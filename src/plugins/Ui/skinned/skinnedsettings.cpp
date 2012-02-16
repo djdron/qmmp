@@ -215,6 +215,8 @@ void SkinnedSettings::readSettings()
     ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
     settings.endGroup();
+    //url dialog
+    ui.clipboardCheckBox->setChecked(settings.value("URLDialog/use_clipboard", false).toBool());
 }
 
 void SkinnedSettings::writeSettings()
@@ -237,4 +239,5 @@ void SkinnedSettings::writeSettings()
     settings.setValue ("start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     settings.endGroup();
+    settings.setValue ("URLDialog/use_clipboard", ui.clipboardCheckBox->isChecked());
 }

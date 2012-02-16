@@ -382,7 +382,7 @@
         <translation>Hinzuzufügende URL eingeben</translation>
     </message>
     <message>
-        <location filename="../addurldialog.cpp" line="117"/>
+        <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -1236,6 +1236,16 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
         <translation>Wiedergabelisten-Trenner:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="474"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>

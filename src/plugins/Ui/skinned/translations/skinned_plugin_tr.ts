@@ -377,7 +377,7 @@
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="117"/>
+        <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
@@ -1232,6 +1232,16 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="474"/>
+        <source>Auto-paste URL from clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

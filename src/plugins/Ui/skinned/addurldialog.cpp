@@ -31,12 +31,13 @@
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmp/qmmpsettings.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmp/qmmp.h>
 #include "addurldialog.h"
 
 #define HISTORY_SIZE 10
 
-AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
+AddUrlDialog::AddUrlDialog(QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
 {
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -44,7 +45,12 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
-    urlComboBox->setEditText(QApplication::clipboard()->text().trimmed());
+    if(settings.value("URLDialog/use_clipboard", false).toBool())
+    {
+        QUrl url(QApplication::clipboard()->text().trimmed());
+        if(url.isValid() && MetaDataManager::instance()->protocols().contains(url.scheme()))
+            urlComboBox->setEditText(QApplication::clipboard()->text().trimmed());
+    }
     m_http = new QNetworkAccessManager(this);
     //load global proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -62,7 +68,7 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
 
 AddUrlDialog::~AddUrlDialog()
 {
-    if ( m_history.size() > HISTORY_SIZE)
+    while (m_history.size() > HISTORY_SIZE)
         m_history.removeLast();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("URLDialog/history", m_history);
@@ -70,7 +76,7 @@ AddUrlDialog::~AddUrlDialog()
 
 QPointer<AddUrlDialog> AddUrlDialog::instance = 0;
 
-void AddUrlDialog::popup(QWidget* parent,PlayListModel* model )
+void AddUrlDialog::popup(QWidget* parent, PlayListModel* model)
 {
     if (!instance)
     {
