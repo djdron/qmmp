@@ -136,7 +136,7 @@ void AddUrlDialog::readResponse(QNetworkReply *reply)
     reply->deleteLater();
 }
 
-void AddUrlDialog::setModel( PlayListModel *m )
+void AddUrlDialog::setModel(PlayListModel *m)
 {
     m_model = m;
 }
