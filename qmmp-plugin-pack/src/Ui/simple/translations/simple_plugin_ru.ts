@@ -964,17 +964,17 @@
     <message>
         <location filename="../forms/simplesettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Разное</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-диалог</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматически вставлять URL из буфера обмена</translation>
     </message>
     <message>
         <location filename="../simplesettings.cpp" line="123"/>
