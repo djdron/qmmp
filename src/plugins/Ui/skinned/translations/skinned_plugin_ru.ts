@@ -1240,12 +1240,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-диалог</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="474"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматически вставлять URL из буфера обмена</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
