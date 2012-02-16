@@ -26,6 +26,7 @@
 #include <QNetworkProxy>
 #include <QUrl>
 #include <QMessageBox>
+#include <QClipboard>
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/playlistmodel.h>
@@ -43,6 +44,7 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
+    urlComboBox->setEditText(QApplication::clipboard()->text().trimmed());
     m_http = new QNetworkAccessManager(this);
     //load global proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
