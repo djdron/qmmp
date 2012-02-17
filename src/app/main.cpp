@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
 
     LXDESupport::load(); //load lxde icons
 
+#ifdef Q_OS_WIN
+    QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
+    QIcon::setThemeName("oxygen");
+#endif
+
     QTranslator translator;
     QString locale = Qmmp::systemLanguageID();
     translator.load(QString(":/qmmp_") + locale);
