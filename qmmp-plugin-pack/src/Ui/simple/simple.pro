@@ -1,17 +1,15 @@
 include(../../plugins.pri)
 
 TARGET = $$PLUGINS_PREFIX/Ui/simple
-unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libsimple.so
 
 CONFIG += release \
     warn_on \
     plugin \
     link_pkgconfig
+
 TEMPLATE = lib
 
 QT += network
-
-PKGCONFIG += qmmp qmmpui
 
 SOURCES += main.cpp \
     mainwindow.cpp \
@@ -50,11 +48,6 @@ HEADERS += mainwindow.h \
     keyboardmanager.h
 TEMPLATE = lib
 
-
-isEmpty(LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Ui
-INSTALLS += target
-
 FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
     forms/simplesettings.ui \
@@ -82,6 +75,24 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_sk.ts
 
 DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
+
+unix {
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Ui
+    INSTALLS += target
+
+    PKGCONFIG += qmmp qmmpui
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libsimple.so
+}
+
+win32 {
+    #HEADERS += ../../../../src/qmmp/metadatamodel.h \
+    #           ../../../../src/qmmp/decoderfactory.h
+    INCLUDEPATH += ../../
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lqmmpui0
+}
+
 
 
 
