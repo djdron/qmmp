@@ -258,7 +258,13 @@ void MainWindow::about()
 
 void MainWindow::toggleVisibility()
 {
-    isHidden() ? show() : hide();
+    if(isHidden())
+    {
+        show();
+        activateWindow();
+    }
+    else
+        hide();
 }
 
 void MainWindow::showSettings()
