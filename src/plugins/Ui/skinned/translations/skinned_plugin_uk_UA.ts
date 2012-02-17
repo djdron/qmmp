@@ -771,7 +771,7 @@
         <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>За номером диску</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
@@ -1240,12 +1240,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-діалог</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="474"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично вставляти URL з буферу обміну</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
