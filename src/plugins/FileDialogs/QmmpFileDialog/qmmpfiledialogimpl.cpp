@@ -127,8 +127,10 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString &path)
 
 void QmmpFileDialogImpl::on_upToolButton_clicked()
 {
+#ifndef Q_OS_WIN
     if (!m_model->parent(fileListView->rootIndex()).isValid())
         return;
+#endif
     fileListView->setRootIndex(m_model->parent(fileListView->rootIndex()));
     treeView->setRootIndex(fileListView->rootIndex());
     lookInComboBox->setEditText(m_model->filePath(fileListView->rootIndex()));
