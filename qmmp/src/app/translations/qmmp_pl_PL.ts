@@ -99,17 +99,17 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja QMMP: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skompilowane z wersją QT: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="302"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Używana wersja Qt: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="293"/>

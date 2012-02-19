@@ -16,7 +16,7 @@
     <message>
         <location filename="../converter.cpp" line="266"/>
         <source>Encoding...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodowanie...</translation>
     </message>
 </context>
 <context>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta wtyczka konwertuje wspierane pliki dźwiękowe do innego formatu przy użyciu zewnętrznych programów</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytor  presetów</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="29"/>
