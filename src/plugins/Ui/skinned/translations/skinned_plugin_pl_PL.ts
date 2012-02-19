@@ -71,7 +71,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Skocz do utworu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -771,7 +771,7 @@
         <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Według numeru płyty</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
@@ -1240,12 +1240,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="474"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne wklejanie URL ze schowka</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>

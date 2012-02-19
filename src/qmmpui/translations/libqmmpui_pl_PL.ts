@@ -41,7 +41,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="66"/>
         <source>Version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja: %1</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
@@ -270,17 +270,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Directory Scanning Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje skanowania katalogów</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
         <source>Restrict files to:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogranicz pliki do:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="463"/>
         <source>Add files from command line to this playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj pliki z linii poleceń do listy odtwarzania:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="611"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="456"/>
         <source>Determine file type by content</source>
-        <translation type="unfinished"></translation>
+        <translation>Określ typ pliku po zawartości</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="379"/>
@@ -567,7 +567,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qmmpuisettings.cpp" line="41"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista odtwarzania</translation>
+        <translation>Lista odtwarzania</translation>
     </message>
 </context>
 <context>
