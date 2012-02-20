@@ -461,6 +461,9 @@
           </item>
           <item row="5" column="0">
            <widget class="QCheckBox" name="showNewPLCheckBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Show 'New Playlist' button</string>
             </property>
@@ -561,12 +564,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>189</y>
+     <x>172</x>
+     <y>238</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
-     <y>221</y>
+     <y>270</y>
     </hint>
    </hints>
   </connection>
@@ -597,8 +600,24 @@
      <y>161</y>
     </hint>
     <hint type="destinationlabel">
-     <x>197</x>
-     <y>243</y>
+     <x>266</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playlistsCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>showNewPLCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>162</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>95</x>
+     <y>181</y>
     </hint>
    </hints>
   </connection>
