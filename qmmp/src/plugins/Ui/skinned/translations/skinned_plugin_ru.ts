@@ -867,32 +867,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="50"/>
         <source>&amp;Load</source>
         <translation>&amp;Загрузить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="53"/>
+        <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="56"/>
+        <location filename="../playlistselector.cpp" line="54"/>
         <source>&amp;Delete</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="114"/>
+        <location filename="../playlistselector.cpp" line="125"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="114"/>
+        <location filename="../playlistselector.cpp" line="125"/>
         <source>Playlist name:</source>
         <translation>Имя списка:</translation>
     </message>
@@ -1239,11 +1239,16 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation>Показывать кнопку &quot;Новый список&quot;</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="478"/>
         <source>URL Dialog</source>
         <translation>URL-диалог</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="474"/>
+        <location filename="../forms/skinnedsettings.ui" line="484"/>
         <source>Auto-paste URL from clipboard</source>
         <translation>Автоматически вставлять URL из буфера обмена</translation>
     </message>
