@@ -60,23 +60,35 @@ private:
     void loadColors();
     void drawButtons();
     void updateScrollers();
-    int firstVisible();
-    int lastVisible();
+    QRect firstVisible();
+    QRect lastVisible();
+    int findPlayList(QPoint pos);
+    int findButton(QPoint pos);
     PlayListManager *m_pl_manager;
     QFontMetrics *m_metrics;
     QFont m_font;
     QMenu *m_menu;
-    bool m_update;
     bool m_scrollable;
     QList <QRect> m_rects;
+    QList <QRect> m_extra_rects;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
     QPixmap m_pixmap;
-    bool m_showButtons;
+    bool m_show_new_pl_button;
     int m_offset, m_offset_max, m_press_offset;
-    bool m_moving, m_left_pressed, m_right_pressed;
+    bool m_moving;
     QPoint m_mouse_pos;
     QString m_pl_separator;
+    QString m_pl_button;
+    int m_pressed_button;
+
+    enum BUTTON
+    {
+        BUTTON_UNKNOWN = -1,
+        BUTTON_NEW_PL,
+        BUTTON_LEFT,
+        BUTTON_RIGHT
+    };
 };
 
 #endif // PLAYLISTSELECTOR_H
