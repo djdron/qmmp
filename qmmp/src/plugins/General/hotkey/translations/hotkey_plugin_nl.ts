@@ -95,6 +95,21 @@
         <translation>Volume -</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="51"/>
+        <source>Forward 5 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <source>Rewind 5 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <source>Jump to track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
         <translation>Globale Sneltoets Module Instellingen</translation>
