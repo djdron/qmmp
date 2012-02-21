@@ -16,15 +16,13 @@ ADD_DEFINITIONS(-DQT_THREAD)
 ADD_DEFINITIONS(-DLIB_DIR=\\\"\\/${LIB_DIR}\\\")
 ADD_DEFINITIONS(-DQMMP_INSTALL_PREFIX=\\\"${CMAKE_INSTALL_PREFIX}\\\")
 
-IF(SVN_VERSION) #add svn revision
+IF(NOT QMMP_VERSION_STABLE) #add svn revision
 execute_process(COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/svn_revision.sh
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                 OUTPUT_VARIABLE SVN_REVISION
                 OUTPUT_STRIP_TRAILING_WHITESPACE)
 ADD_DEFINITIONS(-DSVN_REVISION=\\\"${SVN_REVISION}\\\")
-ELSE(SVN_VERSION)
-
-ENDIF(SVN_VERSION)
+ENDIF(NOT QMMP_VERSION_STABLE)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
@@ -95,7 +93,7 @@ SET(libqmmp_MOC_HDRS
     inputsource.h
     fileinputsource_p.h
     emptyinputsource_p.h
-    qmmpsettings.h 
+    qmmpsettings.h
 )
 
 SET(libqmmp_DEVEL_HDRS
