@@ -44,7 +44,10 @@ public:
         PREVIOUS,
         SHOW_HIDE,
         VOLUME_UP,
-        VOLUME_DOWN
+        VOLUME_DOWN,
+        FORWARD,
+        REWIND,
+        JUMP_TO_TRACK
     };
 
     Hotkey()

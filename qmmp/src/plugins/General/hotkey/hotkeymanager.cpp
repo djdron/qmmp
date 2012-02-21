@@ -66,6 +66,9 @@ quint32 Hotkey::defaultKey(int act)
     keyMap[SHOW_HIDE] = 0;
     keyMap[VOLUME_UP] = XF86XK_AudioRaiseVolume;
     keyMap[VOLUME_DOWN] = XF86XK_AudioLowerVolume;
+    keyMap[FORWARD] = 0;
+    keyMap[REWIND] = 0;
+    keyMap[JUMP_TO_TRACK] = 0;
     return keyMap[act];
 }
 
@@ -75,7 +78,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
     WId rootWindow = QX11Info::appRootWindow();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat); //load settings
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_DOWN; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::JUMP_TO_TRACK; ++i, ++j)
     {
         quint32 key = settings.value(QString("key_%1").arg(i), Hotkey::defaultKey(i)).toUInt();
         quint32 mod = settings.value(QString("modifiers_%1").arg(i), 0).toUInt();
@@ -135,6 +138,8 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
         QKeyEvent* k = static_cast<QKeyEvent*>(e);
         quint32 key = XKeycodeToKeysym(QX11Info::display(), k->nativeScanCode (), 0);
         quint32 mod = k->nativeModifiers ();
+        SoundCore *core = SoundCore::instance();
+        MediaPlayer *player = MediaPlayer::instance();
         foreach(Hotkey *hotkey, m_grabbedKeys)
         {
             if (hotkey->key != key || hotkey->mod != mod)
@@ -144,32 +149,32 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
             switch (hotkey->action)
             {
             case Hotkey::PLAY:
-                MediaPlayer::instance()->play();
+                player->play();
                 break;
             case Hotkey::STOP:
-                MediaPlayer::instance()->stop();
+                player->stop();
                 break;
             case Hotkey::PAUSE:
-                SoundCore::instance()->pause();
+                core->pause();
                 break;
             case Hotkey::PLAY_PAUSE:
-                if (SoundCore::instance()->state() == Qmmp::Stopped)
+                if (core->state() == Qmmp::Stopped)
                     MediaPlayer::instance()->play();
-                else if (SoundCore::instance()->state() != Qmmp::FatalError)
-                    SoundCore::instance()->pause();
+                else if (core->state() != Qmmp::FatalError)
+                    core->pause();
                 break;
             case Hotkey::NEXT:
-                MediaPlayer::instance()->next();
+                player->next();
                 break;
             case Hotkey::PREVIOUS:
-                MediaPlayer::instance()->previous();
+                player->previous();
                 break;
             case Hotkey::SHOW_HIDE:
                 UiHelper::instance()->toggleVisibility();
                 break;
             case Hotkey::VOLUME_UP:
             case Hotkey::VOLUME_DOWN:
-                 SoundCore *core = SoundCore::instance();
+            {
                  int volume = qMax(core->leftVolume(), core->rightVolume());
                  int balance = 0;
                  int left = core->leftVolume();
@@ -182,7 +187,18 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                      volume = qMax (0, volume - 5);
                  core->setVolume(volume-qMax(balance,0)*volume/100,
                                  volume+qMin(balance,0)*volume/100);
+            }
                  break;
+            case Hotkey::FORWARD:
+                core->seek(core->elapsed() + 5000);
+                break;
+            case Hotkey::REWIND:
+                core->seek(qMax(qint64(0), core->elapsed() - 5000));
+                break;
+            case Hotkey::JUMP_TO_TRACK:
+                UiHelper::instance()->jumpToTrack();
+                break;
+
             }
             qApp->processEvents();
         }

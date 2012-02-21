@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,7 +38,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.tableWidget->verticalHeader()->hide();
     ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui.tableWidget->setRowCount (9);
+    ui.tableWidget->setRowCount (12);
     ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
     ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));
     ui.tableWidget->setItem(2,0, new QTableWidgetItem(tr("Pause")));
@@ -48,10 +48,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->setItem(6,0, new QTableWidgetItem(tr("Show/Hide")));
     ui.tableWidget->setItem(7,0, new QTableWidgetItem(tr("Volume +")));
     ui.tableWidget->setItem(8,0, new QTableWidgetItem(tr("Volume -")));
+    ui.tableWidget->setItem(9,0, new QTableWidgetItem(tr("Forward 5 seconds")));
+    ui.tableWidget->setItem(10,0, new QTableWidgetItem(tr("Rewind 5 seconds")));
+    ui.tableWidget->setItem(11,0, new QTableWidgetItem(tr("Jump to track")));
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_DOWN; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::JUMP_TO_TRACK; ++i, ++j)
     {
         Hotkey *hotkey = new Hotkey;
         hotkey->action = i;
