@@ -95,6 +95,21 @@
         <translation>Громкость -</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="51"/>
+        <source>Forward 5 seconds</source>
+        <translation>Вперёд на 5 секунд</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <source>Rewind 5 seconds</source>
+        <translation>Назад на 5 секунд</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <source>Jump to track</source>
+        <translation>Перейти к треку</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
         <translation>Настройки модуля глобальных клавиш</translation>
