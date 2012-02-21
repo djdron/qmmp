@@ -21,6 +21,7 @@
 #define SCROBBLER_H
 
 #include <QMap>
+#include <QObject>
 #include <qmmp/qmmp.h>
 
 class QNetworkAccessManager;

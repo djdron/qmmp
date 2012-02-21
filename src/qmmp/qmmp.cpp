@@ -48,7 +48,7 @@ const QString Qmmp::strVersion()
             .arg(QMMP_VERSION_MAJOR)
             .arg(QMMP_VERSION_MINOR)
             .arg(QMMP_VERSION_PATCH);
-#if !QMMP_VERSION_STABLE && SVN_REVISION
+#if !QMMP_VERSION_STABLE
 #ifdef SVN_REVISION
     ver += "-"SVN_REVISION;
 #else
