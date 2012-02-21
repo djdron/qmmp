@@ -20,13 +20,12 @@
 #ifndef QMMP_H
 #define QMMP_H
 
-#include <QUrl>
-#include <QEvent>
-
+#include <QString>
 
 #define QMMP_VERSION_MAJOR 0
 #define QMMP_VERSION_MINOR 6
 #define QMMP_VERSION_PATCH 0
+#define QMMP_VERSION_STABLE 0
 
 #define QMMP_VERSION_INT (QMMP_VERSION_MAJOR<<16 | QMMP_VERSION_MINOR<<8 | QMMP_VERSION_PATCH)
 

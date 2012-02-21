@@ -24,10 +24,6 @@
 #include <QLocale>
 #include <QByteArray>
 
-#ifndef QMMP_STR_VERSION
-#define QMMP_STR_VERSION "0.6.0"
-#endif
-
 #ifndef LIB_DIR
 #define LIB_DIR "/lib"
 #endif
@@ -48,12 +44,18 @@ void Qmmp::setConfigFile(const QString &path)
 
 const QString Qmmp::strVersion()
 {
+    QString ver = QString("%1.%2.%3")
+            .arg(QMMP_VERSION_MAJOR)
+            .arg(QMMP_VERSION_MINOR)
+            .arg(QMMP_VERSION_PATCH);
+#if !QMMP_VERSION_STABLE && SVN_REVISION
 #ifdef SVN_REVISION
-    return QString("%1.%2.%3-%4").arg(QMMP_VERSION_MAJOR).arg(QMMP_VERSION_MINOR).arg(QMMP_VERSION_PATCH)
-            .arg(SVN_REVISION);
+    ver += "-"SVN_REVISION;
 #else
-    return QString("%1.%2.%3").arg(QMMP_VERSION_MAJOR).arg(QMMP_VERSION_MINOR).arg(QMMP_VERSION_PATCH);
+    ver += "-svn";
 #endif
+#endif
+    return ver;
 }
 
 const QString Qmmp::pluginsPath()
