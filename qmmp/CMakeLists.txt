@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 2.6.0)
 
-SET(SVN_VERSION TRUE)
-
 #extract version from qmmp.h
 FILE(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/qmmp/qmmp.h"
      QMMP_VERSION_DATA REGEX "^#define[ \t]+QMMP_VERSION_[A-Z]+[ \t]+[0-9]+.*$")
