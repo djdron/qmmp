@@ -46,7 +46,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation>(с) %1-%2 Команда Разработчиков Qmmp</translation>
+        <translation>(с) %1-%2 Команда разработчиков Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
