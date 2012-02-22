@@ -40,11 +40,11 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-    licenseTextEdit->setPlainText(getStringFromResource(":COPYING"));
-    aboutTextEdit->setHtml(loadAbout());
-    authorsTextEdit->setPlainText(getStringFromResource(":authors"));
-    thanksToTextEdit->setPlainText(getStringFromResource(":thanks"));
-    translatorsTextEdit->setPlainText(getStringFromResource(":translators"));
+    licenseTextBrowser->setPlainText(getStringFromResource(":COPYING"));
+    aboutTextBrowser->setHtml(loadAbout());
+    authorsTextBrowser->setPlainText(getStringFromResource(":authors"));
+    thanksToTextBrowser->setPlainText(getStringFromResource(":thanks"));
+    translatorsTextBrowser->setPlainText(getStringFromResource(":translators"));
 }
 
 AboutDialog::~AboutDialog()
@@ -63,8 +63,18 @@ QString AboutDialog::loadAbout()
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
     text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
-    text.append("<h4>"+tr("Version: %1").arg(Qmmp::strVersion()) + "</h4>");
-    text.append("<p>"+getStringFromResource(tr(":txt/description_en.txt"))+"</p>");
+
+    text.append("<p>"+getStringFromResource(tr(":description"))+"</p>");
+
+    text.append("<p><b>"+tr("Version: %1").arg(Qmmp::strVersion()) + "</b><br>");
+    text.append(tr("Using Qt %1 (compiled with Qt %2)" ).arg(qVersion()).arg(QT_VERSION_STR) + "</p>");
+
+    text.append("<p>");
+    text.append(tr("(c) %1-%2 Qmmp Development Team").arg(2006).arg(2012)+"<br>");
+    text.append("<a href=\"http://qmmp.ylsoftware.com/\">http://qmmp.ylsoftware.com/</a><br>");
+    text.append("<a href=\"http://code.google.com/p/qmmp//\">http://code.google.com/p/qmmp/</a>");
+    text.append("</p>");
+
     text.append("<h5>"+tr("Input plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
     foreach(DecoderFactory *fact, *Decoder::factories())
