@@ -64,7 +64,7 @@ QString AboutDialog::loadAbout()
     text.append("</head>");
     text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
 
-    text.append("<p>"+getStringFromResource(tr(":description"))+"</p>");
+    text.append("<p>"+getStringFromResource(":description")+"</p>");
 
     text.append("<p><b>"+tr("Version: %1").arg(Qmmp::strVersion()) + "</b><br>");
     text.append(tr("Using Qt %1 (compiled with Qt %2)" ).arg(qVersion()).arg(QT_VERSION_STR) + "</p>");

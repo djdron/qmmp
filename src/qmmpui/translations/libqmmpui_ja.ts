@@ -9,27 +9,27 @@
         <translation>QMMP について</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <location filename="../forms/aboutdialog.ui" line="49"/>
         <source>About</source>
         <translation>QMMP について</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <location filename="../forms/aboutdialog.ui" line="63"/>
         <source>Authors</source>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <location filename="../forms/aboutdialog.ui" line="77"/>
         <source>Translators</source>
         <translation>翻訳者</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <location filename="../forms/aboutdialog.ui" line="91"/>
         <source>Thanks To</source>
         <translation>協力者</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <location filename="../forms/aboutdialog.ui" line="105"/>
         <source>License Agreement</source>
         <translation>使用許諾契約</translation>
     </message>
@@ -39,37 +39,42 @@
         <translation>Qt 製マルティミディアプレイヤー QMMP</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="66"/>
+        <location filename="../aboutdialog.cpp" line="69"/>
         <source>Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="67"/>
-        <source>:txt/description_en.txt</source>
-        <translation>:txt/description_ja.txt</translation>
+        <location filename="../aboutdialog.cpp" line="70"/>
+        <source>Using Qt %1 (compiled with Qt %2)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="68"/>
+        <location filename="../aboutdialog.cpp" line="73"/>
+        <source>(c) %1-%2 Qmmp Development Team</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>Input plugins:</source>
         <translation>入力側プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="77"/>
+        <location filename="../aboutdialog.cpp" line="87"/>
         <source>Output plugins:</source>
         <translation>出力側プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="86"/>
+        <location filename="../aboutdialog.cpp" line="96"/>
         <source>Visual plugins:</source>
         <translation>視覚効果プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="95"/>
+        <location filename="../aboutdialog.cpp" line="105"/>
         <source>Effect plugins:</source>
         <translation>音響効果プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="104"/>
+        <location filename="../aboutdialog.cpp" line="114"/>
         <source>General plugins:</source>
         <translation>一般プラグイン:</translation>
     </message>
