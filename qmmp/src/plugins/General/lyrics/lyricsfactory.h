@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONVERTERFACTORY_H
-#define CONVERTERFACTORY_H
+#ifndef LYRICSFACTORY_H
+#define LYRICSFACTORY_H
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
