@@ -38,7 +38,7 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListModel *model, QWidget* parent)
     m_pl_manager = PlayListManager::instance();
     m_listModel = new QStringListModel(this);
 
-    m_proxyModel = new QSortFilterProxyModel;
+    m_proxyModel = new QSortFilterProxyModel(this);
     m_proxyModel->setDynamicSortFilter(true);
     m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     m_proxyModel->setSourceModel(m_listModel);

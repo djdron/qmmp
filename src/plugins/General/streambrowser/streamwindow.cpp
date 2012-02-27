@@ -24,6 +24,7 @@
 #include <QUrl>
 #include <QRegExp>
 #include <QStandardItemModel>
+#include <QSortFilterProxyModel>
 #include <QSettings>
 #include <QDir>
 #include <QMessageBox>
@@ -45,13 +46,18 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     ui.addPushButton->setIcon(QIcon::fromTheme("list-add"));
     ui.updatePushButton->setIcon(QIcon::fromTheme("view-refresh"));
 
-
     m_icecastModel = new QStandardItemModel(this);
     m_icecastModel->setHorizontalHeaderLabels(QStringList() << tr("Name")
                                        << tr("Genre")
                                        << tr("Bitrate")
                                        << tr("Format"));
-    ui.icecastTableView->setModel(m_icecastModel);
+    m_filterModel = new QSortFilterProxyModel(this);
+    m_filterModel->setSourceModel(m_icecastModel);
+    m_filterModel->setDynamicSortFilter(true);
+    m_filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+
+
+    ui.icecastTableView->setModel(m_filterModel);
     ui.icecastTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
     ui.icecastTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.icecastTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -132,10 +138,16 @@ void StreamWindow::on_addPushButton_clicked()
     QStringList urls;
     foreach(QModelIndex index, indexes)
     {
-        urls.append(m_icecastModel->item(index.row(),0)->data().toString());
+        QModelIndex source_index = m_filterModel->mapToSource(index);
+        urls.append(m_icecastModel->item(source_index.row(),0)->data().toString());
     }
     urls.removeDuplicates();
     PlayListManager::instance()->add(urls);
+}
+
+void StreamWindow::on_filterLineEdit_textChanged(const QString &text)
+{
+    m_filterModel->setFilterFixedString(text);
 }
 
 void StreamWindow::closeEvent(QCloseEvent *)

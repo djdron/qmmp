@@ -8,6 +8,11 @@
         <source>Stream Browser</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../streambrowser.cpp" line="35"/>
+        <source>Ctrl+U</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StreamBrowserFactory</name>
@@ -45,22 +50,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.ui" line="33"/>
+        <location filename="../streamwindow.ui" line="31"/>
+        <source>Filter:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../streamwindow.ui" line="47"/>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.ui" line="59"/>
+        <location filename="../streamwindow.ui" line="73"/>
         <source>IceCast</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.ui" line="88"/>
+        <location filename="../streamwindow.ui" line="102"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.ui" line="95"/>
+        <location filename="../streamwindow.ui" line="109"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -85,18 +95,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="102"/>
+        <location filename="../streamwindow.cpp" line="108"/>
         <source>Done</source>
         <translation type="unfinished">Gotowe</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="105"/>
-        <location filename="../streamwindow.cpp" line="106"/>
+        <location filename="../streamwindow.cpp" line="111"/>
+        <location filename="../streamwindow.cpp" line="112"/>
         <source>Error</source>
         <translation type="unfinished">Błąd</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="125"/>
+        <location filename="../streamwindow.cpp" line="131"/>
         <source>Receiving</source>
         <translation type="unfinished">Pobieranie</translation>
     </message>
