@@ -104,6 +104,8 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     settings.beginGroup("StreamBrowser");
     restoreGeometry(settings.value("geometry").toByteArray());
     ui.icecastTableView->horizontalHeader()->restoreState(settings.value("icecast_headers").toByteArray());
+    ui.favoritesTableView->horizontalHeader()->restoreState(settings.value("favorites_headers").toByteArray());
+    ui.tabWidget->setCurrentIndex(settings.value("current_tab", 1).toInt());
     settings.endGroup();
     //create cache dir
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
@@ -249,6 +251,8 @@ void StreamWindow::closeEvent(QCloseEvent *)
     settings.beginGroup("StreamBrowser");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("icecast_headers", ui.icecastTableView->horizontalHeader()->saveState());
+    settings.setValue("favorites_headers", ui.favoritesTableView->horizontalHeader()->saveState());
+    settings.setValue("current_tab", ui.tabWidget->currentIndex());
     settings.endGroup();
 
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
