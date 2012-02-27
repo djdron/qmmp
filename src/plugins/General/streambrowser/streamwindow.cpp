@@ -46,18 +46,18 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     ui.addPushButton->setIcon(QIcon::fromTheme("list-add"));
     ui.updatePushButton->setIcon(QIcon::fromTheme("view-refresh"));
 
-    m_icecastModel = new QStandardItemModel(this);
-    m_icecastModel->setHorizontalHeaderLabels(QStringList() << tr("Name")
+    m_iceCastModel = new QStandardItemModel(this);
+    m_iceCastModel->setHorizontalHeaderLabels(QStringList() << tr("Name")
                                        << tr("Genre")
                                        << tr("Bitrate")
                                        << tr("Format"));
-    m_filterModel = new QSortFilterProxyModel(this);
-    m_filterModel->setSourceModel(m_icecastModel);
-    m_filterModel->setDynamicSortFilter(true);
-    m_filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    m_iceCastFilterModel = new QSortFilterProxyModel(this);
+    m_iceCastFilterModel->setSourceModel(m_iceCastModel);
+    m_iceCastFilterModel->setDynamicSortFilter(true);
+    m_iceCastFilterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 
 
-    ui.icecastTableView->setModel(m_filterModel);
+    ui.icecastTableView->setModel(m_iceCastFilterModel);
     ui.icecastTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
     ui.icecastTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.icecastTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -137,8 +137,8 @@ void StreamWindow::on_addPushButton_clicked()
     QStringList urls;
     foreach(QModelIndex index, indexes)
     {
-        QModelIndex source_index = m_filterModel->mapToSource(index);
-        urls.append(m_icecastModel->item(source_index.row(),0)->data().toString());
+        QModelIndex source_index = m_iceCastFilterModel->mapToSource(index);
+        urls.append(m_iceCastModel->item(source_index.row(),0)->data().toString());
     }
     urls.removeDuplicates();
     PlayListManager::instance()->add(urls);
@@ -146,7 +146,7 @@ void StreamWindow::on_addPushButton_clicked()
 
 void StreamWindow::on_filterLineEdit_textChanged(const QString &text)
 {
-    m_filterModel->setFilterFixedString(text);
+    m_iceCastFilterModel->setFilterFixedString(text);
 }
 
 void StreamWindow::closeEvent(QCloseEvent *)
@@ -166,14 +166,14 @@ void StreamWindow::closeEvent(QCloseEvent *)
     writer.setAutoFormatting(true);
     writer.writeStartDocument();
     writer.writeStartElement("directory");
-    for(int i = 0; i < m_icecastModel->rowCount(); ++i)
+    for(int i = 0; i < m_iceCastModel->rowCount(); ++i)
     {
         writer.writeStartElement("entry");
-        writer.writeTextElement("server_name", m_icecastModel->item(i,0)->text());
-        writer.writeTextElement("listen_url", m_icecastModel->item(i,0)->data().toString());
-        writer.writeTextElement("genre", m_icecastModel->item(i,1)->text());
-        writer.writeTextElement("bitrate", m_icecastModel->item(i,2)->text());
-        writer.writeTextElement("server_type", m_icecastModel->item(i,3)->text());
+        writer.writeTextElement("server_name", m_iceCastModel->item(i,0)->text());
+        writer.writeTextElement("listen_url", m_iceCastModel->item(i,0)->data().toString());
+        writer.writeTextElement("genre", m_iceCastModel->item(i,1)->text());
+        writer.writeTextElement("bitrate", m_iceCastModel->item(i,2)->text());
+        writer.writeTextElement("server_type", m_iceCastModel->item(i,3)->text());
         writer.writeEndElement();
     }
     writer.writeEndElement();
@@ -182,7 +182,7 @@ void StreamWindow::closeEvent(QCloseEvent *)
 
 void StreamWindow::readIceCast(QIODevice *input)
 {
-    m_icecastModel->removeRows(0, m_icecastModel->rowCount());
+    m_iceCastModel->removeRows(0, m_iceCastModel->rowCount());
     QXmlStreamReader xml(input);
     QString currentTag, server_name, listen_url, genre, bitrate, server_type;
     while (!xml.atEnd())
@@ -196,13 +196,13 @@ void StreamWindow::readIceCast(QIODevice *input)
         {
             if (xml.name() == "entry")
             {
-                m_icecastModel->appendRow(QList<QStandardItem *> ()
+                m_iceCastModel->appendRow(QList<QStandardItem *> ()
                                           << new QStandardItem(server_name)
                                           << new QStandardItem(genre)
                                           << new QStandardItem(bitrate)
                                           << new QStandardItem(server_type));
 
-                QStandardItem *item = m_icecastModel->item(m_icecastModel->rowCount()-1, 0);
+                QStandardItem *item = m_iceCastModel->item(m_iceCastModel->rowCount()-1, 0);
                 item->setToolTip(server_name + "\n" + listen_url);
                 item->setData(listen_url);
 
