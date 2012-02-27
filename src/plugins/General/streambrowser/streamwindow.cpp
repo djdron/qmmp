@@ -28,6 +28,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QMessageBox>
+#include <QMenu>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <qmmp/qmmpsettings.h>
@@ -42,10 +43,10 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_requestReply = 0;
-
+    //buttons
     ui.addPushButton->setIcon(QIcon::fromTheme("list-add"));
     ui.updatePushButton->setIcon(QIcon::fromTheme("view-refresh"));
-
+    //icecast model
     m_iceCastModel = new QStandardItemModel(this);
     m_iceCastModel->setHorizontalHeaderLabels(QStringList() << tr("Name")
                                        << tr("Genre")
@@ -55,15 +56,34 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     m_iceCastFilterModel->setSourceModel(m_iceCastModel);
     m_iceCastFilterModel->setDynamicSortFilter(true);
     m_iceCastFilterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-
-
+    //icecast table
     ui.icecastTableView->setModel(m_iceCastFilterModel);
     ui.icecastTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
     ui.icecastTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.icecastTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui.icecastTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui.icecastTableView, SIGNAL(customContextMenuRequested(QPoint)),
+            SLOT(execIceCastMenu(QPoint)));
+    //favorites model
+    m_favoritesModel = new QStandardItemModel(this);
+    m_favoritesModel->setHorizontalHeaderLabels(QStringList() << tr("Name")
+                                                     << tr("Genre")
+                                                     << tr("Bitrate")
+                                                     << tr("Format"));
+    m_favoritesFilterModel = new QSortFilterProxyModel(this);
+    m_favoritesFilterModel->setSourceModel(m_favoritesModel);
+    m_favoritesFilterModel->setDynamicSortFilter(true);
+    m_favoritesFilterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    //favorites table
+    ui.favoritesTableView->setModel(m_favoritesFilterModel);
+    ui.favoritesTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
+    ui.favoritesTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui.favoritesTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui.favoritesTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui.favoritesTableView, SIGNAL(customContextMenuRequested(QPoint)),
+            SLOT(execFavoritesMenu(QPoint)));
 
     ui.statusLabel->hide();
-
 
     m_http = new QNetworkAccessManager(this);
      //load global proxy settings
@@ -93,9 +113,22 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     //read cache
     QFile file(path + "/streambrowser/icecast.xml");
     if(file.open(QIODevice::ReadOnly))
-        readIceCast(&file);
+        readXml(&file, m_iceCastModel);
     else
         on_updatePushButton_clicked();
+    QFile file2(path + "/streambrowser/favorites.xml");
+    if(file2.open(QIODevice::ReadOnly))
+        readXml(&file2, m_favoritesModel);
+    //create menus
+    m_iceCastMenu = new QMenu(this);
+    m_iceCastMenu->addAction(tr("&Add to favorites"), this, SLOT(addToFavorites()));
+    QAction *addAction = m_iceCastMenu->addAction(tr("&Add to playlist"), this,
+                                                  SLOT(on_addPushButton_clicked()));
+    m_favoritesMenu = new QMenu(this);
+    m_favoritesMenu->addAction(addAction);
+    m_favoritesMenu->addSeparator();
+    m_favoritesMenu->addAction(tr("&Remove"), this, SLOT(removeFromFavorites()), QKeySequence::Delete);
+    addActions(m_favoritesMenu->actions());
 }
 
 StreamWindow::~StreamWindow()
@@ -116,7 +149,7 @@ void StreamWindow::showText(QNetworkReply *reply)
     if(m_requestReply == reply)
     {
         m_requestReply = 0;
-        readIceCast(reply);
+        readXml(reply, m_iceCastModel);
     }
     reply->deleteLater();
 }
@@ -133,12 +166,24 @@ void StreamWindow::on_updatePushButton_clicked()
 
 void StreamWindow::on_addPushButton_clicked()
 {
-    QModelIndexList indexes = ui.icecastTableView->selectionModel()->selectedRows(0);
     QStringList urls;
-    foreach(QModelIndex index, indexes)
+    if(ui.tabWidget->currentIndex() == 0)
     {
-        QModelIndex source_index = m_iceCastFilterModel->mapToSource(index);
-        urls.append(m_iceCastModel->item(source_index.row(),0)->data().toString());
+        QModelIndexList indexes = ui.favoritesTableView->selectionModel()->selectedRows(0);
+        foreach(QModelIndex index, indexes)
+        {
+            QModelIndex source_index = m_favoritesFilterModel->mapToSource(index);
+            urls.append(m_favoritesModel->item(source_index.row(),0)->data().toString());
+        }
+    }
+    else
+    {
+        QModelIndexList indexes = ui.icecastTableView->selectionModel()->selectedRows(0);
+        foreach(QModelIndex index, indexes)
+        {
+            QModelIndex source_index = m_iceCastFilterModel->mapToSource(index);
+            urls.append(m_iceCastModel->item(source_index.row(),0)->data().toString());
+        }
     }
     urls.removeDuplicates();
     PlayListManager::instance()->add(urls);
@@ -147,6 +192,55 @@ void StreamWindow::on_addPushButton_clicked()
 void StreamWindow::on_filterLineEdit_textChanged(const QString &text)
 {
     m_iceCastFilterModel->setFilterFixedString(text);
+    m_favoritesFilterModel->setFilterFixedString(text);
+}
+
+void StreamWindow::execIceCastMenu(const QPoint &pos)
+{
+    m_iceCastMenu->exec(ui.icecastTableView->viewport()->mapToGlobal(pos));
+}
+
+void StreamWindow::execFavoritesMenu(const QPoint &pos)
+{
+    m_favoritesMenu->exec(ui.favoritesTableView->viewport()->mapToGlobal(pos));
+}
+
+void StreamWindow::addToFavorites()
+{
+    QModelIndexList indexes = ui.icecastTableView->selectionModel()->selectedRows(0);
+    foreach(QModelIndex index, indexes)
+    {
+        QModelIndex source_index = m_iceCastFilterModel->mapToSource(index);
+        int row = source_index.row();
+        m_favoritesModel->appendRow(QList<QStandardItem *> ()
+                                    << m_iceCastModel->item(row, 0)->clone()
+                                    << m_iceCastModel->item(row, 1)->clone()
+                                    << m_iceCastModel->item(row, 2)->clone()
+                                    << m_iceCastModel->item(row, 3)->clone());
+    }
+}
+
+void StreamWindow::removeFromFavorites()
+{
+    if(ui.tabWidget->currentIndex() != 0)
+        return;
+    QModelIndexList indexes = ui.favoritesTableView->selectionModel()->selectedRows(0);
+    QList<int> rows_to_remove;
+    foreach(QModelIndex index, indexes)
+    {
+        rows_to_remove.append(m_favoritesFilterModel->mapToSource(index).row());
+    }
+    qStableSort(rows_to_remove);
+    int prev_row = -1;
+    for(int i = rows_to_remove.count() - 1; i >= 0; i -= 1 )
+    {
+        int current = rows_to_remove[i];
+        if(current != prev_row)
+        {
+            m_favoritesFilterModel->removeRows(current, 1);
+            prev_row = current;
+        }
+    }
 }
 
 void StreamWindow::closeEvent(QCloseEvent *)
@@ -158,9 +252,9 @@ void StreamWindow::closeEvent(QCloseEvent *)
     settings.endGroup();
 
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+     //save icecast directory
     QFile file(path + "/streambrowser/icecast.xml");
     file.open(QIODevice::WriteOnly);
-
     QXmlStreamWriter writer(&file);
     writer.setCodec("UTF-8");
     writer.setAutoFormatting(true);
@@ -178,11 +272,33 @@ void StreamWindow::closeEvent(QCloseEvent *)
     }
     writer.writeEndElement();
     writer.writeEndDocument();
+    file.close();
+    //save favorites
+    QFile file2(path + "/streambrowser/favorites.xml");
+    file2.open(QIODevice::WriteOnly);
+    QXmlStreamWriter writer2(&file2);
+    writer2.setCodec("UTF-8");
+    writer2.setAutoFormatting(true);
+    writer2.writeStartDocument();
+    writer2.writeStartElement("directory");
+    for(int i = 0; i < m_favoritesModel->rowCount(); ++i)
+    {
+        writer2.writeStartElement("entry");
+        writer2.writeTextElement("server_name", m_favoritesModel->item(i,0)->text());
+        writer2.writeTextElement("listen_url", m_favoritesModel->item(i,0)->data().toString());
+        writer2.writeTextElement("genre", m_favoritesModel->item(i,1)->text());
+        writer2.writeTextElement("bitrate", m_favoritesModel->item(i,2)->text());
+        writer2.writeTextElement("server_type", m_favoritesModel->item(i,3)->text());
+        writer2.writeEndElement();
+    }
+    writer2.writeEndElement();
+    writer2.writeEndDocument();
+    file2.close();
 }
 
-void StreamWindow::readIceCast(QIODevice *input)
+void StreamWindow::readXml(QIODevice *input, QStandardItemModel *model)
 {
-    m_iceCastModel->removeRows(0, m_iceCastModel->rowCount());
+    model->removeRows(0, model->rowCount());
     QXmlStreamReader xml(input);
     QString currentTag, server_name, listen_url, genre, bitrate, server_type;
     while (!xml.atEnd())
@@ -196,13 +312,13 @@ void StreamWindow::readIceCast(QIODevice *input)
         {
             if (xml.name() == "entry")
             {
-                m_iceCastModel->appendRow(QList<QStandardItem *> ()
+                model->appendRow(QList<QStandardItem *> ()
                                           << new QStandardItem(server_name)
                                           << new QStandardItem(genre)
                                           << new QStandardItem(bitrate)
                                           << new QStandardItem(server_type));
 
-                QStandardItem *item = m_iceCastModel->item(m_iceCastModel->rowCount()-1, 0);
+                QStandardItem *item = model->item(model->rowCount()-1, 0);
                 item->setToolTip(server_name + "\n" + listen_url);
                 item->setData(listen_url);
 
@@ -212,7 +328,6 @@ void StreamWindow::readIceCast(QIODevice *input)
                 bitrate.clear();
                 server_type.clear();
             }
-
         }
         else if (xml.isCharacters() && !xml.isWhitespace())
         {

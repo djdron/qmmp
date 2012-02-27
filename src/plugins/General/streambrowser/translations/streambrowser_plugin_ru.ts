@@ -75,38 +75,57 @@
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="50"/>
+        <location filename="../streamwindow.cpp" line="51"/>
+        <location filename="../streamwindow.cpp" line="69"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="51"/>
+        <location filename="../streamwindow.cpp" line="52"/>
+        <location filename="../streamwindow.cpp" line="70"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="52"/>
+        <location filename="../streamwindow.cpp" line="53"/>
+        <location filename="../streamwindow.cpp" line="71"/>
         <source>Bitrate</source>
         <translation>Битовая частота</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="53"/>
+        <location filename="../streamwindow.cpp" line="54"/>
+        <location filename="../streamwindow.cpp" line="72"/>
         <source>Format</source>
         <translation>Формат</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="108"/>
+        <location filename="../streamwindow.cpp" line="124"/>
+        <source>&amp;Add to favorites</source>
+        <translation>&amp;Добавить в избранное</translation>
+    </message>
+    <message>
+        <location filename="../streamwindow.cpp" line="125"/>
+        <source>&amp;Add to playlist</source>
+        <translation>&amp;Добавить в список воспроизведения</translation>
+    </message>
+    <message>
+        <location filename="../streamwindow.cpp" line="130"/>
+        <source>&amp;Remove</source>
+        <translation>&amp;Удалить</translation>
+    </message>
+    <message>
+        <location filename="../streamwindow.cpp" line="140"/>
         <source>Done</source>
         <translation>Готово</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="111"/>
-        <location filename="../streamwindow.cpp" line="112"/>
+        <location filename="../streamwindow.cpp" line="143"/>
+        <location filename="../streamwindow.cpp" line="144"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="131"/>
+        <location filename="../streamwindow.cpp" line="163"/>
         <source>Receiving</source>
         <translation>Получение</translation>
     </message>

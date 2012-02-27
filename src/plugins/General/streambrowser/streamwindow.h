@@ -27,6 +27,7 @@ class QNetworkAccessManager;
 class QNetworkReply;
 class QStandardItemModel;
 class QSortFilterProxyModel;
+class QMenu;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -44,16 +45,23 @@ private slots:
     void on_updatePushButton_clicked();
     void on_addPushButton_clicked();
     void on_filterLineEdit_textChanged(const QString &text);
+    void execIceCastMenu(const QPoint &pos);
+    void execFavoritesMenu(const QPoint &pos);
+    void addToFavorites();
+    void removeFromFavorites();
 
 private:
     void closeEvent(QCloseEvent *);
-    void readIceCast(QIODevice *input);
+    void readXml(QIODevice *input, QStandardItemModel *model);
+
     Ui::StreamWindow ui;
     QNetworkAccessManager *m_http;
     QNetworkReply *m_requestReply;
     QString m_artist, m_title;
-    QStandardItemModel *m_iceCastModel;
-    QSortFilterProxyModel *m_iceCastFilterModel;
+    QStandardItemModel *m_iceCastModel, *m_favoritesModel;
+    QSortFilterProxyModel *m_iceCastFilterModel, *m_favoritesFilterModel;
+    QMenu *m_iceCastMenu;
+    QMenu *m_favoritesMenu;
 };
 
 #endif
