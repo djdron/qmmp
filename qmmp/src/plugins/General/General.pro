@@ -3,7 +3,8 @@ SUBDIRS += statusicon \
            lyrics \
            scrobbler \
            fileops \
-           covermanager
+           covermanager \
+           streambrowser
 unix:SUBDIRS += mpris \
                 hal \
                 udisks \
