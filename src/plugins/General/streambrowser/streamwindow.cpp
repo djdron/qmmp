@@ -98,7 +98,6 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
         on_updatePushButton_clicked();
 }
 
-
 StreamWindow::~StreamWindow()
 {
 }

@@ -52,8 +52,8 @@ private:
     QNetworkAccessManager *m_http;
     QNetworkReply *m_requestReply;
     QString m_artist, m_title;
-    QStandardItemModel *m_icecastModel;
-    QSortFilterProxyModel *m_filterModel;
+    QStandardItemModel *m_iceCastModel;
+    QSortFilterProxyModel *m_iceCastFilterModel;
 };
 
 #endif
