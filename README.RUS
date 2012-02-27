@@ -53,6 +53,7 @@ Qmmp - Qt-based multimedia player
 - поддержка ReplayGain
 - скробблер Last.fm/Libre.fm
 - поддержка CDDB
+- обзор потоков
 
 
 Требования:
