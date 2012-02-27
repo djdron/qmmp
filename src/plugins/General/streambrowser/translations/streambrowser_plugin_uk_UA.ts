@@ -99,33 +99,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="124"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="125"/>
+        <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="130"/>
+        <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="140"/>
+        <location filename="../streamwindow.cpp" line="142"/>
         <source>Done</source>
         <translation type="unfinished">Готово</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="143"/>
-        <location filename="../streamwindow.cpp" line="144"/>
+        <location filename="../streamwindow.cpp" line="145"/>
+        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation type="unfinished">Помилка</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="163"/>
+        <location filename="../streamwindow.cpp" line="165"/>
         <source>Receiving</source>
         <translation type="unfinished">Отримання</translation>
     </message>
