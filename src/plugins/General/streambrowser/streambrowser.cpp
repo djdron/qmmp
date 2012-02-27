@@ -32,7 +32,7 @@ StreamBrowser::StreamBrowser(QObject *parent) : QObject(parent)
 {
     m_action = new QAction(tr("Stream Browser"), this);
     m_action->setIcon(QIcon::fromTheme("applications-internet"));
-    //m_action->setShortcut(tr("Ctrl+L"));
+    m_action->setShortcut(tr("Ctrl+U"));
     UiHelper::instance()->addAction(m_action, UiHelper::TOOLS_MENU);
     connect (m_action, SIGNAL(triggered ()), SLOT(showStreamWindow()));
 }
