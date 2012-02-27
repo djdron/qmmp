@@ -26,6 +26,7 @@
 class QNetworkAccessManager;
 class QNetworkReply;
 class QStandardItemModel;
+class QSortFilterProxyModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -42,6 +43,7 @@ private slots:
     void showText(QNetworkReply *reply);
     void on_updatePushButton_clicked();
     void on_addPushButton_clicked();
+    void on_filterLineEdit_textChanged(const QString &text);
 
 private:
     void closeEvent(QCloseEvent *);
@@ -51,6 +53,7 @@ private:
     QNetworkReply *m_requestReply;
     QString m_artist, m_title;
     QStandardItemModel *m_icecastModel;
+    QSortFilterProxyModel *m_filterModel;
 };
 
 #endif
