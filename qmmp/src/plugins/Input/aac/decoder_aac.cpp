@@ -42,6 +42,9 @@ DecoderAAC::DecoderAAC(QIODevice *i)
     m_data = 0;
     m_input_buf = 0;
     m_input_at = 0;
+    m_sample_buf = 0;
+    m_sample_buf_at = 0;
+    m_sample_buf_size = 0;
 }
 
 
@@ -88,6 +91,16 @@ bool DecoderAAC::initialize()
         qWarning("DecoderAAC: unsupported AAC file");
         return false;
     }
+
+    //skip id3 tag and partial frame
+    if(aac_file.offset() > 0)
+    {
+        qDebug("DecoderAAC: header offset = %d bytes", aac_file.offset());
+
+        char data[aac_file.offset()];
+        input()->read(data, aac_file.offset());
+    }
+
     m_totalTime = aac_file.length() * 1000;
     m_bitrate = aac_file.bitrate();
 
@@ -107,26 +120,13 @@ bool DecoderAAC::initialize()
 
     m_input_at = input()->read((char *)m_input_buf, AAC_BUFFER_SIZE);
 
-    //skip id3 tag
-    int tag_size = 0;
-    if (!memcmp(m_input_buf, "ID3", 3))
-    {
-        /* high bit is not used */
-        tag_size = (m_input_buf[6] << 21) | (m_input_buf[7] << 14) |
-                   (m_input_buf[8] <<  7) | (m_input_buf[9] <<  0);
-
-        tag_size += 10;
-        memmove (m_input_buf, m_input_buf + tag_size, m_input_at - tag_size);
-        m_input_at -= tag_size;
-        m_input_at += input()->read((char *)(m_input_buf + m_input_at), AAC_BUFFER_SIZE - m_input_at);
-    }
-    #ifdef FAAD_MODIFIED
+#ifdef FAAD_MODIFIED
     uint32_t freq = 0;
     uint8_t chan = 0;
-    #else
+#else
     unsigned long freq = 0;
     unsigned char chan = 0;
-    #endif
+#endif
     int res = NeAACDecInit (data()->handle, (unsigned char*) m_input_buf, m_input_at, &freq, &chan);
 
     if (res < 0)
@@ -151,11 +151,11 @@ qint64 DecoderAAC::read(char *audio, qint64 maxSize)
 {
     NeAACDecFrameInfo frame_info;
     qint64 size = 0, to_read, read;
-    void *out = 0;
     bool eof = false;
 
-    while (size <= 0 && !eof)
+    while(m_sample_buf_size <= 0 && !eof)
     {
+        m_sample_buf_at = 0;
         if (m_input_at < AAC_BUFFER_SIZE)
         {
             to_read = AAC_BUFFER_SIZE - m_input_at;
@@ -164,18 +164,30 @@ qint64 DecoderAAC::read(char *audio, qint64 maxSize)
             m_input_at += read;
         }
 
-        out = NeAACDecDecode(data()->handle, &frame_info, (uchar *)m_input_buf, m_input_at);
-        memmove(m_input_buf, m_input_buf + frame_info.bytesconsumed, m_input_at - frame_info.bytesconsumed);
+
+        m_sample_buf = NeAACDecDecode(data()->handle, &frame_info, (uchar *)m_input_buf, m_input_at);
+        memmove(m_input_buf, m_input_buf + frame_info.bytesconsumed,
+                m_input_at - frame_info.bytesconsumed);
         m_input_at -= frame_info.bytesconsumed;
 
-        if ((size = frame_info.samples * 2) > 0 && size <= maxSize)
-            memcpy((void *) (audio), out, size);
         if (frame_info.error > 0)
         {
             m_input_at = 0;
             qDebug("DecoderAAC: %s", NeAACDecGetErrorMessage(frame_info.error));
+            return -1;
         }
+
+        m_sample_buf_size = frame_info.samples * 2;
     }
+
+    if(m_sample_buf_size > 0)
+    {
+        size = qMin(m_sample_buf_size, maxSize);
+        memcpy(audio, (char *)(m_sample_buf) + m_sample_buf_at, size);
+        m_sample_buf_at += size;
+        m_sample_buf_size -= size;
+    }
+
     return size;
 }
 

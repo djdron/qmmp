@@ -31,13 +31,14 @@
 
 static int adts_sample_rates[] = {96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000,7350,0,0,0};
 
-AACFile::AACFile(QIODevice *i, bool metaData)
+AACFile::AACFile(QIODevice *i, bool metaData, bool adts)
 {
     m_isValid = false;
     m_length = 0;
     m_bitrate = 0;
     m_samplerate = 0;
     m_input = i;
+    m_offset = 0;
     uchar buf[AAC_BUFFER_SIZE];
     qint64 buf_at = i->peek((char *) buf, AAC_BUFFER_SIZE);
 
@@ -55,26 +56,38 @@ AACFile::AACFile(QIODevice *i, bool metaData)
             return;
         }
         memmove (buf, buf + tag_size, buf_at - tag_size);
+        buf_at -= tag_size;
+        m_offset = tag_size;
 
         if (metaData)
             parseID3v2(); //parse id3v2 tags
     }
-    //try to determnate header type;
-    if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0))
+
+    int adts_offset = 0;
+
+    while(adts_offset < buf_at - 6)
     {
-        qDebug("AACFile: ADTS header found");
-        if (!i->isSequential())
-            parseADTS();
-        m_isValid = true;
+        //try to determnate header type;
+        if (buf[adts_offset] == 0xff && ((buf[adts_offset+1] & 0xf6) == 0xf0))
+        {
+            qDebug("AACFile: ADTS header found");
+            if (!i->isSequential() && adts)
+                parseADTS();
+            m_isValid = true;
+            m_offset += adts_offset;
+            return;
+        }
+        adts_offset++;
     }
-    else if (memcmp(buf, "ADIF", 4) == 0)
+
+    if (memcmp(buf, "ADIF", 4) == 0)
     {
         qDebug("AACFile: ADIF header found");
         int skip_size = (buf[4] & 0x80) ? 9 : 0;
         m_bitrate = ((buf[4 + skip_size] & 0x0F)<<19) |
-                    (buf[5 + skip_size]<<11) |
-                    (buf[6 + skip_size]<<3) |
-                    (buf[7 + skip_size] & 0xE0);
+                (buf[5 + skip_size]<<11) |
+                (buf[6 + skip_size]<<3) |
+                (buf[7 + skip_size] & 0xE0);
 
         if (!i->isSequential ())
             m_length = (qint64) (((float)i->size()*8.f)/((float)m_bitrate) + 0.5f);
@@ -101,6 +114,11 @@ quint32 AACFile::bitrate()
 quint32 AACFile::samplerate()
 {
     return m_samplerate;
+}
+
+int AACFile::offset() const
+{
+    return m_offset;
 }
 
 bool AACFile::isValid()
@@ -238,3 +256,4 @@ void ID3v2Tag::read ()
     TagLib::ByteVector v(array.data(), array.size());
     parse(v);
 }
+
