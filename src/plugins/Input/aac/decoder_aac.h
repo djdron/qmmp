@@ -50,9 +50,12 @@ public:
     qint64 read(char *audio, qint64 maxSize);
     void seek(qint64 time);
 
-private:    
+private:
     struct aac_data *m_data;
-    char *m_input_buf;
+    char* m_input_buf;
+    void* m_sample_buf;
+    int m_sample_buf_at;
+    qint64 m_sample_buf_size;
     int m_bitrate;
     ulong  m_input_at, m_output_at;
     double m_frameSize;

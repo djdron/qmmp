@@ -42,13 +42,14 @@ class QBuffer;
 class AACFile
 {
 public:
-    AACFile(QIODevice *i, bool metaData = true);
+    AACFile(QIODevice *i, bool metaData = true, bool adts = true);
 
     ~AACFile();
 
     qint64 length();
     quint32 bitrate();
     quint32 samplerate();
+    int offset() const;
     bool isValid();
     const QMap<Qmmp::MetaData, QString> metaData();
 
@@ -57,6 +58,7 @@ private:
     void parseID3v2();
     qint64 m_length;
     quint32 m_bitrate;
+    int m_offset;
     QIODevice *m_input;
     bool m_isValid;
     quint32 m_samplerate;

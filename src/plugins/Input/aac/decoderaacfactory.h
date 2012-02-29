@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ class DecoderAACFactory : public QObject,
                           DecoderFactory
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
+Q_INTERFACES(DecoderFactory)
 
 public:
     bool supports(const QString &source) const;
