@@ -541,6 +541,8 @@ Version 0.6.0
 * added feature to display shoutcast stream information
 * added 'jump to track' and 'forward/rewind' global hotkeys
 * added 'New Playlist' button
+* added sorting by disc number (Brice Videau)
+* added feature to use clipboard content in the URL dialog (Panagiotis Papadopoulos)
 * changed playlist insertion behaviour
 * improved cue plugin
 * moved skinned ui to separate plugin
@@ -550,3 +552,4 @@ Version 0.6.0
 * fixed windows-specific bugs
 * fixed problems with some asynchronous calls
 * fixed qmmp_cue.desktop (Fixes issue 502)
+* updated about dialog
