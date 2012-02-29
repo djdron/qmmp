@@ -522,6 +522,7 @@ Version 0.5.0
 
 Version 0.6.0
 * added converter plugin
+* added stream browser plugin
 * added file type determination by content
 * added '--quit' command line option
 * added text scroller background option
@@ -538,6 +539,8 @@ Version 0.6.0
 * added pkg-config support
 * added vqf support
 * added feature to display shoutcast stream information
+* added 'jump to track' and 'forward/rewind' global hotkeys
+* added 'New Playlist' button
 * changed playlist insertion behaviour
 * improved cue plugin
 * moved skinned ui to separate plugin
@@ -546,3 +549,4 @@ Version 0.6.0
 * fixed IPC under windows
 * fixed windows-specific bugs
 * fixed problems with some asynchronous calls
+* fixed qmmp_cue.desktop (Fixes issue 502)
