@@ -43,7 +43,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
-#include <ffap.h>
+#include "ffap.h"
 
 #ifdef TARGET_ANDROID
 int posix_memalign (void **memptr, size_t alignment, size_t size) {
