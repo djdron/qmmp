@@ -38,8 +38,11 @@ FFapMetaDataModel::FFapMetaDataModel(const QString &path, QObject *parent) : Met
         m_path = path;
 
     m_file = new TagLib::APE::File (m_path.toLocal8Bit().constData());
-    m_tags << new FFapFileTagModel(m_file, TagLib::APE::File::ID3v1);
-    m_tags << new FFapFileTagModel(m_file, TagLib::APE::File::APE);
+    if(!path.contains("://"))
+    {
+        m_tags << new FFapFileTagModel(m_file, TagLib::APE::File::ID3v1);
+        m_tags << new FFapFileTagModel(m_file, TagLib::APE::File::APE);
+    }
 }
 
 FFapMetaDataModel::~FFapMetaDataModel()

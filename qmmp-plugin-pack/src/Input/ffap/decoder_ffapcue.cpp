@@ -58,7 +58,7 @@ DecoderFFapCUE::~DecoderFFapCUE()
 bool DecoderFFapCUE::initialize()
 {
     QString p = m_path;
-    if(!(m_path.startsWith("ape://") && p.endsWith(".ape")))
+    if(!m_path.startsWith("ape://") || p.endsWith(".ape"))
     {
         qWarning("DecoderFFapCUE: invalid url.");
         return false;
