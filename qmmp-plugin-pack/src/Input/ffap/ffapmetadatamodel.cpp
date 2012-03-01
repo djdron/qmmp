@@ -29,7 +29,7 @@ FFapMetaDataModel::FFapMetaDataModel(const QString &path, QObject *parent) : Met
 {
     if(path.contains("://"))
     {
-        QString p = QUrl(path).path();
+        QString p = path;
         p.remove("ape://");
         p.remove(QRegExp("#\\d+$"));
         m_path = p;
