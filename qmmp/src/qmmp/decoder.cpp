@@ -219,26 +219,12 @@ DecoderFactory *Decoder::findByMime(const QString& type)
     DecoderFactory *fact;
     foreach(fact, *m_factories)
     {
-        if (isEnabled(fact) && fact->properties().contentTypes.contains(type))
+        if (isEnabled(fact) && !fact->properties().noInput
+                && fact->properties().contentTypes.contains(type))
             return fact;
     }
     return 0;
 }
-
-/*DecoderFactory *Decoder::findByContent(const QString &path)
-{
-    checkFactories();
-    QFile file(path);
-    if(!file.open(QIODevice::ReadOnly))
-    {
-        qWarning("Decoder: file open error: %s", qPrintable(file.errorString()));
-        return 0;
-    }
-    QByteArray array = file.read(8192);
-    QBuffer buffer(&array);
-    buffer.open(QIODevice::ReadOnly);
-    return findByContent(&buffer);
-}*/
 
 DecoderFactory *Decoder::findByContent(QIODevice *input)
 {
