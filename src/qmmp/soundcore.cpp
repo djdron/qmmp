@@ -232,7 +232,7 @@ void SoundCore::startNextSource()
     InputSource *s = m_sources.dequeue();
     m_url = s->url();
 
-    if(s->ioDevice() && !s->ioDevice()->open(QIODevice::ReadOnly))
+    if(s->ioDevice() && !s->ioDevice()->isOpen() && !s->ioDevice()->open(QIODevice::ReadOnly))
     {
         qWarning("SoundCore: input error: %s", qPrintable(s->ioDevice()->errorString()));
         m_url.clear();
@@ -272,9 +272,7 @@ void SoundCore::startNextSource()
     }
     else
     {
-        m_sources.prepend(s); //try for next engine
-        if(s->ioDevice())
-            s->ioDevice()->close();
+        m_sources.prepend(s); //try next engine
         m_nextState = ANOTHER_ENGINE;
         if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
         {
