@@ -56,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     ui.setupUi(this);
     m_balance = 0;
     m_update = false;
-    setWindowTitle(QString("Qmmp %1").arg(Qmmp::strVersion()));
     //qmmp objects
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
@@ -180,7 +179,7 @@ void MainWindow::showState(Qmmp::State state)
         m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
         m_timeLabel->clear();
         m_slider->setValue(0);
-        setWindowTitle(QString("Qmmp %1").arg(Qmmp::strVersion()));
+        setWindowTitle("Qmmp");
         break;
     }
 }
