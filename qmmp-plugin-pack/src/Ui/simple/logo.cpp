@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,7 +21,12 @@
 #include <QPainter>
 #include <QFile>
 #include <QTimer>
+#include <stdlib.h>
+#include <qmmp/qmmp.h>
 #include "logo.h"
+
+#define VISUAL_NODE_SIZE 128 //samples
+#define VISUAL_BUFFER_SIZE (3*VISUAL_NODE_SIZE)
 
 Logo::Logo(QWidget *parent) : Visual(parent)
 {
@@ -48,22 +53,30 @@ Logo::Logo(QWidget *parent) : Visual(parent)
     m_letters.insert('_', pixmap.copy(152, 0, 8, 14));
     m_letters.insert('-', pixmap.copy(160, 0, 8, 14));
     m_letters.insert('X', pixmap.copy(168, 0, 8, 14));
-    m_letters.insert(' ', pixmap.copy(176, 0, 8, 14));
+    m_letters.insert('.', pixmap.copy(176, 0, 8, 14));
+    m_letters.insert(' ', pixmap.copy(184, 0, 8, 14));
 
     QFile file(":/ascii_logo.txt");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
+
     while(!file.atEnd())
     {
-        m_source_lines.append(file.readLine());
+        QString line = file.readLine();
+        m_source_lines.append(line);
     }
-    max_steps = 50;
+
     QTimer *m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), SLOT(updateLetters()));
     m_timer->setInterval(50);
     m_timer->start();
+
+    m_buffer_at = 0;
+    m_value = 0;
+    m_elapsed = 0;
+    m_buffer = new short[VISUAL_BUFFER_SIZE];
+
     updateLetters();
     Visual::add(this);
-    m_buf_size = 0;
 }
 
 Logo::~Logo()
@@ -74,13 +87,19 @@ Logo::~Logo()
 void Logo::add(unsigned char *data, qint64 size, int chan)
 {
     Q_UNUSED(chan);
-    m_buf_size = qMin(size, (qint64)2048);
-    memcpy(m_buf, data, m_buf_size);
+    if(VISUAL_BUFFER_SIZE == m_buffer_at)
+    {
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_buffer, (short*) (m_buffer + VISUAL_NODE_SIZE), m_buffer_at * 2);
+        return;
+    }
+    int size_2 = qMin((int)size/2, VISUAL_BUFFER_SIZE - m_buffer_at);
+    memcpy((ushort*)(m_buffer + m_buffer_at), (short*) data, size_2 * 2);
+    m_buffer_at += size_2;
 }
 
 void Logo::clear()
 {
-    m_buf_size = 0;
     update();
 }
 
@@ -100,21 +119,145 @@ void Logo::paintEvent(QPaintEvent *)
     }
 }
 
+void Logo::mousePressEvent(QMouseEvent *)
+{
+    m_elapsed = 10000;
+}
+
 void Logo::updateLetters()
+{
+    if(m_elapsed < 10000)
+    {
+        processPreset1();
+    }
+    else if (m_elapsed > 10000 && m_elapsed < 15000)
+    {
+        processPreset2();
+        m_value = (m_elapsed - 10000) * 16 / 5000;
+    }
+    else if(m_elapsed > 15000 && m_elapsed < 20000)
+    {
+        m_value++;
+        processPreset3();
+    }
+    else if(m_elapsed > 20000 && m_elapsed < 25000)
+    {
+        processPreset4();
+    }
+    else if(m_elapsed > 25000)
+    {
+       m_value = 0;
+       m_elapsed = 0;
+    }
+    m_elapsed += 50;
+}
+
+void Logo::processPreset1()
 {
     m_lines.clear();
     mutex()->lock();
-    int at = 0, value = 0;
     foreach(QString line, m_source_lines)
     {
         while(line.contains("X"))
         {
-            value = 0;
-            if(at < m_buf_size)
-                value = m_buf[at] / 16;
-            line.replace(line.indexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
-            at++;
+            line.replace(line.indexOf("X"), 1, "0");
         }
+
+        m_lines.append(line);
+    }
+    mutex()->unlock();
+    update();
+}
+
+void Logo::processPreset2()
+{
+    m_lines.clear();
+    mutex()->lock();
+    foreach(QString line, m_source_lines)
+    {
+        while(line.contains("X"))
+        {
+            if(rand() % 2 == 1)
+                line.replace(line.indexOf("X"), 1, QString("%1").arg(m_value, 0, 16).toUpper());
+            else
+                line.replace(line.indexOf("X"), 1, ".");
+
+        }
+
+        m_lines.append(line);
+    }
+    mutex()->unlock();
+    update();
+}
+
+void Logo::processPreset3()
+{
+    m_lines.clear();
+    mutex()->lock();
+    QString str = QString("...%1...").arg(Qmmp::strVersion().left(5));
+    int at = m_value % str.size();
+
+    foreach(QString line, m_source_lines)
+    {
+        while(line.contains("X"))
+        {
+            at++;
+            line.replace(line.indexOf("X"), 1, QString("%1").arg(str.at(at % str.size()),
+                                                                 0, 16).toUpper());
+        }
+
+        m_lines.append(line);
+    }
+    mutex()->unlock();
+    update();
+}
+
+void Logo::processPreset4()
+{
+    m_lines.clear();
+    mutex()->lock();
+
+    int max = 0;
+
+    if(m_buffer_at < VISUAL_NODE_SIZE)
+    {
+       m_value -= 512;
+       m_value = qMax(m_value, max);
+    }
+    else
+    {
+        for(int j = 0; j < VISUAL_NODE_SIZE; j+=8)
+        {
+            if(m_buffer[j] > max)
+                max = m_buffer[j];
+        }
+
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at * 2);
+        m_value -= 512;
+        m_value = qMax(m_value, max);
+    }
+
+    int at = 0;
+
+    foreach(QString line, m_source_lines)
+    {
+
+        int count = line.count("X");
+        int k = 0;
+
+        while(k < m_value * count / 2048 / 16)
+        {
+            int value = abs(m_buffer[qMin(at++, m_buffer_at)] / 2048);
+            line.replace(line.indexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
+            k++;
+        }
+
+        while(line.contains("X"))
+        {
+            line.replace(line.indexOf("X"), 1, ".");
+        }
+
         m_lines.append(line);
     }
     mutex()->unlock();

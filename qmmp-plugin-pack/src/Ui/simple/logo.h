@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,7 @@
 #include <QHash>
 #include <QChar>
 #include <QStringList>
+#include <QQueue>
 #include <QPixmap>
 #include <qmmp/visual.h>
 
@@ -46,12 +47,18 @@ private slots:
 
 private:
     void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *);
+    void processPreset1();
+    void processPreset2();
+    void processPreset3();
+    void processPreset4();
     QHash <QChar, QPixmap> m_letters;
     QStringList m_lines;
     QStringList m_source_lines;
-    int max_steps;
-    unsigned char m_buf[2048];
-    int m_buf_size;
+    short *m_buffer;
+    int m_buffer_at;
+    int m_value;
+    qint64 m_elapsed;
 
 };
 
