@@ -4,27 +4,27 @@
 <context>
     <name>OutputWaveOutFactory</name>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="30"/>
+        <location filename="../outputwaveoutfactory.cpp" line="29"/>
         <source>WaveOut Plugin</source>
         <translation>WaveOut įskiepis</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="54"/>
+        <location filename="../outputwaveoutfactory.cpp" line="53"/>
         <source>About WaveOut Output Plugin</source>
         <translation>Apie WaveOut įskiepį</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="55"/>
+        <location filename="../outputwaveoutfactory.cpp" line="54"/>
         <source>Qmmp WaveOut Output Plugin</source>
         <translation>Qmmp WaveOut įskiepis</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="56"/>
+        <location filename="../outputwaveoutfactory.cpp" line="55"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="57"/>
+        <location filename="../outputwaveoutfactory.cpp" line="56"/>
         <source>Based on aacDECdrop player</source>
         <translation>Sukurtas aacDECdrop grotuvo pagrindu</translation>
     </message>
