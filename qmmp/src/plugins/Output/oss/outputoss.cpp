@@ -180,7 +180,7 @@ void OutputOSS::reset()
 }
 
 /***** MIXER *****/
-VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
+VolumeOSS::VolumeOSS()
 {
     m_master = true;
     m_mixer_fd = -1;
@@ -190,7 +190,7 @@ VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
 
 }
 
-VolumeControlOSS::~VolumeControlOSS()
+VolumeOSS::~VolumeOSS()
 {
     if (m_mixer_fd >= 0)
     {
@@ -199,11 +199,14 @@ VolumeControlOSS::~VolumeControlOSS()
     }
 }
 
-void VolumeControlOSS::setVolume(int l, int r)
+void VolumeOSS::setVolume(int channel, int value)
 {
     if (m_mixer_fd < 0)
         return;
-    int v;
+
+    int l = (channel == Volume::LEFT_CHANNEL) ? value : volume(Volume::LEFT_CHANNEL);
+    int r = (channel == Volume::RIGHT_CHANNEL) ? value : volume(Volume::RIGHT_CHANNEL);
+
     long cmd;
     int devs = 0;
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
@@ -216,16 +219,14 @@ void VolumeControlOSS::setVolume(int l, int r)
         //close(mifd);
         return;
     }
-    v = (r << 8) | l;
+    int v = (r << 8) | l;
     ioctl(m_mixer_fd, cmd, &v);
 }
 
-void VolumeControlOSS::volume(int *ll,int *rr)
+int VolumeOSS::volume(int channel)
 {
-    *ll = 0;
-    *rr = 0;
     if(m_mixer_fd < 0)
-        return;
+        return 0;
     int cmd;
     int v, devs = 0;
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
@@ -235,19 +236,15 @@ void VolumeControlOSS::volume(int *ll,int *rr)
     else if ((devs & SOUND_MASK_VOLUME) && m_master)
         cmd = SOUND_MIXER_READ_VOLUME;
     else
-        return;
+        return 0;
 
     ioctl(m_mixer_fd, cmd, &v);
-    *ll = (v & 0xFF00) >> 8;
-    *rr = (v & 0x00FF);
-
-    *ll = (*ll > 100) ? 100 : *ll;
-    *rr = (*rr > 100) ? 100 : *rr;
-    *ll = (*ll < 0) ? 0 : *ll;
-    *rr = (*rr < 0) ? 0 : *rr;
+    if(channel == Volume::LEFT_CHANNEL)
+        return (v & 0xFF00) >> 8;
+    return (v & 0x00FF);
 }
 
-void VolumeControlOSS::openMixer()
+void VolumeOSS::openMixer()
 {
     if (m_mixer_fd >= 0)
         return;

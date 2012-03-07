@@ -29,7 +29,7 @@
 #include "effect.h"
 #include "statehandler.h"
 #include "inputsource.h"
-#include "volumecontrol.h"
+#include "volumecontrol_p.h"
 #include "enginefactory.h"
 #include "metadatamanager.h"
 #include "qmmpsettings.h"
@@ -46,18 +46,18 @@ SoundCore::SoundCore(QObject *parent)
     m_decoder = 0;
     m_parentWidget = 0;
     m_engine = 0;
-    m_volumeControl = 0;
     m_nextState = NO_ENGINE;
     m_handler = new StateHandler(this);
+     m_volumeControl = new VolumeControl(this);
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
     connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
     connect(m_handler, SIGNAL(sampleSizeChanged(int)), SIGNAL(sampleSizeChanged(int)));
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-    updateVolume();
     connect(QmmpSettings::instance(), SIGNAL(eqSettingsChanged()), SIGNAL(eqSettingsChanged()));
-    connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), SLOT(updateVolume()));
+    connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), m_volumeControl, SLOT(reload()));
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
 }
 
 SoundCore::~SoundCore()
@@ -108,7 +108,7 @@ void SoundCore::stop()
     qDeleteAll(m_sources);
     m_sources.clear();
     m_nextState = NO_ENGINE;
-    updateVolume();
+    m_volumeControl->reload();
     if(state() == Qmmp::NormalError || state() == Qmmp::FatalError || state() == Qmmp::Buffering)
         StateHandler::instance()->dispatch(Qmmp::Stopped); //clear error and buffering state
 }
@@ -165,18 +165,6 @@ int SoundCore::leftVolume()
 int SoundCore::rightVolume()
 {
     return m_volumeControl->right();
-}
-
-void SoundCore::updateVolume()
-{
-    if (m_engine)
-        m_engine->mutex()->lock();
-    if(m_volumeControl)
-        delete m_volumeControl;
-    m_volumeControl = VolumeControl::create(this);
-    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
-    if (m_engine)
-        m_engine->mutex()->unlock();
 }
 
 qint64 SoundCore::elapsed()

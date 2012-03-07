@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,7 +39,7 @@ Output* OutputNullFactory::create(QObject* parent)
     return new OutputNull(parent);
 }
 
-VolumeControl *OutputNullFactory::createVolumeControl(QObject *)
+Volume *OutputNullFactory::createVolume()
 {
     return 0;
 }

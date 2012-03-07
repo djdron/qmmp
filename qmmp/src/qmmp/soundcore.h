@@ -213,7 +213,6 @@ signals:
 private slots:
     void startNextSource();
     void startNextEngine();
-    void updateVolume();
 
 private:
     bool event(QEvent *e);

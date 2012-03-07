@@ -25,7 +25,7 @@ contains(CONFIG, ALSA_PLUGIN){
 }
 
 contains(CONFIG, OSS4_PLUGIN){
-   SUBDIRS += oss4
+    SUBDIRS += oss4
 }
 
 }

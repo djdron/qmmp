@@ -1,6 +1,6 @@
 unix:include(../../qmmp.pri)
 win32:include(../../qmmp.pri)
-HEADERS += recycler.h \
+HEADERS += \
     buffer.h \
     decoder.h \
     output.h \
@@ -17,7 +17,6 @@ HEADERS += recycler.h \
     statehandler.h \
     qmmp.h \
     fileinfo.h \
-    volumecontrol.h \
     metadatamodel.h \
     tagmodel.h \
     abstractengine.h \
@@ -33,7 +32,10 @@ HEADERS += recycler.h \
     audioconverter_p.h \
     qmmpsettings.h \
     eqsettings.h \
-    qmmpevents_p.h
+    qmmpevents_p.h \
+    volume.h \
+    volumecontrol_p.h \
+    recycler.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -81,7 +83,7 @@ contains(CONFIG, SVN_VERSION) {
 }
 unix {
     target.path = $$LIB_DIR
-    devel.files += recycler.h \
+    devel.files += \
         buffer.h \
         decoder.h \
         output.h \
@@ -95,7 +97,6 @@ unix {
         statehandler.h \
         qmmp.h \
         fileinfo.h \
-        volumecontrol.h \
         metadatamodel.h \
         tagmodel.h \
         abstractengine.h \
@@ -105,10 +106,19 @@ unix {
         enginefactory.h \
         metadatamanager.h \
         qmmpsettings.h \
-        eqsettings.h
+        eqsettings.h \
+        volume.h \
+        recycler.h
     devel.path = /include/qmmp
     INSTALLS += target \
         devel
     DESTDIR = .
 }
 INCLUDEPATH += ./
+
+
+
+
+
+
+

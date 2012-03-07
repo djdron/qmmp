@@ -40,9 +40,9 @@ const OutputProperties OutputOSS4Factory::properties() const
     return properties;
 }
 
-VolumeControl *OutputOSS4Factory::createVolumeControl(QObject *parent)
+Volume *OutputOSS4Factory::createVolumeControl()
 {
-    return new VolumeControlOSS4(parent);
+    return new VolumeOSS4;
 }
 
 void OutputOSS4Factory::showSettings(QWidget* parent)

@@ -13,7 +13,7 @@
 #include "audioparameters.h"
 #include "qmmpsettings.h"
 #include "buffer.h"
-#include "volumecontrol.h"
+#include "volumecontrol_p.h"
 #include "qmmp.h"
 #include "output.h"
 

@@ -23,7 +23,7 @@
 #include <QSettings>
 #include "qmmpsettings.h"
 #include "output.h"
-#include "volumecontrol.h"
+#include "volumecontrol_p.h"
 
 VolumeControl::VolumeControl(QObject *parent)
         : QObject(parent)
@@ -31,30 +31,28 @@ VolumeControl::VolumeControl(QObject *parent)
     m_left = 0;
     m_right = 0;
     m_prev_block = false;
+    m_volume = 0;
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), SLOT(checkVolume()));
+    reload();
 }
 
 VolumeControl::~VolumeControl()
 {
-}
-
-VolumeControl *VolumeControl::create(QObject *parent)
-{
-    if(QmmpSettings::instance()->useSoftVolume())
-        return new SoftwareVolume(parent);
-    VolumeControl *control = 0;
-    if (Output::currentFactory())
-        control = Output::currentFactory()->createVolumeControl(parent);
-    if (!control)
-        return new SoftwareVolume(parent);
-    QTimer *m_timer = new QTimer(control);
-    connect(m_timer, SIGNAL(timeout()), control, SLOT(checkVolume()));
-    m_timer->start(125);
-    return control;
+    if(m_volume)
+        delete m_volume;
 }
 
 int VolumeControl::left()
 {
     return m_left;
+}
+
+void VolumeControl::setVolume(int left, int right)
+{
+    m_volume->setVolume(Volume::LEFT_CHANNEL, left);
+    m_volume->setVolume(Volume::RIGHT_CHANNEL, right);
+    checkVolume();
 }
 
 int VolumeControl::right()
@@ -64,8 +62,9 @@ int VolumeControl::right()
 
 void VolumeControl::checkVolume()
 {
-    int l = 0, r = 0;
-    volume(&l, &r);
+    int l = m_volume->volume(Volume::LEFT_CHANNEL);
+    int r = m_volume->volume(Volume::RIGHT_CHANNEL);
+
     l = (l > 100) ? 100 : l;
     r = (r > 100) ? 100 : r;
     l = (l < 0) ? 0 : l;
@@ -81,18 +80,36 @@ void VolumeControl::checkVolume()
     m_prev_block = signalsBlocked ();
 }
 
+void VolumeControl::reload()
+{
+    m_timer->stop();
+    if(m_volume)
+    {
+        delete m_volume;
+        m_volume = 0;
+    }
+    if(!QmmpSettings::instance()->useSoftVolume())
+    {
+        m_volume = Output::currentFactory()->createVolume();
+        m_timer->start(150);
+    }
+    if(!m_volume)
+    {
+        m_volume = new SoftwareVolume;
+        blockSignals(true);
+        checkVolume();
+        blockSignals(false);
+        QTimer::singleShot(125, this, SLOT(checkVolume()));
+    }
+}
+
 SoftwareVolume *SoftwareVolume::m_instance = 0;
 
-SoftwareVolume::SoftwareVolume(QObject *parent)
-        : VolumeControl(parent)
+SoftwareVolume::SoftwareVolume()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_left = settings.value("Volume/left", 80).toInt();
     m_right = settings.value("Volume/right", 80).toInt();
-    blockSignals(true);
-    checkVolume();
-    blockSignals(false);
-    QTimer::singleShot(125, this, SLOT(checkVolume()));
     m_scaleLeft = (double)m_left/100.0;
     m_scaleRight = (double)m_right/100.0;
     m_instance = this;
@@ -106,19 +123,21 @@ SoftwareVolume::~SoftwareVolume()
     m_instance = 0;
 }
 
-void SoftwareVolume::setVolume(int left, int right)
+void SoftwareVolume::setVolume(int channel, int value)
 {
-    m_left = left;
-    m_right = right;
-    checkVolume();
+    if(channel == Volume::LEFT_CHANNEL)
+        m_left = value;
+    else
+        m_right = value;
     m_scaleLeft = (double)m_left/100.0;
     m_scaleRight = (double)m_right/100.0;
 }
 
-void SoftwareVolume::volume(int *left, int *right)
+int SoftwareVolume::volume(int channel)
 {
-    *left = m_left;
-    *right = m_right;
+    if(channel == Volume::LEFT_CHANNEL)
+        return m_left;
+    return m_right;
 }
 
 void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)

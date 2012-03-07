@@ -45,7 +45,7 @@ extern "C"
 #include "outputoss4.h"
 
 OutputOSS4 *OutputOSS4::m_instance = 0;
-VolumeControlOSS4 *OutputOSS4::m_vc = 0;
+VolumeOSS4 *OutputOSS4::m_vc = 0;
 
 OutputOSS4::OutputOSS4(QObject *parent) : Output(parent)
 {
@@ -194,7 +194,7 @@ void OutputOSS4::reset()
 }
 
 /***** MIXER *****/
-VolumeControlOSS4::VolumeControlOSS4(QObject *parent) : VolumeControl(parent)
+VolumeOSS4::VolumeOSS4()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_volume = settings.value("OSS4/volume", 0x3232).toInt();
@@ -202,15 +202,17 @@ VolumeControlOSS4::VolumeControlOSS4(QObject *parent) : VolumeControl(parent)
     restore();
 }
 
-VolumeControlOSS4::~VolumeControlOSS4()
+VolumeOSS4::~VolumeOSS4()
 {
     OutputOSS4::m_vc = 0;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("OSS4/volume", m_volume);
 }
 
-void VolumeControlOSS4::setVolume(int l, int r)
+void VolumeOSS4::setVolume(int channel, int value)
 {
+    int l = (channel == Volume::LEFT_CHANNEL) ? value : volume(Volume::LEFT_CHANNEL);
+    int r = (channel == Volume::RIGHT_CHANNEL) ? value : volume(Volume::RIGHT_CHANNEL);
     m_volume = (r << 8) | l;
     if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
@@ -218,27 +220,27 @@ void VolumeControlOSS4::setVolume(int l, int r)
     }
 }
 
-void VolumeControlOSS4::volume(int *ll,int *rr)
+int VolumeOSS4::volume(int channel)
 {
-    *ll = 0;
-    *rr = 0;
     if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
         int v = 0;
         if (ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_GETPLAYVOL, &v) < 0)
             v = 0;
-        *rr = (v & 0xFF00) >> 8;
-        *ll = (v & 0x00FF);
         m_volume = v;
+        if(channel == Volume::LEFT_CHANNEL)
+            return (v & 0x00FF);
+        return (v & 0xFF00) >> 8;
     }
     else
     {
-        *rr = (m_volume & 0xFF00) >> 8;
-        *ll = (m_volume & 0x00FF);
+        if(channel == Volume::LEFT_CHANNEL)
+            return (m_volume & 0x00FF);
+        return (m_volume & 0xFF00) >> 8;
     }
 }
 
-void VolumeControlOSS4::restore()
+void VolumeOSS4::restore()
 {
     setVolume((m_volume & 0x00FF), (m_volume & 0xFF00) >> 8);
 }
