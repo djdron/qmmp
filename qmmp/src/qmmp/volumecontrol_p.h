@@ -28,7 +28,8 @@
 class QTimer;
 class SoftwareVolume;
 
-/*! @brief The VolumeControl class provides volume control access
+/*! @internal
+ * @brief The VolumeControl class provides volume control access
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class VolumeControl : public QObject
@@ -74,7 +75,7 @@ public slots:
      */
     void checkVolume();
     /*!
-     *
+     * Updates volume configuration
      */
     void reload();
 
@@ -85,7 +86,8 @@ private:
     QTimer *m_timer;
 
 };
-/*! @brief The SoftwareVolume class provides access to the software volume control.
+/*! @internal
+ * @brief The SoftwareVolume class provides access to the software volume control.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class SoftwareVolume : public Volume
