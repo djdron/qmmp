@@ -359,7 +359,7 @@ void OutputALSA::uninitialize()
 }
 /* ****** MIXER ******* */
 
-VolumeControlALSA::VolumeControlALSA(QObject *parent) : VolumeControl(parent)
+VolumeALSA::VolumeALSA()
 {
     //alsa mixer
     mixer = 0;
@@ -370,42 +370,40 @@ VolumeControlALSA::VolumeControlALSA(QObject *parent) : VolumeControl(parent)
 }
 
 
-VolumeControlALSA::~VolumeControlALSA()
+VolumeALSA::~VolumeALSA()
 {
     if (mixer)
         snd_mixer_close(mixer);
 }
 
-void VolumeControlALSA::setVolume(int l, int r)
+void VolumeALSA::setVolume(int channel, int value)
 {
-
     if (!pcm_element)
         return;
 
-    snd_mixer_selem_set_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_LEFT, l);
-    snd_mixer_selem_set_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_RIGHT, r);
+    _snd_mixer_selem_channel_id channel_id = SND_MIXER_SCHN_FRONT_LEFT;
+    if(channel == Volume::RIGHT_CHANNEL)
+        channel_id = SND_MIXER_SCHN_FRONT_RIGHT;
+
+    snd_mixer_selem_set_playback_volume(pcm_element, channel_id, value);
 }
 
-void VolumeControlALSA::volume(int *l, int *r)
+int VolumeALSA::volume(int channel)
 {
     if (!pcm_element)
-        return;
+        return 0;
 
-    long ll = *l, lr = *r;
+    _snd_mixer_selem_channel_id channel_id = SND_MIXER_SCHN_FRONT_LEFT;
+    if(channel == Volume::RIGHT_CHANNEL)
+        channel_id = SND_MIXER_SCHN_FRONT_RIGHT;
+
+    long value = 0;
     snd_mixer_handle_events(mixer);
-    snd_mixer_selem_get_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_LEFT, &ll);
-    snd_mixer_selem_get_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_RIGHT, &lr);
-    *l = ll;
-    *r = lr;
+    snd_mixer_selem_get_playback_volume(pcm_element, channel_id, &value);
+    return value;
 }
 
-
-
-int VolumeControlALSA::setupMixer(QString card, QString device)
+int VolumeALSA::setupMixer(QString card, QString device)
 {
     char *name;
     int err, index;
@@ -439,7 +437,7 @@ int VolumeControlALSA::setupMixer(QString card, QString device)
     return 0;
 }
 
-void VolumeControlALSA::parseMixerName(char *str, char **name, int *index)
+void VolumeALSA::parseMixerName(char *str, char **name, int *index)
 {
     char *end;
 
@@ -459,7 +457,7 @@ void VolumeControlALSA::parseMixerName(char *str, char **name, int *index)
     }
 }
 
-snd_mixer_elem_t* VolumeControlALSA::getMixerElem(snd_mixer_t *mixer, char *name, int index)
+snd_mixer_elem_t* VolumeALSA::getMixerElem(snd_mixer_t *mixer, char *name, int index)
 {
     snd_mixer_selem_id_t* selem_id;
     snd_mixer_elem_t* elem;
@@ -475,7 +473,7 @@ snd_mixer_elem_t* VolumeControlALSA::getMixerElem(snd_mixer_t *mixer, char *name
     return elem;
 }
 
-int VolumeControlALSA::getMixer(snd_mixer_t **mixer, QString card)
+int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
 {
     char *dev;
     int err;

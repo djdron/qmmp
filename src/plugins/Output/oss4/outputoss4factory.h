@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,16 +29,15 @@
 #include <qmmp/outputfactory.h>
 
 
-class OutputOSS4Factory : public QObject,
-                          OutputFactory
+class OutputOSS4Factory : public QObject, OutputFactory
 {
 Q_OBJECT
-Q_INTERFACES(OutputFactory);
+Q_INTERFACES(OutputFactory)
 
 public:
     const OutputProperties properties() const;
     Output* create(QObject* parent);
-    VolumeControl *createVolumeControl(QObject *parent);
+    Volume *createVolume();
     void showSettings(QWidget* parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

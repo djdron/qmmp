@@ -26,7 +26,7 @@
 class OutputOSS;
 
 #include <qmmp/output.h>
-#include <qmmp/volumecontrol.h>
+#include <qmmp/volume.h>
 
 class OutputOSS : public Output
 {
@@ -43,8 +43,7 @@ private:
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
-
-private:
+    //oss
     void post();
     void sync();
     QString m_audio_device;
@@ -54,15 +53,14 @@ private:
     long bl, br;
 };
 
-class VolumeControlOSS : public VolumeControl
+class VolumeOSS : public Volume
 {
-    Q_OBJECT
 public:
-    VolumeControlOSS(QObject *parent = 0);
-    ~VolumeControlOSS();
+    VolumeOSS();
+    ~VolumeOSS();
 
-    void setVolume(int left, int right);
-    void volume(int *left, int *right);
+    void setVolume(int channel, int value);
+    int volume(int channel);
 
 private:
     //oss mixer

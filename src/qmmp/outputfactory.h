@@ -26,7 +26,7 @@ class QString;
 class QIODevice;
 class QWidget;
 class QTranslator;
-class VolumeControl;
+class Volume;
 class Decoder;
 class Output;
 
@@ -73,7 +73,7 @@ public:
      * Returns \b 0 if volume control is not supported by plugin.
      * @param parent Parent object.
      */
-    virtual VolumeControl *createVolumeControl(QObject *parent) = 0;
+    virtual Volume *createVolume() = 0;
     /*!
      * Shows settings dialog.
      * @param parent Parent widget.

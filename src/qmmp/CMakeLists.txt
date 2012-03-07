@@ -79,6 +79,7 @@ SET(libqmmp_HDRS
     inputsourcefactory.h
     enginefactory.h
     metadatamanager.h
+    volume.h
 )
 
 SET(libqmmp_MOC_HDRS
@@ -86,7 +87,7 @@ SET(libqmmp_MOC_HDRS
     output.h
     soundcore.h
     statehandler.h
-    volumecontrol.h
+    volumecontrol_p.h
     metadatamodel.h
     qmmpaudioengine_p.h
     abstractengine.h
@@ -111,7 +112,7 @@ SET(libqmmp_DEVEL_HDRS
     effect.h
     qmmp.h
     statehandler.h
-    volumecontrol.h
+    volume.h
     metadatamodel.h
     tagmodel.h
     abstractengine.h

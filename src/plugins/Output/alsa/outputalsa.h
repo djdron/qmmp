@@ -31,7 +31,7 @@ extern "C"
 }
 
 #include <qmmp/output.h>
-#include <qmmp/volumecontrol.h>
+#include <qmmp/volume.h>
 
 
 class OutputALSA : public Output
@@ -70,17 +70,14 @@ private:
     bool m_can_pause;
 };
 
-class VolumeControlALSA : public VolumeControl
+class VolumeALSA : public Volume
 {
-    Q_OBJECT
 public:
-    VolumeControlALSA(QObject *parent = 0);
-    ~VolumeControlALSA();
+    VolumeALSA();
+    ~VolumeALSA();
 
-    void setVolume(int left, int right) ;
-
-protected:
-    void volume(int *left, int *right);
+    void setVolume(int channel, int value);
+    int volume(int channel);
 
 private:
     //alsa mixer

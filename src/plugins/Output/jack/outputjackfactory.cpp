@@ -39,7 +39,7 @@ Output* OutputJACKFactory::create(QObject* parent)
     return new OutputJACK(parent);
 }
 
-VolumeControl *OutputJACKFactory::createVolumeControl(QObject *)
+Volume *OutputJACKFactory::createVolume()
 {
     return 0;
 }

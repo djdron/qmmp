@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,63 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef OUTPUTOSS4_H
-#define OUTPUTOSS4_H
+#ifndef VOLUME_H
+#define VOLUME_H
 
-#include <qmmp/output.h>
-#include <qmmp/volume.h>
+#endif // VOLUME_H
 
-#define DEFAULT_DEV "/dev/dsp"
-#define DEFAULT_MIXER "/dev/mixer"
 
-class VolumeOSS4;
-
-/**
-    @author Ilya Kotov <forkotov@hotmail.ru>
-*/
-class OutputOSS4 : public Output
+/*! @brief The Volume class is a provides volume API
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class Volume
 {
-Q_OBJECT
 public:
-    OutputOSS4();
-    virtual ~OutputOSS4();
-
-    bool initialize(quint32, int, Qmmp::AudioFormat format);
-    int fd();
-    qint64 latency();
-
-    static OutputOSS4 *instance();
-    static VolumeOSS4 *m_vc;
-
-private:
-    //output api
-    qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void drain();
-    void reset();
-
-private:
-    void post();
-    void sync();
-    QString m_audio_device;
-    bool m_do_select;
-    int m_audio_fd;
-    static OutputOSS4 *m_instance;
-
+    virtual ~Volume(){}
+    /*!
+     * Volume control channel enum
+     */
+    enum Channel
+    {
+        LEFT_CHANNEL = 0, /*!< Right channel */
+        RIGHT_CHANNEL     /*!< Left channel */
+    };
+    /*!
+     * Setups volume level.
+     * Subclass should reimplement this fucntion.
+     * @param channel Channel
+     * @param value Volume level. It should be \b 0..100
+     */
+    virtual void setVolume(int channel, int value) = 0;
+    /*!
+     * Returns volume level of the \b channel.
+     */
+    virtual int volume(int channel) = 0;
 };
-
-class VolumeOSS4 : public Volume
-{
-    Q_OBJECT
-public:
-    VolumeOSS4(QObject *parent);
-    ~VolumeOSS4();
-
-    void setVolume(int channel, int value);
-    int volume(int channel);
-    void restore();
-
-private:
-    int m_volume;
-};
-
-#endif

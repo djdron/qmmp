@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QtGui>
-
 #include "outputwaveout.h"
 #include "outputwaveoutfactory.h"
 
@@ -39,7 +38,7 @@ Output* OutputWaveOutFactory::create(QObject* parent)
     return new OutputWaveOut(parent);
 }
 
-VolumeControl *OutputWaveOutFactory::createVolumeControl(QObject *)
+Volume *OutputWaveOutFactory::createVolume()
 {
     return 0;
 }
