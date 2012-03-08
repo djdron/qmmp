@@ -92,23 +92,3 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

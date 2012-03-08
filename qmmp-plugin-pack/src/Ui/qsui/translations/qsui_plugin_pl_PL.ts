@@ -2,30 +2,30 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="pl">
 <context>
-    <name>AboutSimpleUiDialog</name>
+    <name>AboutQSUIDialog</name>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="41"/>
+        <location filename="../forms/aboutqsuidialog.ui" line="14"/>
+        <source>About QSUI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="42"/>
+        <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="44"/>
+        <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="46"/>
+        <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutsimpleuidialog.ui" line="14"/>
-        <source>About QSUI</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -819,6 +819,144 @@
     </message>
 </context>
 <context>
+    <name>QSUIFactory</name>
+    <message>
+        <location filename="../qsuifactory.cpp" line="32"/>
+        <source>Simple User Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QSUISettings</name>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="24"/>
+        <location filename="../forms/qsuisettings.ui" line="30"/>
+        <location filename="../qsuisettings.cpp" line="129"/>
+        <source>View</source>
+        <translation type="unfinished">Wygląd</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="36"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">Zminimalizuj przy zamykaniu</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="43"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">Uruchom zminimalizowany</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="59"/>
+        <source>Fonts</source>
+        <translation type="unfinished">Czcionki</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="77"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">Lista odtwarzania:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="99"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="106"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="116"/>
+        <source>Song Display</source>
+        <translation type="unfinished">Wyświetlanie utworu</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="122"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">Pokaż protokół</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="129"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">Wyświetl numery utworów na liście odtwarzania</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="139"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished">Wyrównaj w pionie numery utworów</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="146"/>
+        <source>Show anchor</source>
+        <translation type="unfinished">Pokaż kotwicę</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="153"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">Pokaż informację popup</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="165"/>
+        <source>Edit template</source>
+        <translation type="unfinished">Edytuj szablon</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="187"/>
+        <source>Show close buttons on tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="123"/>
+        <source>Playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="135"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Lista odtwarzania</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="141"/>
+        <source>Misc</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RenameDialog</name>
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
@@ -846,144 +984,6 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SimpleFactory</name>
-    <message>
-        <location filename="../simplefactory.cpp" line="32"/>
-        <source>Simple User Interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SimpleSettings</name>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="24"/>
-        <location filename="../forms/simplesettings.ui" line="30"/>
-        <location filename="../simplesettings.cpp" line="129"/>
-        <source>View</source>
-        <translation type="unfinished">Wygląd</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="36"/>
-        <source>Hide on close</source>
-        <translation type="unfinished">Zminimalizuj przy zamykaniu</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="43"/>
-        <source>Start hidden</source>
-        <translation type="unfinished">Uruchom zminimalizowany</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="59"/>
-        <source>Fonts</source>
-        <translation type="unfinished">Czcionki</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="77"/>
-        <source>Playlist:</source>
-        <translation type="unfinished">Lista odtwarzania:</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="99"/>
-        <source>???</source>
-        <translation type="unfinished">???</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="106"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="187"/>
-        <source>Show close buttons on tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="211"/>
-        <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="224"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="229"/>
-        <source>Shortcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="237"/>
-        <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="258"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="264"/>
-        <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="270"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="116"/>
-        <source>Song Display</source>
-        <translation type="unfinished">Wyświetlanie utworu</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="122"/>
-        <source>Show protocol</source>
-        <translation type="unfinished">Pokaż protokół</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="129"/>
-        <source>Show song numbers</source>
-        <translation type="unfinished">Wyświetl numery utworów na liście odtwarzania</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="139"/>
-        <source>Align song numbers</source>
-        <translation type="unfinished">Wyrównaj w pionie numery utworów</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="146"/>
-        <source>Show anchor</source>
-        <translation type="unfinished">Pokaż kotwicę</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="153"/>
-        <source>Show popup information</source>
-        <translation type="unfinished">Pokaż informację popup</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="165"/>
-        <source>Edit template</source>
-        <translation type="unfinished">Edytuj szablon</translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="123"/>
-        <source>Playback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="135"/>
-        <source>Playlist</source>
-        <translation type="unfinished">Lista odtwarzania</translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="141"/>
-        <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
