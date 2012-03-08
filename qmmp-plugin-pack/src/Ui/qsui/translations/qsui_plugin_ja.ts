@@ -2,31 +2,31 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ja_JP">
 <context>
-    <name>AboutSimpleUiDialog</name>
+    <name>AboutQSUIDialog</name>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="41"/>
+        <location filename="../forms/aboutqsuidialog.ui" line="14"/>
+        <source>About QSUI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation>QMMP 簡易ユーザーインターフェイス (QSUI)</translation>
+        <translation type="unfinished">QMMP 簡易ユーザーインターフェイス (QSUI)</translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="42"/>
+        <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation type="unfinished">QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="44"/>
+        <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutsimpleuidialog.cpp" line="46"/>
+        <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation>簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutsimpleuidialog.ui" line="14"/>
-        <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
     </message>
 </context>
 <context>
@@ -819,6 +819,144 @@
     </message>
 </context>
 <context>
+    <name>QSUIFactory</name>
+    <message>
+        <location filename="../qsuifactory.cpp" line="32"/>
+        <source>Simple User Interface</source>
+        <translation type="unfinished">簡易ユーザーインターフェイス</translation>
+    </message>
+</context>
+<context>
+    <name>QSUISettings</name>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="24"/>
+        <location filename="../forms/qsuisettings.ui" line="30"/>
+        <location filename="../qsuisettings.cpp" line="129"/>
+        <source>View</source>
+        <translation type="unfinished">観容</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="36"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">「閉じる」で隠す</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="43"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">開始時に隠す</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="59"/>
+        <source>Fonts</source>
+        <translation type="unfinished">書体</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="77"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">プレイリスト:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="99"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="106"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="116"/>
+        <source>Song Display</source>
+        <translation type="unfinished">演目表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="122"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">プロトコルを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="129"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">曲番号つきで表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="139"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished">曲番号のみを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="146"/>
+        <source>Show anchor</source>
+        <translation type="unfinished">アンカーを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="153"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">情報吹き出しを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="165"/>
+        <source>Edit template</source>
+        <translation type="unfinished">ひな型を編集</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="187"/>
+        <source>Show close buttons on tabs</source>
+        <translation type="unfinished">各タブに閉じるボタンを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished">ショートカット</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <source>Action</source>
+        <translation type="unfinished">動作</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <source>Shortcut</source>
+        <translation type="unfinished">ショートカット</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished">ショートカットを変更...</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="123"/>
+        <source>Playback</source>
+        <translation type="unfinished">再生</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="135"/>
+        <source>Playlist</source>
+        <translation type="unfinished">プレイリスト</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="141"/>
+        <source>Misc</source>
+        <translation type="unfinished">いろいろ</translation>
+    </message>
+</context>
+<context>
     <name>RenameDialog</name>
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
@@ -847,144 +985,6 @@
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
         <translation>消去</translation>
-    </message>
-</context>
-<context>
-    <name>SimpleFactory</name>
-    <message>
-        <location filename="../simplefactory.cpp" line="32"/>
-        <source>Simple User Interface</source>
-        <translation>簡易ユーザーインターフェイス</translation>
-    </message>
-</context>
-<context>
-    <name>SimpleSettings</name>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="24"/>
-        <location filename="../forms/simplesettings.ui" line="30"/>
-        <location filename="../simplesettings.cpp" line="129"/>
-        <source>View</source>
-        <translation>観容</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="36"/>
-        <source>Hide on close</source>
-        <translation>「閉じる」で隠す</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="43"/>
-        <source>Start hidden</source>
-        <translation>開始時に隠す</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="59"/>
-        <source>Fonts</source>
-        <translation>書体</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="77"/>
-        <source>Playlist:</source>
-        <translation>プレイリスト:</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="99"/>
-        <source>???</source>
-        <translation>???</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="106"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="187"/>
-        <source>Show close buttons on tabs</source>
-        <translation>各タブに閉じるボタンを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="211"/>
-        <source>Shortcuts</source>
-        <translation>ショートカット</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="224"/>
-        <source>Action</source>
-        <translation>動作</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="229"/>
-        <source>Shortcut</source>
-        <translation>ショートカット</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="237"/>
-        <source>Change shortcut...</source>
-        <translation>ショートカットを変更...</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="258"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="264"/>
-        <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="270"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="116"/>
-        <source>Song Display</source>
-        <translation>演目表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="122"/>
-        <source>Show protocol</source>
-        <translation>プロトコルを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="129"/>
-        <source>Show song numbers</source>
-        <translation>曲番号つきで表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="139"/>
-        <source>Align song numbers</source>
-        <translation>曲番号のみを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="146"/>
-        <source>Show anchor</source>
-        <translation>アンカーを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="153"/>
-        <source>Show popup information</source>
-        <translation>情報吹き出しを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/simplesettings.ui" line="165"/>
-        <source>Edit template</source>
-        <translation>ひな型を編集</translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="123"/>
-        <source>Playback</source>
-        <translation>再生</translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="135"/>
-        <source>Playlist</source>
-        <translation>プレイリスト</translation>
-    </message>
-    <message>
-        <location filename="../simplesettings.cpp" line="141"/>
-        <source>Misc</source>
-        <translation>いろいろ</translation>
     </message>
 </context>
 <context>
