@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,26 +18,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ABOUTSIMPLEUIDIALOG_H
-#define ABOUTSIMPLEUIDIALOG_H
+#ifndef QSUISETTINGS_H
+#define QSUISETTINGS_H
 
-#include <QDialog>
-#include "ui_aboutsimpleuidialog.h"
+#include <QWidget>
+#include <QFileInfo>
+#include "ui_qsuisettings.h"
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class AboutSimpleUiDialog : public QDialog
+class QSUISettings : public QWidget
 {
     Q_OBJECT
 public:
-    explicit AboutSimpleUiDialog(QWidget *parent = 0);
-    virtual ~AboutSimpleUiDialog();
+    explicit QSUISettings(QWidget *parent = 0);
+    virtual ~QSUISettings();
+    void writeSettings();
+
+
+private slots:
+    void on_plFontButton_clicked();
+    void on_popupTemplateButton_clicked();
+    void on_changeShortcutButton_clicked();
 
 private:
-    Ui::AboutSimpleUiDialog m_ui;
-    QString loadAbout();
-    QString getStringFromResource(const QString& res_file);
+    void showEvent(QShowEvent *);
+    void loadFonts();
+    void readSettings();
+    void loadShortcuts();
+
+    Ui::QSUISettings m_ui;
 };
 
-#endif // ABOUTSIMPLEUIDIALOG_H
+#endif // QSUISETTINGS_H

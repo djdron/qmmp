@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,18 +21,18 @@
 #include <QFile>
 #include <QTextStream>
 #include <qmmp/qmmp.h>
-#include "aboutsimpleuidialog.h"
+#include "aboutqsuidialog.h"
 
-AboutSimpleUiDialog::AboutSimpleUiDialog(QWidget *parent) :
+AboutQSUIDialog::AboutQSUIDialog(QWidget *parent) :
     QDialog(parent)
 {
     m_ui.setupUi(this);
     m_ui.aboutTextEdit->setHtml(loadAbout());
 }
 
-AboutSimpleUiDialog::~AboutSimpleUiDialog(){}
+AboutQSUIDialog::~AboutQSUIDialog(){}
 
-QString AboutSimpleUiDialog::loadAbout()
+QString AboutQSUIDialog::loadAbout()
 {
     QString text;
     text.append("<head>");
@@ -52,7 +52,7 @@ QString AboutSimpleUiDialog::loadAbout()
     return text;
 }
 
-QString AboutSimpleUiDialog::getStringFromResource(const QString& res_file)
+QString AboutQSUIDialog::getStringFromResource(const QString& res_file)
 {
     QString ret_string;
     QStringList paths;
@@ -78,4 +78,3 @@ QString AboutSimpleUiDialog::getStringFromResource(const QString& res_file)
     }
     return ret_string;
 }
-

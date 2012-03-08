@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,25 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SIMPLEFACTORY_H
-#define SIMPLEFACTORY_H
 
-#include <QObject>
-#include <QTranslator>
-#include <qmmpui/uifactory.h>
+#include <QtPlugin>
+#include <QMessageBox>
+#include <qmmp/qmmpsettings.h>
+#include "mainwindow.h"
+#include "aboutqsuidialog.h"
+#include "qsuifactory.h"
 
-/*!
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class SimpleFactory : public QObject, public UiFactory
+const UiProperties QSUIFactory::properties() const
 {
-    Q_OBJECT
-    Q_INTERFACES(UiFactory)
-public:
-    const UiProperties properties() const;
-    QObject *create();
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
-};
+    UiProperties props;
+    props.hasAbout = true;
+    props.name = tr("Simple User Interface");
+    props.shortName = "qsui";
+    return props;
+}
 
-#endif
+QObject *QSUIFactory::QSUIFactory::create()
+{
+    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
+    return new MainWindow();
+}
+
+void QSUIFactory::showAbout(QWidget *parent)
+{
+    AboutQSUIDialog about(parent);
+    about.exec();
+}
+
+QTranslator *QSUIFactory::createTranslator(QObject *parent)
+{
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = Qmmp::systemLanguageID();
+    translator->load(QString(":/qsui_plugin_") + locale);
+    return translator;
+}
+
+Q_EXPORT_PLUGIN2(qsui, QSUIFactory)

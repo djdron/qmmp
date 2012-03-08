@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AboutSimpleUiDialog</class>
- <widget class="QDialog" name="AboutSimpleUiDialog">
+ <class>AboutQSUIDialog</class>
+ <widget class="QDialog" name="AboutQSUIDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -71,7 +71,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>AboutSimpleUiDialog</receiver>
+   <receiver>AboutQSUIDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -87,7 +87,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>AboutSimpleUiDialog</receiver>
+   <receiver>AboutQSUIDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

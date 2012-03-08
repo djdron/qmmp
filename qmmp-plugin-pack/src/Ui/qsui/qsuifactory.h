@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,38 +17,25 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef QSUIFACTORY_H
+#define QSUIFACTORY_H
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QObject>
+#include <QTranslator>
+#include <qmmpui/uifactory.h>
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class SimpleSettings : public QWidget
+/*!
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class QSUIFactory : public QObject, public UiFactory
 {
     Q_OBJECT
+    Q_INTERFACES(UiFactory)
 public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
-
-
-private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
-
-private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
-
-    Ui::SimpleSettings m_ui;
+    const UiProperties properties() const;
+    QObject *create();
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 };
 
-#endif // SIMPLESETTINGS_H
+#endif

@@ -1,6 +1,6 @@
 include(../../plugins.pri)
 
-TARGET = $$PLUGINS_PREFIX/Ui/simple
+TARGET = $$PLUGINS_PREFIX/Ui/qsui
 
 CONFIG += release \
     warn_on \
@@ -16,10 +16,8 @@ SOURCES += main.cpp \
     listwidget.cpp \
     visualmenu.cpp \
     renamedialog.cpp \
-    simplefactory.cpp \
     positionslider.cpp \
     actionmanager.cpp \
-    simplesettings.cpp \
     shortcutdialog.cpp \
     shortcutitem.cpp \
     popupsettings.cpp \
@@ -27,16 +25,16 @@ SOURCES += main.cpp \
     addurldialog.cpp \
     equalizer.cpp \
     logo.cpp \
-    aboutsimpleuidialog.cpp \
-    keyboardmanager.cpp
+    keyboardmanager.cpp \
+    aboutqsuidialog.cpp \
+    qsuifactory.cpp \
+    qsuisettings.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
     renamedialog.h \
-    simplefactory.h \
     positionslider.h \
     actionmanager.h \
-    simplesettings.h \
     shortcutdialog.h \
     shortcutitem.h \
     popupsettings.h \
@@ -44,35 +42,37 @@ HEADERS += mainwindow.h \
     addurldialog.h \
     equalizer.h \
     logo.h \
-    aboutsimpleuidialog.h \
-    keyboardmanager.h
+    keyboardmanager.h \
+    aboutqsuidialog.h \
+    qsuifactory.h \
+    qsuisettings.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
-    forms/simplesettings.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
     forms/addurldialog.ui \
-    forms/aboutsimpleuidialog.ui
-RESOURCES += translations/translations.qrc images/simple_images.qrc txt/simple_txt.qrc
+    forms/aboutqsuidialog.ui \
+    forms/qsuisettings.ui
+RESOURCES += translations/translations.qrc images/qsui_images.qrc txt/qsui_txt.qrc
 
-TRANSLATIONS = translations/simple_plugin_ru.ts \
-    translations/simple_plugin_tr.ts \
-    translations/simple_plugin_zh_CN.ts \
-    translations/simple_plugin_cs.ts \
-    translations/simple_plugin_pt_BR.ts \
-    translations/simple_plugin_uk_UA.ts \
-    translations/simple_plugin_zh_TW.ts \
-    translations/simple_plugin_de.ts \
-    translations/simple_plugin_pl_PL.ts \
-    translations/simple_plugin_it.ts \
-    translations/simple_plugin_lt.ts \
-    translations/simple_plugin_hu.ts \
-    translations/simple_plugin_nl.ts \
-    translations/simple_plugin_ja.ts \
-    translations/simple_plugin_es.ts \
-    translations/simple_plugin_sk.ts
+TRANSLATIONS = translations/qsui_plugin_ru.ts \
+    translations/qsui_plugin_tr.ts \
+    translations/qsui_plugin_zh_CN.ts \
+    translations/qsui_plugin_cs.ts \
+    translations/qsui_plugin_pt_BR.ts \
+    translations/qsui_plugin_uk_UA.ts \
+    translations/qsui_plugin_zh_TW.ts \
+    translations/qsui_plugin_de.ts \
+    translations/qsui_plugin_pl_PL.ts \
+    translations/qsui_plugin_it.ts \
+    translations/qsui_plugin_lt.ts \
+    translations/qsui_plugin_hu.ts \
+    translations/qsui_plugin_nl.ts \
+    translations/qsui_plugin_ja.ts \
+    translations/qsui_plugin_es.ts \
+    translations/qsui_plugin_sk.ts
 
 DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
 
@@ -82,7 +82,7 @@ unix {
     INSTALLS += target
 
     PKGCONFIG += qmmp qmmpui
-    QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libsimple.so
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libqsui.so
 }
 
 win32 {
@@ -92,6 +92,22 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

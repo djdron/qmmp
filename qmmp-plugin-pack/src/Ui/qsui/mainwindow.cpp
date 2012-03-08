@@ -44,8 +44,8 @@
 #include "positionslider.h"
 #include "mainwindow.h"
 #include "renamedialog.h"
-#include "simplesettings.h"
-#include "aboutsimpleuidialog.h"
+#include "qsuisettings.h"
+#include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
 #include "equalizer.h"
 
@@ -247,7 +247,7 @@ void MainWindow::renameTab()
 
 void MainWindow::aboutUi()
 {
-    AboutSimpleUiDialog dialog(this);
+    AboutQSUIDialog dialog(this);
     dialog.exec();
 }
 
@@ -270,7 +270,7 @@ void MainWindow::toggleVisibility()
 void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
-    SimpleSettings *simpleSettings = new SimpleSettings(this);
+    QSUISettings *simpleSettings = new QSUISettings(this);
     confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/simple/simple_settings.png"));
     confDialog->exec();
     simpleSettings->writeSettings();

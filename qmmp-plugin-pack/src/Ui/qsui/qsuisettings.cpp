@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,9 +28,9 @@
 #include "shortcutitem.h"
 #include "shortcutdialog.h"
 #include "popupsettings.h"
-#include "simplesettings.h"
+#include "qsuisettings.h"
 
-SimpleSettings::SimpleSettings(QWidget *parent) : QWidget(parent)
+QSUISettings::QSUISettings(QWidget *parent) : QWidget(parent)
 {
     m_ui.setupUi(this);
     //setup icons
@@ -41,10 +41,10 @@ SimpleSettings::SimpleSettings(QWidget *parent) : QWidget(parent)
     loadFonts();
 }
 
-SimpleSettings::~SimpleSettings()
+QSUISettings::~QSUISettings()
 {}
 
-void SimpleSettings::on_plFontButton_clicked()
+void QSUISettings::on_plFontButton_clicked()
 {
     bool ok;
     QFont font = m_ui.plFontLabel->font();
@@ -58,13 +58,13 @@ void SimpleSettings::on_plFontButton_clicked()
     }
 }
 
-void SimpleSettings::showEvent(QShowEvent *)
+void QSUISettings::showEvent(QShowEvent *)
 {
     m_ui.hiddenCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
     m_ui.hideOnCloseCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
 }
 
-void SimpleSettings::loadFonts()
+void QSUISettings::loadFonts()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value ("Simple/pl_font").toString();
@@ -75,14 +75,14 @@ void SimpleSettings::loadFonts()
     m_ui.plFontLabel->setFont(font);
 }
 
-void SimpleSettings::on_popupTemplateButton_clicked()
+void QSUISettings::on_popupTemplateButton_clicked()
 {
     PopupSettings *p = new PopupSettings(this);
     p->exec();
     p->deleteLater();
 }
 
-void SimpleSettings::readSettings()
+void QSUISettings::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
@@ -101,7 +101,7 @@ void SimpleSettings::readSettings()
     m_ui.clipboardCheckBox->setChecked(settings.value("URLDialog/use_clipboard", false).toBool());
 }
 
-void SimpleSettings::writeSettings()
+void QSUISettings::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
@@ -117,7 +117,7 @@ void SimpleSettings::writeSettings()
     settings.setValue ("URLDialog/use_clipboard", m_ui.clipboardCheckBox->isChecked());
 }
 
-void SimpleSettings::loadShortcuts()
+void QSUISettings::loadShortcuts()
 {
     //playback
     QTreeWidgetItem *item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Playback"));
@@ -148,7 +148,7 @@ void SimpleSettings::loadShortcuts()
     m_ui.shortcutTreeWidget->resizeColumnToContents(1);
 }
 
-void SimpleSettings::on_changeShortcutButton_clicked()
+void QSUISettings::on_changeShortcutButton_clicked()
 {
     ShortcutItem *item = dynamic_cast<ShortcutItem *> (m_ui.shortcutTreeWidget->currentItem());
     if(!item)
