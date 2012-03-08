@@ -91,7 +91,7 @@ MESSAGE("")
 MESSAGE("Plugins:")
 PRINT_SUMMARY ("mpg123 plugin ..................." USE_MPG123  MPG123_FOUND)
 PRINT_SUMMARY ("ffap plugin (Monkey's audio) ...." USE_FFAP    TAGLIB_FOUND)
-PRINT_SUMMARY ("simple UI plugin ................" USE_SIMPLE  QMMPUI_FOUND)
+PRINT_SUMMARY ("simple UI plugin ................" USE_QSUI  QMMPUI_FOUND)
 
 
 MESSAGE("")

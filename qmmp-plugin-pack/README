@@ -32,7 +32,7 @@ by running:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123; USE_FFAP; USE_SIMPLE
+- USE_MPG123; USE_FFAP; USE_QSUI
 
 
 Also you can use ccmake for changing plugins configuration.

@@ -1,4 +1,4 @@
-project(libsimple)
+project(libqsui)
 
 cmake_minimum_required(VERSION 2.4.7)
 
@@ -31,7 +31,7 @@ include_directories(${QMMPUI_INCLUDE_DIRS})
 link_directories( ${QMMPUI_LIBRARY_DIRS})
 
 
-SET(libsimple_SRCS
+SET(libqsui_SRCS
     actionmanager.cpp
     listwidget.cpp
     main.cpp
@@ -42,21 +42,21 @@ SET(libsimple_SRCS
     renamedialog.cpp
     shortcutdialog.cpp
     shortcutitem.cpp
-    simplefactory.cpp
-    simplesettings.cpp
+    qsuifactory.cpp
+    qsuisettings.cpp
     visualmenu.cpp
     addurldialog.cpp
     equalizer.cpp
     logo.cpp
-    aboutsimpleuidialog.cpp
+    aboutqsuidialog.cpp
     keyboardmanager.cpp
 )
 
-SET(libsimple_HDRS
+SET(libqsui_HDRS
     shortcutitem.h
 )
 
-SET(libsimple_MOC_HDRS
+SET(libqsui_MOC_HDRS
     actionmanager.h
     listwidget.h
     mainwindow.h
@@ -65,41 +65,40 @@ SET(libsimple_MOC_HDRS
     positionslider.h
     renamedialog.h
     shortcutdialog.h
-    simplefactory.h
-    simplesettings.h
+    qsuifactory.h
+    qsuisettings.h
     visualmenu.h
     addurldialog.h
     equalizer.h
     logo.h
-    aboutsimpleuidialog.h
+    aboutqsuidialog.h
     keyboardmanager.h
 )
 
-SET(libsimple_RCCS translations/translations.qrc txt/simple_txt.qrc images/simple_images.qrc)
+SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc images/qsui_images.qrc)
 
-QT4_ADD_RESOURCES(libsimple_RCC_SRCS ${libsimple_RCCS})
+QT4_ADD_RESOURCES(libqsui_RCC_SRCS ${libqsui_RCCS})
 
-QT4_WRAP_CPP(libsimple_MOC_SRCS ${libsimple_MOC_HDRS})
+QT4_WRAP_CPP(libqsui_MOC_SRCS ${libqsui_MOC_HDRS})
 
 # user interface
 
 
-SET(libsimple_UIS
+SET(libqsui_UIS
     forms/mainwindow.ui
     forms/popupsettings.ui
     forms/renamedialog.ui
     forms/shortcutdialog.ui
-    forms/simplesettings.ui
+    forms/qsuisettings.ui
     forms/addurldialog.ui
-    forms/aboutsimpleuidialog.ui
+    forms/aboutqsuidialog.ui
 )
 
-QT4_WRAP_UI(libsimple_UIS_H ${libsimple_UIS})
+QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(simple MODULE ${libsimple_SRCS} ${libsimple_MOC_SRCS} ${libsimple_UIS_H} ${libsimple_RCC_SRCS} ${libsimple_HDRS})
-target_link_libraries(simple ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${QMMPUI_LDFLAGS})
-install(TARGETS simple DESTINATION ${LIB_DIR}/qmmp/Ui)
-
+ADD_LIBRARY(qsui MODULE ${libqsui_SRCS} ${libqsui_MOC_SRCS} ${libqsui_UIS_H} ${libqsui_RCC_SRCS} ${libqsui_HDRS})
+target_link_libraries(qsui ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${QMMPUI_LDFLAGS})
+install(TARGETS qsui DESTINATION ${LIB_DIR}/qmmp/Ui)
