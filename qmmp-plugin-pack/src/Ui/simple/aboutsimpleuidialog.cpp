@@ -41,13 +41,41 @@ QString AboutSimpleUiDialog::loadAbout()
     text.append("<h3>"+tr("Qmmp Simple User Interface (QSUI)")+"</h3>");
     text.append(tr("Qmmp version: <b>%1</b>").arg(Qmmp::strVersion()));
     text.append("<br>");
-    text.append(tr("User interface version: <b>%1</b>").arg(QMMP_PLUGIN_PACK_VERSION));
+    text.append(tr("QSUI version: <b>%1</b>").arg(QMMP_PLUGIN_PACK_VERSION));
     text.append("<p>");
     text.append(tr("Simple user interface based on standard widgets set."));
     text.append("</p>");
     text.append("<p>");
-    text.append(tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>").replace("<", "&lt;")
-                .replace(">", "&gt;"));
+    text.append(getStringFromResource(":qsui_authors").replace("<", "&lt;")
+                .replace(">", "&gt;").replace("\n", "<br>"));
     text.append("</p>");
     return text;
 }
+
+QString AboutSimpleUiDialog::getStringFromResource(const QString& res_file)
+{
+    QString ret_string;
+    QStringList paths;
+    paths << res_file + "_" + Qmmp::systemLanguageID() + ".txt";
+    if(Qmmp::systemLanguageID().contains("."))
+        paths << res_file + "_" + Qmmp::systemLanguageID().split(".").at(0) + ".txt";
+    if(Qmmp::systemLanguageID().contains("_"))
+        paths << res_file + "_" + Qmmp::systemLanguageID().split("_").at(0) + ".txt";
+    paths << res_file + ".txt";
+    paths << res_file;
+
+    foreach(QString path, paths)
+    {
+        QFile file(path);
+        if (file.open(QIODevice::ReadOnly))
+        {
+            QTextStream ts(&file);
+            ts.setCodec("UTF-8");
+            ret_string = ts.readAll();
+            file.close();
+            return ret_string;
+        }
+    }
+    return ret_string;
+}
+

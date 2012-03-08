@@ -37,6 +37,7 @@ public:
 private:
     Ui::AboutSimpleUiDialog m_ui;
     QString loadAbout();
+    QString getStringFromResource(const QString& res_file);
 };
 
 #endif // ABOUTSIMPLEUIDIALOG_H

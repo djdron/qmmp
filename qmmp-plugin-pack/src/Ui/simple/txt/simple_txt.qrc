@@ -2,5 +2,7 @@
 <RCC version="1.0">
   <qresource>
     <file>ascii_logo.txt</file>
+    <file>qsui_authors.txt</file>
+    <file>qsui_authors_ru.txt</file>
   </qresource>
 </RCC>

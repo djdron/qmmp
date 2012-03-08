@@ -42,42 +42,42 @@
 <context>
     <name>FFapMetaDataModel</name>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="57"/>
+        <location filename="../ffapmetadatamodel.cpp" line="60"/>
         <source>Length</source>
         <translation type="unfinished">Długość</translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="58"/>
+        <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Sample rate</source>
         <translation type="unfinished">Próbkowanie</translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="58"/>
+        <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="59"/>
+        <location filename="../ffapmetadatamodel.cpp" line="62"/>
         <source>Channels</source>
         <translation type="unfinished">Kanały</translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="60"/>
+        <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>Bitrate</source>
         <translation type="unfinished">Szybkość transmisji</translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="60"/>
+        <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="61"/>
+        <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>File size</source>
         <translation type="unfinished">Wielkość pliku</translation>
     </message>
     <message>
-        <location filename="../ffapmetadatamodel.cpp" line="61"/>
+        <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>KB</source>
         <translation type="unfinished"></translation>
     </message>
