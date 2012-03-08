@@ -407,6 +407,7 @@ void Scrobbler2::submit()
     request.setRawHeader("User-Agent", m_ua);
     request.setRawHeader("Host", url.host().toAscii());
     request.setRawHeader("Accept", "*/*");
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader, bodyData.size());
     m_submitReply = m_http->post(request, bodyData);
 }
@@ -454,6 +455,7 @@ void Scrobbler2::sendNotification(const SongInfo &info)
     request.setRawHeader("User-Agent", m_ua);
     request.setRawHeader("Host", url.host().toAscii());
     request.setRawHeader("Accept", "*/*");
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());
     m_notificationReply = m_http->post(request, bodyData);
 }
