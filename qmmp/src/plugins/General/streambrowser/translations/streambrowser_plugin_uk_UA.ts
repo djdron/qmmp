@@ -6,12 +6,12 @@
     <message>
         <location filename="../streambrowser.cpp" line="33"/>
         <source>Stream Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Огляд потоків</translation>
     </message>
     <message>
         <location filename="../streambrowser.cpp" line="35"/>
         <source>Ctrl+U</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,27 +19,27 @@
     <message>
         <location filename="../streambrowserfactory.cpp" line="28"/>
         <source>Stream Browser Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль огляду потоків</translation>
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="49"/>
         <source>About Stream Browser Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про модуль огляду потоків</translation>
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="50"/>
         <source>Qmmp Stream Browser Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль огляду потоків для Qmmp</translation>
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="51"/>
         <source>This plugin allows to add stream from IceCast stream directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей модуль дозволяє додавати потоки з каталогу IceCast</translation>
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -47,87 +47,87 @@
     <message>
         <location filename="../streamwindow.ui" line="14"/>
         <source>Stream Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Огляд потоків</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="31"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Фільтр:</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="47"/>
         <source>Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибране</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="73"/>
         <source>IceCast</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="102"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="109"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновити</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="51"/>
         <location filename="../streamwindow.cpp" line="69"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="52"/>
         <location filename="../streamwindow.cpp" line="70"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="53"/>
         <location filename="../streamwindow.cpp" line="71"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="54"/>
         <location filename="../streamwindow.cpp" line="72"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Додати до вибраного</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Додати до списку</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Видалити</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="142"/>
         <source>Done</source>
-        <translation type="unfinished">Готово</translation>
+        <translation>Готово</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="145"/>
         <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
-        <translation type="unfinished">Помилка</translation>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="165"/>
         <source>Receiving</source>
-        <translation type="unfinished">Отримання</translation>
+        <translation>Отримання</translation>
     </message>
 </context>
 </TS>
