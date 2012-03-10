@@ -1240,7 +1240,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати кнопку &quot;Новий список&quot;</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="478"/>
