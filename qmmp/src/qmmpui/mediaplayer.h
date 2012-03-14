@@ -107,7 +107,7 @@ private slots:
     void playNext();
     void updateNextUrl();
     void processState(Qmmp::State state);
-    void showMetaData();
+    void updateMetaData();
 
 private:
     QmmpUiSettings *m_settings;

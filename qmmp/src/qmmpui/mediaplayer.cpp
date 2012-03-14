@@ -26,8 +26,6 @@
 #include "qmmpuisettings.h"
 #include "mediaplayer.h"
 
-#define MAX_ERRORS 4
-
 MediaPlayer *MediaPlayer::m_instance = 0;
 
 MediaPlayer::MediaPlayer(QObject *parent)
@@ -51,7 +49,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
-    connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
+    connect(m_core, SIGNAL(metaDataChanged()),SLOT(updateMetaData()));
 }
 
 MediaPlayer::~MediaPlayer()
@@ -109,6 +107,7 @@ void MediaPlayer::stop()
 {
     m_core->stop();
     m_nextUrl.clear();
+    m_skips = 0;
 }
 
 void MediaPlayer::next()
@@ -200,15 +199,17 @@ void MediaPlayer::processState(Qmmp::State state)
     switch ((int) state)
     {
     case Qmmp::NormalError:
-        stop();
-        if (m_skips <= MAX_ERRORS)
+        m_core->stop();
+        m_nextUrl.clear();
+        if (m_skips <= m_pl_manager->currentPlayList()->count())
         {
             m_skips++;
             playNext();
         }
         break;
     case Qmmp::FatalError:
-        stop();
+        m_core->stop();
+        m_nextUrl.clear();
         break;
     case Qmmp::Playing:
         m_skips = 0;
@@ -217,7 +218,7 @@ void MediaPlayer::processState(Qmmp::State state)
     }
 }
 
-void MediaPlayer::showMetaData()
+void MediaPlayer::updateMetaData()
 {
     qDebug("===== metadata ======");
     qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
