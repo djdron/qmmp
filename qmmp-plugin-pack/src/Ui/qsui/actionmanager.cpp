@@ -133,8 +133,10 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
         return action;
     if(QFile::exists(iconName))
         action->setIcon(QIcon(iconName));
-    else
+    else if(QIcon::hasThemeIcon(iconName))
         action->setIcon(QIcon::fromTheme(iconName));
+    else
+        action->setIcon(QIcon(QString(":/qsui/")+iconName+".png"));
     return action;
 }
 

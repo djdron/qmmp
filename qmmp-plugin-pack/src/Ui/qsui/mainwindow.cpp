@@ -121,7 +121,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_volumeSlider->setRange(0,100);
     ui.progressToolBar->addSeparator();
     ui.progressToolBar->addWidget(m_volumeSlider);
-    m_volumeAction = ui.progressToolBar->addAction(QIcon::fromTheme("audio-volume-high"), tr("Volume"));
+    QIcon volumeIcon = QIcon::fromTheme("audio-volume-high", QIcon(":/qsui/audio-volume-high.png"));
+    m_volumeAction = ui.progressToolBar->addAction(volumeIcon, tr("Volume"));
     connect(m_volumeSlider, SIGNAL(valueChanged(int)), SLOT(setVolume(int)));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
 
@@ -298,7 +299,7 @@ void MainWindow::updateVolume()
     else if(maxVol >= 30 && maxVol < 60)
         iconName = "audio-volume-medium";
 
-    m_volumeAction->setIcon(QIcon::fromTheme(iconName));
+    m_volumeAction->setIcon(QIcon::fromTheme(iconName, QIcon(QString(":/qsui/") + iconName + ".png")));
 
     if (maxVol)
         m_balance = (m_core->leftVolume() - m_core->rightVolume()) * 100 / maxVol;
