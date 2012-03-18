@@ -9,7 +9,7 @@
 
   ;Name and file
   Name "Qt-based Multimedia Player"
-  OutFile "qmmp-0.6.0-svn2614-win32.exe"
+  OutFile "qmmp-0.6.0-svn2670-win32.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Qt-based Multimedia Player"
@@ -55,6 +55,8 @@ Section "-General Section"
   File /r *.png
   File /r *.bmp
   File /r *.theme
+  File /r *.qm
+  File /r *.conf
   
   ;ADD YOUR OWN FILES HERE...
   
