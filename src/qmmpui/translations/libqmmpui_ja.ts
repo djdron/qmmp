@@ -41,17 +41,17 @@
     <message>
         <location filename="../aboutdialog.cpp" line="69"/>
         <source>Version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン: %1</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="70"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt %1 を現在使用しています (コンパイルは Qt %2 で行われました)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
@@ -210,7 +210,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="456"/>
         <source>Determine file type by content</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル内容をみて形式を判断</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="379"/>
@@ -220,17 +220,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Directory Scanning Options</source>
-        <translation type="unfinished"></translation>
+        <translation>ディレクトリ探査のオプション</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
         <source>Restrict files to:</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを限定(拡張子による):</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="463"/>
         <source>Add files from command line to this playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>コマンド行からファイルを追加できるプレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="509"/>
@@ -576,7 +576,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qmmpuisettings.cpp" line="41"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
 </context>
 <context>

@@ -11,7 +11,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="58"/>
         <source>List all available playlists</source>
-        <translation>利用可能なプレイリストすべての一覧を表示</translation>
+        <translation>すべての利用可能なプレイリストを一覧表示</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="59"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="60"/>
         <source>Play track &lt;track&gt; in playlist &lt;id&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;id&gt; 番プレイリストより &lt;track&gt; 番目を再生</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="61"/>
@@ -53,12 +53,12 @@
     <message>
         <location filename="../playlistoption.cpp" line="95"/>
         <source>Invalid number of arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>引数の項目数が不正</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="104"/>
         <source>Invalid track ID</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックの ID が不正</translation>
     </message>
 </context>
 </TS>

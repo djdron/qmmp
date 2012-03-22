@@ -16,7 +16,7 @@
     <message>
         <location filename="../converter.cpp" line="266"/>
         <source>Encoding...</source>
-        <translation type="unfinished"></translation>
+        <translation>符号化しています...</translation>
     </message>
 </context>
 <context>

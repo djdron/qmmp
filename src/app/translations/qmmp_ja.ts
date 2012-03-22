@@ -109,17 +109,17 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP のバージョン: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>コンパイルに使用した Qt のバージョン: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="302"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>現在使用中の Qt のバージョン: %1</translation>
     </message>
 </context>
 </TS>

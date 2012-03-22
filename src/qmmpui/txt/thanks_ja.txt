@@ -4,6 +4,7 @@
     Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack プラグイン改修, バグ報告
     Anton Petrusevich <casus@casus.us> - シャッフル再生の改良
     Avihay Baratz <avihayb@gmail.com> - 自動終止機能, バグ改修
+    Brice Videau <brice.videau@gmail.com> - バグ改修
     Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg プラグイン改修
     Dmitry Kostin <kostindima@gmail.com> - iso.wv サポート
     Evgeny Gleyzerman <evgley@gmail.com> - cue 解析の改良
