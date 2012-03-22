@@ -4,5 +4,6 @@
     <file>ascii_logo.txt</file>
     <file>qsui_authors.txt</file>
     <file>qsui_authors_ru.txt</file>
+    <file>qsui_authors_ja.txt</file>
   </qresource>
 </RCC>

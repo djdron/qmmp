@@ -6,27 +6,27 @@
     <message>
         <location filename="../forms/aboutqsuidialog.ui" line="14"/>
         <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation>QSUI について</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished">QMMP 簡易ユーザーインターフェイス (QSUI)</translation>
+        <translation>QMMP 簡易ユーザーインターフェイス (QSUI)</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished">QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>QSUI のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished">簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
+        <translation>簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
     </message>
 </context>
 <context>
@@ -370,12 +370,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;About</source>
-        <translation>QMMPについて(&amp;A)</translation>
+        <translation>QMMP について(&amp;A)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;About Qt</source>
-        <translation>Qtについて(&amp;Q)</translation>
+        <translation>Qt について(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
@@ -531,7 +531,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="429"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished">バッファーへ先読み: %1%</translation>
+        <translation>バッファーへ先読み: %1%</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
@@ -823,7 +823,7 @@
     <message>
         <location filename="../qsuifactory.cpp" line="32"/>
         <source>Simple User Interface</source>
-        <translation type="unfinished">簡易ユーザーインターフェイス</translation>
+        <translation>簡易ユーザーインターフェイス</translation>
     </message>
 </context>
 <context>
@@ -833,127 +833,127 @@
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>View</source>
-        <translation type="unfinished">観容</translation>
+        <translation>観容</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">「閉じる」で隠す</translation>
+        <translation>「閉じる」で隠す</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">開始時に隠す</translation>
+        <translation>開始時に隠す</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">書体</translation>
+        <translation>書体</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">プレイリスト:</translation>
+        <translation>プレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">演目表示</translation>
+        <translation>演目表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">プロトコルを表示</translation>
+        <translation>プロトコルを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">曲番号つきで表示</translation>
+        <translation>曲番号つきで表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">曲番号のみを表示</translation>
+        <translation>曲番号のみを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished">アンカーを表示</translation>
+        <translation>アンカーを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished">情報吹き出しを表示</translation>
+        <translation>情報吹き出しを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">ひな型を編集</translation>
+        <translation>ひな型を編集</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation type="unfinished">各タブに閉じるボタンを表示</translation>
+        <translation>各タブに「閉じる」ボタンを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="224"/>
         <source>Action</source>
-        <translation type="unfinished">動作</translation>
+        <translation>動作</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">ショートカットを変更...</translation>
+        <translation>ショートカットを変更...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>各種設定</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL ダイアログ</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>クリップボード上の URL を自動的に貼り付け</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Playback</source>
-        <translation type="unfinished">再生</translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="135"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="141"/>
         <source>Misc</source>
-        <translation type="unfinished">いろいろ</translation>
+        <translation>各種設定</translation>
     </message>
 </context>
 <context>

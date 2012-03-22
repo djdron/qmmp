@@ -6,7 +6,7 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="43"/>
         <source>Length</source>
-        <translation>長さ</translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
