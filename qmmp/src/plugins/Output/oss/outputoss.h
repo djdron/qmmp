@@ -48,7 +48,6 @@ private:
     void sync();
     QString m_audio_device;
 
-    bool do_select;
     int m_audio_fd;
     long bl, br;
 };

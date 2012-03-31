@@ -44,11 +44,10 @@ extern "C"
 #include <qmmp/visual.h>
 #include "outputoss.h"
 
-OutputOSS::OutputOSS(QObject * parent) : Output(parent), do_select(true), m_audio_fd(-1)
+OutputOSS::OutputOSS(QObject * parent) : Output(parent), m_audio_fd(-1)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
-    do_select = false;
 }
 
 OutputOSS::~OutputOSS()
@@ -101,8 +100,6 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         return false;
     }
 
-    //ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
-
     if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
         qWarning("OutputOSS: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
 
@@ -130,32 +127,12 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
 qint64 OutputOSS::latency()
 {
-    //ulong used = 0;
-
-    /*if (ioctl(m_audio_fd, SNDCTL_DSP_GETODELAY, &used) == -1)
-        used = 0;*/
     return 0;
 }
 
 qint64 OutputOSS::writeAudio(unsigned char *data, qint64 maxSize)
 {
-    fd_set afd;
-    struct timeval tv;
-    qint64 m = -1, l;
-    FD_ZERO(&afd);
-    FD_SET(m_audio_fd, &afd);
-    // nice long poll timeout
-    tv.tv_sec = 5l;
-    tv.tv_usec = 0l;
-    if ((!do_select || (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0 &&
-                                 FD_ISSET(m_audio_fd, &afd))))
-    {
-        l = qMin(int(2048), int(maxSize));
-        if (l > 0)
-        {
-             m = write(m_audio_fd, data, l);
-        }
-    }
+    qint64 m = write(m_audio_fd, data, maxSize);
     post();
     return m;
 }
