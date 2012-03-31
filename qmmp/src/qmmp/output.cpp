@@ -479,7 +479,7 @@ OutputFactory *Output::currentFactory()
 #ifdef Q_OS_LINUX
     QString name = settings.value("Output/current_plugin", "alsa").toString();
 #else
-    QString name = settings.value("Output/current_plugin", "oss").toString();
+    QString name = settings.value("Output/current_plugin", "oss4").toString();
 #endif
     foreach(OutputFactory *factory, *m_factories)
     {

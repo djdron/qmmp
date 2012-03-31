@@ -48,6 +48,7 @@ OutputOSS::OutputOSS(QObject * parent) : Output(parent), do_select(true), m_audi
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
+    do_select = false;
 }
 
 OutputOSS::~OutputOSS()
@@ -72,7 +73,7 @@ void OutputOSS::sync()
 
 bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
+    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY);
 
     if (m_audio_fd < 0)
     {
@@ -80,19 +81,7 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         return false;
     }
 
-    int flags;
-    if ((flags = fcntl(m_audio_fd, F_GETFL, 0)) > 0)
-    {
-        flags &= O_NDELAY;
-        fcntl(m_audio_fd, F_SETFL, flags);
-    }
-    fd_set afd;
-    FD_ZERO(&afd);
-    FD_SET(m_audio_fd, &afd);
-    struct timeval tv;
-    tv.tv_sec = 0l;
-    tv.tv_usec = 50000l;
-    do_select = (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0);
+    ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
     int p;
     switch (format)
@@ -112,7 +101,11 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         return false;
     }
 
-    ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
+    //ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
+
+    if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
+        qWarning("OutputOSS: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
+
 
     if(ioctl(m_audio_fd, SNDCTL_DSP_CHANNELS, &chan) == -1)
         qWarning("OutputOSS: ioctl SNDCTL_DSP_CHANNELS failed: %s", strerror(errno));
@@ -125,8 +118,6 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         chan = param + 1;
     }
 
-    if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
-        qWarning("OutputOSS: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
 
     if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) < 0)
         qWarning("OutputOSS: ioctl SNDCTL_DSP_SPEED failed: %s", strerror(errno));

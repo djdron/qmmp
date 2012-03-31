@@ -36,7 +36,7 @@ class OutputOSS4 : public Output
 {
 Q_OBJECT
 public:
-    OutputOSS4();
+    OutputOSS4(QObject *parent = 0);
     virtual ~OutputOSS4();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
@@ -56,7 +56,6 @@ private:
     void post();
     void sync();
     QString m_audio_device;
-    bool m_do_select;
     int m_audio_fd;
     static OutputOSS4 *m_instance;
 
@@ -64,9 +63,8 @@ private:
 
 class VolumeOSS4 : public Volume
 {
-    Q_OBJECT
 public:
-    VolumeOSS4(QObject *parent);
+    VolumeOSS4();
     ~VolumeOSS4();
 
     void setVolume(int channel, int value);
