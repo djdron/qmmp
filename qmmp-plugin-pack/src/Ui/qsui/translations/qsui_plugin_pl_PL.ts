@@ -6,27 +6,27 @@
     <message>
         <location filename="../forms/aboutqsuidialog.ui" line="14"/>
         <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation>O programie QSUI</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosty interfejs użytkownika Qmmp (QSUI)</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja Qmmp: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja QSUI: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosty interfejs użytkownika oparty na standardowych widżetach.</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Skocz do utworu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
@@ -320,7 +320,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zmień nazwę listy</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -345,12 +345,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Korektor</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -365,7 +365,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;O UI</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -393,22 +393,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Wpisz URL do dodania</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dodaj</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Anuluj</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd</translation>
     </message>
 </context>
 <context>
@@ -416,22 +416,22 @@
     <message>
         <location filename="../equalizer.cpp" line="35"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Korektor</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="43"/>
         <source>Enable equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz korektor</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="56"/>
         <source>Preamp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -439,17 +439,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="125"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="177"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstrzymane</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="180"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrzymane</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="275"/>
@@ -459,100 +459,100 @@
     <message>
         <location filename="../mainwindow.cpp" line="315"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzanie</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Stereo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Mono</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="390"/>
         <source>Sort List</source>
-        <translation type="unfinished">Sortuj listę</translation>
+        <translation>Sortuj listę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="393"/>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>By Title</source>
-        <translation type="unfinished">Według nazwy</translation>
+        <translation>Według nazwy</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="397"/>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>By Album</source>
-        <translation type="unfinished">Według nazwy albumu</translation>
+        <translation>Według nazwy albumu</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="401"/>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>By Artist</source>
-        <translation type="unfinished">Według artysty</translation>
+        <translation>Według artysty</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="405"/>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>By Filename</source>
-        <translation type="unfinished">Według nazwy pliku</translation>
+        <translation>Według nazwy pliku</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="409"/>
         <location filename="../mainwindow.cpp" line="448"/>
         <source>By Path + Filename</source>
-        <translation type="unfinished">Według Ścieżki + Nazwy pliku</translation>
+        <translation>Według Ścieżki + Nazwy pliku</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="413"/>
         <location filename="../mainwindow.cpp" line="452"/>
         <source>By Date</source>
-        <translation type="unfinished">Wg Daty</translation>
+        <translation>Wg Daty</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="417"/>
         <location filename="../mainwindow.cpp" line="456"/>
         <source>By Track Number</source>
-        <translation type="unfinished">Wg numeru utworu</translation>
+        <translation>Wg numeru utworu</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Wg Numeru płyty</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="429"/>
         <source>Sort Selection</source>
-        <translation type="unfinished">Sortuj zaznaczone</translation>
+        <translation>Sortuj zaznaczone</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="463"/>
         <source>Randomize List</source>
-        <translation type="unfinished">Tasuj listę</translation>
+        <translation>Tasuj listę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="465"/>
         <source>Reverse List</source>
-        <translation type="unfinished">Odwróć listę</translation>
+        <translation>Odwróć listę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="470"/>
         <location filename="../mainwindow.cpp" line="500"/>
         <source>Actions</source>
-        <translation type="unfinished">Akcje</translation>
+        <translation>Akcje</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Buforowanie: %1%</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="207"/>
@@ -562,142 +562,142 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
         <source>Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="48"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Plik</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="53"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Narzędzia</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="61"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomoc</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="66"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Edycja</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="71"/>
         <source>&amp;Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Odtwarzanie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="76"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Wygląd</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzanie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Postęp</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
-        <translation type="unfinished">Poprzedni</translation>
+        <translation>Poprzedni</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
-        <translation type="unfinished">Odtwarzaj</translation>
+        <translation>Odtwarzaj</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
-        <translation type="unfinished">Pauza</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
-        <translation type="unfinished">Następny</translation>
+        <translation>Następny</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
-        <translation type="unfinished">Zatrzymaj</translation>
+        <translation>Zatrzymaj</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Dodaj plik</translation>
+        <translation>&amp;Dodaj plik</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">Usuń &amp;wszystkie</translation>
+        <translation>Usuń &amp;wszystkie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa lista odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń listę odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">Dodaj &amp;katalog</translation>
+        <translation>Dodaj &amp;katalog</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Wyjście</translation>
+        <translation>&amp;Wyjście</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>O programie QT</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Zaznacz wszystkie</translation>
+        <translation>&amp;Zaznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Usuń zaznaczone</translation>
+        <translation>&amp;Usuń zaznaczone</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">Usuń &amp;niezaznaczone</translation>
+        <translation>Usuń &amp;niezaznaczone</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
-        <translation type="unfinished">Wizualizacja</translation>
+        <translation>Wizualizacja</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Zmień nazwę listy</translation>
+        <translation>Zmień nazwę listy</translation>
     </message>
 </context>
 <context>
@@ -705,117 +705,117 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>UStawienia inforamcji Popup</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Przywróć</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż okładkę</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar okładki:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Przezroczystość:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Artysta</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer utworu</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dwucyfowy numer utworu</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Gatunek</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozytor</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer płyty</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunek</translation>
     </message>
 </context>
 <context>
@@ -823,7 +823,7 @@
     <message>
         <location filename="../qsuifactory.cpp" line="32"/>
         <source>Simple User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosty interfejs użytkownika</translation>
     </message>
 </context>
 <context>
@@ -833,127 +833,127 @@
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>View</source>
-        <translation type="unfinished">Wygląd</translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Zminimalizuj przy zamykaniu</translation>
+        <translation>Zminimalizuj przy zamykaniu</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Uruchom zminimalizowany</translation>
+        <translation>Uruchom zminimalizowany</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">Czcionki</translation>
+        <translation>Czcionki</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Lista odtwarzania:</translation>
+        <translation>Lista odtwarzania:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">Wyświetlanie utworu</translation>
+        <translation>Wyświetlanie utworu</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Pokaż protokół</translation>
+        <translation>Pokaż protokół</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Wyświetl numery utworów na liście odtwarzania</translation>
+        <translation>Wyświetl numery utworów na liście odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Wyrównaj w pionie numery utworów</translation>
+        <translation>Wyrównaj w pionie numery utworów</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished">Pokaż kotwicę</translation>
+        <translation>Pokaż kotwicę</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Pokaż informację popup</translation>
+        <translation>Pokaż informację popup</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">Edytuj szablon</translation>
+        <translation>Edytuj szablon</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż przycisk zamykania na zakładkach list odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Skróty klawiszowe</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="224"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Akcja</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrót klawiszowy</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień skrót...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Inne</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne wklejanie URL ze schowka</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzanie</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="135"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista odtwarzania</translation>
+        <translation>Lista odtwarzania</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="141"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Różne</translation>
     </message>
 </context>
 <context>
@@ -961,12 +961,12 @@
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Zmień nazwę listy</translation>
+        <translation>Zmień nazwę listy</translation>
     </message>
     <message>
         <location filename="../forms/renamedialog.ui" line="24"/>
         <source>New name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa nazwa:</translation>
     </message>
 </context>
 <context>
@@ -974,17 +974,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień skrót klawiszowy</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Wciśnij kombinację klawiszy, które chcesz przypisać</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść</translation>
     </message>
 </context>
 <context>

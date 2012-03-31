@@ -1,6 +1,8 @@
-Brazylijski Portugalski:
-    Klaos Lacerda
-    Bruno Gonçalves
+Główni programiści:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (pomysł i właściwy kod)
+
+Tłumaczenie:
 
 Chiński Tradycyjny:
     lon <lon83129@126.com>
@@ -10,9 +12,6 @@ Chiński Uproszczony:
 
 Czeski:
     Karel Volný <kvolny@redhat.com>
-
-Holenderski:
-    Ronald Uitermark <ronald645@gmail.com>
 
 Francuski:
     Stanislas Zeller <uncensored.assault@gmail.com>
