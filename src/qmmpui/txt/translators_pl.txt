@@ -42,6 +42,9 @@ Polski:
 Rosyjski:
     Ilya Kotov <forkotov02@hotmail.ru>
 
+Słowacki:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
 Hiszpański:
     Félix Medrano <xukosky@yahoo.es>
 

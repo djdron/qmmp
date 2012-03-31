@@ -97,17 +97,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="51"/>
         <source>Forward 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Do przodu 5 sekund</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="52"/>
         <source>Rewind 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Do tyłu 5 sekund</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="53"/>
         <source>Jump to track</source>
-        <translation type="unfinished"></translation>
+        <translation>Skocz do utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
