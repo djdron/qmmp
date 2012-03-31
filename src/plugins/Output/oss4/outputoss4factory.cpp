@@ -40,7 +40,7 @@ const OutputProperties OutputOSS4Factory::properties() const
     return properties;
 }
 
-Volume *OutputOSS4Factory::createVolumeControl()
+Volume *OutputOSS4Factory::createVolume()
 {
     return new VolumeOSS4;
 }

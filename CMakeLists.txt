@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.6.0)
 
+#freebsd include
+include_directories(/usr/local/include)
+
 #extract version from qmmp.h
 FILE(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/qmmp/qmmp.h"
      QMMP_VERSION_DATA REGEX "^#define[ \t]+QMMP_VERSION_[A-Z]+[ \t]+[0-9]+.*$")
