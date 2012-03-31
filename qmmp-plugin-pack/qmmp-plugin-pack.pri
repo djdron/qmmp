@@ -8,6 +8,7 @@ OBJECTS_DIR=./.build/obj
 unix{
 INCLUDEPATH += /home/user/qmmp-0.6/include
 INCLUDEPATH += /usr/include
+INCLUDEPATH += /usr/local/include
 }else{
 INCLUDEPATH += D:/projects/qmmp-svn/qmmp/src
 QMAKE_LIBDIR += D:/projects/qmmp-svn/qmmp/bin
