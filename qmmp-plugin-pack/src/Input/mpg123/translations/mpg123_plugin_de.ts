@@ -27,8 +27,8 @@
         <location filename="../decodermpg123factory.cpp" line="211"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished">Dieses Modul fügt Unterstützung für „MPEG v1/2 Layer1/2/3“
-mit Hilfe der „libmpg123“-Bibliothek hinzu</translation>
+        <translation>Dieses Modul fügt, mit Hilfe der „libmpg123“-Bibliothek,
+Unterstützung für Dateien im „MPEG v1/2 Layer1/2/3“-Format hinzu</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="213"/>

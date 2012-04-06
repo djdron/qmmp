@@ -6,7 +6,7 @@
     <message>
         <location filename="../forms/aboutqsuidialog.ui" line="14"/>
         <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation>Über QSUI</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="41"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished">Qmmp-Version: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation>Qmmp-Version: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>QSUI-Version: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zu Stück springen</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -365,7 +365,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Über QSUI</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzuzufügende URL eingeben</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
@@ -444,12 +444,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="177"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Angehalten</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="180"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gestoppt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="275"/>
@@ -526,7 +526,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach CD-Nummer</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="429"/>
@@ -552,7 +552,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Puffern: %1 %</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="207"/>
@@ -725,12 +725,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cover anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cover-Größe:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -785,17 +785,17 @@
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponent</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dauer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
@@ -833,7 +833,7 @@
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>View</source>
-        <translation type="unfinished">Ansicht</translation>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
@@ -848,42 +848,42 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">Schriftarten</translation>
+        <translation>Schriftarten</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Wiedergabeliste:</translation>
+        <translation>Wiedergabeliste:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">…</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">Titelanzeige</translation>
+        <translation>Titelanzeige</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Protokoll anzeigen</translation>
+        <translation>Protokoll anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Titelnummern anzeigen</translation>
+        <translation>Titelnummern anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Stücknummern ausrichten</translation>
+        <translation>Stücknummern ausrichten</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
@@ -898,7 +898,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">Vorlage bearbeiten</translation>
+        <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
@@ -908,7 +908,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehle</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="224"/>
@@ -918,42 +918,42 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehl</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehl bearbeiten …</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschiedenes</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-Dialog</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL aus der Zwischenablage automatisch einfügen</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Playback</source>
-        <translation type="unfinished">Wiedergabe</translation>
+        <translation>Wiedergabe</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="135"/>
         <source>Playlist</source>
-        <translation type="unfinished">Wiedergabeliste</translation>
+        <translation>Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="141"/>
         <source>Misc</source>
-        <translation type="unfinished">Verschiedenes</translation>
+        <translation>Verschiedenes</translation>
     </message>
 </context>
 <context>
@@ -974,17 +974,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehl bearbeiten</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücken Sie die Tastenkombination, die Sie verwenden möchten</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurücksetzen</translation>
     </message>
 </context>
 <context>

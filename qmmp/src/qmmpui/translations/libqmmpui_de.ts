@@ -41,12 +41,12 @@
     <message>
         <location filename="../aboutdialog.cpp" line="70"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Unter Einsatz von Qt %1 (kompiliert mit Qt %2)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation type="unfinished"></translation>
+        <translation>© %1–%2 Qmmp-Entwicklerteam</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
