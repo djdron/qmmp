@@ -31,7 +31,7 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="75"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation>FPS</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>
@@ -127,12 +127,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation>Video:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation>Audio:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>

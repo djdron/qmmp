@@ -6,77 +6,77 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
         <source>About Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>Over Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="49"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Over</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="63"/>
         <source>Authors</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteurs</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="77"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertalers</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="91"/>
         <source>Thanks To</source>
-        <translation type="unfinished"></translation>
+        <translation>Met dank aan</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="105"/>
         <source>License Agreement</source>
-        <translation type="unfinished"></translation>
+        <translation>Licentie Overeenkomst</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="65"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt gebasseerde multimediaspeler (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="69"/>
         <source>Version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Versie: %1</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="70"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikt Qt %1 (gecompileerd met Qt %2)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation type="unfinished"></translation>
+        <translation>(c) %1-%2 Qmmp Ontwikkelingsteam</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Invoer plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="87"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoer plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="96"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Visuele plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="105"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Effect plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="114"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemene plugins:</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="362"/>
         <source>Description</source>
-        <translation>Popis</translation>
+        <translation>Beschrijving</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="367"/>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../configdialog.cpp" line="192"/>
         <source>Engines</source>
-        <translation>Engines</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="293"/>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../configdialog.cpp" line="295"/>
         <source>Two-digit track number</source>
-        <translation>Twee-getal liednummer</translation>
+        <translation>Liednummer (twee cijfer formaat)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="299"/>
@@ -165,12 +165,12 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>File path</source>
-        <translation>Pad</translation>
+        <translation>Bestandspad</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="296"/>
         <source>Genre</source>
-        <translation>Genre</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -205,17 +205,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="611"/>
         <source>Replay Gain</source>
-        <translation>Replay Gain</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="166"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="123"/>
         <source>Metadata</source>
-        <translation>Metadata</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="135"/>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Cover Image Retrieve</source>
-        <translation>Lees Hoes Af</translation>
+        <translation>Gebruik afbeeldingshoes</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="211"/>
@@ -280,32 +280,32 @@
     <message>
         <location filename="../forms/configdialog.ui" line="456"/>
         <source>Determine file type by content</source>
-        <translation type="unfinished"></translation>
+        <translation>Bepaal bestandstype op basis van inhoud</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="379"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikers interface</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Directory Scanning Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opties voor het scannen van mappen</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
         <source>Restrict files to:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikte bestandsformaten:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="463"/>
         <source>Add files from command line to this playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg bestanden van het commando prompt toe aan de afspeellijst:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="617"/>
         <source>Replay Gain mode:</source>
-        <translation>Replay Gain stand:</translation>
+        <translation>Replay Gain modus:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="634"/>
@@ -316,7 +316,7 @@
         <location filename="../forms/configdialog.ui" line="666"/>
         <location filename="../forms/configdialog.ui" line="711"/>
         <source>dB</source>
-        <translation>dB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="679"/>
@@ -336,12 +336,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="799"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buffer-grootte:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="812"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="848"/>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="509"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="521"/>
@@ -412,7 +412,7 @@
         <location filename="../forms/configdialog.ui" line="94"/>
         <location filename="../forms/configdialog.ui" line="741"/>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="841"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="110"/>
         <source>Genre</source>
-        <translation>Genre</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="111"/>
@@ -485,12 +485,12 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Open de bijbehorende map van dit bestand</translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="45"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="59"/>
@@ -504,7 +504,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -516,50 +516,50 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">Ga Naar Nummer</translation>
+        <translation>Ga Naar Nummer</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">Rij</translation>
+        <translation>Rij</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">Herlaad</translation>
+        <translation>Herlaad</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">Ga Naar</translation>
+        <translation>Ga Naar</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="60"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>F5</source>
-        <translation type="unfinished">F5</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">Verwijder uit lijst</translation>
+        <translation>Verwijder uit lijst</translation>
     </message>
 </context>
 <context>
@@ -576,7 +576,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qmmpuisettings.cpp" line="41"/>
         <source>Playlist</source>
-        <translation type="unfinished">Afspeellijst</translation>
+        <translation>Afspeellijst</translation>
     </message>
 </context>
 <context>
@@ -612,7 +612,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation>Genre:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="244"/>
@@ -624,7 +624,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../forms/tageditor.ui" line="222"/>
         <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
-        <translation>?</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="163"/>
@@ -705,12 +705,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation>Twee-getal liednummer</translation>
+        <translation>Liednummer (twee cijfer formaat)</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation>Genre</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -740,7 +740,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation>Pad</translation>
+        <translation>Bestandspad</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
@@ -758,33 +758,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">Alle Ondersteunde Bitstromen</translation>
+        <translation>Alle Ondersteunde Bitstromen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">Kies een of meer bestanden om te openen</translation>
+        <translation>Kies één of meerdere bestanden om te openen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Kies een map</translation>
+        <translation>Kies een map</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="159"/>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">Afspeellijst Bestanden</translation>
+        <translation>Afspeellijst Bestanden</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">Open Afspeellijst</translation>
+        <translation>Open Afspeellijst</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">Bewaar Afspeellijst</translation>
+        <translation>Bewaar Afspeellijst</translation>
     </message>
 </context>
 </TS>

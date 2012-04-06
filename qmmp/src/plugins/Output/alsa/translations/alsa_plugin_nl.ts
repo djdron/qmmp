@@ -11,12 +11,12 @@
     <message>
         <location filename="../outputalsafactory.cpp" line="56"/>
         <source>About ALSA Output Plugin</source>
-        <translation>Over de ALSA Output Module</translation>
+        <translation>Over de ALSA Uitvoer Module</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="57"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation>ALSA Output Module voor Qmmp</translation>
+        <translation>ALSA Uitvoer Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="58"/>

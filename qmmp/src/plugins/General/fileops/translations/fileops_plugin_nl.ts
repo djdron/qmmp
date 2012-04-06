@@ -21,7 +21,7 @@
     <message>
         <location filename="../fileops.cpp" line="104"/>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="145"/>
@@ -37,7 +37,7 @@
         <location filename="../fileops.cpp" line="189"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
-            <numerusform>Weet u zeker dat u deze %n bestanden wilt verwijderen?</numerusform>
+            <numerusform>Weet u zeker dat u dit bestand wilt verwijderen?</numerusform>
             <numerusform>Weet u zeker dat u deze %n bestanden wilt verwijderen?</numerusform>
         </translation>
     </message>
@@ -117,7 +117,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="194"/>
         <source>Album</source>
-        <translation>Album</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
-        <translation>Genre</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
@@ -147,7 +147,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit track number</source>
-        <translation>Twee-getal liednummer</translation>
+        <translation>Liednummer (twee cijfer formaat)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="204"/>
         <source>File path</source>
-        <translation>Pad</translation>
+        <translation>Bestandspad</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="206"/>
@@ -202,7 +202,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Menu text</source>
-        <translation>Menu tekst</translation>
+        <translation>Menutekst</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
@@ -213,7 +213,7 @@
         <location filename="../settingsdialog.ui" line="126"/>
         <location filename="../settingsdialog.ui" line="143"/>
         <source>...</source>
-        <translation>…</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="116"/>

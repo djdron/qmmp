@@ -16,12 +16,12 @@
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation>Sample Rate Converter Plugin voor Qmmp</translation>
+        <translation>Sample Rate Converter Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Sample Rate (Hz):</source>
-        <translation>Sample frequentie (Hz)</translation>
+        <translation>Sample frequentie (Hz):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>

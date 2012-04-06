@@ -16,7 +16,7 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation>Hz</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
@@ -26,12 +26,12 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>

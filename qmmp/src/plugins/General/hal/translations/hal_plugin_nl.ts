@@ -21,7 +21,7 @@
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation>Deze module levert detectie voor wisselbare stations die gebruikmaken van HAL</translation>
+        <translation>Deze module faciliteert detectie van verwisselbare apparaten, gebruikmakend van HAL (Verouderd, gebruik UDisks module)</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>

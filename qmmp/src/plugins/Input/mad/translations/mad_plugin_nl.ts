@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="222"/>
         <source>Compiled against libmad version:</source>
-        <translation>Gebouwd tegen libmad versie:</translation>
+        <translation>Gecompileerd tegen libmad met versie:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="226"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="227"/>
         <source>Source code based on mq3 and madplay projects</source>
-        <translation type="unfinished"></translation>
+        <translation>Broncode gebasseerd op &apos;mq3&apos; en &apos;madplay&apos; projecten</translation>
     </message>
 </context>
 <context>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
-        <translation>Hz</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="78"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
@@ -108,7 +108,7 @@
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <source>Copyright</source>
-        <translation>Copyright</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
@@ -129,14 +129,14 @@
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
         <source>ID3v1</source>
-        <translation>ID3v1</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="66"/>
         <location filename="../settingsdialog.ui" line="115"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
-        <translation>ID3v2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="210"/>
@@ -156,14 +156,14 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>First:</source>
-        <translation>Bron:</translation>
+        <translation>Primair:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="120"/>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>APE</source>
-        <translation>APE</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
@@ -175,12 +175,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Second:</source>
-        <translation>Tweede:</translation>
+        <translation>Secundair:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="139"/>
         <source>Third:</source>
-        <translation>Derde:</translation>
+        <translation>Tertiair:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="198"/>

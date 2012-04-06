@@ -6,12 +6,12 @@
     <message>
         <location filename="../lyrics.cpp" line="33"/>
         <source>View Lyrics</source>
-        <translation>Laat Tekst zien</translation>
+        <translation>Laat Liedtekst zien</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="34"/>
         <source>Ctrl+L</source>
-        <translation>Ctrl+L</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation>Tekst Module</translation>
+        <translation>Liedtekst Module</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation>Over de Tekst Module</translation>
+        <translation>Over de Liedtekst Module</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation>Qmmp Tekst Module</translation>
+        <translation>Liedtekst Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation>Deze module haalt teksten van LyricWiki</translation>
+        <translation>Deze module haalt liedteksten van LyricWiki</translation>
     </message>
 </context>
 <context>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
-        <translation>Tekst: %1 - %2</translation>
+        <translation>Liedtekst: %1 - %2</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation>Tekst Module</translation>
+        <translation>Liedtekst Module</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>

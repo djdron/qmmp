@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation>Gebouwd tegen libcdio-%1 en libcddb-%2</translation>
+        <translation>Gecompileerd tegen libcdio-%1 en libcddb-%2</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation>Gebruik: gebruik cdda:/// in het &quot;Voeg URL toe&quot; dialoog of als argument</translation>
+        <translation>Gebruik: Voeg cdda:/// in het &quot;Voeg URL toe&quot; dialoog of als argument op de command prompt</translation>
     </message>
 </context>
 <context>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
-        <translation>Forceer apparaat:</translation>
+        <translation>Gebruikt apparaat:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation>CDDB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation>Server:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation>Port:</translation>
+        <translation>Poort:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>

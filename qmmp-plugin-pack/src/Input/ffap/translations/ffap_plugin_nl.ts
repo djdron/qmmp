@@ -6,37 +6,37 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="48"/>
         <source>FFap Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFap Module</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="50"/>
         <source>Monkey&apos;s Audio Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey&apos;s Audio Bestanden</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="153"/>
         <source>About FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Over de FFap Audio Module</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="154"/>
         <source>Qmmp FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFap Audio Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="155"/>
         <source>This plugin provides Monkey&apos;s Audio (APE) support</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module faciliteert in het afspelen van Monkey&apos;s Audio (APE) bestanden</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
         <source>Based on code from deadbeef, FFmpeg and rockbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebasseerd op de broncode van deadbeef, FFmpeg en rockbox</translation>
     </message>
 </context>
 <context>
@@ -44,42 +44,42 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="60"/>
         <source>Length</source>
-        <translation type="unfinished">Duur</translation>
+        <translation>Duur</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Sample frequentie</translation>
+        <translation>Sample frequentie</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="62"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanalen</translation>
+        <translation>Kanalen</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Bitsnelheid</translation>
+        <translation>Bitsnelheid</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>File size</source>
-        <translation type="unfinished">Bestandsgrootte</translation>
+        <translation>Bestandsgrootte</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

@@ -49,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation>UID</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
@@ -69,12 +69,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>&gt;</source>
-        <translation>&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>&lt;</source>
-        <translation>&lt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>

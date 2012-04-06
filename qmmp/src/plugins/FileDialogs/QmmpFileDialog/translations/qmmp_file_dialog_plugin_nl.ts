@@ -6,7 +6,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="13"/>
         <source>Add Files</source>
-        <translation>Toevoegen</translation>
+        <translation>Bestanden toevoegen</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="37"/>
@@ -19,12 +19,12 @@
         <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
-        <translation>…</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="50"/>
         <source>List view</source>
-        <translation>Lijst weergave</translation>
+        <translation>Weergave modus</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="69"/>
@@ -75,8 +75,8 @@
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autoři:
-Vladimír Kuzněcov &lt;vovanec@gmail.com&gt;
+        <translation>Auteur:
+Vladimír Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>

@@ -11,12 +11,12 @@
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="54"/>
         <source>About PulseAudio Output Plugin</source>
-        <translation>Over de PulseAudio Output Module</translation>
+        <translation>Over de PulseAudio Uitvoer Module</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="55"/>
         <source>Qmmp PulseAudio Output Plugin</source>
-        <translation>PulseAudio Audio Output Module voor Qmmp</translation>
+        <translation>PulseAudio Audio Uitvoer Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="56"/>

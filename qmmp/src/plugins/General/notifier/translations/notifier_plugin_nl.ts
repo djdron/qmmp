@@ -72,7 +72,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
-        <translation>Hoesgrootte:</translation>
+        <translation>Albumhoesgrootte:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
@@ -103,12 +103,12 @@
         <location filename="../settingsdialog.ui" line="134"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk layout</translation>
     </message>
 </context>
 </TS>

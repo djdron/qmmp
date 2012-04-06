@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

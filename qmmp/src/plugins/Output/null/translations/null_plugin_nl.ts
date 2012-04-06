@@ -16,7 +16,7 @@
     <message>
         <location filename="../outputnullfactory.cpp" line="55"/>
         <source>Qmmp Null Output Plugin</source>
-        <translation>Null Output Plugin voor Qmmp</translation>
+        <translation>Null Output Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../outputnullfactory.cpp" line="56"/>

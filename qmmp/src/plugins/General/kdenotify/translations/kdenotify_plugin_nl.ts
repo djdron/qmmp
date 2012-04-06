@@ -14,18 +14,18 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>KDE 4 notification plugin</source>
-        <translation>Notificatie module voor KDE 4</translation>
+        <translation>Notificatie Module voor KDE 4</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="50"/>
         <source>About KDE Notification Plugin</source>
-        <translation>Over de KDE Notificatie Module</translation>
+        <translation>Over de KDE 4 Notificatie Module</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="51"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>KDE 4 Notificatie Module voor Qmmp</translation>
     </message>
 </context>
 <context>
@@ -53,17 +53,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation>Uitstraling</translation>
+        <translation>Vertoning</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation>Laat hoezen zien</translation>
+        <translation>Laat albumhoezen zien</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk layout</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>

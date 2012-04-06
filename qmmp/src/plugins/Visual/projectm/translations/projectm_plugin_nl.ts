@@ -19,67 +19,67 @@
     <message>
         <location filename="../projectmwidget.cpp" line="134"/>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
         <source>&amp;Show Song Title</source>
-        <translation>&amp;Laat Liedtitel Zien</translation>
+        <translation>&amp;Weergeef Titel van Nummer</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
         <source>F2</source>
-        <translation>F2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
         <source>&amp;Show Preset Name</source>
-        <translation>&amp;Laat vooringestelde naam zien</translation>
+        <translation>&amp;Weergeef Naam van Voorinstellingen</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
         <source>F3</source>
-        <translation>F3</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
         <source>&amp;Next Preset</source>
-        <translation>&amp;Volgende instelling</translation>
+        <translation>&amp;Volgende Instelling</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
         <source>N</source>
-        <translation>N</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>&amp;Previous Preset</source>
-        <translation>&amp;Vorige instelling</translation>
+        <translation>&amp;Vorige Instelling</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>P</source>
-        <translation>P</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>&amp;Random Preset</source>
-        <translation>&amp;Willekeure instelling</translation>
+        <translation>&amp;Willekeurige Instelling</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>R</source>
-        <translation>R</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>&amp;Lock Preset</source>
-        <translation>&amp;Zet instelling vast</translation>
+        <translation>&amp;Zet Instelling Vast</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>L</source>
-        <translation>L</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="143"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="143"/>
         <source>F</source>
-        <translation>F</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
