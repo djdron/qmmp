@@ -162,7 +162,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translation type="unfinished">Dieses Modul konvertiert mit Hilfe von externen Enkodern (Befehlszeile), unterstützte Audiodateien in andere Formate</translation>
+        <translation>Dieses Modul konvertiert unterstützte Audiodateien in andere Formate, mit Hilfe von Befehlszeilen-Kodierern</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../preseteditor.ui" line="90"/>
         <source>Convert to 16 bit</source>
-        <translation type="unfinished">Zu 16 Bit konvertieren</translation>
+        <translation>Zu 16 Bit konvertieren</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="37"/>
         <source>%1 (Read Only)</source>
-        <translation type="unfinished">%1 (Nur lesen)</translation>
+        <translation>%1 (Nur lesend)</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="70"/>

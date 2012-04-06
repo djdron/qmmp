@@ -53,7 +53,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="95"/>
         <source>Invalid number of arguments</source>
-        <translation type="unfinished">Ungültige Anzahl an Argumenten</translation>
+        <translation>Ungültige Anzahl an Argumenten</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="104"/>
