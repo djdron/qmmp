@@ -5,10 +5,10 @@ Braziliaans Portugees:
 Traditioneel Chinees:
     lon <lon83129@126.com>
 
-Simpel Chinees:
+Gesimplificeerd Chinees:
     lon <lon83129@126.com>
 
-Tsjechisch:
+Tsjech:
     Karel Volný <kvolny@redhat.com>
 
 Nederlands:
@@ -27,6 +27,9 @@ Hongaars:
 Italiaans:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Japans:
+    Ryota Shimamoto <liangtai.s4@gmail.com>
+
 Kazachstaans:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
@@ -39,9 +42,15 @@ Pools:
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
 
+Slowaak:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+Spaans:
+    Félix Medrano <xukosky@yahoo.es>
+
 Turks:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
-Oekrains:
+Oekraïens:
     Gennadi Motsyo <drool@altlinux.ru>
