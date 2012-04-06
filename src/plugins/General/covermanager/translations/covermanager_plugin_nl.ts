@@ -11,7 +11,7 @@
     <message>
         <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
-        <translation>Ctrl+M</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
@@ -62,22 +62,22 @@
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation>128×128</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation>256×256</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation>512×512</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation>1024×1024</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -87,12 +87,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation>Alt+F4</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>Bewaar Hoes Als</translation>
+        <translation>Bewaar Albumhoes Als</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>

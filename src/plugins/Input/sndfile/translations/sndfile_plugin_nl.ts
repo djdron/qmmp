@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodersndfilefactory.cpp" line="132"/>
         <source>Compiled against</source>
-        <translation>Gebouwd tegen</translation>
+        <translation>Gecompileerd tegen</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="133"/>

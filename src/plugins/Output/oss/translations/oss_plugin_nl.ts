@@ -11,12 +11,12 @@
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>Over de OSS Output Module</translation>
+        <translation>Over de OSS Uitvoer Module</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>OSS Output Module voor Qmmp</translation>
+        <translation>OSS Uitvoer Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation>Gebasseerd op code door: Brada Hughese &lt;bhughes@trolltech.com&gt;</translation>
+        <translation>Gebasseerd op code van: Brada Hughese &lt;bhughes@trolltech.com&gt;</translation>
     </message>
 </context>
 <context>

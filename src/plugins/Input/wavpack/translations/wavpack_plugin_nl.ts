@@ -49,7 +49,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="66"/>
         <source>Hz</source>
-        <translation>Hz</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="71"/>

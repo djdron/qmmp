@@ -6,27 +6,27 @@
     <message>
         <location filename="../effectstereofactory.cpp" line="30"/>
         <source>Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra Stereo Module</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="50"/>
         <source>About Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Over de Extra Stereo Module</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="51"/>
         <source>Qmmp Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra Stereo Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="53"/>
         <source>Based on the Extra Stereo Plugin for Xmms by Johan Levin</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebasseerd op de Extra Stereo Module voor Xmms geschreven door Johan Levin</translation>
     </message>
 </context>
 <context>
@@ -34,22 +34,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Extra Stereo Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra Stereo Module Instellingen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
         <source>Effect intensity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Effectintensiteit:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

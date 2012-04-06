@@ -16,7 +16,7 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation>Dit is de Qmmp module versie van Boris Mikhaylov&apos;s &quot;Headset DSP effect&quot; Bauer stereofonisch-naar-&apos;binaural&apos; afgekort bs2b.</translation>
+        <translation>Dit is de Qmmp module versie van Boris Mikhaylov&apos;s &quot;Headset DSP effect&quot; Bauer stereofonisch-naar-&apos;binaural&apos;, afgekort bs2b.</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>
         <source>Compiled against libbs2b-%1</source>
-        <translation>Gebouwd tegen libbs2b-%1</translation>
+        <translation>Gecompileerd tegen libbs2b-%1</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="57"/>
@@ -60,7 +60,7 @@
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -70,12 +70,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>C.Moy</source>
-        <translation>C. Moy</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>J. Meier</source>
-        <translation>J. Meier</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
@@ -85,7 +85,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>%1 dB</source>
-        <translation>%1 dB</translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

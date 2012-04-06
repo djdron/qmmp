@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>UDisks Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks Module Instellingen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Remove tracks from playlist automatically</source>
-        <translation>Verwijder nummers automatisch van speellijst</translation>
+        <translation>Verwijder nummers automatisch uit afspeellijst</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Remove files from playlist automatically</source>
-        <translation>Verwijder bestanden automatisch van afspeellijst</translation>
+        <translation>Verwijder bestanden automatisch uit afspeellijst</translation>
     </message>
 </context>
 <context>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisksfactory.cpp" line="30"/>
         <source>UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks Module</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="50"/>
         <source>About UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Over de Udisks Module</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="51"/>
         <source>Qmmp UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks Module voor Qmmp</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module faciliteert de automatische detectie van verwisselbare media gebruikmakend van UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisksplugin.cpp" line="154"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">Voeg CD &quot;%1&quot; toe</translation>
+        <translation>Voeg CD &quot;%1&quot; toe</translation>
     </message>
     <message>
         <location filename="../udisksplugin.cpp" line="160"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">Voeg Station &quot;%1&quot; toe</translation>
+        <translation>Voeg Station &quot;%1&quot; toe</translation>
     </message>
 </context>
 </TS>

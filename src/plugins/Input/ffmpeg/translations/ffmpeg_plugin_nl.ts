@@ -31,7 +31,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="259"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation>Gebouwd tegen libavformat-%1.%2.%3 en libavcodec-%4.%5.%6</translation>
+        <translation>Gecompileerd tegen libavformat-%1.%2.%3 en libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
         <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
         <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
@@ -64,7 +64,7 @@
         <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
         <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
@@ -76,7 +76,7 @@
         <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
         <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
         <source>Hz</source>
-        <translation>Hz</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
@@ -95,52 +95,52 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Windows Media Audio</source>
-        <translation>Windows Media Audio</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
-        <translation>True Audio</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
-        <translation>ADTS AAC</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>MPEG-4 AAC/ALAC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>RealAudio 1.0/2.0</source>
-        <translation>RealAudio 1.0/2.0</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="110"/>
         <source>Shorten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>AC3/EAC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
         <source>DTS/DTS-Core</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Matroska Audio (Dolby TrueHD Lossless)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -150,12 +150,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <source>Monkey&apos;s Audio (APE)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>MP3 (MPEG audio layer 3)</source>
-        <translation>MP3 (MPEG audio layer 3)</translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

@@ -37,12 +37,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk layout</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
@@ -52,17 +52,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation>Hoesgrootte:</translation>
+        <translation>Albumhoesgrootte:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation>32</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>Use standard icons</source>
-        <translation>Gebruik standaard icoontjes</translation>
+        <translation>Gebruik standaard iconen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
@@ -85,7 +85,7 @@
     <message>
         <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="69"/>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
-        <translation>Aan het Afspelen</translation>
+        <translation>Huidig nummer</translation>
     </message>
 </context>
 <context>

@@ -21,7 +21,7 @@
     <message>
         <location filename="../httpinputfactory.cpp" line="56"/>
         <source>Compiled against libcurl-%1</source>
-        <translation>Gebouwd tegen libcurl-%1</translation>
+        <translation>Gecompileerd tegen libcurl-%1</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="57"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>

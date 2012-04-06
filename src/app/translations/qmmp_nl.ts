@@ -6,12 +6,12 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Skip forward in playlist</source>
-        <translation>Naar voren springen in afspeellijstb</translation>
+        <translation>Naar voren schuiven in afspeellijst</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip backwards in playlist</source>
-        <translation>Naar achteren springen in afspeellijst</translation>
+        <translation>Naar achteren schuiven in afspeellijst</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="61"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Niet de afspellijst leeghalen</translation>
+        <translation>Niet de afspeellijst leeghalen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
@@ -41,17 +41,17 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Jump to File dialog</source>
-        <translation>Toon Ga Naar Bestandsdialoog</translation>
+        <translation>Weergeef bestandskeuze venster</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit applicatie</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation>Zet afspeelvolume (voorbeeld: qmmp --volume 20)</translation>
+        <translation>Verander afspeelvolume (voorbeeld: qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="292"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet de applicatie starten</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="294"/>
@@ -99,22 +99,22 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP versie: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecompileerd met QT versie: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="302"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikt QT versie: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="293"/>
         <source>Display this text and exit</source>
-        <translation>Toon dit tekstje en sluit</translation>
+        <translation>Toon deze tekst en sluit</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="83"/>

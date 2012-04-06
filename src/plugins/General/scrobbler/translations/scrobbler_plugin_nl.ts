@@ -34,17 +34,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Last.fm</source>
-        <translation>Last.fm</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Session:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessie:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Registreer nieuwe sessie</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="70"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Libre.fm</source>
-        <translation>Libre.fm</translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

@@ -6,7 +6,7 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="44"/>
         <source>CUE Plugin</source>
-        <translation>CUE Audio Module</translation>
+        <translation>CUE Module</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="47"/>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemene Instellingen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic file detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische bestandsdetectie</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
