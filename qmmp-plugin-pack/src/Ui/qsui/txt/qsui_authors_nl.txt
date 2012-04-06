@@ -1,6 +1,8 @@
-Braziliaans Portugees:
-    Klaos Lacerda
-    Bruno Gonçalves
+Ontwikkelaars:
+
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Vertalers:
 
 Traditioneel Chinees:
     lon <lon83129@126.com>
@@ -8,17 +10,13 @@ Traditioneel Chinees:
 Gesimplificeerd Chinees:
     lon <lon83129@126.com>
 
-Tsjech:
+Tjechisch:
     Karel Volný <kvolny@redhat.com>
-
-Nederlands:
-    Ronald Uitermark <ronald645@gmail.com>
 
 Frans:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Duits:
-    Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
 Hongaars:
@@ -42,7 +40,7 @@ Pools:
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
 
-Slowaak:
+Slowaaks:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
 Spaans:

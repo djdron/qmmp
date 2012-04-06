@@ -1,14 +1,14 @@
-Hoofdontwikkelaars:
+Ontwikkelaars:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (idee en codebasis)
-    Vladimir Kuznetsov <vovanec@gmail.com> (uiterlijk&gebruik en vele verbeteringen)
+    Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
 
-Module-ontwikkelaars:
+Plugin Ontwikkelaars:
 
-    Artur Guzik <aguzik88@gmail.com> (kde4 notificatie plugin, taak icoon verbeteringen)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss module)
+    Artur Guzik <aguzik88@gmail.com> (kde4 notification plugin, tray icon improvements)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss plugin)
 
-Ontwerp:
+Artistiek werk:
 
     Andrey Adreev <andreev00@gmail.com>
 
