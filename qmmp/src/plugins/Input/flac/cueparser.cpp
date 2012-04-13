@@ -170,7 +170,7 @@ const QMap<Qmmp::ReplayGainKey, double>  CUEParser::replayGain(int track) const
 
 QStringList CUEParser::splitLine(const QString &line)
 {
-    //qDebug("row string = %s",qPrintable(line));
+    //qDebug("raw string = %s",qPrintable(line));
     QStringList list;
     QString buf = line.trimmed();
     if (buf.isEmpty())
@@ -181,6 +181,12 @@ QStringList CUEParser::splitLine(const QString &line)
         if (buf.startsWith('"'))
         {
             int end = buf.indexOf('"',1);
+            if(end == -1) //ignore invalid line
+            {
+                list.clear();
+                qWarning("CUEParser: unable to parse line: %s",qPrintable(line));
+                return list;
+            }
             list << buf.mid (1, end - 1);
             buf.remove (0, end+1);
         }
