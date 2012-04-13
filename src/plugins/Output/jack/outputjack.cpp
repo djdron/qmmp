@@ -37,6 +37,7 @@ OutputJACK::OutputJACK(QObject *parent) : Output(parent), m_inited(false)
 {
     JACK_Init();
     m_wait_time = 0;
+    jack_device = 0;
 }
 
 OutputJACK::~OutputJACK()
@@ -91,4 +92,5 @@ void OutputJACK::uninitialize()
     if (!m_inited)
         return;
     JACK_Close(jack_device);
+    m_inited = false;
 }

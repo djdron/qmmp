@@ -90,8 +90,8 @@ void VolumeControl::reload()
     }
     if(!QmmpSettings::instance()->useSoftVolume())
     {
-        m_volume = Output::currentFactory()->createVolume();
-        m_timer->start(150);
+        if((m_volume = Output::currentFactory()->createVolume()))
+            m_timer->start(150);
     }
     if(!m_volume)
     {
