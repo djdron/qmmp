@@ -78,7 +78,6 @@ CUEParser::CUEParser(const QString &url)
     //qDebug("CUEParser: using %s encoding", codec->name().constData());
     textStream.setCodec(codec);
     QString album, genre, date, comment, artist, file_path;
-    bool new_file = false;
     double album_gain = 0.0, album_peak = 0.0;
 
     while (!textStream.atEnd())
@@ -90,19 +89,8 @@ CUEParser::CUEParser(const QString &url)
 
         if (words[0] == "FILE")
         {
-            if(!m_tracks.isEmpty())
-            {
-                QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(file_path, false);
-                qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
-                if (l > m_tracks.last()->offset)
-                    m_tracks.last()->info.setLength(l - m_tracks.last()->offset);
-                else
-                    m_tracks.last()->info.setLength(0);
-            }
             file_path = getDirtyPath(fileName, QFileInfo(fileName).dir().filePath(words[1]));
-            new_file = true;
         }
-
         else if (words[0] == "PERFORMER")
         {
             if(m_tracks.isEmpty())
@@ -131,7 +119,6 @@ CUEParser::CUEParser(const QString &url)
             m_tracks << new CUETrack;
             m_tracks.last()->info = info;
             m_tracks.last()->offset = 0;
-            m_tracks.last()->file = file_path;
             m_tracks.last()->replayGain.insert(Qmmp::REPLAYGAIN_ALBUM_GAIN, album_gain);
             m_tracks.last()->replayGain.insert(Qmmp::REPLAYGAIN_ALBUM_PEAK, album_peak);
         }
@@ -140,10 +127,7 @@ CUEParser::CUEParser(const QString &url)
             if (m_tracks.isEmpty())
                 continue;
             m_tracks.last()->offset = getLength(words[2]);
-            int c = m_tracks.count();
-            if(c > 1 && !new_file)
-                m_tracks[c - 2]->info.setLength(m_tracks[c - 1]->offset - m_tracks[c - 2]->offset);
-            new_file = false;
+            m_tracks.last()->file = file_path;
         }
         else if (words[0] == "REM")
         {
@@ -175,14 +159,6 @@ CUEParser::CUEParser(const QString &url)
         qWarning("CUEParser: invalid cue file");
         return;
     }
-    //calculate last item length
-    QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(file_path, false);
-    qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
-    if (l > m_tracks.last()->offset)
-        m_tracks.last()->info.setLength(l - m_tracks.last()->offset);
-    else
-        m_tracks.last()->info.setLength(0);
-
     //skip invalid cue sheet
     foreach(CUETrack *track, m_tracks)
     {
@@ -191,6 +167,22 @@ CUEParser::CUEParser(const QString &url)
             qDeleteAll(m_tracks);
             m_tracks.clear();
             break;
+        }
+    }
+    //calculate lengths
+    for(int i = 0; i < m_tracks.count(); ++i)
+    {
+        QString file_path = m_tracks[i]->file;
+        if((i < m_tracks.count() - 1) && (file_path == m_tracks[i+1]->file))
+            m_tracks[i]->info.setLength(m_tracks[i+1]->offset - m_tracks[i]->offset);
+        else
+        {
+            QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(file_path, false);
+            qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
+            if (l > m_tracks[i]->offset)
+                m_tracks[i]->info.setLength(l - m_tracks[i]->offset);
+            else
+                m_tracks[i]->info.setLength(0);
         }
     }
 }
