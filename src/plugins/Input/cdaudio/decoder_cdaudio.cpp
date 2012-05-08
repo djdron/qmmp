@@ -31,6 +31,7 @@
 #include <cdio/sector.h>
 #include <cdio/cd_types.h>
 #include <cdio/logging.h>
+#include <cdio/version.h>
 #include <cddb/cddb.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
@@ -170,6 +171,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             return tracks;
         }
         //cd text
+#if LIBCDIO_VERSION_NUM <= 83
         cdtext_t *cdtext = use_cd_text ? cdio_get_cdtext(pcdrom_drive->p_cdio, i) : 0;
         if (cdtext && cdtext->field[CDTEXT_TITLE])
         {
@@ -178,6 +180,16 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             t.info.setMetaData(Qmmp::GENRE, QString::fromLocal8Bit(cdtext->field[CDTEXT_GENRE]));
             use_cddb = false;
         }
+#else
+        cdtext_t *cdtext = use_cd_text ? cdio_get_cdtext(pcdrom_drive->p_cdio) : 0;
+        if (cdtext)
+        {
+            t.info.setMetaData(Qmmp::TITLE, QString::fromUtf8(cdtext_get_const(cdtext,CDTEXT_FIELD_TITLE,i)));
+            t.info.setMetaData(Qmmp::ARTIST, QString::fromUtf8(cdtext_get_const(cdtext,CDTEXT_FIELD_PERFORMER,i)));
+            t.info.setMetaData(Qmmp::GENRE, QString::fromUtf8(cdtext_get_const(cdtext,CDTEXT_FIELD_GENRE,i)));
+            use_cddb = false;
+        }
+#endif
         else
             t.info.setMetaData(Qmmp::TITLE, QString("CDA Track %1").arg(i, 2, 10, QChar('0')));
         tracks  << t;
