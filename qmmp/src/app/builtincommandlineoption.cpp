@@ -133,7 +133,8 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--pause" || option_string == "-u")
     {
-        core->pause();
+        if(core->state() == Qmmp::Playing)
+            core->pause();
     }
     else if (option_string == "--next")
     {
