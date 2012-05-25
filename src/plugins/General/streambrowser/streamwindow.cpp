@@ -52,7 +52,7 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
                                        << tr("Genre")
                                        << tr("Bitrate")
                                        << tr("Format"));
-    m_iceCastFilterModel = new QSortFilterProxyModel(this);
+    m_iceCastFilterModel = new StreamsProxyModel(this);
     m_iceCastFilterModel->setSourceModel(m_iceCastModel);
     m_iceCastFilterModel->setDynamicSortFilter(true);
     m_iceCastFilterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
@@ -70,7 +70,7 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
                                                      << tr("Genre")
                                                      << tr("Bitrate")
                                                      << tr("Format"));
-    m_favoritesFilterModel = new QSortFilterProxyModel(this);
+    m_favoritesFilterModel = new StreamsProxyModel(this);
     m_favoritesFilterModel->setSourceModel(m_favoritesModel);
     m_favoritesFilterModel->setDynamicSortFilter(true);
     m_favoritesFilterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);

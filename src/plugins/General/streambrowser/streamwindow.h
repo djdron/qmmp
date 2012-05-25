@@ -21,6 +21,7 @@
 #define STREAMWINDOW_H
 
 #include <QWidget>
+#include <QSortFilterProxyModel>
 #include "ui_streamwindow.h"
 
 class QNetworkAccessManager;
@@ -28,6 +29,7 @@ class QNetworkReply;
 class QStandardItemModel;
 class QSortFilterProxyModel;
 class QMenu;
+class StreamsProxyModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -63,5 +65,26 @@ private:
     QMenu *m_iceCastMenu;
     QMenu *m_favoritesMenu;
 };
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class StreamsProxyModel: public QSortFilterProxyModel
+{
+Q_OBJECT
+public:
+    StreamsProxyModel(QObject *parent) : QSortFilterProxyModel(parent){}
+
+protected:
+    bool lessThan (const QModelIndex &left, const QModelIndex &right) const
+    {
+        if(left.column() == 2 && right.column() == 2)
+        {
+            return sourceModel()->data(left).toInt() < sourceModel()->data(right).toInt();
+        }
+        return QSortFilterProxyModel::lessThan(left, right);
+    }
+};
+
 
 #endif
