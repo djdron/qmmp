@@ -132,9 +132,6 @@ bool DecoderFFmpeg::initialize()
     m_stream->seekable = !input()->isSequential();
     m_stream->max_packet_size = INPUT_BUFFER_SIZE;
 
-    AVFormatParameters ap;
-    memset(&ap, 0, sizeof(ap));
-
     if(avformat_open_input(&ic, m_path.toLocal8Bit().constData(), fmt, 0) != 0)
     {
         qDebug("DecoderFFmpeg: av_open_input_stream() failed");
@@ -256,7 +253,6 @@ bool DecoderFFmpeg::initialize()
 #endif
     return true;
 }
-
 
 qint64 DecoderFFmpeg::totalTime()
 {
