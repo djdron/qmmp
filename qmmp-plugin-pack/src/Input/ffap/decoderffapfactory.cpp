@@ -54,7 +54,7 @@ const DecoderProperties DecoderFFapFactory::properties() const
     properties.hasSettings = false;
     properties.noInput = false;
     properties.protocols << "ape";
-    properties.priority = 10;
+    properties.priority = 9;
     return properties;
 }
 
