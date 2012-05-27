@@ -22,7 +22,7 @@ DSP effects:
 - sample rate converter
 - LADSPA effects
 - extra stereo
-- crossfade (Experimental)
+- crossfade
 
 Visual effects:
 - projectM visualization
