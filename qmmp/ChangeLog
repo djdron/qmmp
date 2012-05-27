@@ -520,10 +520,86 @@ Version 0.5.0
 * updated Spanish translation (Félix Medrano)
 * updated Lithuanian translation (Algirdas Butkus)
 
+Version 0.5.1
+* added latest ffmpeg support
+* added ac3 support
+* added possibility to switch normal/shaded mode by double click (Panagiotis Papadopoulos)
+* decreased startup delay
+* fixed visualization bug
+* fixed scrobbler plugin
+* fixed build scripts
+* fixed signals synchronization
+* fixed mplayer support
+* fixed segmentation fault in the alsa settings dialog
+* fixed broken mpris2
+* fixed windows overlapping at left side of screen (Artur Guzik)
+* fixed frozen while cycling through deleted files in playlist
+* fixed status icon bugs (Artur Guzik)
+* fixed skinned button bug
+* fixed metacity support
+* removed internal api usage from gme plugin
+* updated Chinese Traditional translation (lon)
+* updated Chinese Simplified translation (lon)
+* updated German translation (Panagiotis Papadopoulos)
+
+Version 0.5.2
+* added feature to reset equalizer slider on middle click (Panagiotis Papadopoulos)
+* added recent Psi+ notification support
+* added Slovak translation (Ján Ďanovský)
+* added EAC3, DTS, and Dolby TrueHD support (Makis Kalofolias)
+* added automatic removal of spaces from the URL
+* added mms metadata support
+* improved playlist selector
+* improved docking windows behaviour
+* fixed mouse cursor change bug
+* fixed multi-selection bug
+* fixed cmake build scripts
+* fixed Alt-mouse moving bug
+* fixed mms delays
+* fixed pulseaudio support
+* fixed jack support
+* fixed text scroller title format
+
+Version 0.5.3
+* added Sony Media Wave 64 (W64) support
+* added ffmpeg 0.9.1 support
+* fixed jack 1.9.6 support
+* fixed http plugin freeze
+* fixed displaying ape bitrate
+* fixed bugs in the text scroller
+* fixed oss4 volume control
+* fixed segmentation fault when 'repeat track' is enabled
+* fixed text scroller default font
+* fixed segmentation fault when delete invalid tracks
+* fixed duplicates removal
+* removed taglib dependency from gme plugin
+* updated Japanese translation (Ryota Shimamoto)
+
+Version 0.5.4
+* added ffmpeg 0.10 support
+* added 'disc number' tag support for flac files with embedded cuesheet (Brice Videau)
+* fixed build (Karel Volný)
+* fixed sorting bugs (Brice Videau)
+* fixed drag-and-drop feature
+* fixed playlists scrolling
+* fixed memory leak
+
+Version 0.5.5
+* added latest libcdio support (Leon Merten Lohse)
+* enabled oss4 plugin by default
+* fixed Russian translation
+* fixed acc streams support
+* fixed aac bitrate calculation
+* fixed scrobbler failure when using Qt 4.8 (Cristian Rodríguez)
+* fixed oss support under freebsd
+* fixed some cuesheets parsing
+* fixed --pause command line option behavior (Jared Breland)
+* updated Japanese translation (Ryota Shimamoto)
+
 Version 0.6.0
 * added converter plugin
 * added stream browser plugin
-* added file type determination by content
+* added file type determination by content (experimental)
 * added '--quit' command line option
 * added text scroller background option
 * added playlists separator option
@@ -551,5 +627,11 @@ Version 0.6.0
 * fixed IPC under windows
 * fixed windows-specific bugs
 * fixed problems with some asynchronous calls
-* fixed qmmp_cue.desktop (Fixes issue 502)
+* fixed qmmp_cue.desktop
 * updated about dialog
+* updated Russian translation
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Japanese translation (Ryota Shimamoto)
+* updated Polish translation (Grzegorz Gibas)
+* updated German translation (Panagiotis Papadopoulos)
+* updated Dutch translation (Ronald Uitermark)
