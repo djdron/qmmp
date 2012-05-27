@@ -620,6 +620,7 @@ Version 0.6.0
 * added sorting by disc number (Brice Videau)
 * added feature to use clipboard content in the URL dialog (Panagiotis Papadopoulos)
 * changed playlist insertion behaviour
+* disabled by default OSS3 plugin
 * improved cue plugin
 * moved skinned ui to separate plugin
 * fixed 'hide on close' feature
