@@ -163,12 +163,12 @@ void ListWidget::paintEvent(QPaintEvent *)
         if (m_model->currentRow() == i + m_first)
         {
             m_font.setBold(true);
-            m_painter.setFont(m_font);
-            m_font.setBold(false);
             m_painter.setPen(m_current);
         }
         else
-            m_painter.setFont(m_font);
+            m_font.setBold(false);
+
+        m_painter.setFont(m_font);
 
         if (m_model->isSelected(i + m_first))
             m_painter.setPen(m_highlighted);
