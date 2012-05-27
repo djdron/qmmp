@@ -117,6 +117,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.noInput = false;
+    properties.priority = 10;
     return properties;
 }
 
