@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.6.0)
 
 #freebsd include
 include_directories(/usr/local/include)
+SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
 
 #extract version from qmmp.h
 FILE(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/qmmp/qmmp.h"
