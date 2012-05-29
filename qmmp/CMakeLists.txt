@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.6.0)
 
-#freebsd include
+#freebsd support
 include_directories(/usr/local/include)
+link_directories(/usr/local/lib)
+link_directories(/usr/local/lib32)
+link_directories(/usr/local/lib64)
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
 
 #extract version from qmmp.h
