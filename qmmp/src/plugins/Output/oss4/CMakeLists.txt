@@ -24,7 +24,7 @@ SET(QT_INCLUDES
   ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 #oss4
-include_directories(/usr/lib/oss/include)
+include_directories(/usr/lib/oss/include /usr/local/lib/oss/include)
 CHECK_INCLUDE_FILE(sys/soundcard.h SYS_SOUNDCARD_H_FOUND)
 IF(SYS_SOUNDCARD_H_FOUND)
 ADD_DEFINITIONS(-DHAVE_SYS_SOUNDCARD_H)
@@ -32,7 +32,10 @@ SET(CMAKE_REQUIRED_DEFINITIONS -DHAVE_SYS_SOUNDCARD_H)
 ENDIF(SYS_SOUNDCARD_H_FOUND)
 
 
-SET(CMAKE_REQUIRED_INCLUDES /usr/lib/oss/include/ /usr/include/)
+SET(CMAKE_REQUIRED_INCLUDES 
+   /usr/lib/oss/include/
+   /usr/local/lib/oss/include 
+   ${CMAKE_REQUIRED_INCLUDES})
 
 CHECK_CXX_SOURCE_COMPILES("
 #include <unistd.h>
