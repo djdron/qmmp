@@ -3,6 +3,11 @@ Qmmp - Qt-based multimedia player
 Программа является аудио-плеером, написанным с использованием библиотеки Qt.
 Официальная домашняя страница: http://qmmp.ylsoftware.com/
 
+Поддерживаемые операционные системы:
+- GNU/Linux
+- FreeBSD
+- Microsoft Windows (экспериментальная)
+
 Поддерживаемые форматы:
 - MPEG1 layer 2/3
 - Ogg Vorbis
@@ -29,7 +34,7 @@ Qmmp - Qt-based multimedia player
 - анализатор спектра
 
 Системы вывода звука:
-- OSS
+- OSS4 (FreeBSD)
 - ALSA (Linux)
 - Pulse Audio
 - JACK
@@ -55,9 +60,7 @@ Qmmp - Qt-based multimedia player
 - поддержка CDDB
 - обзор потоков
 
-
 Требования:
-- ОС GNU Linux
 - Qt >= 4.6
 - tar, unzip, bzip2, gzip
 - libmad
