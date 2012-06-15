@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,7 +40,6 @@ SkinReader::SkinReader(QObject *parent)
     dir.mkdir("skin");
 }
 
-
 SkinReader::~SkinReader()
 {}
 
@@ -50,7 +49,11 @@ void SkinReader::generateThumbs()
     QDir dir(QDir::homePath() +"/.qmmp/skins");
     dir.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList f = dir.entryInfoList();
+#if defined(Q_OS_WIN) && !defined(Q_OS_CYGWIN)
+    dir.setPath(qApp->applicationDirPath()+"/skins");
+#else
     dir.setPath(qApp->applicationDirPath()+"/../share/qmmp/skins");
+#endif
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     f << dir.entryInfoList();
     QDir cache_dir(QDir::homePath() +"/.qmmp/cache/thumbs");
