@@ -596,6 +596,10 @@ Version 0.5.5
 * fixed --pause command line option behavior (Jared Breland)
 * updated Japanese translation (Ryota Shimamoto)
 
+Version 0.5.6
+* added ffmpeg 0.11 support
+* fixed freebsd build
+
 Version 0.6.0
 * added converter plugin
 * added stream browser plugin
