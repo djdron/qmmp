@@ -14,22 +14,22 @@
         <translation>FFmpeg 用の形式</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="256"/>
+        <location filename="../decoderffmpegfactory.cpp" line="257"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>FFmpeg 音響プラグインについて</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="258"/>
+        <location filename="../decoderffmpegfactory.cpp" line="259"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>QMMP FFmpeg 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="259"/>
+        <location filename="../decoderffmpegfactory.cpp" line="260"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>libavformat-%1.%2.%3 と libavcodec-%4.%5.%6 対応でコンパイル</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="266"/>
+        <location filename="../decoderffmpegfactory.cpp" line="267"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
