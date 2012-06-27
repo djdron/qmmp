@@ -42,9 +42,11 @@ Thanks to:
     Anton Petrusevich <casus@casus.us> - random playback improvements
     Avihay Baratz <avihayb@gmail.com> - auto stop feature, bug fixes
     Brice Videau <brice.videau@gmail.com> - bug fixes
+    Cristian Rodríguez <judas.iscariote@gmail.com> - scrobbler fixes
     Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg plugin fixes
     Dmitry Kostin <kostindima@gmail.com> - iso.wv support
     Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
+    Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
