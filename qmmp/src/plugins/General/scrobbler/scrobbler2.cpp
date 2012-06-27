@@ -261,9 +261,14 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
                 m_songCache.removeFirst ();
             }
             if (!m_songCache.isEmpty()) //submit remaining songs
+            {
                 submit();
-            else
+            }
+            else 
+            {
+                syncCache(); // update the cache file to reflect the empty cache
                 updateMetaData();
+            }
         }
         else if(error_code == "9") //invalid session key
         {
