@@ -2,13 +2,15 @@ include(../../qmmp.pri)
 
 HEADERS += qmmpstarter.h \
            builtincommandlineoption.h \
-    lxdesupport.h
+    lxdesupport.h \
+    qmmpapplication.h
 
 SOURCES += \
            qmmpstarter.cpp \
            builtincommandlineoption.cpp \
     lxdesupport.cpp \
-    main.cpp
+    main.cpp \
+    qmmpapplication.cpp
 
 
 
@@ -75,3 +77,5 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_ja.ts \
     translations/qmmp_es.ts \
     translations/qmmp_sk.ts
+
+

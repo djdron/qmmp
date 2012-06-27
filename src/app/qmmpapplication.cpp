@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,43 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QApplication>
-#include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
-#include <QIcon>
-#include <stdio.h>
-#include <stdlib.h>
-#include <qmmp/qmmp.h>
-#include "lxdesupport.h"
+#include <qmmpui/uihelper.h>
 #include "qmmpapplication.h"
-#include "qmmpstarter.h"
 
-int main(int argc, char *argv[])
+QmmpApplication::QmmpApplication(int &argc, char **argv) : QApplication(argc, argv)
 {
-    QmmpApplication a (argc, argv );
-    a.setApplicationName("qmmp");
-    a.setWindowIcon(QIcon(":/32x32/qmmp.png"));
+}
 
-    LXDESupport::load(); //load lxde icons
-
-#ifdef Q_OS_WIN
-    QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
-    QIcon::setThemeName("oxygen");
-#endif
-
-    QTranslator translator;
-    QString locale = Qmmp::systemLanguageID();
-    translator.load(QString(":/qmmp_") + locale);
-    a.installTranslator(&translator);
-
-    QTranslator qt_translator;
-    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
-    a.installTranslator(&qt_translator);
-
-    QMMPStarter starter(argc,argv);
-    Q_UNUSED(starter)
-
-    a.setQuitOnLastWindowClosed(false);
-    return a.exec();
+void QmmpApplication::commitData(QSessionManager &manager)
+{
+    if(UiHelper::instance())
+        UiHelper::instance()->exit();
+    else
+        QApplication::commitData(manager);
 }

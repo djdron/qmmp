@@ -33,6 +33,7 @@ SET(app_SRCS
     main.cpp
     qmmpstarter.cpp
     lxdesupport.cpp
+    qmmpapplication.cpp
 )
 
 SET(app_HDRS lxdesupport.h)
@@ -40,7 +41,7 @@ SET(app_HDRS lxdesupport.h)
 SET(app_MOC_HDRS
     builtincommandlineoption.h
     qmmpstarter.h
-    
+    qmmpapplication.h
 )
 
 SET(app_RCCS images/images.qrc translations/qmmp_locales.qrc)
