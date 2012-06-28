@@ -623,6 +623,7 @@ Version 0.6.0
 * added 'New Playlist' button
 * added sorting by disc number (Brice Videau)
 * added feature to use clipboard content in the URL dialog (Panagiotis Papadopoulos)
+* added scrobbler cache synchronization after successful submission (Ferdinand Vesely)
 * changed playlist insertion behaviour
 * disabled OSS3 plugin by default
 * improved cue plugin
@@ -633,6 +634,7 @@ Version 0.6.0
 * fixed windows-specific bugs
 * fixed problems with some asynchronous calls
 * fixed qmmp_cue.desktop
+* fixed saving playlists on logout
 * updated about dialog
 * updated Russian translation
 * updated Ukrainian translation (Gennadi Motsyo)
