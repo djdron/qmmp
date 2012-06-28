@@ -624,7 +624,7 @@ Version 0.6.0
 * added sorting by disc number (Brice Videau)
 * added feature to use clipboard content in the URL dialog (Panagiotis Papadopoulos)
 * added scrobbler cache synchronization after successful submission (Ferdinand Vesely)
-* changed playlist insertion behaviour
+* changed playlist insertion behavior
 * disabled OSS3 plugin by default
 * improved cue plugin
 * moved skinned ui to separate plugin
