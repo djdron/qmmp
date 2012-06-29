@@ -74,6 +74,7 @@ ENDIF(NOT LIB_SUFFIX)
 
 SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
 SET(USE_SKINNED TRUE CACHE BOOL "enable/disable standard skinned user interface")
+SET(USE_DIR_ASSOC TRUE CACHE BOOL "enable/disable inode/directory mime type association")
 
 pkg_search_module(X11 x11)
 
@@ -187,5 +188,6 @@ MESSAGE("")
 MESSAGE("Advanced:")
 PRINT_SUMMARY ("Skinned user interface ............" USE_SKINNED X11_FOUND)
 PRINT_SUMMARY ("Automatic charset detection ......." USE_ENCA ENCA_FOUND)
+PRINT_SUMMARY ("Directory association ............." USE_DIR_ASSOC 1)
 
 MESSAGE("")
