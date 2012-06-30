@@ -11,7 +11,7 @@ Description:
 Requirements:
 - OS GNU Linux
 - Qt >= 4.6
-- qmmp >= 0.6
+- qmmp 0.6.x
 - libmpg123 (Optional)
 - cmake >= 2.8.0 (for build only)
 - yasm (for build only)
@@ -68,11 +68,11 @@ To avoid some problems please read below carefully.
 
 How to enable MPG123 plugin.
 By default libmad-based mpeg plugin has higher priority than mpg123.
-To fix this go to the settings->plugins and disable "MPEG plugin".
+To fix this go to the 'settings'->'plugins' and disable 'MPEG plugin'.
 
 How to enabled FFap plugin.
 Go to FFmpeg plugin settings and disable Monkey's Audio support.
 
 
-All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
+All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker:
 http://code.google.com/p/qmmp/issues/list

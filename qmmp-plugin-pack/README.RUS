@@ -11,14 +11,14 @@ Qmmp Plugin Pack
 Требования:
 - ОС GNU Linux
 - Qt >= 4.6
-- qmmp >= 0.6
+- qmmp 0.6.x
 - libmpg123 (Опционально)
 - cmake >= 2.8.0 (только для сборки)
 - yasm (только для сборки)
 
 Внимание! Для сборки набора модулей нужна утилита lrelease. Очень часто она находится в пакете libqt4-devel.
 
-Конфигурирование:
+Конфигурация:
 cmake ./
 
 Сборка:
@@ -30,7 +30,7 @@ make install
 Если какой-либо модуль (например, MPG123) не собирается или не нужен, то вы можете отключить его командой:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
-Available options:
+Доступные модули:
 - USE_MPG123; USE_FFAP; USE_QSUI
 
 
@@ -68,5 +68,5 @@ cmake ./ -DLIB_DIR=lib64
 Перейдите в настройки модуля FFmpeg и отключите поддержку Monkey's Audio.
 
 
-All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
+Патчи, сообщение об ошибках направляйте на forkotov02@hotmail.ru или используйте баг-трекер:
 http://code.google.com/p/qmmp/issues/list
