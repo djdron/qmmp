@@ -32,16 +32,28 @@ class QListWidgetItem;
 class QTreeWidgetItem;
 
 
-/**
+/*! @brief Configuration dialog class.
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class ConfigDialog : public QDialog
 {
     Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param parent Parent widget
+     */
     ConfigDialog(QWidget *parent = 0);
+    /*!
+     * Destructor
+     */
     virtual ~ConfigDialog();
-
+    /*!
+     * Adds custom page in configuration dialog
+     * @param name Localized name of the custom page
+     * @param widget Custom page instance
+     * @param icon Custom page icon
+     */
     void addPage(const QString &name, QWidget *widget, const QIcon &icon = QIcon());
 
 private slots:

@@ -46,7 +46,6 @@ public:
     static void select(UiFactory* factory);
     /*!
      * Returns \b true if general plugin is enabled, otherwise returns \b false
-     * @param factory General plugin factory.
      */
     static UiFactory *selected();
 
