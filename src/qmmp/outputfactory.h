@@ -71,7 +71,6 @@ public:
     /*!
      * Creates volume control object provided by plugin.
      * Returns \b 0 if volume control is not supported by plugin.
-     * @param parent Parent object.
      */
     virtual Volume *createVolume() = 0;
     /*!

@@ -87,17 +87,45 @@ public:
      * @param parent Parent widget
      */
     QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
-
+    /*!
+     * Opens 'Add File' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
     void addFile(QWidget *parent = qApp->activeWindow(),
                  PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
+     * Opens 'Add Directory' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
     void addDirectory(QWidget *parent = qApp->activeWindow(),
                       PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
+     * Opens 'Load Playlist' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
     void loadPlayList(QWidget *parent = qApp->activeWindow(),
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
+     * Opens 'Save Playlist' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
     void savePlayList(QWidget *parent = qApp->activeWindow(),
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
+     * Opens 'Jump To Track' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
     void jumpToTrack(QWidget *parent = qApp->activeWindow(),
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
+     * Shows about dialog
+     * @param parent Parent widget
+     */
     void about(QWidget *parent = 0);
     /*!
      * Returns a pointer to the object's instance.

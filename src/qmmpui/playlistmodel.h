@@ -163,7 +163,7 @@ public:
     /*!
      * Sets the selected state of the item to \b select
      * @param row Number of item.
-     * @param select Selection state (\b true - select, \b false - unselect)
+     * @param selected Selection state (\b true - select, \b false - unselect)
      */
     void setSelected(int row, bool selected = true);
     /*!
