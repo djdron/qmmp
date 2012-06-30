@@ -25,6 +25,7 @@
 #include "ui_aboutdialog.h"
 
 /**
+    @internal
     @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 

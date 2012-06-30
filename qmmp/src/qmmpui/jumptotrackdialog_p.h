@@ -30,6 +30,7 @@ class PlayListManager;
 class PlayListModel;
 
 /**
+   @internal
    @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class JumpToTrackDialog : public QDialog, private Ui::JumpToTrackDialog
