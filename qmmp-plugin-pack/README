@@ -4,9 +4,9 @@ Plugin pack is a set of extra plugins for Qmmp.
 Official home page: http://qmmp.ylsoftware.com/
 
 Description:
-- MPG123: provides MPEG v1/2 layer1/2/3 support with use of libmpg123 library
-- FFap: provides enhanced Monkey's Audio (APE) support (24-bit samples and embedded cue support)
-- Simple Ui: simple user interface based on standard widgets set
+- MPG123 - MPEG v1/2 layer1/2/3 decoder using of libmpg123 library
+- FFap - enhanced Monkey's Audio (APE) decoder (24-bit samples and embedded cue support)
+- Simple Ui - simple user interface based on standard widgets set
 
 Requirements:
 - OS GNU Linux
