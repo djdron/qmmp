@@ -6,7 +6,8 @@ MOC_DIR=./.build/moc/
 OBJECTS_DIR=./.build/obj
 
 unix{
-INCLUDEPATH += /home/user/qmmp-0.6/include
+INCLUDEPATH += /home/user/qmmp-0.7/include
+QMAKE_LIBDIR += /home/user/qmmp-0.7/lib
 INCLUDEPATH += /usr/include
 INCLUDEPATH += /usr/local/include
 }else{
