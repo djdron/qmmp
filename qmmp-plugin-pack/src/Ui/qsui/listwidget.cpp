@@ -297,7 +297,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     m_scrollBar->setGeometry(width() - m_scrollBar->sizeHint().width(), 0,
                              m_scrollBar->sizeHint().width(), height());
 
-    m_rows = (e->size().height() - 10) / m_metrics->height ();
+    m_rows = e->size().height() / (m_metrics->lineSpacing() + 2);
 
     //m_scroll = true;
     recenterCurrent();
