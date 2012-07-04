@@ -316,6 +316,9 @@ void StreamWindow::readXml(QIODevice *input, QStandardItemModel *model)
         {
             if (xml.name() == "entry")
             {
+                if(server_name == "Unspecified name" || server_name.isEmpty())
+                    server_name = listen_url.section("/", -1);
+
                 model->appendRow(QList<QStandardItem *> ()
                                           << new QStandardItem(server_name)
                                           << new QStandardItem(genre)
