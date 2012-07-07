@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.0)
 
 #freebsd include
-include_directories(/usr/include /usr/local/include)
+include_directories(SYSTEM /usr/include /usr/local/include)
 
 
 CONFIGURE_FILE(

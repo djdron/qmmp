@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6.0)
 
 #freebsd support
-include_directories(/usr/local/include)
+include_directories(SYSTEM /usr/local/include)
 link_directories(/usr/local/lib)
 link_directories(/usr/local/lib32)
 link_directories(/usr/local/lib64)
