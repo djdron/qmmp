@@ -478,7 +478,7 @@ OutputFactory *Output::currentFactory()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
 #ifdef Q_OS_LINUX
     QString name = settings.value("Output/current_plugin", "alsa").toString();
-#elifdef Q_WS_WIN
+#elif defined Q_WS_WIN
     QString name = settings.value("Output/current_plugin", "waveout").toString();
 #else
     QString name = settings.value("Output/current_plugin", "oss4").toString();
