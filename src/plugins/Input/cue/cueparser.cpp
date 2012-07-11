@@ -50,10 +50,8 @@ CUEParser::CUEParser(const QString &url)
     QTextStream textStream (&file);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
-    QTextCodec *codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
-    if(!codec)
-        codec = QTextCodec::codecForName("UTF-8");
     m_dirty = settings.value("dirty_cue", false).toBool();
+    QTextCodec *codec = 0;
 #ifdef WITH_ENCA
     EncaAnalyser analyser = 0;
     if(settings.value("use_enca", false).toBool())
@@ -74,6 +72,10 @@ CUEParser::CUEParser(const QString &url)
         }
     }
 #endif
+    if(!codec)
+        codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
+    if(!codec)
+        codec = QTextCodec::codecForName("UTF-8");
     settings.endGroup();
     //qDebug("CUEParser: using %s encoding", codec->name().constData());
     textStream.setCodec(codec);
