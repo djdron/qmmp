@@ -32,7 +32,7 @@
       <item>
        <widget class="QCheckBox" name="dirtyCueCheckBox">
         <property name="text">
-         <string>Automatic file detection</string>
+         <string>Load incorrect cue files if possible</string>
         </property>
        </widget>
       </item>
