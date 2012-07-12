@@ -43,7 +43,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
-        <source>Automatic file detection</source>
+        <source>Load incorrect cue sheets if possible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
