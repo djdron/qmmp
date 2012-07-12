@@ -286,10 +286,9 @@ qint64 CUEParser::getLength(const QString &str)
     return 0;
 }
 
-QString CUEParser::getDirtyPath(const QString &cue, const QString &path)
+QString CUEParser::getDirtyPath(const QString &cue_path, const QString &path)
 {
-
-    if (Decoder::findByPath(path) || !m_dirty)
+    if((QFile::exists(path) && Decoder::findByPath(path)) || !m_dirty)
         return path;
 
     QStringList candidates;
@@ -298,7 +297,7 @@ QString CUEParser::getDirtyPath(const QString &cue, const QString &path)
     {
         it.next();
         QString f = it.filePath();
-        if ((f != cue) && Decoder::findByPath(f))
+        if ((f != cue_path) && Decoder::findByPath(f))
             candidates.push_back(f);
     }
 
@@ -307,10 +306,10 @@ QString CUEParser::getDirtyPath(const QString &cue, const QString &path)
     else if (candidates.count() == 1)
         return candidates.first();
 
-    int dot = cue.lastIndexOf('.');
+    int dot = cue_path.lastIndexOf('.');
     if (dot != -1)
     {
-        QRegExp r(QRegExp::escape(cue.left(dot)) + "\\.[^\\.]+$");
+        QRegExp r(QRegExp::escape(cue_path.left(dot)) + "\\.[^\\.]+$");
 
         int index = candidates.indexOf(r);
         int rindex = candidates.lastIndexOf(r);

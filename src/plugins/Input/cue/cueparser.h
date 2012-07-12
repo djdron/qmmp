@@ -59,7 +59,7 @@ private:
     bool m_dirty;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
-    QString getDirtyPath(const QString &cue, const QString &path);
+    QString getDirtyPath(const QString &cue_path, const QString &path);
 };
 
 #endif
