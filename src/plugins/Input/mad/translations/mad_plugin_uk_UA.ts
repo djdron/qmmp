@@ -151,7 +151,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Tag Priority</source>
-        <translation>Приорітет тєгу</translation>
+        <translation>Пріоритет тегу</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
