@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Load incorrect cue sheets if possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Завантажувати cue з помилками, якщо можливо</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
