@@ -471,7 +471,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation>Змінити комбінації клавіш...</translation>
+        <translation>Змінити комбінацію клавіш...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation>Змінити комбінації клавіш</translation>
+        <translation>Змінити комбінацію клавіш</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
@@ -1215,7 +1215,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="363"/>
         <source>Show song numbers</source>
-        <translation>Відображати номера пісень</translation>
+        <translation>Відображати номери пісень</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
