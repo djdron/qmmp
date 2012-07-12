@@ -43,8 +43,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
-        <source>Automatic file detection</source>
-        <translation>Автоматический поиск файла</translation>
+        <source>Load incorrect cue sheets if possible</source>
+        <translation>Загружать cue с ошибками, если возможно</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
