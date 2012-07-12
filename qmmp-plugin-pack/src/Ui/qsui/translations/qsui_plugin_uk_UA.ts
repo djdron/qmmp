@@ -6,27 +6,27 @@
     <message>
         <location filename="../forms/aboutqsuidialog.ui" line="14"/>
         <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation>Про QSUI</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished"></translation>
+        <translation>QSUI - простий інтерфейс користувача для Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія Qmmp: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія QSUI: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Простий інтерфейс користувача, побудований з використанням стандартних елементів.</translation>
     </message>
 </context>
 <context>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
@@ -320,7 +320,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Переіменувати список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -345,12 +345,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Еквалайзер</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -365,7 +365,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Про інтерфейс</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -393,22 +393,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть адресу для додавання</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Додати</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Відміна</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка</translation>
     </message>
 </context>
 <context>
@@ -416,22 +416,22 @@
     <message>
         <location filename="../equalizer.cpp" line="35"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Еквалайзер</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="43"/>
         <source>Enable equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Увімкнути еквалайзер</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished">Скинути</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="56"/>
         <source>Preamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Підсилення</translation>
     </message>
 </context>
 <context>
@@ -439,17 +439,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="125"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Гучність</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="177"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Призупинено</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="180"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Зупинено</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="275"/>
@@ -459,100 +459,100 @@
     <message>
         <location filename="../mainwindow.cpp" line="315"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; [%2 біт/%3/%4 Гц/%5 кбіт/с]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Відтворюється</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Stereo</source>
-        <translation type="unfinished"></translation>
+        <translation>Стерео</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Mono</source>
-        <translation type="unfinished"></translation>
+        <translation>Моно</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="390"/>
         <source>Sort List</source>
-        <translation type="unfinished">Сортувати</translation>
+        <translation>Сортувати</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="393"/>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>By Title</source>
-        <translation type="unfinished">За назвою</translation>
+        <translation>За назвою</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="397"/>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>By Album</source>
-        <translation type="unfinished">За альбомом</translation>
+        <translation>За альбомом</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="401"/>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>By Artist</source>
-        <translation type="unfinished">За артистом</translation>
+        <translation>За виконавцем</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="405"/>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>By Filename</source>
-        <translation type="unfinished">За ім&apos;ям файлу</translation>
+        <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="409"/>
         <location filename="../mainwindow.cpp" line="448"/>
         <source>By Path + Filename</source>
-        <translation type="unfinished">За шляхом та файлом</translation>
+        <translation>За шляхом та файлом</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="413"/>
         <location filename="../mainwindow.cpp" line="452"/>
         <source>By Date</source>
-        <translation type="unfinished">За датою</translation>
+        <translation>За датою</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="417"/>
         <location filename="../mainwindow.cpp" line="456"/>
         <source>By Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>За номером треку</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>За номером диску</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="429"/>
         <source>Sort Selection</source>
-        <translation type="unfinished">Сортувати вибране</translation>
+        <translation>Сортувати вибране</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="463"/>
         <source>Randomize List</source>
-        <translation type="unfinished">Перемішати</translation>
+        <translation>Перемішати</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="465"/>
         <source>Reverse List</source>
-        <translation type="unfinished">Перевернути</translation>
+        <translation>Перевернути</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="470"/>
         <location filename="../mainwindow.cpp" line="500"/>
         <source>Actions</source>
-        <translation type="unfinished">Дії</translation>
+        <translation>Дії</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Буферизація: %1%</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="207"/>
@@ -562,142 +562,142 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
         <source>Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="48"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Файл</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="53"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Інструменти</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="61"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Довідка</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="66"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Правка</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="71"/>
         <source>&amp;Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Відтворення</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="76"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Вигляд</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
-        <translation type="unfinished">Відтворення</translation>
+        <translation>Відтворення</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Прогрес</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
-        <translation type="unfinished">Назад</translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
-        <translation type="unfinished">Відтворити</translation>
+        <translation>Відтворити</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
-        <translation type="unfinished">Пауза</translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
-        <translation type="unfinished">Вперед</translation>
+        <translation>Вперед</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
-        <translation type="unfinished">Стоп</translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Додати файл</translation>
+        <translation>&amp;Додати файл</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Видалити все</translation>
+        <translation>&amp;Видалити все</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий список</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити список</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Додати теку</translation>
+        <translation>&amp;Додати теку</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Вихід</translation>
+        <translation>&amp;Вихід</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Про програму</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Про Qt</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Вибрати все</translation>
+        <translation>&amp;Вибрати все</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Видалити вибране</translation>
+        <translation>&amp;Видалити вибране</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Видалити не вибране</translation>
+        <translation>&amp;Видалити не вибране</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
-        <translation type="unfinished">Візуалізація</translation>
+        <translation>Візуалізація</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Переіменувати список</translation>
+        <translation>Переіменувати список</translation>
     </message>
 </context>
 <context>
@@ -823,7 +823,7 @@
     <message>
         <location filename="../qsuifactory.cpp" line="32"/>
         <source>Simple User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Простий інтерфейс користувача</translation>
     </message>
 </context>
 <context>
@@ -833,127 +833,127 @@
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>View</source>
-        <translation type="unfinished">Вигляд</translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Ховати при закритті</translation>
+        <translation>Ховати при закритті</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Запускати схованим</translation>
+        <translation>Запускати схованим</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">Шрифти</translation>
+        <translation>Шрифти</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Список:</translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">Список пісень</translation>
+        <translation>Список пісень</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Показати протокол</translation>
+        <translation>Показати протокол</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Відображати номера пісень</translation>
+        <translation>Відображати номери пісень</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Вирівнювати номери фрагментів</translation>
+        <translation>Вирівнювати номери фрагментів</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished">Показувати &quot;якір&quot;</translation>
+        <translation>Показувати &quot;якір&quot;</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Показувати спливаюче вікно з інформацією</translation>
+        <translation>Показувати спливаюче вікно з інформацією</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">Редагувати шаблон</translation>
+        <translation>Редагувати шаблон</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати кнопки закриття на вкладках</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Комбінації клавіш</translation>
+        <translation>Комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="224"/>
         <source>Action</source>
-        <translation type="unfinished">Дія</translation>
+        <translation>Дія</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Комбінація</translation>
+        <translation>Комбінація</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Змінити комбінації клавіш...</translation>
+        <translation>Змінити комбінацію клавіш...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Різне</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-діалог</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично вставляти URL з буфера обміну</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Playback</source>
-        <translation type="unfinished">Відтворення</translation>
+        <translation>Відтворення</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="135"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="141"/>
         <source>Misc</source>
-        <translation type="unfinished">Інші</translation>
+        <translation>Інші</translation>
     </message>
 </context>
 <context>
@@ -961,12 +961,12 @@
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Переіменувати список</translation>
+        <translation>Переіменувати список</translation>
     </message>
     <message>
         <location filename="../forms/renamedialog.ui" line="24"/>
         <source>New name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Номе ім&apos;я:</translation>
     </message>
 </context>
 <context>

@@ -6,33 +6,35 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="74"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="77"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">Файли MPEG</translation>
+        <translation>Файли MPEG</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="209"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про модуль MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="210"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль MPG123 для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="211"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей модуль надає підтримку
+MPEG v1/2 layer1/2/3 з використанням бібліотеки
+libmpg123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="213"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>

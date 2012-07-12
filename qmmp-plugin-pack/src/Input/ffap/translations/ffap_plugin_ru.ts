@@ -31,7 +31,7 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;&quot;</translation>
+        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
