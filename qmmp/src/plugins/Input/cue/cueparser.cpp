@@ -73,7 +73,7 @@ CUEParser::CUEParser(const QString &url)
     }
 #endif
     if(!codec)
-        codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
+        codec = QTextCodec::codecForName(settings.value("encoding","UTF-8").toByteArray ());
     if(!codec)
         codec = QTextCodec::codecForName("UTF-8");
     settings.endGroup();

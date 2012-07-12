@@ -44,7 +44,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 #endif
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
-    int pos = ui.cueEncComboBox->findText(settings.value("encoding","ISO-8859-1").toString());
+    int pos = ui.cueEncComboBox->findText(settings.value("encoding","UTF-8").toString());
     ui.cueEncComboBox->setCurrentIndex(pos);
 #ifdef WITH_ENCA
     ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", false).toBool());
