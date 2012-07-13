@@ -129,6 +129,7 @@ HttpStreamReader::HttpStreamReader(const QString &url, QObject *parent)
     m_analyser = 0;
     if(settings.value("use_enca", false).toBool())
         m_analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
+    enca_set_threshold(m_analyser, 1.38);
 #endif
     settings.endGroup();
 }
