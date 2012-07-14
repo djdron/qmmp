@@ -59,6 +59,7 @@ Qmmp - Qt-based multimedia player
 - скробблер Last.fm/Libre.fm
 - поддержка CDDB
 - обзор потоков
+- преобразователь аудио-форматов
 
 Требования:
 - Qt >= 4.6

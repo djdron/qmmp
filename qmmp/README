@@ -58,7 +58,9 @@ Other features:
 - ReplayGain support
 - Last.fm/Libre.fm scrobbler
 - CDDB support
+- audio converter
 - stream browser
+- audio formats conveter
 
 Requirements:
 - Qt >= 4.6
