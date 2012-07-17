@@ -2,7 +2,7 @@ SET(USE_MPG123 TRUE CACHE BOOL "enable/disable mpg123 plugin")
 SET(USE_FFAP   TRUE CACHE BOOL "enabled/disable ffap plugin")
 
 INCLUDE(FindPkgConfig)
-pkg_check_modules(TAGLIB taglib>=1.6.3)
+pkg_check_modules(TAGLIB taglib>=1.7.0)
 
 IF(USE_MPG123 AND QMMP_FOUND AND TAGLIB_FOUND)
 add_subdirectory(mpg123)

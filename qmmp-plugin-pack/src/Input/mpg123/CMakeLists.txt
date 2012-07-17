@@ -22,7 +22,7 @@ include_directories(${QMMP_INCLUDE_DIRS})
 link_directories( ${QMMP_LIBRARY_DIRS})
 
 # libmpg123
-pkg_check_modules(MPG123 libmpg123)
+pkg_check_modules(MPG123 libmpg123>=1.13.0)
 
 include_directories(${MPG123_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
 link_directories(${MPG123_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
