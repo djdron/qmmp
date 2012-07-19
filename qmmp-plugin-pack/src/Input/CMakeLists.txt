@@ -1,5 +1,6 @@
 SET(USE_MPG123 TRUE CACHE BOOL "enable/disable mpg123 plugin")
 SET(USE_FFAP   TRUE CACHE BOOL "enabled/disable ffap plugin")
+SET(USE_ASM    TRUE CACHE BOOL "enable/disable assembler optimizations (inside ffap decoder)")
 
 INCLUDE(FindPkgConfig)
 pkg_check_modules(TAGLIB taglib>=1.7.0)

@@ -33,7 +33,8 @@ by running:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123; USE_FFAP; USE_QSUI
+- USE_MPG123; USE_FFAP; USE_QSUI (plugins)
+- USE_ASM (assembler-level optimizations inside FFap decoder)
 
 
 Also you can use ccmake for changing plugins configuration.
