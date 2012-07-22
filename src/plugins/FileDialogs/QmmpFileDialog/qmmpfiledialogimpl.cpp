@@ -92,6 +92,12 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
     lookInComboBox->setMaxCount(HISTORY_SIZE);
     QCompleter* dir_completer = new QCompleter (m_model, this);
     lookInComboBox->setCompleter (dir_completer);
+
+    if(qApp->style()->styleHint(QStyle::SH_DialogButtonBox_ButtonsHaveIcons, 0, this))
+    {
+        addPushButton->setIcon(qApp->style()->standardIcon(QStyle::SP_DialogOpenButton));
+        closePushButton->setIcon(qApp->style()->standardIcon(QStyle::SP_DialogCloseButton));
+    }
 }
 
 QmmpFileDialogImpl::~QmmpFileDialogImpl()
