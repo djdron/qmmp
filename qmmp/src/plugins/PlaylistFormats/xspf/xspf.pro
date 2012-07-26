@@ -13,6 +13,8 @@ QMAKE_LIBDIR += ../../../../lib
 
 INCLUDEPATH += ../../../../src
 
+QT += xml
+
 SOURCES += xspfplaylistformat.cpp
 HEADERS += xspfplaylistformat.h
 
