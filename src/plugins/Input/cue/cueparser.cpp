@@ -57,10 +57,10 @@ CUEParser::CUEParser(const QString &url)
     if(settings.value("use_enca", false).toBool())
     {
         analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
-        enca_set_threshold(analyser, 1.38);
-
+        
         if(analyser)
         {
+            enca_set_threshold(analyser, 1.38);
             EncaEncoding encoding = enca_analyse(analyser,
                                                  (uchar *)file.readAll().constData(),
                                                  file.size());
