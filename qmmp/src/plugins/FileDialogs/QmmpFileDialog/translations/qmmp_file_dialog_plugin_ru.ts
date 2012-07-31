@@ -88,22 +88,22 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
 <context>
     <name>QmmpFileDialogImpl</name>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="248"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="254"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="261"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="267"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="275"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="281"/>
         <source>Directories</source>
         <translation>Директории</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="444"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="450"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 уже существует.
