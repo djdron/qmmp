@@ -54,7 +54,14 @@ ENDIF(NOT LIB_SUFFIX)
 
 SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
 
+
+include(FindPkgConfig)
+pkg_check_modules(QMMPUI qmmpui>=0.6.0)
+pkg_check_modules(QMMP qmmp>=0.6.0 REQUIRED)
+
+IF(QMMP_FOUND)
 add_subdirectory(src)
+ENDIF(QMMP_FOUND)
 
 MACRO(PRINT_SUMMARY str USE FOUND)
 IF(${USE} AND ${FOUND})
@@ -84,7 +91,7 @@ ADD_CUSTOM_COMMAND(
     COMMAND find
     ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.pc" | xargs rm -rf
     COMMAND find
-    ARGS ${CMAKE_CURRENT_SOURCE_DIR} -name "*.depends" | xargs rm -rf
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.depends" | xargs rm -rf
     COMMAND rm
     ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt
     TARGET  distclean
