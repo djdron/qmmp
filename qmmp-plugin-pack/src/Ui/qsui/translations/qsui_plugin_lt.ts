@@ -6,27 +6,27 @@
     <message>
         <location filename="../forms/aboutqsuidialog.ui" line="14"/>
         <source>About QSUI</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie QSUI </translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp paprasta vartotojo sąsaja (QSUI) </translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp versija: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>QSUI versija: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paprasta vartotojo sąsaja .</translation>
     </message>
 </context>
 <context>
@@ -321,7 +321,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pervadinti sąrašą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Glotintuvas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
@@ -366,7 +366,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Apie Ui</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -394,22 +394,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite adresą</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pridėti</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Atšaukti</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Klaida</translation>
     </message>
 </context>
 <context>
@@ -417,22 +417,22 @@
     <message>
         <location filename="../equalizer.cpp" line="35"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Glotintuvas</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="43"/>
         <source>Enable equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Įjungti glotintuvą</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="56"/>
         <source>Preamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Stiprinimas</translation>
     </message>
 </context>
 <context>
@@ -440,120 +440,120 @@
     <message>
         <location filename="../mainwindow.cpp" line="125"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Garsumas</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="177"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Pristabdyta</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="180"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Sustabdyta</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="275"/>
         <source>Appearance</source>
-        <translation type="unfinished">Išvaizda</translation>
+        <translation>Išvaizda</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="315"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojama</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Stereo</source>
-        <translation type="unfinished"></translation>
+        <translation>Stereo</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Mono</source>
-        <translation type="unfinished"></translation>
+        <translation>Mono</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="390"/>
         <source>Sort List</source>
-        <translation type="unfinished">Rūšiuoti</translation>
+        <translation>Rūšiuoti sąrašą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="393"/>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>By Title</source>
-        <translation type="unfinished">Pagal dainos pavadinimą</translation>
+        <translation>Pagal dainos pavadinimą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="397"/>
         <location filename="../mainwindow.cpp" line="436"/>
         <source>By Album</source>
-        <translation type="unfinished">Pagal albumą</translation>
+        <translation>Pagal albumą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="401"/>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>By Artist</source>
-        <translation type="unfinished">Pagal atlikėją</translation>
+        <translation>Pagal atlikėją</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="405"/>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>By Filename</source>
-        <translation type="unfinished">Pagal bylos pavadinimą</translation>
+        <translation>Pagal bylos pavadinimą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="409"/>
         <location filename="../mainwindow.cpp" line="448"/>
         <source>By Path + Filename</source>
-        <translation type="unfinished">Pagal kelią iki bylos</translation>
+        <translation>Pagal kelią iki bylos ir pavadinimą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="413"/>
         <location filename="../mainwindow.cpp" line="452"/>
         <source>By Date</source>
-        <translation type="unfinished">Pagal datą</translation>
+        <translation>Pagal datą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="417"/>
         <location filename="../mainwindow.cpp" line="456"/>
         <source>By Track Number</source>
-        <translation type="unfinished">Pagal takelio numerį</translation>
+        <translation>Pagal takelio numerį</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagal disko numerį</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="429"/>
         <source>Sort Selection</source>
-        <translation type="unfinished">Rūšiuoti pasirinktus</translation>
+        <translation>Rūšiuoti pasirinktus</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="463"/>
         <source>Randomize List</source>
-        <translation type="unfinished">Sumaišyti sąrašą</translation>
+        <translation>Sumaišyti sąrašą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="465"/>
         <source>Reverse List</source>
-        <translation type="unfinished">Apversti</translation>
+        <translation>Apversti</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="470"/>
         <location filename="../mainwindow.cpp" line="500"/>
         <source>Actions</source>
-        <translation type="unfinished">Veiksmai</translation>
+        <translation>Veiksmai</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Buferis: %1%</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="207"/>
@@ -563,142 +563,142 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
         <source>Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="48"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Byla</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="53"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Įrankiai</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="61"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pagalba</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="66"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Taisa</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="71"/>
         <source>&amp;Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Grojimas</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="76"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rodyti</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojimas</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progresas</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
-        <translation type="unfinished">Ankstesnis</translation>
+        <translation>Ankstesnis</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
-        <translation type="unfinished">Groti</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
-        <translation type="unfinished">Pristabdyti</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
-        <translation type="unfinished">Sekantis</translation>
+        <translation>Sekantis</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
-        <translation type="unfinished">Sustoti</translation>
+        <translation>Sustoti</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Pridėti bylą</translation>
+        <translation>&amp;Pridėti bylą</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Pašalinti visus</translation>
+        <translation>&amp;Pašalinti visus</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Naujas grojaraštis</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pašalinti grojaraštį</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Pridėti aplanką</translation>
+        <translation>&amp;Pridėti aplanką</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Išeiti</translation>
+        <translation>&amp;Išeiti</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie Qt</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Pasirinkti visus</translation>
+        <translation>&amp;Pasirinkti visus</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Pašalinti pasirinktus</translation>
+        <translation>&amp;Pašalinti pasirinktus</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Pašalinti NEpasirinktus</translation>
+        <translation>&amp;Pašalinti NEpasirinktus</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
-        <translation type="unfinished">Vizualizacija</translation>
+        <translation>Vizualizacija</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatymai</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Pervadinti grojaraštį</translation>
+        <translation>Pervadinti grojaraštį</translation>
     </message>
 </context>
 <context>
@@ -706,117 +706,117 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Iššokančios informacijos nustatymai</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Šablonas</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Įterpti</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti viršelį</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viršelio dydis:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Permatomumas:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uždelsimas:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlikėjas</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Albumas</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelio numeris</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dviejų skaičių takelio numeris</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žanras</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentaras</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozitorius</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disko numeris</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos pavadinimas</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos kelias</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Metai</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Būklė</translation>
     </message>
 </context>
 <context>
@@ -824,7 +824,7 @@
     <message>
         <location filename="../qsuifactory.cpp" line="32"/>
         <source>Simple User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Paprasta vartotojo sąsaja</translation>
     </message>
 </context>
 <context>
@@ -834,127 +834,128 @@
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>View</source>
-        <translation type="unfinished">Rodyti</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Paslėpti išjungus</translation>
+        <translation>Paslėpti išjungus</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Įjungti paslėptą</translation>
+        <translation>Įjungti paslėptą</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">Šriftai</translation>
+        <translation>Šriftai</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Gojaraštis:</translation>
+        <translation>Gojaraštis:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">Dainų sąrašas</translation>
+        <translation>Dainų sąrašas</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Rodyti bylos galūnę</translation>
+        <translation>Rodyti bylos galūnę</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Rodyti takelių numerius</translation>
+        <translation>Rodyti takelių numerius</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Lygiuoti dainų numerius</translation>
+        <translation>Lygiuoti dainų numerius</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>???????????</translatorcomment>
+        <translation type="unfinished">Rodyti inkarą</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Rodyti iššokančią informaciją</translation>
+        <translation>Rodyti iššokančią informaciją</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">Taisyti šabloną</translation>
+        <translation>Taisyti šabloną</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti užvėrimo mygtukus kortelėse</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Trumpiniai</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="224"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Veiksmas</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Trumpinys</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Keisti trumpinį...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiti</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Adreso dialogas</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatinis adreso įkėlimas iš iškarpinės</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojimas</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="135"/>
         <source>Playlist</source>
-        <translation type="unfinished">Grojaraštis</translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="141"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiti</translation>
     </message>
 </context>
 <context>
@@ -962,12 +963,12 @@
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Pervadinti grojaraštį</translation>
+        <translation>Pervadinti grojaraštį</translation>
     </message>
     <message>
         <location filename="../forms/renamedialog.ui" line="24"/>
         <source>New name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naujas pavadinimas:</translation>
     </message>
 </context>
 <context>
@@ -975,17 +976,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Keisti trumpinį</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Paspausk klavišų kombinaciją, kurią nori priskirt</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti</translation>
     </message>
 </context>
 <context>

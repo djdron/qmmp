@@ -46,7 +46,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungti programą</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
@@ -109,17 +109,17 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP versija: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukompiliuota su Qt versija: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="302"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudojama Qt versija: %1</translation>
     </message>
 </context>
 </TS>

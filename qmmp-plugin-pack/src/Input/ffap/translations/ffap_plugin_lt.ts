@@ -6,22 +6,22 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="48"/>
         <source>FFap Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFap įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="50"/>
         <source>Monkey&apos;s Audio Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey&apos;s Audio bylos</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="153"/>
         <source>About FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie FFap audio įskiepį</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="154"/>
         <source>Qmmp FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp FFap audio įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="155"/>
@@ -31,12 +31,12 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukūrė by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
         <source>Based on code from deadbeef, FFmpeg and rockbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurta kodo pagrindu iš deadbeef, FFmpeg ir rockbox</translation>
     </message>
 </context>
 <context>
@@ -44,42 +44,42 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="60"/>
         <source>Length</source>
-        <translation type="unfinished">Trukmė</translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Dažnis</translation>
+        <translation>Dažnis</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="62"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanalai</translation>
+        <translation>Kanalai</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Kokybė</translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>File size</source>
-        <translation type="unfinished">Bylos dydis</translation>
+        <translation>Bylos dydis</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>

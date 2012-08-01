@@ -6,22 +6,22 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="74"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPG123 Įskiepis</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="77"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">MPEG bylos</translation>
+        <translation>MPEG bylos</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="209"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie MPG123 Audio įskiepį </translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="210"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp MPG123 Audio įskiepis</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="211"/>
@@ -32,7 +32,7 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../decodermpg123factory.cpp" line="213"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
