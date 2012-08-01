@@ -52,7 +52,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation>Viršelio dydis</translation>
+        <translation>Viršelio dydis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>

@@ -36,17 +36,17 @@
     <message>
         <location filename="../aboutdialog.cpp" line="69"/>
         <source>Version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Versija: %1</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="70"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudojama Qt %1 (sukompiliuota su Qt %2)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation type="unfinished"></translation>
+        <translation>(c) %1-%2 Qmmp Kūrėjų Komanda</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
@@ -275,7 +275,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Directory Scanning Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplanko skenavimo pasirinkimai</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
@@ -285,7 +285,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="463"/>
         <source>Add files from command line to this playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Į šį grojaraštį įkelti bylas iš komandinės eilutės: </translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="611"/>
@@ -378,12 +378,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="456"/>
         <source>Determine file type by content</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatyti bylos tipą pagal turinį</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="379"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Vartotojo sąsaja</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="509"/>
@@ -517,29 +517,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">Pereiti prie takelio</translation>
+        <translation>Pereiti prie takelio</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtras</translation>
+        <translation>Filtras</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">Į eilę</translation>
+        <translation>Į eilę</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">Atnaujinti</translation>
+        <translation>Atnaujinti</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">Prereiti prie</translation>
+        <translation>Prereiti prie</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
@@ -560,7 +560,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">Pašalinti iš eilės</translation>
+        <translation>Pašalinti iš eilės</translation>
     </message>
 </context>
 <context>
@@ -577,7 +577,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qmmpuisettings.cpp" line="41"/>
         <source>Playlist</source>
-        <translation type="unfinished">Grojaraštis</translation>
+        <translation>Grojaraštis</translation>
     </message>
 </context>
 <context>
@@ -759,33 +759,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">Palaikomi bylų tipai</translation>
+        <translation>Palaikomi bylų tipai</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">Pasirinkite vieną ar kelias bylas atvėrimui</translation>
+        <translation>Pasirinkite vieną ar kelias bylas atvėrimui</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Pasirinkite aplanką</translation>
+        <translation>Pasirinkite aplanką</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="159"/>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">Grojaraščio bylos</translation>
+        <translation>Grojaraščio bylos</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">Atverti grojaraštį</translation>
+        <translation>Atverti grojaraštį</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">Išsaugoti grojaraštį</translation>
+        <translation>Išsaugoti grojaraštį</translation>
     </message>
 </context>
 </TS>

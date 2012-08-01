@@ -71,7 +71,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Šokti prie takelio</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -462,37 +462,37 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="27"/>
         <source>Action</source>
-        <translation type="unfinished">Veiksmas</translation>
+        <translation>Veiksmas</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="32"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Trumpinys</translation>
+        <translation>Trumpinys</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Keisti trumpinį...</translation>
+        <translation>Keisti trumpinį...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
-        <translation type="unfinished">Grojimas</translation>
+        <translation>Grojimas</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
-        <translation type="unfinished">Rodyti</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Playlist</source>
-        <translation type="unfinished">Grojaraštis</translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
-        <translation type="unfinished">Įvairūs</translation>
+        <translation>Įvairūs</translation>
     </message>
 </context>
 <context>
@@ -721,12 +721,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="319"/>
         <source>Appearance</source>
-        <translation type="unfinished">Išvaizda</translation>
+        <translation>Išvaizda</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="320"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Santrumpos</translation>
+        <translation>Trumpiniai</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="382"/>
@@ -772,7 +772,7 @@
         <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagal disko numerį</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
@@ -895,7 +895,7 @@
     <message>
         <location filename="../playlistselector.cpp" line="125"/>
         <source>Playlist name:</source>
-        <translation>Grojaraščio pavadinimas</translation>
+        <translation>Grojaraščio pavadinimas:</translation>
     </message>
 </context>
 <context>
@@ -913,7 +913,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
-        <translation>Permatomumas</translation>
+        <translation>Permatomumas:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
@@ -928,7 +928,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation>Nuotraukos dydis</translation>
+        <translation>Viršelio dydis:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
@@ -1067,35 +1067,38 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="31"/>
         <source>Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Apvilkta vartotojo sąsaja</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="44"/>
         <source>About Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie apvilktą Qmmp vartotojo sčsają</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp apvilkta vartotojo sąsaja</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="46"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
-        <translation type="unfinished"></translation>
+        <translation>Paprasta vartotojo sąsaja su Winamp-2.x/XMMS apvalkalų palaikymu </translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukūrė:
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafika:
+Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -1103,80 +1106,80 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="24"/>
         <source>Skins</source>
-        <translation type="unfinished">Temos</translation>
+        <translation>Temos</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="55"/>
         <source>Add...</source>
-        <translation type="unfinished">Pridėti...</translation>
+        <translation>Pridėti...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="68"/>
         <source>Refresh</source>
-        <translation type="unfinished">Atnaujinti</translation>
+        <translation>Atnaujinti</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
-        <translation type="unfinished">Rodyti</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Paslėpti išjungus</translation>
+        <translation>Paslėpti išjungus</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="108"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Įjungti paslėptą</translation>
+        <translation>Įjungti paslėptą</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="115"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished">Naudoti temos kursorių</translation>
+        <translation>Naudoti temos kursorių</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="131"/>
         <source>Fonts</source>
-        <translation type="unfinished">Šriftai</translation>
+        <translation>Šriftai</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="149"/>
         <source>Player:</source>
-        <translation type="unfinished">Grotuvas:</translation>
+        <translation>Grotuvas:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="171"/>
         <location filename="../forms/skinnedsettings.ui" line="219"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="178"/>
         <location filename="../forms/skinnedsettings.ui" line="226"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="197"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Gojaraštis:</translation>
+        <translation>Gojaraštis:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="233"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished">Naudoti bitmap šriftą, jei įmanoma</translation>
+        <translation>Naudoti bitmap šriftą, jei įmanoma</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="243"/>
         <source>Transparency</source>
-        <translation type="unfinished">Permatomumas</translation>
+        <translation>Permatomumas</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Main window</source>
-        <translation type="unfinished">Pagrindinis langas</translation>
+        <translation>Pagrindinis langas</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="272"/>
@@ -1188,97 +1191,98 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="279"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Glotintuvas</translation>
+        <translation>Glotintuvas</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="303"/>
         <source>Playlist</source>
-        <translation type="unfinished">Grojaraštis</translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished">Kiti</translation>
+        <translation>Kiti</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="350"/>
         <source>Song Display</source>
-        <translation type="unfinished">Dainų sąrašas</translation>
+        <translation>Dainų sąrašas</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="356"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Rodyti bylos galūnę</translation>
+        <translation>Rodyti bylos galūnę</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="363"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Rodyti takelių numerius</translation>
+        <translation>Rodyti takelių numerius</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
-        <translation type="unfinished">Rodyti grojaraščius</translation>
+        <translation>Rodyti grojaraščius</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Rodyti iššokančią informaciją</translation>
+        <translation>Rodyti iššokančią informaciją</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
-        <translation type="unfinished">Taisyti šabloną</translation>
+        <translation>Taisyti šabloną</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraščio atskyrėjas:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti naujo grojaraščio mygtuką</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="478"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Adreso dialogas</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="484"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatinis adreso įkėlimas iš iškarpinės</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??????????????</translatorcomment>
+        <translation>Rodyti inkarą</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="373"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Lygiuoti dainų numerius</translation>
+        <translation>Lygiuoti dainų numerius</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished">Pasirinkti temų bylas</translation>
+        <translation>Pasirinkti temų bylas</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
-        <translation type="unfinished">Temų bylos</translation>
+        <translation>Temų bylos</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished">Išskleista tema</translation>
+        <translation>Išskleista tema</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
-        <translation type="unfinished">Suspausta tema</translation>
+        <translation>Suspausta tema</translation>
     </message>
 </context>
 <context>
@@ -1291,7 +1295,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../textscroller.cpp" line="54"/>
         <source>Transparent Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Permatomas fonas</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="123"/>

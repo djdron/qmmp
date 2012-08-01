@@ -254,7 +254,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
         <source>10</source>
-        <translation type="unfinished">10</translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="551"/>
         <source>5</source>
-        <translation type="unfinished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="577"/>
@@ -282,7 +282,7 @@
 too high may cause clipping!</source>
         <translation>Priminimas: Per didelis garso
  triprinimas gali sukelti garso
- trūkinėjimą</translation>
+ trūkinėjimą!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>

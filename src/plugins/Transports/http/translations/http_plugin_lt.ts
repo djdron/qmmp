@@ -59,12 +59,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Language:</source>
-        <translation>Kalba</translation>
+        <translation>Kalba:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="114"/>
         <source>Default encoding:</source>
-        <translation>Kodavimas pagal nutylėjimą</translation>
+        <translation>Kodavimas pagal nutylėjimą:</translation>
     </message>
 </context>
 </TS>

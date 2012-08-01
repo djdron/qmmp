@@ -14,6 +14,9 @@ Kinų supaprastintas:
 Lenkų
    Grzegorz Gibas <amigib@gmail.com>
 
+Olandų:
+    Ronald Uitermark <ronald645@gmail.com>
+
 Čekų:
     Karel Volný <kvolny@redhat.com>
 
@@ -21,14 +24,15 @@ Vokiečių:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Prancūzų:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
 Rusų:
     Ilya Kotov <forkotov02@hotmail.ru>
 
 Turkų:
     Mustafa GUNAY <mustafagunay@pgmail.com>
-
-Ukrainiečių:
-    Gennadi Motsyo <drool@altlinux.ru>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
 Lietuvių:
     Algirdas Butkus <butkus.algirdas@gmail.com>
@@ -39,12 +43,12 @@ Lenkų:
 Rusų:
     Ilya Kotov <forkotov02@hotmail.ru>
 
-spanų:
+Ispanų:
     Félix Medrano <xukosky@yahoo.es>
 
 Turkų:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
-Ukrainiečių:
-    Gennadi Motsyo <drool@altlinux.ru>
+Vengrų:
+    Németh Gábor <sutee84@freemail.hu>
