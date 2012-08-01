@@ -9,7 +9,7 @@
 
   ;Name and file
   Name "Qt-based Multimedia Player"
-  OutFile "qmmp-0.6.1-win32.exe"
+  OutFile "qmmp-0.6.3-win32.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Qt-based Multimedia Player"
@@ -40,6 +40,7 @@
 ;Languages
  
   !insertmacro MUI_LANGUAGE "English"
+  !insertmacro MUI_LANGUAGE "Ukrainian"
   !insertmacro MUI_LANGUAGE "Russian"
 
 ;--------------------------------
