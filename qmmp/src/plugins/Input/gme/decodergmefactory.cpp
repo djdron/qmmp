@@ -122,7 +122,7 @@ void DecoderGmeFactory::showAbout(QWidget *parent)
 QTranslator *DecoderGmeFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/gme_plugin_") + locale);
     return translator;
 }
