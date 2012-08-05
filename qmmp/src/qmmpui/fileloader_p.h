@@ -52,7 +52,7 @@ public:
      */
     ~FileLoader();
     /*!
-     * Sets files to load
+     * Removes files and directories from queue and waits until thread is finished
      */
     void finish();
     /*!
