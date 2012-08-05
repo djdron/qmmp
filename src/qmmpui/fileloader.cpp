@@ -87,24 +87,21 @@ void FileLoader::run()
 void FileLoader::loadFile(const QString &path)
 {
     m_files.enqueue(path);
-    if(m_filters.isEmpty())
-        m_filters = MetaDataManager::instance()->nameFilters();
+    m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 
 void FileLoader::loadFiles(const QStringList &paths)
 {
     m_files << paths;
-    if(m_filters.isEmpty())
-        m_filters = MetaDataManager::instance()->nameFilters();
+    m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 
 void FileLoader::loadDirectory(const QString &path)
 {
     m_directories.enqueue(path);
-    if(m_filters.isEmpty())
-        m_filters = MetaDataManager::instance()->nameFilters();
+    m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 
