@@ -24,14 +24,11 @@
 #include <QSettings>
 #include <QFileInfo>
 #include <QDir>
-#include <cdio/cdtext.h>
-#include <cdio/track.h>
+#include <cdio/cdio.h>
 #include <cdio/cdda.h>
 #include <cdio/audio.h>
-#include <cdio/sector.h>
 #include <cdio/cd_types.h>
 #include <cdio/logging.h>
-#include <cdio/version.h>
 #include <cddb/cddb.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
