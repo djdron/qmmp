@@ -516,7 +516,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
     else if(m_popupWidget)
     {
         int row = rowAt(e->y());
-        if(row < 0 || m_popupWidget->item() != m_model->item(row))
+        if(row < 0 || m_popupWidget->url() != m_model->item(row)->url())
             m_popupWidget->deactivate();
     }
 }
