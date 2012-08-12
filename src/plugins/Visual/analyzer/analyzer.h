@@ -63,7 +63,7 @@ private:
     short *m_left_buffer;
     short *m_right_buffer;
     int m_buffer_at;
-    int m_x_steps, m_y_steps;
+    int m_cols, m_rows;
     //colors
     QColor m_color1;
     QColor m_color2;
