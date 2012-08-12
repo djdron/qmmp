@@ -40,8 +40,9 @@ Analyzer::Analyzer (QWidget *parent)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     restoreGeometry(settings.value("Analyzer/geometry").toByteArray());
-    setFixedSize(2*300-30,105);
-    m_pixmap = QPixmap (75,20);
+    //setAttribute(Qt::WA_TranslucentBackground);
+    //setFixedSize(2*300-30,105);
+    setMinimumSize(2*300-30,105);
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     m_left_buffer = new short[VISUAL_BUFFER_SIZE];
@@ -64,7 +65,10 @@ Analyzer::Analyzer (QWidget *parent)
     m_color2.setNamedColor(settings.value("Analyzer/color2", "Yellow").toString());
     m_color3.setNamedColor(settings.value("Analyzer/color3", "Red").toString());
     m_bgColor.setNamedColor(settings.value("Analyzer/bg_color", "Black").toString());
+    //m_bgColor.setAlpha(0);
     m_peakColor.setNamedColor(settings.value("Analyzer/peak_color", "Cyan").toString());
+    m_cell_size = QSize(15, 6);
+    //m_cell_size = QSize(5, 3);
 }
 
 Analyzer::~Analyzer()
@@ -76,7 +80,7 @@ Analyzer::~Analyzer()
 void Analyzer::clear()
 {
     m_buffer_at = 0;
-    for (int i = 0; i< 75; ++i)
+    for (int i = 0; i< 7500; ++i)
     {
         m_intern_vis_data[i] = 0;
         m_peaks[i] = 0;
@@ -161,32 +165,46 @@ void Analyzer::process (short *left, short *right)
     if (!state)
         state = fft_init();
 
+    m_y_steps = (height() - 2) / m_cell_size.height();
+    m_x_steps = (width() - 2) / m_cell_size.width() / 2;
+
     short dest_l[256];
     short dest_r[256];
-
-    const int xscale_short[] =
-        {
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
-            36, 47, 62, 82, 107, 141, 184, 255
-        };
 
     calc_freq (dest_l, left);
     calc_freq (dest_r, right);
 
-    const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
+    int xscale_short[m_x_steps + 1];
+    for(int i = 0; i < m_x_steps + 1; ++i)
+    {
+        xscale_short[i] = pow(pow(255.0, 1.0 / m_x_steps), i);
+        //qDebug("=%d", int(xscale_short[i]));
+    }
+
+    double y_scale = (double) 1.25 * m_y_steps / log(256);
+
     int yl,yr, j;
 
-    for (int i = 0; i < 19; i++)
+    for (int i = 0; i < m_x_steps; i++)
     {
         yl = yr = 0;
 
-        for (j = xscale_short[i];  j < xscale_short[i + 1]; j++)
+        if(xscale_short[i] == xscale_short[i + 1])
         {
-            if (dest_l[j] > yl)
-                yl = dest_l[j];
-            if (dest_r[j] > yr)
-                yr = dest_r[j];
+            yl = dest_l[i];
+            yr = dest_r[i];
         }
+        else
+        {
+            for (j = xscale_short[i]; j < xscale_short[i + 1]; j++)
+            {
+                if (dest_l[j] > yl)
+                    yl = dest_l[j];
+                if (dest_r[j] > yr)
+                    yr = dest_r[j];
+            }
+        }
+
         yl >>= 7;
         yr >>= 7;
         int magnitude_l = 0;
@@ -195,35 +213,36 @@ void Analyzer::process (short *left, short *right)
         if (yl)
         {
             magnitude_l = int(log (yl) * y_scale);
-            if (magnitude_l > 15)
-                magnitude_l = 15;
+            if (magnitude_l > m_y_steps)
+                magnitude_l = m_y_steps;
             if (magnitude_l < 0)
                 magnitude_l = 0;
         }
         if (yr)
         {
             magnitude_r = int(log (yr) * y_scale);
-            if (magnitude_r > 15)
-                magnitude_r = 15;
+            if (magnitude_r > m_y_steps)
+                magnitude_r = m_y_steps;
             if (magnitude_r < 0)
                 magnitude_r = 0;
         }
 
-        m_intern_vis_data[i] -= m_analyzer_falloff;
+        m_intern_vis_data[i] -= m_analyzer_falloff * m_y_steps / 15;
         m_intern_vis_data[i] = magnitude_l > m_intern_vis_data[i]
                                ? magnitude_l : m_intern_vis_data[i];
 
-        m_intern_vis_data[37-i] -= m_analyzer_falloff;
-        m_intern_vis_data[37-i] = magnitude_r > m_intern_vis_data[37-i]
-                                  ? magnitude_r : m_intern_vis_data[37-i];
+        m_intern_vis_data[m_x_steps * 2 - 1 - i] -= m_analyzer_falloff * m_y_steps / 15;
+        m_intern_vis_data[m_x_steps * 2 - 1 - i] = magnitude_r > m_intern_vis_data[2*m_x_steps-1-i]
+                                  ? magnitude_r : m_intern_vis_data[2*m_x_steps-1-i];
 
         if (m_show_peaks)
         {
-            m_peaks[i] -= m_peaks_falloff;
+            m_peaks[i] -= m_peaks_falloff * m_y_steps / 15;
             m_peaks[i] = magnitude_l > m_peaks[i] ? magnitude_l : m_peaks[i];
 
-            m_peaks[37-i] -= m_peaks_falloff;
-            m_peaks[37-i] = magnitude_r > m_peaks[37-i] ? magnitude_r : m_peaks[37-i];
+            m_peaks[m_x_steps * 2 - 1 - i] -= m_peaks_falloff * m_y_steps / 15;
+            m_peaks[m_x_steps * 2 - 1 - i] = magnitude_r > m_peaks[2*m_x_steps-1-i]
+                    ? magnitude_r : m_peaks[2*m_x_steps-1-i];
         }
     }
 }
@@ -231,34 +250,50 @@ void Analyzer::process (short *left, short *right)
 void Analyzer::draw (QPainter *p)
 {
     QBrush brush(Qt::SolidPattern);
-    for (int j = 0; j < 19; ++j)
+    //m_x_steps = (width() - 2) / m_cell_size.width() / 2;
+    //m_y_steps = (height() - 2) / m_cell_size.height();
+    for (int j = 0; j < m_x_steps; ++j)
     {
         for (int i = 0; i <= m_intern_vis_data[j]; ++i)
         {
-            if (i <= 5)
+            if (i <= m_y_steps/3)
                 brush.setColor(m_color1);
-            else if (i > 5 && i <= 10)
+            else if (i > m_y_steps/3 && i <= 2 * m_y_steps / 3)
                 brush.setColor(m_color2);
             else
                 brush.setColor(m_color3);
-            p->fillRect (j*15+1, height() - i*7, 12, 4, brush);
+
+
+            p->fillRect (j* m_cell_size.width() +1, height() - i*m_cell_size.height() + 1,
+                         m_cell_size.width() -2, m_cell_size.height() - 2, brush);
         }
 
-        for (int i = 0; i <= m_intern_vis_data[19+j]; ++i)
+        for (int i = 0; i <= m_intern_vis_data[m_x_steps+j]; ++i)
         {
-            if (i <= 5)
+
+            if (i <= m_y_steps/3)
                 brush.setColor(m_color1);
-            else if (i > 5 && i <= 10)
+            else if (i > m_y_steps/3 && i <= 2 * m_y_steps / 3)
                 brush.setColor(m_color2);
             else
                 brush.setColor(m_color3);
-            p->fillRect ((j+19)*15+1, height() - i*7, 12, 4, brush);
+
+            p->fillRect (width() / 2 + j* m_cell_size.width() +1, height() - i*m_cell_size.height() + 1,
+                         m_cell_size.width() -2, m_cell_size.height() - 2, brush);
         }
 
         if (m_show_peaks)
         {
-            p->fillRect (j*15+1, height() - int(m_peaks[j])*7, 12, 4, m_peakColor);
-            p->fillRect ((j+19)*15+1, height() - int(m_peaks[j+19])*7, 12, 4, m_peakColor);
+            p->fillRect (j* m_cell_size.width() +1, height() - int(m_peaks[j])*m_cell_size.height() + 1,
+                         m_cell_size.width() -2, m_cell_size.height() - 2, m_peakColor);
+
+            p->fillRect (width() / 2 + j* m_cell_size.width() +1,
+                         height() - int(m_peaks[m_x_steps+j])*m_cell_size.height() + 1,
+                         m_cell_size.width() -2, m_cell_size.height() - 2, m_peakColor);
+
+
+            //p->fillRect (j*15+1, height() - int(m_peaks[j])*7, 12, 4, m_peakColor);
+            //p->fillRect ((j+19)*15+1, height() - int(m_peaks[j+19])*7, 12, 4, m_peakColor);
         }
     }
 }

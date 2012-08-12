@@ -52,24 +52,25 @@ public slots:
 private:
     void process(short *l, short *r);
     void draw(QPainter *p);
-    QPixmap m_pixmap;
     QPixmap m_bg;
     QTimer *m_timer;
     int m_fps;
-    double m_intern_vis_data[75];
-    double m_peaks[75];
+    double m_intern_vis_data[7500];
+    double m_peaks[7500];
     double m_peaks_falloff;
     double m_analyzer_falloff;
     bool m_show_peaks;
     short *m_left_buffer;
     short *m_right_buffer;
     int m_buffer_at;
+    int m_x_steps, m_y_steps;
     //colors
     QColor m_color1;
     QColor m_color2;
     QColor m_color3;
     QColor m_bgColor;
     QColor m_peakColor;
+    QSize m_cell_size;
 };
 
 
