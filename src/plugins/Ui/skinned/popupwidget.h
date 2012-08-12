@@ -42,7 +42,7 @@ public:
 
     void prepare(PlayListItem *item, QPoint pos);
     void deactivate();
-    PlayListItem *item();
+    const QString url() const;
 
 protected:
     virtual void mousePressEvent (QMouseEvent *);
@@ -58,8 +58,7 @@ private:
     QString m_template;
     uint m_pos;
     int m_coverSize;
-    PlayListItem *m_item;
-
+    QString m_url;
 };
 }
 

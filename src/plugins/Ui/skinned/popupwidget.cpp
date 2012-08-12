@@ -40,7 +40,6 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::Dialog | Qt::FramelessWindowHint);
     //setFrameStyle(QFrame::Box | QFrame::Plain);
     setAttribute(Qt::WA_QuitOnClose, false);
-    m_item = 0;
     QHBoxLayout *hlayout = new QHBoxLayout(this); //layout
     m_pixlabel = new QLabel(this);
     hlayout->addWidget(m_pixlabel);
@@ -86,7 +85,7 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
 {
     pos += QPoint(15,10);
 
-    m_item = item;
+    m_url = item->url();
     hide();
     if(!item)
     {
@@ -112,19 +111,20 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
 void PopupWidget::deactivate()
 {
     m_timer->stop();
+    m_url.clear();
     hide();
 }
 
-PlayListItem *PopupWidget::item()
+const QString PopupWidget::url() const
 {
-    return m_item;
+    return m_url;
 }
 
 void PopupWidget::loadCover()
 {
-    if(!m_item)
+    if(m_url.isEmpty())
         return;
-    QPixmap pix = MetaDataManager::instance()->getCover(m_item->url());
+    QPixmap pix = MetaDataManager::instance()->getCover(m_url);
     if(pix.isNull())
         pix = QPixmap(":/skinned/ui_no_cover.png");
     m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
