@@ -49,14 +49,18 @@ protected:
 public slots:
     void timeout();
 
+private slots:
+    void toggleFullScreen();
+
 private:
     void process(short *l, short *r);
     void draw(QPainter *p);
     QPixmap m_bg;
     QTimer *m_timer;
     int m_fps;
-    double m_intern_vis_data[7500];
-    double m_peaks[7500];
+    double *m_intern_vis_data;
+    double *m_peaks;
+    int *m_x_scale;
     double m_peaks_falloff;
     double m_analyzer_falloff;
     bool m_show_peaks;
