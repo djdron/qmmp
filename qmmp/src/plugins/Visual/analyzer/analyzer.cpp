@@ -71,8 +71,7 @@ Analyzer::Analyzer (QWidget *parent) : Visual (parent), m_fps (20)
     m_bgColor.setNamedColor(settings.value("Analyzer/bg_color", "Black").toString());
     //m_bgColor.setAlpha(0);
     m_peakColor.setNamedColor(settings.value("Analyzer/peak_color", "Cyan").toString());
-    m_cell_size = QSize(15, 6);
-    //m_cell_size = QSize(5, 3);
+    m_cell_size = settings.value("Analyzer/cells_size", QSize(15, 6)).toSize();
 
     QAction *fullScreenAction = new QAction(this);
     fullScreenAction->setShortcut(tr("F"));

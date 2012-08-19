@@ -1,195 +1,239 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SettingsDialog</class>
- <widget class="QDialog" name="SettingsDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>292</width>
-    <height>327</height>
+    <width>314</width>
+    <height>310</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Analyzer Plugin Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>General</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="peaksCheckBox" >
-        <property name="layoutDirection" >
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="peaksCheckBox">
+        <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Show peaks</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_10" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
          <string>Analyzer falloff:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QComboBox" name="analyzerComboBox" >
-        <property name="currentIndex" >
+      <item row="1" column="1">
+       <widget class="QComboBox" name="analyzerComboBox">
+        <property name="currentIndex">
          <number>2</number>
         </property>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Slowest</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Slow</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Medium</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Fast</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Fastest</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_9" >
-        <property name="text" >
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
          <string>Peaks falloff:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="1" >
-       <widget class="QComboBox" name="peaksComboBox" >
-        <property name="currentIndex" >
+      <item row="2" column="1">
+       <widget class="QComboBox" name="peaksComboBox">
+        <property name="currentIndex">
          <number>2</number>
         </property>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Slowest</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Slow</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Medium</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Fast</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>Fastest</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label_11" >
-        <property name="text" >
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
          <string>Refresh rate:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" >
-       <widget class="QComboBox" name="fpsComboBox" >
-        <property name="currentIndex" >
+      <item row="3" column="1">
+       <widget class="QComboBox" name="fpsComboBox">
+        <property name="currentIndex">
          <number>0</number>
         </property>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>50 FPS</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>25 FPS</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>10 FPS</string>
          </property>
         </item>
         <item>
-         <property name="text" >
+         <property name="text">
           <string>5 FPS</string>
          </property>
         </item>
        </widget>
       </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Cells size:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSpinBox" name="cellWidthSpinBox"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string notr="true">X</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="cellHeightSpinBox"/>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="MinimumExpanding" hsizetype="Preferred" >
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Colors</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_4" >
-        <property name="text" >
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
          <string>Peaks:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="0" column="1" >
-       <widget class="ColorWidget" native="1" name="peakColorWidget" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <item row="0" column="1">
+       <widget class="ColorWidget" name="peakColorWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize" >
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -197,25 +241,31 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="2" >
-       <widget class="QLabel" name="label_6" >
-        <property name="text" >
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
          <string>Analyzer #1:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="0" column="3" >
-       <widget class="ColorWidget" native="1" name="colorWidget1" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <item row="0" column="3">
+       <widget class="ColorWidget" name="colorWidget1" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize" >
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -223,25 +273,31 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_5" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
          <string>Background:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="ColorWidget" native="1" name="bgColorWidget" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <item row="1" column="1">
+       <widget class="ColorWidget" name="bgColorWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize" >
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -249,25 +305,31 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2" >
-       <widget class="QLabel" name="label_7" >
-        <property name="text" >
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
          <string>Analyzer #2:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="3" >
-       <widget class="ColorWidget" native="1" name="colorWidget2" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <item row="1" column="3">
+       <widget class="ColorWidget" name="colorWidget2" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize" >
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -275,12 +337,12 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2" >
+      <item row="2" column="0" colspan="2">
        <spacer>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>111</width>
           <height>20</height>
@@ -288,25 +350,31 @@
         </property>
        </spacer>
       </item>
-      <item row="2" column="2" >
-       <widget class="QLabel" name="label_8" >
-        <property name="text" >
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
          <string>Analyzer #3:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="3" >
-       <widget class="ColorWidget" native="1" name="colorWidget3" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <item row="2" column="3">
+       <widget class="ColorWidget" name="colorWidget3" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize" >
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -317,25 +385,9 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Minimum</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>95</width>
-       <height>29</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="standardButtons" >
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
@@ -358,11 +410,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>204</x>
      <y>303</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>53</x>
      <y>308</y>
     </hint>
@@ -374,11 +426,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>228</x>
      <y>307</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>78</x>
      <y>288</y>
     </hint>

@@ -4,120 +4,130 @@
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="51"/>
+        <location filename="../analyzer.cpp" line="56"/>
         <source>Qmmp Analyzer</source>
         <translation>QMMP アナライザー</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="77"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Analyzer Plugin Settings</source>
         <translation>アナライザープラグイン設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="25"/>
+        <location filename="../settingsdialog.ui" line="26"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="34"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Show peaks</source>
         <translation>ピーク表示</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="42"/>
         <source>Analyzer falloff:</source>
         <translation>アナライザー減衰速度:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <location filename="../settingsdialog.ui" line="97"/>
+        <location filename="../settingsdialog.ui" line="56"/>
+        <location filename="../settingsdialog.ui" line="98"/>
         <source>Slowest</source>
         <translation>さらに遅く</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="60"/>
-        <location filename="../settingsdialog.ui" line="102"/>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Slow</source>
         <translation>遅く</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="65"/>
-        <location filename="../settingsdialog.ui" line="107"/>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Medium</source>
         <translation>適度</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="70"/>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="71"/>
+        <location filename="../settingsdialog.ui" line="113"/>
         <source>Fast</source>
         <translation>速く</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="76"/>
+        <location filename="../settingsdialog.ui" line="118"/>
         <source>Fastest</source>
         <translation>さらに速く</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Peaks falloff:</source>
         <translation>ピーク減衰速度:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="125"/>
+        <location filename="../settingsdialog.ui" line="126"/>
         <source>Refresh rate:</source>
         <translation>再描画の頻度:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="139"/>
+        <location filename="../settingsdialog.ui" line="140"/>
         <source>50 FPS</source>
         <translation>50 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="144"/>
+        <location filename="../settingsdialog.ui" line="145"/>
         <source>25 FPS</source>
         <translation>25 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="149"/>
+        <location filename="../settingsdialog.ui" line="150"/>
         <source>10 FPS</source>
         <translation>10 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="154"/>
+        <location filename="../settingsdialog.ui" line="155"/>
         <source>5 FPS</source>
         <translation>5 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="171"/>
+        <location filename="../settingsdialog.ui" line="163"/>
+        <source>Cells size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="209"/>
         <source>Colors</source>
         <translation>色</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="177"/>
+        <location filename="../settingsdialog.ui" line="215"/>
         <source>Peaks:</source>
         <translation>峰:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="203"/>
+        <location filename="../settingsdialog.ui" line="247"/>
         <source>Analyzer #1:</source>
         <translation>第一アナライザー:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>Background:</source>
         <translation>背景:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="255"/>
+        <location filename="../settingsdialog.ui" line="311"/>
         <source>Analyzer #2:</source>
         <translation>第二アナライザー:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="294"/>
+        <location filename="../settingsdialog.ui" line="356"/>
         <source>Analyzer #3:</source>
         <translation>第三アナライザー:</translation>
     </message>
