@@ -4,120 +4,130 @@
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="51"/>
+        <location filename="../analyzer.cpp" line="56"/>
         <source>Qmmp Analyzer</source>
         <translation>Qmmp analizatorius</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="77"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Analyzer Plugin Settings</source>
         <translation>Analizatoriaus įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="25"/>
+        <location filename="../settingsdialog.ui" line="26"/>
         <source>General</source>
         <translation>Bendri</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="34"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Show peaks</source>
         <translation>Rodyti pikus</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="42"/>
         <source>Analyzer falloff:</source>
         <translation>Analizatoriaus kritimas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <location filename="../settingsdialog.ui" line="97"/>
+        <location filename="../settingsdialog.ui" line="56"/>
+        <location filename="../settingsdialog.ui" line="98"/>
         <source>Slowest</source>
         <translation>Lėčiausias</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="60"/>
-        <location filename="../settingsdialog.ui" line="102"/>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Slow</source>
         <translation>Lėtas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="65"/>
-        <location filename="../settingsdialog.ui" line="107"/>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Medium</source>
         <translation>Vidutinis</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="70"/>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="71"/>
+        <location filename="../settingsdialog.ui" line="113"/>
         <source>Fast</source>
         <translation>Greitas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="76"/>
+        <location filename="../settingsdialog.ui" line="118"/>
         <source>Fastest</source>
         <translation>Greičiausias</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Peaks falloff:</source>
         <translation>Pikų kritimas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="125"/>
+        <location filename="../settingsdialog.ui" line="126"/>
         <source>Refresh rate:</source>
         <translation>Atnaujinimo dažnis:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="139"/>
+        <location filename="../settingsdialog.ui" line="140"/>
         <source>50 FPS</source>
         <translation>50 FPS/с</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="144"/>
+        <location filename="../settingsdialog.ui" line="145"/>
         <source>25 FPS</source>
         <translation>25 FPS/с</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="149"/>
+        <location filename="../settingsdialog.ui" line="150"/>
         <source>10 FPS</source>
         <translation>10 FPS/с</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="154"/>
+        <location filename="../settingsdialog.ui" line="155"/>
         <source>5 FPS</source>
         <translation>5 FPS/с</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="171"/>
+        <location filename="../settingsdialog.ui" line="163"/>
+        <source>Cells size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="209"/>
         <source>Colors</source>
         <translation>Spalvos</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="177"/>
+        <location filename="../settingsdialog.ui" line="215"/>
         <source>Peaks:</source>
         <translation>Pikai:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="203"/>
+        <location filename="../settingsdialog.ui" line="247"/>
         <source>Analyzer #1:</source>
         <translation>Analizatorius #1:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>Background:</source>
         <translation>Fonas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="255"/>
+        <location filename="../settingsdialog.ui" line="311"/>
         <source>Analyzer #2:</source>
         <translation>Analizatorius #2:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="294"/>
+        <location filename="../settingsdialog.ui" line="356"/>
         <source>Analyzer #3:</source>
         <translation>Analizatorius #3:</translation>
     </message>
