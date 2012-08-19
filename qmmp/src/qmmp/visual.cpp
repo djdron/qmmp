@@ -185,6 +185,8 @@ void Visual::showSettings(VisualFactory *factory, QWidget *parent)
         remove(visual);
         visual->close();
         visual = factory->create(m_parentWidget);
+        if (m_receiver && m_member)
+            connect(visual, SIGNAL(closedByUser()), m_receiver, m_member);
         visual->setWindowFlags(Qt::Window);
         m_vis_map[factory] = visual;
         visual->show();
