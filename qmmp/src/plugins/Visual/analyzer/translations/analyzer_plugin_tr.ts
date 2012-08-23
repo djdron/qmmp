@@ -102,32 +102,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="223"/>
         <source>Colors</source>
         <translation>Renkler</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="215"/>
+        <location filename="../settingsdialog.ui" line="229"/>
         <source>Peaks:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="247"/>
+        <location filename="../settingsdialog.ui" line="261"/>
         <source>Analyzer #1:</source>
         <translation>Çözümleyici #1:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="279"/>
+        <location filename="../settingsdialog.ui" line="293"/>
         <source>Background:</source>
         <translation>Arkaplan:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="311"/>
+        <location filename="../settingsdialog.ui" line="325"/>
         <source>Analyzer #2:</source>
         <translation>Çözümleyici #2:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="356"/>
+        <location filename="../settingsdialog.ui" line="370"/>
         <source>Analyzer #3:</source>
         <translation>Çözümleyici #2:</translation>
     </message>
