@@ -2,10 +2,10 @@
 <RCC version="1.0">
   <qresource>
     <file>qsui_plugin_ru.qm</file>
-    <file>qsui_plugin_tr.qm</file>
-    <file>qsui_plugin_zh_CN.qm</file>
     <file>qsui_plugin_uk_UA.qm</file>
+    <file>qsui_plugin_zh_CN.qm</file>
     <file>qsui_plugin_zh_TW.qm</file>
+    <file>qsui_plugin_tr.qm</file>
     <file>qsui_plugin_cs.qm</file>
     <file>qsui_plugin_pt_BR.qm</file>
     <file>qsui_plugin_de.qm</file>
@@ -18,5 +18,6 @@
     <file>qsui_plugin_nl.qm</file>
     <file>qsui_plugin_ja.qm</file>
     <file>qsui_plugin_sk.qm</file>
+    <file>qsui_plugin_es.qm</file>
   </qresource>
 </RCC>
