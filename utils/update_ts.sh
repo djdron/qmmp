@@ -47,25 +47,27 @@ do
       	    ts_files="${ts_files} ${tr_dir}/${plug_name}_${code}.ts"
             qm_files="${qm_files} ${plug_name}_${code}.qm"
       	done
+        qrc_file="${tr_dir}/${plug_name}_locales.qrc"
      else
         for code in $LOCALES
         do
       	    ts_files="${ts_files} ${tr_dir}/${plug_name}_plugin_${code}.ts"
-            qm_files="${qm_files} ${plug_name}_${code}.qm"
+            qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
       	done
+        qrc_file="${tr_dir}/translations.qrc"
      fi
 
      lupdate -no-obsolete -silent -extensions "cpp,ui" ${tr_dir}/../ -ts ${ts_files}
 
-     qrc_file="${tr_dir}/translations.qrc"
+     
 
      echo "<!DOCTYPE RCC>" > $qrc_file
      echo "<RCC version=\"1.0\">" >> $qrc_file
-     echo "    <qresource>" >> $qrc_file
+     echo "  <qresource>" >> $qrc_file
      for qm_file in $qm_files
      do
          echo "    <file>${qm_file}</file>" >> $qrc_file;
      done
-     echo "    </qresource>" >> $qrc_file
+     echo "  </qresource>" >> $qrc_file
      echo "</RCC>" >> $qrc_file
 done
