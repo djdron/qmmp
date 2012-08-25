@@ -2,10 +2,10 @@
 <RCC version="1.0">
   <qresource>
     <file>skinned_plugin_ru.qm</file>
-    <file>skinned_plugin_tr.qm</file>
-    <file>skinned_plugin_zh_CN.qm</file>
     <file>skinned_plugin_uk_UA.qm</file>
+    <file>skinned_plugin_zh_CN.qm</file>
     <file>skinned_plugin_zh_TW.qm</file>
+    <file>skinned_plugin_tr.qm</file>
     <file>skinned_plugin_cs.qm</file>
     <file>skinned_plugin_pt_BR.qm</file>
     <file>skinned_plugin_de.qm</file>
@@ -18,5 +18,6 @@
     <file>skinned_plugin_nl.qm</file>
     <file>skinned_plugin_ja.qm</file>
     <file>skinned_plugin_sk.qm</file>
+    <file>skinned_plugin_es.qm</file>
   </qresource>
 </RCC>

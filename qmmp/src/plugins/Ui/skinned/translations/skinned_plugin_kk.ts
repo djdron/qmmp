@@ -2,98 +2,382 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="kk_KZ">
 <context>
-    <name>AboutDialog</name>
+    <name>ActionManager</name>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="13"/>
-        <source>About Qmmp</source>
-        <translation>Qmmp туралы</translation>
+        <location filename="../actionmanager.cpp" line="38"/>
+        <source>&amp;Play</source>
+        <translation type="unfinished">&amp;Ойнату</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="51"/>
-        <source>About</source>
-        <translatorcomment>Осы туралы</translatorcomment>
-        <translation>О программе</translation>
+        <location filename="../actionmanager.cpp" line="38"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="158"/>
-        <source>License Agreement</source>
-        <translation>Лицензиясы</translation>
+        <location filename="../actionmanager.cpp" line="39"/>
+        <source>&amp;Pause</source>
+        <translation type="unfinished">&amp;Аялдату</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="83"/>
-        <source>Authors</source>
-        <translation>Авторрлары</translation>
+        <location filename="../actionmanager.cpp" line="39"/>
+        <source>C</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="129"/>
-        <source>Thanks To</source>
-        <translation>Алғыстар</translation>
+        <location filename="../actionmanager.cpp" line="40"/>
+        <source>&amp;Stop</source>
+        <translation type="unfinished">&amp;Тоқтату</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="61"/>
-        <source>:/txt/authors_en.txt</source>
-        <translation>:/txt/authors_kk.txt</translation>
+        <location filename="../actionmanager.cpp" line="40"/>
+        <source>V</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="62"/>
-        <source>:/txt/thanks_en.txt</source>
-        <translation>:/txt/thanks_kk.txt</translation>
+        <location filename="../actionmanager.cpp" line="41"/>
+        <source>&amp;Previous</source>
+        <translation type="unfinished">Ал&amp;дыңғысы</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="81"/>
-        <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>Qt-негізіндегі мультимедиа плеері (Qmmp)</translation>
+        <location filename="../actionmanager.cpp" line="41"/>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="82"/>
-        <source>Version:</source>
-        <translation>Нұсқасы:</translation>
+        <location filename="../actionmanager.cpp" line="42"/>
+        <source>&amp;Next</source>
+        <translation type="unfinished">&amp;Келесісі</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="83"/>
-        <source>:txt/description_en.txt</source>
-        <translation>:txt/description_kk.txt</translation>
+        <location filename="../actionmanager.cpp" line="42"/>
+        <source>B</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="84"/>
-        <source>Input plugins:</source>
-        <translation>Кіріс модульдері:</translation>
+        <location filename="../actionmanager.cpp" line="43"/>
+        <source>&amp;Play/Pause</source>
+        <translation type="unfinished">О&amp;йнат/аялдат</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="93"/>
-        <source>Output plugins:</source>
-        <translation>Шығыс модульдері:</translation>
+        <location filename="../actionmanager.cpp" line="43"/>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="102"/>
-        <source>Visual plugins:</source>
-        <translation>Визуализация модульдері:</translation>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>&amp;Jump to Track</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="111"/>
-        <source>Effect plugins:</source>
-        <translation>Эффекттер модульдері:</translation>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>J</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="120"/>
-        <source>General plugins:</source>
-        <translation>Жалпы модульдері:</translation>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>&amp;Repeat Playlist</source>
+        <translation type="unfinished">Тізі&amp;мді қайталау</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="115"/>
-        <source>Translators</source>
-        <translation>Аудармашылар</translation>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>R</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="63"/>
-        <source>:/txt/translators_en.txt</source>
-        <translation>:/txt/translators_kk.txt</translation>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>&amp;Repeat Track</source>
+        <translation type="unfinished">Т&amp;ректі қайталау</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>Ctrl+R</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="47"/>
+        <source>&amp;Shuffle</source>
+        <translation type="unfinished">Ке&amp;з-келген ретпен</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="47"/>
+        <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="48"/>
+        <source>&amp;No Playlist Advance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="49"/>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="50"/>
+        <source>&amp;Stop After Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="51"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="52"/>
+        <source>&amp;Clear Queue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="52"/>
+        <source>Alt+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="54"/>
+        <source>Show Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="54"/>
+        <source>Alt+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="55"/>
+        <source>Show Equalizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="55"/>
+        <source>Alt+G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="56"/>
+        <source>Always on Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="57"/>
+        <source>Put on All Workspaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="58"/>
+        <source>Double Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="58"/>
+        <source>Meta+D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="60"/>
+        <source>&amp;Add File</source>
+        <translation type="unfinished">Фа&amp;йлды қосу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="60"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>&amp;Add Directory</source>
+        <translation type="unfinished">Бу&amp;маны қосу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>&amp;Add Url</source>
+        <translation type="unfinished">URL-д&amp;ы қосу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="63"/>
+        <source>&amp;Remove Selected</source>
+        <translation type="unfinished">Таңда&amp;лғанды өшіру</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="64"/>
+        <source>Del</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="65"/>
+        <source>&amp;Remove All</source>
+        <translation type="unfinished">&amp;Барлығын өшіру</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="66"/>
+        <source>&amp;Remove Unselected</source>
+        <translation type="unfinished">Таң&amp;далмағанды өшіру</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="68"/>
+        <source>Remove unavailable files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="70"/>
+        <source>Remove duplicates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="71"/>
+        <source>&amp;Queue Toggle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="71"/>
+        <source>Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="72"/>
+        <source>Invert Selection</source>
+        <translation type="unfinished">Таңдауды кері айналдыру</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="73"/>
+        <source>&amp;Select None</source>
+        <translation type="unfinished">Т&amp;аңдауды алу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="74"/>
+        <source>&amp;Select All</source>
+        <translation type="unfinished">&amp;Барлығын таңдау</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="75"/>
+        <source>Ctrl+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="76"/>
+        <source>&amp;View Track Details</source>
+        <translation type="unfinished">&amp;Ақпараты</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="76"/>
+        <source>Alt+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="78"/>
+        <source>&amp;New List</source>
+        <translation type="unfinished">&amp;Жаңа тізім</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="78"/>
+        <source>Ctrl+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="79"/>
+        <source>&amp;Delete List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="79"/>
+        <source>Ctrl+W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="80"/>
+        <source>&amp;Load List</source>
+        <translation type="unfinished">Ті&amp;зімді жүктеу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="80"/>
+        <source>O</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="81"/>
+        <source>&amp;Save List</source>
+        <translation type="unfinished">Тізімді &amp;сақтау</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="81"/>
+        <source>Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="82"/>
+        <source>&amp;Select Next Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="83"/>
+        <source>Ctrl+PgDown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="84"/>
+        <source>&amp;Select Previous Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="85"/>
+        <source>Ctrl+PgUp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="86"/>
+        <source>&amp;Show Playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="87"/>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="89"/>
+        <source>&amp;Settings</source>
+        <translation type="unfinished">&amp;Баптаулары</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="89"/>
+        <source>Ctrl+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="90"/>
+        <source>&amp;About</source>
+        <translation type="unfinished">&amp;Осы туралы</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="91"/>
+        <source>&amp;About Qt</source>
+        <translation type="unfinished">Qt т&amp;уралы</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="92"/>
+        <source>&amp;Exit</source>
+        <translation type="unfinished">&amp;Шығу</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="92"/>
+        <source>Ctrl+Q</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="107"/>
+        <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
         <translation>Қате</translation>
     </message>
@@ -114,687 +398,319 @@
     </message>
 </context>
 <context>
-    <name>BuiltinCommandLineOption</name>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
-        <source>Skip forward in playlist</source>
-        <translation>Келесіге өту</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Алдыңғысына өту</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Start playing current song</source>
-        <translation>Ағымдағы өленді ойнату</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
-        <source>Pause current song</source>
-        <translation>Ағымдағы өленді аялдату</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
-        <source>Pause if playing, play otherwise</source>
-        <translation>Аялдату/ойнату</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
-        <source>Stop current song</source>
-        <translation>Ағымдағы өленді тоқтату</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
-        <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation>Дыбыс деңгейін орнату (мысалы: qmmp --volume20, qmmp --volume100)</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
-        <source>Display Jump to File dialog</source>
-        <translation>Файлға өту сұхбатын көрсету</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
-        <source>Show/hide application</source>
-        <translation>Бағдарламаны көрсету/жасыру</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Display Add File dialog</source>
-        <translation>Файлдарды қосу сұхбатын көрсету</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
-        <source>Display Add Directory dialog</source>
-        <translation>Бумаларды қосу сұхбатын көрсету</translation>
-    </message>
-</context>
-<context>
-    <name>ConfigDialog</name>
-    <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
-        <source>Enabled</source>
-        <translation>Қосулы</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
-        <source>Description</source>
-        <translation>Анықтамасы</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
-        <location filename="../configdialog.cpp" line="524"/>
-        <source>Filename</source>
-        <translation>Файл аты</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="519"/>
-        <source>Artist</source>
-        <translation>Орындаушы</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="520"/>
-        <source>Album</source>
-        <translation>Альбом</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="521"/>
-        <source>Title</source>
-        <translation>Аты</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="522"/>
-        <source>Tracknumber</source>
-        <translation>Трек нөмірі</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="523"/>
-        <source>Genre</source>
-        <translation>Жанры</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="525"/>
-        <source>Filepath</source>
-        <translation>Файл жолы</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="526"/>
-        <source>Date</source>
-        <translation>Күні</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="527"/>
-        <source>Year</source>
-        <translation>Жылы</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="528"/>
-        <source>Comment</source>
-        <translation>Қосымша</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
-        <source>Qmmp Settings</source>
-        <translation>Qmmp баптаулары</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="162"/>
-        <source>Skins</source>
-        <translation>Скиндар</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="222"/>
-        <source>Fonts</source>
-        <translation>Қаріптер</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="234"/>
-        <source>Player:</source>
-        <translation>Плеер:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="270"/>
-        <source>Playlist:</source>
-        <translation>Тізім:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="250"/>
-        <location filename="../forms/configdialog.ui" line="286"/>
-        <source>???</source>
-        <translation>???</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="257"/>
-        <location filename="../forms/configdialog.ui" line="293"/>
-        <location filename="../forms/configdialog.ui" line="348"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="307"/>
-        <source>Metadata</source>
-        <translation>Метаақпараты</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="319"/>
-        <source>Load metadata from files</source>
-        <translation>Метаақпаратты файлдардан оқу</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="329"/>
-        <source>Song Display</source>
-        <translation>Өлендер тізімі</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="335"/>
-        <source>Title format:</source>
-        <translation>Атаудың пішімі:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="460"/>
-        <source>Input</source>
-        <translation>Кіріс</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="489"/>
-        <source>Output</source>
-        <translation>Шығыс</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="417"/>
-        <source>Preferences</source>
-        <translation>Баптаулар</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="430"/>
-        <location filename="../forms/configdialog.ui" line="618"/>
-        <source>Information</source>
-        <translation>Ақпараты</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="83"/>
-        <source>Appearance</source>
-        <translation>Сыртқы түрі</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="92"/>
-        <location filename="../forms/configdialog.ui" line="701"/>
-        <source>Playlist</source>
-        <translation>Тізім</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="101"/>
-        <source>Plugins</source>
-        <translation>Модульдер</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="110"/>
-        <source>Advanced</source>
-        <translation>Кеңейтілген</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="876"/>
-        <source>Close</source>
-        <translation>Жабу</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="177"/>
-        <source>Archived skin</source>
-        <translation>Сығылған скин</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="197"/>
-        <source>Unarchived skin</source>
-        <translation>Тарқатылған скин</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="119"/>
-        <source>Connectivity</source>
-        <translation>Желі</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="512"/>
-        <source>Visualization</source>
-        <translation>Визуализация</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="529"/>
-        <source>Effects</source>
-        <translation>Эффекттер</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="546"/>
-        <source>General</source>
-        <translation>Жалпы</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="609"/>
-        <source>File Dialog</source>
-        <translation>Файл сұхбат терезесі</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="570"/>
-        <source>Audio</source>
-        <translation>Аудио</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="576"/>
-        <source>Use software volume control</source>
-        <translation>Дауыс деңгейін бағдарламалық тәсілмен өзгертіу</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="586"/>
-        <source>Visibility Control</source>
-        <translation>Көрінуін басқару</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="592"/>
-        <source>Hide on close</source>
-        <translation>Жабылғанда жасыру</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="599"/>
-        <source>Start hidden</source>
-        <translation>Жасырын түрінде қосылу</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="744"/>
-        <source>Proxy</source>
-        <translation>Прокси</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="756"/>
-        <source>Enable proxy usage</source>
-        <translation>Проксиді қолдану</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="763"/>
-        <source>Proxy host name:</source>
-        <translation>Прокси сервері:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="776"/>
-        <source>Proxy port:</source>
-        <translation>Прокси порты:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="789"/>
-        <source>Use authentication with proxy</source>
-        <translation>Прокси аутентификациясын қолдану</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="796"/>
-        <source>Proxy user name:</source>
-        <translation>Прокси пайдаланушысы:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="809"/>
-        <source>Proxy password:</source>
-        <translation>Паролі:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
-        <source>Convert underscores to blanks</source>
-        <translation>Астыңғы сызуды бос орынға алмастыру</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="362"/>
-        <source>Convert %20 to blanks</source>
-        <translation>%20 бос орынға алмасытру</translation>
-    </message>
-    <message>
-        <source>Show full path of a stream</source>
-        <translation type="obsolete">Показывать полный путь для потоков</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="645"/>
-        <source>Select Skin Files</source>
-        <translation>Скин файлдарын таңдау</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="646"/>
-        <source>Skin files</source>
-        <translation>Скин файлдары</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="193"/>
-        <source>Add...</source>
-        <translation>Қосу...</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="206"/>
-        <source>Refresh</source>
-        <translation>Жаңарту</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="369"/>
-        <source>Show protocol</source>
-        <translation>Хаттаманы көрсету</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="641"/>
-        <source>Transparency</source>
-        <translation>Мөлдірлілігі</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="647"/>
-        <source>Main window</source>
-        <translation>Басты терезе</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="670"/>
-        <location filename="../forms/configdialog.ui" line="694"/>
-        <location filename="../forms/configdialog.ui" line="718"/>
-        <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="677"/>
-        <source>Equalizer</source>
-        <translation>Эквалайзер</translation>
-    </message>
-</context>
-<context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="153"/>
-        <location filename="../eqwidget.cpp" line="176"/>
+        <location filename="../eqwidget.cpp" line="157"/>
+        <location filename="../eqwidget.cpp" line="178"/>
         <source>preset</source>
         <translation>орнату</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="262"/>
+        <location filename="../eqwidget.cpp" line="264"/>
         <source>&amp;Load/Delete</source>
         <translation>&amp;Жүктеу/Өшіру</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="264"/>
+        <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Save Preset</source>
         <translation>&amp;Орнатуды сақтау</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="265"/>
+        <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>&amp;Авто-орнатуды сақтау</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="268"/>
+        <location filename="../eqwidget.cpp" line="273"/>
         <source>&amp;Clear</source>
         <translation>&amp;Тазарту</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="297"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Saving Preset</source>
         <translation>Орнатуды сақтау</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="298"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>Preset name:</source>
         <translation>Орнату атауы:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="299"/>
+        <location filename="../eqwidget.cpp" line="304"/>
         <source>preset #</source>
         <translation>орнату #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="266"/>
+        <location filename="../eqwidget.cpp" line="270"/>
         <source>&amp;Import</source>
         <translation>&amp;Импорттау</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="390"/>
+        <location filename="../eqwidget.cpp" line="44"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">Эквалайзер</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="395"/>
         <source>Import Preset</source>
         <translation>Орнатуды импорттау</translation>
     </message>
 </context>
 <context>
-    <name>JumpToTrackDialog</name>
+    <name>HotkeyEditor</name>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="81"/>
-        <location filename="../jumptotrackdialog.cpp" line="137"/>
-        <source>Unqueue</source>
-        <translation>Кезектен алып тастау</translation>
+        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="79"/>
-        <location filename="../jumptotrackdialog.cpp" line="83"/>
-        <location filename="../jumptotrackdialog.cpp" line="139"/>
-        <source>Queue</source>
-        <translation>Кезекке қою</translation>
+        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="13"/>
-        <source>Jump To Track</source>
-        <translation>Трекке өту</translation>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="33"/>
-        <source>Filter</source>
-        <translation>Фильтр</translation>
+        <location filename="../hotkeyeditor.cpp" line="55"/>
+        <source>Playback</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="86"/>
-        <source>Refresh</source>
-        <translation>Жаңарту</translation>
+        <location filename="../hotkeyeditor.cpp" line="61"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="93"/>
-        <source>Jump To</source>
-        <translation>Өту</translation>
+        <location filename="../hotkeyeditor.cpp" line="67"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Тізім</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="100"/>
-        <source>Close</source>
-        <translation>Жабу</translation>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <source>Misc</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="61"/>
+        <location filename="../display.cpp" line="57"/>
         <source>Previous</source>
         <translation>Алдыңғысы</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="65"/>
+        <location filename="../display.cpp" line="61"/>
         <source>Play</source>
         <translation>Ойнату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="69"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Pause</source>
         <translation>Аялдату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="73"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Stop</source>
         <translation>Тоқтату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="77"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Next</source>
         <translation>Келесіге өту</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Add file</source>
         <translation>Файлды қосу</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="96"/>
+        <location filename="../display.cpp" line="80"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="101"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Playlist</source>
         <translation>Тізім</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="109"/>
+        <location filename="../display.cpp" line="88"/>
         <source>Repeat playlist</source>
         <translation>Тізімді қайталау</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="113"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Shuffle</source>
         <translation>Кез-келген ретпен</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="144"/>
+        <location filename="../display.cpp" line="101"/>
         <source>Volume</source>
         <translation>Даусы</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="150"/>
+        <location filename="../display.cpp" line="107"/>
         <source>Balance</source>
         <translation>Баланс</translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="296"/>
+        <source>Volume: %1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="300"/>
+        <source>Balance: %1% right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="302"/>
+        <source>Balance: %1% left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="304"/>
+        <source>Balance: center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="315"/>
+        <source>Seek to: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="294"/>
+        <location filename="../mainvisual.cpp" line="282"/>
         <source>Visualization Mode</source>
         <translation>Визуализация түрі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="285"/>
         <source>Analyzer</source>
         <translation>Анализатор</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="286"/>
         <source>Scope</source>
         <translation>Осциллограф</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="287"/>
         <source>Off</source>
         <translation>Сөндірілген</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="306"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Analyzer Mode</source>
         <translation>Анализатор режимі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Normal</source>
         <translation>Кәдімгі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Fire</source>
         <translation>От</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Vertical Lines</source>
         <translation>Тік сызықтар</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="312"/>
+        <location filename="../mainvisual.cpp" line="300"/>
         <source>Lines</source>
         <translation>Сызықтар</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="313"/>
+        <location filename="../mainvisual.cpp" line="301"/>
         <source>Bars</source>
         <translation>Жолақшалар</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="326"/>
+        <location filename="../mainvisual.cpp" line="314"/>
         <source>Peaks</source>
         <translation>Пиктер</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="330"/>
+        <location filename="../mainvisual.cpp" line="318"/>
         <source>Refresh Rate</source>
         <translation>Жаңарту жиілігі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="321"/>
         <source>50 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>25 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="323"/>
         <source>10 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>5 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="343"/>
+        <location filename="../mainvisual.cpp" line="331"/>
         <source>Analyzer Falloff</source>
         <translation>Анализатор түсуі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="348"/>
         <source>Slowest</source>
         <translation>Ең баяу</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Slow</source>
         <translation>Баяу</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Medium</source>
         <translation>Орташа</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="349"/>
-        <location filename="../mainvisual.cpp" line="363"/>
+        <location filename="../mainvisual.cpp" line="337"/>
+        <location filename="../mainvisual.cpp" line="351"/>
         <source>Fast</source>
         <translation>Жылдам</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="350"/>
-        <location filename="../mainvisual.cpp" line="364"/>
+        <location filename="../mainvisual.cpp" line="338"/>
+        <location filename="../mainvisual.cpp" line="352"/>
         <source>Fastest</source>
         <translation>Ең жылдам</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="357"/>
+        <location filename="../mainvisual.cpp" line="345"/>
         <source>Peaks Falloff</source>
         <translation>Пиктер түсуі</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="370"/>
+        <location filename="../mainvisual.cpp" line="358"/>
         <source>Background</source>
         <translation>Фон</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="371"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Transparent</source>
         <translation>Мөлдір</translation>
     </message>
@@ -802,174 +718,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="480"/>
-        <source>Default</source>
-        <translation>Бастапқы</translation>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Сыртқы түрі</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
-        <source>Choose a directory</source>
-        <translation>Буманы таңдаңыз</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="290"/>
-        <source>Select one or more files to open</source>
-        <translation>Бір немесе бірнеше файлды таңдаңыз</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="417"/>
-        <source>&amp;Play</source>
-        <translation>&amp;Ойнату</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="417"/>
-        <source>X</source>
+        <location filename="../mainwindow.cpp" line="320"/>
+        <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
-        <source>&amp;Pause</source>
-        <translation>&amp;Аялдату</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="418"/>
-        <source>C</source>
+        <location filename="../mainwindow.cpp" line="382"/>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
-        <source>&amp;Stop</source>
-        <translation>&amp;Тоқтату</translation>
+        <location filename="../mainwindow.cpp" line="390"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Тізім</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <source>&amp;Previous</source>
-        <translation>Ал&amp;дыңғысы</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="421"/>
-        <source>&amp;Next</source>
-        <translation>&amp;Келесісі</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="421"/>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="440"/>
-        <source>&amp;Jump To File</source>
-        <translation>&amp;Файлға өту</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="440"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="446"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Баптаулары</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="446"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="452"/>
-        <source>&amp;Exit</source>
-        <translation>&amp;Шығу</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="452"/>
-        <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="494"/>
-        <source>Open Playlist</source>
-        <translation>Тізімді ашу</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="519"/>
-        <source>Save Playlist</source>
-        <translation>Тізімді сақтау</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="448"/>
-        <source>&amp;About</source>
-        <translation>&amp;Осы туралы</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="518"/>
-        <source>Playlist Files</source>
-        <translation>Тізімдер файлдары</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="422"/>
-        <source>Space</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="449"/>
-        <source>&amp;About Qt</source>
-        <translation>Qt т&amp;уралы</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="422"/>
-        <source>&amp;Play/Pause</source>
-        <translation>О&amp;йнат/аялдат</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="286"/>
-        <source>All Supported Bitstreams</source>
-        <translation>Барлық пішімдер</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="425"/>
-        <source>&amp;Repeat Track</source>
-        <translation>Т&amp;ректі қайталау</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="426"/>
-        <source>&amp;Shuffle</source>
-        <translation>Ке&amp;з-келген ретпен</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="430"/>
-        <source>R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="424"/>
-        <source>&amp;Repeat Playlist</source>
-        <translation>Тізі&amp;мді қайталау</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="410"/>
         <source>Tools</source>
         <translation>Қызмет</translation>
     </message>
@@ -977,269 +746,562 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="136"/>
-        <source>F</source>
+        <location filename="../playlist.cpp" line="53"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Тізім</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="177"/>
+        <source>&amp;Copy Selection To</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="142"/>
-        <source>D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="174"/>
-        <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="266"/>
-        <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="281"/>
-        <source>O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="135"/>
-        <source>&amp;Add File</source>
-        <translation>Фа&amp;йлды қосу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="141"/>
-        <source>&amp;Add Directory</source>
-        <translation>Бу&amp;маны қосу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="154"/>
-        <source>&amp;Remove Selected</source>
-        <translation>Таңда&amp;лғанды өшіру</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="161"/>
-        <source>&amp;Remove All</source>
-        <translation>&amp;Барлығын өшіру</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="167"/>
-        <source>&amp;Remove Unselected</source>
-        <translation>Таң&amp;далмағанды өшіру</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="173"/>
-        <source>&amp;View Track Details</source>
-        <translation>&amp;Ақпараты</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="182"/>
+        <location filename="../playlist.cpp" line="204"/>
         <source>Sort List</source>
         <translation>Сұрыптау</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="185"/>
-        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="207"/>
+        <location filename="../playlist.cpp" line="246"/>
         <source>By Title</source>
         <translation>Аты бойынша</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
-        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="211"/>
+        <location filename="../playlist.cpp" line="250"/>
+        <source>By Album</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="215"/>
+        <location filename="../playlist.cpp" line="254"/>
+        <source>By Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="219"/>
+        <location filename="../playlist.cpp" line="258"/>
+        <source>By Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="223"/>
+        <location filename="../playlist.cpp" line="262"/>
         <source>By Filename</source>
         <translation>Файл аты бойынша</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="193"/>
-        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="227"/>
+        <location filename="../playlist.cpp" line="266"/>
         <source>By Path + Filename</source>
         <translation>Жолы мен файл аты бойынша</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="197"/>
-        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="231"/>
+        <location filename="../playlist.cpp" line="270"/>
         <source>By Date</source>
         <translation>Уақыты бойынша</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
+        <location filename="../playlist.cpp" line="243"/>
         <source>Sort Selection</source>
         <translation>Таңдалғанды сұрыптау</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>Randomize List</source>
         <translation>Тізімді араластыру</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="239"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>Reverse List</source>
         <translation>Тізімді кері айналдыру</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="251"/>
-        <source>Invert Selection</source>
-        <translation>Таңдауды кері айналдыру</translation>
+        <location filename="../playlist.cpp" line="549"/>
+        <source>&amp;New PlayList</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="258"/>
-        <source>&amp;Select None</source>
-        <translation>Т&amp;аңдауды алу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="265"/>
-        <source>&amp;Select All</source>
-        <translation>&amp;Барлығын таңдау</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="273"/>
-        <source>&amp;New List</source>
-        <translation>&amp;Жаңа тізім</translation>
-    </message>
-    <message>
+        <location filename="../playlist.cpp" line="235"/>
         <location filename="../playlist.cpp" line="274"/>
-        <source>Shift+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="280"/>
-        <source>&amp;Load List</source>
-        <translation>Ті&amp;зімді жүктеу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="285"/>
-        <source>&amp;Save List</source>
-        <translation>Тізімді &amp;сақтау</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="286"/>
-        <source>Shift+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="155"/>
-        <source>Del</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="147"/>
-        <source>&amp;Add Url</source>
-        <translation>URL-д&amp;ы қосу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="148"/>
-        <source>U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="201"/>
-        <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
         <translation>Трек нөмірі бойынша</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="247"/>
-        <source>&amp;Queue</source>
-        <translation>&amp;Кезекке</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="247"/>
-        <source>Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>Actions</source>
         <translation>Әрекеттер</translation>
     </message>
 </context>
 <context>
+    <name>PlayListBrowser</name>
+    <message>
+        <location filename="../forms/playlistbrowser.ui" line="14"/>
+        <source>Playlist Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/playlistbrowser.ui" line="45"/>
+        <source>New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/playlistbrowser.ui" line="52"/>
+        <location filename="../playlistbrowser.cpp" line="39"/>
+        <source>Delete</source>
+        <translation type="unfinished">Өшіру</translation>
+    </message>
+    <message>
+        <location filename="../forms/playlistbrowser.ui" line="69"/>
+        <location filename="../forms/playlistbrowser.ui" line="79"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../playlistbrowser.cpp" line="38"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PlayListSelector</name>
+    <message>
+        <location filename="../playlistselector.cpp" line="50"/>
+        <source>&amp;Load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="51"/>
+        <source>&amp;Save As...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="53"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="54"/>
+        <source>&amp;Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="125"/>
+        <source>Rename Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="125"/>
+        <source>Playlist name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PopupSettings</name>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="14"/>
+        <source>Popup Information Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="29"/>
+        <source>Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="58"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="65"/>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
+        <source>Cover size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="115"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="62"/>
+        <source>Artist</source>
+        <translation type="unfinished">Орындаушы</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="63"/>
+        <source>Album</source>
+        <translation type="unfinished">Альбом</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="64"/>
+        <source>Title</source>
+        <translation type="unfinished">Аты</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="65"/>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="66"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="67"/>
+        <source>Genre</source>
+        <translation type="unfinished">Жанры</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="68"/>
+        <source>Comment</source>
+        <translation type="unfinished">Қосымша</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="69"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="70"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="71"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>Year</source>
+        <translation type="unfinished">Жылы</translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="75"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PresetEditor</name>
     <message>
-        <location filename="../forms/preseteditor.ui" line="13"/>
+        <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
         <translation>Орнатулар түзеткіші</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="28"/>
+        <location filename="../forms/preseteditor.ui" line="77"/>
         <source>Load</source>
         <translation>Жүктеу</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="35"/>
+        <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
         <translation>Өшіру</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="46"/>
+        <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
         <translation>Орнату</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="62"/>
+        <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>Авто-орнату</translation>
     </message>
 </context>
 <context>
-    <name>QMMPStarter</name>
+    <name>ShortcutDialog</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="142"/>
-        <source>Usage: qmmp [options] [files]</source>
-        <translation>Қолданылуы: qmmp [опциялар] [файлдар]</translation>
+        <location filename="../forms/shortcutdialog.ui" line="14"/>
+        <source>Change Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="143"/>
-        <source>Options:</source>
-        <translation>Опциялары:</translation>
+        <location filename="../forms/shortcutdialog.ui" line="29"/>
+        <source>Press the key combination you want to assign</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="149"/>
-        <source>Print version number and exit</source>
-        <translation>Нұсқасын көрсету мен шығу</translation>
+        <location filename="../forms/shortcutdialog.ui" line="43"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SkinnedFactory</name>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="31"/>
+        <source>Skinned User Interface</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="150"/>
-        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation>Ұсыныстар, түзетулер, қателер туралы хабарласыңыз:  forkotov02@hotmail.ru</translation>
+        <location filename="../skinnedfactory.cpp" line="44"/>
+        <source>About Qmmp Skinned User Interface</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="148"/>
-        <source>Display this text and exit</source>
-        <translation>Осы мәтінді көрсету және шығу</translation>
+        <location filename="../skinnedfactory.cpp" line="45"/>
+        <source>Qmmp Skinned User Interface</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
-        <source>QMMP version:</source>
-        <translation>QMMP нұсқасы:</translation>
+        <location filename="../skinnedfactory.cpp" line="46"/>
+        <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="145"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Тізімді тазартпау</translation>
+        <location filename="../skinnedfactory.cpp" line="47"/>
+        <source>Written by:
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
-        <source>Qt version:</source>
-        <translation>Qt нұсқасы:</translation>
+        <location filename="../skinnedfactory.cpp" line="50"/>
+        <source>Artwork:
+Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SkinnedSettings</name>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="24"/>
+        <source>Skins</source>
+        <translation type="unfinished">Скиндар</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="55"/>
+        <source>Add...</source>
+        <translation type="unfinished">Қосу...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="68"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Жаңарту</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="101"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">Жабылғанда жасыру</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="108"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">Жасырын түрінде қосылу</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="115"/>
+        <source>Use skin cursors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <source>Fonts</source>
+        <translation type="unfinished">Қаріптер</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <source>Player:</source>
+        <translation type="unfinished">Плеер:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
+        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
+        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">Тізім:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Transparency</source>
+        <translation type="unfinished">Мөлдірлілігі</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <source>Main window</source>
+        <translation type="unfinished">Басты терезе</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">Эквалайзер</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Тізім</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <source>Song Display</source>
+        <translation type="unfinished">Өлендер тізімі</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">Хаттаманы көрсету</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="373"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <source>Show anchor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <source>Show playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="394"/>
+        <source>Show popup information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="478"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="484"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="101"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished">Скин файлдарын таңдау</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="102"/>
+        <source>Skin files</source>
+        <translation type="unfinished">Скин файлдары</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="150"/>
+        <source>Unarchived skin</source>
+        <translation type="unfinished">Тарқатылған скин</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="181"/>
+        <source>Archived skin</source>
+        <translation type="unfinished">Сығылған скин</translation>
     </message>
 </context>
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="176"/>
-        <source>Buffering:</source>
-        <translation>Буферизация:</translation>
-    </message>
-    <message>
-        <location filename="../textscroller.cpp" line="62"/>
+        <location filename="../textscroller.cpp" line="53"/>
         <source>Autoscroll Songname</source>
         <translation>Өлен атауын автоайналдыру</translation>
+    </message>
+    <message>
+        <location filename="../textscroller.cpp" line="54"/>
+        <source>Transparent Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../textscroller.cpp" line="123"/>
+        <source>Buffering: %1%</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="30"/>
+        <location filename="../visualmenu.cpp" line="26"/>
         <source>Visualization</source>
         <translation>Визуализация</translation>
     </message>
