@@ -32,6 +32,7 @@
 #include "shadedvisual.h"
 #include "display.h"
 #include "titlebar.h"
+#include "mainwindow.h"
 
 // TODO skin cursor with shade mode
 TitleBar::TitleBar(QWidget *parent)
