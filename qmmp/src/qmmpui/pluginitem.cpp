@@ -32,6 +32,10 @@
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/uihelper.h>
+#include <qmmpui/filedialogfactory.h>
+#include <qmmpui/filedialog.h>
+#include <qmmpui/uiloader.h>
+#include "radioitemdelegate_p.h"
 #include "pluginitem_p.h"
 
 PluginItem::PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path)
@@ -88,10 +92,38 @@ PluginItem::PluginItem(QTreeWidgetItem *parent, GeneralFactory *factory, const Q
     m_factory = factory;
 }
 
-PluginItem::~PluginItem()
+PluginItem::PluginItem(QTreeWidgetItem *parent, OutputFactory *factory, const QString &path)
+    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), OUTPUT)
 {
-
+    setCheckState(0, (Output::currentFactory() == factory) ? Qt::Checked : Qt::Unchecked);
+    m_has_about = factory->properties().hasAbout;
+    m_has_config = factory->properties().hasSettings;
+    m_factory = factory;
+    setData(0, RadioButtonRole, true);
 }
+
+PluginItem::PluginItem(QTreeWidgetItem *parent, FileDialogFactory *factory, const QString &path)
+    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path, FILE_DIALOG)
+{
+    setCheckState(0, FileDialog::isEnabled(factory) ? Qt::Checked : Qt::Unchecked);
+    m_has_about = factory->properties().hasAbout;
+    m_has_config = false;
+    m_factory = factory;
+    setData(0, RadioButtonRole, true);
+}
+
+PluginItem::PluginItem(QTreeWidgetItem *parent, UiFactory *factory, const QString &path)
+    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), USER_INTERFACE)
+{
+    setCheckState(0, (UiLoader::selected() == factory) ? Qt::Checked : Qt::Unchecked);
+    m_has_about = factory->properties().hasAbout;
+    m_has_config = false;
+    m_factory = factory;
+    setData(0, RadioButtonRole, true);
+}
+
+PluginItem::~PluginItem()
+{}
 
 bool PluginItem::hasAbout() const
 {
@@ -124,6 +156,15 @@ void PluginItem::showAbout(QWidget *parent)
     case PluginItem::GENERAL:
         static_cast<GeneralFactory *>(m_factory)->showAbout(parent);
         break;
+    case PluginItem::OUTPUT:
+        static_cast<OutputFactory *>(m_factory)->showAbout(parent);
+        break;
+    case PluginItem::FILE_DIALOG:
+        static_cast<FileDialogFactory *>(m_factory)->showAbout(parent);
+        break;
+    case PluginItem::USER_INTERFACE:
+        static_cast<UiFactory *>(m_factory)->showAbout(parent);
+        break;
     default:
         ;
     }
@@ -137,19 +178,22 @@ void PluginItem::showSettings(QWidget *parent)
         static_cast<InputSourceFactory *>(m_factory)->showSettings(parent);
         break;
     case PluginItem::DECODER:
-        static_cast<DecoderFactory *>(m_factory)->showSettings (parent);
+        static_cast<DecoderFactory *>(m_factory)->showSettings(parent);
         break;
     case PluginItem::ENGINE:
-        static_cast<EngineFactory *>(m_factory)->showSettings (parent);
+        static_cast<EngineFactory *>(m_factory)->showSettings(parent);
         break;
     case PluginItem::EFFECT:
-        static_cast<EffectFactory *>(m_factory)->showSettings (parent);
+        static_cast<EffectFactory *>(m_factory)->showSettings(parent);
         break;
     case PluginItem::VISUAL:
         Visual::showSettings(static_cast<VisualFactory *>(m_factory), parent);
         break;
     case PluginItem::GENERAL:
         General::showSettings(static_cast<GeneralFactory *>(m_factory), parent);
+        break;
+    case PluginItem::OUTPUT:
+        static_cast<OutputFactory *>(m_factory)->showSettings(parent);
         break;
     default:
         ;
@@ -177,6 +221,24 @@ void PluginItem::setEnabled(bool enabled)
         break;
     case PluginItem::GENERAL:
         General::setEnabled(static_cast<GeneralFactory *>(m_factory), enabled);
+        break;
+    case PluginItem::OUTPUT:
+        if(enabled)
+        {
+            Output::setCurrentFactory(static_cast<OutputFactory *>(m_factory));
+        }
+        break;
+    case PluginItem::FILE_DIALOG:
+        if(enabled)
+        {
+            FileDialog::setEnabled(static_cast<FileDialogFactory *>(m_factory));
+        }
+        break;
+    case PluginItem::USER_INTERFACE:
+        if(enabled)
+        {
+             UiLoader::select(static_cast<UiFactory *>(m_factory));
+        }
         break;
     default:
         ;

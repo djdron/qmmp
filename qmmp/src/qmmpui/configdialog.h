@@ -22,6 +22,9 @@
 
 #include <QDialog>
 #include <QIcon>
+#include <QStyledItemDelegate>
+#include <QApplication>
+#include <QMouseEvent>
 
 
 namespace Ui {
@@ -30,7 +33,6 @@ namespace Ui {
 
 class QListWidgetItem;
 class QTreeWidgetItem;
-
 
 /*! @brief Configuration dialog class.
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -62,15 +64,8 @@ private slots:
     void on_informationButton_clicked();
     void addTitleString(QAction *);
     void saveSettings();
-    void updateDialogButton(int);
-    void on_fdInformationButton_clicked();
     void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
     void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
-    void on_outputComboBox_activated (int index);
-    void on_outputPreferencesButton_clicked();
-    void on_outputInformationButton_clicked();
-    void on_uiComboBox_activated (int index);
-    void on_uiInformationButton_clicked();
 
 private:
     void readSettings();
