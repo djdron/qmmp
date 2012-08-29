@@ -45,6 +45,7 @@ SET(libqmmpui_SRCS
     pluginitem.cpp
     aboutdialog.cpp
     qmmpuisettings.cpp
+    radioitemdelegate.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -78,6 +79,7 @@ SET(libqmmpui_MOC_HDRS
     configdialog.h
     aboutdialog_p.h
     qmmpuisettings.h
+    radioitemdelegate_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
