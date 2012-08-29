@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,7 +52,7 @@ public:
     /*!
      * Object destructor.
      */
-    virtual ~FileDialogFactory() {};
+    virtual ~FileDialogFactory() {}
     /*!
      * Creates file dialog object.
      */
@@ -73,6 +73,6 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(FileDialogFactory, "FileDialogFactory/1.0");
+Q_DECLARE_INTERFACE(FileDialogFactory, "FileDialogFactory/1.0")
 
 #endif

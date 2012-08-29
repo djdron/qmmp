@@ -34,6 +34,9 @@ class OutputFactory;
 class VisualFactory;
 class EffectFactory;
 class GeneralFactory;
+class OutputFactory;
+class FileDialogFactory;
+class UiFactory;
 
 class PluginItem : public QTreeWidgetItem
 {
@@ -45,6 +48,9 @@ public:
     PluginItem(QTreeWidgetItem *parent, EffectFactory *factory, const QString &path);
     PluginItem(QTreeWidgetItem *parent, VisualFactory *factory, const QString &path);
     PluginItem(QTreeWidgetItem *parent, GeneralFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, OutputFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, FileDialogFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, UiFactory *factory, const QString &path);
     ~PluginItem();
 
     enum PluginType
@@ -54,7 +60,10 @@ public:
         ENGINE,
         EFFECT,
         VISUAL,
-        GENERAL
+        GENERAL,
+        OUTPUT,
+        FILE_DIALOG,
+        USER_INTERFACE
     };
 
     bool hasAbout() const;

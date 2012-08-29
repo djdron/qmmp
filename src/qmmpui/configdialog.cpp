@@ -42,6 +42,7 @@
 #include <qmmp/inputsourcefactory.h>
 #include "ui_configdialog.h"
 #include "pluginitem_p.h"
+#include "radioitemdelegate_p.h"
 #include "generalfactory.h"
 #include "general.h"
 #include "uihelper.h"
@@ -61,8 +62,8 @@ ConfigDialog::ConfigDialog (QWidget *parent) : QDialog (parent)
     setAttribute(Qt::WA_DeleteOnClose, false);
     m_ui->preferencesButton->setEnabled(false);
     m_ui->informationButton->setEnabled(false);
+    m_ui->treeWidget->setItemDelegate(new RadioItemDelegate(this));
     connect (this, SIGNAL(rejected()),SLOT(saveSettings()));
-    connect (m_ui->fileDialogComboBox, SIGNAL (currentIndexChanged (int)), SLOT(updateDialogButton(int)));
     m_ui->replayGainModeComboBox->addItem (tr("Track"), QmmpSettings::REPLAYGAIN_TRACK);
     m_ui->replayGainModeComboBox->addItem (tr("Album"), QmmpSettings::REPLAYGAIN_ALBUM);
     m_ui->replayGainModeComboBox->addItem (tr("Disabled"), QmmpSettings::REPLAYGAIN_DISABLED);
@@ -72,10 +73,6 @@ ConfigDialog::ConfigDialog (QWidget *parent) : QDialog (parent)
     //setup icons
     m_ui->preferencesButton->setIcon(QIcon::fromTheme("configure"));
     m_ui->informationButton->setIcon(QIcon::fromTheme("dialog-information"));
-    m_ui->fdInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
-    m_ui->outputInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
-    m_ui->uiInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
-    m_ui->outputPreferencesButton->setIcon(QIcon::fromTheme("configure"));
 }
 
 ConfigDialog::~ConfigDialog()
@@ -226,47 +223,40 @@ void ConfigDialog::loadPluginsInfo()
     }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
+    /*
+        load output plugins information
+    */
+    item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Output"));
+    foreach(OutputFactory *factory, *Output::factories())
+    {
+        new PluginItem (item, factory, Output::file(factory));
+    }
+    m_ui->treeWidget->addTopLevelItem(item);
+    item->setExpanded(true);
+    /*
+        load file dialogs information
+    */
+    item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("File Dialogs"));
+    foreach(FileDialogFactory *factory, FileDialog::registeredFactories())
+    {
+        new PluginItem (item, factory, "Unknown");
+    }
+    m_ui->treeWidget->addTopLevelItem(item);
+    item->setExpanded(true);
+    /*
+        load user interfaces information
+    */
+    item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("User Interfaces"));
+    foreach(UiFactory *factory, *UiLoader::factories())
+    {
+        new PluginItem (item, factory, UiLoader::file(factory));
+    }
+    m_ui->treeWidget->addTopLevelItem(item);
+    item->setExpanded(true);
 
     m_ui->treeWidget->blockSignals(false);
     m_ui->treeWidget->resizeColumnToContents(0);
     m_ui->treeWidget->resizeColumnToContents(1);
-    /*
-        load output plugins information
-    */
-    m_ui->outputInformationButton->setEnabled(false);
-    m_ui->outputPreferencesButton->setEnabled(false);
-    QList <OutputFactory *> *outputs = Output::factories();
-    for (int i = 0; i < outputs->count (); ++i)
-    {
-        m_ui->outputComboBox->addItem(outputs->at(i)->properties().name);
-        if(Output::currentFactory() == outputs->at(i))
-        {
-            m_ui->outputComboBox->setCurrentIndex(i);
-            on_outputComboBox_activated (i);
-        }
-    }
-    /*
-        load file dialog information
-    */
-    foreach(FileDialogFactory *factory, FileDialog::registeredFactories())
-    {
-        m_ui->fileDialogComboBox->addItem(factory->properties().name);
-        if (FileDialog::isEnabled(factory))
-            m_ui->fileDialogComboBox->setCurrentIndex(m_ui->fileDialogComboBox->count()-1);
-    }
-    /*
-        load ui information
-    */
-    m_ui->uiInformationButton->setEnabled(false);
-    foreach(UiFactory *factory, *UiLoader::factories())
-    {
-        m_ui->uiComboBox->addItem(factory->properties().name);
-        if (UiLoader::selected() == factory)
-        {
-            m_ui->uiComboBox->setCurrentIndex(m_ui->uiComboBox->count()-1);
-            on_uiComboBox_activated(m_ui->uiComboBox->count()-1);
-        }
-    }
 }
 
 void ConfigDialog::on_preferencesButton_clicked()
@@ -331,7 +321,6 @@ void ConfigDialog::saveSettings()
         guis->sync();
     }
 
-    FileDialog::setEnabled(FileDialog::registeredFactories().at(m_ui->fileDialogComboBox->currentIndex()));
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy
     QUrl proxyUrl;
@@ -357,26 +346,11 @@ void ConfigDialog::saveSettings()
     gs->setBufferSize(m_ui->bufferSizeSpinBox->value());
     gs->setDetermineFileTypeByContent(m_ui->byContentCheckBox->isChecked());
     gs->sync();
-    QList <OutputFactory *> *outputs = Output::factories();
-    if(m_ui->outputComboBox->currentIndex() >= 0 && outputs->count())
-        Output::setCurrentFactory(outputs->at(m_ui->outputComboBox->currentIndex()));
-
     QList<QVariant> var_sizes;
     var_sizes << m_ui->splitter->sizes().first() << m_ui->splitter->sizes().last();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("ConfigDialog/splitter_sizes", var_sizes);
     settings.setValue("ConfigDialog/window_size", size());
-}
-
-void ConfigDialog::updateDialogButton(int index)
-{
-    m_ui->fdInformationButton->setEnabled(FileDialog::registeredFactories()[index]->properties().hasAbout);
-}
-
-void ConfigDialog::on_fdInformationButton_clicked()
-{
-    int index = m_ui->fileDialogComboBox->currentIndex ();
-    FileDialog::registeredFactories()[index]->showAbout(this);
 }
 
 void ConfigDialog::on_treeWidget_itemChanged (QTreeWidgetItem *item, int column)
@@ -397,36 +371,4 @@ void ConfigDialog::on_treeWidget_currentItemChanged (QTreeWidgetItem *current, Q
         m_ui->preferencesButton->setEnabled(false);
         m_ui->informationButton->setEnabled(false);
     }
-}
-
-void ConfigDialog::on_outputComboBox_activated (int index)
-{
-    OutputFactory *factory = Output::factories()->at(index);
-    m_ui->outputInformationButton->setEnabled(factory->properties().hasAbout);
-    m_ui->outputPreferencesButton->setEnabled(factory->properties().hasSettings);
-}
-
-void ConfigDialog::on_outputPreferencesButton_clicked()
-{
-    int index = m_ui->outputComboBox->currentIndex();
-    Output::factories()->at(index)->showSettings(this);
-}
-
-void ConfigDialog::on_uiComboBox_activated (int index)
-{
-    UiFactory *factory =  UiLoader::factories()->at(index);
-    m_ui->uiInformationButton->setEnabled(factory->properties().hasAbout);
-    UiLoader::select(factory);
-}
-
-void ConfigDialog::on_outputInformationButton_clicked()
-{
-    int index = m_ui->outputComboBox->currentIndex();
-    Output::factories()->at(index)->showAbout(this);
-}
-
-void ConfigDialog::on_uiInformationButton_clicked()
-{
-    int index = m_ui->uiComboBox->currentIndex();
-    UiLoader::factories()->at(index)->showAbout(this);
 }

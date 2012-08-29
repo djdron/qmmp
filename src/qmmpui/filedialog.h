@@ -220,7 +220,7 @@ protected:
     virtual bool modal()const
     {
         return true;
-    };
+    }
     /*!
      * Object destructor
      */

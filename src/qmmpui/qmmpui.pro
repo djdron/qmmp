@@ -44,7 +44,8 @@ HEADERS += general.h \
     configdialog.h \
     pluginitem_p.h \
     aboutdialog_p.h \
-    qmmpuisettings.h
+    qmmpuisettings.h \
+    radioitemdelegate_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -66,7 +67,8 @@ SOURCES += general.cpp \
     configdialog.cpp \
     pluginitem.cpp \
     aboutdialog.cpp \
-    qmmpuisettings.cpp
+    qmmpuisettings.cpp \
+    radioitemdelegate.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
@@ -116,6 +118,8 @@ unix {
     INSTALLS += target \
         devel
 }
+
+
 
 
 
