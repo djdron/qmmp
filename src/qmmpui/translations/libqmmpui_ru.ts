@@ -130,17 +130,17 @@
     <message>
         <location filename="../configdialog.cpp" line="229"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Вывод</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="239"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Файловые диалоги</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="249"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользовательские интерфейсы</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="283"/>
@@ -291,12 +291,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметры интерфейса</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="391"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="447"/>
