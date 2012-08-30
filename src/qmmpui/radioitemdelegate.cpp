@@ -89,7 +89,11 @@ bool RadioItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
             QRect checkRect = qApp->style()->subElementRect(QStyle::SE_RadioButtonIndicator, &option);
 
             QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(event);
-            if (checkRect.contains(mouseEvent->pos()) && !index.data(Qt::CheckStateRole).toBool())
+
+            if(!checkRect.contains(mouseEvent->pos()))
+                return QStyledItemDelegate::editorEvent(event,model,option,index);
+
+            if (!index.data(Qt::CheckStateRole).toBool())
             {
                 model->setData(index, Qt::Checked, Qt::CheckStateRole);
                 QModelIndex parentItem = index.parent();
@@ -99,8 +103,8 @@ bool RadioItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
                     if (childIndex != index)
                         model->setData(childIndex, Qt::Unchecked, Qt::CheckStateRole);
                 }
-                return true;
             }
+            return true;
         }
     }
     return QStyledItemDelegate::editorEvent(event,model,option,index);
