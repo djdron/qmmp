@@ -69,6 +69,7 @@ ConfigDialog::ConfigDialog (QWidget *parent) : QDialog (parent)
     m_ui->replayGainModeComboBox->addItem (tr("Disabled"), QmmpSettings::REPLAYGAIN_DISABLED);
     readSettings();
     loadPluginsInfo();
+    loadLanguages();
     createMenus();
     //setup icons
     m_ui->preferencesButton->setIcon(QIcon::fromTheme("configure"));
@@ -297,6 +298,43 @@ void ConfigDialog::createMenus()
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
 }
 
+void ConfigDialog::loadLanguages()
+{
+    QMap<QString, QString> l;
+    l["auto"] = tr("<Autodetect>");
+    l["pt_BR"] = tr("Brazilian Portuguese");
+    l["zh_CN"] = tr("Chinese Simplified");
+    l["zh_TW"] = tr("Chinese Traditional");
+    l["cs"] = tr("Czech");
+    l["nl"] = tr("Dutch");
+    l["en_US"] = tr("English");
+    l["fr"] = tr("French");
+    l["de"] = tr("German");
+    l["hu"] = tr("Hungarian");
+    l["it"] = tr("Italian");
+    l["ja"] = tr("Japanese");
+    l["kk"] = tr("Kazakh");
+    l["lt"] = tr("Lithuanian");
+    l["pl_PL"] = tr("Polish");
+    l["ru_RU"] = tr("Russian");
+    l["sk"] = tr("Slovak");
+    l["es"] = tr("Spanish");
+    l["tr"] = tr("Turkish");
+    l["uk_UA"] = tr("Ukrainian");
+
+    foreach(QString code, l.keys())
+    {
+        QString title = code != "auto" ? l.value(code) + " (" + code + ")" : l.value(code);
+        m_ui->langComboBox->addItem(title, code);
+    }
+
+    QString code = Qmmp::uiLanguageID();
+    int index = m_ui->langComboBox->findData(code);
+    if(index < 0)
+        index = m_ui->langComboBox->findData("auto");
+    m_ui->langComboBox->setCurrentIndex(index);
+}
+
 void ConfigDialog::addTitleString(QAction * a)
 {
     if (m_ui->formatLineEdit->cursorPosition () < 1)
@@ -351,6 +389,10 @@ void ConfigDialog::saveSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("ConfigDialog/splitter_sizes", var_sizes);
     settings.setValue("ConfigDialog/window_size", size());
+    //User interface language
+    int index = m_ui->langComboBox->currentIndex();
+    if(index >= 0)
+        Qmmp::setUiLanguageID(m_ui->langComboBox->itemData(index).toString());
 }
 
 void ConfigDialog::on_treeWidget_itemChanged (QTreeWidgetItem *item, int column)

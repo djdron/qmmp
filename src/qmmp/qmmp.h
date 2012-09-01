@@ -102,12 +102,22 @@ public:
      */
     static const QString pluginsPath();
     /*!
-     * Returns system language
+     * Returns system language if uiLanguageID() is 'auto'. Otherwise returns uiLanguageID().
      */
     static QString systemLanguageID();
+    /*!
+     * Returns state of the user interface language option. Code "auto" means autodetection.
+     */
+    static QString uiLanguageID();
+    /*!
+     * Sets user interface language.
+     * @param code Language code; code "auto" means autodetection.
+     */
+    static void setUiLanguageID(const QString &code);
 
 private:
     static QString m_configFile;
+    static QString m_langID;
 
 };
 

@@ -31,6 +31,7 @@
 #include "qmmp.h"
 
 QString Qmmp::m_configFile;
+QString Qmmp::m_langID;
 
 const QString Qmmp::configFile()
 {
@@ -78,6 +79,15 @@ const QString Qmmp::pluginsPath()
 
 QString Qmmp::systemLanguageID()
 {
+    if(m_langID.isEmpty())
+    {
+        m_langID = uiLanguageID();
+        qDebug("Qmmp: ui language: %s", qPrintable(m_langID));
+    }
+
+    if(m_langID != "auto")
+        return m_langID;
+
 #ifdef Q_OS_UNIX
     QByteArray v = qgetenv ("LC_ALL");
     if (v.isEmpty())
@@ -88,4 +98,19 @@ QString Qmmp::systemLanguageID()
         return QLocale (v).name();
 #endif
     return  QLocale::system().name();
+}
+
+QString Qmmp::uiLanguageID()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    QString langID = settings.value("General/locale", "auto").toString();
+    langID = langID.isEmpty() ? "auto" : langID;
+    return langID;
+}
+
+void Qmmp::setUiLanguageID(const QString &code)
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("General/locale", code);
+    m_langID.clear();
 }
