@@ -82,7 +82,7 @@ QString Qmmp::systemLanguageID()
     if(m_langID.isEmpty())
     {
         m_langID = uiLanguageID();
-        qDebug("Qmmp: ui language: %s", qPrintable(m_langID));
+        qDebug("Qmmp: setting ui language to '%s'", qPrintable(m_langID));
     }
 
     if(m_langID != "auto")
