@@ -163,7 +163,7 @@ void FileDialog::registerExternalFactories()
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (loader.isLoaded())
-            qDebug("FileDialog: plugin loaded - %s", qPrintable(fileName));
+            qDebug("FileDialog: loaded plugin %s", qPrintable(fileName));
         else
             qDebug("FileDialog: %s",qPrintable(loader.errorString()));
 

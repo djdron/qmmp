@@ -41,7 +41,7 @@ void UiLoader::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("UiLoader: plugin loaded - %s", qPrintable(fileName));
+                qDebug("UiLoader: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("UiLoader: %s", qPrintable(loader.errorString()));
 

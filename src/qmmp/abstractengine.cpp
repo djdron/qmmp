@@ -59,7 +59,7 @@ void AbstractEngine::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("AbstractEngine: plugin loaded - %s", qPrintable(fileName));
+                qDebug("AbstractEngine: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("AbstractEngine: %s", qPrintable(loader.errorString ()));
             EngineFactory *factory = 0;

@@ -87,7 +87,7 @@ void PlaylistParser::loadExternalPlaylistFormats()
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (loader.isLoaded())
-            qDebug("PlaylistParser: plugin loaded - %s", qPrintable(fileName));
+            qDebug("PlaylistParser: loaded plugin %s", qPrintable(fileName));
         else
             qWarning("PlaylistParser: %s", qPrintable(loader.errorString ()));
 

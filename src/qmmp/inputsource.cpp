@@ -159,7 +159,7 @@ void InputSource::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("InputSource: plugin loaded - %s", qPrintable(fileName));
+                qDebug("InputSource: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("InputSource: %s", qPrintable(loader.errorString ()));
             InputSourceFactory *factory = 0;
