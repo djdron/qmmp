@@ -415,7 +415,7 @@ void Output::checkFactories()
             QPluginLoader loader ( pluginsDir.absoluteFilePath ( fileName ) );
             QObject *plugin = loader.instance();
             if ( loader.isLoaded() )
-                qDebug ( "Output: plugin loaded - %s", qPrintable ( fileName ) );
+                qDebug ( "Output: loaded plugin %s", qPrintable ( fileName ) );
             else
                 qWarning("Output: %s", qPrintable(loader.errorString ()));
 

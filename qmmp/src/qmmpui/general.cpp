@@ -43,7 +43,7 @@ void General::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("General: plugin loaded - %s", qPrintable(fileName));
+                qDebug("General: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("General: %s", qPrintable(loader.errorString ()));
 

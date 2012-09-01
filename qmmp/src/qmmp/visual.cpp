@@ -209,7 +209,7 @@ void Visual::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("Visual: plugin loaded - %s", qPrintable(fileName));
+                qDebug("Visual: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("Visual: %s", qPrintable(loader.errorString ()));
 

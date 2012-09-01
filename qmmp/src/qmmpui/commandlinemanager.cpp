@@ -49,7 +49,7 @@ void CommandLineManager::checkOptions()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                /*qDebug("CommandLineManager: plugin loaded - %s", qPrintable(fileName))*/;
+                /*qDebug("CommandLineManager: loaded plugin %s", qPrintable(fileName))*/;
             else
                 qWarning("CommandLineManager: %s", qPrintable(loader.errorString ()));
 

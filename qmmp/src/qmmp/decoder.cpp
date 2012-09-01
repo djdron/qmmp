@@ -114,7 +114,7 @@ void Decoder::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("Decoder: plugin loaded - %s", qPrintable(fileName));
+                qDebug("Decoder: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("Decoder: %s", qPrintable(loader.errorString ()));
             DecoderFactory *factory = 0;

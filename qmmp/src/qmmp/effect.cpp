@@ -95,7 +95,7 @@ void Effect::checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                qDebug("Effect: plugin loaded - %s", qPrintable(fileName));
+                qDebug("Effect: loaded plugin %s", qPrintable(fileName));
             else
                 qWarning("Effect: %s", qPrintable(loader.errorString ()));
 
