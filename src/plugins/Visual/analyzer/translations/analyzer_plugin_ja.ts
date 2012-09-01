@@ -11,7 +11,7 @@
     <message>
         <location filename="../analyzer.cpp" line="77"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>F</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="163"/>
         <source>Cells size:</source>
-        <translation type="unfinished"></translation>
+        <translation>セルサイズ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="223"/>

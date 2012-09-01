@@ -216,12 +216,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>外観と感触</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="391"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>言語:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="447"/>
@@ -363,17 +363,17 @@
     <message>
         <location filename="../configdialog.cpp" line="230"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>出力</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="240"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルダイアログ</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="250"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーインターフェイス</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="282"/>
