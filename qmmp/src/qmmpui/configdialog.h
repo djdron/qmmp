@@ -72,6 +72,7 @@ private:
     void findSkins(const QString &path);
     void loadPluginsInfo();
     void createMenus();
+    void loadLanguages();
     int m_insert_row;
     Ui::ConfigDialog *m_ui;
 
