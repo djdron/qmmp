@@ -130,17 +130,17 @@
     <message>
         <location filename="../configdialog.cpp" line="229"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="239"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлові діалоги</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="249"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Інтерфейси користувача</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="283"/>
@@ -291,12 +291,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметри інтерфейсу</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="391"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мова:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="447"/>
