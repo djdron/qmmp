@@ -170,102 +170,102 @@
     <message>
         <location filename="../configdialog.cpp" line="304"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Автоматично&gt;</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="305"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Бразильська португальська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="306"/>
         <source>Chinese Simplified</source>
-        <translation type="unfinished"></translation>
+        <translation>Китайська спрощена</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="307"/>
         <source>Chinese Traditional</source>
-        <translation type="unfinished"></translation>
+        <translation>Китайська традиційна</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="308"/>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>Чеська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="309"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Голландська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="310"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>Англійська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="311"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>Французька</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="312"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>Німецька</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="313"/>
         <source>Hungarian</source>
-        <translation type="unfinished"></translation>
+        <translation>Угорська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="314"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>Італійська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>Japanese</source>
-        <translation type="unfinished"></translation>
+        <translation>Японська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>Kazakh</source>
-        <translation type="unfinished"></translation>
+        <translation>Казахська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="317"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Литовська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="318"/>
         <source>Polish</source>
-        <translation type="unfinished"></translation>
+        <translation>Польська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="319"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>Російська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="320"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>Словацька</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="321"/>
         <source>Spanish</source>
-        <translation type="unfinished"></translation>
+        <translation>Іспанська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="322"/>
         <source>Turkish</source>
-        <translation type="unfinished"></translation>
+        <translation>Турецька</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>Українська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="287"/>
