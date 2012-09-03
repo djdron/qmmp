@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,9 +33,9 @@ class QTranslator;
 class QtFileDialogFactory : public QObject, public FileDialogFactory
 {
     Q_OBJECT
-    Q_INTERFACES(FileDialogFactory);
+    Q_INTERFACES(FileDialogFactory)
 public:
-    QtFileDialogFactory(){};
+    QtFileDialogFactory(){}
     FileDialog* create();
     const FileDialogProperties properties() const;
     void showAbout(QWidget*);

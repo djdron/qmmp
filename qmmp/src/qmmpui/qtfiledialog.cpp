@@ -34,10 +34,11 @@ const FileDialogProperties QtFileDialogFactory::properties() const
     properties.name = tr("Qt File Dialog");
     properties.shortName = "qt_dialog";
     properties.hasAbout = false;
+    properties.modal = true;
     return properties;
 }
 
-void QtFileDialogFactory::showAbout(QWidget*){};
+void QtFileDialogFactory::showAbout(QWidget*){}
 
 QTranslator *QtFileDialogFactory::createTranslator(QObject *parent)
 {

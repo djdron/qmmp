@@ -1,5 +1,5 @@
 /**************************************************************************
-*   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+*   Copyright (C) 2008-2012 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -23,12 +23,9 @@
 
 #include <QString>
 #include <QStringList>
-
 #include <QFileDialog>
-#include <QMap>
-
+#include <QHash>
 #include "filedialogfactory.h"
-
 
 /*! @brief The FileDialog class is the base interface class of the file dialogs.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
@@ -37,6 +34,23 @@ class FileDialog : public QObject
 {
     Q_OBJECT
 public:
+    /*!
+     * Returns a list of registered file dialog factories.
+     */
+    static QList <FileDialogFactory*> *factories();
+    /*!
+     * Selects current file dialog factory.
+     */
+    static void setEnabled(FileDialogFactory *factory);
+    /*!
+     * Returns \b true if file dialog \b factory is used by default, otherwise returns \b false
+     */
+    static bool isEnabled(FileDialogFactory *factory);
+    /*!
+     * Returns plugin file path.
+     * @param factory File dialog plugin factory.
+     */
+    static QString file(FileDialogFactory *factory);
     /*!
      * Enum of available file dialog modes
      */
@@ -127,28 +141,13 @@ public:
                       const char *member = 0,
                       const QString &caption = QString(),
                       const QString &filters = QString());
-    /*!
-     * Returns a list of registered file dialog factories.
-     */
-    static QList <FileDialogFactory*> registeredFactories();
-    /*!
-     * Returns \b true if selected file dialog doesn't support nonmodal mode, otherwise returns \b false
-     */
-    static bool isModal();
-    /*!
-     * Selects current file dialog factory.
-     */
-    static void setEnabled(FileDialogFactory *factory);
-    /*!
-     * Returns \b true if file dialog \b factory is used by default, otherwise returns \b false
-     */
-    static bool isEnabled(FileDialogFactory *factory);
 
 signals:
     /*!
      * Emitted when the add button has pressed. Subclass should emit this signal.
      */
     void filesAdded(const QStringList&);
+
 protected:
     /*!
      * Object constructor.
@@ -208,26 +207,12 @@ protected:
     * (example: "Audio (*.mp3 *.ogg);;Text files (*.txt);;XML files (*.xml)").
     * @param selectedFilter Default selected filter.
     */
-    virtual QString saveFileName ( QWidget *parent ,
-                                   const QString &caption,
-                                   const QString &dir,
-                                   const QString &filter ,
-                                   QString *selectedFilter);
-    /*!
-     * Returns \b true if file dialog doesn't support nonmodal mode, otherwise returns \b false
-     * Subclass should reimplement this function.
-     */
-    virtual bool modal()const
-    {
-        return true;
-    }
+    virtual QString saveFileName (QWidget *parent, const QString &caption, const QString &dir,
+                                   const QString &filter, QString *selectedFilter);
     /*!
      * Object destructor
      */
-    virtual ~FileDialog()
-    {
-        ;
-    };
+    virtual ~FileDialog();
     /*!
      * Opens nonmodal file dialog. Selected file dialog should support nonmodal mode.
      * Otherwise this function does nothing.
@@ -237,40 +222,22 @@ protected:
      * @param caption Dialog title.
      * @param mask Filer used by file dialog
      */
-    virtual void raise(const QString &dir = QString(),
-                       Mode mode = AddFiles,
-                       const QString &caption = QString(),
-                       const QStringList &mask = QStringList())
-    {
-        Q_UNUSED(dir);
-        Q_UNUSED(mode);
-        Q_UNUSED(caption);
-        Q_UNUSED(mask);
-    }
-    /*!
-     * Returns a pointer to the selected file dialog instance.
-     */
-    static FileDialog* instance();
-    /*!
-     * Returns a pointer to the default file dialog instance.
-     */
-    static FileDialog* defaultInstance();
-    /*!
-     * Registers file dialog \b factory
-     * Returns \b false if \b factory is already registered, otherwise returns \b true
-     */
-    static bool registerFactory(FileDialogFactory *factory);
+    virtual void raise(const QString &dir = QString(), Mode mode = AddFiles,
+                       const QString &caption = QString(), const QStringList &mask = QStringList());
 
 private slots:
     void updateLastDir(const QStringList&);
 
 private:
+    static void checkFactories();
+    static FileDialog* instance();
+    static FileDialog* createDefault();
+    static QList<FileDialogFactory*> *m_factories;
+    static FileDialogFactory *m_currentFactory;
+    static FileDialog* m_instance;
+    static QHash <FileDialogFactory*, QString> *m_files;
+
     void init(QObject* receiver, const char* member, QString *dir);
-    static void registerBuiltinFactories();
-    static void registerExternalFactories();
-    static QMap <QString,FileDialogFactory*> factories;
-    static FileDialog* _instance;
-    static QString m_current_factory;
     bool m_initialized;
     QString *m_lastDir;
 };
