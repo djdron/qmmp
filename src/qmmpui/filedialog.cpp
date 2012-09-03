@@ -30,54 +30,87 @@
 #include "qtfiledialog_p.h"
 
 
-FileDialog* FileDialog::_instance = 0;
+//static functions
+FileDialog* FileDialog::m_instance = 0;
+QList<FileDialogFactory*> *FileDialog::m_factories = 0;
+QHash <FileDialogFactory*, QString> *FileDialog::m_files = 0;
+FileDialogFactory *FileDialog::m_currentFactory = 0;
 
-QMap<QString,FileDialogFactory*> FileDialog::factories = QMap<QString,FileDialogFactory*>();
-
-FileDialog::FileDialog() : QObject(), m_initialized(false)
+void FileDialog::checkFactories()
 {
-    m_lastDir = 0;
+    if(m_factories)
+        return;
+
+    m_factories = new QList<FileDialogFactory *>;
+    m_files = new QHash <FileDialogFactory*, QString>;
+    m_factories->append(new QtFileDialogFactory);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("FileDialogs");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    {
+        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+        QObject *plugin = loader.instance();
+        if (loader.isLoaded())
+            qDebug("FileDialog: loaded plugin %s", qPrintable(fileName));
+        else
+            qWarning("FileDialog: %s",qPrintable(loader.errorString()));
+
+        FileDialogFactory *factory = 0;
+        if (plugin)
+            factory = qobject_cast<FileDialogFactory *>(plugin);
+
+        if (factory)
+        {
+            m_factories->append(factory);
+            m_files->insert(factory, fileName);
+            qApp->installTranslator(factory->createTranslator(qApp));
+        }
+    }
+#ifndef Q_OS_WIN32
+#if (QT_VERSION >= 0x040500 && QT_VERSION < 0x040600)
+    //load native kde dialog
+    QStringList paths;
+    paths << "/usr/lib/kde4/kio_file.so";
+    paths << "/usr/lib64/kde4/kio_file.so";
+    paths << "/usr/local/kde4/lib/kde4/kio_file.so";
+    foreach(QString path, paths)
+    {
+        if(QFile::exists(path))
+        {
+            QLibrary *l = new QLibrary(path, qApp);
+            l->load();
+            break;
+        }
+    }
+#endif
+#endif
 }
 
-bool FileDialog::isModal()
+QList <FileDialogFactory*> *FileDialog::factories()
 {
-    return instance()->modal();
+    checkFactories();
+    return m_factories;
 }
 
 void FileDialog::setEnabled(FileDialogFactory *factory)
 {
-    if (factories.isEmpty())
-    {
-        registerBuiltinFactories();
-        registerExternalFactories();
-    }
+    checkFactories();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("FileDialog", factories.key(factory));
+    settings.setValue("FileDialog", factory->properties().shortName);
 }
 
 bool FileDialog::isEnabled(FileDialogFactory *factory)
 {
-    if (factories.isEmpty())
-    {
-        registerBuiltinFactories();
-        registerExternalFactories();
-    }
+    checkFactories();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString f_dialogName = settings.value("FileDialog", "qt_dialog").toString();
-    return factories.value(f_dialogName) == factory;
+    QString name = settings.value("FileDialog", "qt_dialog").toString();
+    return factory->properties().shortName == name;
 }
 
-void FileDialog::init(QObject* receiver, const char* member, QString *dir)
+QString FileDialog::file(FileDialogFactory *factory)
 {
-    m_lastDir = dir;
-    if (m_initialized)
-        disconnect();
-    if (receiver &&  member)
-    {
-        connect(this,SIGNAL(filesAdded(const QStringList&)), receiver, member);
-        connect(this,SIGNAL(filesAdded(const QStringList&)), SLOT(updateLastDir(const QStringList&)));
-        m_initialized = true;
-    }
+    checkFactories();
+    return m_files->value(factory);
 }
 
 QString FileDialog::getExistingDirectory(QWidget *parent,
@@ -110,167 +143,6 @@ QString FileDialog::getSaveFileName (QWidget *parent, const QString &caption,
     return instance()->saveFileName(parent,caption,dir,filter,selectedFilter);
 }
 
-//virtual
-QString FileDialog::existingDirectory(QWidget *parent, const QString &caption, const QString &dir)
-{
-    FileDialog *instance = FileDialog::defaultInstance();
-    QString dir_path = instance->existingDirectory(parent, caption, dir);
-    delete instance;
-    return dir_path;
-}
-
-QString FileDialog::openFileName(QWidget *parent, const QString &caption, const QString &dir,
-                                 const QString &filter, QString *selectedFilter)
-{
-    FileDialog *instance = FileDialog::defaultInstance();
-    QString file_path = instance->openFileName(parent, caption, dir, filter, selectedFilter);
-    delete instance;
-    return file_path;
-}
-
-QStringList FileDialog::openFileNames(QWidget *parent, const QString &caption, const QString &dir,
-                                      const QString &filter, QString *selectedFilter)
-{
-    FileDialog *instance = FileDialog::defaultInstance();
-    QStringList list = instance->openFileNames(parent, caption, dir, filter, selectedFilter);
-    delete instance;
-    return list;
-}
-
-QString FileDialog::saveFileName(QWidget *parent, const QString &caption, const QString &dir,
-                                 const QString &filter, QString *selectedFilter)
-{
-    FileDialog *instance = FileDialog::defaultInstance();
-    QString file_path = instance->saveFileName(parent, caption, dir, filter, selectedFilter);
-    delete instance;
-    return file_path;
-}
-
-
-void FileDialog::registerBuiltinFactories()
-{
-    FileDialogFactory *fct = new QtFileDialogFactory();
-    qApp->installTranslator(fct->createTranslator(qApp));
-    registerFactory(fct);
-}
-
-void FileDialog::registerExternalFactories()
-{
-    QDir pluginsDir (Qmmp::pluginsPath());
-    pluginsDir.cd("FileDialogs");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
-    {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = loader.instance();
-        if (loader.isLoaded())
-            qDebug("FileDialog: loaded plugin %s", qPrintable(fileName));
-        else
-            qDebug("FileDialog: %s",qPrintable(loader.errorString()));
-
-        FileDialogFactory *fct = 0;
-        if (plugin)
-            fct = qobject_cast<FileDialogFactory *>(plugin);
-
-        if (fct)
-        {
-            if (!registerFactory(fct))
-                qDebug("Warning: Plugin with name %s is already registered...",
-                       qPrintable(fileName));
-            qApp->installTranslator(fct->createTranslator(qApp));
-        }
-    }
-#ifndef Q_OS_WIN32
-#if (QT_VERSION >= 0x040500 && QT_VERSION < 0x040600)
-    //load native kde dialog
-    QStringList paths;
-    paths << "/usr/lib/kde4/kio_file.so";
-    paths << "/usr/lib64/kde4/kio_file.so";
-    paths << "/usr/local/kde4/lib/kde4/kio_file.so";
-    foreach(QString path, paths)
-    {
-        if(QFile::exists(path))
-        {
-            QLibrary *l = new QLibrary(path, qApp);
-            l->load();
-            break;
-        }
-    }
-#endif
-#endif
-}
-
-bool FileDialog::registerFactory(FileDialogFactory *factory)
-{
-    if (!factories.contains(factory->properties().shortName))
-    {
-        factories.insert(factory->properties().shortName, factory);
-        return true;
-    }
-    return false;
-}
-
-QString FileDialog::m_current_factory = QString();
-
-FileDialog* FileDialog::instance()
-{
-    if (factories.isEmpty())
-    {
-        registerBuiltinFactories();
-        registerExternalFactories();
-    }
-
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString f_dialogName = settings.value("FileDialog", "qt_dialog").toString();
-
-    QStringList names = factories.keys();
-
-    if (!names.contains(f_dialogName))
-        f_dialogName = "qt_dialog";
-
-    if (m_current_factory != f_dialogName || !_instance)
-    {
-        if (_instance)
-        {
-            delete _instance;
-            _instance = 0;
-        }
-
-        foreach(QString name,names)
-        {
-            if (name == f_dialogName)
-            {
-                _instance = factories[name]->create();
-                m_current_factory = f_dialogName;
-                break;
-            }
-        }
-
-        if (!_instance)
-            _instance = factories["qt_dialog"]->create();
-    }
-    return _instance;
-}
-
-FileDialog* FileDialog::defaultInstance()
-{
-    if (factories.isEmpty())
-    {
-        registerBuiltinFactories();
-        registerExternalFactories();
-    }
-    return factories["qt_dialog"]->create();
-}
-
-QList <FileDialogFactory*> FileDialog::registeredFactories()
-{
-    if (factories.isEmpty())
-    {
-        registerBuiltinFactories();
-        registerExternalFactories();
-    }
-    return factories.values();
-}
-
 void FileDialog::popup(QWidget *parent,
                        Mode m,
                        QString *dir,
@@ -285,7 +157,7 @@ void FileDialog::popup(QWidget *parent,
     FileDialog* inst = instance();
     inst->setParent(parent);
     inst->init(receiver, member, dir);
-    if (!inst->modal())
+    if (!m_currentFactory->properties().modal)
         inst->raise(*dir, m, caption, filters.split(";;"));
     else
     {
@@ -305,6 +177,107 @@ void FileDialog::popup(QWidget *parent,
     }
 }
 
+FileDialog* FileDialog::instance()
+{
+    checkFactories();
+    FileDialogFactory *selected = 0;
+
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QString name = settings.value("FileDialog", "qt_dialog").toString();
+    foreach(FileDialogFactory *factory, *m_factories)
+    {
+        if(factory->properties().shortName == name)
+        {
+            selected = factory;
+            break;
+        }
+    }
+
+    if(!selected)
+        selected = m_factories->at(0);
+
+    if(selected == m_currentFactory && m_instance)
+        return m_instance;
+
+    if(m_instance)
+    {
+        delete m_instance;
+        m_instance = 0;
+    }
+
+    m_currentFactory = selected;
+    m_instance = m_currentFactory->create();
+    return m_instance;
+}
+
+FileDialog* FileDialog::createDefault()
+{
+    return m_factories->at(0)->create();
+}
+
+//base implementation
+FileDialog::FileDialog() : QObject(), m_initialized(false)
+{
+    m_lastDir = 0;
+}
+
+FileDialog::~FileDialog() {}
+
+void FileDialog::raise(const QString &dir, Mode mode, const QString &caption, const QStringList &mask)
+{
+    Q_UNUSED(dir);
+    Q_UNUSED(mode);
+    Q_UNUSED(caption);
+    Q_UNUSED(mask);
+}
+
+QString FileDialog::existingDirectory(QWidget *parent, const QString &caption, const QString &dir)
+{
+    FileDialog *instance = FileDialog::createDefault();
+    QString dir_path = instance->existingDirectory(parent, caption, dir);
+    delete instance;
+    return dir_path;
+}
+
+QString FileDialog::openFileName(QWidget *parent, const QString &caption, const QString &dir,
+                                 const QString &filter, QString *selectedFilter)
+{
+    FileDialog *instance = FileDialog::createDefault();
+    QString file_path = instance->openFileName(parent, caption, dir, filter, selectedFilter);
+    delete instance;
+    return file_path;
+}
+
+QStringList FileDialog::openFileNames(QWidget *parent, const QString &caption, const QString &dir,
+                                      const QString &filter, QString *selectedFilter)
+{
+    FileDialog *instance = FileDialog::createDefault();
+    QStringList list = instance->openFileNames(parent, caption, dir, filter, selectedFilter);
+    delete instance;
+    return list;
+}
+
+QString FileDialog::saveFileName(QWidget *parent, const QString &caption, const QString &dir,
+                                 const QString &filter, QString *selectedFilter)
+{
+    FileDialog *instance = FileDialog::createDefault();
+    QString file_path = instance->saveFileName(parent, caption, dir, filter, selectedFilter);
+    delete instance;
+    return file_path;
+}
+
+void FileDialog::init(QObject* receiver, const char* member, QString *dir)
+{
+    m_lastDir = dir;
+    if (m_initialized)
+        disconnect();
+    if (receiver &&  member)
+    {
+        connect(this,SIGNAL(filesAdded(const QStringList&)), receiver, member);
+        connect(this,SIGNAL(filesAdded(const QStringList&)), SLOT(updateLastDir(const QStringList&)));
+        m_initialized = true;
+    }
+}
 
 void FileDialog::updateLastDir(const QStringList& list)
 {

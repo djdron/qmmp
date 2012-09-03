@@ -1,5 +1,5 @@
 /**************************************************************************
-*   Copyright (C) 2008 by Ilya Kotov                                      *
+*   Copyright (C) 2008-2012 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -25,8 +25,6 @@
 #include "qmmpfiledialogimpl.h"
 #include "qmmpfiledialog.h"
 
-
-
 QmmpFileDialog::QmmpFileDialog()
 {
     m_dialog = new QmmpFileDialogImpl();
@@ -35,11 +33,6 @@ QmmpFileDialog::QmmpFileDialog()
 
 void QmmpFileDialog::handleSelected(/*const QStringList& s */)
 {
-}
-
-bool QmmpFileDialog::modal()const
-{
-    return false;
 }
 
 QmmpFileDialog::~QmmpFileDialog()
@@ -120,7 +113,8 @@ const FileDialogProperties QmmpFileDialogFactory::properties() const
     FileDialogProperties properties;
     properties.name = tr("Qmmp File Dialog");
     properties.shortName = "qmmp_dialog";
-    properties.hasAbout =true;
+    properties.hasAbout = true;
+    properties.modal = false;
     return properties;
 }
 

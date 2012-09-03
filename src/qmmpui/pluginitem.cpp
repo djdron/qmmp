@@ -103,7 +103,7 @@ PluginItem::PluginItem(QTreeWidgetItem *parent, OutputFactory *factory, const QS
 }
 
 PluginItem::PluginItem(QTreeWidgetItem *parent, FileDialogFactory *factory, const QString &path)
-    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path, FILE_DIALOG)
+    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), FILE_DIALOG)
 {
     setCheckState(0, FileDialog::isEnabled(factory) ? Qt::Checked : Qt::Unchecked);
     m_has_about = factory->properties().hasAbout;
