@@ -54,7 +54,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[SHOW_PLAYLIST] = createAction2(tr("Show Playlist"), "show_playlist", tr("Alt+E"));
     m_actions[SHOW_EQUALIZER] = createAction2(tr("Show Equalizer"), "show_equalizer", tr("Alt+G"));
     m_actions[WM_ALLWAYS_ON_TOP] = createAction2(tr("Always on Top"), "always_on_top", "");
-    m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "General/always_on_top", "");
+    m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "sticky", "");
     m_actions[WM_DOUBLE_SIZE] = createAction2(tr("Double Size"), "double_size", tr("Meta+D"));
     //playlist
     m_actions[PL_ADD_FILE] = createAction(tr("&Add File"), "add_file", tr("F"), "audio-x-generic");
