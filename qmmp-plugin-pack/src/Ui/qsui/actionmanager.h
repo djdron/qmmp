@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -61,6 +61,8 @@ public:
 
         WM_ALLWAYS_ON_TOP,
         WM_STICKY,
+
+        UI_ANALYZER,
 
         PL_ADD_FILE,
         PL_ADD_DIRECTORY,

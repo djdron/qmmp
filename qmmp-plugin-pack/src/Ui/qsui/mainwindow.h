@@ -86,7 +86,7 @@ private:
 	void writeSettings();
 	QString m_lastDir;
 	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
+	Ui::MainWindow m_ui;
 	MediaPlayer *m_player;
 	PositionSlider *m_slider;
 	QLabel *m_timeLabel;

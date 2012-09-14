@@ -28,7 +28,9 @@ SOURCES += main.cpp \
     keyboardmanager.cpp \
     aboutqsuidialog.cpp \
     qsuifactory.cpp \
-    qsuisettings.cpp
+    qsuisettings.cpp \
+    qsuianalyzer.cpp \
+    fft.c
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -45,7 +47,10 @@ HEADERS += mainwindow.h \
     keyboardmanager.h \
     aboutqsuidialog.h \
     qsuifactory.h \
-    qsuisettings.h
+    qsuisettings.h \
+    qsuianalyzer.h \
+    fft.h \
+    inlines.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
@@ -92,3 +97,7 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
+
+
+
+

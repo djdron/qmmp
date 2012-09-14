@@ -54,7 +54,9 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[CLEAR_QUEUE] = createAction(tr("&Clear Queue"), "clear_queue", tr("Alt+Q"));
     //view
     m_actions[WM_ALLWAYS_ON_TOP] = createAction2(tr("Always on Top"), "always_on_top", "");
-    m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "General/always_on_top", "");
+    m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "sticky", "");
+    m_actions[UI_ANALYZER] = createAction2(tr("Analyzer"), "analyzer", "");
+
     //playlist
     m_actions[PL_ADD_FILE] = createAction(tr("&Add File"), "add_file", tr("F"), "audio-x-generic");
     m_actions[PL_ADD_DIRECTORY] = createAction(tr("&Add Directory"), "add_dir", tr("D"), "folder");

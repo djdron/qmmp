@@ -50,10 +50,14 @@ SET(libqsui_SRCS
     logo.cpp
     aboutqsuidialog.cpp
     keyboardmanager.cpp
+    qsuianalyzer.cpp
+    fft.c
 )
 
 SET(libqsui_HDRS
     shortcutitem.h
+    inlines.h
+    fft.h
 )
 
 SET(libqsui_MOC_HDRS
@@ -73,6 +77,7 @@ SET(libqsui_MOC_HDRS
     logo.h
     aboutqsuidialog.h
     keyboardmanager.h
+    qsuianalyzer.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc images/qsui_images.qrc)

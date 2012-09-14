@@ -53,7 +53,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
     m_balance = 0;
     m_update = false;
     //qmmp objects
@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_uiHelper = UiHelper::instance();
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
-    ui.actionVisualization->setMenu(m_visMenu);
+    m_ui.actionVisualization->setMenu(m_visMenu);
     m_pl_menu = new QMenu(this); //playlist menu
     new ActionManager(this); //action manager
     //status
@@ -80,21 +80,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
         ListWidget *list = new ListWidget(model, this);
         list->setMenu(m_pl_menu);
         if(m_pl_manager->currentPlayList() != model)
-            ui.tabWidget->addTab(list, model->name());
+            m_ui.tabWidget->addTab(list, model->name());
         else
         {
-            ui.tabWidget->addTab(list, "[" + model->name() + "]");
-            ui.tabWidget->setCurrentWidget(list);
+            m_ui.tabWidget->addTab(list, "[" + model->name() + "]");
+            m_ui.tabWidget->setCurrentWidget(list);
         }
         if(model == m_pl_manager->selectedPlayList())
         {
-            ui.tabWidget->setCurrentWidget(list);
+            m_ui.tabWidget->setCurrentWidget(list);
             m_key_manager->setListWidget(list);
         }
     }
     m_slider = new PositionSlider(this);
     m_slider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    ui.progressToolBar->addWidget(m_slider);
+    m_ui.progressToolBar->addWidget(m_slider);
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     //playlist manager
@@ -105,30 +105,35 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
             SLOT(updateTabs()));
     connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeTab(int)));
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
-    connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
-    connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
-    ui.tabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(ui.tabWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(showTabMenu(QPoint)));
-    m_tab_menu = new QMenu(ui.tabWidget);
+    connect(m_ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
+    connect(m_ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
+    m_ui.tabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_ui.tabWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(showTabMenu(QPoint)));
+    m_tab_menu = new QMenu(m_ui.tabWidget);
     //status bar
     m_timeLabel = new QLabel(this);
     m_statusLabel = new QLabel(this);
-    ui.statusbar->addPermanentWidget(m_statusLabel, 0);
-    ui.statusbar->addPermanentWidget(m_timeLabel, 1);
+    m_ui.statusbar->addPermanentWidget(m_statusLabel, 0);
+    m_ui.statusbar->addPermanentWidget(m_timeLabel, 1);
     //volume
     m_volumeSlider = new QSlider(Qt::Horizontal, this);
     m_volumeSlider->setFixedWidth(100);
     m_volumeSlider->setRange(0,100);
-    ui.progressToolBar->addSeparator();
-    ui.progressToolBar->addWidget(m_volumeSlider);
+    m_ui.progressToolBar->addSeparator();
+    m_ui.progressToolBar->addWidget(m_volumeSlider);
     QIcon volumeIcon = QIcon::fromTheme("audio-volume-high", QIcon(":/qsui/audio-volume-high.png"));
-    m_volumeAction = ui.progressToolBar->addAction(volumeIcon, tr("Volume"));
+    m_volumeAction = m_ui.progressToolBar->addAction(volumeIcon, tr("Volume"));
     connect(m_volumeSlider, SIGNAL(valueChanged(int)), SLOT(setVolume(int)));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
 
     updateVolume();
     createActions();
     readSettings();
+
+    //visualization
+    Visual::add(m_ui.visualWidget);
+
+   m_ui.splitter->setStretchFactor(0,1);
 }
 
 MainWindow::~MainWindow()
@@ -191,13 +196,13 @@ void MainWindow::updateTabs()
     {
         PlayListModel *model = m_pl_manager->playListAt(i);
         if(model == m_pl_manager->currentPlayList())
-            ui.tabWidget->setTabText(i, "[" + model->name() + "]");
+            m_ui.tabWidget->setTabText(i, "[" + model->name() + "]");
         else
-            ui.tabWidget->setTabText(i, model->name());
+            m_ui.tabWidget->setTabText(i, model->name());
         if(model == m_pl_manager->selectedPlayList())
         {
-            ui.tabWidget->setCurrentIndex(i);
-            m_key_manager->setListWidget(qobject_cast<ListWidget *>(ui.tabWidget->widget(i)));
+            m_ui.tabWidget->setCurrentIndex(i);
+            m_key_manager->setListWidget(qobject_cast<ListWidget *>(m_ui.tabWidget->widget(i)));
         }
     }
 }
@@ -221,14 +226,14 @@ void MainWindow::addTab(int index)
 {
     ListWidget *list = new ListWidget(m_pl_manager->playListAt(index), this);
     list->setMenu(m_pl_menu);
-    ui.tabWidget->insertTab(index, list, m_pl_manager->playListAt(index)->name());
+    m_ui.tabWidget->insertTab(index, list, m_pl_manager->playListAt(index)->name());
     updateTabs();
 }
 
 void MainWindow::removeTab(int index)
 {
-    ui.tabWidget->widget(index)->deleteLater();
-    ui.tabWidget->removeTab(index);
+    m_ui.tabWidget->widget(index)->deleteLater();
+    m_ui.tabWidget->removeTab(index);
     updateTabs();
 }
 
@@ -239,7 +244,7 @@ void MainWindow::renameTab()
     {
         if(!dialog->ui.nameLineEdit->text().isEmpty())
         {
-            m_pl_manager->playListAt(ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
+            m_pl_manager->playListAt(m_ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
             updateTabs();
         }
     }
@@ -352,40 +357,42 @@ void MainWindow::createActions()
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
     //main toolbar
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause())));
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::STOP, m_player, SLOT(stop())));
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::NEXT, m_player, SLOT(next())));
-    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::STOP, m_player, SLOT(stop())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::NEXT, m_player, SLOT(next())));
+    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles())));
 
     //file menu
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, this, SLOT(addDir())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_URL, this, SLOT(addUrl())));
-    ui.menuFile->addSeparator();
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, this, SLOT(addPlaylist())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renameTab())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, this, SLOT(addDir())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_URL, this, SLOT(addUrl())));
+    m_ui.menuFile->addSeparator();
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, this, SLOT(addPlaylist())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renameTab())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
                                       SLOT(selectNextPlayList())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
                                       SLOT(selectPreviousPlayList())));
-    ui.menuFile->addSeparator();
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SLOT(loadPlayList())));
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SLOT(savePlayList())));
-    ui.menuFile->addSeparator();
-    ui.menuFile->addAction(SET_ACTION(ActionManager::QUIT, m_uiHelper, SLOT(exit())));
+    m_ui.menuFile->addSeparator();
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SLOT(loadPlayList())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SLOT(savePlayList())));
+    m_ui.menuFile->addSeparator();
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::QUIT, m_uiHelper, SLOT(exit())));
     //edit menu
-    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
-    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager,
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager,
                                       SLOT(removeSelected())));
-    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
                                       SLOT(removeUnselected())));
-    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
-    ui.menuEdit->addSeparator();
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
+    m_ui.menuEdit->addSeparator();
     //view menu
-    ui.menuView->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(readSettings())));
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(readSettings())));
+    m_ui.menuView->addSeparator();
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, this, SLOT(readSettings())));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -424,7 +431,7 @@ void MainWindow::createActions()
 
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
-    ui.menuEdit->addMenu (sort_mode_menu);
+    m_ui.menuEdit->addMenu (sort_mode_menu);
 
     sort_mode_menu = new QMenu (tr("Sort Selection"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -458,38 +465,38 @@ void MainWindow::createActions()
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
 
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sortSelection (int)));
-    ui.menuEdit->addMenu (sort_mode_menu);
-    ui.menuEdit->addSeparator();
-    ui.menuEdit->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
+    m_ui.menuEdit->addMenu (sort_mode_menu);
+    m_ui.menuEdit->addSeparator();
+    m_ui.menuEdit->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
                             m_pl_manager, SLOT(randomizeList()));
-    ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
+    m_ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                             m_pl_manager, SLOT(reverseList()));
-    ui.menuEdit->addSeparator();
-    ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
+    m_ui.menuEdit->addSeparator();
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
-    ui.menuTools->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Actions"), this));
+    m_ui.menuTools->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Actions"), this));
     //playback menu
-    ui.menuPlayback->addAction(ACTION(ActionManager::PLAY));
-    ui.menuPlayback->addAction(ACTION(ActionManager::STOP));
-    ui.menuPlayback->addAction(ACTION(ActionManager::PAUSE));
-    ui.menuPlayback->addAction(ACTION(ActionManager::NEXT));
-    ui.menuPlayback->addAction(ACTION(ActionManager::PREVIOUS));
-    ui.menuPlayback->addSeparator();
-    ui.menuPlayback->addAction(SET_ACTION(ActionManager::JUMP, this, SLOT(jumpTo())));
-    ui.menuPlayback->addSeparator();
-    ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
-    ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
-    ui.menuPlayback->addSeparator();
-    ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_ALL));
-    ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_TRACK));
-    ui.menuPlayback->addAction(ACTION(ActionManager::SHUFFLE));
-    ui.menuPlayback->addAction(ACTION(ActionManager::NO_PL_ADVANCE));
-    ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::PLAY));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::STOP));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::PAUSE));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::NEXT));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::PREVIOUS));
+    m_ui.menuPlayback->addSeparator();
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::JUMP, this, SLOT(jumpTo())));
+    m_ui.menuPlayback->addSeparator();
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
+    m_ui.menuPlayback->addSeparator();
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_ALL));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_TRACK));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::SHUFFLE));
+    m_ui.menuPlayback->addAction(ACTION(ActionManager::NO_PL_ADVANCE));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                           SLOT(stopAfterSelected())));
     //help menu
-    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_UI, this, SLOT(aboutUi())));
-    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
-    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
+    m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_UI, this, SLOT(aboutUi())));
+    m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
+    m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
     //playlist menu
     m_pl_menu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT(showDetails())));
     m_pl_menu->addSeparator();
@@ -501,7 +508,7 @@ void MainWindow::createActions()
     m_pl_menu->addSeparator();
     m_pl_menu->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
     //tools menu
-    ui.menuTools->addAction(SET_ACTION(ActionManager::EQUALIZER, this, SLOT(showEqualizer())));
+    m_ui.menuTools->addAction(SET_ACTION(ActionManager::EQUALIZER, this, SLOT(showEqualizer())));
 
     //tab menu
     m_tab_menu->addAction(ACTION(ActionManager::PL_RENAME));
@@ -537,22 +544,28 @@ void MainWindow::readSettings()
         if(settings.value("start_hidden").toBool())
             hide();
 
+        ACTION(ActionManager::UI_ANALYZER)->setChecked(settings.value("show_analyzer", true).toBool());
+        m_ui.splitter->setSizes(QList<int>() << 200 << 100);
+        m_ui.splitter->restoreState(settings.value("splitter_sizes").toByteArray());
+
         m_update = true;
     }
     else
     {
-        for(int i = 0; i < ui.tabWidget->count(); ++i)
+        for(int i = 0; i < m_ui.tabWidget->count(); ++i)
         {
-            qobject_cast<ListWidget *>(ui.tabWidget->widget(i))->readSettings();
+            qobject_cast<ListWidget *>(m_ui.tabWidget->widget(i))->readSettings();
         }
         if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         else
             setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
+
         show();
     }
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
-    ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
+    m_ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
+    m_ui.visualWidget->setVisible(ACTION(ActionManager::UI_ANALYZER)->isChecked());
     settings.endGroup();
 
     addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
@@ -561,7 +574,7 @@ void MainWindow::readSettings()
 
 void MainWindow::showTabMenu(QPoint pos)
 {
-    QTabBar *tabBar = qobject_cast<QTabBar *> (ui.tabWidget->childAt(pos));
+    QTabBar *tabBar = qobject_cast<QTabBar *> (m_ui.tabWidget->childAt(pos));
     if(!tabBar)
         return;
 
@@ -570,7 +583,7 @@ void MainWindow::showTabMenu(QPoint pos)
         return;
 
     m_pl_manager->selectPlayList(index);
-    m_tab_menu->popup(ui.tabWidget->mapToGlobal(pos));
+    m_tab_menu->popup(m_ui.tabWidget->mapToGlobal(pos));
 }
 
 void MainWindow::writeSettings()
@@ -578,7 +591,9 @@ void MainWindow::writeSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Simple/mw_geometry", saveGeometry());
     settings.setValue("Simple/mw_state", saveState());
+    settings.setValue("Simple/splitter_sizes", m_ui.splitter->saveState());
     settings.setValue("Simple/always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
+    settings.setValue("Simple/show_analyzer", ACTION(ActionManager::UI_ANALYZER)->isChecked());
 }
 
 void MainWindow::savePlayList()
