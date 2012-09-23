@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Ilya Kotov                                      *
+ *   Copyright (C) 2005-2012 by Ilya Kotov                                 *
  *   qmmeter_freedevelop@mail.ru                                           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,11 +21,10 @@
 #define COLORWIDGET_H
 
 #include <QFrame>
-#include <QColorDialog>
 #include <QPaintEvent>
 
 /**
-@author user
+@author Ilya Kotov
 */
 class ColorWidget : public QFrame
 {
@@ -35,14 +34,13 @@ public:
 
     ~ColorWidget();
 
-    QString colorName();
+    const QString colorName() const;
 
 public slots:
     void setColor (QString);
 
-
-protected:
-    virtual void mousePressEvent ( QMouseEvent *);
+private:
+    void mousePressEvent(QMouseEvent *);
 
 
 };
