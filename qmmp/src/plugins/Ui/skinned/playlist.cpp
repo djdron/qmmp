@@ -106,6 +106,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_listWidget->setModel(m_pl_manager->selectedPlayList());
 
     m_titleBar = new PlayListTitleBar (this);
+    m_titleBar->setMinimumSize(0,0);
     m_titleBar->move (0,0);
     connect (m_pl_manager, SIGNAL (currentPlayListChanged(PlayListModel *, PlayListModel *)),
              m_titleBar, SLOT(setModel(PlayListModel*)));
