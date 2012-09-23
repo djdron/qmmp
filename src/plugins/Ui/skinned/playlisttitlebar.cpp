@@ -74,8 +74,8 @@ PlayListTitleBar::~PlayListTitleBar()
 
 void PlayListTitleBar::updatePositions()
 {
-    int sx = (width()-275*m_ratio)/25;
     m_ratio = m_skin->ratio();
+    int sx = (width()-275*m_ratio)/25;
     m_close->move(m_ratio*264+sx*25,m_ratio*3);
     m_shade->move(m_ratio*255+sx*25,m_ratio*3);
     if (m_shade2)
@@ -147,8 +147,8 @@ void PlayListTitleBar::resizeEvent(QResizeEvent *)
 {
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
-    updatePixmap();
     updatePositions();
+    updatePixmap();
 }
 
 void PlayListTitleBar::mousePressEvent(QMouseEvent* event)
@@ -251,7 +251,7 @@ void PlayListTitleBar::shade()
 
 void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent *)
 {
-       PlayListTitleBar::shade();
+    PlayListTitleBar::shade();
 }
 
 void PlayListTitleBar::showCurrent()

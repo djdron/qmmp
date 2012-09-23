@@ -226,7 +226,7 @@ public:
         TITLEBAR_A = 0,
         TITLEBAR_I,
         TITLEBAR_SHADED_A,
-        TITLEBAR_SHADED_I,
+        TITLEBAR_SHADED_I
     };
     enum PlayList
     {
@@ -250,7 +250,7 @@ public:
         PL_TITLEBAR_SHADED1_A,
         PL_TITLEBAR_SHADED1_I,
         PL_TITLEBAR_SHADED2,
-        PL_TFILL_SHADED,
+        PL_TFILL_SHADED
     };
     enum Equalizer
     {
@@ -265,27 +265,27 @@ public:
         EQ_VOLUME3,
         EQ_BALANCE1,
         EQ_BALANCE2,
-        EQ_BALANCE3,
+        EQ_BALANCE3
     };
     enum MonoSter
     {
         MONO_A = 0,
         MONO_I,
         STEREO_A,
-        STEREO_I,
+        STEREO_I
     };
     enum OtherParts
     {
         PLAY = 0,
         PAUSE,
-        STOP,
+        STOP
     };
     enum Regions
     {
         NORMAL = 0,
         EQUALIZER,
         WINDOW_SHADE,
-        EQUALIZER_WS,
+        EQUALIZER_WS
     };
     enum Cursors
     {
@@ -298,29 +298,29 @@ public:
         CUR_TITLEBAR,
         CUR_VOLBAL,
         CUR_WINBUT,
-        
+
         CUR_WSNORMAL,
         CUR_WSPOSBAR,
-        
+
         CUR_EQCLOSE,
         CUR_EQNORMAL,
         CUR_EQSLID,
         CUR_EQTITLE,
-        
+
         CUR_PCLOSE,
         CUR_PNORMAL,
         CUR_PSIZE,
         CUR_PTBAR,
         CUR_PVSCROLL,
         CUR_PWINBUT,
-        
+
         CUR_PWSNORM,
         CUR_PWSSIZE,
-        
+
         CUR_VOLBAR,
         CUR_WSCLOSE,
         CUR_WSMIN,
-        CUR_WSWINBUT,
+        CUR_WSWINBUT
     };
 
 public slots:
@@ -338,7 +338,7 @@ private:
 
     /*!
      * As far as there is no standard in skin making we cannot be sure
-     * that all needful images we can find in skin :( This will cause 
+     * that all needful images we can find in skin :( This will cause
      * segfaults and asserts. So to prevent this we need such method
      * to load pixmap from default skin.
      */
