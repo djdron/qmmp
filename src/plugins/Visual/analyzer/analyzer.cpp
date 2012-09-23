@@ -56,7 +56,7 @@ Analyzer::Analyzer (QWidget *parent) : Visual (parent), m_fps (20)
     setWindowTitle (tr("Qmmp Analyzer"));
 
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
-    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
+    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.4, 2.8 };
     int intervals[] = { 20 , 40 , 100 , 200 };
 
     m_peaks_falloff =
