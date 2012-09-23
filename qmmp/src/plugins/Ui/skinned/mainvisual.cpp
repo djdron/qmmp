@@ -422,7 +422,7 @@ Analyzer::Analyzer()
     m_size = QSize(76*m_skin->ratio(), 16*m_skin->ratio());
 
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
-    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
+    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.4, 2.8 };
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
