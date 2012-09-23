@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Ilya Kotov                                      *
+ *   Copyright (C) 2005-2012 by Ilya Kotov                                 *
  *   qmmeter_freedevelop@mail.ru                                           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,8 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#include "colorwidget.h"
 
+#include <QColorDialog>
+#include <QPalette>
+#include "colorwidget.h"
 
 ColorWidget::ColorWidget(QWidget *parent) : QFrame(parent)
 {
@@ -26,31 +28,29 @@ ColorWidget::ColorWidget(QWidget *parent) : QFrame(parent)
     setAutoFillBackground(true);
 }
 
-
 ColorWidget::~ColorWidget()
 {}
 
-void ColorWidget::mousePressEvent( QMouseEvent *)
+void ColorWidget::mousePressEvent(QMouseEvent *)
 {
-    QColor color = QColorDialog::getColor();
+    QColor color = QColorDialog::getColor(palette().color(backgroundRole()), parentWidget(),
+                                          tr("Select Color"));
     if (color.isValid())
     {
         QPalette palette;
-        palette.setColor(this->backgroundRole(), color);
-        this->setPalette(palette);
+        palette.setColor(backgroundRole(), color);
+        setPalette(palette);
     }
 }
 
 void ColorWidget::setColor(QString c)
 {
     QPalette palette;
-    palette.setColor(this->backgroundRole(), c);
-    this->setPalette(palette);
+    palette.setColor(backgroundRole(), c);
+    setPalette(palette);
 }
 
-QString ColorWidget::colorName()
+const QString ColorWidget::colorName() const
 {
-    QPalette palette;
-    palette = this->palette();
-    return (palette.color(this->backgroundRole())).name();
+    return palette().color(backgroundRole()).name();
 }
