@@ -15,6 +15,14 @@
     </message>
 </context>
 <context>
+    <name>ColorWidget</name>
+    <message>
+        <location filename="../colorwidget.cpp" line="37"/>
+        <source>Select Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
