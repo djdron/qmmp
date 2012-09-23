@@ -647,22 +647,22 @@
     <message>
         <location filename="../mainvisual.cpp" line="321"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 кадр/с</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="322"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 кадр/с</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="323"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 кадр/с</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="324"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 кадр/с</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="331"/>
