@@ -417,6 +417,14 @@
     </message>
 </context>
 <context>
+    <name>ColorWidget</name>
+    <message>
+        <location filename="../colorwidget.cpp" line="37"/>
+        <source>Select Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Equalizer</name>
     <message>
         <location filename="../equalizer.cpp" line="35"/>
@@ -467,100 +475,100 @@
         <translation>外観</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="321"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="321"/>
+        <location filename="../mainwindow.cpp" line="322"/>
         <source>Playing</source>
         <translation>演奏中</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Stereo</source>
         <translation>ステレオ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Mono</source>
         <translation>モノラル</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="398"/>
         <source>Sort List</source>
         <translation>リストを並び換え</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="400"/>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>By Title</source>
         <translation>タイトル名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>By Album</source>
         <translation>アルバム名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
-        <location filename="../mainwindow.cpp" line="447"/>
+        <location filename="../mainwindow.cpp" line="409"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>By Artist</source>
         <translation>アーティスト名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="412"/>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>By Filename</source>
         <translation>ファイル名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="416"/>
-        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>By Path + Filename</source>
         <translation>パスとファイル名の順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="460"/>
         <source>By Date</source>
         <translation>日付順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="464"/>
         <source>By Track Number</source>
         <translation>トラック番号順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="429"/>
         <source>By Disc Number</source>
         <translation>ディスク番号順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>Sort Selection</source>
         <translation>選択範囲内で並び換え</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="470"/>
+        <location filename="../mainwindow.cpp" line="471"/>
         <source>Randomize List</source>
         <translation>リストを順不同に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="472"/>
+        <location filename="../mainwindow.cpp" line="473"/>
         <source>Reverse List</source>
         <translation>リストを逆順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="477"/>
-        <location filename="../mainwindow.cpp" line="507"/>
+        <location filename="../mainwindow.cpp" line="478"/>
+        <location filename="../mainwindow.cpp" line="508"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="617"/>
+        <location filename="../mainwindow.cpp" line="618"/>
         <source>Buffering: %1%</source>
         <translation>バッファーへ先読み: %1%</translation>
     </message>
@@ -836,7 +844,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="129"/>
+        <location filename="../qsuisettings.cpp" line="140"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
@@ -946,19 +954,122 @@
         <translation>クリップボード上の URL を自動的に貼り付け</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="123"/>
+        <location filename="../forms/qsuisettings.ui" line="280"/>
+        <source>Analyzer Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="286"/>
+        <source>Analyzer #1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="321"/>
+        <source>Peaks:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="353"/>
+        <source>Analyzer #2:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="385"/>
+        <source>Background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="417"/>
+        <source>Analyzer #3:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="134"/>
         <source>Playback</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="135"/>
+        <location filename="../qsuisettings.cpp" line="146"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="141"/>
+        <location filename="../qsuisettings.cpp" line="152"/>
         <source>Misc</source>
         <translation>各種設定</translation>
+    </message>
+</context>
+<context>
+    <name>QSUiAnalyzer</name>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="259"/>
+        <source>Peaks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="262"/>
+        <source>Refresh Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="265"/>
+        <source>50 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="266"/>
+        <source>25 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="267"/>
+        <source>10 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="268"/>
+        <source>5 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="275"/>
+        <source>Analyzer Falloff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="278"/>
+        <location filename="../qsuianalyzer.cpp" line="292"/>
+        <source>Slowest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="279"/>
+        <location filename="../qsuianalyzer.cpp" line="293"/>
+        <source>Slow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="280"/>
+        <location filename="../qsuianalyzer.cpp" line="294"/>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="281"/>
+        <location filename="../qsuianalyzer.cpp" line="295"/>
+        <source>Fast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="282"/>
+        <location filename="../qsuianalyzer.cpp" line="296"/>
+        <source>Fastest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="289"/>
+        <source>Peaks Falloff</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

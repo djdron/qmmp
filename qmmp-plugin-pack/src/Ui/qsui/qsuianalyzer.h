@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,21 +39,24 @@ public:
 
     void add(unsigned char *data, qint64 size, int chan);
     void clear();
-    void paintEvent( QPaintEvent * );
+    void readSettings();
 
-protected:
-    virtual void hideEvent (QHideEvent *);
-    virtual void showEvent (QShowEvent *);
 
-public slots:
+private slots:
     void timeout();
+    void writeSettings();
 
 private:
+    void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *);
+    void hideEvent(QHideEvent *);
+    void showEvent(QShowEvent *);
     void process(short *l, short *r);
     void draw(QPainter *p);
+    void createMenu();
+
     QPixmap m_bg;
     QTimer *m_timer;
-    int m_fps;
     double *m_intern_vis_data;
     double *m_peaks;
     int *m_x_scale;
@@ -64,6 +67,7 @@ private:
     short *m_right_buffer;
     int m_buffer_at;
     int m_cols, m_rows;
+    bool m_update;
     //colors
     QColor m_color1;
     QColor m_color2;
@@ -71,6 +75,11 @@ private:
     QColor m_bgColor;
     QColor m_peakColor;
     QSize m_cell_size;
+    QMenu *m_menu;
+    QAction *m_peaksAction;
+    QActionGroup *m_fpsGroup;
+    QActionGroup *m_analyzerFalloffGroup;
+    QActionGroup *m_peaksFalloffGroup;
 };
 
 

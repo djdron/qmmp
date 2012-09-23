@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,12 +22,10 @@
 #include <QPainter>
 #include <QMenu>
 #include <QActionGroup>
-
+#include <qmmp/qmmp.h>
 #include <qmmp/buffer.h>
-#include <qmmp/output.h>
 #include <math.h>
 #include <stdlib.h>
-
 #include "fft.h"
 #include "inlines.h"
 #include "qsuianalyzer.h"
@@ -35,7 +33,7 @@
 #define VISUAL_NODE_SIZE 512 //samples
 #define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
 
-QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent), m_fps (20)
+QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent)
 {
     m_intern_vis_data = 0;
     m_peaks = 0;
@@ -43,30 +41,16 @@ QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent), m_fps (20)
     m_buffer_at = 0;
     m_rows = 0;
     m_cols = 0;
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_update = false;
+    createMenu();
+
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     m_left_buffer = new short[VISUAL_BUFFER_SIZE];
     m_right_buffer = new short[VISUAL_BUFFER_SIZE];
 
+    readSettings();
     clear();
-
-    double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
-    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
-    int intervals[] = { 20 , 40 , 100 , 200 };
-
-    settings.beginGroup("Simple");
-    m_peaks_falloff = peaks_speed[settings.value("peaks_falloff", 3).toInt()-1];
-    m_analyzer_falloff = analyzer_speed[settings.value("analyzer_falloff", 3).toInt()-1];
-    m_show_peaks = settings.value("show_peaks", true).toBool();
-    m_timer->setInterval(intervals[settings.value("refresh_rate", 2).toInt() - 1]);
-    m_color1.setNamedColor(settings.value("color1", "#BECBFF").toString());
-    m_color2.setNamedColor(settings.value("color2", "#BECBFF").toString());
-    m_color3.setNamedColor(settings.value("color3", "#BECBFF").toString());
-    m_bgColor.setNamedColor(settings.value("bg_color", "Black").toString());
-    m_peakColor.setNamedColor(settings.value("peak_color", "#DDDDDD").toString());
-    settings.endGroup();
-    m_cell_size =  QSize(14, 8);
 }
 
 QSUiAnalyzer::~QSUiAnalyzer()
@@ -264,4 +248,115 @@ void QSUiAnalyzer::draw (QPainter *p)
                          m_cell_size.width() - 1, m_cell_size.height() - 4, m_peakColor);
         }
     }
+}
+
+void QSUiAnalyzer::createMenu()
+{
+    m_menu = new QMenu (this);
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(writeSettings()));
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(readSettings()));
+
+    m_peaksAction = m_menu->addAction(tr("Peaks"));
+    m_peaksAction->setCheckable(true);
+
+    QMenu *refreshRate = m_menu->addMenu(tr("Refresh Rate"));
+    m_fpsGroup = new QActionGroup(this);
+    m_fpsGroup->setExclusive(true);
+    m_fpsGroup->addAction(tr("50 fps"))->setData(50);
+    m_fpsGroup->addAction(tr("25 fps"))->setData(25);
+    m_fpsGroup->addAction(tr("10 fps"))->setData(10);
+    m_fpsGroup->addAction(tr("5 fps"))->setData(5);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    {
+        act->setCheckable(true);
+        refreshRate->addAction(act);
+    }
+
+    QMenu *analyzerFalloff = m_menu->addMenu(tr("Analyzer Falloff"));
+    m_analyzerFalloffGroup = new QActionGroup(this);
+    m_analyzerFalloffGroup->setExclusive(true);
+    m_analyzerFalloffGroup->addAction(tr("Slowest"))->setData(1.2);
+    m_analyzerFalloffGroup->addAction(tr("Slow"))->setData(1.8);
+    m_analyzerFalloffGroup->addAction(tr("Medium"))->setData(2.2);
+    m_analyzerFalloffGroup->addAction(tr("Fast"))->setData(2.4);
+    m_analyzerFalloffGroup->addAction(tr("Fastest"))->setData(2.8);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    {
+        act->setCheckable(true);
+        analyzerFalloff->addAction(act);
+    }
+
+    QMenu *peaksFalloff = m_menu->addMenu(tr("Peaks Falloff"));
+    m_peaksFalloffGroup = new QActionGroup(this);
+    m_peaksFalloffGroup->setExclusive(true);
+    m_peaksFalloffGroup->addAction(tr("Slowest"))->setData(0.05);
+    m_peaksFalloffGroup->addAction(tr("Slow"))->setData(0.1);
+    m_peaksFalloffGroup->addAction(tr("Medium"))->setData(0.2);
+    m_peaksFalloffGroup->addAction(tr("Fast"))->setData(0.4);
+    m_peaksFalloffGroup->addAction(tr("Fastest"))->setData(0.8);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    {
+        act->setCheckable(true);
+        peaksFalloff->addAction(act);
+    }
+    update();
+}
+
+void QSUiAnalyzer::mousePressEvent (QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+}
+
+void QSUiAnalyzer::readSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    m_peaks_falloff = settings.value("vis_peaks_falloff", 0.2).toDouble();
+    m_analyzer_falloff = settings.value("vis_analyzer_falloff", 2.2).toDouble();
+    m_show_peaks = settings.value("vis_show_peaks", true).toBool();
+    m_timer->setInterval(1000 / settings.value("vis_refresh_rate", 25).toInt());
+    m_color1.setNamedColor(settings.value("vis_color1", "#BECBFF").toString());
+    m_color2.setNamedColor(settings.value("vis_color2", "#BECBFF").toString());
+    m_color3.setNamedColor(settings.value("vis_color3", "#BECBFF").toString());
+    m_bgColor.setNamedColor(settings.value("vis_bg_color", "Black").toString());
+    m_peakColor.setNamedColor(settings.value("vis_peak_color", "#DDDDDD").toString());
+    m_cell_size =  QSize(14, 8);
+    if(!m_update)
+    {
+        m_update = true;
+        m_peaksAction->setChecked(m_show_peaks);
+
+        foreach(QAction *act, m_fpsGroup->actions ())
+        {
+            if (m_timer->interval() == 1000 / act->data().toInt())
+                act->setChecked(true);
+        }
+        foreach(QAction *act, m_peaksFalloffGroup->actions ())
+        {
+            if (m_peaks_falloff == act->data().toDouble())
+                act->setChecked(true);
+        }
+        foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+        {
+            if (m_analyzer_falloff == act->data().toDouble())
+                act->setChecked(true);
+        }
+    }
+    settings.endGroup();
+}
+
+void QSUiAnalyzer::writeSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+
+    QAction *act = m_fpsGroup->checkedAction ();
+    settings.setValue("vis_refresh_rate", act ? act->data().toInt() : 25);
+    act = m_peaksFalloffGroup->checkedAction ();
+    settings.setValue("vis_peaks_falloff", act ? act->data().toDouble() : 0.2);
+    act = m_analyzerFalloffGroup->checkedAction ();
+    settings.setValue("vis_analyzer_falloff", act ? act->data().toDouble() : 2.2);
+    settings.setValue("vis_show_peaks", m_peaksAction->isChecked());
+    settings.endGroup();
 }

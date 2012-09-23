@@ -96,25 +96,36 @@ void QSUISettings::readSettings()
     //view
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
-    settings.endGroup();
     //url dialog
     m_ui.clipboardCheckBox->setChecked(settings.value("URLDialog/use_clipboard", false).toBool());
+    //analyzer colors
+    m_ui.aColor1->setColor(settings.value("vis_color1", "#BECBFF").toString());
+    m_ui.aColor2->setColor(settings.value("vis_color2", "#BECBFF").toString());
+    m_ui.aColor3->setColor(settings.value("vis_color3", "#BECBFF").toString());
+    m_ui.peaksColor->setColor(settings.value("vis_peak_color", "#DDDDDD").toString());
+    m_ui.bgColor->setColor(settings.value("vis_bg_color", "Black").toString());
+    settings.endGroup();
 }
 
 void QSUISettings::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    settings.setValue ("pl_tabs_closable", m_ui.tabsClosableCheckBox->isChecked());
-    settings.setValue ("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
-    settings.setValue ("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
-    settings.setValue ("pl_align_numbers", m_ui.alignCheckBox->isChecked());
-    settings.setValue ("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
-    settings.setValue ("pl_show_popup", m_ui.popupCheckBox->isChecked());
-    settings.setValue ("start_hidden", m_ui.hiddenCheckBox->isChecked());
-    settings.setValue ("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue("pl_tabs_closable", m_ui.tabsClosableCheckBox->isChecked());
+    settings.setValue("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
+    settings.setValue("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
+    settings.setValue("pl_align_numbers", m_ui.alignCheckBox->isChecked());
+    settings.setValue("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
+    settings.setValue("pl_show_popup", m_ui.popupCheckBox->isChecked());
+    settings.setValue("start_hidden", m_ui.hiddenCheckBox->isChecked());
+    settings.setValue("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue("vis_color1", m_ui.aColor1->colorName());
+    settings.setValue("vis_color2", m_ui.aColor2->colorName());
+    settings.setValue("vis_color3", m_ui.aColor3->colorName());
+    settings.setValue("vis_peak_color", m_ui.peaksColor->colorName());
+    settings.setValue("vis_bg_color", m_ui.bgColor->colorName());
     settings.endGroup();
-    settings.setValue ("URLDialog/use_clipboard", m_ui.clipboardCheckBox->isChecked());
+    settings.setValue("URLDialog/use_clipboard", m_ui.clipboardCheckBox->isChecked());
 }
 
 void QSUISettings::loadShortcuts()

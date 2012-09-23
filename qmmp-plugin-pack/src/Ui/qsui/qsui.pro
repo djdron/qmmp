@@ -30,7 +30,8 @@ SOURCES += main.cpp \
     qsuifactory.cpp \
     qsuisettings.cpp \
     qsuianalyzer.cpp \
-    fft.c
+    fft.c \
+    colorwidget.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -50,7 +51,8 @@ HEADERS += mainwindow.h \
     qsuisettings.h \
     qsuianalyzer.h \
     fft.h \
-    inlines.h
+    inlines.h \
+    colorwidget.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
@@ -97,6 +99,8 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
+
+
 
 
 

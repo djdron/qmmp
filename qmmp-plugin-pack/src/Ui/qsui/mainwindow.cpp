@@ -283,6 +283,7 @@ void MainWindow::showSettings()
     confDialog->deleteLater();
     readSettings();
     ActionManager::instance()->saveActions();
+    m_ui.visualWidget->readSettings();
 }
 
 void MainWindow::setVolume(int volume)
