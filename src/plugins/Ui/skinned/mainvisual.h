@@ -63,18 +63,18 @@ public slots:
     void timeout();
 
 private slots:
-    void updateSettings();
+    void readSettings();
+    void writeSettings();
 
 private:
     void drawBackGround();
     void createMenu();
-    void readSettings();
+
     static MainVisual *m_instance;
     VisualBase *m_vis;
     QPixmap m_pixmap;
     QPixmap m_bg;
     QTimer *m_timer;
-    bool m_playing;
     Skin *m_skin;
     //menu and actions
     QMenu *m_menu;
@@ -88,9 +88,9 @@ private:
     QAction *m_peaksAction;
     QAction *m_transparentAction;
     int m_ratio;
-    short *m_left_buffer;
-    short *m_right_buffer;
+    short *m_buffer;
     int m_buffer_at;
+    bool m_update;
 };
 
 namespace mainvisual
@@ -104,14 +104,13 @@ public:
     void clear();
     bool process(short *l);
     void draw(QPainter *p);
-    const QString name() 
+    const QString name()
     {
         return "Analyzer";
     }
 
 private:
     QSize m_size;
-    int m_analyzerBarWidth, m_fps;
     double m_intern_vis_data[75];
     double m_peaks[75];
     double m_peaks_falloff;
@@ -130,7 +129,7 @@ public:
     void clear();
     bool process(short *l);
     void draw(QPainter *p);
-    const QString name() 
+    const QString name()
     {
         return "Scope";
     }
