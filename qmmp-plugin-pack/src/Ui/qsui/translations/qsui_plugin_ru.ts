@@ -185,7 +185,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Анализатор</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
