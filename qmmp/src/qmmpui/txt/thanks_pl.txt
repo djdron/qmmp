@@ -5,9 +5,11 @@ Podziękowania:
     Anton Petrusevich <casus@casus.us> - ulepszenia losowego odtwarzania
     Avihay Baratz <avihayb@gmail.com> - funkcja auto stop, poprawki błędów
     Brice Videau <brice.videau@gmail.com> - poprawki błędów
+        Cristian Rodríguez <judas.iscariote@gmail.com> - poprawki scrobbler'a
     Csaba Hruska <csaba.hruska@gmail.com> - poprawki dla wtyczki ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - wsparcie dla iso.wv
-    Evgeny Gleyzerman <evgley@gmail.com> - poprawki przetwarzania cue
+    Evgeny Gleyzerman <evgley@gmail.com> - usprawnienia przetwarzania cue
+    Ferdinand Vesely <erdofves@gmail.com> - usprawnienia dla scrobbler'a
     Gennadi Motsyo <drool@altlinux.ru> - raporty błędów
     Vadim Kalinnikov <moose@ylsoftware.com> - hosting projektu
     Erik Ölsar <erlk.ozlr@gmail.com> - wsparcie dla kursorów z motywu, udoskonalenia dla ui

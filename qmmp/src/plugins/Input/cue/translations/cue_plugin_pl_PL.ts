@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl_PL">
+<TS version="2.0" language="pl">
 <context>
     <name>DecoderCUEFactory</name>
     <message>
         <location filename="../decodercuefactory.cpp" line="44"/>
         <source>CUE Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka CUE</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="47"/>
         <source>CUE Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki CUE</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="95"/>
         <source>About CUE Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce CUE Audio</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="96"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce CUE dla Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="97"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,37 +34,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>CUE Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia wtyczki CUE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogólne opcje</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Load incorrect cue sheets if possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Załaduj niewłaściwy plik CUE jeśli możliwe</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>CUE encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodowanie CUE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne wykrywanie kodowania</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Język:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślne kodowanie:</translation>
     </message>
 </context>
 </TS>

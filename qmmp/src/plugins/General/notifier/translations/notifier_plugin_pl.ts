@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation>Pozycja</translation>
+        <translation>Powiadamianie o zmianie utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
@@ -98,7 +98,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
-        <translation>Wielkość okładki:</translation>
+        <translation>Rozmiar okładki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>

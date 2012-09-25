@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl_PL">
+<TS version="2.0" language="pl">
 <context>
     <name>ProjectMPlugin</name>
     <message>
         <location filename="../projectmplugin.cpp" line="40"/>
         <source>ProjectM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -14,82 +14,82 @@
     <message>
         <location filename="../projectmwidget.cpp" line="134"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomoc</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="134"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
         <source>&amp;Show Song Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż &amp;tytuł utworu</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
         <source>&amp;Show Preset Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż nazwę &amp;Wizualizacji</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
         <source>F3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
         <source>&amp;Next Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Następna animacja</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
         <source>N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>&amp;Previous Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Poprzednia animacja</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>&amp;Random Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Losowa animacja</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>&amp;Lock Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zablokuj animację</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation>L</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="143"/>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;ełny ekran</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="143"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -97,32 +97,32 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="29"/>
         <source>ProjectM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="49"/>
         <source>About ProjectM Visual Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O Wtyczce ProjectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="50"/>
         <source>Qmmp ProjectM Visual Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka ProjectM dla Qmmp</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugin adds projectM visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta wtyczka dodaje obsługę wizualizacji projectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>
         <source>Based on llibrojectM-qt library</source>
-        <translation type="unfinished"></translation>
+        <translation>Oparta na bibliotece llibrojectM-qt</translation>
     </message>
 </context>
 </TS>

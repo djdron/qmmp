@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl_PL">
+<TS version="2.0" language="pl">
 <context>
     <name>Analyzer</name>
     <message>
         <location filename="../analyzer.cpp" line="56"/>
         <source>Qmmp Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Analizator</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="77"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>F</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz kolor</translation>
     </message>
 </context>
 <context>
@@ -27,117 +27,117 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Analyzer Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia Wtyczki Analizator</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="26"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogólne</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Show peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż piki</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Analyzer falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator opadanie:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="56"/>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>Najwolniej</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>Wolno</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="66"/>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Średnio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="113"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybko</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <location filename="../settingsdialog.ui" line="118"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>Najszybciej</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Peaks falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opadanie pików:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="126"/>
         <source>Refresh rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Odświeżanie:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="140"/>
         <source>50 FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="145"/>
         <source>25 FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="150"/>
         <source>10 FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="155"/>
         <source>5 FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="163"/>
         <source>Cells size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar komórki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="223"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolory</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>
         <source>Peaks:</source>
-        <translation type="unfinished"></translation>
+        <translation>Piki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="261"/>
         <source>Analyzer #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator #1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="293"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tło:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="325"/>
         <source>Analyzer #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator #2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="370"/>
         <source>Analyzer #3:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator #3:</translation>
     </message>
 </context>
 <context>
@@ -145,22 +145,22 @@
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="30"/>
         <source>Analyzer Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Analizator</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="49"/>
         <source>About Analyzer Visual Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce Analizator</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="50"/>
         <source>Qmmp Analyzer Visual Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka wizualna Analizator dla Qmmp</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="51"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

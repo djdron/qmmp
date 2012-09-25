@@ -6,22 +6,22 @@
     <message>
         <location filename="../notifierfactory.cpp" line="30"/>
         <source>Notifier Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Notifier</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="50"/>
         <source>About Notifier Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce Notifier</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="51"/>
         <source>Qmmp Notifier Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Notifier dla Qmmp</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../popupwidget.cpp" line="127"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność:</translation>
     </message>
 </context>
 <context>
@@ -37,78 +37,78 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Notifier Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia wtyczki Notifier</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Desktop Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiadomienie na pulpicie</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiadamianie o zmianie utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiadamianie o zmianie głośności</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Czcionka:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar okładki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="134"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Przezroczystość:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="321"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozycja</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj szablon</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="368"/>
         <source>Psi Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiadomienia Psi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz powiadomienia Psi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon powiadomienia</translation>
     </message>
 </context>
 </TS>

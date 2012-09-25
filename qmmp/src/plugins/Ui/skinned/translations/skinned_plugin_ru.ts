@@ -585,132 +585,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="282"/>
+        <location filename="../mainvisual.cpp" line="243"/>
         <source>Visualization Mode</source>
         <translation>Режим визуализации</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="285"/>
+        <location filename="../mainvisual.cpp" line="246"/>
         <source>Analyzer</source>
         <translation>Анализатор</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="286"/>
+        <location filename="../mainvisual.cpp" line="247"/>
         <source>Scope</source>
         <translation>Осциллограф</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="287"/>
+        <location filename="../mainvisual.cpp" line="248"/>
         <source>Off</source>
         <translation>Выключено</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="294"/>
+        <location filename="../mainvisual.cpp" line="255"/>
         <source>Analyzer Mode</source>
         <translation>Режим анализатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="258"/>
         <source>Normal</source>
         <translation>Обычный</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="259"/>
         <source>Fire</source>
         <translation>Огонь</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="260"/>
         <source>Vertical Lines</source>
         <translation>Вертикальные линии</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="300"/>
+        <location filename="../mainvisual.cpp" line="261"/>
         <source>Lines</source>
         <translation>Линии</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="301"/>
+        <location filename="../mainvisual.cpp" line="262"/>
         <source>Bars</source>
         <translation>Полоски</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="314"/>
+        <location filename="../mainvisual.cpp" line="275"/>
         <source>Peaks</source>
         <translation>Пики</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="318"/>
+        <location filename="../mainvisual.cpp" line="279"/>
         <source>Refresh Rate</source>
         <translation>Частота обновления</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="321"/>
+        <location filename="../mainvisual.cpp" line="282"/>
         <source>50 fps</source>
         <translation>50 кадр/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="283"/>
         <source>25 fps</source>
         <translation>25 кадр/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="323"/>
+        <location filename="../mainvisual.cpp" line="284"/>
         <source>10 fps</source>
         <translation>10 кадр/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="324"/>
+        <location filename="../mainvisual.cpp" line="285"/>
         <source>5 fps</source>
         <translation>5 кадр/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="331"/>
+        <location filename="../mainvisual.cpp" line="292"/>
         <source>Analyzer Falloff</source>
         <translation>Падение анализатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
-        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="295"/>
+        <location filename="../mainvisual.cpp" line="309"/>
         <source>Slowest</source>
         <translation>Самое медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
-        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="310"/>
         <source>Slow</source>
         <translation>Медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
-        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="311"/>
         <source>Medium</source>
         <translation>Среднее</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="337"/>
-        <location filename="../mainvisual.cpp" line="351"/>
+        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Fast</source>
         <translation>Быстрое</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="338"/>
-        <location filename="../mainvisual.cpp" line="352"/>
+        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="313"/>
         <source>Fastest</source>
         <translation>Самое быстрое</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
+        <location filename="../mainvisual.cpp" line="306"/>
         <source>Peaks Falloff</source>
         <translation>Падение пиков</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="319"/>
         <source>Background</source>
         <translation>Фон</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="320"/>
         <source>Transparent</source>
         <translation>Прозрачность</translation>
     </message>
@@ -746,80 +746,80 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="177"/>
+        <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
         <translation>&amp;Копировать выделенное в</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="204"/>
+        <location filename="../playlist.cpp" line="205"/>
         <source>Sort List</source>
         <translation>Сортировать</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="207"/>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="208"/>
+        <location filename="../playlist.cpp" line="247"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="211"/>
-        <location filename="../playlist.cpp" line="250"/>
+        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="251"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="215"/>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="255"/>
         <source>By Disc Number</source>
         <translation>По номеру диска</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="219"/>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="223"/>
-        <location filename="../playlist.cpp" line="262"/>
+        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="227"/>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="231"/>
-        <location filename="../playlist.cpp" line="270"/>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Date</source>
         <translation>По дате</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="243"/>
+        <location filename="../playlist.cpp" line="244"/>
         <source>Sort Selection</source>
         <translation>Сортировать выделенное</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="282"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>Randomize List</source>
         <translation>Перемешать</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="284"/>
+        <location filename="../playlist.cpp" line="285"/>
         <source>Reverse List</source>
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="549"/>
+        <location filename="../playlist.cpp" line="550"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новый список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="235"/>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
     </message>
@@ -829,7 +829,7 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="291"/>
+        <location filename="../playlist.cpp" line="292"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>

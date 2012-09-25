@@ -130,17 +130,17 @@
     <message>
         <location filename="../configdialog.cpp" line="230"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyjście</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="240"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Okno dialogowe</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="250"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfejs użytkownika</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="284"/>
@@ -170,102 +170,102 @@
     <message>
         <location filename="../configdialog.cpp" line="304"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Automatyczne&gt;</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="305"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Brazylijski Portugalski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="306"/>
         <source>Chinese Simplified</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiński Uproszczony</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="307"/>
         <source>Chinese Traditional</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiński Tradycyjny</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="308"/>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>Czeski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="309"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Holenderski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="310"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>Angielski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="311"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>Francuski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="312"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>Niemiecki</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="313"/>
         <source>Hungarian</source>
-        <translation type="unfinished"></translation>
+        <translation>Węgierski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="314"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>Włoski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>Japanese</source>
-        <translation type="unfinished"></translation>
+        <translation>Japoński</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>Kazakh</source>
-        <translation type="unfinished"></translation>
+        <translation>Kazaski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="317"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Litewski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="318"/>
         <source>Polish</source>
-        <translation type="unfinished"></translation>
+        <translation>Polski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="319"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>Rosyjski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="320"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>Słowacki</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="321"/>
         <source>Spanish</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiszpański</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="322"/>
         <source>Turkish</source>
-        <translation type="unfinished"></translation>
+        <translation>Turecki</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukraiński</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="287"/>
@@ -391,12 +391,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd i zachowanie</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="391"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Język:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="447"/>
