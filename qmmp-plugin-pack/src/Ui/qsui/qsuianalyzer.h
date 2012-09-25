@@ -39,8 +39,9 @@ public:
 
     void add(unsigned char *data, qint64 size, int chan);
     void clear();
-    void readSettings();
 
+public slots:
+    void readSettings();
 
 private slots:
     void timeout();
