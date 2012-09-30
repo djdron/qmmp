@@ -19,7 +19,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть колір</translation>
     </message>
 </context>
 <context>
