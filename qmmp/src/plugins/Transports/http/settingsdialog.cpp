@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,8 +25,7 @@
 #endif
 #include "settingsdialog.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent)
-        : QDialog(parent)
+SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
     ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -41,7 +40,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 #endif
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HTTP");
-    int pos = ui.icyEncodingComboBox->findText(settings.value("icy_encoding","windows-1252").toString());
+    int pos = ui.icyEncodingComboBox->findText(settings.value("icy_encoding","UTF-8").toString());
     ui.icyEncodingComboBox->setCurrentIndex(pos);
     ui.bufferSizeSpinBox->setValue(settings.value("buffer_size",128).toInt());
 #ifdef WITH_ENCA
