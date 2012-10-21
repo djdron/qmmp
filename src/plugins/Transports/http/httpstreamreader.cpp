@@ -28,6 +28,7 @@
 #include <qmmp/qmmp.h>
 #include <qmmp/statehandler.h>
 #include <qmmp/inputsource.h>
+#include "httpinputsource.h"
 #include "httpstreamreader.h"
 
 //curl callbacks
@@ -104,10 +105,9 @@ int curl_progress(void *pointer, double dltotal, double dlnow, double ultotal, d
     return 0;
 }
 
-
-HttpStreamReader::HttpStreamReader(const QString &url, QObject *parent)
-        : QIODevice(parent)
+HttpStreamReader::HttpStreamReader(const QString &url, HTTPInputSource *parent) : QIODevice(parent)
 {
+    m_parent = parent;
     m_url = url;
     curl_global_init(CURL_GLOBAL_ALL);
     m_stream.buf_fill = 0;
@@ -373,8 +373,8 @@ void HttpStreamReader::checkBuffer()
                 metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
             }
             metaData.insert(Qmmp::URL, m_url);
-            (qobject_cast<InputSource *>(parent()))->addMetaData(metaData);
-            (qobject_cast<InputSource *>(parent()))->addStreamInfo(m_stream.header);
+            m_parent->addMetaData(metaData);
+            m_parent->addStreamInfo(m_stream.header);
         }
         emit ready();
     }

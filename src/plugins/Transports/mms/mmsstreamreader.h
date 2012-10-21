@@ -31,6 +31,7 @@
 
 class QFileInfo;
 class DownloadThread;
+class MMSInputSource;
 
 /*! @internal
  *   @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -39,7 +40,7 @@ class MMSStreamReader : public QIODevice
 {
     Q_OBJECT
 public:
-    MMSStreamReader(const QString &url, QObject *parent = 0);
+    MMSStreamReader(const QString &url, MMSInputSource *parent);
 
     ~MMSStreamReader();
 
@@ -81,6 +82,7 @@ private:
     qint64 m_buffer_at;
     bool m_ready;
     DownloadThread *m_thread;
+    MMSInputSource *m_parent;
 };
 
 class DownloadThread : public QThread
