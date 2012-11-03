@@ -24,3 +24,36 @@ Type=Application
 Categories=AudioVideo;Player;Audio;Qt;
 MimeType=application/x-ogg;audio/mp3;audio/mpeg;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-ms-wma;audio/x-musepack;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mpegurl;audio/x-it;audio/x-mod;audio/x-ape;application/x-cue;x-content/audio-cdda;audio/x-ffmpeg-shorten;
 X-KDE-StartupNotify=false
+
+X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Previous;Next;
+
+[Play Shortcut Group]
+Name=Play
+Name[ru]=Воспроизвести
+Exec=qmmp --no-start --play
+TargetEnvironment=Unity
+
+[Pause Shortcut Group]
+Name=Pause
+Name[ru]=Пауза
+Exec=qmmp --no-start --pause
+TargetEnvironment=Unity
+
+[Stop Shortcut Group]
+Name=Stop
+Name[ru]=Остановить
+Exec=qmmp --no-start --stop
+TargetEnvironment=Unity
+
+[Previous Shortcut Group]
+Name=Previous
+Name[ru]=Предыдущий фрагмент
+Exec=qmmp --no-start --previous
+TargetEnvironment=Unity
+
+[Next Shortcut Group]
+Name=Next
+Name[ru]=Следующий фрагмент
+Exec=qmmp --no-start --next
+TargetEnvironment=Unity
+
