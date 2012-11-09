@@ -40,10 +40,10 @@ unsigned int blength = 0;
 #endif
 
 /*
- * Global vars
+ * Equalizer settings
  */
-unsigned int rate;
-int band_count;
+unsigned int rate = 0;
+int band_count = 0;
 
 void set_preamp(int chn, float val)
 {
@@ -58,8 +58,10 @@ void init_iir(unsigned int srate, int band_num)
   band_count = cfg.band_num;
 #endif
 
-  band_count = band_num;
+  if(srate == rate && band_num == band_count)
+      return;
 
+  band_count = band_num;
   rate = srate;
 
   iir_cf = get_coeffs(&band_count, rate);

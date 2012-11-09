@@ -71,7 +71,6 @@ __inline__ int round_ppc(float x);
 
 extern float preamp[EQ_CHANNELS];
 extern sIIRCoefficients *iir_cf;
-extern unsigned int rate;
 extern int band_count;
 
 #ifdef BENCHMARK
