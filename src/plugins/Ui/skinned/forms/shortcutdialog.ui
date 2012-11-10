@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ShortcutDialog</class>
- <widget class="QDialog" name="HotkeyDialog">
+ <widget class="QDialog" name="ShortcutDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -32,6 +32,9 @@
    </item>
    <item row="1" column="0" colspan="3">
     <widget class="QLineEdit" name="keyLineEdit">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -71,7 +74,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>HotkeyDialog</receiver>
+   <receiver>ShortcutDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -87,7 +90,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>HotkeyDialog</receiver>
+   <receiver>ShortcutDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
