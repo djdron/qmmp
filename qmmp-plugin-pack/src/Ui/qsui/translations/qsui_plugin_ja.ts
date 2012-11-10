@@ -1098,7 +1098,7 @@
         <translation>割り当てたいキーの組み合わせを押します</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="43"/>
+        <location filename="../forms/shortcutdialog.ui" line="46"/>
         <source>Clear</source>
         <translation>消去</translation>
     </message>

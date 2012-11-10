@@ -1098,7 +1098,7 @@
         <translation>Wciśnij kombinację klawiszy, które chcesz przypisać</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="43"/>
+        <location filename="../forms/shortcutdialog.ui" line="46"/>
         <source>Clear</source>
         <translation>Wyczyść</translation>
     </message>
