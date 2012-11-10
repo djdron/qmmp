@@ -310,10 +310,18 @@ void Output::run()
         {
             if (m_useEq)
             {
-                if(m_format == Qmmp::PCM_S16LE)
+                switch(m_format)
+                {
+                case Qmmp::PCM_S16LE:
                     iir((void*) b->data, b->nbytes, m_channels);
-                else if(m_format == Qmmp::PCM_S32LE || m_format == Qmmp::PCM_S24LE)
+                    break;
+                case Qmmp::PCM_S24LE:
+                case Qmmp::PCM_S32LE:
                     iir32((void*) b->data, b->nbytes, m_channels);
+                    break;
+                default:
+                    ;
+                }
             }
             dispatchVisual(b);
             if (SoftwareVolume::instance())
@@ -398,8 +406,7 @@ void Output::updateEqSettings()
         set_gain(i,0, 0.03*value+0.000999999*value*value);
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }
-    if(isRunning())
-        m_useEq = m_eqEnabled;// && m_format == Qmmp::PCM_S16LE;
+    m_useEq = isRunning() && m_eqEnabled;
     mutex()->unlock();
 }
 
