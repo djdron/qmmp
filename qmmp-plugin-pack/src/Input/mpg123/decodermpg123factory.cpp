@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -78,7 +78,7 @@ const DecoderProperties DecoderMPG123Factory::properties() const
     properties.contentTypes << "audio/mp3" << "audio/mpeg";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.noInput = true;
+    properties.noInput = false;
     properties.priority = 10; //lowest priority
     return properties;
 }

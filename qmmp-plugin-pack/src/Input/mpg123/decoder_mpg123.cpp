@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,39 @@
 #include <stdio.h>
 #include "tagextractor.h"
 #include "decoder_mpg123.h"
+
+ssize_t mpg123_read_cb (void *src, void *buf, size_t size)
+{
+    DecoderMPG123 *d = (DecoderMPG123 *) src;
+    return d->input()->read((char *)buf, size);
+}
+
+off_t mpg123_seek_cb(void *src, off_t offset, int whence)
+{
+    DecoderMPG123 *d = (DecoderMPG123 *) src;
+    if (d->input()->isSequential())
+            return -1;
+
+        long start = 0;
+        switch (whence)
+        {
+        case SEEK_END:
+            start = d->input()->size();
+            break;
+
+        case SEEK_CUR:
+            start = d->input()->pos();
+            break;
+
+        case SEEK_SET:
+        default:
+            start = 0;
+        }
+
+        if (!d->input()->seek(start + offset))
+            return -1;
+        return d->input()->pos();
+}
 
 DecoderMPG123::DecoderMPG123(const QString &url, QIODevice *i) : Decoder(i)
 {
@@ -57,7 +90,15 @@ bool DecoderMPG123::initialize()
         return false;
     }
 
-    if((err = mpg123_open(m_handle, qPrintable(m_url))) != MPG123_OK)
+    if((err = mpg123_replace_reader_handle(m_handle, mpg123_read_cb, mpg123_seek_cb, 0)) != MPG123_OK)
+    {
+        qWarning("DecoderMPG123: mpg123 error: %s", mpg123_plain_strerror(err));
+        cleanup(m_handle);
+        m_handle = 0;
+        return false;
+    }
+
+    if((err = mpg123_open_handle(m_handle, this)) != MPG123_OK)
     {
         qWarning("DecoderMPG123: mpg123 error: %s", mpg123_plain_strerror(err));
         cleanup(m_handle);
@@ -85,7 +126,8 @@ bool DecoderMPG123::initialize()
     mpg123_format_none(m_handle);
     mpg123_format(m_handle, m_rate, channels, encoding);
     //duration
-    mpg123_scan(m_handle);
+    err = mpg123_scan(m_handle);
+    qWarning("DecoderMPG123: mpg123 error: %s", mpg123_plain_strerror(err));
     m_totalTime = (qint64) mpg123_length(m_handle) * 1000 / m_rate;
 
     configure(m_rate, channels, Qmmp::PCM_S16LE);
