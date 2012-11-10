@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,10 +31,14 @@ void PositionSlider::mousePressEvent (QMouseEvent *event)
 		if (orientation() == Qt::Vertical)
 			setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height() ) ;
 		else
-			setValue(minimum() + ((maximum()-minimum()) * event->x()) / width() ) ;
-
+			setValue(minimum() + ((maximum()-minimum()) * event->x()) / width());
+		setSliderDown (true);
 		event->accept();
 	}
 	QSlider::mousePressEvent(event);
 }
 
+void PositionSlider::mouseReleaseEvent (QMouseEvent *)
+{
+	setSliderDown (false);
+}
