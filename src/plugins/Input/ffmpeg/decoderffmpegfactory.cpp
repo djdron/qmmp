@@ -85,10 +85,17 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
 
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
+    av_register_all();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
+
+    if(!avcodec_find_decoder(CODEC_ID_AAC))
+    {
+        filters.removeAll("*.aac");
+        filters.removeAll("*.m4a");
+    }
     DecoderProperties properties;
     properties.name = tr("FFmpeg Plugin");
     properties.filters = filters;
