@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,7 +21,6 @@
 #include <QtPlugin>
 #include <QMessageBox>
 #include <QTranslator>
-//#include <curl/curlver.h>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "mmsinputsource.h"
@@ -63,4 +62,4 @@ QTranslator *MMSInputFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mms_plugin_") + locale);
     return translator;
 }
-Q_EXPORT_PLUGIN2(mms, MMSInputFactory);
+Q_EXPORT_PLUGIN2(mms, MMSInputFactory)
