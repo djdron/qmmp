@@ -451,7 +451,7 @@ void HttpStreamReader::parseICYMetaData(char *data, qint64 size)
                 metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
             metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
             metaData.insert(Qmmp::URL, m_url);
-            (qobject_cast<InputSource *>(parent()))->addMetaData(metaData);
+            m_parent->addMetaData(metaData);
             m_meta_sent = true;
             break;
         }
