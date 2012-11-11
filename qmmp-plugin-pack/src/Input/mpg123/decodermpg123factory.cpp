@@ -59,12 +59,32 @@ bool DecoderMPG123Factory::supports(const QString &source) const
 
 bool DecoderMPG123Factory::canDecode(QIODevice *input) const
 {
-    Q_UNUSED(input)
-    /*char buf[16 * 512];*/
-    /*if (input->peek(buf,sizeof(buf)) == sizeof(buf))
+    char buf[16 * 512];
+    if (input->peek(buf,sizeof(buf)) == sizeof(buf))
     {
-
-    }*/
+        mpg123_init();
+        mpg123_handle *handle = mpg123_new(0, 0);
+        if (!handle)
+            return false;
+        if(mpg123_open_feed(handle) != MPG123_OK)
+        {
+            mpg123_delete(handle);
+            return false;
+        }
+        if (mpg123_format(handle, 44100, MPG123_STEREO, MPG123_ENC_SIGNED_16) != MPG123_OK)
+        {
+            mpg123_close(handle);
+            mpg123_delete(handle);
+            return false;
+        }
+        size_t out_size = 0;
+        int ret = mpg123_decode(handle, (unsigned char*) buf, sizeof(buf), 0, 0, &out_size);
+        mpg123_close(handle);
+        mpg123_delete(handle);
+        if (ret != MPG123_DONE && ret != MPG123_NEW_FORMAT)
+            return false;
+        return true;
+    }
     return false;
 }
 

@@ -62,7 +62,6 @@ off_t mpg123_seek_cb(void *src, off_t offset, int whence)
 
 DecoderMPG123::DecoderMPG123(const QString &url, QIODevice *i) : Decoder(i)
 {
-    Q_UNUSED(i); //TODO add stream-based input support
     m_url = url;
     m_totalTime = 0;
     m_rate = 0;
@@ -125,13 +124,18 @@ bool DecoderMPG123::initialize()
     /* Ensure that this output format will not change (it could, when we allow it). */
     mpg123_format_none(m_handle);
     mpg123_format(m_handle, m_rate, channels, encoding);
-    //duration
-    err = mpg123_scan(m_handle);
-    qWarning("DecoderMPG123: mpg123 error: %s", mpg123_plain_strerror(err));
-    m_totalTime = (qint64) mpg123_length(m_handle) * 1000 / m_rate;
+
+    if(!input()->isSequential())
+    {
+        if((err = mpg123_scan(m_handle)) != MPG123_OK)
+            qWarning("DecoderMPG123: mpg123 error: %s", mpg123_plain_strerror(err));
+        //duration
+        m_totalTime = (qint64) mpg123_length(m_handle) * 1000 / m_rate;
+    }
+    else
+        m_totalTime = 0;
 
     configure(m_rate, channels, Qmmp::PCM_S16LE);
-
     return true;
 }
 
