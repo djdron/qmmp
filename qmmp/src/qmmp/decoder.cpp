@@ -185,7 +185,10 @@ DecoderFactory *Decoder::findByPath(const QString& source, bool useContent)
         //try last factory with stream based input or local files support
         if (fact && isEnabled(fact) && (!fact->properties().noInput ||
                                         fact->properties().protocols.contains("file")))
-            return fact;
+        {
+            if(fact->canDecode(&buffer))
+                return fact;
+        }
 
         foreach(DecoderFactory *fact, *m_factories)
         {
