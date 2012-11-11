@@ -360,6 +360,8 @@ qint64 HttpStreamReader::readBuffer(char* data, qint64 maxlen)
 
 void HttpStreamReader::checkBuffer()
 {
+    if(m_stream.aborted)
+        return;
     if (m_stream.buf_fill > m_buffer_size && !m_ready)
     {
         m_ready  = true;
