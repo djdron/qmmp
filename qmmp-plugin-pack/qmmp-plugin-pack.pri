@@ -13,6 +13,8 @@ INCLUDEPATH += /usr/local/include
 }else{
 INCLUDEPATH += D:/projects/qmmp/qmmp-svn/qmmp/src
 QMAKE_LIBDIR += D:/projects/qmmp/qmmp-svn/qmmp/bin
+INCLUDEPATH += C:/projects/qmmp/qmmp-svn/qmmp/src
+QMAKE_LIBDIR += C:/projects/qmmp/qmmp-svn/qmmp/bin
 }
 
 #Version
