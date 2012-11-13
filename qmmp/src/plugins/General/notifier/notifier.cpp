@@ -42,45 +42,41 @@ Notifier::Notifier(QObject *parent) : QObject(parent)
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect (m_core, SIGNAL(volumeChanged(int, int)), SLOT(showVolume(int, int)));
-    if(m_psi) //clear psi notification
+
+    //psi tune files (thousands of them!)
+    QString psi_data_dir = qgetenv("PSIDATADIR");
+    QString xdg_cache_home = qgetenv("XDG_CACHE_HOME");
+    if(!psi_data_dir.isEmpty())
+        m_psiTuneFiles << psi_data_dir+"/tune";
+    else if(!xdg_cache_home.isEmpty())
     {
-        QFile::remove(QDir::homePath()+"/.psi/tune");
-        QFile::remove(QDir::homePath()+"/.psi-plus/tune");
-        QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
+        m_psiTuneFiles << xdg_cache_home+"/psi/tune";
+        m_psiTuneFiles << xdg_cache_home+"/psi+/tune";
     }
+    else
+    {
+        m_psiTuneFiles << QDir::homePath()+"/.cache/psi/tune";
+        m_psiTuneFiles << QDir::homePath()+"/.cache/psi+/tune";
+    }
+    //legacy psi support
+    m_psiTuneFiles << QDir::homePath()+"/.psi/tune";
+    m_psiTuneFiles << QDir::homePath()+"/.psi-plus/tune";
+    m_psiTuneFiles << QDir::homePath()+"/.cache/Psi+/tune";
+
     if (m_core->state() == Qmmp::Playing) //test message
         showMetaData();
 }
 
 Notifier::~Notifier()
 {
-    if(m_psi) //clear psi notification
-    {
-        QFile::remove(QDir::homePath()+"/.psi/tune");
-        QFile::remove(QDir::homePath()+"/.psi-plus/tune");
-        QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
-    }
+    removePsiTuneFiles();
 }
 
 void Notifier::setState(Qmmp::State state)
 {
-    switch ((uint) state)
+    if(state == Qmmp::Stopped)
     {
-    case Qmmp::Playing:
-    case Qmmp::Paused:
-    {
-        break;
-    }
-    case Qmmp::Stopped:
-    {
-        if (m_psi)
-        {
-            QFile::remove(QDir::homePath()+"/.psi/tune");
-            QFile::remove(QDir::homePath()+"/.psi-plus/tune");
-            QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
-        }
-        break;
-    }
+        removePsiTuneFiles();
     }
 }
 
@@ -103,32 +99,18 @@ void Notifier::showMetaData()
     data.append(m_core->metaData(Qmmp::TRACK).toUtf8()+"\n");
     data.append(QString("%1").arg(m_core->totalTime()/1000).toUtf8()+"\n");
 
-    QDir psi_dir(QDir::homePath()+"/.psi/");
-    if(psi_dir.exists())
+    foreach(QString path, m_psiTuneFiles)
     {
-        QFile file(QDir::homePath()+"/.psi/tune");
-        file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
-        file.write(data);
-        file.close();
-    }
+        QDir tuneDir = QFileInfo(path).absoluteDir();
+        if(!tuneDir.exists())
+            continue;
 
-    QDir psi_plus_dir(QDir::homePath()+"/.psi-plus/");
-    if(psi_plus_dir.exists())
-    {
-        QFile file(QDir::homePath()+"/.psi-plus/tune");
+        QFile file(path);
         file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
         file.write(data);
         file.close();
+        continue;
     }
-    QDir psi_plus_dir2(QDir::homePath()+"/.cache/Psi+/");
-    if(psi_plus_dir2.exists())
-    {
-        QFile file(QDir::homePath()+"/.cache/Psi+/tune");
-        file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
-        file.write(data);
-        file.close();
-    }
-
 }
 
 void Notifier::showVolume(int l, int r)
@@ -143,5 +125,14 @@ void Notifier::showVolume(int l, int r)
         }
         m_l = l;
         m_r = r;
+    }
+}
+
+void Notifier::removePsiTuneFiles()
+{
+    if(m_psi) //clear psi notification
+    {
+        foreach(QString path, m_psiTuneFiles)
+            QFile::remove(path);
     }
 }
