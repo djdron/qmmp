@@ -21,7 +21,7 @@
 #define NOTIFIER_H
 
 #include <QPointer>
-
+#include <QStringList>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
 
@@ -47,10 +47,12 @@ private slots:
 
 private:
     QPointer<PopupWidget> m_popupWidget;
+    void removePsiTuneFiles();
     bool m_desktop, m_showVolume;
     bool m_psi;
     int m_l, m_r;
     SoundCore *m_core;
+    QStringList m_psiTuneFiles;
 
 };
 
