@@ -122,7 +122,7 @@ HttpStreamReader::HttpStreamReader(const QString &url, HTTPInputSource *parent) 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HTTP");
     m_codec = QTextCodec::codecForName(settings.value("icy_encoding","UTF-8").toByteArray ());
-    m_buffer_size = settings.value("buffer_size",128).toInt() * 1000;
+    m_buffer_size = settings.value("buffer_size",384).toInt() * 1000;
     if (!m_codec)
         m_codec = QTextCodec::codecForName ("UTF-8");
 #ifdef WITH_ENCA

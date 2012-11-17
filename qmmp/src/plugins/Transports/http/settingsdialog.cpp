@@ -42,7 +42,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     settings.beginGroup("HTTP");
     int pos = ui.icyEncodingComboBox->findText(settings.value("icy_encoding","UTF-8").toString());
     ui.icyEncodingComboBox->setCurrentIndex(pos);
-    ui.bufferSizeSpinBox->setValue(settings.value("buffer_size",128).toInt());
+    ui.bufferSizeSpinBox->setValue(settings.value("buffer_size",384).toInt());
 #ifdef WITH_ENCA
     ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", false).toBool());
     pos = ui.encaAnalyserComboBox->findText(settings.value("enca_lang", langs[n-1]).toString());
