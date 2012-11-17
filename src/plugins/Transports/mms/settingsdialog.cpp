@@ -29,9 +29,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);    
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);   
-    ui.bufferSizeSpinBox->setValue(settings.value("MMS/buffer_size",128).toInt());
+    setAttribute(Qt::WA_DeleteOnClose);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    ui.bufferSizeSpinBox->setValue(settings.value("MMS/buffer_size",384).toInt());
 }
 
 
@@ -40,7 +40,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);    
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("MMS/buffer_size", ui.bufferSizeSpinBox->value());
     QDialog::accept();
 }
