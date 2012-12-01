@@ -19,5 +19,6 @@
     <file>aac_plugin_ja.qm</file>
     <file>aac_plugin_sk.qm</file>
     <file>aac_plugin_es.qm</file>
+    <file>aac_plugin_he.qm</file>
   </qresource>
 </RCC>

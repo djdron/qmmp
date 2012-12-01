@@ -19,5 +19,6 @@
     <file>skinned_plugin_ja.qm</file>
     <file>skinned_plugin_sk.qm</file>
     <file>skinned_plugin_es.qm</file>
+    <file>skinned_plugin_he.qm</file>
   </qresource>
 </RCC>

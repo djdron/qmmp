@@ -19,5 +19,6 @@
     <file>bs2b_plugin_ja.qm</file>
     <file>bs2b_plugin_sk.qm</file>
     <file>bs2b_plugin_es.qm</file>
+    <file>bs2b_plugin_he.qm</file>
   </qresource>
 </RCC>

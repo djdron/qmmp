@@ -19,5 +19,6 @@
     <file>oss4_plugin_ja.qm</file>
     <file>oss4_plugin_sk.qm</file>
     <file>oss4_plugin_es.qm</file>
+    <file>oss4_plugin_he.qm</file>
   </qresource>
 </RCC>

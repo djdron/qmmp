@@ -19,5 +19,6 @@
     <file>cue_plugin_ja.qm</file>
     <file>cue_plugin_sk.qm</file>
     <file>cue_plugin_es.qm</file>
+    <file>cue_plugin_he.qm</file>
   </qresource>
 </RCC>
