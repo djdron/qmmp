@@ -19,5 +19,6 @@
     <file>status_plugin_ja.qm</file>
     <file>status_plugin_sk.qm</file>
     <file>status_plugin_es.qm</file>
+    <file>status_plugin_he.qm</file>
   </qresource>
 </RCC>

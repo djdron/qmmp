@@ -19,5 +19,6 @@
     <file>playlist_plugin_ja.qm</file>
     <file>playlist_plugin_sk.qm</file>
     <file>playlist_plugin_es.qm</file>
+    <file>playlist_plugin_he.qm</file>
   </qresource>
 </RCC>

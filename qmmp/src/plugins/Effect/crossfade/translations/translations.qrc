@@ -19,5 +19,6 @@
     <file>crossfade_plugin_ja.qm</file>
     <file>crossfade_plugin_sk.qm</file>
     <file>crossfade_plugin_es.qm</file>
+    <file>crossfade_plugin_he.qm</file>
   </qresource>
 </RCC>

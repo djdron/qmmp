@@ -19,5 +19,6 @@
     <file>http_plugin_ja.qm</file>
     <file>http_plugin_sk.qm</file>
     <file>http_plugin_es.qm</file>
+    <file>http_plugin_he.qm</file>
   </qresource>
 </RCC>

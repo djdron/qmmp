@@ -19,5 +19,6 @@
     <file>libqmmpui_ja.qm</file>
     <file>libqmmpui_sk.qm</file>
     <file>libqmmpui_es.qm</file>
+    <file>libqmmpui_he.qm</file>
   </qresource>
 </RCC>

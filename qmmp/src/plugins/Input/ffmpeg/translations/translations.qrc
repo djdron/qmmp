@@ -19,5 +19,6 @@
     <file>ffmpeg_plugin_ja.qm</file>
     <file>ffmpeg_plugin_sk.qm</file>
     <file>ffmpeg_plugin_es.qm</file>
+    <file>ffmpeg_plugin_he.qm</file>
   </qresource>
 </RCC>

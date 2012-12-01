@@ -19,5 +19,6 @@
     <file>gme_plugin_ja.qm</file>
     <file>gme_plugin_sk.qm</file>
     <file>gme_plugin_es.qm</file>
+    <file>gme_plugin_he.qm</file>
   </qresource>
 </RCC>

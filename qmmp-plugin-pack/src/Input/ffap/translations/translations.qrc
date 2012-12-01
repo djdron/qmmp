@@ -19,5 +19,6 @@
     <file>ffap_plugin_ja.qm</file>
     <file>ffap_plugin_sk.qm</file>
     <file>ffap_plugin_es.qm</file>
+    <file>ffap_plugin_he.qm</file>
   </qresource>
 </RCC>

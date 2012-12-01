@@ -19,5 +19,6 @@
     <file>stereo_plugin_ja.qm</file>
     <file>stereo_plugin_sk.qm</file>
     <file>stereo_plugin_es.qm</file>
+    <file>stereo_plugin_he.qm</file>
   </qresource>
 </RCC>
