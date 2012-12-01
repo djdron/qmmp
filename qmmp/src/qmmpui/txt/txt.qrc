@@ -68,5 +68,10 @@
     <file>translators_es.txt</file>
     <file>description_es.txt</file>
 
+    <file>authors_he.txt</file>
+    <file>thanks_he.txt</file>
+    <file>translators_he.txt</file>
+    <file>description_he.txt</file>
+
   </qresource>
 </RCC>
