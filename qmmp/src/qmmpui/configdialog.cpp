@@ -310,6 +310,7 @@ void ConfigDialog::loadLanguages()
     l["en_US"] = tr("English");
     l["fr"] = tr("French");
     l["de"] = tr("German");
+    l["he"] = tr("Hebrew");
     l["hu"] = tr("Hungarian");
     l["it"] = tr("Italian");
     l["ja"] = tr("Japanese");
