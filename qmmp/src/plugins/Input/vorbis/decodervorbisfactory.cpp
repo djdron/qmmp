@@ -124,7 +124,7 @@ void DecoderVorbisFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About Ogg Vorbis Audio Plugin"),
                         tr("Qmmp Ogg Vorbis Audio Plugin")+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
-                        tr("Source code based on mq3 progect")
+                        tr("Source code based on mq3 project")
                        );
 }
 

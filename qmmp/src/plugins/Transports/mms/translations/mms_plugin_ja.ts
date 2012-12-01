@@ -4,22 +4,22 @@
 <context>
     <name>MMSInputFactory</name>
     <message>
-        <location filename="../mmsinputfactory.cpp" line="34"/>
+        <location filename="../mmsinputfactory.cpp" line="33"/>
         <source>MMS Plugin</source>
         <translation>MMS プラグイン</translation>
     </message>
     <message>
-        <location filename="../mmsinputfactory.cpp" line="54"/>
+        <location filename="../mmsinputfactory.cpp" line="53"/>
         <source>About MMS Transport Plugin</source>
         <translation>MMS 搬送プラグインについて</translation>
     </message>
     <message>
-        <location filename="../mmsinputfactory.cpp" line="55"/>
+        <location filename="../mmsinputfactory.cpp" line="54"/>
         <source>Qmmp MMS Transport Plugin</source>
         <translation>QMMP MMS 搬送プラグイン</translation>
     </message>
     <message>
-        <location filename="../mmsinputfactory.cpp" line="56"/>
+        <location filename="../mmsinputfactory.cpp" line="55"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

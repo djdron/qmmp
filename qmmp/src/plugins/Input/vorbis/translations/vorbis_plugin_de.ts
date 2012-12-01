@@ -30,7 +30,7 @@
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="127"/>
-        <source>Source code based on mq3 progect</source>
+        <source>Source code based on mq3 project</source>
         <translation>Quellcode basiert auf dem mq3-Projekt</translation>
     </message>
 </context>

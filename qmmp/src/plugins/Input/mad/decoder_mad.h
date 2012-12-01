@@ -1,5 +1,5 @@
 /***************************************************************************
- *  Based on mq3 and madplay progects                                      *
+ *  Based on mq3 and madplay projects                                      *
  *                                                                         *
  * Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>             *
  * Copyright (C) 2000-2004 Robert Leslie <rob@mars.org>                    *
