@@ -36,6 +36,9 @@
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Иврит:
+    Genghis Khan <genghiskhan@gmx.ca>
+
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
 
