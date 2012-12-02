@@ -215,7 +215,7 @@
     <message>
         <location filename="../configdialog.cpp" line="313"/>
         <source>Hebrew</source>
-        <translation type="unfinished"></translation>
+        <translation>иврит</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="314"/>
