@@ -35,7 +35,7 @@
 
 static CRITICAL_SECTION  cs;
 static HWAVEOUT          dev                    = NULL;
-static unsigned int               ScheduledBlocks        = 0;
+static unsigned int      ScheduledBlocks        = 0;
 static int               PlayedWaveHeadersCount = 0;          // free index
 static WAVEHDR*          PlayedWaveHeaders [MAX_WAVEBLOCKS];
 
@@ -47,6 +47,7 @@ static void CALLBACK wave_callback (HWAVE hWave, UINT uMsg, DWORD dwInstance, DW
     {
         EnterCriticalSection (&cs);
         PlayedWaveHeaders [PlayedWaveHeadersCount++] = (WAVEHDR*) dwParam1;
+        ScheduledBlocks--;                        // decrease the number of USED blocks
         LeaveCriticalSection (&cs);
     }
 }
@@ -59,7 +60,6 @@ free_memory (void)
 
     EnterCriticalSection (&cs);
     wh = PlayedWaveHeaders [--PlayedWaveHeadersCount];
-    ScheduledBlocks--;                        // decrease the number of USED blocks
     LeaveCriticalSection (&cs);
 
     waveOutUnprepareHeader (dev, wh, sizeof (WAVEHDR));
@@ -199,11 +199,9 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
 void OutputWaveOut::drain()
 {
     while (ScheduledBlocks > 0)
-    {
-        Sleep(ScheduledBlocks);
-        while (PlayedWaveHeadersCount > 0)                        // free used blocks ...
-            free_memory();
-    }
+        Sleep(10);
+    while (PlayedWaveHeadersCount > 0)                        // free used blocks ...
+        free_memory();
 }
 
 void OutputWaveOut::suspend()
@@ -227,12 +225,12 @@ void OutputWaveOut::uninitialize()
 {
     if (dev)
     {
-        while (ScheduledBlocks > 0)
-        {
-            Sleep (ScheduledBlocks);
-            while (PlayedWaveHeadersCount > 0)                        // free used blocks ...
-                free_memory ();
-        }
+        waveOutReset(dev); // reset the device
+        while (ScheduledBlocks > 0);
+            Sleep (10);
+
+        while (PlayedWaveHeadersCount > 0)         // free used blocks ...
+            free_memory ();
 
         waveOutReset (dev);      // reset the device
         waveOutClose (dev);      // close the device
@@ -240,6 +238,5 @@ void OutputWaveOut::uninitialize()
     }
 
     DeleteCriticalSection (&cs);
-    ScheduledBlocks = 0;
     return;
 }
