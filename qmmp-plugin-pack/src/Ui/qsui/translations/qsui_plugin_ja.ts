@@ -185,7 +185,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>スペクトルアナライザー</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
@@ -421,7 +421,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>色を選択</translation>
     </message>
 </context>
 <context>
@@ -956,32 +956,32 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="280"/>
         <source>Analyzer Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>アナライザーの配色</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="286"/>
         <source>Analyzer #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>第一アナライザー:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="321"/>
         <source>Peaks:</source>
-        <translation type="unfinished"></translation>
+        <translation>峰:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="353"/>
         <source>Analyzer #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>第二アナライザー:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="385"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>背景:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="417"/>
         <source>Analyzer #3:</source>
-        <translation type="unfinished"></translation>
+        <translation>第三アナライザー:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="134"/>
@@ -1004,72 +1004,72 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="259"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>峰</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="262"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>再描画の頻度</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="265"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 フレーム毎秒</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="266"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 フレーム毎秒</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="267"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 フレーム毎秒</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="268"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 フレーム毎秒</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="275"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>アナライザー減衰速度</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="278"/>
         <location filename="../qsuianalyzer.cpp" line="292"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>さらに遅く</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>
         <location filename="../qsuianalyzer.cpp" line="293"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>遅く</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="280"/>
         <location filename="../qsuianalyzer.cpp" line="294"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>適度</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="281"/>
         <location filename="../qsuianalyzer.cpp" line="295"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>速く</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="282"/>
         <location filename="../qsuianalyzer.cpp" line="296"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>さらに速く</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>ピーク減衰速度</translation>
     </message>
 </context>
 <context>
