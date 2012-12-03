@@ -160,7 +160,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         if(m_number_width)
         {
             QString number = QString("%1").arg(m_first+i+1);
-            m_painter.drawText(10 + m_number_width - m_extra_metrics->width(number),
+            m_painter.drawText(10 + m_number_width - m_metrics->width(number),
                                font_y, number);
             m_painter.drawText(10 + m_number_width + m_metrics->width("9"), font_y, m_titles.at(i));
         }
@@ -187,8 +187,8 @@ void ListWidget::paintEvent(QPaintEvent *)
     if(m_number_width)
     {
         m_painter.setPen(m_normal);
-        m_painter.drawLine(10 + m_number_width + m_metrics->width("9") / 2, 2,
-                           10 + m_number_width + m_metrics->width("9") / 2, font_y);
+        m_painter.drawLine(10 + m_number_width + m_metrics->width("9") / 2 - 1, 2,
+                           10 + m_number_width + m_metrics->width("9") / 2 - 1, font_y);
     }
 }
 
