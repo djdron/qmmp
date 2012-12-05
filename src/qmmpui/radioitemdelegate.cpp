@@ -82,16 +82,19 @@ QSize RadioItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QMod
 bool RadioItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
                                     const QStyleOptionViewItem &option, const QModelIndex &index)
 {
-    if (event->type() == QEvent::MouseButtonRelease)
+    if (event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::KeyPress)
     {
         if (hasRadioButton(index))
         {
-            QRect checkRect = qApp->style()->subElementRect(QStyle::SE_RadioButtonIndicator, &option);
+            if(event->type() == QEvent::MouseButtonRelease)
+            {
+                QRect checkRect = qApp->style()->subElementRect(QStyle::SE_RadioButtonIndicator, &option);
 
-            QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(event);
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(event);
 
-            if(!checkRect.contains(mouseEvent->pos()))
-                return QStyledItemDelegate::editorEvent(event,model,option,index);
+                if(!checkRect.contains(mouseEvent->pos()))
+                    return QStyledItemDelegate::editorEvent(event,model,option,index);
+            }
 
             if (!index.data(Qt::CheckStateRole).toBool())
             {
