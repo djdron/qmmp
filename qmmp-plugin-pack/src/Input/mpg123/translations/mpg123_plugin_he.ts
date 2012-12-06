@@ -6,33 +6,34 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="94"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="97"/>
         <source>MPEG Files</source>
-        <translation type="unfinished"></translation>
+        <translation>קבצי MPEG</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="229"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>אודות תוספת שמע MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="230"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת שמע MPG123 ‫Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="231"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת זו מספקת תמיכה עבור MPEG v1/2 layer1/2/3
+באמצעות ספריית libmpg123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="233"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -40,12 +41,12 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="70"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>פורמט</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור סיביות</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
@@ -55,12 +56,12 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור דגימה</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>הרץ</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="78"/>
@@ -68,49 +69,49 @@ with use of libmpg123 library</source>
         <location filename="../mpegmetadatamodel.cpp" line="84"/>
         <location filename="../mpegmetadatamodel.cpp" line="87"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>מצב</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>ק״ב</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>גודל קובץ</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="93"/>
         <location filename="../mpegmetadatamodel.cpp" line="95"/>
         <source>Protection</source>
-        <translation type="unfinished"></translation>
+        <translation>הגנה</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="93"/>
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>כן</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="95"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>לא</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>זכויות יוצרים</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
         <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>Original</source>
-        <translation type="unfinished"></translation>
+        <translation>מקורי</translation>
     </message>
 </context>
 <context>
@@ -118,70 +119,70 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPEG Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>הגדרות תוספת MPEG</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>עדיפות תגית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>ראשונה:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="66"/>
         <location filename="../settingsdialog.ui" line="115"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="120"/>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <location filename="../settingsdialog.ui" line="125"/>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>מנוטרלת</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>שניה:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="139"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>שלישית:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>קידודים</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="210"/>
         <source>ID3v1 encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>קידוד ID3v1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>ID3v2 encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>קידוד ID3v2:</translation>
     </message>
 </context>
 </TS>

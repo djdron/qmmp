@@ -139,21 +139,21 @@
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="66"/>
         <location filename="../settingsdialog.ui" line="115"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="120"/>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>

@@ -54,7 +54,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>

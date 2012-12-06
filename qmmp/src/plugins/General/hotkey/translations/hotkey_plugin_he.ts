@@ -92,12 +92,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>
         <source>Next</source>
-        <translation>בא</translation>
+        <translation>הבא</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="47"/>
         <source>Previous</source>
-        <translation>קודם</translation>
+        <translation>הקודם</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>

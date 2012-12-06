@@ -1,1 +1,1 @@
-This program is an audio-player, written with the help of the Qt library.
+תוכנית זו הינה נגן-אודיו, נכתבה בעזרת הספרייה Qt.

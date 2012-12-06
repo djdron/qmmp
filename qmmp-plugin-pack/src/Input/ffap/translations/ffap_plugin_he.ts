@@ -6,37 +6,37 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="48"/>
         <source>FFap Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת FFap</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="50"/>
         <source>Monkey&apos;s Audio Files</source>
-        <translation type="unfinished"></translation>
+        <translation>קבצי Monkey&apos;s Audio</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="153"/>
         <source>About FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>אודות תוספת שמע FFap</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="154"/>
         <source>Qmmp FFap Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת שמע FFap ‫Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="155"/>
         <source>This plugin provides Monkey&apos;s Audio (APE) support</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת זו מספקת תמיכה לקבצי Monkey&apos;s Audio ‫(APE)</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
         <source>Based on code from deadbeef, FFmpeg and rockbox</source>
-        <translation type="unfinished"></translation>
+        <translation>מבוססת על קוד מן deadbeef, FFmpeg וגם rockbox</translation>
     </message>
 </context>
 <context>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="60"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>אריכות</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור דגימה</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>הרץ</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="62"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>ערוצים</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור סיביות</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
@@ -74,12 +74,12 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>גודל קובץ</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>ק״ב</translation>
     </message>
 </context>
 </TS>

@@ -62,7 +62,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
@@ -78,7 +78,7 @@
         <location filename="../settingsdialog.ui" line="134"/>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>
