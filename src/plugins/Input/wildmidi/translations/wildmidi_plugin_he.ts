@@ -26,7 +26,7 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="102"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation>תוספת עושה ניצול בספריית WildMidi להנגנה של קבצי midi</translation>
+        <translation>תוספת עושה ניצול בספריית WildMidi לניגון של קבצי midi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="103"/>

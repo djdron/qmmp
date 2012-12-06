@@ -42,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
@@ -75,27 +75,27 @@
     <message>
         <location filename="../statusicon.cpp" line="65"/>
         <source>Play</source>
-        <translation>נגינה</translation>
+        <translation>נגן</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="66"/>
         <source>Pause</source>
-        <translation>השהיה</translation>
+        <translation>השהה</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
-        <translation>הפסקה</translation>
+        <translation>הפסק</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="69"/>
         <source>Next</source>
-        <translation>בא</translation>
+        <translation>הבא</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="70"/>
         <source>Previous</source>
-        <translation>קודם</translation>
+        <translation>הקודם</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="72"/>

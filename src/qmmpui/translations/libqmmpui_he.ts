@@ -141,7 +141,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="166"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
@@ -212,12 +212,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="427"/>
         <source>Playback</source>
-        <translation>ניתון הקלטה</translation>
+        <translation>פס קול</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="433"/>
         <source>Continue playback on startup</source>
-        <translation>המשך ניגון הקלטה בעת הפעלה</translation>
+        <translation>המשך ניגון פס קול בעת הפעלה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="440"/>
@@ -558,7 +558,7 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="45"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="59"/>
@@ -643,17 +643,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="60"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
@@ -729,7 +729,7 @@
         <location filename="../forms/tageditor.ui" line="222"/>
         <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="197"/>
@@ -753,7 +753,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>

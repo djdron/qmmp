@@ -69,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
