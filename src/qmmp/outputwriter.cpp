@@ -87,9 +87,6 @@ OutputWriter::~OutputWriter()
 bool OutputWriter::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     m_output = Output::create();
-    m_frequency = freq;
-    m_channels = chan;
-    m_format = format;
     if(!m_output)
     {
         qWarning("OutputWriter: unable to create output");
@@ -103,6 +100,9 @@ bool OutputWriter::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         m_output = 0;
         return false;
     }
+    m_frequency = m_output->sampleRate();
+    m_channels = m_output->channels();
+    m_format = m_output->format();
     QMap<Qmmp::AudioFormat, QString> formatNames;
     formatNames.insert(Qmmp::PCM_S8, "s8");
     formatNames.insert(Qmmp::PCM_S16LE, "s16le");
