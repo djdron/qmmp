@@ -31,8 +31,11 @@ SET(libnull_SRCS
 )
 
 SET(libnull_MOC_HDRS
-  outputnull.h
   outputnullfactory.h
+)
+
+SET(libnull_HDRS
+  outputnull.h
 )
 
 SET(libnull_RCCS translations/translations.qrc)
@@ -47,7 +50,7 @@ QT4_WRAP_CPP(libnull_MOC_SRCS ${libnull_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
-ADD_LIBRARY(null MODULE ${libnull_SRCS} ${libnull_MOC_SRCS} ${libnull_UIS_H} ${libnull_RCC_SRCS})
+ADD_LIBRARY(null MODULE ${libnull_SRCS} ${libnull_MOC_SRCS} ${libnull_UIS_H} ${libnull_RCC_SRCS} ${libnull_HDRS})
 add_dependencies(null qmmp)
 target_link_libraries(null ${QT_LIBRARIES} -lqmmp)
 install(TARGETS null DESTINATION ${LIB_DIR}/qmmp/Output)

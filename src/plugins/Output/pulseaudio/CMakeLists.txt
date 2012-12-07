@@ -38,8 +38,11 @@ SET(libpulseaudio_SRCS
 )
 
 SET(libpulseaudio_MOC_HDRS
-  outputpulseaudio.h
   outputpulseaudiofactory.h
+)
+
+SET(libpulseaudio_HDRS
+  outputpulseaudio.h
 )
 
 SET(libpulseaudio_RCCS translations/translations.qrc)
@@ -55,7 +58,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(PULSE_FOUND)
 ADD_LIBRARY(pulseaudio MODULE ${libpulseaudio_SRCS} ${libpulseaudio_MOC_SRCS} ${libpulseaudio_UIS_H}
-  ${libpulseaudio_RCC_SRCS})
+  ${libpulseaudio_RCC_SRCS} ${libpulseaudio_HDRS})
 add_dependencies(pulseaudio qmmp)
 target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS})
 install(TARGETS pulseaudio DESTINATION ${LIB_DIR}/qmmp/Output)

@@ -81,12 +81,12 @@ SET(libqmmp_HDRS
     enginefactory.h
     metadatamanager.h
     volume.h
+    output.h
 )
 
 SET(libqmmp_MOC_HDRS
     visual.h
-    output.h
-    outputwriter.h
+    outputwriter_p.h
     soundcore.h
     statehandler.h
     volumecontrol_p.h

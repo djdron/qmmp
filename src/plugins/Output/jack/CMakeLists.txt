@@ -63,11 +63,11 @@ SET(libjack_SRCS
 
 SET(libjack_HDRS
   bio2jack.h
+  outputjack.h
 )
 
 SET(libjack_MOC_HDRS
   outputjackfactory.h
-  outputjack.h
 )
 
 SET(libjack_RCCS translations/translations.qrc)
