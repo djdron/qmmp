@@ -19,7 +19,6 @@
 #include "visualfactory.h"
 #include "statehandler.h"
 #include "audioparameters.h"
-#include "recycler.h"
 
 class QTimer;
 class QmmpSettings;

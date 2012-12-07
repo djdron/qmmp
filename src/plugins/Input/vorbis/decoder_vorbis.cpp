@@ -7,13 +7,12 @@
 
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
 #include <QObject>
 #include <QIODevice>
 #include "decoder_vorbis.h"
-// ic functions for OggVorbis
 
+// ic functions for OggVorbis
 static size_t oggread (void *buf, size_t size, size_t nmemb, void *src)
 {
     if (! src) return 0;

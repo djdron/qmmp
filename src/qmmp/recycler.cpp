@@ -4,7 +4,7 @@
 // warranty, or liability of any kind.
 //
 
-#include "recycler.h"
+#include "recycler_p.h"
 #include "qmmpsettings.h"
 #include "audioparameters.h"
 #include "buffer.h"

@@ -27,7 +27,6 @@
 #include <stdint.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include "decoder_wavpack.h"
 #include "cueparser.h"
 

@@ -22,7 +22,6 @@
 #include <QFile>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/soundcore.h>

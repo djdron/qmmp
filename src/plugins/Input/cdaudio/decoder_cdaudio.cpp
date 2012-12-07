@@ -32,7 +32,6 @@
 #include <cddb/cddb.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include <qmmp/qmmpsettings.h>
 
 #define CDDA_SECTORS 4

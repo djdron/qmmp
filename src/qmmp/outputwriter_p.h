@@ -23,7 +23,7 @@
 
 #include <QThread>
 #include <QMutex>
-#include "recycler.h"
+#include "recycler_p.h"
 #include "audioparameters.h"
 
 class QTimer;
@@ -32,6 +32,7 @@ class StateHandler;
 class Output;
 
 /** @internal
+    @brief Output thread.
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class OutputWriter : public QThread
