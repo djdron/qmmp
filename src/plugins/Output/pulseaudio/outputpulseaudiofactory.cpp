@@ -34,9 +34,9 @@ const OutputProperties OutputPulseAudioFactory::properties() const
     return properties;
 }
 
-Output* OutputPulseAudioFactory::create(QObject* parent)
+Output* OutputPulseAudioFactory::create()
 {
-    return new OutputPulseAudio(parent);
+    return new OutputPulseAudio();
 }
 
 Volume *OutputPulseAudioFactory::createVolume()

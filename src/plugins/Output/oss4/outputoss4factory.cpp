@@ -25,9 +25,9 @@
 #include "outputoss4factory.h"
 
 
-Output* OutputOSS4Factory::create(QObject* parent)
+Output* OutputOSS4Factory::create()
 {
-    return new OutputOSS4(parent);
+    return new OutputOSS4();
 }
 
 const OutputProperties OutputOSS4Factory::properties() const

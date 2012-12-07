@@ -24,7 +24,7 @@
 class OutputJACK;
 
 #include <qmmp/output.h>
-#include <QObject>
+
 extern "C"
 {
 #include <jack/jack.h>
@@ -34,20 +34,18 @@ extern "C"
 
 class OutputJACK : public Output
 {
-    Q_OBJECT
 public:
-    OutputJACK(QObject * parent = 0);
+    OutputJACK();
     ~OutputJACK();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
+    //output api
     qint64 latency();
-
-private:
-     //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain(){}
     void reset();
 
+private:
     // helper functions
     void uninitialize();
     qint64 m, m_wait_time;

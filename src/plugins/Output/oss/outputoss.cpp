@@ -44,7 +44,7 @@ extern "C"
 #include <qmmp/visual.h>
 #include "outputoss.h"
 
-OutputOSS::OutputOSS(QObject * parent) : Output(parent), m_audio_fd(-1)
+OutputOSS::OutputOSS() : Output(), m_audio_fd(-1)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_audio_device = settings.value("OSS/device","/dev/dsp").toString();

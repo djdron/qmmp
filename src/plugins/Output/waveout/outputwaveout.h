@@ -21,7 +21,6 @@
 #ifndef OUTPUTWAVEOUT_H
 #define OUTPUTWAVEOUT_H
 
-#include <QObject>
 #include <stdio.h>
 #include <windows.h>
 #include <qmmp/output.h>
@@ -31,22 +30,21 @@
 */
 class OutputWaveOut : public Output
 {
-    Q_OBJECT
 public:
-    OutputWaveOut(QObject * parent = 0);
+    OutputWaveOut();
     ~OutputWaveOut();
 
     bool initialize(quint32, int,  Qmmp::AudioFormat format);
-    qint64 latency();
 
-private:
     //output api
+    qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 size);
     void drain();
     void suspend();
     void resume();
-    void reset(); 
+    void reset();
 
+private:
     // helper functions
     void status();
     void uninitialize();

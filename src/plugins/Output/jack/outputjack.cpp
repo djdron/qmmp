@@ -33,7 +33,7 @@
 
 #define JACK_TIMEOUT 500000L
 
-OutputJACK::OutputJACK(QObject *parent) : Output(parent), m_inited(false)
+OutputJACK::OutputJACK() : Output(), m_inited(false)
 {
     JACK_Init();
     m_wait_time = 0;

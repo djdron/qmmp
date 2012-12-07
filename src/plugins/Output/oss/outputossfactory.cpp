@@ -25,9 +25,9 @@
 #include "outputossfactory.h"
 
 
-Output* OutputOSSFactory::create(QObject* parent)
+Output* OutputOSSFactory::create()
 {
-    return new OutputOSS(parent);
+    return new OutputOSS();
 }
 
 const OutputProperties OutputOSSFactory::properties() const
@@ -48,7 +48,7 @@ Volume *OutputOSSFactory::createVolume()
 void OutputOSSFactory::showSettings(QWidget* parent)
 {
     SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();
+    s->show();
 }
 
 void OutputOSSFactory::showAbout(QWidget *parent)

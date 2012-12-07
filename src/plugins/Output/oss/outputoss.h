@@ -23,26 +23,23 @@
 #ifndef OUTPUTOSS_H
 #define OUTPUTOSS_H
 
-class OutputOSS;
-
 #include <qmmp/output.h>
 #include <qmmp/volume.h>
 
 class OutputOSS : public Output
 {
-Q_OBJECT
 public:
-    OutputOSS(QObject * parent = 0);
+    OutputOSS();
     virtual ~OutputOSS();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
     //output api
+    qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
+
+private:
     //oss
     void post();
     void sync();

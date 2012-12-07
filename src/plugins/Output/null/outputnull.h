@@ -21,7 +21,6 @@
 #ifndef OUTPUTNULL_H
 #define OUTPUTNULL_H
 
-#include <QObject>
 #include <qmmp/output.h>
 
 /**
@@ -29,19 +28,18 @@
 */
 class OutputNull : public Output
 {
-    Q_OBJECT
 public:
-    OutputNull(QObject * parent = 0);
+    OutputNull();
     ~OutputNull();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
     //output api
+    qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
+
+private:
     qint64 m_bytes_per_second;
 };
 

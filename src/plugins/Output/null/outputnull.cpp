@@ -21,7 +21,7 @@
 #include "outputnull.h"
 
 
-OutputNull::OutputNull(QObject * parent) : Output(parent)
+OutputNull::OutputNull() : Output()
 {
    m_bytes_per_second = 0;
 }

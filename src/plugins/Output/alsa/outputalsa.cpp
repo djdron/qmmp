@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include <QObject>
-#include <QApplication>
-#include <QtGlobal>
+//#include <QApplication>
+//#include <QtGlobal>
 #include <QDir>
 #include <QSettings>
 #include <QTimer>
@@ -36,8 +36,7 @@
 #include <qmmp/statehandler.h>
 #include "outputalsa.h"
 
-OutputALSA::OutputALSA(QObject * parent)
-        : Output(parent), m_inited(false)
+OutputALSA::OutputALSA() : m_inited(false)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();

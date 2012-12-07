@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -65,9 +65,8 @@ public:
     virtual const OutputProperties properties() const = 0;
     /*!
      * Creates output provided by plugin.
-     * @param parent Parent object.
      */
-    virtual Output *create(QObject *parent) = 0;
+    virtual Output *create() = 0;
     /*!
      * Creates volume control object provided by plugin.
      * Returns \b 0 if volume control is not supported by plugin.

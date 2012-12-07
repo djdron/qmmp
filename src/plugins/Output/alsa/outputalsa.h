@@ -23,8 +23,6 @@
 
 class OutputALSA;
 
-
-#include <QObject>
 extern "C"
 {
 #include <alsa/asoundlib.h>
@@ -36,22 +34,20 @@ extern "C"
 
 class OutputALSA : public Output
 {
-    Q_OBJECT
 public:
-    OutputALSA(QObject * parent = 0);
+    OutputALSA();
     ~OutputALSA();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
     //output api
+    qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
     void suspend();
     void resume();
 
+private:
     // helper functions
     long alsa_write(unsigned char *data, long size);
     void uninitialize();

@@ -27,7 +27,7 @@
 #include "audioparameters.h"
 
 class QIODevice;
-class Output;
+class OutputWriter;
 class Effect;
 class DecoderFactory;
 class StateHandler;
@@ -69,13 +69,13 @@ private:
     void addOffset();
     qint64 produceSound(char *data, qint64 size, quint32 brate);
     void sendMetaData();
-    Output *createOutput();
+    OutputWriter *createOutput();
     void prepareEffects(Decoder *d);
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
     QList <Effect*> m_blockedEffects;
-    Output *m_output;
+    OutputWriter *m_output;
 
     bool m_done, m_finish, m_user_stop;
     uint m_bks;

@@ -73,7 +73,7 @@ free_memory (void)
     GlobalFree   (hg);
 }
 
-OutputWaveOut::OutputWaveOut(QObject * parent) : Output(parent)
+OutputWaveOut::OutputWaveOut() : Output()
 {
     //m_connection = 0;
     //m_dev = 0;
@@ -117,10 +117,10 @@ bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         return false;
     case WAVERR_BADFORMAT:
         qWarning("OutputWaveOut: This audio format is not supported.");
-        return false; 
+        return false;
     case WAVERR_SYNC:
         qWarning("OutputWaveOut: The device is synchronous.");
-        return false; 
+        return false;
     default:
         qWarning("OutputWaveOut: Unknown media error.");
         return false;
@@ -149,7 +149,7 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
     void*      allocptr;
     len = qMin(len, (qint64)1024);
 
-   
+
     while (PlayedWaveHeadersCount > 0)                        // free used blocks ...
         free_memory ();
 
@@ -158,7 +158,7 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
         usleep(500);
         return 0;
     }
-       
+
     if ((hg2 = GlobalAlloc (GMEM_MOVEABLE, len)) == NULL)   // allocate some memory for a copy of the buffer
     {
         qWarning("OutputWaveOut: GlobalAlloc failed");
