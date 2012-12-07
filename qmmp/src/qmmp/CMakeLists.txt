@@ -31,6 +31,7 @@ SET(libqmmp_SRCS
     recycler.cpp
     decoder.cpp
     output.cpp
+    outputwriter.cpp
     fileinfo.cpp
     equ/iir.c
     equ/iir_cfs.c
@@ -65,7 +66,7 @@ SET(libqmmp_HDRS
     equ/iir_fpu.h
     equ/iir.h
     visualfactory.h
-    recycler.h
+    recycler_p.h
     buffer.h
     effect.h
     qmmp.h
@@ -85,6 +86,7 @@ SET(libqmmp_HDRS
 SET(libqmmp_MOC_HDRS
     visual.h
     output.h
+    outputwriter.h
     soundcore.h
     statehandler.h
     volumecontrol_p.h
@@ -101,7 +103,6 @@ SET(libqmmp_DEVEL_HDRS
     visual.h
     decoderfactory.h
     visualfactory.h
-    recycler.h
     buffer.h
     decoder.h
     output.h
