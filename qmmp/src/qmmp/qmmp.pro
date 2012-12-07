@@ -35,7 +35,8 @@ HEADERS += \
     qmmpevents_p.h \
     volume.h \
     volumecontrol_p.h \
-    recycler.h
+    recycler.h \
+    outputwriter_p.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -62,7 +63,8 @@ SOURCES += recycler.cpp \
     audioconverter.cpp \
     qmmpsettings.cpp \
     eqsettings.cpp \
-    qmmpevents.cpp
+    qmmpevents.cpp \
+    outputwriter.cpp
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
@@ -115,6 +117,8 @@ unix {
     DESTDIR = .
 }
 INCLUDEPATH += ./
+
+
 
 
 

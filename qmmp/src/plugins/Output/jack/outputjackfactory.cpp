@@ -34,9 +34,9 @@ const OutputProperties OutputJACKFactory::properties() const
     return properties;
 }
 
-Output* OutputJACKFactory::create(QObject* parent)
+Output* OutputJACKFactory::create()
 {
-    return new OutputJACK(parent);
+    return new OutputJACK();
 }
 
 Volume *OutputJACKFactory::createVolume()

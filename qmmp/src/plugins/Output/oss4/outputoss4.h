@@ -34,23 +34,21 @@ class VolumeOSS4;
 */
 class OutputOSS4 : public Output
 {
-Q_OBJECT
 public:
-    OutputOSS4(QObject *parent = 0);
+    OutputOSS4();
     virtual ~OutputOSS4();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
     int fd();
-    qint64 latency();
 
-    static OutputOSS4 *instance();
-    static VolumeOSS4 *m_vc;
-
-private:
     //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
+    qint64 latency();
+
+    static OutputOSS4 *instance();
+    static VolumeOSS4 *m_vc;
 
 private:
     void post();

@@ -32,20 +32,18 @@ extern "C"{
 */
 class OutputPulseAudio : public Output
 {
-    Q_OBJECT
 public:
-    OutputPulseAudio(QObject * parent = 0);
+    OutputPulseAudio();
     ~OutputPulseAudio();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
     //output api
+    qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
     void drain();
     void reset();
 
+private:
     // helper functions
     void uninitialize();
     pa_simple *m_connection;

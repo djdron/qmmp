@@ -34,9 +34,9 @@ const OutputProperties OutputNullFactory::properties() const
     return properties;
 }
 
-Output* OutputNullFactory::create(QObject* parent)
+Output* OutputNullFactory::create()
 {
-    return new OutputNull(parent);
+    return new OutputNull();
 }
 
 Volume *OutputNullFactory::createVolume()

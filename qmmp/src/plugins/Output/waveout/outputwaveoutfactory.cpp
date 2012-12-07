@@ -33,9 +33,9 @@ const OutputProperties OutputWaveOutFactory::properties() const
     return properties;
 }
 
-Output* OutputWaveOutFactory::create(QObject* parent)
+Output* OutputWaveOutFactory::create()
 {
-    return new OutputWaveOut(parent);
+    return new OutputWaveOut();
 }
 
 Volume *OutputWaveOutFactory::createVolume()

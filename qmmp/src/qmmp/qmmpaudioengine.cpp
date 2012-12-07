@@ -25,10 +25,11 @@
 #include "effect.h"
 #include "buffer.h"
 #include "decoder.h"
-#include "output.h"
+#include "outputwriter_p.h"
 #include "decoderfactory.h"
 #include "effectfactory.h"
 #include "inputsource.h"
+#include "statehandler.h"
 #include "audioconverter_p.h"
 #include "qmmpaudioengine_p.h"
 #include "metadatamanager.h"
@@ -521,15 +522,15 @@ void QmmpAudioEngine::sendMetaData()
     }
 }
 
-Output *QmmpAudioEngine::createOutput()
+OutputWriter *QmmpAudioEngine::createOutput()
 {
-    Output *output = Output::create(0);
-    if(!output)
+    OutputWriter *output = new OutputWriter(this);
+    /*if(!output)
     {
         qWarning("QmmpAudioEngine: unable to create output");
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
-    }
+    }*/
     if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()) ||
             output->audioParameters() != m_ap) //TODO add soundconverter
     {

@@ -23,8 +23,7 @@ extern "C"{
 }
 #include "outputpulseaudio.h"
 
-OutputPulseAudio::OutputPulseAudio(QObject * parent)
-        : Output(parent)
+OutputPulseAudio::OutputPulseAudio(): Output()
 {
     m_connection = 0;
 }

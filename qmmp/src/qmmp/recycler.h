@@ -10,8 +10,7 @@
 #include <QMutex>
 #include <QWaitCondition>
 #include "qmmp.h"
-
-class Buffer;
+#include "buffer.h"
 
 /*! @brief The Recycler class provides a queue of audio buffers.
  *  @author Brad Hughes <bhughes@trolltech.com>

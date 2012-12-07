@@ -35,9 +35,9 @@ const OutputProperties OutputALSAFactory::properties() const
     return properties;
 }
 
-Output* OutputALSAFactory::create(QObject* parent)
+Output* OutputALSAFactory::create()
 {
-    return new OutputALSA(parent);
+    return new OutputALSA();
 }
 
 Volume *OutputALSAFactory::createVolume()

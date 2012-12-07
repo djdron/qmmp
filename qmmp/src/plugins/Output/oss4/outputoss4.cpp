@@ -47,7 +47,7 @@ extern "C"
 OutputOSS4 *OutputOSS4::m_instance = 0;
 VolumeOSS4 *OutputOSS4::m_vc = 0;
 
-OutputOSS4::OutputOSS4(QObject *parent) : Output(parent)
+OutputOSS4::OutputOSS4() : Output()
 {
     m_audio_fd = -1;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -118,7 +118,7 @@ bool OutputOSS4::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         qWarning("OutputOSS4: unsupported audio format");
         return false;
     }
-   
+
     if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
         qWarning("OutputOSS4: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
 
