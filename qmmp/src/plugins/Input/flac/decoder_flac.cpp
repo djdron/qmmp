@@ -31,7 +31,6 @@
 #include <taglib/id3v2header.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include <qmmp/statehandler.h>
 #include <QObject>
 #include <QFile>

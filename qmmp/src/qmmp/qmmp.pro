@@ -35,8 +35,8 @@ HEADERS += \
     qmmpevents_p.h \
     volume.h \
     volumecontrol_p.h \
-    recycler.h \
-    outputwriter_p.h
+    outputwriter_p.h \
+    recycler_p.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -109,14 +109,15 @@ unix {
         metadatamanager.h \
         qmmpsettings.h \
         eqsettings.h \
-        volume.h \
-        recycler.h
+        volume.h
     devel.path = /include/qmmp
     INSTALLS += target \
         devel
     DESTDIR = .
 }
 INCLUDEPATH += ./
+
+
 
 
 

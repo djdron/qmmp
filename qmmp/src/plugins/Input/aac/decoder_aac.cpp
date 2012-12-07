@@ -22,11 +22,8 @@
 #include <QObject>
 #include <QIODevice>
 #include <QtGlobal>
-
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-#include <qmmp/recycler.h>
-
 #include "decoder_aac.h"
 #include "aacfile.h"
 

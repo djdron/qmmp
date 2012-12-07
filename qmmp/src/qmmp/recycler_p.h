@@ -4,15 +4,16 @@
 // warranty, or liability of any kind.
 //
 
-#ifndef __recycler_h
-#define __recycler_h
+#ifndef RECYCLER_P_H
+#define RECYCLER_P_H
 
 #include <QMutex>
 #include <QWaitCondition>
 #include "qmmp.h"
 #include "buffer.h"
 
-/*! @brief The Recycler class provides a queue of audio buffers.
+/*! @internal
+ *  @brief The Recycler class provides a queue of audio buffers.
  *  @author Brad Hughes <bhughes@trolltech.com>
  */
 class Recycler
