@@ -525,12 +525,6 @@ void QmmpAudioEngine::sendMetaData()
 OutputWriter *QmmpAudioEngine::createOutput()
 {
     OutputWriter *output = new OutputWriter(this);
-    /*if(!output)
-    {
-        qWarning("QmmpAudioEngine: unable to create output");
-        StateHandler::instance()->dispatch(Qmmp::FatalError);
-        return 0;
-    }*/
     if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()) ||
             output->audioParameters() != m_ap) //TODO add soundconverter
     {
