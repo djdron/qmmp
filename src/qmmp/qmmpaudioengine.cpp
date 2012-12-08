@@ -532,7 +532,7 @@ OutputWriter *QmmpAudioEngine::createOutput()
         delete output;
         output = 0;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
-        return false;
+        return 0;
     }
     if(m_output_buf)
         delete [] m_output_buf;
@@ -555,7 +555,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
             delete e;
         }
     }
-    QList <Effect *> m_tmp_effects = m_effects;
+    QList <Effect *> tmp_effects = m_effects;
     m_effects.clear();
 
     if(m_settings->use16BitOutput())
@@ -571,7 +571,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
             continue;
 
         Effect *effect = 0;
-        foreach(Effect *e, m_tmp_effects) //find effect
+        foreach(Effect *e, tmp_effects) //find effect
         {
             if(e->factory() == factory)
                 effect = e;
@@ -581,7 +581,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
                       m_blockedEffects.contains(effect))) //destroy effect which require restart
         {
             m_blockedEffects.removeAll(effect);
-            m_tmp_effects.removeAll(effect);
+            tmp_effects.removeAll(effect);
             delete effect;
             effect = 0;
         }
@@ -596,7 +596,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
             }
         }
         m_effects << effect;
-        m_tmp_effects.removeAll(effect);
+        tmp_effects.removeAll(effect);
     }
     m_chan = m_ap.channels();
 }
