@@ -128,7 +128,7 @@ bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     waveOutReset (dev);
     InitializeCriticalSection (&cs);
-    configure(freq, chan, format);
+    configure(freq, chan, Qmmp::PCM_S16LE);
 
     return true;
 }

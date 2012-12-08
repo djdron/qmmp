@@ -527,7 +527,6 @@ OutputWriter *QmmpAudioEngine::createOutput()
     OutputWriter *output = new OutputWriter(this);
     if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()))
     {
-        qWarning("QmmpAudioEngine: unable to initialize output");
         delete output;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
@@ -539,6 +538,7 @@ OutputWriter *QmmpAudioEngine::createOutput()
             Effect *effect = new AudioConverter();
             effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
             m_ap = effect->audioParameters();
+            m_effects.append(effect);
             qDebug("QmmpAudioEngine: output plugin requires 16 bit, using 16-bit converter");
         }
         else
