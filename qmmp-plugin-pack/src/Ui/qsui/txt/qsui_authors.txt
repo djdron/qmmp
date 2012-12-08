@@ -19,6 +19,9 @@ French:
 German:
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Hebrew:
+    Genghis Khan <genghiskhan@gmx.ca>
+
 Hungarian:
     Németh Gábor <sutee84@freemail.hu>
 
