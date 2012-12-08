@@ -160,7 +160,6 @@ void OutputOSS4::drain()
 
 void OutputOSS4::reset()
 {
-    ioctl(m_audio_fd, SNDCTL_DSP_HALT_OUTPUT, 0);
     ioctl(m_audio_fd, SNDCTL_DSP_SKIP, 0);
 }
 
