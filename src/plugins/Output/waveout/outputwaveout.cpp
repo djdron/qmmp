@@ -20,9 +20,7 @@
 
 
 #include <QObject>
-#include <QApplication>
-#include <QtGlobal>
-
+#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
