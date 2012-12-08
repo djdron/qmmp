@@ -95,7 +95,7 @@ bool OutputWriter::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     if (!m_output->initialize(freq, chan, format))
     {
-        qWarning("QmmpAudioEngine: unable to initialize output");
+        qWarning("OutputWriter: unable to initialize output");
         delete m_output;
         m_output = 0;
         return false;
