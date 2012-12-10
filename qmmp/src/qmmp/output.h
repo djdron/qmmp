@@ -38,7 +38,7 @@ public:
     /*!
      * Destructor.
      */
-    ~Output();
+    virtual ~Output();
     /*!
      * Prepares object for usage and setups required audio parameters.
      * Subclass should reimplement this function.
