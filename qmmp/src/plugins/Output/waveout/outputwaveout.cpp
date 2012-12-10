@@ -153,7 +153,7 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
 
     if (ScheduledBlocks >= sizeof(PlayedWaveHeaders)/sizeof(*PlayedWaveHeaders)) // wait for a free block ...
     {
-        usleep(500);
+        usleep(50000);
         return 0;
     }
 
