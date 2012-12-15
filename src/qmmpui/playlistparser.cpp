@@ -61,9 +61,18 @@ QList<PlaylistFormat*> PlaylistParser::formats()
 PlaylistFormat *PlaylistParser::findByPath(const QString &filePath)
 {
     loadExternalPlaylistFormats();
+    QString ext;
+    if(filePath.contains("://")) //is it url?
+    {
+        QString p = QUrl(filePath).encodedPath();
+        ext = QFileInfo(p).suffix().toLower();
+    }
+    else
+        ext = QFileInfo(filePath).suffix().toLower();
+
     foreach(PlaylistFormat* format, m_formats)
     {
-        if (format->hasFormat(QFileInfo(filePath).suffix().toLower()))
+        if (format->hasFormat(ext))
             return format;
     }
     return 0;
