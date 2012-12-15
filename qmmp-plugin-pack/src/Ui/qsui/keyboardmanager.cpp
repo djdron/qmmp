@@ -59,7 +59,7 @@ void KeyboardManager::processUp()
 
     int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
 
-    QList<int> rows = m_listWidget->model()->selectedRows();
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
     int first_visible = m_listWidget->firstVisibleRow();
     int last_visible = m_listWidget->visibleRows() + first_visible - 1;
     if(rows.isEmpty())
@@ -123,7 +123,7 @@ void KeyboardManager::processDown()
 
     int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
 
-    QList<int> rows = m_listWidget->model()->selectedRows();
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
     int first_visible = m_listWidget->firstVisibleRow();
     int last_visible = m_listWidget->visibleRows() + first_visible - 1;
     if(rows.isEmpty())
@@ -188,7 +188,7 @@ void KeyboardManager::processEnter()
 {
     if(!m_listWidget)
         return;
-    QList<int> rows = m_listWidget->model()->selectedRows();
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
     if(rows.isEmpty())
         return;
     SoundCore::instance()->stop();
