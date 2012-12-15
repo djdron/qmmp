@@ -396,12 +396,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Різне</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="211"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Автозбереження переліку після зміни</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="331"/>
