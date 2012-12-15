@@ -24,7 +24,6 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QNetworkProxy>
-#include <QUrl>
 #include <QMessageBox>
 #include <QClipboard>
 #include <qmmpui/playlistparser.h>
@@ -119,12 +118,25 @@ void AddUrlDialog::accept( )
 
 void AddUrlDialog::readResponse(QNetworkReply *reply)
 {
-    addButton->setEnabled(true);
     disconnect(m_http, SIGNAL(finished (QNetworkReply *)), 0, 0);
     if (reply->error() != QNetworkReply::NoError)
         QMessageBox::critical (this, tr("Error"), reply->errorString ());
     else if (!urlComboBox->currentText().isEmpty())
     {
+        QUrl url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+
+        if(!url.isEmpty() && url != m_redirect_url)
+        {
+            m_redirect_url = url;
+            connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(readResponse(QNetworkReply *)));
+            QNetworkRequest request(url);
+            request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
+            m_http->get(request);
+            reply->deleteLater();
+            return;
+        }
+        m_redirect_url.clear();
+
         QString s = urlComboBox->currentText();
         PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
         if (prs)
@@ -133,6 +145,7 @@ void AddUrlDialog::readResponse(QNetworkReply *reply)
             QDialog::accept();
         }
     }
+    addButton->setEnabled(true);
     reply->deleteLater();
 }
 
