@@ -61,6 +61,6 @@ public:
     virtual QString name() const = 0;
 };
 
-Q_DECLARE_INTERFACE(PlaylistFormat,"PlaylistFormatInterface/1.0");
+Q_DECLARE_INTERFACE(PlaylistFormat,"PlaylistFormatInterface/1.0")
 
 #endif

@@ -24,6 +24,7 @@
 #include "ui_addurldialog.h"
 #include <QDialog>
 #include <QPointer>
+#include <QUrl>
 
 class QNetworkAccessManager;
 class QNetworkReply;
@@ -55,6 +56,7 @@ private:
     PlayListModel* m_model;
     QStringList m_history;
     QNetworkAccessManager *m_http;
+    QUrl m_redirect_url;
 
 };
 #endif //ADDURLDIALOG_H
