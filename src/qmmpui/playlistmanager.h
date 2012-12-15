@@ -23,6 +23,8 @@
 #include <QObject>
 #include "playlistmodel.h"
 
+class QTimer;
+
 /*! @brief The PlayListManager class is used to handle multiple playlists.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -260,15 +262,23 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->stopAfterSelected()
      */
     void stopAfterSelected();
+    /*!
+     * Read the relevant settings.
+     */
+    void readSettings();
+
+private slots:
+    void writePlayLists();
 
 private:
     void readPlayLists();
-    void writePlayLists();
+    void setAutoSavePlayList();
     static PlayListManager* m_instance;
     QList <PlayListModel *> m_models;
     PlayListModel *m_current;
     PlayListModel *m_selected;
-    bool m_repeatable, m_shuffle;
+    bool m_repeatable, m_shuffle, m_autosave_playlist;
+    QTimer *m_timer;
 };
 
 #endif // PLAYLISTMANAGER_H

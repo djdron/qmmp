@@ -148,7 +148,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             }
         }
 
-        if (m_model->currentRow() == i + m_first)
+        if (m_model->currentIndex() == i + m_first)
             m_painter.setPen(m_current);
         else
             m_painter.setPen(m_normal);  //243,58
@@ -459,7 +459,7 @@ const QString ListWidget::getExtraString(int i)
         extra_string += "|"+QString::number(index + 1)+"|";
     }
 
-    if(m_model->currentRow() == i && m_player->isRepeatable())
+    if(m_model->currentIndex() == i && m_player->isRepeatable())
         extra_string += "|R|";
     else if(m_model->isStopAfter(m_model->item(i)))
         extra_string += "|S|";
@@ -557,10 +557,10 @@ void ListWidget::recenterCurrent()
 {
     if (!m_scroll && m_rows)
     {
-        if (m_first + m_rows < m_model->currentRow() + 1)
+        if (m_first + m_rows < m_model->currentIndex() + 1)
             m_first = qMin(m_model->count() - m_rows,
-                           m_model->currentRow() - m_rows/2);
-        else if (m_first > m_model->currentRow())
-            m_first = qMax (m_model->currentRow() - m_rows/2, 0);
+                           m_model->currentIndex() - m_rows/2);
+        else if (m_first > m_model->currentIndex())
+            m_first = qMax (m_model->currentIndex() - m_rows/2, 0);
     }
 }

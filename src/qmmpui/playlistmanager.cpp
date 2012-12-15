@@ -22,8 +22,10 @@
 #include <QFile>
 #include <QBuffer>
 #include <QDir>
+#include <QTimer>
 #include <QSettings>
 #include <qmmp/fileinfo.h>
+#include "qmmpuisettings.h"
 #include "playlistmanager.h"
 
 
@@ -38,10 +40,18 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_selected = 0;
     m_repeatable = false;
     m_shuffle = false;
-    readPlayLists();
+    m_timer = new QTimer(this);
+    m_timer->setInterval(5000);
+    m_timer->setSingleShot(true);
+    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
+    connect(ui_settings, SIGNAL(playListSettingsChanged()), SLOT(readSettings()));
+    connect(m_timer, SIGNAL(timeout()), SLOT(writePlayLists()));
+    readPlayLists(); //read playlists
+
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
     setShuffle(settings.value("Playlist/shuffle",false).toBool());
+    readSettings();  //read other settings
 }
 
 PlayListManager::~PlayListManager()
@@ -57,7 +67,6 @@ PlayListManager* PlayListManager::instance()
 {
     return m_instance;
 }
-
 
 PlayListModel *PlayListManager::selectedPlayList() const
 {
@@ -171,6 +180,8 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     model->prepareForRepeatablePlaying(m_repeatable);
     model->prepareForShufflePlaying(m_shuffle);
     connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
+    if (m_autosave_playlist)
+        connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
     emit playListAdded(m_models.indexOf(model));
     emit playListsChanged();
     return model;
@@ -348,14 +359,19 @@ void PlayListManager::readPlayLists()
 
 void PlayListManager::writePlayLists()
 {
+    qDebug("PlayListManager: saving playlists...");
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
-    file.open(QIODevice::WriteOnly);
+    if(!file.open(QIODevice::WriteOnly))
+    {
+        qDebug("PlayListManager: error: %s", qPrintable(file.errorString()));
+        return;
+    }
     file.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
     foreach(PlayListModel *model, m_models)
     {
         QList<PlayListItem *> items = model->items();
         file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
-        file.write(QString("current=%1\n").arg(model->currentRow()).toUtf8());
+        file.write(QString("current=%1\n").arg(model->currentIndex()).toUtf8());
         foreach(PlayListItem* m, items)
         {
             file.write(QString("file=%1\n").arg(m->url()).toUtf8());
@@ -467,4 +483,33 @@ void PlayListManager::clearQueue()
 void PlayListManager::stopAfterSelected()
 {
     m_selected->stopAfterSelected();
+}
+
+void PlayListManager::readSettings()
+{
+    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
+    bool enabled = ui_settings->autoSavePlayList();
+    if (m_autosave_playlist != enabled)
+    {
+        m_autosave_playlist = enabled;
+        setAutoSavePlayList();
+    }
+}
+
+void PlayListManager::setAutoSavePlayList()
+{
+    if (m_autosave_playlist)
+    {
+        foreach(PlayListModel *model, m_models)
+        {
+            connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()), Qt::UniqueConnection);
+        }
+    }
+    else
+    {
+        foreach(PlayListModel *model, m_models)
+        {
+            disconnect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
+        }
+    }
 }

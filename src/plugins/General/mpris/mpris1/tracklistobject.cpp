@@ -71,7 +71,7 @@ void TrackListObject::DelTrack(int in0)
 
 int TrackListObject::GetCurrentTrack()
 {
-    return m_model->currentRow();
+    return m_model->currentIndex();
 }
 
 int TrackListObject::GetLength()

@@ -194,7 +194,7 @@ void FileOps::execAction(int n)
         foreach(PlayListItem *item, items)
         {
             if (QFile::exists(item->url()) && QFile::remove(item->url()))
-                model->removeAt (model->row(item));
+                model->removeAt (model->indexOf(item));
         }
     }
 }

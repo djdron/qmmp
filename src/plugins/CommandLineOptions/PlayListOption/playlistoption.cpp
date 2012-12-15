@@ -84,7 +84,7 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
         for(int i = 0; i < model->count(); ++i)
         {
             out += QString("%1. %2").arg(i+1).arg(formatter.parse(model->item(i)));
-            if(i == model->currentRow())
+            if(i == model->currentIndex())
                 out += " [*]";
             out += "\n";
         }

@@ -60,7 +60,7 @@ struct SimpleSelection
      */
     inline void dump()const
     {
-        qWarning("top: %d\tbotom: %d\tanchor: %d",m_top,m_bottom,m_anchor);
+        qWarning("top: %d\tbotom: %d\tanchor: %d", m_top, m_bottom, m_anchor);
     }
     /*!
      * Returns number of selected items.
@@ -72,7 +72,7 @@ struct SimpleSelection
     int m_bottom;               /*!<    */
     int m_top;                  /*!<    */
     int m_anchor;               /*!<    */
-    QList<int>m_selected_rows;  /*!< Selected rows numbers */
+    QList<int> m_selected_indexes;  /*!< Selected items numbers */
 };
 /*! @internal
  * @brief Helper class used for tags update after details dialog closing.
@@ -133,39 +133,36 @@ public:
     /*!
      * Returns the row of the \b item
      */
-    int row(PlayListItem* item) const
-    {
-        return m_items.indexOf(item);
-    }
+    int indexOf(PlayListItem* item) const;
     /*!
-     * Returns the item of the \b row or 0 if item doesn't exist.
+     * Returns the item with the index \b index or 0 if item doesn't exist.
      */
-    PlayListItem* item(int row) const;
+    PlayListItem* item(int index) const;
     /*!
-     * Returns current row.
+     * Returns index of the current item.
      */
-    int currentRow();
+    int currentIndex();
     /*!
-     * Sets current row number.
-     * Returns \b false if item with this number doesn't exist, otherwise returns \b true
+     * Sets current index.
+     * Returns \b false if item with this index doesn't exist, otherwise returns \b true
      * @param row Number of item.
      */
-    bool setCurrent (int row);
+    bool setCurrent (int index);
     /*!
      * Sets current item to \b item.
      * Returns \b true if success, otherwise returns \b false
      */
     bool setCurrent(PlayListItem *item);
     /*!
-     * Returns \b true if \b row is selected, otherwise returns \b false
+     * Returns \b true if item with \b index is selected, otherwise returns \b false
      */
-    bool isSelected(int row);
+    bool isSelected(int index);
     /*!
      * Sets the selected state of the item to \b select
-     * @param row Number of item.
+     * @param index Number of item.
      * @param selected Selection state (\b true - select, \b false - unselect)
      */
-    void setSelected(int row, bool selected = true);
+    void setSelected(int index, bool selected = true);
     /*!
      * Advances to the next item. Returns \b false if next iten doesn't exist,
      * otherwise returns \b true
@@ -222,9 +219,9 @@ public:
      */
     const SimpleSelection& getSelection(int row);
     /*!
-     * Returns list with selected rows indexes.
+     * Returns list with selected items indexes.
      */
-    QList<int> selectedRows() const;
+    QList<int> selectedIndexes() const;
     /*!
      * Returns list of \b PlayListItem pointers that are selected.
      */
@@ -313,6 +310,10 @@ signals:
      * Emitted when playlist loader thread has finished.
      */
     void loaderFinished();
+    /*!
+     * Emitted when playlist items are added or removed.
+     */
+    void countChanged();
 
 public slots:
     /*!
@@ -452,27 +453,14 @@ private:
     PlayListItem* m_currentItem;
     PlayListItem* m_stop_item;
     int m_current;
-    /*!
-     * This flyweight object represents current selection.
-     */
-    SimpleSelection m_selection;
-    /*!
-     * Songs in play queue.
-     */
-    QQueue <PlayListItem*> m_queued_songs;
-    /*!
-     * Is playlist repeatable?
-     */
-    bool is_repeatable_list;
-    /*!
-     * Current playing state (Normal or Shuffle)
-     */
-    PlayState* m_play_state;
+    SimpleSelection m_selection;  /*!< This flyweight object represents current selection. */
+    QQueue <PlayListItem*> m_queued_songs; /*!< Songs in play queue. */
+    bool m_is_repeatable_list; /*!< Is playlist repeatable? */
+    PlayState* m_play_state; /*!< Current playing state (Normal or Shuffle) */
     int m_total_length;
     FileLoader *m_loader;
     bool m_shuffle;
     QString m_name;
 };
-
 
 #endif

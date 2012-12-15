@@ -108,6 +108,8 @@ void ConfigDialog::readSettings()
         //default playlist
         m_ui->defaultPlayListCheckBox->setChecked(guis->useDefaultPlayList());
         m_ui->defaultPlayListLineEdit->setText(guis->defaultPlayListName());
+        //playlist auto-save when modified
+        m_ui->autoSavePlayListCheckBox->setChecked(guis->autoSavePlayList());
     }
     //proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -357,6 +359,7 @@ void ConfigDialog::saveSettings()
         guis->setExcludeFilters(m_ui->dirExcludeLineEdit->text());
         guis->setDefaultPlayList(m_ui->defaultPlayListLineEdit->text(),
                                  m_ui->defaultPlayListCheckBox->isChecked());
+        guis->setAutoSavePlayList(m_ui->autoSavePlayListCheckBox->isChecked());
         guis->sync();
     }
 
