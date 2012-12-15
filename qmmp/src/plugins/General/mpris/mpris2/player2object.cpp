@@ -64,7 +64,7 @@ bool Player2Object::canGoNext() const
 
 bool Player2Object::canGoPrevious() const
 {
-    return m_pl_manager->currentPlayList()->currentRow() > 0;
+    return m_pl_manager->currentPlayList()->currentIndex() > 0;
 }
 
 bool Player2Object::canPause() const

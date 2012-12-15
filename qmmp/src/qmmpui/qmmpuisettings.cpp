@@ -34,6 +34,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_convertUnderscore = s.value ("PlayList/convert_underscore", true).toBool();
     m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();
+    m_autosave_playlist = s.value("PlayList/autosave", true).toBool();
     m_resume_on_startup = s.value("General/resume_on_startup", false).toBool();
     m_restrict_filters = s.value("General/restrict_filters").toStringList();
     m_exclude_filters = s.value("General/exclude_filters", QStringList() << "*.cue").toStringList();
@@ -115,6 +116,7 @@ void QmmpUiSettings::sync()
     s.setValue("PlayList/convert_underscore", m_convertUnderscore);
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
     s.setValue("PlayList/load_metadata", m_useMetadata);
+    s.setValue("PlayList/autosave", m_autosave_playlist);
     s.setValue("General/resume_on_startup", m_resume_on_startup);
     s.setValue("General/restrict_filters", m_restrict_filters);
     s.setValue("General/exclude_filters", m_exclude_filters);
@@ -164,3 +166,18 @@ void QmmpUiSettings::setDefaultPlayList(const QString &name, bool enabled)
     m_use_default_pl = enabled;
     m_default_pl_name = name;
 }
+
+void QmmpUiSettings::setAutoSavePlayList(bool enabled)
+{
+    if (autoSavePlayList() != enabled)
+    {
+        m_autosave_playlist = enabled;
+        emit playListSettingsChanged();
+    }
+}
+
+bool QmmpUiSettings::autoSavePlayList() const
+{
+    return m_autosave_playlist;
+}
+

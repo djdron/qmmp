@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
-    <height>455</height>
+    <width>640</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -200,71 +200,17 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_9">
+         <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
-           <string>Cover Image Retrieve</string>
+           <string>Miscellaneous</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0" colspan="2">
-            <widget class="QCheckBox" name="useCoverFilesCheckBox">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QCheckBox" name="autoSavePlayListCheckBox">
              <property name="text">
-              <string>Use separate image files</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
+              <string>Auto-save playlist when modified</string>
              </property>
             </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Include files:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="coverIncludeLineEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Exclude files:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="coverExcludeLineEdit"/>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Recursive search depth:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="coverDepthSpinBox">
-               <property name="maximum">
-                <number>6</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
            </item>
           </layout>
          </widget>
@@ -454,6 +400,76 @@
               <bool>false</bool>
              </property>
             </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="title">
+           <string>Cover Image Retrieve</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0" colspan="2">
+            <widget class="QCheckBox" name="useCoverFilesCheckBox">
+             <property name="text">
+              <string>Use separate image files</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Include files:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="coverIncludeLineEdit"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Exclude files:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="coverExcludeLineEdit"/>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Recursive search depth:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="coverDepthSpinBox">
+               <property name="maximum">
+                <number>6</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -914,54 +930,6 @@
     <hint type="destinationlabel">
      <x>141</x>
      <y>414</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>useCoverFilesCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>coverIncludeLineEdit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>616</x>
-     <y>271</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>654</x>
-     <y>296</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>useCoverFilesCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>coverExcludeLineEdit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>586</x>
-     <y>271</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>654</x>
-     <y>321</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>useCoverFilesCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>coverDepthSpinBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>560</x>
-     <y>271</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>458</x>
-     <y>346</y>
     </hint>
    </hints>
   </connection>

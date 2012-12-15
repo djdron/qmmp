@@ -119,9 +119,26 @@ public:
      */
     void setDefaultPlayList(const QString &name, bool enabled = true);
     /*!
+     * Enable/disable playlist auto-saving.
+     * @param enabled New setting for the auto-save option (\b true to enable)
+     */
+    void setAutoSavePlayList(bool enabled);
+    /*!
+     * Return the current setting for the playlist auto-save option.
+     * @return \b true if the playlist should be saved automatically, \b false
+     *         otherwise.
+     */
+    bool autoSavePlayList() const;
+    /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
     static QmmpUiSettings* instance();
+
+signals:
+    /*!
+     * Emitted when the playlist settings change.
+     */
+    void playListSettingsChanged();
 
 public slots:
     /*!
@@ -141,8 +158,8 @@ private:
     //default playlist
     bool m_use_default_pl;
     QString m_default_pl_name;
-
-
+    //playlist auto-save option
+    bool m_autosave_playlist;
 };
 
 #endif // QMMPUISETTINGS_H

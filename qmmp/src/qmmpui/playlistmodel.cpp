@@ -70,7 +70,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_shuffle = 0;
     m_total_length = 0;
     m_current = 0;
-    is_repeatable_list = false;
+    m_is_repeatable_list = false;
     m_stop_item = 0;
     m_play_state = new NormalPlayState(this);
     m_loader = new FileLoader(this);
@@ -112,6 +112,7 @@ void PlayListModel::add(PlayListItem *item)
 
     emit itemAdded(item);
     emit listChanged();
+    emit countChanged();
 }
 
 void PlayListModel::add(QList <PlayListItem *> items)
@@ -129,6 +130,7 @@ void PlayListModel::add(QList <PlayListItem *> items)
         emit itemAdded(item);
     }
     emit listChanged();
+    emit countChanged();
 }
 
 void PlayListModel::add(const QString &path)
@@ -176,22 +178,27 @@ PlayListItem* PlayListModel::nextItem()
     return m_items.at(index);
 }
 
-PlayListItem* PlayListModel::item(int row) const
+int PlayListModel::indexOf(PlayListItem* item) const
 {
-    return (row <  m_items.size() && row >= 0) ? m_items.at(row) : 0;
+    return m_items.indexOf(item);
 }
 
-int PlayListModel::currentRow()
+PlayListItem* PlayListModel::item(int index) const
+{
+    return (index <  m_items.size() && index >= 0) ? m_items.at(index) : 0;
+}
+
+int PlayListModel::currentIndex()
 {
     return m_current;
 }
 
-bool PlayListModel::setCurrent(int c)
+bool PlayListModel::setCurrent(int index)
 {
-    if (c > count()-1 || c < 0)
+    if (index > count()-1 || index < 0)
         return false;
-    m_current = c;
-    m_currentItem = m_items.at(c);
+    m_current = index;
+    m_currentItem = m_items.at(index);
     emit currentChanged();
     emit listChanged();
     return true;
@@ -253,6 +260,7 @@ void PlayListModel::clear()
     m_total_length = 0;
     m_play_state->resetState();
     emit listChanged();
+    emit countChanged();
 }
 
 void PlayListModel::clearSelection()
@@ -291,10 +299,10 @@ QStringList PlayListModel::getTimes(int b,int l)
     return m_times;
 }
 
-bool PlayListModel::isSelected(int row)
+bool PlayListModel::isSelected(int index)
 {
-    if (m_items.count() > row && row >= 0)
-        return m_items.at(row)->isSelected();
+    if (m_items.count() > index && index >= 0)
+        return m_items.at(index)->isSelected();
 
     return false;
 }
@@ -309,11 +317,11 @@ bool PlayListModel::contains(const QString &url)
     return false;
 }
 
-void PlayListModel::setSelected(int row, bool selected)
+void PlayListModel::setSelected(int index, bool selected)
 {
-    if (m_items.count() > row && row >= 0)
+    if (m_items.count() > index && index >= 0)
     {
-        m_items.at(row)->setSelected(selected);
+        m_items.at(index)->setSelected(selected);
         emit listChanged();
     }
 }
@@ -355,6 +363,7 @@ void PlayListModel::removeAt (int i)
 
         m_play_state->prepare();
         emit listChanged();
+        emit countChanged();
     }
 }
 
@@ -410,6 +419,7 @@ void PlayListModel::removeSelection(bool inverted)
     m_play_state->prepare();
 
     emit listChanged();
+    emit countChanged();
 }
 
 void PlayListModel::invertSelection()
@@ -468,7 +478,7 @@ void PlayListModel::moveItems(int from, int to)
     if (from == to)
         return;
 
-    QList<int> selected_rows = selectedRows();
+    QList<int> selected_rows = selectedIndexes();
 
     if (!(bottommostInSelection(from) == INVALID_ROW ||
             from == INVALID_ROW ||
@@ -529,11 +539,11 @@ const SimpleSelection& PlayListModel::getSelection(int row)
     m_selection.m_top = topmostInSelection(row);
     m_selection.m_anchor = row;
     m_selection.m_bottom = bottommostInSelection(row);
-    m_selection.m_selected_rows = selectedRows();
+    m_selection.m_selected_indexes = selectedIndexes();
     return m_selection;
 }
 
-QList<int> PlayListModel::selectedRows() const
+QList<int> PlayListModel::selectedIndexes() const
 {
     QList<int>selected_rows;
     for (int i = 0;i<m_items.count();i++)
@@ -583,7 +593,7 @@ bool PlayListModel::isQueued(PlayListItem* f) const
 
 void PlayListModel::setCurrentToQueued()
 {
-    setCurrent(row(m_queued_songs.dequeue()));
+    setCurrent(indexOf(m_queued_songs.dequeue()));
 }
 
 bool PlayListModel::isEmptyQueue() const
@@ -785,7 +795,7 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
 void PlayListModel::sortSelection(int mode)
 {
     QList<PlayListItem*>selected_items = selectedItems();
-    QList<int>selected_rows = selectedRows();
+    QList<int>selected_rows = selectedIndexes();
 
     doSort(mode,selected_items);
 
@@ -819,7 +829,7 @@ void PlayListModel::prepareForShufflePlaying(bool val)
 
 void PlayListModel::prepareForRepeatablePlaying(bool val)
 {
-    is_repeatable_list = val;
+    m_is_repeatable_list = val;
 }
 
 void PlayListModel::doCurrentVisibleRequest()
@@ -884,7 +894,7 @@ void PlayListModel::savePlaylist(const QString & f_name)
 
 bool PlayListModel::isRepeatableList() const
 {
-    return is_repeatable_list;
+    return m_is_repeatable_list;
 }
 
 bool PlayListModel::isShuffle() const
