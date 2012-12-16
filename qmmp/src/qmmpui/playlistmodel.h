@@ -32,7 +32,7 @@
 class FileLoader;
 class PlayListItem;
 class PlayState;
-class PlaylistFormat;
+class PlayListFormat;
 class PlayListModel;
 
 /*! @brief Helper class that keeps track of a view's selected items.

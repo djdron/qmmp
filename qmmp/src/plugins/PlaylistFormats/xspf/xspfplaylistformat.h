@@ -30,10 +30,10 @@
  * Class for XSPF playlist format parsing
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-class XSPFPlaylistFormat : public QObject, public PlaylistFormat
+class XSPFPlaylistFormat : public QObject, public PlayListFormat
 {
     Q_OBJECT
-    Q_INTERFACES(PlaylistFormat)
+    Q_INTERFACES(PlayListFormat)
 public:
     XSPFPlaylistFormat();
     virtual QStringList getExtensions()const;
