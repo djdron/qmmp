@@ -26,39 +26,39 @@
 #include "playlistformat.h"
 #include "playlistparser.h"
 
-PlaylistParser *PlaylistParser::m_instance = 0;
+PlayListParser *PlayListParser::m_instance = 0;
 
-PlaylistParser::PlaylistParser(QObject *parent) : QObject (parent)
+PlayListParser::PlayListParser(QObject *parent) : QObject (parent)
 {
     m_instance = this;
 }
 
-PlaylistParser::~PlaylistParser()
+PlayListParser::~PlayListParser()
 {
     m_instance = 0;
 }
 
-QStringList PlaylistParser::getExtensions()
+QStringList PlayListParser::getExtensions()
 {
     loadExternalPlaylistFormats();
     QStringList extensions;
-    foreach(PlaylistFormat *format, m_formats)
+    foreach(PlayListFormat *format, m_formats)
     extensions << format->getExtensions();
     return extensions;
 }
 
-bool PlaylistParser::supports(const QString &filePath)
+bool PlayListParser::supports(const QString &filePath)
 {
     return findByPath(filePath) != 0;
 }
 
-QList<PlaylistFormat*> PlaylistParser::formats()
+QList<PlayListFormat*> PlayListParser::formats()
 {
     loadExternalPlaylistFormats();
     return m_formats;
 }
 
-PlaylistFormat *PlaylistParser::findByPath(const QString &filePath)
+PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 {
     loadExternalPlaylistFormats();
     QString ext;
@@ -70,7 +70,7 @@ PlaylistFormat *PlaylistParser::findByPath(const QString &filePath)
     else
         ext = QFileInfo(filePath).suffix().toLower();
 
-    foreach(PlaylistFormat* format, m_formats)
+    foreach(PlayListFormat* format, m_formats)
     {
         if (format->hasFormat(ext))
             return format;
@@ -78,14 +78,14 @@ PlaylistFormat *PlaylistParser::findByPath(const QString &filePath)
     return 0;
 }
 
-PlaylistParser* PlaylistParser::instance()
+PlayListParser* PlayListParser::instance()
 {
     if(!m_instance)
         qFatal("PlaylistParser: object is not created");
     return m_instance;
 }
 
-void PlaylistParser::loadExternalPlaylistFormats()
+void PlayListParser::loadExternalPlaylistFormats()
 {
     if (!m_formats.isEmpty())
         return;
@@ -100,9 +100,9 @@ void PlaylistParser::loadExternalPlaylistFormats()
         else
             qWarning("PlaylistParser: %s", qPrintable(loader.errorString ()));
 
-        PlaylistFormat *fmt = 0;
+        PlayListFormat *fmt = 0;
         if (plugin)
-            fmt = qobject_cast<PlaylistFormat *>(plugin);
+            fmt = qobject_cast<PlayListFormat *>(plugin);
 
         if (fmt)
             m_formats << fmt;

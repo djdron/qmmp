@@ -30,10 +30,10 @@
  * Class for M3U playlist format parsing
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-class M3UPlaylistFormat : public QObject, public PlaylistFormat
+class M3UPlaylistFormat : public QObject, public PlayListFormat
 {
     Q_OBJECT
-    Q_INTERFACES(PlaylistFormat)
+    Q_INTERFACES(PlayListFormat)
 public:
     M3UPlaylistFormat();
     virtual QStringList getExtensions()const;

@@ -27,13 +27,13 @@ class PlayListItem;
 /*! @brief Abstract interface for playlist formats.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-class PlaylistFormat
+class PlayListFormat
 {
 public:
     /*!
      * Object destructor
      */
-    virtual ~PlaylistFormat()
+    virtual ~PlayListFormat()
     {
         ;
     }
@@ -61,6 +61,6 @@ public:
     virtual QString name() const = 0;
 };
 
-Q_DECLARE_INTERFACE(PlaylistFormat,"PlaylistFormatInterface/1.0")
+Q_DECLARE_INTERFACE(PlayListFormat,"PlayListFormatInterface/1.0")
 
 #endif

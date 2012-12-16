@@ -165,7 +165,7 @@ void QMMPStarter::startPlayer()
     m_core = SoundCore::instance();
 
     //additional featuries
-    new PlaylistParser(this);
+    new PlayListParser(this);
     new UiHelper(this);
 
     //interface

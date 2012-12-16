@@ -30,10 +30,10 @@
  * Class for PLS playlist format parsing
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-class PLSPlaylistFormat : public QObject, public PlaylistFormat
+class PLSPlaylistFormat : public QObject, public PlayListFormat
 {
     Q_OBJECT
-    Q_INTERFACES(PlaylistFormat)
+    Q_INTERFACES(PlayListFormat)
 public:
     PLSPlaylistFormat();
     virtual QStringList getExtensions()const;

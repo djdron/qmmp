@@ -26,7 +26,7 @@
 /*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlaylistParser  : public QObject
+class PlayListParser  : public QObject
 {
     Q_OBJECT
 public:
@@ -34,11 +34,11 @@ public:
     * Object constructor,
     * @param parent Parent object
     */
-    PlaylistParser(QObject *parent);
+    PlayListParser(QObject *parent);
     /*!
      * Destructor
      */
-    ~PlaylistParser();
+    ~PlayListParser();
     /*!
      * Returns a list of supported file extensions.
      */
@@ -50,21 +50,21 @@ public:
     /*!
      * Returns a list of the installed playlist formats.
      */
-    QList<PlaylistFormat*> formats();
+    QList<PlayListFormat*> formats();
     /*!
      * Returns a pointer to the object's instance.
      */
-    static PlaylistParser* instance();
+    static PlayListParser* instance();
     /*!
      * Finds playlist format by file path \b filePath
      * Returns \b 0 if file \b filePath is unsupported.
      */
-    PlaylistFormat *findByPath(const QString &filePath);
+    PlayListFormat *findByPath(const QString &filePath);
 
 private:
     void loadExternalPlaylistFormats();
-    QList<PlaylistFormat*> m_formats;
-    static PlaylistParser* m_instance;
+    QList<PlayListFormat*> m_formats;
+    static PlayListParser* m_instance;
 
 };
 
