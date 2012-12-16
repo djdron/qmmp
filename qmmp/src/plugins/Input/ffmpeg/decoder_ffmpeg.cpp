@@ -84,7 +84,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
     m_bitrate = 0;
     m_temp_pkt.size = 0;
     if (ic)
-        avformat_close_input(&ic);
+        avformat_free_context(ic);
    if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_stream)
@@ -102,6 +102,8 @@ bool DecoderFFmpeg::initialize()
     avcodec_register_all();
     avformat_network_init();
     av_register_all();
+
+    ic = avformat_alloc_context();
 
 
     AVProbeData  pd;
@@ -131,10 +133,11 @@ bool DecoderFFmpeg::initialize()
     }
     m_stream->seekable = !input()->isSequential();
     m_stream->max_packet_size = INPUT_BUFFER_SIZE;
+    ic->pb = m_stream;
 
-    if(avformat_open_input(&ic, m_path.toLocal8Bit().constData(), fmt, 0) != 0)
+    if(avformat_open_input(&ic, 0, fmt, 0) != 0)
     {
-        qDebug("DecoderFFmpeg: av_open_input_stream() failed");
+        qDebug("DecoderFFmpeg: avformat_open_input() failed");
         return false;
     }
     avformat_find_stream_info(ic, 0);
