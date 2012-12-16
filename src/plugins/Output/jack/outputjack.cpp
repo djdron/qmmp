@@ -23,12 +23,14 @@
 #include <QtGlobal>
 #include <QDir>
 #include <QSettings>
+
 #include "outputjack.h"
 #include <qmmp/audioparameters.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
 
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
 #define JACK_TIMEOUT 500000L
