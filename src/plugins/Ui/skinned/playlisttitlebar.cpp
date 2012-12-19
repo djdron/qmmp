@@ -172,7 +172,7 @@ void PlayListTitleBar::mouseReleaseEvent(QMouseEvent*)
 {
     Dock::instance()->updateDock();
     m_resize = false;
-    setCursor (Qt::ArrowCursor);
+    setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
 }
 
 void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
