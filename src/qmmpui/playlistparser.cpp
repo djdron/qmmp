@@ -38,12 +38,12 @@ PlayListParser::~PlayListParser()
     m_instance = 0;
 }
 
-QStringList PlayListParser::getExtensions()
+QStringList PlayListParser::extensions()
 {
     loadExternalPlaylistFormats();
     QStringList extensions;
     foreach(PlayListFormat *format, m_formats)
-    extensions << format->getExtensions();
+        extensions << format->getExtensions();
     return extensions;
 }
 
@@ -81,7 +81,7 @@ PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 PlayListParser* PlayListParser::instance()
 {
     if(!m_instance)
-        qFatal("PlaylistParser: object is not created");
+        qFatal("PlayListParser: object is not created");
     return m_instance;
 }
 
@@ -90,15 +90,15 @@ void PlayListParser::loadExternalPlaylistFormats()
     if (!m_formats.isEmpty())
         return;
     QDir pluginsDir (Qmmp::pluginsPath());
-    pluginsDir.cd("PlaylistFormats");
+    pluginsDir.cd("PlayListFormats");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (loader.isLoaded())
-            qDebug("PlaylistParser: loaded plugin %s", qPrintable(fileName));
+            qDebug("PlayListParser: loaded plugin %s", qPrintable(fileName));
         else
-            qWarning("PlaylistParser: %s", qPrintable(loader.errorString ()));
+            qWarning("PlayListParser: %s", qPrintable(loader.errorString ()));
 
         PlayListFormat *fmt = 0;
         if (plugin)
