@@ -42,7 +42,7 @@ public:
     /*!
      * Returns a list of supported file extensions.
      */
-    QStringList getExtensions();
+    QStringList extensions();
     /*!
      * Returns \b true if file \b filePath is supported, otherwise returns \b false
      */
