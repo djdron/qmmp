@@ -35,14 +35,10 @@ class PLSPlaylistFormat : public QObject, public PlayListFormat
     Q_OBJECT
     Q_INTERFACES(PlayListFormat)
 public:
-    PLSPlaylistFormat();
-    virtual QStringList getExtensions()const;
-    virtual bool hasFormat(const QString&);
-    virtual QStringList decode(const QString& contents);
-    virtual QString encode(const QList<PlayListItem*>& contents);
-    virtual QString name()const;
-protected:
-    QStringList m_supported_formats;
+    const PlayListFormatProperties properties() const;
+    QStringList decode(const QString& contents);
+    QString encode(const QList<PlayListItem*>& contents);
+
 };
 
 #endif

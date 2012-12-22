@@ -33,6 +33,10 @@ public:
      */
     static QList<PlayListFormat*> *formats();
     /*!
+     * Returns a list of the supported files name filters, i.e. "*.m3u *.pls"
+     */
+    static QStringList nameFilters();
+    /*!
      * Finds playlist format by file path \b filePath
      * Returns \b 0 if file \b filePath is unsupported.
      */

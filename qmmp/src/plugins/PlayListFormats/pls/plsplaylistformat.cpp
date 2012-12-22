@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,33 +20,15 @@
 
 #include <QFileInfo>
 #include <QtPlugin>
-
 #include "plsplaylistformat.h"
 
-bool PLSPlaylistFormat::hasFormat(const QString & f)
+const PlayListFormatProperties PLSPlaylistFormat::properties() const
 {
-    foreach(QString s,m_supported_formats)
-    if (f == s)
-        return true;
-
-    return false;
+    PlayListFormatProperties p;
+    p.filters << "*.pls";
+    p.shortName = "pls";
+    return p;
 }
-
-QStringList PLSPlaylistFormat::getExtensions() const
-{
-    return m_supported_formats;
-}
-
-PLSPlaylistFormat::PLSPlaylistFormat()
-{
-    m_supported_formats << "pls";
-}
-
-QString PLSPlaylistFormat::name() const
-{
-    return "PLSPlaylistFormat";
-}
-
 
 QStringList PLSPlaylistFormat::decode(const QString & contents)
 {

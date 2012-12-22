@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,14 +35,10 @@ class M3UPlaylistFormat : public QObject, public PlayListFormat
     Q_OBJECT
     Q_INTERFACES(PlayListFormat)
 public:
-    M3UPlaylistFormat();
-    virtual QStringList getExtensions()const;
-    virtual bool hasFormat(const QString&);
-    virtual QStringList decode(const QString& contents);
-    virtual QString encode(const QList<PlayListItem*>& contents);
-    virtual QString name()const;
-protected:
-    QStringList m_supported_formats;
+    const PlayListFormatProperties properties() const;
+    QStringList decode(const QString& contents);
+    QString encode(const QList<PlayListItem*>& contents);
+
 };
 
 #endif

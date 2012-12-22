@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,12 +23,18 @@
 #include <QFileInfo>
 #include <QUrl>
 #include <QtPlugin>
-
 #include <qmmp/qmmp.h>
-
 #include "xspfplaylistformat.h"
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
+
+const PlayListFormatProperties XSPFPlaylistFormat::XSPFPlaylistFormat::properties() const
+{
+    PlayListFormatProperties p;
+    p.filters << "*.xspf";
+    p.shortName = "xspf";
+    return p;
+}
 
 QStringList XSPFPlaylistFormat::decode(const QString & contents)
 {
@@ -136,31 +142,6 @@ QString XSPFPlaylistFormat::encode(const QList<PlayListItem*> & files)
     doc.appendChild( root );
     QString xml_header("<?xml version='1.0' encoding='UTF-8'?>\n");
     return doc.toString().prepend(xml_header);
-}
-
-XSPFPlaylistFormat::XSPFPlaylistFormat()
-{
-    m_supported_formats << "xspf";
-}
-
-bool XSPFPlaylistFormat::hasFormat(const QString & f)
-{
-    foreach(QString s,m_supported_formats)
-    if (f == s)
-        return true;
-
-    return false;
-}
-
-QStringList XSPFPlaylistFormat::getExtensions() const
-{
-    return m_supported_formats;
-}
-
-
-QString XSPFPlaylistFormat::name() const
-{
-    return "XSPFPlaylistFormat";
 }
 
 Q_EXPORT_PLUGIN2(xspfplaylistformat,XSPFPlaylistFormat)

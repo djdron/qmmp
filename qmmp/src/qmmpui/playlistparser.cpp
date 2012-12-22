@@ -18,9 +18,10 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QtGui>
-#include <QObject>
+#include <QPluginLoader>
+#include <QRegExp>
 #include <QList>
+#include <QDir>
 #include <QApplication>
 #include <qmmp/qmmp.h>
 #include "playlistformat.h"
@@ -34,22 +35,28 @@ QList<PlayListFormat*> *PlayListParser::formats()
     return m_formats;
 }
 
+QStringList PlayListParser::nameFilters()
+{
+    checkFormats();
+    QStringList filters;
+    foreach(PlayListFormat* format, *m_formats)
+    {
+        filters << format->properties().filters;
+    }
+    return filters;
+}
+
 PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 {
     checkFormats();
-    QString ext;
-    if(filePath.contains("://")) //is it url?
-    {
-        QString p = QUrl(filePath).encodedPath();
-        ext = QFileInfo(p).suffix().toLower();
-    }
-    else
-        ext = QFileInfo(filePath).suffix().toLower();
-
     foreach(PlayListFormat* format, *m_formats)
     {
-        if (format->hasFormat(ext))
-            return format;
+        foreach(QString filter, format->properties().filters)
+        {
+            QRegExp r(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+            if(r.exactMatch(filePath))
+                return format;
+        }
     }
     return 0;
 }

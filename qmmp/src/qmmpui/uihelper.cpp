@@ -147,51 +147,42 @@ void UiHelper::addDirectory(QWidget *parent, PlayListModel *model)
 
 void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)
 {
-    QStringList l;
-    QList<PlayListFormat*> *p_list = PlayListParser::formats();
-    if (!p_list->isEmpty())
+    if(PlayListParser::nameFilters().isEmpty())
     {
-        foreach(PlayListFormat* fmt, *p_list)
-            l << fmt->getExtensions();
-
-        QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        //TODO use nonmodal dialog and multiplier playlists
-        QString f_name = FileDialog::getOpenFileName(parent ,tr("Open Playlist"),m_lastDir,mask);
-        if (!f_name.isEmpty())
-        {
-            model->clear();
-            model->loadPlaylist(f_name);
-            model->setName(QFileInfo(f_name).baseName());
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
-        }
+        qWarning("UiHelper: There is no registered playlist parsers");
+        return;
     }
-    else
+
+    QString mask = tr("Playlist Files") + " (" + PlayListParser::nameFilters().join(" ") + ")";
+    //TODO use nonmodal dialog and multiplier playlists
+    QString f_name = FileDialog::getOpenFileName(parent ,tr("Open Playlist"), m_lastDir, mask);
+    if (!f_name.isEmpty())
     {
-        qWarning("Error: There is no registered playlist parsers");
+        model->clear();
+        model->loadPlaylist(f_name);
+        model->setName(QFileInfo(f_name).baseName());
+        m_lastDir = QFileInfo(f_name).absoluteDir().path();
     }
 }
 
 void UiHelper::savePlayList(QWidget *parent, PlayListModel *model)
 {
-    QStringList l;
-    QList<PlayListFormat*> *p_list = PlayListParser::formats();
-    if (!p_list->isEmpty())
+    if(PlayListParser::nameFilters().isEmpty())
     {
-        foreach(PlayListFormat* fmt,*p_list)
-            l << fmt->getExtensions();
-
-        QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        QString f_name = FileDialog::getSaveFileName(parent, tr("Save Playlist"),m_lastDir + "/" +
-                                                     model->name() + "." + l[0],mask);
-
-        if (!f_name.isEmpty())
-        {
-            model->savePlaylist(f_name);
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
-        }
+        qWarning("UiHelper: There is no registered playlist parsers");
+        return;
     }
-    else
-        qWarning("Error: There is no registered playlist parsers");
+    QString ext = PlayListParser::nameFilters().at(0);
+    ext.replace("*.", "."); //extract extension from name filter
+    QString mask = tr("Playlist Files") + " (" + PlayListParser::nameFilters().join(" ") + ")";
+    QString f_name = FileDialog::getSaveFileName(parent, tr("Save Playlist"),m_lastDir + "/" +
+                                                 model->name() + ext,mask);
+
+    if (!f_name.isEmpty())
+    {
+        model->savePlaylist(f_name);
+        m_lastDir = QFileInfo(f_name).absoluteDir().path();
+    }
 }
 
 void UiHelper::jumpToTrack(QWidget *parent, PlayListModel *model)

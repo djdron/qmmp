@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,19 +22,12 @@
 #include <QtPlugin>
 #include "m3uplaylistformat.h"
 
-bool M3UPlaylistFormat::hasFormat(const QString &f)
+const PlayListFormatProperties M3UPlaylistFormat::properties() const
 {
-    return m_supported_formats.contains(f);
-}
-
-QStringList M3UPlaylistFormat::getExtensions() const
-{
-    return m_supported_formats;
-}
-
-M3UPlaylistFormat::M3UPlaylistFormat()
-{
-    m_supported_formats << "m3u";
+    PlayListFormatProperties p;
+    p.filters << "*.m3u";
+    p.shortName = "m3u";
+    return p;
 }
 
 QStringList M3UPlaylistFormat::decode(const QString & contents)
@@ -68,11 +61,6 @@ QString M3UPlaylistFormat::encode(const QList<PlayListItem*> & contents)
         out.append(f->url());
     }
     return out.join("\n");
-}
-
-QString M3UPlaylistFormat::name() const
-{
-    return "M3UPlaylistFormat";
 }
 
 Q_EXPORT_PLUGIN2(m3uplaylistformat,M3UPlaylistFormat)
