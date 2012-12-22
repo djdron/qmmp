@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,41 +26,26 @@
 #include "playlistformat.h"
 #include "playlistparser.h"
 
-PlayListParser *PlayListParser::m_instance = 0;
+QList<PlayListFormat*> *PlayListParser::m_formats = 0;
 
-PlayListParser::PlayListParser(QObject *parent) : QObject (parent)
+QStringList PlayListParser::filters()
 {
-    m_instance = this;
-}
-
-PlayListParser::~PlayListParser()
-{
-    m_instance = 0;
-}
-
-QStringList PlayListParser::extensions()
-{
-    loadExternalPlaylistFormats();
+    checkFormats();
     QStringList extensions;
-    foreach(PlayListFormat *format, m_formats)
+    foreach(PlayListFormat *format, *m_formats)
         extensions << format->getExtensions();
     return extensions;
 }
 
-bool PlayListParser::supports(const QString &filePath)
+QList<PlayListFormat*> *PlayListParser::formats()
 {
-    return findByPath(filePath) != 0;
-}
-
-QList<PlayListFormat*> PlayListParser::formats()
-{
-    loadExternalPlaylistFormats();
+    checkFormats();
     return m_formats;
 }
 
 PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 {
-    loadExternalPlaylistFormats();
+    checkFormats();
     QString ext;
     if(filePath.contains("://")) //is it url?
     {
@@ -70,7 +55,7 @@ PlayListFormat *PlayListParser::findByPath(const QString &filePath)
     else
         ext = QFileInfo(filePath).suffix().toLower();
 
-    foreach(PlayListFormat* format, m_formats)
+    foreach(PlayListFormat* format, *m_formats)
     {
         if (format->hasFormat(ext))
             return format;
@@ -78,19 +63,14 @@ PlayListFormat *PlayListParser::findByPath(const QString &filePath)
     return 0;
 }
 
-PlayListParser* PlayListParser::instance()
+void PlayListParser::checkFormats()
 {
-    if(!m_instance)
-        qFatal("PlayListParser: object is not created");
-    return m_instance;
-}
-
-void PlayListParser::loadExternalPlaylistFormats()
-{
-    if (!m_formats.isEmpty())
+    if (m_formats)
         return;
+
+    m_formats = new QList<PlayListFormat*>();
     QDir pluginsDir (Qmmp::pluginsPath());
-    pluginsDir.cd("PlayListFormats");
+    pluginsDir.cd("PlaylistFormats");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
@@ -105,6 +85,6 @@ void PlayListParser::loadExternalPlaylistFormats()
             fmt = qobject_cast<PlayListFormat *>(plugin);
 
         if (fmt)
-            m_formats << fmt;
+            m_formats->append(fmt);
     }
 }

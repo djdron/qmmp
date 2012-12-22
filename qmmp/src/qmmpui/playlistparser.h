@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,51 +20,33 @@
 #ifndef PLAYLISTPARSER_H
 #define PLAYLISTPARSER_H
 
-#include <QObject>
 #include "playlistformat.h"
 
 /*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListParser  : public QObject
+class PlayListParser
 {
-    Q_OBJECT
 public:
-    /*!
-    * Object constructor,
-    * @param parent Parent object
-    */
-    PlayListParser(QObject *parent);
-    /*!
-     * Destructor
-     */
-    ~PlayListParser();
     /*!
      * Returns a list of supported file extensions.
      */
-    QStringList extensions();
-    /*!
-     * Returns \b true if file \b filePath is supported, otherwise returns \b false
-     */
-    bool supports(const QString &filePath);
+    static QStringList filters();
     /*!
      * Returns a list of the installed playlist formats.
      */
-    QList<PlayListFormat*> formats();
-    /*!
-     * Returns a pointer to the object's instance.
-     */
-    static PlayListParser* instance();
+    static QList<PlayListFormat*> *formats();
     /*!
      * Finds playlist format by file path \b filePath
      * Returns \b 0 if file \b filePath is unsupported.
      */
-    PlayListFormat *findByPath(const QString &filePath);
+    static PlayListFormat *findByPath(const QString &filePath);
 
 private:
-    void loadExternalPlaylistFormats();
-    QList<PlayListFormat*> m_formats;
-    static PlayListParser* m_instance;
+    PlayListParser(){}
+    static void checkFormats();
+    static QList<PlayListFormat*> *m_formats;
+
 
 };
 

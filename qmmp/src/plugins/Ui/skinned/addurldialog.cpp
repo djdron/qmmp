@@ -99,7 +99,7 @@ void AddUrlDialog::accept( )
         if (s.startsWith("http://"))
         {
             //try to download playlist
-            PlayListFormat* prs = PlayListParser::instance()->findByPath(s);
+            PlayListFormat* prs = PlayListParser::findByPath(s);
             if (prs)
             {
                 connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(readResponse(QNetworkReply *)));
@@ -138,7 +138,7 @@ void AddUrlDialog::readResponse(QNetworkReply *reply)
         m_redirect_url.clear();
 
         QString s = urlComboBox->currentText();
-        PlayListFormat* prs = PlayListParser::instance()->findByPath(s);
+        PlayListFormat* prs = PlayListParser::findByPath(s);
         if (prs)
         {
             m_model->add(prs->decode(reply->readAll()));
