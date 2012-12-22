@@ -6,11 +6,6 @@ if(COMMAND cmake_policy)
    cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy) 
 
-SET(QT_USE_QTNETWORK TRUE)
-
-INCLUDE(FindQt4)
-
-include(${QT_USE_FILE})
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -40,7 +35,6 @@ ADD_DEFINITIONS(${X11_CFLAGS})
 
 SET(skinned_SRCS
     fft.c
-    addurldialog.cpp
     balancebar.cpp
     button.cpp
     skinnedsettings.cpp
@@ -101,7 +95,6 @@ SET(skinned_HDRS
 )
 
 SET(skinned_MOC_HDRS
-    addurldialog.h
     balancebar.h
     button.h
     skinnedsettings.h
@@ -156,7 +149,6 @@ QT4_WRAP_CPP(skinned_MOC_SRCS ${skinned_MOC_HDRS})
 # user interface
 
 SET(skinned_UIS
-    forms/addurldialog.ui
     forms/skinnedsettings.ui
     forms/preseteditor.ui
     forms/playlistbrowser.ui
