@@ -72,47 +72,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="287"/>
+        <location filename="../qmmpstarter.cpp" line="286"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Kullanım:qmmp [seçenek] [dosyalar]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="288"/>
+        <location filename="../qmmpstarter.cpp" line="287"/>
         <source>Options:</source>
         <translation>Seçenekler:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="292"/>
+        <location filename="../qmmpstarter.cpp" line="291"/>
         <source>Don&apos;t start the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="294"/>
+        <location filename="../qmmpstarter.cpp" line="293"/>
         <source>Print version number and exit</source>
         <translation>Sürüm numarasını yazdır ve çık</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="295"/>
+        <location filename="../qmmpstarter.cpp" line="294"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Fikirleinizi, yamalarınızı, hata raporlarınızı forkotov02@hotmail.ru adresine gönderin</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="300"/>
+        <location filename="../qmmpstarter.cpp" line="299"/>
         <source>QMMP version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="301"/>
+        <location filename="../qmmpstarter.cpp" line="300"/>
         <source>Compiled with Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="302"/>
+        <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Using Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="293"/>
+        <location filename="../qmmpstarter.cpp" line="292"/>
         <source>Display this text and exit</source>
         <translation>Bu metni göster ve çık</translation>
     </message>

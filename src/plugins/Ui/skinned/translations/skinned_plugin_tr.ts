@@ -375,29 +375,6 @@
     </message>
 </context>
 <context>
-    <name>AddUrlDialog</name>
-    <message>
-        <location filename="../addurldialog.cpp" line="125"/>
-        <source>Error</source>
-        <translation>Hata</translation>
-    </message>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="13"/>
-        <source>Enter URL to add</source>
-        <translation>Eklenecek URL girin</translation>
-    </message>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="51"/>
-        <source>&amp;Add</source>
-        <translation>&amp;Ekle</translation>
-    </message>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="58"/>
-        <source>&amp;Cancel</source>
-        <translation>&amp;İptal</translation>
-    </message>
-</context>
-<context>
     <name>EqWidget</name>
     <message>
         <location filename="../eqwidget.cpp" line="157"/>
@@ -718,27 +695,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>Appearance</source>
         <translation type="unfinished">Görünüm</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="381"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>Tools</source>
         <translation>Araçlar</translation>
     </message>
