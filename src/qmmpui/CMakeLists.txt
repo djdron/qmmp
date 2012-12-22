@@ -61,11 +61,11 @@ SET(libqmmpui_HDRS
     uifactory.h
     pluginitem_p.h
     general.h
+    playlistparser.h
 )
 
 SET(libqmmpui_MOC_HDRS
     uihelper.h
-    playlistparser.h
     filedialog.h
     qtfiledialog_p.h
     fileloader_p.h

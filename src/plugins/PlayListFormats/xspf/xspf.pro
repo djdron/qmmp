@@ -5,7 +5,7 @@ warn_on \
 plugin  \
  lib
 
-TARGET =$$PLUGINS_PREFIX/PlaylistFormats/xspfplaylistformat
+TARGET =$$PLUGINS_PREFIX/PlayListFormats/xspfplaylistformat
 
 
 TEMPLATE = lib
