@@ -37,7 +37,6 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
-#include "addurldialog.h"
 #include "actionmanager.h"
 #include "visualmenu.h"
 #include "listwidget.h"
@@ -152,7 +151,7 @@ void MainWindow::addFiles()
 
 void MainWindow::addUrl()
 {
-    AddUrlDialog::popup(this, m_pl_manager->selectedPlayList());
+    m_uiHelper->addUrl(this);
 }
 
 void MainWindow::updatePosition(qint64 pos)
@@ -642,4 +641,3 @@ void MainWindow::showMetaData()
         setWindowTitle(model->currentItem()->text());
     }
 }
-

@@ -7,10 +7,6 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
-SET(QT_USE_QTNETWORK TRUE)
-INCLUDE(FindQt4)
-include(${QT_USE_FILE})
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -45,7 +41,6 @@ SET(libqsui_SRCS
     qsuifactory.cpp
     qsuisettings.cpp
     visualmenu.cpp
-    addurldialog.cpp
     equalizer.cpp
     logo.cpp
     aboutqsuidialog.cpp
@@ -73,7 +68,6 @@ SET(libqsui_MOC_HDRS
     qsuifactory.h
     qsuisettings.h
     visualmenu.h
-    addurldialog.h
     equalizer.h
     logo.h
     aboutqsuidialog.h
@@ -90,14 +84,12 @@ QT4_WRAP_CPP(libqsui_MOC_SRCS ${libqsui_MOC_HDRS})
 
 # user interface
 
-
 SET(libqsui_UIS
     forms/mainwindow.ui
     forms/popupsettings.ui
     forms/renamedialog.ui
     forms/shortcutdialog.ui
     forms/qsuisettings.ui
-    forms/addurldialog.ui
     forms/aboutqsuidialog.ui
 )
 

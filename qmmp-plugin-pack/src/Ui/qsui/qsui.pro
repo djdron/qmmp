@@ -22,7 +22,6 @@ SOURCES += main.cpp \
     shortcutitem.cpp \
     popupsettings.cpp \
     popupwidget.cpp \
-    addurldialog.cpp \
     equalizer.cpp \
     logo.cpp \
     keyboardmanager.cpp \
@@ -42,7 +41,6 @@ HEADERS += mainwindow.h \
     shortcutitem.h \
     popupsettings.h \
     popupwidget.h \
-    addurldialog.h \
     equalizer.h \
     logo.h \
     keyboardmanager.h \
@@ -59,7 +57,6 @@ FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
-    forms/addurldialog.ui \
     forms/aboutqsuidialog.ui \
     forms/qsuisettings.ui
 RESOURCES += translations/translations.qrc images/qsui_images.qrc txt/qsui_txt.qrc
@@ -99,6 +96,9 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
+
+
+
 
 
 
