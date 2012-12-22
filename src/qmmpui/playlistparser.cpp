@@ -28,15 +28,6 @@
 
 QList<PlayListFormat*> *PlayListParser::m_formats = 0;
 
-QStringList PlayListParser::filters()
-{
-    checkFormats();
-    QStringList extensions;
-    foreach(PlayListFormat *format, *m_formats)
-        extensions << format->getExtensions();
-    return extensions;
-}
-
 QList<PlayListFormat*> *PlayListParser::formats()
 {
     checkFormats();

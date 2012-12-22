@@ -29,10 +29,6 @@ class PlayListParser
 {
 public:
     /*!
-     * Returns a list of supported file extensions.
-     */
-    static QStringList filters();
-    /*!
      * Returns a list of the installed playlist formats.
      */
     static QList<PlayListFormat*> *formats();
