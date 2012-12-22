@@ -45,8 +45,6 @@ UiHelper::UiHelper(QObject *parent)
     General::create(parent);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_lastDir = settings.value("General/last_dir", QDir::homePath()).toString(); //last directory
-    if(!PlayListParser::instance())
-        new PlayListParser(parent);
 }
 
 UiHelper::~UiHelper()
@@ -150,10 +148,10 @@ void UiHelper::addDirectory(QWidget *parent, PlayListModel *model)
 void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)
 {
     QStringList l;
-    QList<PlayListFormat*> p_list = PlayListParser::instance()->formats();
-    if (!p_list.isEmpty())
+    QList<PlayListFormat*> *p_list = PlayListParser::formats();
+    if (!p_list->isEmpty())
     {
-        foreach(PlayListFormat* fmt,p_list)
+        foreach(PlayListFormat* fmt, *p_list)
             l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
@@ -176,10 +174,10 @@ void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)
 void UiHelper::savePlayList(QWidget *parent, PlayListModel *model)
 {
     QStringList l;
-    QList<PlayListFormat*> p_list = PlayListParser::instance()->formats();
-    if (!p_list.isEmpty())
+    QList<PlayListFormat*> *p_list = PlayListParser::formats();
+    if (!p_list->isEmpty())
     {
-        foreach(PlayListFormat* fmt,p_list)
+        foreach(PlayListFormat* fmt,*p_list)
             l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";

@@ -840,7 +840,7 @@ void PlayListModel::doCurrentVisibleRequest()
 
 void PlayListModel::loadPlaylist(const QString &f_name)
 {
-    PlayListFormat* prs = PlayListParser::instance()->findByPath(f_name);
+    PlayListFormat* prs = PlayListParser::findByPath(f_name);
     if(!prs)
     {
         //qWarning("PlayListModel: unsupported playlist format");
@@ -874,7 +874,7 @@ void PlayListModel::loadPlaylist(const QString &f_name)
 
 void PlayListModel::savePlaylist(const QString & f_name)
 {
-    PlayListFormat* prs = PlayListParser::instance()->findByPath(f_name);
+    PlayListFormat* prs = PlayListParser::findByPath(f_name);
     if (prs)
     {
         QFile file(f_name);

@@ -18,6 +18,7 @@ TEMPLATE = lib
 unix:isEmpty(LIB_DIR):LIB_DIR = /lib
 VERSION = $$QMMP_VERSION
 unix:target.path = $$LIB_DIR
+QT += network
 HEADERS += general.h \
     generalfactory.h \
     playlistformat.h \
