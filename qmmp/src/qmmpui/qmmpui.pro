@@ -46,7 +46,9 @@ HEADERS += general.h \
     pluginitem_p.h \
     aboutdialog_p.h \
     qmmpuisettings.h \
-    radioitemdelegate_p.h
+    radioitemdelegate_p.h \
+    playlistdownloader.h \
+    addurldialog_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -69,13 +71,16 @@ SOURCES += general.cpp \
     pluginitem.cpp \
     aboutdialog.cpp \
     qmmpuisettings.cpp \
-    radioitemdelegate.cpp
+    radioitemdelegate.cpp \
+    playlistdownloader.cpp \
+    addurldialog.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
     forms/jumptotrackdialog.ui \
     forms/configdialog.ui \
-    forms/aboutdialog.ui
+    forms/aboutdialog.ui \
+    forms/addurldialog.ui
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc \
     images/qmmpui_images.qrc \
@@ -114,11 +119,17 @@ unix {
                    uifactory.h \
                    uiloader.h \
                    uihelper.h \
-                   qmmpuisettings.h
+                   qmmpuisettings.h \
+                   playlistdownloader.h
     devel.path = /include/qmmpui
     INSTALLS += target \
         devel
 }
+
+
+
+
+
 
 
 

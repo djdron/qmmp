@@ -46,6 +46,17 @@ QStringList PlayListParser::nameFilters()
     return filters;
 }
 
+PlayListFormat *PlayListParser::findByMime(const QString &mime)
+{
+    checkFormats();
+    foreach(PlayListFormat* format, *m_formats)
+    {
+        if(format->properties().contentTypes.contains(mime))
+            return format;
+    }
+    return 0;
+}
+
 PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 {
     checkFormats();
@@ -59,6 +70,12 @@ PlayListFormat *PlayListParser::findByPath(const QString &filePath)
         }
     }
     return 0;
+}
+
+PlayListFormat *PlayListParser::findByUrl(const QUrl &url)
+{
+    QString path = url.encodedPath();
+    return findByPath(path);
 }
 
 void PlayListParser::checkFormats()

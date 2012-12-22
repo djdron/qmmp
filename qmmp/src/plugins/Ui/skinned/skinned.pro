@@ -1,7 +1,6 @@
 include(../../plugins.pri)
 FORMS += \
     forms/preseteditor.ui \
-    forms/addurldialog.ui \
     forms/playlistbrowser.ui \
     forms/popupsettings.ui \
     forms/shortcutdialog.ui \
@@ -39,7 +38,6 @@ HEADERS += mainwindow.h \
     preseteditor.h \
     timeindicator.h \
     keyboardmanager.h \
-    addurldialog.h \
     skinreader.h \
     visualmenu.h \
     titlebarcontrol.h \
@@ -89,7 +87,6 @@ SOURCES += mainwindow.cpp \
     preseteditor.cpp \
     timeindicator.cpp \
     keyboardmanager.cpp \
-    addurldialog.cpp \
     skinreader.cpp \
     visualmenu.cpp \
     titlebarcontrol.cpp \
@@ -109,8 +106,6 @@ SOURCES += mainwindow.cpp \
     skinnedsettings.cpp \
     hotkeyeditor.cpp
 
-
-QT += network
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
 unix:LIBS += -lqmmpui -lqmmp
@@ -160,5 +155,3 @@ TRANSLATIONS = translations/skinned_plugin_ru.ts \
     translations/skinned_plugin_ja.ts \
     translations/skinned_plugin_es.ts \
     translations/skinned_plugin_sk.ts
-
-

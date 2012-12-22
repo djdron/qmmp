@@ -841,11 +841,8 @@ void PlayListModel::doCurrentVisibleRequest()
 void PlayListModel::loadPlaylist(const QString &f_name)
 {
     PlayListFormat* prs = PlayListParser::findByPath(f_name);
-    if(!prs)
-    {
-        //qWarning("PlayListModel: unsupported playlist format");
+    if(!prs || !QFile::exists(f_name))
         return;
-    }
 
     QFile file(f_name);
     if (!file.open(QIODevice::ReadOnly))
