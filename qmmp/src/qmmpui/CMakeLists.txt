@@ -7,6 +7,10 @@ cmake_policy(SET CMP0003 OLD)
 cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
+SET(QT_USE_QTNETWORK TRUE)
+INCLUDE(FindQt4)
+include(${QT_USE_FILE})
+
 # qt lib
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -46,6 +50,8 @@ SET(libqmmpui_SRCS
     aboutdialog.cpp
     qmmpuisettings.cpp
     radioitemdelegate.cpp
+    playlistdownloader.cpp
+    addurldialog.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -80,6 +86,8 @@ SET(libqmmpui_MOC_HDRS
     aboutdialog_p.h
     qmmpuisettings.h
     radioitemdelegate_p.h
+    playlistdownloader.h
+    addurldialog_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -103,6 +111,7 @@ SET(libqmmpui_DEVEL_HDRS
     uifactory.h
     configdialog.h
     qmmpuisettings.h
+    playlistdownloader.h
 )
 
 
@@ -113,6 +122,7 @@ SET(libqmmpui_UIS
     forms/jumptotrackdialog.ui
     forms/configdialog.ui
     forms/aboutdialog.ui
+    forms/addurldialog.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
