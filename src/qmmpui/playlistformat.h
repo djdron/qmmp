@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,16 @@
 
 class PlayListItem;
 
+/*! @brief Helper structure to store playlist format properies.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+struct PlayListFormatProperties
+{
+    QString shortName;        /*!< Unique name of the playlist format for internal usage */
+    QStringList filters;      /*!< File filters (example: "*.m3u") */
+    QStringList contentTypes; /*!< Supported content types */
+};
+
 /*! @brief Abstract interface for playlist formats.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
@@ -33,10 +43,11 @@ public:
     /*!
      * Object destructor
      */
-    virtual ~PlayListFormat()
-    {
-        ;
-    }
+    virtual ~PlayListFormat() {}
+    /*!
+     * Returns playlist format properties.
+     */
+    virtual const PlayListFormatProperties properties() const = 0;
     /*!
      * Takes raw contents of playlist file, should return string list of
      * ready file pathes to fill the playlist.
@@ -47,18 +58,6 @@ public:
      * encoded playlist file
      */
     virtual QString encode(const QList<PlayListItem*>& contents) = 0;
-    /*!
-     * Returns list of file extensions that current format supports
-     */
-    virtual QStringList getExtensions()const = 0;
-    /*!
-     * Verifies is the \b ext file extension supported by current playlist format.
-     */
-    virtual bool hasFormat(const QString& ext) = 0;
-    /*!
-     * Unique name of playlist format.
-     */
-    virtual QString name() const = 0;
 };
 
 Q_DECLARE_INTERFACE(PlayListFormat,"PlayListFormatInterface/1.0")
