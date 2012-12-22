@@ -4,7 +4,7 @@ SUBDIRS += Input \
            Visual \
            Transports \
            Effect \
-           PlaylistFormats \
+           PlayListFormats \
            FileDialogs \
            Ui
 

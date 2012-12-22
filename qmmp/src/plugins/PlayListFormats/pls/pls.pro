@@ -5,7 +5,7 @@ warn_on \
 plugin  \
  lib
 
-TARGET =$$PLUGINS_PREFIX/PlaylistFormats/plsplaylistformat
+TARGET =$$PLUGINS_PREFIX/PlayListFormats/plsplaylistformat
 
 
 TEMPLATE = lib
@@ -24,7 +24,7 @@ unix {
     target.path = $$LIB_DIR/qmmp/PlaylistFormats
     INSTALLS += target
 
-    QMAKE_CLEAN =$$PLUGINS_PREFIX/PlaylistFormats/plsplaylistformat.so
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/PlayListFormats/plsplaylistformat.so
     LIBS += -lqmmpui
 }
 

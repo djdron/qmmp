@@ -5,7 +5,7 @@ warn_on \
 plugin  \
  lib
 
-TARGET =$$PLUGINS_PREFIX/PlaylistFormats/m3uplaylistformat
+TARGET =$$PLUGINS_PREFIX/PlayListFormats/m3uplaylistformat
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib

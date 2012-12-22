@@ -61,7 +61,7 @@ void PlayListParser::checkFormats()
 
     m_formats = new QList<PlayListFormat*>();
     QDir pluginsDir (Qmmp::pluginsPath());
-    pluginsDir.cd("PlaylistFormats");
+    pluginsDir.cd("PlayListFormats");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
