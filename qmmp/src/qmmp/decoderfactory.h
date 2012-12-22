@@ -33,7 +33,7 @@ class Output;
 class FileInfo;
 class MetaDataModel;
 
-/*! @brief Helper class to store input plugin properies.
+/*! @brief Helper class to store input plugin properties.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class DecoderProperties
