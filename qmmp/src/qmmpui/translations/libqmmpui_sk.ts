@@ -80,6 +80,29 @@
     </message>
 </context>
 <context>
+    <name>AddUrlDialog</name>
+    <message>
+        <location filename="../forms/addurldialog.ui" line="14"/>
+        <source>Enter URL to add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/addurldialog.ui" line="43"/>
+        <source>&amp;Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/addurldialog.ui" line="50"/>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addurldialog.cpp" line="123"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="314"/>
@@ -671,6 +694,14 @@
     </message>
 </context>
 <context>
+    <name>PlayListDownloader</name>
+    <message>
+        <location filename="../playlistdownloader.cpp" line="108"/>
+        <source>Unsupported playlist format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="163"/>
@@ -851,33 +882,33 @@
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="135"/>
+        <location filename="../uihelper.cpp" line="134"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished">Všetky podporované formáty</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="140"/>
+        <location filename="../uihelper.cpp" line="139"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">Vyberte jeden alebo viac súborov na otvorenie</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="147"/>
+        <location filename="../uihelper.cpp" line="146"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Vyberte priečinok</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="159"/>
-        <location filename="../uihelper.cpp" line="185"/>
+        <location filename="../uihelper.cpp" line="162"/>
+        <location filename="../uihelper.cpp" line="183"/>
         <source>Playlist Files</source>
         <translation type="unfinished">Súbory playlistov</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="161"/>
+        <location filename="../uihelper.cpp" line="164"/>
         <source>Open Playlist</source>
         <translation type="unfinished">Otvoriť playlist</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="186"/>
+        <location filename="../uihelper.cpp" line="184"/>
         <source>Save Playlist</source>
         <translation type="unfinished">Uložiť playlist</translation>
     </message>

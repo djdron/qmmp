@@ -375,29 +375,6 @@
     </message>
 </context>
 <context>
-    <name>AddUrlDialog</name>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="13"/>
-        <source>Enter URL to add</source>
-        <translation>הזן URL להוספה</translation>
-    </message>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="51"/>
-        <source>&amp;Add</source>
-        <translation>&amp;הוספה</translation>
-    </message>
-    <message>
-        <location filename="../forms/addurldialog.ui" line="58"/>
-        <source>&amp;Cancel</source>
-        <translation>&amp;ביטול</translation>
-    </message>
-    <message>
-        <location filename="../addurldialog.cpp" line="125"/>
-        <source>Error</source>
-        <translation>שגיאה</translation>
-    </message>
-</context>
-<context>
     <name>EqWidget</name>
     <message>
         <location filename="../eqwidget.cpp" line="44"/>
@@ -718,27 +695,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>Appearance</source>
         <translation>בופעה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="319"/>
         <source>Shortcuts</source>
         <translation>קיצורי דרך</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="381"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>Tools</source>
         <translation>כלים</translation>
     </message>
