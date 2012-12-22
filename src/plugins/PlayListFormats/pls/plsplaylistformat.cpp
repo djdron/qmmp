@@ -26,6 +26,7 @@ const PlayListFormatProperties PLSPlaylistFormat::properties() const
 {
     PlayListFormatProperties p;
     p.filters << "*.pls";
+    p.contentTypes << "audio/x-scpls";
     p.shortName = "pls";
     return p;
 }

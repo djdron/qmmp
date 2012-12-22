@@ -33,6 +33,7 @@ const PlayListFormatProperties XSPFPlaylistFormat::XSPFPlaylistFormat::propertie
     PlayListFormatProperties p;
     p.filters << "*.xspf";
     p.shortName = "xspf";
+    p.contentTypes << "application/xspf+xml";
     return p;
 }
 

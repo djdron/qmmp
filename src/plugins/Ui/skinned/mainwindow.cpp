@@ -44,7 +44,6 @@
 #include "dock.h"
 #include "eqwidget.h"
 #include "mainvisual.h"
-#include "addurldialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
 #include "windowsystem.h"
@@ -471,7 +470,7 @@ void MainWindow::jumpToTrack()
 
 void MainWindow::addUrl()
 {
-    AddUrlDialog::popup(this, m_pl_manager->selectedPlayList());
+    m_uiHelper->addUrl(this);
 }
 
 MainDisplay * MainWindow::mainDisplay() const

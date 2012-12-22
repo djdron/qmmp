@@ -31,6 +31,7 @@
 #include "generalfactory.h"
 #include "jumptotrackdialog_p.h"
 #include "aboutdialog_p.h"
+#include "addurldialog_p.h"
 #include "uihelper.h"
 
 UiHelper *UiHelper::m_instance = 0;
@@ -143,6 +144,11 @@ void UiHelper::addDirectory(QWidget *parent, PlayListModel *model)
     FileDialog::popup(parent, FileDialog::AddDirs, &m_lastDir,
                       model, SLOT(add(const QStringList&)),
                       tr("Choose a directory"));
+}
+
+void UiHelper::addUrl(QWidget *parent, PlayListModel *model)
+{
+    AddUrlDialog::popup(parent, model);
 }
 
 void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)

@@ -18,45 +18,40 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef ADDURLDIALOG_H
-#define ADDURLDIALOG_H
+#ifndef ADDURLDIALOG_P_H
+#define ADDURLDIALOG_P_H
 
-#include "ui_addurldialog.h"
 #include <QDialog>
 #include <QPointer>
 #include <QUrl>
+#include "ui_addurldialog.h"
 
 class QNetworkAccessManager;
 class QNetworkReply;
 class PlayListModel;
+class PlayListDownloader;
 
-/**
+/*! @internal
    @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-
 class AddUrlDialog : public QDialog , private Ui::AddUrlDialog
 {
     Q_OBJECT
 public:
     static void popup(QWidget* parent ,PlayListModel*);
 
-protected:
-    AddUrlDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
-    ~AddUrlDialog();
-
-protected slots:
-    virtual void accept();
-
 private slots:
-    void readResponse(QNetworkReply *reply);
+    void add(const QStringList &urls);
+    void showError(const QString &message);
 
 private:
+    AddUrlDialog(QWidget *parent);
+    ~AddUrlDialog();
+    void accept();
     void setModel(PlayListModel*);
-    static QPointer<AddUrlDialog> instance;
-    PlayListModel* m_model;
+    static QPointer<AddUrlDialog> m_instance;
+    PlayListModel *m_model;
+    PlayListDownloader *m_downloader;
     QStringList m_history;
-    QNetworkAccessManager *m_http;
-    QUrl m_redirect_url;
-
 };
-#endif //ADDURLDIALOG_H
+#endif //ADDURLDIALOG_P_H

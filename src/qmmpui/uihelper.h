@@ -102,6 +102,13 @@ public:
     void addDirectory(QWidget *parent = qApp->activeWindow(),
                       PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     /*!
+     * Opens 'Add URL' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
+    void addUrl(QWidget *parent = qApp->activeWindow(),
+                PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
      * Opens 'Load Playlist' dialog
      * @param parent Parent widget
      * @param model Destination playlist model

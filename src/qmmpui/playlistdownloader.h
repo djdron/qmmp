@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,49 +17,56 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef PLAYLISTPARSER_H
-#define PLAYLISTPARSER_H
 
-#include <QStringList>
+#ifndef PLAYLISTDOWNLOADER_H
+#define PLAYLISTDOWNLOADER_H
+
+#include <QObject>
 #include <QUrl>
-#include "playlistformat.h"
 
-/*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
+class QNetworkAccessManager;
+class QNetworkReply;
+
+/*! @brief The PlayListDownloader class downloads playlist from remote URL and extracts tracks
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListParser
+class PlayListDownloader : public QObject
 {
+    Q_OBJECT
 public:
     /*!
-     * Returns a list of the installed playlist formats.
+     * Object constructor.
      */
-    static QList<PlayListFormat*> *formats();
+    explicit PlayListDownloader(QObject *parent = 0);
+
+signals:
     /*!
-     * Returns a list of the supported files name filters, i.e. "*.m3u *.pls"
+     * Emitted when downloading is finished without errors.
+     * @param urls A list of extracted URLs or argument of the \b PlayListDownloader::start()
+     * function if remote URL doesn't contain playlist.
      */
-    static QStringList nameFilters();
+    void done(const QStringList &urls);
     /*!
-     * Returns PlayListFormat pointer which supports mime type \b mime
-     * or \b 0 if mime type \b mime is unsupported
+     * Emitted when downloading is finished with error.
+     * @param message Error message.
      */
-    static PlayListFormat *findByMime(const QString &mime);
+    void error(const QString &message);
+
+public slots:
     /*!
-     * Finds playlist format by file path \b filePath
-     * Returns \b 0 if file \b filePath is unsupported.
+     * Starts playlist downloading
+     * @param url URL of remote playlist
      */
-    static PlayListFormat *findByPath(const QString &filePath);
-    /*!
-     * Finds playlist format by url path \b url
-     * Returns \b 0 if file \b filePath is unsupported.
-     */
-    static PlayListFormat *findByUrl(const QUrl &url);
+    void start(const QUrl &url);
+
+private slots:
+    void readResponse(QNetworkReply *reply);
 
 private:
-    PlayListParser(){}
-    static void checkFormats();
-    static QList<PlayListFormat*> *m_formats;
-
-
+    QNetworkAccessManager *m_manager;
+    QUrl m_redirect_url, m_url;
+    QNetworkReply *m_getReply;
+    QByteArray m_ua;
 };
 
-#endif
+#endif // PLAYLISTDOWNLOADER_H
