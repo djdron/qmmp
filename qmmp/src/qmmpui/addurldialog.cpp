@@ -124,5 +124,3 @@ void AddUrlDialog::showError(const QString &message)
     QMessageBox::warning(this, tr("Error"), message);
     addButton->setEnabled(true);
 }
-
-
