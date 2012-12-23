@@ -97,7 +97,7 @@
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../addurldialog.cpp" line="123"/>
+        <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
