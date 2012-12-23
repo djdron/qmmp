@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите адрес для добавления</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Добавить</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Отмена</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="123"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка</translation>
     </message>
 </context>
 <context>
@@ -444,12 +444,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="480"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-диалог</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="486"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматически вставлять URL из буфера обмена</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="627"/>
@@ -708,7 +708,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>Неподдерживаемый формат списка воспроизведения</translation>
     </message>
 </context>
 <context>
