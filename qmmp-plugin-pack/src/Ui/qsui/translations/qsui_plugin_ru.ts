@@ -821,7 +821,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="140"/>
+        <location filename="../qsuisettings.cpp" line="137"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
@@ -922,56 +922,46 @@
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
-        <source>URL Dialog</source>
-        <translation>URL-диалог</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>Автоматически вставлять URL из буфера обмена</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="280"/>
         <source>Analyzer Colors</source>
         <translation>Цвета анализатора</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="286"/>
+        <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Analyzer #1:</source>
         <translation>Анализатор #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="321"/>
+        <location filename="../forms/qsuisettings.ui" line="305"/>
         <source>Peaks:</source>
         <translation>Пики:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="353"/>
+        <location filename="../forms/qsuisettings.ui" line="337"/>
         <source>Analyzer #2:</source>
         <translation>Анализатор #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="385"/>
+        <location filename="../forms/qsuisettings.ui" line="369"/>
         <source>Background:</source>
         <translation>Фон:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="417"/>
+        <location filename="../forms/qsuisettings.ui" line="401"/>
         <source>Analyzer #3:</source>
         <translation>Анализатор #3:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="134"/>
+        <location filename="../qsuisettings.cpp" line="131"/>
         <source>Playback</source>
         <translation>Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="146"/>
+        <location filename="../qsuisettings.cpp" line="143"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="152"/>
+        <location filename="../qsuisettings.cpp" line="149"/>
         <source>Misc</source>
         <translation>Другие</translation>
     </message>

@@ -96,8 +96,6 @@ void QSUISettings::readSettings()
     //view
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
-    //url dialog
-    m_ui.clipboardCheckBox->setChecked(settings.value("URLDialog/use_clipboard", false).toBool());
     //analyzer colors
     m_ui.aColor1->setColor(settings.value("vis_color1", "#BECBFF").toString());
     m_ui.aColor2->setColor(settings.value("vis_color2", "#BECBFF").toString());
@@ -125,7 +123,6 @@ void QSUISettings::writeSettings()
     settings.setValue("vis_peak_color", m_ui.peaksColor->colorName());
     settings.setValue("vis_bg_color", m_ui.bgColor->colorName());
     settings.endGroup();
-    settings.setValue("URLDialog/use_clipboard", m_ui.clipboardCheckBox->isChecked());
 }
 
 void QSUISettings::loadShortcuts()

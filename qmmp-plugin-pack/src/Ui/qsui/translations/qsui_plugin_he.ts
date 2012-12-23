@@ -822,7 +822,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="140"/>
+        <location filename="../qsuisettings.cpp" line="137"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
@@ -923,56 +923,46 @@
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
-        <source>URL Dialog</source>
-        <translation>דו שיח URL</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>הדבקה אוטומטית של URL מן לוח גזירים</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="280"/>
         <source>Analyzer Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="286"/>
+        <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Analyzer #1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="321"/>
+        <location filename="../forms/qsuisettings.ui" line="305"/>
         <source>Peaks:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="353"/>
+        <location filename="../forms/qsuisettings.ui" line="337"/>
         <source>Analyzer #2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="385"/>
+        <location filename="../forms/qsuisettings.ui" line="369"/>
         <source>Background:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="417"/>
+        <location filename="../forms/qsuisettings.ui" line="401"/>
         <source>Analyzer #3:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="134"/>
+        <location filename="../qsuisettings.cpp" line="131"/>
         <source>Playback</source>
         <translation>פס קול</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="146"/>
+        <location filename="../qsuisettings.cpp" line="143"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="152"/>
+        <location filename="../qsuisettings.cpp" line="149"/>
         <source>Misc</source>
         <translation>שונות</translation>
     </message>
