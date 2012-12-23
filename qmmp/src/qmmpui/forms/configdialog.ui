@@ -324,7 +324,7 @@
        </layout>
       </widget>
       <widget class="QWidget" name="page_2">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
@@ -470,6 +470,22 @@
               </spacer>
              </item>
             </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_7">
+          <property name="title">
+           <string>URL Dialog</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QCheckBox" name="clipboardCheckBox">
+             <property name="text">
+              <string>Auto-paste URL from clipboard</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

@@ -1220,16 +1220,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Показывать кнопку &quot;Новый список&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation>URL-диалог</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>Автоматически вставлять URL из буфера обмена</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation>Показывать &quot;якорь&quot;</translation>

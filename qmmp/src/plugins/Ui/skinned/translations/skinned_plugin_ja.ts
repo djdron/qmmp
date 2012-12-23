@@ -1221,16 +1221,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>&apos;新しいプレイリスト&apos;ボタンを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation>URL ダイアログ</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>クリップボード上の URL を自動的に貼り付け</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation>アンカーを表示</translation>
