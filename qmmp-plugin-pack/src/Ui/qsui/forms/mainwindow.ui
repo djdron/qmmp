@@ -38,7 +38,7 @@
       <property name="handleWidth">
        <number>6</number>
       </property>
-      <widget class="QTabWidget" name="tabWidget">
+      <widget class="QSUiTabWidget" name="tabWidget">
        <property name="currentIndex">
         <number>-1</number>
        </property>
@@ -267,6 +267,12 @@
    <class>QSUiAnalyzer</class>
    <extends>QWidget</extends>
    <header>qsuianalyzer.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QSUiTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>qsuitabwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -106,6 +106,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(m_ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
     connect(m_ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
+    connect(m_ui.tabWidget, SIGNAL(tabMoved(int,int)), m_pl_manager, SLOT(move(int,int)));
+
     m_ui.tabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(m_ui.tabWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(showTabMenu(QPoint)));
     m_tab_menu = new QMenu(m_ui.tabWidget);
