@@ -18,20 +18,23 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#ifndef QSUITABBAR_H
+#define QSUITABBAR_H
+
 #include <QTabBar>
-#include "qsuitabbar.h"
-#include "qsuitabwidget.h"
 
-QSUiTabWidget::QSUiTabWidget(QWidget *parent) : QTabWidget(parent)
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class QSUiTabBar : public QTabBar
 {
-    setTabBar(new QSUiTabBar(this));
-    setMovable(true);
-    connect(tabBar(), SIGNAL(tabMoved(int,int)), SIGNAL(tabMoved(int,int)));
-    connect(tabBar(), SIGNAL(tabCloseRequested(int)), SLOT(onTabCloseRequest(int)));
-}
+    Q_OBJECT
+public:
+    explicit QSUiTabBar(QWidget *parent = 0);
 
-void QSUiTabWidget::onTabCloseRequest(int i)
-{
-    if(!tabsClosable())
-        emit tabCloseRequested(i);
-}
+private:
+    void mouseReleaseEvent(QMouseEvent *e);
+
+};
+
+#endif // QSUITABBAR_H

@@ -18,20 +18,22 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QTabBar>
+#include <QMouseEvent>
 #include "qsuitabbar.h"
-#include "qsuitabwidget.h"
 
-QSUiTabWidget::QSUiTabWidget(QWidget *parent) : QTabWidget(parent)
-{
-    setTabBar(new QSUiTabBar(this));
-    setMovable(true);
-    connect(tabBar(), SIGNAL(tabMoved(int,int)), SIGNAL(tabMoved(int,int)));
-    connect(tabBar(), SIGNAL(tabCloseRequested(int)), SLOT(onTabCloseRequest(int)));
-}
+QSUiTabBar::QSUiTabBar(QWidget *parent) : QTabBar(parent)
+{}
 
-void QSUiTabWidget::onTabCloseRequest(int i)
+void QSUiTabBar::mouseReleaseEvent(QMouseEvent *e)
 {
-    if(!tabsClosable())
-        emit tabCloseRequested(i);
+    if(e->button() == Qt::MidButton)
+    {
+        int i = tabAt(e->pos());
+        if(i >= 0)
+        {
+            e->accept();
+            emit tabCloseRequested(i);
+        }
+    }
+    QTabBar::mouseReleaseEvent(e);
 }

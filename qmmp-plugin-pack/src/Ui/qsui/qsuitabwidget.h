@@ -35,7 +35,8 @@ public:
 signals:
     void tabMoved(int from, int to);
 
-public slots:
+private slots:
+    void onTabCloseRequest(int i);
 
 };
 

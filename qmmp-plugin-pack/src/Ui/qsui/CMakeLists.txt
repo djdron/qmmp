@@ -49,6 +49,7 @@ SET(libqsui_SRCS
     fft.c
     colorwidget.cpp
     qsuitabwidget.cpp
+    qsuitabbar.cpp
 )
 
 SET(libqsui_HDRS
@@ -76,6 +77,7 @@ SET(libqsui_MOC_HDRS
     qsuianalyzer.h
     colorwidget.h
     qsuitabwidget.h
+    qsuitabbar.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc images/qsui_images.qrc)
