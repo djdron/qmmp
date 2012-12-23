@@ -11,7 +11,7 @@ Qmmp Plugin Pack
 Требования:
 - ОС GNU Linux
 - Qt >= 4.6
-- qmmp 0.6.x
+- qmmp 0.7.x
 - taglib >= 1.7.0
 - libmpg123 >= 1.13.0 (Опционально)
 - cmake >= 2.8.0 (только для сборки)
