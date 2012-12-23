@@ -1220,16 +1220,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Pokaż przycisk &apos;Nowa lista odtwarazania&apos;</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>Automatyczne wklejanie URL ze schowka</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation>Pokaż kotwicę</translation>

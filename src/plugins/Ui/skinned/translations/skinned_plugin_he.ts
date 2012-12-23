@@ -1232,16 +1232,6 @@ Andrey Adreev ‫&lt;andreev00@gmail.com&gt;</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation>דו שיח URL</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>הדבקה אוטומטית של URL מן לוח גזירים</translation>
-    </message>
-    <message>
         <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation>בחירת קבצי סקין</translation>

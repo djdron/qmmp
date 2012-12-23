@@ -40,6 +40,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_exclude_filters = s.value("General/exclude_filters", QStringList() << "*.cue").toStringList();
     m_use_default_pl = s.value("General/use_default_pl", false).toBool();
     m_default_pl_name = s.value("General/default_pl_name", tr("Playlist")).toString();
+    m_use_clipboard = s.value("URLDialog/use_clipboard", false).toBool();
 }
 
 QmmpUiSettings::~QmmpUiSettings()
@@ -109,6 +110,16 @@ void QmmpUiSettings::setResumeOnStartup(bool enabled)
     m_resume_on_startup = enabled;
 }
 
+void QmmpUiSettings::setUseClipboard(bool enabled)
+{
+    m_use_clipboard = enabled;
+}
+
+bool QmmpUiSettings::useClipboard() const
+{
+    return m_use_clipboard;
+}
+
 void QmmpUiSettings::sync()
 {
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
@@ -122,6 +133,7 @@ void QmmpUiSettings::sync()
     s.setValue("General/exclude_filters", m_exclude_filters);
     s.setValue("General/use_default_pl", m_use_default_pl);
     s.setValue("General/default_pl_name", m_default_pl_name);
+    s.setValue("URLDialog/use_clipboard", m_use_clipboard);
 }
 
 QStringList QmmpUiSettings::restrictFilters() const

@@ -87,6 +87,15 @@ public:
      */
     void setResumeOnStartup(bool enabled);
     /*!
+     * Sets the "Use clipboard in the URL dialog" option state to \b enabled
+     * @param enabled Option state (\b true - enabled, \b false - disabled)
+     */
+    void setUseClipboard(bool enabled);
+    /*!
+     * Returns \b true if option "Use clipboard in the URL dialog" is enabled, otherwise returns \b false
+     */
+    bool useClipboard() const;
+    /*!
      * Returns a list of filters which should be used for directory scanning.
      */
     QStringList restrictFilters() const;
@@ -160,6 +169,8 @@ private:
     QString m_default_pl_name;
     //playlist auto-save option
     bool m_autosave_playlist;
+    //url dialog
+    bool m_use_clipboard;
 };
 
 #endif // QMMPUISETTINGS_H

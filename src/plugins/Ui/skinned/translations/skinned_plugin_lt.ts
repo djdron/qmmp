@@ -1221,16 +1221,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Rodyti naujo grojaraščio mygtuką</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation>Adreso dialogas</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>Automatinis adreso įkėlimas iš iškarpinės</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translatorcomment>??????????????</translatorcomment>

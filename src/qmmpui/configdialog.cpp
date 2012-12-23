@@ -110,6 +110,8 @@ void ConfigDialog::readSettings()
         m_ui->defaultPlayListLineEdit->setText(guis->defaultPlayListName());
         //playlist auto-save when modified
         m_ui->autoSavePlayListCheckBox->setChecked(guis->autoSavePlayList());
+        //url dialog
+        m_ui->clipboardCheckBox->setChecked(guis->useClipboard());
     }
     //proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -360,6 +362,7 @@ void ConfigDialog::saveSettings()
         guis->setDefaultPlayList(m_ui->defaultPlayListLineEdit->text(),
                                  m_ui->defaultPlayListCheckBox->isChecked());
         guis->setAutoSavePlayList(m_ui->autoSavePlayListCheckBox->isChecked());
+        guis->setUseClipboard(m_ui->clipboardCheckBox->isChecked());
         guis->sync();
     }
 

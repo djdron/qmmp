@@ -1220,16 +1220,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>„Neue Wiedergabeliste“-Knopf zeigen</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="478"/>
-        <source>URL Dialog</source>
-        <translation>URL-Dialog</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="484"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>URL aus der Zwischenablage automatisch einfügen</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
