@@ -27,6 +27,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistdownloader.h>
 #include <qmmp/qmmpsettings.h>
+#include <qmmpuisettings.h>
 #include <qmmp/metadatamanager.h>
 #include <qmmp/qmmp.h>
 #include "addurldialog_p.h"
@@ -41,15 +42,15 @@ AddUrlDialog::AddUrlDialog(QWidget *parent) : QDialog(parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
-    if(settings.value("URLDialog/use_clipboard", false).toBool())
+    m_downloader = new PlayListDownloader(this);
+    connect(m_downloader, SIGNAL(done(QStringList)), SLOT(add(QStringList)));
+    connect(m_downloader, SIGNAL(error(QString)), SLOT(showError(QString)));
+    if(QmmpUiSettings::instance()->useClipboard())
     {
         QUrl url(QApplication::clipboard()->text().trimmed());
         if(url.isValid() && MetaDataManager::instance()->protocols().contains(url.scheme()))
             urlComboBox->setEditText(QApplication::clipboard()->text().trimmed());
     }
-    m_downloader = new PlayListDownloader(this);
-    connect(m_downloader, SIGNAL(done(QStringList)), SLOT(add(QStringList)));
-    connect(m_downloader, SIGNAL(error(QString)), SLOT(showError(QString)));
 }
 
 AddUrlDialog::~AddUrlDialog()
