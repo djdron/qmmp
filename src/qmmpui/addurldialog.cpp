@@ -22,14 +22,14 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QClipboard>
-#include <qmmpui/playlistparser.h>
-#include <qmmpui/playlistformat.h>
-#include <qmmpui/playlistmodel.h>
-#include <qmmpui/playlistdownloader.h>
 #include <qmmp/qmmpsettings.h>
-#include <qmmpuisettings.h>
 #include <qmmp/metadatamanager.h>
 #include <qmmp/qmmp.h>
+#include "playlistparser.h"
+#include "playlistformat.h"
+#include "playlistmodel.h"
+#include "playlistdownloader.h"
+#include "qmmpuisettings.h"
 #include "addurldialog_p.h"
 
 #define HISTORY_SIZE 10
