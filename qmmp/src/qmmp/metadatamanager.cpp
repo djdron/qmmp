@@ -247,10 +247,15 @@ QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
     return file_list;
 }
 
- void MetaDataManager::clearCoverChache()
- {
-     m_cover_cache.clear();
- }
+void MetaDataManager::clearCoverChache()
+{
+    m_cover_cache.clear();
+}
+
+void MetaDataManager::prepareForAnotherThread()
+{
+    protocols(); //this hack should load all requied plugins
+}
 
 MetaDataManager *MetaDataManager::instance()
 {

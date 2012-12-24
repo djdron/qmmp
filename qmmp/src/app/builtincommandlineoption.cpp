@@ -25,6 +25,8 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/qmmpuisettings.h>
+#include <qmmpui/playlistdownloader.h>
+#include <qmmpui/playlistparser.h>
 #include <qmmp/metadatamanager.h>
 #include "builtincommandlineoption.h"
 
@@ -80,22 +82,29 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     SoundCore *core = SoundCore::instance();
     MediaPlayer *player = MediaPlayer::instance();
     PlayListManager *pl_manager = PlayListManager::instance();
+    QmmpUiSettings *settings = QmmpUiSettings::instance();
     if(!core || !player)
         return;
     if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
     {
         if(args.isEmpty())
             return;
-        QStringList full_path_list;
+        QStringList full_path_list, remote_pls_list;
         foreach(QString s, args)
         {
-            if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
-                full_path_list << s;
-            else
+            if (s.startsWith("/")) //absolute path
+                    full_path_list << s;
+            else if(s.contains("://")) //url
+            {
+                if(PlayListParser::findByUrl(s)) //remote playlist
+                    remote_pls_list << s;
+                else
+                    full_path_list << s; //url
+            }
+            else //relative path
                 full_path_list << cwd + "/" + s;
         }
         //default playlist
-        QmmpUiSettings *settings = QmmpUiSettings::instance();
         if(settings->useDefaultPlayList())
         {
             if(!pl_manager->playListNames().contains(settings->defaultPlayListName()))
@@ -103,6 +112,8 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
             pl_manager->selectPlayList(settings->defaultPlayListName());
         }
         pl_manager->activatePlayList(pl_manager->selectedPlayList());
+        m_model = pl_manager->selectedPlayList();
+
         if(option_string.isEmpty()) //clear playlist if option is empty
         {
             if (core->state() != Qmmp::Stopped)
@@ -112,15 +123,21 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
             }
             m_model = pl_manager->selectedPlayList();
             m_model->clear();
-            connect(m_model, SIGNAL(itemAdded(PlayListItem*)), player, SLOT(play()));
-            connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(disconnectPl()));
-            connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
-            m_model->add(full_path_list);
+            if(!full_path_list.isEmpty())
+            {
+                connect(m_model, SIGNAL(itemAdded(PlayListItem*)), player, SLOT(play()));
+                connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(disconnectPl()));
+                connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
+            }
         }
-        else
+        m_model->add(full_path_list);
+        if(!remote_pls_list.isEmpty())
         {
-            pl_manager->selectedPlayList()->add(full_path_list);
-            return;
+            PlayListDownloader *downloader = new PlayListDownloader(this);
+            connect(downloader, SIGNAL(done(QStringList)), m_model, SLOT(add(QStringList)));
+            connect(downloader, SIGNAL(done(QStringList)), downloader, SLOT(deleteLater()));
+            connect(downloader, SIGNAL(error(QString)), downloader, SLOT(deleteLater()));
+            downloader->start(remote_pls_list.at(0));
         }
     }
     else if (option_string == "--play" || option_string == "-p")
