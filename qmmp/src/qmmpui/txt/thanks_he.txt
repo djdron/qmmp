@@ -1,25 +1,48 @@
 תודות:
 
-    Adria Arrufat <swiftscythe@gmail.com> - דיווחי תקלות
-    Adrian Knoth <adi@drcomp.erfurt.thur.de> - תיקוניי תוספת ‫jack, דיווחי תקלות
-    Anton Petrusevich <casus@casus.us> - שיפורי השמעה אקראית חוזרת של פסקול
-    Avihay Baratz <avihayb@gmail.com> - תכונת הפסקה אוטומטית, תיקוניי תקלות
-    Brice Videau <brice.videau@gmail.com> - תיקוניי תקלות
-    Cristian Rodríguez <judas.iscariote@gmail.com> - תיקוניי ‫scrobbler
-    Csaba Hruska <csaba.hruska@gmail.com> - תיקוניי תוספת ‫ffmpeg
-    Dmitry Kostin <kostindima@gmail.com> - תמיכת ‫iso.wv
-    Evgeny Gleyzerman <evgley@gmail.com> - שיפורי ניתוח ‫cue
-    Ferdinand Vesely <erdofves@gmail.com> - שיפורי ‫scrobbler    
-    Gennadi Motsyo <drool@altlinux.ru> - דיווחי תקלות
-    Vadim Kalinnikov <moose@ylsoftware.com> - אירוח פרויקט
-    Erik Ölsar <erlk.ozlr@gmail.com> - סמנים בעלי סקינים, שיפורי ממשק משתמש
-    Funda Wang <fundawang@gmail.com> - תיקוניי קבצי ‫cmake
-    Makis Kalofolias <makskafl@gmail.com> - תמיכה עבור ‫EAC3, DTS, וגם Dolby TrueHD
-    Michail Zheludkov <zheludkovm@mail.ru> - תיקוניי תוספת ‫ffmpeg
-    Michał Grosicki <grosik88@o2.pl> - תיקוניי תוספת ‫alsa
-    Panagiotis Papadopoulos <pano_90@gmx.net> - תיקוניי ממשק משתמש, דיווחי תקלות
-    Pino Toscano <toscano.pino@tiscali.it> - טלאיי ניידות
-    Karel Volný <kvolny@redhat.com> - תיקונים שונים
-    Sebastian Pipping <webmaster@hartwork.org> - טלאיי ‫bs2b
-    Stefan Koelling <stefankoelling.ext@googlemail.com> - תיקוניי ‫build מסוימים
-    Yaakov Selkowitz <yselkowitz@gmail.com> - טלאיי ‫cygwin
+    דיווחי תקלות
+    Adria Arrufat <swiftscythe@gmail.com>
+    תיקוניי תוספת jack, דיווחי תקלות
+    Adrian Knoth <adi@drcomp.erfurt.thur.de>
+    שיפורי השמעה אקראית חוזרת של פסקול
+    Anton Petrusevich <casus@casus.us>
+    תכונת הפסקה אוטומטית, תיקוניי תקלות
+    Avihay Baratz <avihayb@gmail.com>
+    תיקוניי תקלות
+    Brice Videau <brice.videau@gmail.com>
+    תיקוניי scrobbler
+    Cristian Rodríguez <judas.iscariote@gmail.com>
+    תיקוניי תוספת ffmpeg
+    Csaba Hruska <csaba.hruska@gmail.com>
+    תמיכת iso.wv
+    Dmitry Kostin <kostindima@gmail.com>
+    שיפורי ניתוח cue
+    Evgeny Gleyzerman <evgley@gmail.com>
+    שיפורי scrobbler
+    Ferdinand Vesely <erdofves@gmail.com>
+    דיווחי תקלות
+    Gennadi Motsyo <drool@altlinux.ru>
+    אירוח פרויקט
+    Vadim Kalinnikov <moose@ylsoftware.com>
+    סמנים בעלי סקינים, שיפורי ממשק משתמש
+    Erik Ölsar <erlk.ozlr@gmail.com>
+    תיקוניי קבצי cmake
+    Funda Wang <fundawang@gmail.com>
+    תמיכה עבור EAC3, DTS, וגם Dolby TrueHD
+    Makis Kalofolias <makskafl@gmail.com>
+    תיקוניי תוספת ffmpeg
+    Michail Zheludkov <zheludkovm@mail.ru>
+    תיקוניי תוספת alsa
+    Michał Grosicki <grosik88@o2.pl>
+    תיקוניי ממשק משתמש, דיווחי תקלות
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+    טלאיי ניידות
+    Pino Toscano <toscano.pino@tiscali.it>
+    תיקונים שונים
+    Karel Volný <kvolny@redhat.com>
+    טלאיי bs2b
+    Sebastian Pipping <webmaster@hartwork.org>
+    תיקוניי build מסוימים
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    טלאיי cygwin
+    Yaakov Selkowitz <yselkowitz@gmail.com>

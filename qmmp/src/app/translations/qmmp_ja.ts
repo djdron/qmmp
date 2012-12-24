@@ -4,67 +4,67 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>プレイリストをクリアしない</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Start playing current song</source>
         <translation>今の曲から再生を開始</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause current song</source>
         <translation>今の曲で一時停止</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Pause if playing, play otherwise</source>
         <translation>再生中なら一時停止、一時停止しておれば再生</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Stop current song</source>
         <translation>今の曲で終止</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Display Jump to File dialog</source>
         <translation>「ファイルを指定して即刻再生」ダイアログを表示</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Quit application</source>
         <translation>アプリケーションを終了</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>音量設定 (例: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Skip forward in playlist</source>
         <translation>プレイリストでの次の曲にスキップ</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Skip backwards in playlist</source>
         <translation>プレイリストで前の曲にスキップ</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
         <translation>アプリケーションウィンドウを表示/非表示</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
         <translation>「ファイル追加」ダイアログを表示</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Display Add Directory dialog</source>
         <translation>「ディレクトリ追加」ダイアログを表示</translation>
     </message>

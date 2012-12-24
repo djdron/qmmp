@@ -1,12 +1,16 @@
 מפתחי ליבה:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (רעיון וקוד בסיס)
-    Vladimir Kuznetsov <vovanec@gmail.com> (מראה ותחושה וגם שיפורים רבים)
+    רעיון וקוד בסיס
+    Ilya Kotov <forkotov02@hotmail.ru>
+    מראה ותחושה וגם שיפורים רבים
+    Vladimir Kuznetsov <vovanec@gmail.com>
 
-מפתחי ליבה:
+מפתחי תוספת:
 
-    Artur Guzik <aguzik88@gmail.com> (תוספת התראה kde4, שיפורים לצלמית מגש)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (תוספת jack וגם oss)
+    תוספת התראה kde4, שיפורים לצלמית מגש
+    Artur Guzik <aguzik88@gmail.com>
+    תוספת jack וגם oss
+    Yuriy Zhuravlev <stalkerg@gmail.com>
 
 אומנות:
 

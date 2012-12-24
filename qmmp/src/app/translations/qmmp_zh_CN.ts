@@ -4,67 +4,67 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Skip forward in playlist</source>
         <translation>跳到播放列表中的下一曲</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Skip backwards in playlist</source>
         <translation>跳到播放列表中的上一曲</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Start playing current song</source>
         <translation>开始播放当前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>不要清除这个播放列表</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause current song</source>
         <translation>暂停当前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Pause if playing, play otherwise</source>
         <translation>正在播放则暂停，相反处于暂停则播放</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Stop current song</source>
         <translation>停止当前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Display Jump to File dialog</source>
         <translation>显示跳到文件对话</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Quit application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>设置回放音量 (例如：qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
         <translation>显示/隐藏程序</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
         <translation>显示添加文件对话</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Display Add Directory dialog</source>
         <translation>显示添加文件夹对话</translation>
     </message>
