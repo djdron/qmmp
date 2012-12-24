@@ -95,6 +95,10 @@ public:
      */
     void clearCoverChache();
     /*!
+     * Prepares object for usage by another thread to avoid warnings about parent the different thread
+     */
+    void prepareForAnotherThread();
+    /*!
      * Returns a pointer to the MetaDataManager instance.
      */
     static MetaDataManager* instance();

@@ -87,6 +87,7 @@ void FileLoader::run()
 void FileLoader::loadFile(const QString &path)
 {
     m_files.enqueue(path);
+    MetaDataManager::instance()->prepareForAnotherThread();
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
@@ -94,6 +95,7 @@ void FileLoader::loadFile(const QString &path)
 void FileLoader::loadFiles(const QStringList &paths)
 {
     m_files << paths;
+    MetaDataManager::instance()->prepareForAnotherThread();
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
