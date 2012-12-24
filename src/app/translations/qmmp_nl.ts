@@ -4,67 +4,67 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Skip forward in playlist</source>
         <translation>Naar voren schuiven in afspeellijst</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Skip backwards in playlist</source>
         <translation>Naar achteren schuiven in afspeellijst</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Start playing current song</source>
         <translation>Begin met afspelen van huidig nummer</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Niet de afspeellijst leeghalen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause current song</source>
         <translation>Pauzeer huidig nummer</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Pauzeer als er wordt gespeeld, anders spelen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Stop current song</source>
         <translation>Stop huidig nummer</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Display Jump to File dialog</source>
         <translation>Weergeef bestandskeuze venster</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Quit application</source>
         <translation>Sluit applicatie</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Verander afspeelvolume (voorbeeld: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
         <translation>Toon/verberg programma</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
         <translation>Toon venster om bestanden toe te voegen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Display Add Directory dialog</source>
         <translation>Toon venster om mappen toe te voegen</translation>
     </message>

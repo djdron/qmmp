@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation>‫(c) ‫%1-%2 נבחרת הפיתוח של Qmmp</translation>
+        <translation>‏(c) ‫%1-%2 נבחרת הפיתוח של Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="78"/>
@@ -76,8 +76,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="114"/>
         <source>General plugins:</source>
-        <translatorcomment>כלליות</translatorcomment>
-        <translation>תוספות גנגיות:</translation>
+        <translation>תוספות כלליות:</translation>
     </message>
 </context>
 <context>
@@ -159,7 +158,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="156"/>
         <source>Title format:</source>
-        <translation>פורמו כותרת:</translation>
+        <translation>פורמט כותרת:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="166"/>
@@ -181,6 +180,26 @@
         <location filename="../forms/configdialog.ui" line="436"/>
         <source>Exclude files:</source>
         <translation>הוצאת קבצים:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="205"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="211"/>
+        <source>Auto-save playlist when modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="331"/>
+        <source>Look and Feel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="337"/>
+        <source>Language:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="410"/>
@@ -208,16 +227,6 @@
         <translation>העדפות</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="205"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="211"/>
-        <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="272"/>
         <source>Information</source>
         <translation>מידע</translation>
@@ -231,16 +240,6 @@
         <location filename="../forms/configdialog.ui" line="319"/>
         <source>Filename</source>
         <translation>שם קובץ</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
-        <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="337"/>
-        <source>Language:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="373"/>
