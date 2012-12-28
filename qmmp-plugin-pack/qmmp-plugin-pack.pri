@@ -1,8 +1,8 @@
 #Common settings for Qmmp Plugin Pack build
 
 #Some conf to redirect intermediate stuff in separate dirs
-unix:UI_DIR=./.build/ui/
-MOC_DIR=./.build/moc/
+UI_DIR=./.build/ui
+MOC_DIR=./.build/moc
 OBJECTS_DIR=./.build/obj
 
 unix{

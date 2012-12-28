@@ -96,7 +96,7 @@ unix {
 win32 {
     #HEADERS += ../../../../src/qmmp/metadatamodel.h \
     #           ../../../../src/qmmp/decoderfactory.h
-    INCLUDEPATH += ../../
+    INCLUDEPATH += ../../ ./
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0
 }
