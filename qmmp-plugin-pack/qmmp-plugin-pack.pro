@@ -4,11 +4,11 @@ include (qmmp-plugin-pack.pri)
 
 TEMPLATE = subdirs
 
-SUBDIRS += src/Ui
+SUBDIRS += src/Ui  
 
-unix{
+
 SUBDIRS += src/Input
-}
+
 
 unix:exists($$[QT_INSTALL_BINS]/lrelease){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
