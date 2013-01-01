@@ -6,7 +6,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="13"/>
         <source>Add Files</source>
-        <translation>הוספת קבצים</translation>
+        <translation>הוסף קבצים</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="37"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="94"/>
         <source>Close dialog on add</source>
-        <translation>שגירת דו שיח בעת הוספה</translation>
+        <translation>סגור דו שיח בעת הוספה</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="177"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="193"/>
         <source>Add</source>
-        <translation>הוספה</translation>
+        <translation>הוסף</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="200"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="226"/>
         <source>Close</source>
-        <translation>סגירה</translation>
+        <translation>סגור</translation>
     </message>
 </context>
 <context>
@@ -90,12 +90,12 @@ Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="254"/>
         <source>Add</source>
-        <translation>הוספה</translation>
+        <translation>הוסף</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="267"/>
         <source>Save</source>
-        <translation>שמירה</translation>
+        <translation>שמור</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="281"/>

@@ -93,7 +93,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation>עורך תבנית</translation>
+        <translation>ערוך תבנית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="368"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
-        <translation>אפשור התראת Psi</translation>
+        <translation>אפשר התראת Psi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="105"/>

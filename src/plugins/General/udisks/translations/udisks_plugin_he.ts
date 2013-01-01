@@ -16,12 +16,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
         <source>Add tracks to playlist automatically</source>
-        <translation>הוספת רצועות אוטומטית אל רשימת השמעה</translation>
+        <translation>הוסף רצועות אוטומטית אל רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Remove tracks from playlist automatically</source>
-        <translation>הסרת רצועות אוטומטית מן רשימת השמעה</translation>
+        <translation>הסר רצועות אוטומטית מן רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -31,12 +31,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Add files to playlist automatically</source>
-        <translation>הוספת קבצים אוטומטית אל רשימת השמעה</translation>
+        <translation>הוסף קבצים אוטומטית אל רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Remove files from playlist automatically</source>
-        <translation>הסרת קבצים אוטומטית מן רשימת השמעה</translation>
+        <translation>הסר קבצים אוטומטית מן רשימת השמעה</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisksplugin.cpp" line="154"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation>הוספת CD ‫&quot;%1&quot;</translation>
+        <translation>הוסף CD ‫&quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisksplugin.cpp" line="160"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation>הוספת כרך &quot;%1&quot;</translation>
+        <translation>הוסף כרך &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>

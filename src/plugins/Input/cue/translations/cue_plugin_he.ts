@@ -16,12 +16,12 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="95"/>
         <source>About CUE Audio Plugin</source>
-        <translation>אודות תוספת שמע CUE</translation>
+        <translation>אודות תוספת CUE שמע</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="96"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation>תוספת שמע CUE ‫Qmmp</translation>
+        <translation>תוספת CUE שמע ‫Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="97"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Automatic charset detection</source>
-        <translation>איתור מערך-תווים אוטומטי</translation>
+        <translation>איתור מערך-תווים אוטומטית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>

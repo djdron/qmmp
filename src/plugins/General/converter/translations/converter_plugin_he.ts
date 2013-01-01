@@ -11,7 +11,7 @@
     <message>
         <location filename="../converter.cpp" line="171"/>
         <source>Preset: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>קביעה: %1</translation>
     </message>
     <message>
         <location filename="../converter.cpp" line="266"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../converterdialog.ui" line="29"/>
         <source>Select tracks to convert:</source>
-        <translation>בחירת רצועות להמרה:</translation>
+        <translation>בחר רצועות להמרה:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../converterdialog.ui" line="63"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>קביעה:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="73"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="90"/>
         <source>Choose a directory</source>
-        <translation>בחירת מדור</translation>
+        <translation>בחר מדור</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="110"/>
@@ -124,22 +124,22 @@
     <message>
         <location filename="../converterdialog.cpp" line="128"/>
         <source>Create</source>
-        <translation>יצירה</translation>
+        <translation>צור</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="129"/>
         <source>Edit</source>
-        <translation>עריכה</translation>
+        <translation>ערוך</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="130"/>
         <source>Create a copy</source>
-        <translation>יצירת עותק</translation>
+        <translation>צור עותק</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Delete</source>
-        <translation>מחיקה</translation>
+        <translation>מחק</translation>
     </message>
 </context>
 <context>
@@ -147,7 +147,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="28"/>
         <source>Converter Plugin</source>
-        <translation>תוספת ממירה</translation>
+        <translation>תוספת ממיר</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="49"/>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>עורך קביעות</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="29"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../preseteditor.cpp" line="37"/>
         <source>%1 (Read Only)</source>
-        <translation>%1 (לקריאה בלבד)</translation>
+        <translation>%1 (קריאה בלבד)</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="70"/>

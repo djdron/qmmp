@@ -36,12 +36,12 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="55"/>
         <source>Nick Lamb &lt;njl195@zepler.org.uk&gt;</source>
-        <translation>Nick Lamb ‫&lt;njl195@zepler.org.uk&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="56"/>
         <source>Giacomo Lozito &lt;city_hunter@users.sf.net&gt;</source>
-        <translation>Giacomo Lozito ‫&lt;city_hunter@users.sf.net&gt;</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="126"/>
         <source>This LADSPA plugin has no user controls</source>
-        <translation>לתוספת LADSPA זו אין בקריי משתמש</translation>
+        <translation>לתוספת LADSPA זו אין בקרי משתמש</translation>
     </message>
 </context>
 </TS>
