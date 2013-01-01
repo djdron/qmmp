@@ -24,7 +24,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
         <source>&amp;Show Song Title</source>
-        <translation>&amp;הצגת כותרת שיר</translation>
+        <translation>הצג &amp;כותרת שיר</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="135"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
         <source>&amp;Show Preset Name</source>
-        <translation type="unfinished"></translation>
+        <translation>הצג &amp;שם קביעה</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="136"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
         <source>&amp;Next Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>קביעה &amp;באה</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="138"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>&amp;Previous Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>קביעה &amp;קודמת</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>&amp;Random Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>קביעה &amp;אקריאת</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>&amp;Lock Preset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;נעל קביעה</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
@@ -102,7 +102,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="49"/>
         <source>About ProjectM Visual Plugin</source>
-        <translation>אודות תוספת חיזוי  ProjectM</translation>
+        <translation>אודות תוספת חיזוי ProjectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="50"/>
@@ -122,7 +122,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>
         <source>Based on llibrojectM-qt library</source>
-        <translation>מבוססת ספריית llibrojectM-qt</translation>
+        <translation>מבוססת על ספריית llibrojectM-qt</translation>
     </message>
 </context>
 </TS>

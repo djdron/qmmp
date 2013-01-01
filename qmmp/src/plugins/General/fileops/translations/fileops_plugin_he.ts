@@ -22,7 +22,7 @@
     <message>
         <location filename="../fileops.cpp" line="104"/>
         <source>Stop</source>
-        <translation>הפסקה</translation>
+        <translation>הפסק</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="145"/>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../fileops.cpp" line="188"/>
         <source>Remove files</source>
-        <translation>הסרת קבצים</translation>
+        <translation>הסר קבצים</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="189"/>
@@ -71,17 +71,17 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>התאמת קיצור קרך</translation>
+        <translation>התאם קיצור דרך</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>נא להזין את צירוף המקשים שברצונך להקצות</translation>
+        <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
         <source>Clear</source>
-        <translation>טיהור</translation>
+        <translation>טהר</translation>
     </message>
 </context>
 <context>
@@ -114,14 +114,14 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Add</source>
-        <translation>הוספה</translation>
+        <translation>הוסף</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <location filename="../settingsdialog.cpp" line="56"/>
         <location filename="../settingsdialog.cpp" line="136"/>
         <source>Remove</source>
-        <translation>הסרה</translation>
+        <translation>הסר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
@@ -143,13 +143,13 @@
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Copy</source>
-        <translation>העתקה</translation>
+        <translation>העתק</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="54"/>
         <location filename="../settingsdialog.cpp" line="134"/>
         <source>Rename</source>
-        <translation>שינוי שם</translation>
+        <translation>שנה שם</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="139"/>
@@ -229,7 +229,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="222"/>
         <source>Choose a directory</source>
-        <translation>בחירת מדור</translation>
+        <translation>בחר מדור</translation>
     </message>
 </context>
 </TS>

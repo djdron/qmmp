@@ -19,7 +19,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation>בחירת צבע</translation>
+        <translation>בחר צבע</translation>
     </message>
 </context>
 <context>
@@ -38,47 +38,47 @@
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Show peaks</source>
         <translatorcomment>פסגות</translatorcomment>
-        <translation>הצגת שיאים</translation>
+        <translation>הצג שיאים</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Analyzer falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת אבחון:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="56"/>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>הכי איטית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>איטית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="66"/>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>בינונית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="113"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>מהירה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <location filename="../settingsdialog.ui" line="118"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>הכי מהירה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Peaks falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת שיאים:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="126"/>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="261"/>
         <source>Analyzer #1:</source>
-        <translation>מאבחן #1:</translation>
+        <translation>מאבחן 1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="293"/>
@@ -133,12 +133,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="325"/>
         <source>Analyzer #2:</source>
-        <translation>מאבחן #2:</translation>
+        <translation>מאבחן 2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="370"/>
         <source>Analyzer #3:</source>
-        <translation>מאבחן #3:</translation>
+        <translation>מאבחן 3:</translation>
     </message>
 </context>
 <context>

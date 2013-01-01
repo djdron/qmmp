@@ -22,17 +22,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation>טולטיפ</translation>
+        <translation>כיתוב קופץ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>נסה לפצל שם קובץ כאשר לא קימת תגית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation>הצגת שורת התקדמות</translation>
+        <translation>הצג שורת התקדמות</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
@@ -57,12 +57,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation>עריכת תבנית</translation>
+        <translation>ערוך תבנית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>Use standard icons</source>
-        <translation>שימוש בצלמיות רגילות</translation>
+        <translation>השתמש בצלמיות רגילות</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
-        <translation>מתנגן כעת</translation>
+        <translation>מנגן עכשיו</translation>
     </message>
 </context>
 <context>
@@ -133,12 +133,12 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation>Artur Guzik ‫&lt;a.guzik88@gmail.com&gt;</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>הופסקה</translation>
     </message>
 </context>
 </TS>

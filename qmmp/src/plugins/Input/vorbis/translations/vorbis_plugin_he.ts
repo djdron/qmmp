@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="127"/>
         <source>Source code based on mq3 project</source>
-        <translation type="unfinished"></translation>
+        <translation>קוד מקוד מבוסס על פרויקט mq3</translation>
     </message>
 </context>
 <context>

@@ -16,7 +16,7 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation>זוהי גירסת תוספת  של אפקט אוזניית DSP של Boris Mikhaylov &quot;‫Bauer stereophonic-to-binaural&quot;, ובקיצור bs2b.</translation>
+        <translation>זוהי גירסת תוספת של אפקט אוזניית DSP של Boris Mikhaylov &quot;‫Bauer stereophonic-to-binaural&quot;, ובקיצור bs2b.</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>

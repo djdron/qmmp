@@ -26,7 +26,7 @@
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>ממשק משתמש פשוט מבוסס על מערך וידג&apos;טים סטנדרטי.</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Play/Pause</source>
-        <translation>&amp;הנגנה/השהייה</translation>
+        <translation>נ&amp;גן/השהה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -105,7 +105,7 @@
         <location filename="../actionmanager.cpp" line="45"/>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add File</source>
-        <translation>הוס&amp;פת קובץ</translation>
+        <translation>הוס&amp;ף קובץ</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Shuffle</source>
-        <translation>&amp;ערבוב</translation>
+        <translation>&amp;ערבב</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;בלי החשת רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="52"/>
         <source>&amp;Stop After Selected</source>
-        <translation>ה&amp;פסק לאחר נבחרת</translation>
+        <translation>ה&amp;פסק עובר נבחרת</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>&amp;Clear Queue</source>
-        <translation>&amp;טיהור תור</translation>
+        <translation>&amp;טהר תור</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
@@ -180,7 +180,8 @@
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>Put on All Workspaces</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>חללי</translatorcomment>
+        <translation>השם בכל מרחב עבודה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
@@ -195,7 +196,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Add Directory</source>
-        <translation>הוספת &amp;מדור</translation>
+        <translation>הוסף &amp;מדור</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
@@ -205,7 +206,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>&amp;Add Url</source>
-        <translation>הוספת &amp;Url</translation>
+        <translation>הוסף &amp;Url</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
@@ -235,7 +236,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>Remove unavailable files</source>
-        <translation>הסר קבצים שלא זמינים</translation>
+        <translation>הסר קבצים לא זמינים</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -245,7 +246,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;תור</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
@@ -260,7 +261,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;בחר כלום</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
@@ -275,7 +276,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;View Track Details</source>
-        <translation>&amp;צפיה בפרטי רצועה</translation>
+        <translation>&amp;צפה בפרטי רצועה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
@@ -295,7 +296,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Delete List</source>
-        <translation>&amp;מחיקת רשימה</translation>
+        <translation>&amp;מחק רשימה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
@@ -305,7 +306,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Load List</source>
-        <translation>&amp;טעינת רשימה</translation>
+        <translation>&amp;טען רשימה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
@@ -411,12 +412,12 @@
     <message>
         <location filename="../equalizer.cpp" line="43"/>
         <source>Enable equalizer</source>
-        <translation>אפשור אקולייזר</translation>
+        <translation>אפשר אקולייזר</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="45"/>
         <source>Reset</source>
-        <translation>איפוס</translation>
+        <translation>אפס</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="56"/>
@@ -499,7 +500,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="196"/>
         <source>&amp;Add File</source>
-        <translation>הוספת &amp;קובץ</translation>
+        <translation>הוסף &amp;קובץ</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="201"/>
@@ -514,12 +515,12 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="211"/>
         <source>Remove Playlist</source>
-        <translation>הסרת רשימת השמעה</translation>
+        <translation>הסר רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="216"/>
         <source>&amp;Add Directory</source>
-        <translation>הוספת &amp;מדור</translation>
+        <translation>הוסף &amp;מדור</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="221"/>
@@ -579,7 +580,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="186"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>הופסקה</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="213"/>
@@ -600,7 +601,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="323"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>מנגן</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="325"/>
@@ -615,7 +616,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="399"/>
         <source>Sort List</source>
-        <translation>מיון רשימה</translation>
+        <translation>מיין רשימה</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="402"/>
@@ -667,7 +668,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="438"/>
         <source>Sort Selection</source>
-        <translation>מיון נבחרות</translation>
+        <translation>מיין נבחרות</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="472"/>
@@ -706,12 +707,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation>איפוס</translation>
+        <translation>אפס</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
-        <translation>שיבוץ</translation>
+        <translation>שבץ</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
@@ -864,37 +865,37 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation>הצגת פרוטוקול</translation>
+        <translation>הצג פרוטוקול</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation>הצגת מספרי שיר</translation>
+        <translation>הצג מספרי שיר</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>ישר מספרי שורות</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation>הצג עוגן</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation>הצג מידע מוקפץ</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation>עריכת תבנית</translation>
+        <translation>ערוך תבנית</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation>הצגת לחצני סגירה על כרטיסיות</translation>
+        <translation>הצג לחצני סגירה על כרטיסיות</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="211"/>
@@ -1063,12 +1064,12 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>נא להזין את צירוף המקשים שברצונך להקצות</translation>
+        <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="46"/>
         <source>Clear</source>
-        <translation>טיהור</translation>
+        <translation>טהר</translation>
     </message>
 </context>
 <context>

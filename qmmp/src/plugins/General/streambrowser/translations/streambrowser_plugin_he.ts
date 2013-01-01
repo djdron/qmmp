@@ -35,7 +35,7 @@
     <message>
         <location filename="../streambrowserfactory.cpp" line="51"/>
         <source>This plugin allows to add stream from IceCast stream directory</source>
-        <translation>תוספת זו מאפשרת להוסיף זרם מן מדור זרם של IceCast</translation>
+        <translation>תוספת זו מתירה לך להוסיף זרם מן מדור זרם של IceCast</translation>
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="52"/>
@@ -68,12 +68,12 @@
     <message>
         <location filename="../streamwindow.ui" line="102"/>
         <source>Add</source>
-        <translation>הוספה</translation>
+        <translation>הוסף</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="109"/>
         <source>Update</source>
-        <translation>עדכון</translation>
+        <translation>עדכן</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="51"/>
@@ -102,17 +102,17 @@
     <message>
         <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
-        <translation>הוספה אל &amp;מועדפים</translation>
+        <translation>הוסף אל &amp;מועדפים</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
-        <translation>הוספה אל &amp;רשימת השמעה</translation>
+        <translation>הוסף אל &amp;רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
-        <translation>הס&amp;רה</translation>
+        <translation>הס&amp;ר</translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="142"/>

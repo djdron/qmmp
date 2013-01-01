@@ -6,17 +6,17 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>התאמת קיצור דרך</translation>
+        <translation>התאם קיצור דרך</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
-        <translation>נא להזין את צירוף המקשים שברצונך להקצות</translation>
+        <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
-        <translation>טיהור</translation>
+        <translation>טהר</translation>
     </message>
 </context>
 <context>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="45"/>
         <source>Play/Pause</source>
-        <translation>הנגנה/השהייה</translation>
+        <translation>נגינה/השהה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>

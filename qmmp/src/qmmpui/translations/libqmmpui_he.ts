@@ -122,7 +122,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="76"/>
         <source>Advanced</source>
-        <translation>מתקדם</translation>
+        <translation>מתקדמות</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="85"/>
@@ -143,17 +143,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="135"/>
         <source>Load metadata from files</source>
-        <translation>טעינת מידע-מוצמד מן קבצים</translation>
+        <translation>טען מידע-מוצמד מן קבצים</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="142"/>
         <source>Convert underscores to blanks</source>
-        <translation>המרת הדגשות אל תווי רווח</translation>
+        <translation>המר הדגשות אל תווי רווח</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="149"/>
         <source>Convert %20 to blanks</source>
-        <translation>המרת %20 אל תווי רווח</translation>
+        <translation>המר %20 אל תווי רווח</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="156"/>
@@ -173,13 +173,13 @@
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
         <source>Restrict files to:</source>
-        <translation>הגבלת קבצים אל:</translation>
+        <translation>הגבל קבצים אל:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="192"/>
         <location filename="../forms/configdialog.ui" line="436"/>
         <source>Exclude files:</source>
-        <translation>הוצאת קבצים:</translation>
+        <translation>הוצא קבצים:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
@@ -209,12 +209,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="416"/>
         <source>Use separate image files</source>
-        <translation>שימוש בקבצי תמונה פרודים</translation>
+        <translation>השתמש בקבצי תמונה פרודים</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="426"/>
         <source>Include files:</source>
-        <translation>הכללת קבצים:</translation>
+        <translation>הכלל קבצים:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="448"/>
@@ -259,7 +259,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="393"/>
         <source>Add files from command line to this playlist:</source>
-        <translation>הוספת קבצים מן שורת פקודה אל רשימת השמעה זו:</translation>
+        <translation>הוסף קבצים מן שורת פקודה אל רשימת השמעה זו:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="480"/>
@@ -279,8 +279,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="537"/>
         <source>Enable proxy usage</source>
-        <translatorcomment>אפשור ניצול פרוקסי</translatorcomment>
-        <translation>אפשור שימוש בפרוקסי</translation>
+        <translation>אפשר שימוש בפרוקסי</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="544"/>
@@ -295,7 +294,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="570"/>
         <source>Use authentication with proxy</source>
-        <translation>שימוש באימות עם פרוקסי</translation>
+        <translation>השתמש באימות עם פרוקסי</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="577"/>
@@ -331,12 +330,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="695"/>
         <source>Default gain:</source>
-        <translation>רווח משתמט:</translation>
+        <translation>מגבר משתמט:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="747"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation>שימוש במידע שיא למניעת קיצץ</translation>
+        <translation>השתמש במידע שיא למניעת קיצץ</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="763"/>
@@ -351,7 +350,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="811"/>
         <source>Use software volume control</source>
-        <translation>ניצול בקרת שמע של תוכנה</translation>
+        <translation>נצל בקרת שמע של תוכנה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="818"/>
@@ -595,7 +594,7 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
-        <translation>פתיחת המדור שמכיל את קובץ זה</translation>
+        <translation>פתח את המדור שמכיל את קובץ זה</translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="45"/>
@@ -658,7 +657,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation>קפיצה אל רצועה</translation>
+        <translation>קפוץ אל רצועה</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
@@ -675,12 +674,12 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation>רענון</translation>
+        <translation>רענן</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation>קפיצה אל</translation>
+        <translation>קפוץ אל</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
@@ -701,7 +700,7 @@
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation>הוצאה מן תור</translation>
+        <translation>הוצא מן תור</translation>
     </message>
 </context>
 <context>
@@ -799,7 +798,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
-        <translation>הכללת תגית נבחרת בקובץ</translation>
+        <translation>הכלל תגית נבחרת בקובץ</translation>
     </message>
 </context>
 <context>
@@ -905,7 +904,7 @@
     <message>
         <location filename="../uihelper.cpp" line="146"/>
         <source>Choose a directory</source>
-        <translation>בחירת מדור</translation>
+        <translation>בחר מדור</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="162"/>
@@ -916,12 +915,12 @@
     <message>
         <location filename="../uihelper.cpp" line="164"/>
         <source>Open Playlist</source>
-        <translation>פתיחת רשימת השמעה</translation>
+        <translation>פתח רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="184"/>
         <source>Save Playlist</source>
-        <translation>שמירת רשימת השמעה</translation>
+        <translation>שמור רשימת השמעה</translation>
     </message>
 </context>
 </TS>

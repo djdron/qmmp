@@ -49,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation>עדכון התראות נראות במקום ליצור חדשות</translation>
+        <translation>עדכן התראות נראות במקום ליצור חדשות</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
@@ -59,12 +59,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation>הצגת כיסויים</translation>
+        <translation>הצג כיסויים</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Edit template</source>
-        <translation>עריכת תבנית</translation>
+        <translation>ערוך תבנית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>

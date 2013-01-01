@@ -79,12 +79,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
-        <translation>ניצול גישת mmap</translation>
+        <translation>נצל גישת mmap</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
-        <translation>ניצול פונקציית snd_pcm_pause</translation>
+        <translation>השתמש בפונקציית snd_pcm_pause</translation>
     </message>
 </context>
 </TS>

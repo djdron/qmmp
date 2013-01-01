@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation>Olivier Lapicque ‫&lt;olivierl@jps.net&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation>Kenton Varda ‫&lt;temporal@gauge3d.org&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation>Konstanty Bialkowski ‫&lt;konstanty@ieee.org&gt;</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -298,7 +298,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="683"/>
         <source>Use filename as song title</source>
-        <translation>שימוש בשם קובץ ככותרת שיר</translation>
+        <translation>השתמש בשם קובץ ככותרת שיר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
@@ -313,7 +313,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
         <source>Play Amiga MOD</source>
-        <translation type="unfinished"></translation>
+        <translation>נגן Amiga MOD</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="720"/>
@@ -323,7 +323,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="726"/>
         <source>Don&apos;t loop</source>
-        <translation type="unfinished"></translation>
+        <translation>אל תקיים לולאה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="733"/>
@@ -338,7 +338,8 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>תמידית</translatorcomment>
+        <translation>לולאה נצחית</translation>
     </message>
 </context>
 </TS>

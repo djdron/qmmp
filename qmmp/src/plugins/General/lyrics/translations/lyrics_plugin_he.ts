@@ -6,7 +6,7 @@
     <message>
         <location filename="../lyrics.cpp" line="33"/>
         <source>View Lyrics</source>
-        <translation>הצגת מילות שיר</translation>
+        <translation>הצג מילות שיר</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="34"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation>חיפוש</translation>
+        <translation>חפש</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>

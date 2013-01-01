@@ -6,17 +6,17 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="45"/>
         <source>CD Audio Plugin</source>
-        <translation>תוספת שמע CD</translation>
+        <translation>תוספת CD שמע</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>About CD Audio Plugin</source>
-        <translation>אודות תוספת שמע CD</translation>
+        <translation>אודות תוספת CD שמע</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation>תוספת שמע CD ‫Qmmp</translation>
+        <translation>תוספת CD שמע ‫Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation>שימוש: פתח cdda‪:///‬ באמצעות דו שיח הוספת URL או שורת פקודה</translation>
+        <translation>שימוש: פתח cdda‪:///‬ באמצעות דו שיח הוסף URL או שורת פקודה</translation>
     </message>
 </context>
 <context>
@@ -39,22 +39,23 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>CD Audio Plugin Settings</source>
-        <translation>הגדרות תוספת שמע CD</translation>
+        <translation>הגדרות תוספת CD שמע</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
-        <translation>עקיפת התקן:</translation>
+        <translation>עקוף התקן:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Limid cd speed:</source>
-        <translation>מהירות cd מותחמת:</translation>
+        <translatorcomment>מהירות cd מותחמת</translatorcomment>
+        <translation>תחום מהירות cd:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Use cd-text</source>
-        <translation>ניצול cd-text</translation>
+        <translation>נצל cd-text</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
@@ -64,7 +65,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation>ניצול HTTP במקום CDDBP</translation>
+        <translation>נצל HTTP במקום CDDBP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
@@ -84,7 +85,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation>טיהור מטמון CDDB</translation>
+        <translation>טהר מטמון CDDB</translation>
     </message>
 </context>
 </TS>

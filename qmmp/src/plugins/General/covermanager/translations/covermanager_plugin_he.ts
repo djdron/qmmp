@@ -6,7 +6,7 @@
     <message>
         <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
-        <translation>הצגת כיסוי</translation>
+        <translation>הצג כיסוי</translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="36"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;שמירה בשם...</translation>
+        <translation>&amp;שמור בשם...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation>&amp;סגירה</translation>
+        <translation>&amp;סגור</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>שמירת כיסוי בשם</translation>
+        <translation>שמור כיסוי בשם</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
