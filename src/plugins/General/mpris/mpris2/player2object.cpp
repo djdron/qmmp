@@ -126,8 +126,8 @@ QVariantMap Player2Object::metadata() const
     map["mpris:length"] = qMax(m_core->totalTime() * 1000 , qint64(0));
     if(!MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)).isEmpty())
     {
-        map["mpris:artUrl"] = QString("file://") +
-                MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL));
+        map["mpris:artUrl"] = QUrl::fromLocalFile(
+                    MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL))).toString();
     }
     if(!m_core->metaData(Qmmp::ALBUM).isEmpty())
         map["xesam:album"] = m_core->metaData(Qmmp::ALBUM);
@@ -146,7 +146,10 @@ QVariantMap Player2Object::metadata() const
     if(!m_core->metaData(Qmmp::TRACK).isEmpty())
         map["xesam:trackNumber"] = m_core->metaData(Qmmp::TRACK).toInt();
     map["mpris:trackid"] = QVariant::fromValue<QDBusObjectPath>(m_trackID);
-    map["xesam:url"] = m_core->metaData(Qmmp::URL);
+    if(m_core->metaData(Qmmp::URL).startsWith("/"))
+        map["xesam:url"] =  QUrl::fromLocalFile(m_core->metaData(Qmmp::URL)).toString();
+    else
+        map["xesam:url"] = m_core->metaData(Qmmp::URL);
     return map;
 }
 
