@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>262</width>
-    <height>299</height>
+    <width>261</width>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
    <item row="1" column="0">
     <widget class="QCheckBox" name="speedCheckBox">
      <property name="text">
-      <string>Limid cd speed:</string>
+      <string>Limit cd speed:</string>
      </property>
      <property name="checked">
       <bool>true</bool>

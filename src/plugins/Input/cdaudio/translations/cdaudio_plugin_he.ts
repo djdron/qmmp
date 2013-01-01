@@ -48,7 +48,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
-        <source>Limid cd speed:</source>
+        <source>Limit cd speed:</source>
         <translatorcomment>מהירות cd מותחמת</translatorcomment>
         <translation>תחום מהירות cd:</translation>
     </message>

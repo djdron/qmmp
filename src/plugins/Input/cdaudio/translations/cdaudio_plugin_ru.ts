@@ -48,7 +48,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
-        <source>Limid cd speed:</source>
+        <source>Limit cd speed:</source>
         <translation>Ограничить скорость cd:</translation>
     </message>
     <message>
