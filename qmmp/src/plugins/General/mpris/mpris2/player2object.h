@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,6 +31,7 @@ class SoundCore;
 class MediaPlayer;
 class PlayListManager;
 class PlayListItem;
+class PlayListModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -98,6 +99,7 @@ private slots:
     void checkSeeking(qint64 elapsed);
     void playItem(PlayListItem *item);
     void disconnectPl();
+    void setModel(PlayListModel *selected, PlayListModel *previous);
 
 
 private:
@@ -106,7 +108,7 @@ private:
     MediaPlayer *m_player;
     PlayListManager *m_pl_manager;
     QMap<QString, QVariant> m_props;
-    QString m_trackID;
+    QDBusObjectPath m_trackID;
     PlayListItem *m_prev_item;
     qint64 m_previous_pos;
 

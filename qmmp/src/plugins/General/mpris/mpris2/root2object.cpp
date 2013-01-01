@@ -58,8 +58,7 @@ bool Root2Object::hasTrackList() const
 }
 QString Root2Object::identity() const
 {
-    QString name = "Qmmp " + Qmmp::strVersion();
-    return name;
+    return "Qmmp";
 }
 
 QStringList Root2Object::supportedMimeTypes() const
