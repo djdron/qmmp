@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,7 +36,6 @@ Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
     m_pl_manager =  m_player->playListManager();
-    connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateId()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(emitPropertiesChanged()));
@@ -45,7 +44,11 @@ Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(checkSeeking(qint64)));
     connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), SLOT(emitPropertiesChanged()));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), SLOT(emitPropertiesChanged()));
+    connect(m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
+            SLOT(setModel(PlayListModel*,PlayListModel*)));
     connect(m_player, SIGNAL(repeatableChanged(bool)), SLOT(emitPropertiesChanged()));
+    setModel(m_pl_manager->currentPlayList(), 0);
+    updateId();
     syncProperties();
 }
 
@@ -120,9 +123,12 @@ QVariantMap Player2Object::metadata() const
     if(!item || m_core->metaData(Qmmp::URL).isEmpty())
         return QVariantMap();
     QVariantMap map;
-    map["mpris:length"] = m_core->totalTime() * 1000;
+    map["mpris:length"] = qMax(m_core->totalTime() * 1000 , qint64(0));
     if(!MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)).isEmpty())
-        map["mpris:artUrl"] = MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL));
+    {
+        map["mpris:artUrl"] = QString("file://") +
+                MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL));
+    }
     if(!m_core->metaData(Qmmp::ALBUM).isEmpty())
         map["xesam:album"] = m_core->metaData(Qmmp::ALBUM);
     if(!m_core->metaData(Qmmp::ARTIST).isEmpty())
@@ -136,10 +142,10 @@ QVariantMap Player2Object::metadata() const
     if(!m_core->metaData(Qmmp::GENRE).isEmpty())
         map["xesam:genre"] = QStringList() << m_core->metaData(Qmmp::GENRE);
     if(!m_core->metaData(Qmmp::TITLE).isEmpty())
-        map["xesam:title"] = QStringList() << m_core->metaData(Qmmp::TITLE);
+        map["xesam:title"] = m_core->metaData(Qmmp::TITLE);
     if(!m_core->metaData(Qmmp::TRACK).isEmpty())
-        map["xesam:trackNumber"] = m_core->metaData(Qmmp::TRACK);
-    map["mpris:trackid"] = m_trackID;
+        map["xesam:trackNumber"] = m_core->metaData(Qmmp::TRACK).toInt();
+    map["mpris:trackid"] = QVariant::fromValue<QDBusObjectPath>(m_trackID);
     map["xesam:url"] = m_core->metaData(Qmmp::URL);
     return map;
 }
@@ -160,7 +166,7 @@ QString Player2Object::playbackStatus() const
 
 qlonglong Player2Object::position() const
 {
-    return m_core->elapsed() * 1000;
+    return qMax(m_core->elapsed() * 1000, qint64(0));
 }
 
 double Player2Object::rate() const
@@ -249,7 +255,7 @@ void Player2Object::Seek(qlonglong Offset)
 }
 void Player2Object::SetPosition(const QDBusObjectPath &TrackId, qlonglong Position)
 {
-    if(m_trackID == TrackId.path())
+    if(m_trackID == TrackId)
         m_core->seek(Position/1000);
     else
         qWarning("Player2Object: SetPosition() called with a invalid trackId");
@@ -263,39 +269,37 @@ void Player2Object::Stop()
 void Player2Object::emitPropertiesChanged()
 {
     QList<QByteArray> changedProps;
-    if(m_props["canGoNext"] != canGoNext())
-        changedProps << "canGoNext";
-    if(m_props["canGoPrevious"] != canGoPrevious())
-        changedProps << "canGoPrevious";
-    if(m_props["canPause"] != canPause())
-        changedProps << "canPause";
-    if(m_props["canPlay"] != canPlay())
-        changedProps << "canPlay";
-    if(m_props["canSeek"] != canSeek())
-        changedProps << "canSeek";
-    if(m_props["loopStatus"] != loopStatus())
-        changedProps << "loopStatus";
-    if(m_props["maximumRate"] != maximumRate())
-        changedProps << "maximumRate";
-    if(m_props["minimumRate"] != minimumRate())
-        changedProps << "minimumRate";
-    if(m_props["playbackStatus"] != playbackStatus())
-        changedProps << "playbackStatus";
-    if(m_props["position"] != position())
-        changedProps << "position";
-    if(m_props["rate"] != rate())
-        changedProps << "rate";
-    if(m_props["shuffle"] != shuffle())
-        changedProps << "shuffle";
-    if(m_props["volume"] != volume())
-        changedProps << "volume";
-    if(m_props["metadata"] != metadata())
-        changedProps << "metadata";
-
-    syncProperties();
+    if(m_props["CanGoNext"] != canGoNext())
+        changedProps << "CanGoNext";
+    if(m_props["CanGoPrevious"] != canGoPrevious())
+        changedProps << "CanGoPrevious";
+    if(m_props["CanPause"] != canPause())
+        changedProps << "CanPause";
+    if(m_props["CanPlay"] != canPlay())
+        changedProps << "CanPlay";
+    if(m_props["CanSeek"] != canSeek())
+        changedProps << "CanSeek";
+    if(m_props["LoopStatus"] != loopStatus())
+        changedProps << "LoopStatus";
+    if(m_props["MaximumRate"] != maximumRate())
+        changedProps << "MaximumRate";
+    if(m_props["MinimumRate"] != minimumRate())
+        changedProps << "MinimumRate";
+    if(m_props["PlaybackStatus"] != playbackStatus())
+        changedProps << "PlaybackStatus";
+    if(m_props["Rate"] != rate())
+        changedProps << "Rate";
+    if(m_props["Shuffle"] != shuffle())
+        changedProps << "Shuffle";
+    if(m_props["Volume"] != volume())
+        changedProps << "Volume";
+    if(m_props["Metadata"] != metadata())
+        changedProps << "Metadata";
 
     if(changedProps.isEmpty())
         return;
+
+    syncProperties();
 
     QVariantMap map;
     foreach(QByteArray name, changedProps)
@@ -303,11 +307,9 @@ void Player2Object::emitPropertiesChanged()
 
     QDBusMessage msg = QDBusMessage::createSignal("/org/mpris/MediaPlayer2",
                                                   "org.freedesktop.DBus.Properties", "PropertiesChanged");
-    QVariantList args = QVariantList()
-            << "org.mpris.MediaPlayer2.Player"
-            << map
-            << QStringList();
-    msg.setArguments(args);
+    msg << "org.mpris.MediaPlayer2.Player";
+    msg << map;
+    msg << QStringList();
     QDBusConnection::sessionBus().send(msg);
 }
 
@@ -315,7 +317,7 @@ void Player2Object::updateId()
 {
     if(m_prev_item != m_pl_manager->currentPlayList()->currentItem())
     {
-        m_trackID = QString("%1/Track/%2").arg("/org/mpris/MediaPlayer2").arg(qrand());
+        m_trackID = QDBusObjectPath(QString("%1/Track/%2").arg("/org/qmmp/MediaPlayer2").arg(qrand()));
         m_prev_item = m_pl_manager->currentPlayList()->currentItem();
     }
 }
@@ -352,20 +354,26 @@ void Player2Object::disconnectPl()
                this, SLOT(playItem(PlayListItem*)));
 }
 
+void Player2Object::setModel(PlayListModel *selected, PlayListModel *previous)
+{
+    if(previous)
+        disconnect(previous, 0, this, 0); //disconnect previous model
+    connect(selected, SIGNAL(listChanged()), SLOT(emitPropertiesChanged()));
+}
+
 void Player2Object::syncProperties()
 {
-    m_props["canGoNext"] = canGoNext();
-    m_props["canGoPrevious"] = canGoPrevious();
-    m_props["canPause"] = canPause();
-    m_props["canPlay"] = canPlay();
-    m_props["canSeek"] = canSeek();
-    m_props["loopStatus"] = loopStatus();
-    m_props["maximumRate"] = maximumRate();
-    m_props["minimumRate"] = minimumRate();
-    m_props["playbackStatus"] = playbackStatus();
-    m_props["position"] = position();
-    m_props["rate"] = rate();
-    m_props["shuffle"] = shuffle();
-    m_props["volume"] = volume();
-    m_props["metadata"] = metadata();
+    m_props["CanGoNext"] = canGoNext();
+    m_props["CanGoPrevious"] = canGoPrevious();
+    m_props["CanPause"] = canPause();
+    m_props["CanPlay"] = canPlay();
+    m_props["CanSeek"] = canSeek();
+    m_props["LoopStatus"] = loopStatus();
+    m_props["MaximumRate"] = maximumRate();
+    m_props["MinimumRate"] = minimumRate();
+    m_props["PlaybackStatus"] = playbackStatus();
+    m_props["Rate"] = rate();
+    m_props["Shuffle"] = shuffle();
+    m_props["Volume"] = volume();
+    m_props["Metadata"] = metadata();
 }
