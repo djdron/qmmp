@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -177,8 +177,10 @@ void PlayList::createMenus()
     m_playlistMenu = new QMenu (this);
     m_copySelectedMenu = new QMenu (tr("&Copy Selection To"), m_listWidget->menu());
     m_copySelectedMenu->setIcon(QIcon::fromTheme("edit-copy"));
-    connect (m_copySelectedMenu, SIGNAL (aboutToShow ()  ), this, SLOT (generateCopySelectedMenu ()));
-    connect (m_copySelectedMenu, SIGNAL (triggered ( QAction *)  ), this, SLOT (copySelectedMenuActionTriggered( QAction *)));
+    connect(m_copySelectedMenu, SIGNAL(aboutToShow()),
+            SLOT(generateCopySelectedMenu()));
+    connect(m_copySelectedMenu, SIGNAL(triggered(QAction *)),
+            SLOT(copySelectedMenuActionTriggered(QAction *)));
 }
 
 void PlayList::createActions()
