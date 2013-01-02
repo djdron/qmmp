@@ -82,6 +82,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
 
 PlayListModel::~PlayListModel()
 {
+    blockSignals(true);
     clear();
     delete m_play_state;
     m_loader->finish();
