@@ -277,14 +277,16 @@ public:
      */
     enum SortMode
     {
-        TITLE,             /*!< by title */
-        ALBUM,             /*!< by album */
-        DISCNUMBER,        /*!< by discnumber */
-        ARTIST,            /*!< by artist */
-        FILENAME,          /*!< by file name */
-        PATH_AND_FILENAME, /*!< by path and file name */
-        DATE,              /*!< by date */
-        TRACK              /*!< by track */
+        TITLE,                  /*!< by title */
+        ALBUM,                  /*!< by album */
+        DISCNUMBER,             /*!< by discnumber */
+        ARTIST,                 /*!< by artist */
+        FILENAME,               /*!< by file name */
+        PATH_AND_FILENAME,      /*!< by path and file name */
+        DATE,                   /*!< by date */
+        TRACK,                  /*!< by track */
+        FILE_CREATION_DATE,     /*!< by file creation date */
+        FILE_MODIFICATION_DATE  /*!< by file modification date */
     };
 
 signals:

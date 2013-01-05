@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QBuffer>
 #include <QMetaType>
+#include <QDateTime>
 #include <time.h>
 #include <qmmp/metadatamanager.h>
 #include "playlistparser.h"
@@ -725,7 +726,26 @@ static bool _trackGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return s1->value(Qmmp::TRACK).toInt() > s2->value(Qmmp::TRACK).toInt();
 }
+//by file creation date
+static bool _fileCreationDateLessComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QFileInfo(s1->value(Qmmp::URL)).created() < QFileInfo(s2->value(Qmmp::URL)).created();
+}
 
+static bool _fileCreationDateGreaterComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QFileInfo(s1->value(Qmmp::URL)).created() > QFileInfo(s2->value(Qmmp::URL)).created();
+}
+//by file modification date
+static bool _fileModificationDateLessComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QFileInfo(s1->value(Qmmp::URL)).lastModified() < QFileInfo(s2->value(Qmmp::URL)).lastModified();
+}
+
+static bool _fileModificationDateGreaterComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QFileInfo(s1->value(Qmmp::URL)).lastModified() > QFileInfo(s2->value(Qmmp::URL)).lastModified();
+}
 // This is main sort method
 void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
 {
@@ -772,6 +792,14 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
     case TRACK:
         compareLessFunc = _trackLessComparator;
         compareGreaterFunc = _trackGreaterComparator;
+        break;
+    case FILE_CREATION_DATE:
+        compareLessFunc = _fileCreationDateLessComparator;
+        compareGreaterFunc = _fileCreationDateGreaterComparator;
+        break;
+    case FILE_MODIFICATION_DATE:
+        compareLessFunc = _fileModificationDateLessComparator;
+        compareGreaterFunc = _fileModificationDateGreaterComparator;
         break;
     default:
         compareLessFunc = _titleLessComparator;
