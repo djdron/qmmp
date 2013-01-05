@@ -431,6 +431,10 @@ void MainWindow::createActions()
     connect (discAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (discAct, PlayListModel::DISCNUMBER);
 
+    QAction* fileCreationDateAct = sort_mode_menu->addAction (tr("By File Creation Date"));
+    connect (fileCreationDateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (fileCreationDateAct, PlayListModel::FILE_CREATION_DATE);
+
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
     m_ui.menuEdit->addMenu (sort_mode_menu);
@@ -465,6 +469,14 @@ void MainWindow::createActions()
     trackAct = sort_mode_menu->addAction (tr ("By Track Number"));
     connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
+
+    discAct = sort_mode_menu->addAction (tr("By Disc Number"));
+    connect (discAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (discAct, PlayListModel::DISCNUMBER);
+
+    fileCreationDateAct = sort_mode_menu->addAction (tr("By File Creation Date"));
+    connect (fileCreationDateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (fileCreationDateAct, PlayListModel::FILE_CREATION_DATE);
 
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sortSelection (int)));
     m_ui.menuEdit->addMenu (sort_mode_menu);
