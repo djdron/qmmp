@@ -734,74 +734,80 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="253"/>
         <source>By Title</source>
         <translation>Cím szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="257"/>
         <source>By Album</source>
         <translation>Album szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>By Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="265"/>
         <source>By Artist</source>
         <translation>Előadó szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>By Filename</source>
         <translation>Fájlnév szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>By Path + Filename</source>
         <translation>Elérési út és fájlnév szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>By Date</source>
         <translation>Dátum szerint</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>By Track Number</source>
         <translation>Zene sorszáma szerint</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="242"/>
+        <location filename="../playlist.cpp" line="285"/>
+        <source>By File Creation Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="250"/>
         <source>Sort Selection</source>
         <translation>Jelöltek rendezése</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="293"/>
         <source>Randomize List</source>
         <translation>Lista összekeverése</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="295"/>
         <source>Reverse List</source>
         <translation>Fordított lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="294"/>
+        <location filename="../playlist.cpp" line="302"/>
         <source>Actions</source>
         <translation>Tevékenységek</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="552"/>
+        <location filename="../playlist.cpp" line="560"/>
         <source>&amp;New PlayList</source>
         <translation type="unfinished"></translation>
     </message>
