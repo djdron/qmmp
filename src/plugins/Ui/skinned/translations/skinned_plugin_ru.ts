@@ -734,69 +734,75 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="253"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="257"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>By Disc Number</source>
         <translation>По номеру диска</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="265"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>By Date</source>
         <translation>По дате</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="242"/>
+        <location filename="../playlist.cpp" line="285"/>
+        <source>By File Creation Date</source>
+        <translation>По дате создания файла</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="250"/>
         <source>Sort Selection</source>
         <translation>Сортировать выделенное</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="293"/>
         <source>Randomize List</source>
         <translation>Перемешать</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="295"/>
         <source>Reverse List</source>
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="552"/>
+        <location filename="../playlist.cpp" line="560"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новый список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
     </message>
@@ -806,7 +812,7 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="294"/>
+        <location filename="../playlist.cpp" line="302"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>
