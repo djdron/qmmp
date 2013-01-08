@@ -4,7 +4,8 @@ SUBDIRS += statusicon \
            scrobbler \
            fileops \
            covermanager \
-           streambrowser
+           streambrowser \
+           songchange
 unix:SUBDIRS += mpris \
                 hal \
                 udisks \
