@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+*   Copyright (C) 2006-2013 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -17,7 +17,6 @@
 *   Free Software Foundation, Inc.,                                       *
 *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
 ***************************************************************************/
-
 
 #include <QFile>
 #include <QTextStream>
@@ -51,11 +50,6 @@ AboutDialog::~AboutDialog()
 {}
 
 /*$SPECIALIZATION$*/
-void AboutDialog::accept()
-{
-    QDialog::accept();
-}
-
 QString AboutDialog::loadAbout()
 {
     QString text;
