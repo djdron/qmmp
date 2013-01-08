@@ -227,13 +227,16 @@ bool DecoderFFmpeg::initialize()
     switch(c->sample_fmt)
     {
     case AV_SAMPLE_FMT_U8:
+    case AV_SAMPLE_FMT_U8P:
         format = Qmmp::PCM_S8;
         break;
     case AV_SAMPLE_FMT_S16:
+    case AV_SAMPLE_FMT_S16P:
         format = Qmmp::PCM_S16LE;
         break;
     case AV_SAMPLE_FMT_S32:
     case AV_SAMPLE_FMT_FLT:
+    case AV_SAMPLE_FMT_FLTP:
         format = Qmmp::PCM_S32LE;
         break;
     default:
@@ -278,12 +281,29 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
         return 0;
     qint64 len = qMin(m_output_at, maxSize);
 
-    memcpy(audio, m_decoded_frame->extended_data[0], len);
+    if(av_sample_fmt_is_planar(c->sample_fmt))
+    {
+        int bps = av_get_bytes_per_sample(c->sample_fmt);
 
-    m_output_at -= len;
-    memmove(m_decoded_frame->extended_data[0], m_decoded_frame->extended_data[0] + len, m_output_at);
+        for(int i = 0; i < len >> 1; i+=bps)
+        {
+            memcpy(audio + 2*i, m_decoded_frame->extended_data[0] + i, bps);
+            memcpy(audio + 2*i + bps, m_decoded_frame->extended_data[1] + i, bps);
+        }
+        m_output_at -= len;
+        memmove(m_decoded_frame->extended_data[0],
+                m_decoded_frame->extended_data[0] + len/2, m_output_at/2);
+        memmove(m_decoded_frame->extended_data[1],
+                m_decoded_frame->extended_data[1] + len/2, m_output_at/2);
+    }
+    else
+    {
+        memcpy(audio, m_decoded_frame->extended_data[0], len);
+        m_output_at -= len;
+        memmove(m_decoded_frame->extended_data[0], m_decoded_frame->extended_data[0] + len, m_output_at);
+    }
 
-    if(c->sample_fmt == AV_SAMPLE_FMT_FLT)
+    if(c->sample_fmt == AV_SAMPLE_FMT_FLTP || c->sample_fmt == AV_SAMPLE_FMT_FLT)
     {
         //convert float to signed 32 bit LE
         for(int i = 0; i < len >> 2; i++)
