@@ -20,6 +20,7 @@
 #ifndef SONGCHANGE_H
 #define SONGCHANGE_H
 
+#include <QMap>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
 
@@ -38,6 +39,19 @@ public:
     SongChange(QObject *parent = 0);
 
     ~SongChange();
+
+private slots:
+    void onStateChanged(Qmmp::State state);
+    void onMetaDataChanged();
+    void onFinised();
+
+private:
+    QString m_newTrackCommand;
+    QString m_endOfTrackCommand;
+    QString m_endOfPlCommand;
+    QString m_titleChangeCommand;
+    SoundCore *m_core;
+    QMap <Qmmp::MetaData, QString> m_prevMetaData;
 };
 
 #endif
