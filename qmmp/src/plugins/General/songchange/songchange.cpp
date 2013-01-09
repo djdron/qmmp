@@ -36,7 +36,50 @@
 #include "songchange.h"
 
 SongChange::SongChange(QObject *parent) : QObject(parent)
-{}
+{
+    m_core = SoundCore::instance();
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(onStateChanged(Qmmp::State)));
+    connect(m_core, SIGNAL(metaDataChanged()), SLOT(onMetaDataChanged()));
+    connect(m_core, SIGNAL(finished()), SLOT(onFinised()));
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_newTrackCommand = settings.value("SongChange/new_track_command").toString();
+    m_endOfTrackCommand = settings.value("SongChange/end_of_track_command").toString();
+    m_endOfPlCommand = settings.value("SongChange/end_of_pl_command").toString();
+    m_titleChangeCommand = settings.value("SongChange/title_change_command").toString();
+}
 
 SongChange::~SongChange()
 {}
+
+void SongChange::onStateChanged(Qmmp::State state)
+{
+    switch (state)
+    {
+    case Qmmp::Playing:
+        break;
+    default:
+        m_prevMetaData.clear();
+    }
+}
+
+void SongChange::onMetaDataChanged()
+{
+    QMap <Qmmp::MetaData, QString> metaData = m_core->metaData();
+    if(m_prevMetaData != metaData)
+    {
+        if(m_prevMetaData[Qmmp::URL] == metaData[Qmmp::URL])
+        {
+            qDebug("m_titleChangeCommand");
+        }
+        else
+        {
+            qDebug("new_track_command");
+        }
+    }
+    m_prevMetaData = metaData;
+}
+
+void SongChange::onFinised()
+{
+    qDebug("on_track_finished");
+}
