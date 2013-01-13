@@ -46,7 +46,7 @@ QDialog *TrackChangeFactory::createConfigDialog(QWidget *parent)
 
 void TrackChangeFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About Song Change Plugin"),
+    QMessageBox::about (parent, tr("About Track Change Plugin"),
                         tr("Qmmp Track Change Plugin")+"\n"+
                         tr("This plugin executes external command when"
                            "current track is changed.") + "\n" +

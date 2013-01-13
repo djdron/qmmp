@@ -5,7 +5,7 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
+        <source>Track Change Plugin Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -116,7 +116,7 @@
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="49"/>
-        <source>About Song Change Plugin</source>
+        <source>About Track Change Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
