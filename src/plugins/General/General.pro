@@ -5,7 +5,7 @@ SUBDIRS += statusicon \
            fileops \
            covermanager \
            streambrowser \
-           songchange
+           trackchange
 unix:SUBDIRS += mpris \
                 hal \
                 udisks \
