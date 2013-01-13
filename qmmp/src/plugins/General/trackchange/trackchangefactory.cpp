@@ -28,7 +28,7 @@ const GeneralProperties TrackChangeFactory::properties() const
 {
     GeneralProperties properties;
     properties.name = tr("Track Change Plugin");
-    properties.shortName = "songchange";
+    properties.shortName = "trackchange";
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.visibilityControl = false;
