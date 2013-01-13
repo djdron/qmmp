@@ -21,7 +21,6 @@
 #include <QSettings>
 #include <QMenu>
 #include <qmmp/qmmp.h>
-#include "songchange.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
@@ -33,10 +32,10 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     addMenu(m_ui.titleChangeButton);
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_ui.newTrackLineEdit->setText(settings.value("SongChange/new_track_command").toString());
-    m_ui.endOfTrackLineEdit->setText(settings.value("SongChange/end_of_track_command").toString());
-    m_ui.endOfPlayListLineEdit->setText(settings.value("SongChange/end_of_pl_command").toString());
-    m_ui.titleChangeLineEdit->setText(settings.value("SongChange/title_change_command").toString());
+    m_ui.newTrackLineEdit->setText(settings.value("TrackChange/new_track_command").toString());
+    m_ui.endOfTrackLineEdit->setText(settings.value("TrackChange/end_of_track_command").toString());
+    m_ui.endOfPlayListLineEdit->setText(settings.value("TrackChange/end_of_pl_command").toString());
+    m_ui.titleChangeLineEdit->setText(settings.value("TrackChange/title_change_command").toString());
 }
 
 SettingsDialog::~SettingsDialog()
@@ -45,10 +44,10 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("SongChange/new_track_command", m_ui.newTrackLineEdit->text());
-    settings.setValue("SongChange/end_of_track_command",  m_ui.endOfTrackLineEdit->text());
-    settings.setValue("SongChange/end_of_pl_command",  m_ui.endOfPlayListLineEdit->text());
-    settings.setValue("SongChange/title_change_command", m_ui.titleChangeLineEdit->text());
+    settings.setValue("TrackChange/new_track_command", m_ui.newTrackLineEdit->text());
+    settings.setValue("TrackChange/end_of_track_command",  m_ui.endOfTrackLineEdit->text());
+    settings.setValue("TrackChange/end_of_pl_command",  m_ui.endOfPlayListLineEdit->text());
+    settings.setValue("TrackChange/title_change_command", m_ui.titleChangeLineEdit->text());
     QDialog::accept();
 }
 

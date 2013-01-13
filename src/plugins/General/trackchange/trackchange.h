@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef SONGCHANGE_H
-#define SONGCHANGE_H
+#ifndef TRACKCHANGE_H
+#define TRACKCHANGE_H
 
 #include <QMap>
 #include <qmmpui/general.h>
@@ -32,13 +32,13 @@ class PlayListManager;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class SongChange : public QObject
+class TrackChange : public QObject
 {
     Q_OBJECT
 public:
-    SongChange(QObject *parent = 0);
+    TrackChange(QObject *parent = 0);
 
-    ~SongChange();
+    ~TrackChange();
 
 private slots:
     void onStateChanged(Qmmp::State state);

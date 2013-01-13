@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef SONGCHANGEFACTORY_H
-#define SONGCHANGEFACTORY_H
+#ifndef TRACKCHANGEFACTORY_H
+#define TRACKCHANGEFACTORY_H
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -29,7 +29,7 @@
 #include <qmmpui/general.h>
 #include <qmmpui/generalfactory.h>
 
-class SongChangeFactory : public QObject, public GeneralFactory
+class TrackChangeFactory : public QObject, public GeneralFactory
 {
 Q_OBJECT
 Q_INTERFACES(GeneralFactory)
