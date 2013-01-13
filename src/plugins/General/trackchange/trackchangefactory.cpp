@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QtGui>
-
 #include "trackchange.h"
 #include "settingsdialog.h"
 #include "trackchangefactory.h"
