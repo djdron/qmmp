@@ -47,9 +47,9 @@ QDialog *SongChangeFactory::createConfigDialog(QWidget *parent)
 
 void SongChangeFactory::showAbout(QWidget *parent)
 {
-    /*QMessageBox::about (parent, tr("About File Operations Plugin"),
-                        tr("Qmmp File Operations Plugin")+"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+    QMessageBox::about (parent, tr("About Song Change Plugin"),
+                        tr("Qmmp Song Change Plugin")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *SongChangeFactory::createTranslator(QObject *parent)

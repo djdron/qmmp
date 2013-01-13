@@ -29,47 +29,47 @@
         <translation>Ringraziamenti</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="65"/>
+        <location filename="../aboutdialog.cpp" line="59"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
         <translation>Qt-based Multimedia Player (Qmmp)</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="69"/>
+        <location filename="../aboutdialog.cpp" line="63"/>
         <source>Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="64"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="73"/>
+        <location filename="../aboutdialog.cpp" line="67"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
+        <location filename="../aboutdialog.cpp" line="72"/>
         <source>Input plugins:</source>
         <translation>Moduli d&apos;entrata: </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="87"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Output plugins:</source>
         <translation>Moduli d&apos;uscita : </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="96"/>
+        <location filename="../aboutdialog.cpp" line="90"/>
         <source>Visual plugins:</source>
         <translation>Moduli di visualizzazione: </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="105"/>
+        <location filename="../aboutdialog.cpp" line="99"/>
         <source>Effect plugins:</source>
         <translation>Мoduli per gli effetti: </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="114"/>
+        <location filename="../aboutdialog.cpp" line="108"/>
         <source>General plugins:</source>
         <translation>Moduli generali: </translation>
     </message>

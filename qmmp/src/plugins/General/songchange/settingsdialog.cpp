@@ -39,7 +39,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     m_ui.titleChangeLineEdit->setText(settings.value("SongChange/title_change_command").toString());
 }
 
-
 SettingsDialog::~SettingsDialog()
 {}
 
@@ -72,5 +71,29 @@ void SettingsDialog::addMenu(QToolButton *button)
     menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
     button->setMenu(menu);
     button->setPopupMode(QToolButton::InstantPopup);
-    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTemplateString(QAction *)));
+}
+
+void SettingsDialog::addTemplateString(QAction *a)
+{
+    QMenu *menu = qobject_cast<QMenu*> (sender());
+    if(!menu)
+        return;
+
+    if(m_ui.newTrackButton->menu() == menu)
+    {
+        m_ui.newTrackLineEdit->insert(a->data().toString());
+    }
+    else if(m_ui.endOfTrackButton->menu() == menu)
+    {
+        m_ui.endOfTrackLineEdit->insert(a->data().toString());
+    }
+    else if(m_ui.endOfPlayListButton->menu() == menu)
+    {
+        m_ui.endOfPlayListLineEdit->insert(a->data().toString());
+    }
+    else if(m_ui.titleChangeButton->menu() == menu)
+    {
+        m_ui.titleChangeLineEdit->insert(a->data().toString());
+    }
 }

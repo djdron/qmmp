@@ -29,47 +29,47 @@
         <translation>Подяки</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="65"/>
+        <location filename="../aboutdialog.cpp" line="59"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
         <translation>Мультимедійний програвач на базі Qt (Qmmp)</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="69"/>
+        <location filename="../aboutdialog.cpp" line="63"/>
         <source>Version: %1</source>
         <translation>Версія: %1</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="64"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
         <translation>Використовується Qt %1 (зібрано з Qt %2)</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="73"/>
+        <location filename="../aboutdialog.cpp" line="67"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
         <translation>(c) %1-%2 Команда розробників Qmmp</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
+        <location filename="../aboutdialog.cpp" line="72"/>
         <source>Input plugins:</source>
         <translation>Модулі введення:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="87"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Output plugins:</source>
         <translation>Модулі виведення:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="96"/>
+        <location filename="../aboutdialog.cpp" line="90"/>
         <source>Visual plugins:</source>
         <translation>Модулі візуалізації:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="105"/>
+        <location filename="../aboutdialog.cpp" line="99"/>
         <source>Effect plugins:</source>
         <translation>Модулі ефектів:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="114"/>
+        <location filename="../aboutdialog.cpp" line="108"/>
         <source>General plugins:</source>
         <translation>Загальні модулі:</translation>
     </message>

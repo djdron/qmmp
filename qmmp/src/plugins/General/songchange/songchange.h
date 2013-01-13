@@ -27,11 +27,11 @@
 class QAction;
 class SoundCore;
 class PlayListItem;
+class PlayListManager;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
 class SongChange : public QObject
 {
     Q_OBJECT
@@ -46,11 +46,13 @@ private slots:
     void onFinised();
 
 private:
+    bool executeCommand(const QMap <Qmmp::MetaData, QString> &metaData, const QString &format);
     QString m_newTrackCommand;
     QString m_endOfTrackCommand;
     QString m_endOfPlCommand;
     QString m_titleChangeCommand;
     SoundCore *m_core;
+    PlayListManager *m_plManager;
     QMap <Qmmp::MetaData, QString> m_prevMetaData;
 };
 

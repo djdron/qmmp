@@ -34,47 +34,47 @@
         <translation>使用許諾契約</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="65"/>
+        <location filename="../aboutdialog.cpp" line="59"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
         <translation>Qt 製マルティミディアプレイヤー QMMP</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="69"/>
+        <location filename="../aboutdialog.cpp" line="63"/>
         <source>Version: %1</source>
         <translation>バージョン: %1</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="64"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
         <translation>Qt %1 を現在使用しています (コンパイルは Qt %2 で行われました)</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="73"/>
+        <location filename="../aboutdialog.cpp" line="67"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
+        <location filename="../aboutdialog.cpp" line="72"/>
         <source>Input plugins:</source>
         <translation>入力側プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="87"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Output plugins:</source>
         <translation>出力側プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="96"/>
+        <location filename="../aboutdialog.cpp" line="90"/>
         <source>Visual plugins:</source>
         <translation>視覚効果プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="105"/>
+        <location filename="../aboutdialog.cpp" line="99"/>
         <source>Effect plugins:</source>
         <translation>音響効果プラグイン:</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="114"/>
+        <location filename="../aboutdialog.cpp" line="108"/>
         <source>General plugins:</source>
         <translation>一般プラグイン:</translation>
     </message>
