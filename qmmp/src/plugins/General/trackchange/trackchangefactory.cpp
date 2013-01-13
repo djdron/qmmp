@@ -49,6 +49,8 @@ void TrackChangeFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Song Change Plugin"),
                         tr("Qmmp Track Change Plugin")+"\n"+
+                        tr("This plugin executes external command when"
+                           "current track is changed.") + "\n" +
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
