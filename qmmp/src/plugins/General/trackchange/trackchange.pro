@@ -5,8 +5,8 @@ CONFIG += release \
 warn_on \
 plugin
 
-TARGET =$$PLUGINS_PREFIX/General/songchange
-unix : QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libsongchange.so
+TARGET =$$PLUGINS_PREFIX/General/trackchange
+unix : QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libtrackchange.so
 
 
 TEMPLATE = lib
@@ -24,13 +24,13 @@ unix {
     target.path = $$LIB_DIR/qmmp/General
     INSTALLS += target
 }
-HEADERS += songchangefactory.h \
-           songchange.h \
+HEADERS += trackchangefactory.h \
+           trackchange.h \
            settingsdialog.h
 
 win32 : HEADERS += ../../../../src/qmmpui/general.h
-SOURCES += songchangefactory.cpp \
-           songchange.cpp \
+SOURCES += trackchangefactory.cpp \
+           trackchange.cpp \
            settingsdialog.cpp
 
 FORMS += settingsdialog.ui
