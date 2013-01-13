@@ -110,27 +110,27 @@
 <context>
     <name>TrackChangeFactory</name>
     <message>
-        <location filename="../trackchangefactory.cpp" line="30"/>
+        <location filename="../trackchangefactory.cpp" line="29"/>
         <source>Track Change Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="50"/>
+        <location filename="../trackchangefactory.cpp" line="49"/>
         <source>About Song Change Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="51"/>
+        <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="52"/>
+        <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command whencurrent track is changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="54"/>
+        <location filename="../trackchangefactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
