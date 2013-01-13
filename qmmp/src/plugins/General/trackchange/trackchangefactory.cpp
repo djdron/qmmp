@@ -20,14 +20,14 @@
 
 #include <QtGui>
 
-#include "songchange.h"
+#include "trackchange.h"
 #include "settingsdialog.h"
-#include "songchangefactory.h"
+#include "trackchangefactory.h"
 
-const GeneralProperties SongChangeFactory::properties() const
+const GeneralProperties TrackChangeFactory::properties() const
 {
     GeneralProperties properties;
-    properties.name = tr("Song Change Plugin");
+    properties.name = tr("Track Change Plugin");
     properties.shortName = "songchange";
     properties.hasAbout = true;
     properties.hasSettings = true;
@@ -35,29 +35,29 @@ const GeneralProperties SongChangeFactory::properties() const
     return properties;
 }
 
-QObject *SongChangeFactory::create(QObject *parent)
+QObject *TrackChangeFactory::create(QObject *parent)
 {
-    return new SongChange(parent);
+    return new TrackChange(parent);
 }
 
-QDialog *SongChangeFactory::createConfigDialog(QWidget *parent)
+QDialog *TrackChangeFactory::createConfigDialog(QWidget *parent)
 {
     return new SettingsDialog(parent);
 }
 
-void SongChangeFactory::showAbout(QWidget *parent)
+void TrackChangeFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Song Change Plugin"),
-                        tr("Qmmp Song Change Plugin")+"\n"+
+                        tr("Qmmp Track Change Plugin")+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *SongChangeFactory::createTranslator(QObject *parent)
+QTranslator *TrackChangeFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/songchange_plugin_") + locale);
+    translator->load(QString(":/trackchange_plugin_") + locale);
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(songchange, SongChangeFactory)
+Q_EXPORT_PLUGIN2(trackchange, TrackChangeFactory)
