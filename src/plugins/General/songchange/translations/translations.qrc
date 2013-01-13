@@ -1,0 +1,24 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>songchange_plugin_ru.qm</file>
+    <file>songchange_plugin_uk_UA.qm</file>
+    <file>songchange_plugin_zh_CN.qm</file>
+    <file>songchange_plugin_zh_TW.qm</file>
+    <file>songchange_plugin_tr.qm</file>
+    <file>songchange_plugin_cs.qm</file>
+    <file>songchange_plugin_pt_BR.qm</file>
+    <file>songchange_plugin_de.qm</file>
+    <file>songchange_plugin_pl_PL.qm</file>
+    <file>songchange_plugin_fr.qm</file>
+    <file>songchange_plugin_it.qm</file>
+    <file>songchange_plugin_kk.qm</file>
+    <file>songchange_plugin_lt.qm</file>
+    <file>songchange_plugin_hu.qm</file>
+    <file>songchange_plugin_nl.qm</file>
+    <file>songchange_plugin_ja.qm</file>
+    <file>songchange_plugin_sk.qm</file>
+    <file>songchange_plugin_es.qm</file>
+    <file>songchange_plugin_he.qm</file>
+  </qresource>
+</RCC>

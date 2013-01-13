@@ -26,6 +26,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
+#include <QProcess>
 #include <qmmp/soundcore.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmodel.h>
@@ -38,6 +39,7 @@
 SongChange::SongChange(QObject *parent) : QObject(parent)
 {
     m_core = SoundCore::instance();
+    m_plManager = PlayListManager::instance();
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(onStateChanged(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()), SLOT(onMetaDataChanged()));
     connect(m_core, SIGNAL(finished()), SLOT(onFinised()));
@@ -69,11 +71,19 @@ void SongChange::onMetaDataChanged()
     {
         if(m_prevMetaData[Qmmp::URL] == metaData[Qmmp::URL])
         {
-            qDebug("m_titleChangeCommand");
+            if(!m_titleChangeCommand.isEmpty())
+            {
+                qDebug("SongChange: startig title change command..");
+                executeCommand(metaData, m_titleChangeCommand);
+            }
         }
         else
         {
-            qDebug("new_track_command");
+            if(!m_newTrackCommand.isEmpty())
+            {
+                qDebug("SongChange: startig new track command..");
+                executeCommand(metaData, m_newTrackCommand);
+            }
         }
     }
     m_prevMetaData = metaData;
@@ -81,5 +91,28 @@ void SongChange::onMetaDataChanged()
 
 void SongChange::onFinised()
 {
-    qDebug("on_track_finished");
+    if(!m_endOfTrackCommand.isEmpty())
+    {
+        qDebug("SongChange: startig end of track command..");
+        executeCommand(m_prevMetaData, m_endOfTrackCommand);
+    }
+    if(!m_endOfPlCommand.isEmpty() && !m_plManager->currentPlayList()->nextItem())
+    {
+        qDebug("SongChange: startig end of playlist command..");
+        executeCommand(m_prevMetaData, m_endOfPlCommand);
+    }
+}
+
+bool SongChange::executeCommand(const QMap<Qmmp::MetaData, QString> &metaData, const QString &format)
+{
+    MetaDataFormatter formatter(format);
+    QString command = formatter.parse(metaData);
+#ifdef Q_OS_WIN
+    bool ok = QProcess::startDetached(QString("cmd.exe \"%1\"").arg(command));
+#else
+    bool ok = QProcess::startDetached(QString("sh -c \"%1\"").arg(command));
+#endif
+    if(!ok)
+        qWarning("SongChange: unable to start command '%s'", qPrintable(command));
+    return ok;
 }

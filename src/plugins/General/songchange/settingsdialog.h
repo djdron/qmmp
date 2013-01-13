@@ -23,6 +23,9 @@
 #include <QDialog>
 #include "ui_settingsdialog.h"
 
+class QAction;
+class QToolButton;
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -37,8 +40,12 @@ public:
 public slots:
     void accept();
 
+private slots:
+     void addTemplateString(QAction *);
+
 private:
     void addMenu(QToolButton *button);
+
     Ui::SettingsDialog m_ui;
 
 };
