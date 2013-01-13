@@ -11,6 +11,8 @@ SET(USE_COVER TRUE CACHE BOOL "enable/disable cover manager plugin")
 SET(USE_KDENOTIFY TRUE CACHE BOOL "enable/disable kde notification plugin")
 SET(USE_CONVERTER TRUE CACHE BOOL "enable/disable audio converter plugin")
 SET(USE_SB TRUE CACHE BOOL "enable/disable stream browser plugin")
+SET(USE_TRACKCHANGE TRUE CACHE BOOL "enable/disable track change plugin")
+
 
 IF(USE_MPRIS)
 add_subdirectory(mpris)
@@ -63,3 +65,7 @@ ENDIF(USE_CONVERTER AND TAGLIB_FOUND)
 IF(USE_SB)
 add_subdirectory(streambrowser)
 ENDIF(USE_SB)
+
+IF(USE_TRACKCHANGE)
+add_subdirectory(trackchange)
+ENDIF(USE_TRACKCHANGE)
