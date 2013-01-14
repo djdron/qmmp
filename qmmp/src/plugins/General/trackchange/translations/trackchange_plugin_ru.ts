@@ -4,6 +4,76 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="57"/>
+        <source>Artist</source>
+        <translation>Исполнитель</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="58"/>
+        <source>Album</source>
+        <translation>Альбом</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Title</source>
+        <translation>Название</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>Genre</source>
+        <translation>Жанр</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="69"/>
+        <source>Year</source>
+        <translation>Год</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="63"/>
+        <source>Comment</source>
+        <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
+        <source>Track number</source>
+        <translation>Номер трека</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <source>Two-digit track number</source>
+        <translation>2-х разрядный номер трека</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="64"/>
+        <source>Composer</source>
+        <translation>Композитор</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="65"/>
+        <source>Duration</source>
+        <translation>Длительность</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="66"/>
+        <source>Disc number</source>
+        <translation>Номер диска</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>File name</source>
+        <translation>Имя файла</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="68"/>
+        <source>File path</source>
+        <translation>Путь к файлу</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="70"/>
+        <source>Condition</source>
+        <translation>Условие</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
         <translation type="unfinished"></translation>
@@ -14,7 +84,7 @@
         <location filename="../settingsdialog.ui" line="52"/>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
@@ -36,103 +106,33 @@
         <source>Command to run when title changes (i.e. network streams title)</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="57"/>
-        <source>Artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="58"/>
-        <source>Album</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="59"/>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="60"/>
-        <source>Track number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>Genre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="63"/>
-        <source>Comment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="64"/>
-        <source>Composer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="65"/>
-        <source>Duration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="66"/>
-        <source>Disc number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="67"/>
-        <source>File name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="68"/>
-        <source>File path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="69"/>
-        <source>Year</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
-        <source>Condition</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>TrackChangeFactory</name>
     <message>
         <location filename="../trackchangefactory.cpp" line="29"/>
         <source>Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль смены трека</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="49"/>
         <source>About Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>О модуле смены трека</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль смены трека для Qmmp</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
-        <source>This plugin executes external command whencurrent track is changed.</source>
+        <source>This plugin executes external command when current track is changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="53"/>
+        <location filename="../trackchangefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>
