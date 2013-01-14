@@ -126,11 +126,11 @@
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
-        <source>This plugin executes external command whencurrent track is changed.</source>
+        <source>This plugin executes external command when current track is changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="53"/>
+        <location filename="../trackchangefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
