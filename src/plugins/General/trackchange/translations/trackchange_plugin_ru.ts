@@ -76,7 +76,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки модуля смены трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
@@ -89,22 +89,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Command to run when Qmmp starts new track</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда, запускаемая, когда Qmmp начинает новый трек</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Command to run toward to end of a track</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда, запускаемая в конце трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Command to run when Qmmp reaches the end of the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда, запускаемая, когда Qmmp доходит до конца списка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Command to run when title changes (i.e. network streams title)</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда, запускаемая при смене названия (например, в интернет-потоках)</translation>
     </message>
 </context>
 <context>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Данный модуль предназначен для запуска внешней команды при смене текущего трека</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>
