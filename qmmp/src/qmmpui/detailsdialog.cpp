@@ -101,6 +101,10 @@ void DetailsDialog::printInfo()
     else
         metaData = *m_item;
     QString formattedText;
+    if(layoutDirection() == Qt::RightToLeft)
+        formattedText.append("<DIV align=\"right\" dir=\"rtl\">");
+    else
+        formattedText.append("<DIV>");
     formattedText.append("<TABLE>");
     //tags
     formattedText += formatRow(tr("Title"), metaData[Qmmp::TITLE]);
@@ -134,6 +138,7 @@ void DetailsDialog::printInfo()
     if(!m_metaDataModel)
     {
         formattedText.append("</TABLE>");
+        formattedText.append("</DIV>");
         m_ui->textEdit->setHtml(formattedText);
         return;
     }
@@ -152,6 +157,7 @@ void DetailsDialog::printInfo()
         formattedText += formatRow(key, ap.value(key));
 
     formattedText.append("</TABLE>");
+    formattedText.append("</DIV>");
     m_ui->textEdit->setHtml(formattedText);
 }
 
@@ -160,7 +166,10 @@ QString DetailsDialog::formatRow(const QString key, const QString value)
     if(value.isEmpty())
         return QString();
     QString str("<tr>");
-    str.append("<td><b>" + key + "</b></td> <td style=\"padding-left: 15px;\">" + value + "</td>");
+    if(layoutDirection() == Qt::RightToLeft)
+        str.append("<td>" + value + "</td> <td style=\"padding-left: 15px;\"><b>" + key + "</b></td>");
+    else
+        str.append("<td><b>" + key + "</b></td> <td style=\"padding-left: 15px;\">" + value + "</td>");
     str.append("</tr>");
     return str;
 }

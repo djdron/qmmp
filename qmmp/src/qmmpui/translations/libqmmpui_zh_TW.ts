@@ -587,47 +587,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation>藝術家</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Album</source>
         <translation>專輯</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation>備註</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="111"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Composer</source>
         <translation>作曲</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="113"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Track</source>
         <translation>音軌</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="121"/>
         <source>Disc number</source>
         <translation>光槃編號</translation>
     </message>

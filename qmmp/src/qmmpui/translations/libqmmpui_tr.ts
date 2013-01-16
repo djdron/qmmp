@@ -587,47 +587,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Title</source>
         <translation type="unfinished">Başlık</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation type="unfinished">Sanatçı</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Album</source>
         <translation type="unfinished">Albüm</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation type="unfinished">Yorum</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Genre</source>
         <translation type="unfinished">Tarz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="111"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="113"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Year</source>
         <translation type="unfinished">Yıl</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="121"/>
         <source>Disc number</source>
         <translation type="unfinished"></translation>
     </message>
