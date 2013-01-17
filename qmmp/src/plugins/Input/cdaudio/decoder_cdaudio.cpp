@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,11 @@
 #include <QFileInfo>
 #include <QDir>
 #include <cdio/cdio.h>
+#if LIBCDIO_VERSION_NUM <= 83
 #include <cdio/cdda.h>
+#else
+#include <cdio/paranoia/cdda.h>
+#endif
 #include <cdio/audio.h>
 #include <cdio/cd_types.h>
 #include <cdio/logging.h>
