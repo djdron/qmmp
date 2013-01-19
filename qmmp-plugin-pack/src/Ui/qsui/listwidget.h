@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -136,7 +136,7 @@ private:
     QList <QString> m_times;
     //PlayList *m_pl;
     QFont m_font, m_extra_font;
-    QFontMetrics *m_metrics, *m_extra_metrics;
+    QFontMetrics *m_metrics, *m_bold_metrics, *m_extra_metrics;
     //Skin *m_skin;
     QColor m_normal, m_current, m_highlighted, m_normal_bg, m_selected_bg;
     int m_anchor_row;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,6 +86,9 @@ void ListWidget::readSettings()
         delete m_metrics;
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
+        m_font.setBold(true);
+        m_bold_metrics = new QFontMetrics(m_font);
+        m_font.setBold(false);
         m_extra_metrics = new QFontMetrics(m_extra_font);
         m_rows = height() / (m_metrics->lineSpacing() + 2);
         updateList();
@@ -99,6 +102,9 @@ void ListWidget::readSettings()
     {
         m_update = true;
         m_metrics = new QFontMetrics(m_font);
+        m_font.setBold(true);
+        m_bold_metrics = new QFontMetrics(m_font);
+        m_font.setBold(false);
         m_extra_metrics = new QFontMetrics(m_extra_font);
     }
     if(show_popup)
@@ -115,99 +121,122 @@ void ListWidget::paintEvent(QPaintEvent *)
     m_selected_bg = palette().color(QPalette::Highlight);
 
 
-    QPainter m_painter(this);
+    QPainter painter(this);
     //m_painter.setPen(Qt::white);
-    m_painter.setFont(m_font);
-    m_painter.setBrush(QBrush(m_normal_bg));
+    painter.setFont(m_font);
+    painter.setBrush(QBrush(m_normal_bg));
+    painter.setLayoutDirection(Qt::LayoutDirectionAuto);
+    bool rtl = (layoutDirection() == Qt::RightToLeft);
     int x = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
-    int font_y = 0;
+    int sx = 0, sy = 0;
 
-    m_painter.drawRect(-1,-1, x + 1, height()+1);
+    painter.drawRect(-1,-1, x + 1, height()+1);
 
-    for (int i=0; i<m_titles.size(); ++i )
+    for (int i = 0; i < m_titles.size(); ++i)
     {
         if(i % 2 == 0)
         {
-            m_painter.setBrush(QBrush(palette().color(QPalette::AlternateBase)));
-            m_painter.setPen(palette().color(QPalette::AlternateBase));
-            m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+            painter.setBrush(QBrush(palette().color(QPalette::AlternateBase)));
+            painter.setPen(palette().color(QPalette::AlternateBase));
+            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                 x - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
-            m_painter.setPen(m_normal_bg);
-            m_painter.setBrush(QBrush(m_normal_bg));
-            m_painter.drawRect (6,  i * (m_metrics->lineSpacing() + 2),
+            painter.setPen(m_normal_bg);
+            painter.setBrush(QBrush(m_normal_bg));
+            painter.drawRect (6,  i * (m_metrics->lineSpacing() + 2),
                                 x - 10, m_metrics->lineSpacing() + 1);
         }
 
         if (m_show_anchor && i == m_anchor_row - m_first)
         {
-            m_painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
-            m_painter.setPen(m_normal);
-            m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+            painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
+            painter.setPen(m_normal);
+            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                 x - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
             if (m_model->isSelected(i + m_first))
             {
-                m_painter.setBrush(QBrush(m_selected_bg));
-                m_painter.setPen(m_selected_bg);
-                m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                painter.setBrush(QBrush(m_selected_bg));
+                painter.setPen(m_selected_bg);
+                painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                     x - 10, m_metrics->lineSpacing() + 1);
             }
         }
 
-
+        QFontMetrics *metrics = 0;
         if (m_model->currentIndex() == i + m_first)
         {
             m_font.setBold(true);
-            m_painter.setPen(m_current);
+            metrics = m_bold_metrics;
+            painter.setPen(m_current);
         }
         else
+        {
             m_font.setBold(false);
+            metrics = m_metrics;
+        }
 
-        m_painter.setFont(m_font);
+        painter.setFont(m_font);
 
         if (m_model->isSelected(i + m_first))
-            m_painter.setPen(m_highlighted);
+            painter.setPen(m_highlighted);
         else
-            m_painter.setPen(m_normal);
+            painter.setPen(m_normal);
 
-        font_y = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
+        sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
 
         if(m_number_width)
         {
             QString number = QString("%1").arg(m_first+i+1);
-            m_painter.drawText(10 + m_number_width - m_metrics->width(number),
-                               font_y, number);
-            m_painter.drawText(10 + m_number_width + m_metrics->width("9"), font_y, m_titles.at(i));
+            sx = 10 + m_number_width - metrics->width(number);
+            if(rtl)
+                sx = width() - sx - metrics->width(number);
+            painter.drawText(sx, sy, number);
+
+            sx = 10 + m_number_width + metrics->width("9");
+            if(rtl)
+                sx = width() - sx - metrics->width(m_titles.at(i));
+            painter.drawText(sx, sy, m_titles.at(i));
         }
         else
-            m_painter.drawText(10, font_y, m_titles.at(i));
+        {
+            sx = rtl ? width() - 10 - metrics->width(m_titles.at(i)) : 10;
+            painter.drawText(sx, sy, m_titles.at(i));
+        }
 
         QString extra_string = getExtraString(m_first + i);
         if(!extra_string.isEmpty())
         {
-            m_painter.setFont(m_extra_font);
+            painter.setFont(m_extra_font);
 
             if(m_times.at(i).isEmpty())
-                m_painter.drawText(x - 7 - m_extra_metrics->width(extra_string),
-                                   font_y, extra_string);
+            {
+                sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
+                painter.drawText(sx, sy, extra_string);
+            }
             else
-                m_painter.drawText(x - 10 - m_extra_metrics->width(extra_string) -
-                                   m_metrics->width(m_times.at(i)), font_y, extra_string);
-            m_painter.setFont(m_font);
+            {
+                sx = width() - 10 - m_extra_metrics->width(extra_string) - metrics->width(m_times.at(i));
+                if(rtl)
+                    sx = width() - sx - m_extra_metrics->width(extra_string);
+                painter.drawText(sx, sy, extra_string);
+            }
+            painter.setFont(m_font);
         }
-        m_painter.drawText(x - 7 - m_metrics->width(m_times.at(i)), font_y, m_times.at(i));
+        sx = rtl ? 7 : width() - 7 - metrics->width(m_times.at(i));
+        painter.drawText(sx, sy, m_times.at(i));
     }
     //draw line
     if(m_number_width)
     {
-        m_painter.setPen(m_normal);
-        m_painter.drawLine(10 + m_number_width + m_metrics->width("9") / 2 - 1, 2,
-                           10 + m_number_width + m_metrics->width("9") / 2 - 1, font_y);
+        painter.setPen(m_normal);
+        sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+                   10 + m_number_width + m_metrics->width("9")/2 - 1;
+        painter.drawLine(sx, 2, sx, sy);
     }
 }
 
