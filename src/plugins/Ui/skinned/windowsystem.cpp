@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Based on Licq                                                         *
  *   Copyright (C) 2006-2009 Licq developers                               *
- *   Copyright (C) 2011 Ilya Kotov                                         *
+ *   Copyright (C) 2011-2013 Ilya Kotov                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -208,6 +208,24 @@ unsigned char* WindowSystem::getWindowProperty(WId win, const char* prop)
   }
 
   return retValue;
+}
+//On RTL locales Qt sets flag NorthEastGravity for windows.
+//This function reverts these changes.
+void WindowSystem::revertGravity(WId win)
+{
+    Display* dsp = QX11Info::display();
+    XSizeHints sh;
+    memset(&sh, 0, sizeof(sh));
+    long unused;
+    XGetWMNormalHints(dsp, win, &sh, &unused);
+    sh.flags |= PWinGravity;
+
+    if(sh.win_gravity == NorthEastGravity)
+        sh.win_gravity = NorthWestGravity;
+    else
+        return;
+    sh.win_gravity = NorthWestGravity;
+    XSetWMNormalHints(dsp, win, &sh);
 }
 
 #endif

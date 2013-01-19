@@ -390,6 +390,11 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
            sy--;
         resize (275+25*sx,116+29*sy);
 #else
+#ifdef Q_WS_X11
+        //avoid right corner moving during resize
+        if(layoutDirection() == Qt::RightToLeft)
+            WindowSystem::revertGravity(winId());
+#endif
         resize (e->x() +25, e->y() +25);
 #endif
     }
