@@ -56,6 +56,10 @@ QString AboutDialog::loadAbout()
     text.append("<head>");
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
+    if(layoutDirection() == Qt::RightToLeft)
+        text.append("<div dir='rtl'>");
+    else
+        text.append("<div>");
     text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
 
     text.append("<p>"+getStringFromResource(":description")+"</p>");
@@ -114,6 +118,7 @@ QString AboutDialog::loadAbout()
         text.append("</li>");
     }
     text.append("</ul>");
+    text.append("<div>");
 
     return text;
 }
