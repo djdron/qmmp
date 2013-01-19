@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Based on Licq                                                         *
  *   Copyright (C) 2006-2009 Licq developers                               *
- *   Copyright (C) 2011 Ilya Kotov                                         *
+ *   Copyright (C) 2011-2013 Ilya Kotov                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -32,6 +32,7 @@ public:
     static QString netWindowManagerName();
     static void changeWinSticky(WId win, bool stick);
     static void setWinHint(WId win, const char *res_name, const char *res_class);
+    static void revertGravity(WId win);
 private:
     static unsigned char* getWindowProperty(WId win, const char* prop);
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <qmmpui/playlistmodel.h>
 #include "dock.h"
+#include "windowsystem.h"
 #include "button.h"
 #include "playlisttitlebar.h"
 #include "skin.h"
@@ -177,10 +178,14 @@ void PlayListTitleBar::mouseReleaseEvent(QMouseEvent*)
 
 void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    QPoint npos = (event->globalPos()-pos);
-    QPoint oldpos = npos;
+    QPoint npos = event->globalPos()-pos;
     if (m_shaded && m_resize)
     {
+#ifdef Q_WS_X11
+        //avoid right corner moving during resize
+        if(layoutDirection() == Qt::RightToLeft)
+            WindowSystem::revertGravity(m_pl->winId());
+#endif
         resize((event->x() + 25*m_ratio), height());
         m_pl->resize((event->x() + 25*m_ratio), m_pl->height());
     }
@@ -193,7 +198,6 @@ void PlayListTitleBar::setActive(bool a)
     m_active = a;
     updatePixmap();
 }
-
 
 void PlayListTitleBar::setModel(PlayListModel *selected, PlayListModel *previous)
 {
