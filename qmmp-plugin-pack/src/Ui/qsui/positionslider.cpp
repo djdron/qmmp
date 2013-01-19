@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,17 +21,23 @@
 #include "positionslider.h"
 
 PositionSlider::PositionSlider(QWidget *parent) : QSlider(Qt::Horizontal, parent)
-{
-}
+{}
 
 void PositionSlider::mousePressEvent (QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton)
 	{
 		if (orientation() == Qt::Vertical)
-			setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height() ) ;
+			setValue(minimum() + ((maximum() - minimum()) * (height()-event->y())) / height() ) ;
 		else
-			setValue(minimum() + ((maximum()-minimum()) * event->x()) / width());
+		{
+			if(layoutDirection() == Qt::RightToLeft)
+			{
+				setValue(maximum() - ((maximum() - minimum()) * event->x()) / width());
+			}
+			else
+				setValue(minimum() + ((maximum() - minimum()) * event->x()) / width());
+		}
 		setSliderDown (true);
 		event->accept();
 	}
