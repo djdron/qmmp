@@ -796,7 +796,7 @@
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="560"/>
+        <location filename="../playlist.cpp" line="565"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новий список</translation>
     </message>

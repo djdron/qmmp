@@ -29,47 +29,47 @@
         <translation>感谢</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="59"/>
+        <location filename="../aboutdialog.cpp" line="63"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
         <translation>基于 Qt 的多媒体播放器 (Qmmp)</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="63"/>
+        <location filename="../aboutdialog.cpp" line="67"/>
         <source>Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="64"/>
+        <location filename="../aboutdialog.cpp" line="68"/>
         <source>Using Qt %1 (compiled with Qt %2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="67"/>
+        <location filename="../aboutdialog.cpp" line="71"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="72"/>
+        <location filename="../aboutdialog.cpp" line="76"/>
         <source>Input plugins:</source>
         <translation>输入插件：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="81"/>
+        <location filename="../aboutdialog.cpp" line="85"/>
         <source>Output plugins:</source>
         <translation>输出插件</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="90"/>
+        <location filename="../aboutdialog.cpp" line="94"/>
         <source>Visual plugins:</source>
         <translation>可视化插件</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="99"/>
+        <location filename="../aboutdialog.cpp" line="103"/>
         <source>Effect plugins:</source>
         <translation>特效插件：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="108"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source>General plugins:</source>
         <translation>常规插件：</translation>
     </message>

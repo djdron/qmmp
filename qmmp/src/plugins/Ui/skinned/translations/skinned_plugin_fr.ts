@@ -806,7 +806,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="560"/>
+        <location filename="../playlist.cpp" line="565"/>
         <source>&amp;New PlayList</source>
         <translation type="unfinished"></translation>
     </message>
