@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 2.4.7)
 
 
 SET(QT_USE_QTNETWORK TRUE)
-SET(QT_USE_QTXML TRUE)
 INCLUDE(FindQt4)
 
 include(${QT_USE_FILE})

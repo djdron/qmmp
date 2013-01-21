@@ -38,7 +38,7 @@ SOURCES += scrobblerfactory.cpp \
     settingsdialog.cpp \
     scrobblerhandler.cpp \
     scrobbler2.cpp
-QT += network xml
+QT += network
 INCLUDEPATH += ../../../
 unix:LIBS += -lqmmpui \
     -lqmmp

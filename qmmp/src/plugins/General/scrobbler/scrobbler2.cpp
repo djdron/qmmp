@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,12 +24,12 @@
 #include <QNetworkReply>
 #include <QByteArray>
 #include <QCryptographicHash>
+#include <QXmlStreamReader>
 #include <QUrl>
 #include <QTime>
 #include <QTimer>
 #include <QDateTime>
 #include <QDir>
-#include <QDomDocument>
 #include <QDesktopServices>
 #include <QSettings>
 #include <qmmp/soundcore.h>
@@ -105,6 +105,15 @@ Scrobbler2::Scrobbler2(const QString &url, const QString &name, QObject *parent)
     }
     if(m_session.isEmpty())
         getToken();
+    else
+    {
+        submit();
+        if(m_core->state() == Qmmp::Playing)
+        {
+            setState(Qmmp::Playing);
+            updateMetaData();
+        }
+    }
 }
 
 
@@ -161,37 +170,68 @@ void Scrobbler2::updateMetaData()
 
 void Scrobbler2::processResponse(QNetworkReply *reply)
 {
-    QString data = QString::fromUtf8(reply->readAll());
     if (reply->error() != QNetworkReply::NoError)
     {
         qWarning("Scrobbler2[%s]: http error: %s", qPrintable(m_name), qPrintable(reply->errorString()));
     }
-    QDomDocument document;
-    document.setContent(data);
-    QDomElement root = document.documentElement();
-    QString error_code;
-    QString status = root.attribute("status");
-    if(status != "ok" && !status.isEmpty())
+
+    ScrobblerResponse response;
+    QStringList tags;
+    QXmlStreamReader reader(reply);
+    while(!reader.atEnd())
     {
-        QDomElement error = root.firstChildElement("error");
-        if(!error.isNull())
+        reader.readNext();
+        if(reader.isStartElement())
         {
-            qWarning("Scrobbler2[%s]: status=%s, %s-%s", qPrintable(m_name), qPrintable(status),
-                     qPrintable(error.attribute("code")), qPrintable(error.text()));
-            error_code = error.attribute("code");
+            tags << reader.name().toString();
+            if(tags.last() == "lfm")
+                response.status = reader.attributes().value("status").toString();
+            else if(tags.last() == "error")
+                response.code = reader.attributes().value("code").toString();
+        }
+        else if(reader.isCharacters() && !reader.isWhitespace())
+        {
+            if(tags.last() == "token")
+                response.token = reader.text().toString();
+            else if(tags.last() == "error")
+                response.error = reader.text().toString();
+            if(tags.count() >= 2 && tags.at(tags.count() - 2) == "session")
+            {
+                if(tags.last() == "key")
+                    response.key = reader.text().toString();
+                else if(tags.last() == "name")
+                    response.name = reader.text().toString();
+                else if(tags.last() == "subscriber")
+                    response.subscriber = reader.text().toString();
+            }
+        }
+        else if(reader.isEndElement())
+        {
+            tags.takeLast();
+        }
+    }
+
+    QString error_code;
+    if(response.status != "ok" && !response.status.isEmpty())
+    {
+        if(!response.error.isEmpty())
+        {
+            qWarning("Scrobbler2[%s]: status=%s, %s-%s",
+                     qPrintable(m_name),
+                     qPrintable(response.status),
+                     qPrintable(response.code), qPrintable(response.error));
+            error_code = response.code;
         }
         else
             qWarning("Scrobbler2[%s]: invalid content", qPrintable(m_name));
     }
 
-    data = data.trimmed();
-
     if (reply == m_getTokenReply)
     {
         m_getTokenReply = 0;
-        if(status == "ok")
+        if(response.status == "ok")
         {
-            m_token = root.firstChildElement("token").text();
+            m_token = response.token;
             qDebug("Scrobbler2[%s]: token: %s", qPrintable(m_name), qPrintable(m_token));
             QDesktopServices::openUrl("http://www.last.fm/api/auth/?api_key="API_KEY"&token="+m_token);
             QTimer::singleShot(120000, this, SLOT(getSession())); //2 minutes
@@ -212,17 +252,15 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
     {
         m_getSessionReply = 0;
         m_session.clear();
-        if(status == "ok")
+        if(response.status == "ok")
         {
-            QDomElement session = root.firstChildElement("session");
-            m_session = session.firstChildElement("key").text();
-            QString name = session.firstChildElement("name").text();
-            QString subscriber = session.firstChildElement("subscriber").text();
-            qDebug("Scrobbler2[%s]: name: %s", qPrintable(m_name),qPrintable(name));
+            m_session = response.key;
+            qDebug("Scrobbler2[%s]: name: %s", qPrintable(m_name),qPrintable(response.name));
             qDebug("Scrobbler2[%s]: key: %s", qPrintable(m_name), qPrintable(m_session));
-            qDebug("Scrobbler2[%s]: subscriber: %s",qPrintable(m_name), qPrintable(subscriber));
+            qDebug("Scrobbler2[%s]: subscriber: %s",qPrintable(m_name), qPrintable(response.subscriber));
             QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
             settings.setValue("Scrobbler/lastfm_session", m_session);
+            submit();
         }
         else if(error_code == "4" || error_code == "15") //invalid token
         {
@@ -252,7 +290,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
     else if (reply == m_submitReply)
     {
         m_submitReply = 0;
-        if (status == "ok")
+        if (response.status == "ok")
         {
             qDebug("Scrobbler2[%s]: submited %d song(s)",qPrintable(m_name), m_submitedSongs);
             while (m_submitedSongs)
@@ -264,7 +302,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
             {
                 submit();
             }
-            else 
+            else
             {
                 syncCache(); // update the cache file to reflect the empty cache
                 updateMetaData();
@@ -289,7 +327,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
     else if (reply == m_notificationReply)
     {
         m_notificationReply = 0;
-        if(status == "ok")
+        if(response.status == "ok")
         {
             qDebug("Scrobbler2[%s]: Now-Playing notification done", qPrintable(m_name));
         }
@@ -365,9 +403,10 @@ void Scrobbler2::getSession()
 
 void Scrobbler2::submit()
 {
-    qDebug("Scrobbler2[%s]: submit request", qPrintable(m_name));
-    if (m_songCache.isEmpty() || m_session.isEmpty())
+    if (m_songCache.isEmpty() || m_session.isEmpty() || m_submitReply)
         return;
+
+    qDebug("Scrobbler2[%s]: submit request", qPrintable(m_name));
     m_submitedSongs = qMin(m_songCache.size(),25);
 
     QMap <QString, QString> params;
@@ -377,19 +416,18 @@ void Scrobbler2::submit()
         params.insert(QString("track[%1]").arg(i),info.metaData(Qmmp::TITLE));
         params.insert(QString("timestamp[%1]").arg(i),QString("%1").arg(info.timeStamp()));
         params.insert(QString("artist[%1]").arg(i),info.metaData(Qmmp::ARTIST));
-        if(!info.metaData(Qmmp::ALBUM).isEmpty())
-            params.insert(QString("album[%1]").arg(i),info.metaData(Qmmp::ALBUM));
-        if(!info.metaData(Qmmp::TRACK).isEmpty())
-            params.insert(QString("trackNumber[%1]").arg(i),info.metaData(Qmmp::TRACK));
+        params.insert(QString("album[%1]").arg(i),info.metaData(Qmmp::ALBUM));
+        params.insert(QString("trackNumber[%1]").arg(i),info.metaData(Qmmp::TRACK));
         params.insert(QString("duration[%1]").arg(i),QString("%1").arg(info.length()));
     }
     params.insert("api_key", API_KEY);
     params.insert("method", "track.scrobble");
     params.insert("sk", m_session);
 
-    foreach (QString key, params) //removes empty keys
+    QStringList keys = params.keys();
+    foreach (QString key, keys) //removes empty keys
     {
-        if(params.value(key).isEmpty())
+        if(params.value(key).isEmpty() || params.value(key) == "0")
             params.remove(key);
     }
 
@@ -405,7 +443,7 @@ void Scrobbler2::submit()
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
-    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    QByteArray bodyData = body.toEncoded().remove(0,1);
     bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);

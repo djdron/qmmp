@@ -32,7 +32,20 @@ class SoundCore;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+struct ScrobblerResponse
+{
+    QString status;
+    QString token;
+    QString code;
+    QString error;
+    QString key;
+    QString name;
+    QString subscriber;
+};
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Scrobbler2 : public QObject
 {
     Q_OBJECT
