@@ -140,7 +140,6 @@ void Scrobbler::setState(Qmmp::State state)
             m_songCache << m_song;
             syncCache();
         }
-
         m_song.clear();
         if (m_songCache.isEmpty())
             break;
@@ -374,7 +373,7 @@ void Scrobbler::submit()
 
 void Scrobbler::sendNotification(const SongInfo &info)
 {
-    qDebug("Scrobbler[%s] sending notification", qPrintable(m_name));
+    qDebug("Scrobbler[%s]: sending notification", qPrintable(m_name));
     QString body = QString("s=%1").arg(m_session);
     body += QString("&a=%1&t=%2&b=%3&l=%4&n=%5&m=")
             .arg(info.metaData(Qmmp::ARTIST))
