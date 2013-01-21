@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,7 +32,6 @@ class SoundCore;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
 class SongInfo
 {
 public:
@@ -63,6 +62,9 @@ private:
 
 };
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Scrobbler : public QObject
 {
     Q_OBJECT
