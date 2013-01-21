@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,7 +37,7 @@
 
 #define PROTOCOL_VER "1.2.1"
 #define CLIENT_ID "qmm"
-#define CLIENT_VER "0.5"
+#define CLIENT_VER "0.7"
 
 
 Scrobbler::Scrobbler(const QString &url,
@@ -49,7 +49,6 @@ Scrobbler::Scrobbler(const QString &url,
     m_failure_count = 0;
     m_handshake_count = 0;
     m_http = new QNetworkAccessManager(this);
-    m_state = Qmmp::Stopped;
     m_login = login;
     m_passw = passw;
     m_server = url;
@@ -110,6 +109,7 @@ Scrobbler::Scrobbler(const QString &url,
         }
         file.close();
     }
+    m_start_ts = QDateTime::currentDateTime().toTime_t();
     if (!m_disabled)
         handshake();
 }
@@ -123,7 +123,6 @@ Scrobbler::~Scrobbler()
 
 void Scrobbler::setState(Qmmp::State state)
 {
-    m_state = state;
     switch ((uint) state)
     {
     case Qmmp::Playing:
@@ -157,7 +156,7 @@ void Scrobbler::setState(Qmmp::State state)
 void Scrobbler::updateMetaData()
 {
     QMap <Qmmp::MetaData, QString> metadata = m_core->metaData();
-    if (m_state == Qmmp::Playing
+    if (m_core->state() == Qmmp::Playing
             && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
             && !metadata.value(Qmmp::ARTIST).isEmpty()
             && m_core->totalTime()                         //skip stream
@@ -194,6 +193,7 @@ void Scrobbler::processResponse(QNetworkReply *reply)
 
     if (reply == m_handshakeReply)
     {
+        m_handshakeReply = 0;
         m_submitUrl.clear();
         m_session.clear();
         m_nowPlayingUrl.clear();

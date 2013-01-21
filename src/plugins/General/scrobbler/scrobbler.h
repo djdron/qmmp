@@ -92,7 +92,6 @@ private:
     uint m_start_ts;
     SongInfo m_song;
     QNetworkAccessManager *m_http;
-    Qmmp::State m_state;
     SoundCore *m_core;
     QString m_login;
     QString m_passw;
