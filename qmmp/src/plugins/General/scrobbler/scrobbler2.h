@@ -32,7 +32,7 @@ class SoundCore;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-struct ScrobblerResponse
+struct Scrobbler2Response
 {
     QString status;
     QString token;
@@ -66,7 +66,8 @@ private:
     enum { MIN_SONG_LENGTH = 30 };
 
     void sendNotification(const SongInfo &info);
-    void syncCache();
+    void writeCache();
+    void readCache();
     uint m_start_ts;
     SongInfo m_song;
     QNetworkAccessManager *m_http;

@@ -44,65 +44,27 @@ Scrobbler2::Scrobbler2(const QString &url, const QString &name, QObject *parent)
 {
     m_getTokenReply = 0;
     m_getSessionReply = 0;
-    m_http = new QNetworkAccessManager(this);
+    m_notificationReply = 0;
+    m_submitedSongs = 0;
+    m_submitReply = 0;
     m_state = Qmmp::Stopped;
     m_server = url;
     m_name = name;
+    m_time = new QTime();
+    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
+    m_http = new QNetworkAccessManager(this);
+    m_core = SoundCore::instance();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_session = settings.value("Scrobbler/lastfm_session").toString();
-    connect(QmmpSettings::instance(), SIGNAL(networkSettingsChanged()), SLOT(setupProxy()));
-    setupProxy();
+
     connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
-    m_core = SoundCore::instance();
+    connect(QmmpSettings::instance(), SIGNAL(networkSettingsChanged()), SLOT(setupProxy()));
     connect (m_core, SIGNAL(metaDataChanged()), SLOT(updateMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
-    m_time = new QTime();
-    m_submitedSongs = 0;
-    m_submitReply = 0;
-    m_notificationReply = 0;
-    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
 
-    QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
+    setupProxy();
+    readCache();
 
-    if (file.open(QIODevice::ReadOnly))
-    {
-        int s;
-        QString line, param, value;
-        while (!file.atEnd())
-        {
-            line = QString::fromUtf8(file.readLine()).trimmed();
-            if ((s = line.indexOf("=")) < 0)
-                continue;
-
-            param = line.left(s);
-            value = line.right(line.size() - s - 1);
-
-            if (param == "title")
-            {
-                m_songCache << SongInfo();
-                m_songCache.last().setMetaData(Qmmp::TITLE, value);
-            }
-            else if (m_songCache.isEmpty())
-                continue;
-            else if (param == "artist")
-                m_songCache.last().setMetaData(Qmmp::ARTIST, value);
-            else if (param == "album")
-                m_songCache.last().setMetaData(Qmmp::ALBUM, value);
-            else if (param == "comment")
-                m_songCache.last().setMetaData(Qmmp::COMMENT, value);
-            else if (param == "genre")
-                m_songCache.last().setMetaData(Qmmp::GENRE, value);
-            else if (param == "year")
-                m_songCache.last().setMetaData(Qmmp::YEAR, value);
-            else if (param == "track")
-                m_songCache.last().setMetaData(Qmmp::TRACK, value);
-            else if (param == "length")
-                m_songCache.last().setLength(value.toInt());
-            else if (param == "time")
-                m_songCache.last().setTimeStamp(value.toUInt());
-        }
-        file.close();
-    }
     if(m_session.isEmpty())
         getToken();
     else
@@ -120,7 +82,7 @@ Scrobbler2::Scrobbler2(const QString &url, const QString &name, QObject *parent)
 Scrobbler2::~Scrobbler2()
 {
     delete m_time;
-    syncCache();
+    writeCache();
 }
 
 void Scrobbler2::setState(Qmmp::State state)
@@ -134,12 +96,12 @@ void Scrobbler2::setState(Qmmp::State state)
         break;
     case Qmmp::Stopped:
         if (!m_song.metaData().isEmpty()
-            && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
-            && (m_song.length() > MIN_SONG_LENGTH))
+                && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
+                && (m_song.length() > MIN_SONG_LENGTH))
         {
             m_song.setTimeStamp(m_start_ts);
             m_songCache << m_song;
-            syncCache();
+            writeCache();
         }
 
         m_song.clear();
@@ -157,15 +119,15 @@ void Scrobbler2::setState(Qmmp::State state)
 void Scrobbler2::updateMetaData()
 {
     QMap <Qmmp::MetaData, QString> metadata = m_core->metaData();
-    if (m_state == Qmmp::Playing
-            && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
-            && !metadata.value(Qmmp::ARTIST).isEmpty()
-            && m_core->totalTime())                        //skip stream
-    {
-        m_song = SongInfo(metadata, m_core->totalTime()/1000);
-        if (!m_session.isEmpty() && !m_notificationReply && !m_submitReply)
-            sendNotification(m_song);
-    }
+    if(m_state != Qmmp::Playing || m_core->totalTime() <= 0) //skip stream
+        return;
+    if(metadata.value(Qmmp::TITLE).isEmpty() || metadata.value(Qmmp::ARTIST).isEmpty()) //skip empty tags
+        return;
+    if(m_notificationReply && m_submitReply) //used
+        return;
+
+    m_song = SongInfo(metadata, m_core->totalTime()/1000);
+    sendNotification(m_song);
 }
 
 void Scrobbler2::processResponse(QNetworkReply *reply)
@@ -175,7 +137,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
         qWarning("Scrobbler2[%s]: http error: %s", qPrintable(m_name), qPrintable(reply->errorString()));
     }
 
-    ScrobblerResponse response;
+    Scrobbler2Response response;
     QStringList tags;
     QXmlStreamReader reader(reply);
     while(!reader.atEnd())
@@ -304,7 +266,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
             }
             else
             {
-                syncCache(); // update the cache file to reflect the empty cache
+                writeCache(); // update the cache file to reflect the empty cache
                 updateMetaData();
             }
         }
@@ -359,7 +321,8 @@ void Scrobbler2::setupProxy()
 
 void Scrobbler2::getToken()
 {
-    qDebug("%s", Q_FUNC_INFO);
+    qDebug("Scrobbler2[%s]: new token request", qPrintable(m_name));
+    m_session.clear();
     QUrl url(QString("http://") + m_server + "/?");
     url.setPort(80);
     url.addQueryItem("method", "auth.getToken");
@@ -380,7 +343,7 @@ void Scrobbler2::getToken()
 
 void Scrobbler2::getSession()
 {
-    qDebug("%s", Q_FUNC_INFO);
+    qDebug("Scrobbler2[%s]: new session request", qPrintable(m_name));
     QUrl url(QString("http://") + m_server + "/?");
     url.setPort(80);
     url.addQueryItem("api_key", API_KEY);
@@ -459,7 +422,7 @@ void Scrobbler2::sendNotification(const SongInfo &info)
 {
     if(m_session.isEmpty())
         return;
-    qDebug("Scrobbler2[%s] sending notification", qPrintable(m_name));
+    qDebug("Scrobbler2[%s]: sending notification", qPrintable(m_name));
 
     QMap <QString, QString> params;
     params.insert("track", info.metaData(Qmmp::TITLE));
@@ -503,7 +466,7 @@ void Scrobbler2::sendNotification(const SongInfo &info)
     m_notificationReply = m_http->post(request, bodyData);
 }
 
-void Scrobbler2::syncCache()
+void Scrobbler2::writeCache()
 {
     QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
     if (m_songCache.isEmpty())
@@ -511,7 +474,12 @@ void Scrobbler2::syncCache()
         file.remove();
         return;
     }
-    file.open(QIODevice::WriteOnly);
+    if(!file.open(QIODevice::WriteOnly))
+    {
+        qWarning("Scrobbler2[%s]: error %d: %s", qPrintable(m_name),
+                 file.error(), qPrintable(file.errorString()));
+        return;
+    }
     foreach(SongInfo m, m_songCache)
     {
         file.write(QString("title=%1").arg(m.metaData(Qmmp::TITLE)).toUtf8() +"\n");
@@ -523,6 +491,51 @@ void Scrobbler2::syncCache()
         file.write(QString("track=%1").arg(m.metaData(Qmmp::TRACK)).toUtf8() +"\n");
         file.write(QString("length=%1").arg(m.length()).toUtf8() +"\n");
         file.write(QString("time=%1").arg(m.timeStamp()).toUtf8() +"\n");
+    }
+    file.close();
+}
+
+void Scrobbler2::readCache()
+{
+    int s = 0;
+    QString line, param, value;
+    QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
+
+    if(!file.open(QIODevice::ReadOnly))
+        return;
+
+    while (!file.atEnd())
+    {
+        line = QString::fromUtf8(file.readLine()).trimmed();
+        if ((s = line.indexOf("=")) < 0)
+            continue;
+
+        param = line.left(s);
+        value = line.right(line.size() - s - 1);
+
+        if (param == "title")
+        {
+            m_songCache << SongInfo();
+            m_songCache.last().setMetaData(Qmmp::TITLE, value);
+        }
+        else if (m_songCache.isEmpty())
+            continue;
+        else if (param == "artist")
+            m_songCache.last().setMetaData(Qmmp::ARTIST, value);
+        else if (param == "album")
+            m_songCache.last().setMetaData(Qmmp::ALBUM, value);
+        else if (param == "comment")
+            m_songCache.last().setMetaData(Qmmp::COMMENT, value);
+        else if (param == "genre")
+            m_songCache.last().setMetaData(Qmmp::GENRE, value);
+        else if (param == "year")
+            m_songCache.last().setMetaData(Qmmp::YEAR, value);
+        else if (param == "track")
+            m_songCache.last().setMetaData(Qmmp::TRACK, value);
+        else if (param == "length")
+            m_songCache.last().setLength(value.toInt());
+        else if (param == "time")
+            m_songCache.last().setTimeStamp(value.toUInt());
     }
     file.close();
 }
