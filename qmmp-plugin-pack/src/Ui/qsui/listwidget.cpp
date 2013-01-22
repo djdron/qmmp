@@ -194,17 +194,17 @@ void ListWidget::paintEvent(QPaintEvent *)
             QString number = QString("%1").arg(m_first+i+1);
             sx = 10 + m_number_width - metrics->width(number);
             if(rtl)
-                sx = width() - sx - metrics->width(number);
+                sx = x - sx - metrics->width(number);
             painter.drawText(sx, sy, number);
 
             sx = 10 + m_number_width + metrics->width("9");
             if(rtl)
-                sx = width() - sx - metrics->width(m_titles.at(i));
+                sx = x - sx - metrics->width(m_titles.at(i));
             painter.drawText(sx, sy, m_titles.at(i));
         }
         else
         {
-            sx = rtl ? width() - 10 - metrics->width(m_titles.at(i)) : 10;
+            sx = rtl ? x - 10 - metrics->width(m_titles.at(i)) : 10;
             painter.drawText(sx, sy, m_titles.at(i));
         }
 
@@ -215,26 +215,26 @@ void ListWidget::paintEvent(QPaintEvent *)
 
             if(m_times.at(i).isEmpty())
             {
-                sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
+                sx = rtl ? 7 : x - 7 - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             else
             {
-                sx = width() - 10 - m_extra_metrics->width(extra_string) - metrics->width(m_times.at(i));
+                sx = x - 10 - m_extra_metrics->width(extra_string) - metrics->width(m_times.at(i));
                 if(rtl)
-                    sx = width() - sx - m_extra_metrics->width(extra_string);
+                    sx = x - sx - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             painter.setFont(m_font);
         }
-        sx = rtl ? 7 : width() - 7 - metrics->width(m_times.at(i));
+        sx = rtl ? 7 : x - 7 - metrics->width(m_times.at(i));
         painter.drawText(sx, sy, m_times.at(i));
     }
     //draw line
     if(m_number_width)
     {
         painter.setPen(m_normal);
-        sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+        sx = rtl ? x - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                    10 + m_number_width + m_metrics->width("9")/2 - 1;
         painter.drawLine(sx, 2, sx, sy);
     }
