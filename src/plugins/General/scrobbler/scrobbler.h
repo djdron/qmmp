@@ -90,27 +90,29 @@ private:
     void submit();
     void sendNotification(const SongInfo &info);
     bool isReady();
-    void syncCache();
+    void writeCache();
+    void readCache();
     uint m_start_ts;
     SongInfo m_song;
     QNetworkAccessManager *m_http;
     SoundCore *m_core;
+    QNetworkReply *m_handshakeReply;
+    QNetworkReply *m_submitReply;
+    QNetworkReply *m_notificationReply;
+    QTime* m_time;
     QString m_login;
     QString m_passw;
     QString m_submitUrl;
     QString m_nowPlayingUrl;
     QString m_session;
+    QString m_server, m_name;
     QList <SongInfo> m_songCache;
     QByteArray m_ua;
-    QTime* m_time;
     int m_submitedSongs;
     int m_failure_count;
     int m_handshake_count;
-    QNetworkReply *m_handshakeReply;
-    QNetworkReply *m_submitReply;
-    QNetworkReply *m_notificationReply;
     bool m_disabled;
-    QString m_server, m_name;
+
 };
 
 #endif
