@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,28 +17,65 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
+#ifndef LIBREFMSCROBBLER_H
+#define LIBREFMSCROBBLER_H
 
-#include <QSettings>
-#include "lastfmscrobbler.h"
-#include "librefmscrobbler.h"
-#include "scrobblerhandler.h"
+#include <QMap>
+#include <QObject>
+#include <qmmp/qmmp.h>
+#include "scrobblercache.h"
 
-ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
+class QNetworkAccessManager;
+class QNetworkReply;
+class QTime;
+class SoundCore;
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class LibrefmScrobbler : public QObject
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Scrobbler");
-    if(settings.value("use_lastfm", false).toBool())
-    {
-        new LastfmScrobbler(this);
-    }
-    if(settings.value("use_librefm", false).toBool())
-    {
-        new LibrefmScrobbler(settings.value("librefm_login").toString(),
-                             settings.value("librefm_password").toString(), this);
+    Q_OBJECT
+public:
+    LibrefmScrobbler(const QString &login, const QString &passw, QObject *parent = 0);
 
-    }
-    settings.endGroup();
-}
+    ~LibrefmScrobbler();
 
-ScrobblerHandler::~ScrobblerHandler()
-{}
+private slots:
+    void setState(Qmmp::State state);
+    void updateMetaData();
+    void processResponse(QNetworkReply *reply);
+    void setupProxy();
+    void handshake();
+
+private:
+    enum { MIN_SONG_LENGTH = 30 };
+
+    void submit();
+    void sendNotification(const SongInfo &info);
+    bool isReady();
+
+    uint m_start_ts;
+    SongInfo m_song;
+    QString m_login;
+    QString m_passw;
+    QString m_submitUrl;
+    QString m_nowPlayingUrl;
+    QString m_session;
+    QList <SongInfo> m_cachedSongs;
+    QByteArray m_ua;
+    int m_submitedSongs;
+    int m_failure_count;
+    int m_handshake_count;
+    bool m_disabled;
+    QNetworkAccessManager *m_http;
+    SoundCore *m_core;
+    QNetworkReply *m_handshakeReply;
+    QNetworkReply *m_submitReply;
+    QNetworkReply *m_notificationReply;
+    QTime* m_time;
+    ScrobblerCache *m_cache;
+
+};
+
+#endif

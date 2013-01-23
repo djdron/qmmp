@@ -28,16 +28,18 @@ unix {
     INSTALLS += target
 }
 HEADERS += scrobblerfactory.h \
-    scrobbler.h \
     settingsdialog.h \
     scrobblerhandler.h \
-    scrobbler2.h
+    lastfmscrobbler.h \
+    librefmscrobbler.h \
+    scrobblercache.h
 win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += scrobblerfactory.cpp \
-    scrobbler.cpp \
     settingsdialog.cpp \
     scrobblerhandler.cpp \
-    scrobbler2.cpp
+    lastfmscrobbler.cpp \
+    librefmscrobbler.cpp \
+    scrobblercache.cpp
 QT += network
 INCLUDEPATH += ../../../
 unix:LIBS += -lqmmpui \
@@ -45,3 +47,15 @@ unix:LIBS += -lqmmpui \
 win32:LIBS += -lqmmpui0 \
     -lqmmp0
 FORMS += settingsdialog.ui
+
+
+
+
+
+
+
+
+
+
+
+
