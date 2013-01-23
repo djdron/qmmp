@@ -30,18 +30,23 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libscrobbler_SRCS
     settingsdialog.cpp
-    scrobbler.cpp
     scrobblerhandler.cpp
     scrobblerfactory.cpp
-    scrobbler2.cpp
+    scrobblercache.cpp
+    lastfmscrobbler.cpp
+    librefmscrobbler.cpp
 )
 
 SET(libscrobbler_MOC_HDRS
     settingsdialog.h
     scrobblerfactory.h
     scrobblerhandler.h
-    scrobbler.h
-    scrobbler2.h
+    lastfmscrobbler.h
+    librefmscrobbler.h
+)
+
+SET(libscrobbler_HDRS
+    scrobblercache.h
 )
 
 SET(libscrobbler_RCCS translations/translations.qrc)
@@ -63,7 +68,7 @@ QT4_WRAP_UI(libscrobbler_UIS_H ${libscrobbler_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(scrobbler MODULE ${libscrobbler_SRCS} ${libscrobbler_MOC_SRCS} ${libscrobbler_UIS_H}
-  ${libscrobbler_RCC_SRCS})
+  ${libscrobbler_RCC_SRCS} ${libscrobbler_HDRS})
 add_dependencies(scrobbler qmmpui)
 target_link_libraries(scrobbler ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS scrobbler DESTINATION ${LIB_DIR}/qmmp/General)

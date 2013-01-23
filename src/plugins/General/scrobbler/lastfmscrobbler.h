@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,12 +17,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef SCROBBLER_H
-#define SCROBBLER_H
+#ifndef LASTFMSCROBBLER_H
+#define LASTFMSCROBBLER_H
 
 #include <QMap>
 #include <QObject>
 #include <qmmp/qmmp.h>
+#include "scrobblercache.h"
 
 class QNetworkAccessManager;
 class QNetworkReply;
@@ -32,87 +33,53 @@ class SoundCore;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class SongInfo
+struct LastfmResponse
 {
-public:
-    SongInfo();
-    SongInfo(const QMap <Qmmp::MetaData, QString> metadata, qint64 length = 0);
-    SongInfo(const SongInfo &other);
-
-    ~SongInfo();
-
-    void operator=(const SongInfo &info);
-    bool operator==(const SongInfo &info);
-    bool operator!=(const SongInfo &info);
-
-    void setMetaData(const QMap <Qmmp::MetaData, QString> metadata);
-    void setMetaData(Qmmp::MetaData key, const QString &value);
-    void setLength(qint64 l);
-    const QMap <Qmmp::MetaData, QString> metaData() const;
-    const QString metaData(Qmmp::MetaData) const;
-    qint64 length () const;
-    void clear();
-    void setTimeStamp(uint ts);
-    uint timeStamp() const;
-
-private:
-    QMap <Qmmp::MetaData, QString> m_metadata;
-    qint64 m_length;
-    uint m_start_ts;
-
+    QString status;
+    QString token;
+    QString code;
+    QString error;
+    QString key;
+    QString name;
+    QString subscriber;
 };
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class Scrobbler : public QObject
+class LastfmScrobbler : public QObject
 {
     Q_OBJECT
 public:
-    Scrobbler(const QString &url,
-              const QString &login,
-              const QString &passw,
-              const QString &name,
-              QObject *parent = 0);
-
-    ~Scrobbler();
+    LastfmScrobbler(QObject *parent = 0);
+    ~LastfmScrobbler();
 
 private slots:
     void setState(Qmmp::State state);
     void updateMetaData();
     void processResponse(QNetworkReply *reply);
     void setupProxy();
-    void handshake();
+    void getToken();
+    void getSession();
+    void submit();
 
 private:
     enum { MIN_SONG_LENGTH = 30 };
 
-    void submit();
     void sendNotification(const SongInfo &info);
-    bool isReady();
-    void writeCache();
-    void readCache();
     uint m_start_ts;
     SongInfo m_song;
-    QNetworkAccessManager *m_http;
-    SoundCore *m_core;
-    QNetworkReply *m_handshakeReply;
-    QNetworkReply *m_submitReply;
-    QNetworkReply *m_notificationReply;
-    QTime* m_time;
-    QString m_login;
-    QString m_passw;
-    QString m_submitUrl;
-    QString m_nowPlayingUrl;
-    QString m_session;
-    QString m_server, m_name;
-    QList <SongInfo> m_songCache;
+    Qmmp::State m_state;
+    QList <SongInfo> m_cachedSongs;
     QByteArray m_ua;
     int m_submitedSongs;
-    int m_failure_count;
-    int m_handshake_count;
-    bool m_disabled;
-
+    QString m_token, m_session;
+    QNetworkAccessManager *m_http;
+    SoundCore *m_core;
+    QNetworkReply *m_getTokenReply, *m_getSessionReply;
+    QNetworkReply *m_submitReply, *m_notificationReply;
+    QTime *m_time;
+    ScrobblerCache *m_cache;
 };
 
 #endif

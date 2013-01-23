@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2013 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,70 +17,62 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef SCROBBLER2_H
-#define SCROBBLER2_H
+
+#ifndef SCROBBLERCACHE_H
+#define SCROBBLERCACHE_H
 
 #include <QMap>
+#include <QList>
 #include <qmmp/qmmp.h>
-#include "scrobbler.h"
 
-class QNetworkAccessManager;
-class QNetworkReply;
-class QTime;
-class SoundCore;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-struct Scrobbler2Response
+class SongInfo
 {
-    QString status;
-    QString token;
-    QString code;
-    QString error;
-    QString key;
-    QString name;
-    QString subscriber;
-};
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class Scrobbler2 : public QObject
-{
-    Q_OBJECT
 public:
-    Scrobbler2(const QString &url, const QString &name, QObject *parent = 0);
-    ~Scrobbler2();
+    SongInfo();
+    SongInfo(const QMap <Qmmp::MetaData, QString> metadata, qint64 length = 0);
+    SongInfo(const SongInfo &other);
 
-private slots:
-    void setState(Qmmp::State state);
-    void updateMetaData();
-    void processResponse(QNetworkReply *reply);
-    void setupProxy();
-    void getToken();
-    void getSession();
-    void submit();
+    ~SongInfo();
+
+    void operator=(const SongInfo &info);
+    bool operator==(const SongInfo &info);
+    bool operator!=(const SongInfo &info);
+
+    void setMetaData(const QMap <Qmmp::MetaData, QString> metadata);
+    void setMetaData(Qmmp::MetaData key, const QString &value);
+    void setLength(qint64 l);
+    const QMap <Qmmp::MetaData, QString> metaData() const;
+    const QString metaData(Qmmp::MetaData) const;
+    qint64 length () const;
+    void clear();
+    void setTimeStamp(uint ts);
+    uint timeStamp() const;
 
 private:
-    enum { MIN_SONG_LENGTH = 30 };
-
-    void sendNotification(const SongInfo &info);
-    void writeCache();
-    void readCache();
+    QMap <Qmmp::MetaData, QString> m_metadata;
+    qint64 m_length;
     uint m_start_ts;
-    SongInfo m_song;
-    QNetworkAccessManager *m_http;
-    Qmmp::State m_state;
-    SoundCore *m_core;
-    QList <SongInfo> m_songCache;
-    QByteArray m_ua;
-    QTime* m_time;
-    int m_submitedSongs;
-    QNetworkReply *m_getTokenReply, *m_getSessionReply;
-    QNetworkReply *m_submitReply, *m_notificationReply;
-    QString m_server, m_name;
-    QString m_token, m_session;
+
 };
 
-#endif
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ScrobblerCache
+{
+public:
+    explicit ScrobblerCache(const QString &filePath);
+
+    QList<SongInfo> load();
+    void save(const QList<SongInfo> &songs);
+
+private:
+    QString m_filePath;
+
+};
+
+#endif // SCROBBLERCACHE_H
