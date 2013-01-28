@@ -37,29 +37,80 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="43"/>
         <source>Session:</source>
         <translation>סשן:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="51"/>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>Register new session</source>
         <translation>רישום סשן חדש</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="85"/>
         <source>Libre.fm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="70"/>
+        <location filename="../settingsdialog.ui" line="94"/>
         <source>User name:</source>
         <translation>שם משתמש:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="80"/>
+        <location filename="../settingsdialog.ui" line="104"/>
         <source>Password:</source>
         <translation>סיסמה:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="90"/>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="71"/>
+        <source>1. Wait for browser startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="72"/>
+        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="73"/>
+        <source>3. Press &quot;OK&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="77"/>
+        <location filename="../settingsdialog.cpp" line="81"/>
+        <location filename="../settingsdialog.cpp" line="96"/>
+        <location filename="../settingsdialog.cpp" line="100"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="77"/>
+        <location filename="../settingsdialog.cpp" line="96"/>
+        <source>Network error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="81"/>
+        <location filename="../settingsdialog.cpp" line="100"/>
+        <source>Unable to register new session.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="90"/>
+        <source>New session has been received successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -27,14 +27,17 @@
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QIODevice;
 class QTime;
 class SoundCore;
+
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-struct LastfmResponse
+class LastfmResponse
 {
+public:
     QString status;
     QString token;
     QString code;
@@ -42,6 +45,8 @@ struct LastfmResponse
     QString key;
     QString name;
     QString subscriber;
+
+    void parse(QIODevice *device);
 };
 
 /**
@@ -80,6 +85,39 @@ private:
     QNetworkReply *m_submitReply, *m_notificationReply;
     QTime *m_time;
     ScrobblerCache *m_cache;
+};
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class LastfmAuth : public QObject
+{
+    Q_OBJECT
+public:
+    explicit LastfmAuth(QObject *parent = 0);
+    void getToken();
+    void getSession();
+    QString session() const;
+
+    enum ErrorType
+    {
+        NO_ERROR = 0,
+        NETWORK_ERROR,
+        LASTFM_ERROR
+    };
+
+signals:
+    void tokenRequestFinished(int error);
+    void sessionRequestFinished(int error);
+
+private slots:
+    void processResponse(QNetworkReply *reply);
+
+private:
+    QString m_token, m_session;
+    QByteArray m_ua;
+    QNetworkAccessManager *m_http;
+    QNetworkReply *m_getTokenReply, *m_getSessionReply;
 };
 
 #endif

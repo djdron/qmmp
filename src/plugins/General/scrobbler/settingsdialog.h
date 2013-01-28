@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,12 +21,12 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
-
 #include "ui_settingsdialog.h"
 
+class LastfmAuth;
+
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
@@ -36,12 +36,17 @@ public:
 
     ~SettingsDialog();
 
-
 public slots:
     virtual void accept();
 
+private slots:
+    void on_newSessionButton_lastfm_clicked();
+    void processTokenResponse(int error);
+    void processSessionResponse(int error);
+
 private:
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
+    LastfmAuth *m_lastfmAuth;
 
 };
 

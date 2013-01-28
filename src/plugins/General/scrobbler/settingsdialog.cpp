@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,22 +19,26 @@
  ***************************************************************************/
 
 #include <QSettings>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
+#include "lastfmscrobbler.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
+    m_lastfmAuth = new LastfmAuth(this);
+    connect(m_lastfmAuth, SIGNAL(tokenRequestFinished(int)), SLOT(processTokenResponse(int)));
+    connect(m_lastfmAuth, SIGNAL(sessionRequestFinished(int)), SLOT(processSessionResponse(int)));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", false).toBool());
-    ui.sessionLineEdit_lastfm->setText(settings.value("lastfm_session").toString());
-    ui.librefmGroupBox->setChecked(settings.value("use_librefm", false).toBool());
-    ui.userLineEdit_libre->setText(settings.value("librefm_login").toString());
-    ui.passwordLineEdit_libre->setText(settings.value("librefm_password").toString());
+    m_ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", false).toBool());
+    m_ui.sessionLineEdit_lastfm->setText(settings.value("lastfm_session").toString());
+    m_ui.librefmGroupBox->setChecked(settings.value("use_librefm", false).toBool());
+    m_ui.userLineEdit_libre->setText(settings.value("librefm_login").toString());
+    m_ui.passwordLineEdit_libre->setText(settings.value("librefm_password").toString());
     settings.endGroup();
 }
-
 
 SettingsDialog::~SettingsDialog()
 {}
@@ -43,13 +47,56 @@ void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    settings.setValue("use_lastfm", ui.lastfmGroupBox->isChecked());
-    if(ui.newSessionCheckBox_lastfm->isChecked())
-        ui.sessionLineEdit_lastfm->clear();
-    settings.setValue("lastfm_session",ui.sessionLineEdit_lastfm->text());
-    settings.setValue("use_librefm", ui.librefmGroupBox->isChecked());
-    settings.setValue("librefm_login",ui.userLineEdit_libre->text());
-    settings.setValue("librefm_password", ui.passwordLineEdit_libre->text());
+    settings.setValue("use_lastfm", m_ui.lastfmGroupBox->isChecked());
+    settings.setValue("lastfm_session",m_ui.sessionLineEdit_lastfm->text());
+    settings.setValue("use_librefm", m_ui.librefmGroupBox->isChecked());
+    settings.setValue("librefm_login",m_ui.userLineEdit_libre->text());
+    settings.setValue("librefm_password", m_ui.passwordLineEdit_libre->text());
     settings.endGroup();
     QDialog::accept();
+}
+
+void SettingsDialog::on_newSessionButton_lastfm_clicked()
+{
+    m_lastfmAuth->getToken();
+}
+
+void SettingsDialog::processTokenResponse(int error)
+{
+    switch(error)
+    {
+    case LastfmAuth::NO_ERROR:
+        QMessageBox::information(this,
+                                 tr("Message"),
+                                 tr("1. Wait for browser startup.") + "\n" +
+                                 tr("2. Allow Qmmp to scrobble tracks to your Last.fm account.") + "\n" +
+                                 tr("3. Press \"OK\"."));
+        m_lastfmAuth->getSession();
+        break;
+    case LastfmAuth::NETWORK_ERROR:
+        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        break;
+    case LastfmAuth::LASTFM_ERROR:
+    default:
+        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session."));
+    }
+}
+
+void SettingsDialog::processSessionResponse(int error)
+{
+    switch(error)
+    {
+    case LastfmAuth::NO_ERROR:
+        QMessageBox::information(this, tr("Message"), tr("New session has been received successfully."));
+        m_ui.sessionLineEdit_lastfm->setText(m_lastfmAuth->session());
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+        settings.setValue("lastfm_session",m_ui.sessionLineEdit_lastfm->text());
+        break;
+    case LastfmAuth::NETWORK_ERROR:
+        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        break;
+    case LastfmAuth::LASTFM_ERROR:
+    default:
+        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session."));
+    }
 }

@@ -42,6 +42,44 @@
 #define SECRET "32d47bc0010473d40e1d38bdcff20968"
 
 
+void LastfmResponse::parse(QIODevice *device)
+{
+    QXmlStreamReader reader(device);
+    QStringList tags;
+    while(!reader.atEnd())
+    {
+        reader.readNext();
+        if(reader.isStartElement())
+        {
+            tags << reader.name().toString();
+            if(tags.last() == "lfm")
+                status = reader.attributes().value("status").toString();
+            else if(tags.last() == "error")
+                code = reader.attributes().value("code").toString();
+        }
+        else if(reader.isCharacters() && !reader.isWhitespace())
+        {
+            if(tags.last() == "token")
+                token = reader.text().toString();
+            else if(tags.last() == "error")
+                error = reader.text().toString();
+            if(tags.count() >= 2 && tags.at(tags.count() - 2) == "session")
+            {
+                if(tags.last() == "key")
+                    key = reader.text().toString();
+                else if(tags.last() == "name")
+                    name = reader.text().toString();
+                else if(tags.last() == "subscriber")
+                    subscriber = reader.text().toString();
+            }
+        }
+        else if(reader.isEndElement())
+        {
+            tags.takeLast();
+        }
+    }
+}
+
 LastfmScrobbler::LastfmScrobbler(QObject *parent) : QObject(parent)
 {
     m_getTokenReply = 0;
@@ -140,40 +178,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
     }
 
     LastfmResponse response;
-    QStringList tags;
-    QXmlStreamReader reader(reply);
-    while(!reader.atEnd())
-    {
-        reader.readNext();
-        if(reader.isStartElement())
-        {
-            tags << reader.name().toString();
-            if(tags.last() == "lfm")
-                response.status = reader.attributes().value("status").toString();
-            else if(tags.last() == "error")
-                response.code = reader.attributes().value("code").toString();
-        }
-        else if(reader.isCharacters() && !reader.isWhitespace())
-        {
-            if(tags.last() == "token")
-                response.token = reader.text().toString();
-            else if(tags.last() == "error")
-                response.error = reader.text().toString();
-            if(tags.count() >= 2 && tags.at(tags.count() - 2) == "session")
-            {
-                if(tags.last() == "key")
-                    response.key = reader.text().toString();
-                else if(tags.last() == "name")
-                    response.name = reader.text().toString();
-                else if(tags.last() == "subscriber")
-                    response.subscriber = reader.text().toString();
-            }
-        }
-        else if(reader.isEndElement())
-        {
-            tags.takeLast();
-        }
-    }
+    response.parse(reply);
 
     QString error_code;
     if(response.status != "ok" && !response.status.isEmpty())
@@ -461,4 +466,167 @@ void LastfmScrobbler::sendNotification(const SongInfo &info)
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());
     m_notificationReply = m_http->post(request, bodyData);
+}
+
+LastfmAuth::LastfmAuth(QObject *parent) : QObject(parent)
+{
+    m_getTokenReply = 0;
+    m_getSessionReply = 0;
+    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
+    m_http = new QNetworkAccessManager(this);
+    connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
+
+    QmmpSettings *gs = QmmpSettings::instance();
+    if (gs->isProxyEnabled())
+    {
+        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
+        if(gs->useProxyAuth())
+        {
+            proxy.setUser(gs->proxy().userName());
+            proxy.setPassword(gs->proxy().password());
+        }
+        m_http->setProxy(proxy);
+    }
+    else
+        m_http->setProxy(QNetworkProxy::NoProxy);
+}
+
+void LastfmAuth::getToken()
+{
+    qDebug("LastfmAuth: new token request");
+    m_session.clear();
+    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
+    url.setPort(80);
+    url.addQueryItem("method", "auth.getToken");
+    url.addQueryItem("api_key", API_KEY);
+
+    QByteArray data;
+    data.append("api_key"API_KEY);
+    data.append("methodauth.getToken");
+    data.append(SECRET);
+    url.addQueryItem("api_sig", QCryptographicHash::hash(data,QCryptographicHash::Md5).toHex());
+
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent",  m_ua);
+    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    m_getTokenReply = m_http->get(request);
+}
+
+void LastfmAuth::getSession()
+{
+    qDebug("LastfmAuth: new session request");
+    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
+    url.setPort(80);
+    url.addQueryItem("api_key", API_KEY);
+    url.addQueryItem("method", "auth.getSession");
+    url.addQueryItem("token", m_token);
+
+    QByteArray data;
+    data.append("api_key"API_KEY);
+    data.append("methodauth.getSession");
+    data.append("token" + m_token.toUtf8());
+    data.append(SECRET);
+    url.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent",  m_ua);
+    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    m_getSessionReply = m_http->get(request);
+}
+
+QString LastfmAuth::session() const
+{
+    return m_session;
+}
+
+void LastfmAuth::processResponse(QNetworkReply *reply)
+{
+    if (reply->error() != QNetworkReply::NoError)
+    {
+        qWarning("LastfmAuth: http error: %s", qPrintable(reply->errorString()));
+    }
+
+    LastfmResponse response;
+    response.parse(reply);
+
+    QString error_code;
+    if(response.status != "ok" && !response.status.isEmpty())
+    {
+        if(!response.error.isEmpty())
+        {
+            qWarning("LastfmAuth: status=%s, %s-%s", qPrintable(response.status),
+                     qPrintable(response.code), qPrintable(response.error));
+            error_code = response.code;
+        }
+        else
+            qWarning("LastfmAuth: invalid content");
+    }
+
+    if (reply == m_getTokenReply)
+    {
+        m_getTokenReply = 0;
+        if(response.status == "ok")
+        {
+            m_token = response.token;
+            qDebug("LastfmAuth: token: %s", qPrintable(m_token));
+            QDesktopServices::openUrl("http://www.last.fm/api/auth/?api_key="API_KEY"&token="+m_token);
+            emit(tokenRequestFinished(NO_ERROR));
+        }
+        else if(error_code.isEmpty())
+        {
+             m_token.clear();
+             emit tokenRequestFinished(NETWORK_ERROR);
+        }
+        else if(error_code == "8" || error_code == "7" ||  error_code == "11" || error_code.isEmpty())
+        {
+            m_token.clear();
+            emit tokenRequestFinished(LASTFM_ERROR);
+        }
+        else
+        {
+            m_token.clear();
+            emit tokenRequestFinished(LASTFM_ERROR);
+        }
+    }
+    else if(reply == m_getSessionReply)
+    {
+        m_getSessionReply = 0;
+        m_session.clear();
+        if(response.status == "ok")
+        {
+            m_session = response.key;
+            qDebug("LastfmAuth: name: %s", qPrintable(response.name));
+            qDebug("LastfmAuth: key: %s", qPrintable(m_session));
+            qDebug("LastfmAuth: subscriber: %s", qPrintable(response.subscriber));
+            emit sessionRequestFinished(NO_ERROR);
+        }
+        else if(error_code == "4" || error_code == "15") //invalid token
+        {
+            m_token.clear();
+            emit sessionRequestFinished(LASTFM_ERROR);
+        }
+        else if(error_code == "11") //service offline
+        {
+            m_token.clear();
+            emit sessionRequestFinished(LASTFM_ERROR);
+        }
+        else if(error_code == "14") // unauthorized token
+        {
+            m_token.clear();
+            emit sessionRequestFinished(LASTFM_ERROR);
+        }
+        else if (error_code.isEmpty()) //network error
+        {
+            m_token.clear();
+            emit sessionRequestFinished(NETWORK_ERROR);
+        }
+        else
+        {
+            m_token.clear();
+            emit sessionRequestFinished(LASTFM_ERROR);
+        }
+    }
+    reply->deleteLater();
 }
