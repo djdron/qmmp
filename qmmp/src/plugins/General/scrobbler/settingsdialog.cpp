@@ -87,11 +87,14 @@ void SettingsDialog::processSessionResponse(int error)
     switch(error)
     {
     case LastfmAuth::NO_ERROR:
+    {
         QMessageBox::information(this, tr("Message"), tr("New session has been received successfully."));
         m_ui.sessionLineEdit_lastfm->setText(m_lastfmAuth->session());
+
         QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue("lastfm_session",m_ui.sessionLineEdit_lastfm->text());
+        settings.setValue("Scrobbler/lastfm_session",m_ui.sessionLineEdit_lastfm->text());
         break;
+    }
     case LastfmAuth::NETWORK_ERROR:
         QMessageBox::warning(this, tr("Error"), tr("Network error."));
         break;
