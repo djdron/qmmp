@@ -68,7 +68,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
-        <location filename="../settingsdialog.cpp" line="90"/>
+        <location filename="../settingsdialog.cpp" line="91"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
@@ -90,25 +90,25 @@
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="96"/>
-        <location filename="../settingsdialog.cpp" line="100"/>
+        <location filename="../settingsdialog.cpp" line="99"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
-        <location filename="../settingsdialog.cpp" line="96"/>
+        <location filename="../settingsdialog.cpp" line="99"/>
         <source>Network error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="100"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
         <source>Unable to register new session.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="90"/>
+        <location filename="../settingsdialog.cpp" line="91"/>
         <source>New session has been received successfully.</source>
         <translation type="unfinished"></translation>
     </message>
