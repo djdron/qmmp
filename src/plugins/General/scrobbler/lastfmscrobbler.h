@@ -94,6 +94,7 @@ public:
     explicit LastfmAuth(QObject *parent = 0);
     void getToken();
     void getSession();
+    void checkSession(const QString &session);
     QString session() const;
 
     enum ErrorType
@@ -106,6 +107,7 @@ public:
 signals:
     void tokenRequestFinished(int error);
     void sessionRequestFinished(int error);
+    void checkSessionFinished(int error);
 
 private slots:
     void processResponse(QNetworkReply *reply);
@@ -114,7 +116,7 @@ private:
     QString m_token, m_session;
     QByteArray m_ua;
     QNetworkAccessManager *m_http;
-    QNetworkReply *m_getTokenReply, *m_getSessionReply;
+    QNetworkReply *m_getTokenReply, *m_getSessionReply, *m_checkSessionReply;
 };
 
 #endif

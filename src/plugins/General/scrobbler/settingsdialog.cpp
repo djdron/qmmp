@@ -30,6 +30,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     m_lastfmAuth = new LastfmAuth(this);
     connect(m_lastfmAuth, SIGNAL(tokenRequestFinished(int)), SLOT(processTokenResponse(int)));
     connect(m_lastfmAuth, SIGNAL(sessionRequestFinished(int)), SLOT(processSessionResponse(int)));
+    connect(m_lastfmAuth, SIGNAL(checkSessionFinished(int)), SLOT(processCheckResponse(int)));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     m_ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", false).toBool());
@@ -58,11 +59,13 @@ void SettingsDialog::accept()
 
 void SettingsDialog::on_newSessionButton_lastfm_clicked()
 {
+    m_ui.newSessionButton_lastfm->setEnabled(false);
     m_lastfmAuth->getToken();
 }
 
 void SettingsDialog::processTokenResponse(int error)
 {
+    m_ui.newSessionButton_lastfm->setEnabled(true);
     switch(error)
     {
     case LastfmAuth::NO_ERROR:
@@ -71,6 +74,7 @@ void SettingsDialog::processTokenResponse(int error)
                                  tr("1. Wait for browser startup.") + "\n" +
                                  tr("2. Allow Qmmp to scrobble tracks to your Last.fm account.") + "\n" +
                                  tr("3. Press \"OK\"."));
+        m_ui.newSessionButton_lastfm->setEnabled(false);
         m_lastfmAuth->getSession();
         break;
     case LastfmAuth::NETWORK_ERROR:
@@ -84,6 +88,7 @@ void SettingsDialog::processTokenResponse(int error)
 
 void SettingsDialog::processSessionResponse(int error)
 {
+    m_ui.newSessionButton_lastfm->setEnabled(true);
     switch(error)
     {
     case LastfmAuth::NO_ERROR:
@@ -101,5 +106,34 @@ void SettingsDialog::processSessionResponse(int error)
     case LastfmAuth::LASTFM_ERROR:
     default:
         QMessageBox::warning(this, tr("Error"), tr("Unable to register new session."));
+    }
+}
+
+void SettingsDialog::on_checkButton_lastfm_clicked()
+{
+    if(!m_ui.sessionLineEdit_lastfm->text().isEmpty())
+    {
+        m_ui.checkButton_lastfm->setEnabled(false);
+        m_lastfmAuth->checkSession(m_ui.sessionLineEdit_lastfm->text());
+    }
+}
+
+void SettingsDialog::processCheckResponse(int error)
+{
+    m_ui.checkButton_lastfm->setEnabled(true);
+    switch(error)
+    {
+    case LastfmAuth::NO_ERROR:
+    {
+        QMessageBox::information(this, tr("Message"), tr("Permission granted."));
+        m_ui.sessionLineEdit_lastfm->setText(m_lastfmAuth->session());
+        break;
+    }
+    case LastfmAuth::NETWORK_ERROR:
+        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        break;
+    case LastfmAuth::LASTFM_ERROR:
+    default:
+        QMessageBox::warning(this, tr("Error"), tr("Permission denied."));
     }
 }
