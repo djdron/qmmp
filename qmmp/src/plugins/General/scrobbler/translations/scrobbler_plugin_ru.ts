@@ -75,18 +75,46 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="74"/>
-        <source>1. Wait for browser startup.</source>
-        <translation>1. Подождите, пока запустится браузер.</translation>
+        <source>1. Wait for browser startup</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
-        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account.</source>
-        <translation>2. Разрешите доступ Qmmp к вашей учётной записи на Last.fm.</translation>
+        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="76"/>
-        <source>3. Press &quot;OK&quot;.</source>
-        <translation>3. Нажмите &quot;OK&quot;.</translation>
+        <source>3. Press &quot;OK&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="81"/>
+        <location filename="../settingsdialog.cpp" line="104"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Network error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="85"/>
+        <location filename="../settingsdialog.cpp" line="108"/>
+        <source>Unable to register new session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="96"/>
+        <source>New session has been received successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="128"/>
+        <source>Permission granted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="137"/>
+        <source>Permission denied</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
@@ -97,34 +125,6 @@
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Error</source>
         <translation>Ошибка</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Network error.</source>
-        <translation>Ошибка соединения.</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Unable to register new session.</source>
-        <translation>Невозможно зарегистрировать новую сессию.</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="96"/>
-        <source>New session has been received successfully.</source>
-        <translation>Новая сессия успешно получена.</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="128"/>
-        <source>Permission granted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
-        <source>Permission denied.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

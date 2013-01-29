@@ -71,18 +71,18 @@ void SettingsDialog::processTokenResponse(int error)
     case LastfmAuth::NO_ERROR:
         QMessageBox::information(this,
                                  tr("Message"),
-                                 tr("1. Wait for browser startup.") + "\n" +
-                                 tr("2. Allow Qmmp to scrobble tracks to your Last.fm account.") + "\n" +
-                                 tr("3. Press \"OK\"."));
+                                 tr("1. Wait for browser startup") + "\n" +
+                                 tr("2. Allow Qmmp to scrobble tracks to your Last.fm account") + "\n" +
+                                 tr("3. Press \"OK\""));
         m_ui.newSessionButton_lastfm->setEnabled(false);
         m_lastfmAuth->getSession();
         break;
     case LastfmAuth::NETWORK_ERROR:
-        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        QMessageBox::warning(this, tr("Error"), tr("Network error"));
         break;
     case LastfmAuth::LASTFM_ERROR:
     default:
-        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session."));
+        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session"));
     }
 }
 
@@ -93,7 +93,7 @@ void SettingsDialog::processSessionResponse(int error)
     {
     case LastfmAuth::NO_ERROR:
     {
-        QMessageBox::information(this, tr("Message"), tr("New session has been received successfully."));
+        QMessageBox::information(this, tr("Message"), tr("New session has been received successfully"));
         m_ui.sessionLineEdit_lastfm->setText(m_lastfmAuth->session());
 
         QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -101,11 +101,11 @@ void SettingsDialog::processSessionResponse(int error)
         break;
     }
     case LastfmAuth::NETWORK_ERROR:
-        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        QMessageBox::warning(this, tr("Error"), tr("Network error"));
         break;
     case LastfmAuth::LASTFM_ERROR:
     default:
-        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session."));
+        QMessageBox::warning(this, tr("Error"), tr("Unable to register new session"));
     }
 }
 
@@ -125,15 +125,15 @@ void SettingsDialog::processCheckResponse(int error)
     {
     case LastfmAuth::NO_ERROR:
     {
-        QMessageBox::information(this, tr("Message"), tr("Permission granted."));
+        QMessageBox::information(this, tr("Message"), tr("Permission granted"));
         m_ui.sessionLineEdit_lastfm->setText(m_lastfmAuth->session());
         break;
     }
     case LastfmAuth::NETWORK_ERROR:
-        QMessageBox::warning(this, tr("Error"), tr("Network error."));
+        QMessageBox::warning(this, tr("Error"), tr("Network error"));
         break;
     case LastfmAuth::LASTFM_ERROR:
     default:
-        QMessageBox::warning(this, tr("Error"), tr("Permission denied."));
+        QMessageBox::warning(this, tr("Error"), tr("Permission denied"));
     }
 }
