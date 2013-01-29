@@ -26,6 +26,7 @@
 #include <QSignalMapper>
 #include <QMenu>
 #include <QSettings>
+#include <QInputDialog>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmp/metadatamanager.h>
@@ -42,7 +43,6 @@
 #include "listwidget.h"
 #include "positionslider.h"
 #include "mainwindow.h"
-#include "renamedialog.h"
 #include "qsuisettings.h"
 #include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
@@ -240,16 +240,16 @@ void MainWindow::removeTab(int index)
 
 void MainWindow::renameTab()
 {
-    RenameDialog *dialog = new RenameDialog(this);
-    if(dialog->exec()==QDialog::Accepted)
+    bool ok = false;
+    QString name = QInputDialog::getText (this,
+                                          tr("Rename Playlist"), tr("Playlist name:"),
+                                          QLineEdit::Normal,
+                                          m_pl_manager->selectedPlayList()->name(), &ok);
+    if(ok)
     {
-        if(!dialog->ui.nameLineEdit->text().isEmpty())
-        {
-            m_pl_manager->playListAt(m_ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
-            updateTabs();
-        }
+        m_pl_manager->selectedPlayList()->setName(name);
+        updateTabs();
     }
-    dialog->deleteLater();
 }
 
 void MainWindow::aboutUi()

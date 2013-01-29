@@ -15,7 +15,6 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     listwidget.cpp \
     visualmenu.cpp \
-    renamedialog.cpp \
     positionslider.cpp \
     actionmanager.cpp \
     shortcutdialog.cpp \
@@ -36,7 +35,6 @@ SOURCES += main.cpp \
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
-    renamedialog.h \
     positionslider.h \
     actionmanager.h \
     shortcutdialog.h \

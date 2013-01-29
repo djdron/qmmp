@@ -35,7 +35,6 @@ SET(libqsui_SRCS
     popupsettings.cpp
     popupwidget.cpp
     positionslider.cpp
-    renamedialog.cpp
     shortcutdialog.cpp
     shortcutitem.cpp
     qsuifactory.cpp
@@ -65,7 +64,6 @@ SET(libqsui_MOC_HDRS
     popupsettings.h
     popupwidget.h
     positionslider.h
-    renamedialog.h
     shortcutdialog.h
     qsuifactory.h
     qsuisettings.h
