@@ -89,7 +89,6 @@ QT4_WRAP_CPP(libqsui_MOC_SRCS ${libqsui_MOC_HDRS})
 SET(libqsui_UIS
     forms/mainwindow.ui
     forms/popupsettings.ui
-    forms/renamedialog.ui
     forms/shortcutdialog.ui
     forms/qsuisettings.ui
     forms/aboutqsuidialog.ui

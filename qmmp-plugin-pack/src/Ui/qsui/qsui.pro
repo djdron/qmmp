@@ -56,7 +56,6 @@ HEADERS += mainwindow.h \
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
-         forms/renamedialog.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
