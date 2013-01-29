@@ -82,8 +82,6 @@ void LastfmResponse::parse(QIODevice *device)
 
 LastfmScrobbler::LastfmScrobbler(QObject *parent) : QObject(parent)
 {
-    m_getTokenReply = 0;
-    m_getSessionReply = 0;
     m_notificationReply = 0;
     m_submitedSongs = 0;
     m_submitReply = 0;
@@ -104,9 +102,7 @@ LastfmScrobbler::LastfmScrobbler(QObject *parent) : QObject(parent)
     setupProxy();
     m_cachedSongs = m_cache->load();
 
-    if(m_session.isEmpty())
-        getToken();
-    else
+    if(!m_session.isEmpty())
     {
         submit();
         if(m_core->state() == Qmmp::Playing)
@@ -193,66 +189,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
             qWarning("LastfmScrobbler: invalid content");
     }
 
-    if (reply == m_getTokenReply)
-    {
-        m_getTokenReply = 0;
-        if(response.status == "ok")
-        {
-            m_token = response.token;
-            qDebug("LastfmScrobbler: token: %s", qPrintable(m_token));
-            QDesktopServices::openUrl("http://www.last.fm/api/auth/?api_key="API_KEY"&token="+m_token);
-            QTimer::singleShot(120000, this, SLOT(getSession())); //2 minutes
-        }
-        else if(error_code == "8" || error_code == "7" ||  error_code == "11" || error_code.isEmpty())
-        {
-            m_token.clear();
-            QTimer::singleShot(120000, this, SLOT(getToken())); // wait 2 minutes and try again
-        }
-        else
-        {
-            m_token.clear();
-            qWarning("LastfmScrobbler: service returned unrecoverable error, scrobbling disabled");
-        }
-    }
-    else if(reply == m_getSessionReply)
-    {
-        m_getSessionReply = 0;
-        m_session.clear();
-        if(response.status == "ok")
-        {
-            m_session = response.key;
-            qDebug("LastfmScrobbler: name: %s", qPrintable(response.name));
-            qDebug("LastfmScrobbler: key: %s", qPrintable(m_session));
-            qDebug("LastfmScrobbler: subscriber: %s", qPrintable(response.subscriber));
-            QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-            settings.setValue("Scrobbler/lastfm_session", m_session);
-            submit();
-        }
-        else if(error_code == "4" || error_code == "15") //invalid token
-        {
-            m_token.clear();
-            getToken();
-        }
-        else if(error_code == "11") //service offline
-        {
-            QTimer::singleShot(120000, this, SLOT(getSession()));
-        }
-        else if(error_code == "14") // unauthorized token
-        {
-            QDesktopServices::openUrl("http://www.last.fm/api/auth/?api_key="API_KEY"&token="+m_token);
-            QTimer::singleShot(120000, this, SLOT(getSession())); //2 minutes
-        }
-        else if (error_code.isEmpty()) //network error
-        {
-            QTimer::singleShot(120000, this, SLOT(getSession()));
-        }
-        else
-        {
-            m_token.clear();
-            qWarning("LastfmScrobbler: service returned unrecoverable error, scrobbling disabled");
-        }
-    }
-    else if (reply == m_submitReply)
+    if (reply == m_submitReply)
     {
         m_submitReply = 0;
         if (response.status == "ok")
@@ -276,7 +213,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         else if(error_code == "9") //invalid session key
         {
             m_session.clear();
-            getToken();
+            qWarning("LastfmScrobbler: invalid session key, scrobbling disabled");
         }
         else if(error_code == "11" || error_code == "16" || error_code.isEmpty()) //unavailable
         {
@@ -298,7 +235,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         else if(error_code == "9") //invalid session key
         {
             m_session.clear();
-            getToken();
+            qWarning("LastfmScrobbler: invalid session key, scrobbling disabled");
         }
     }
     reply->deleteLater();
@@ -319,51 +256,6 @@ void LastfmScrobbler::setupProxy()
     }
     else
         m_http->setProxy(QNetworkProxy::NoProxy);
-}
-
-void LastfmScrobbler::getToken()
-{
-    qDebug("LastfmScrobbler: new token request");
-    m_session.clear();
-    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
-    url.setPort(80);
-    url.addQueryItem("method", "auth.getToken");
-    url.addQueryItem("api_key", API_KEY);
-
-    QByteArray data;
-    data.append("api_key"API_KEY);
-    data.append("methodauth.getToken");
-    data.append(SECRET);
-    url.addQueryItem("api_sig", QCryptographicHash::hash(data,QCryptographicHash::Md5).toHex());
-
-    QNetworkRequest request(url);
-    request.setRawHeader("User-Agent",  m_ua);
-    request.setRawHeader("Host",url.host().toAscii());
-    request.setRawHeader("Accept", "*/*");
-    m_getTokenReply = m_http->get(request);
-}
-
-void LastfmScrobbler::getSession()
-{
-    qDebug("LastfmScrobbler: new session request");
-    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
-    url.setPort(80);
-    url.addQueryItem("api_key", API_KEY);
-    url.addQueryItem("method", "auth.getSession");
-    url.addQueryItem("token", m_token);
-
-    QByteArray data;
-    data.append("api_key"API_KEY);
-    data.append("methodauth.getSession");
-    data.append("token" + m_token.toUtf8());
-    data.append(SECRET);
-    url.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
-
-    QNetworkRequest request(url);
-    request.setRawHeader("User-Agent",  m_ua);
-    request.setRawHeader("Host",url.host().toAscii());
-    request.setRawHeader("Accept", "*/*");
-    m_getSessionReply = m_http->get(request);
 }
 
 void LastfmScrobbler::submit()
