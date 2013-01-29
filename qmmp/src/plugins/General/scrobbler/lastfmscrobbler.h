@@ -64,8 +64,6 @@ private slots:
     void updateMetaData();
     void processResponse(QNetworkReply *reply);
     void setupProxy();
-    void getToken();
-    void getSession();
     void submit();
 
 private:
@@ -78,10 +76,9 @@ private:
     QList <SongInfo> m_cachedSongs;
     QByteArray m_ua;
     int m_submitedSongs;
-    QString m_token, m_session;
+    QString m_session;
     QNetworkAccessManager *m_http;
     SoundCore *m_core;
-    QNetworkReply *m_getTokenReply, *m_getSessionReply;
     QNetworkReply *m_submitReply, *m_notificationReply;
     QTime *m_time;
     ScrobblerCache *m_cache;
