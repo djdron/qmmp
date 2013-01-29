@@ -428,6 +428,39 @@ void LastfmAuth::getSession()
     m_getSessionReply = m_http->get(request);
 }
 
+void LastfmAuth::checkSession(const QString &session)
+{
+    qDebug("LastfmAuth: checking session...");
+    QMap <QString, QString> params;
+    params.insert("api_key", API_KEY);
+    params.insert("sk", session);
+    params.insert("method", "user.getRecommendedArtists");
+    params.insert("limit", "1");
+
+    QUrl url(SCROBBLER_LASTFM_URL);
+    url.setPort(80);
+
+    QUrl body("");
+    QByteArray data;
+    foreach (QString key, params.keys())
+    {
+        body.addQueryItem(key, params.value(key));
+        data.append(key.toUtf8() + params.value(key).toUtf8());
+    }
+    data.append(SECRET);
+    body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    bodyData.replace("+", QUrl::toPercentEncoding("+"));
+
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent", m_ua);
+    request.setRawHeader("Host", url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());
+    m_checkSessionReply = m_http->post(request, bodyData);
+}
+
 QString LastfmAuth::session() const
 {
     return m_session;
@@ -518,6 +551,25 @@ void LastfmAuth::processResponse(QNetworkReply *reply)
         {
             m_token.clear();
             emit sessionRequestFinished(LASTFM_ERROR);
+        }
+    }
+    else if(reply == m_checkSessionReply)
+    {
+        m_checkSessionReply = 0;
+        if(response.status == "ok")
+        {
+            qDebug("LastfmAuth: session ok");
+            emit checkSessionFinished(NO_ERROR);
+        }
+        else if(error_code.isEmpty())
+        {
+            qWarning("LastfmAuth: network error");
+            emit checkSessionFinished(NETWORK_ERROR);
+        }
+        else
+        {
+            qWarning("LastfmAuth: received last.fm error (code=%s)", qPrintable(error_code));
+            emit checkSessionFinished(LASTFM_ERROR);
         }
     }
     reply->deleteLater();

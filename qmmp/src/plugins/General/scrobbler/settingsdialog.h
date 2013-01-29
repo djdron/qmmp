@@ -43,6 +43,8 @@ private slots:
     void on_newSessionButton_lastfm_clicked();
     void processTokenResponse(int error);
     void processSessionResponse(int error);
+    void on_checkButton_lastfm_clicked();
+    void processCheckResponse(int error);
 
 private:
     Ui::SettingsDialog m_ui;
