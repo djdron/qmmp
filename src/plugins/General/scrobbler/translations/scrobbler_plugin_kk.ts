@@ -75,17 +75,45 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="74"/>
-        <source>1. Wait for browser startup.</source>
+        <source>1. Wait for browser startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
-        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account.</source>
+        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="76"/>
-        <source>3. Press &quot;OK&quot;.</source>
+        <source>3. Press &quot;OK&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="81"/>
+        <location filename="../settingsdialog.cpp" line="104"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Network error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="85"/>
+        <location filename="../settingsdialog.cpp" line="108"/>
+        <source>Unable to register new session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="96"/>
+        <source>New session has been received successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="128"/>
+        <source>Permission granted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="137"/>
+        <source>Permission denied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -96,34 +124,6 @@
         <location filename="../settingsdialog.cpp" line="133"/>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Network error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Unable to register new session.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="96"/>
-        <source>New session has been received successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="128"/>
-        <source>Permission granted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
-        <source>Permission denied.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
