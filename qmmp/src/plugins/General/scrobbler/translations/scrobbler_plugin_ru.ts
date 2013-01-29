@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверить</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -70,22 +70,22 @@
         <location filename="../settingsdialog.cpp" line="70"/>
         <location filename="../settingsdialog.cpp" line="91"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Сообщение</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="71"/>
         <source>1. Wait for browser startup.</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Подождите, пока запустится браузер.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="72"/>
         <source>2. Allow Qmmp to scrobble tracks to your Last.fm account.</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Разрешите доступ Qmmp к вашей учётной записи на Last.fm.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="73"/>
         <source>3. Press &quot;OK&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Нажмите &quot;OK&quot;.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
@@ -93,24 +93,24 @@
         <location filename="../settingsdialog.cpp" line="99"/>
         <location filename="../settingsdialog.cpp" line="103"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <location filename="../settingsdialog.cpp" line="99"/>
         <source>Network error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка соединения.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
         <location filename="../settingsdialog.cpp" line="103"/>
         <source>Unable to register new session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно зарегистрировать новую сессию.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="91"/>
         <source>New session has been received successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая сессия успешно получена.</translation>
     </message>
 </context>
 </TS>
