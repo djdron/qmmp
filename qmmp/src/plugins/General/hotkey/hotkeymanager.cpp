@@ -34,6 +34,7 @@ extern "C"
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include <X11/XF86keysym.h>
+#include <X11/XKBlib.h>
 }
 #undef CursorShape
 #undef Status
@@ -90,7 +91,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
                 Hotkey *hotkey = new Hotkey;
                 hotkey->action = i;
                 hotkey->key = key;
-                hotkey->code = XKeysymToKeycode(QX11Info::display(), hotkey->key);
+                hotkey->code = XkbKeycodeToKeysym(QX11Info::display(), hotkey->key, 0, 0);
                 if(!hotkey->code)
                     continue;
                 XGrabKey(QX11Info::display(),  hotkey->code, mod | mask_mod, rootWindow, False,
@@ -136,7 +137,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
     if (e->type() == QEvent::KeyPress && (o == qApp->desktop () || o == qApp->activeWindow ()))
     {
         QKeyEvent* k = static_cast<QKeyEvent*>(e);
-        quint32 key = XKeycodeToKeysym(QX11Info::display(), k->nativeScanCode (), 0);
+        quint32 key = XkbKeycodeToKeysym(QX11Info::display(), k->nativeScanCode (), 0, 0);
         quint32 mod = k->nativeModifiers ();
         SoundCore *core = SoundCore::instance();
         MediaPlayer *player = MediaPlayer::instance();
@@ -222,7 +223,7 @@ void HotkeyManager::ensureModifiers()
     XModifierKeymap* map = XGetModifierMapping(appDpy);
     if (map)
     {
-        // XKeycodeToKeysym helper code adapeted from xmodmap
+        // XkbKeycodeToKeysym helper code adapeted from xmodmap
         int min_keycode, max_keycode, keysyms_per_keycode = 1;
         XDisplayKeycodes (appDpy, &min_keycode, &max_keycode);
         XFree(XGetKeyboardMapping (appDpy, min_keycode, (max_keycode - min_keycode + 1), &keysyms_per_keycode));
@@ -238,7 +239,7 @@ void HotkeyManager::ensureModifiers()
                     int symIndex = 0;
                     do
                     {
-                        sym = XKeycodeToKeysym(appDpy, map->modifiermap[mapIndex], symIndex);
+                        sym = XkbKeycodeToKeysym(appDpy, map->modifiermap[mapIndex], symIndex, 0);
                         symIndex++;
                     }
                     while ( !sym && symIndex < keysyms_per_keycode);
@@ -308,5 +309,5 @@ QList<long> HotkeyManager::ignModifiersList()
 
 quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
 {
-    return XKeycodeToKeysym(QX11Info::display(), keycode, 0);
+    return XkbKeycodeToKeysym(QX11Info::display(), keycode, 0, 0);
 }

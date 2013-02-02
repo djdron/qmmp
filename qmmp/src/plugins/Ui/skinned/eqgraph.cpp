@@ -116,7 +116,7 @@ void EQGraph::draw()
         return;
     }
 
-    int i, y, ymin, ymax, py = 0;
+    int i, y;
     double x[] = { 0, 11, 23, 35, 47, 59, 71, 83, 97, 109 }, yf[10];
     double *bands = new double[10];
 
@@ -133,19 +133,6 @@ void EQGraph::draw()
             y = 0;
         if (y > 18)
             y = 18;
-        if (!i)
-            py = y;
-        if (y < py)
-        {
-            ymin = y;
-            ymax = py;
-        }
-        else
-        {
-            ymin = py;
-            ymax = y;
-        }
-        py = y;
 
         QPainter paint (&pixmap);
         paint.drawPixmap (i*m_ratio, y*m_ratio, m_skin->getEqSpline (y));

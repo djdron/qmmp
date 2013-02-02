@@ -135,7 +135,7 @@ void Dock::addWidget (QWidget *widget)
 
 void Dock::move (QWidget* mv, QPoint npos)
 {
-    QRect desktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
+    //QRect desktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
 
     /*if(npos.y() < desktopRect.y())
         npos.setY(desktopRect.y());*/

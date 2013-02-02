@@ -23,7 +23,7 @@
 #include <QWidget>
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class QPixmap;
 
@@ -33,14 +33,14 @@ Q_OBJECT
 public:
     PixmapWidget(QWidget *parent = 0);
 
-    ~PixmapWidget();
+    virtual ~PixmapWidget();
 
     virtual void setPixmap(const QPixmap);
 
 protected:
     void paintEvent ( QPaintEvent * event );
 
-private: 
+private:
       QPixmap m_pixmap;
 
 
