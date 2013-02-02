@@ -2258,7 +2258,9 @@ JACK_GetPositionFromDriver(jack_driver_t * drv, enum pos_enum position,
   long elapsedMS;
   double sec2msFactor = 1000;
 
+#if TRACE_ENABLE
   char *type_str = "UNKNOWN type";
+#endif
 
   /* if we are reset we should return a position of 0 */
   if(drv->state == RESET)
@@ -2269,15 +2271,21 @@ JACK_GetPositionFromDriver(jack_driver_t * drv, enum pos_enum position,
 
   if(type == WRITTEN)
   {
+#if TRACE_ENABLE
     type_str = "WRITTEN";
+#endif
     return_val = drv->client_bytes;
   } else if(type == WRITTEN_TO_JACK)
   {
+#if TRACE_ENABLE
     type_str = "WRITTEN_TO_JACK";
+#endif
     return_val = drv->written_client_bytes;
   } else if(type == PLAYED)       /* account for the elapsed time for the played_bytes */
   {
+#if TRACE_ENABLE
     type_str = "PLAYED";
+#endif
     return_val = drv->played_client_bytes;
     gettimeofday(&now, 0);
 
@@ -2316,9 +2324,10 @@ JACK_GetPositionFromDriver(jack_driver_t * drv, enum pos_enum position,
       return_val = 0;
     }
   }
-
+#if TRACE_ENABLE
   TRACE("drv->deviceID(%d), type(%s), return_val = %ld\n", drv->deviceID,
         type_str, return_val);
+#endif
 
   return return_val;
 }
