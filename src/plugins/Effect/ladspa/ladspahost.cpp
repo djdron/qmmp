@@ -435,7 +435,6 @@ void LADSPAHost::initialize(LADSPAEffect *instance)
     const LADSPA_Descriptor *plugin = instance->descriptor;
     const LADSPA_PortRangeHint *hints = plugin->PortRangeHints;
     LADSPA_Data fact, min, max, step, start;
-    int dp;
 
     for (unsigned long k = 0; k < MAX_KNOBS && k < plugin->PortCount; ++k)
     {
@@ -474,41 +473,35 @@ void LADSPAHost::initialize(LADSPAEffect *instance)
         /* infinity */
         if (10000.0f <= max - min)
         {
-            dp = 1;
             step = 5.0f;
 
             /* 100.0 ... lots */
         }
         else if (100.0f < max - min)
         {
-            dp = 0;
             step = 5.0f;
 
             /* 10.0 ... 100.0 */
         }
         else if (10.0f < max - min)
         {
-            dp = 1;
             step = 0.5f;
 
             /* 1.0 ... 10.0 */
         }
         else if (1.0f < max - min)
         {
-            dp = 2;
             step = 0.05f;
 
             /* 0.0 ... 1.0 */
         }
         else
         {
-            dp = 3;
             step = 0.005f;
         }
 
         if (LADSPA_IS_HINT_INTEGER(hints[k].HintDescriptor))
         {
-            dp = 0;
             if (step < 1.0f)
                 step = 1.0f;
         }

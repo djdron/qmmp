@@ -31,7 +31,8 @@ void LXDESupport::load()
     QString conf_path = qgetenv("XDG_CONFIG_HOME");
     if(conf_path.isEmpty())
         conf_path = QDir::homePath() + "/.config";
-    conf_path.append("/lxsession/LXDE/desktop.conf");
+    //conf_path.append("/lxsession/LXDE/desktop.conf");
+    conf_path.append("/lxsession/Lubuntu/desktop.conf");
 
     QSettings lxde_settings(conf_path, QSettings::IniFormat);
     QString themeName = lxde_settings.value("GTK/sNet/IconThemeName").toString();

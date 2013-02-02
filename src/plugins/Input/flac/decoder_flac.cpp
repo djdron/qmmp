@@ -91,9 +91,6 @@ static int flac_decode (void *void_data, char *buf, int buf_len)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) void_data;
     unsigned to_copy;
-    int bytes_per_sample;
-
-    bytes_per_sample = dflac->data()->bits_per_sample / 8;
 
     if (!dflac->data()->sample_buffer_fill)
     {
