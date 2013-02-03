@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,13 +28,18 @@ void LXDESupport::load()
     if(qgetenv("XDG_CURRENT_DESKTOP") != "LXDE")
         return;
 
-    QString conf_path = qgetenv("XDG_CONFIG_HOME");
-    if(conf_path.isEmpty())
-        conf_path = QDir::homePath() + "/.config";
-    //conf_path.append("/lxsession/LXDE/desktop.conf");
-    conf_path.append("/lxsession/Lubuntu/desktop.conf");
+    QString config_dir = qgetenv("XDG_CONFIG_HOME");
+    if(config_dir.isEmpty())
+        config_dir = QDir::homePath() + "/.config/";
 
-    QSettings lxde_settings(conf_path, QSettings::IniFormat);
+    QString config_file = config_dir + "/lxsession/LXDE/desktop.conf";
+    if(qgetenv("DESKTOP_SESSION") == "Lubuntu")
+    {
+        qDebug("LXDESupport: using Lubuntu configuration");
+        config_file = config_dir + "/lxsession/Lubuntu/desktop.conf";
+    }
+
+    QSettings lxde_settings(config_file, QSettings::IniFormat);
     QString themeName = lxde_settings.value("GTK/sNet/IconThemeName").toString();
     if(!themeName.isEmpty())
         QIcon::setThemeName(themeName);
