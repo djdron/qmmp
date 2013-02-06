@@ -9,6 +9,7 @@ SUBDIRS += statusicon \
 unix:SUBDIRS += mpris \
                 hal \
                 udisks \
+                udisks2 \
                 hotkey \
                 kdenotify \
                 converter
