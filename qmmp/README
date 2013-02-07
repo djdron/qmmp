@@ -118,7 +118,7 @@ Available options:
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (effects);
 - USE_ANALYZER, USE_PROJECTM (visualization);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY, USE_UDISKS, USE_CONVERTER, USE_SB, USE_TRACKCHANGE (general plugins);
+  USE_KDENOTIFY, USE_UDISKS2, USE_UDISKS, USE_CONVERTER, USE_SB, USE_TRACKCHANGE (general plugins);
 - USE_QMMP_DIALOG (file dialog);
 - USE_ENCA (automatic charset detection);
 - USE_SKINNED (standard skinned UI);
@@ -128,8 +128,9 @@ Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
 cmake ./ -DCMAKE_INSTALL_PREFIX=custom_path
 
-OSS3 support.
-OSS3 plugin is deprecated and disabled by default. To enable it run cmake ./ -DUSE_OSS:BOOL=TRUE before compilation.
+OSS3 and UDisks support.
+OSS3 and UDisks plugins are deprecated and disabled by default.
+To enable them, run 'cmake ./ -DUSE_OSS:BOOL=TRUE' or 'cmake ./ -DUSE_OSS:UDISKS2=TRUE' before compilation.
 
 In some cases, you can use qmake for building and installation.
 
