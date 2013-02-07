@@ -24,15 +24,12 @@
 #include <QDBusMetaType>
 #include "udisks2device.h"
 
-UDisks2Device::UDisks2Device(QDBusObjectPath o, QObject *parent)
-        : QObject(parent)
+UDisks2Device::UDisks2Device(QDBusObjectPath o, QObject *parent) : QObject(parent)
 {
     m_block_interface = new QDBusInterface("org.freedesktop.UDisks2", o.path(),
                                            "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(),
                                            this);
-    m_fs_interface = new QDBusInterface("org.freedesktop.UDisks2", o.path(),
-                                        "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus(),
-                                        this);
+
     QDBusObjectPath drive_object = property("Drive").value<QDBusObjectPath>();
 
     QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", o.path(),

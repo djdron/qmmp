@@ -70,12 +70,12 @@
 <context>
     <name>UDisks2Plugin</name>
     <message>
-        <location filename="../udisks2plugin.cpp" line="153"/>
+        <location filename="../udisks2plugin.cpp" line="130"/>
         <source>Add CD &quot;%1&quot;</source>
         <translation type="unfinished">CD &quot;%1&quot; Ekle</translation>
     </message>
     <message>
-        <location filename="../udisks2plugin.cpp" line="160"/>
+        <location filename="../udisks2plugin.cpp" line="138"/>
         <source>Add Volume &quot;%1&quot;</source>
         <translation type="unfinished">&quot;%1&quot; Aygıtını Ekle</translation>
     </message>

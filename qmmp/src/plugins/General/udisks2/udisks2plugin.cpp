@@ -72,7 +72,7 @@ void UDisks2Plugin::removeDevice(QDBusObjectPath o)
         {
             m_devices.removeAll(device);
             delete device;
-            qDebug("UDisks2Plugin: device \"%s\" removed", qPrintable(o.path()));
+            qDebug("UDisks2Plugin: removed device: \"%s\"", qPrintable(o.path()));
             updateActions();
             break;
         }
@@ -88,45 +88,15 @@ void UDisks2Plugin::addDevice(QDBusObjectPath o)
     }
     UDisks2Device *device = new UDisks2Device(o, this);
 
-    //audio cd
-    if (device->isAudio())
+    if(device->isRemovable()) //detect removable devices only
     {
-        if (m_detectCDA)
-        {
-            qDebug("UDisks2Plugin: device \"%s\" added (cd audio)", qPrintable(o.path()));
-            m_devices << device;
-            connect(device, SIGNAL(changed()), SLOT(updateActions()));
-            updateActions();
-        }
-        else
-            delete device;
-        return;
+        qDebug("UDisks2Plugin: added device: \"%s\"", qPrintable(o.path()));
+        m_devices << device;
+        updateActions();
+        connect(device, SIGNAL(changed()), SLOT(updateActions()));
     }
-
-    if(!device->isRemovable())
-    {
+    else
         delete device;
-        return;
-    }
-
-    if (device->property("Size").toLongLong() < 17000000000LL &&
-            (device->property("IdType").toString() == "vfat" ||
-             device->property("IdType").toString() == "iso9660" ||
-             device->property("IdType").toString() == "udf" ||
-             device->property("IdType").toString() == "ext2"))
-    {
-        if (m_detectRemovable)
-        {
-            qDebug("UDisks2Plugin: device \"%s\" added (removable)", qPrintable(o.path()));
-            m_devices << device;
-            updateActions();
-            connect(device, SIGNAL(changed()), SLOT(updateActions()));
-        }
-        else
-            delete device;
-        return;
-    }
-    delete device;
 }
 
 void UDisks2Plugin::updateActions()
@@ -135,13 +105,19 @@ void UDisks2Plugin::updateActions()
     foreach(UDisks2Device *device, m_devices)
     {
         QString dev_path;
-        if (device->isAudio()) //cd audio
+        if (m_detectCDA && device->isAudio()) //cd audio
         {
             dev_path = "cdda://" + device->deviceFile();
-            qDebug("dev path = %s", qPrintable(dev_path));
         }
-        else if (device->isMounted()) //mounted volume
+        else if (m_detectRemovable && device->isMounted() &&
+                 device->property("Size").toLongLong() < 17000000000LL &&
+                 (device->property("IdType").toString() == "vfat" ||
+                  device->property("IdType").toString() == "iso9660" ||
+                  device->property("IdType").toString() == "udf" ||
+                  device->property("IdType").toString() == "ext2")) //mounted volume
+        {
             dev_path = device->mountPoints().first();
+        }
         else
             continue;
 
@@ -150,7 +126,9 @@ void UDisks2Plugin::updateActions()
             QAction *action = new QAction(this);
             QString actionText;
             if (device->isAudio())
+            {
                 actionText = QString(tr("Add CD \"%1\"")).arg(device->deviceFile());
+            }
             else
             {
                 QString name = device->property("IdLabel").toString();
@@ -170,6 +148,8 @@ void UDisks2Plugin::updateActions()
             else
                 action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveHDIcon));
 
+            qDebug("UDisks2Plugin: added menu item: \"%s\"", qPrintable(dev_path));
+
             action->setText(actionText);
             action->setData(dev_path);
             m_actions->addAction(action);
@@ -182,6 +162,7 @@ void UDisks2Plugin::updateActions()
     {
         if (!findDevice(action))
         {
+            qDebug("UDisks2Plugin: removed menu item: \"%s\"", qPrintable(action->data().toString()));
             m_actions->removeAction(action);
             UiHelper::instance()->removeAction(action);
             removePath(action->data().toString());

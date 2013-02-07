@@ -80,7 +80,6 @@ void UDisks2Manager::onInterfacesAdded(const QDBusObjectPath &object_path, const
 {
     if(object_path.path().startsWith("/org/freedesktop/UDisks2/jobs"))
         return;
-    qDebug("UDisks2Manager: interfaces added: %s", qPrintable(object_path.path()));
     emit deviceAdded(object_path);
 }
 
@@ -88,6 +87,5 @@ void UDisks2Manager::onInterfacesRemoved(const QDBusObjectPath &object_path, con
 {
     if(object_path.path().startsWith("/org/freedesktop/UDisks2/jobs"))
         return;
-    qDebug("UDisks2Manager: interfaces removed: %s", qPrintable(object_path.path()));
     emit deviceRemoved(object_path);
 }
