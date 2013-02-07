@@ -115,7 +115,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY, USE_UDISKS, USE_CONVERTER, USE_TRACKCHANGE (модули общего назначения);
+  USE_KDENOTIFY, USE_UDISKS2, USE_UDISKS, USE_CONVERTER, USE_TRACKCHANGE (модули общего назначения);
 - USE_QMMP_DIALOG (файловый диалог);
 - USE_ENCA (автоматическое определение кодировки);
 - USE_SKINNED (стандартный пользовательский интерфейс)
@@ -125,8 +125,9 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
 cmake ./ -DCMAKE_INSTALL_PREFIX=другой_путь
 
-Поддержка OSS3.
-Модуль вывода OSS3 устарел и отключён по умолчанию. Для его включения выполните cmake ./ -DUSE_OSS:BOOL=TRUE перед сборкой.
+Поддержка OSS3 и Udisks.
+Модуль OSS3 и UDisks2 устарели и отключёны по умолчанию. 
+Для их включения выполните 'cmake ./ -DUSE_OSS:BOOL=TRUE' или 'cmake ./ -DUSE_OSS:UDISKS2=TRUE' перед сборкой.
 
 В некоторых случаях вы можете использовать qmake для сборки и установки.
 
@@ -158,5 +159,5 @@ cmake ./ -DLIB_DIR=lib64
 
 Также выражается благодарность всем, приславшим патчи и багрепорты.
 
-Просьба присылающим патчи: оставляйте, пожалуйста, представляйтесь.
+Просьба присылающим патчи: пожалуйста, представляйтесь.
 Наиболее активные участники будут занесены в список :)
