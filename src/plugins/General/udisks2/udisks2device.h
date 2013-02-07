@@ -82,11 +82,9 @@ public:
 signals:
     void changed();
 
-
 private:
     QDBusInterface *m_block_interface;
     QDBusInterface *m_drive_interface;
-    QDBusInterface *m_fs_interface;
     QDBusObjectPath m_path;
 };
 
