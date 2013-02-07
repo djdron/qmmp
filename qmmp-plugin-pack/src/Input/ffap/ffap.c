@@ -380,7 +380,6 @@ ape_read_header (FFap_decoder *decoder)
 //ape_read_header(DB_FILE *fp, APEContext *ape)
 {
     uint32_t i;
-    int total_blocks;
     APEContext *ape = decoder->ape_ctx;
 
     /* TODO: Skip any leading junk such as id3v2 tags */
@@ -587,8 +586,6 @@ ape_read_header (FFap_decoder *decoder)
     ape_dumpinfo(ape);
     fprintf (stderr, "ape: Decoding file - v%d.%02d, compression level %d\n", ape->fileversion / 1000, (ape->fileversion % 1000) / 10, ape->compressiontype);
 #endif
-
-    total_blocks = (ape->totalframes == 0) ? 0 : ((ape->totalframes - 1) * ape->blocksperframe) + ape->finalframeblocks;
 
     return 0;
 }
