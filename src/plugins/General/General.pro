@@ -14,15 +14,15 @@ unix:SUBDIRS += mpris \
                 converter
 
 contains(CONFIG, UDISKS_PLUGIN){
-    SUBDIRS += udisks
+    unix:SUBDIRS += udisks
 }
 
 contains(CONFIG, UDISKS2_PLUGIN){
-    SUBDIRS += udisks2
+    unix:SUBDIRS += udisks2
 }
 
 contains(CONFIG, HAL_PLUGIN){
-    SUBDIRS += hal
+    unix:SUBDIRS += hal
 }
 
 TEMPLATE = subdirs
