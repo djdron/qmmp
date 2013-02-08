@@ -7,6 +7,7 @@ plugin  \
  link_pkgconfig
 
 PKGCONFIG += x11
+DEFINES += HAVE_XKBLIB_H
 
 TARGET = $$PLUGINS_PREFIX/General/hotkey
 QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libhotkey.so

@@ -30,6 +30,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
+# xkb
+CHECK_INCLUDE_FILE(X11/XKBlib.h XKBLIB_H_FOUND)
+IF(XKBLIB_H_FOUND)
+ADD_DEFINITIONS(-DHAVE_XKBLIB_H)
+SET(CMAKE_REQUIRED_DEFINITIONS -DHAVE_XKBLIB_H)
+ENDIF(XKBLIB_H_FOUND)
+
 SET(libhotkey_SRCS
     settingsdialog.cpp
     hotkeyfactory.cpp
@@ -44,7 +51,7 @@ SET(libhotkey_MOC_HDRS
     hotkeydialog.h
 )
 
-SET(libhotkey_RCCS 
+SET(libhotkey_RCCS
     translations/translations.qrc
 )
 
