@@ -132,6 +132,14 @@ OSS3 and UDisks support.
 OSS3 and UDisks plugins are deprecated and disabled by default.
 To enable them, run 'cmake ./ -DUSE_OSS:BOOL=TRUE' or 'cmake ./ -DUSE_OSS:UDISKS2=TRUE' before compilation.
 
+HAL and UDisks2 support.
+Most Linux distributions does not include HAL anymore. To disable HAL plugin run following command before compilation:
+cmake ./ -DUSE_HAL:BOOL=FALSE
+UDisks2 project doesn't have port to FreeBSD, so it's recommended to disable Udisks2 plugin under FreeBSD by
+following command:
+cmake ./ -DUSE_UDISKS2:BOOL=FALSE
+
+
 In some cases, you can use qmake for building and installation.
 
 Configure:
