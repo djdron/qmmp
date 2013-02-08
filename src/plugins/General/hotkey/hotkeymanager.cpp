@@ -34,7 +34,9 @@ extern "C"
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include <X11/XF86keysym.h>
+#ifdef HAVE_XKBLIB_H
 #include <X11/XKBlib.h>
+#endif
 }
 #undef CursorShape
 #undef Status
@@ -91,7 +93,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
                 Hotkey *hotkey = new Hotkey;
                 hotkey->action = i;
                 hotkey->key = key;
-                hotkey->code = XkbKeycodeToKeysym(QX11Info::display(), hotkey->key, 0, 0);
+                hotkey->code = XKeysymToKeycode(QX11Info::display(), hotkey->key);
                 if(!hotkey->code)
                     continue;
                 XGrabKey(QX11Info::display(),  hotkey->code, mod | mask_mod, rootWindow, False,
@@ -103,7 +105,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
     }
     settings.endGroup();
     XSync(QX11Info::display(), False);
-//         XSetErrorHandler();
+    //         XSetErrorHandler();
 }
 
 HotkeyManager::~HotkeyManager()
@@ -137,7 +139,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
     if (e->type() == QEvent::KeyPress && (o == qApp->desktop () || o == qApp->activeWindow ()))
     {
         QKeyEvent* k = static_cast<QKeyEvent*>(e);
-        quint32 key = XkbKeycodeToKeysym(QX11Info::display(), k->nativeScanCode (), 0, 0);
+        quint32 key = keycodeToKeysym(k->nativeScanCode());
         quint32 mod = k->nativeModifiers ();
         SoundCore *core = SoundCore::instance();
         MediaPlayer *player = MediaPlayer::instance();
@@ -176,20 +178,20 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
             case Hotkey::VOLUME_UP:
             case Hotkey::VOLUME_DOWN:
             {
-                 int volume = qMax(core->leftVolume(), core->rightVolume());
-                 int balance = 0;
-                 int left = core->leftVolume();
-                 int right = core->rightVolume();
-                 if (left || right)
-                     balance = (right - left)*100/volume;
-                 if(hotkey->action == Hotkey::VOLUME_UP)
-                     volume = qMin (100, volume + 5);
-                 else
-                     volume = qMax (0, volume - 5);
-                 core->setVolume(volume-qMax(balance,0)*volume/100,
-                                 volume+qMin(balance,0)*volume/100);
+                int volume = qMax(core->leftVolume(), core->rightVolume());
+                int balance = 0;
+                int left = core->leftVolume();
+                int right = core->rightVolume();
+                if (left || right)
+                    balance = (right - left)*100/volume;
+                if(hotkey->action == Hotkey::VOLUME_UP)
+                    volume = qMin (100, volume + 5);
+                else
+                    volume = qMax (0, volume - 5);
+                core->setVolume(volume-qMax(balance,0)*volume/100,
+                                volume+qMin(balance,0)*volume/100);
             }
-                 break;
+                break;
             case Hotkey::FORWARD:
                 core->seek(core->elapsed() + 5000);
                 break;
@@ -239,7 +241,11 @@ void HotkeyManager::ensureModifiers()
                     int symIndex = 0;
                     do
                     {
+#ifdef HAVE_XKBLIB_H
                         sym = XkbKeycodeToKeysym(appDpy, map->modifiermap[mapIndex], symIndex, 0);
+#else
+                        sym = XKeycodeToKeysym(appDpy, map->modifiermap[mapIndex], symIndex);
+#endif
                         symIndex++;
                     }
                     while ( !sym && symIndex < keysyms_per_keycode);
@@ -309,5 +315,9 @@ QList<long> HotkeyManager::ignModifiersList()
 
 quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
 {
+#ifdef HAVE_XKBLIB_H
     return XkbKeycodeToKeysym(QX11Info::display(), keycode, 0, 0);
+#else
+    return XKeycodeToKeysym(QX11Info::display(), keycode,0);
+#endif
 }
