@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,9 +24,7 @@
 extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
-#if (LIBAVUTIL_VERSION_INT >= ((51<<16)+(32<<8)+0))
 #include <libavutil/dict.h>
-#endif
 }
 
 #include "ffmpegmetadatamodel.h"
@@ -135,7 +133,6 @@ Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
     QList <FileInfo*> list;
     avcodec_register_all();
     avformat_network_init();
@@ -189,61 +186,6 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     }
     info->setLength(in->duration/AV_TIME_BASE);
     avformat_close_input(&in);
-#else
-    QList <FileInfo*> list;
-    avcodec_init();
-    avcodec_register_all();
-    av_register_all();
-    AVFormatContext *in = 0;
-
-    if (av_open_input_file(&in, fileName.toLocal8Bit(), 0, 0, 0) < 0)
-    {
-        qDebug("DecoderFFmpegFactory: unable to open file");
-        return list;
-    }
-    FileInfo *info = new FileInfo(fileName);
-    av_find_stream_info(in);
-
-    if (useMetaData)
-    {
-        AVMetadataTag *album = av_metadata_get(in->metadata,"album",0,0);
-        if(!album)
-            album = av_metadata_get(in->metadata,"WM/AlbumTitle",0,0);
-        AVMetadataTag *artist = av_metadata_get(in->metadata,"artist",0,0);
-        if(!artist)
-            artist = av_metadata_get(in->metadata,"author",0,0);
-        AVMetadataTag *comment = av_metadata_get(in->metadata,"comment",0,0);
-        AVMetadataTag *genre = av_metadata_get(in->metadata,"genre",0,0);
-        AVMetadataTag *title = av_metadata_get(in->metadata,"title",0,0);
-        AVMetadataTag *year = av_metadata_get(in->metadata,"WM/Year",0,0);
-        if(!year)
-            year = av_metadata_get(in->metadata,"year",0,0);
-        if(!year)
-            year = av_metadata_get(in->metadata,"date",0,0);
-        AVMetadataTag *track = av_metadata_get(in->metadata,"track",0,0);
-        if(!track)
-            track = av_metadata_get(in->metadata,"WM/Track",0,0);
-        if(!track)
-            track = av_metadata_get(in->metadata,"WM/TrackNumber",0,0);
-
-        if(album)
-            info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(album->value).trimmed());
-        if(artist)
-            info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(artist->value).trimmed());
-        if(comment)
-            info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment->value).trimmed());
-        if(genre)
-            info->setMetaData(Qmmp::GENRE, QString::fromUtf8(genre->value).trimmed());
-        if(title)
-            info->setMetaData(Qmmp::TITLE, QString::fromUtf8(title->value).trimmed());
-        if(year)
-            info->setMetaData(Qmmp::YEAR, year->value);
-        if(track)
-            info->setMetaData(Qmmp::TRACK, track->value);
-    }
-    info->setLength(in->duration/AV_TIME_BASE);
-    av_close_input_file(in);
-#endif
     list << info;
     return list;
 }
