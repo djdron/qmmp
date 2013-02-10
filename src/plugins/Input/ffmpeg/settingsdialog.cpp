@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,15 +20,12 @@
 
 #include <QSettings>
 #include <QStringList>
-
 #include <qmmp/qmmp.h>
 
 extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
-#if (LIBAVUTIL_VERSION_INT >= ((51<<16)+(32<<8)+0))
 #include <libavutil/dict.h>
-#endif
 }
 #include "settingsdialog.h"
 
@@ -67,11 +64,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.mkaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TRUEHD));
     ui.mkaCheckBox->setChecked(filters.contains("*.mka") && avcodec_find_decoder(CODEC_ID_TRUEHD));
     ui.vqfCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TWINVQ));
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(42<<8)+4))
     ui.vqfCheckBox->setChecked(filters.contains("*.vqf") && avcodec_find_decoder(CODEC_ID_TWINVQ));
-#else
-    ui.vqfCheckBox->hide();
-#endif
 }
 
 SettingsDialog::~SettingsDialog()

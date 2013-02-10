@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,16 +18,14 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef __decoder_ffmeg_h
-#define __decoder_ffmeg_h
+#ifndef DECODER_FFMPEG_H
+#define DECODER_FFMPEG_H
 
 extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
 #include <libavutil/mathematics.h>
-#if (LIBAVUTIL_VERSION_INT >= ((51<<16)+(32<<8)+0))
 #include <libavutil/dict.h>
-#endif
 }
 
 
@@ -68,25 +66,10 @@ private:
     int64_t m_seekTime;
     qint64  m_skipBytes;
 
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
     qint64 ffmpeg_decode();
     AVIOContext *m_stream;
     AVFrame *m_decoded_frame;
-
-#else
-    qint64 ffmpeg_decode(uint8_t *audio);
-    bool m_skip;
-
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(102<<8)+0))
-    AVIOContext *m_stream;
-#else
-    ByteIOContext *m_stream;
-#endif
-
-    uint8_t *m_output_buf;
-
-#endif
 };
 
 
-#endif // __decoder_ffmpeg_h
+#endif // DECODER_FFMPEG_H
