@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="100"/>
+        <location filename="../decoderffmpegfactory.cpp" line="98"/>
         <source>FFmpeg Plugin</source>
         <translation>תוספת FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="102"/>
+        <location filename="../decoderffmpegfactory.cpp" line="100"/>
         <source>FFmpeg Formats</source>
         <translation>פורמטים של FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="264"/>
+        <location filename="../decoderffmpegfactory.cpp" line="206"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>אודות תוספת שמע FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="266"/>
+        <location filename="../decoderffmpegfactory.cpp" line="208"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>תוספת שמע FFmpeg ‫Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="267"/>
+        <location filename="../decoderffmpegfactory.cpp" line="209"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>הודרה כנגד libavformat-%1.%2.%3 וכנגד libavcodec-%4.%5.%6</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="274"/>
+        <location filename="../decoderffmpegfactory.cpp" line="216"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -37,50 +37,42 @@
 <context>
     <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="99"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
         <source>Length</source>
         <translation>אריכות</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="51"/>
         <source>File size</source>
         <translation>גודל קובץ</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="51"/>
         <source>KB</source>
         <translation>ק״ב</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
         <translation>שיעור סיביות</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
         <source>kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="64"/>
         <source>Sample rate</source>
         <translation>שיעור דגימה</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="64"/>
         <source>Hz</source>
         <translation>הרץ</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="118"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="65"/>
         <source>Channels</source>
         <translation>ערוצים</translation>
     </message>

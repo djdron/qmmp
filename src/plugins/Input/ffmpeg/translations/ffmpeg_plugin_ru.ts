@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="264"/>
+        <location filename="../decoderffmpegfactory.cpp" line="206"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Об аудио-модуле FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="266"/>
+        <location filename="../decoderffmpegfactory.cpp" line="208"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Аудио-модуль FFmpeg для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="274"/>
+        <location filename="../decoderffmpegfactory.cpp" line="216"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="100"/>
+        <location filename="../decoderffmpegfactory.cpp" line="98"/>
         <source>FFmpeg Plugin</source>
         <translation>Модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="102"/>
+        <location filename="../decoderffmpegfactory.cpp" line="100"/>
         <source>FFmpeg Formats</source>
         <translation>Форматы FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="267"/>
+        <location filename="../decoderffmpegfactory.cpp" line="209"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Собрано с libavformat-%1.%2.%3 и libavcodec-%4.%5.%6</translation>
     </message>
@@ -37,50 +37,42 @@
 <context>
     <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="99"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
         <source>Length</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="51"/>
         <source>File size</source>
         <translation>Размер файла</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="51"/>
         <source>KB</source>
         <translation>КБ</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
         <translation>Битовая частота</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="64"/>
         <source>Sample rate</source>
         <translation>Дискретизация</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="64"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
-        <location filename="../ffmpegmetadatamodel.cpp" line="118"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="65"/>
         <source>Channels</source>
         <translation>Каналов</translation>
     </message>
