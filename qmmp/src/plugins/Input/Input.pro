@@ -16,7 +16,11 @@ contains(CONFIG, MODPLUG_PLUGIN){
 }
 
 contains(CONFIG, FFMPEG_PLUGIN){
-    SUBDIRS += ffmpeg
+   contains(CONFIG, FFMPEG_LEGACY){
+       SUBDIRS += ffmpeg_legacy
+    }else{
+       SUBDIRS += ffmpeg
+    }
 }
 
 unix{
