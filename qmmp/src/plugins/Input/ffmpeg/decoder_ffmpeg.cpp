@@ -58,7 +58,7 @@ static int64_t ffmpeg_seek(void *data, int64_t offset, int whence)
 
 // Decoder class
 
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(42<<8)+4))
+#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
 
 DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
         : Decoder(i)
