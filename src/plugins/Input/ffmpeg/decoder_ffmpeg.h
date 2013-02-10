@@ -68,7 +68,7 @@ private:
     int64_t m_seekTime;
     qint64  m_skipBytes;
 
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(42<<8)+4))
+#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
     qint64 ffmpeg_decode();
     AVIOContext *m_stream;
     AVFrame *m_decoded_frame;

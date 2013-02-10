@@ -20,7 +20,7 @@
 
 #include "ffmpegmetadatamodel.h"
 
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(42<<8)+4))
+#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
 
 FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {

@@ -135,7 +135,7 @@ Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
-#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(42<<8)+4))
+#if (LIBAVCODEC_VERSION_INT >= ((53<<16)+(34<<8)+0))
     QList <FileInfo*> list;
     avcodec_register_all();
     avformat_network_init();
