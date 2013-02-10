@@ -42,9 +42,9 @@ HEADERS += hotkeyfactory.h \
            hotkeydialog.h
 
 SOURCES += hotkeyfactory.cpp \
-           hotkeymanager.cpp \
            settingsdialog.cpp \
-           hotkeydialog.cpp
+           hotkeydialog.cpp \
+    hotkeymanager_x11.cpp
 
 INCLUDEPATH += ../../../../src
 

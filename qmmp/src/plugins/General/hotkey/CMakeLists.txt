@@ -40,7 +40,7 @@ ENDIF(XKBLIB_H_FOUND)
 SET(libhotkey_SRCS
     settingsdialog.cpp
     hotkeyfactory.cpp
-    hotkeymanager.cpp
+    hotkeymanager_x11.cpp
     hotkeydialog.cpp
 )
 
