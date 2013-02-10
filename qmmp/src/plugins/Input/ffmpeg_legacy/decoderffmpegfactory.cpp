@@ -227,4 +227,4 @@ QTranslator *DecoderFFmpegFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(ffmpeg,DecoderFFmpegFactory)
+Q_EXPORT_PLUGIN2(ffmpeg_legacy,DecoderFFmpegFactory)
