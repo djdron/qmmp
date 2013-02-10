@@ -1,6 +1,6 @@
 project(libffmpeg)
 
-cmake_minimum_required(VERSION 2.4.7)
+cmake_minimum_required(VERSION 2.6.0)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -28,10 +28,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # minimal supported versions
-# libav-0.8: libavcodec-53.34.0, libavformat-53.20.0, libavutil-51.21.0
-# ffmpeg-0.9: libavcodec-53.42.0, libavformat-53.24.0, libavutil-51.32.0
 # ffmpeg-0.6: libavcodec-52.72.2, libavformat-52.64.2, libavutil-50.15.1
-pkg_check_modules(FFMPEG_LEGACY libavcodec<53.34.0 libavformat<53.20.0 libavutil<51.21.0)
+pkg_check_modules(FFMPEG_LEGACY libavcodec>=52.72.2 libavformat>=52.64.2 libavutil>=50.15.1)
+
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 link_directories(${FFMPEG_LIBRARY_DIRS})
@@ -77,5 +76,5 @@ ADD_LIBRARY(ffmpeg_legacy MODULE ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libff
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg_legacy qmmp)
 target_link_libraries(ffmpeg_legacy ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS})
-install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
+install(TARGETS ffmpeg_legacy DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_LEGACY_FOUND)
