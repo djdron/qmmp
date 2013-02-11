@@ -29,8 +29,14 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # minimal supported versions
 # ffmpeg-0.6: libavcodec-52.72.2, libavformat-52.64.2, libavutil-50.15.1
-pkg_check_modules(FFMPEG_LEGACY libavcodec>=52.72.2 libavformat>=52.64.2 libavutil>=50.15.1)
+pkg_check_modules(FFMPEG_MIN libavcodec>=52.72.2 libavformat>=52.64.2 libavutil>=50.15.1)
 
+# maximal supported versions
+# libav-0.8: libavcodec-53.34.0, libavformat-53.20.0, libavutil-51.21.0
+# ffmpeg-0.9: libavcodec-53.42.0, libavformat-53.24.0, libavutil-51.32.0
+IF(FFMPEG_MIN_FOUND)
+pkg_check_modules(FFMPEG_LEGACY libavcodec<=53.33.0 libavformat<=53.19.0 libavutil<=51.20.0)
+ENDIF(FFMPEG_MIN_FOUND)
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 link_directories(${FFMPEG_LIBRARY_DIRS})
