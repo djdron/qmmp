@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Libre.fm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="73"/>
@@ -99,7 +99,7 @@
         <location filename="../settingsdialog.cpp" line="85"/>
         <location filename="../settingsdialog.cpp" line="108"/>
         <source>Unable to register new session</source>
-        <translation>Невозможно зарегистрировать новую версию</translation>
+        <translation>Невозможно зарегистрировать новую сессию</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="96"/>
