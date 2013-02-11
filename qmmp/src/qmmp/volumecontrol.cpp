@@ -143,6 +143,8 @@ int SoftwareVolume::volume(int channel)
 void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
 {
     int samples = 0;
+    qint32 sample1 = 0;
+    qint32 sample2 = 0;
     switch(format)
     {
     case Qmmp::PCM_S8:
@@ -177,6 +179,41 @@ void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
         }
         break;
     case Qmmp::PCM_S24LE:
+        samples = b->nbytes/4;
+        if (chan > 1)
+        {
+            for (qint64 i = 0; i < samples; i+=2)
+            {
+                sample1 = ((qint32*)b->data)[i];
+                sample2 = ((qint32*)b->data)[i+1];
+
+                if (sample1 & 0x800000)
+                    sample1 |= 0xff000000;
+
+                if (sample2 & 0x800000)
+                    sample2 |= 0xff000000;
+
+                sample1 *= m_scaleLeft;
+                sample2 *= m_scaleRight;
+
+                ((qint32*)b->data)[i] = sample1;
+                ((qint32*)b->data)[i+1] = sample2;
+            }
+        }
+        else
+        {
+            for (qint64 i = 0; i < samples; i++)
+            {
+                sample1 = ((qint32*)b->data)[i];
+                sample1 *= qMax(m_scaleRight, m_scaleLeft);
+
+                if (sample1 & 0x800000)
+                    sample1 |= 0xff000000;
+
+                ((qint32*)b->data)[i] = sample1;
+            }
+        }
+        break;
     case Qmmp::PCM_S32LE:
         samples = b->nbytes/4;
         if (chan > 1)
