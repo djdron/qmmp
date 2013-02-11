@@ -20,6 +20,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QtGlobal>
+#ifdef Q_WS_X11
 #include <QSettings>
 #include <QX11Info>
 #include <QEvent>
@@ -321,3 +323,4 @@ quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
     return XKeycodeToKeysym(QX11Info::display(), keycode,0);
 #endif
 }
+#endif

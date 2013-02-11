@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,12 +20,6 @@
 
 #include <QSettings>
 #include <QHeaderView>
-
-extern "C"
-{
-#include <X11/keysym.h>
-}
-
 #include <qmmp/qmmp.h>
 #include "hotkeydialog.h"
 #include "settingsdialog.h"
@@ -61,7 +55,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         hotkey->key = settings.value(QString("key_%1").arg(i), hotkey->defaultKey()).toUInt();
         hotkey->mod = settings.value(QString("modifiers_%1").arg(i), 0).toUInt();
         ui.tableWidget->setItem(j,1, new QTableWidgetItem(HotkeyManager::getKeyString(hotkey->key,
-                                hotkey->mod), i));
+                                                                                      hotkey->mod), i));
         m_hotkeys << hotkey;
     }
     settings.endGroup();

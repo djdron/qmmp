@@ -7,9 +7,9 @@ SUBDIRS += statusicon \
            fileops \
            covermanager \
            streambrowser \
-           trackchange
+           trackchange \
+           hotkey
 unix:SUBDIRS += mpris \
-                hotkey \
                 kdenotify \
                 converter
 

@@ -6,11 +6,9 @@ plugin  \
  lib  \
  link_pkgconfig
 
-PKGCONFIG += x11
-DEFINES += HAVE_XKBLIB_H
 
 TARGET = $$PLUGINS_PREFIX/General/hotkey
-QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libhotkey.so
+
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
@@ -30,9 +28,6 @@ TRANSLATIONS = translations/hotkey_plugin_cs.ts \
                translations/hotkey_plugin_es.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
 
@@ -44,11 +39,30 @@ HEADERS += hotkeyfactory.h \
 SOURCES += hotkeyfactory.cpp \
            settingsdialog.cpp \
            hotkeydialog.cpp \
-    hotkeymanager_x11.cpp
-
-INCLUDEPATH += ../../../../src
-
-LIBS += -lqmmpui -lqmmp
+           hotkeymanager_x11.cpp \
+           hotkeymanager_win.cpp
 
 FORMS += settingsdialog.ui \
          hotkeydialog.ui
+
+
+INCLUDEPATH += ../../../../src
+
+unix {
+    isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
+    target.path = $$LIB_DIR/qmmp/General
+    INSTALLS += target
+    QMAKE_LIBDIR += ../../../../lib
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libhotkey.so
+    PKGCONFIG += x11
+    DEFINES += HAVE_XKBLIB_H
+    LIBS += -lqmmpui -lqmmp
+}
+
+win32 {
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmpui0 -lqmmp0
+}
+
