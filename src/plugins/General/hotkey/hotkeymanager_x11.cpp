@@ -164,7 +164,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 break;
             case Hotkey::PLAY_PAUSE:
                 if (core->state() == Qmmp::Stopped)
-                    MediaPlayer::instance()->play();
+                    player->play();
                 else if (core->state() != Qmmp::FatalError)
                     core->pause();
                 break;

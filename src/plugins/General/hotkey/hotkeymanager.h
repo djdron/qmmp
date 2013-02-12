@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,7 @@
 #include <qmmpui/general.h>
 
 class QEvent;
+class QWidget;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -78,10 +79,13 @@ public:
     static QList<long> ignModifiersList();
     static quint32 keycodeToKeysym(quint32 keycode);
 
+#ifdef Q_WS_X11
 protected:
     virtual bool eventFilter(QObject* o, QEvent* e);
+#endif
 
 private:
+#ifdef Q_WS_X11
     static void ensureModifiers();
     QList <Hotkey *> m_grabbedKeys;
     static long m_alt_mask;
@@ -90,6 +94,11 @@ private:
     static long m_hyper_mask;
     static long m_numlock_mask;
     static bool m_haveMods;
+#endif
+
+#ifdef Q_OS_WIN
+    QList<QWidget *> m_filters;
+#endif
 };
 
 #endif
