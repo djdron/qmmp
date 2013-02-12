@@ -35,6 +35,13 @@ extern "C"{
 
 // DecoderFFmpegFactory
 
+DecoderFFmpegFactory::DecoderFFmpegFactory()
+{
+    avcodec_register_all();
+    avformat_network_init();
+    av_register_all();
+}
+
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
     foreach(QString filter, properties().filters)
@@ -48,7 +55,6 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
 
 bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
 {
-    av_register_all();
     QStringList filters = properties().filters;
 
     AVProbeData  pd;
@@ -83,7 +89,6 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
 
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
-    av_register_all();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
@@ -134,9 +139,6 @@ Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo*> list;
-    avcodec_register_all();
-    avformat_network_init();
-    av_register_all();
     AVFormatContext *in = 0;
 
     if (avformat_open_input(&in,fileName.toLocal8Bit().constData(), 0, 0) < 0)

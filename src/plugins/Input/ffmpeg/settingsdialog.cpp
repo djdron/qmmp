@@ -39,8 +39,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     filters << "*.wma";
     filters << "*.ape";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
-    avcodec_register_all();
-    av_register_all();
     ui.wmaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_WMAV1));
     ui.wmaCheckBox->setChecked(filters.contains("*.wma") && avcodec_find_decoder(CODEC_ID_WMAV1));
     ui.apeCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_APE));

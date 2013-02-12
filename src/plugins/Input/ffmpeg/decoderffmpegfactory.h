@@ -37,6 +37,7 @@ Q_OBJECT
 Q_INTERFACES(DecoderFactory)
 
 public:
+    DecoderFFmpegFactory();
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
