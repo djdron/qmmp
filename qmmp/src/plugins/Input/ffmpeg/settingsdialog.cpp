@@ -36,8 +36,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
-    filters << "*.wma";
-    filters << "*.ape";
+    filters << "*.wma" << "*.ape" << "*.tta" << "*.m4a" << "*.ra" << "*.shn" << "*.vqf" << "*.ac3";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     ui.wmaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_WMAV1));
     ui.wmaCheckBox->setChecked(filters.contains("*.wma") && avcodec_find_decoder(CODEC_ID_WMAV1));
