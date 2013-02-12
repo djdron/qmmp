@@ -27,7 +27,6 @@
 #include <QCoreApplication>
 #include <QApplication>
 #include <QDesktopWidget>
-#define _WIN32_WINNT 0x0500
 #include <windows.h>
 #include <winuser.h>
 #include <commctrl.h>
@@ -47,14 +46,14 @@ quint32 Hotkey::defaultKey(int act)
     //default key bindings
     QMap<int, quint32> keyMap;
     keyMap[PLAY] = 0;
-    keyMap[STOP] = VK_MEDIA_STOP;
+    keyMap[STOP] = 0;
     keyMap[PAUSE] = 0;
-    keyMap[PLAY_PAUSE] = VK_MEDIA_PLAY_PAUSE;
-    keyMap[NEXT] = VK_MEDIA_NEXT_TRACK;
-    keyMap[PREVIOUS] = VK_MEDIA_PREV_TRACK;
+    keyMap[PLAY_PAUSE] = 0;
+    keyMap[NEXT] = 0;
+    keyMap[PREVIOUS] = 0;
     keyMap[SHOW_HIDE] = 0;
-    keyMap[VOLUME_UP] = VK_VOLUME_UP;
-    keyMap[VOLUME_DOWN] = VK_VOLUME_DOWN;
+    keyMap[VOLUME_UP] = 0;
+    keyMap[VOLUME_DOWN] = 0;
     keyMap[FORWARD] = 0;
     keyMap[REWIND] = 0;
     keyMap[JUMP_TO_TRACK] = 0;
@@ -217,6 +216,9 @@ const QString HotkeyManager::getKeyString(quint32 key, quint32 modifiers)
     }
 
     LONG lScan = MapVirtualKey(key, 0) << 16;
+
+    if(key == VK_SHIFT || key == VK_CONTROL || key == VK_LWIN || key == VK_RWIN || key == VK_MENU)
+        return keyStr;
 
     int nBufferLen = 64;
     std::wstring str;
