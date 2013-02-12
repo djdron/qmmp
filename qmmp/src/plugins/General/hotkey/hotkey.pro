@@ -29,7 +29,6 @@ TRANSLATIONS = translations/hotkey_plugin_cs.ts \
 RESOURCES = translations/translations.qrc
 
 target.path = $$LIB_DIR/qmmp/General
-INSTALLS += target
 
 HEADERS += hotkeyfactory.h \
            hotkeymanager.h \
