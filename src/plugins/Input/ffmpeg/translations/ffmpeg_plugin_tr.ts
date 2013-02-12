@@ -4,17 +4,17 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="125"/>
+        <location filename="../decoderffmpegfactory.cpp" line="126"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="127"/>
+        <location filename="../decoderffmpegfactory.cpp" line="128"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg Biçimleri</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="230"/>
+        <location filename="../decoderffmpegfactory.cpp" line="231"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>FFmpeg Ses Eklentisi Hakkında</translation>
     </message>
@@ -25,11 +25,11 @@
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="233"/>
-        <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation>libavformat-%1.%2.%3 ve libavcodec-%4.%5.%6 ile derlenmiştir</translation>
+        <source>Compiled against:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="240"/>
+        <location filename="../decoderffmpegfactory.cpp" line="246"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

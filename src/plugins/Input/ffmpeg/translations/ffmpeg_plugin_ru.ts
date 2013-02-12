@@ -4,7 +4,7 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="230"/>
+        <location filename="../decoderffmpegfactory.cpp" line="231"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Об аудио-модуле FFmpeg</translation>
     </message>
@@ -14,24 +14,24 @@
         <translation>Аудио-модуль FFmpeg для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="240"/>
+        <location filename="../decoderffmpegfactory.cpp" line="233"/>
+        <source>Compiled against:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="246"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="125"/>
+        <location filename="../decoderffmpegfactory.cpp" line="126"/>
         <source>FFmpeg Plugin</source>
         <translation>Модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="127"/>
+        <location filename="../decoderffmpegfactory.cpp" line="128"/>
         <source>FFmpeg Formats</source>
         <translation>Форматы FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="233"/>
-        <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation>Собрано с libavformat-%1.%2.%3 и libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
