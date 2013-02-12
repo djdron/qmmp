@@ -41,6 +41,7 @@ SET(libhotkey_SRCS
     settingsdialog.cpp
     hotkeyfactory.cpp
     hotkeymanager_x11.cpp
+    hotkeymanager_win.cpp
     hotkeydialog.cpp
 )
 
