@@ -91,14 +91,36 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
-    filters << "*.wma" << "*.ape";
+    filters << "*.wma" << "*.ape" << "*.tta" << "*.m4a" << "*.ra" << "*.shn" << "*.vqf" << "*.ac3";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
 
+    //removed unsupported filters
+    if(!avcodec_find_decoder(CODEC_ID_WMAV1))
+        filters.removeAll("*.wma");
+    if(!avcodec_find_decoder(CODEC_ID_APE))
+        filters.removeAll("*.ape");
+    if(!avcodec_find_decoder(CODEC_ID_TTA))
+        filters.removeAll("*.tta");
     if(!avcodec_find_decoder(CODEC_ID_AAC))
-    {
         filters.removeAll("*.aac");
+    if(!avcodec_find_decoder(CODEC_ID_MP3))
+        filters.removeAll("*.mp3");
+    if(!avcodec_find_decoder(CODEC_ID_AAC) && !avcodec_find_decoder(CODEC_ID_ALAC))
         filters.removeAll("*.m4a");
-    }
+    if(!avcodec_find_decoder(CODEC_ID_RA_288))
+        filters.removeAll("*.ra");
+    if(!avcodec_find_decoder(CODEC_ID_SHORTEN))
+        filters.removeAll("*.shn");
+    if(!avcodec_find_decoder(CODEC_ID_EAC3))
+        filters.removeAll("*.ac3");
+    if(!avcodec_find_decoder(CODEC_ID_DTS))
+        filters.removeAll("*.dts");
+    if(!avcodec_find_decoder(CODEC_ID_TRUEHD))
+        filters.removeAll("*.mka");
+    if(!avcodec_find_decoder(CODEC_ID_TWINVQ))
+        filters.removeAll("*.vqf");
+
+
     DecoderProperties properties;
     properties.name = tr("FFmpeg Plugin");
     properties.filters = filters;
