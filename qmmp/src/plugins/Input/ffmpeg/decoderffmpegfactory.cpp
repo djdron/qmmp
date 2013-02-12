@@ -25,6 +25,7 @@ extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
 #include <libavutil/dict.h>
+#include <libavutil/avutil.h>
 }
 
 #include "ffmpegmetadatamodel.h"
@@ -228,15 +229,20 @@ void DecoderFFmpegFactory::showSettings(QWidget *parent)
 void DecoderFFmpegFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About FFmpeg Audio Plugin"),
-
                         tr("Qmmp FFmpeg Audio Plugin")+"\n"+
-                        QString(tr("Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6"))
+                        tr("Compiled against:") + "\n"+
+                        QString("libavformat-%1.%2.%3\n"
+                                "libavcodec-%4.%5.%6\n"
+                                "libavutil-%7.%8.%9")
                         .arg(LIBAVFORMAT_VERSION_MAJOR)
                         .arg(LIBAVFORMAT_VERSION_MINOR)
                         .arg(LIBAVFORMAT_VERSION_MICRO)
                         .arg(LIBAVCODEC_VERSION_MAJOR)
                         .arg(LIBAVCODEC_VERSION_MINOR)
-                        .arg(LIBAVCODEC_VERSION_MICRO)+"\n"+
+                        .arg(LIBAVCODEC_VERSION_MICRO)
+                        .arg(LIBAVUTIL_VERSION_MAJOR)
+                        .arg(LIBAVUTIL_VERSION_MINOR)
+                        .arg(LIBAVUTIL_VERSION_MICRO) +"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
