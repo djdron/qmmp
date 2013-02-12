@@ -16,7 +16,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="233"/>
         <source>Compiled against:</source>
-        <translation type="unfinished"></translation>
+        <translation>Собрано с библиотеками:</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="246"/>
