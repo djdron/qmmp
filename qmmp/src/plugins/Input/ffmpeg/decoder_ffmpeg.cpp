@@ -96,12 +96,7 @@ bool DecoderFFmpeg::initialize()
     m_totalTime = 0;
     m_seekTime = -1;
 
-    avcodec_register_all();
-    avformat_network_init();
-    av_register_all();
-
     ic = avformat_alloc_context();
-
 
     AVProbeData  pd;
     uint8_t buf[PROBE_BUFFER_SIZE + AVPROBE_PADDING_SIZE];
