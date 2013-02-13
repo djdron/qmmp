@@ -324,6 +324,8 @@ void OutputWriter::run()
                     iir((void*) b->data, b->nbytes, m_channels);
                     break;
                 case Qmmp::PCM_S24LE:
+                    iir24((void*) b->data, b->nbytes, m_channels);
+                    break;
                 case Qmmp::PCM_S32LE:
                     iir32((void*) b->data, b->nbytes, m_channels);
                     break;

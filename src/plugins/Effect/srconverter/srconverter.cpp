@@ -65,6 +65,16 @@ void SRConverter::applyEffect(Buffer *b)
         }
         else
         {
+            qint32 *data = (int *) b->data;
+            if(format() == Qmmp::PCM_S24LE)
+            {
+                uint samples =  b->size >> 2;
+                for(unsigned int i = 0; i < samples; ++i)
+                {
+                    if(data[i] & 0x800000)
+                        data[i] |= 0xff000000;
+                }
+            }
             src_int_to_float_array((int*) b->data, m_src_data.data_in,
                                    m_src_data.input_frames * channels());
         }

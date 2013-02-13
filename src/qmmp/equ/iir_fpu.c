@@ -206,6 +206,18 @@ __inline__ int iir(void * d, int length, int nch)
   return length;
 }
 
+__inline__ int iir24(void * d, int length, int nch)
+{
+    int *data = (int *) d;
+    int index;
+    for (index = 0; index < length; index++)
+    {
+        if(data[index] & 0x800000)
+            data[index] |= 0xff000000;
+    }
+    return iir32(d, length, nch);
+}
+
 __inline__ int iir32(void * d, int length, int nch)
 {
 //  FTZ_ON;
