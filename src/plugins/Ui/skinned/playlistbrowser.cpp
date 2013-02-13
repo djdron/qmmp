@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QStyle>
+#include <QKeyEvent>
 #include <qmmpui/playlistmanager.h>
 #include "playlistbrowser.h"
 
@@ -114,4 +115,23 @@ void PlayListBrowser::on_upButton_clicked()
     int pos = m_pl_manager->indexOf(m_pl_manager->selectedPlayList());
     if(pos > 0)
         m_pl_manager->move(pos, pos - 1);
+}
+
+void PlayListBrowser::keyPressEvent(QKeyEvent *e)
+{
+    if(e->key() == Qt::Key_Return)
+    {
+        QListWidgetItem *item = ui.listWidget->currentItem();
+        if(item)
+        {
+            disconnect(m_pl_manager, SIGNAL(playListsChanged()), this, SLOT(updateList()));
+            m_pl_manager->activatePlayList(ui.listWidget->row(item));
+            m_pl_manager->selectPlayList(ui.listWidget->row(item));
+            connect(m_pl_manager, SIGNAL(playListsChanged()), SLOT(updateList()));
+            updateList();
+        }
+        e->accept();
+    }
+    else
+        QDialog::keyPressEvent(e);
 }

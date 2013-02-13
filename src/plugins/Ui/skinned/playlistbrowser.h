@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,6 +47,7 @@ private slots:
     void on_upButton_clicked();
 
 private:
+    void keyPressEvent(QKeyEvent *e);
     Ui::PlayListBrowser ui;
     PlayListManager *m_pl_manager;
 };
