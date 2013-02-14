@@ -125,7 +125,9 @@ void ListWidget::paintEvent(QPaintEvent *)
     //m_painter.setPen(Qt::white);
     painter.setFont(m_font);
     painter.setBrush(QBrush(m_normal_bg));
+#if QT_VERSION >= 0x040700
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
+#endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
     int x = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
     int sx = 0, sy = 0;

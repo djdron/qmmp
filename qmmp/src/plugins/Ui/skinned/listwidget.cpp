@@ -126,7 +126,9 @@ void ListWidget::paintEvent(QPaintEvent *)
     painter.setFont(m_font);
     painter.setBrush(QBrush(m_normal_bg));
     painter.drawRect(-1,-1,width()+1,height()+1);
+#if QT_VERSION >= 0x040700
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
+#endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
     int sx = 0, sy = 0;
 
