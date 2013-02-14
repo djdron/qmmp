@@ -41,6 +41,7 @@
 ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 {
     m_update = false;
+    m_use_system_colors = true;
     m_popupWidget = 0;
     m_menu = 0;
     m_scroll_direction = NONE;
@@ -80,6 +81,14 @@ void ListWidget::readSettings()
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     bool show_popup = settings.value("pl_show_popup", false).toBool();
+    m_use_system_colors = settings.value("pl_system_colors", true).toBool();
+    loadSystemColors();
+    m_normal_bg.setNamedColor(settings.value("pl_bg1_color", m_normal_bg.name()).toString());
+    m_alternate.setNamedColor(settings.value("pl_bg2_color", m_alternate.name()).toString());
+    m_selected_bg.setNamedColor(settings.value("pl_highlight_color", m_selected_bg.name()).toString());
+    m_normal.setNamedColor(settings.value("pl_normal_text_color", m_normal.name()).toString());
+    m_current.setNamedColor(settings.value("pl_current_text_color",m_current.name()).toString());
+    m_highlighted.setNamedColor(settings.value("pl_hl_text_color",m_highlighted.name()).toString());
 
     if (m_update)
     {
@@ -114,12 +123,10 @@ void ListWidget::readSettings()
 
 void ListWidget::paintEvent(QPaintEvent *)
 {
-    m_normal = palette().color(QPalette::Text);
-    m_current = palette().color(QPalette::Text);
-    m_highlighted = palette().color(QPalette::HighlightedText);
-    m_normal_bg = palette().color(QPalette::Base);
-    m_selected_bg = palette().color(QPalette::Highlight);
-
+    if(m_use_system_colors)
+    {
+       loadSystemColors();
+    }
 
     QPainter painter(this);
     //m_painter.setPen(Qt::white);
@@ -136,9 +143,9 @@ void ListWidget::paintEvent(QPaintEvent *)
 
     for (int i = 0; i < m_titles.size(); ++i)
     {
-        if(i % 2 == 0)
+        if(i % 2 == 1)
         {
-            painter.setBrush(QBrush(palette().color(QPalette::AlternateBase)));
+            painter.setBrush(QBrush(m_alternate));
             painter.setPen(palette().color(QPalette::AlternateBase));
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                 x - 10, m_metrics->lineSpacing() + 1);
@@ -257,7 +264,6 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
         update();
     }
 }
-
 
 void ListWidget::mousePressEvent(QMouseEvent *e)
 {
@@ -461,6 +467,16 @@ void ListWidget::autoscroll()
     }
 }
 
+void ListWidget::loadSystemColors()
+{
+    m_normal = palette().color(QPalette::Text);
+    m_alternate = palette().color(QPalette::AlternateBase);
+    m_current = palette().color(QPalette::Text);
+    m_highlighted = palette().color(QPalette::HighlightedText);
+    m_normal_bg = palette().color(QPalette::Base);
+    m_selected_bg = palette().color(QPalette::Highlight);
+}
+
 void ListWidget::scroll(int sc)
 {
     if (m_model->count() <= m_rows)
@@ -468,12 +484,6 @@ void ListWidget::scroll(int sc)
     m_first = sc;
     m_scroll = true;
     updateList();
-}
-
-void ListWidget::updateSkin()
-{
-    //loadColors();
-    update();
 }
 
 void ListWidget::dragEnterEvent(QDragEnterEvent *event)

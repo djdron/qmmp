@@ -442,6 +442,11 @@
         <translation>Остановлено</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="245"/>
+        <source>Playlist name:</source>
+        <translation>Имя списка:</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="281"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
@@ -693,6 +698,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="261"/>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
     </message>
@@ -828,7 +834,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="137"/>
+        <location filename="../qsuisettings.cpp" line="158"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
@@ -958,17 +964,57 @@
         <translation>Анализатор #3:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="131"/>
+        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <source>Playlist Colors</source>
+        <translation>Цвета списка воспроиведения</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <source>Use system colors</source>
+        <translation>Использовать системные цвета</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="494"/>
+        <source>Background #1:</source>
+        <translation>Фон #1:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="542"/>
+        <source>Normal text:</source>
+        <translation>Обычный текст:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="590"/>
+        <source>Background #2:</source>
+        <translation>Фон #2:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="625"/>
+        <source>Current text:</source>
+        <translation>Текущий текст:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="660"/>
+        <source>Highlighted background:</source>
+        <translation>Выделенный фон:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="695"/>
+        <source>Hightlighted text:</source>
+        <translation>Выделенный текст:</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="152"/>
         <source>Playback</source>
         <translation>Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="143"/>
+        <location filename="../qsuisettings.cpp" line="164"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="149"/>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Misc</source>
         <translation>Другие</translation>
     </message>
@@ -1044,19 +1090,6 @@
         <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>Peaks Falloff</source>
         <translation>Падение пиков</translation>
-    </message>
-</context>
-<context>
-    <name>RenameDialog</name>
-    <message>
-        <location filename="../forms/renamedialog.ui" line="14"/>
-        <source>Rename Playlist</source>
-        <translation>Переименовать список</translation>
-    </message>
-    <message>
-        <location filename="../forms/renamedialog.ui" line="24"/>
-        <source>New name:</source>
-        <translation>Новое имя:</translation>
     </message>
 </context>
 <context>

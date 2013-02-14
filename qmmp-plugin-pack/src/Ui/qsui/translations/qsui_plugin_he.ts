@@ -564,6 +564,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="261"/>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Rename Playlist</source>
         <translation>שנה שם רשימת השמעה</translation>
     </message>
@@ -586,6 +587,11 @@
         <location filename="../mainwindow.cpp" line="213"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="245"/>
+        <source>Playlist name:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="281"/>
@@ -830,7 +836,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="137"/>
+        <location filename="../qsuisettings.cpp" line="158"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
@@ -960,17 +966,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="131"/>
+        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <source>Playlist Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <source>Use system colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="494"/>
+        <source>Background #1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="542"/>
+        <source>Normal text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="590"/>
+        <source>Background #2:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="625"/>
+        <source>Current text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="660"/>
+        <source>Highlighted background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="695"/>
+        <source>Hightlighted text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="152"/>
         <source>Playback</source>
         <translation>פס קול</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="143"/>
+        <location filename="../qsuisettings.cpp" line="164"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="149"/>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Misc</source>
         <translation>שונות</translation>
     </message>
@@ -1046,19 +1092,6 @@
         <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>Peaks Falloff</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>RenameDialog</name>
-    <message>
-        <location filename="../forms/renamedialog.ui" line="14"/>
-        <source>Rename Playlist</source>
-        <translation>שנה שם של רשימת השמעה</translation>
-    </message>
-    <message>
-        <location filename="../forms/renamedialog.ui" line="24"/>
-        <source>New name:</source>
-        <translation>שם חדש:</translation>
     </message>
 </context>
 <context>

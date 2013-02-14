@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -102,6 +102,20 @@ void QSUISettings::readSettings()
     m_ui.aColor3->setColor(settings.value("vis_color3", "#BECBFF").toString());
     m_ui.peaksColor->setColor(settings.value("vis_peak_color", "#DDDDDD").toString());
     m_ui.bgColor->setColor(settings.value("vis_bg_color", "Black").toString());
+    //playlist colors
+    QString normal_bg = palette().color(QPalette::Base).name();
+    QString alternate = palette().color(QPalette::AlternateBase).name();
+    QString selected_bg = palette().color(QPalette::Highlight).name();
+    QString normal = palette().color(QPalette::Text).name();
+    QString current = palette().color(QPalette::Text).name();
+    QString highlighted = palette().color(QPalette::HighlightedText).name();
+    m_ui.plSystemColorsCheckBox->setChecked(settings.value("pl_system_colors", true).toBool());
+    m_ui.plBg1Color->setColor(settings.value("pl_bg1_color", normal_bg).toString());
+    m_ui.plBg2Color->setColor(settings.value("pl_bg2_color", alternate).toString());
+    m_ui.plHlColor->setColor(settings.value("pl_highlight_color", selected_bg).toString());
+    m_ui.plTextNormalColor->setColor(settings.value("pl_normal_text_color", normal).toString());
+    m_ui.plTextCurrentColor->setColor(settings.value("pl_current_text_color", current).toString());
+    m_ui.plTextHlCurrentColor->setColor(settings.value("pl_hl_text_color", highlighted).toString());
     settings.endGroup();
 }
 
@@ -122,6 +136,13 @@ void QSUISettings::writeSettings()
     settings.setValue("vis_color3", m_ui.aColor3->colorName());
     settings.setValue("vis_peak_color", m_ui.peaksColor->colorName());
     settings.setValue("vis_bg_color", m_ui.bgColor->colorName());
+    settings.setValue("pl_system_colors", m_ui.plSystemColorsCheckBox->isChecked());
+    settings.setValue("pl_bg1_color", m_ui.plBg1Color->colorName());
+    settings.setValue("pl_bg2_color", m_ui.plBg2Color->colorName());
+    settings.setValue("pl_highlight_color", m_ui.plHlColor->colorName());
+    settings.setValue("pl_normal_text_color", m_ui.plTextNormalColor->colorName());
+    settings.setValue("pl_current_text_color", m_ui.plTextCurrentColor->colorName());
+    settings.setValue("pl_hl_text_color", m_ui.plTextHlCurrentColor->colorName());
     settings.endGroup();
 }
 

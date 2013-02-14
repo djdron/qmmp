@@ -118,10 +118,10 @@ protected:
     bool event (QEvent *e);
 
 private slots:
-    void updateSkin();
     void autoscroll();
 
 private:
+    void loadSystemColors();
     bool m_update;
     bool m_scroll;
     int m_pressed_row;
@@ -134,11 +134,9 @@ private:
     int m_rows, m_first;
     QList <QString> m_titles;
     QList <QString> m_times;
-    //PlayList *m_pl;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics, *m_bold_metrics, *m_extra_metrics;
-    //Skin *m_skin;
-    QColor m_normal, m_current, m_highlighted, m_normal_bg, m_selected_bg;
+    QColor m_normal, m_alternate, m_current, m_highlighted, m_normal_bg, m_selected_bg;
     int m_anchor_row;
 
     enum ScrollDirection
@@ -161,6 +159,7 @@ private:
     bool m_show_anchor;
     int m_number_width;
     bool m_align_numbres;
+    bool m_use_system_colors;
 };
 
 #endif
