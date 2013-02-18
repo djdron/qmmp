@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <qmmp/volume.h>
 #include <qmmp/output.h>
 
 /**
@@ -48,6 +49,19 @@ private:
     // helper functions
     void status();
     void uninitialize();
+};
+
+class VolumeWaveOut : public Volume
+{
+public:
+    VolumeWaveOut();
+    ~VolumeWaveOut();
+
+    void setVolume(int channel, int value);
+    int volume(int channel);
+
+private:
+    DWORD m_volume;
 };
 
 

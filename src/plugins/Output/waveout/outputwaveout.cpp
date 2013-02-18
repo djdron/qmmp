@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,7 +17,6 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-
 
 #include <QObject>
 #include <unistd.h>
@@ -237,4 +236,30 @@ void OutputWaveOut::uninitialize()
 
     DeleteCriticalSection (&cs);
     return;
+}
+
+/***** MIXER *****/
+VolumeWaveOut::VolumeWaveOut()
+{}
+
+VolumeWaveOut::~VolumeWaveOut()
+{}
+
+void VolumeWaveOut::setVolume(int channel, int value)
+{
+    int l = (channel == Volume::LEFT_CHANNEL) ? value : (long)LOWORD(m_volume) * 100 / 0xFFFF;
+    int r = (channel == Volume::RIGHT_CHANNEL) ? value : (long)HIWORD(m_volume) * 100 / 0xFFFF;
+    m_volume = (r*0xFFFF/100 << 16) | l*0xFFFF/100;
+    waveOutSetVolume(0, m_volume);
+}
+
+int VolumeWaveOut::volume(int channel)
+{
+    DWORD volume;
+    waveOutGetVolume(0, (LPDWORD)&volume);
+    m_volume = volume;
+    if(channel == Volume::LEFT_CHANNEL)
+        return (long)LOWORD(volume) * 100 / 0xFFFF;
+    else
+        return (long)HIWORD(volume) * 100 / 0xFFFF;
 }
