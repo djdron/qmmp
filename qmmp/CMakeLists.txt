@@ -141,6 +141,7 @@ PRINT_SUMMARY ("Mplayer support ..................." USE_MPLAYER 1)
 PRINT_SUMMARY ("CD Audio support .................." USE_CDA CDIO_FOUND)
 PRINT_SUMMARY ("Midi support ......................" USE_MIDI WILDMIDI_FOUND)
 PRINT_SUMMARY ("Game music support ................" USE_GME GME_FOUND)
+PRINT_SUMMARY ("Ogg Opus support .................." USE_OPUS OPUS_FOUND)
 
 MESSAGE("")
 MESSAGE("Output Plugins:")
