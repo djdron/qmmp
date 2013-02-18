@@ -40,7 +40,7 @@ Output* OutputWaveOutFactory::create()
 
 Volume *OutputWaveOutFactory::createVolume()
 {
-    return 0;
+    return new VolumeWaveOut();
 }
 
 void OutputWaveOutFactory::showSettings(QWidget* parent)
