@@ -11,6 +11,7 @@ Qmmp - Qt-based multimedia player
 Поддерживаемые форматы:
 - MPEG1 layer 2/3
 - Ogg Vorbis
+- Ogg Opus
 - Native FLAC, Ogg FLAC
 - Musepack
 - WavePack
@@ -86,6 +87,8 @@ Qmmp - Qt-based multimedia player
 - libcddb >= 1.3.1 (Опционально)
 - faad2 >= 2.6.1 (Опционально)
 - game-music-emu >= 0.5.5 (Опционально)
+- opus >= 1.0.2 (Опционально)
+- opusfile >= 0.2 (Опционально)
 - libWildMidi >= 0.2.3.4 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
@@ -110,7 +113,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Доступные опции:
 - USE_CURL, USE_MMS (транспортные модули);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
-  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY (декодеры);
+  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY, USE_OPUS (декодеры);
 - USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (модули  вывода);
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
