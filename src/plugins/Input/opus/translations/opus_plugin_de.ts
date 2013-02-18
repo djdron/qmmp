@@ -28,6 +28,11 @@
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
+    <message>
+        <location filename="../decoderopusfactory.cpp" line="125"/>
+        <source>This plugin includes code form TagLib library</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OpusMetaDataModel</name>
