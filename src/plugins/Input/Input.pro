@@ -41,4 +41,7 @@ contains(CONFIG, GME_PLUGIN){
   SUBDIRS += gme
 }
 
+contains(CONFIG, OPUS_PLUGIN){
+  SUBDIRS += opus
+}
 }

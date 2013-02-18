@@ -831,7 +831,7 @@
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
-        <location filename="../playlistbrowser.cpp" line="39"/>
+        <location filename="../playlistbrowser.cpp" line="40"/>
         <source>Delete</source>
         <translation>Видалити</translation>
     </message>
@@ -842,7 +842,7 @@
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../playlistbrowser.cpp" line="38"/>
+        <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Rename</source>
         <translation>Переіменувати</translation>
     </message>
