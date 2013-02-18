@@ -1,11 +1,11 @@
 project(libopus)
 
-cmake_minimum_required(VERSION 2.4.7)
+cmake_minimum_required(VERSION 2.6.0)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
-              
+
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -26,7 +26,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libopus and libopusfile
-pkg_check_modules(OPUS opus opusfile)
+pkg_check_modules(OPUS opus>=1.0.2 opusfile>=0.2)
 
 include_directories(${OPUS_INCLUDE_DIRS}  ${TAGLIB_INCLUDE_DIRS})
 link_directories(${OPUS_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})

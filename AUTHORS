@@ -127,7 +127,7 @@ Licq - an instant messaging client for UNIX (C) 2006-2009
 
     Licq developers
 
-TagLib - a library for reading and editing the meta-data of several popular audio formats (C) 2002-2012
+TagLib - audio meta-data library (C) 2002-2012
 
     Lukáš Lalinský <wheeler@kde.org>
     Scott Wheeler <wheeler@kde.org>

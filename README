@@ -11,6 +11,7 @@ Supported operating systems:
 Supported formats:
 - MPEG1 layer 2/3
 - Ogg Vorbis
+- Ogg Opus
 - Native FLAC, Ogg FLAC
 - Musepack
 - WavePack
@@ -87,6 +88,8 @@ Requirements:
 - libcddb >= 1.3.1 (Optional)
 - faad2 >= 2.6.1 (Optional)
 - game-music-emu >= 0.5.5 (Optional)
+- opus >= 1.0.2 (Optional)
+- opusfile >= 0.2 (Optional)
 - libWildMidi >= 0.2.3.4 (Optional)
 - libbs2b >= 3.0.0 (Optional)
 - libprojectM >= 1.2.0 (Optional)
@@ -113,7 +116,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Available options:
 - USE_CURL, USE_MMS (transports);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
-  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY (decoders);
+  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY, USE_OPUS (decoders);
 - USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (output plugins);
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (effects);
 - USE_ANALYZER, USE_PROJECTM (visualization);
