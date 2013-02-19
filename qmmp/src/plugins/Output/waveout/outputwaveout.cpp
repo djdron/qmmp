@@ -256,10 +256,10 @@ void VolumeWaveOut::setVolume(int channel, int value)
 int VolumeWaveOut::volume(int channel)
 {
     DWORD volume;
-    waveOutGetVolume(0, (LPDWORD)&volume);
+    waveOutGetVolume(0, (PDWORD)&volume);
     m_volume = volume;
     if(channel == Volume::LEFT_CHANNEL)
-        return (long)LOWORD(volume) * 100 / 0xFFFF;
+        return (long)LOWORD(volume) * 100 / 0xFFFF + 1;
     else
-        return (long)HIWORD(volume) * 100 / 0xFFFF;
+        return (long)HIWORD(volume) * 100 / 0xFFFF + 1;
 }
