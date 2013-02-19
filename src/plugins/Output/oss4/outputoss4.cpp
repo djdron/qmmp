@@ -173,6 +173,8 @@ VolumeOSS4::VolumeOSS4()
 
 VolumeOSS4::~VolumeOSS4()
 {
+    VolumeSettings vol = volume();
+    m_volume = (vol.right << 8) | vol.left;
     OutputOSS4::m_vc = 0;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("OSS4/volume", m_volume);
@@ -195,10 +197,14 @@ VolumeSettings VolumeOSS4::volume() const
         int v = 0;
         if (ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_GETPLAYVOL, &v) < 0)
             v = 0;
-        m_volume = v;
+        vol.left = v & 0x00FF;
+        vol.right = (v & 0xFF00) >> 8;
     }
-    vol.left = m_volume & 0x00FF;
-    vol.right = (m_volume & 0xFF00) >> 8;
+    else
+    {
+        vol.left = m_volume & 0x00FF;
+        vol.right = (m_volume & 0xFF00) >> 8;
+    }
     return vol;
 }
 
