@@ -50,8 +50,10 @@ int VolumeControl::left()
 
 void VolumeControl::setVolume(int left, int right)
 {
-    m_volume->setVolume(Volume::LEFT_CHANNEL, left);
-    m_volume->setVolume(Volume::RIGHT_CHANNEL, right);
+    VolumeSettings v;
+    v.left = left;
+    v.right = right;
+    m_volume->setVolume(v);
     checkVolume();
 }
 
@@ -62,8 +64,9 @@ int VolumeControl::right()
 
 void VolumeControl::checkVolume()
 {
-    int l = m_volume->volume(Volume::LEFT_CHANNEL);
-    int r = m_volume->volume(Volume::RIGHT_CHANNEL);
+    VolumeSettings v = m_volume->volume();
+    int l = v.left;
+    int r = v.right;
 
     l = (l > 100) ? 100 : l;
     r = (r > 100) ? 100 : r;
@@ -123,21 +126,20 @@ SoftwareVolume::~SoftwareVolume()
     m_instance = 0;
 }
 
-void SoftwareVolume::setVolume(int channel, int value)
+void SoftwareVolume::setVolume(const VolumeSettings &v)
 {
-    if(channel == Volume::LEFT_CHANNEL)
-        m_left = value;
-    else
-        m_right = value;
+    m_left = v.left;
+    m_right = v.right;
     m_scaleLeft = (double)m_left/100.0;
     m_scaleRight = (double)m_right/100.0;
 }
 
-int SoftwareVolume::volume(int channel)
+VolumeSettings SoftwareVolume::volume() const
 {
-    if(channel == Volume::LEFT_CHANNEL)
-        return m_left;
-    return m_right;
+    VolumeSettings v;
+    v.left = m_left;
+    v.right = m_right;
+    return v;
 }
 
 void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)

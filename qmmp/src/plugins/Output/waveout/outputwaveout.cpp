@@ -245,21 +245,18 @@ VolumeWaveOut::VolumeWaveOut()
 VolumeWaveOut::~VolumeWaveOut()
 {}
 
-void VolumeWaveOut::setVolume(int channel, int value)
+void VolumeWaveOut::setVolume(const VolumeSettings &vol)
 {
-    int l = (channel == Volume::LEFT_CHANNEL) ? value : (long)LOWORD(m_volume) * 100 / 0xFFFF;
-    int r = (channel == Volume::RIGHT_CHANNEL) ? value : (long)HIWORD(m_volume) * 100 / 0xFFFF;
-    m_volume = (r*0xFFFF/100 << 16) | l*0xFFFF/100;
-    waveOutSetVolume(0, m_volume);
+    DWORD data = (vol.right*0xFFFF/100 << 16) | vol.left*0xFFFF/100;
+    waveOutSetVolume(0, data);
 }
 
-int VolumeWaveOut::volume(int channel)
+VolumeSettings VolumeWaveOut::volume() const
 {
-    DWORD volume;
-    waveOutGetVolume(0, (PDWORD)&volume);
-    m_volume = volume;
-    if(channel == Volume::LEFT_CHANNEL)
-        return (long)LOWORD(volume) * 100 / 0xFFFF + 1;
-    else
-        return (long)HIWORD(volume) * 100 / 0xFFFF + 1;
+    VolumeSettings vol;
+    DWORD data;
+    waveOutGetVolume(0, (PDWORD)&data);
+    vol.left = (long)LOWORD(data) * 100 / 0xFFFF + 1;
+    vol.right = (long)HIWORD(data) * 100 / 0xFFFF + 1;
+    return vol;
 }

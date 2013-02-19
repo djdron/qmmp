@@ -96,8 +96,8 @@ public:
     SoftwareVolume();
     ~SoftwareVolume();
 
-    void setVolume(int channel, int value);
-    int volume(int channel);
+    void setVolume(const VolumeSettings &v);
+    VolumeSettings volume() const;
     void changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format);
 
     static SoftwareVolume *instance();
