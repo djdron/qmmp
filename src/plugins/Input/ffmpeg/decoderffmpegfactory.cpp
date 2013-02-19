@@ -68,7 +68,6 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
     {
-        qWarning("DecoderFFmpegFactory: usupported format");
         return false;
     }
     if(filters.contains("*.wma") && !memcmp(fmt->name, "asf", 3))
