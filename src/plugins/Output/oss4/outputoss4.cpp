@@ -178,40 +178,34 @@ VolumeOSS4::~VolumeOSS4()
     settings.setValue("OSS4/volume", m_volume);
 }
 
-void VolumeOSS4::setVolume(int channel, int value)
+void VolumeOSS4::setVolume(const VolumeSettings &vol)
 {
-    int l = (channel == Volume::LEFT_CHANNEL) ? value : volume(Volume::LEFT_CHANNEL);
-    int r = (channel == Volume::RIGHT_CHANNEL) ? value : volume(Volume::RIGHT_CHANNEL);
-    m_volume = (r << 8) | l;
+    m_volume = (vol.right << 8) | vol.left;
     if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
         ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_SETPLAYVOL, &m_volume);
     }
 }
 
-int VolumeOSS4::volume(int channel)
+VolumeSettings VolumeOSS4::volume() const
 {
+    VolumeSettings vol;
     if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
         int v = 0;
         if (ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_GETPLAYVOL, &v) < 0)
             v = 0;
         m_volume = v;
-        if(channel == Volume::LEFT_CHANNEL)
-            return (v & 0x00FF);
-        return (v & 0xFF00) >> 8;
     }
-    else
-    {
-        if(channel == Volume::LEFT_CHANNEL)
-            return (m_volume & 0x00FF);
-        return (m_volume & 0xFF00) >> 8;
-    }
+    vol.left = m_volume & 0x00FF;
+    vol.right = (m_volume & 0xFF00) >> 8;
+    return vol;
 }
 
 void VolumeOSS4::restore()
 {
-    int v = m_volume;
-    setVolume(Volume::LEFT_CHANNEL, (v & 0x00FF));
-    setVolume(Volume::RIGHT_CHANNEL, (v & 0xFF00) >> 8);
+    if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
+    {
+        ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_SETPLAYVOL, &m_volume);
+    }
 }

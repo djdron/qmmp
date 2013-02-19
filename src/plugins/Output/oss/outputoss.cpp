@@ -167,13 +167,10 @@ VolumeOSS::~VolumeOSS()
     }
 }
 
-void VolumeOSS::setVolume(int channel, int value)
+void VolumeOSS::setVolume(const VolumeSettings &vol)
 {
     if (m_mixer_fd < 0)
         return;
-
-    int l = (channel == Volume::LEFT_CHANNEL) ? value : volume(Volume::LEFT_CHANNEL);
-    int r = (channel == Volume::RIGHT_CHANNEL) ? value : volume(Volume::RIGHT_CHANNEL);
 
     long cmd;
     int devs = 0;
@@ -187,14 +184,15 @@ void VolumeOSS::setVolume(int channel, int value)
         //close(mifd);
         return;
     }
-    int v = (r << 8) | l;
+    int v = (vol.right << 8) | vol.left;
     ioctl(m_mixer_fd, cmd, &v);
 }
 
-int VolumeOSS::volume(int channel)
+VolumeSettings VolumeOSS::volume() const
 {
+    VolumeSettings vol;
     if(m_mixer_fd < 0)
-        return 0;
+        return vol;
     int cmd;
     int v, devs = 0;
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
@@ -204,12 +202,12 @@ int VolumeOSS::volume(int channel)
     else if ((devs & SOUND_MASK_VOLUME) && m_master)
         cmd = SOUND_MIXER_READ_VOLUME;
     else
-        return 0;
+        return vol;
 
     ioctl(m_mixer_fd, cmd, &v);
-    if(channel == Volume::LEFT_CHANNEL)
-        return (v & 0xFF00) >> 8;
-    return (v & 0x00FF);
+    vol.left = (v & 0xFF00) >> 8;
+    vol.right = (v & 0x00FF);
+    return vol;
 }
 
 void VolumeOSS::openMixer()

@@ -21,33 +21,44 @@
 #ifndef VOLUME_H
 #define VOLUME_H
 
-#endif // VOLUME_H
+/*! @brief The VolumeSettings structure stores volume levels
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+struct VolumeSettings
+{
+    /*!
+     * Constructor
+     */
+    VolumeSettings()
+    {
+        left = 0;
+        right = 0;
+    }
+    int left /*!< Volume of the left channel. It should be \b 0..100. */;
+    int right /*!< Volume of the left channel It should be \b 0..100. */;
+};
 
 
-/*! @brief The Volume class is a provides volume API
+/*! @brief The Volume class provides asbtract volume interface
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class Volume
 {
 public:
+    /*!
+     * Destructor.
+     */
     virtual ~Volume(){}
     /*!
-     * Volume control channel enum
-     */
-    enum Channel
-    {
-        LEFT_CHANNEL = 0, /*!< Right channel */
-        RIGHT_CHANNEL     /*!< Left channel */
-    };
-    /*!
-     * Setups volume level.
+     * Setups volume levels.
      * Subclass should reimplement this fucntion.
-     * @param channel Channel
-     * @param value Volume level. It should be \b 0..100
+     * @param volume Structure with required volume levels.
      */
-    virtual void setVolume(int channel, int value) = 0;
+    virtual void setVolume(const VolumeSettings &volume) = 0;
     /*!
      * Returns volume level of the \b channel.
      */
-    virtual int volume(int channel) = 0;
+    virtual VolumeSettings volume() const = 0;
 };
+
+#endif // VOLUME_H

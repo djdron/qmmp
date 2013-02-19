@@ -57,11 +57,8 @@ public:
     VolumeWaveOut();
     ~VolumeWaveOut();
 
-    void setVolume(int channel, int value);
-    int volume(int channel);
-
-private:
-    DWORD m_volume;
+    void setVolume(const VolumeSettings &vol);
+    VolumeSettings volume() const;
 };
 
 

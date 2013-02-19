@@ -55,8 +55,8 @@ public:
     VolumeOSS();
     ~VolumeOSS();
 
-    void setVolume(int channel, int value);
-    int volume(int channel);
+    void setVolume(const VolumeSettings &vol);
+    VolumeSettings volume() const;
 
 private:
     //oss mixer

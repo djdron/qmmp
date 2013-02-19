@@ -375,31 +375,28 @@ VolumeALSA::~VolumeALSA()
         snd_mixer_close(mixer);
 }
 
-void VolumeALSA::setVolume(int channel, int value)
+void VolumeALSA::setVolume(const VolumeSettings &vol)
 {
     if (!pcm_element)
         return;
 
-    _snd_mixer_selem_channel_id channel_id = SND_MIXER_SCHN_FRONT_LEFT;
-    if(channel == Volume::RIGHT_CHANNEL)
-        channel_id = SND_MIXER_SCHN_FRONT_RIGHT;
-
-    snd_mixer_selem_set_playback_volume(pcm_element, channel_id, value);
+    snd_mixer_selem_set_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, vol.left);
+    snd_mixer_selem_set_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, vol.right);
 }
 
-int VolumeALSA::volume(int channel)
+VolumeSettings VolumeALSA::volume() const
 {
+    VolumeSettings vol;
     if (!pcm_element)
-        return 0;
-
-    _snd_mixer_selem_channel_id channel_id = SND_MIXER_SCHN_FRONT_LEFT;
-    if(channel == Volume::RIGHT_CHANNEL)
-        channel_id = SND_MIXER_SCHN_FRONT_RIGHT;
+        return vol;
 
     long value = 0;
     snd_mixer_handle_events(mixer);
-    snd_mixer_selem_get_playback_volume(pcm_element, channel_id, &value);
-    return value;
+    snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &value);
+    vol.left = value;
+    snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &value);
+    vol.right = value;
+    return vol;
 }
 
 int VolumeALSA::setupMixer(QString card, QString device)

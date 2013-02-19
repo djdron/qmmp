@@ -65,8 +65,8 @@ public:
     VolumeOSS4();
     ~VolumeOSS4();
 
-    void setVolume(int channel, int value);
-    int volume(int channel);
+    void setVolume(const VolumeSettings &vol);
+    VolumeSettings volume() const;
     void restore();
 
 private:
