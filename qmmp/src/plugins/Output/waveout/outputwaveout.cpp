@@ -260,3 +260,11 @@ VolumeSettings VolumeWaveOut::volume() const
     vol.right = (long)HIWORD(data) * 100 / 0xFFFF + 1;
     return vol;
 }
+
+bool VolumeWaveOut::isSupported() const
+{
+    WAVEOUTCAPS waveCaps;
+    if(waveOutGetDevCaps(0,(LPWAVEOUTCAPS)&waveCaps, sizeof(WAVEOUTCAPS)) != MMSYSERR_NOERROR)
+        return false;
+    return (waveCaps.dwSupport & WAVECAPS_VOLUME) != 0;
+}

@@ -59,6 +59,8 @@ public:
 
     void setVolume(const VolumeSettings &vol);
     VolumeSettings volume() const;
+
+    bool isSupported() const;
 };
 
 
