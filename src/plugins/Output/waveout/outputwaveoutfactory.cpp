@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,7 +40,14 @@ Output* OutputWaveOutFactory::create()
 
 Volume *OutputWaveOutFactory::createVolume()
 {
-    return new VolumeWaveOut();
+    VolumeWaveOut *vol = new VolumeWaveOut();
+    if(!vol->isSupported())
+    {
+        qDebug("OutputWaveOutFactory: device doesn't support volume control");
+        delete vol;
+        return 0;
+    }
+    return vol;
 }
 
 void OutputWaveOutFactory::showSettings(QWidget* parent)
