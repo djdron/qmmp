@@ -47,27 +47,27 @@
         <translation>Настройки инструментов:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="53"/>
+        <location filename="../settingsdialog.ui" line="43"/>
         <source>Sample rate:</source>
         <translation>Частота дискретизации:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="60"/>
+        <location filename="../settingsdialog.ui" line="50"/>
         <source>Enhanced resampling</source>
         <translation>Улучшенная передискретизация</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="57"/>
         <source>Reverberation</source>
         <translation>Реверберация</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="35"/>
+        <location filename="../settingsdialog.cpp" line="39"/>
         <source>44100 Hz</source>
         <translation>44100 Гц</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="36"/>
+        <location filename="../settingsdialog.cpp" line="40"/>
         <source>48000 Hz</source>
         <translation>48000 Гц</translation>
     </message>

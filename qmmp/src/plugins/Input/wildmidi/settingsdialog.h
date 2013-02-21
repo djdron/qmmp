@@ -39,7 +39,7 @@ public slots:
     virtual void accept();
 
 private:
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
 
 };
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>135</height>
+    <width>339</width>
+    <height>169</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,16 +35,6 @@
      <property name="editable">
       <bool>true</bool>
      </property>
-     <item>
-      <property name="text">
-       <string notr="true">/etc/timidity.cfg</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string notr="true">/etc/timidity/timidity.cfg</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item row="1" column="0">
