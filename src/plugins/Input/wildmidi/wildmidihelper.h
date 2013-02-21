@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QMutex>
+#include <QStringList>
 
 class WildMidiHelper : public QObject
 {
@@ -35,6 +36,7 @@ public:
     quint32 sampleRate();
     void addPtr(void *);
     void removePtr(void *);
+    QStringList configFiles() const;
     static WildMidiHelper *instance();
 
 private:

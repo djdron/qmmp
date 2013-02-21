@@ -9,22 +9,22 @@
         <translation>Modul WaveOut</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="53"/>
+        <location filename="../outputwaveoutfactory.cpp" line="60"/>
         <source>About WaveOut Output Plugin</source>
         <translation>O výstupním modulu WaveOut</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="54"/>
+        <location filename="../outputwaveoutfactory.cpp" line="61"/>
         <source>Qmmp WaveOut Output Plugin</source>
         <translation>Výstupní modul Qmmp WaveOut</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="55"/>
+        <location filename="../outputwaveoutfactory.cpp" line="62"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="56"/>
+        <location filename="../outputwaveoutfactory.cpp" line="63"/>
         <source>Based on aacDECdrop player</source>
         <translation>Založeno na přehrávači aacDECdrop</translation>
     </message>

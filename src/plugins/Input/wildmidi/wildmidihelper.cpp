@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 
 #include <QApplication>
 #include <QSettings>
+#include <QFile>
 extern "C"{
 #include <wildmidi_lib.h>
 }
@@ -54,7 +55,14 @@ bool WildMidiHelper::initialize()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Midi");
     unsigned short int mixer_options = 0;
-    QString conf_path = settings.value("conf_path", "/etc/timidity/timidity.cfg").toString();
+    QString conf_path = configFiles().isEmpty() ? QString() : configFiles().first();
+    conf_path = settings.value("conf_path", conf_path).toString();
+    if(conf_path.isEmpty() || !QFile::exists(conf_path))
+    {
+        qWarning("WildMidiHelper: invalid config path: %s", qPrintable(conf_path));
+        m_mutex.unlock();
+        return false;
+    }
     unsigned short int sample_rate = settings.value("sample_rate", 44100).toInt();
     if(settings.value("enhanced_resampling", false).toBool())
         mixer_options |= WM_MO_ENHANCED_RESAMPLING;
@@ -101,6 +109,19 @@ void WildMidiHelper::removePtr(void *t)
     m_mutex.lock();
     m_ptrs.removeAll(t);
     m_mutex.unlock();
+}
+
+QStringList WildMidiHelper::configFiles() const
+{
+    QStringList files = QStringList() << "/etc/timidity.cfg"
+                                      << "/etc/timidity.cfg"
+                                      << "/etc/wildmidi/wildmidi.cfg";
+    foreach(QString path, files)
+    {
+        if(!QFile::exists(path))
+            files.removeAll(path);
+    }
+    return files;
 }
 
 quint32 WildMidiHelper::sampleRate()

@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="209"/>
+        <location filename="../decoderffmpegfactory.cpp" line="208"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>关于 FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="211"/>
+        <location filename="../decoderffmpegfactory.cpp" line="210"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="219"/>
+        <location filename="../decoderffmpegfactory.cpp" line="218"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="100"/>
+        <location filename="../decoderffmpegfactory.cpp" line="99"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg 插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="102"/>
+        <location filename="../decoderffmpegfactory.cpp" line="101"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg 格式</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="212"/>
+        <location filename="../decoderffmpegfactory.cpp" line="211"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>编译依赖 libavformat-%1.%2.%3 和 libavcodec-%4.%5.%6</translation>
     </message>
