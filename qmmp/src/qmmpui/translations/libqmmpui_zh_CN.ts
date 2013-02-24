@@ -587,47 +587,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="118"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="120"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Composer</source>
         <translation>作曲</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="122"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="124"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Track</source>
         <translation>音轨</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="126"/>
+        <location filename="../detailsdialog.cpp" line="121"/>
         <source>Disc number</source>
         <translation>光盘编号</translation>
     </message>

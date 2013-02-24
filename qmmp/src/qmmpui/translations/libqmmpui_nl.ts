@@ -587,47 +587,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Title</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation>Artiest</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="118"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation>Commentaar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Genre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="120"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Composer</source>
         <translation>Componist</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="122"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Year</source>
         <translation>Jaar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="124"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Track</source>
         <translation>Nummer</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="126"/>
+        <location filename="../detailsdialog.cpp" line="121"/>
         <source>Disc number</source>
         <translation>CD nummer</translation>
     </message>
