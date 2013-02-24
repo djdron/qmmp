@@ -607,47 +607,47 @@
         <translation>あらまし</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="111"/>
+        <location filename="../detailsdialog.cpp" line="116"/>
         <source>Artist</source>
         <translation>アーティスト</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="112"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Album</source>
         <translation>アルバム</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="113"/>
+        <location filename="../detailsdialog.cpp" line="118"/>
         <source>Comment</source>
         <translation>コメント</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="114"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Genre</source>
         <translation>ジャンル</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="120"/>
         <source>Composer</source>
         <translation>作曲者</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="122"/>
         <source>Year</source>
         <translation>年</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../detailsdialog.cpp" line="124"/>
         <source>Track</source>
         <translation>トラック</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="121"/>
+        <location filename="../detailsdialog.cpp" line="126"/>
         <source>Disc number</source>
         <translation>ディスク番号</translation>
     </message>

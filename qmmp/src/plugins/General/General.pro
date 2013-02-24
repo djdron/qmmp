@@ -8,7 +8,8 @@ SUBDIRS += statusicon \
            covermanager \
            streambrowser \
            trackchange \
-           hotkey
+           hotkey \
+           copypaste
 unix:SUBDIRS += mpris \
                 kdenotify \
                 converter

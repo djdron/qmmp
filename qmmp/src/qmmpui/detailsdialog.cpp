@@ -62,6 +62,11 @@ DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)
         }
     }
     printInfo();
+
+    QWidget *w = new QWidget(m_ui->textEdit);
+    w->resize(120,120);
+    w->setAutoFillBackground(true);
+    w->move(m_ui->textEdit->width() - 130, m_ui->textEdit->height() - 130);
 }
 
 DetailsDialog::~DetailsDialog()
