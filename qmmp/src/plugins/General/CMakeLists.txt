@@ -13,6 +13,7 @@ SET(USE_KDENOTIFY TRUE CACHE BOOL "enable/disable kde notification plugin")
 SET(USE_CONVERTER TRUE CACHE BOOL "enable/disable audio converter plugin")
 SET(USE_SB TRUE CACHE BOOL "enable/disable stream browser plugin")
 SET(USE_TRACKCHANGE TRUE CACHE BOOL "enable/disable track change plugin")
+SET(USE_COPYPASTE TRUE CACHE BOOL "enable/disable copy/paste change plugin")
 
 
 IF(USE_MPRIS)
@@ -74,3 +75,7 @@ ENDIF(USE_SB)
 IF(USE_TRACKCHANGE)
 add_subdirectory(trackchange)
 ENDIF(USE_TRACKCHANGE)
+
+IF(USE_COPYPASTE)
+add_subdirectory(copypaste)
+ENDIF(USE_COPYPASTE)
