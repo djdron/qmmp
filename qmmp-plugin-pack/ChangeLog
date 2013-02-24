@@ -1,0 +1,47 @@
+Changelog of Qmmp Plugin Pack
+
+--------------
+Version 0.6.0
+* initial release
+
+Version 0.6.1
+* added feature to disable assembler optimizations in the FFap plugin
+* fixed documentation
+* fixed playlist scrolling
+* fixed build
+* updated Ukrainian translation (Gennadi Motsyo)
+
+Version 0.6.2
+* fixed FSF address
+* fixed some bugs in cmake files
+* removed executable stack from libffap.so (thanks to Karel Volný)
+* fixed crash in the playlist popup message
+* updated Lithuanian translation (Algirdas Butkus)
+
+Version 0.6.3
+* added Hebrew translation (Genghis Khan)
+* added missing translation files
+* fixed resources
+* fixed qsui settings
+* fixed shortcut editor
+* fixed qsui position bar behavior
+* fixed division line position in the playlist of the qsui plugin
+
+Version 0.6.4
+* added http redirect support to the url dialog of the qsui plugin
+* updated Hebrew translation (Genghis Khan)
+
+Version 0.6.5
+* improved rtl locales support
+* fixed compiler warnings
+
+Version 0.7.0
+* added qmmp 0.7 support
+* added spectrum analyzer to the qsui plugin
+* added playlist colors settings to the qsui plugin
+* added sorting by date to the qsui plugin
+* added windows support to the ffap plugin
+* added streams support to the mpg123 plugin
+* improved qsui plugin tabs (movable, closable by middle click)
+* removed rename dialog, using standard instead
+* removed qmmp 0.6.x support
