@@ -607,47 +607,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Title</source>
         <translation type="unfinished">Názov</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation type="unfinished">Interprét</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Album</source>
         <translation type="unfinished">Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="118"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation type="unfinished">Poznámka</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Genre</source>
         <translation type="unfinished">Žáner</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="120"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Composer</source>
         <translation type="unfinished">Skladateľ</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="122"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Year</source>
         <translation type="unfinished">Rok</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="124"/>
+        <location filename="../detailsdialog.cpp" line="119"/>
         <source>Track</source>
         <translation type="unfinished">Skladba</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="126"/>
+        <location filename="../detailsdialog.cpp" line="121"/>
         <source>Disc number</source>
         <translation type="unfinished">Číslo disku</translation>
     </message>
