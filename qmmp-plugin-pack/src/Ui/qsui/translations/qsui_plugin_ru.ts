@@ -1024,7 +1024,7 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="276"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Обложка</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>
