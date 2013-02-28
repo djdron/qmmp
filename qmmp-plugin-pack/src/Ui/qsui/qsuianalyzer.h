@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,17 +27,18 @@
 class QTimer;
 class QMenu;
 class QActionGroup;
+class QLabel;
 
 
 class QSUiAnalyzer : public Visual
 {
     Q_OBJECT
-
 public:
     QSUiAnalyzer( QWidget *parent = 0);
     virtual ~QSUiAnalyzer();
 
     void add(unsigned char *data, qint64 size, int chan);
+    void setCover(const QPixmap &pixmap);
     void clear();
 
 public slots:
@@ -52,11 +53,14 @@ private:
     void mousePressEvent(QMouseEvent *);
     void hideEvent(QHideEvent *);
     void showEvent(QShowEvent *);
+    void resizeEvent(QResizeEvent *e);
     void process(short *l, short *r);
     void draw(QPainter *p);
     void createMenu();
+    void updateCover();
 
     QPixmap m_bg;
+    QPixmap m_cover;
     QTimer *m_timer;
     double *m_intern_vis_data;
     double *m_peaks;
@@ -64,11 +68,14 @@ private:
     double m_peaks_falloff;
     double m_analyzer_falloff;
     bool m_show_peaks;
+    bool m_show_cover;
     short *m_left_buffer;
     short *m_right_buffer;
     int m_buffer_at;
     int m_cols, m_rows;
+    int m_offset;
     bool m_update;
+    QLabel *m_pixLabel;
     //colors
     QColor m_color1;
     QColor m_color2;
@@ -78,6 +85,7 @@ private:
     QSize m_cell_size;
     QMenu *m_menu;
     QAction *m_peaksAction;
+    QAction *m_coverAction;
     QActionGroup *m_fpsGroup;
     QActionGroup *m_analyzerFalloffGroup;
     QActionGroup *m_peaksFalloffGroup;

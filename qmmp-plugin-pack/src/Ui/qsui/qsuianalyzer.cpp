@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QMenu>
 #include <QActionGroup>
+#include <QLabel>
 #include <qmmp/qmmp.h>
 #include <qmmp/buffer.h>
 #include <math.h>
@@ -41,7 +42,10 @@ QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent)
     m_buffer_at = 0;
     m_rows = 0;
     m_cols = 0;
+    m_offset = 0;
     m_update = false;
+    m_show_cover = false;
+    m_pixLabel = new QLabel(this);
     createMenu();
 
     m_timer = new QTimer (this);
@@ -71,6 +75,8 @@ void QSUiAnalyzer::clear()
     m_buffer_at = 0;
     m_rows = 0;
     m_cols = 0;
+    m_cover = QPixmap();
+    updateCover();
     update();
 }
 
@@ -103,9 +109,18 @@ void QSUiAnalyzer::add (unsigned char *data, qint64 size, int chan)
     m_buffer_at += frames;
 }
 
+void QSUiAnalyzer::setCover(const QPixmap &pixmap)
+{
+    if(pixmap.isNull())
+        m_cover = QPixmap(":/qsui/ui_no_cover.png");
+    else
+        m_cover = pixmap;
+    m_pixLabel->setPixmap(m_cover.scaled(m_pixLabel->size()));
+}
+
 void QSUiAnalyzer::timeout()
 {
-    mutex()->lock ();
+    mutex()->lock();
     if(m_buffer_at < VISUAL_NODE_SIZE)
     {
         mutex()->unlock ();
@@ -137,6 +152,11 @@ void QSUiAnalyzer::showEvent (QShowEvent *)
     m_timer->start();
 }
 
+void QSUiAnalyzer::resizeEvent(QResizeEvent *e)
+{
+    updateCover();
+}
+
 void QSUiAnalyzer::process (short *left, short *right)
 {
     static fft_state *state = 0;
@@ -144,7 +164,7 @@ void QSUiAnalyzer::process (short *left, short *right)
         state = fft_init();
 
     int rows = (height() - 2) / m_cell_size.height();
-    int cols = (width() - 2) / m_cell_size.width();// / 2;
+    int cols = (width() - m_offset - 2) / m_cell_size.width();// / 2;
 
     if(m_rows != rows || m_cols != cols)
     {
@@ -227,7 +247,7 @@ void QSUiAnalyzer::draw (QPainter *p)
 
     for (int j = 0; j < m_cols; ++j)
     {
-        x = j * m_cell_size.width() + 1;
+        x = m_offset + j * m_cell_size.width() + 1;
 
         for (int i = 0; i <= m_intern_vis_data[j]; ++i)
         {
@@ -255,6 +275,9 @@ void QSUiAnalyzer::createMenu()
     m_menu = new QMenu (this);
     connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(writeSettings()));
     connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(readSettings()));
+
+    m_coverAction = m_menu->addAction(tr("Show Cover"));
+    m_coverAction->setCheckable(true);
 
     m_peaksAction = m_menu->addAction(tr("Peaks"));
     m_peaksAction->setCheckable(true);
@@ -302,6 +325,22 @@ void QSUiAnalyzer::createMenu()
     update();
 }
 
+void QSUiAnalyzer::updateCover()
+{
+    if(m_show_cover)
+    {
+        m_offset = height();
+        m_pixLabel->setGeometry(10,10, height() - 20, height() - 20);
+        m_pixLabel->setPixmap(m_cover.scaled(m_pixLabel->size()));
+        m_pixLabel->show();
+    }
+    else
+    {
+        m_offset = 0;
+        m_pixLabel->hide();
+    }
+}
+
 void QSUiAnalyzer::mousePressEvent (QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
@@ -315,6 +354,7 @@ void QSUiAnalyzer::readSettings()
     m_peaks_falloff = settings.value("vis_peaks_falloff", 0.2).toDouble();
     m_analyzer_falloff = settings.value("vis_analyzer_falloff", 2.2).toDouble();
     m_show_peaks = settings.value("vis_show_peaks", true).toBool();
+    m_show_cover = settings.value("vis_show_cover", true).toBool();
     m_timer->setInterval(1000 / settings.value("vis_refresh_rate", 25).toInt());
     m_color1.setNamedColor(settings.value("vis_color1", "#BECBFF").toString());
     m_color2.setNamedColor(settings.value("vis_color2", "#BECBFF").toString());
@@ -325,6 +365,7 @@ void QSUiAnalyzer::readSettings()
     if(!m_update)
     {
         m_update = true;
+        m_coverAction->setChecked(m_show_cover);
         m_peaksAction->setChecked(m_show_peaks);
 
         foreach(QAction *act, m_fpsGroup->actions ())
@@ -343,6 +384,7 @@ void QSUiAnalyzer::readSettings()
                 act->setChecked(true);
         }
     }
+    updateCover();
     settings.endGroup();
 }
 
@@ -358,5 +400,6 @@ void QSUiAnalyzer::writeSettings()
     act = m_analyzerFalloffGroup->checkedAction ();
     settings.setValue("vis_analyzer_falloff", act ? act->data().toDouble() : 2.2);
     settings.setValue("vis_show_peaks", m_peaksAction->isChecked());
+    settings.setValue("vis_show_cover", m_coverAction->isChecked());
     settings.endGroup();
 }

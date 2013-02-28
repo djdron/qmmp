@@ -178,6 +178,7 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
         showBitrate(m_core->bitrate());
+        m_ui.visualWidget->setCover(MetaDataManager::instance()->getCover(m_core->url()));
         break;
     case Qmmp::Paused:
         m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
