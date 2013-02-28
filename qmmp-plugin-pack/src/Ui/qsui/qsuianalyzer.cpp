@@ -111,11 +111,8 @@ void QSUiAnalyzer::add (unsigned char *data, qint64 size, int chan)
 
 void QSUiAnalyzer::setCover(const QPixmap &pixmap)
 {
-    if(pixmap.isNull())
-        m_cover = QPixmap(":/qsui/ui_no_cover.png");
-    else
-        m_cover = pixmap;
-    m_pixLabel->setPixmap(m_cover.scaled(m_pixLabel->size()));
+    m_cover = pixmap;
+    updateCover();
 }
 
 void QSUiAnalyzer::timeout()
@@ -276,7 +273,7 @@ void QSUiAnalyzer::createMenu()
     connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(writeSettings()));
     connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(readSettings()));
 
-    m_coverAction = m_menu->addAction(tr("Show Cover"));
+    m_coverAction = m_menu->addAction(tr("Cover"));
     m_coverAction->setCheckable(true);
 
     m_peaksAction = m_menu->addAction(tr("Peaks"));
@@ -327,7 +324,7 @@ void QSUiAnalyzer::createMenu()
 
 void QSUiAnalyzer::updateCover()
 {
-    if(m_show_cover)
+    if(m_show_cover && !m_cover.isNull())
     {
         m_offset = height();
         m_pixLabel->setGeometry(10,10, height() - 20, height() - 20);
