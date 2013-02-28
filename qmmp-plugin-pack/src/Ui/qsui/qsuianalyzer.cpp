@@ -149,7 +149,7 @@ void QSUiAnalyzer::showEvent (QShowEvent *)
     m_timer->start();
 }
 
-void QSUiAnalyzer::resizeEvent(QResizeEvent *e)
+void QSUiAnalyzer::resizeEvent(QResizeEvent *)
 {
     updateCover();
 }
