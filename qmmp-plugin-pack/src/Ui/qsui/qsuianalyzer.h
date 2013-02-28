@@ -53,7 +53,7 @@ private:
     void mousePressEvent(QMouseEvent *);
     void hideEvent(QHideEvent *);
     void showEvent(QShowEvent *);
-    void resizeEvent(QResizeEvent *e);
+    void resizeEvent(QResizeEvent *);
     void process(short *l, short *r);
     void draw(QPainter *p);
     void createMenu();

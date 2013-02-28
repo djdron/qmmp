@@ -432,132 +432,132 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="183"/>
+        <location filename="../mainwindow.cpp" line="184"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="186"/>
+        <location filename="../mainwindow.cpp" line="187"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="246"/>
         <source>Playlist name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="281"/>
+        <location filename="../mainwindow.cpp" line="282"/>
         <source>Appearance</source>
         <translation type="unfinished">Görünüm</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="323"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Stereo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="325"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Mono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="399"/>
+        <location filename="../mainwindow.cpp" line="400"/>
         <source>Sort List</source>
         <translation type="unfinished">Listeyi Sınıflandır</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="402"/>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>By Title</source>
         <translation type="unfinished">Başlığa Göre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="406"/>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="407"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>By Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="454"/>
         <source>By Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="414"/>
-        <location filename="../mainwindow.cpp" line="457"/>
+        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="458"/>
         <source>By Filename</source>
         <translation type="unfinished">Dosya Adına Göre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>By Path + Filename</source>
         <translation type="unfinished">Dosya Yolu + Dosya Adına Göre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="466"/>
         <source>By Date</source>
         <translation type="unfinished">Tarihe Göre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="426"/>
-        <location filename="../mainwindow.cpp" line="469"/>
+        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="470"/>
         <source>By Track Number</source>
         <translation type="unfinished">Parça Numarasına Göre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
-        <location filename="../mainwindow.cpp" line="473"/>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>By Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="434"/>
-        <location filename="../mainwindow.cpp" line="477"/>
+        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="478"/>
         <source>By File Creation Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="442"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>Sort Selection</source>
         <translation type="unfinished">Seçilenleri Sınıflandır</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="484"/>
+        <location filename="../mainwindow.cpp" line="485"/>
         <source>Randomize List</source>
         <translation type="unfinished">Rastgele Listele</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="486"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>Reverse List</source>
         <translation type="unfinished">Listeyi Ters Çevir</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="492"/>
+        <location filename="../mainwindow.cpp" line="522"/>
         <source>Actions</source>
         <translation type="unfinished">Eylemler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="631"/>
+        <location filename="../mainwindow.cpp" line="632"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="213"/>
+        <location filename="../mainwindow.cpp" line="214"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
@@ -698,7 +698,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="261"/>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="246"/>
         <source>Rename Playlist</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1022,72 +1022,77 @@
 <context>
     <name>QSUiAnalyzer</name>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="259"/>
-        <source>Peaks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="262"/>
-        <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="265"/>
-        <source>50 fps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="266"/>
-        <source>25 fps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="267"/>
-        <source>10 fps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="268"/>
-        <source>5 fps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="275"/>
-        <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="278"/>
-        <location filename="../qsuianalyzer.cpp" line="292"/>
-        <source>Slowest</source>
+        <location filename="../qsuianalyzer.cpp" line="276"/>
+        <source>Cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>
-        <location filename="../qsuianalyzer.cpp" line="293"/>
-        <source>Slow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="280"/>
-        <location filename="../qsuianalyzer.cpp" line="294"/>
-        <source>Medium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="281"/>
-        <location filename="../qsuianalyzer.cpp" line="295"/>
-        <source>Fast</source>
+        <source>Peaks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="282"/>
-        <location filename="../qsuianalyzer.cpp" line="296"/>
+        <source>Refresh Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="285"/>
+        <source>50 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="286"/>
+        <source>25 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="287"/>
+        <source>10 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="288"/>
+        <source>5 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="295"/>
+        <source>Analyzer Falloff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="298"/>
+        <location filename="../qsuianalyzer.cpp" line="312"/>
+        <source>Slowest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="299"/>
+        <location filename="../qsuianalyzer.cpp" line="313"/>
+        <source>Slow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="300"/>
+        <location filename="../qsuianalyzer.cpp" line="314"/>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="301"/>
+        <location filename="../qsuianalyzer.cpp" line="315"/>
+        <source>Fast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="302"/>
+        <location filename="../qsuianalyzer.cpp" line="316"/>
         <source>Fastest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="289"/>
+        <location filename="../qsuianalyzer.cpp" line="309"/>
         <source>Peaks Falloff</source>
         <translation type="unfinished"></translation>
     </message>
