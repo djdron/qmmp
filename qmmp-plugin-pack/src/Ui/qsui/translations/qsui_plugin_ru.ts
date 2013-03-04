@@ -404,24 +404,66 @@
 <context>
     <name>Equalizer</name>
     <message>
-        <location filename="../equalizer.cpp" line="35"/>
+        <location filename="../equalizer.cpp" line="39"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="43"/>
+        <location filename="../equalizer.cpp" line="48"/>
         <source>Enable equalizer</source>
         <translation>Включить эквалайзер</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="45"/>
+        <location filename="../equalizer.cpp" line="54"/>
+        <source>Preset:</source>
+        <translation>Предустановка:</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="62"/>
+        <source>Save</source>
+        <translation>Сохранить</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="66"/>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="70"/>
         <source>Reset</source>
         <translation>Сбросить</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="56"/>
+        <location filename="../equalizer.cpp" line="83"/>
         <source>Preamp</source>
         <translation>Усиление</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="100"/>
+        <location filename="../equalizer.cpp" line="201"/>
+        <source>%1dB</source>
+        <translation>%1дБ</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="102"/>
+        <location filename="../equalizer.cpp" line="199"/>
+        <source>+%1dB</source>
+        <translation>+%1дБ</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="151"/>
+        <source>preset</source>
+        <translation>предустановка</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="224"/>
+        <source>Overwrite Request</source>
+        <translation>Запрос на перезапись</translation>
+    </message>
+    <message>
+        <location filename="../equalizer.cpp" line="225"/>
+        <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
+        <translation>Предустановка &apos;%1&apos; уже существует. Перезаписать?</translation>
     </message>
 </context>
 <context>
@@ -472,87 +514,87 @@
         <translation>Моно</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="400"/>
+        <location filename="../mainwindow.cpp" line="405"/>
         <source>Sort List</source>
         <translation>Сортировать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="407"/>
-        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="412"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="416"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
-        <location filename="../mainwindow.cpp" line="458"/>
+        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="463"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
-        <location filename="../mainwindow.cpp" line="462"/>
+        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="467"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="423"/>
-        <location filename="../mainwindow.cpp" line="466"/>
+        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="471"/>
         <source>By Date</source>
         <translation>По дате</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
-        <location filename="../mainwindow.cpp" line="470"/>
+        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="475"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <location filename="../mainwindow.cpp" line="474"/>
+        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="479"/>
         <source>By Disc Number</source>
         <translation>По номеру диска</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
-        <location filename="../mainwindow.cpp" line="478"/>
+        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="483"/>
         <source>By File Creation Date</source>
         <translation>По времени создания файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Sort Selection</source>
         <translation>Сортировать выделенное</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="485"/>
+        <location filename="../mainwindow.cpp" line="490"/>
         <source>Randomize List</source>
         <translation>Перемешать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="487"/>
+        <location filename="../mainwindow.cpp" line="492"/>
         <source>Reverse List</source>
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="527"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="632"/>
+        <location filename="../mainwindow.cpp" line="637"/>
         <source>Buffering: %1%</source>
         <translation>Буферизация: %1%</translation>
     </message>
@@ -969,37 +1011,37 @@
         <translation>Цвета списка воспроиведения</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <location filename="../forms/qsuisettings.ui" line="720"/>
         <source>Use system colors</source>
         <translation>Использовать системные цвета</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="494"/>
+        <location filename="../forms/qsuisettings.ui" line="484"/>
         <source>Background #1:</source>
         <translation>Фон #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="542"/>
+        <location filename="../forms/qsuisettings.ui" line="532"/>
         <source>Normal text:</source>
         <translation>Обычный текст:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="590"/>
+        <location filename="../forms/qsuisettings.ui" line="580"/>
         <source>Background #2:</source>
         <translation>Фон #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="625"/>
+        <location filename="../forms/qsuisettings.ui" line="615"/>
         <source>Current text:</source>
         <translation>Текущий текст:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="660"/>
+        <location filename="../forms/qsuisettings.ui" line="650"/>
         <source>Highlighted background:</source>
         <translation>Выделенный фон:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="695"/>
+        <location filename="../forms/qsuisettings.ui" line="685"/>
         <source>Hightlighted text:</source>
         <translation>Выделенный текст:</translation>
     </message>

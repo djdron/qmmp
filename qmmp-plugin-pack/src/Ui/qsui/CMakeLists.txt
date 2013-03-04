@@ -48,12 +48,14 @@ SET(libqsui_SRCS
     colorwidget.cpp
     qsuitabwidget.cpp
     qsuitabbar.cpp
+    eqpreset.cpp
 )
 
 SET(libqsui_HDRS
     shortcutitem.h
     inlines.h
     fft.h
+    eqpreset.h
 )
 
 SET(libqsui_MOC_HDRS
