@@ -31,7 +31,8 @@ SOURCES += \
     fft.c \
     colorwidget.cpp \
     qsuitabwidget.cpp \
-    qsuitabbar.cpp
+    qsuitabbar.cpp \
+    eqpreset.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -52,7 +53,8 @@ HEADERS += mainwindow.h \
     inlines.h \
     colorwidget.h \
     qsuitabwidget.h \
-    qsuitabbar.h
+    qsuitabbar.h \
+    eqpreset.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \

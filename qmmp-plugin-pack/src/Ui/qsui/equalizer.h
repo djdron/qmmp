@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,10 +23,13 @@
 
 #include <QDialog>
 #include <QList>
+#include "eqpreset.h"
 
 class QVBoxLayout;
 class QCheckBox;
 class QSlider;
+class QLabel;
+class QComboBox;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -36,17 +39,28 @@ class Equalizer : public QDialog
     Q_OBJECT
 public:
     explicit Equalizer(QWidget *parent = 0);
+    ~Equalizer();
 
 
 private slots:
-    void writeSettings();
+    void applySettings();
     void resetSettings();
+    void updateLabel();
+    void loadPreset(int index);
+    void savePreset();
+    void savePresets();
+    void deletePreset();
 
 private:
     void readSettigs();
+    void loadPresets();
+
     QVBoxLayout *m_layout;
     QCheckBox *m_enabled;
-    QList <QSlider *> m_sliders;
+    QComboBox *m_presetComboBox;
+    QList<QSlider *> m_sliders;
+    QList<QLabel *> m_labels;
+    QList<EQPreset *> m_presets;
 
 };
 
