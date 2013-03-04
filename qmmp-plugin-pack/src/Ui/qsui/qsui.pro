@@ -11,7 +11,7 @@ TEMPLATE = lib
 
 QT += network
 
-SOURCES += main.cpp \
+SOURCES += \
     mainwindow.cpp \
     listwidget.cpp \
     visualmenu.cpp \

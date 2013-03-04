@@ -30,7 +30,6 @@ link_directories( ${QMMPUI_LIBRARY_DIRS})
 SET(libqsui_SRCS
     actionmanager.cpp
     listwidget.cpp
-    main.cpp
     mainwindow.cpp
     popupsettings.cpp
     popupwidget.cpp
