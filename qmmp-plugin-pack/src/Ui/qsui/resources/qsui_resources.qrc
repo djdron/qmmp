@@ -13,5 +13,6 @@
         <file>audio-volume-low.png</file>
         <file>audio-volume-medium.png</file>
         <file>audio-volume-muted.png</file>
+        <file>eq16.preset</file>
     </qresource>
 </RCC>

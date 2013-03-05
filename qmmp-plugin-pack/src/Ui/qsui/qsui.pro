@@ -62,7 +62,7 @@ FORMS += forms/mainwindow.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
     forms/qsuisettings.ui
-RESOURCES += translations/translations.qrc images/qsui_images.qrc txt/qsui_txt.qrc
+RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 TRANSLATIONS = translations/qsui_plugin_ru.ts \
     translations/qsui_plugin_tr.ts \

@@ -79,7 +79,7 @@ SET(libqsui_MOC_HDRS
     qsuitabbar.h
 )
 
-SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc images/qsui_images.qrc)
+SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
 
 QT4_ADD_RESOURCES(libqsui_RCC_SRCS ${libqsui_RCCS})
 

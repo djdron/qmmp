@@ -141,6 +141,8 @@ void Equalizer::loadPresets()
     m_presetComboBox->clear();
     //equalizer presets
     QString preset_path = QDir::homePath() +"/.qmmp/eq16.preset";
+    if(!QFile::exists(preset_path))
+        preset_path = ":/qsui/eq16.preset";
     QSettings eq_preset (preset_path, QSettings::IniFormat);
     int i = 0;
     forever
