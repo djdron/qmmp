@@ -441,28 +441,28 @@
     </message>
     <message>
         <location filename="../equalizer.cpp" line="100"/>
-        <location filename="../equalizer.cpp" line="201"/>
+        <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
-        <location filename="../equalizer.cpp" line="199"/>
+        <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="151"/>
+        <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="224"/>
+        <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="225"/>
+        <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
         <translation type="unfinished"></translation>
     </message>
