@@ -656,7 +656,7 @@ Version 0.7.0
 * added playlists auto-save feauture (patch by Ferdinand Vesely)
 * added unified URL dialog
 * added remote playlists support to the command line parser
-* added windows support to the hotkey plugin
+* added winapi support to the hotkey plugin
 * added volume control support to the waveout plugin
 * added wildmidi configuration file auto-search
 * added sorting by file creation date
