@@ -36,12 +36,15 @@ Version 0.6.5
 * fixed compiler warnings
 
 Version 0.7.0
-* added qmmp 0.7 support
-* added spectrum analyzer to the qsui plugin
-* added playlist colors settings to the qsui plugin
-* added sorting by date to the qsui plugin
+* ported to qmmp 0.7 api
 * added windows support to the ffap plugin
 * added streams support to the mpg123 plugin
-* improved qsui plugin tabs (movable, closable by middle click)
+* improved qsui plugin:
+  - added spectrum analyzer
+  - added sorting by date
+  - added playlist colors settings
+  - added cover art display
+  - added equalizer presets
+  - improved tabs (movable, closable by middle click)
 * removed rename dialog, using standard instead
 * removed qmmp 0.6.x support
