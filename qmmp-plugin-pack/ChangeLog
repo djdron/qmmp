@@ -41,7 +41,7 @@ Version 0.7.0
 * added streams support to the mpg123 plugin
 * improved qsui plugin:
   - added spectrum analyzer
-  - added sorting by date
+  - added sorting by file creation date
   - added playlist colors settings
   - added cover art display
   - added equalizer presets

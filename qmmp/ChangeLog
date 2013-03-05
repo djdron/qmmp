@@ -647,20 +647,19 @@ Version 0.7.0
 * added udisks2 plugin
 * added opus plugin
 * added track change plugin
-* added copy/paste plugin
-* added ffmpeg_legacy plugin
+* added tracks copy/paste plugin
 * added x-content/audio-cdda content type
-* added 24/32-bit equalizer (Closes issue 552)
+* added 24/32-bit equalizer
 * added unity integration
 * added user interface language option
 * added playlists auto-save feauture (patch by Ferdinand Vesely)
 * added unified URL dialog
-* added remote playlists support to the command line parser
+* added playlists downloading support to the command line parser
 * added winapi support to the hotkey plugin
 * added volume control support to the waveout plugin
 * added wildmidi configuration file auto-search
 * added sorting by file creation date
-* added libavutil version to the about dialog of the ffmpeg plugin
+* added libavutil version output to the ffmpeg plugin
 * added automatic 16-bit audio converter
 * enabled UTF-8 by default for cue files and shoutcast metadata
 * enabled more formats by default in the ffmpeg plugin
@@ -668,6 +667,6 @@ Version 0.7.0
 * improved analyzer plugin (variable size, fullscreen mode, etc)
 * improved last.fm registration
 * improved configuration dialog
-* removed legacy code from the ffmpeg plugin
 * removed QtXML dependence from the scrobbler plugin
-* disabled udisks plugin by default 
+* disabled udisks plugin by default
+* moved ffmpeg 0.6-0.8 support to separate plugin
