@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,36 +29,37 @@
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
 
-    m_buttons.insert(PopupWidget::TOPLEFT, ui.topLeftButton);
-    m_buttons.insert(PopupWidget::TOP, ui.topButton);
-    m_buttons.insert(PopupWidget::TOPRIGHT, ui.topRightButton);
-    m_buttons.insert(PopupWidget::RIGHT, ui.rightButton);
-    m_buttons.insert(PopupWidget::BOTTOMRIGHT, ui.bottomRightButton);
-    m_buttons.insert(PopupWidget::BOTTOM, ui.bottomButton);
-    m_buttons.insert(PopupWidget::BOTTOMLEFT, ui.bottomLeftButton);
-    m_buttons.insert(PopupWidget::LEFT, ui.leftButton);
-    m_buttons.insert(PopupWidget::CENTER, ui.centerButton);
+    m_buttons.insert(PopupWidget::TOPLEFT, m_ui.topLeftButton);
+    m_buttons.insert(PopupWidget::TOP, m_ui.topButton);
+    m_buttons.insert(PopupWidget::TOPRIGHT, m_ui.topRightButton);
+    m_buttons.insert(PopupWidget::RIGHT, m_ui.rightButton);
+    m_buttons.insert(PopupWidget::BOTTOMRIGHT, m_ui.bottomRightButton);
+    m_buttons.insert(PopupWidget::BOTTOM, m_ui.bottomButton);
+    m_buttons.insert(PopupWidget::BOTTOMLEFT, m_ui.bottomLeftButton);
+    m_buttons.insert(PopupWidget::LEFT, m_ui.leftButton);
+    m_buttons.insert(PopupWidget::CENTER, m_ui.centerButton);
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
-    ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
+    m_ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
     m_buttons.value(pos)->setChecked(true);
-    ui.psiCheckBox->setChecked(settings.value("psi_notification", false).toBool());
-    ui.songCheckBox->setChecked(settings.value("song_notification", true).toBool());
-    ui.volumeCheckBox->setChecked(settings.value("volume_notification", true).toBool());
-    ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
+    m_ui.psiCheckBox->setChecked(settings.value("psi_notification", false).toBool());
+    m_ui.resumeCheckBox->setChecked(settings.value("resume_notification", false).toBool());
+    m_ui.songCheckBox->setChecked(settings.value("song_notification", true).toBool());
+    m_ui.volumeCheckBox->setChecked(settings.value("volume_notification", true).toBool());
+    m_ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     QString fontname = settings.value ("font").toString();
-    ui.coverSizeSlider->setValue(settings.value ("cover_size", 64).toInt());
+    m_ui.coverSizeSlider->setValue(settings.value ("cover_size", 64).toInt());
     m_template = settings.value ("template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
     QFont font;
     if(!fontname.isEmpty())
         font.fromString(fontname);
-    ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-    ui.fontLabel->setFont(font);
+    m_ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.fontLabel->setFont(font);
 }
 
 
@@ -69,7 +70,7 @@ void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
-    settings.setValue ("message_delay", ui.messageDelaySpinBox->value());
+    settings.setValue ("message_delay", m_ui.messageDelaySpinBox->value());
     uint pos = PopupWidget::BOTTOMLEFT;
     foreach (QPushButton *button, m_buttons.values())
     {
@@ -77,12 +78,13 @@ void SettingsDialog::accept()
             pos = m_buttons.key(button);
     }
     settings.setValue("message_pos", pos);
-    settings.setValue("psi_notification", ui.psiCheckBox->isChecked());
-    settings.setValue("song_notification", ui.songCheckBox->isChecked());
-    settings.setValue("volume_notification", ui.volumeCheckBox->isChecked());
-    settings.setValue("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
-    settings.setValue("font", ui.fontLabel->font().toString());
-    settings.setValue("cover_size", ui.coverSizeSlider->value());
+    settings.setValue("psi_notification", m_ui.psiCheckBox->isChecked());
+    settings.setValue("resume_notification", m_ui.resumeCheckBox->isChecked());
+    settings.setValue("song_notification", m_ui.songCheckBox->isChecked());
+    settings.setValue("volume_notification", m_ui.volumeCheckBox->isChecked());
+    settings.setValue("opacity", 1.0 -  (double)m_ui.transparencySlider->value()/100);
+    settings.setValue("font", m_ui.fontLabel->font().toString());
+    settings.setValue("cover_size", m_ui.coverSizeSlider->value());
     settings.setValue("template", m_template);
     settings.endGroup();
     QDialog::accept();
@@ -91,12 +93,12 @@ void SettingsDialog::accept()
 void SettingsDialog::on_fontButton_pressed()
 {
     bool ok;
-    QFont font = ui.fontLabel->font();
+    QFont font = m_ui.fontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
     if (ok)
     {
-        ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-        ui.fontLabel->setFont(font);
+        m_ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.fontLabel->setFont(font);
     }
 }
 
