@@ -32,9 +32,11 @@ Notifier::Notifier(QObject *parent) : QObject(parent)
     m_popupWidget = 0;
     m_l = -1;
     m_r = -1;
+    m_isPaused = false;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     m_desktop = settings.value("song_notification", true).toBool();
+    m_resumeNotification = settings.value("resume_notification", false).toBool();
     m_showVolume = settings.value("volume_notification", true).toBool();
     m_psi = settings.value("psi_notification", false).toBool();
     settings.endGroup();
@@ -74,9 +76,31 @@ Notifier::~Notifier()
 
 void Notifier::setState(Qmmp::State state)
 {
-    if(state == Qmmp::Stopped)
+    switch ((uint) state)
     {
+    case Qmmp::Playing:
+    {
+        if (m_isPaused)
+        {
+            showMetaData();
+            m_isPaused = false;
+            break;
+        }
+    }
+    case Qmmp::Paused:
+    {
+        if(m_resumeNotification)
+            m_isPaused = true;
+        break;
+    }
+    case Qmmp::Stopped:
+    {
+        m_isPaused = false;
         removePsiTuneFiles();
+        break;
+    }
+    default:
+        m_isPaused = false;
     }
 }
 

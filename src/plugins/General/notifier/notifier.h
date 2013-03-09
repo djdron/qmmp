@@ -51,6 +51,8 @@ private:
     bool m_desktop, m_showVolume;
     bool m_psi;
     int m_l, m_r;
+    bool m_isPaused;
+    bool m_resumeNotification;
     SoundCore *m_core;
     QStringList m_psiTuneFiles;
 

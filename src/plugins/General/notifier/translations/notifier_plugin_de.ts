@@ -35,12 +35,12 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="368"/>
+        <location filename="../settingsdialog.ui" line="378"/>
         <source>Psi Notification</source>
         <translation>Psi-Benachrichtigungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="380"/>
+        <location filename="../settingsdialog.ui" line="390"/>
         <source>Enable Psi notification</source>
         <translation>Psi-Benachrichtigungen aktivieren</translation>
     </message>
@@ -50,22 +50,22 @@
         <translation>Desktop-Benachrichtigungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="332"/>
         <source>Delay (ms):</source>
         <translation>Anzeigedauer (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="141"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>Transparency:</source>
         <translation>Transparenz:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="321"/>
+        <location filename="../settingsdialog.ui" line="219"/>
         <source>Position</source>
         <translation>Position</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="343"/>
+        <location filename="../settingsdialog.ui" line="241"/>
         <source>Edit template</source>
         <translation>Vorlage bearbeiten</translation>
     </message>
@@ -75,38 +75,43 @@
         <translation>Einstellungen Benachrichtigungsmodul</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="361"/>
+        <source>Playback resume notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="368"/>
         <source>Song change notification</source>
         <translation>Benachrichtigung bei Titelwechsel</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="48"/>
+        <location filename="../settingsdialog.ui" line="325"/>
         <source>Volume change notification</source>
         <translation>Benachrichtigung bei Lautstärkeänderung</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="134"/>
-        <location filename="../settingsdialog.ui" line="164"/>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="105"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
         <source>Notification Template</source>
         <translation>Benachrichtigungsvorlage</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Font:</source>
         <translation>Schriftart:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="108"/>
+        <location filename="../settingsdialog.ui" line="299"/>
         <source>Cover size:</source>
         <translation>Cover-Größe:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>...</source>
         <translation>…</translation>
     </message>
