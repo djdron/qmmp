@@ -26,3 +26,34 @@ Type=Application
 Categories=AudioVideo;Player;Audio;Qt;
 MimeType=application/x-ogg;audio/mp3;audio/mpeg;audio/flac;audio/x-mp3;audio/x-mpeg;audio/x-ms-wma;audio/x-musepack;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mpegurl;audio/x-it;audio/x-mod;audio/x-ape;application/x-cue;x-content/audio-cdda;audio/x-ffmpeg-shorten;
 X-KDE-StartupNotify=false
+Actions=Play;Pause;Stop;Previous;Next;
+
+[Desktop Action Play]
+Name=Play
+Name[ru]=Воспроизвести
+Exec=qmmp --no-start --play
+OnlyShowIn=Unity;
+
+[Desktop Action Pause]
+Name=Pause
+Name[ru]=Пауза
+Exec=qmmp --no-start --pause
+OnlyShowIn=Unity;
+
+[Desktop Action Stop]
+Name=Stop
+Name[ru]=Остановить
+Exec=qmmp --no-start --stop
+OnlyShowIn=Unity;
+
+[Desktop Action Previous]
+Name=Previous
+Name[ru]=Предыдущий фрагмент
+Exec=qmmp --no-start --previous
+OnlyShowIn=Unity;
+
+[Desktop Action Next]
+Name=Next
+Name[ru]=Следующий фрагмент
+Exec=qmmp --no-start --next
+OnlyShowIn=Unity;
