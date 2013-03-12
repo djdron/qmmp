@@ -123,17 +123,29 @@ LastfmScrobbler::~LastfmScrobbler()
 
 void LastfmScrobbler::setState(Qmmp::State state)
 {
+    static Qmmp::State previousState = state;
+    static int elapsed = 0;
     m_state = state;
     switch ((uint) state)
     {
     case Qmmp::Playing:
-        m_start_ts = QDateTime::currentDateTime().toTime_t();
+        if (previousState != Qmmp::Paused) 
+        {
+            qDebug("LastfmScrobbler: new song started");
+            m_start_ts = QDateTime::currentDateTime().toTime_t();
+            elapsed = 0;
+        }
+        else 
+        {
+            qDebug("LastfmScrobbler: resuming after pause, %d seconds played", elapsed / 1000);
+        }
         m_time->restart();
         break;
     case Qmmp::Stopped:
+        elapsed += m_time->elapsed();
         if (!m_song.metaData().isEmpty()
-                && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
-                && (m_song.length() > MIN_SONG_LENGTH))
+            && ((elapsed / 1000 > 240) || (elapsed / 1000 > int(m_song.length()/2)))
+            && (m_song.length() > MIN_SONG_LENGTH))
         {
             m_song.setTimeStamp(m_start_ts);
             m_cachedSongs << m_song;
@@ -147,9 +159,14 @@ void LastfmScrobbler::setState(Qmmp::State state)
         if (!m_session.isEmpty() && !m_submitReply)
             submit();
         break;
+    case Qmmp::Paused:
+        elapsed += m_time->restart();
+        qDebug("LastfmScrobbler: pausing after %d seconds played", elapsed / 1000);
+        break;
     default:
         ;
     }
+    previousState = state;
 }
 
 void LastfmScrobbler::updateMetaData()
