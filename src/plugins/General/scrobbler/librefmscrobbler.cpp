@@ -82,17 +82,24 @@ LibrefmScrobbler::~LibrefmScrobbler()
 
 void LibrefmScrobbler::setState(Qmmp::State state)
 {
+    static Qmmp::State previousState = state;
+    static int elapsed = 0;
     switch ((uint) state)
     {
     case Qmmp::Playing:
-        m_start_ts = QDateTime::currentDateTime().toTime_t();
-        m_time->restart();
+        if (previousState != Qmmp::Paused)
+        {
+            m_start_ts = QDateTime::currentDateTime().toTime_t();
+            m_time->restart();
+            elapsed = 0;
+        }
         if (!isReady() && !m_handshakeReply)
             handshake();
         break;
     case Qmmp::Stopped:
+        elapsed += m_time->elapsed();
         if (!m_song.metaData().isEmpty()
-            && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
+            && ((elapsed/1000 > 240) || (elapsed/1000 > int(m_song.length()/2)))
             && (m_song.length() > MIN_SONG_LENGTH))
         {
             m_song.setTimeStamp(m_start_ts);
@@ -105,6 +112,10 @@ void LibrefmScrobbler::setState(Qmmp::State state)
 
         if (isReady() && !m_submitReply)
             submit();
+        break;
+    case Qmmp::Paused:
+        elapsed += m_time->restart();
+        qDebug("LibrefmScrobbler: pausing after %d seconds played", elapsed / 1000);
         break;
     default:
         ;
