@@ -23,6 +23,10 @@ contains(CONFIG, FFMPEG_PLUGIN){
     }
 }
 
+contains(CONFIG, GME_PLUGIN){
+  SUBDIRS += gme
+}
+
 unix{
 
 contains(CONFIG, AAC_PLUGIN){
@@ -35,10 +39,6 @@ contains(CONFIG, CDAUDIO_PLUGIN){
 
 contains(CONFIG, WILDMIDI_PLUGIN){
   SUBDIRS += wildmidi
-}
-
-contains(CONFIG, GME_PLUGIN){
-  SUBDIRS += gme
 }
 
 contains(CONFIG, OPUS_PLUGIN){
