@@ -48,7 +48,6 @@ SET(libwildmidi_MOC_HDRS
 )
 
 # libwildmidi
-
 CHECK_INCLUDE_FILE(wildmidi_lib.h WILDMIDI_HEADER_FOUND)
 FIND_LIBRARY(WILDMIDI_LIB NAME WildMidi PATHS /usr/lib /usr/lib32  /usr/local/lib /usr/local/lib32)
 
