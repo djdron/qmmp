@@ -13,13 +13,7 @@ CONFIG += release \
     warn_on \
     plugin
 TEMPLATE = lib
-QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib \
-    -L/usr/local/lib \
-    -I/usr/include \
-    -I/usr/local/include \
-    -lgme
+
 TRANSLATIONS = translations/gme_plugin_it.ts \
                translations/gme_plugin_ru.ts \
                translations/gme_plugin_cs.ts \
@@ -34,6 +28,23 @@ TRANSLATIONS = translations/gme_plugin_it.ts \
                translations/gme_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
-isEmpty (LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
+unix{
+    isEmpty (LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+    QMAKE_LIBDIR += ../../../../lib
+    LIBS += -lqmmp \
+      -L/usr/lib \
+      -L/usr/local/lib \
+      -I/usr/include \
+      -I/usr/local/include \
+      -lgme
+}
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lgme.dll
+}
