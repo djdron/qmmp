@@ -49,11 +49,15 @@ SET(libwildmidi_MOC_HDRS
 
 # libwildmidi
 
-CHECK_INCLUDE_FILE(wildmidi_lib.h WILDMIDI_FOUND)
+CHECK_INCLUDE_FILE(wildmidi_lib.h WILDMIDI_HEADER_FOUND)
+FIND_LIBRARY(WILDMIDI_LIB NAME WildMidi PATHS /usr/lib /usr/lib32  /usr/local/lib /usr/local/lib32)
 
-IF(WILDMIDI_FOUND)
+IF(WILDMIDI_HEADER_FOUND AND (NOT WILDMIDI_LIB MATCHES "^.*-NOTFOUND"))
 SET(WILDMIDI_FOUND TRUE CACHE INTERNAL "wildmidi")
-ENDIF(WILDMIDI_FOUND)
+MESSAGE(STATUS "Found WildMidi: ${WILDMIDI_LIB}")
+ELSE(WILDMIDI_HEADER_FOUND AND (NOT WILDMIDI_LIB MATCHES "^.*-NOTFOUND"))
+MESSAGE(STATUS "Could not find WildMidi library")
+ENDIF(WILDMIDI_HEADER_FOUND AND (NOT WILDMIDI_LIB MATCHES "^.*-NOTFOUND"))
 
 SET(libwildmidi_RCCS translations/translations.qrc)
 
@@ -77,6 +81,6 @@ IF(WILDMIDI_FOUND)
 ADD_LIBRARY(wildmidi MODULE ${libwildmidi_SRCS} ${libwildmidi_MOC_SRCS} ${libwildmidi_UIS_H} ${libwildmidi_RCC_SRCS}
 ${libwildmidi_HDRS})
 add_dependencies(wildmidi qmmp)
-target_link_libraries(wildmidi ${QT_LIBRARIES} -lqmmp -lWildMidi)
+target_link_libraries(wildmidi ${QT_LIBRARIES} -lqmmp ${WILDMIDI_LIB})
 install(TARGETS wildmidi DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(WILDMIDI_FOUND)
