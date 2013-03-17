@@ -468,7 +468,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
-        <translation>いろいろ</translation>
+        <translation>その他いろいろ</translation>
     </message>
 </context>
 <context>
@@ -790,7 +790,7 @@
         <location filename="../playlist.cpp" line="242"/>
         <location filename="../playlist.cpp" line="285"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの作成日順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="250"/>
@@ -1184,7 +1184,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
         <source>Miscellaneous</source>
-        <translation>各種設定</translation>
+        <translation>その他いろいろ</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="350"/>

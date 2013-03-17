@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation></translation>
+        <translation>(c) %1-%2 Qmmp Development Team (開発者チーム)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="76"/>
@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加したい URL をここに記入</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加(&amp;A)</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>事故</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>その他いろいろ</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="211"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストの変更を自動保存</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="331"/>
@@ -264,12 +264,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="480"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL ダイアログ</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="486"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>クリップボードから URL を自動取り込み</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="525"/>
@@ -708,7 +708,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>サポート外のプレイリスト書式です</translation>
     </message>
 </context>
 <context>

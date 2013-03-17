@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック変化プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
@@ -14,97 +14,97 @@
         <location filename="../settingsdialog.ui" line="52"/>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Command to run when Qmmp starts new track</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックを新たに再生し始めるときに実行するコマンド</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Command to run toward to end of a track</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックの終了時に合わせて実行するコマンド</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Command to run when Qmmp reaches the end of the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストの最終演目に達したときに実行するコマンド</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Command to run when title changes (i.e. network streams title)</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトルが変化したときに実行するコマンド (ネット放送用)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="58"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバム</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="61"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>ジャンル</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="63"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>作曲者</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="66"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="68"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="69"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>定番</translation>
     </message>
 </context>
 <context>
@@ -112,27 +112,27 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="29"/>
         <source>Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック変化プラグイン</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="49"/>
         <source>About Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック変化プラグインについて</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP トラック変化プラグイン</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインはトラック (演目) が切り換わる際に外部コマンドを実行します。</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

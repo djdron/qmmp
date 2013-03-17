@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderopusfactory.cpp" line="48"/>
         <source>Opus Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Opus プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="51"/>
         <source>Ogg Opus Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogg Opus ファイル</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="122"/>
         <source>About Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Opus 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="123"/>
         <source>Qmmp Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP Opus 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="124"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="125"/>
         <source>This plugin includes code from TagLib library</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは TagLib ライブラリーのコードを流用しています。</translation>
     </message>
 </context>
 <context>
@@ -39,42 +39,42 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished">長さ</translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished">サンプルレート</translation>
+        <translation>サンプルレート</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished">チャンネル</translation>
+        <translation>チャンネル</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished">ビットレート</translation>
+        <translation>ビットレート</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation type="unfinished">キロビット毎秒</translation>
+        <translation>キロビット毎秒</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation type="unfinished">ファイルの大きさ</translation>
+        <translation>ファイルの大きさ</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>KB</source>
-        <translation type="unfinished">KiB</translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>

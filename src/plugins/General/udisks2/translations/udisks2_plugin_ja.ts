@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisks2factory.cpp" line="30"/>
         <source>UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks2 プラグイン</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="50"/>
         <source>About UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks2 プラグインについて</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="51"/>
         <source>Qmmp UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP UDisks2 プラグイン</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks2</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは着脱可能なデバイスの検知を UDisks2 により行ないます</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisks2plugin.cpp" line="130"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">CD &quot;%1&quot; を追加</translation>
+        <translation>CD &quot;%1&quot; を追加</translation>
     </message>
     <message>
         <location filename="../udisks2plugin.cpp" line="138"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">量目 &quot;%1&quot; を追加</translation>
+        <translation>量目 &quot;%1&quot; を追加</translation>
     </message>
 </context>
 </TS>
