@@ -26,7 +26,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="232"/>
         <source>Compiled against:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skompilowana z biblioteką:</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="245"/>

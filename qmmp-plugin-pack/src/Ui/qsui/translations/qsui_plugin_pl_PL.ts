@@ -416,17 +416,17 @@
     <message>
         <location filename="../equalizer.cpp" line="54"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil:</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="70"/>
@@ -442,28 +442,28 @@
         <location filename="../equalizer.cpp" line="100"/>
         <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
         <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
-        <translation type="unfinished"></translation>
+        <translation>profil</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadpisz Żądanie</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil &apos;%1&apos; już istnieje. Nadpisać?</translation>
     </message>
 </context>
 <context>
@@ -486,7 +486,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="246"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa listy odtwarzania:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="282"/>
@@ -570,7 +570,7 @@
         <location filename="../mainwindow.cpp" line="440"/>
         <location filename="../mainwindow.cpp" line="483"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Wg Daty Utworzenia pliku</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="448"/>
@@ -1008,42 +1008,42 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="478"/>
         <source>Playlist Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolory Listy Utworzenia</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="720"/>
         <source>Use system colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj systemowych kolorów</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="484"/>
         <source>Background #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tło #1:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="532"/>
         <source>Normal text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalny tekst:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="580"/>
         <source>Background #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tło #2:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="615"/>
         <source>Current text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualny tekst:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="650"/>
         <source>Highlighted background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uwydatnione tło:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="685"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uwydatniony tekst:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="152"/>
@@ -1066,7 +1066,7 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="276"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Okładka</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>

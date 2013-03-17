@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="45"/>
         <source>CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka CD Audio</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>About CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce CD Audio</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka CD Audio dla Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Skompilowane przy użyciu libcdio-%1 oraz libcddb-%2</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished"></translation>
+        <translation>Instrukcja: otwórz cdda:/// używając Dodaj URL lib z linii poleceń</translation>
     </message>
 </context>
 <context>
@@ -39,52 +39,52 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>CD Audio Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia wtyczki CD Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wymuś urządzenie:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Limit cd speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Limit prędkości cd:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Use cd-text</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj cd-text</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation>CDDB</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj HTTP zamiast CDDBP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwer:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść bufor CDDB</translation>
     </message>
 </context>
 </TS>
