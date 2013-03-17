@@ -416,17 +416,17 @@
     <message>
         <location filename="../equalizer.cpp" line="54"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>プリセット:</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>削除</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="70"/>
@@ -442,28 +442,28 @@
         <location filename="../equalizer.cpp" line="100"/>
         <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1dB</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
         <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>+%1dB</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
-        <translation type="unfinished"></translation>
+        <translation>プリセット</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
-        <translation type="unfinished"></translation>
+        <translation>上書き警告</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>既にプリセット「%1」があります。 これを上書きしますか？</translation>
     </message>
 </context>
 <context>
@@ -491,7 +491,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="246"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリスト名:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="282"/>
@@ -575,7 +575,7 @@
         <location filename="../mainwindow.cpp" line="440"/>
         <location filename="../mainwindow.cpp" line="483"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの作成日順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="448"/>
@@ -973,7 +973,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Miscellaneous</source>
-        <translation>各種設定</translation>
+        <translation>その他いろいろ</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
@@ -1008,42 +1008,42 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="478"/>
         <source>Playlist Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストの配色</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="720"/>
         <source>Use system colors</source>
-        <translation type="unfinished"></translation>
+        <translation>システム標準の配色を使用</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="484"/>
         <source>Background #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>第一背景:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="532"/>
         <source>Normal text:</source>
-        <translation type="unfinished"></translation>
+        <translation>通常のテキスト:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="580"/>
         <source>Background #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>第二背景:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="615"/>
         <source>Current text:</source>
-        <translation type="unfinished"></translation>
+        <translation>現在位置のテキスト:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="650"/>
         <source>Highlighted background:</source>
-        <translation type="unfinished"></translation>
+        <translation>ハイライトした背景:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="685"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
+        <translation>ハイライトしたテキスト:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="152"/>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
         <source>Misc</source>
-        <translation>各種設定</translation>
+        <translation>その他いろいろ</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1066,7 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="276"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>表紙画像</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>

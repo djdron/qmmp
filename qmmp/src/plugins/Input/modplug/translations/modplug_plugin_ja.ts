@@ -286,7 +286,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
         <source>Misc</source>
-        <translation>いろいろ</translation>
+        <translation>その他いろいろ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="677"/>
