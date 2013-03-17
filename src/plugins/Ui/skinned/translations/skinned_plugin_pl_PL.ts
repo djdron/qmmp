@@ -778,7 +778,7 @@
         <location filename="../playlist.cpp" line="242"/>
         <location filename="../playlist.cpp" line="285"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Wg Daty Utworzenia Pliku</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="250"/>

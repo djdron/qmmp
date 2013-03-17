@@ -20,7 +20,10 @@ Francuski:
 Niemiecki:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
-
+    
+Hebrajski:
+    Genghis Khan <genghiskhan@gmx.ca>
+    
 Węgierski:
     Németh Gábor <sutee84@freemail.hu>
 

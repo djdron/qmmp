@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Wipsz URL do dodania</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Dod&amp;aj</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd</translation>
     </message>
 </context>
 <context>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../configdialog.cpp" line="317"/>
         <source>Hebrew</source>
-        <translation type="unfinished"></translation>
+        <translation>Hebrajski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="318"/>
@@ -419,12 +419,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Różne</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="211"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczny zapis listy odtwarzania przy modyfikacji</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="331"/>
@@ -444,12 +444,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="480"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Okno dialogowe URL</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="486"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatycznie wklejaj URL ze schowka</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="627"/>
@@ -708,7 +708,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>Niewspierane listy odtwarzania</translation>
     </message>
 </context>
 <context>

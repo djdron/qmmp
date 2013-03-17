@@ -98,7 +98,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiadomienie o wznowieniu odtwarzania</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="378"/>
