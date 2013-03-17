@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,8 +18,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef _PALYLISTFORMAT_H
-#define _PALYLISTFORMAT_H
+#ifndef PALYLISTFORMAT_H
+#define PALYLISTFORMAT_H
+
 #include <QStringList>
 
 class PlayListItem;
@@ -60,6 +61,6 @@ public:
     virtual QString encode(const QList<PlayListItem*>& contents) = 0;
 };
 
-Q_DECLARE_INTERFACE(PlayListFormat,"PlayListFormatInterface/1.0")
+Q_DECLARE_INTERFACE(PlayListFormat,"PlayListFormat/1.0")
 
 #endif
