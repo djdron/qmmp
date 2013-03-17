@@ -27,6 +27,13 @@
  *   http://www.mozilla.org/MPL/                                           *
  ***************************************************************************/
 
+/*
+  Changes against original code:
+  - removed constructor File(IOStream *stream, bool readProperties, Properties::ReadStyle propertiesStyle);
+  - removed function PropertyMap File::properties() const;
+  - removed function PropertyMap File::setProperties(const PropertyMap &properties).
+*/
+
 #include <bitset>
 
 #include <taglib/tstring.h>
