@@ -298,7 +298,7 @@ Version 0.3.1
 * added cygwin support (yselkowitz AT gmail.com)
 * added standard icons support to the status icon plugin
 * added openbox compatibility option
-* added possibility to load plugins form a different location (Holger Schurig)
+* added possibility to load plugins from a different location (Holger Schurig)
 * added mkv extension to mplayer plugin
 * added volume control using global hotkeys
 * added scrolling with mouse to text scroller (Erik Ölsar)
