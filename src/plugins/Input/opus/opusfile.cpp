@@ -31,7 +31,6 @@
 
 #include <taglib/tstring.h>
 #include "tdebug.h"
-#include <taglib/tpropertymap.h>
 
 #include "opusfile.h"
 
@@ -66,13 +65,6 @@ Opus::File::File(FileName file, bool readProperties,
   read(readProperties, propertiesStyle);
 }
 
-Opus::File::File(IOStream *stream, bool readProperties,
-                   Properties::ReadStyle propertiesStyle) : Ogg::File(stream)
-{
-  d = new FilePrivate;
-  read(readProperties, propertiesStyle);
-}
-
 Opus::File::~File()
 {
   delete d;
@@ -81,16 +73,6 @@ Opus::File::~File()
 Ogg::XiphComment *Opus::File::tag() const
 {
   return d->comment;
-}
-
-PropertyMap Opus::File::properties() const
-{
-  return d->comment->properties();
-}
-
-PropertyMap Opus::File::setProperties(const PropertyMap &properties)
-{
-  return d->comment->setProperties(properties);
 }
 
 Opus::Properties *Opus::File::audioProperties() const
