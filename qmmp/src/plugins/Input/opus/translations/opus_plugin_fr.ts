@@ -30,7 +30,7 @@
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="125"/>
-        <source>This plugin includes code form TagLib library</source>
+        <source>This plugin includes code from TagLib library</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
