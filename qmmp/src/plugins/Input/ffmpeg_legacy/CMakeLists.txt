@@ -1,4 +1,4 @@
-project(libffmpeg)
+project(libffmpeg_legacy)
 
 cmake_minimum_required(VERSION 2.6.0)
 
@@ -38,9 +38,9 @@ IF(FFMPEG_MIN_FOUND)
 pkg_check_modules(FFMPEG_LEGACY libavcodec<=53.33.0 libavformat<=53.19.0 libavutil<=51.20.0)
 ENDIF(FFMPEG_MIN_FOUND)
 
-include_directories(${FFMPEG_INCLUDE_DIRS})
-link_directories(${FFMPEG_LIBRARY_DIRS})
-ADD_DEFINITIONS(${FFMPEG_CFLAGS})
+include_directories(${FFMPEG_LEGACY_INCLUDE_DIRS})
+link_directories(${FFMPEG_LEGACY_LIBRARY_DIRS})
+ADD_DEFINITIONS(${FFMPEG_LEGACY_CFLAGS})
 
 SET(libffmpeg_SRCS
   decoder_ffmpeg.cpp
@@ -81,6 +81,6 @@ IF(FFMPEG_LEGACY_FOUND)
 ADD_LIBRARY(ffmpeg_legacy MODULE ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg_legacy qmmp)
-target_link_libraries(ffmpeg_legacy ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS})
+target_link_libraries(ffmpeg_legacy ${QT_LIBRARIES} -lqmmp ${FFMPEG_LEGACY_LDFLAGS})
 install(TARGETS ffmpeg_legacy DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_LEGACY_FOUND)
