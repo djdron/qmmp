@@ -27,6 +27,13 @@
  *   http://www.mozilla.org/MPL/                                           *
  ***************************************************************************/
 
+/*
+  Changes against original code:
+  - removed constructor File(IOStream *stream, bool readProperties, Properties::ReadStyle propertiesStyle);
+  - removed function PropertyMap File::properties() const;
+  - removed function PropertyMap File::setProperties(const PropertyMap &properties).
+*/
+
 #ifndef TAGLIB_OPUSFILE_H
 #define TAGLIB_OPUSFILE_H
 
