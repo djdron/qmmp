@@ -26,7 +26,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="232"/>
         <source>Compiled against:</source>
-        <translation type="unfinished"></translation>
+        <translation>הודרה כנגד:</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="245"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>

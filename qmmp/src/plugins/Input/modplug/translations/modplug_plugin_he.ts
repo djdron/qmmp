@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation></translation>
+        <translation>‭Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation></translation>
+        <translation>‭Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation></translation>
+        <translation>‭Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>

@@ -186,7 +186,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>מאבחן</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
@@ -399,7 +399,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>בחר צבע</translation>
     </message>
 </context>
 <context>
@@ -417,17 +417,17 @@
     <message>
         <location filename="../equalizer.cpp" line="54"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוע מראש:</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>שמור</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>מחק</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="70"/>
@@ -443,28 +443,28 @@
         <location filename="../equalizer.cpp" line="100"/>
         <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1דציבל</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
         <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>+%1דציבל</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוע מראש</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
-        <translation type="unfinished"></translation>
+        <translation>החלף בקשה</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוע מראש &apos;%1&apos; כבר קיים. להחליף?</translation>
     </message>
 </context>
 <context>
@@ -633,7 +633,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="246"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>שם רשימת השמעה:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="282"/>
@@ -718,7 +718,7 @@
         <location filename="../mainwindow.cpp" line="440"/>
         <location filename="../mainwindow.cpp" line="483"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>לפי תאריך יצירת קובץ</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="448"/>
@@ -980,72 +980,72 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="264"/>
         <source>Analyzer Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>צבעי מאבחן</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="270"/>
         <source>Analyzer #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>מאבחן ראשון:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="305"/>
         <source>Peaks:</source>
-        <translation type="unfinished"></translation>
+        <translation>שיאים:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="337"/>
         <source>Analyzer #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>מאבחן שני:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="369"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>רקע אחורי:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="401"/>
         <source>Analyzer #3:</source>
-        <translation type="unfinished"></translation>
+        <translation>מאבחן שלישי:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="478"/>
         <source>Playlist Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>צבעי רשימת השמעה</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="720"/>
         <source>Use system colors</source>
-        <translation type="unfinished"></translation>
+        <translation>השתמש בצבעי מערכת</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="484"/>
         <source>Background #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>רקע ראשון:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="532"/>
         <source>Normal text:</source>
-        <translation type="unfinished"></translation>
+        <translation>טקסט רגיל:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="580"/>
         <source>Background #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>רקע שני:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="615"/>
         <source>Current text:</source>
-        <translation type="unfinished"></translation>
+        <translation>טקסט נוכחי:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="650"/>
         <source>Highlighted background:</source>
-        <translation type="unfinished"></translation>
+        <translation>רקע אחורי מודגש:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="685"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
+        <translation>טקסט מודגש:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="152"/>
@@ -1068,77 +1068,77 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="276"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>כיסוי</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="279"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>שיאים</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="282"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור רענון</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="285"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="286"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="287"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="288"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="295"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת מאבחן</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="298"/>
         <location filename="../qsuianalyzer.cpp" line="312"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>הכי איטי</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="299"/>
         <location filename="../qsuianalyzer.cpp" line="313"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>איטי</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="300"/>
         <location filename="../qsuianalyzer.cpp" line="314"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>רגיל</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="301"/>
         <location filename="../qsuianalyzer.cpp" line="315"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>מהיר</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="302"/>
         <location filename="../qsuianalyzer.cpp" line="316"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>הכי מהיר</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="309"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת שיאים</translation>
     </message>
 </context>
 <context>

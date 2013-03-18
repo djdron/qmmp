@@ -44,12 +44,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>בדיקה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Register new session</source>
-        <translation>רישום סשן חדש</translation>
+        <translation>רשום סשן חדש</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
@@ -71,50 +71,50 @@
         <location filename="../settingsdialog.cpp" line="96"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>הודעה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="74"/>
         <source>1. Wait for browser startup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. המתן להפעלת דפדפן</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. התר ל Qmmp לקיים scrobble לרצועות לחשבונך אצל Last.fm</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="76"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>3. לחץ &quot;אישור&quot;</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
         <location filename="../settingsdialog.cpp" line="104"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Network error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאת רשת עבודה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="85"/>
         <location filename="../settingsdialog.cpp" line="108"/>
         <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>לא ניתן לרשום סשן חדש</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="96"/>
         <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>סשן חדש נתקבל בהצלחה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Permission granted</source>
-        <translation type="unfinished"></translation>
+        <translation>הרשאה נענתה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>הרשאה נאסרה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
@@ -124,7 +124,7 @@
         <location filename="../settingsdialog.cpp" line="133"/>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאה</translation>
     </message>
 </context>
 </TS>

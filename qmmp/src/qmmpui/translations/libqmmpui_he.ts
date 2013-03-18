@@ -36,7 +36,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>נגן מולטימדיה מבוסס Qt ‫(Qmmp)</translation>
+        <translation>נגן מולטימדיה מבוסס ‏Qt ‏(Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="71"/>
         <source>(c) %1-%2 Qmmp Development Team</source>
-        <translation>‏(c) ‫%1-%2 נבחרת הפיתוח של Qmmp</translation>
+        <translation>‏(c) ‏%1-%2 נבחרת הפיתוח של Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="76"/>
@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>הזנת URL להוספה</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;הוסף</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ביטול</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאה</translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="149"/>
         <source>Convert %20 to blanks</source>
-        <translation>המר %20 אל תווי רווח</translation>
+        <translation>המר ‎%20 אל תווי רווח</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="156"/>
@@ -184,22 +184,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>שונות</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="211"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>שמור אוטומטית רשימת השמעה כאשר משתנה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="331"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>מראה ותחושה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="337"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>שפה:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="410"/>
@@ -264,12 +264,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="480"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>דו שיח URL</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="486"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>הדבק אוטומטית URL מן לוח גזירה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="525"/>
@@ -406,17 +406,17 @@
     <message>
         <location filename="../configdialog.cpp" line="234"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>פלט</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="244"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>תיבות דו שיח קובץ</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="254"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>ממשקי משתמש</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="286"/>
@@ -481,107 +481,107 @@
     <message>
         <location filename="../configdialog.cpp" line="308"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;איתור אוטומטי&gt;</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="309"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>ברזילאית פורטוגזית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="310"/>
         <source>Chinese Simplified</source>
-        <translation type="unfinished"></translation>
+        <translation>סינית מפושטת</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="311"/>
         <source>Chinese Traditional</source>
-        <translation type="unfinished"></translation>
+        <translation>סינית מסורתית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="312"/>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>צ׳כית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="313"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>הולנדית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="314"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>אנגלית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>צרפתית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>גרמנית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="317"/>
         <source>Hebrew</source>
-        <translation type="unfinished"></translation>
+        <translation>עברית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="318"/>
         <source>Hungarian</source>
-        <translation type="unfinished"></translation>
+        <translation>הונגרית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="319"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>איטלקית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="320"/>
         <source>Japanese</source>
-        <translation type="unfinished"></translation>
+        <translation>יפנית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="321"/>
         <source>Kazakh</source>
-        <translation type="unfinished"></translation>
+        <translation>קזחית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="322"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>ליטאית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Polish</source>
-        <translation type="unfinished"></translation>
+        <translation>פולנית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="324"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>רוסית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="325"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>סלובקית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
         <source>Spanish</source>
-        <translation type="unfinished"></translation>
+        <translation>ספרדית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="327"/>
         <source>Turkish</source>
-        <translation type="unfinished"></translation>
+        <translation>טורקית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="328"/>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>אוקראינית</translation>
     </message>
 </context>
 <context>
@@ -708,7 +708,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>פורמט רשימת השמעה לא נתמך</translation>
     </message>
 </context>
 <context>

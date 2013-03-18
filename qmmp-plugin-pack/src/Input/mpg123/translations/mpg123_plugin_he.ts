@@ -51,7 +51,7 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
