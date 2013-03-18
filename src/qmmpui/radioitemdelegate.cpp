@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -93,7 +93,7 @@ bool RadioItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
                 QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(event);
 
                 if(!checkRect.contains(mouseEvent->pos()))
-                    return QStyledItemDelegate::editorEvent(event,model,option,index);
+                    return true;
             }
 
             if (!index.data(Qt::CheckStateRole).toBool())
