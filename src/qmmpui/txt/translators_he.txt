@@ -1,6 +1,32 @@
+אוקראינית:
+    Gennadi Motsyo <drool@altlinux.ru>
+
+איטלקית:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
 ברזילאית פורטוגזית:
     Klaos Lacerda
     Bruno Gonçalves
+
+גרמנית:
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+הונגרית:
+    Németh Gábor <sutee84@freemail.hu>
+
+הולנדית:
+    Ronald Uitermark <ronald645@gmail.com>
+
+טורקית:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+יפנית:
+    Ryota Shimamoto <liangtai.s4@gmail.com>
+
+ליטאית:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
 
 סינית מסורתית:
     lon <lon83129@126.com>
@@ -8,52 +34,26 @@
 סינית מפושטת:
     lon <lon83129@126.com>
 
-צ׳כית:
-    Karel Volný <kvolny@redhat.com>
-
-הולנדית:
-    Ronald Uitermark <ronald645@gmail.com>
-
-צרפתית:
-    Stanislas Zeller <uncensored.assault@gmail.com>
-
-גרמנית:
-    Stefan Koelling <stefankoelling.ext@googlemail.com>
-    Panagiotis Papadopoulos <pano_90@gmx.net>
-
-עברית:
-    Genghis Khan <genghiskhan@gmx.ca>
-
-הונגרית:
-    Németh Gábor <sutee84@freemail.hu>
-
-איטלקית:
-    Gian Paolo Renello <emmerkar@gmail.com>
-
-יפנית:
-    Ryota Shimamoto <liangtai.s4@gmail.com>
-
- קזכית:
-    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-
-ליטאית:
-    Algirdas Butkus <butkus.algirdas@gmail.com>
-
-פולנית:
-    Grzegorz Gibas <amigib@gmail.com>
-
-רוסית:
-    Ilya Kotov <forkotov02@hotmail.ru>
-
 סלובקית:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
 ספרדית:
     Félix Medrano <xukosky@yahoo.es>
 
-טורקית:
-    Mustafa GUNAY <mustafagunay@pgmail.com>
-    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+עברית:
+    Genghis Khan <genghiskhan@gmx.ca>
 
-אוקראינית:
-    Gennadi Motsyo <drool@altlinux.ru>
+פולנית:
+    Grzegorz Gibas <amigib@gmail.com>
+
+צ׳כית:
+    Karel Volný <kvolny@redhat.com>
+
+צרפתית:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+קזכית:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+רוסית:
+    Ilya Kotov <forkotov02@hotmail.ru>

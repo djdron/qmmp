@@ -792,7 +792,7 @@
         <location filename="../playlist.cpp" line="242"/>
         <location filename="../playlist.cpp" line="285"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>לפי תאריך יצירת קובץ</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="250"/>
@@ -1075,16 +1075,16 @@
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי:
-Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
-Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי:‭
+Vladimir Kuznetsov ‫&lt;vovanec@gmail.com&gt;
+Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;‬</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation>אומנות:
-Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
+        <translation>אומנות:‭
+Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     </message>
 </context>
 <context>

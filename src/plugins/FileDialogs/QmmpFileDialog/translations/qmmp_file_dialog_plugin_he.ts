@@ -75,9 +75,9 @@
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי:
+        <translation>חוברה על ידי:‭
 Vladimir Kuznetsov ‫&lt;vovanec@gmail.com&gt;
-Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;‬</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="128"/>
