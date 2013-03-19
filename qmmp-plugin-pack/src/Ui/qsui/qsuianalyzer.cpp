@@ -126,8 +126,8 @@ void QSUiAnalyzer::timeout()
 
     process (m_left_buffer, m_right_buffer);
     m_buffer_at -= VISUAL_NODE_SIZE;
-    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, (m_buffer_at - VISUAL_NODE_SIZE) << 1);
-    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, (m_buffer_at - VISUAL_NODE_SIZE) << 1);
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
     mutex()->unlock ();
     update();
 }
@@ -156,10 +156,6 @@ void QSUiAnalyzer::resizeEvent(QResizeEvent *)
 
 void QSUiAnalyzer::process (short *left, short *right)
 {
-    static fft_state *state = 0;
-    if (!state)
-        state = fft_init();
-
     int rows = (height() - 2) / m_cell_size.height();
     int cols = (width() - m_offset - 2) / m_cell_size.width();// / 2;
 
@@ -188,7 +184,7 @@ void QSUiAnalyzer::process (short *left, short *right)
     short dest[256];
     short y;
     int k, magnitude;
-    short data[256];
+    short data[512];
 
     for(int i = 0; i < VISUAL_NODE_SIZE; ++i)
     {
