@@ -126,8 +126,8 @@ void QSUiAnalyzer::timeout()
 
     process (m_left_buffer, m_right_buffer);
     m_buffer_at -= VISUAL_NODE_SIZE;
-    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, (m_buffer_at - VISUAL_NODE_SIZE) << 1);
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, (m_buffer_at - VISUAL_NODE_SIZE) << 1);
     mutex()->unlock ();
     update();
 }
@@ -185,19 +185,15 @@ void QSUiAnalyzer::process (short *left, short *right)
         for(int i = 0; i < m_cols + 1; ++i)
             m_x_scale[i] = pow(pow(255.0, 1.0 / m_cols), i);
     }
-
     short dest[256];
-
     short y;
     int k, magnitude;
-
     short data[256];
 
     for(int i = 0; i < VISUAL_NODE_SIZE; ++i)
     {
         data[i] = (left[i] >> 1) + (right[i] >> 1);
     }
-
     calc_freq (dest, data);
 
     double y_scale = (double) 1.25 * m_rows / log(256);
