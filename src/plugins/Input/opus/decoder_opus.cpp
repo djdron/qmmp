@@ -84,7 +84,6 @@ DecoderOpus::~DecoderOpus()
 bool DecoderOpus::initialize()
 {
     qDebug("DecoderOpus: initialize");
-    quint32 freq = 0;
     m_chan = 0;
     m_totalTime = 0;
 
@@ -125,11 +124,9 @@ bool DecoderOpus::initialize()
 
     const OpusHead *head = op_head(m_opusfile, -1);
     if (head)
-    {
-        freq = head->input_sample_rate;
         m_chan =  head->channel_count;
-    }
-    configure(freq, m_chan, Qmmp::PCM_S16LE);
+
+    configure(48000, m_chan, Qmmp::PCM_S16LE); //opus codec supports 48 kHz only
     return true;
 }
 
