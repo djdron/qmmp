@@ -38,8 +38,8 @@ Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
     m_pl_manager =  m_player->playListManager();
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateId()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(emitPropertiesChanged()));
-    connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(checkState(Qmmp::State)));
+    connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(checkSeeking(qint64)));
     connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), SLOT(emitPropertiesChanged()));
@@ -328,7 +328,10 @@ void Player2Object::updateId()
 void Player2Object::checkState(Qmmp::State state)
 {
     if(state == Qmmp::Playing)
+    {
+        updateId();
         m_previous_pos = 0;
+    }
 }
 
 void Player2Object::checkSeeking(qint64 elapsed)
