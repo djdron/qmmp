@@ -75,6 +75,11 @@ void QSUiAnalyzer::clear()
     m_buffer_at = 0;
     m_rows = 0;
     m_cols = 0;
+    update();
+}
+
+void QSUiAnalyzer::clearCover()
+{
     m_cover = QPixmap();
     updateCover();
     update();

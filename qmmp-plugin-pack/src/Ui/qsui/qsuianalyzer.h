@@ -40,6 +40,7 @@ public:
     void add(unsigned char *data, qint64 size, int chan);
     void setCover(const QPixmap &pixmap);
     void clear();
+    void clearCover();
 
 public slots:
     void readSettings();

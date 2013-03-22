@@ -134,7 +134,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //visualization
     Visual::add(m_ui.visualWidget);
 
-   m_ui.splitter->setStretchFactor(0,1);
+    m_ui.splitter->setStretchFactor(0,1);
 }
 
 MainWindow::~MainWindow()
@@ -187,6 +187,7 @@ void MainWindow::showState(Qmmp::State state)
         m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
         m_timeLabel->clear();
         m_slider->setValue(0);
+        m_ui.visualWidget->clearCover();
         setWindowTitle("Qmmp");
         break;
     }
