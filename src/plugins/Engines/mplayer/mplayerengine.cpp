@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -74,7 +74,7 @@ QStringList MplayerInfo::filters()
 {
     QStringList filters;
     filters << "*.avi" << "*.mpg" << "*.mpeg" << "*.divx" << "*.qt" << "*.mov" << "*.wmv" << "*.asf"
-    << "*.flv" << "*.3gp" << "*.mkv";
+            << "*.flv" << "*.3gp" << "*.mkv" << "*.mp4";
     return filters;
 }
 
