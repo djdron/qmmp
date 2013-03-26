@@ -12,7 +12,7 @@ if [ ! -d "qmmp-svn" ]; then
 svn checkout http://qmmp.googlecode.com/svn/branches/qmmp-0.7/ qmmp-svn
 fi
 
-echo "Creating changelog..."
+echo "Creating changelog.."
 cd qmmp-svn
 svn up
 svn log > ChangeLog.svn
@@ -41,9 +41,8 @@ cd utils
 ./remove_svn_tags.sh
 cd ..
 
-echo "Fixing versions.."
+echo "Fixing version.."
 sed 's/QMMP_VERSION_STABLE 0/QMMP_VERSION_STABLE 1/' -i src/qmmp/qmmp.h
-sed 's/CONFIG += SVN_VERSION/#CONFIG += SVN_VERSION/' -i qmmp.pri
 cd ..
 
 echo "Creating tarball.."
