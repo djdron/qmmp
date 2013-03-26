@@ -643,6 +643,81 @@ Version 0.6.0
 * updated German translation (Panagiotis Papadopoulos)
 * updated Dutch translation (Ronald Uitermark)
 
+Version 0.6.1
+* added icons to the file dialog buttons
+* fixed icecast streams titles
+* fixed build
+* fixed default output under windows
+* fixed api documentation
+* fixed possible segmentation fault in the cue plugin
+* fixed cue parsing
+* fixed automatic charset detection
+* fixed Ukrainian translation (Gennadi Motsyo)
+* fixed Russian translation
+
+Version 0.6.2
+* fixed crash in the http plugin (Franz Fellner)
+* fixed possible crash in the cue parser
+
+Version 0.6.3
+* fixed typo in the about dialog
+* fixed FSF address
+* fixed cmake scripts
+* fixed filters of the directory scanner
+* fixed crash in the playlist popup message
+* updated Lithuanian translation (Algirdas Butkus)
+
+Version 0.6.4
+* using UTF-8 encoding for shoutcast metadata by default
+* fixed visualization menu update after changing settings
+* fixed skinned user interface settings
+* fixed analyzer falloff speeds
+* fixed skinned user interface visualization switching
+* fixed playlist titlebar resize bug
+* fixed color selection widget
+* fixed possible crash in the transport plugins
+* fixed Russian translation
+* updated Japanese translation (Ryota Shimamoto)
+
+Version 0.6.5
+* added latest psi/psi+ support
+* added Hebrew translation (Genghis Khan)
+* increased default mms/http buffer size
+* fixed shortcut dialogs
+* fixed segmentation fault caused by http transport
+* fixed file type determination by content
+* fixed division line position in the playlist
+* fixed some bugs in the WaveOut plugin
+* updated Japanese translation (Ryota Shimamoto)
+* updated Russian translation
+* updated flac mime-type (Christian Morales Vega)
+
+Version 0.6.6
+* added support for http redirect to the url dialog
+* added ffmpeg 1.1 support
+* fixed 24/32-bit mode support in the src plugin
+* fixed seeking when using oss4 as output
+* fixed streaming support in the ffmpeg plugin
+* fixed build without qt3support headers (thanks to Dmitry Smolin)
+* fixed playlist titlebar cursor
+* fixed mpris2 support
+* fixed typos
+* updated Hebrew translation (Genghis Khan)
+
+Version 0.6.7
+* added lubuntu integration
+* improved rtl locales support
+* fixed latest paranoia support
+* fixed libav 0.8.x support
+* fixed 'enter' hotkey in the playlist browser
+* fixed 24-bit mode support in the src plugin
+* fixed compiler warnings
+
+Version 0.6.8
+* fixed bugs in the mpris plugin
+* fixed segmentation fault when running without output plugins
+* updated Japanese translation (Ryota Shimamoto)
+
 Version 0.7.0
 * added udisks2 plugin
 * added opus plugin
