@@ -77,12 +77,14 @@ TEMPLATE = lib
 VERSION = $$QMMP_VERSION
 unix:isEmpty(LIB_DIR):LIB_DIR = /lib
 unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
-DEFINES += QMMP_VERSION=$$QMMP_VERSION
-DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
-contains(CONFIG, SVN_VERSION) {
-    unix:DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
-    win32:DEFINES += SVN_REVISION=\\\"svn\\\"
+
+unix {
+  SVN_REVISION = $$system(./svn_revision.sh)
+  !isEmpty(SVN_REVISION) {
+    DEFINES += SVN_REVISION=\\\"$$SVN_REVISION\\\"
+  }
 }
+
 unix {
     target.path = $$LIB_DIR
     devel.files += \
