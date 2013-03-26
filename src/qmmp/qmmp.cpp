@@ -28,6 +28,8 @@
 #define LIB_DIR "/lib"
 #endif
 
+#define DEV_SUFFIX "dev"
+
 #include "qmmp.h"
 
 QString Qmmp::m_configFile;
@@ -51,9 +53,9 @@ const QString Qmmp::strVersion()
             .arg(QMMP_VERSION_PATCH);
 #if !QMMP_VERSION_STABLE
 #ifdef SVN_REVISION
-    ver += "-"SVN_REVISION;
+    ver += "-svn-"SVN_REVISION;
 #else
-    ver += "-svn";
+    ver += "-"DEV_SUFFIX;
 #endif
 #endif
     return ver;
