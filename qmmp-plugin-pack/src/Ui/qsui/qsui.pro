@@ -81,7 +81,13 @@ TRANSLATIONS = translations/qsui_plugin_ru.ts \
     translations/qsui_plugin_es.ts \
     translations/qsui_plugin_sk.ts
 
-DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
+
+contains(CONFIG, SVN_VERSION){
+    DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION-dev\\\"
+}
+else{
+    DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
+}
 
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
