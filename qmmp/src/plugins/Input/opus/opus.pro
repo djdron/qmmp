@@ -57,5 +57,4 @@ win32 {
                ../../../../src/qmmp/decoderfactory.h
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lopusfile -lopus -ltag.dll -lm
-    LD_FLAGS += -no-undefined
 }

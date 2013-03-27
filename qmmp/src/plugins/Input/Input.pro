@@ -27,6 +27,10 @@ contains(CONFIG, GME_PLUGIN){
   SUBDIRS += gme
 }
 
+contains(CONFIG, OPUS_PLUGIN){
+  SUBDIRS += opus
+}
+
 unix{
 
 contains(CONFIG, AAC_PLUGIN){
@@ -41,7 +45,5 @@ contains(CONFIG, WILDMIDI_PLUGIN){
   SUBDIRS += wildmidi
 }
 
-contains(CONFIG, OPUS_PLUGIN){
-  SUBDIRS += opus
-}
+
 }
