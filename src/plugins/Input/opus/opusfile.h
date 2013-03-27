@@ -59,7 +59,7 @@ namespace TagLib {
        * the codec implementations, in this case Opus specifically.
        */
 
-      class TAGLIB_EXPORT File : public Ogg::File
+      class File : public Ogg::File
       {
       public:
         /*!
