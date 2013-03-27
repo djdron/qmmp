@@ -33,6 +33,9 @@ List of the third-party libraries.
   wavpack             http://www.wavpack.com/ 
   ffmpeg              http://ffmpeg.mplayerhq.hu/
   libbs2b             http://bs2b.sourceforge.net/
+  game-music-emu      http://code.google.com/p/game-music-emu/
+  libopus             http://www.opus-codec.org/
+  libopusfile         http://www.opus-codec.org/
 
 List of the third-party artwork
 
