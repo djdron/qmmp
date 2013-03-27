@@ -3,8 +3,17 @@ Qt-based Multimedia Player for Windows
 License: GNU General Public License v2.0 or later
 Offical web page: http://qmmp.ylsoftware.com
 Bug tracker: http://code.google.com/p/qmmp/issues/list
-Maintainer: Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com> 
+Maintainer: Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com>
 
+Known issues:
+  - missing plugins: wildmidi, cdaudio, aac, jack, pulseaudio, oss4, alsa, mplayer, 
+    mpris, converter, kdenotify;
+  - packed Xmms skins (i.e. *.tar.gz, *.tar.bz2) are unsupported. You should unpack them before usage.
+
+Extra plugins (see http://qmmp.ylsoftware.com/plugins.php):
+  - FFap - enhanced Monkey's Audio (APE) decoder; 
+  - Simple Ui - simple user interface based on standard widgets set. 
+   
 This archive also contains third-party libraries. Source code of these libraries
 is freely available on the Internet. 
 
@@ -15,7 +24,6 @@ List of the third-party libraries.
   GNU C Library       http://www.gnu.org/s/libc
   MinGW               http://mingw.org
   Qt                  http://qt.nokia.com
-  tar                 http://www.gnu.org/software/tar/
   unzip               http://www.info-zip.org/pub/infozip/UnZip.html
   bzip2               http://www.bzip.org/
   gzip                http://www.gnu.org/software/gzip/
@@ -37,7 +45,7 @@ List of the third-party libraries.
   libopus             http://www.opus-codec.org/
   libopusfile         http://www.opus-codec.org/
 
-List of the third-party artwork
+List of the third-party artwork.
 
   Name                Web page
 
@@ -45,5 +53,4 @@ List of the third-party artwork
   SK051 skin
   Vortigo skin
   Azenis skin
-
-  
+ 
