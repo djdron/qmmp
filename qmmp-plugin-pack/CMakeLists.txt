@@ -106,7 +106,7 @@ PRINT_SUMMARY ("Simple UI plugin ................" USE_QSUI QMMPUI_FOUND)
 
 MESSAGE("")
 MESSAGE("Advanced:")
-PRINT_SUMMARY ("Assempler optimizations ........." USE_ASM USE_FFAP)
+PRINT_SUMMARY ("Assempler optimizations ........." YASM_FOUND USE_FFAP)
 
 
 MESSAGE("")

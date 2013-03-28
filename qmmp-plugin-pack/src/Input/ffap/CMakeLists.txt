@@ -56,6 +56,11 @@ SET(libffap_MOC_HDRS
 )
 
 IF(USE_ASM)
+FIND_PROGRAM(YASM_PATH yasm)
+ENDIF(USE_ASM)
+
+IF(USE_ASM AND (NOT YASM_PATH MATCHES "^.*-NOTFOUND"))
+  SET(YASM_FOUND TRUE CACHE INTERNAL "yasm_found")
   IF(CMAKE_SYSTEM_PROCESSOR MATCHES "^(i.86|x86_64)$")
     set(CMAKE_ASM_NASM_COMPILER "yasm")
     enable_language(ASM_NASM)
@@ -80,9 +85,9 @@ IF(USE_ASM)
       set_source_files_properties(${SOURCE} PROPERTIES COMPILE_FLAGS "-Wall")
     ENDIF()
   ENDFOREACH()
-ELSE(USE_ASM)
+ELSE(USE_ASM AND (NOT YASM_PATH MATCHES "^.*-NOTFOUND"))
     message("-- Assembler optimizations are disabled")
-ENDIF(USE_ASM)
+ENDIF(USE_ASM AND (NOT YASM_PATH MATCHES "^.*-NOTFOUND"))
 
 SET(libffap_RCCS translations/translations.qrc)
 
