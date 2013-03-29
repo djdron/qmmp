@@ -32,7 +32,6 @@ class Output
 public:
     /*!
      * Object contsructor.
-     * @param parent Parent object.
      */
     Output();
     /*!
