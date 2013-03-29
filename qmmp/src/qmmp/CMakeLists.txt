@@ -102,30 +102,30 @@ SET(libqmmp_MOC_HDRS
 )
 
 SET(libqmmp_DEVEL_HDRS
-    visual.h
-    decoderfactory.h
-    visualfactory.h
-    buffer.h
-    decoder.h
-    output.h
-    fileinfo.h
-    outputfactory.h
-    soundcore.h
-    effectfactory.h
-    effect.h
-    qmmp.h
-    statehandler.h
-    volume.h
-    metadatamodel.h
-    tagmodel.h
     abstractengine.h
     audioparameters.h
-    inputsource.h
-    inputsourcefactory.h
+    buffer.h
+    decoderfactory.h
+    decoder.h
+    effectfactory.h
+    effect.h
     enginefactory.h
-    metadatamanager.h
-    qmmpsettings.h
     eqsettings.h
+    fileinfo.h
+    inputsourcefactory.h
+    inputsource.h
+    metadatamanager.h
+    metadatamodel.h
+    outputfactory.h
+    output.h
+    qmmp.h
+    qmmpsettings.h
+    soundcore.h
+    statehandler.h
+    tagmodel.h
+    visualfactory.h
+    visual.h
+    volume.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
