@@ -42,6 +42,7 @@ Version 0.7.0
 * ported to qmmp 0.7 api
 * added windows support to the ffap plugin
 * added streams support to the mpg123 plugin
+* added automatic yasm detection
 * improved qsui plugin:
   - added spectrum analyzer
   - added sorting by file creation date
