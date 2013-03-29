@@ -69,9 +69,9 @@ struct SimpleSelection
     {
         return m_bottom - m_top + 1;
     }
-    int m_bottom;               /*!<    */
-    int m_top;                  /*!<    */
-    int m_anchor;               /*!<    */
+    int m_bottom;               /*!< Bottom of the selection */
+    int m_top;                  /*!< Top of the selection   */
+    int m_anchor;               /*!< Main index of the selection  */
     QList<int> m_selected_indexes;  /*!< Selected items numbers */
 };
 /*! @internal
@@ -145,7 +145,7 @@ public:
     /*!
      * Sets current index.
      * Returns \b false if item with this index doesn't exist, otherwise returns \b true
-     * @param row Number of item.
+     * @param index Number of item.
      */
     bool setCurrent (int index);
     /*!
