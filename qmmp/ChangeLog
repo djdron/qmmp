@@ -727,7 +727,7 @@ Version 0.7.0
 * added 24/32-bit equalizer
 * added unity integration
 * added user interface language option
-* added playlists auto-save feauture (patch by Ferdinand Vesely)
+* added playlists auto-save feature (Ferdinand Vesely)
 * added unified URL dialog
 * added playlists downloading support to the command line parser
 * added winapi support to the hotkey plugin
@@ -736,6 +736,7 @@ Version 0.7.0
 * added sorting by file creation date
 * added libavutil version output to the ffmpeg plugin
 * added automatic 16-bit audio converter
+* added pause handling to the scrobbler plugin (Ferdinand Vesely)
 * enabled UTF-8 by default for cue files and shoutcast metadata
 * enabled more formats by default in the ffmpeg plugin
 * improved some plugins api
