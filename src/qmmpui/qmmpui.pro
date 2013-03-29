@@ -101,26 +101,28 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_es.ts \
     translations/libqmmpui_sk.ts
 unix {
-    devel.files += general.h \
-                   generalfactory.h \
-                   playlistformat.h \
-                   playlistparser.h \
-                   commandlinemanager.h \
+    devel.files += commandlinemanager.h \
                    commandlineoption.h \
-                   filedialog.h \
-                   filedialogfactory.h \
-                   playlistitem.h \
-                   playlistmodel.h \
-                   mediaplayer.h \
+                   configdialog.h \
                    detailsdialog.h \
-                   playlistmanager.h \
+                   filedialogfactory.h \
+                   filedialog.h \
+                   generalfactory.h \
+                   general.h \
+                   mediaplayer.h \
                    metadataformatter.h \
+                   playlistdownloader.h \
+                   playlistformat.h \
+                   playlistitem.h \
+                   playlistmanager.h \
+                   playlistmodel.h \
+                   playlistparser.h \
+                   qmmpuisettings.h \
                    templateeditor.h \
                    uifactory.h \
-                   uiloader.h \
                    uihelper.h \
-                   qmmpuisettings.h \
-                   playlistdownloader.h
+                   uiloader.h
+                   
     devel.path = /include/qmmpui
     INSTALLS += target \
         devel
