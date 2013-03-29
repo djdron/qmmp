@@ -6,7 +6,7 @@ Bug tracker: http://code.google.com/p/qmmp/issues/list
 Maintainer: Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com>
 
 Known issues:
-  - missing plugins: wildmidi, cdaudio, aac, jack, pulseaudio, oss4, alsa, mplayer, 
+  - missing plugins: mms, wildmidi, cdaudio, aac, jack, pulseaudio, oss4, alsa, mplayer, 
     mpris, converter, kdenotify;
   - packed Xmms skins (i.e. *.tar.gz, *.tar.bz2) are unsupported. You should unpack them before usage.
 
