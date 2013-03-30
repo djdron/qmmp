@@ -9,7 +9,6 @@ Description:
 - Simple Ui - simple user interface based on standard widgets set
 
 Requirements:
-- OS GNU Linux
 - Qt >= 4.6
 - qmmp 0.7.x
 - taglib >= 1.7.0

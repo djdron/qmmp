@@ -81,7 +81,7 @@ Qmmp - Qt-based multimedia player
 - libsndfile >= 1.0.17 (Опционально)
 - wavpack >= 4.41 (Опционально)
 - pulseaudio >= 0.9.15 (Опционально)
-- ffmpeg >= 0.9.1 (Опционально)
+- ffmpeg >= 0.9.1 или libav >= 0.8.0 (Опционально)
 - libcdio >= 0.80 (Опционально)
 - libcdio-paranoia >= 10.2 (начиная с libcdio 0.90)
 - libcddb >= 1.3.1 (Опционально)
