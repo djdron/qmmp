@@ -52,6 +52,7 @@ Version 0.7.0
   - improved tabs (movable, closable by middle click)
 * removed rename dialog, using standard instead
 * removed qmmp 0.6.x support
+* updated Ukrainian translation (Gennadi Motsyo)
 * updated Russian translation
 * updated Polish translation (Grzegorz Gibas)
 * updated Japanese translation (Ryota Shimamoto)
