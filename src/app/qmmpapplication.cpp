@@ -29,6 +29,8 @@ void QmmpApplication::commitData(QSessionManager &manager)
 {
     if(UiHelper::instance())
         UiHelper::instance()->exit();
+#ifndef QT_NO_SESSIONMANAGER
     else
         QApplication::commitData(manager);
+#endif
 }
