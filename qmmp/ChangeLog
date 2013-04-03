@@ -746,6 +746,7 @@ Version 0.7.0
 * removed QtXML dependence from the scrobbler plugin
 * disabled udisks plugin by default
 * moved ffmpeg 0.6-0.8 support to separate plugin
+* updated Ukrainian translation (Gennadi Motsyo)
 * updated Russian translation
 * updated Polish translation (Grzegorz Gibas)
 * updated Japanese translation (Ryota Shimamoto)
