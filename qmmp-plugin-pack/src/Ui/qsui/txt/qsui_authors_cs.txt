@@ -1,6 +1,8 @@
-Brazilská portugalština:
-    Klaos Lacerda
-    Bruno Gonçalves
+Vývojáři:
+
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Překladatelé:
 
 Tradiční čínština:
     lon <lon83129@126.com>
@@ -11,14 +13,10 @@ Zjednodušená čínština:
 Čeština:
     Karel Volný <kvolny@redhat.com>
 
-Nizozemština:
-    Ronald Uitermark <ronald645@gmail.com>
-
 Francouzština:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Němčina:
-    Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
 Hebrejština:
@@ -42,7 +40,7 @@ Litevština:
 Polština:
     Grzegorz Gibas <amigib@gmail.com>
 
-Ruština:
+Ručtina:
     Ilya Kotov <forkotov02@hotmail.ru>
 
 Slovenština:

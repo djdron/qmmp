@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecná nastavení</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Load incorrect cue sheets if possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrávat i neplatné cue, je-li to možné</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

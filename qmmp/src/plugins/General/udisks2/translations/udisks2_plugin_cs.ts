@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>UDisks Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení modulu UDisks</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisks2factory.cpp" line="30"/>
         <source>UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul UDisks2</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="50"/>
         <source>About UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu UDisks2</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="51"/>
         <source>Qmmp UDisks2 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp UDisks2</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks2</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento modul poskytuje detekci výměnných médií pomocí UDisks2</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisks2plugin.cpp" line="130"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">Přidat CD „%1“</translation>
+        <translation>Přidat CD „%1“</translation>
     </message>
     <message>
         <location filename="../udisks2plugin.cpp" line="138"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">Přidat svazek „%1“</translation>
+        <translation>Přidat svazek „%1“</translation>
     </message>
 </context>
 </TS>

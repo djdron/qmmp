@@ -6,33 +6,33 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="94"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="97"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">Soubory MPEG</translation>
+        <translation>Soubory MPEG</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="229"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="230"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvukový modul Qmmp MPG123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="231"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento modul poskytuje podporu pro MPEG 1/2 vrstvy 1/2/3 prostřednictvím knihovny libmpg123</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="233"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>

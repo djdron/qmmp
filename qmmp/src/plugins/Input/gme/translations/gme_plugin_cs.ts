@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodergmefactory.cpp" line="48"/>
         <source>GME Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="51"/>
         <source>Game Music Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory s hudbou z her</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="116"/>
         <source>About GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="117"/>
         <source>Qmmp GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="118"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento modul využívá knihovnu Game_Music_Emu pro přehrávání souborů s hudbou z her</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="119"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>
