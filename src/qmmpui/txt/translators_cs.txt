@@ -11,14 +11,49 @@ Zjednodušená čínština:
 Čeština:
     Karel Volný <kvolny@redhat.com>
 
+Nizozemština:
+    Ronald Uitermark <ronald645@gmail.com>
+
+Francouzština:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
 Němčina:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Hebrejština:
+    Genghis Khan <genghiskhan@gmx.ca>
+
+Maďarština:
+    Németh Gábor <sutee84@freemail.hu>
+
+Italština:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+Japonština:
+    Ryota Shimamoto <liangtai.s4@gmail.com>
+
+Kazaština:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Litevština:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Polština:
+    Grzegorz Gibas <amigib@gmail.com>
 
 Ruština:
     Ilya Kotov <forkotov02@hotmail.ru>
 
+Slovenština:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+Španělština:
+    Félix Medrano <xukosky@yahoo.es>
+
 Turečtina:
     Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
 Ukrajinština:
     Gennadi Motsyo <drool@altlinux.ru>

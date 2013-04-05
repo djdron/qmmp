@@ -97,17 +97,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="45"/>
         <source>Forward 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Vpřed o 5 sekund</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>
         <source>Rewind 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzad o 5 sekund</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="47"/>
         <source>Jump to track</source>
-        <translation type="unfinished"></translation>
+        <translation>Skočit na stopu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>

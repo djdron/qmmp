@@ -39,17 +39,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Session:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sezení:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Zkontrolovat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrovat nové sezení</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>
@@ -71,50 +71,50 @@
         <location filename="../settingsdialog.cpp" line="96"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpráva</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="74"/>
         <source>1. Wait for browser startup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Vyčkejte startu prohlížeče</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Povolte Qmmp odesílat stopy na svůj účet na Last.fm</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="76"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Stlačte „OK“</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
         <location filename="../settingsdialog.cpp" line="104"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Network error</source>
-        <translation type="unfinished"></translation>
+        <translation>Síťová chyba</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="85"/>
         <location filename="../settingsdialog.cpp" line="108"/>
         <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze registrovat nové sezení</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="96"/>
         <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové sezení bylo úspěšně přijato</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Permission granted</source>
-        <translation type="unfinished"></translation>
+        <translation>Přístup povolen </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Přístup odmítnut</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="81"/>
@@ -124,7 +124,7 @@
         <location filename="../settingsdialog.cpp" line="133"/>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
 </context>
 </TS>

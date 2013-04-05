@@ -6,12 +6,12 @@
     <message>
         <location filename="../analyzer.cpp" line="56"/>
         <source>Qmmp Analyzer</source>
-        <translation>Qmmp frekvenční analyzátor</translation>
+        <translation>Frekvenční analyzátor Qmmp</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="77"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>F</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte barvu</translation>
     </message>
 </context>
 <context>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="163"/>
         <source>Cells size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost polí:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="223"/>

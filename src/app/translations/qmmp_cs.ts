@@ -21,7 +21,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Nevyprazdňovat seznam skladeb</translation>
+        <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit aplikaci</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="291"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Nespouštět aplikaci</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="293"/>
@@ -99,17 +99,17 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="299"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP verze: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zkompilováno s Qt verze: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Používá Qt verze: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="292"/>

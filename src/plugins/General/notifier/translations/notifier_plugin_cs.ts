@@ -92,7 +92,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznámení o pokračování přehrávání</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="368"/>
@@ -113,7 +113,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="241"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit šablonu</translation>
     </message>
 </context>
 </TS>
