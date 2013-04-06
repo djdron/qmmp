@@ -71,7 +71,7 @@ Requirements:
 - libvorbis
 - libogg
 - libalsa >= 1.0.1
-- taglib >= 1.7.0
+- taglib >= 1.6
 - curl >= 7.16
 - libmms >= 0.4 (Optional)
 - flac >= 1.1.3 (Optional)
