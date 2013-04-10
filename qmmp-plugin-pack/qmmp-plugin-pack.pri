@@ -6,8 +6,8 @@ MOC_DIR=./.build/moc
 OBJECTS_DIR=./.build/obj
 
 unix{
-INCLUDEPATH += /home/user/qmmp-0.7/include
-QMAKE_LIBDIR += /home/user/qmmp-0.7/lib
+INCLUDEPATH += /home/user/qmmp-0.8/include
+QMAKE_LIBDIR += /home/user/qmmp-0.8/lib
 INCLUDEPATH += /usr/include
 INCLUDEPATH += /usr/local/include
 }else{
@@ -19,7 +19,7 @@ QMAKE_LIBDIR += C:/projects/qmmp/qmmp-svn/qmmp/bin
 
 #Version
 
-QMMP_PLUGIN_PACK_VERSION = 0.7.0
+QMMP_PLUGIN_PACK_VERSION = 0.8.0
 CONFIG += SVN_VERSION
 
 
