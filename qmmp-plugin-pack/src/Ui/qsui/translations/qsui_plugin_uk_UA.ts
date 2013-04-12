@@ -416,17 +416,17 @@
     <message>
         <location filename="../equalizer.cpp" line="54"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Предвстановлення:</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="70"/>
@@ -442,28 +442,29 @@
         <location filename="../equalizer.cpp" line="100"/>
         <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1дБ</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
         <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>+%1дБ</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
-        <translation type="unfinished"></translation>
+        <translation>предвстановлення</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
-        <translation type="unfinished"></translation>
+        <translation>Запит на перезапис</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>Предвстановлення &apos;%1&apos; вже існує. Замінити?</translation>
     </message>
 </context>
 <context>
@@ -486,7 +487,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="247"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва списку:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="283"/>
@@ -1008,42 +1009,42 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="478"/>
         <source>Playlist Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Кольори списку відтворення</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="720"/>
         <source>Use system colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Використовувати системні кольори</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="484"/>
         <source>Background #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тло #1:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="532"/>
         <source>Normal text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Звичайний текст:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="580"/>
         <source>Background #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тло #2:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="615"/>
         <source>Current text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Поточний текст:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="650"/>
         <source>Highlighted background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виділене тло:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="685"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виділений текст:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="152"/>
@@ -1066,7 +1067,7 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="273"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Обкладинка</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="276"/>
