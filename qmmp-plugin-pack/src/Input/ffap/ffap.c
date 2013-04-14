@@ -49,7 +49,7 @@
 #if defined(_WIN32) && ! defined(_MSC_VER)
 #include <malloc.h>
 int posix_memalign (void **memptr, size_t alignment, size_t size) {
-    *memptr = __mingw_aligned_malloc (alignment, size);
+    *memptr = __mingw_aligned_malloc (size, alignment);
     return *memptr ? 0 : -1;
 }
 #endif
