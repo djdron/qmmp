@@ -50,13 +50,27 @@ OutputJACK::~OutputJACK()
 bool OutputJACK::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     qDebug("OutputJACK: initialize");
-    if(JACK_Open(&jack_device, AudioParameters::sampleSize(format)*8, (unsigned long *)&freq, chan))
+    int bits = 0;
+    Qmmp::AudioFormat input_format = Qmmp::PCM_S8;
+    switch(format)
+    {
+    case Qmmp::PCM_S8:
+        bits = 8;
+        input_format = Qmmp::PCM_S8;
+        break;
+    default:
+        bits = 16;
+        input_format = Qmmp::PCM_S16LE;
+    }
+
+
+    if(JACK_Open(&jack_device, bits, (unsigned long *)&freq, chan))
     {
         m_inited = false;
         return false;
     }
     m_inited = true;
-    configure(freq, chan, format);
+    configure(freq, chan, input_format);
     return true;
 }
 
