@@ -2544,7 +2544,6 @@ JACK_Init(void)
 
     JACK_CleanupDriver(drv);
     JACK_ResetFromDriver(drv);
-    releaseDriver(drv);
   }
 
   client_name = 0;              /* initialize the name to null */
