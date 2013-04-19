@@ -347,7 +347,7 @@ releaseDriver(jack_driver_t * drv)
      #endif
    */
   if(pthread_mutex_unlock(&drv->mutex) != 0)
-    ERR("lock returned an error\n");
+    ERR("lock returned an error: %s\n", strerror(errno));
 }
 
 
