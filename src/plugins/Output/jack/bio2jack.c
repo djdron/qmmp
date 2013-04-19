@@ -346,8 +346,9 @@ releaseDriver(jack_driver_t * drv)
      TRACE("deviceID == %d\n", drv->deviceID);
      #endif
    */
-  if(pthread_mutex_unlock(&drv->mutex) != 0)
-    ERR("lock returned an error: %s\n", strerror(errno));
+  int err = 0;
+  if((err = pthread_mutex_unlock(&drv->mutex)) != 0)
+    ERR("lock returned an error: %d\n", err);
 }
 
 
