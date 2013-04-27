@@ -126,14 +126,3 @@ unix {
     INSTALLS += target \
         devel
 }
-
-
-
-
-
-
-
-
-
-
-
