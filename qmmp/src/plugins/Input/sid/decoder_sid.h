@@ -22,13 +22,8 @@
 #define DECODER_SID_H
 
 #include <qmmp/decoder.h>
-#include <sidplayfp/sidplayfp.h>
-#include <sidplayfp/SidTune.h>
-#include <sidplayfp/sidbuilder.h>
-#include <sidplayfp/SidConfig.h>
-#include <sidplayfp/builders/residfp.h>
-#include <sidplayfp/SidInfo.h>
-#include <sidplayfp/SidTuneInfo.h>
+
+class sidplayfp;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>

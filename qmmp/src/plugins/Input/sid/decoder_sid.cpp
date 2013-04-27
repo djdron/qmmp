@@ -19,6 +19,13 @@
  ***************************************************************************/
 
 #include <QFile>
+#include <sidplayfp/sidplayfp.h>
+#include <sidplayfp/SidTune.h>
+#include <sidplayfp/sidbuilder.h>
+#include <sidplayfp/SidConfig.h>
+#include <sidplayfp/builders/residfp.h>
+#include <sidplayfp/SidInfo.h>
+#include <sidplayfp/SidTuneInfo.h>
 #include "decoder_sid.h"
 
 // Decoder class
