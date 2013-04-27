@@ -1,9 +1,11 @@
 include(../../plugins.pri)
 
 HEADERS += decodersidfactory.h \
-    decoder_sid.h
+    decoder_sid.h \
+    sidhelper.h
 SOURCES += decoder_sid.cpp \
-    decodersidfactory.cpp
+    decodersidfactory.cpp \
+    sidhelper.cpp
 TARGET = $$PLUGINS_PREFIX/Input/sid
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libsid.so
 INCLUDEPATH += ../../../

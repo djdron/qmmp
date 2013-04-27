@@ -18,12 +18,13 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-
+#include <QFile>
 #include "decoder_sid.h"
 
 // Decoder class
-DecoderSID::DecoderSID(QIODevice *input) : Decoder(input)
+DecoderSID::DecoderSID(const QString &url) : Decoder()
 {
+    m_url = url;
     m_player = new sidplayfp();
 }
 
@@ -34,23 +35,39 @@ DecoderSID::~DecoderSID()
 
 bool DecoderSID::initialize()
 {
-    QByteArray data = input()->readAll();
+    QString path = m_url;
+    path.remove("sid://");
+    path.remove(QRegExp("#\\d+$"));
+    int track = m_url.section("#", -1).toInt();
 
-    if(data.isEmpty())
+    SidTune *tune = new SidTune(0);
+    tune->load(qPrintable(path));
+    int count = tune->getInfo()->songs();
+
+    if(track > count || track < 1)
     {
-        qWarning("DecoderSID: error: %s", qPrintable(input()->errorString()));
+        qWarning("DecoderSID: track number is out of range");
+        delete tune;
         return false;
     }
 
-    SidTune *tune = new SidTune(0);
-    tune->read((const unsigned char*)data.constData(), data.size());
-    tune->selectSong(0);
+    tune->selectSong(track);
 
     if(!tune->getStatus())
     {
         qWarning("DecoderSID: error: %s", tune->statusString());
         return false;
     }
+
+    //send metadata for pseudo-protocol
+    const SidTuneInfo *tune_info = tune->getInfo();
+    QMap<Qmmp::MetaData, QString> metadata;
+    metadata.insert(Qmmp::TITLE,  tune_info->infoString(0));
+    metadata.insert(Qmmp::ARTIST, tune_info->infoString(1));
+    metadata.insert(Qmmp::COMMENT, tune_info->commentString(0));
+    metadata.insert(Qmmp::TRACK, QString("%1").arg(track));
+    metadata.insert(Qmmp::URL, m_url);
+    addMetaData(metadata);
 
     sidbuilder *rs = new ReSIDfpBuilder("ReSIDfp builder");
     rs->create(m_player->info().maxsids());
