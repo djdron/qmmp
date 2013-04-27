@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,11 +42,8 @@ Music_Emu *GmeHelper::load(const QString &url, int sample_rate)
     QString path = url;
     if(url.contains("://"))
     {
-        path = QUrl(url).path();
-        path.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        path.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        path.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        path.remove("gme://");
+        path.remove(QRegExp("#\\d+$"));
     }
     const char *err = 0;
     gme_type_t file_type;
@@ -103,12 +100,7 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
             info->setMetaData(Qmmp::COMMENT, track_info->comment);
             info->setMetaData(Qmmp::TRACK, i+1);
         }
-        QString path = m_path;
-        path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
-        path.replace("#", QString(QUrl::toPercentEncoding("#")));
-        path.replace("?", QString(QUrl::toPercentEncoding("?")));
-        path.replace(":", QString(QUrl::toPercentEncoding(":")));
-        info->setPath("gme://"+path+QString("#%1").arg(i+1));
+        info->setPath("gme://" + m_path + QString("#%1").arg(i+1));
         info->setLength(track_info->length/1000);
         gme_free_info(track_info);
         list << info;
