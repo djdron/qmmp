@@ -22,7 +22,6 @@ QT += network
 unix:TARGET = ../../bin/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += thread \
-    release \
     warn_on
 QMAKE_LIBDIR += ../../lib \
     qmmpui
