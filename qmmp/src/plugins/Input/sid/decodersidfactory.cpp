@@ -20,6 +20,8 @@
 
 #include <QtGui>
 #include <QRegExp>
+#include <sidplayfp/SidTune.h>
+#include <sidplayfp/SidTuneInfo.h>
 #include "decoder_sid.h"
 #include "decodersidfactory.h"
 
@@ -36,16 +38,19 @@ bool DecoderSIDFactory::supports(const QString &source) const
     return false;
 }
 
-bool DecoderSIDFactory::canDecode(QIODevice *) const
+bool DecoderSIDFactory::canDecode(QIODevice *input) const
 {
-    return false;
+    char buf[4];
+    if (input->peek(buf, 4) != 4)
+        return false;
+    return (!memcmp(buf, "RSID", 4) || !memcmp(buf, "PSID", 4));
 }
 
 const DecoderProperties DecoderSIDFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("SID Plugin");
-    properties.filters << "*.sid";
+    properties.filters << "*.sid" << "*.mus" << "*.str" << "*.prg" << "*.P00";
     properties.description = tr("SID Files");
     //properties.contentType = ;
     properties.shortName = "sid";
@@ -64,7 +69,17 @@ Decoder *DecoderSIDFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderSIDFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo*> list;
-    list << new FileInfo(fileName);
+    FileInfo *info = new FileInfo(fileName);
+    if(useMetaData)
+    {
+        SidTune *tune = new SidTune(qPrintable(fileName));
+        const SidTuneInfo *tune_info = tune->getInfo();
+        info->setMetaData(Qmmp::TITLE, tune_info->infoString(0));
+        info->setMetaData(Qmmp::ARTIST, tune_info->infoString(1));
+        info->setMetaData(Qmmp::COMMENT, tune_info->commentString(0));
+        delete tune;
+    }
+    list << info;
     return list;
 }
 
