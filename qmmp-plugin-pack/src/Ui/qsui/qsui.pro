@@ -2,8 +2,7 @@ include(../../plugins.pri)
 
 TARGET = $$PLUGINS_PREFIX/Ui/qsui
 
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 

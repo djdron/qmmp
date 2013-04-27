@@ -16,8 +16,7 @@ TARGET = $$PLUGINS_PREFIX/Input/mpg123
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmpg123.so
 
 win32:INCLUDEPATH += D:\qt4\MINGW\include\taglib
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

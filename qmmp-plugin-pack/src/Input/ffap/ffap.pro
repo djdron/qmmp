@@ -45,8 +45,7 @@ TARGET = $$PLUGINS_PREFIX/Input/ffap
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libffap.so
 
 
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib
