@@ -1,7 +1,6 @@
 include(../../plugins.pri)
 INCLUDEPATH += ../../../../src
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 unix:TARGET = $$PLUGINS_PREFIX/General/statusicon
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libstatusicon.so

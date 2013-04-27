@@ -13,8 +13,7 @@ SOURCES += decoder_wavpack.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/wavpack
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

@@ -12,8 +12,7 @@ TARGET=$$PLUGINS_PREFIX/Output/null
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
 
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 thread \
 plugin
 

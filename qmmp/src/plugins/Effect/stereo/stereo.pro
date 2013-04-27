@@ -11,8 +11,7 @@ SOURCES += stereoplugin.cpp \
 TARGET =$$PLUGINS_PREFIX/Effect/stereo
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin
 
 TEMPLATE = lib

@@ -68,8 +68,7 @@ SOURCES += recycler.cpp \
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
-CONFIG += release \
-    shared \
+CONFIG += shared \
     warn_on \
     qt \
     thread

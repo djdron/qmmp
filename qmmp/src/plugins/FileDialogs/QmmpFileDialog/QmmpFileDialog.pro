@@ -14,7 +14,7 @@ SOURCES += qmmpfiledialog.cpp \
 
 FORMS += qmmpfiledialog.ui
 
-CONFIG += release warn_on plugin
+CONFIG += warn_on plugin
 
 TEMPLATE = lib
 

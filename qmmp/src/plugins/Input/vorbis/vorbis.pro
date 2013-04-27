@@ -11,8 +11,7 @@ SOURCES += decoder_vorbis.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/vorbis
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

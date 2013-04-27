@@ -15,8 +15,7 @@ win32:HEADERS += ../../../../src/qmmp/decoder.h \
 TARGET = $$PLUGINS_PREFIX/Input/cue
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libcue.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 TEMPLATE = lib
 unix{

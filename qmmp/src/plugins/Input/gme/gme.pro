@@ -9,8 +9,7 @@ SOURCES += decoder_gme.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/gme
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libgme.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 TEMPLATE = lib
 

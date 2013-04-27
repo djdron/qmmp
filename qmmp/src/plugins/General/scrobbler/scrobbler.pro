@@ -1,6 +1,5 @@
 include(../../plugins.pri)
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib

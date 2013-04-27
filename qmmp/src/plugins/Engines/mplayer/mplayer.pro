@@ -10,8 +10,7 @@ SOURCES += mplayerengine.cpp \
 TARGET = $$PLUGINS_PREFIX/Engines/mplayer
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Engines/libmplayer.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib

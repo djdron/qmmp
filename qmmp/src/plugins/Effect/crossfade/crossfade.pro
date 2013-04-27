@@ -11,8 +11,7 @@ SOURCES += crossfadeplugin.cpp \
 TARGET =$$PLUGINS_PREFIX/Effect/crossfade
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin
 
 TEMPLATE = lib

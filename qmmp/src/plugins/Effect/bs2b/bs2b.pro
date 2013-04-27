@@ -11,8 +11,7 @@ SOURCES += bs2bplugin.cpp \
 TARGET =$$PLUGINS_PREFIX/Effect/bs2b
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin \
 link_pkgconfig
 

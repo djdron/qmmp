@@ -113,8 +113,7 @@ unix:LIBS += -lqmmpui -lqmmp
 win32:QMAKE_LIBDIR += ../../../../bin
 win32:LIBS += -lqmmpui0 -lqmmp0
 
-CONFIG += release \
-          warn_on \
+CONFIG += warn_on \
           plugin
 
 

@@ -11,8 +11,7 @@ SOURCES += decoder_wildmidi.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/wildmidi
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwildmidi.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib

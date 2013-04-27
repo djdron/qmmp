@@ -1,8 +1,7 @@
 include(../../qmmp.pri)
 unix:TARGET = ../../lib/qmmpui
 win32:TARGET = ../../../bin/qmmpui
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     shared \
     qt \
     thread
