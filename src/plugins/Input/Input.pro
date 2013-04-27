@@ -45,5 +45,8 @@ contains(CONFIG, WILDMIDI_PLUGIN){
   SUBDIRS += wildmidi
 }
 
+contains(CONFIG, SID_PLUGIN){
+  SUBDIRS += sid
+}
 
 }
