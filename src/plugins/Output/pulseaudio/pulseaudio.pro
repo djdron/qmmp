@@ -13,8 +13,7 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/libpulseaudio.so
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
 
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 thread \
 plugin \
 link_pkgconfig

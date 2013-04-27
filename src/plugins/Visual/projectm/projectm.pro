@@ -14,8 +14,7 @@ SOURCES += projectmplugin.cpp \
            visualprojectmfactory.cpp \
            projectmwidget.cpp
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin \
 link_pkgconfig
 

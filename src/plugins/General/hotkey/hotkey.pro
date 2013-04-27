@@ -1,7 +1,6 @@
 include(../../plugins.pri)
 
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin  \
  lib  \
  link_pkgconfig

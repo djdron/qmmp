@@ -9,8 +9,7 @@ TARGET=$$PLUGINS_PREFIX/Input/sndfile
 
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin \
 link_pkgconfig
 

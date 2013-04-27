@@ -17,8 +17,7 @@ SOURCES += decoder_opus.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/opus
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

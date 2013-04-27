@@ -15,8 +15,7 @@ SOURCES += ladspahost.cpp \
 TARGET = $$PLUGINS_PREFIX/Effect/ladspa
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Effect/libladspa.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

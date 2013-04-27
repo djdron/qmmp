@@ -15,8 +15,7 @@ TARGET = $$PLUGINS_PREFIX/Input/modplug
 DEFINES += HAVE_STDINT_H \
     HAVE_INTTYPES_H
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

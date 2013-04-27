@@ -1,8 +1,7 @@
 include(../../plugins.pri)
 
 INCLUDEPATH += ../../../../src
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin \
 link_pkgconfig
 

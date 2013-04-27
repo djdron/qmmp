@@ -14,8 +14,7 @@ win32:HEADERS += ../../../../src/qmmp/inputsource.h \
 TARGET = $$PLUGINS_PREFIX/Transports/mms
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmms.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

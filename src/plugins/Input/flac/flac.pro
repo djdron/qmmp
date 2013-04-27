@@ -13,8 +13,7 @@ SOURCES += decoder_flac.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/flac
 
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

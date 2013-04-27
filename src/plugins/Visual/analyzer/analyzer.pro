@@ -19,8 +19,7 @@ SOURCES += analyzer.cpp \
 win32:HEADERS += ../../../../src/qmmp/visual.h
 win32:INCLUDEPATH += ./
 INCLUDEPATH += ../../../
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 plugin
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib

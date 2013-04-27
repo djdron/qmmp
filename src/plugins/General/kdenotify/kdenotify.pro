@@ -4,8 +4,7 @@
 include(../../plugins.pri)
 INCLUDEPATH += ../../../../src
 QT += dbus
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin
 unix:TARGET = $$PLUGINS_PREFIX/General/kdenotify
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libkdenotify.so

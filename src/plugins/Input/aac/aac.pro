@@ -11,8 +11,7 @@ SOURCES += decoder_aac.cpp \
 TARGET = $$PLUGINS_PREFIX/Input/aac
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libaac.so
 INCLUDEPATH += ../../../
-CONFIG += release \
-    warn_on \
+CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib

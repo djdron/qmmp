@@ -14,8 +14,7 @@ TARGET=$$PLUGINS_PREFIX/Output/waveout
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../bin
 
-CONFIG += release \
-warn_on \
+CONFIG += warn_on \
 thread \
 plugin 
 
