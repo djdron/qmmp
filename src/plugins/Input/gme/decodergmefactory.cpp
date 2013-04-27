@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -71,11 +71,9 @@ QList<FileInfo *> DecoderGmeFactory::createPlayList(const QString &fileName, boo
     //is it one track?
     if(fileName.contains("://"))
     {
-        QString path = QUrl(fileName).path();
-        path.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        path.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        path.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString path = fileName;
+        path.remove("gme://");
+        path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
         list = createPlayList(path, true);
         if (list.isEmpty() || track <= 0 || track > list.count())
