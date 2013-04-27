@@ -47,16 +47,17 @@ const DecoderProperties DecoderSIDFactory::properties() const
     properties.name = tr("SID Plugin");
     properties.filters << "*.sid";
     properties.description = tr("SID Files");
-    //properties.contentType = ;*/
+    //properties.contentType = ;
     properties.shortName = "sid";
-    /*properties.hasAbout = true;
+    properties.hasAbout = true;
     properties.hasSettings = false;
-    properties.noInput = true;*/
+    properties.noInput = false;
     return properties;
 }
 
 Decoder *DecoderSIDFactory::create(const QString &path, QIODevice *input)
 {
+    Q_UNUSED(path);
     return new DecoderSID(input);
 }
 
@@ -81,10 +82,10 @@ void DecoderSIDFactory::showSettings(QWidget *parent)
 
 void DecoderSIDFactory::showAbout(QWidget *parent)
 {
-    /*-QMessageBox::about (parent, tr("About GME Audio Plugin"),
-                        tr("Qmmp GME Audio Plugin")+"\n"+
-                        tr("This plugin uses Game_Music_Emu library to play game music files")+"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+    QMessageBox::about (parent, tr("About SID Audio Plugin"),
+                        tr("Qmmp SID Audio Plugin")+"\n"+
+                        tr("This plugin plays Commodore 64 music files using libsidplayfp library")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderSIDFactory::createTranslator(QObject *parent)
