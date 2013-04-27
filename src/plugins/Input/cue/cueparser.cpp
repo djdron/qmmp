@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,10 +36,8 @@ CUEParser::CUEParser(const QString &url)
     QString fileName = url;
     if(url.contains("://"))
     {
-        QString p = fileName;
-        p.remove("cue://");
-        p.remove(QRegExp("#\\d+$"));
-        fileName = p;
+        fileName.remove("cue://");
+        fileName.remove(QRegExp("#\\d+$"));
     }
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
@@ -57,7 +55,7 @@ CUEParser::CUEParser(const QString &url)
     if(settings.value("use_enca", false).toBool())
     {
         analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
-        
+
         if(analyser)
         {
             enca_set_threshold(analyser, 1.38);
