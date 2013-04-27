@@ -23,6 +23,7 @@
 #include <sidplayfp/SidTune.h>
 #include <sidplayfp/SidTuneInfo.h>
 #include "decoder_sid.h"
+#include "sidhelper.h"
 #include "decodersidfactory.h"
 
 // DecoderSIDFactory
@@ -56,30 +57,37 @@ const DecoderProperties DecoderSIDFactory::properties() const
     properties.shortName = "sid";
     properties.hasAbout = true;
     properties.hasSettings = false;
-    properties.noInput = false;
+    properties.noInput = true;
+    properties.protocols << "sid";
     return properties;
 }
 
 Decoder *DecoderSIDFactory::create(const QString &path, QIODevice *input)
 {
-    Q_UNUSED(path);
-    return new DecoderSID(input);
+    Q_UNUSED(input);
+    return new DecoderSID(path);
 }
 
 QList<FileInfo *> DecoderSIDFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
-    QList <FileInfo*> list;
-    FileInfo *info = new FileInfo(fileName);
-    if(useMetaData)
+    SIDHelper helper;
+    helper.load(fileName);
+    QList <FileInfo*> list = helper.createPlayList(useMetaData);
+    if(list.isEmpty())
+        return list;
+    if(fileName.contains("://")) //is it url?
     {
-        SidTune *tune = new SidTune(qPrintable(fileName));
-        const SidTuneInfo *tune_info = tune->getInfo();
-        info->setMetaData(Qmmp::TITLE, tune_info->infoString(0));
-        info->setMetaData(Qmmp::ARTIST, tune_info->infoString(1));
-        info->setMetaData(Qmmp::COMMENT, tune_info->commentString(0));
-        delete tune;
+        int track = fileName.section("#", -1).toInt();
+        if(track > list.count() || track < 1)
+        {
+            qDeleteAll(list);
+            list.clear();
+            return list;
+        }
+        FileInfo *info = list.takeAt(track - 1);
+        qDeleteAll(list);
+        return QList<FileInfo *>() << info;
     }
-    list << info;
     return list;
 }
 

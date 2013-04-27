@@ -28,8 +28,7 @@
 #include <sidplayfp/SidConfig.h>
 #include <sidplayfp/builders/residfp.h>
 #include <sidplayfp/SidInfo.h>
-
-class GmeHelper;
+#include <sidplayfp/SidTuneInfo.h>
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -37,7 +36,7 @@ class GmeHelper;
 class DecoderSID : public Decoder
 {
 public:
-    DecoderSID(QIODevice *input);
+    DecoderSID(const QString &url);
     virtual ~DecoderSID();
 
     // Standard Decoder API
@@ -49,7 +48,7 @@ public:
 
 private:
     qint64 m_totalTime;
-    QString m_path;
+    QString m_url;
     sidplayfp *m_player;
 };
 
