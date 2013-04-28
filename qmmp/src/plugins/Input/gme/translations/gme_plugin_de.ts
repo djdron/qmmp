@@ -14,22 +14,22 @@
         <translation>Musikdateien aus Spielen (Game Music)</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="116"/>
+        <location filename="../decodergmefactory.cpp" line="114"/>
         <source>About GME Audio Plugin</source>
         <translation>Über GME-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="117"/>
+        <location filename="../decodergmefactory.cpp" line="115"/>
         <source>Qmmp GME Audio Plugin</source>
         <translation>Qmmp GME-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="118"/>
+        <location filename="../decodergmefactory.cpp" line="116"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
         <translation>Dieses Modul verwendet die Bibliothek „Game_Music_Emu“, um Musikdateien aus Spielen abzuspielen</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="119"/>
+        <location filename="../decodergmefactory.cpp" line="117"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

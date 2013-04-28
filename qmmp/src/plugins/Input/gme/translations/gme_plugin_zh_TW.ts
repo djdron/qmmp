@@ -14,22 +14,22 @@
         <translation>Game 音頻文件</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="116"/>
+        <location filename="../decodergmefactory.cpp" line="114"/>
         <source>About GME Audio Plugin</source>
         <translation>關於 Game 音頻文件</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="117"/>
+        <location filename="../decodergmefactory.cpp" line="115"/>
         <source>Qmmp GME Audio Plugin</source>
         <translation>Qmmp Game 音頻文件</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="118"/>
+        <location filename="../decodergmefactory.cpp" line="116"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
         <translation>此插件使用 Game_Music_Emu 庫播放 Game 音頻文件</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="119"/>
+        <location filename="../decodergmefactory.cpp" line="117"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
