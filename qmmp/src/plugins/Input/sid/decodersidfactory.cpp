@@ -24,6 +24,7 @@
 #include <sidplayfp/SidTuneInfo.h>
 #include "decoder_sid.h"
 #include "sidhelper.h"
+#include "settingsdialog.h"
 #include "decodersidfactory.h"
 
 // DecoderSIDFactory
@@ -56,7 +57,7 @@ const DecoderProperties DecoderSIDFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "sid";
     properties.hasAbout = true;
-    properties.hasSettings = false;
+    properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols << "sid";
     return properties;
@@ -100,7 +101,8 @@ MetaDataModel* DecoderSIDFactory::createMetaDataModel(const QString &path, QObje
 
 void DecoderSIDFactory::showSettings(QWidget *parent)
 {
-    Q_UNUSED(parent);
+    SettingsDialog *d = new SettingsDialog(parent);
+    d->show();
 }
 
 void DecoderSIDFactory::showAbout(QWidget *parent)

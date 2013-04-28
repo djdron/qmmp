@@ -24,6 +24,7 @@
 #include <sidplayfp/sidbuilder.h>
 #include <sidplayfp/SidConfig.h>
 #include <sidplayfp/builders/residfp.h>
+#include <sidplayfp/builders/resid.h>
 #include <sidplayfp/SidInfo.h>
 #include <sidplayfp/SidTuneInfo.h>
 #include <sidplayfp/SidDatabase.h>
@@ -92,6 +93,7 @@ bool DecoderSID::initialize()
     cfg.samplingMethod = SidConfig::INTERPOLATE;
     cfg.playback     = SidConfig::STEREO;
     cfg.sidEmulation = rs;
+    cfg.fastSampling = false;
 
     if(!m_player->config(cfg))
     {
