@@ -2,10 +2,12 @@ include(../../plugins.pri)
 
 HEADERS += decodersidfactory.h \
     decoder_sid.h \
-    sidhelper.h
+    sidhelper.h \
+    settingsdialog.h
 SOURCES += decoder_sid.cpp \
     decodersidfactory.cpp \
-    sidhelper.cpp
+    sidhelper.cpp \
+    settingsdialog.cpp
 TARGET = $$PLUGINS_PREFIX/Input/sid
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libsid.so
 INCLUDEPATH += ../../../
@@ -44,3 +46,6 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lsidplayfp.dll
 }
+
+FORMS += \
+    settingsdialog.ui
