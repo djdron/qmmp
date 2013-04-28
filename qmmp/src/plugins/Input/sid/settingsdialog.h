@@ -21,7 +21,7 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
+#include <sidplayfp/SidDatabase.h>
 #include "ui_settingsdialog.h"
 
 /**
@@ -31,15 +31,16 @@ class SettingsDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SettingsDialog(QWidget *parent = 0);
+    SettingsDialog(SidDatabase *db, QWidget *parent = 0);
 
-    ~SettingsDialog();
+    virtual ~SettingsDialog();
 
 public slots:
     virtual void accept();
 
 private:
     Ui::SettingsDialog m_ui;
+    SidDatabase *m_db;
 
 };
 

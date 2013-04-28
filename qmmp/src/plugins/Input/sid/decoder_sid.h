@@ -24,6 +24,7 @@
 #include <qmmp/decoder.h>
 
 class sidplayfp;
+class SidDatabase;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -31,7 +32,7 @@ class sidplayfp;
 class DecoderSID : public Decoder
 {
 public:
-    DecoderSID(const QString &url);
+    DecoderSID(SidDatabase *db, const QString &url);
     virtual ~DecoderSID();
 
     // Standard Decoder API
@@ -45,6 +46,7 @@ private:
     qint64 m_totalTime;
     QString m_url;
     sidplayfp *m_player;
+    SidDatabase *m_db;
     int m_length;
 };
 
