@@ -18,7 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QFile>
+#include <QFileInfo>
+#include <QSettings>
 #include <sidplayfp/sidplayfp.h>
 #include <sidplayfp/SidTune.h>
 #include <sidplayfp/sidbuilder.h>
@@ -84,16 +85,34 @@ bool DecoderSID::initialize()
     metadata.insert(Qmmp::URL, m_url);
     addMetaData(metadata);
 
-    sidbuilder *rs = new ReSIDfpBuilder("ReSIDfp builder");
+    //read settings
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("SID");
+    settings.value("use_hvsc", false).toBool();
+    QString hvsc_default_path = QFileInfo(Qmmp::configFile()).absolutePath() + "/Songlengths.txt";
+    settings.value("hvsc_path", hvsc_default_path).toString();
+
+    sidbuilder *rs = 0;
+    if(settings.value("engine", "residfp").toString() == "residfp")
+    {
+        rs = new ReSIDfpBuilder("ReSIDfp builder");
+        qDebug("DecoderSID: using ReSIDfp emulation");
+    }
+    else
+    {
+        rs = new ReSIDBuilder("ReSID builder");
+        qDebug("DecoderSID: using ReSID emulation");
+    }
     rs->create(m_player->info().maxsids());
 
     SidConfig cfg = m_player->config();
-
-    cfg.frequency    = 44100;
-    cfg.samplingMethod = SidConfig::INTERPOLATE;
+    cfg.frequency    = settings.value("sample_rate", 44100).toInt();
+    int sm = settings.value("resampling_method", SidConfig::INTERPOLATE).toInt();
+    cfg.samplingMethod = (SidConfig::sampling_method_t) sm;
     cfg.playback     = SidConfig::STEREO;
     cfg.sidEmulation = rs;
-    cfg.fastSampling = false;
+    cfg.fastSampling = settings.value("fast_resampling", false).toBool();
+    settings.endGroup();
 
     if(!m_player->config(cfg))
     {
