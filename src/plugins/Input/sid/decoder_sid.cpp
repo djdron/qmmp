@@ -49,6 +49,12 @@ bool DecoderSID::initialize()
 
     SidTune *tune = new SidTune(0);
     tune->load(qPrintable(path));
+    if(!tune->getInfo())
+    {
+        qWarning("DecoderSID: unable to load tune, error: %s", tune->statusString());
+        delete tune;
+        return false;
+    }
     int count = tune->getInfo()->songs();
 
     if(track > count || track < 1)
