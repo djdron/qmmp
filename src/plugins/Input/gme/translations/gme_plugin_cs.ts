@@ -14,22 +14,22 @@
         <translation>Soubory s hudbou z her</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="116"/>
+        <location filename="../decodergmefactory.cpp" line="114"/>
         <source>About GME Audio Plugin</source>
         <translation>O modulu GME</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="117"/>
+        <location filename="../decodergmefactory.cpp" line="115"/>
         <source>Qmmp GME Audio Plugin</source>
         <translation>Modul Qmmp GME</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="118"/>
+        <location filename="../decodergmefactory.cpp" line="116"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
         <translation>Tento modul využívá knihovnu Game_Music_Emu pro přehrávání souborů s hudbou z her</translation>
     </message>
     <message>
-        <location filename="../decodergmefactory.cpp" line="119"/>
+        <location filename="../decodergmefactory.cpp" line="117"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
