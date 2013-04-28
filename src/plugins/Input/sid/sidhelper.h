@@ -34,7 +34,7 @@
 class SIDHelper
 {
 public:
-    SIDHelper();
+    SIDHelper(SidDatabase *db);
     ~SIDHelper();
     SidTune *load(const QString &url);
     QList <FileInfo*> createPlayList(bool meta);
@@ -42,7 +42,7 @@ public:
 private:
     QString m_path;
     SidTune *m_tune;
-    SidDatabase m_database;
+    SidDatabase *m_db;
 };
 
 #endif // SIDHELPER_H

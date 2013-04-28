@@ -24,6 +24,7 @@
 #include <QString>
 #include <QIODevice>
 #include <QWidget>
+#include <sidplayfp/SidDatabase.h>
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
@@ -38,6 +39,8 @@ class DecoderSIDFactory : public QObject, DecoderFactory
     Q_INTERFACES(DecoderFactory)
 
 public:
+    DecoderSIDFactory();
+
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
@@ -47,6 +50,9 @@ public:
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);
+
+private:
+    SidDatabase m_db;
 };
 
 #endif

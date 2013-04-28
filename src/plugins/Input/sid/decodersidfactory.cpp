@@ -29,6 +29,19 @@
 
 // DecoderSIDFactory
 
+DecoderSIDFactory::DecoderSIDFactory()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("SID");
+    if(settings.value("use_hvsc", false).toBool())
+    {
+        QString default_path = QFileInfo(Qmmp::configFile()).absolutePath() + "/Songlengths.txt";
+        if(!m_db.open(qPrintable(settings.value("hvsc_path", default_path).toString())))
+            qWarning("DecoderSIDFactory: %s", m_db.error());
+    }
+    settings.endGroup();
+}
+
 bool DecoderSIDFactory::supports(const QString &source) const
 {
     foreach(QString filter, properties().filters)
@@ -66,12 +79,12 @@ const DecoderProperties DecoderSIDFactory::properties() const
 Decoder *DecoderSIDFactory::create(const QString &path, QIODevice *input)
 {
     Q_UNUSED(input);
-    return new DecoderSID(path);
+    return new DecoderSID(&m_db, path);
 }
 
 QList<FileInfo *> DecoderSIDFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
-    SIDHelper helper;
+    SIDHelper helper(&m_db);
     helper.load(fileName);
     QList <FileInfo*> list = helper.createPlayList(useMetaData);
     if(list.isEmpty())
@@ -101,7 +114,7 @@ MetaDataModel* DecoderSIDFactory::createMetaDataModel(const QString &path, QObje
 
 void DecoderSIDFactory::showSettings(QWidget *parent)
 {
-    SettingsDialog *d = new SettingsDialog(parent);
+    SettingsDialog *d = new SettingsDialog(&m_db, parent);
     d->show();
 }
 

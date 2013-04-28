@@ -22,10 +22,10 @@
 #include <sidplayfp/SidDatabase.h>
 #include "sidhelper.h"
 
-SIDHelper::SIDHelper()
+SIDHelper::SIDHelper(SidDatabase *db)
 {
     m_tune = 0;
-    m_database.open("/home/user/.qmmp/Songlengths.txt");
+    m_db = db;
 }
 
 SIDHelper::~SIDHelper()
@@ -79,7 +79,7 @@ QList <FileInfo*> SIDHelper::createPlayList(bool meta)
             info->setMetaData(Qmmp::COMMENT, tune_info->commentString(0));
             info->setMetaData(Qmmp::TRACK, i);
         }
-        int length = m_database.length(md5, i);
+        int length = m_db->length(md5, i);
         if(length > -1)
             info->setLength(length);
 

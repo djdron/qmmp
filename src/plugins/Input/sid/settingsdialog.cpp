@@ -24,8 +24,9 @@
 #include <sidplayfp/SidConfig.h>
 #include "settingsdialog.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
+SettingsDialog::SettingsDialog(SidDatabase *db, QWidget *parent) : QDialog(parent)
 {
+    m_db = db;
     m_ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
 
@@ -35,6 +36,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     m_ui.useHVSCCheckBox->setChecked(settings.value("use_hvsc", false).toBool());
     QString hvsc_default_path = QFileInfo(Qmmp::configFile()).absolutePath() + "/Songlengths.txt";
     m_ui.hvscPathLineEdit->setText(settings.value("hvsc_path", hvsc_default_path).toString());
+    m_ui.defaultLengthSpinBox->setValue(settings.value("song_length", 180).toInt());
 
     m_ui.sampleRateComboBox->addItem(tr("44100 Hz"), 44100);
     m_ui.sampleRateComboBox->addItem(tr("48000 Hz"), 48000);
@@ -66,6 +68,7 @@ void SettingsDialog::accept()
     settings.beginGroup("SID");
     settings.setValue("use_hvsc", m_ui.useHVSCCheckBox->isChecked());
     settings.setValue("hvsc_path", m_ui.hvscPathLineEdit->text());
+    settings.setValue("song_length", m_ui.defaultLengthSpinBox->value());
     int i = m_ui.sampleRateComboBox->currentIndex();
     if(i >= 0)
         settings.setValue("sample_rate", m_ui.sampleRateComboBox->itemData(i));
@@ -74,6 +77,12 @@ void SettingsDialog::accept()
     settings.setValue("fast_resampling", m_ui.fastResampligCheckBox->isChecked());
     if((i = m_ui.resamplingComboBox->currentIndex()) >= 0)
         settings.setValue("resampling_method", m_ui.resamplingComboBox->itemData(i));
+    m_db->close();
+    if(m_ui.useHVSCCheckBox->isChecked())
+    {
+        if(!m_db->open(qPrintable(m_ui.hvscPathLineEdit->text())))
+            qWarning("SettingsDialog: %s", m_db->error());
+    }
     settings.endGroup();
     QDialog::accept();
 }

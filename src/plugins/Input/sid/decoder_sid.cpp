@@ -32,10 +32,12 @@
 #include "decoder_sid.h"
 
 // Decoder class
-DecoderSID::DecoderSID(const QString &url) : Decoder()
+DecoderSID::DecoderSID(SidDatabase *db, const QString &url) : Decoder()
 {
+    m_db = db;
     m_url = url;
     m_player = new sidplayfp();
+    m_length = 0;
 }
 
 DecoderSID::~DecoderSID()
@@ -88,9 +90,17 @@ bool DecoderSID::initialize()
     //read settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("SID");
-    settings.value("use_hvsc", false).toBool();
-    QString hvsc_default_path = QFileInfo(Qmmp::configFile()).absolutePath() + "/Songlengths.txt";
-    settings.value("hvsc_path", hvsc_default_path).toString();
+    if(settings.value("use_hvsc", false).toBool())
+    {
+        char md5[SidTune::MD5_LENGTH];
+        tune->createMD5(md5);
+        m_length = m_db->length(md5, track);
+    }
+
+    if(m_length <= 0)
+        m_length = settings.value("song_length", 180).toInt();
+
+    qDebug("DecoderSID: song length: %d", m_length);
 
     sidbuilder *rs = 0;
     if(settings.value("engine", "residfp").toString() == "residfp")
@@ -128,21 +138,6 @@ bool DecoderSID::initialize()
 
     configure(44100, 2);
     qDebug("DecoderSID: initialize succes");
-
-
-    char md5[SidTune::MD5_LENGTH];
-    tune->createMD5(md5);
-
-    SidDatabase database;
-
-    database.open("/home/user/.qmmp/Songlengths.txt");
-
-
-
-    qDebug("length = %d", database.length(md5, track));
-    m_length = database.length(md5, track);
-
-
     return true;
 }
 
@@ -163,7 +158,7 @@ int DecoderSID::bitrate()
 
 qint64 DecoderSID::read(char *data, qint64 size)
 {
-    if(m_player->time() > m_length)
-        return 0;
+    //if(m_player->time() > m_length)
+    //    return 0;
     return m_player->play((short *)data, size/2) * 2;
 }
