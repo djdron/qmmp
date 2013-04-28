@@ -48,6 +48,8 @@ private:
     sidplayfp *m_player;
     SidDatabase *m_db;
     int m_length;
+    qint64 m_length_in_bytes;
+    qint64 m_read_bytes;
 };
 
 #endif // DECODER_SID_H
