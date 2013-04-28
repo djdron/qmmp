@@ -38,6 +38,8 @@ DecoderSID::DecoderSID(SidDatabase *db, const QString &url) : Decoder()
     m_url = url;
     m_player = new sidplayfp();
     m_length = 0;
+    m_length_in_bytes = 0;
+    m_read_bytes = 0;
 }
 
 DecoderSID::~DecoderSID()
@@ -47,6 +49,8 @@ DecoderSID::~DecoderSID()
 
 bool DecoderSID::initialize()
 {
+    m_length_in_bytes = 0;
+    m_read_bytes = 0;
     QString path = m_url;
     path.remove("sid://");
     path.remove(QRegExp("#\\d+$"));
@@ -137,6 +141,9 @@ bool DecoderSID::initialize()
     }
 
     configure(44100, 2);
+    m_length_in_bytes = audioParameters().sampleRate() *
+            audioParameters().channels() *
+            audioParameters().sampleSize() * m_length;
     qDebug("DecoderSID: initialize succes");
     return true;
 }
@@ -158,7 +165,10 @@ int DecoderSID::bitrate()
 
 qint64 DecoderSID::read(char *data, qint64 size)
 {
-    //if(m_player->time() > m_length)
-    //    return 0;
-    return m_player->play((short *)data, size/2) * 2;
+    size = qMin(size, qMax(m_length_in_bytes - m_read_bytes, qint64(0)));
+    size -= size % 4;
+    if(size <= 0)
+        return 0;
+    m_read_bytes += size;
+    return m_player->play((short *)data,     size/2) * 2;
 }
