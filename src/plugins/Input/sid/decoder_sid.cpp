@@ -26,6 +26,7 @@
 #include <sidplayfp/builders/residfp.h>
 #include <sidplayfp/SidInfo.h>
 #include <sidplayfp/SidTuneInfo.h>
+#include <sidplayfp/SidDatabase.h>
 #include "decoder_sid.h"
 
 // Decoder class
@@ -106,6 +107,21 @@ bool DecoderSID::initialize()
 
     configure(44100, 2);
     qDebug("DecoderSID: initialize succes");
+
+
+    char md5[SidTune::MD5_LENGTH];
+    tune->createMD5(md5);
+
+    SidDatabase database;
+
+    database.open("/home/user/.qmmp/Songlengths.txt");
+
+
+
+    qDebug("length = %d", database.length(md5, track));
+    m_length = database.length(md5, track);
+
+
     return true;
 }
 
@@ -126,5 +142,7 @@ int DecoderSID::bitrate()
 
 qint64 DecoderSID::read(char *data, qint64 size)
 {
+    if(m_player->time() > m_length)
+        return 0;
     return m_player->play((short *)data, size/2) * 2;
 }
