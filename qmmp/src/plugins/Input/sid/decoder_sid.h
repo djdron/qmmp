@@ -45,6 +45,7 @@ private:
     qint64 m_totalTime;
     QString m_url;
     sidplayfp *m_player;
+    int m_length;
 };
 
 #endif // DECODER_SID_H
