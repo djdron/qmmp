@@ -21,6 +21,7 @@ Supported formats:
 - WMA, Monkey's Audio (and other formats provided by FFmpeg library)
 - PCM WAVE (and other formats provided by libsndfile library)
 - midi
+- SID
 - chiptune formats (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 DSP effects:
@@ -91,6 +92,7 @@ Requirements:
 - opus >= 1.0.2 (Optional)
 - opusfile >= 0.2 (Optional)
 - libWildMidi >= 0.2.3.4 (Optional)
+- libsidplayfp >= 1.0.1 (Optional)
 - libbs2b >= 3.0.0 (Optional)
 - libprojectM >= 1.2.0 (Optional)
 - libenca >= 1.9 (Optional)
