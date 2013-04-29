@@ -96,7 +96,7 @@ bool DecoderSID::initialize()
     settings.beginGroup("SID");
     if(settings.value("use_hvsc", false).toBool())
     {
-        char md5[SidTune::MD5_LENGTH];
+        char md5[SidTune::MD5_LENGTH+1];
         tune->createMD5(md5);
         m_length = m_db->length(md5, track);
     }

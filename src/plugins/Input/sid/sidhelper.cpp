@@ -63,7 +63,7 @@ QList <FileInfo*> SIDHelper::createPlayList(bool meta)
         return list;
     int count = m_tune->getInfo()->songs();
 
-    char md5[SidTune::MD5_LENGTH];
+    char md5[SidTune::MD5_LENGTH+1];
     m_tune->createMD5(md5);
 
     for(int i = 1; i <= count; ++i)
