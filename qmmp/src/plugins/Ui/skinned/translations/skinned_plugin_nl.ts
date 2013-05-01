@@ -1039,7 +1039,7 @@
         <translation>Druk de gewenste sneltoetscombinatie</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Leeghalen</translation>
     </message>

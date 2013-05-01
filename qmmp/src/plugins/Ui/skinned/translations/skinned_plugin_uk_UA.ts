@@ -1039,7 +1039,7 @@
         <translation>Натисніть клавіші, комбінації яких ви бажаєте використовувати</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Очистити</translation>
     </message>
