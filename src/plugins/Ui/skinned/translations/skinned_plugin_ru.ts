@@ -1039,7 +1039,7 @@
         <translation>Нажмите клавиши, сочетание которых вы хотите использовать</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Очистить</translation>
     </message>

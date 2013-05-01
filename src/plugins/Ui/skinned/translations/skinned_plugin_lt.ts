@@ -1040,7 +1040,7 @@
         <translation>Paspauskite klavišų kombinaciją, kurią norite priskirti</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Išvalyti</translation>
     </message>

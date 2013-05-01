@@ -1042,7 +1042,7 @@
         <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>טהר</translation>
     </message>

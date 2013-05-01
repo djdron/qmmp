@@ -1039,7 +1039,7 @@
         <translation>Drücken Sie die Tastenkombination, die Sie zuweisen möchten</translation>
     </message>
     <message>
-        <location filename="../forms/shortcutdialog.ui" line="46"/>
+        <location filename="../forms/shortcutdialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Löschen</translation>
     </message>
