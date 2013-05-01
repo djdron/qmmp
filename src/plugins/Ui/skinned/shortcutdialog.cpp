@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,8 +24,12 @@
 ShortcutDialog::ShortcutDialog(const QString &key, QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
-    ui.keyLineEdit->setText(key);
+    m_ui.setupUi(this);
+    m_ui.keyLineEdit->setText(key);
+
+    //buttons should not catch keys
+    foreach(QAbstractButton *button, m_ui.buttonBox->buttons())
+        button->setFocusPolicy(Qt::NoFocus);
 }
 
 ShortcutDialog::~ShortcutDialog()
@@ -48,16 +52,16 @@ void ShortcutDialog::keyPressEvent (QKeyEvent *event)
     case 0:
     case Qt::Key_unknown:
         key = 0;
-        ui.keyLineEdit->clear();
+        m_ui.keyLineEdit->clear();
         QWidget::keyPressEvent(event);
         return;
     }
     QKeySequence seq(event->modifiers() + event->key());
-    ui.keyLineEdit->setText(seq.toString());
+    m_ui.keyLineEdit->setText(seq.toString());
     QWidget::keyPressEvent(event);
 }
 
 const QString ShortcutDialog::key()
 {
-    return ui.keyLineEdit->text();
+    return m_ui.keyLineEdit->text();
 }

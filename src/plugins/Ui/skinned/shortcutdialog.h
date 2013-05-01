@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,7 +42,7 @@ protected:
     virtual void keyPressEvent (QKeyEvent *event);
 
 private:
-    Ui::ShortcutDialog ui;
+    Ui::ShortcutDialog m_ui;
 
 };
 

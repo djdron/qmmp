@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>310</width>
-    <height>89</height>
+    <height>99</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,6 +42,12 @@
    </item>
    <item row="2" column="0">
     <widget class="QPushButton" name="clearButton">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::NoContextMenu</enum>
+     </property>
      <property name="text">
       <string>Clear</string>
      </property>
@@ -62,6 +68,9 @@
    </item>
    <item row="2" column="2">
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
