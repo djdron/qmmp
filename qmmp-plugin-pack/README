@@ -10,7 +10,7 @@ Description:
 
 Requirements:
 - Qt >= 4.6
-- qmmp 0.7.x
+- qmmp 0.8.x
 - taglib >= 1.7.0
 - libmpg123 >= 1.13.0 (Optional)
 - cmake >= 2.8.0 (for build only)
