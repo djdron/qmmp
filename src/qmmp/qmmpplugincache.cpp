@@ -109,7 +109,10 @@ DecoderFactory *QmmpPluginCache::decoderFactory()
     {
         m_decoderFactory = qobject_cast<DecoderFactory *> (instance());
         if(m_decoderFactory)
+        {
+            qDebug("QmmpPluginCache: loaded decoder %s", qPrintable(QFileInfo(m_path).fileName()));
             qApp->installTranslator(m_decoderFactory->createTranslator(qApp));
+        }
     }
     return m_decoderFactory;
 }
@@ -127,9 +130,7 @@ QObject *QmmpPluginCache::instance()
         return m_instance;
     QPluginLoader loader(m_path);
     m_instance = loader.instance();
-    if (loader.isLoaded())
-        qDebug("QmmpPluginCache: loaded plugin %s", qPrintable(QFileInfo(m_path).fileName()));
-    else
+    if (!loader.isLoaded())
     {
         m_error = true;
         qWarning("QmmpPluginCache: error: %s", qPrintable(loader.errorString ()));
