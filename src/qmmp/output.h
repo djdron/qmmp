@@ -22,6 +22,7 @@
 
 class QTimer;
 class QmmpSettings;
+class QmmpPluginCache;
 
 /*! @brief The Output class provides the base interface class of audio outputs.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -107,7 +108,7 @@ public:
     /*!
      * Returns a list of output factories.
      */
-    static QList<OutputFactory*> *factories();
+    static QList<OutputFactory*> factories();
     /*!
      * Returns plugin file path.
      * @param factory Output plugin factory.
@@ -135,9 +136,8 @@ private:
     quint32 m_frequency;
     int m_channels;
     Qmmp::AudioFormat m_format;
-    static void checkFactories();
-    static QList<OutputFactory*> *m_factories;
-    static QHash <OutputFactory*, QString> *m_files;
+    static void loadPlugins();
+    static QList<QmmpPluginCache*> *m_cache;
 };
 
 

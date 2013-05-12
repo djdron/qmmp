@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -232,7 +232,7 @@ void ConfigDialog::loadPluginsInfo()
         load output plugins information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Output"));
-    foreach(OutputFactory *factory, *Output::factories())
+    foreach(OutputFactory *factory, Output::factories())
     {
         new PluginItem (item, factory, Output::file(factory));
     }

@@ -3,12 +3,13 @@
 // Use, modification and distribution is allowed without limitation,
 // warranty, or liability of any kind.
 //
-#include <QtGui>
 #include <QObject>
 #include <QStringList>
 #include <QApplication>
 #include <QSettings>
 #include <QIODevice>
+#include <QBuffer>
+#include <QDir>
 #include <math.h>
 #include "qmmpplugincache_p.h"
 #include "buffer.h"
@@ -92,7 +93,7 @@ static bool _pluginCacheLessComparator(QmmpPluginCache* f1, QmmpPluginCache* f2)
     return f1->priority() < f2->priority();
 }
 
-void Decoder::checkFactories()
+void Decoder::loadPlugins()
 {
     if (m_cache)
         return;
@@ -118,7 +119,7 @@ void Decoder::checkFactories()
 
 QString Decoder::file(DecoderFactory *factory)
 {
-    checkFactories();
+    loadPlugins();
     foreach(QmmpPluginCache *item, *m_cache)
     {
         if(item->shortName() == factory->properties().shortName)
@@ -129,7 +130,7 @@ QString Decoder::file(DecoderFactory *factory)
 
 QStringList Decoder::protocols()
 {
-    checkFactories();
+    loadPlugins();
     QStringList protocolsList;
 
     foreach (QmmpPluginCache *item, *m_cache)
@@ -145,7 +146,7 @@ QStringList Decoder::protocols()
 
 DecoderFactory *Decoder::findByPath(const QString& source, bool useContent)
 {
-    checkFactories();
+    loadPlugins();
     DecoderFactory *fact = m_lastFactory;
     if(useContent)
     {
@@ -206,7 +207,7 @@ DecoderFactory *Decoder::findByMime(const QString& type)
 {
     if(type.isEmpty())
         return 0;
-    checkFactories();
+    loadPlugins();
     foreach (QmmpPluginCache *item, *m_cache)
     {
         if(m_disabledNames.contains(item->shortName()))
@@ -220,7 +221,7 @@ DecoderFactory *Decoder::findByMime(const QString& type)
 
 DecoderFactory *Decoder::findByContent(QIODevice *input)
 {
-    checkFactories();
+    loadPlugins();
     foreach (QmmpPluginCache *item, *m_cache)
     {
         if(m_disabledNames.contains(item->shortName()))
@@ -234,7 +235,7 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 
 DecoderFactory *Decoder::findByProtocol(const QString &p)
 {
-    checkFactories();
+    loadPlugins();
     foreach (QmmpPluginCache *item, *m_cache)
     {
         if(m_disabledNames.contains(item->shortName()))
@@ -248,7 +249,7 @@ DecoderFactory *Decoder::findByProtocol(const QString &p)
 
 void Decoder::setEnabled(DecoderFactory* factory, bool enable)
 {
-    checkFactories();
+    loadPlugins();
     if (!factories().contains(factory))
         return;
 
@@ -267,13 +268,13 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
 
 bool Decoder::isEnabled(DecoderFactory* factory)
 {
-    checkFactories();
+    loadPlugins();
     return !m_disabledNames.contains(factory->properties().shortName);
 }
 
 QList<DecoderFactory *> Decoder::factories()
 {
-    checkFactories();
+    loadPlugins();
     QList<DecoderFactory *> list;
     foreach (QmmpPluginCache *item, *m_cache)
     {

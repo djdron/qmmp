@@ -3,17 +3,17 @@
 // Use, modification and distribution is allowed without limitation,
 // warranty, or liability of any kind.
 //
-
-#include <QtGui>
 #include <QObject>
 #include <QStringList>
 #include <QApplication>
+#include <QDir>
 #include <stdio.h>
 #include "audioparameters.h"
 #include "qmmpsettings.h"
 #include "buffer.h"
 #include "volumecontrol_p.h"
 #include "qmmp.h"
+#include "qmmpplugincache_p.h"
 #include "output.h"
 
 Output::Output()
@@ -65,76 +65,71 @@ Output::~Output()
 {}
 
 // static methods
+QList<QmmpPluginCache*> *Output::m_cache = 0;
 
-QList<OutputFactory*> *Output::m_factories = 0;
-QHash <OutputFactory*, QString> *Output::m_files = 0;
-
-void Output::checkFactories()
+void Output::loadPlugins()
 {
-    if (!m_factories)
+    if (m_cache)
+        return;
+
+    m_cache = new QList<QmmpPluginCache *>;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("Output");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        m_files = new QHash <OutputFactory*, QString>;
-        m_factories = new QList<OutputFactory *>;
-
-        QDir pluginsDir (Qmmp::pluginsPath());
-        pluginsDir.cd("Output");
-        foreach (QString fileName, pluginsDir.entryList (QDir::Files))
+        QmmpPluginCache *item = new QmmpPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            QPluginLoader loader (pluginsDir.absoluteFilePath (fileName));
-            QObject *plugin = loader.instance();
-            if (loader.isLoaded())
-                qDebug ("Output: loaded plugin %s", qPrintable (fileName));
-            else
-                qWarning("Output: %s", qPrintable(loader.errorString ()));
-
-            OutputFactory *factory = 0;
-            if (plugin)
-                factory = qobject_cast<OutputFactory *> (plugin);
-
-            if (factory)
-            {
-                m_factories->append (factory);
-                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
-                qApp->installTranslator(factory->createTranslator(qApp));
-            }
+            delete item;
+            continue;
         }
+        m_cache->append(item);
     }
 }
 
 Output *Output::create ()
 {
+    loadPlugins();
     Output *output = 0;
-
-    checkFactories();
-    if (m_factories->isEmpty ())
+    if (m_cache->isEmpty ())
     {
         qDebug("Output: unable to find output plugins");
         return output;
     }
     OutputFactory *fact = Output::currentFactory();
-    if (!fact && !m_factories->isEmpty())
-        fact = m_factories->at(0);
     if (fact)
         output = fact->create ();
     return output;
 }
 
-QList<OutputFactory*> *Output::factories()
+QList<OutputFactory *> Output::factories()
 {
-    checkFactories();
-    return m_factories;
+    loadPlugins();
+    QList<OutputFactory *> list;
+    foreach(QmmpPluginCache *item, *m_cache)
+    {
+        if(item->outputFactory())
+            list.append(item->outputFactory());
+    }
+    return list;
 }
 
 QString Output::file(OutputFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 void Output::setCurrentFactory(OutputFactory* factory)
 {
-    checkFactories();
-    if (!m_factories->contains(factory))
+    loadPlugins();
+    if (file(factory).isEmpty())
         return;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Output/current_plugin", factory->properties().shortName);
@@ -142,7 +137,7 @@ void Output::setCurrentFactory(OutputFactory* factory)
 
 OutputFactory *Output::currentFactory()
 {
-    checkFactories();
+    loadPlugins();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
 #ifdef Q_OS_LINUX
     QString name = settings.value("Output/current_plugin", "alsa").toString();
@@ -151,12 +146,12 @@ OutputFactory *Output::currentFactory()
 #else
     QString name = settings.value("Output/current_plugin", "oss4").toString();
 #endif
-    foreach(OutputFactory *factory, *m_factories)
+    foreach(QmmpPluginCache *item, *m_cache)
     {
-        if (factory->properties().shortName == name)
-            return factory;
+        if (item->shortName() == name && item->outputFactory())
+            return item->outputFactory();
     }
-    if (!m_factories->isEmpty())
-        return m_factories->at(0);
+    if (!m_cache->isEmpty())
+        return m_cache->at(0)->outputFactory();
     return 0;
 }

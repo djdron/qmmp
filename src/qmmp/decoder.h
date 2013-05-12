@@ -162,7 +162,7 @@ protected:
     void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
 
 private:
-    static void checkFactories();
+    static void loadPlugins();
     static DecoderFactory *m_lastFactory;
     static QList<QmmpPluginCache*> *m_cache;
     static QStringList m_disabledNames;
