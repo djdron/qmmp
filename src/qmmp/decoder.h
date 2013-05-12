@@ -20,6 +20,7 @@
 class Decoder;
 class DecoderFactory;
 class QIODevice;
+class PluginCache;
 
 /*! @brief The Decoder class provides the base interface class of audio decoders.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -128,7 +129,7 @@ public:
     /*!
      * Returns a list of decoder factories.
      */
-    static QList<DecoderFactory*> *factories();
+    static QList<DecoderFactory*> factories();
     /*!
      * Returns plugin file path.
      * @param factory Decoder plugin factory.
@@ -162,10 +163,9 @@ protected:
 
 private:
     static void checkFactories();
-    static QList<DecoderFactory*> *m_factories;
-    static QList<DecoderFactory*> *m_disabledFactories;
     static DecoderFactory *m_lastFactory;
-    static QHash <DecoderFactory*, QString> *m_files;
+    static QList<PluginCache*> *m_cache;
+    static QStringList m_disabledNames;
     AudioParameters m_parameters;
     QIODevice *m_input;
     bool m_hasMetaData;

@@ -78,18 +78,18 @@ void Output::checkFactories()
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Output");
-        foreach ( QString fileName, pluginsDir.entryList ( QDir::Files ) )
+        foreach (QString fileName, pluginsDir.entryList (QDir::Files))
         {
-            QPluginLoader loader ( pluginsDir.absoluteFilePath ( fileName ) );
+            QPluginLoader loader (pluginsDir.absoluteFilePath (fileName));
             QObject *plugin = loader.instance();
-            if ( loader.isLoaded() )
-                qDebug ( "Output: loaded plugin %s", qPrintable ( fileName ) );
+            if (loader.isLoaded())
+                qDebug ("Output: loaded plugin %s", qPrintable (fileName));
             else
                 qWarning("Output: %s", qPrintable(loader.errorString ()));
 
             OutputFactory *factory = 0;
             if (plugin)
-                factory = qobject_cast<OutputFactory *> ( plugin );
+                factory = qobject_cast<OutputFactory *> (plugin);
 
             if (factory)
             {

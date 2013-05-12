@@ -69,7 +69,7 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
             list << new FileInfo(fileName);
             return list;
         }
-        foreach(fact, *Decoder::factories())
+        foreach(fact, Decoder::factories())
         {
             if(fact->properties().protocols.contains(scheme) && Decoder::isEnabled(fact))
                 return fact->createPlayList(fileName, useMetaData);
@@ -115,7 +115,7 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
 QStringList MetaDataManager::filters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, *Decoder::factories())
+    foreach(DecoderFactory *fact, Decoder::factories())
     {
         if (Decoder::isEnabled(fact) && !fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
@@ -131,7 +131,7 @@ QStringList MetaDataManager::filters() const
 QStringList MetaDataManager::nameFilters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, *Decoder::factories())
+    foreach(DecoderFactory *fact, Decoder::factories())
     {
         if (Decoder::isEnabled(fact))
             filters << fact->properties().filters;
