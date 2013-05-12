@@ -39,8 +39,12 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     m_path = info.QFileInfo::canonicalFilePath();
 
     settings->beginGroup("PluginCache");
+#ifdef Q_OS_WIN
+    if(settings->allKeys().contains(m_path))
+#else
     QString copy = m_path;
     if(settings->allKeys().contains(copy.remove(0,1)))
+#endif
     {
         QStringList values = settings->value(m_path).toStringList();
         if(values.count() != 3)
@@ -144,8 +148,11 @@ void QmmpPluginCache::cleanup(QSettings *settings)
 
     foreach (QString key, settings->allKeys())
     {
-        //TODO win32 support
-        if(!QFile::exists("/" + key))
+#ifdef Q_OS_WIN
+        if(!QFile::exists(key))
+#else
+        if(!QFile::exists(key))
+#endif
         {
             settings->remove(key);
             qDebug("QmmpPluginCache: removed key %s", qPrintable(key));
