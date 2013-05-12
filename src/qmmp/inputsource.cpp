@@ -20,8 +20,7 @@
 
 #include <QFile>
 #include <QDir>
-#include <QApplication>
-#include <QPluginLoader>
+#include "qmmpplugincache_p.h"
 #include "qmmp.h"
 #include "fileinputsource_p.h"
 #include "emptyinputsource_p.h"
@@ -89,25 +88,29 @@ QHash<QString, QString> InputSource::takeStreamInfo()
 }
 
 // static methods
-QList<InputSourceFactory*> *InputSource::m_factories = 0;
-QHash <InputSourceFactory*, QString> *InputSource::m_files = 0;
+QStringList InputSource::m_disabledNames;
+QList<QmmpPluginCache*> *InputSource::m_cache = 0;
 
 InputSource *InputSource::create(const QString &url, QObject *parent)
 {
-    checkFactories();
+    loadPlugins();
     InputSourceFactory *factory = 0;
     if(!url.contains("://")) //local file path doesn't contain "://"
     {
         qDebug("InputSource: using file transport");
         return new FileInputSource(url, parent);
     }
-    foreach(InputSourceFactory *f, *m_factories)
+    foreach (QmmpPluginCache *item, *m_cache)
     {
-        if(f->properties().protocols.contains(url.section("://", 0, 0)))
-        {
-            factory =  f;
+        if(m_disabledNames.contains(item->shortName()))
+            continue;
+
+        factory = item->inputSourceFactory();
+
+        if(factory && factory->properties().protocols.contains(url.section("://", 0, 0)))
             break;
-        }
+        else
+            factory = 0;
     }
     if(factory)
     {
@@ -123,55 +126,100 @@ InputSource *InputSource::create(const QString &url, QObject *parent)
 
 QList<InputSourceFactory *> InputSource::factories()
 {
-    checkFactories();
-    return *m_factories;
+    loadPlugins();
+    QList<InputSourceFactory *> list;
+    foreach (QmmpPluginCache *item, *m_cache)
+    {
+        if(item->inputSourceFactory())
+            list.append(item->inputSourceFactory());
+    }
+    return list;
+}
+
+QList<InputSourceFactory *> InputSource::enabledFactories()
+{
+    loadPlugins();
+    QList<InputSourceFactory *> list;
+    foreach (QmmpPluginCache *item, *m_cache)
+    {
+        if(m_disabledNames.contains(item->shortName()))
+            continue;
+        if(item->decoderFactory())
+            list.append(item->inputSourceFactory());
+    }
+    return list;
 }
 
 QString InputSource::file(InputSourceFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 QStringList InputSource::protocols()
 {
-    checkFactories();
+    loadPlugins();
     QStringList protocolsList;
-    foreach(InputSourceFactory *f, *m_factories)
+
+    foreach (QmmpPluginCache *item, *m_cache)
     {
-        protocolsList << f->properties().protocols;
+        if(m_disabledNames.contains(item->shortName()))
+            continue;
+        if(item->inputSourceFactory())
+            protocolsList << item->inputSourceFactory()->properties().protocols;
     }
     protocolsList.removeDuplicates();
     return protocolsList;
 }
 
-void InputSource::checkFactories()
+void InputSource::setEnabled(InputSourceFactory *factory, bool enable)
 {
-    if (!m_factories)
+    loadPlugins();
+    if (!factories().contains(factory))
+        return;
+
+    if(enable == isEnabled(factory))
+        return;
+
+    if(enable)
+        m_disabledNames.removeAll(factory->properties().shortName);
+    else
+        m_disabledNames.append(factory->properties().shortName);
+
+    m_disabledNames.removeDuplicates();
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Transports/disabled_plugins", m_disabledNames);
+}
+
+bool InputSource::isEnabled(InputSourceFactory *factory)
+{
+    loadPlugins();
+    return !m_disabledNames.contains(factory->properties().shortName);
+}
+
+void InputSource::loadPlugins()
+{
+    if (m_cache)
+        return;
+
+    m_cache = new QList<QmmpPluginCache*>;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("Transports");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        m_files = new QHash <InputSourceFactory*, QString>;
-        m_factories = new QList<InputSourceFactory *>;
-
-        QDir pluginsDir (Qmmp::pluginsPath());
-        pluginsDir.cd("Transports");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QmmpPluginCache *item = new QmmpPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-            QObject *plugin = loader.instance();
-            if (loader.isLoaded())
-                qDebug("InputSource: loaded plugin %s", qPrintable(fileName));
-            else
-                qWarning("InputSource: %s", qPrintable(loader.errorString ()));
-            InputSourceFactory *factory = 0;
-            if (plugin)
-                factory = qobject_cast<InputSourceFactory *>(plugin);
-
-            if (factory)
-            {
-                m_factories->append(factory);
-                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
-                qApp->installTranslator(factory->createTranslator(qApp));
-            }
+            delete item;
+            continue;
         }
+        m_cache->append(item);
     }
+    m_disabledNames = settings.value("Transports/disabled_plugins").toStringList();
 }

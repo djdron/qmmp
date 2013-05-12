@@ -83,7 +83,7 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(InputSourceFactory, "InputSourceFactory/1.0");
+Q_DECLARE_INTERFACE(InputSourceFactory, "InputSourceFactory/1.0")
 
 #endif // INPUTSOURCEFACTORY_H
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <qmmp/inputsourcefactory.h>
+#include <qmmp/inputsource.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/outputfactory.h>
 #include <qmmp/visualfactory.h>
@@ -41,6 +42,7 @@
 PluginItem::PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path)
     : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), TRANSPORT)
 {
+    setCheckState(0, InputSource::isEnabled(factory) ? Qt::Checked : Qt::Unchecked);
     m_has_about = factory->properties().hasAbout;
     m_has_config = factory->properties().hasSettings;
     m_factory = factory;
@@ -205,7 +207,7 @@ void PluginItem::setEnabled(bool enabled)
     switch(type())
     {
     case PluginItem::TRANSPORT:
-        //dynamic_cast<InputSourceFactory *>(m_factory)
+        InputSource::setEnabled(static_cast<InputSourceFactory *>(m_factory), enabled);
         break;
     case PluginItem::DECODER:
         Decoder::setEnabled(static_cast<DecoderFactory *>(m_factory), enabled);

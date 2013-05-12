@@ -29,6 +29,7 @@ class DecoderFactory;
 class OutputFactory;
 class EngineFactory;
 class EffectFactory;
+class InputSourceFactory;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -47,6 +48,7 @@ public:
     OutputFactory *outputFactory();
     EngineFactory *engineFactory();
     EffectFactory *effectFactory();
+    InputSourceFactory *inputSourceFactory();
 
     static void cleanup(QSettings *settings);
 
@@ -60,6 +62,7 @@ private:
     OutputFactory *m_outputFactory;
     EngineFactory *m_engineFactory;
     EffectFactory *m_effectFactory;
+    InputSourceFactory *m_inputSourceFactory;
     int m_priority;
 };
 

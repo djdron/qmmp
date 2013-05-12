@@ -30,6 +30,8 @@
 #include "qmmp.h"
 #include "inputsourcefactory.h"
 
+class QmmpPluginCache;
+
 /*! @brief The InputSource class provides the base interface class of transports.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -115,6 +117,10 @@ public:
      */
     static QList<InputSourceFactory *> factories();
     /*!
+     * Returns a list of enabled transport factories.
+     */
+    static QList<InputSourceFactory *> enabledFactories();
+    /*!
      * Returns plugin file path.
      * @param factory Transport plugin factory.
      */
@@ -123,6 +129,17 @@ public:
      * Returns a list of supported protocols.
      */
     static QStringList protocols();
+    /*!
+     * Sets whether the input plugin is enabled.
+     * @param factory Transport plugin factory.
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
+     */
+    static void setEnabled(InputSourceFactory* factory, bool enable = true);
+    /*!
+     * Returns \b true if input plugin is enabled, otherwise returns \b false
+     * @param factory Decoder plugin factory.
+     */
+    static bool isEnabled(InputSourceFactory* factory);
 
 signals:
     /*!
@@ -140,9 +157,9 @@ private:
     QMap<Qmmp::MetaData, QString> m_metaData;
     QHash<QString, QString> m_streamInfo;
     bool m_hasMetaData, m_hasStreamInfo;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QHash <InputSourceFactory*, QString> *m_files;
+    static void loadPlugins();
+    static QList<QmmpPluginCache*> *m_cache;
+    static QStringList m_disabledNames;
 };
 
 #endif // INPUTSOURCE_H
