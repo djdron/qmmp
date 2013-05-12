@@ -75,7 +75,7 @@ QString AboutDialog::loadAbout()
 
     text.append("<h5>"+tr("Input plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(DecoderFactory *fact, *Decoder::factories())
+    foreach(DecoderFactory *fact, Decoder::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);

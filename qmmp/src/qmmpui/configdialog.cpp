@@ -182,7 +182,7 @@ void ConfigDialog::loadPluginsInfo()
         load input plugins information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Decoders"));
-    foreach(DecoderFactory *factory, *Decoder::factories())
+    foreach(DecoderFactory *factory, Decoder::factories())
     {
         new PluginItem (item, factory,  Decoder::file(factory));
     }

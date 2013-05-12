@@ -36,7 +36,8 @@ HEADERS += \
     volume.h \
     volumecontrol_p.h \
     outputwriter_p.h \
-    recycler_p.h
+    recycler_p.h \
+    plugincache.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -64,7 +65,8 @@ SOURCES += recycler.cpp \
     qmmpsettings.cpp \
     eqsettings.cpp \
     qmmpevents.cpp \
-    outputwriter.cpp
+    outputwriter.cpp \
+    plugincache.cpp
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
