@@ -115,9 +115,9 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
 QStringList MetaDataManager::filters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, Decoder::factories())
+    foreach(DecoderFactory *fact, Decoder::enabledFactories())
     {
-        if (Decoder::isEnabled(fact) && !fact->properties().filters.isEmpty())
+        if (!fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
     foreach(EngineFactory *fact, *AbstractEngine::factories())
@@ -131,7 +131,7 @@ QStringList MetaDataManager::filters() const
 QStringList MetaDataManager::nameFilters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, Decoder::factories())
+    foreach(DecoderFactory *fact, Decoder::enabledFactories())
     {
         if (Decoder::isEnabled(fact))
             filters << fact->properties().filters;

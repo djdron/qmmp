@@ -131,6 +131,10 @@ public:
      */
     static QList<DecoderFactory*> factories();
     /*!
+     * Returns a list of enabled decoder factories.
+     */
+    static QList<DecoderFactory*> enabledFactories();
+    /*!
      * Returns plugin file path.
      * @param factory Decoder plugin factory.
      */

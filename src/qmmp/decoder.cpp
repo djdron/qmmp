@@ -283,3 +283,15 @@ QList<DecoderFactory *> Decoder::factories()
     }
     return list;
 }
+
+QList<DecoderFactory *> Decoder::enabledFactories()
+{
+    loadPlugins();
+    QList<DecoderFactory *> list;
+    foreach (QmmpPluginCache *item, *m_cache)
+    {
+        if(!m_disabledNames.contains(item->shortName()) && item->decoderFactory())
+            list.append(item->decoderFactory());
+    }
+    return list;
+}
