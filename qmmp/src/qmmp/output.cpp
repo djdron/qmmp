@@ -3,9 +3,7 @@
 // Use, modification and distribution is allowed without limitation,
 // warranty, or liability of any kind.
 //
-#include <QObject>
 #include <QStringList>
-#include <QApplication>
 #include <QDir>
 #include <stdio.h>
 #include "audioparameters.h"
