@@ -26,6 +26,7 @@
 #include <QSettings>
 
 class DecoderFactory;
+class OutputFactory;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -40,10 +41,10 @@ public:
     int priority() const;
     bool hasError() const;
 
-
     DecoderFactory *decoderFactory();
+    OutputFactory *outputFactory();
 
-    //OutputFactory *outputFactory();
+
     //EngineFactory *engineFactory();
 
     static void cleanup(QSettings *settings);
@@ -55,6 +56,7 @@ private:
     bool m_error;
     QObject *m_instance;
     DecoderFactory *m_decoderFactory;
+    OutputFactory *m_outputFactory;
     int m_priority;
 };
 

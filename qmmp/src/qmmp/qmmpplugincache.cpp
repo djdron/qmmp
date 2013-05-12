@@ -33,6 +33,7 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     m_error = false;
     m_instance = 0;
     m_decoderFactory = 0;
+    m_outputFactory = 0;
     m_priority = 0;
     bool update = false;
     QFileInfo info(file);
@@ -67,11 +68,11 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
             m_shortName = factory->properties().shortName;
             m_priority = factory->properties().priority;
         }
-        /*else if(OutputFactory *factory = outputFactory())
+        else if(OutputFactory *factory = outputFactory())
         {
             m_shortName = factory->properties().shortName;
             m_priority = 0;
-        }*/
+        }
         else
         {
             qWarning("QmmpPluginCache: unknown plugin type: %s", qPrintable(m_path));
@@ -119,6 +120,20 @@ DecoderFactory *QmmpPluginCache::decoderFactory()
         }
     }
     return m_decoderFactory;
+}
+
+OutputFactory *QmmpPluginCache::outputFactory()
+{
+    if(!m_outputFactory)
+    {
+        m_outputFactory = qobject_cast<OutputFactory *> (instance());
+        if(m_outputFactory)
+        {
+            qDebug("QmmpPluginCache: loaded output %s", qPrintable(QFileInfo(m_path).fileName()));
+            qApp->installTranslator(m_outputFactory->createTranslator(qApp));
+        }
+    }
+    return m_outputFactory;
 }
 
 bool QmmpPluginCache::hasError() const
