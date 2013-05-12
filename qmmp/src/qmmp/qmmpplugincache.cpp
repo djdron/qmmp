@@ -39,12 +39,12 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     m_path = info.QFileInfo::canonicalFilePath();
 
     settings->beginGroup("PluginCache");
-#ifdef Q_OS_WIN
-    if(settings->allKeys().contains(m_path))
-#else
-    QString copy = m_path;
-    if(settings->allKeys().contains(copy.remove(0,1)))
+    QString key = m_path;
+#ifndef Q_OS_WIN
+    key.remove(0,1);
 #endif
+    if(settings->allKeys().contains(key))
+
     {
         QStringList values = settings->value(m_path).toStringList();
         if(values.count() != 3)
@@ -151,7 +151,7 @@ void QmmpPluginCache::cleanup(QSettings *settings)
 #ifdef Q_OS_WIN
         if(!QFile::exists(key))
 #else
-        if(!QFile::exists(key))
+        if(!QFile::exists("/" + key))
 #endif
         {
             settings->remove(key);
