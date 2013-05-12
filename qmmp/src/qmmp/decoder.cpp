@@ -5,14 +5,11 @@
 //
 #include <QStringList>
 #include <QSettings>
-#include <QIODevice>
 #include <QBuffer>
 #include <QDir>
 #include <math.h>
 #include "qmmpplugincache_p.h"
-#include "buffer.h"
 #include "output.h"
-#include "visual.h"
 #include "decoderfactory.h"
 
 extern "C"

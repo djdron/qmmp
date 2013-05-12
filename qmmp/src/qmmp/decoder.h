@@ -10,13 +10,12 @@
 #include <QStringList>
 #include <QList>
 #include <QMap>
+#include <QIODevice>
 #include "fileinfo.h"
 #include "qmmp.h"
 #include "audioparameters.h"
+#include "decoderfactory.h"
 
-class Decoder;
-class DecoderFactory;
-class QIODevice;
 class QmmpPluginCache;
 
 /*! @brief The Decoder class provides the base interface class of audio decoders.

@@ -28,6 +28,7 @@
 #include "outputfactory.h"
 #include "enginefactory.h"
 #include "effectfactory.h"
+#include "inputsourcefactory.h"
 #include "qmmpplugincache_p.h"
 
 QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
@@ -38,6 +39,7 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     m_outputFactory = 0;
     m_engineFactory = 0;
     m_effectFactory = 0;
+    m_inputSourceFactory = 0;
     m_priority = 0;
     bool update = false;
     QFileInfo info(file);
@@ -86,6 +88,11 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
         {
             m_shortName = factory->properties().shortName;
             m_priority = factory->properties().priority;
+        }
+        else if(InputSourceFactory *factory = inputSourceFactory())
+        {
+            m_shortName = factory->properties().shortName;
+            m_priority = 0;
         }
         else
         {
@@ -164,6 +171,17 @@ EffectFactory *QmmpPluginCache::effectFactory()
             qApp->installTranslator(m_effectFactory->createTranslator(qApp));
     }
     return m_effectFactory;
+}
+
+InputSourceFactory *QmmpPluginCache::inputSourceFactory()
+{
+    if(!m_inputSourceFactory)
+    {
+        m_inputSourceFactory = qobject_cast<InputSourceFactory *> (instance());
+        if(m_inputSourceFactory)
+            qApp->installTranslator(m_inputSourceFactory->createTranslator(qApp));
+    }
+    return m_inputSourceFactory;
 }
 
 bool QmmpPluginCache::hasError() const
