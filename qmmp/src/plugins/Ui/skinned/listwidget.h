@@ -85,7 +85,7 @@ public:
 
     PlayListModel *model()
     {
-        Q_ASSERT(!m_model);
+        Q_ASSERT(m_model);
         return m_model;
     }
 
