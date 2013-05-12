@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,11 +22,11 @@
 
 #include <QList>
 #include <QStringList>
-#include <QHash>
 #include "audioparameters.h"
 #include "buffer.h"
 
 class EffectFactory;
+class QmmpPluginCache;
 
 /*! @brief The Effect class provides the base interface class of audio effects.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -83,7 +83,11 @@ public:
     /*!
      * Returns a list of effect factories.
      */
-    static QList<EffectFactory*> *factories();
+    static QList<EffectFactory*> factories();
+    /*!
+     * Returns a list of enabled effect factories.
+     */
+    static QList<EffectFactory*> enabledFactories();
     /*!
      * Returns plugin file path.
      * @param factory Effect plugin factory.
@@ -106,9 +110,9 @@ private:
     quint32 m_freq;
     int m_chan;
     Qmmp::AudioFormat m_format;
-    static void checkFactories();
-    static QList<EffectFactory*> *m_factories;
-    static QHash <EffectFactory*, QString> *m_files;
+    static void loadPlugins();
+    static QList<QmmpPluginCache*> *m_cache;
+    static QStringList m_enabledNames;
 };
 
 #endif

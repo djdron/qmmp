@@ -202,7 +202,7 @@ void ConfigDialog::loadPluginsInfo()
         load effect plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Effects"));
-    foreach(EffectFactory *factory, *Effect::factories())
+    foreach(EffectFactory *factory, Effect::factories())
     {
         new PluginItem (item, factory, Effect::file(factory));
     }

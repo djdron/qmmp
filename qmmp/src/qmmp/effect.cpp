@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,13 +17,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#include <QtGui>
+
 #include <QStringList>
 #include <QDir>
-#include <QApplication>
-#include <QHash>
 #include "qmmpaudioengine_p.h"
 #include "qmmp.h"
+#include "qmmpplugincache_p.h"
 #include "effectfactory.h"
 #include "effect.h"
 
@@ -70,106 +69,114 @@ EffectFactory* Effect::factory() const
     return m_factory;
 }
 
-bool effectCompareFunc(EffectFactory *e1, EffectFactory *e2)
+bool _effectCacheCompareFunc(QmmpPluginCache *e1, QmmpPluginCache *e2)
 {
-    return e1->properties().priority > e2->properties().priority;
+    return e1->priority() > e2->priority();
 }
 
 //static members
 
-QList<EffectFactory*> *Effect::m_factories = 0;
-QHash <EffectFactory*, QString> *Effect::m_files = 0;
+QList<QmmpPluginCache*> *Effect::m_cache = 0;
+QStringList Effect::m_enabledNames;
 
-void Effect::checkFactories()
+void Effect::loadPlugins()
 {
-    if (!m_factories)
+    if(m_cache)
+        return;
+
+    m_cache = new QList<QmmpPluginCache *>;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("Effect");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        m_factories = new QList<EffectFactory *>;
-        m_files = new QHash <EffectFactory*, QString>;
-
-        QDir pluginsDir (Qmmp::pluginsPath());
-        pluginsDir.cd("Effect");
-
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QmmpPluginCache *item = new QmmpPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-            QObject *plugin = loader.instance();
-            if (loader.isLoaded())
-                qDebug("Effect: loaded plugin %s", qPrintable(fileName));
-            else
-                qWarning("Effect: %s", qPrintable(loader.errorString ()));
-
-            EffectFactory *factory = 0;
-            if (plugin)
-                factory = qobject_cast<EffectFactory *>(plugin);
-
-            if (factory)
-            {
-                m_factories->append(factory);
-                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
-                qApp->installTranslator(factory->createTranslator(qApp));
-            }
+            delete item;
+            continue;
         }
-        qSort(m_factories->begin(), m_factories->end(), effectCompareFunc);
+        m_cache->append(item);
     }
+
+    qSort(m_cache->begin(), m_cache->end(), _effectCacheCompareFunc);
+    m_enabledNames = settings.value("Effect/enabled_plugins").toStringList();
 }
 
 Effect* Effect::create(EffectFactory *factory)
 {
-    checkFactories();
+    loadPlugins();
     Effect *effect = factory->create();
     effect->m_factory = factory;
     return effect;
 }
 
-QList<EffectFactory*> *Effect::factories()
+QList<EffectFactory *> Effect::factories()
 {
-    checkFactories();
-    return m_factories;
+    loadPlugins();
+    QList<EffectFactory *> list;
+    foreach (QmmpPluginCache *item, *m_cache)
+    {
+        if(item->effectFactory())
+            list.append(item->effectFactory());
+    }
+    return list;
+}
+
+QList<EffectFactory *> Effect::enabledFactories()
+{
+    loadPlugins();
+    QList<EffectFactory *> list;
+    foreach (QmmpPluginCache *item, *m_cache)
+    {
+        if(m_enabledNames.contains(item->shortName()) && item->effectFactory())
+            list.append(item->effectFactory());
+    }
+    return list;
 }
 
 QString Effect::file(EffectFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 void Effect::setEnabled(EffectFactory* factory, bool enable)
 {
-    checkFactories();
-    if(!m_factories->contains(factory))
+    loadPlugins();
+    if (!factories().contains(factory))
         return;
 
-    QString name = factory->properties().shortName;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
+    if(enable == isEnabled(factory))
+        return;
 
     if(enable)
     {
-        if (!effList.contains(name))
-        {
-            effList << name;
-            if(QmmpAudioEngine::instance())
-                QmmpAudioEngine::instance()->addEffect(factory);
-        }
+        if(QmmpAudioEngine::instance())
+            QmmpAudioEngine::instance()->addEffect(factory);
+        m_enabledNames.append(factory->properties().shortName);
     }
-    else if (effList.contains(name))
+    else
     {
-        effList.removeAll(name);
+        m_enabledNames.removeAll(factory->properties().shortName);
         if(QmmpAudioEngine::instance())
             QmmpAudioEngine::instance()->removeEffect(factory);
     }
-    settings.setValue("Effect/enabled_plugins", effList);
+
+    m_enabledNames.removeDuplicates();
+
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Effect/enabled_plugins", m_enabledNames);
 }
 
 bool Effect::isEnabled(EffectFactory* factory)
 {
-    checkFactories();
-    if(!m_factories->contains(factory))
-        return false;
-    QString name = factory->properties().shortName;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
-    return effList.contains(name);
+    loadPlugins();
+    return m_enabledNames.contains(factory->properties().shortName);
 }
 

@@ -102,7 +102,7 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
     text.append("<h5>"+tr("Effect plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(EffectFactory *fact, *Effect::factories())
+    foreach(EffectFactory *fact, Effect::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);
