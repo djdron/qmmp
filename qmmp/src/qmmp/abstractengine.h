@@ -29,6 +29,7 @@
 
 class QIODevice;
 class InputSource;
+class QmmpPluginCache;
 
 
 /*! @brief The AbstractEngine class provides the base interface class of audio audio engines.
@@ -82,9 +83,13 @@ public:
      */
     static AbstractEngine *create(InputSource *s, QObject *parent = 0);
     /*!
-     * Returns a list of decoder factories.
+     * Returns a list of engine factories.
      */
-    static QList<EngineFactory*> *factories();
+    static QList<EngineFactory*> factories();
+    /*!
+     * Returns a list of enabled engine factories.
+     */
+    static QList<EngineFactory*> enabledFactories();
     /*!
      * Returns EngineFactory pointer which supports file \b path or 0 if file \b path is unsupported
      */
@@ -113,10 +118,9 @@ public:
 
 private:
     QMutex m_mutex;
-    static void checkFactories();
-    static QList<EngineFactory*> *m_factories;
-    static QList<EngineFactory*> *m_disabledFactories;
-    static QHash <EngineFactory*, QString> *m_files;
+    static void loadPlugins();
+    static QList<QmmpPluginCache*> *m_cache;
+    static QStringList m_disabledNames;
 };
 
 

@@ -192,7 +192,7 @@ void ConfigDialog::loadPluginsInfo()
         load audio engines information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Engines"));
-    foreach(EngineFactory *factory, *AbstractEngine::factories())
+    foreach(EngineFactory *factory, AbstractEngine::factories())
     {
         new PluginItem (item, factory,  AbstractEngine::file(factory));
     }

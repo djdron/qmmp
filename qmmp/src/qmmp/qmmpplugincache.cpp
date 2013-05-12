@@ -26,6 +26,7 @@
 #include <QTranslator>
 #include "decoderfactory.h"
 #include "outputfactory.h"
+#include "enginefactory.h"
 #include "qmmpplugincache_p.h"
 
 QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
@@ -34,6 +35,7 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     m_instance = 0;
     m_decoderFactory = 0;
     m_outputFactory = 0;
+    m_engineFactory = 0;
     m_priority = 0;
     bool update = false;
     QFileInfo info(file);
@@ -69,6 +71,11 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
             m_priority = factory->properties().priority;
         }
         else if(OutputFactory *factory = outputFactory())
+        {
+            m_shortName = factory->properties().shortName;
+            m_priority = 0;
+        }
+        else if(EngineFactory *factory = engineFactory())
         {
             m_shortName = factory->properties().shortName;
             m_priority = 0;
@@ -128,6 +135,17 @@ OutputFactory *QmmpPluginCache::outputFactory()
             qApp->installTranslator(m_outputFactory->createTranslator(qApp));
     }
     return m_outputFactory;
+}
+
+EngineFactory *QmmpPluginCache::engineFactory()
+{
+    if(!m_engineFactory)
+    {
+        m_engineFactory = qobject_cast<EngineFactory *> (instance());
+        if(m_engineFactory)
+            qApp->installTranslator(m_engineFactory->createTranslator(qApp));
+    }
+    return m_engineFactory;
 }
 
 bool QmmpPluginCache::hasError() const
