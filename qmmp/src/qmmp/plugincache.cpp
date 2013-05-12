@@ -28,7 +28,7 @@
 #include "outputfactory.h"
 #include "plugincache.h"
 
-PluginCache::PluginCache(const QString &file, QSettings *settings)
+QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
 {
     m_error = false;
     m_instance = 0;
@@ -80,17 +80,17 @@ PluginCache::PluginCache(const QString &file, QSettings *settings)
     settings->endGroup();
 }
 
-const QString PluginCache::shortName() const
+const QString QmmpPluginCache::shortName() const
 {
     return m_shortName;
 }
 
-const QString PluginCache::file() const
+const QString QmmpPluginCache::file() const
 {
     return m_path;
 }
 
-DecoderFactory *PluginCache::decoderFactory()
+DecoderFactory *QmmpPluginCache::decoderFactory()
 {
     if(!m_decoderFactory)
     {
@@ -101,12 +101,12 @@ DecoderFactory *PluginCache::decoderFactory()
     return m_decoderFactory;
 }
 
-bool PluginCache::hasError() const
+bool QmmpPluginCache::hasError() const
 {
     return m_error;
 }
 
-QObject *PluginCache::instance()
+QObject *QmmpPluginCache::instance()
 {
     if(m_error)
         return 0;

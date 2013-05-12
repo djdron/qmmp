@@ -30,10 +30,10 @@ class DecoderFactory;
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PluginCache
+class QmmpPluginCache
 {
 public:
-    PluginCache(const QString &file, QSettings *settings);
+    QmmpPluginCache(const QString &file, QSettings *settings);
 
     const QString shortName() const;
     const QString file() const;
