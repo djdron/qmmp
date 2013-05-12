@@ -26,13 +26,14 @@
 #include <QTranslator>
 #include "decoderfactory.h"
 #include "outputfactory.h"
-#include "plugincache.h"
+#include "qmmpplugincache_p.h"
 
 QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
 {
     m_error = false;
     m_instance = 0;
     m_decoderFactory = 0;
+    m_priority = 0;
     bool update = false;
     QFileInfo info(file);
     m_path = info.QFileInfo::canonicalFilePath();
@@ -42,12 +43,13 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
     if(settings->allKeys().contains(copy.remove(0,1)))
     {
         QStringList values = settings->value(m_path).toStringList();
-        if(values.count() != 2)
+        if(values.count() != 3)
             update = true;
         else
         {
             m_shortName = values.at(0);
-            update = (info.lastModified().toString(Qt::ISODate) != values.at(1));
+            m_priority = values.at(1).toInt();
+            update = (info.lastModified().toString(Qt::ISODate) != values.at(2));
         }
     }
     else
@@ -59,24 +61,30 @@ QmmpPluginCache::QmmpPluginCache(const QString &file, QSettings *settings)
         if(DecoderFactory *factory = decoderFactory())
         {
             m_shortName = factory->properties().shortName;
+            m_priority = factory->properties().priority;
         }
         /*else if(OutputFactory *factory = outputFactory())
         {
             m_shortName = factory->properties().shortName;
+            m_priority = 0;
         }*/
         else
+        {
+            qWarning("QmmpPluginCache: unknown plugin type: %s", qPrintable(m_path));
             m_error = true;
+        }
 
         if (!m_error)
         {
             QStringList values;
             values << m_shortName;
+            values << QString::number(m_priority);
             values << info.lastModified().toString(Qt::ISODate);
             settings->setValue(m_path, values);
-            qDebug("PluginCache: added to cache: %s", qPrintable(m_path));
+            qDebug("QmmpPluginCache: added cache item \"%s=%s\"",
+                   qPrintable(info.fileName()), qPrintable(values.join(",")));
         }
     }
-
     settings->endGroup();
 }
 
@@ -88,6 +96,11 @@ const QString QmmpPluginCache::shortName() const
 const QString QmmpPluginCache::file() const
 {
     return m_path;
+}
+
+int QmmpPluginCache::priority() const
+{
+    return m_priority;
 }
 
 DecoderFactory *QmmpPluginCache::decoderFactory()
@@ -115,11 +128,11 @@ QObject *QmmpPluginCache::instance()
     QPluginLoader loader(m_path);
     m_instance = loader.instance();
     if (loader.isLoaded())
-        qDebug("PluginCache: loaded plugin %s", qPrintable(QFileInfo(m_path).fileName()));
+        qDebug("QmmpPluginCache: loaded plugin %s", qPrintable(QFileInfo(m_path).fileName()));
     else
     {
         m_error = true;
-        qWarning("PluginCache: %s", qPrintable(loader.errorString ()));
+        qWarning("QmmpPluginCache: error: %s", qPrintable(loader.errorString ()));
     }
     return m_instance;
 }

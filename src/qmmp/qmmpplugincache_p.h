@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef PLUGINCACHE_H
-#define PLUGINCACHE_H
+#ifndef QMMPPLUGINCACHE_P_H
+#define QMMPPLUGINCACHE_P_H
 
 #include <QString>
 #include <QObject>
@@ -37,6 +37,7 @@ public:
 
     const QString shortName() const;
     const QString file() const;
+    int priority() const;
     bool hasError() const;
 
 
@@ -52,6 +53,7 @@ private:
     bool m_error;
     QObject *m_instance;
     DecoderFactory *m_decoderFactory;
+    int m_priority;
 };
 
-#endif // PLUGINCACHE_H
+#endif // QMMPPLUGINCACHE_P_H
