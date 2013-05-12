@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -101,9 +101,9 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
         {
             return fact->createMetaDataModel(path, parent);
         }
-        foreach(efact, *AbstractEngine::factories())
+        foreach(efact, AbstractEngine::enabledFactories())
         {
-            if(efact->properties().protocols.contains(scheme) && AbstractEngine::isEnabled(efact))
+            if(efact->properties().protocols.contains(scheme))
                 model = efact->createMetaDataModel(path, parent);
             if(model)
                 return model;
@@ -120,9 +120,9 @@ QStringList MetaDataManager::filters() const
         if (!fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
-    foreach(EngineFactory *fact, *AbstractEngine::factories())
+    foreach(EngineFactory *fact, AbstractEngine::enabledFactories())
     {
-        if (AbstractEngine::isEnabled(fact) && !fact->properties().filters.isEmpty())
+        if (!fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
     return filters;
@@ -136,7 +136,7 @@ QStringList MetaDataManager::nameFilters() const
         if (Decoder::isEnabled(fact))
             filters << fact->properties().filters;
     }
-    foreach(EngineFactory *fact, *AbstractEngine::factories())
+    foreach(EngineFactory *fact, AbstractEngine::enabledFactories())
     {
         if (AbstractEngine::isEnabled(fact))
             filters << fact->properties().filters;

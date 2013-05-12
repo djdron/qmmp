@@ -27,6 +27,7 @@
 
 class DecoderFactory;
 class OutputFactory;
+class EngineFactory;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -43,6 +44,7 @@ public:
 
     DecoderFactory *decoderFactory();
     OutputFactory *outputFactory();
+    EngineFactory *engineFactory();
 
 
     //EngineFactory *engineFactory();
@@ -57,6 +59,7 @@ private:
     QObject *m_instance;
     DecoderFactory *m_decoderFactory;
     OutputFactory *m_outputFactory;
+    EngineFactory *m_engineFactory;
     int m_priority;
 };
 
