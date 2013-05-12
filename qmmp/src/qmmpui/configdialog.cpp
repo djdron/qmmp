@@ -172,7 +172,7 @@ void ConfigDialog::loadPluginsInfo()
         load transport plugin information
      */
     QTreeWidgetItem *item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Transports"));
-    foreach(InputSourceFactory *factory, *InputSource::factories())
+    foreach(InputSourceFactory *factory, InputSource::factories())
     {
         new PluginItem (item, factory,  InputSource::file(factory));
     }
@@ -212,7 +212,7 @@ void ConfigDialog::loadPluginsInfo()
         load visual plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Visualization"));
-    foreach(VisualFactory *factory, *Visual::factories())
+    foreach(VisualFactory *factory, Visual::factories())
     {
         new PluginItem (item, factory, Visual::file(factory));
     }

@@ -7,11 +7,8 @@
 #ifndef DECODER_H
 #define DECODER_H
 
-#include <QList>
 #include <QStringList>
-#include <QUrl>
 #include <QList>
-#include <QPixmap>
 #include <QMap>
 #include "fileinfo.h"
 #include "qmmp.h"

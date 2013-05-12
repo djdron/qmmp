@@ -8,16 +8,9 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include <QObject>
-#include <QThread>
-#include <QEvent>
 #include <QList>
-#include <QHash>
 #include <QIODevice>
-#include "visual.h"
 #include "outputfactory.h"
-#include "visualfactory.h"
-#include "statehandler.h"
 #include "audioparameters.h"
 
 class QTimer;

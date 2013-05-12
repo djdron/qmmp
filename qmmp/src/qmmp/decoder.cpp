@@ -14,7 +14,6 @@
 #include "output.h"
 #include "visual.h"
 #include "decoderfactory.h"
-#include "qmmp.h"
 
 extern "C"
 {

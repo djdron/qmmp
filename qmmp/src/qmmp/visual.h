@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -66,7 +66,7 @@ public:
     /*!
     * Returns a list of visual factories.
     */
-    static QList<VisualFactory*> *factories();
+    static QList<VisualFactory*> factories();
     /*!
      * Returns plugin file path.
      * @param factory Visual plugin factory.
