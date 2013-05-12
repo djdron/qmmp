@@ -579,11 +579,8 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         m_ap = m_effects.at(0)->audioParameters();
     }
 
-    foreach(EffectFactory *factory, *Effect::factories())
+    foreach(EffectFactory *factory, Effect::enabledFactories())
     {
-        if(!Effect::isEnabled(factory))
-            continue;
-
         Effect *effect = 0;
         foreach(Effect *e, tmp_effects) //find effect
         {
