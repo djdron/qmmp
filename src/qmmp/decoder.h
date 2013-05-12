@@ -20,7 +20,7 @@
 class Decoder;
 class DecoderFactory;
 class QIODevice;
-class PluginCache;
+class QmmpPluginCache;
 
 /*! @brief The Decoder class provides the base interface class of audio decoders.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -164,7 +164,7 @@ protected:
 private:
     static void checkFactories();
     static DecoderFactory *m_lastFactory;
-    static QList<PluginCache*> *m_cache;
+    static QList<QmmpPluginCache*> *m_cache;
     static QStringList m_disabledNames;
     AudioParameters m_parameters;
     QIODevice *m_input;
