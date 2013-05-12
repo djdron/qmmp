@@ -137,3 +137,19 @@ QObject *QmmpPluginCache::instance()
     }
     return m_instance;
 }
+
+void QmmpPluginCache::cleanup(QSettings *settings)
+{
+    settings->beginGroup("PluginCache");
+
+    foreach (QString key, settings->allKeys())
+    {
+        //TODO win32 support
+        if(!QFile::exists("/" + key))
+        {
+            settings->remove(key);
+            qDebug("QmmpPluginCache: removed key %s", qPrintable(key));
+        }
+    }
+    settings->endGroup();
+}

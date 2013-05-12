@@ -113,6 +113,7 @@ void Decoder::checkFactories()
     }
     m_disabledNames = settings.value("Decoder/disabled_plugins").toStringList();
     qSort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
+    QmmpPluginCache::clearCache(&settings);
 }
 
 QString Decoder::file(DecoderFactory *factory)
