@@ -46,6 +46,8 @@ public:
     //OutputFactory *outputFactory();
     //EngineFactory *engineFactory();
 
+    static void cleanup(QSettings *settings);
+
 private:
     QObject *instance();
     QString m_path;
