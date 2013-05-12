@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,6 +35,7 @@ class QIODevice;
 class VolumeControl;
 class AbstractEngine;
 class InputSource;
+class StateHandler;
 
 /*! \brief The SoundCore class provides a simple interface for audio playback.
  * @author Ilya Kotov <forkotov02@hotmail.ru>

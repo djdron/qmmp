@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -75,10 +75,10 @@ QWidget *Visual::m_parentWidget = 0;
 QObject *Visual::m_receiver = 0;
 const char *Visual::m_member = 0;
 
-QList<VisualFactory*> *Visual::factories()
+QList<VisualFactory *> Visual::factories()
 {
     checkFactories();
-    return m_factories;
+    return *m_factories;
 }
 
 QString Visual::file(VisualFactory *factory)
@@ -152,7 +152,7 @@ void Visual::initialize(QWidget *parent , QObject *receiver, const char *member)
     m_receiver = receiver;
     m_member = member;
     m_parentWidget = parent;
-    foreach(VisualFactory* factory, *factories())
+    foreach(VisualFactory* factory, factories())
     {
         if (isEnabled(factory))
         {

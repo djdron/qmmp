@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -121,10 +121,10 @@ InputSource *InputSource::create(const QString &url, QObject *parent)
     }
 }
 
-QList<InputSourceFactory*> *InputSource::factories()
+QList<InputSourceFactory *> InputSource::factories()
 {
     checkFactories();
-    return m_factories;
+    return *m_factories;
 }
 
 QString InputSource::file(InputSourceFactory *factory)

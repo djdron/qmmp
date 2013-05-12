@@ -93,7 +93,7 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
     text.append("<h5>"+tr("Visual plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(VisualFactory *fact, *Visual::factories())
+    foreach(VisualFactory *fact, Visual::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);
