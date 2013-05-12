@@ -57,6 +57,7 @@ SET(libqmmp_SRCS
     audioconverter.cpp
     eqsettings.cpp
     qmmpevents.cpp
+    qmmpplugincache.cpp
 )
 
 SET(libqmmp_HDRS
@@ -75,6 +76,7 @@ SET(libqmmp_HDRS
     replaygain_p.h
     fileinfo.h
     audioconverter_p.h
+    qmmpplugincache_p.h
     eqsettings.h
     decoder.h
     tagmodel.h
@@ -84,6 +86,7 @@ SET(libqmmp_HDRS
     metadatamanager.h
     volume.h
     output.h
+
 )
 
 SET(libqmmp_MOC_HDRS

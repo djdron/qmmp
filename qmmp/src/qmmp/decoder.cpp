@@ -10,7 +10,7 @@
 #include <QSettings>
 #include <QIODevice>
 #include <math.h>
-#include "plugincache.h"
+#include "qmmpplugincache_p.h"
 #include "buffer.h"
 #include "output.h"
 #include "visual.h"
@@ -87,10 +87,10 @@ DecoderFactory *Decoder::m_lastFactory = 0;
 QList<QmmpPluginCache*> *Decoder::m_cache = 0;
 
 //sort cache items by priority
-/*static bool _decoderLessComparator(DecoderFactory* f1, DecoderFactory* f2)
+static bool _pluginCacheLessComparator(QmmpPluginCache* f1, QmmpPluginCache* f2)
 {
-    return f1->properties().priority < f2->properties().priority;
-}*/
+    return f1->priority() < f2->priority();
+}
 
 void Decoder::checkFactories()
 {
@@ -112,6 +112,7 @@ void Decoder::checkFactories()
         m_cache->append(item);
     }
     m_disabledNames = settings.value("Decoder/disabled_plugins").toStringList();
+    qSort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
 }
 
 QString Decoder::file(DecoderFactory *factory)
