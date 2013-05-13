@@ -222,7 +222,7 @@ void ConfigDialog::loadPluginsInfo()
         load general plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("General"));
-    foreach(GeneralFactory *factory, *General::factories())
+    foreach(GeneralFactory *factory, General::factories())
     {
         new PluginItem (item, factory, General::file(factory));
     }
