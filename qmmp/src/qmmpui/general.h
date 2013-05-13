@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,8 @@
 #include <QHash>
 #include "generalfactory.h"
 
+class QmmpUiPluginCache;
+
 /*! @brief The General class provides simple access to general plugins
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -37,9 +39,13 @@ public:
      */
     static void create(QObject *parent);
     /*!
-     * Returns a list of the loaded general plugin factories.
+     * Returns a list of the general plugin factories.
      */
-    static QList<GeneralFactory*> *factories();
+    static QList<GeneralFactory *> factories();
+    /*!
+     * Returns a list of the enabled general plugin factories.
+     */
+    static QList<GeneralFactory *> enabledFactories();
     /*!
      * Returns plugin file path.
      * @param factory General plugin factory.
@@ -64,11 +70,11 @@ public:
     static bool isEnabled(GeneralFactory* factory);
 
 private:
-    static void checkFactories();
-    static QList<GeneralFactory*> *m_factories;
+    static void loadPlugins();
     static QHash <GeneralFactory*, QObject*> *m_generals;
-    static QHash <GeneralFactory*, QString> *m_files;
     static QObject *m_parent;
+    static QList<QmmpUiPluginCache*> *m_cache;
+    static QStringList m_enabledNames;
 };
 
 #endif

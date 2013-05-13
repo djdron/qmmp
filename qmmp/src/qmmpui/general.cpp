@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,47 +18,39 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QtGui>
-#include <QObject>
 #include <QList>
-#include <QApplication>
+#include <QDir>
+#include <QDialog>
 #include <qmmp/qmmp.h>
+#include "qmmpuiplugincache_p.h"
 #include "general.h"
 
-QList<GeneralFactory*> *General::m_factories = 0;
-QHash <GeneralFactory*, QString> *General::m_files = 0;
+QList<QmmpUiPluginCache*> *General::m_cache = 0;
+QStringList General::m_enabledNames;
 QHash <GeneralFactory*, QObject*> *General::m_generals = 0;
 QObject *General::m_parent = 0;
 
-void General::checkFactories()
+void General::loadPlugins()
 {
-    if (!m_factories)
+    if (m_cache)
+        return;
+
+    m_cache = new QList<QmmpUiPluginCache*>;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("General");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        m_factories = new QList<GeneralFactory *>;
-        m_files = new QHash <GeneralFactory*, QString>;
-        QDir pluginsDir (Qmmp::pluginsPath());
-        pluginsDir.cd("General");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QmmpUiPluginCache *item = new QmmpUiPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-            QObject *plugin = loader.instance();
-            if (loader.isLoaded())
-                qDebug("General: loaded plugin %s", qPrintable(fileName));
-            else
-                qWarning("General: %s", qPrintable(loader.errorString ()));
-
-            GeneralFactory *factory = 0;
-            if (plugin)
-                factory = qobject_cast<GeneralFactory *>(plugin);
-
-            if (factory)
-            {
-                m_factories->append(factory);
-                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
-                qApp->installTranslator(factory->createTranslator(qApp));
-            }
+            delete item;
+            continue;
         }
+        m_cache->append(item);
     }
+    m_enabledNames = settings.value("General/enabled_plugins").toStringList();
+    QmmpUiPluginCache::cleanup(&settings);
 }
 
 void General::create(QObject *parent)
@@ -67,10 +59,13 @@ void General::create(QObject *parent)
         return;
     m_generals = new QHash <GeneralFactory*, QObject*>();
     m_parent = parent;
-    checkFactories();
-    foreach(GeneralFactory* factory, *General::factories())
+    loadPlugins();
+    foreach(QmmpUiPluginCache* item, *m_cache)
     {
-        if (General::isEnabled(factory))
+        if(!m_enabledNames.contains(item->shortName()))
+            continue;
+        GeneralFactory *factory = item->generalFactory();
+        if (factory)
         {
             QObject *general = factory->create(parent);
             m_generals->insert(factory, general);
@@ -78,39 +73,63 @@ void General::create(QObject *parent)
     }
 }
 
-QList<GeneralFactory*> *General::factories()
+QList<GeneralFactory *> General::factories()
 {
-    checkFactories();
-    return m_factories;
+    loadPlugins();
+    QList<GeneralFactory *> list;
+    foreach (QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->generalFactory())
+            list.append(item->generalFactory());
+    }
+    return list;
+}
+
+QList<GeneralFactory *> General::enabledFactories()
+{
+    loadPlugins();
+    QList<GeneralFactory *> list;
+    foreach (QmmpUiPluginCache *item, *m_cache)
+    {
+        if(!m_enabledNames.contains(item->shortName()))
+            continue;
+        if(item->generalFactory())
+            list.append(item->generalFactory());
+    }
+    return list;
 }
 
 QString General::file(GeneralFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 void General::setEnabled(GeneralFactory* factory, bool enable)
 {
-    checkFactories();
-    if (!m_factories->contains(factory))
+    loadPlugins();
+    if (!factories().contains(factory))
         return;
 
-    QString name = factory->properties().shortName;
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList genList = settings.value("General/enabled_plugins").toStringList();
+    if(enable == isEnabled(factory))
+        return;
+
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
 
     if (enable)
-    {
-        if (!genList.contains(name))
-            genList << name;
-    }
+        m_enabledNames << factory->properties().shortName;
     else
-        genList.removeAll(name);
-    settings.setValue("General/enabled_plugins", genList);
+        m_enabledNames.removeAll(factory->properties().shortName);
+    m_enabledNames.removeDuplicates();
+    settings.setValue("General/enabled_plugins", m_enabledNames);
+
     if(!m_generals)
         return;
-
 
     if (enable == m_generals->keys().contains(factory))
         return;
@@ -143,10 +162,6 @@ void General::showSettings(GeneralFactory* factory, QWidget* parentWidget)
 
 bool General::isEnabled(GeneralFactory* factory)
 {
-    checkFactories();
-    if (!m_factories->contains(factory))
-        return false;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
-    QStringList genList = settings.value("General/enabled_plugins").toStringList();
-    return genList.contains(factory->properties().shortName);
+    loadPlugins();
+    return m_enabledNames.contains(factory->properties().shortName);
 }
