@@ -25,6 +25,7 @@
 #include <QApplication>
 #include <QTranslator>
 #include "generalfactory.h"
+#include "uifactory.h"
 #include "qmmpuiplugincache_p.h"
 
 QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
@@ -32,6 +33,7 @@ QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
     m_error = false;
     m_instance = 0;
     m_generalFactory = 0;
+    m_uiFactory = 0;
     m_priority = 0;
     bool update = false;
     QFileInfo info(file);
@@ -62,6 +64,11 @@ QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
     if(update)
     {
         if(GeneralFactory *factory = generalFactory())
+        {
+            m_shortName = factory->properties().shortName;
+            m_priority = 0;
+        }
+        else if(UiFactory *factory = uiFactory())
         {
             m_shortName = factory->properties().shortName;
             m_priority = 0;
@@ -115,6 +122,17 @@ GeneralFactory *QmmpUiPluginCache::generalFactory()
             qApp->installTranslator(m_generalFactory->createTranslator(qApp));
     }
     return m_generalFactory;
+}
+
+UiFactory *QmmpUiPluginCache::uiFactory()
+{
+    if(!m_uiFactory)
+    {
+        m_uiFactory = qobject_cast<UiFactory *> (instance());
+        if(m_uiFactory)
+            qApp->installTranslator(m_uiFactory->createTranslator(qApp));
+    }
+    return m_uiFactory;
 }
 
 QObject *QmmpUiPluginCache::instance()
