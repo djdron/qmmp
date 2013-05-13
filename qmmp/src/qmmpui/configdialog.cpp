@@ -252,7 +252,7 @@ void ConfigDialog::loadPluginsInfo()
         load user interfaces information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("User Interfaces"));
-    foreach(UiFactory *factory, *UiLoader::factories())
+    foreach(UiFactory *factory, UiLoader::factories())
     {
         new PluginItem (item, factory, UiLoader::file(factory));
     }

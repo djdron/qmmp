@@ -26,6 +26,7 @@
 #include <QSettings>
 
 class GeneralFactory;
+class UiFactory;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -41,6 +42,7 @@ public:
     bool hasError() const;
 
     GeneralFactory *generalFactory();
+    UiFactory *uiFactory();
 
     static void cleanup(QSettings *settings);
 
@@ -51,6 +53,7 @@ private:
     bool m_error;
     QObject *m_instance;
     GeneralFactory *m_generalFactory;
+    UiFactory *m_uiFactory;
     int m_priority;
 };
 

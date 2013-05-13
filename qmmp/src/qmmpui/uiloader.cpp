@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,63 +18,61 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QtGui>
-#include <QObject>
-#include <QList>
-#include <QApplication>
+#include <QDir>
 #include <qmmp/qmmp.h>
+#include "qmmpuiplugincache_p.h"
 #include "uiloader.h"
 
-QList<UiFactory*> *UiLoader::m_factories = 0;
-QHash <UiFactory*, QString> *UiLoader::m_files = 0;
+QList<QmmpUiPluginCache*> *UiLoader::m_cache = 0;
 
-void UiLoader::checkFactories()
+void UiLoader::loadPlugins()
 {
-    if (!m_factories)
+    if (m_cache)
+        return;
+
+    m_cache = new QList<QmmpUiPluginCache*>;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("Ui");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        m_factories = new QList<UiFactory *>;
-        m_files = new QHash <UiFactory*, QString>;
-        QDir pluginsDir(Qmmp::pluginsPath());
-        pluginsDir.cd("Ui");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QmmpUiPluginCache *item = new QmmpUiPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-            QObject *plugin = loader.instance();
-            if (loader.isLoaded())
-                qDebug("UiLoader: loaded plugin %s", qPrintable(fileName));
-            else
-                qWarning("UiLoader: %s", qPrintable(loader.errorString()));
-
-            UiFactory *factory = 0;
-            if (plugin)
-                factory = qobject_cast<UiFactory *>(plugin);
-
-            if (factory)
-            {
-                m_factories->append(factory);
-                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
-                qApp->installTranslator(factory->createTranslator(qApp));
-            }
+            delete item;
+            continue;
         }
+        m_cache->append(item);
     }
 }
 
-QList<UiFactory*> *UiLoader::factories()
+QList<UiFactory *> UiLoader::factories()
 {
-    checkFactories();
-    return m_factories;
+    loadPlugins();
+    QList<UiFactory *> list;
+    foreach (QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->uiFactory())
+            list.append(item->uiFactory());
+    }
+    return list;
 }
 
 QString UiLoader::file(UiFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 void UiLoader::select(UiFactory* factory)
 {
-    checkFactories();
-    if (!m_factories->contains(factory))
+    loadPlugins();
+    if (!factories().contains(factory))
         return;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Ui/current_plugin", factory->properties().shortName);
@@ -82,15 +80,15 @@ void UiLoader::select(UiFactory* factory)
 
 UiFactory *UiLoader::selected()
 {
-    checkFactories();
+    loadPlugins();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString name = settings.value("Ui/current_plugin", "skinned").toString();
-    foreach(UiFactory *factory, *m_factories)
+    foreach(QmmpUiPluginCache *item, *m_cache)
     {
-        if (factory->properties().shortName == name)
-            return factory;
+        if(item->shortName() == name && item->uiFactory())
+            return item->uiFactory();
     }
-    if (!m_factories->isEmpty())
-        return m_factories->at(0);
+    if (!m_cache->isEmpty())
+        return m_cache->at(0)->uiFactory();
     return 0;
 }
