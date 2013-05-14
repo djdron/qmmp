@@ -26,64 +26,60 @@
 #include <QMetaObject>
 #include <QLibrary>
 #include <qmmp/qmmp.h>
+#include "qmmpuiplugincache_p.h"
 #include "filedialog.h"
 #include "qtfiledialog_p.h"
 
-
 //static functions
 FileDialog* FileDialog::m_instance = 0;
-QList<FileDialogFactory*> *FileDialog::m_factories = 0;
-QHash <FileDialogFactory*, QString> *FileDialog::m_files = 0;
+QList<QmmpUiPluginCache*> *FileDialog::m_cache = 0;
 FileDialogFactory *FileDialog::m_currentFactory = 0;
 
-void FileDialog::checkFactories()
+void FileDialog::loadPlugins()
 {
-    if(m_factories)
+    if (m_cache)
         return;
 
-    m_factories = new QList<FileDialogFactory *>;
-    m_files = new QHash <FileDialogFactory*, QString>;
-    m_factories->append(new QtFileDialogFactory);
+    m_cache = new QList<QmmpUiPluginCache*>;
+    m_cache->append(new QmmpUiPluginCache(new QtFileDialogFactory));
+
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QDir pluginsDir (Qmmp::pluginsPath());
     pluginsDir.cd("FileDialogs");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = loader.instance();
-        if (loader.isLoaded())
-            qDebug("FileDialog: loaded plugin %s", qPrintable(fileName));
-        else
-            qWarning("FileDialog: %s",qPrintable(loader.errorString()));
-
-        FileDialogFactory *factory = 0;
-        if (plugin)
-            factory = qobject_cast<FileDialogFactory *>(plugin);
-
-        if (factory)
+        QmmpUiPluginCache *item = new QmmpUiPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
+        if(item->hasError())
         {
-            m_factories->append(factory);
-            m_files->insert(factory, fileName);
-            qApp->installTranslator(factory->createTranslator(qApp));
+            delete item;
+            continue;
         }
+        m_cache->append(item);
     }
 }
 
-QList <FileDialogFactory*> *FileDialog::factories()
+QList<FileDialogFactory *> FileDialog::factories()
 {
-    checkFactories();
-    return m_factories;
+    loadPlugins();
+    QList<FileDialogFactory *> list;
+    foreach (QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->fileDialogFactory())
+            list.append(item->fileDialogFactory());
+    }
+    return list;
 }
 
 void FileDialog::setEnabled(FileDialogFactory *factory)
 {
-    checkFactories();
+    loadPlugins();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FileDialog", factory->properties().shortName);
 }
 
 bool FileDialog::isEnabled(FileDialogFactory *factory)
 {
-    checkFactories();
+    loadPlugins();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString name = settings.value("FileDialog", "qt_dialog").toString();
     return factory->properties().shortName == name;
@@ -91,8 +87,13 @@ bool FileDialog::isEnabled(FileDialogFactory *factory)
 
 QString FileDialog::file(FileDialogFactory *factory)
 {
-    checkFactories();
-    return m_files->value(factory);
+    loadPlugins();
+    foreach(QmmpUiPluginCache *item, *m_cache)
+    {
+        if(item->shortName() == factory->properties().shortName)
+            return item->file();
+    }
+    return QString();
 }
 
 QString FileDialog::getExistingDirectory(QWidget *parent,
@@ -161,22 +162,22 @@ void FileDialog::popup(QWidget *parent,
 
 FileDialog* FileDialog::instance()
 {
-    checkFactories();
+    loadPlugins();
     FileDialogFactory *selected = 0;
 
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString name = settings.value("FileDialog", "qt_dialog").toString();
-    foreach(FileDialogFactory *factory, *m_factories)
+    foreach(QmmpUiPluginCache *item, *m_cache)
     {
-        if(factory->properties().shortName == name)
+        if(item->shortName() == name)
         {
-            selected = factory;
+            selected = item->fileDialogFactory();
             break;
         }
     }
 
     if(!selected)
-        selected = m_factories->at(0);
+        selected = m_cache->at(0)->fileDialogFactory();
 
     if(selected == m_currentFactory && m_instance)
         return m_instance;
@@ -194,7 +195,7 @@ FileDialog* FileDialog::instance()
 
 FileDialog* FileDialog::createDefault()
 {
-    return m_factories->at(0)->create();
+    return m_cache->at(0)->fileDialogFactory()->create();
 }
 
 //base implementation

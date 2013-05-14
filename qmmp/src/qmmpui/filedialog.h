@@ -1,5 +1,5 @@
 /**************************************************************************
-*   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+*   Copyright (C) 2008-2013 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,8 @@
 #include <QHash>
 #include "filedialogfactory.h"
 
+class QmmpUiPluginCache;
+
 /*! @brief The FileDialog class is the base interface class of the file dialogs.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
@@ -37,7 +39,7 @@ public:
     /*!
      * Returns a list of registered file dialog factories.
      */
-    static QList <FileDialogFactory*> *factories();
+    static QList <FileDialogFactory*> factories();
     /*!
      * Selects current file dialog factory.
      */
@@ -229,13 +231,12 @@ private slots:
     void updateLastDir(const QStringList&);
 
 private:
-    static void checkFactories();
+    static void loadPlugins();
     static FileDialog* instance();
     static FileDialog* createDefault();
-    static QList<FileDialogFactory*> *m_factories;
     static FileDialogFactory *m_currentFactory;
     static FileDialog* m_instance;
-    static QHash <FileDialogFactory*, QString> *m_files;
+    static QList<QmmpUiPluginCache*> *m_cache;
 
     void init(QObject* receiver, const char* member, QString *dir);
     bool m_initialized;
