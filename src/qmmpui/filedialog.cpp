@@ -1,5 +1,5 @@
 /**************************************************************************
-*   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+*   Copyright (C) 2008-2013 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -66,24 +66,6 @@ void FileDialog::checkFactories()
             qApp->installTranslator(factory->createTranslator(qApp));
         }
     }
-#ifndef Q_OS_WIN32
-#if (QT_VERSION >= 0x040500 && QT_VERSION < 0x040600)
-    //load native kde dialog
-    QStringList paths;
-    paths << "/usr/lib/kde4/kio_file.so";
-    paths << "/usr/lib64/kde4/kio_file.so";
-    paths << "/usr/local/kde4/lib/kde4/kio_file.so";
-    foreach(QString path, paths)
-    {
-        if(QFile::exists(path))
-        {
-            QLibrary *l = new QLibrary(path, qApp);
-            l->load();
-            break;
-        }
-    }
-#endif
-#endif
 }
 
 QList <FileDialogFactory*> *FileDialog::factories()
