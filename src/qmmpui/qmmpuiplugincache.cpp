@@ -26,6 +26,7 @@
 #include <QTranslator>
 #include "generalfactory.h"
 #include "uifactory.h"
+#include "filedialogfactory.h"
 #include "qmmpuiplugincache_p.h"
 
 QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
@@ -34,6 +35,7 @@ QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
     m_instance = 0;
     m_generalFactory = 0;
     m_uiFactory = 0;
+    m_fileDialogFactory = 0;
     m_priority = 0;
     bool update = false;
     QFileInfo info(file);
@@ -73,6 +75,11 @@ QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
             m_shortName = factory->properties().shortName;
             m_priority = 0;
         }
+        else if(FileDialogFactory *factory = fileDialogFactory())
+        {
+            m_shortName = factory->properties().shortName;
+            m_priority = 0;
+        }
         else
         {
             qWarning("QmmpUiPluginCache: unknown plugin type: %s", qPrintable(m_path));
@@ -91,6 +98,39 @@ QmmpUiPluginCache::QmmpUiPluginCache(const QString &file, QSettings *settings)
         }
     }
     settings->endGroup();
+}
+
+QmmpUiPluginCache::QmmpUiPluginCache(QObject *instance)
+{
+    m_error = false;
+    m_instance = instance;
+    m_generalFactory = 0;
+    m_uiFactory = 0;
+    m_fileDialogFactory = 0;
+    m_priority = 0;
+
+    if(GeneralFactory *factory = generalFactory())
+    {
+        m_shortName = factory->properties().shortName;
+        m_priority = 0;
+    }
+    else if(UiFactory *factory = uiFactory())
+    {
+        m_shortName = factory->properties().shortName;
+        m_priority = 0;
+    }
+    else if(FileDialogFactory *factory = fileDialogFactory())
+    {
+        m_shortName = factory->properties().shortName;
+        m_priority = 0;
+    }
+    else
+    {
+        qWarning("QmmpUiPluginCache: unknown plugin type");
+        m_error = true;
+        return;
+    }
+    qDebug("QmmpUiPluginCache: registered internal factory %s", qPrintable(m_shortName));
 }
 
 const QString QmmpUiPluginCache::shortName() const
@@ -133,6 +173,17 @@ UiFactory *QmmpUiPluginCache::uiFactory()
             qApp->installTranslator(m_uiFactory->createTranslator(qApp));
     }
     return m_uiFactory;
+}
+
+FileDialogFactory *QmmpUiPluginCache::fileDialogFactory()
+{
+    if(!m_fileDialogFactory)
+    {
+        m_fileDialogFactory = qobject_cast<FileDialogFactory *> (instance());
+        if(m_fileDialogFactory)
+            qApp->installTranslator(m_fileDialogFactory->createTranslator(qApp));
+    }
+    return m_fileDialogFactory;
 }
 
 QObject *QmmpUiPluginCache::instance()

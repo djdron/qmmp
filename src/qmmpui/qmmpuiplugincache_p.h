@@ -27,6 +27,7 @@
 
 class GeneralFactory;
 class UiFactory;
+class FileDialogFactory;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,6 +36,7 @@ class QmmpUiPluginCache
 {
 public:
     QmmpUiPluginCache(const QString &file, QSettings *settings);
+    QmmpUiPluginCache(QObject *instance);
 
     const QString shortName() const;
     const QString file() const;
@@ -43,6 +45,7 @@ public:
 
     GeneralFactory *generalFactory();
     UiFactory *uiFactory();
+    FileDialogFactory *fileDialogFactory();
 
     static void cleanup(QSettings *settings);
 
@@ -54,6 +57,7 @@ private:
     QObject *m_instance;
     GeneralFactory *m_generalFactory;
     UiFactory *m_uiFactory;
+    FileDialogFactory *m_fileDialogFactory;
     int m_priority;
 };
 

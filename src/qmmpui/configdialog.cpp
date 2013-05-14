@@ -242,7 +242,7 @@ void ConfigDialog::loadPluginsInfo()
         load file dialogs information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("File Dialogs"));
-    foreach(FileDialogFactory *factory, *FileDialog::factories())
+    foreach(FileDialogFactory *factory, FileDialog::factories())
     {
         new PluginItem (item, factory, FileDialog::file(factory));
     }
