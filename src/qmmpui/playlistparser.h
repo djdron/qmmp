@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,7 @@ public:
     /*!
      * Returns a list of the installed playlist formats.
      */
-    static QList<PlayListFormat*> *formats();
+    static QList<PlayListFormat*> formats();
     /*!
      * Returns a list of the supported files name filters, i.e. "*.m3u *.pls"
      */

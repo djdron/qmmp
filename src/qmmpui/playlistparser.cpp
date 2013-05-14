@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,10 +29,10 @@
 
 QList<PlayListFormat*> *PlayListParser::m_formats = 0;
 
-QList<PlayListFormat*> *PlayListParser::formats()
+QList<PlayListFormat *> PlayListParser::formats()
 {
     checkFormats();
-    return m_formats;
+    return *m_formats;
 }
 
 QStringList PlayListParser::nameFilters()
