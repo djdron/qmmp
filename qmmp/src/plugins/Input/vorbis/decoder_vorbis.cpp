@@ -8,6 +8,7 @@
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/fileinfo.h>
+#include <stdlib.h>
 #include <QObject>
 #include <QIODevice>
 #include "decoder_vorbis.h"
