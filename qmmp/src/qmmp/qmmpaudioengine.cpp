@@ -34,6 +34,7 @@
 #include "qmmpaudioengine_p.h"
 #include "metadatamanager.h"
 
+#define TRANSPORT_TIMEOUT 5000 //ms
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0)
@@ -313,6 +314,7 @@ void QmmpAudioEngine::run()
     mutex()->lock ();
     m_next = false;
     qint64 len = 0;
+    int delay = 0;
     if(m_decoders.isEmpty())
     {
          mutex()->unlock ();
@@ -346,7 +348,23 @@ void QmmpAudioEngine::run()
             StateHandler::instance()->dispatch(m_inputs[m_decoder]->takeMetaData());
         if(m_inputs[m_decoder]->hasStreamInfo())
             StateHandler::instance()->dispatch(m_inputs[m_decoder]->takeStreamInfo());
-
+        //wait more data
+        if(m_inputs[m_decoder]->isWaiting())
+        {
+            mutex()->unlock();
+            msleep(5);
+            delay += 5;
+            mutex()->lock();
+            m_done = m_user_stop;
+            mutex()->unlock();
+            if(delay > TRANSPORT_TIMEOUT)
+            {
+                qWarning("QmmpAudioEngine: unable to receive more data");
+                m_finish = true;
+            }
+            continue;
+        }
+        delay = 0;
         // decode
         len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
 
@@ -354,8 +372,7 @@ void QmmpAudioEngine::run()
         {
             m_bitrate = m_decoder->bitrate();
             m_output_at += len;
-            if (m_output)
-                flush();
+            flush();
         }
         else if (len == 0)
         {

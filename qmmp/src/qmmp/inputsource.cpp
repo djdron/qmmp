@@ -34,6 +34,11 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
     m_hasStreamInfo = false;
 }
 
+bool InputSource::isWaiting()
+{
+    return false;
+}
+
 QString InputSource::contentType() const
 {
     return QString();

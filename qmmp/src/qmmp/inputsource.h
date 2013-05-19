@@ -60,6 +60,12 @@ public:
      */
     virtual bool isReady() = 0;
     /*!
+     * Returns \b true if the transport is waiting more data; otherwise returns \b false.
+     * Reader should wait until this function returns \b false.
+     * Default implementation allways returns \b false.
+     */
+    virtual bool isWaiting();
+    /*!
      * Returns content type of the input stream. Default implementation returns empty string.
      */
     virtual QString contentType() const;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -145,6 +145,7 @@ void MMSStreamReader::run()
         qWarning("MMSStreamReader: connection failed");
         setErrorString("connection failed");
         emit error();
+        QIODevice::close();
         return;
     }
     m_mutex.lock();
@@ -188,6 +189,7 @@ void MMSStreamReader::run()
             break;
         DownloadThread::usleep(5000);
     }
+    QIODevice::close();
 }
 
 void MMSStreamReader::checkBuffer()
