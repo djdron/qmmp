@@ -79,6 +79,22 @@ void QmmpAudioEngine::reset()
     m_next = false;
 }
 
+void QmmpAudioEngine::clearDecoders()
+{
+    if(m_decoder)
+    {
+        m_inputs.take(m_decoder)->deleteLater ();
+        delete m_decoder;
+        m_decoder = 0;
+    }
+    while(!m_decoders.isEmpty())
+    {
+        Decoder *d = m_decoders.dequeue();
+        m_inputs.take(d)->deleteLater ();
+        delete d;
+    }
+}
+
 bool QmmpAudioEngine::play()
 {
     if(isRunning() || m_decoders.isEmpty() || (m_output && m_output->isRunning()))
@@ -258,14 +274,8 @@ void QmmpAudioEngine::stop()
         m_output = 0;
     }
 
-    while(!m_decoders.isEmpty())
-    {
-        Decoder *d = m_decoders.dequeue();
-        m_inputs.take(d)->deleteLater ();
-        delete d;
-    }
+    clearDecoders();
     reset();
-    m_decoder = 0;
     while(!m_effects.isEmpty()) //delete effects
         delete m_effects.takeFirst();
 }
@@ -328,7 +338,7 @@ void QmmpAudioEngine::run()
     StateHandler::instance()->dispatch(Qmmp::Playing);
     sendMetaData();
 
-    while (! m_done && ! m_finish)
+    while (!m_done && !m_finish)
     {
         mutex()->lock ();
         //seek
@@ -360,13 +370,19 @@ void QmmpAudioEngine::run()
             if(delay > TRANSPORT_TIMEOUT)
             {
                 qWarning("QmmpAudioEngine: unable to receive more data");
-                m_finish = true;
+                m_done = true;
+                StateHandler::instance()->dispatch(Qmmp::NormalError);
+                break;
             }
-            continue;
+            else
+                continue;
         }
-        delay = 0;
-        // decode
-        len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
+        else
+        {
+            delay = 0;
+            // decode
+            len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
+        }
 
         if (len > 0)
         {
@@ -457,13 +473,7 @@ void QmmpAudioEngine::run()
             m_finish = true;
         mutex()->unlock();
     }
-    if(m_decoder)
-    {
-        m_inputs.take(m_decoder)->deleteLater ();
-        delete m_decoder;
-        m_decoder = 0;
-    }
-
+    clearDecoders();
     mutex()->lock ();
     m_next = false;
     if (m_finish)

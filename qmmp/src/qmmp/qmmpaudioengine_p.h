@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -65,6 +65,7 @@ private slots:
 private:
     void run();
     void reset();
+    void clearDecoders();
     void flush(bool = false);
     void addOffset();
     qint64 produceSound(char *data, qint64 size, quint32 brate);
