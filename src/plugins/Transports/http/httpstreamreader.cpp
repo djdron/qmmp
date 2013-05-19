@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -201,6 +201,11 @@ qint64 HttpStreamReader::readData(char* data, qint64 maxlen)
 
     qint64 len = 0;
     m_mutex.lock();
+    if(m_stream.buf_fill == 0)
+    {
+        m_mutex.unlock();
+        return 0;
+    }
     if (!m_stream.icy_meta_data || m_stream.icy_metaint == 0)
         len = readBuffer(data, maxlen);
     else
@@ -210,7 +215,6 @@ qint64 HttpStreamReader::readData(char* data, qint64 maxlen)
         while (maxlen > nread && m_stream.buf_fill > nread)
         {
             to_read = qMin<qint64>(m_stream.icy_metaint - m_metacount, maxlen - nread);
-            //to_read = (maxlen - nread);
             qint64 res = readBuffer(data + nread, to_read);
             nread += res;
             m_metacount += res;
@@ -343,6 +347,7 @@ void HttpStreamReader::run()
         setErrorString(errorBuffer);
         emit error();
     }
+    QIODevice::close();
 }
 
 qint64 HttpStreamReader::readBuffer(char* data, qint64 maxlen)
@@ -392,7 +397,14 @@ void HttpStreamReader::readICYMetaData()
     uint8_t packet_size;
     m_metacount = 0;
     m_mutex.lock();
-    readBuffer((char *)&packet_size, sizeof(packet_size));
+
+    while (m_stream.buf_fill < 1 && m_thread->isRunning())
+    {
+        m_mutex.unlock();
+        qApp->processEvents();
+        m_mutex.lock();
+    }
+    readBuffer((char *)&packet_size, 1);
     if (packet_size != 0)
     {
         int size = packet_size * 16;

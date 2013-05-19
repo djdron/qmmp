@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,6 +42,11 @@ bool HTTPInputSource::initialize()
 bool HTTPInputSource::isReady()
 {
     return m_reader->isOpen();
+}
+
+bool HTTPInputSource::isWaiting()
+{
+    return (!m_reader->bytesAvailable() && m_reader->isOpen());
 }
 
 QString HTTPInputSource::contentType() const

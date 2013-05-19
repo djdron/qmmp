@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,7 @@ class QTranslator;
 class HTTPInputFactory : public QObject, InputSourceFactory
 {
 Q_OBJECT
-Q_INTERFACES(InputSourceFactory);
+Q_INTERFACES(InputSourceFactory)
 public:
     const InputSourceProperties properties() const;
     InputSource *create(const QString &url, QObject *parent = 0);

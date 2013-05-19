@@ -37,6 +37,7 @@ public:
     QIODevice *ioDevice();
     bool initialize();
     bool isReady();
+    bool isWaiting();
     QString contentType() const;
 
 private:
