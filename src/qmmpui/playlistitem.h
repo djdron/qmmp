@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,10 +21,8 @@
 #define PLAYLISTITEM_H
 
 #include <QMap>
+#include <qmmp/fileinfo.h>
 #include <qmmp/qmmp.h>
-
-class FileInfo;
-class QSettings;
 
 /** @brief The PlayListItem class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
