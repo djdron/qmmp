@@ -296,8 +296,8 @@ void OutputWriter::run()
 
         while (!done && (recycler()->empty() || m_pause))
         {
-            mutex()->unlock();
             recycler()->cond()->wakeOne();
+            mutex()->unlock();
             recycler()->cond()->wait(recycler()->mutex());
             mutex()->lock ();
             done = m_userStop || m_finish;
