@@ -123,7 +123,8 @@ void MMSStreamReader::abort()
     }
     m_aborted = true;
     m_mutex.unlock();
-    m_thread->wait();
+    if(m_thread->isRunning())
+        m_thread->wait();
     m_ready = false;
     if (m_handle)
         mmsx_close(m_handle);

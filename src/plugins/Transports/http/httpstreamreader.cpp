@@ -262,7 +262,8 @@ void HttpStreamReader::abort()
     }
     m_stream.aborted = true;
     m_mutex.unlock();
-    m_thread->wait();
+    if(m_thread->isRunning())
+        m_thread->wait();
     if (m_handle)
     {
         curl_easy_cleanup(m_handle);
