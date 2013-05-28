@@ -256,7 +256,8 @@ void QmmpAudioEngine::stop()
     if (m_output)
         m_output->recycler()->cond()->wakeAll();
 
-    wait();
+    if(isRunning())
+        wait();
 
     if (m_output)
     {
@@ -269,7 +270,8 @@ void QmmpAudioEngine::stop()
     if (m_output)
     {
         m_output->recycler()->cond()->wakeAll();
-        m_output->wait();
+        if(m_output->isRunning())
+            m_output->wait();
         delete m_output;
         m_output = 0;
     }
