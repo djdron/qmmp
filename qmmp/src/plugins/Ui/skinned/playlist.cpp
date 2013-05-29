@@ -539,7 +539,15 @@ void PlayList::updateSkin()
 {
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL)); // TODO shaded
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
-    m_ratio = m_skin->ratio();
+    if(m_ratio != m_skin->ratio())
+    {
+        if(m_skin->ratio() < m_ratio)
+        {
+            setMinimumSize (275*m_skin->ratio(), (m_shaded ? 14 : 116)*m_skin->ratio());
+            resize(width()*m_skin->ratio() / m_ratio, height()*m_skin->ratio() / m_ratio);
+        }
+        m_ratio = m_skin->ratio();
+    }
     setMinimalMode(m_shaded);
 }
 
@@ -624,7 +632,6 @@ void PlayList::setMinimalMode(bool b)
         setMinimumSize(275*m_ratio, 116*m_ratio);
         resize (width(), m_height);
         setSizeIncrement (25*m_ratio, 29*m_ratio);
-
     }
     updatePositions();
     update();
