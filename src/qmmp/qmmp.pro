@@ -72,6 +72,7 @@ unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += shared \
     warn_on \
+    create_pc create_prl no_install_prl \
     qt \
     thread
 TEMPLATE = lib
@@ -122,12 +123,11 @@ unix {
 INCLUDEPATH += ./
 
 
-
-
-
-
-
-
+QMAKE_PKGCONFIG_NAME = qmmp
+QMAKE_PKGCONFIG_DESCRIPTION = qmmp core library
+QMAKE_PKGCONFIG_REQUIRES = QtCore QtGui
+QMAKE_PKGCONFIG_DESTDIR = pkgconfig
+ 
 
 
 

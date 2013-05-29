@@ -42,7 +42,7 @@ TRANSLATIONS = translations/kdenotify_plugin_cs.ts \
                translations/kdenotify_plugin_ja.ts \
                translations/kdenotify_plugin_es.ts
 
-images.files = app_icon.png \
-               empty_cover.png
+images.files = images/app_icon.png \
+               images/empty_cover.png
 images.path = /share/qmmp/images/
 INSTALLS += images
