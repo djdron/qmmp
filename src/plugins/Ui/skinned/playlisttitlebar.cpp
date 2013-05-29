@@ -265,10 +265,13 @@ void PlayListTitleBar::showCurrent()
         PlayListItem* info = m_model->currentItem();
         if (info)
         {
-            m_text = QString("%1. ").arg(m_model->currentIndex()+1);
-            m_text.append(info->text());
-            m_text.append(QString("  (%1:%2)").arg(info->length()/60)
-                          .arg(info->length()%60, 2, 10, QChar('0')));
+            m_text = QString("%1. %2").arg(m_model->currentIndex()+1)
+                    .arg(info->text());
+            if(info->length())
+            {
+                m_text.append(QString("  (%1:%2)").arg(info->length()/60)
+                              .arg(info->length()%60, 2, 10, QChar('0')));
+            }
         }
         else
             m_text.clear();
