@@ -105,6 +105,10 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
              m_listWidget, SLOT(setModel(PlayListModel*)));
     m_listWidget->setModel(m_pl_manager->selectedPlayList());
 
+    createMenus();
+    createActions();
+    readSettings();
+
     m_titleBar = new PlayListTitleBar (this);
     m_titleBar->setMinimumSize(0,0);
     m_titleBar->move (0,0);
@@ -112,10 +116,6 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
              m_titleBar, SLOT(setModel(PlayListModel*)));
     m_titleBar->setModel(m_pl_manager->currentPlayList());
 
-    createMenus();
-    createActions();
-
-    readSettings();
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
     updatePositions();
 #ifdef Q_WS_X11
@@ -580,7 +580,7 @@ void PlayList::generateCopySelectedMenu()
     }
 }
 
-void PlayList::copySelectedMenuActionTriggered( QAction * action)
+void PlayList::copySelectedMenuActionTriggered(QAction *action)
 {
     PlayListModel *targetPlayList = 0;
     QString actionText=action->text();
