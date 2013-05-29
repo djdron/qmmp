@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 #include <QWidget>
 #include <QPointer>
 
-class QMenu;;
+class QMenu;
 class Skin;
 class ListWidget;
 class PlayListItem;
