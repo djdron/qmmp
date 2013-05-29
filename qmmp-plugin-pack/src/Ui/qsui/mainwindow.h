@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,70 +38,71 @@ class PositionSlider;
 class KeyboardManager;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class MainWindow : public QMainWindow
 {
 Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
 private slots:
-	void addDir();
-	void addFiles();
-	void addUrl();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void aboutUi();
-	void about();
-	void toggleVisibility();
-	void showSettings();
-	void setVolume(int volume);
-	void updateVolume();
-	void jumpTo();
-	void readSettings();
-	void showTabMenu(QPoint pos);
-	void savePlayList();
-	void loadPlayList();
-	void on_tabWidget_tabCloseRequested(int index);
-	void showBuffering(int percent);
-	void showEqualizer();
-	void forward();
-	void backward();
-	void showMetaData();
+    void addDir();
+    void addFiles();
+    void addUrl();
+    void updatePosition(qint64 pos);
+    void seek();
+    void showState(Qmmp::State);
+    void showBitrate(int);
+    void updateTabs();
+    void addPlaylist();
+    void removePlaylist();
+    void removePlaylistWithIndex(int);
+    void addTab(int);
+    void removeTab(int);
+    void renameTab();
+    void aboutUi();
+    void about();
+    void toggleVisibility();
+    void showSettings();
+    void setVolume(int volume);
+    void updateVolume();
+    void jumpTo();
+    void playPause();
+    void readSettings();
+    void showTabMenu(QPoint pos);
+    void savePlayList();
+    void loadPlayList();
+    void on_tabWidget_tabCloseRequested(int index);
+    void showBuffering(int percent);
+    void showEqualizer();
+    void forward();
+    void backward();
+    void showMetaData();
 
 private:
-	void closeEvent(QCloseEvent *);
-	void createActions();
-	void writeSettings();
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow m_ui;
-	MediaPlayer *m_player;
-	PositionSlider *m_slider;
-	QLabel *m_timeLabel;
-	SoundCore *m_core;
-	QLabel *m_statusLabel;
-	VisualMenu *m_visMenu;
-	UiHelper *m_uiHelper;
-	QMenu *m_pl_menu;
-	QMenu *m_tab_menu;
-	QSlider *m_volumeSlider;
-	QAction *m_volumeAction;
-	KeyboardManager *m_key_manager;
-	int m_balance;
-	bool m_update;
-	bool m_hideOnClose;
+    void closeEvent(QCloseEvent *);
+    void createActions();
+    void writeSettings();
+    QString m_lastDir;
+    PlayListManager *m_pl_manager;
+    Ui::MainWindow m_ui;
+    MediaPlayer *m_player;
+    PositionSlider *m_slider;
+    QLabel *m_timeLabel;
+    SoundCore *m_core;
+    QLabel *m_statusLabel;
+    VisualMenu *m_visMenu;
+    UiHelper *m_uiHelper;
+    QMenu *m_pl_menu;
+    QMenu *m_tab_menu;
+    QSlider *m_volumeSlider;
+    QAction *m_volumeAction;
+    KeyboardManager *m_key_manager;
+    int m_balance;
+    bool m_update;
+    bool m_hideOnClose;
 
 };
 

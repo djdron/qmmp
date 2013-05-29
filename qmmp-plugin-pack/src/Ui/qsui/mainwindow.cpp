@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -319,6 +319,14 @@ void MainWindow::jumpTo()
     m_uiHelper->jumpToTrack(this);
 }
 
+void MainWindow::playPause()
+{
+    if (m_core->state() == Qmmp::Playing)
+        m_core->pause();
+    else
+        m_player->play();
+}
+
 void MainWindow::showBitrate(int)
 {
     m_statusLabel->setText(tr("<b>%1</b> [%2 bit/%3/%4 Hz/%5 kbps]")
@@ -377,9 +385,9 @@ void MainWindow::createActions()
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renameTab())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
-                                      SLOT(selectNextPlayList())));
+                                        SLOT(selectNextPlayList())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
-                                      SLOT(selectPreviousPlayList())));
+                                        SLOT(selectPreviousPlayList())));
     m_ui.menuFile->addSeparator();
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SLOT(loadPlayList())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SLOT(savePlayList())));
@@ -389,9 +397,9 @@ void MainWindow::createActions()
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
     m_ui.menuEdit->addSeparator();
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager,
-                                      SLOT(removeSelected())));
+                                        SLOT(removeSelected())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
-                                      SLOT(removeUnselected())));
+                                        SLOT(removeUnselected())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_INVALID, m_pl_manager,
                                         SLOT(removeInvalidItems())));
@@ -489,9 +497,9 @@ void MainWindow::createActions()
     m_ui.menuEdit->addMenu (sort_mode_menu);
     m_ui.menuEdit->addSeparator();
     m_ui.menuEdit->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
-                            m_pl_manager, SLOT(randomizeList()));
+                              m_pl_manager, SLOT(randomizeList()));
     m_ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
-                            m_pl_manager, SLOT(reverseList()));
+                              m_pl_manager, SLOT(reverseList()));
     m_ui.menuEdit->addSeparator();
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
@@ -502,6 +510,7 @@ void MainWindow::createActions()
     m_ui.menuPlayback->addAction(ACTION(ActionManager::PAUSE));
     m_ui.menuPlayback->addAction(ACTION(ActionManager::NEXT));
     m_ui.menuPlayback->addAction(ACTION(ActionManager::PREVIOUS));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::PLAY_PAUSE,this,SLOT(playPause())));
     m_ui.menuPlayback->addSeparator();
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::JUMP, this, SLOT(jumpTo())));
     m_ui.menuPlayback->addSeparator();
@@ -513,7 +522,7 @@ void MainWindow::createActions()
     m_ui.menuPlayback->addAction(ACTION(ActionManager::SHUFFLE));
     m_ui.menuPlayback->addAction(ACTION(ActionManager::NO_PL_ADVANCE));
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
-                                          SLOT(stopAfterSelected())));
+                                            SLOT(stopAfterSelected())));
     //help menu
     m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_UI, this, SLOT(aboutUi())));
     m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
