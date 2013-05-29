@@ -9,4 +9,6 @@ for /d /r %%B in (release)  do rmdir /s /q %%B
 for /r %%B in (*resource.rc)  do del /s /q %%B
 for /r %%B in (*.Debug)  do del /s /q %%B
 rmdir /s /q bin\plugins
+rmdir /s /q src\qmmp\pkgconfig
+rmdir /s /q src\qmmpui\pkgconfig
 del /s /q bin\qmmp.exe

@@ -21,10 +21,10 @@ unix {
     isEmpty(LIB_DIR){
         LIB_DIR = /lib
     }
-    target.path = $$LIB_DIR/qmmp/PlaylistFormats
+    target.path = $$LIB_DIR/qmmp/PlayListFormats
     INSTALLS += target
 
-    QMAKE_CLEAN =$$PLUGINS_PREFIX/PlaylistFormats/libxsplaylistformat.so
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/PlayListFormats/libxsplaylistformat.so
     LIBS += -lqmmpui -lqmmp
 }
 
