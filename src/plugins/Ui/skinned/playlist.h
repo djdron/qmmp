@@ -85,7 +85,7 @@ class PlayList : public QWidget
         void deletePlaylist();
         void showPlayLists();
         void generateCopySelectedMenu();
-        void copySelectedMenuActionTriggered( QAction * action);
+        void copySelectedMenuActionTriggered(QAction *action);
 
     private:
         void updatePositions();
