@@ -19,17 +19,17 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation>MÃ³dulo de letras</translation>
+        <translation>Módulo de letras</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation>Acerca del mÃ³dulo de letras</translation>
+        <translation>Acerca del módulo de letras</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation>MÃ³dulo de letras para Qmmp</translation>
+        <translation>Módulo de letras para Qmmp</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation>Este mÃ³dulo descarga letras de LyricWiki</translation>
+        <translation>Este módulo descarga letras de LyricWiki</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation>MÃ³dulo de letras</translation>
+        <translation>Módulo de letras</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
         <source>Title:</source>
-        <translation>TÃ­tulo:</translation>
+        <translation>Título:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
