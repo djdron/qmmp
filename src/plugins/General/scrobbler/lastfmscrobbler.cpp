@@ -129,15 +129,15 @@ void LastfmScrobbler::setState(Qmmp::State state)
     switch ((uint) state)
     {
     case Qmmp::Playing:
-        if (previousState != Qmmp::Paused) 
+        if (previousState != Qmmp::Paused)
         {
             qDebug("LastfmScrobbler: new song started");
             m_start_ts = QDateTime::currentDateTime().toTime_t();
             elapsed = 0;
         }
-        else 
+        else
         {
-            qDebug("LastfmScrobbler: resuming after pause, %d seconds played", elapsed / 1000);
+            qDebug("LastfmScrobbler: resuming from %d seconds played", elapsed / 1000);
         }
         m_time->restart();
         break;
@@ -448,6 +448,7 @@ void LastfmAuth::getSession()
 void LastfmAuth::checkSession(const QString &session)
 {
     qDebug("LastfmAuth: checking session...");
+    m_session = session;
     QMap <QString, QString> params;
     params.insert("api_key", API_KEY);
     params.insert("sk", session);
