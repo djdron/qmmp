@@ -90,9 +90,13 @@ void LibrefmScrobbler::setState(Qmmp::State state)
         if (previousState != Qmmp::Paused)
         {
             m_start_ts = QDateTime::currentDateTime().toTime_t();
-            m_time->restart();
             elapsed = 0;
         }
+        else
+        {
+            qDebug("LibrefmScrobbler: resuming from %d seconds played", elapsed / 1000);
+        }
+        m_time->restart();
         if (!isReady() && !m_handshakeReply)
             handshake();
         break;
@@ -120,6 +124,7 @@ void LibrefmScrobbler::setState(Qmmp::State state)
     default:
         ;
     }
+    previousState = state;
 }
 
 void LibrefmScrobbler::updateMetaData()
