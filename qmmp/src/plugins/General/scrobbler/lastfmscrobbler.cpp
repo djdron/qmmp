@@ -142,7 +142,8 @@ void LastfmScrobbler::setState(Qmmp::State state)
         m_time->restart();
         break;
     case Qmmp::Stopped:
-        elapsed += m_time->elapsed();
+        if (previousState != Qmmp::Paused)
+            elapsed += m_time->elapsed();
         if (!m_song.metaData().isEmpty()
             && ((elapsed / 1000 > 240) || (elapsed / 1000 > int(m_song.length()/2)))
             && (m_song.length() > MIN_SONG_LENGTH))
@@ -160,7 +161,7 @@ void LastfmScrobbler::setState(Qmmp::State state)
             submit();
         break;
     case Qmmp::Paused:
-        elapsed += m_time->restart();
+        elapsed += m_time->elapsed();
         qDebug("LastfmScrobbler: pausing after %d seconds played", elapsed / 1000);
         break;
     default:
