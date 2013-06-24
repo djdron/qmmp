@@ -49,7 +49,6 @@ HEADERS += mainwindow.h \
     popupwidget.h \
     popupsettings.h \
     windowsystem.h \
-    lxdesupport.h \
     actionmanager.h \
     shortcutitem.h \
     shortcutdialog.h \
@@ -98,7 +97,6 @@ SOURCES += mainwindow.cpp \
     popupwidget.cpp \
     popupsettings.cpp \
     windowsystem.cpp \
-    lxdesupport.cpp \
     actionmanager.cpp \
     shortcutitem.cpp \
     shortcutdialog.cpp \
