@@ -342,20 +342,21 @@ void PlayListModel::removeAt (int i)
 {
     if ((i < count()) && (i >= 0))
     {
-        PlayListItem* f = m_items.takeAt(i);
-        if(m_stop_item == f)
+        PlayListItem* item = m_items.takeAt(i);
+        m_queued_songs.removeAll(item);
+        if(m_stop_item == item)
             m_stop_item = 0;
-        m_total_length -= f->length();
+        m_total_length -= item->length();
         if (m_total_length < 0)
             m_total_length = qMin(0, m_total_length);
 
-        if (f->flag() == PlayListItem::FREE)
+        if (item->flag() == PlayListItem::FREE)
         {
-            delete f;
-            f = NULL;
+            delete item;
+            item = NULL;
         }
-        else if (f->flag() == PlayListItem::EDITING)
-            f->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
+        else if (item->flag() == PlayListItem::EDITING)
+            item->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
 
         if (m_current >= i && m_current != 0)
             m_current--;
@@ -385,20 +386,21 @@ void PlayListModel::removeSelection(bool inverted)
     {
         if (m_items.at(i)->isSelected() ^ inverted)
         {
-            PlayListItem* f = m_items.takeAt(i);
-            if(f == m_stop_item)
+            PlayListItem* item = m_items.takeAt(i);
+            m_queued_songs.removeAll(item);
+            if(item == m_stop_item)
                 m_stop_item = 0;
-            m_total_length -= f->length();
+            m_total_length -= item->length();
             if (m_total_length < 0)
                 m_total_length = 0;
 
-            if (f->flag() == PlayListItem::FREE)
+            if (item->flag() == PlayListItem::FREE)
             {
-                delete f;
-                f = NULL;
+                delete item;
+                item = NULL;
             }
-            else if (f->flag() == PlayListItem::EDITING)
-                f->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
+            else if (item->flag() == PlayListItem::EDITING)
+                item->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
 
             select_after_delete = i;
 
@@ -579,12 +581,12 @@ void PlayListModel::addToQueue()
     emit listChanged();
 }
 
-void PlayListModel::setQueued(PlayListItem* file)
+void PlayListModel::setQueued(PlayListItem* item)
 {
-    if (isQueued(file))
-        m_queued_songs.removeAll(file);
+    if (isQueued(item))
+        m_queued_songs.removeAll(item);
     else
-        m_queued_songs.enqueue(file);
+        m_queued_songs.enqueue(item);
     emit listChanged();
 }
 

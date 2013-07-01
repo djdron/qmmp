@@ -407,9 +407,9 @@ public slots:
      */
     void addToQueue();
     /*!
-     * Adds/removes media file \b f to/from playback queue.
+     * Adds/removes item \b f to/from playback queue.
      */
-    void setQueued(PlayListItem* f);
+    void setQueued(PlayListItem* item);
     /*!
      * Removes invalid items from playlist
      */
