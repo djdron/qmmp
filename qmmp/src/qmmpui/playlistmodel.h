@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -185,6 +185,12 @@ public:
      * @param last Last item.
      */
     QStringList getTimes(int first,int last);
+    /*!
+     * Returns a list of the items, starting at position \b pos
+     * \param pos First item position.
+     * \param count A number of items. If \b count is -1 (the default), all items from pos are returned.
+     */
+    QList<PlayListItem *> mid(int pos, int count = -1);
     /*!
      *  Moves the item at index position \b from to index position \b to.
      */

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2012 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2013 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -282,7 +282,7 @@ QStringList PlayListModel::getTitles(int b,int l)
 
 QStringList PlayListModel::getTimes(int b,int l)
 {
-    QList <QString> m_times;
+    QStringList times;
     int d = 0;
     QString str;
     for (int i = b; (i < b + l) && (i < m_items.size()); ++i)
@@ -295,10 +295,15 @@ QStringList PlayListModel::getTimes(int b,int l)
         str += QString(":%1").arg(d%60, 2, 10, QChar('0'));
         if(!d)
             str.clear();
-        m_times << str;
+        times << str;
         str.clear();
     }
-    return m_times;
+    return times;
+}
+
+QList<PlayListItem *> PlayListModel::mid(int pos, int count)
+{
+    return m_items.mid(pos, count);
 }
 
 bool PlayListModel::isSelected(int index)
