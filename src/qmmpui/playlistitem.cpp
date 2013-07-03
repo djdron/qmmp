@@ -33,7 +33,7 @@ PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)
 PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QString>(other),
     m_flag(other.m_flag)
 {
-    m_title = other.m_title;
+    m_formattedTitle = other.m_formattedTitle;
     if (other.m_info)
         m_info = new FileInfo(*(other.m_info));
     else
@@ -41,11 +41,12 @@ PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QSt
     m_selected = other.m_selected;
     m_current = other.m_current;
     m_length = other.m_length;
+    m_formattedLength = other.m_formattedLength;
 }
 
 PlayListItem::PlayListItem(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()), m_flag(FREE)
 {
-    m_length = info->length();
+    setLength(m_length = info->length());
     m_selected = false;
     m_current = false;
     m_info = info;
@@ -114,16 +115,21 @@ void PlayListItem::updateTags()
         delete list.takeLast();
 }
 
-const QString PlayListItem::text()
+const QString PlayListItem::formattedTitle()
 {
-    if(m_title.isEmpty())
+    if(m_formattedTitle.isEmpty())
         readMetadata();
-    return m_title;
+    return m_formattedTitle;
+}
+
+const QString PlayListItem::formattedLength() const
+{
+    return m_formattedLength;
 }
 
 void PlayListItem::setText(const QString &title)
 {
-    m_title = title;
+    m_formattedTitle = title;
 }
 
 qint64 PlayListItem::length() const
@@ -134,6 +140,8 @@ qint64 PlayListItem::length() const
 void PlayListItem::setLength(qint64 length)
 {
     m_length = length;
+    MetaDataFormatter f;
+    m_formattedLength = f.formatLength(m_length);
 }
 
 const QString PlayListItem::url() const
@@ -144,14 +152,14 @@ const QString PlayListItem::url() const
 void PlayListItem::readMetadata()
 {
     MetaDataFormatter f(QmmpUiSettings::instance()->format());
-    m_title = f.parse(this);
-    if (m_title.isEmpty())
-        m_title = value(Qmmp::URL).section('/',-1);
+    m_formattedTitle = f.parse(this);
+    if (m_formattedTitle.isEmpty())
+        m_formattedTitle = value(Qmmp::URL).section('/',-1);
     if (m_info)
         delete m_info;
     m_info = 0;
     if (QmmpUiSettings::instance()->convertUnderscore())
-        m_title.replace("_", " ");
+        m_formattedTitle.replace("_", " ");
     if (QmmpUiSettings::instance()->convertTwenty())
-        m_title.replace("%20", " ");
+        m_formattedTitle.replace("%20", " ");
 }

@@ -51,7 +51,7 @@ public:
      * %l - duration,
      * %if(A,B,C) or %if(A&B&C,D,E) - condition.
      */
-    MetaDataFormatter(const QString &format);
+    MetaDataFormatter(const QString &format = QString());
     /*!
      * Converts metadata of item \b item to one string using template.
      */

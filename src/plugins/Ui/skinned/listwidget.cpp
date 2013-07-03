@@ -356,8 +356,13 @@ void ListWidget::updateList()
         emit positionChanged(0, qMax(0, m_model->count() - m_rows));
     }
 
-    m_titles = m_model->getTitles(m_first, m_rows);
-    m_times  = m_model->getTimes(m_first, m_rows);
+    m_titles.clear();
+    m_times.clear();
+    foreach (PlayListItem *item, m_model->mid(m_first, m_rows))
+    {
+        m_titles.append(item->formattedTitle());
+        m_times.append(item->formattedLength());
+    }
     m_scroll = false;
     //add numbers
     for (int i = 0; i < m_titles.size() && m_show_number && !m_align_numbres; ++i)

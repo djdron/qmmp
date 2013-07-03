@@ -266,7 +266,7 @@ void PlayListTitleBar::showCurrent()
         if (info)
         {
             m_text = QString("%1. %2").arg(m_model->currentIndex()+1)
-                    .arg(info->text());
+                    .arg(info->formattedTitle());
             if(info->length())
             {
                 m_text.append(QString("  (%1:%2)").arg(info->length()/60)

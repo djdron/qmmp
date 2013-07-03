@@ -86,9 +86,13 @@ public:
      */
     void setFlag(FLAGS);
     /*!
-     * Returns item short title.
+     * Returns formatted title of the item.
      */
-    const QString text();
+    const QString formattedTitle();
+    /*!
+     *  Returns formatted length of the item.
+     */
+    const QString formattedLength() const;
     /*!
      * Direct access to the item short title.
      * @param title New short title.
@@ -118,7 +122,8 @@ public:
 
 private:
     void readMetadata();
-    QString m_title;
+    QString m_formattedTitle;
+    QString m_formattedLength;
     FileInfo *m_info;
     bool m_selected;
     bool m_current;

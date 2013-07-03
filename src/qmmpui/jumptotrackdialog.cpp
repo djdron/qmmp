@@ -105,7 +105,9 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 void JumpToTrackDialog::refresh()
 {
     filterLineEdit->clear();
-    QStringList titles = m_model->getTitles(0, m_model->count());
+    QStringList titles;
+    foreach (PlayListItem *item, m_model->items())
+        titles.append(item->formattedTitle());
     m_listModel->setStringList(titles);
     filterLineEdit->setFocus();
 }
