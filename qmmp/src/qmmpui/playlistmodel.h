@@ -235,10 +235,7 @@ public:
     /*!
      * Returns list of all \b PlayListItem pointers.
      */
-    QList<PlayListItem*> items() const
-    {
-        return m_items;
-    }
+    QList<PlayListItem*> items() const;
     /*!
      * Returns number of first item that selected upper the \b row item.
      */
@@ -250,10 +247,7 @@ public:
     /*!
      * Returns total lenght in seconds of all songs.
      */
-    int totalLength()const
-    {
-        return m_total_length;
-    }
+    int totalLength() const;
     /*!
      * Loads playlist with \b f_name name.
      */

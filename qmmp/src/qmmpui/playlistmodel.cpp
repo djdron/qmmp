@@ -481,6 +481,11 @@ int PlayListModel::firstSelectedLower(int row)
     return -1;
 }
 
+int PlayListModel::totalLength() const
+{
+    return m_total_length;
+}
+
 void PlayListModel::moveItems(int from, int to)
 {
     // Get rid of useless work
@@ -567,15 +572,18 @@ QList<int> PlayListModel::selectedIndexes() const
 
 QList< PlayListItem * > PlayListModel::selectedItems() const
 {
-    QList<PlayListItem*>selected_items;
-    for (int i = 0;i<m_items.count();i++)
+    QList<PlayListItem*> selected_items;
+    foreach(PlayListItem *item, m_items)
     {
-        if (m_items[i]->isSelected())
-        {
-            selected_items.append(m_items[i]);
-        }
+        if(item->isSelected())
+            selected_items.append(item);
     }
     return selected_items;
+}
+
+QList<PlayListItem *> PlayListModel::items() const
+{
+    return m_items;
 }
 
 void PlayListModel::addToQueue()
