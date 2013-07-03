@@ -668,6 +668,6 @@ void MainWindow::showMetaData()
     PlayListModel *model = m_pl_manager->currentPlayList();
     if(model->currentItem() && model->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
     {
-        setWindowTitle(model->currentItem()->text());
+        setWindowTitle(model->currentItem()->formattedTitle());
     }
 }
