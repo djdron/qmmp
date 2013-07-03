@@ -182,7 +182,7 @@ void MainWindow::showState(Qmmp::State state)
     case Qmmp::Stopped:
         m_playlist->setTime(-1);
         if (m_playlist->currentItem())
-            setWindowTitle(m_playlist->currentItem()->text());
+            setWindowTitle(m_playlist->currentItem()->formattedTitle());
         else
             setWindowTitle("Qmmp");
         break;
@@ -194,7 +194,7 @@ void MainWindow::showMetaData()
     if (m_playlist->currentItem() &&
         m_playlist->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
     {
-        setWindowTitle(m_playlist->currentItem()->text());
+        setWindowTitle(m_playlist->currentItem()->formattedTitle());
     }
 }
 

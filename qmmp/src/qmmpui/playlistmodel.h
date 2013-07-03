@@ -174,18 +174,6 @@ public:
      */
     bool previous();
     /*!
-     * Returns a list of the formated titles.
-     * @param first First item.
-     * @param last Last item.
-     */
-    QStringList getTitles(int first,int last);
-    /*!
-     * Returns a list of the formatted durations.
-     * @param first First item.
-     * @param last Last item.
-     */
-    QStringList getTimes(int first,int last);
-    /*!
      * Returns a list of the items, starting at position \b pos
      * \param pos First item position.
      * \param count A number of items. If \b count is -1 (the default), all items from pos are returned.

@@ -272,35 +272,6 @@ void PlayListModel::clearSelection()
     emit listChanged();
 }
 
-QStringList PlayListModel::getTitles(int b,int l)
-{
-    QList <QString> m_titles;
-    for (int i = b;(i < b + l) &&(i < m_items.size()); ++i)
-        m_titles << m_items.at(i)->text();
-    return m_titles;
-}
-
-QStringList PlayListModel::getTimes(int b,int l)
-{
-    QStringList times;
-    int d = 0;
-    QString str;
-    for (int i = b; (i < b + l) && (i < m_items.size()); ++i)
-    {
-        d = m_items.at(i)->length();
-        if(d > 3600)
-            str += QString("%1:%2").arg(d/3600).arg(d%3600/60, 2, 10, QChar('0'));
-        else
-            str += QString("%1").arg(d%3600/60);
-        str += QString(":%1").arg(d%60, 2, 10, QChar('0'));
-        if(!d)
-            str.clear();
-        times << str;
-        str.clear();
-    }
-    return times;
-}
-
 QList<PlayListItem *> PlayListModel::mid(int pos, int count)
 {
     return m_items.mid(pos, count);
