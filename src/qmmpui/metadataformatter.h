@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,6 +62,11 @@ public:
      * @param length Length in seconds.
      */
     QString parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length = 0);
+    /*!
+     * Returns formatted length (example: 05:02:03).
+     * \param length Length in seconds.
+     */
+    QString formatLength(qint64 length) const;
 
 private:
     QString m_format;

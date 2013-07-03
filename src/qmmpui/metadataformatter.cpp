@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -73,27 +73,25 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData, q
     title.replace("%F", metaData[Qmmp::URL]);
     title.replace("%y", metaData[Qmmp::YEAR]);
     if(title.contains("l"))
-    {
-        if (length)
-        {
-            QString time;
-            int l = length;
-            if(l > 3600)
-                time == QString("%1:%2:%3").arg(l/3600,2,10,QChar('0'))
-                .arg(l%3600/60,2,10,QChar('0')).arg(l%60,2,10,QChar('0'));
-            else
-                time = QString("%1:%2").arg(l/60,2,10,QChar('0')).arg(l%60,2,10,QChar('0'));
-            title.replace("%l",time);
-        }
-        else
-            title.replace("%l","");
-    }
-
+        title.replace("%l",formatLength(length));
     if(title.contains("%if"))
         title = processIfKeyWord(title);
     title.replace("%28", "(");
     title.replace("%29", ")");
     return title;
+}
+
+QString MetaDataFormatter::formatLength(qint64 length) const
+{
+    if(length <= 0)
+        return QString();
+    QString str;
+    if(length > 3600)
+        str = QString("%1:%2").arg(length/3600).arg(length%3600/60, 2, 10, QChar('0'));
+    else
+        str = QString("%1").arg(length%3600/60);
+    str += QString(":%1").arg(length%60, 2, 10, QChar('0'));
+    return str;
 }
 
 QString MetaDataFormatter::processIfKeyWord(QString title)
