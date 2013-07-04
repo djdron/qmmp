@@ -32,11 +32,11 @@
 class TagUpdater : public QObject
 {
     Q_OBJECT
-    QObject* m_observable;
-    PlayListItem* m_item;
 
 public:
     TagUpdater(QObject* o, PlayListItem* item);
+    QObject* m_observable;
+    PlayListItem* m_item;
 
 public slots:
     void updateTag();
