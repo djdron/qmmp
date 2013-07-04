@@ -667,7 +667,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="145"/>
+        <location filename="../jumptotrackdialog.cpp" line="147"/>
         <source>Queue</source>
         <translation type="unfinished">加入佇列</translation>
     </message>
@@ -698,7 +698,7 @@
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="143"/>
+        <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Unqueue</source>
         <translation type="unfinished">移出佇列</translation>
     </message>

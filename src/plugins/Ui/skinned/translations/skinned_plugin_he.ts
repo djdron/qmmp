@@ -815,7 +815,7 @@
         <translation>פעולות</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="565"/>
+        <location filename="../playlist.cpp" line="573"/>
         <source>&amp;New PlayList</source>
         <translation>רשימת השמעה &amp;חדשה</translation>
     </message>

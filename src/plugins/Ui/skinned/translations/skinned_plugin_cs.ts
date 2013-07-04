@@ -791,7 +791,7 @@
         <translation>Obrátit pořadí seznamu</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="565"/>
+        <location filename="../playlist.cpp" line="573"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nový seznam skladeb</translation>
     </message>
