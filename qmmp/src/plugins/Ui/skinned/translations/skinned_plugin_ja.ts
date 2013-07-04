@@ -813,7 +813,7 @@
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="565"/>
+        <location filename="../playlist.cpp" line="573"/>
         <source>&amp;New PlayList</source>
         <translation>新しいプレイリスト(&amp;N)</translation>
     </message>
