@@ -91,7 +91,7 @@ SET(libqmmpui_MOC_HDRS
     radioitemdelegate_p.h
     playlistdownloader.h
     addurldialog_p.h
-    tagupdater_p.cpp
+    tagupdater_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
