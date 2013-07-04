@@ -37,31 +37,10 @@
 #include "playlistitem.h"
 #include "playstate_p.h"
 #include "detailsdialog.h"
+#include "tagupdater.h"
 #include "playlistmodel.h"
 
-
 #define INVALID_ROW -1
-
-TagUpdater::TagUpdater(QObject* o,PlayListItem* item):m_observable(o),m_item(item)
-{
-    m_item->setFlag(PlayListItem::EDITING);
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
-}
-
-void TagUpdater::updateTag()
-{
-    if (m_item->flag() == PlayListItem::SCHEDULED_FOR_DELETION)
-    {
-        delete m_item;
-        m_item = NULL;
-    }
-    else
-    {
-        m_item->updateTags();
-        m_item->setFlag(PlayListItem::FREE);
-    }
-}
 
 PlayListModel::PlayListModel(const QString &name, QObject *parent)
         : QObject(parent) , m_selection()

@@ -49,7 +49,8 @@ HEADERS += general.h \
     radioitemdelegate_p.h \
     playlistdownloader.h \
     addurldialog_p.h \
-    qmmpuiplugincache_p.h
+    qmmpuiplugincache_p.h \
+    tagupdater.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -75,7 +76,8 @@ SOURCES += general.cpp \
     radioitemdelegate.cpp \
     playlistdownloader.cpp \
     addurldialog.cpp \
-    qmmpuiplugincache.cpp
+    qmmpuiplugincache.cpp \
+    tagupdater.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
