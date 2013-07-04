@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef TAGUPDATER_H
-#define TAGUPDATER_H
+#ifndef TAGUPDATER_P_H
+#define TAGUPDATER_P_H
 
 #include <QObject>
 #include "playlistitem.h"
@@ -43,4 +43,4 @@ public slots:
 
 };
 
-#endif // TAGUPDATER_H
+#endif // TAGUPDATER_P_H

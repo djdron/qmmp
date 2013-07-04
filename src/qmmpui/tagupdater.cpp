@@ -18,7 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "tagupdater.h"
+#include "tagupdater_p.h"
 
 TagUpdater::TagUpdater(QObject* o, PlayListItem* item) : m_observable(o), m_item(item)
 {

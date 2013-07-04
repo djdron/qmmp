@@ -34,10 +34,9 @@
 #include "playlistparser.h"
 #include "playlistformat.h"
 #include "fileloader_p.h"
-#include "playlistitem.h"
 #include "playstate_p.h"
 #include "detailsdialog.h"
-#include "tagupdater.h"
+#include "tagupdater_p.h"
 #include "playlistmodel.h"
 
 #define INVALID_ROW -1

@@ -50,7 +50,7 @@ HEADERS += general.h \
     playlistdownloader.h \
     addurldialog_p.h \
     qmmpuiplugincache_p.h \
-    tagupdater.h
+    tagupdater_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
