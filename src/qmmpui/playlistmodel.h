@@ -74,23 +74,6 @@ struct SimpleSelection
     int m_anchor;               /*!< Main index of the selection  */
     QList<int> m_selected_indexes;  /*!< Selected items numbers */
 };
-/*! @internal
- * @brief Helper class used for tags update after details dialog closing.
- *
- * @author Vladimir Kuznetsov <vovanec@gmail.com>
- */
-class TagUpdater : public QObject
-{
-    Q_OBJECT
-    QObject* m_observable;
-    PlayListItem* m_item;
-
-public:
-    TagUpdater(QObject* o, PlayListItem* item);
-
-protected slots:
-    void updateTag();
-};
 /*! @brief The PlayListModel class provides a data model for the playlist.
  *
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
