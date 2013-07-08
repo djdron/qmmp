@@ -30,7 +30,6 @@ class QFontMetrics;
 class QMenu;
 class QAction;
 class QTimer;
-class PlayList;
 class PlayListModel;
 class Skin;
 class PlayListItem;
@@ -117,9 +116,6 @@ private:
      */
     const QString getExtraString(int i);
     int m_row_count, m_first;
-    //QList <QString> m_titles;
-    //QList <QString> m_times;
-    PlayList *m_pl;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;

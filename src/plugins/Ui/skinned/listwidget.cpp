@@ -413,8 +413,8 @@ void ListWidget::updateList()
         int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
         if(m_number_width)
             extra_string_width += m_number_width + m_metrics->width("9");
-        row->title.replace(i, m_metrics->elidedText (row->title, Qt::ElideRight,
-                                 width() -  m_metrics->width(row->length) - 22 - extra_string_width));
+        row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+                        width() -  m_metrics->width(row->length) - 22 - extra_string_width);
 
         m_rows.append(row);
     }
