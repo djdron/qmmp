@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,6 +38,18 @@ class MediaPlayer;
 namespace PlayListPopup{
 class PopupWidget;
 }
+
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+struct ListWidgetRow
+{
+    QString title;
+    QString length;
+    QString extraString;
+    int index;
+    PlayListItem *item;
+};
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -104,9 +116,9 @@ private:
      * Returns string with queue number or(and) repeate flag for the item number \b i.
      */
     const QString getExtraString(int i);
-    int m_rows, m_first;
-    QList <QString> m_titles;
-    QList <QString> m_times;
+    int m_row_count, m_first;
+    //QList <QString> m_titles;
+    //QList <QString> m_times;
     PlayList *m_pl;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics;
@@ -131,6 +143,7 @@ private:
     bool m_show_anchor;
     bool m_align_numbres;
     int m_number_width;
+    QList<ListWidgetRow *> m_rows;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;

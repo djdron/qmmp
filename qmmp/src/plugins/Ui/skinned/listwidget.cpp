@@ -54,7 +54,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_player = MediaPlayer::instance();
     connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
     m_first = 0;
-    m_rows = 0;
+    m_row_count = 0;
     m_scroll = false;
     m_select_on_release = false;
     readSettings();
@@ -94,7 +94,7 @@ void ListWidget::readSettings()
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
-        m_rows = height() / (m_metrics->lineSpacing() + 2);
+        m_row_count = height() / (m_metrics->lineSpacing() + 2);
         updateList();
         if(m_popupWidget)
         {
@@ -114,7 +114,7 @@ void ListWidget::readSettings()
 
 int ListWidget::visibleRows() const
 {
-    return m_rows;
+    return m_row_count;
 }
 
 int ListWidget::firstVisibleRow() const
@@ -164,18 +164,18 @@ void ListWidget::paintEvent(QPaintEvent *)
     bool rtl = (layoutDirection() == Qt::RightToLeft);
     int sx = 0, sy = 0;
 
-    for (int i = 0; i < m_titles.size(); ++i )
+    for (int i = 0; i < m_rows.size(); ++i )
     {
         if (m_show_anchor && i == m_anchor_row - m_first)
         {
-            painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
+            painter.setBrush(m_rows[i]->item->isSelected() ? m_selected_bg : m_normal_bg);
             painter.setPen(m_normal);
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                 width() - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
-            if (m_model->isSelected(i + m_first))
+            if (m_rows[i]->item->isSelected())
             {
                 painter.setBrush(QBrush(m_selected_bg));
                 painter.setPen(m_selected_bg);
@@ -184,7 +184,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             }
         }
 
-        if (m_model->currentIndex() == i + m_first)
+        if (m_model->currentIndex() == m_rows[i]->index)
             painter.setPen(m_current);
         else
             painter.setPen(m_normal);  //243,58
@@ -201,37 +201,37 @@ void ListWidget::paintEvent(QPaintEvent *)
 
             sx = 10 + m_number_width + m_metrics->width("9");
             if(rtl)
-                sx = width() - sx - m_metrics->width(m_titles.at(i));
-            painter.drawText(sx, sy, m_titles.at(i));
+                sx = width() - sx - m_metrics->width(m_rows[i]->title);
+            painter.drawText(sx, sy, m_rows[i]->title);
         }
         else
         {
-            sx = rtl ? width() - 10 - m_metrics->width(m_titles.at(i)) : 10;
-            painter.drawText(sx, sy, m_titles.at(i));
+            sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
+            painter.drawText(sx, sy, m_rows[i]->title);
         }
 
-        QString extra_string = getExtraString(m_first + i);
+        QString extra_string = m_rows[i]->extraString;
 
         if(!extra_string.isEmpty())
         {
             painter.setFont(m_extra_font);
 
-            if(m_times.at(i).isEmpty())
+            if(m_rows[i]->length.isEmpty())
             {
                 sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             else
             {
-                sx = width() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(m_times.at(i));
+                sx = width() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(m_rows[i]->length);
                 if(rtl)
                     sx = width() - sx - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             painter.setFont(m_font);
         }
-        sx = rtl ? 7 : width() - 7 - m_metrics->width(m_times.at(i));
-        painter.drawText(sx, sy, m_times.at(i));
+        sx = rtl ? 7 : width() - 7 - m_metrics->width(m_rows[i]->length);
+        painter.drawText(sx, sy, m_rows[i]->length);
     }
     //draw line
     if(m_number_width)
@@ -254,7 +254,6 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
         update();
     }
 }
-
 
 void ListWidget::mousePressEvent(QMouseEvent *e)
 {
@@ -322,7 +321,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_rows = e->size().height() / (m_metrics->lineSpacing() + 2);
+    m_row_count = e->size().height() / (m_metrics->lineSpacing() + 2);
     m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
@@ -330,17 +329,17 @@ void ListWidget::resizeEvent(QResizeEvent *e)
 
 void ListWidget::wheelEvent (QWheelEvent *e)
 {
-    if (m_model->count() <= m_rows)
+    if (m_model->count() <= m_row_count)
         return;
     if ((m_first == 0 && e->delta() > 0) ||
-            ((m_first == m_model->count() - m_rows) && e->delta() < 0))
+            ((m_first == m_model->count() - m_row_count) && e->delta() < 0))
         return;
     m_first -= e->delta()/40;  //40*3 TODO: add step to config
     if (m_first < 0)
         m_first = 0;
 
-    if (m_first > m_model->count() - m_rows)
-        m_first = m_model->count() - m_rows;
+    if (m_first > m_model->count() - m_row_count)
+        m_first = m_model->count() - m_row_count;
 
     m_scroll = false;
     updateList();
@@ -371,37 +370,21 @@ bool ListWidget::event (QEvent *e)
 
 void ListWidget::updateList()
 {
-    if (m_model->count() < (m_rows+m_first+1) && m_rows< m_model->count())
+    if (m_model->count() < (m_row_count+m_first+1) && m_row_count< m_model->count())
     {
-        m_first = m_model->count() - m_rows;
+        m_first = m_model->count() - m_row_count;
     }
-    if (m_model->count() < m_rows + 1)
+    if (m_model->count() < m_row_count + 1)
     {
         m_first = 0;
         emit positionChanged(0,0);
     }
     else
-        emit positionChanged(m_first, m_model->count() - m_rows);
+        emit positionChanged(m_first, m_model->count() - m_row_count);
     if (m_model->count() <= m_first)
     {
         m_first = 0;
-        emit positionChanged(0, qMax(0, m_model->count() - m_rows));
-    }
-
-    m_titles.clear();
-    m_times.clear();
-    foreach (PlayListItem *item, m_model->mid(m_first, m_rows))
-    {
-        m_titles.append(item->formattedTitle());
-        m_times.append(item->formattedLength());
-    }
-    m_scroll = false;
-    //add numbers
-    for (int i = 0; i < m_titles.size() && m_show_number && !m_align_numbres; ++i)
-    {
-        QString title = m_titles.at(i);
-        m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));
-
+        emit positionChanged(0, qMax(0, m_model->count() - m_row_count));
     }
     //song numbers width
     if(m_show_number && m_align_numbres && m_model->count())
@@ -411,18 +394,31 @@ void ListWidget::updateList()
     else
         m_number_width = 0;
 
-    //elide title
-    QString extra_string;
-    for (int i=0; i<m_titles.size(); ++i)
-    {
-        extra_string = getExtraString(m_first + i);
-        int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
-        if(m_number_width)
-            extra_string_space += m_number_width + m_metrics->width("9");
-        m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
-                            width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
-    }
+    qDeleteAll(m_rows); //TODO do not delete all row objects
+    m_rows.clear();
 
+    QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
+    for(int i = 0; i < items.count(); ++i)
+    {
+        ListWidgetRow *row = new ListWidgetRow;
+        row->item = items[i];
+        row->title = items[i]->formattedTitle();
+        row->length = items[i]->formattedLength();
+        row->index = m_first + i;
+        //add numbers
+        if(m_show_number && !m_align_numbres)
+            row->title.prepend(QString("%1").arg(m_first+i+1)+". ");
+        //elide titles
+        row->extraString = getExtraString(m_first + i);
+        int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
+        if(m_number_width)
+            extra_string_width += m_number_width + m_metrics->width("9");
+        row->title.replace(i, m_metrics->elidedText (row->title, Qt::ElideRight,
+                                 width() -  m_metrics->width(row->length) - 22 - extra_string_width));
+
+        m_rows.append(row);
+    }
+    m_scroll = false;
     update();
 }
 
@@ -435,8 +431,8 @@ void ListWidget::autoscroll()
 
     if(m_scroll_direction == DOWN)
     {
-        int row = m_first + m_rows;
-        (m_first + m_rows < m_model->count()) ? m_first ++ : m_first;
+        int row = m_first + m_row_count;
+        (m_first + m_row_count < m_model->count()) ? m_first ++ : m_first;
         m_model->moveItems(m_pressed_row,row);
         m_pressed_row = row;
     }
@@ -464,7 +460,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 
 void ListWidget::scroll(int sc)
 {
-    if (m_model->count() <= m_rows)
+    if (m_model->count() <= m_row_count)
         return;
     m_first = sc; //*(m_model->count() - m_rows)/99;
     m_scroll = true;
@@ -558,7 +554,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             }
             else if(sel.count() > 1 && m_scroll_direction == DOWN)
             {
-                if(sel.m_bottom == m_model->count() - 1 || sel.m_bottom == m_first + m_rows)
+                if(sel.m_bottom == m_model->count() - 1 || sel.m_bottom == m_first + m_row_count)
                     return;
             }
             m_model->moveItems(m_pressed_row,row);
@@ -595,7 +591,7 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::rowAt(int y) const
 {
-    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i)
+    for (int i = 0; i < qMin(m_row_count, m_model->count() - m_first); ++i)
     {
         if ((y >= i * (m_metrics->lineSpacing() + 2)) && (y <= (i+1) * (m_metrics->lineSpacing() + 2)))
             return m_first + i;
@@ -611,12 +607,12 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
-    if (!m_scroll && m_rows)
+    if (!m_scroll && m_row_count)
     {
-        if (m_first + m_rows < m_model->currentIndex() + 1)
-            m_first = qMin(m_model->count() - m_rows,
-                           m_model->currentIndex() - m_rows/2);
+        if (m_first + m_row_count < m_model->currentIndex() + 1)
+            m_first = qMin(m_model->count() - m_row_count,
+                           m_model->currentIndex() - m_row_count/2);
         else if (m_first > m_model->currentIndex())
-            m_first = qMax (m_model->currentIndex() - m_rows/2, 0);
+            m_first = qMax (m_model->currentIndex() - m_row_count/2, 0);
     }
 }
