@@ -112,6 +112,38 @@ void ListWidget::readSettings()
         m_popupWidget = new PlayListPopup::PopupWidget(this);
 }
 
+int ListWidget::visibleRows() const
+{
+    return m_rows;
+}
+
+int ListWidget::firstVisibleRow() const
+{
+    return m_first;
+}
+
+int ListWidget::anchorRow() const
+{
+    return m_anchor_row;
+}
+
+void ListWidget::setAnchorRow(int r)
+{
+    m_anchor_row = r;
+    update();
+}
+
+QMenu *ListWidget::menu()
+{
+    return m_menu;
+}
+
+PlayListModel *ListWidget::model()
+{
+    Q_ASSERT(m_model);
+    return m_model;
+}
+
 void ListWidget::loadColors()
 {
     m_normal.setNamedColor(m_skin->getPLValue("normal"));

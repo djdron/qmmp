@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,7 @@
 #ifndef _KEYBOARDMANAGER_H
 #define _KEYBOARDMANAGER_H
 
-class PlayList;
+class ListWidget;
 class QKeyEvent;
 
 
@@ -37,16 +37,16 @@ class KeyboardManager
       /*!
        * Constructor. Takes \b PlayList object as an argument.
        */
-        KeyboardManager (PlayList*);
+        KeyboardManager (ListWidget *l);
 
         /*!
-         * Handles key press events from \b PlayList object. Returns \b true 
+         * Handles key press events from \b PlayList object. Returns \b true
          * if the key was handled, otherwise \b false.
          */
         bool handleKeyPress (QKeyEvent*);
 
         /*!
-         * Handles key release events from \b PlayList object. Returns \b true 
+         * Handles key release events from \b PlayList object. Returns \b true
          * if the key was handled, otherwise \b false.
          */
         bool handleKeyRelease (QKeyEvent*);
@@ -60,7 +60,7 @@ class KeyboardManager
         void keyHome(QKeyEvent* ke);
         void keyEnd(QKeyEvent* ke);
     private:
-        PlayList* m_playlist;
+        ListWidget* m_listWidget;
 };
 
 #endif

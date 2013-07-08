@@ -54,48 +54,22 @@ public:
     /*!
      * Returns count of currently visible rows.
      */
-    int visibleRows()const
-    {
-        return m_rows;
-    }
-
+    int visibleRows() const;
     /*!
      * Returns number of first visible row.
      */
-    int firstVisibleRow()const
-    {
-        return m_first;
-    }
+    int firstVisibleRow() const;
 
-    int anchorRow() const
-    {
-        return m_anchor_row;
-    }
-
-    void setAnchorRow(int r)
-    {
-        m_anchor_row = r;
-        update();
-    }
-
-    QMenu *menu()
-    {
-        return m_menu;
-    }
-
-    PlayListModel *model()
-    {
-        Q_ASSERT(m_model);
-        return m_model;
-    }
-
+    int anchorRow() const;
+    void setAnchorRow(int r);
+    QMenu *menu();
+    PlayListModel *model();
 
 public slots:
     void updateList();
     void scroll(int); //0-99
     void recenterCurrent();
     void setModel(PlayListModel *selected, PlayListModel *previous = 0);
-
 
 signals:
     void selectionChanged();
