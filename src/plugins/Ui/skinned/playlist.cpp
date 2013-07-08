@@ -80,7 +80,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_length_totalLength->setAlignment (Qt::AlignLeft);
 
     m_current_time = new SymbolDisplay (this,6);
-    m_keyboardManager = new KeyboardManager (this);
+    m_keyboardManager = new KeyboardManager (m_listWidget);
 
     connect (m_listWidget, SIGNAL (selectionChanged()), parent, SLOT (replay()));
 

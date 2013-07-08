@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,18 +18,17 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-
 #include <QKeyEvent>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
+#include <qmmpui/mediaplayer.h>
 #include "playlist.h"
 #include "listwidget.h"
 #include "keyboardmanager.h"
-#include "mainwindow.h"
 
-
-KeyboardManager::KeyboardManager (PlayList* pl)
+KeyboardManager::KeyboardManager (ListWidget *l)
 {
-    m_playlist = pl;
+    m_listWidget = l;
 }
 
 bool KeyboardManager::handleKeyPress (QKeyEvent* ke)
@@ -72,8 +71,7 @@ bool KeyboardManager::handleKeyRelease (QKeyEvent*)
 
 void KeyboardManager::keyUp (QKeyEvent * ke)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->selectedIndexes();
-    ListWidget* list_widget = m_playlist->listWidget();
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
 
     if (rows.count() > 0)
     {
@@ -82,13 +80,13 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
 
         if (! (ke->modifiers() & Qt::ShiftModifier || ke->modifiers() & Qt::AltModifier))
         {
-            m_playlist->listWidget()->model()->clearSelection();
-            list_widget->setAnchorRow(-1);
+            m_listWidget->model()->clearSelection();
+            m_listWidget->setAnchorRow(-1);
         }
 
         bool select_top = false;
-        int first_visible = list_widget->firstVisibleRow();
-        int last_visible = list_widget->visibleRows() + first_visible - 1;
+        int first_visible = m_listWidget->firstVisibleRow();
+        int last_visible = m_listWidget->visibleRows() + first_visible - 1;
         foreach (int i, rows)
         {
             if (i > last_visible || i < first_visible)
@@ -104,71 +102,70 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
             {
                 if(rows.first() == 0)
                     return;
-                m_playlist->listWidget()->model()->moveItems (rows.first(),rows.first() - 1);
-                list_widget->setAnchorRow (list_widget->anchorRow() - 1);
+                m_listWidget->model()->moveItems (rows.first(),rows.first() - 1);
+                m_listWidget->setAnchorRow (m_listWidget->anchorRow() - 1);
             }
             else
             {
-                if (rows.last() > list_widget->anchorRow() && ke->modifiers() & Qt::ShiftModifier)
+                if (rows.last() > m_listWidget->anchorRow() && ke->modifiers() & Qt::ShiftModifier)
                 {
-                    m_playlist->listWidget()->model()->setSelected (rows.last(),false);
+                    m_listWidget->model()->setSelected (rows.last(),false);
                 }
                 else if (rows.first() > 0)
                 {
-                    m_playlist->listWidget()->model()->setSelected (rows.first() - 1,true);
+                    m_listWidget->model()->setSelected (rows.first() - 1,true);
                 }
                 else
                 {
-                    m_playlist->listWidget()->model()->setSelected (rows.first(),true);
-                    if(list_widget->anchorRow() == -1)
-                     list_widget->setAnchorRow(rows.first());
+                    m_listWidget->model()->setSelected (rows.first(),true);
+                    if(m_listWidget->anchorRow() == -1)
+                     m_listWidget->setAnchorRow(rows.first());
                 }
 
                 if (! (ke->modifiers() & Qt::ShiftModifier) && rows.first() > 0)
-                    list_widget->setAnchorRow (rows.first() - 1);
+                    m_listWidget->setAnchorRow (rows.first() - 1);
             }
         }
         else
         {
-            m_playlist->listWidget()->model()->setSelected (list_widget->firstVisibleRow(),true);
-            list_widget->setAnchorRow(list_widget->firstVisibleRow());
+            m_listWidget->model()->setSelected (m_listWidget->firstVisibleRow(),true);
+            m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
         }
 
-        rows = m_playlist->listWidget()->model()->selectedIndexes();
+        rows = m_listWidget->model()->selectedIndexes();
 
-        if (rows.first()  < list_widget->firstVisibleRow() && list_widget->firstVisibleRow() > 0)
+        if (rows.first()  < m_listWidget->firstVisibleRow() && m_listWidget->firstVisibleRow() > 0)
         {
-          int r = rows.last() > list_widget->anchorRow() ? rows.last(): rows.first();
-          if(ke->modifiers() & Qt::ShiftModifier && (r >= list_widget->firstVisibleRow()))
+          int r = rows.last() > m_listWidget->anchorRow() ? rows.last(): rows.first();
+          if(ke->modifiers() & Qt::ShiftModifier && (r >= m_listWidget->firstVisibleRow()))
               ;
             else
-                list_widget->scroll (list_widget->firstVisibleRow() - 1);
+                m_listWidget->scroll (m_listWidget->firstVisibleRow() - 1);
         }
     }
     else
     {
-       //if(list_widget->getAnchorRow() == -1)
-          list_widget->setAnchorRow(list_widget->firstVisibleRow());
-        m_playlist->listWidget()->model()->setSelected (list_widget->firstVisibleRow(),true);
+       //if(m_listWidget->getAnchorRow() == -1)
+          m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
+        m_listWidget->model()->setSelected (m_listWidget->firstVisibleRow(),true);
     }
 }
 
 void KeyboardManager::keyDown (QKeyEvent * ke)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->selectedIndexes();
-    ListWidget* list_widget = m_playlist->listWidget();
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
     //qWarning("count: %d",rows.count());
     if (rows.count() > 0)
     {
         if (! (ke->modifiers() & Qt::ShiftModifier || ke->modifiers() & Qt::AltModifier))
         {
-            m_playlist->listWidget()->model()->clearSelection();
-            list_widget->setAnchorRow(-1);
+            m_listWidget->model()->clearSelection();
+            m_listWidget->setAnchorRow(-1);
         }
 
         bool select_top = false;
-        int first_visible = list_widget->firstVisibleRow();
-        int last_visible = list_widget->visibleRows() + first_visible - 1;
+        int first_visible = m_listWidget->firstVisibleRow();
+        int last_visible = m_listWidget->visibleRows() + first_visible - 1;
         foreach (int i, rows)
         {
             if (i > last_visible || i < first_visible)
@@ -182,103 +179,104 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
         {
             if (ke->modifiers() == Qt::AltModifier)
             {
-                if(rows.last() == m_playlist->listWidget()->model()->count() - 1)
+                if(rows.last() == m_listWidget->model()->count() - 1)
                     return;
-                m_playlist->listWidget()->model()->moveItems (rows.last(),rows.last() + 1);
-                list_widget->setAnchorRow (list_widget->anchorRow() + 1);
+                m_listWidget->model()->moveItems (rows.last(),rows.last() + 1);
+                m_listWidget->setAnchorRow (m_listWidget->anchorRow() + 1);
             }
             else
             {
-               //qWarning("list_widget %d",list_widget->getAnchorRow());
-                //qWarning("model count: %d rows.last(): %d",m_playlist->listWidget()->model()->count(),rows.last());
-                if (rows.first() < list_widget->anchorRow()  && ke->modifiers() & Qt::ShiftModifier)
-                    m_playlist->listWidget()->model()->setSelected (rows.first(),false);
-                else if (rows.last() < m_playlist->listWidget()->model()->count() - 1)
+               //qWarning("list_widget %d",m_listWidget->getAnchorRow());
+                //qWarning("model count: %d rows.last(): %d",m_listWidget->model()->count(),rows.last());
+                if (rows.first() < m_listWidget->anchorRow()  && ke->modifiers() & Qt::ShiftModifier)
+                    m_listWidget->model()->setSelected (rows.first(),false);
+                else if (rows.last() < m_listWidget->model()->count() - 1)
                 {
-                    m_playlist->listWidget()->model()->setSelected (rows.last() + 1,true);
+                    m_listWidget->model()->setSelected (rows.last() + 1,true);
                 }
                 else
                 {
-                    m_playlist->listWidget()->model()->setSelected (rows.last(),true);
-                    if(list_widget->anchorRow() == -1)
-                       list_widget->setAnchorRow(rows.last());
+                    m_listWidget->model()->setSelected (rows.last(),true);
+                    if(m_listWidget->anchorRow() == -1)
+                       m_listWidget->setAnchorRow(rows.last());
                 }
 
-                if (! (ke->modifiers() & Qt::ShiftModifier) && rows.last() < m_playlist->listWidget()->model()->count() - 1)
-                    list_widget->setAnchorRow (rows.last() + 1);
+                if (! (ke->modifiers() & Qt::ShiftModifier) && rows.last() < m_listWidget->model()->count() - 1)
+                    m_listWidget->setAnchorRow (rows.last() + 1);
             }
         }
         else
         {
-            m_playlist->listWidget()->model()->setSelected (list_widget->firstVisibleRow(),true);
-            list_widget->setAnchorRow(list_widget->firstVisibleRow());
+            m_listWidget->model()->setSelected (m_listWidget->firstVisibleRow(),true);
+            m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
         }
 
-        rows = m_playlist->listWidget()->model()->selectedIndexes();
+        rows = m_listWidget->model()->selectedIndexes();
 
-        if (!rows.isEmpty() && rows.last() >= list_widget->visibleRows() + list_widget->firstVisibleRow())
+        if (!rows.isEmpty() && rows.last() >= m_listWidget->visibleRows() + m_listWidget->firstVisibleRow())
         {
-            int r = rows.first() < list_widget->anchorRow() ? rows.first(): rows.last();
+            int r = rows.first() < m_listWidget->anchorRow() ? rows.first(): rows.last();
             if(ke->modifiers() & Qt::ShiftModifier &&
-               (r < list_widget->firstVisibleRow() + list_widget->visibleRows()))
+               (r < m_listWidget->firstVisibleRow() + m_listWidget->visibleRows()))
               ;
             else
-                list_widget->scroll (list_widget->firstVisibleRow() + 1);
+                m_listWidget->scroll (m_listWidget->firstVisibleRow() + 1);
         }
     }
     else
     {
-        m_playlist->listWidget()->model()->setSelected (list_widget->firstVisibleRow(),true);
-        //if(list_widget->getAnchorRow() == -1)
-           list_widget->setAnchorRow(list_widget->firstVisibleRow());
+        m_listWidget->model()->setSelected (m_listWidget->firstVisibleRow(),true);
+        //if(m_listWidget->getAnchorRow() == -1)
+           m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
     }
 }
 
 void KeyboardManager::keyPgUp (QKeyEvent *)
 {
-    ListWidget* list_widget = m_playlist->listWidget();
-    int page_size = list_widget->visibleRows();
-    int offset= (list_widget->firstVisibleRow()-page_size >= 0) ?list_widget->firstVisibleRow()-page_size:0;
-    list_widget->scroll (offset);
+    int page_size = m_listWidget->visibleRows();
+    int offset= (m_listWidget->firstVisibleRow()-page_size >= 0) ?m_listWidget->firstVisibleRow()-page_size:0;
+    m_listWidget->scroll (offset);
 }
 
 void KeyboardManager::keyPgDown (QKeyEvent *)
 {
-    ListWidget* list_widget = m_playlist->listWidget();
-    int page_size = list_widget->visibleRows();
-    int offset = (list_widget->firstVisibleRow() +page_size < m_playlist->listWidget()->model()->count()) ?
-                 list_widget->firstVisibleRow() +page_size:m_playlist->listWidget()->model()->count() - 1;
-    list_widget->scroll (offset);
+    int page_size = m_listWidget->visibleRows();
+    int offset = (m_listWidget->firstVisibleRow() +page_size < m_listWidget->model()->count()) ?
+                 m_listWidget->firstVisibleRow() +page_size:m_listWidget->model()->count() - 1;
+    m_listWidget->scroll (offset);
 }
 
 void KeyboardManager::keyEnter (QKeyEvent *)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->selectedIndexes();
-    MainWindow* mw = qobject_cast<MainWindow*> (m_playlist->parentWidget());
-    if (mw && rows.count() > 0)
+    QList<int> rows = m_listWidget->model()->selectedIndexes();
+    if (rows.count() > 0)
     {
-        m_playlist->listWidget()->model()->setCurrent (rows.first());
-        mw->replay();
+        m_listWidget->model()->setCurrent (rows.first());
+        MediaPlayer::instance()->stop();
+        PlayListManager::instance()->activatePlayList(m_listWidget->model());
+        MediaPlayer::instance()->play();
     }
 }
 
 void KeyboardManager::keyHome(QKeyEvent *ke)
 {
-    ListWidget* list_widget = m_playlist->listWidget();
-    m_playlist->listWidget()->scroll (0);
+    m_listWidget->scroll (0);
     if(ke->modifiers() & Qt::ShiftModifier)
-       for(int i = 0; i <= list_widget->anchorRow(); ++i)
-           m_playlist->listWidget()->model()->setSelected (i,true);
+    {
+       for(int i = 0; i <= m_listWidget->anchorRow(); ++i)
+           m_listWidget->model()->setSelected (i, true);
+    }
 }
 
 void KeyboardManager::keyEnd(QKeyEvent *ke)
 {
-   ListWidget* list_widget = m_playlist->listWidget();
-   int page_size = list_widget->visibleRows();
-   int scroll_to = m_playlist->listWidget()->model()->count() - page_size;
+   int page_size = m_listWidget->visibleRows();
+   int scroll_to = m_listWidget->model()->count() - page_size;
    if(scroll_to >= 0)
-       list_widget->scroll(scroll_to);
+       m_listWidget->scroll(scroll_to);
    if(ke->modifiers() & Qt::ShiftModifier)
-       for(int i = list_widget->anchorRow(); i < m_playlist->listWidget()->model()->count(); ++i)
-           m_playlist->listWidget()->model()->setSelected (i,true);
+   {
+       for(int i = m_listWidget->anchorRow(); i < m_listWidget->model()->count(); ++i)
+           m_listWidget->model()->setSelected (i, true);
+   }
 }
