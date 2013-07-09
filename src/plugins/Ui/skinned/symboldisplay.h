@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,31 +21,23 @@
 #define SYMBOLDISPLAY_H
 
 #include <QPixmap>
-
 #include "pixmapwidget.h"
+
+class Skin;
 
 /**
    @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-
-class Skin;
-
 class SymbolDisplay : public PixmapWidget
 {
     Q_OBJECT
 public:
     SymbolDisplay(QWidget *parent = 0, int digits = 3);
 
-    ~SymbolDisplay();
+    virtual ~SymbolDisplay();
 
-    void setAlignment(Qt::Alignment a)
-    {
-        m_alignment = a;
-    }
-    Qt::Alignment alignment()const
-    {
-        return m_alignment;
-    }
+    void setAlignment(Qt::Alignment a);
+    Qt::Alignment alignment() const;
 
 public slots:
     void display(const QString&);
@@ -57,11 +49,10 @@ private slots:
 private:
     Skin* m_skin;
     QPixmap m_pixmap;
-    int m_digits;
     QString m_text;
     Qt::Alignment m_alignment;
+    int m_digits;
     int m_max;
-
 };
 
 #endif
