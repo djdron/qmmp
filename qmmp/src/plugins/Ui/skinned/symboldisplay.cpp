@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,17 +19,17 @@
  ***************************************************************************/
 #include <QPainter>
 #include <math.h>
-
 #include "skin.h"
-
 #include "symboldisplay.h"
 
-SymbolDisplay::SymbolDisplay ( QWidget *parent, int digits )
-        : PixmapWidget ( parent ), m_digits ( digits ), m_text(), m_max(0)
+SymbolDisplay::SymbolDisplay (QWidget *parent, int digits)
+        : PixmapWidget (parent)
 {
     m_alignment = Qt::AlignRight;
     m_skin = Skin::instance();
-    connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT (draw()));
+    m_digits  = digits;
+    m_max = 0;
+    connect (m_skin, SIGNAL (skinChanged()), this, SLOT (draw()));
     draw();
     for (int i=0; i<m_digits; ++i)
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_WIN32) || defined (Q_OS_MAC)
@@ -39,9 +39,18 @@ SymbolDisplay::SymbolDisplay ( QWidget *parent, int digits )
 #endif
 }
 
-
 SymbolDisplay::~SymbolDisplay()
 {}
+
+void SymbolDisplay::setAlignment(Qt::Alignment a)
+{
+    m_alignment = a;
+}
+
+Qt::Alignment SymbolDisplay::alignment() const
+{
+    return m_alignment;
+}
 
 void SymbolDisplay::display (const QString& str)
 {
@@ -53,28 +62,28 @@ void SymbolDisplay::display (const QString& str)
 void SymbolDisplay::draw()
 {
     QString str = m_text;
-    QPixmap bg = m_skin->getLetter ( ' ' );
+    QPixmap bg = m_skin->getLetter (' ');
     int w = bg.size().width();
     int h = bg.size().height();
-    QPixmap tmp ( m_digits*w,h );
-    QPainter paint ( &tmp );
+    QPixmap tmp (m_digits*w,h);
+    QPainter paint (&tmp);
     int j;
-    for ( int i = 0; i < m_digits; ++i )
+    for (int i = 0; i < m_digits; ++i)
     {
         if (m_alignment == Qt::AlignRight) // TODO: add align Center
         {
             j = str.size() -1 - i;
-            if ( j >= 0 )
-                paint.drawPixmap ( ( m_digits-1-i ) *w,0,m_skin->getLetter ( str.at ( j ) ) );
+            if (j >= 0)
+                paint.drawPixmap ((m_digits-1-i) *w,0,m_skin->getLetter (str.at (j)));
             else
-                paint.drawPixmap ( ( m_digits-1-i ) *w,0,m_skin->getLetter ( ' ' ) );
+                paint.drawPixmap ((m_digits-1-i) *w,0,m_skin->getLetter (' '));
         }
         else
         {
             if (i < str.size())
-                paint.drawPixmap ( i * w,0,m_skin->getLetter ( str.at ( i ) ) );
+                paint.drawPixmap (i * w,0,m_skin->getLetter (str.at (i)));
             else
-                paint.drawPixmap ( i * w,0,m_skin->getLetter ( ' ' ) );
+                paint.drawPixmap (i * w,0,m_skin->getLetter (' '));
             ;
         }
     }
@@ -88,4 +97,3 @@ void SymbolDisplay::display(int val)
     else
         display(QString("%1h").arg(val/100));
 }
-
