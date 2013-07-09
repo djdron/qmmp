@@ -49,8 +49,8 @@ class PlayList : public QWidget
         Q_OBJECT
     public:
         PlayList (PlayListManager *manager, QWidget *parent = 0);
+        virtual ~PlayList();
 
-        ~PlayList();
         void load (PlayListItem *);
         void readSettings();
         PlayListItem *currentItem();
