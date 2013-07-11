@@ -28,7 +28,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libsidplayfp
-pkg_search_module(SIDPLAYFP libsidplayfp>=1.0.1)
+pkg_search_module(SIDPLAYFP libsidplayfp>=1.0.3)
 
 include_directories(${SIDPLAYFP_INCLUDE_DIRS})
 link_directories(${SIDPLAYFP_LIBRARY_DIRS})

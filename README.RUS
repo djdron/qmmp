@@ -91,7 +91,7 @@ Qmmp - Qt-based multimedia player
 - opus >= 1.0.2 (Опционально)
 - opusfile >= 0.2 (Опционально)
 - libWildMidi >= 0.2.3.4 (Опционально)
-- libsidplayfp >= 1.0.1 (Опционально)
+- libsidplayfp >= 1.0.3 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
 - libenca >= 1.9 (Опционально)
