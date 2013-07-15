@@ -309,7 +309,7 @@ void MainDisplay::updateVolume()
 void MainDisplay::showPosition()
 {
     int sec = m_posbar->value() / 1000;
-    if(sec > 3600)
+    if(sec >= 3600)
         sec /= 60;
     QString time = QString("%1:%2").arg(sec/60, 2, 10, QChar('0')).arg(sec%60, 2, 10, QChar('0'));
     m_text->setText(tr("Seek to: %1").arg(time));

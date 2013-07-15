@@ -492,7 +492,7 @@ void PlayList::showSortMenu()
 
 QString PlayList::formatTime (int sec)
 {
-    if(sec > 3600)
+    if(sec >= 3600)
         sec /= 60;
     return QString("%1:%2").arg(sec/60, 2, 10, QChar('0')).arg(sec%60, 2, 10, QChar('0'));
 }

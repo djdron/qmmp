@@ -86,7 +86,7 @@ QString MetaDataFormatter::formatLength(qint64 length) const
     if(length <= 0)
         return QString();
     QString str;
-    if(length > 3600)
+    if(length >= 3600)
         str = QString("%1:%2").arg(length/3600).arg(length%3600/60, 2, 10, QChar('0'));
     else
         str = QString("%1").arg(length%3600/60);
