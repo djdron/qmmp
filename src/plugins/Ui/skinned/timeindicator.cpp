@@ -59,7 +59,7 @@ void TimeIndicator::setTime (int t)
     if (t < 0)
         t = 0;
 
-    if(t > 3600)
+    if(t >= 3600)
         t /= 60;
 
     paint.drawPixmap(r*13,0,m_skin->getNumber(t/600%10));
