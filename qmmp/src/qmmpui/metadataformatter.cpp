@@ -47,12 +47,12 @@ MetaDataFormatter::MetaDataFormatter(const QString &format)
     m_format = format;
 }
 
-QString MetaDataFormatter::parse(PlayListItem *item)
+QString MetaDataFormatter::parse(const PlayListItem *item)
 {
     return parse(*item, item->length());
 }
 
-QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length)
+QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length)
 {
     QString title = m_format;
     title.replace("\\(", "%28");
