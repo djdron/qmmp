@@ -70,14 +70,6 @@ public:
      */
     bool isSelected() const;
     /*!
-     * It is used by PlayListModel class.
-     */
-    void setCurrent(bool yes);
-    /*!
-     * Returns \b true if the item is the current item; otherwise returns returns \b false.
-     */
-    bool isCurrent() const;
-    /*!
      * Returns current state of the playlist item.
      */
     FLAGS flag() const;
@@ -120,13 +112,14 @@ public:
      */
     void updateTags();
 
+    const QString groupName() const;
+
 private:
     void readMetadata();
     QString m_formattedTitle;
     QString m_formattedLength;
     FileInfo *m_info;
     bool m_selected;
-    bool m_current;
     FLAGS m_flag;
     qint64 m_length;
 };

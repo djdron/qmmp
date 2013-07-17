@@ -27,7 +27,6 @@ PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)
     m_info = 0;
     m_length = 0;
     m_selected = false;
-    m_current = false;
 }
 
 PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QString>(other),
@@ -39,7 +38,6 @@ PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QSt
     else
         m_info = 0;
     m_selected = other.m_selected;
-    m_current = other.m_current;
     m_length = other.m_length;
     m_formattedLength = other.m_formattedLength;
 }
@@ -48,7 +46,6 @@ PlayListItem::PlayListItem(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info
 {
     setLength(m_length = info->length());
     m_selected = false;
-    m_current = false;
     m_info = info;
     insert(Qmmp::URL, m_info->path());
 }
@@ -67,16 +64,6 @@ void PlayListItem::setSelected(bool yes)
 bool PlayListItem::isSelected() const
 {
     return m_selected;
-}
-
-void PlayListItem::setCurrent(bool yes)
-{
-    m_current = yes;
-}
-
-bool PlayListItem::isCurrent() const
-{
-    return m_current;
 }
 
 void PlayListItem::setFlag(FLAGS f)
@@ -113,6 +100,12 @@ void PlayListItem::updateTags()
     }
     while(list.size() > 1)
         delete list.takeLast();
+}
+
+const QString PlayListItem::groupName() const
+{
+    MetaDataFormatter f("%p");
+    return f.parse(this);
 }
 
 const QString PlayListItem::formattedTitle()

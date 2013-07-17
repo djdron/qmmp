@@ -55,13 +55,13 @@ public:
     /*!
      * Converts metadata of item \b item to one string using template.
      */
-    QString parse(PlayListItem *item);
+    QString parse(const PlayListItem *item);
     /*!
      * Converts metadata to one string using template.
      * @param metaData Metadata array.
      * @param length Length in seconds.
      */
-    QString parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length = 0);
+    QString parse(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
