@@ -67,7 +67,14 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 }
 
 ListWidget::~ListWidget()
-{}
+{
+    if(m_metrics)
+        delete m_metrics;
+    if(m_bold_metrics)
+        delete m_bold_metrics;
+    if(m_extra_metrics)
+        delete m_extra_metrics;
+}
 
 void ListWidget::readSettings()
 {
