@@ -49,7 +49,7 @@ ConverterHelper::ConverterHelper(QObject *parent) : QObject(parent)
 
 ConverterHelper::~ConverterHelper()
 {
-    m_progress->deleteLater();
+    delete m_progress;
 }
 
 void ConverterHelper::openConverter()

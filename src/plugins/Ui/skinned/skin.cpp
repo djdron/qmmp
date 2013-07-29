@@ -370,6 +370,8 @@ void Skin::loadPlayList()
     buttons[PL_BT_SHADE2_N] = pixmap->copy (129,45,9,9);
     buttons[PL_BT_SHADE2_P] = pixmap->copy (150,42,9,9);
 
+    delete pixmap;
+
 }
 
 QPixmap *Skin::getPixmap (const QString& name)

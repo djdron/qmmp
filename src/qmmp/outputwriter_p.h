@@ -41,7 +41,7 @@ class OutputWriter : public QThread
 public:
     explicit OutputWriter(QObject *parent = 0);
 
-    ~OutputWriter();
+    virtual ~OutputWriter();
     /*!
      * Prepares object for usage and setups required audio parameters.
      * @param freq Sample rate.

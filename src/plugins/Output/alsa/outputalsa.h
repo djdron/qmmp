@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -70,7 +70,7 @@ class VolumeALSA : public Volume
 {
 public:
     VolumeALSA();
-    ~VolumeALSA();
+    virtual ~VolumeALSA();
 
     void setVolume(const VolumeSettings &vol);
     VolumeSettings volume() const;
@@ -79,9 +79,9 @@ private:
     //alsa mixer
     int setupMixer(QString card, QString device);
     void parseMixerName(char *str, char **name, int *index);
-    int getMixer(snd_mixer_t **mixer, QString card);
-    snd_mixer_elem_t* getMixerElem(snd_mixer_t *mixer, char *name, int index);
-    snd_mixer_t *mixer;
+    int getMixer(snd_mixer_t **m_mixer, QString card);
+    snd_mixer_elem_t* getMixerElem(snd_mixer_t *m_mixer, char *name, int index);
+    snd_mixer_t *m_mixer;
     snd_mixer_elem_t *pcm_element;
     bool m_use_mmap;
 };

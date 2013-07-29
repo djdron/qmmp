@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -72,6 +72,8 @@ Notifier::Notifier(QObject *parent) : QObject(parent)
 Notifier::~Notifier()
 {
     removePsiTuneFiles();
+    if (m_popupWidget)
+        delete m_popupWidget;
 }
 
 void Notifier::setState(Qmmp::State state)

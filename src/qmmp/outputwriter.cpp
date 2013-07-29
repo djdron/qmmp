@@ -82,6 +82,11 @@ OutputWriter::~OutputWriter()
         delete m_output;
         m_output = 0;
     }
+    if(m_visBuffer)
+    {
+        delete[] m_visBuffer;
+        m_visBuffer = 0;
+    }
 }
 
 bool OutputWriter::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
@@ -117,7 +122,8 @@ bool OutputWriter::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     if(m_visBuffer)
         delete [] m_visBuffer;
     m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * chan; //16-bit samples
-    m_visBuffer = new unsigned char [m_visBufferSize];
+    if(m_format != Qmmp::PCM_S16LE)
+        m_visBuffer = new unsigned char [m_visBufferSize];
     m_useEq = m_eqEnabled && m_frequency && m_format == Qmmp::PCM_S16LE;
     if(m_frequency)
     {

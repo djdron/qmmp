@@ -56,21 +56,21 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_tray->show();
     settings.endGroup();
     //actions
-    QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
+    m_menu = new QMenu();
     QIcon playIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
     QIcon pauseIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
     QIcon stopIcon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
     QIcon nextIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipForward);
     QIcon previousIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipBackward);
-    menu->addAction(playIcon,tr("Play"), m_player, SLOT(play()));
-    menu->addAction(pauseIcon,tr("Pause"), m_core, SLOT(pause()));
-    menu->addAction(stopIcon,tr("Stop"), m_core, SLOT(stop()));
-    menu->addSeparator();
-    menu->addAction(nextIcon, tr("Next"), m_player, SLOT(next()));
-    menu->addAction(previousIcon, tr("Previous"), m_player, SLOT(previous()));
-    menu->addSeparator();
-    menu->addAction(tr("Exit"), UiHelper::instance(), SLOT(exit()));
-    m_tray->setContextMenu(menu);
+    m_menu->addAction(playIcon,tr("Play"), m_player, SLOT(play()));
+    m_menu->addAction(pauseIcon,tr("Pause"), m_core, SLOT(pause()));
+    m_menu->addAction(stopIcon,tr("Stop"), m_core, SLOT(stop()));
+    m_menu->addSeparator();
+    m_menu->addAction(nextIcon, tr("Next"), m_player, SLOT(next()));
+    m_menu->addAction(previousIcon, tr("Previous"), m_player, SLOT(previous()));
+    m_menu->addSeparator();
+    m_menu->addAction(tr("Exit"), UiHelper::instance(), SLOT(exit()));
+    m_tray->setContextMenu(m_menu);
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     setState(m_core->state()); //update state
@@ -78,9 +78,10 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
         QTimer::singleShot(1500, this, SLOT(showMetaData()));
 }
 
-
 StatusIcon::~StatusIcon()
-{}
+{
+    delete m_menu;
+}
 
 void StatusIcon::setState(Qmmp::State state)
 {
