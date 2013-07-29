@@ -114,7 +114,7 @@ void WildMidiHelper::removePtr(void *t)
 QStringList WildMidiHelper::configFiles() const
 {
     QStringList files = QStringList() << "/etc/timidity.cfg"
-                                      << "/etc/timidity.cfg"
+                                      << "/etc/timidity/timidity.cfg"
                                       << "/etc/wildmidi/wildmidi.cfg";
     foreach(QString path, files)
     {
