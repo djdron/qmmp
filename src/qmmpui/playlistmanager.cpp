@@ -40,6 +40,7 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_selected = 0;
     m_repeatable = false;
     m_shuffle = false;
+    m_autosave_playlist = false;
     m_timer = new QTimer(this);
     m_timer->setInterval(5000);
     m_timer->setSingleShot(true);
