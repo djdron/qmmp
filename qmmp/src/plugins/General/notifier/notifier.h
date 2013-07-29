@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,7 +38,7 @@ Q_OBJECT
 public:
     Notifier(QObject *parent = 0);
 
-    ~Notifier();
+    virtual~Notifier();
 
 private slots:
     void showMetaData();

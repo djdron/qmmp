@@ -38,7 +38,7 @@ Bs2bPlugin::Bs2bPlugin() : Effect()
 Bs2bPlugin::~Bs2bPlugin()
 {
     m_instance = 0;
-    bs2b_clear(m_bs2b_handler);
+    bs2b_close(m_bs2b_handler);
 }
 
 #define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \

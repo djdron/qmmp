@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +28,7 @@
 class SoundCore;
 class MediaPlayer;
 class QEvent;
+class QMenu;
 
 
 /**
@@ -55,6 +56,7 @@ private:
     int m_messageDelay;
     SoundCore *m_core;
     MediaPlayer *m_player;
+    QMenu *m_menu;
 };
 
 #endif

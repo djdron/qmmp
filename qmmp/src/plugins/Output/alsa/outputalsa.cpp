@@ -361,7 +361,7 @@ void OutputALSA::uninitialize()
 VolumeALSA::VolumeALSA()
 {
     //alsa mixer
-    mixer = 0;
+    m_mixer = 0;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString card = settings.value("ALSA/mixer_card","hw:0").toString();
     QString dev = settings.value("ALSA/mixer_device", "PCM").toString();
@@ -371,8 +371,8 @@ VolumeALSA::VolumeALSA()
 
 VolumeALSA::~VolumeALSA()
 {
-    if (mixer)
-        snd_mixer_close(mixer);
+    if (m_mixer)
+        snd_mixer_close(m_mixer);
 }
 
 void VolumeALSA::setVolume(const VolumeSettings &vol)
@@ -391,7 +391,7 @@ VolumeSettings VolumeALSA::volume() const
         return vol;
 
     long value = 0;
-    snd_mixer_handle_events(mixer);
+    snd_mixer_handle_events(m_mixer);
     snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &value);
     vol.left = value;
     snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &value);
@@ -407,12 +407,12 @@ int VolumeALSA::setupMixer(QString card, QString device)
 
     qDebug("OutputALSA: setupMixer()");
 
-    if ((err = getMixer(&mixer, card)) < 0)
+    if ((err = getMixer(&m_mixer, card)) < 0)
         return err;
 
     parseMixerName(device.toAscii().data(), &name, &index);
 
-    pcm_element = getMixerElem(mixer, name, index);
+    pcm_element = getMixerElem(m_mixer, name, index);
 
     free(name);
 
@@ -487,8 +487,10 @@ int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
     {
         qWarning("OutputALSA: Attaching to mixer %s failed: %s",
                  dev, snd_strerror(-err));
+        free(dev);
         return -1;
     }
+    free(dev);
     if ((err = snd_mixer_selem_register(*mixer, NULL, NULL)) < 0)
     {
         qWarning("OutputALSA: Failed to register mixer: %s",
@@ -501,8 +503,5 @@ int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
                  snd_strerror(-err));
         return -1;
     }
-
-    free(dev);
-
     return (*mixer != NULL);
 }
