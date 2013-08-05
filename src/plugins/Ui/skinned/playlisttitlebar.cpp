@@ -260,9 +260,9 @@ void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent *)
 
 void PlayListTitleBar::showCurrent()
 {
-    if (m_model)
+    /*if (m_model)
     {
-        PlayListItem* info = m_model->currentItem();
+        PlayListTrack* info = m_model->currentItem();
         if (info)
         {
             m_text = QString("%1. %2").arg(m_model->currentIndex()+1)
@@ -278,5 +278,5 @@ void PlayListTitleBar::showCurrent()
     }
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
-    updatePixmap();
+    updatePixmap();*/
 }

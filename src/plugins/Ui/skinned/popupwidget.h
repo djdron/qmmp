@@ -26,7 +26,7 @@
 
 class QTimer;
 class QLabel;
-class PlayListItem;
+class PlayListTrack;
 
 namespace PlayListPopup {
 /**
@@ -40,7 +40,7 @@ public:
 
     ~PopupWidget();
 
-    void prepare(PlayListItem *item, QPoint pos);
+    void prepare(PlayListTrack *item, QPoint pos);
     void deactivate();
     const QString url() const;
 

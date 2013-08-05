@@ -85,7 +85,7 @@ void FileOps::execAction(int n)
     QString destination = m_destinations.at(n);
 
     PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
-    QList<PlayListItem*> items = model->selectedItems();
+    QList<PlayListTrack*> items = model->selectedItems();
 
     switch (type)
     {
@@ -105,7 +105,7 @@ void FileOps::execAction(int n)
         progress.show();
         progress.setAutoClose (false);
         int i  = 0;
-        foreach(PlayListItem *item, items)
+        foreach(PlayListTrack *item, items)
         {
             if (!QFile::exists(item->url()))
                 continue;
@@ -158,7 +158,7 @@ void FileOps::execAction(int n)
     }
     case RENAME:
         qDebug("FileOps: rename");
-        foreach(PlayListItem *item, items)
+        foreach(PlayListTrack *item, items)
         {
             if (!QFile::exists(item->url()))
                 continue;
@@ -191,7 +191,7 @@ void FileOps::execAction(int n)
                                    QMessageBox::Yes | QMessageBox::No) !=  QMessageBox::Yes)
             break;
 
-        foreach(PlayListItem *item, items)
+        foreach(PlayListTrack *item, items)
         {
             if (QFile::exists(item->url()) && QFile::remove(item->url()))
                 model->removeAt (model->indexOf(item));

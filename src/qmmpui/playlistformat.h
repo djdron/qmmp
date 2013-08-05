@@ -23,7 +23,7 @@
 
 #include <QStringList>
 
-class PlayListItem;
+class PlayListTrack;
 
 /*! @brief Helper structure to store playlist format properies.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -58,7 +58,7 @@ public:
      * Takes the list of AbstractPlaylistItem objects, should return string of
      * encoded playlist file
      */
-    virtual QString encode(const QList<PlayListItem*>& contents) = 0;
+    virtual QString encode(const QList<PlayListTrack*>& contents) = 0;
 };
 
 Q_DECLARE_INTERFACE(PlayListFormat,"PlayListFormat/1.0")

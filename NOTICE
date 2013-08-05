@@ -1,0 +1,5 @@
+Current version is broken.
+
+Use the following command to obtain the latest working version:
+
+svn up -r3864

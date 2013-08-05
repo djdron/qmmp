@@ -51,11 +51,11 @@ QStringList M3UPlaylistFormat::decode(const QString & contents)
     return out;
 }
 
-QString M3UPlaylistFormat::encode(const QList<PlayListItem*> & contents)
+QString M3UPlaylistFormat::encode(const QList<PlayListTrack*> & contents)
 {
     QStringList out;
     out << QString("#EXTM3U");
-    foreach(PlayListItem* f,contents)
+    foreach(PlayListTrack* f,contents)
     {
         QString info = "#EXTINF:" + QString::number(f->length()) + "," + f->value(Qmmp::TITLE);
         out.append(info);

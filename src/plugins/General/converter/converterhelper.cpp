@@ -55,7 +55,7 @@ ConverterHelper::~ConverterHelper()
 void ConverterHelper::openConverter()
 {
     PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
-    QList <PlayListItem *> items = pl_manager->selectedPlayList()->selectedItems();
+    QList <PlayListTrack *> items = pl_manager->selectedPlayList()->selectedItems();
     if (items.isEmpty())
         return;
 

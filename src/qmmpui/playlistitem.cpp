@@ -22,39 +22,13 @@
 #include "qmmpuisettings.h"
 #include "playlistitem.h"
 
-PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)
+PlayListItem::PlayListItem()
 {
-    m_info = 0;
-    m_length = 0;
     m_selected = false;
-}
-
-PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QString>(other),
-    m_flag(other.m_flag)
-{
-    m_formattedTitle = other.m_formattedTitle;
-    if (other.m_info)
-        m_info = new FileInfo(*(other.m_info));
-    else
-        m_info = 0;
-    m_selected = other.m_selected;
-    m_length = other.m_length;
-    m_formattedLength = other.m_formattedLength;
-}
-
-PlayListItem::PlayListItem(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()), m_flag(FREE)
-{
-    setLength(m_length = info->length());
-    m_selected = false;
-    m_info = info;
-    insert(Qmmp::URL, m_info->path());
 }
 
 PlayListItem::~PlayListItem()
-{
-    if (m_info)
-        delete m_info;
-}
+{}
 
 void PlayListItem::setSelected(bool yes)
 {
@@ -66,93 +40,4 @@ bool PlayListItem::isSelected() const
     return m_selected;
 }
 
-void PlayListItem::setFlag(FLAGS f)
-{
-    m_flag = f;
-}
 
-PlayListItem::FLAGS PlayListItem::flag() const
-{
-    return m_flag;
-}
-
-void PlayListItem::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
-{
-    QMap <Qmmp::MetaData, QString>::operator =(metaData);
-    readMetadata();
-}
-
-void PlayListItem::updateTags()
-{
-    if (m_info)
-    {
-        delete m_info;
-        m_info = 0;
-    }
-    QList <FileInfo *> list =  MetaDataManager::instance()->createPlayList(value(Qmmp::URL));
-    if(!list.isEmpty() && !list.at(0)->path().contains("://"))
-    {
-        m_info = list.at(0);
-        m_length = m_info->length();
-        QMap <Qmmp::MetaData, QString>::operator =(m_info->metaData());
-        insert(Qmmp::URL, m_info->path());
-        readMetadata();
-    }
-    while(list.size() > 1)
-        delete list.takeLast();
-}
-
-const QString PlayListItem::groupName() const
-{
-    MetaDataFormatter f("%p");
-    return f.parse(this);
-}
-
-const QString PlayListItem::formattedTitle()
-{
-    if(m_formattedTitle.isEmpty())
-        readMetadata();
-    return m_formattedTitle;
-}
-
-const QString PlayListItem::formattedLength() const
-{
-    return m_formattedLength;
-}
-
-void PlayListItem::setText(const QString &title)
-{
-    m_formattedTitle = title;
-}
-
-qint64 PlayListItem::length() const
-{
-    return m_length;
-}
-
-void PlayListItem::setLength(qint64 length)
-{
-    m_length = length;
-    MetaDataFormatter f;
-    m_formattedLength = f.formatLength(m_length);
-}
-
-const QString PlayListItem::url() const
-{
-    return value(Qmmp::URL);
-}
-
-void PlayListItem::readMetadata()
-{
-    MetaDataFormatter f(QmmpUiSettings::instance()->format());
-    m_formattedTitle = f.parse(this);
-    if (m_formattedTitle.isEmpty())
-        m_formattedTitle = value(Qmmp::URL).section('/',-1);
-    if (m_info)
-        delete m_info;
-    m_info = 0;
-    if (QmmpUiSettings::instance()->convertUnderscore())
-        m_formattedTitle.replace("_", " ");
-    if (QmmpUiSettings::instance()->convertTwenty())
-        m_formattedTitle.replace("%20", " ");
-}

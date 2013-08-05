@@ -75,7 +75,7 @@ QStringList XSPFPlaylistFormat::decode(const QString & contents)
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
 
-QString XSPFPlaylistFormat::encode(const QList<PlayListItem*> & files)
+QString XSPFPlaylistFormat::encode(const QList<PlayListTrack*> & files)
 {
     QDomDocument doc;
     QDomElement root = doc.createElement("playlist");
@@ -90,7 +90,7 @@ QString XSPFPlaylistFormat::encode(const QList<PlayListItem*> & files)
     QDomElement tracklist = doc.createElement("trackList");
 
     int counter = 1;
-    foreach(PlayListItem* f,files)
+    foreach(PlayListTrack* f,files)
     {
         QDomElement track = doc.createElement("track");
 

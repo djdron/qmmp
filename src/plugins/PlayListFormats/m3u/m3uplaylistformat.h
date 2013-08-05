@@ -37,7 +37,7 @@ class M3UPlaylistFormat : public QObject, public PlayListFormat
 public:
     const PlayListFormatProperties properties() const;
     QStringList decode(const QString& contents);
-    QString encode(const QList<PlayListItem*>& contents);
+    QString encode(const QList<PlayListTrack*>& contents);
 
 };
 

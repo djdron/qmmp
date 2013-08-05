@@ -64,12 +64,12 @@ QStringList PLSPlaylistFormat::decode(const QString & contents)
     return QStringList();
 }
 
-QString PLSPlaylistFormat::encode(const QList<PlayListItem *> & contents)
+QString PLSPlaylistFormat::encode(const QList<PlayListTrack *> & contents)
 {
     QStringList out;
     out << QString("[playlist]");
     int counter = 1;
-    foreach(PlayListItem* f,contents)
+    foreach(PlayListTrack* f,contents)
     {
         QString begin = "File" + QString::number(counter) + "=";
         out.append(begin + f->url());

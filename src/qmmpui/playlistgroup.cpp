@@ -18,25 +18,63 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "tagupdater_p.h"
+#include "playlistgroup.h"
 
-TagUpdater::TagUpdater(QObject* o, PlayListTrack* track) : m_observable(o), m_item(track)
+PlayListGroup::PlayListGroup(const QString &name)
 {
-    m_item->setFlag(PlayListTrack::EDITING);
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
+    m_name = name;
+    firstIndex = 0;
+    lastIndex = 0;
 }
 
-void TagUpdater::updateTag()
+PlayListGroup::~PlayListGroup()
 {
-    if (m_item->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
+    while(!m_tracks.isEmpty())
     {
-        delete m_item;
-        m_item = NULL;
+        PlayListTrack* mf = m_tracks.takeFirst();
+
+        if (mf->flag() == PlayListTrack::FREE)
+        {
+            delete mf;
+        }
+        else if (mf->flag() == PlayListTrack::EDITING)
+        {
+            mf->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
+        }
     }
-    else
-    {
-        m_item->updateTags();
-        m_item->setFlag(PlayListTrack::FREE);
-    }
+}
+
+const QString PlayListGroup::formattedTitle() const
+{
+    return m_name;
+}
+
+void PlayListGroup::addTrack(PlayListTrack *track)
+{
+    m_tracks.append(track);
+}
+
+bool PlayListGroup::contains(PlayListTrack *track) const
+{
+    return m_tracks.contains(track);
+}
+
+bool PlayListGroup::isEmpty() const
+{
+    return m_tracks.isEmpty();
+}
+
+void PlayListGroup::remove(PlayListTrack *track)
+{
+    m_tracks.removeAll(track);
+}
+
+QList<PlayListTrack *> *PlayListGroup::tracks()
+{
+    return &m_tracks;
+}
+
+int PlayListGroup::count() const
+{
+    return m_tracks.count();
 }

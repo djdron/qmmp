@@ -22,7 +22,7 @@
 #define TAGUPDATER_P_H
 
 #include <QObject>
-#include "playlistitem.h"
+#include "playlisttrack.h"
 
 /*! @internal
  * @brief Helper class used for tags update after details dialog closing.
@@ -34,9 +34,9 @@ class TagUpdater : public QObject
     Q_OBJECT
 
 public:
-    TagUpdater(QObject* o, PlayListItem* item);
+    TagUpdater(QObject* o, PlayListTrack* track);
     QObject* m_observable;
-    PlayListItem* m_item;
+    PlayListTrack* m_item;
 
 public slots:
     void updateTag();

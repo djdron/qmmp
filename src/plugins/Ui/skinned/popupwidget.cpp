@@ -81,7 +81,7 @@ void PopupWidget::mouseMoveEvent (QMouseEvent *)
     hide();
 }
 
-void PopupWidget::prepare(PlayListItem *item, QPoint pos)
+void PopupWidget::prepare(PlayListTrack *item, QPoint pos)
 {
     pos += QPoint(15,10);
 

@@ -1,14 +1,14 @@
 SUBDIRS += Input \
            Output \
-           General \
+           #General \
            Visual \
            Transports \
            Effect \
-           PlayListFormats \
+           #PlayListFormats \
            FileDialogs \
            Ui
 
 
-unix:SUBDIRS += CommandLineOptions \
-                Engines
+#unix:SUBDIRS += CommandLineOptions \
+#                Engines
 TEMPLATE = subdirs

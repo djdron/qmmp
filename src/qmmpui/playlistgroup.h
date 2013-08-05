@@ -18,25 +18,44 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "tagupdater_p.h"
+#ifndef PLAYLISTGROUP_H
+#define PLAYLISTGROUP_H
 
-TagUpdater::TagUpdater(QObject* o, PlayListTrack* track) : m_observable(o), m_item(track)
-{
-    m_item->setFlag(PlayListTrack::EDITING);
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
-}
+#include "playlisttrack.h"
+#include "playlistitem.h"
 
-void TagUpdater::updateTag()
+class PlayListGroup : public PlayListItem
 {
-    if (m_item->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
-    {
-        delete m_item;
-        m_item = NULL;
-    }
-    else
-    {
-        m_item->updateTags();
-        m_item->setFlag(PlayListTrack::FREE);
-    }
-}
+public:
+    PlayListGroup(const QString &formattedTitle);
+
+    virtual ~PlayListGroup();
+
+    int firstIndex;
+    int lastIndex;
+
+    const QString formattedTitle() const;
+    void addTrack(PlayListTrack *track);
+    bool contains(PlayListTrack *track) const;
+    bool isEmpty() const;
+    void remove(PlayListTrack *track);
+
+    QList<PlayListTrack *> *tracks();
+
+    int count() const;
+
+
+
+    /*!
+     *  Returns formatted length of the item.
+     */
+    const QString formattedLength() const { return QString(); }
+
+    virtual bool isGroup() const { return true; }
+
+private:
+    QList<PlayListTrack *> m_tracks;
+    QString m_name;
+};
+
+#endif // PLAYLISTGROUP_H

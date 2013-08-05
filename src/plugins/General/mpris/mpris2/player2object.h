@@ -30,7 +30,7 @@
 class SoundCore;
 class MediaPlayer;
 class PlayListManager;
-class PlayListItem;
+class PlayListTrack;
 class PlayListModel;
 
 /**
@@ -97,7 +97,7 @@ private slots:
     void updateId();
     void checkState(Qmmp::State state);
     void checkSeeking(qint64 elapsed);
-    void playItem(PlayListItem *item);
+    void playItem(PlayListTrack *item);
     void disconnectPl();
     void setModel(PlayListModel *selected, PlayListModel *previous);
 
@@ -109,7 +109,7 @@ private:
     PlayListManager *m_pl_manager;
     QMap<QString, QVariant> m_props;
     QDBusObjectPath m_trackID;
-    PlayListItem *m_prev_item;
+    PlayListTrack *m_prev_item;
     qint64 m_previous_pos;
 
 };

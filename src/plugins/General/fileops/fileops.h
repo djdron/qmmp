@@ -25,7 +25,7 @@
 
 class QAction;
 class SoundCore;
-class PlayListItem;
+class PlayListTrack;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>

@@ -168,49 +168,79 @@ void ListWidget::paintEvent(QPaintEvent *)
 
     for (int i = 0; i < m_rows.size(); ++i )
     {
+        sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
+
+        if(m_rows[i]->separator)
+        {
+            painter.setPen(m_normal);
+            if(m_number_width)
+            {
+                sx = 10 + m_number_width + m_metrics->width("9");
+                if(rtl)
+                {
+                    sx = width() - sx - m_metrics->width(m_rows[i]->title);
+                }
+            }
+            else
+            {
+                sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
+            }
+            painter.drawLine(sx, sy - m_metrics->lineSpacing()/2 + 2,
+                             sx + 30, sy - m_metrics->lineSpacing()/2 + 2);
+
+            painter.drawLine(sx + 35 + m_metrics->width(m_rows[i]->title) + 5,
+                             sy - m_metrics->lineSpacing()/2 + 2,
+                             width() - 10,
+                             sy - m_metrics->lineSpacing()/2 + 2);
+
+            painter.drawText(sx + 35, sy, m_rows[i]->title);
+            continue;
+        }
+
         if (m_show_anchor && i == m_anchor_row - m_first)
         {
-            painter.setBrush(m_rows[i]->item->isSelected() ? m_selected_bg : m_normal_bg);
+            painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
             painter.setPen(m_normal);
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                width() - 10, m_metrics->lineSpacing() + 1);
+                              width() - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
-            if (m_rows[i]->item->isSelected())
+            if (m_rows[i]->selected)
             {
                 painter.setBrush(QBrush(m_selected_bg));
                 painter.setPen(m_selected_bg);
                 painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                    width() - 10, m_metrics->lineSpacing() + 1);
+                                  width() - 10, m_metrics->lineSpacing() + 1);
             }
         }
 
-        if (m_model->currentIndex() == m_rows[i]->index)
+
+        if (m_model->currentIndex() == m_first + i)
             painter.setPen(m_current);
         else
             painter.setPen(m_normal);  //243,58
 
-        sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
 
         if(m_number_width)
         {
-            QString number = QString("%1").arg(m_first+i+1);
+            QString number = QString("%1").arg(m_rows[i]->number);
             sx = 10 + m_number_width - m_metrics->width(number);
             if(rtl)
                 sx = width() - sx - m_metrics->width(number);
-            painter.drawText(sx, sy, number);
+            if(!m_rows[i]->separator)
+                painter.drawText(sx, sy, number);
 
             sx = 10 + m_number_width + m_metrics->width("9");
             if(rtl)
                 sx = width() - sx - m_metrics->width(m_rows[i]->title);
-            painter.drawText(sx, sy, m_rows[i]->title);
         }
         else
         {
             sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
-            painter.drawText(sx, sy, m_rows[i]->title);
         }
+
+        painter.drawText(sx, sy, m_rows[i]->title);
 
         QString extra_string = m_rows[i]->extraString;
 
@@ -349,7 +379,7 @@ void ListWidget::wheelEvent (QWheelEvent *e)
 
 bool ListWidget::event (QEvent *e)
 {
-    if(m_popupWidget)
+    /*if(m_popupWidget)
     {
         if(e->type() == QEvent::ToolTip)
         {
@@ -366,7 +396,7 @@ bool ListWidget::event (QEvent *e)
         }
         else if(e->type() == QEvent::Leave)
             m_popupWidget->deactivate();
-    }
+    }*/
     return QWidget::event(e);
 }
 
@@ -391,34 +421,51 @@ void ListWidget::updateList()
     //song numbers width
     if(m_show_number && m_align_numbres && m_model->count())
     {
-        m_number_width = m_metrics->width("9") * QString::number(m_model->count()).size();
+        m_number_width = m_metrics->width("9") * QString::number(m_model->trackCount()).size();
     }
     else
         m_number_width = 0;
 
-    qDeleteAll(m_rows); //TODO do not delete all row objects
+    qDeleteAll(m_rows);
     m_rows.clear();
 
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
+
+    while(m_rows.count() < qMin(m_row_count, items.count()))
+        m_rows << new ListWidgetRow;
+    while(m_rows.count() > qMin(m_row_count, items.count()))
+        delete m_rows.takeFirst();
+
     for(int i = 0; i < items.count(); ++i)
     {
-        ListWidgetRow *row = new ListWidgetRow;
-        row->item = items[i];
-        row->title = items[i]->formattedTitle();
-        row->length = items[i]->formattedLength();
-        row->index = m_first + i;
-        //add numbers
-        if(m_show_number && !m_align_numbres)
-            row->title.prepend(QString("%1").arg(m_first+i+1)+". ");
-        //elide titles
-        row->extraString = getExtraString(m_first + i);
-        int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
-        if(m_number_width)
-            extra_string_width += m_number_width + m_metrics->width("9");
-        row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                        width() -  m_metrics->width(row->length) - 22 - extra_string_width);
-
-        m_rows.append(row);
+        ListWidgetRow *row = m_rows[i];
+        if(items[i]->isGroup())
+        {
+            row->separator = true;
+            row->number = 0;
+            row->title = items[i]->formattedTitle();
+            row->length.clear();
+            row->selected = false;
+            row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+                            width() -  m_number_width - 22 - 70);
+        }
+        else
+        {
+            row->separator = false;
+            row->number = m_model->numberOfTrack(m_first+i) + 1;
+            row->title = items[i]->formattedTitle();
+            row->length = items[i]->formattedLength();
+            row->selected = items[i]->isSelected();
+            if(m_show_number && !m_align_numbres)
+                row->title.prepend(QString("%1").arg(row->number)+". ");
+            row->extraString = getExtraString(m_first + i);
+            //elide titles
+            int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
+            if(m_number_width)
+                extra_string_width += m_number_width + m_metrics->width("9");
+            row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+                            width() -  m_metrics->width(row->length) - 22 - extra_string_width);
+        }
     }
     m_scroll = false;
     update();
@@ -504,18 +551,22 @@ const QString ListWidget::getExtraString(int i)
 {
     QString extra_string;
 
-    if (m_show_protocol && m_model->item(i)->url().contains("://"))
-        extra_string = "[" + m_model->item(i)->url().split("://").at(0) + "]";
+    PlayListTrack *track = m_model->track(i);
+    if(!track)
+        return extra_string;
 
-    if (m_model->isQueued(m_model->item(i)))
+    if (m_show_protocol && track->url().contains("://"))
+        extra_string = "[" + track->url().split("://").at(0) + "]";
+
+    if (m_model->isQueued(track))
     {
-        int index = m_model->queuedIndex(m_model->item(i));
+        int index = m_model->queuedIndex(track);
         extra_string += "|"+QString::number(index + 1)+"|";
     }
 
     if(m_model->currentIndex() == i && m_player->isRepeatable())
         extra_string += "|R|";
-    else if(m_model->isStopAfter(m_model->item(i)))
+    else if(m_model->isStopAfter(track))
         extra_string += "|S|";
 
     extra_string = extra_string.trimmed(); //remove white space
@@ -570,8 +621,8 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
     else if(m_popupWidget)
     {
         int row = rowAt(e->y());
-        if(row < 0 || m_popupWidget->url() != m_model->item(row)->url())
-            m_popupWidget->deactivate();
+        /*if(row < 0 || m_popupWidget->url() != m_model->item(row)->url())
+            m_popupWidget->deactivate();*/
     }
 }
 
