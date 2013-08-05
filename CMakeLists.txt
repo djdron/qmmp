@@ -1,4 +1,4 @@
-MESSAGE(ERROR "this revision is broken. Use r3864 instead"
+MESSAGE(FATAL_ERROR "This revision is broken. Use r3864 instead")
 
 cmake_minimum_required(VERSION 2.6.0)
 
