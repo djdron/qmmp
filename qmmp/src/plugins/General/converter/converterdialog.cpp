@@ -29,11 +29,11 @@
 #include "preseteditor.h"
 #include "converterdialog.h"
 
-ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent) : QDialog(parent)
+ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent) : QDialog(parent)
 {
     ui.setupUi(this);
     MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
-    foreach(PlayListItem *item , items)
+    foreach(PlayListTrack *item , items)
     {
         if(item->length() == 0)
             continue;

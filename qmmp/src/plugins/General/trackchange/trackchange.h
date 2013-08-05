@@ -26,7 +26,7 @@
 
 class QAction;
 class SoundCore;
-class PlayListItem;
+class PlayListTrack;
 class PlayListManager;
 
 /**

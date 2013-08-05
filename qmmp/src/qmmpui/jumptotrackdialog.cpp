@@ -81,16 +81,16 @@ void JumpToTrackDialog::on_refreshPushButton_clicked()
 
 void JumpToTrackDialog::on_queuePushButton_clicked()
 {
-    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
+    /*QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
     if (!mi_list.isEmpty())
     {
         int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
-        m_model->setQueued(m_model->item(selected));
-        if (m_model->isQueued(m_model->item(selected)))
+        m_model->setQueued(m_model->track(selected));
+        if (m_model->isQueued(m_model->track(selected)))
             queuePushButton->setText(tr("Unqueue"));
         else
             queuePushButton->setText(tr("Queue"));
-    }
+    }*/
 }
 
 void JumpToTrackDialog::on_jumpToPushButton_clicked()
@@ -104,12 +104,12 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 
 void JumpToTrackDialog::refresh()
 {
-    filterLineEdit->clear();
+    /*filterLineEdit->clear();
     QStringList titles;
-    foreach (PlayListItem *item, m_model->items())
+    foreach (PlayListTrack *item, m_model->items())
         titles.append(item->formattedTitle());
     m_listModel->setStringList(titles);
-    filterLineEdit->setFocus();
+    filterLineEdit->setFocus();*/
 }
 
 void JumpToTrackDialog::on_filterLineEdit_textChanged(const QString &str)
@@ -140,9 +140,9 @@ void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
-    int row = m_proxyModel->mapToSource(curr).row();
+    /*int row = m_proxyModel->mapToSource(curr).row();
     if (m_model->isQueued(m_model->item(row)))
         queuePushButton->setText(tr("Unqueue"));
     else
-        queuePushButton->setText(tr("Queue"));
+        queuePushButton->setText(tr("Queue"));*/
 }

@@ -35,7 +35,7 @@ class ToggleButton;
 class EQGraph;
 class Button;
 class EQPreset;
-class PlayListItem;
+class PlayListTrack;
 class SoundCore;
 
 class EqWidget : public PixmapWidget

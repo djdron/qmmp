@@ -82,7 +82,7 @@ int TrackListObject::GetLength()
 QVariantMap TrackListObject::GetMetadata(int in0)
 {
     QVariantMap map;
-    PlayListItem *item = m_model->item(in0);
+    PlayListTrack *item = m_model->item(in0);
     if (item)
     {
         if (QFile::exists(item->url()))

@@ -211,7 +211,7 @@ UDisks2Device *UDisks2Plugin::findDevice(QAction *action)
 
 void UDisks2Plugin::addPath(const QString &path)
 {
-    foreach(PlayListItem *item, PlayListManager::instance()->selectedPlayList()->items()) // Is it already exist?
+    foreach(PlayListTrack *item, PlayListManager::instance()->selectedPlayList()->items()) // Is it already exist?
     {
         if (item->url().startsWith(path))
             return;

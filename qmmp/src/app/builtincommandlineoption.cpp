@@ -125,7 +125,7 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
             m_model->clear();
             if(!full_path_list.isEmpty())
             {
-                connect(m_model, SIGNAL(itemAdded(PlayListItem*)), player, SLOT(play()));
+                connect(m_model, SIGNAL(itemAdded(PlayListTrack*)), player, SLOT(play()));
                 connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(disconnectPl()));
                 connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
             }
@@ -219,7 +219,7 @@ void BuiltinCommandLineOption::disconnectPl()
 {
     if(m_model)
     {
-        disconnect(m_model, SIGNAL(itemAdded(PlayListItem*)), MediaPlayer::instance(), SLOT(play()));
+        disconnect(m_model, SIGNAL(itemAdded(PlayListTrack*)), MediaPlayer::instance(), SLOT(play()));
         disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
         disconnect(SoundCore::instance(), SIGNAL(stateChanged(Qmmp::State)), this, SLOT(disconnectPl()));
         m_model = 0;

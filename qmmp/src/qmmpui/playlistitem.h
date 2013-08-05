@@ -24,42 +24,22 @@
 #include <qmmp/fileinfo.h>
 #include <qmmp/qmmp.h>
 
+
 /** @brief The PlayListItem class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListItem : public QMap <Qmmp::MetaData, QString>
+class PlayListItem
 {
 public:
-    /*!
-     * Current state of playlist item.
-     * FREE - instance is free and may be deleted
-     * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
-     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it
-     * instead of delete operator call.
-     */
-    enum FLAGS
-    {
-        FREE = 0,              /*!< instance is free and may be deleted */
-        EDITING,               /*!< instance is currently busy */
-        SCHEDULED_FOR_DELETION /*!< instance is sheduled for deletion */
-    };
+
     /*!
      * Constructs an empty plalist item.
      */
     PlayListItem();
     /*!
-     * Constructs a new PlayListItem that is a copy of the given \b item
-     */
-    PlayListItem(const PlayListItem &item);
-    /*!
-     * Constructs plalist item with given metadata.
-     * @param info Media file information.
-     */
-    PlayListItem(FileInfo *info);
-    /*!
      * Object destructor.
      */
-    ~PlayListItem();
+    virtual ~PlayListItem();
     /*!
      * Sets item selection flag to \b select
      * @param select State of selection (\b true select, \b false unselect)
@@ -70,58 +50,18 @@ public:
      */
     bool isSelected() const;
     /*!
-     * Returns current state of the playlist item.
-     */
-    FLAGS flag() const;
-    /*!
-     * Sets state of the playlist item.
-     */
-    void setFlag(FLAGS);
-    /*!
      * Returns formatted title of the item.
      */
-    const QString formattedTitle();
+    virtual const QString formattedTitle() const = 0;
     /*!
      *  Returns formatted length of the item.
      */
-    const QString formattedLength() const;
-    /*!
-     * Direct access to the item short title.
-     * @param title New short title.
-     */
-    void setText(const QString &title);
-    /*!
-     * Returns song length in seconds.
-     */
-    qint64 length() const;
-    /*!
-     * Sets length in seconds.
-     */
-    void setLength(qint64 length);
-    /*!
-     * Same as url()
-     */
-    const QString url() const;
-    /*!
-     * Updates current metadata.
-     * @param metaData Map with metadata values.
-     */
-    void updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData);
-    /*!
-     * Gets new metadata from file (works for local files only).
-     */
-    void updateTags();
+    virtual const QString formattedLength() const = 0;
 
-    const QString groupName() const;
+    virtual bool isGroup() const = 0;
 
 private:
-    void readMetadata();
-    QString m_formattedTitle;
-    QString m_formattedLength;
-    FileInfo *m_info;
     bool m_selected;
-    FLAGS m_flag;
-    qint64 m_length;
 };
 
 #endif

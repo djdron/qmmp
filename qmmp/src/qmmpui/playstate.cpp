@@ -113,56 +113,75 @@ void ShufflePlayState::resetState()
 NormalPlayState::NormalPlayState(PlayListModel * model) : PlayState(model)
 {}
 
-
 bool NormalPlayState::next()
 {
-    int itm_count = m_model->items().count();
+    int item_count = m_model->items().count();
 
-    if (itm_count > 0)
-    {
-        if ( m_model->currentIndex() == itm_count - 1)
-        {
-            if (m_model->isRepeatableList())
-                return m_model->setCurrent(0);
-            else
-                return false;
-        }
-        return m_model->setCurrent(m_model->currentIndex() + 1);
-    }
-    else
+    if(!item_count)
         return false;
+
+    if (m_model->isRepeatableList() && m_model->currentIndex() == item_count - 1)
+    {
+        if(item_count >= 1 && m_model->track(0))
+            return m_model->setCurrent(0);
+        else if(item_count >= 2 && m_model->track(1))
+            return m_model->setCurrent(1);
+    }
+    else if(m_model->track((m_model->currentIndex() + 1)))
+        return m_model->setCurrent(m_model->currentIndex() + 1);
+    else if(m_model->currentIndex() + 2 >= item_count)
+        return false;
+    else if(m_model->track(m_model->currentIndex() + 2))
+        return m_model->setCurrent(m_model->currentIndex() + 2);
+    return false;
 }
 
 bool NormalPlayState::previous()
 {
-    int itm_count = m_model->items().count();
+    int item_count = m_model->items().count();
 
-    if (itm_count > 0)
+    if(!item_count)
+        return false;
+
+    if(m_model->isRepeatableList())
     {
-        if ( m_model->currentIndex() < 1 && !m_model->isRepeatableList())
-            return false;
-        else if (m_model->setCurrent(m_model->currentIndex() - 1))
-            return true;
-        else if (m_model->isRepeatableList())
-            return m_model->setCurrent(m_model->items().count() - 1);
+        if(m_model->currentIndex() == 1 && m_model->track(0))
+            return m_model->setCurrent(0);
+        else if(m_model->currentIndex() == 1 && !m_model->track(0))
+            return (m_model->setCurrent(m_model->currentIndex() - 1));
+        else if(m_model->currentIndex() == 0)
+            return m_model->setCurrent(m_model->currentIndex() - 1);
     }
+
+    if(m_model->currentIndex() == 0)
+        return false;
+    else if(m_model->track(m_model->currentIndex() - 1))
+        return m_model->setCurrent(m_model->currentIndex() - 1);
+    else if(m_model->currentIndex() >= 2 && m_model->track(m_model->currentIndex() - 2))
+        return m_model->setCurrent(m_model->currentIndex() - 2);
 
     return false;
 }
 
 int NormalPlayState::nextIndex()
 {
-    int itm_count = m_model->items().count();
-    if(!itm_count)
+    int item_count = m_model->items().count();
+    if(!item_count)
         return -1;
 
-    if (m_model->currentIndex() == itm_count - 1)
+    if (m_model->currentIndex() == item_count - 1)
     {
         if (m_model->isRepeatableList())
             return 0;
         else
             return -1;
     }
-    return m_model->currentIndex() + 1;
+    if(m_model->track(m_model->currentIndex() + 1))
+        return m_model->currentIndex() + 1;
+    else if(m_model->currentIndex() + 2 >= m_model->count())
+        return -1;
+    else if(m_model->track(m_model->currentIndex() + 2))
+        return m_model->currentIndex() + 2;
+    return -1;
 }
 

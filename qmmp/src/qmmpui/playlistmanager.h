@@ -209,7 +209,7 @@ public slots:
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->removeItem(item)
      */
-    void removeItem (PlayListItem *item);
+    void removeItem (PlayListTrack *item);
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->invertSelection()
      */

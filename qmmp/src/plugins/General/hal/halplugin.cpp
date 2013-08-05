@@ -237,7 +237,7 @@ HalDevice *HalPlugin::findDevice(QAction *action)
 
 void HalPlugin::addPath(const QString &path)
 {
-    foreach(PlayListItem *item, MediaPlayer::instance()->playListManager()->selectedPlayList()->items()) // Is it already exist?
+    foreach(PlayListTrack *item, MediaPlayer::instance()->playListManager()->selectedPlayList()->items()) // Is it already exist?
     {
         if (item->url().startsWith(path))
             return;

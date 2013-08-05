@@ -119,7 +119,7 @@ double Player2Object::maximumRate() const
 
 QVariantMap Player2Object::metadata() const
 {
-    PlayListItem *item = m_pl_manager->currentPlayList()->currentItem();
+    PlayListTrack *item = m_pl_manager->currentPlayList()->currentItem();
     if(!item || m_core->metaData(Qmmp::URL).isEmpty())
         return QVariantMap();
     QVariantMap map;
@@ -222,8 +222,8 @@ void Player2Object::OpenUri(const QString &in0)
     if(!m_pl_manager->currentPlayList()->isLoaderRunning())
     {
         m_pl_manager->selectPlayList(m_pl_manager->currentPlayList());
-        connect(m_pl_manager->currentPlayList(), SIGNAL(itemAdded(PlayListItem*)),
-                SLOT(playItem(PlayListItem*)));
+        connect(m_pl_manager->currentPlayList(), SIGNAL(itemAdded(PlayListTrack*)),
+                SLOT(playItem(PlayListTrack*)));
         connect(m_pl_manager->currentPlayList(), SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
     }
     m_pl_manager->currentPlayList()->add(path);
@@ -343,11 +343,11 @@ void Player2Object::checkSeeking(qint64 elapsed)
     m_previous_pos = elapsed;
 }
 
-void Player2Object::playItem(PlayListItem *item)
+void Player2Object::playItem(PlayListTrack *item)
 {
     m_pl_manager->selectPlayList((PlayListModel*)sender());
     m_pl_manager->activatePlayList((PlayListModel*)sender());
-    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListItem*))), this, SLOT(playItem(PlayListItem*)));
+    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListTrack*))), this, SLOT(playItem(PlayListTrack*)));
     if(!m_pl_manager->currentPlayList()->setCurrent(item))
         return;
     m_core->stop();
@@ -356,8 +356,8 @@ void Player2Object::playItem(PlayListItem *item)
 
 void Player2Object::disconnectPl()
 {
-    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListItem*))),
-               this, SLOT(playItem(PlayListItem*)));
+    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListTrack*))),
+               this, SLOT(playItem(PlayListTrack*)));
 }
 
 void Player2Object::setModel(PlayListModel *selected, PlayListModel *previous)

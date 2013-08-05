@@ -26,7 +26,7 @@
 #include "ui_converterdialog.h"
 
 class QAction;
-class PlayListItem;
+class PlayListTrack;
 class ConverterPreset;
 
 /**
@@ -36,7 +36,7 @@ class ConverterDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit ConverterDialog(QList <PlayListItem *> items,  QWidget *parent = 0);
+    explicit ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent = 0);
     virtual ~ConverterDialog();
 
     QStringList selectedUrls() const;

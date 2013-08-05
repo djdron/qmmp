@@ -81,18 +81,18 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
 
 void QmmpUiSettings::setFormat(const QString &format)
 {
-    m_format = format;
+    /*m_format = format;
     if(format != m_format)
     {
         m_format = format;
         //emit settingsChanged();
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
-            foreach(PlayListItem *item, model->items())
+            foreach(PlayListTrack *item, model->items())
                 item->setText(QString());
             model->doCurrentVisibleRequest();
         }
-    }
+    }*/
 }
 
 void QmmpUiSettings::setUseMetadata(bool yes)

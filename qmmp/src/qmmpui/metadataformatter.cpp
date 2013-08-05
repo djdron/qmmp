@@ -47,7 +47,7 @@ MetaDataFormatter::MetaDataFormatter(const QString &format)
     m_format = format;
 }
 
-QString MetaDataFormatter::parse(const PlayListItem *item)
+QString MetaDataFormatter::parse(const PlayListTrack *item)
 {
     return parse(*item, item->length());
 }

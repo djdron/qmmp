@@ -522,7 +522,7 @@ void PlayList::updateList()
 
 PlayListItem *PlayList::currentItem()
 {
-    return m_pl_manager->currentPlayList()->currentItem();
+    return m_pl_manager->currentPlayList()->currentTrack();
 }
 
 void PlayList::showPlaylistMenu()
@@ -582,7 +582,7 @@ void PlayList::generateCopySelectedMenu()
 
 void PlayList::copySelectedMenuActionTriggered(QAction *action)
 {
-    PlayListModel *targetPlayList = 0;
+    /*PlayListModel *targetPlayList = 0;
     QString actionText=action->text();
     if(action == m_copySelectedMenu->actions().at(0))//actionText == tr ("&New PlayList"))
     {
@@ -606,13 +606,13 @@ void PlayList::copySelectedMenuActionTriggered(QAction *action)
         qWarning("Error: Cannot find target playlist '%s'",qPrintable(actionText));
         return;
     }
-    QList <PlayListItem *> theCopy;
+    QList <PlayListTrack *> theCopy;
     foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->selectedItems())
     {
-        PlayListItem *newItem = new PlayListItem(*item);
+        PlayListTrack *newItem = new PlayListTrack(*item);
         theCopy << newItem;
     }
-    targetPlayList->add(theCopy);
+    targetPlayList->add(theCopy);*/
 }
 
 void PlayList::setMinimalMode(bool b)

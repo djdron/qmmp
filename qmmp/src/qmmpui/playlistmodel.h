@@ -29,8 +29,10 @@
 #include <QVector>
 #include "playlistitem.h"
 
+
+#include "playlistcontainer.h"
+
 class FileLoader;
-class PlayListItem;
 class PlayState;
 class PlayListFormat;
 class PlayListModel;
@@ -104,15 +106,18 @@ public:
     /*!
      * Returns number of items.
      */
-    int count();
+    int count() const;
+
+    int trackCount() const;
+
     /*!
      * Returns the current item.
      */
-    PlayListItem* currentItem();
+    PlayListTrack* currentTrack() const;
     /*!
      * Returns the next playing item or 0 if next item is unknown.
      */
-    PlayListItem* nextItem();
+    PlayListTrack* nextTrack() const;
     /*!
      * Returns the row of the \b item
      */
@@ -121,10 +126,11 @@ public:
      * Returns the item with the index \b index or 0 if item doesn't exist.
      */
     PlayListItem* item(int index) const;
+    PlayListTrack* track(int index) const;
     /*!
      * Returns index of the current item.
      */
-    int currentIndex();
+    int currentIndex() const;
     /*!
      * Sets current index.
      * Returns \b false if item with this index doesn't exist, otherwise returns \b true
@@ -135,11 +141,11 @@ public:
      * Sets current item to \b item.
      * Returns \b true if success, otherwise returns \b false
      */
-    bool setCurrent(PlayListItem *item);
+    bool setCurrent(PlayListTrack *item);
     /*!
      * Returns \b true if item with \b index is selected, otherwise returns \b false
      */
-    bool isSelected(int index);
+    bool isSelected(int index) const;
     /*!
      * Sets the selected state of the item to \b select
      * @param index Number of item.
@@ -161,7 +167,7 @@ public:
      * \param pos First item position.
      * \param count A number of items. If \b count is -1 (the default), all items from pos are returned.
      */
-    QList<PlayListItem *> mid(int pos, int count = -1);
+    QList<PlayListItem *> mid(int pos, int count = -1) const;
     /*!
      *  Moves the item at index position \b from to index position \b to.
      */
@@ -169,7 +175,7 @@ public:
     /*!
      * Returns \b true if \b f file is in play queue, otherwise returns \b false.
      */
-    bool isQueued(PlayListItem* item) const;
+    bool isQueued(PlayListTrack* item) const;
     /*!
      * Sets current song to the file that is nex in queue, if queue is empty - does nothing
      */
@@ -181,7 +187,7 @@ public:
     /*!
      * Returns index of \b f file in queue.e
      */
-    int queuedIndex(PlayListItem* item) const;
+    int queuedIndex(PlayListTrack* track) const;
     /*!
      * Returns the number of items in the queue
      */
@@ -202,7 +208,7 @@ public:
     /*!
      * Returns list of \b PlayListItem pointers that are selected.
      */
-    QList<PlayListItem*> selectedItems() const;
+    QList<PlayListTrack *> selectedTracks();
     /*!
      * Returns list of all \b PlayListItem pointers.
      */
@@ -260,6 +266,8 @@ public:
         FILE_MODIFICATION_DATE  /*!< by file modification date */
     };
 
+    int numberOfTrack(int index) const;
+
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
@@ -292,12 +300,12 @@ public slots:
     /*!
      * Adds \b item to the playlist.
      */
-    void add(PlayListItem *item);
+    void add(PlayListTrack *item);
     /*!
      * Adds a list of items to the playlist.
      * @param items List of items.
      */
-    void add(QList <PlayListItem *> items);
+    void add(QList <PlayListTrack *> tracks);
     /*!
      * Adds a list of files and directories to the playlist
      * @param path Full path of file or directory.
@@ -327,7 +335,7 @@ public slots:
     /*!
      * Removes items with \b i index.
      */
-    void removeAt (int i);
+    void removeTrack (int i);
     /*!
      * Removes item \b item from playlist
      */
@@ -380,7 +388,7 @@ public slots:
     /*!
      * Adds/removes item \b f to/from playback queue.
      */
-    void setQueued(PlayListItem* item);
+    void setQueued(PlayListTrack* item);
     /*!
      * Removes invalid items from playlist
      */
@@ -421,19 +429,18 @@ private slots:
     void preparePlayState();
 
 private:
-    QList <PlayListItem*> m_items;
-    QList <PlayListItem*> m_editing_items;
-    PlayListItem* m_currentItem;
-    PlayListItem* m_stop_item;
+    PlayListTrack* m_current_track;
+    PlayListTrack* m_stop_track;
     int m_current;
     SimpleSelection m_selection;  /*!< This flyweight object represents current selection. */
-    QQueue <PlayListItem*> m_queued_songs; /*!< Songs in play queue. */
+    QQueue <PlayListTrack*> m_queued_songs; /*!< Songs in play queue. */
     bool m_is_repeatable_list; /*!< Is playlist repeatable? */
     PlayState* m_play_state; /*!< Current playing state (Normal or Shuffle) */
     int m_total_length;
     FileLoader *m_loader;
     bool m_shuffle;
     QString m_name;
+    PlayListContainer m_container;
 };
 
 #endif

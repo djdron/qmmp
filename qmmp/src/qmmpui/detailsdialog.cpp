@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,11 +28,11 @@
 #include <qmmp/tagmodel.h>
 #include <qmmp/soundcore.h>
 #include "ui_detailsdialog.h"
-#include "playlistitem.h"
+#include "playlisttrack.h"
 #include "tageditor_p.h"
 #include "detailsdialog.h"
 
-DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)
+DetailsDialog::DetailsDialog(PlayListTrack *item, QWidget *parent)
         : QDialog(parent)
 {
     m_ui = new Ui::DetailsDialog;

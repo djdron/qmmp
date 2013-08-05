@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,7 @@
 #include <QRegExp>
 #include "fileloader_p.h"
 #include "qmmpuisettings.h"
-#include "playlistitem.h"
+#include "playlisttrack.h"
 
 FileLoader::FileLoader(QObject *parent) : QThread(parent)
 {
@@ -38,7 +38,7 @@ void FileLoader::addFile(const QString &path)
     bool use_meta = m_settings->useMetadata();
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
     foreach(FileInfo *info, playList)
-        emit newPlayListItem(new PlayListItem(info));
+        emit newPlayListTrack(new PlayListTrack(info));
 }
 
 void FileLoader::addDirectory(const QString& s)

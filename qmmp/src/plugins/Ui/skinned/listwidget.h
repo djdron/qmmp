@@ -46,8 +46,9 @@ struct ListWidgetRow
     QString title;
     QString length;
     QString extraString;
-    int index;
-    PlayListItem *item;
+    int number;
+    bool separator;
+    bool selected;
 };
 
 /**

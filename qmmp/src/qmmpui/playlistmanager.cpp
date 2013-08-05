@@ -279,7 +279,7 @@ void PlayListManager::readPlayLists()
 {
     QString line, param, value;
     int s = 0, row = 0, pl = 0;
-    QList <PlayListItem *> items;
+    QList <PlayListTrack *> items;
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::ReadOnly);
     QByteArray array = file.readAll();
@@ -287,7 +287,7 @@ void PlayListManager::readPlayLists()
     QBuffer buffer(&array);
     buffer.open(QIODevice::ReadOnly);
 
-    while (!buffer.atEnd())
+    /*while (!buffer.atEnd())
     {
         line = QString::fromUtf8(buffer.readLine()).trimmed();
         if ((s = line.indexOf("=")) < 0)
@@ -316,7 +316,7 @@ void PlayListManager::readPlayLists()
         }
         else if (param == "file")
         {
-            items << new PlayListItem();
+            items << new PlayListTrack();
             items.last()->insert(Qmmp::URL, value);
         }
         else if (items.isEmpty())
@@ -341,12 +341,12 @@ void PlayListManager::readPlayLists()
             items.last()->insert(Qmmp::DISCNUMBER, value);
         else if (param == "length")
             items.last()->setLength(value.toInt());
-    }
+    }*/
     buffer.close();
     if(!m_models.isEmpty())
     {
-        m_models.last()->add(items);
-        m_models.last()->setCurrent(row);
+        //m_models.last()->add(items);
+        //m_models.last()->setCurrent(row);
     }
     else
         m_models << new PlayListModel(tr("Playlist"),this);
@@ -360,7 +360,7 @@ void PlayListManager::readPlayLists()
 
 void PlayListManager::writePlayLists()
 {
-    qDebug("PlayListManager: saving playlists...");
+    /*qDebug("PlayListManager: saving playlists...");
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     if(!file.open(QIODevice::WriteOnly))
     {
@@ -370,10 +370,10 @@ void PlayListManager::writePlayLists()
     file.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
     foreach(PlayListModel *model, m_models)
     {
-        QList<PlayListItem *> items = model->items();
+        QList<PlayListTrack *> items = model->items();
         file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
         file.write(QString("current=%1\n").arg(model->currentIndex()).toUtf8());
-        foreach(PlayListItem* m, items)
+        foreach(PlayListTrack* m, items)
         {
             file.write(QString("file=%1\n").arg(m->url()).toUtf8());
             file.write(QString("title=%1\n").arg(m->value(Qmmp::TITLE)).toUtf8());
@@ -388,7 +388,7 @@ void PlayListManager::writePlayLists()
             file.write(QString("length=%1\n").arg(m->length()).toUtf8());
         }
     }
-    file.close();
+    file.close();*/
 }
 
 void PlayListManager::clear()
@@ -413,10 +413,10 @@ void PlayListManager::removeUnselected()
 
 void PlayListManager::removeAt (int i)
 {
-    m_selected->removeAt(i);
+    m_selected->removeTrack(i);
 }
 
-void PlayListManager::removeItem (PlayListItem *item)
+void PlayListManager::removeItem (PlayListTrack *item)
 {
     m_selected->removeItem(item);
 }

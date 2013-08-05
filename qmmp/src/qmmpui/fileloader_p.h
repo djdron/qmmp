@@ -26,7 +26,7 @@
 #include <QFileInfo>
 #include <QThread>
 
-class PlayListItem;
+class PlayListTrack;
 class QmmpUiSettings;
 
 /*! @internal
@@ -73,7 +73,7 @@ signals:
      * Emitted when new playlist item is available.
      * @param item Pointer of the new PlayListItem object.
      */
-    void newPlayListItem(PlayListItem *item);
+    void newPlayListTrack(PlayListTrack *item);
 
 protected:
     virtual void run();

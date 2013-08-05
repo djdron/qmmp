@@ -26,7 +26,7 @@
 
 class QAction;
 class SoundCore;
-class PlayListItem;
+class PlayListTrack;
 class PlayListManager;
 
 /**
@@ -47,7 +47,7 @@ private slots:
 
 private:
     PlayListManager *m_pl_manager;
-    QList<PlayListItem *> m_buffer;
+    QList<PlayListTrack *> m_buffer;
 };
 
 #endif //COPYPASTE_H

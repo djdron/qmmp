@@ -18,25 +18,49 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "tagupdater_p.h"
+#ifndef PLAYLISTCONTAINER_H
+#define PLAYLISTCONTAINER_H
 
-TagUpdater::TagUpdater(QObject* o, PlayListTrack* track) : m_observable(o), m_item(track)
-{
-    m_item->setFlag(PlayListTrack::EDITING);
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
-}
+#include <QList>
+#include "playlistitem.h"
+#include "playlisttrack.h"
+#include "playlistgroup.h"
 
-void TagUpdater::updateTag()
+
+class PlayListContainer
 {
-    if (m_item->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
-    {
-        delete m_item;
-        m_item = NULL;
-    }
-    else
-    {
-        m_item->updateTags();
-        m_item->setFlag(PlayListTrack::FREE);
-    }
-}
+public:
+    PlayListContainer();
+
+    void addGroup(PlayListGroup *group);
+    void addTrack(PlayListTrack *item);
+
+    QList<PlayListGroup *> groups();
+    QList<PlayListItem *> items() const;
+    int count() const;
+    int trackCount() const;
+    QList<PlayListItem *> mid(int pos, int count) const;
+    bool isEmpty() const;
+
+    bool isSelected(int index) const;
+    void setSelected(int index, bool selected);
+    void clearSelection();
+    int indexOf(PlayListItem *item) const;
+    PlayListItem *item(int index) const;
+    PlayListTrack *track(int index) const;
+    bool contains(PlayListItem *track) const;
+    int numberOfTrack(int index) const;
+
+    void removeTrack(int index);
+    void removeTrack(PlayListTrack *track);
+
+    void clear();
+
+private:
+    void updateIndex();
+    QList<PlayListGroup *> m_groups;
+    QList<PlayListItem *> m_items;
+
+};
+
+#endif // PLAYLISTCONTAINER_H

@@ -89,7 +89,7 @@ void MediaPlayer::play(qint64 offset)
     if (m_pl_manager->currentPlayList()->count() == 0)
         return;
 
-    QString s = m_pl_manager->currentPlayList()->currentItem()->url();
+    QString s = m_pl_manager->currentPlayList()->currentTrack()->url();
     if (s.isEmpty())
     {
         m_nextUrl.clear();
@@ -172,18 +172,18 @@ void MediaPlayer::setNoPlaylistAdvance(bool enabled)
 void MediaPlayer::updateNextUrl()
 {
     m_nextUrl.clear();
-    PlayListItem *item = 0;
+    PlayListTrack *track = 0;
     if(isRepeatable())
-        item = m_pl_manager->currentPlayList()->currentItem();
+        track = m_pl_manager->currentPlayList()->currentTrack();
     else if(!m_noPlaylistAdvance)
-        item = m_pl_manager->currentPlayList()->nextItem();
+        track = m_pl_manager->currentPlayList()->nextTrack();
 
-    if(item)
+    if(track)
     {
-        bool ok = m_core->play(item->url(), true);
+        bool ok = m_core->play(track->url(), true);
         if(ok)
         {
-            m_nextUrl = item->url();
+            m_nextUrl = track->url();
             qDebug("MediaPlayer: next track state: received");
         }
         else
@@ -231,9 +231,9 @@ void MediaPlayer::updateMetaData()
     qDebug("== end of metadata ==");
 
     PlayListModel *pl = m_pl_manager->currentPlayList();
-    if (pl->currentItem() && pl->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
+    if (pl->currentTrack() && pl->currentTrack()->url() == m_core->metaData().value(Qmmp::URL))
     {
-        pl->currentItem()->updateMetaData(m_core->metaData());
+        pl->currentTrack()->updateMetaData(m_core->metaData());
         pl->doCurrentVisibleRequest();
     }
 }

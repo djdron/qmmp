@@ -99,7 +99,7 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
         PlayListModel *model = pl_manager->playListAt(pl_id);
         if(!model)
             return tr("Invalid playlist ID") + "\n";
-        PlayListItem *item = model->item(track_id);
+        PlayListTrack *item = model->item(track_id);
         if(!item)
             return tr("Invalid track ID") + "\n";
         player->stop();
