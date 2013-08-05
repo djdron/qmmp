@@ -142,6 +142,10 @@ public:
      * Returns \b true if success, otherwise returns \b false
      */
     bool setCurrent(PlayListTrack *item);
+
+
+    bool isTrack(int index) const;
+
     /*!
      * Returns \b true if item with \b index is selected, otherwise returns \b false
      */

@@ -207,6 +207,13 @@ bool PlayListModel::setCurrent(PlayListTrack *track)
     return setCurrent(m_container.indexOf(track));
 }
 
+bool PlayListModel::isTrack(int index) const
+{
+    if (index > count()-1 || index < 0)
+        return false;
+    return !m_container.item(index)->isGroup();
+}
+
 bool PlayListModel::next()
 {
     if(m_stop_track == currentTrack())
