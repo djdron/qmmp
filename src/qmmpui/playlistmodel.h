@@ -396,7 +396,7 @@ public slots:
     /*!
      * Removes invalid items from playlist
      */
-    void removeInvalidItems();
+    void removeInvalidTracks();
     /*!
      * Removes duplicate items by URL.
      */

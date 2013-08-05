@@ -53,6 +53,7 @@ public:
 
     void removeTrack(int index);
     void removeTrack(PlayListTrack *track);
+    void removeTracks(QList<PlayListTrack *> tracks);
 
     void clear();
 

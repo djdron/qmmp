@@ -468,7 +468,7 @@ void PlayListManager::addToQueue()
 
 void PlayListManager::removeInvalidItems()
 {
-    m_selected->removeInvalidItems();
+    m_selected->removeInvalidTracks();
 }
 
 void PlayListManager::removeDuplicates()
