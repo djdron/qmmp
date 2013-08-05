@@ -930,18 +930,54 @@ void PlayListModel::preparePlayState()
     m_play_state->prepare();
 }
 
-void PlayListModel::removeInvalidItems()
+void PlayListModel::removeInvalidTracks()
 {
-    /*foreach(PlayListItem *item, m_items)
+    QList<PlayListTrack *> invalid_tracks;
+    bool ok = false;
+    for(int i = 0; m_container.count(); ++i)
     {
-        bool ok = false;
-        if(!item->url().contains("://"))
-            ok = MetaDataManager::instance()->supports(item->url());
+        PlayListTrack *track = m_container.track(i);
+        if(!track)
+            continue;
+
+        if(track->url().contains("://"))
+            ok = MetaDataManager::instance()->protocols().contains(track->url().section("://",0,0));
         else
-            ok = MetaDataManager::instance()->protocols().contains(item->url().section("://",0,0));
+            ok = MetaDataManager::instance()->supports(track->url());
         if(!ok)
-            removeItem(item);
-    }*/
+        {
+            invalid_tracks.append(track);
+            m_queued_songs.removeAll(track);
+            if(track == m_stop_track)
+                m_stop_track = 0;
+        }
+    }
+    if(!invalid_tracks.isEmpty())
+    {
+        m_container.removeTracks(invalid_tracks);
+        if(invalid_tracks.contains(m_current_track))
+        {
+            m_current = qMin(m_container.count() - 1, m_current);
+            if(!isTrack(m_current))
+                m_current++;
+            m_current_track = m_container.track(m_current);
+            emit currentChanged();
+        }
+        else if(m_container.isEmpty())
+        {
+            m_current = -1;
+            m_current_track = 0;
+            emit currentChanged();
+        }
+        else if(m_current != m_container.indexOf(m_current_track))
+        {
+            emit currentChanged();
+        }
+
+        qDeleteAll(invalid_tracks);
+        emit listChanged();
+        emit countChanged();
+    }
 }
 
 void PlayListModel::removeDuplicates()

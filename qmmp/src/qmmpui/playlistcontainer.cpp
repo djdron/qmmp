@@ -183,6 +183,12 @@ void PlayListContainer::removeTrack(PlayListTrack *track)
     }
 }
 
+void PlayListContainer::removeTracks(QList<PlayListTrack *> tracks)
+{
+    foreach(PlayListTrack *t, tracks)
+        removeTrack(t);
+}
+
 void PlayListContainer::clear()
 {
     while(!m_groups.isEmpty())
