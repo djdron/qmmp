@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,31 +27,27 @@ ShufflePlayState::ShufflePlayState(PlayListModel * model) : PlayState(model)
 
 bool ShufflePlayState::next()
 {
-    int itm_count = m_model->items().count();
+    if(!m_model->count())
+        return false;
 
-    if (itm_count > 0)
+    if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
     {
-        if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
-        {
-            if (!m_model->isRepeatableList())
-                return false;
-            else
-                prepare();
-        }
+        if (!m_model->isRepeatableList())
+            return false;
         else
-            m_shuffled_current = (m_shuffled_current + 1) % m_shuffled_indexes.count();
-
-        return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
+            prepare();
     }
-    return false;
+    else
+        m_shuffled_current = (m_shuffled_current + 1) % m_shuffled_indexes.count();
+
+    return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
+
 }
 
 int ShufflePlayState::nextIndex()
 {
-    int itm_count = m_model->items().count();
-    if(!itm_count)
+    if(!m_model->count())
         return -1;
-
 
     if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
     {
@@ -65,36 +61,32 @@ int ShufflePlayState::nextIndex()
 
 bool ShufflePlayState::previous()
 {
-    int itm_count = m_model->items().count();
+    if(!m_model->count())
+        return false;
 
-    if (itm_count > 0)
+    if (m_shuffled_current <= 0)
     {
-        if (m_shuffled_current <= 0)
+        if (!m_model->isRepeatableList())
+            return false;
+        else
         {
-            if (!m_model->isRepeatableList())
-                return false;
-            else
-            {
-                prepare();
-                m_shuffled_current = m_shuffled_indexes.count() - 1;
-            }
+            prepare();
+            m_shuffled_current = m_shuffled_indexes.count() - 1;
         }
-
-        if (itm_count > 1)
-            m_shuffled_current --;
-
-        m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
-        return true;
     }
-    return false;
+
+    if (m_model->count() > 1)
+        m_shuffled_current--;
+
+    return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
 }
 
 void ShufflePlayState::prepare()
 {
     resetState();
-    for(int i = 0;i < m_model->items().count();i++)
+    for(int i = 0; i < m_model->count(); i++)
     {
-        if (i != m_model->currentIndex())
+        if (i != m_model->currentIndex() && m_model->isTrack(i))
             m_shuffled_indexes << i;
     }
 
@@ -102,6 +94,9 @@ void ShufflePlayState::prepare()
         m_shuffled_indexes.swap(i, qrand()%m_shuffled_indexes.size());
 
     m_shuffled_indexes.prepend(m_model->currentIndex());
+
+    for (int i = 0; i < m_shuffled_indexes.count(); i++)
+        qDebug("++%d++", m_shuffled_indexes.at(i));
 }
 
 void ShufflePlayState::resetState()
