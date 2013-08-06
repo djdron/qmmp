@@ -343,7 +343,7 @@ public slots:
     /*!
      * Removes item \b item from playlist
      */
-    void removeItem (PlayListItem *item);
+    void removeTrack (PlayListItem *track);
     /*!
      * Inverts selection (selects unselected items and unselects selected items)
      */

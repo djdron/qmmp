@@ -128,9 +128,9 @@ PlayListTrack *PlayListContainer::track(int index) const
     return dynamic_cast<PlayListTrack *> (i);
 }
 
-bool PlayListContainer::contains(PlayListItem *track) const
+bool PlayListContainer::contains(PlayListItem *item) const
 {
-    return m_items.contains(track);
+    return m_items.contains(item);
 }
 
 int PlayListContainer::numberOfTrack(int index) const
