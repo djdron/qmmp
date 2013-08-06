@@ -93,7 +93,7 @@ bool PlayListContainer::isSelected(int index) const
 
 void PlayListContainer::setSelected(int index, bool selected)
 {
-    if (0 <= index && index < m_items.count() && !m_items.at(index)->isGroup())
+    if (0 <= index && index < m_items.count())// && !m_items.at(index)->isGroup())
         m_items.at(index)->setSelected(selected);
 }
 

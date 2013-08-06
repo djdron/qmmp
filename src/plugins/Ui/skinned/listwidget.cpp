@@ -170,6 +170,24 @@ void ListWidget::paintEvent(QPaintEvent *)
     {
         sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
 
+        if (m_show_anchor && i == m_anchor_row - m_first)
+        {
+            painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
+            painter.setPen(m_normal);
+            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                              width() - 10, m_metrics->lineSpacing() + 1);
+        }
+        else
+        {
+            if (m_rows[i]->selected)
+            {
+                painter.setBrush(QBrush(m_selected_bg));
+                painter.setPen(m_selected_bg);
+                painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                  width() - 10, m_metrics->lineSpacing() + 1);
+            }
+        }
+
         if(m_rows[i]->separator)
         {
             painter.setPen(m_normal);
@@ -197,23 +215,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             continue;
         }
 
-        if (m_show_anchor && i == m_anchor_row - m_first)
-        {
-            painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
-            painter.setPen(m_normal);
-            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                              width() - 10, m_metrics->lineSpacing() + 1);
-        }
-        else
-        {
-            if (m_rows[i]->selected)
-            {
-                painter.setBrush(QBrush(m_selected_bg));
-                painter.setPen(m_selected_bg);
-                painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                  width() - 10, m_metrics->lineSpacing() + 1);
-            }
-        }
+
 
 
         if (m_model->currentIndex() == m_first + i)
@@ -445,7 +447,7 @@ void ListWidget::updateList()
             row->number = 0;
             row->title = items[i]->formattedTitle();
             row->length.clear();
-            row->selected = false;
+            row->selected = items[i]->isSelected();
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
                             width() -  m_number_width - 22 - 70);
         }
