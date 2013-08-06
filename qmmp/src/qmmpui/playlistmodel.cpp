@@ -371,6 +371,9 @@ void PlayListModel::removeSelection(bool inverted)
             else if (track->flag() == PlayListTrack::EDITING)
                 track->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
 
+            if(m_container.isEmpty())
+                continue;
+
             select_after_delete = i;
 
             if (m_current >= i && m_current > 0)
