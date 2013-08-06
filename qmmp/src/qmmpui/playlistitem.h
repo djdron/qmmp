@@ -44,7 +44,7 @@ public:
      * Sets item selection flag to \b select
      * @param select State of selection (\b true select, \b false unselect)
      */
-    virtual void setSelected(bool select);
+    void setSelected(bool select);
     /*!
      * Return \b true if item is selected, otherwise returns \b false.
      */

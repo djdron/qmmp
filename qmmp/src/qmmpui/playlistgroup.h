@@ -31,9 +31,6 @@ public:
 
     virtual ~PlayListGroup();
 
-
-    virtual void setSelected(bool select);
-
     int firstIndex;
     int lastIndex;
 
