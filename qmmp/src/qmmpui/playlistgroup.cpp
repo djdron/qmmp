@@ -44,6 +44,13 @@ PlayListGroup::~PlayListGroup()
     }
 }
 
+void PlayListGroup::setSelected(bool select)
+{
+    foreach(PlayListTrack *track, m_tracks)
+        track->setSelected(select);
+    PlayListItem::setSelected(select);
+}
+
 const QString PlayListGroup::formattedTitle() const
 {
     return m_name;
