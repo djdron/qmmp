@@ -411,14 +411,14 @@ void PlayListManager::removeUnselected()
     m_selected->removeUnselected();
 }
 
-void PlayListManager::removeAt (int i)
+void PlayListManager::removeTrack (int i)
 {
     m_selected->removeTrack(i);
 }
 
-void PlayListManager::removeItem (PlayListTrack *item)
+void PlayListManager::removeTrack (PlayListTrack *track)
 {
-    m_selected->removeItem(item);
+    m_selected->removeTrack(track);
 }
 
 void PlayListManager::invertSelection()
@@ -466,7 +466,7 @@ void PlayListManager::addToQueue()
     m_selected->addToQueue();
 }
 
-void PlayListManager::removeInvalidItems()
+void PlayListManager::removeInvalidTracks()
 {
     m_selected->removeInvalidTracks();
 }
