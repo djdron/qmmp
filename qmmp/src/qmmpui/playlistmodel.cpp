@@ -891,22 +891,27 @@ void PlayListModel::loadPlaylist(const QString &f_name)
 
 void PlayListModel::savePlaylist(const QString & f_name)
 {
-    /*PlayListFormat* prs = PlayListParser::findByPath(f_name);
-    if (prs)
+    PlayListFormat* prs = PlayListParser::findByPath(f_name);
+    if (!prs)
+        return;
+
+    QFile file(f_name);
+    if (file.open(QIODevice::WriteOnly))
     {
-        QFile file(f_name);
-        if (file.open(QIODevice::WriteOnly))
+        QTextStream ts(&file);
+        QList <PlayListTrack *> songs;
+        for(int i = 0; i < m_container.count(); ++i)
         {
-            QTextStream ts(&file);
-            QList <PlayListItem *> songs;
-            foreach(PlayListItem* item, m_items)
-            songs << item;
-            ts << prs->encode(songs);
-            file.close();
+            if(!isTrack(i))
+                continue;
+            songs << m_container.track(i);
         }
-        else
-            qWarning("Error opening %s",f_name.toLocal8Bit().data());
-    }*/
+        ts << prs->encode(songs);
+        file.close();
+    }
+    else
+        qWarning("Error opening %s",f_name.toLocal8Bit().data());
+
 }
 
 bool PlayListModel::isRepeatableList() const
