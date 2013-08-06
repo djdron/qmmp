@@ -328,7 +328,11 @@ void PlayListModel::removeTrack (int i)
             if(m_current > 0 && m_container.item(m_current)->isGroup())
                 m_current--;
 
-            m_current_track = m_container.track(m_current);
+            if(m_current_track != m_container.track(m_current))
+            {
+                m_current_track = m_container.track(m_current);
+                emit currentChanged();
+            }
         }
 
         m_play_state->prepare();
@@ -391,9 +395,12 @@ void PlayListModel::removeSelection(bool inverted)
             i++;
     }
 
-    if (!m_container.isEmpty())
+    if (m_container.isEmpty())
+        m_current_track = 0;
+    else if(m_current_track != m_container.track(m_current))
     {
         m_current_track = m_container.track(m_current);
+        emit currentChanged();
     }
     else
         m_current_track = 0;
