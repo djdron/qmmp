@@ -670,15 +670,7 @@
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="145"/>
-        <source>Unqueue</source>
-        <translation>Vyradiť</translation>
-    </message>
-    <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="147"/>
         <source>Queue</source>
         <translation>Zaradiť</translation>
     </message>
@@ -714,8 +706,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="163"/>
-        <location filename="../playlistmanager.cpp" line="351"/>
+        <location filename="../playlistmanager.cpp" line="164"/>
+        <location filename="../playlistmanager.cpp" line="352"/>
         <source>Playlist</source>
         <translation type="unfinished">Playlist</translation>
     </message>

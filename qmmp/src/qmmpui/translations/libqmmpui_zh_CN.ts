@@ -666,8 +666,6 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="147"/>
         <source>Queue</source>
         <translation type="unfinished">加入队列</translation>
     </message>
@@ -696,12 +694,6 @@
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="145"/>
-        <source>Unqueue</source>
-        <translation type="unfinished">移出队列</translation>
-    </message>
 </context>
 <context>
     <name>PlayListDownloader</name>
@@ -714,8 +706,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="163"/>
-        <location filename="../playlistmanager.cpp" line="351"/>
+        <location filename="../playlistmanager.cpp" line="164"/>
+        <location filename="../playlistmanager.cpp" line="352"/>
         <source>Playlist</source>
         <translation>播放列表</translation>
     </message>

@@ -667,8 +667,6 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="147"/>
         <source>Queue</source>
         <translation>Į eilę</translation>
     </message>
@@ -697,12 +695,6 @@
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="145"/>
-        <source>Unqueue</source>
-        <translation>Pašalinti iš eilės</translation>
-    </message>
 </context>
 <context>
     <name>PlayListDownloader</name>
@@ -715,8 +707,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="163"/>
-        <location filename="../playlistmanager.cpp" line="351"/>
+        <location filename="../playlistmanager.cpp" line="164"/>
+        <location filename="../playlistmanager.cpp" line="352"/>
         <source>Playlist</source>
         <translation>Grojaraštis</translation>
     </message>
