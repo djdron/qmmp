@@ -103,7 +103,7 @@
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="125"/>
+        <location filename="../statusicon.cpp" line="126"/>
         <source>Now Playing</source>
         <translation>Сейчас играет</translation>
     </message>
