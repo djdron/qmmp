@@ -31,7 +31,7 @@
 
 Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
 {
-    m_prev_item = 0;
+    m_prev_track = 0;
     m_previous_pos = 0;
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
@@ -62,7 +62,7 @@ bool Player2Object::canControl() const
 
 bool Player2Object::canGoNext() const
 {
-    return m_pl_manager->currentPlayList()->nextItem() != 0;
+    return m_pl_manager->currentPlayList()->nextTrack() != 0;
 }
 
 bool Player2Object::canGoPrevious() const
@@ -119,8 +119,8 @@ double Player2Object::maximumRate() const
 
 QVariantMap Player2Object::metadata() const
 {
-    PlayListTrack *item = m_pl_manager->currentPlayList()->currentItem();
-    if(!item || m_core->metaData(Qmmp::URL).isEmpty())
+    PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
+    if(!track || m_core->metaData(Qmmp::URL).isEmpty())
         return QVariantMap();
     QVariantMap map;
     map["mpris:length"] = qMax(m_core->totalTime() * 1000 , qint64(0));
@@ -318,10 +318,10 @@ void Player2Object::emitPropertiesChanged()
 
 void Player2Object::updateId()
 {
-    if(m_prev_item != m_pl_manager->currentPlayList()->currentItem())
+    if(m_prev_track != m_pl_manager->currentPlayList()->currentTrack())
     {
         m_trackID = QDBusObjectPath(QString("%1/Track/%2").arg("/org/qmmp/MediaPlayer2").arg(qrand()));
-        m_prev_item = m_pl_manager->currentPlayList()->currentItem();
+        m_prev_track = m_pl_manager->currentPlayList()->currentTrack();
     }
 }
 

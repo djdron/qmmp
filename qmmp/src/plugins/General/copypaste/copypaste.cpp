@@ -66,9 +66,9 @@ void CopyPaste::cut()
     qDebug("%s", Q_FUNC_INFO);
     qDeleteAll(m_buffer);
     m_buffer.clear();
-    foreach(PlayListTrack *item,  m_pl_manager->selectedPlayList()->selectedItems())
+    foreach(PlayListTrack *track,  m_pl_manager->selectedPlayList()->selectedTracks())
     {
-        m_buffer.append(new PlayListTrack(*item));
+        m_buffer.append(new PlayListTrack(*track));
     }
     m_pl_manager->selectedPlayList()->removeSelected();
 }
@@ -78,17 +78,17 @@ void CopyPaste::copy()
     qDebug("%s", Q_FUNC_INFO);
     qDeleteAll(m_buffer);
     m_buffer.clear();
-    foreach(PlayListTrack *item,  m_pl_manager->selectedPlayList()->selectedItems())
+    foreach(PlayListTrack *track,  m_pl_manager->selectedPlayList()->selectedTracks())
     {
-        m_buffer.append(new PlayListTrack(*item));
+        m_buffer.append(new PlayListTrack(*track));
     }
 }
 
 void CopyPaste::paste()
 {
     qDebug("%s", Q_FUNC_INFO);
-    foreach(PlayListTrack *item,  m_buffer)
+    foreach(PlayListTrack *track,  m_buffer)
     {
-        m_pl_manager->selectedPlayList()->add(new PlayListTrack(*item));
+        m_pl_manager->selectedPlayList()->add(new PlayListTrack(*track));
     }
 }

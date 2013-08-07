@@ -24,7 +24,7 @@
 #include <QString>
 #include <QStringList>
 #include <qmmpui/playlistformat.h>
-#include <qmmpui/playlistitem.h>
+#include <qmmpui/playlisttrack.h>
 
 /*!
  * Class for PLS playlist format parsing

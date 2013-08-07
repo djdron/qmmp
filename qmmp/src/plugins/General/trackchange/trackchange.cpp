@@ -96,7 +96,7 @@ void TrackChange::onFinised()
         qDebug("TrackChange: startig end of track command..");
         executeCommand(m_prevMetaData, m_endOfTrackCommand);
     }
-    if(!m_endOfPlCommand.isEmpty() && !m_plManager->currentPlayList()->nextItem())
+    if(!m_endOfPlCommand.isEmpty() && !m_plManager->currentPlayList()->nextTrack())
     {
         qDebug("TrackChange: startig end of playlist command..");
         executeCommand(m_prevMetaData, m_endOfPlCommand);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,16 +40,16 @@ CoverManager::CoverManager(QObject *parent) : QObject(parent)
 
 void CoverManager::showWindow()
 {
-    QList <PlayListTrack *> items = MediaPlayer::instance()->playListManager()->selectedPlayList()->selectedItems();
-    if (!items.isEmpty())
+    QList <PlayListTrack *> tracks = MediaPlayer::instance()->playListManager()->selectedPlayList()->selectedTracks();
+    if (!tracks.isEmpty())
     {
         CoverWidget *w = new CoverWidget(qApp->activeWindow ());
-        QPixmap pix = MetaDataManager::instance()->getCover(items.at(0)->url());
+        QPixmap pix = MetaDataManager::instance()->getCover(tracks.at(0)->url());
         if(pix.isNull())
             pix = QPixmap(":/cm_no_cover.png");
         w->setPixmap(pix);
         MetaDataFormatter formatter("%p%if(%p&%t, - ,)%if(%t,%t,%f)");
-        w->setWindowTitle(formatter.parse(items.at(0)));
+        w->setWindowTitle(formatter.parse(tracks.at(0)));
         w->show();
     }
 }

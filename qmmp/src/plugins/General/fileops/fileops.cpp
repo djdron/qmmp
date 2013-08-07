@@ -85,7 +85,7 @@ void FileOps::execAction(int n)
     QString destination = m_destinations.at(n);
 
     PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
-    QList<PlayListTrack*> items = model->selectedItems();
+    QList<PlayListTrack*> tracks = model->selectedTracks();
 
     switch (type)
     {
@@ -105,7 +105,7 @@ void FileOps::execAction(int n)
         progress.show();
         progress.setAutoClose (false);
         int i  = 0;
-        foreach(PlayListTrack *item, items)
+        foreach(PlayListTrack *item, tracks)
         {
             if (!QFile::exists(item->url()))
                 continue;
@@ -142,7 +142,7 @@ void FileOps::execAction(int n)
 
             progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
             progress.setValue(0);
-            progress.setLabelText (QString(tr("Copying file %1/%2")).arg(++i).arg(items.size()));
+            progress.setLabelText (QString(tr("Copying file %1/%2")).arg(++i).arg(tracks.size()));
             progress.update();
 
             while (!in.atEnd ())
@@ -158,7 +158,7 @@ void FileOps::execAction(int n)
     }
     case RENAME:
         qDebug("FileOps: rename");
-        foreach(PlayListTrack *item, items)
+        foreach(PlayListTrack *item, tracks)
         {
             if (!QFile::exists(item->url()))
                 continue;
@@ -187,14 +187,14 @@ void FileOps::execAction(int n)
         qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove files"),
                                    tr("Are you sure you want to remove %n file(s) from disk?",
-                                      "",items.size()),
+                                      "",tracks.size()),
                                    QMessageBox::Yes | QMessageBox::No) !=  QMessageBox::Yes)
             break;
 
-        foreach(PlayListTrack *item, items)
+        foreach(PlayListTrack *track, tracks)
         {
-            if (QFile::exists(item->url()) && QFile::remove(item->url()))
-                model->removeAt (model->indexOf(item));
+            if (QFile::exists(track->url()) && QFile::remove(track->url()))
+                model->removeTrack(track);
         }
     }
 }
