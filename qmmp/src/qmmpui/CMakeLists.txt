@@ -37,6 +37,9 @@ SET(libqmmpui_SRCS
     playstate.cpp
     playlistmodel.cpp
     playlistitem.cpp
+    playlistgroup.cpp
+    playlisttrack.cpp
+    playlistcontainer.cpp
     mediaplayer.cpp
     detailsdialog.cpp
     tageditor.cpp
@@ -64,6 +67,9 @@ SET(libqmmpui_HDRS
     filedialogfactory.h
     playstate_p.h
     playlistitem.h
+    playlistgroup.h
+    playlisttrack.h
+    playlistcontainer.h
     metadataformatter.h
     uiloader.h
     uifactory.h
@@ -108,6 +114,8 @@ SET(libqmmpui_DEVEL_HDRS
     playlistdownloader.h
     playlistformat.h
     playlistitem.h
+    playlistgroup.h
+    playlisttrack.h
     playlistmanager.h
     playlistmodel.h
     playlistparser.h
