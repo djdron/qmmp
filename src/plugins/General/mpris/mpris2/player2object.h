@@ -109,7 +109,7 @@ private:
     PlayListManager *m_pl_manager;
     QMap<QString, QVariant> m_props;
     QDBusObjectPath m_trackID;
-    PlayListTrack *m_prev_item;
+    PlayListTrack *m_prev_track;
     qint64 m_previous_pos;
 
 };

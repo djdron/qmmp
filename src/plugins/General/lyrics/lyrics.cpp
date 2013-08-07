@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,13 +42,13 @@ Lyrics::~Lyrics()
 void Lyrics::showLyrics()
 {
     PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
-    QList <PlayListTrack *> items = pl_manager->selectedPlayList()->selectedItems();
-    if (!items.isEmpty())
+    QList <PlayListTrack *> tracks = pl_manager->selectedPlayList()->selectedTracks();
+    if (!tracks.isEmpty())
     {
-        if (items.at(0)->value(Qmmp::ARTIST).isEmpty() || items.at(0)->value(Qmmp::TITLE).isEmpty())
+        if (tracks.at(0)->value(Qmmp::ARTIST).isEmpty() || tracks.at(0)->value(Qmmp::TITLE).isEmpty())
                 return;
-            LyricsWindow *w = new LyricsWindow(items.at(0)->value(Qmmp::ARTIST),
-                                               items.at(0)->value(Qmmp::TITLE), qApp->activeWindow ());
+            LyricsWindow *w = new LyricsWindow(tracks.at(0)->value(Qmmp::ARTIST),
+                                               tracks.at(0)->value(Qmmp::TITLE), qApp->activeWindow ());
             w->show();
     }
 }

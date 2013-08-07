@@ -66,7 +66,7 @@ int TrackListObject::AddTrack(const QString &in0, bool in1)
 
 void TrackListObject::DelTrack(int in0)
 {
-    m_model->removeAt(in0);
+    m_model->removeTrack(in0);
 }
 
 int TrackListObject::GetCurrentTrack()
@@ -82,22 +82,22 @@ int TrackListObject::GetLength()
 QVariantMap TrackListObject::GetMetadata(int in0)
 {
     QVariantMap map;
-    PlayListTrack *item = m_model->item(in0);
-    if (item)
+    PlayListTrack *track = m_model->track(in0);
+    if (track)
     {
-        if (QFile::exists(item->url()))
-            map.insert("location", "file://" + item->url());
+        if (QFile::exists(track->url()))
+            map.insert("location", "file://" + track->url());
         else
-            map.insert("location", item->url());
-        map.insert("title", item->value(Qmmp::TITLE));
-        map.insert("artist", item->value(Qmmp::ARTIST));
-        map.insert("album", item->value(Qmmp::ALBUM));
-        map.insert("tracknumber", item->value(Qmmp::TRACK));
-        map.insert("time", (quint32)item->length());
-        map.insert("mtime", (quint32)item->length() * 1000);
-        map.insert("genre", item->value(Qmmp::GENRE));
-        map.insert("comment", item->value(Qmmp::COMMENT));
-        map.insert("year", item->value(Qmmp::YEAR).toUInt());
+            map.insert("location", track->url());
+        map.insert("title", track->value(Qmmp::TITLE));
+        map.insert("artist", track->value(Qmmp::ARTIST));
+        map.insert("album", track->value(Qmmp::ALBUM));
+        map.insert("tracknumber", track->value(Qmmp::TRACK));
+        map.insert("time", (quint32)track->length());
+        map.insert("mtime", (quint32)track->length() * 1000);
+        map.insert("genre", track->value(Qmmp::GENRE));
+        map.insert("comment", track->value(Qmmp::COMMENT));
+        map.insert("year", track->value(Qmmp::YEAR).toUInt());
     }
     return map;
 }
