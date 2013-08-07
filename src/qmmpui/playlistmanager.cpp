@@ -279,7 +279,7 @@ void PlayListManager::readPlayLists()
 {
     QString line, param, value;
     int s = 0, row = 0, pl = 0;
-    QList <PlayListTrack *> items;
+    QList <PlayListTrack *> tracks;
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::ReadOnly);
     QByteArray array = file.readAll();
@@ -287,7 +287,7 @@ void PlayListManager::readPlayLists()
     QBuffer buffer(&array);
     buffer.open(QIODevice::ReadOnly);
 
-    /*while (!buffer.atEnd())
+    while (!buffer.atEnd())
     {
         line = QString::fromUtf8(buffer.readLine()).trimmed();
         if ((s = line.indexOf("=")) < 0)
@@ -303,10 +303,10 @@ void PlayListManager::readPlayLists()
 
             if(!m_models.isEmpty())
             {
-                m_models.last()->add(items);
+                m_models.last()->add(tracks);
                 m_models.last()->setCurrent(row);
             }
-            items.clear();
+            tracks.clear();
             row = 0;
             m_models << new PlayListModel(value, this);
         }
@@ -316,37 +316,37 @@ void PlayListManager::readPlayLists()
         }
         else if (param == "file")
         {
-            items << new PlayListTrack();
-            items.last()->insert(Qmmp::URL, value);
+            tracks << new PlayListTrack();
+            tracks.last()->insert(Qmmp::URL, value);
         }
-        else if (items.isEmpty())
+        else if (tracks.isEmpty())
             continue;
         else if (param == "title")
-            items.last()->insert(Qmmp::TITLE, value);
+            tracks.last()->insert(Qmmp::TITLE, value);
         else if (param == "artist")
-            items.last()->insert(Qmmp::ARTIST, value);
+            tracks.last()->insert(Qmmp::ARTIST, value);
         else if (param == "album")
-            items.last()->insert(Qmmp::ALBUM, value);
+            tracks.last()->insert(Qmmp::ALBUM, value);
         else if (param == "comment")
-            items.last()->insert(Qmmp::COMMENT, value);
+            tracks.last()->insert(Qmmp::COMMENT, value);
         else if (param == "genre")
-            items.last()->insert(Qmmp::GENRE, value);
+            tracks.last()->insert(Qmmp::GENRE, value);
         else if (param == "composer")
-            items.last()->insert(Qmmp::COMPOSER, value);
+            tracks.last()->insert(Qmmp::COMPOSER, value);
         else if (param == "year")
-            items.last()->insert(Qmmp::YEAR, value);
+            tracks.last()->insert(Qmmp::YEAR, value);
         else if (param == "track")
-            items.last()->insert(Qmmp::TRACK, value);
+            tracks.last()->insert(Qmmp::TRACK, value);
         else if (param == "disc")
-            items.last()->insert(Qmmp::DISCNUMBER, value);
+            tracks.last()->insert(Qmmp::DISCNUMBER, value);
         else if (param == "length")
-            items.last()->setLength(value.toInt());
-    }*/
+            tracks.last()->setLength(value.toInt());
+    }
     buffer.close();
     if(!m_models.isEmpty())
     {
-        //m_models.last()->add(items);
-        //m_models.last()->setCurrent(row);
+        m_models.last()->add(tracks);
+        m_models.last()->setCurrent(row);
     }
     else
         m_models << new PlayListModel(tr("Playlist"),this);
@@ -360,7 +360,7 @@ void PlayListManager::readPlayLists()
 
 void PlayListManager::writePlayLists()
 {
-    /*qDebug("PlayListManager: saving playlists...");
+    qDebug("PlayListManager: saving playlists...");
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     if(!file.open(QIODevice::WriteOnly))
     {
@@ -370,25 +370,28 @@ void PlayListManager::writePlayLists()
     file.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
     foreach(PlayListModel *model, m_models)
     {
-        QList<PlayListTrack *> items = model->items();
+        QList<PlayListItem *> items = model->items();
         file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
         file.write(QString("current=%1\n").arg(model->currentIndex()).toUtf8());
-        foreach(PlayListTrack* m, items)
+        foreach(PlayListItem* m, items)
         {
-            file.write(QString("file=%1\n").arg(m->url()).toUtf8());
-            file.write(QString("title=%1\n").arg(m->value(Qmmp::TITLE)).toUtf8());
-            file.write(QString("artist=%1\n").arg(m->value(Qmmp::ARTIST)).toUtf8());
-            file.write(QString("album=%1\n").arg(m->value(Qmmp::ALBUM)).toUtf8());
-            file.write(QString("comment=%1\n").arg(m->value(Qmmp::COMMENT)).toUtf8());
-            file.write(QString("genre=%1\n").arg(m->value(Qmmp::GENRE)).toUtf8());
-            file.write(QString("composer=%1\n").arg(m->value(Qmmp::COMPOSER)).toUtf8());
-            file.write(QString("year=%1\n").arg(m->value(Qmmp::YEAR)).toUtf8());
-            file.write(QString("track=%1\n").arg(m->value(Qmmp::TRACK)).toUtf8());
-            file.write(QString("disc=%1\n").arg(m->value(Qmmp::DISCNUMBER)).toUtf8());
-            file.write(QString("length=%1\n").arg(m->length()).toUtf8());
+            if(m->isGroup())
+                continue;
+            PlayListTrack *t = dynamic_cast<PlayListTrack *>(m);
+            file.write(QString("file=%1\n").arg(t->url()).toUtf8());
+            file.write(QString("title=%1\n").arg(t->value(Qmmp::TITLE)).toUtf8());
+            file.write(QString("artist=%1\n").arg(t->value(Qmmp::ARTIST)).toUtf8());
+            file.write(QString("album=%1\n").arg(t->value(Qmmp::ALBUM)).toUtf8());
+            file.write(QString("comment=%1\n").arg(t->value(Qmmp::COMMENT)).toUtf8());
+            file.write(QString("genre=%1\n").arg(t->value(Qmmp::GENRE)).toUtf8());
+            file.write(QString("composer=%1\n").arg(t->value(Qmmp::COMPOSER)).toUtf8());
+            file.write(QString("year=%1\n").arg(t->value(Qmmp::YEAR)).toUtf8());
+            file.write(QString("track=%1\n").arg(t->value(Qmmp::TRACK)).toUtf8());
+            file.write(QString("disc=%1\n").arg(t->value(Qmmp::DISCNUMBER)).toUtf8());
+            file.write(QString("length=%1\n").arg(t->length()).toUtf8());
         }
     }
-    file.close();*/
+    file.close();
 }
 
 void PlayListManager::clear()
