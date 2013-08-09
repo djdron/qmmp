@@ -114,8 +114,10 @@ public:
      */
     void setFlag(FLAGS);
 
-private:
     void readMetadata();
+
+private:
+
     QString m_formattedTitle;
     QString m_formattedLength;
     FileInfo *m_info;
