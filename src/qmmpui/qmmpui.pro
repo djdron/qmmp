@@ -52,8 +52,8 @@ HEADERS += general.h \
     qmmpuiplugincache_p.h \
     tagupdater_p.h \
     playlistgroup.h \
-    playlistcontainer.h \
-    playlisttrack.h
+    playlisttrack.h \
+    playlistcontainer_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \

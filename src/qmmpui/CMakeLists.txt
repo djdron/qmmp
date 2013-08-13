@@ -69,7 +69,7 @@ SET(libqmmpui_HDRS
     playlistitem.h
     playlistgroup.h
     playlisttrack.h
-    playlistcontainer.h
+    playlistcontainer_p.h
     metadataformatter.h
     uiloader.h
     uifactory.h
