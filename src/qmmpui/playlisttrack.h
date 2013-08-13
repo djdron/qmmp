@@ -25,6 +25,7 @@
 #include <qmmp/qmmp.h>
 #include "playlistitem.h"
 
+class QmmpUiSettings;
 
 /** @brief The PlayListTrack class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -106,10 +107,11 @@ public:
     void setFlag(FLAGS);
 
 private:
-    void readMetadata();
+    void formatMetaData();
     QString m_formattedTitle;
     QString m_formattedLength;
-    FileInfo *m_info;
+    QString m_titleFormat;
+    QmmpUiSettings *m_settings;
     qint64 m_length;
     FLAGS m_flag;
 };

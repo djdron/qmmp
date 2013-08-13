@@ -24,18 +24,17 @@
 
 PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem(), m_flag(FREE)
 {
-    m_info = 0;
+    m_settings = QmmpUiSettings::instance();
     m_length = 0;
 }
 
 PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, QString>(other),
     PlayListItem(),m_flag(FREE)
 {
+    m_settings = QmmpUiSettings::instance();
     m_formattedTitle = other.m_formattedTitle;
-    if (other.m_info)
-        m_info = new FileInfo(*(other.m_info));
-    else
-        m_info = 0;
+    m_formattedLength = other.m_formattedLength;
+    m_titleFormat = other.m_titleFormat;
     setSelected(other.isSelected());
     setFlag(other.flag());
     m_length = other.m_length;
@@ -45,38 +44,30 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
 PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()),
     PlayListItem(), m_flag(FREE)
 {
+    m_settings = QmmpUiSettings::instance();
     setLength(m_length = info->length());
-    m_info = info;
-    insert(Qmmp::URL, m_info->path());
+    insert(Qmmp::URL, info->path());
 }
 
 PlayListTrack::~PlayListTrack()
-{
-    if (m_info)
-        delete m_info;
-}
+{}
 
 void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
     QMap <Qmmp::MetaData, QString>::operator =(metaData);
-    readMetadata();
+    formatMetaData();
 }
 
 void PlayListTrack::updateMetaData()
 {
-    if (m_info)
-    {
-        delete m_info;
-        m_info = 0;
-    }
     QList <FileInfo *> list =  MetaDataManager::instance()->createPlayList(value(Qmmp::URL));
     if(!list.isEmpty() && !list.at(0)->path().contains("://"))
     {
-        m_info = list.at(0);
-        m_length = m_info->length();
-        QMap <Qmmp::MetaData, QString>::operator =(m_info->metaData());
-        insert(Qmmp::URL, m_info->path());
-        readMetadata();
+        FileInfo *info = list.at(0);
+        m_length = info->length();
+        QMap <Qmmp::MetaData, QString>::operator =(info->metaData());
+        insert(Qmmp::URL, info->path());
+        formatMetaData();
     }
     while(list.size() > 1)
         delete list.takeLast();
@@ -95,13 +86,23 @@ bool PlayListTrack::isGroup() const
 
 const QString PlayListTrack::formattedTitle()
 {
-    if(m_formattedTitle.isEmpty())
-        readMetadata();
+    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->format())
+    {
+        m_titleFormat = m_settings->format();
+        formatMetaData();
+    }
     return m_formattedTitle;
 }
 
 const QString PlayListTrack::formattedLength()
 {
+    if(m_length != 0 && m_formattedLength.isEmpty())
+    {
+        MetaDataFormatter f;
+        m_formattedLength = f.formatLength(m_length);
+    }
+    else if(m_length == 0)
+        m_formattedLength.clear();
     return m_formattedLength;
 }
 
@@ -113,8 +114,7 @@ qint64 PlayListTrack::length() const
 void PlayListTrack::setLength(qint64 length)
 {
     m_length = length;
-    MetaDataFormatter f;
-    m_formattedLength = f.formatLength(m_length);
+    m_formattedLength.clear();
 }
 
 const QString PlayListTrack::url() const
@@ -132,17 +132,14 @@ PlayListTrack::FLAGS PlayListTrack::flag() const
     return m_flag;
 }
 
-void PlayListTrack::readMetadata()
+void PlayListTrack::formatMetaData()
 {
-    MetaDataFormatter f(QmmpUiSettings::instance()->format());
+    MetaDataFormatter f(m_settings->format());
     m_formattedTitle = f.parse(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
-    if (m_info)
-        delete m_info;
-    m_info = 0;
-    if (QmmpUiSettings::instance()->convertUnderscore())
+    if (m_settings->convertUnderscore())
         m_formattedTitle.replace("_", " ");
-    if (QmmpUiSettings::instance()->convertTwenty())
+    if (m_settings->convertTwenty())
         m_formattedTitle.replace("%20", " ");
 }
