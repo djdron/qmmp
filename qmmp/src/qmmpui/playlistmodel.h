@@ -28,14 +28,14 @@
 #include <QPointer>
 #include <QVector>
 #include "playlistitem.h"
-
-
-#include "playlistcontainer.h"
+#include "playlisttrack.h"
+#include "playlistgroup.h"
 
 class FileLoader;
 class PlayState;
 class PlayListFormat;
 class PlayListModel;
+class PlayListContainer;
 
 /*! @brief Helper class that keeps track of a view's selected items.
  *
@@ -444,7 +444,7 @@ private:
     FileLoader *m_loader;
     bool m_shuffle;
     QString m_name;
-    PlayListContainer m_container;
+    PlayListContainer *m_container;
 };
 
 #endif
