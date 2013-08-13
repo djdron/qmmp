@@ -54,9 +54,13 @@ public:
      */
     bool useMetadata() const;
     /*!
-     * Returns title format string.
+     * Returns playlist short title format.
      */
-    const QString format() const;
+    const QString titleFormat() const;
+    /*!
+     * Returns playlist group format.
+     */
+    const QString groupFormat() const;
     /*!
      * Sets the "Convert underscores to blanks" option state to \b enabled
      * @param enabled Option state (\b true - enabled, \b false - disabled)
@@ -71,7 +75,7 @@ public:
      * Sets short title template.
      * @param format title template. \sa MetaDataFormatter
      */
-    void setFormat(const QString &format);
+    void setTitleFormat(const QString &titleFormat);
     /*!
      * Sets metadata usage option state to \b enabled
      * @param enabled Option state (\b true - enabled, \b false - disabled)
@@ -160,7 +164,8 @@ private:
     //playlist
     bool m_convertUnderscore, m_convertTwenty;
     bool m_useMetadata;
-    QString m_format;
+    QString m_title_format;
+    QString m_group_format;
     //general
     bool m_resume_on_startup;
     QStringList m_exclude_filters, m_restrict_filters;

@@ -33,8 +33,10 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
 {
     m_settings = QmmpUiSettings::instance();
     m_formattedTitle = other.m_formattedTitle;
+    m_group = other.m_group;
     m_formattedLength = other.m_formattedLength;
     m_titleFormat = other.m_titleFormat;
+    m_groupFormat = other.m_groupFormat;
     setSelected(other.isSelected());
     setFlag(other.flag());
     m_length = other.m_length;
@@ -55,7 +57,7 @@ PlayListTrack::~PlayListTrack()
 void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
     QMap <Qmmp::MetaData, QString>::operator =(metaData);
-    formatMetaData();
+    formatTitle();
 }
 
 void PlayListTrack::updateMetaData()
@@ -67,16 +69,20 @@ void PlayListTrack::updateMetaData()
         m_length = info->length();
         QMap <Qmmp::MetaData, QString>::operator =(info->metaData());
         insert(Qmmp::URL, info->path());
-        formatMetaData();
+        formatTitle();
     }
     while(list.size() > 1)
         delete list.takeLast();
 }
 
-const QString PlayListTrack::groupName() const
+const QString PlayListTrack::groupName()
 {
-    MetaDataFormatter f("%p - %a");
-    return f.parse(this);
+    if(m_group.isEmpty() || m_groupFormat != m_settings->groupFormat())
+    {
+        m_groupFormat = m_settings->groupFormat();
+        formatGroup();
+    }
+    return m_group;
 }
 
 bool PlayListTrack::isGroup() const
@@ -86,10 +92,10 @@ bool PlayListTrack::isGroup() const
 
 const QString PlayListTrack::formattedTitle()
 {
-    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->format())
+    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->titleFormat())
     {
-        m_titleFormat = m_settings->format();
-        formatMetaData();
+        m_titleFormat = m_settings->titleFormat();
+        formatTitle();
     }
     return m_formattedTitle;
 }
@@ -132,9 +138,9 @@ PlayListTrack::FLAGS PlayListTrack::flag() const
     return m_flag;
 }
 
-void PlayListTrack::formatMetaData()
+void PlayListTrack::formatTitle()
 {
-    MetaDataFormatter f(m_settings->format());
+    MetaDataFormatter f(m_settings->titleFormat());
     m_formattedTitle = f.parse(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
@@ -142,4 +148,16 @@ void PlayListTrack::formatMetaData()
         m_formattedTitle.replace("_", " ");
     if (m_settings->convertTwenty())
         m_formattedTitle.replace("%20", " ");
+}
+
+void PlayListTrack::formatGroup()
+{
+    MetaDataFormatter f(m_settings->groupFormat());
+    m_group = f.parse(this);
+    if (m_group.isEmpty())
+        m_group = m_settings->tr("No group");
+    if (m_settings->convertUnderscore())
+        m_group.replace("_", " ");
+    if (m_settings->convertTwenty())
+        m_group.replace("%20", " ");
 }

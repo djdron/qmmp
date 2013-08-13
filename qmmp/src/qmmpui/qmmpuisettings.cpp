@@ -30,7 +30,8 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
 {
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
-    m_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
+    m_title_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
+    m_group_format = s.value("PlayList/group_format", "%p%if(%p&%a, - ,)%a").toString();
     m_convertUnderscore = s.value ("PlayList/convert_underscore", true).toBool();
     m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();
@@ -49,9 +50,14 @@ QmmpUiSettings::~QmmpUiSettings()
     sync();
 }
 
-const QString QmmpUiSettings::format() const
+const QString QmmpUiSettings::titleFormat() const
 {
-    return m_format;
+    return m_title_format;
+}
+
+const QString QmmpUiSettings::groupFormat() const
+{
+    return m_group_format;
 }
 
 bool QmmpUiSettings::convertUnderscore() const
@@ -79,12 +85,12 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
     m_convertTwenty = yes;
 }
 
-void QmmpUiSettings::setFormat(const QString &format)
+void QmmpUiSettings::setTitleFormat(const QString &format)
 {
-    m_format = format;
-    if(format != m_format)
+    m_title_format = format;
+    if(format != m_title_format)
     {
-        m_format = format;
+        m_title_format = format;
         emit playListSettingsChanged();
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
@@ -121,7 +127,8 @@ bool QmmpUiSettings::useClipboard() const
 void QmmpUiSettings::sync()
 {
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
-    s.setValue("PlayList/title_format", m_format);
+    s.setValue("PlayList/title_format", m_title_format);
+    s.setValue("PlayList/group_format", m_group_format);
     s.setValue("PlayList/convert_underscore", m_convertUnderscore);
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
     s.setValue("PlayList/load_metadata", m_useMetadata);

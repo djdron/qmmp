@@ -93,7 +93,7 @@ public:
      */
     void updateMetaData();
 
-    const QString groupName() const;
+    const QString groupName();
 
     bool isGroup() const;
 
@@ -107,10 +107,13 @@ public:
     void setFlag(FLAGS);
 
 private:
-    void formatMetaData();
+    void formatTitle();
+    void formatGroup();
     QString m_formattedTitle;
     QString m_formattedLength;
+    QString m_group;
     QString m_titleFormat;
+    QString m_groupFormat;
     QmmpUiSettings *m_settings;
     qint64 m_length;
     FLAGS m_flag;

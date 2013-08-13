@@ -96,7 +96,7 @@ void ConfigDialog::readSettings()
     {
         //playlist options
         QmmpUiSettings *guis = QmmpUiSettings::instance();
-        m_ui->formatLineEdit->setText(guis->format());
+        m_ui->formatLineEdit->setText(guis->titleFormat());
         m_ui->metadataCheckBox->setChecked(guis->useMetadata());
         m_ui->underscoresCheckBox->setChecked(guis->convertUnderscore());
         m_ui->per20CheckBox->setChecked(guis->convertTwenty());
@@ -352,7 +352,7 @@ void ConfigDialog::saveSettings()
 {
     if (QmmpUiSettings *guis = QmmpUiSettings::instance())
     {
-        guis->setFormat(m_ui->formatLineEdit->text().trimmed());
+        guis->setTitleFormat(m_ui->formatLineEdit->text().trimmed());
         guis->setUseMetadata(m_ui->metadataCheckBox->isChecked());
         guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
         guis->setConvertTwenty(m_ui->per20CheckBox->isChecked());
