@@ -278,7 +278,7 @@ bool PlayListManager::isShuffle() const
 void PlayListManager::readPlayLists()
 {
     QString line, param, value;
-    int s = 0, row = 0, pl = 0;
+    int s = 0, current = 0, pl = 0;
     QList <PlayListTrack *> tracks;
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::ReadOnly);
@@ -300,19 +300,18 @@ void PlayListManager::readPlayLists()
             pl = value.toInt();
         else if(param == "playlist")
         {
-
             if(!m_models.isEmpty())
             {
                 m_models.last()->add(tracks);
-                m_models.last()->setCurrent(row);
+                m_models.last()->setCurrent(tracks.at(qBound(0, current, tracks.count()-1)));
             }
             tracks.clear();
-            row = 0;
+            current = 0;
             m_models << new PlayListModel(value, this);
         }
         else if (param == "current")
         {
-            row = value.toInt();
+            current = value.toInt();
         }
         else if (param == "file")
         {
@@ -346,7 +345,7 @@ void PlayListManager::readPlayLists()
     if(!m_models.isEmpty())
     {
         m_models.last()->add(tracks);
-        m_models.last()->setCurrent(row);
+        m_models.last()->setCurrent(tracks.at(qBound(0, current, tracks.count()-1)));
     }
     else
         m_models << new PlayListModel(tr("Playlist"),this);
@@ -372,7 +371,7 @@ void PlayListManager::writePlayLists()
     {
         QList<PlayListItem *> items = model->items();
         file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
-        file.write(QString("current=%1\n").arg(model->currentIndex()).toUtf8());
+        file.write(QString("current=%1\n").arg(model->numberOfTrack(model->currentIndex())).toUtf8());
         foreach(PlayListItem* m, items)
         {
             if(m->isGroup())
