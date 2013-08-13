@@ -109,7 +109,6 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
     foreach(PlayListTrack *track, tracks)
     {
         m_container.addTrack(track);
-        track->readMetadata();
         m_total_length += track->length();
         emit itemAdded(track);
     }

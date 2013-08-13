@@ -52,11 +52,11 @@ public:
     /*!
      * Returns formatted title of the item.
      */
-    virtual const QString formattedTitle() const = 0;
+    virtual const QString formattedTitle() = 0;
     /*!
      *  Returns formatted length of the item.
      */
-    virtual const QString formattedLength() const = 0;
+    virtual const QString formattedLength() = 0;
 
     virtual bool isGroup() const = 0;
 

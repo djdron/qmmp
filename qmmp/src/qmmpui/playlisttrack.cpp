@@ -48,7 +48,6 @@ PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(in
     setLength(m_length = info->length());
     m_info = info;
     insert(Qmmp::URL, m_info->path());
-    readMetadata();
 }
 
 PlayListTrack::~PlayListTrack()
@@ -63,7 +62,7 @@ void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaDat
     readMetadata();
 }
 
-void PlayListTrack::updateTags()
+void PlayListTrack::updateMetaData()
 {
     if (m_info)
     {
@@ -94,21 +93,16 @@ bool PlayListTrack::isGroup() const
     return false;
 }
 
-const QString PlayListTrack::formattedTitle() const
+const QString PlayListTrack::formattedTitle()
 {
-    /*if(m_formattedTitle.isEmpty())
-        readMetadata();*/
+    if(m_formattedTitle.isEmpty())
+        readMetadata();
     return m_formattedTitle;
 }
 
-const QString PlayListTrack::formattedLength() const
+const QString PlayListTrack::formattedLength()
 {
     return m_formattedLength;
-}
-
-void PlayListTrack::setText(const QString &title)
-{
-    m_formattedTitle = title;
 }
 
 qint64 PlayListTrack::length() const

@@ -36,7 +36,7 @@ void TagUpdater::updateTag()
     }
     else
     {
-        m_item->updateTags();
+        m_item->updateMetaData();
         m_item->setFlag(PlayListTrack::FREE);
     }
 }
