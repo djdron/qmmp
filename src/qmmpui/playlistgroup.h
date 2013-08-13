@@ -53,6 +53,8 @@ public:
 
     virtual bool isGroup() const { return true; }
 
+    void move(int from, int to);
+
 private:
     QList<PlayListTrack *> m_tracks;
     QString m_name;

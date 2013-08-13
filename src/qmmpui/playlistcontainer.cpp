@@ -197,6 +197,55 @@ void PlayListContainer::removeTracks(QList<PlayListTrack *> tracks)
         removeTrack(t);
 }
 
+void PlayListContainer::move(QList<int> indexes, int from, int to)
+{
+    PlayListGroup *group = 0;
+
+    foreach (PlayListGroup *g, m_groups)
+    {
+        if(from > g->firstIndex && from <= g->lastIndex &&
+                to > g->firstIndex && to <= g->lastIndex)
+        {
+            group = g;
+            break;
+        }
+    }
+
+    if(!group)
+        return;
+
+    foreach (int i, indexes)
+    {
+        if(i <= group->firstIndex || i > group->lastIndex)
+            return;
+    }
+
+    if (from > to)
+        foreach(int i, indexes)
+        {
+            if (i + to - from < 0)
+                break;
+            else
+            {
+                m_items.move(i,i + to - from);
+                group->move(i - group->firstIndex - 1,
+                            i + to - from  - group->firstIndex - 1);
+            }
+        }
+    else
+        for (int i = indexes.count() - 1; i >= 0; i--)
+        {
+            if (indexes[i] + to - from >= m_items.count())
+                break;
+            else
+            {
+                m_items.move(indexes[i], indexes[i] + to - from);
+                group->move(indexes[i] - group->firstIndex - 1,
+                            indexes[i] + to - from - group->firstIndex - 1);
+            }
+        }
+}
+
 void PlayListContainer::clear()
 {
     while(!m_groups.isEmpty())

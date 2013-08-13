@@ -39,7 +39,7 @@
 #include "tagupdater_p.h"
 #include "playlistmodel.h"
 
-#define INVALID_ROW -1
+#define INVALID_INDEX -1
 
 PlayListModel::PlayListModel(const QString &name, QObject *parent)
         : QObject(parent) , m_selection()
@@ -128,7 +128,6 @@ void PlayListModel::add(const QString &path)
         m_loader->loadFile(path);
         loadPlaylist(path);
     }
-
 }
 
 void PlayListModel::add(const QStringList &paths)
@@ -477,33 +476,48 @@ int PlayListModel::totalLength() const
 void PlayListModel::moveItems(int from, int to)
 {
     // Get rid of useless work
-    /*if (from == to)
+    if (from == to)
         return;
 
-    QList<int> selected_rows = selectedIndexes();
+    QList<int> selected_indexes = selectedIndexes();
 
-    if (!(bottommostInSelection(from) == INVALID_ROW ||
-            from == INVALID_ROW ||
-            topmostInSelection(from) == INVALID_ROW)
-       )
+    if(selected_indexes.isEmpty())
+        return;
+
+    foreach(int i, selected_indexes) //do no move groups
     {
-        if (from > to)
-            foreach(int i, selected_rows)
+        if(!isTrack(i))
+            return;
+    }
+
+    if (bottommostInSelection(from) == INVALID_INDEX ||
+            from == INVALID_INDEX ||
+            topmostInSelection(from) == INVALID_INDEX)
+        return;
+
+    m_container.move(selected_indexes, from, to);
+
+    /*if (from > to)
+        foreach(int i, selected_indexes)
+        {
             if (i + to - from < 0)
                 break;
+
             else
                 m_items.move(i,i + to - from);
+        }
+    else
+
+    for (int i = selected_indexes.count() - 1; i >= 0; i--)
+    {
+        if (selected_indexes[i] + to -from >= m_items.count())
+            break;
         else
-            for (int i = selected_rows.count() - 1; i >= 0; i--)
-                if (selected_rows[i] + to -from >= m_items.count())
-                    break;
-                else
-                    m_items.move(selected_rows[i],selected_rows[i] + to - from);
-
-        m_current = m_items.indexOf(m_currentItem);
-
-        emit listChanged();
+            m_items.move(selected_indexes[i],selected_indexes[i] + to - from);
     }*/
+
+    m_current = m_container.indexOf(m_current_track);
+    emit listChanged();
 }
 
 int PlayListModel::topmostInSelection(int row)
