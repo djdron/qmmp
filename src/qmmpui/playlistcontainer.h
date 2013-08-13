@@ -55,7 +55,7 @@ public:
     void removeTrack(PlayListTrack *track);
     void removeTracks(QList<PlayListTrack *> tracks);
 
-    void move(QList<int> indexes, int from, int to);
+    bool move(QList<int> indexes, int from, int to);
 
     void clear();
 

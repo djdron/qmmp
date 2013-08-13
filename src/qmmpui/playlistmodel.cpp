@@ -495,7 +495,11 @@ void PlayListModel::moveItems(int from, int to)
             topmostInSelection(from) == INVALID_INDEX)
         return;
 
-    m_container.move(selected_indexes, from, to);
+    if(m_container.move(selected_indexes, from, to))
+    {
+        m_current = m_container.indexOf(m_current_track);
+        emit listChanged();
+    }
 
     /*if (from > to)
         foreach(int i, selected_indexes)
@@ -515,9 +519,6 @@ void PlayListModel::moveItems(int from, int to)
         else
             m_items.move(selected_indexes[i],selected_indexes[i] + to - from);
     }*/
-
-    m_current = m_container.indexOf(m_current_track);
-    emit listChanged();
 }
 
 int PlayListModel::topmostInSelection(int row)
