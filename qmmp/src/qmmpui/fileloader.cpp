@@ -39,6 +39,7 @@ void FileLoader::addFile(const QString &path)
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
     foreach(FileInfo *info, playList)
         emit newPlayListTrack(new PlayListTrack(info));
+    qDeleteAll(playList);
 }
 
 void FileLoader::addDirectory(const QString& s)

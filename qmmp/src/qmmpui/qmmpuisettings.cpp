@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -81,18 +81,16 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
 
 void QmmpUiSettings::setFormat(const QString &format)
 {
-    /*m_format = format;
+    m_format = format;
     if(format != m_format)
     {
         m_format = format;
-        //emit settingsChanged();
+        emit playListSettingsChanged();
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
-            foreach(PlayListTrack *item, model->items())
-                item->setText(QString());
             model->doCurrentVisibleRequest();
         }
-    }*/
+    }
 }
 
 void QmmpUiSettings::setUseMetadata(bool yes)
