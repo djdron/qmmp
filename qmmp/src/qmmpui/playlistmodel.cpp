@@ -83,14 +83,15 @@ void PlayListModel::setName(const QString &name)
 
 void PlayListModel::add(PlayListTrack *track)
 {
-    if (m_container.isEmpty())
-    {
-        m_current_track = track;
-        m_current = 1; //0
-    }
     m_container.addTrack(track);
     m_total_length += track->length();
 
+    if(m_container.trackCount() == 1)
+    {
+        m_current_track = track;
+        m_current = m_container.indexOf(track);
+        emit currentChanged();
+    }
     emit itemAdded(track);
     emit listChanged();
     emit countChanged();
@@ -100,16 +101,17 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
 {
     if(tracks.isEmpty())
         return;
-    if (m_container.isEmpty())
-    {
-        m_current_track = tracks.at(0);
-        m_current = 1; //0
-    }
 
     foreach(PlayListTrack *track, tracks)
     {
         m_container.addTrack(track);
         m_total_length += track->length();
+        if(m_container.trackCount() == 1)
+        {
+            m_current_track = track;
+            m_current = m_container.indexOf(track);
+            emit currentChanged();
+        }
         emit itemAdded(track);
     }
     emit listChanged();
