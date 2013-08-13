@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef PLAYLISTCONTAINER_H
-#define PLAYLISTCONTAINER_H
+#ifndef PLAYLISTCONTAINER_P_H
+#define PLAYLISTCONTAINER_P_H
 
 #include <QList>
 #include "playlistitem.h"
@@ -66,4 +66,4 @@ private:
 
 };
 
-#endif // PLAYLISTCONTAINER_H
+#endif // PLAYLISTCONTAINER_P_H
