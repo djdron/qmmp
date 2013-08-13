@@ -34,7 +34,7 @@ public:
     int firstIndex;
     int lastIndex;
 
-    const QString formattedTitle() const;
+    const QString formattedTitle();
     void addTrack(PlayListTrack *track);
     bool contains(PlayListTrack *track) const;
     bool isEmpty() const;
@@ -49,7 +49,7 @@ public:
     /*!
      *  Returns formatted length of the item.
      */
-    const QString formattedLength() const { return QString(); }
+    const QString formattedLength() { return QString(); }
 
     virtual bool isGroup() const { return true; }
 

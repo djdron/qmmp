@@ -44,7 +44,7 @@ PlayListGroup::~PlayListGroup()
     }
 }
 
-const QString PlayListGroup::formattedTitle() const
+const QString PlayListGroup::formattedTitle()
 {
     return m_name;
 }

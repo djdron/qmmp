@@ -26,10 +26,6 @@
 #include "playlistitem.h"
 
 
-//PlayListItem
-//PlayListTrack
-//PlayListGroup
-
 /** @brief The PlayListTrack class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -69,16 +65,11 @@ public:
     /*!
      * Returns formatted title of the item.
      */
-    const QString formattedTitle() const;
+    const QString formattedTitle();
     /*!
      *  Returns formatted length of the item.
      */
-    const QString formattedLength() const;
-    /*!
-     * Direct access to the item short title.
-     * @param title New short title.
-     */
-    void setText(const QString &title);
+    const QString formattedLength();
     /*!
      * Returns song length in seconds.
      */
@@ -99,7 +90,7 @@ public:
     /*!
      * Gets new metadata from file (works for local files only).
      */
-    void updateTags();
+    void updateMetaData();
 
     const QString groupName() const;
 
@@ -114,10 +105,8 @@ public:
      */
     void setFlag(FLAGS);
 
-    void readMetadata();
-
 private:
-
+    void readMetadata();
     QString m_formattedTitle;
     QString m_formattedLength;
     FileInfo *m_info;
