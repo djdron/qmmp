@@ -38,6 +38,14 @@ void PlayListContainer::addGroup(PlayListGroup *group)
 
 void PlayListContainer::addTrack(PlayListTrack *track)
 {
+    if(!m_groups.isEmpty() && track->groupName() == m_groups.last()->formattedTitle())
+    {
+        PlayListGroup *group = m_groups.last();
+        group->addTrack(track);
+        m_items.insert(group->lastIndex + 1, track);
+        updateIndex();
+        return;
+    }
     foreach(PlayListGroup *group, m_groups)
     {
         if(track->groupName() == group->formattedTitle())
