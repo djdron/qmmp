@@ -300,7 +300,7 @@ void PlayListManager::readPlayLists()
             pl = value.toInt();
         else if(param == "playlist")
         {
-            if(!m_models.isEmpty())
+            if(!m_models.isEmpty() && !tracks.isEmpty())
             {
                 m_models.last()->add(tracks);
                 m_models.last()->setCurrent(tracks.at(qBound(0, current, tracks.count()-1)));
