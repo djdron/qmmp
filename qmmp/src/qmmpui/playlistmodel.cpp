@@ -34,6 +34,8 @@
 #include "playlistparser.h"
 #include "playlistformat.h"
 #include "playlistcontainer_p.h"
+#include "groupedcontainer_p.h"
+#include "normalcontainer_p.h"
 #include "fileloader_p.h"
 #include "playstate_p.h"
 #include "detailsdialog.h"
@@ -54,7 +56,8 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_stop_track = 0;
     m_play_state = new NormalPlayState(this);
     m_loader = new FileLoader(this);
-    m_container = new PlayListContainer;
+    m_container = new GroupedContainer;
+    //m_container = new NormalContainer;
     connect(m_loader, SIGNAL(newPlayListTrack(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
@@ -503,25 +506,6 @@ void PlayListModel::moveItems(int from, int to)
         m_current = m_container->indexOf(m_current_track);
         emit listChanged();
     }
-
-    /*if (from > to)
-        foreach(int i, selected_indexes)
-        {
-            if (i + to - from < 0)
-                break;
-
-            else
-                m_items.move(i,i + to - from);
-        }
-    else
-
-    for (int i = selected_indexes.count() - 1; i >= 0; i--)
-    {
-        if (selected_indexes[i] + to -from >= m_items.count())
-            break;
-        else
-            m_items.move(selected_indexes[i],selected_indexes[i] + to - from);
-    }*/
 }
 
 int PlayListModel::topmostInSelection(int row)
