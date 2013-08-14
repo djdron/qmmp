@@ -18,14 +18,17 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "playlistcontainer_p.h"
+#include "groupedcontainer_p.h"
 
-PlayListContainer::PlayListContainer()
+GroupedContainer::GroupedContainer()
 {
-    qDebug("%s", Q_FUNC_INFO);
 }
 
-void PlayListContainer::addGroup(PlayListGroup *group)
+GroupedContainer::~GroupedContainer()
+{
+}
+
+void GroupedContainer::addGroup(PlayListGroup *group)
 {
     m_groups.append(group);
     m_items.append(group);
@@ -36,7 +39,7 @@ void PlayListContainer::addGroup(PlayListGroup *group)
     updateIndex();
 }
 
-void PlayListContainer::addTrack(PlayListTrack *track)
+void GroupedContainer::addTrack(PlayListTrack *track)
 {
     if(!m_groups.isEmpty() && track->groupName() == m_groups.last()->formattedTitle())
     {
@@ -62,50 +65,50 @@ void PlayListContainer::addTrack(PlayListTrack *track)
     addGroup(group);
 }
 
-QList<PlayListGroup *> PlayListContainer::groups()
+QList<PlayListGroup *> GroupedContainer::groups()
 {
     return m_groups;
 }
 
-QList<PlayListItem *> PlayListContainer::items() const
+QList<PlayListItem *> GroupedContainer::items() const
 {
     return m_items;
 }
 
-int PlayListContainer::count() const
+int GroupedContainer::count() const
 {
     return m_items.count();
 }
 
-int PlayListContainer::trackCount() const
+int GroupedContainer::trackCount() const
 {
     return m_items.count() - m_groups.count();
 }
 
-QList<PlayListItem *> PlayListContainer::mid(int pos, int count) const
+QList<PlayListItem *> GroupedContainer::mid(int pos, int count) const
 {
     return m_items.mid(pos, count);
 }
 
-bool PlayListContainer::isEmpty() const
+bool GroupedContainer::isEmpty() const
 {
     return m_items.isEmpty();
 }
 
-bool PlayListContainer::isSelected(int index) const
+bool GroupedContainer::isSelected(int index) const
 {
     if (0 <= index && index < m_items.count())
         return m_items.at(index)->isSelected();
     return false;
 }
 
-void PlayListContainer::setSelected(int index, bool selected)
+void GroupedContainer::setSelected(int index, bool selected)
 {
     if (0 <= index && index < m_items.count())// && !m_items.at(index)->isGroup())
         m_items.at(index)->setSelected(selected);
 }
 
-void PlayListContainer::clearSelection()
+void GroupedContainer::clearSelection()
 {
     foreach (PlayListItem *item, m_items)
     {
@@ -113,12 +116,12 @@ void PlayListContainer::clearSelection()
     }
 }
 
-int PlayListContainer::indexOf(PlayListItem *item) const
+int GroupedContainer::indexOf(PlayListItem *item) const
 {
     return m_items.indexOf(item);
 }
 
-PlayListItem *PlayListContainer::item(int index) const
+PlayListItem *GroupedContainer::item(int index) const
 {
     if(index >= count() || index < 0)
     {
@@ -128,7 +131,7 @@ PlayListItem *PlayListContainer::item(int index) const
     return m_items.at(index);
 }
 
-PlayListTrack *PlayListContainer::track(int index) const
+PlayListTrack *GroupedContainer::track(int index) const
 {
     PlayListItem *i = item(index);
     if(!i || i->isGroup())
@@ -136,12 +139,12 @@ PlayListTrack *PlayListContainer::track(int index) const
     return dynamic_cast<PlayListTrack *> (i);
 }
 
-bool PlayListContainer::contains(PlayListItem *item) const
+bool GroupedContainer::contains(PlayListItem *item) const
 {
     return m_items.contains(item);
 }
 
-int PlayListContainer::numberOfTrack(int index) const
+int GroupedContainer::numberOfTrack(int index) const
 {
     for(int i = 0; i < m_groups.count(); ++i)
     {
@@ -153,7 +156,7 @@ int PlayListContainer::numberOfTrack(int index) const
     return -1;
 }
 
-void PlayListContainer::removeTrack(int index)
+void GroupedContainer::removeTrack(int index)
 {
     PlayListTrack *t = track(index);
     if(t)
@@ -170,7 +173,7 @@ void PlayListContainer::removeTrack(int index)
     }
 }
 
-void PlayListContainer::removeTrack(PlayListTrack *track)
+void GroupedContainer::removeTrack(PlayListTrack *track)
 {
     m_items.removeAll(track);
 
@@ -191,13 +194,13 @@ void PlayListContainer::removeTrack(PlayListTrack *track)
     }
 }
 
-void PlayListContainer::removeTracks(QList<PlayListTrack *> tracks)
+void GroupedContainer::removeTracks(QList<PlayListTrack *> tracks)
 {
     foreach(PlayListTrack *t, tracks)
         removeTrack(t);
 }
 
-bool PlayListContainer::move(QList<int> indexes, int from, int to)
+bool GroupedContainer::move(QList<int> indexes, int from, int to)
 {
     PlayListGroup *group = 0;
 
@@ -251,7 +254,7 @@ bool PlayListContainer::move(QList<int> indexes, int from, int to)
     return true;
 }
 
-void PlayListContainer::clear()
+void GroupedContainer::clear()
 {
     while(!m_groups.isEmpty())
     {
@@ -260,7 +263,7 @@ void PlayListContainer::clear()
     m_items.clear();
 }
 
-void PlayListContainer::updateIndex()
+void GroupedContainer::updateIndex()
 {
     for(int i = 0; i < m_groups.count(); ++i)
     {
@@ -276,3 +279,4 @@ void PlayListContainer::updateIndex()
         }
     }
 }
+

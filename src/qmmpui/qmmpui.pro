@@ -53,7 +53,9 @@ HEADERS += general.h \
     tagupdater_p.h \
     playlistgroup.h \
     playlisttrack.h \
-    playlistcontainer_p.h
+    playlistcontainer_p.h \
+    groupedcontainer_p.h \
+    normalcontainer_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -82,8 +84,9 @@ SOURCES += general.cpp \
     qmmpuiplugincache.cpp \
     tagupdater.cpp \
     playlistgroup.cpp \
-    playlistcontainer.cpp \
-    playlisttrack.cpp
+    playlisttrack.cpp \
+    groupedcontainer.cpp \
+    normalcontainer.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
