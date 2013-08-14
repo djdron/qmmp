@@ -39,7 +39,8 @@ SET(libqmmpui_SRCS
     playlistitem.cpp
     playlistgroup.cpp
     playlisttrack.cpp
-    playlistcontainer.cpp
+    normalcontainer.cpp
+    groupedcontainer.cpp
     mediaplayer.cpp
     detailsdialog.cpp
     tageditor.cpp
@@ -70,6 +71,8 @@ SET(libqmmpui_HDRS
     playlistgroup.h
     playlisttrack.h
     playlistcontainer_p.h
+    normalcontainer_p.cpp
+    groupedcontainer_p.cpp
     metadataformatter.h
     uiloader.h
     uifactory.h
