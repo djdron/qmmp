@@ -107,15 +107,16 @@ public:
      * Returns number of items.
      */
     int count() const;
-
-    int trackCount() const;
-
     /*!
-     * Returns the current item.
+     * Returns number of tracks.
+     */
+    int trackCount() const;
+    /*!
+     * Returns the current track.
      */
     PlayListTrack* currentTrack() const;
     /*!
-     * Returns the next playing item or 0 if next item is unknown.
+     * Returns the next playing track or 0 if next track is unknown.
      */
     PlayListTrack* nextTrack() const;
     /*!
