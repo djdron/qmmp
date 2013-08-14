@@ -71,8 +71,8 @@ SET(libqmmpui_HDRS
     playlistgroup.h
     playlisttrack.h
     playlistcontainer_p.h
-    normalcontainer_p.cpp
-    groupedcontainer_p.cpp
+    normalcontainer_p.h
+    groupedcontainer_p.h
     metadataformatter.h
     uiloader.h
     uifactory.h
