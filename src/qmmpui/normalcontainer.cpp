@@ -26,6 +26,7 @@ NormalContainer::NormalContainer()
 
 NormalContainer::~NormalContainer()
 {
+    clear();
 }
 
 void NormalContainer::addTrack(PlayListTrack *track)

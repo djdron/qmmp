@@ -26,6 +26,7 @@ GroupedContainer::GroupedContainer()
 
 GroupedContainer::~GroupedContainer()
 {
+    clear();
 }
 
 void GroupedContainer::addGroup(PlayListGroup *group)
