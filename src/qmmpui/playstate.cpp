@@ -94,9 +94,6 @@ void ShufflePlayState::prepare()
         m_shuffled_indexes.swap(i, qrand()%m_shuffled_indexes.size());
 
     m_shuffled_indexes.prepend(m_model->currentIndex());
-
-    for (int i = 0; i < m_shuffled_indexes.count(); i++)
-        qDebug("++%d++", m_shuffled_indexes.at(i));
 }
 
 void ShufflePlayState::resetState()
