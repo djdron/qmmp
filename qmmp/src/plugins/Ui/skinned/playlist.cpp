@@ -201,7 +201,6 @@ void PlayList::createActions()
                                 SLOT(removeDuplicates())));
     //sort menu
     m_sortMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT (showDetails ())));
-    m_sortMenu->addAction (ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));
     m_sortMenu->addSeparator();
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), m_sortMenu);
