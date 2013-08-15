@@ -381,24 +381,24 @@ void ListWidget::wheelEvent (QWheelEvent *e)
 
 bool ListWidget::event (QEvent *e)
 {
-    /*if(m_popupWidget)
+    if(m_popupWidget)
     {
         if(e->type() == QEvent::ToolTip)
         {
             QHelpEvent *helpEvent = (QHelpEvent *) e;
             int row = rowAt(helpEvent->y());
-            if(row < 0)
+            if(row < 0 || !m_model->isTrack(row))
             {
                 m_popupWidget->deactivate();
                 return QWidget::event(e);
             }
             e->accept();
-            m_popupWidget->prepare(m_model->item(row), helpEvent->globalPos());
+            m_popupWidget->prepare(m_model->track(row), helpEvent->globalPos());
             return true;
         }
         else if(e->type() == QEvent::Leave)
             m_popupWidget->deactivate();
-    }*/
+    }
     return QWidget::event(e);
 }
 
@@ -623,8 +623,8 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
     else if(m_popupWidget)
     {
         int row = rowAt(e->y());
-        /*if(row < 0 || m_popupWidget->url() != m_model->item(row)->url())
-            m_popupWidget->deactivate();*/
+        if(row < 0 || !m_model->isTrack(row) || m_popupWidget->url() != m_model->track(row)->url())
+            m_popupWidget->deactivate();
     }
 }
 
