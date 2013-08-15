@@ -25,6 +25,7 @@
 #include <QSignalMapper>
 #include <QHBoxLayout>
 #include <QCloseEvent>
+#include <QActionGroup>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
@@ -202,6 +203,19 @@ void PlayList::createActions()
     //sort menu
     m_sortMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT (showDetails ())));
     m_sortMenu->addSeparator();
+
+    QMenu* groups_menu = new QMenu (tr("Groups"), m_sortMenu);
+    //groups_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
+    QAction* noneAct = groups_menu->addAction(tr("None"));
+    QAction* albumArtistAct = groups_menu->addAction(tr("Artist/Album"));
+    QActionGroup *actionGroup = new QActionGroup(this);
+    actionGroup->setExclusive(true);
+    foreach (QAction *act, groups_menu->actions())
+    {
+        act->setCheckable(true);
+        actionGroup->addAction(act);
+    }
+    m_sortMenu->addMenu (groups_menu);
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), m_sortMenu);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
