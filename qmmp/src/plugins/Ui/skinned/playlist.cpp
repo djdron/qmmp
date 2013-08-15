@@ -520,11 +520,6 @@ void PlayList::updateList()
     m_titleBar->showCurrent();
 }
 
-PlayListItem *PlayList::currentItem()
-{
-    return m_pl_manager->currentPlayList()->currentTrack();
-}
-
 void PlayList::showPlaylistMenu()
 {
     m_playlistMenu->exec (m_playlistButton->mapToGlobal (QPoint (0,0)));
