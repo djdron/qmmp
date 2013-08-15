@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QCloseEvent>
 #include <QFile>
 #include <qmmpui/filedialog.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmp/soundcore.h>
 #include "skin.h"
 #include "eqslider.h"
@@ -323,22 +324,22 @@ void EqWidget::savePreset()
 
 void EqWidget::saveAutoPreset()
 {
-    PlayList* playlist;// = qobject_cast<MainWindow*>(parent())->playlist();
-    /*if (!playlist->currentItem())
-        return;*/
+    PlayListTrack *track = PlayListManager::instance()->currentPlayList()->currentTrack();
+    if (!track)
+        return;
     //delete preset if it already exists
-    //EQPreset* preset = findPreset(playlist->currentItem()->url().section("/",-1));
-    //if (preset)
-    //    deletePreset(preset);
+    EQPreset* preset = findPreset(track->url().section("/",-1));
+    if (preset)
+        deletePreset(preset);
     //create new preset
-    //preset = new EQPreset();
-    //preset->setText(playlist->currentItem()->url().section("/",-1));
-    /*preset->setPreamp(m_preamp->value());
+    preset = new EQPreset();
+    preset->setText(track->url().section("/",-1));
+    preset->setPreamp(m_preamp->value());
     for (int i = 0; i<10; ++i)
     {
         preset->setGain(i, m_sliders.at (i)->value());
     }
-    m_autoPresets.append(preset);*/
+    m_autoPresets.append(preset);
 }
 
 void EqWidget::setPreset(EQPreset* preset)

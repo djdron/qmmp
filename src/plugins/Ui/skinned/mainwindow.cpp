@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -117,9 +117,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 }
 
 MainWindow::~MainWindow()
-{
-    qDebug("%s", Q_FUNC_INFO);
-}
+{}
 
 void MainWindow::play()
 {
@@ -174,15 +172,15 @@ void MainWindow::showState(Qmmp::State state)
     switch ((int) state)
     {
     case Qmmp::Playing:
-        //if (m_pl_manager->currentPlayList()->currentItem())
-        //    m_equalizer->loadPreset(m_pl_manager->currentPlayList()->currentItem()->url().section("/",-1));
+        if (m_pl_manager->currentPlayList()->currentTrack())
+            m_equalizer->loadPreset(m_pl_manager->currentPlayList()->currentTrack()->url().section("/",-1));
         break;
     case Qmmp::Paused:
         break;
     case Qmmp::Stopped:
         m_playlist->setTime(-1);
-        if (m_playlist->currentItem())
-            setWindowTitle(m_playlist->currentItem()->formattedTitle());
+        if (m_pl_manager->currentPlayList()->currentTrack())
+            setWindowTitle(m_pl_manager->currentPlayList()->currentTrack()->formattedTitle());
         else
             setWindowTitle("Qmmp");
         break;
@@ -191,11 +189,11 @@ void MainWindow::showState(Qmmp::State state)
 
 void MainWindow::showMetaData()
 {
-    /*if (m_playlist->currentItem() &&
-        m_playlist->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
+    PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
+    if (track && track->url() == m_core->metaData().value(Qmmp::URL))
     {
-        setWindowTitle(m_playlist->currentItem()->formattedTitle());
-    }*/
+        setWindowTitle(track->formattedTitle());
+    }
 }
 
 void MainWindow::closeEvent (QCloseEvent *)

@@ -52,7 +52,7 @@ class PlayList : public QWidget
         virtual ~PlayList();
 
         void readSettings();
-        PlayListItem *currentItem();
+
         ListWidget* listWidget() const
         {
             return m_listWidget;
