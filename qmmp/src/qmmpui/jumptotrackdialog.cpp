@@ -81,16 +81,16 @@ void JumpToTrackDialog::on_refreshPushButton_clicked()
 
 void JumpToTrackDialog::on_queuePushButton_clicked()
 {
-    /*QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
+    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
     if (!mi_list.isEmpty())
     {
         int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
-        m_model->setQueued(m_model->track(selected));
-        if (m_model->isQueued(m_model->track(selected)))
+        m_model->setQueued(m_model->track(m_indexes[selected]));
+        if (m_model->isQueued(m_model->track(m_indexes[selected])))
             queuePushButton->setText(tr("Unqueue"));
         else
             queuePushButton->setText(tr("Queue"));
-    }*/
+    }
 }
 
 void JumpToTrackDialog::on_jumpToPushButton_clicked()
@@ -104,12 +104,19 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 
 void JumpToTrackDialog::refresh()
 {
-    /*filterLineEdit->clear();
+    filterLineEdit->clear();
+    m_indexes.clear();
     QStringList titles;
-    foreach (PlayListTrack *item, m_model->items())
-        titles.append(item->formattedTitle());
+    QList<PlayListItem *> items = m_model->items();
+    for(int i = 0; i < items.count(); ++i)
+    {
+        if(items[i]->isGroup())
+            continue;
+        titles.append(items[i]->formattedTitle());
+        m_indexes.append(i);
+    }
     m_listModel->setStringList(titles);
-    filterLineEdit->setFocus();*/
+    filterLineEdit->setFocus();
 }
 
 void JumpToTrackDialog::on_filterLineEdit_textChanged(const QString &str)
@@ -132,7 +139,7 @@ void JumpToTrackDialog::on_filterLineEdit_returnPressed ()
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 {
     int selected = (m_proxyModel->mapToSource(index)).row();
-    m_model->setCurrent(selected);
+    m_model->setCurrent(m_indexes[selected]);
     SoundCore::instance()->stop();
     m_pl_manager->activatePlayList(m_model);
     MediaPlayer::instance()->play();
@@ -140,9 +147,9 @@ void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
-    /*int row = m_proxyModel->mapToSource(curr).row();
-    if (m_model->isQueued(m_model->item(row)))
+    int row = m_proxyModel->mapToSource(curr).row();
+    if (m_model->isQueued(m_model->track(m_indexes[row])))
         queuePushButton->setText(tr("Unqueue"));
     else
-        queuePushButton->setText(tr("Queue"));*/
+        queuePushButton->setText(tr("Queue"));
 }
