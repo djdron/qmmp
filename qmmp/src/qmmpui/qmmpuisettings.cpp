@@ -91,7 +91,6 @@ void QmmpUiSettings::setTitleFormat(const QString &format)
     if(format != m_title_format)
     {
         m_title_format = format;
-        emit playListSettingsChanged();
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->doCurrentVisibleRequest();
@@ -186,11 +185,8 @@ void QmmpUiSettings::setDefaultPlayList(const QString &name, bool enabled)
 
 void QmmpUiSettings::setAutoSavePlayList(bool enabled)
 {
-    if (autoSavePlayList() != enabled)
-    {
-        m_autosave_playlist = enabled;
-        emit playListSettingsChanged();
-    }
+    m_autosave_playlist = enabled;
+    PlayListManager::instance()->readSettings();
 }
 
 bool QmmpUiSettings::autoSavePlayList() const

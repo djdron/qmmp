@@ -44,15 +44,10 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_timer = new QTimer(this);
     m_timer->setInterval(5000);
     m_timer->setSingleShot(true);
-    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
-    connect(ui_settings, SIGNAL(playListSettingsChanged()), SLOT(readSettings()));
+
     connect(m_timer, SIGNAL(timeout()), SLOT(writePlayLists()));
     readPlayLists(); //read playlists
-
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
-    setShuffle(settings.value("Playlist/shuffle",false).toBool());
-    readSettings();  //read other settings
+    readSettings();  //read settings
 }
 
 PlayListManager::~PlayListManager()
@@ -490,29 +485,20 @@ void PlayListManager::stopAfterSelected()
 
 void PlayListManager::readSettings()
 {
-    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
-    bool enabled = ui_settings->autoSavePlayList();
-    if (m_autosave_playlist != enabled)
-    {
-        m_autosave_playlist = enabled;
-        setAutoSavePlayList();
-    }
-}
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
+    setShuffle(settings.value("Playlist/shuffle",false).toBool());
 
-void PlayListManager::setAutoSavePlayList()
-{
-    if (m_autosave_playlist)
+    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
+    if (m_autosave_playlist != ui_settings->autoSavePlayList())
     {
+        m_autosave_playlist = ui_settings->autoSavePlayList();
         foreach(PlayListModel *model, m_models)
         {
-            connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()), Qt::UniqueConnection);
-        }
-    }
-    else
-    {
-        foreach(PlayListModel *model, m_models)
-        {
-            disconnect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
+            if (m_autosave_playlist)
+                connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()), Qt::UniqueConnection);
+            else
+                disconnect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
         }
     }
 }

@@ -147,12 +147,6 @@ public:
      */
     static QmmpUiSettings* instance();
 
-signals:
-    /*!
-     * Emitted when the playlist settings change.
-     */
-    void playListSettingsChanged();
-
 public slots:
     /*!
      * Writes all unsaved settings to configuration file
