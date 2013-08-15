@@ -211,9 +211,13 @@ UDisks2Device *UDisks2Plugin::findDevice(QAction *action)
 
 void UDisks2Plugin::addPath(const QString &path)
 {
-    foreach(PlayListTrack *item, PlayListManager::instance()->selectedPlayList()->items()) // Is it already exist?
+    PlayListModel *model = PlayListManager::instance()->selectedPlayList();
+
+    foreach(PlayListItem *item, model->items()) // Is it already exist?
     {
-        if (item->url().startsWith(path))
+        if(item->isGroup())
+            continue;
+        if (dynamic_cast<PlayListTrack *>(item)->url().startsWith(path))
             return;
     }
 
@@ -237,8 +241,8 @@ void UDisks2Plugin::removePath(const QString &path)
     int i = 0;
     while (model->count() > 0 && i < model->count())
     {
-        if (model->item(i)->url().startsWith(path))
-            model->removeAt (i);
+        if (model->isTrack(i) && model->track(i)->url().startsWith(path))
+            model->removeTrack(i);
         else
             ++i;
     }

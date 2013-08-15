@@ -278,11 +278,14 @@ bool PlayListModel::isSelected(int index) const
 
 bool PlayListModel::contains(const QString &url)
 {
-    /*foreach (PlayListItem *item, m_items)
+    for(int i = 0; i < m_container->count(); ++i)
     {
-        if(item->url() == url)
+        PlayListTrack *t = track(i);
+        if(!t)
+            continue;
+        if(t->url() == url)
             return true;
-    }*/
+    }
     return false;
 }
 
