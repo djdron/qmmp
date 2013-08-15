@@ -22,6 +22,7 @@
 #define JUMPTOTRACKDIALOG_P_H
 
 #include <QDialog>
+#include <QList>
 #include "ui_jumptotrackdialog.h"
 
 class QStringListModel;
@@ -56,6 +57,7 @@ private:
     QSortFilterProxyModel* m_proxyModel;
     PlayListManager *m_pl_manager;
     PlayListModel *m_model;
+    QList<int> m_indexes;
 };
 
 #endif //JUMPTOTRACKDIALOG_P_H
