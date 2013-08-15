@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -237,19 +237,23 @@ HalDevice *HalPlugin::findDevice(QAction *action)
 
 void HalPlugin::addPath(const QString &path)
 {
-    foreach(PlayListTrack *item, MediaPlayer::instance()->playListManager()->selectedPlayList()->items()) // Is it already exist?
+    PlayListModel *model = PlayListManager::instance()->selectedPlayList();
+
+    foreach(PlayListItem *item, model->items()) // Is it already exist?
     {
-        if (item->url().startsWith(path))
+        if(item->isGroup())
+            continue;
+        if (dynamic_cast<PlayListTrack *>(item)->url().startsWith(path))
             return;
     }
 
     if (path.startsWith("cdda://") && m_addTracks)
     {
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
+        PlayListManager::instance()->selectedPlayList()->add(path);
         return;
     }
     else if (!path.startsWith("cdda://") && m_addFiles)
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
+        PlayListManager::instance()->selectedPlayList()->add(path);
 }
 
 void HalPlugin::removePath(const QString &path)
@@ -258,13 +262,13 @@ void HalPlugin::removePath(const QString &path)
             (!path.startsWith("cdda://") && !m_removeFiles)) //process settings
         return;
 
-    PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
+    PlayListModel *model = PlayListManager::instance()->selectedPlayList();
 
     int i = 0;
     while (model->count() > 0 && i < model->count())
     {
-        if (model->item(i)->url().startsWith(path))
-            model->removeAt (i);
+        if (model->isTrack(i) && model->track(i)->url().startsWith(path))
+            model->removeTrack(i);
         else
             ++i;
     }
