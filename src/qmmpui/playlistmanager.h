@@ -272,7 +272,6 @@ private slots:
 
 private:
     void readPlayLists();
-    void setAutoSavePlayList();
     static PlayListManager* m_instance;
     QList <PlayListModel *> m_models;
     PlayListModel *m_current;
