@@ -37,15 +37,15 @@ add_subdirectory(lyrics)
 ENDIF(USE_LYRICS)
 
 IF(USE_HAL)
-#add_subdirectory(hal)
+add_subdirectory(hal)
 ENDIF(USE_HAL)
 
 IF(USE_UDISKS2)
-#add_subdirectory(udisks2)
+add_subdirectory(udisks2)
 ENDIF(USE_UDISKS2)
 
 IF(USE_UDISKS)
-#add_subdirectory(udisks)
+add_subdirectory(udisks)
 ENDIF(USE_UDISKS)
 
 IF(USE_HOTKEY)
