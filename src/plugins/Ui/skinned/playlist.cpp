@@ -208,6 +208,7 @@ void PlayList::createActions()
     //groups_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
     QAction* noneAct = groups_menu->addAction(tr("None"));
     QAction* albumArtistAct = groups_menu->addAction(tr("Artist/Album"));
+    connect(albumArtistAct, SIGNAL(toggled(bool)), m_pl_manager, SLOT(setGroupsEnabled(bool)));
     QActionGroup *actionGroup = new QActionGroup(this);
     actionGroup->setExclusive(true);
     foreach (QAction *act, groups_menu->actions())
