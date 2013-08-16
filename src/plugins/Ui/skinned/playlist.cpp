@@ -580,7 +580,7 @@ void PlayList::generateCopySelectedMenu()
 
 void PlayList::copySelectedMenuActionTriggered(QAction *action)
 {
-    /*PlayListModel *targetPlayList = 0;
+    PlayListModel *targetPlayList = 0;
     QString actionText=action->text();
     if(action == m_copySelectedMenu->actions().at(0))//actionText == tr ("&New PlayList"))
     {
@@ -594,7 +594,7 @@ void PlayList::copySelectedMenuActionTriggered(QAction *action)
             //if("&" + model->name().replace("&", "&&") == actionText)
             if(model->name() == actionText)
             {
-                targetPlayList=model;
+                targetPlayList = model;
                 break;
             }
         }
@@ -605,12 +605,12 @@ void PlayList::copySelectedMenuActionTriggered(QAction *action)
         return;
     }
     QList <PlayListTrack *> theCopy;
-    foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->selectedItems())
+    foreach(PlayListTrack *track, m_pl_manager->selectedPlayList()->selectedTracks())
     {
-        PlayListTrack *newItem = new PlayListTrack(*item);
+        PlayListTrack *newItem = new PlayListTrack(*track);
         theCopy << newItem;
     }
-    targetPlayList->add(theCopy);*/
+    targetPlayList->add(theCopy);
 }
 
 void PlayList::setMinimalMode(bool b)
