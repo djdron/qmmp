@@ -39,6 +39,7 @@ SET(libqmmpui_SRCS
     playlistitem.cpp
     playlistgroup.cpp
     playlisttrack.cpp
+    playlistcontainer.cpp
     normalcontainer.cpp
     groupedcontainer.cpp
     mediaplayer.cpp

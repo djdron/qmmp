@@ -18,41 +18,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef NORMALCONTAINER_P_H
-#define NORMALCONTAINER_P_H
-
 #include "playlistcontainer_p.h"
 
-class NormalContainer : public PlayListContainer
+void PlayListContainer::addTracks(QList<PlayListTrack *> tracks)
 {
-public:
-    NormalContainer();
-    virtual ~NormalContainer();
+    foreach(PlayListTrack *t, tracks)
+        addTrack(t);
+}
 
-    void addTrack(PlayListTrack *item);
-    QList<PlayListGroup *> groups();
-    QList<PlayListItem *> items() const;
-    int count() const;
-    int trackCount() const;
-    QList<PlayListItem *> mid(int pos, int count) const;
-    bool isEmpty() const;
-    bool isSelected(int index) const;
-    void setSelected(int index, bool selected);
-    void clearSelection();
-    int indexOf(PlayListItem *item) const;
-    PlayListItem *item(int index) const;
-    PlayListTrack *track(int index) const;
-    bool contains(PlayListItem *item) const;
-    int numberOfTrack(int index) const;
-    void removeTrack(int index);
-    void removeTrack(PlayListTrack *track);
-    void removeTracks(QList<PlayListTrack *> tracks);
-    bool move(QList<int> indexes, int from, int to);
-    QList<PlayListTrack *> takeAllTracks();
-    void clear();
 
-private:
-    QList<PlayListItem *> m_items;
-};
-
-#endif // NORMALCONTAINER_P_H

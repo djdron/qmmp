@@ -263,6 +263,11 @@ public slots:
      */
     void stopAfterSelected();
     /*!
+     * Enables or disables playlist groups
+     * * @param enabled State of the groups (\b true - enabled, \b false - disabled)
+     */
+    void setGroupsEnabled(bool enabled);
+    /*!
      * Read the relevant settings.
      */
     void readSettings();
@@ -277,6 +282,7 @@ private:
     PlayListModel *m_current;
     PlayListModel *m_selected;
     bool m_repeatable, m_shuffle, m_autosave_playlist;
+    bool m_groups_enabled;
     QTimer *m_timer;
 };
 

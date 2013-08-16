@@ -49,6 +49,7 @@ public:
     void removeTrack(PlayListTrack *track);
     void removeTracks(QList<PlayListTrack *> tracks);
     bool move(QList<int> indexes, int from, int to);
+    QList<PlayListTrack *> takeAllTracks();
     void clear();
 
 private:

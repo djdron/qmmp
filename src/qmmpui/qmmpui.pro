@@ -86,7 +86,8 @@ SOURCES += general.cpp \
     playlistgroup.cpp \
     playlisttrack.cpp \
     groupedcontainer.cpp \
-    normalcontainer.cpp
+    normalcontainer.cpp \
+    playlistcontainer.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \

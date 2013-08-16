@@ -39,21 +39,16 @@ public:
     bool contains(PlayListTrack *track) const;
     bool isEmpty() const;
     void remove(PlayListTrack *track);
-
     QList<PlayListTrack *> *tracks();
-
     int count() const;
-
-
-
     /*!
      *  Returns formatted length of the item.
      */
     const QString formattedLength() { return QString(); }
-
     virtual bool isGroup() const { return true; }
-
     void move(int from, int to);
+
+    QList<PlayListTrack *> takeAll();
 
 private:
     QList<PlayListTrack *> m_tracks;

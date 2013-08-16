@@ -56,8 +56,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_stop_track = 0;
     m_play_state = new NormalPlayState(this);
     m_loader = new FileLoader(this);
-    m_container = new GroupedContainer;
-    //m_container = new NormalContainer;
+    m_container = new NormalContainer;
     connect(m_loader, SIGNAL(newPlayListTrack(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
@@ -867,6 +866,21 @@ void PlayListModel::prepareForShufflePlaying(bool val)
 void PlayListModel::prepareForRepeatablePlaying(bool val)
 {
     m_is_repeatable_list = val;
+}
+
+void PlayListModel::prepareGroups(bool enabled)
+{
+    PlayListContainer *container = 0;
+    if(enabled)
+        container = new GroupedContainer;
+    else
+        container = new NormalContainer;
+    container->addTracks(m_container->takeAllTracks());
+    delete m_container;
+    m_container = container;
+    if(!m_container->isEmpty())
+        m_current = m_container->indexOf(m_current_track);
+    emit listChanged();
 }
 
 void PlayListModel::doCurrentVisibleRequest()

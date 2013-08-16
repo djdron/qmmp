@@ -379,6 +379,11 @@ public slots:
      */
     void prepareForRepeatablePlaying(bool);
     /*!
+     * Enabled/Disabled groped mode
+     * @param enabled State of the groups (\b true - enabled, \b false - disabled)
+     */
+    void prepareGroups(bool enabled);
+    /*!
      * Sorts selected items in \b mode sort mode.
      */
     void sortSelection(int mode);
