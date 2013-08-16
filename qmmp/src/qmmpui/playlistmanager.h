@@ -90,6 +90,10 @@ public:
      * Returns state of "Shuffle" option.
      */
     bool isShuffle() const;
+    /*!
+     * Returns \b true if the playlist groups are enabled. Otherwise returns \b false.
+     */
+    bool isGroupsEnabled() const;
 
 signals:
     /*!

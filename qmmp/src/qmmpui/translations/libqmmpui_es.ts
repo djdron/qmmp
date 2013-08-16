@@ -714,8 +714,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="160"/>
-        <location filename="../playlistmanager.cpp" line="347"/>
+        <location filename="../playlistmanager.cpp" line="161"/>
+        <location filename="../playlistmanager.cpp" line="351"/>
         <source>Playlist</source>
         <translation>Lista de reproducción</translation>
     </message>

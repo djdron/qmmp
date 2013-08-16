@@ -119,6 +119,7 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
         }
         emit itemAdded(track);
     }
+    preparePlayState();
     emit listChanged();
     emit countChanged();
 }
