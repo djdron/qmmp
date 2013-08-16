@@ -204,20 +204,6 @@ void PlayList::createActions()
     m_sortMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT (showDetails ())));
     m_sortMenu->addSeparator();
 
-    QMenu* groups_menu = new QMenu (tr("Groups"), m_sortMenu);
-    //groups_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
-    QAction* noneAct = groups_menu->addAction(tr("None"));
-    QAction* albumArtistAct = groups_menu->addAction(tr("Artist/Album"));
-    connect(albumArtistAct, SIGNAL(toggled(bool)), m_pl_manager, SLOT(setGroupsEnabled(bool)));
-    QActionGroup *actionGroup = new QActionGroup(this);
-    actionGroup->setExclusive(true);
-    foreach (QAction *act, groups_menu->actions())
-    {
-        act->setCheckable(true);
-        actionGroup->addAction(act);
-    }
-    m_sortMenu->addMenu (groups_menu);
-
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), m_sortMenu);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
     QSignalMapper* signalMapper = new QSignalMapper (this);
@@ -308,6 +294,9 @@ void PlayList::createActions()
                            m_pl_manager, SLOT(randomizeList()));
     m_sortMenu->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                            m_pl_manager, SLOT(reverseList()));
+    QAction *groupAct = m_sortMenu->addAction(tr("Group tracks"));
+    groupAct->setCheckable(true);
+    connect(groupAct,SIGNAL(triggered(bool)),m_pl_manager,SLOT(setGroupsEnabled(bool)));
     //playlist context menu
     m_listWidget->menu()->addAction(ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));
     m_listWidget->menu()->addSeparator();
