@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <qmmp/metadatamanager.h>
+#include <QApplication>
 #include "metadataformatter.h"
 #include "qmmpuisettings.h"
 #include "playlisttrack.h"
@@ -155,7 +156,7 @@ void PlayListTrack::formatGroup()
     MetaDataFormatter f(m_settings->groupFormat());
     m_group = f.parse(this);
     if (m_group.isEmpty())
-        m_group = m_settings->tr("No group");
+        m_group = qApp->translate("PlayListTrack", "Empty group");
     if (m_settings->convertUnderscore())
         m_group.replace("_", " ");
     if (m_settings->convertTwenty())
