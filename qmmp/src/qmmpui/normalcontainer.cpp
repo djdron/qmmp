@@ -170,6 +170,14 @@ bool NormalContainer::move(QList<int> indexes, int from, int to)
     return true;
 }
 
+QList<PlayListTrack *> NormalContainer::takeAllTracks()
+{
+    QList<PlayListTrack *> tracks;
+    while(!m_items.isEmpty())
+        tracks.append(dynamic_cast<PlayListTrack *>(m_items.takeFirst()));
+    return tracks;
+}
+
 void NormalContainer::clear()
 {
     qDeleteAll(m_items);

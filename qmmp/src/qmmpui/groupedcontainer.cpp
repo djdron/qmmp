@@ -255,6 +255,17 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
     return true;
 }
 
+QList<PlayListTrack *> GroupedContainer::takeAllTracks()
+{
+    QList<PlayListTrack *> tracks;
+    foreach (PlayListGroup *g, m_groups)
+    {
+        tracks.append(g->takeAll());
+    }
+    clear();
+    return tracks;
+}
+
 void GroupedContainer::clear()
 {
     while(!m_groups.isEmpty())

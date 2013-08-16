@@ -41,6 +41,7 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_repeatable = false;
     m_shuffle = false;
     m_autosave_playlist = false;
+    m_groups_enabled = false;
     m_timer = new QTimer(this);
     m_timer->setInterval(5000);
     m_timer->setSingleShot(true);
@@ -481,6 +482,16 @@ void PlayListManager::clearQueue()
 void PlayListManager::stopAfterSelected()
 {
     m_selected->stopAfterSelected();
+}
+
+void PlayListManager::setGroupsEnabled(bool enabled)
+{
+    if(m_groups_enabled == enabled)
+        return;
+
+    m_groups_enabled = enabled;
+    foreach(PlayListModel *model, m_models)
+        model->prepareGroups(enabled);
 }
 
 void PlayListManager::readSettings()

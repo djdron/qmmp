@@ -83,3 +83,10 @@ void PlayListGroup::move(int from, int to)
 {
     m_tracks.move(from, to);
 }
+
+QList<PlayListTrack *> PlayListGroup::takeAll()
+{
+    QList<PlayListTrack *> t = m_tracks;
+    m_tracks.clear();
+    return t;
+}
