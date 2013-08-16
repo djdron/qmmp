@@ -723,9 +723,9 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="158"/>
-        <source>No group</source>
-        <translation type="unfinished"></translation>
+        <location filename="../playlisttrack.cpp" line="159"/>
+        <source>Empty group</source>
+        <translation>Пустая группа</translation>
     </message>
 </context>
 <context>
