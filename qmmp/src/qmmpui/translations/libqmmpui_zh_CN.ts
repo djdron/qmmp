@@ -666,6 +666,8 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
+        <location filename="../jumptotrackdialog.cpp" line="92"/>
+        <location filename="../jumptotrackdialog.cpp" line="154"/>
         <source>Queue</source>
         <translation type="unfinished">加入队列</translation>
     </message>
@@ -694,6 +696,12 @@
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../jumptotrackdialog.cpp" line="90"/>
+        <location filename="../jumptotrackdialog.cpp" line="152"/>
+        <source>Unqueue</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PlayListDownloader</name>
@@ -706,16 +714,24 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="164"/>
-        <location filename="../playlistmanager.cpp" line="352"/>
+        <location filename="../playlistmanager.cpp" line="160"/>
+        <location filename="../playlistmanager.cpp" line="347"/>
         <source>Playlist</source>
         <translation>播放列表</translation>
     </message>
 </context>
 <context>
+    <name>PlayListTrack</name>
+    <message>
+        <location filename="../playlisttrack.cpp" line="158"/>
+        <source>No group</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QmmpUiSettings</name>
     <message>
-        <location filename="../qmmpuisettings.cpp" line="42"/>
+        <location filename="../qmmpuisettings.cpp" line="43"/>
         <source>Playlist</source>
         <translation type="unfinished">播放列表</translation>
     </message>
