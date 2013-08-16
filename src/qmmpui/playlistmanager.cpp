@@ -47,8 +47,8 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_timer->setSingleShot(true);
 
     connect(m_timer, SIGNAL(timeout()), SLOT(writePlayLists()));
-    readPlayLists(); //read playlists
     readSettings();  //read settings
+    readPlayLists(); //read playlists
 }
 
 PlayListManager::~PlayListManager()
@@ -57,6 +57,7 @@ PlayListManager::~PlayListManager()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Playlist/repeatable", m_repeatable);
     settings.setValue("Playlist/shuffle", m_shuffle);
+    settings.setValue("Playlist/groups", m_groups_enabled);
     m_instance = 0;
 }
 
@@ -271,6 +272,11 @@ bool PlayListManager::isShuffle() const
     return m_shuffle;
 }
 
+bool PlayListManager::isGroupsEnabled() const
+{
+    return m_groups_enabled;
+}
+
 void PlayListManager::readPlayLists()
 {
     QString line, param, value;
@@ -304,6 +310,8 @@ void PlayListManager::readPlayLists()
             tracks.clear();
             current = 0;
             m_models << new PlayListModel(value, this);
+            if(m_groups_enabled)
+                m_models.last()->prepareGroups(true);
         }
         else if (param == "current")
         {
@@ -338,19 +346,27 @@ void PlayListManager::readPlayLists()
             tracks.last()->setLength(value.toInt());
     }
     buffer.close();
-    if(!m_models.isEmpty())
+    if(m_models.isEmpty())
+    {
+        m_models << new PlayListModel(tr("Playlist"),this);
+        if(m_groups_enabled)
+            m_models.last()->prepareGroups(true);
+    }
+    else
     {
         m_models.last()->add(tracks);
         m_models.last()->setCurrent(tracks.at(qBound(0, current, tracks.count()-1)));
     }
-    else
-        m_models << new PlayListModel(tr("Playlist"),this);
     if(pl < 0 || pl >= m_models.count())
         pl = 0;
     m_selected = m_models.at(pl);
     m_current = m_models.at(pl);
     foreach(PlayListModel *model, m_models)
+    {
         connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
+        if (m_autosave_playlist)
+            connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
+    }
 }
 
 void PlayListManager::writePlayLists()
@@ -499,6 +515,7 @@ void PlayListManager::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
     setShuffle(settings.value("Playlist/shuffle",false).toBool());
+    setGroupsEnabled(settings.value("Playlist/groups",false).toBool());
 
     QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
     if (m_autosave_playlist != ui_settings->autoSavePlayList())

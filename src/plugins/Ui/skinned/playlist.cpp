@@ -296,6 +296,7 @@ void PlayList::createActions()
                            m_pl_manager, SLOT(reverseList()));
     QAction *groupAct = m_sortMenu->addAction(tr("Group tracks"));
     groupAct->setCheckable(true);
+    groupAct->setChecked(m_pl_manager->isGroupsEnabled());
     connect(groupAct,SIGNAL(triggered(bool)),m_pl_manager,SLOT(setGroupsEnabled(bool)));
     //playlist context menu
     m_listWidget->menu()->addAction(ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));

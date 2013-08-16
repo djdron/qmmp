@@ -801,7 +801,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="571"/>
+        <location filename="../playlist.cpp" line="572"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новий список</translation>
     </message>
@@ -817,7 +817,7 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="306"/>
         <source>Actions</source>
         <translation>Дії</translation>
     </message>

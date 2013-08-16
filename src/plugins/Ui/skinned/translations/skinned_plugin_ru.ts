@@ -798,10 +798,10 @@
     <message>
         <location filename="../playlist.cpp" line="297"/>
         <source>Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>Группировать треки</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="571"/>
+        <location filename="../playlist.cpp" line="572"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новый список</translation>
     </message>
@@ -817,7 +817,7 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="306"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>

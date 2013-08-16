@@ -813,12 +813,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="306"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="571"/>
+        <location filename="../playlist.cpp" line="572"/>
         <source>&amp;New PlayList</source>
         <translation>新しいプレイリスト(&amp;N)</translation>
     </message>
