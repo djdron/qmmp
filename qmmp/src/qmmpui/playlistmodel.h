@@ -255,11 +255,11 @@ public:
      */
     bool contains(const QString &url);
     /*!
-     * Enum of available sort modes
+     * Enum of the available sort modes
      */
     enum SortMode
     {
-        TITLE,                  /*!< by title */
+        TITLE = 0,              /*!< by title */
         ALBUM,                  /*!< by album */
         DISCNUMBER,             /*!< by discnumber */
         ARTIST,                 /*!< by artist */
