@@ -312,40 +312,52 @@ void PlayListModel::removeUnselected()
 
 void PlayListModel::removeTrack (int i)
 {
+    bool current_changed = false;
     if ((i < count()) && (i >= 0))
     {
         PlayListTrack* track = m_container->track(i);
         if(!track)
             return;
         m_queued_songs.removeAll(track);
+        m_container->removeTrack(track);
         if(m_stop_track == track)
             m_stop_track = 0;
         m_total_length -= track->length();
         m_total_length = qMax(0, m_total_length);
 
-        m_container->removeTrack(i);
-
-        if(m_container->isEmpty())
+        if(m_current_track == track)
         {
-            m_current = 0;
-            m_current_track = 0;
-        }
-        else
-        {
-            if (m_current >= i && m_current > 0)
-                m_current--;
-
-            if(m_current > 0 && m_container->item(m_current)->isGroup())
-                m_current--;
-
-            if(m_current_track != m_container->track(m_current))
+            if(m_container->isEmpty())
+                m_current_track = 0;
+            else
             {
-                m_current_track = m_container->track(m_current);
-                emit currentChanged();
+                current_changed = true;
+                int current = qMin(i - 1, m_container->count() - 2);
+                current = qMax(current, 0);
+                m_current_track = m_container->track(current);
+                if(!m_current_track)
+                {
+                    m_current_track = current > 0 ? m_container->track(current-1) :
+                                                    m_container->track(1);
+                }
             }
         }
 
+        if (track->flag() == PlayListTrack::FREE)
+        {
+            delete track;
+            track = NULL;
+        }
+        else if (track->flag() == PlayListTrack::EDITING)
+            track->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
+
+
+        m_current = m_current_track ? m_container->indexOf(m_current_track) : -1;
         m_play_state->prepare();
+
+        if(current_changed)
+            emit currentChanged();
+
         emit listChanged();
         emit countChanged();
     }
@@ -360,61 +372,26 @@ void PlayListModel::removeTrack (PlayListItem *track)
 void PlayListModel::removeSelection(bool inverted)
 {
     int i = 0;
-
     int select_after_delete = -1;
+    PlayListTrack *prev_current_track = m_current_track;
 
     while (!m_container->isEmpty() && i < m_container->count())
     {
         PlayListItem *item = m_container->item(i);
         if (!item->isGroup() && item->isSelected() ^ inverted)
         {
-            PlayListTrack *track = dynamic_cast<PlayListTrack *> (item);
-            m_container->removeTrack(track);
-            m_queued_songs.removeAll(track);
-            if(track == m_stop_track)
-                m_stop_track = 0;
-            m_total_length -= track->length();
-            if (m_total_length < 0)
-                m_total_length = 0;
-
-            if (track->flag() == PlayListTrack::FREE)
-            {
-                delete track;
-                track = NULL;
-            }
-            else if (track->flag() == PlayListTrack::EDITING)
-                track->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
+            blockSignals(true);
+            removeTrack(i);
+            blockSignals(false);
 
             if(m_container->isEmpty())
                 continue;
 
             select_after_delete = i;
-
-            if (m_current >= i && m_current > 0)
-            {
-                if(m_current != 1 || !m_container->item(0)->isGroup())
-                {
-                    if(!m_container->item(m_current-1)->isGroup())
-                        m_current--;
-                    else
-                        m_current-=2;
-                }
-            }
         }
         else
             i++;
     }
-
-    if (m_container->isEmpty())
-        m_current_track = 0;
-    else if(m_current_track != m_container->track(m_current))
-    {
-        m_current_track = m_container->track(m_current);
-        emit currentChanged();
-    }
-    else
-        m_current_track = 0;
-
 
     if (select_after_delete >= m_container->count())
         select_after_delete = m_container->count() - 1;
@@ -423,6 +400,9 @@ void PlayListModel::removeSelection(bool inverted)
         m_container->setSelected(select_after_delete, true);
 
     m_play_state->prepare();
+
+    if(prev_current_track != m_current_track)
+        emit currentChanged();
 
     emit listChanged();
     emit countChanged();
@@ -970,15 +950,12 @@ void PlayListModel::removeInvalidTracks()
 {
     bool ok = false;
 
-    int i = 0;
-    while(i < m_container->count())
+    for(int i = m_container->count() - 1; i >= 0; i--)
     {
-        PlayListTrack *track = m_container->track(i);
-        if(!track)
-        {
-            i++;
+        if(i >= m_container->count() || !isTrack(i))
             continue;
-        }
+
+        PlayListTrack *track = m_container->track(i);
 
         if(track->url().contains("://"))
             ok = MetaDataManager::instance()->protocols().contains(track->url().section("://",0,0));
@@ -986,8 +963,7 @@ void PlayListModel::removeInvalidTracks()
             ok = MetaDataManager::instance()->supports(track->url());
         if(!ok)
             removeTrack(i);
-        else
-            i++;
+
     }
 }
 
