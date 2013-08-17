@@ -42,6 +42,17 @@ public:
      */
     virtual ~QmmpUiSettings();
     /*!
+     * Enum of the available group formats
+     */
+    enum GroupFormat
+    {
+        NONE = 0,               /*!< disable groups */
+        ARTIST_ALBUM,           /*!< by artist/album */
+        ARTIST_DATE_ALBUM,      /*!< by artist/date/album */
+        ARTIST,                 /*!< by artist */
+        CUSTOM                  /*!< by user defined formar */
+    };
+    /*!
      * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
      */
     bool convertUnderscore() const;
