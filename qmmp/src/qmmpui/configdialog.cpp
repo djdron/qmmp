@@ -97,6 +97,7 @@ void ConfigDialog::readSettings()
         //playlist options
         QmmpUiSettings *guis = QmmpUiSettings::instance();
         m_ui->formatLineEdit->setText(guis->titleFormat());
+        m_ui->groupLineEdit->setText(guis->groupFormat());
         m_ui->metadataCheckBox->setChecked(guis->useMetadata());
         m_ui->underscoresCheckBox->setChecked(guis->convertUnderscore());
         m_ui->per20CheckBox->setChecked(guis->convertTwenty());
@@ -281,25 +282,42 @@ void ConfigDialog::on_informationButton_clicked()
 
 void ConfigDialog::createMenus()
 {
-    QMenu *menu = new QMenu(this);
+    QMenu *titleMenu = new QMenu(this);
 
-    menu->addAction(tr("Artist"))->setData("%p");
-    menu->addAction(tr("Album"))->setData("%a");
-    menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Two-digit track number"))->setData("%NN");
-    menu->addAction(tr("Genre"))->setData("%g");
-    menu->addAction(tr("Comment"))->setData("%c");
-    menu->addAction(tr("Composer"))->setData("%C");
-    menu->addAction(tr("Disc number"))->setData("%D");
-    menu->addAction(tr("File name"))->setData("%f");
-    menu->addAction(tr("File path"))->setData("%F");
-    menu->addAction(tr("Year"))->setData("%y");
-    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    titleMenu->addAction(tr("Artist"))->setData("%p");
+    titleMenu->addAction(tr("Album"))->setData("%a");
+    titleMenu->addAction(tr("Title"))->setData("%t");
+    titleMenu->addAction(tr("Track number"))->setData("%n");
+    titleMenu->addAction(tr("Two-digit track number"))->setData("%NN");
+    titleMenu->addAction(tr("Genre"))->setData("%g");
+    titleMenu->addAction(tr("Comment"))->setData("%c");
+    titleMenu->addAction(tr("Composer"))->setData("%C");
+    titleMenu->addAction(tr("Disc number"))->setData("%D");
+    titleMenu->addAction(tr("File name"))->setData("%f");
+    titleMenu->addAction(tr("File path"))->setData("%F");
+    titleMenu->addAction(tr("Year"))->setData("%y");
+    titleMenu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
 
-    m_ui->titleButton->setMenu(menu);
+    m_ui->titleButton->setMenu(titleMenu);
     m_ui->titleButton->setPopupMode(QToolButton::InstantPopup);
-    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
+    connect(titleMenu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
+
+    QMenu *groupMenu = new QMenu(this);
+
+    groupMenu->addAction(tr("Artist"))->setData("%p");
+    groupMenu->addAction(tr("Album"))->setData("%a");
+    groupMenu->addAction(tr("Genre"))->setData("%g");
+    groupMenu->addAction(tr("Comment"))->setData("%c");
+    groupMenu->addAction(tr("Composer"))->setData("%C");
+    groupMenu->addAction(tr("Disc number"))->setData("%D");
+    groupMenu->addAction(tr("Year"))->setData("%y");
+    groupMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%f)");
+    groupMenu->addAction(tr("Artist/Album"))->setData("%p%if(%p&%a, - ,)%a");
+    groupMenu->addAction(tr("Artist/Year/Album"))->setData("%p%if(%p&%a, - ,)%if(%y,[%y] ,)%a");
+
+    m_ui->groupButton->setMenu(groupMenu);
+    m_ui->groupButton->setPopupMode(QToolButton::InstantPopup);
+    connect(groupMenu, SIGNAL(triggered (QAction *)), SLOT(addGroupString(QAction *)));
 }
 
 void ConfigDialog::loadLanguages()
@@ -348,11 +366,20 @@ void ConfigDialog::addTitleString(QAction * a)
         m_ui->formatLineEdit->insert(" - "+a->data().toString());
 }
 
+void ConfigDialog::addGroupString(QAction *a)
+{
+    if (m_ui->groupLineEdit->cursorPosition () < 1)
+        m_ui->groupLineEdit->insert(a->data().toString());
+    else
+        m_ui->groupLineEdit->insert(" - "+a->data().toString());
+}
+
 void ConfigDialog::saveSettings()
 {
     if (QmmpUiSettings *guis = QmmpUiSettings::instance())
     {
         guis->setTitleFormat(m_ui->formatLineEdit->text().trimmed());
+        guis->setGroupFormat(m_ui->groupLineEdit->text().trimmed());
         guis->setUseMetadata(m_ui->metadataCheckBox->isChecked());
         guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
         guis->setConvertTwenty(m_ui->per20CheckBox->isChecked());
