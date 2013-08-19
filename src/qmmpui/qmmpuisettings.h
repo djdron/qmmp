@@ -42,17 +42,6 @@ public:
      */
     virtual ~QmmpUiSettings();
     /*!
-     * Enum of the available group formats
-     */
-    enum GroupFormat
-    {
-        NONE = 0,               /*!< disable groups */
-        ARTIST_ALBUM,           /*!< by artist/album */
-        ARTIST_DATE_ALBUM,      /*!< by artist/date/album */
-        ARTIST,                 /*!< by artist */
-        CUSTOM                  /*!< by user defined formar */
-    };
-    /*!
      * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
      */
     bool convertUnderscore() const;
@@ -87,6 +76,11 @@ public:
      * @param format title template. \sa MetaDataFormatter
      */
     void setTitleFormat(const QString &titleFormat);
+    /*!
+     * Sets group format.
+     * \param groupFormat group format. \sa MetaDataFormatter
+     */
+    void setGroupFormat(const QString &groupFormat);
     /*!
      * Sets metadata usage option state to \b enabled
      * @param enabled Option state (\b true - enabled, \b false - disabled)
