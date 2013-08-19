@@ -85,15 +85,28 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
     m_convertTwenty = yes;
 }
 
-void QmmpUiSettings::setTitleFormat(const QString &format)
+void QmmpUiSettings::setTitleFormat(const QString &titleFormat)
 {
-    m_title_format = format;
-    if(format != m_title_format)
+    if(titleFormat != m_title_format)
     {
-        m_title_format = format;
+        m_title_format = titleFormat;
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->doCurrentVisibleRequest();
+        }
+    }
+}
+
+void QmmpUiSettings::setGroupFormat(const QString &groupFormat)
+{
+    if(groupFormat != m_group_format)
+    {
+        m_group_format = groupFormat;
+        if(!PlayListManager::instance()->isGroupsEnabled())
+            return;
+        foreach(PlayListModel *model, PlayListManager::instance()->playLists())
+        {
+            model->prepareGroups(true);
         }
     }
 }
