@@ -65,7 +65,7 @@ void HotkeyEditor::loadShortcuts()
     m_ui->shortcutTreeWidget->addTopLevelItem(item);
     //playlist
     item = new QTreeWidgetItem (m_ui->shortcutTreeWidget, QStringList() << tr("Playlist"));
-    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_SHOW_MANAGER; ++i)
+    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_GROUP_TRACKS; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     m_ui->shortcutTreeWidget->addTopLevelItem(item);

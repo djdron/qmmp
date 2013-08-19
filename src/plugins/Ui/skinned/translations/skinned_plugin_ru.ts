@@ -344,32 +344,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="89"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
+        <location filename="../actionmanager.cpp" line="88"/>
+        <source>&amp;Group tracks</source>
+        <translation>&amp;Группировать треки</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="89"/>
-        <source>Ctrl+P</source>
+        <location filename="../actionmanager.cpp" line="88"/>
+        <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
+        <source>&amp;Settings</source>
+        <translation>&amp;Настройки</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="90"/>
+        <source>Ctrl+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;About Qt</source>
         <translation>&amp;О библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="93"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
@@ -796,12 +806,7 @@
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
-        <source>Group tracks</source>
-        <translation>Группировать треки</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="572"/>
+        <location filename="../playlist.cpp" line="571"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новый список</translation>
     </message>
@@ -817,7 +822,7 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="306"/>
+        <location filename="../playlist.cpp" line="305"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>

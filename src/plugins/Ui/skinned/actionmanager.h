@@ -85,6 +85,7 @@ public:
         PL_SELECT_NEXT,
         PL_SELECT_PREVIOUS,
         PL_SHOW_MANAGER,
+        PL_GROUP_TRACKS,
 
         SETTINGS,
         ABOUT,
