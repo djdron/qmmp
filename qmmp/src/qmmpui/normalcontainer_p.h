@@ -51,6 +51,8 @@ public:
     QList<PlayListTrack *> takeAllTracks();
     void clear();
 
+    void reverseList();
+
 private:
     QList<PlayListItem *> m_items;
 };
