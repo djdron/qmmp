@@ -83,7 +83,10 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
             return tr("Invalid playlist ID") + "\n";
         for(int i = 0; i < model->count(); ++i)
         {
-            out += QString("%1. %2").arg(i+1).arg(formatter.parse(model->item(i)));
+            PlayListTrack *track = model->track(i);
+            if(!track)
+                continue;
+            out += QString("%1. %2").arg(i+1).arg(formatter.parse(track));
             if(i == model->currentIndex())
                 out += " [*]";
             out += "\n";
@@ -99,13 +102,13 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
         PlayListModel *model = pl_manager->playListAt(pl_id);
         if(!model)
             return tr("Invalid playlist ID") + "\n";
-        PlayListTrack *item = model->item(track_id);
-        if(!item)
+        PlayListTrack *track = model->track(track_id);
+        if(!track)
             return tr("Invalid track ID") + "\n";
         player->stop();
         pl_manager->activatePlayList(model);
         pl_manager->selectPlayList(model);
-        model->setCurrent(item);
+        model->setCurrent(track);
         player->play();
     }
     else if(opt_str == "--pl-clear")
