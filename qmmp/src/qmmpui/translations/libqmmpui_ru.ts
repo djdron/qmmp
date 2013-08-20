@@ -197,12 +197,12 @@
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель/Альбом</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель/Год/Альбом</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
@@ -428,7 +428,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="160"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат группы:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="190"/>
@@ -724,7 +724,7 @@
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="152"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>Снять с очереди</translation>
     </message>
 </context>
 <context>

@@ -78,7 +78,7 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> &metaData, 
         title = processIfKeyWord(title);
     title.replace("%28", "(");
     title.replace("%29", ")");
-    return title;
+    return title.trimmed();
 }
 
 QString MetaDataFormatter::formatLength(qint64 length) const
