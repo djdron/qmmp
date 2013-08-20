@@ -56,6 +56,7 @@ public:
     virtual void clear() = 0;
 
     virtual void reverseList() = 0;
+    virtual void randomizeList() = 0;
 };
 
 #endif // PLAYLISTCONTAINER_P_H

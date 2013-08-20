@@ -53,6 +53,7 @@ public:
     void clear();
 
     void reverseList();
+    void randomizeList();
 
 private:
     void addGroup(PlayListGroup *group);

@@ -608,11 +608,11 @@ bool PlayListModel::isStopAfter(PlayListItem* item) const
 
 void PlayListModel::randomizeList()
 {
-    /*for (int i = 0;i < m_items.size();i++)
-        m_items.swap(qrand()%m_items.size(),qrand()%m_items.size());
-
-    m_current = m_items.indexOf(m_currentItem);
-    emit listChanged();*/
+    if(m_container->isEmpty())
+        return;
+    m_container->randomizeList();
+    m_current = m_container->indexOf(m_current_track);
+    emit listChanged();
 }
 
 void PlayListModel::reverseList()

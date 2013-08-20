@@ -186,6 +186,12 @@ void NormalContainer::clear()
 
 void NormalContainer::reverseList()
 {
-    for (int i = 0;i < m_items.size()/2;i++)
-        m_items.swap(i,m_items.size() - i - 1);
+    for (int i = 0; i < m_items.size()/2; i++)
+        m_items.swap(i, m_items.size() - i - 1);
+}
+
+void NormalContainer::randomizeList()
+{
+    for (int i = 0; i < m_items.size(); i++)
+        m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
 }
