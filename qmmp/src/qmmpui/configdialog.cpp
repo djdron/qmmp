@@ -311,7 +311,7 @@ void ConfigDialog::createMenus()
     groupMenu->addAction(tr("Composer"))->setData("%C");
     groupMenu->addAction(tr("Disc number"))->setData("%D");
     groupMenu->addAction(tr("Year"))->setData("%y");
-    groupMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%f)");
+    groupMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%p%a)");
     groupMenu->addAction(tr("Artist/Album"))->setData("%p%if(%p&%a, - ,)%a");
     groupMenu->addAction(tr("Artist/Year/Album"))->setData("%p%if(%p&%a, - ,)%if(%y,[%y] ,)%a");
 
