@@ -418,10 +418,6 @@ public slots:
 
 private:
     /*!
-     * This internal method performs sorting of \b list_to_sort list of items.
-     */
-    void doSort(int mode,QList<PlayListItem*>& list_to_sort);
-    /*!
      * Returns topmost row in current selection
      */
     int topmostInSelection(int);

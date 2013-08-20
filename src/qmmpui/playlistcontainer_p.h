@@ -57,6 +57,13 @@ public:
 
     virtual void reverseList() = 0;
     virtual void randomizeList() = 0;
+    virtual void sort(int mode);
+
+protected:
+    /*!
+     * This internal method performs sorting of \b list_to_sort list of items.
+     */
+    void doSort(int sort_mode, QList<PlayListTrack*>& list_to_sort);
 };
 
 #endif // PLAYLISTCONTAINER_P_H
