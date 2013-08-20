@@ -54,6 +54,8 @@ public:
     virtual bool move(QList<int> indexes, int from, int to) = 0;
     virtual QList<PlayListTrack *> takeAllTracks() = 0;
     virtual void clear() = 0;
+
+    virtual void reverseList() = 0;
 };
 
 #endif // PLAYLISTCONTAINER_P_H

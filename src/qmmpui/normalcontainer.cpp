@@ -183,3 +183,9 @@ void NormalContainer::clear()
     qDeleteAll(m_items);
     m_items.clear();
 }
+
+void NormalContainer::reverseList()
+{
+    for (int i = 0;i < m_items.size()/2;i++)
+        m_items.swap(i,m_items.size() - i - 1);
+}

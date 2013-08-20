@@ -275,6 +275,17 @@ void GroupedContainer::clear()
     m_items.clear();
 }
 
+void GroupedContainer::reverseList()
+{
+    QList<PlayListTrack *> tracks = takeAllTracks();
+
+    for (int i = 0;i < tracks.size()/2;i++)
+        tracks.swap(i, tracks.size() - i - 1);
+
+    foreach (PlayListTrack *t, tracks)
+        addTrack(t);
+}
+
 void GroupedContainer::updateIndex()
 {
     for(int i = 0; i < m_groups.count(); ++i)

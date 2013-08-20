@@ -617,11 +617,11 @@ void PlayListModel::randomizeList()
 
 void PlayListModel::reverseList()
 {
-    /*for (int i = 0;i < m_items.size()/2;i++)
-        m_items.swap(i,m_items.size() - i - 1);
-
-    m_current = m_items.indexOf(m_currentItem);
-    emit listChanged();*/
+    if(m_container->isEmpty())
+        return;
+    m_container->reverseList();
+    m_current = m_container->indexOf(m_current_track);
+    emit listChanged();
 }
 /*
 ////===============THE BEGINNING OF SORT IMPLEMENTATION =======================////
