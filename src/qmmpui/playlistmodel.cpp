@@ -18,17 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QWidget>
-#include <QFile>
-#include <QDir>
 #include <QtAlgorithms>
-#include <QFileInfo>
 #include <QTextStream>
-#include <QPluginLoader>
-#include <QApplication>
-#include <QTimer>
-#include <QBuffer>
-#include <QMetaType>
-#include <QDateTime>
 #include <time.h>
 #include <qmmp/metadatamanager.h>
 #include "playlistparser.h"
@@ -543,7 +534,7 @@ QList<int> PlayListModel::selectedIndexes() const
     return selected_rows;
 }
 
-QList<PlayListTrack *> PlayListModel::selectedTracks()
+QList<PlayListTrack *> PlayListModel::selectedTracks() const
 {
     QList<PlayListTrack*> selected_tracks;
     foreach(PlayListItem *item, m_container->items())
@@ -626,16 +617,11 @@ void PlayListModel::reverseList()
 
 void PlayListModel::sortSelection(int mode)
 {
-    /*QList<PlayListItem*>selected_items = selectedItems();
-    QList<int>selected_rows = selectedIndexes();
-
-    doSort(mode,selected_items);
-
-    for (int i = 0;i < selected_rows.count();i++)
-        m_items.replace(selected_rows[i],selected_items[i]);
-
-    m_current = m_items.indexOf(m_currentItem);
-    emit listChanged();*/
+    if(m_container->isEmpty())
+        return;
+    m_container->sortSelection(mode);
+    m_current = m_container->indexOf(m_current_track);
+    emit listChanged();
 }
 
 void PlayListModel::sort(int mode)

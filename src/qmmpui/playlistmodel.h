@@ -213,7 +213,7 @@ public:
     /*!
      * Returns list of \b PlayListItem pointers that are selected.
      */
-    QList<PlayListTrack *> selectedTracks();
+    QList<PlayListTrack *> selectedTracks() const;
     /*!
      * Returns list of all \b PlayListItem pointers.
      */

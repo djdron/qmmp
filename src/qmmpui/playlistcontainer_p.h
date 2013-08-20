@@ -58,6 +58,7 @@ public:
     virtual void reverseList() = 0;
     virtual void randomizeList() = 0;
     virtual void sort(int mode);
+    virtual void sortSelection(int mode);
 
 protected:
     /*!

@@ -20,6 +20,7 @@
 
 #include <QFileInfo>
 #include <QDateTime>
+#include <QtAlgorithms>
 #include "playlistmodel.h"
 #include "playlistcontainer_p.h"
 
@@ -33,6 +34,27 @@ void PlayListContainer::sort(int mode)
 {
     QList<PlayListTrack *> tracks = takeAllTracks();
     doSort(mode, tracks);
+    addTracks(tracks);
+}
+
+void PlayListContainer::sortSelection(int mode)
+{
+    QList<PlayListTrack *> tracks = takeAllTracks();
+    QList<PlayListTrack *> selected_tracks;
+    QList<int> selected_indexes;
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        if(tracks[i]->isSelected())
+        {
+            selected_tracks.append(tracks[i]);
+            selected_indexes.append(i);
+        }
+    }
+    doSort(mode, selected_tracks);
+
+    for (int i = 0; i < selected_indexes.count(); i++)
+        tracks.replace(selected_indexes[i], selected_tracks[i]);
+
     addTracks(tracks);
 }
 
