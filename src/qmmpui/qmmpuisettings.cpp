@@ -31,7 +31,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     m_title_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
-    m_group_format = s.value("PlayList/group_format", "%if(%p,%p -,)%if(%y, [%y],)%if(%a, %a,)").toString();
+    m_group_format = s.value("PlayList/group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
     m_convertUnderscore = s.value ("PlayList/convert_underscore", true).toBool();
     m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();

@@ -313,7 +313,7 @@ void ConfigDialog::createMenus()
     groupMenu->addAction(tr("Year"))->setData("%y");
     groupMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%p%a)");
     groupMenu->addAction(tr("Artist/Album"))->setData("%p%if(%p&%a, - ,)%a");
-    groupMenu->addAction(tr("Artist/Year/Album"))->setData("%if(%p,%p -,)%if(%y, [%y],)%if(%a, %a,)");
+    groupMenu->addAction(tr("Artist/Year/Album"))->setData("%p%if(%p&%a, - %if(%y,[%y] ,),)%a");
 
     m_ui->groupButton->setMenu(groupMenu);
     m_ui->groupButton->setPopupMode(QToolButton::InstantPopup);
