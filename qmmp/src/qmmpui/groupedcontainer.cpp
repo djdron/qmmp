@@ -279,8 +279,19 @@ void GroupedContainer::reverseList()
 {
     QList<PlayListTrack *> tracks = takeAllTracks();
 
-    for (int i = 0;i < tracks.size()/2;i++)
+    for (int i = 0; i < tracks.size()/2 ;i++)
         tracks.swap(i, tracks.size() - i - 1);
+
+    foreach (PlayListTrack *t, tracks)
+        addTrack(t);
+}
+
+void GroupedContainer::randomizeList()
+{
+    QList<PlayListTrack *> tracks = takeAllTracks();
+
+    for (int i = 0; i < tracks.size(); i++)
+        tracks.swap(qrand()%tracks.size(),qrand()%tracks.size());
 
     foreach (PlayListTrack *t, tracks)
         addTrack(t);

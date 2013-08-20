@@ -52,6 +52,7 @@ public:
     void clear();
 
     void reverseList();
+    void randomizeList();
 
 private:
     QList<PlayListItem *> m_items;
