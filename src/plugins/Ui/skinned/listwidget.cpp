@@ -191,32 +191,31 @@ void ListWidget::paintEvent(QPaintEvent *)
         if(m_rows[i]->separator)
         {
             painter.setPen(m_normal);
+            sx = 45;
+
             if(m_number_width)
+                sx += m_number_width + m_metrics->width("9");
+            if(rtl)
+                sx = width() - sx - m_metrics->width(m_rows[i]->title) - 5;
+
+            painter.drawText(sx, sy, m_rows[i]->title);
+
+            sy -= (m_metrics->lineSpacing()/2 - 2);
+
+            if(rtl)
             {
-                sx = 10 + m_number_width + m_metrics->width("9");
-                if(rtl)
-                {
-                    sx = width() - sx - m_metrics->width(m_rows[i]->title);
-                }
+                painter.drawLine(10, sy, sx - 5, sy);
+                painter.drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
+                                 sx + m_metrics->width(m_rows[i]->title) + 35, sy);
             }
             else
             {
-                sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
+                painter.drawLine(sx - 35, sy, sx - 5, sy);
+                painter.drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
+                                 width() - 10, sy);
             }
-            painter.drawLine(sx, sy - m_metrics->lineSpacing()/2 + 2,
-                             sx + 30, sy - m_metrics->lineSpacing()/2 + 2);
-
-            painter.drawLine(sx + 35 + m_metrics->width(m_rows[i]->title) + 5,
-                             sy - m_metrics->lineSpacing()/2 + 2,
-                             width() - 10,
-                             sy - m_metrics->lineSpacing()/2 + 2);
-
-            painter.drawText(sx + 35, sy, m_rows[i]->title);
             continue;
         }
-
-
-
 
         if (m_model->currentIndex() == m_first + i)
             painter.setPen(m_current);
@@ -230,8 +229,8 @@ void ListWidget::paintEvent(QPaintEvent *)
             sx = 10 + m_number_width - m_metrics->width(number);
             if(rtl)
                 sx = width() - sx - m_metrics->width(number);
-            if(!m_rows[i]->separator)
-                painter.drawText(sx, sy, number);
+
+            painter.drawText(sx, sy, number);
 
             sx = 10 + m_number_width + m_metrics->width("9");
             if(rtl)
@@ -264,7 +263,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             }
             painter.setFont(m_font);
         }
-        sx = rtl ? 7 : width() - 7 - m_metrics->width(m_rows[i]->length);
+        sx = rtl ? 9 : width() - 7 - m_metrics->width(m_rows[i]->length);
         painter.drawText(sx, sy, m_rows[i]->length);
     }
     //draw line
@@ -428,8 +427,8 @@ void ListWidget::updateList()
     else
         m_number_width = 0;
 
-    qDeleteAll(m_rows);
-    m_rows.clear();
+    //qDeleteAll(m_rows);
+    //m_rows.clear();
 
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
 
@@ -441,23 +440,21 @@ void ListWidget::updateList()
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        row->title = items[i]->formattedTitle();
+        row->selected = items[i]->isSelected();
         if(items[i]->isGroup())
         {
             row->separator = true;
             row->number = 0;
-            row->title = items[i]->formattedTitle();
             row->length.clear();
-            row->selected = items[i]->isSelected();
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                            width() -  m_number_width - 22 - 70);
+                            width() - m_number_width - 22 - 70);
         }
         else
         {
             row->separator = false;
             row->number = m_model->numberOfTrack(m_first+i) + 1;
-            row->title = items[i]->formattedTitle();
             row->length = items[i]->formattedLength();
-            row->selected = items[i]->isSelected();
             if(m_show_number && !m_align_numbres)
                 row->title.prepend(QString("%1").arg(row->number)+". ");
             row->extraString = getExtraString(m_first + i);
