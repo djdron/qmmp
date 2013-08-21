@@ -40,6 +40,20 @@ class PopupWidget;
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+struct ListWidgetRow
+{
+    QString title;
+    QString length;
+    QString extraString;
+    int number;
+    bool separator;
+    bool selected;
+};
+
+
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class ListWidget : public QWidget
 {
     Q_OBJECT
@@ -54,7 +68,7 @@ public:
      */
     int visibleRows()const
     {
-        return m_rows;
+        return m_row_count;
     }
 
     /*!
@@ -131,9 +145,7 @@ private:
      * Returns string with queue number or(and) repeate flag for the item number \b i.
      */
     const QString getExtraString(int i);
-    int m_rows, m_first;
-    QList <QString> m_titles;
-    QList <QString> m_times;
+    int m_row_count, m_first;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics, *m_bold_metrics, *m_extra_metrics;
     QColor m_normal, m_alternate, m_current, m_highlighted, m_normal_bg, m_selected_bg;
@@ -158,6 +170,7 @@ private:
     QScrollBar *m_scrollBar;
     bool m_show_anchor;
     int m_number_width;
+    QList<ListWidgetRow *> m_rows;
     bool m_align_numbres;
     bool m_use_system_colors;
 };

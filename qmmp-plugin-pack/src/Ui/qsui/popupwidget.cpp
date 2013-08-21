@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -81,13 +81,13 @@ void PopupWidget::mouseMoveEvent (QMouseEvent *)
     hide();
 }
 
-void PopupWidget::prepare(PlayListItem *item, QPoint pos)
+void PopupWidget::prepare(PlayListTrack *track, QPoint pos)
 {
     pos += QPoint(15,10);
 
-    m_url = item->url();
+    m_url = track->url();
     hide();
-    if(!item)
+    if(!track)
     {
         m_timer->stop();
         return;
@@ -95,7 +95,7 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
 
     QString title = m_template;
     MetaDataFormatter f(title);
-    title = f.parse(item);
+    title = f.parse(track);
     m_label1->setText(title);
     qApp->processEvents();
     updateGeometry ();

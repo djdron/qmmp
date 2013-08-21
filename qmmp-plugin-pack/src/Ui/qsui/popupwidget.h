@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@
 
 class QTimer;
 class QLabel;
-class PlayListItem;
+class PlayListTrack;
 
 namespace PlayListPopup {
 /**
@@ -40,7 +40,7 @@ public:
 
     ~PopupWidget();
 
-    void prepare(PlayListItem *item, QPoint pos);
+    void prepare(PlayListTrack *track, QPoint pos);
     void deactivate();
     const QString url() const;
 
