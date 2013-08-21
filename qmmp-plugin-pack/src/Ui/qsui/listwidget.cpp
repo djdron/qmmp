@@ -143,10 +143,10 @@ void ListWidget::paintEvent(QPaintEvent *)
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
 #endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
-    int x = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
+    int w = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
     int sx = 0, sy = 0;
 
-    painter.drawRect(-1,-1, x + 1, height()+1);
+    painter.drawRect(-1,-1, w + 1, height()+1);
 
     for (int i = 0; i < m_rows.size(); ++i)
     {
@@ -156,14 +156,14 @@ void ListWidget::paintEvent(QPaintEvent *)
             painter.setBrush(QBrush(m_alternate));
             painter.setPen(palette().color(QPalette::AlternateBase));
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                x - 10, m_metrics->lineSpacing() + 1);
+                                w - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
             painter.setPen(m_normal_bg);
             painter.setBrush(QBrush(m_normal_bg));
             painter.drawRect (6,  i * (m_metrics->lineSpacing() + 2),
-                                x - 10, m_metrics->lineSpacing() + 1);
+                                w - 10, m_metrics->lineSpacing() + 1);
         }
 
         if (m_show_anchor && i == m_anchor_row - m_first)
@@ -171,7 +171,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
             painter.setPen(m_normal);
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                x - 10, m_metrics->lineSpacing() + 1);
+                                w - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
@@ -180,19 +180,22 @@ void ListWidget::paintEvent(QPaintEvent *)
                 painter.setBrush(QBrush(m_selected_bg));
                 painter.setPen(m_selected_bg);
                 painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                    x - 10, m_metrics->lineSpacing() + 1);
+                                    w - 10, m_metrics->lineSpacing() + 1);
             }
         }
 
+        QFontMetrics *metrics = 0;
         if(m_rows[i]->separator)
         {
+            m_font.setBold(false);
+            painter.setFont(m_font);
             painter.setPen(m_normal);
             sx = 45;
 
             if(m_number_width)
                 sx += m_number_width + m_metrics->width("9");
             if(rtl)
-                sx = x - sx - m_metrics->width(m_rows[i]->title) - 5;
+                sx = w - sx - m_metrics->width(m_rows[i]->title) - 5;
 
             painter.drawText(sx, sy, m_rows[i]->title);
 
@@ -208,13 +211,11 @@ void ListWidget::paintEvent(QPaintEvent *)
             {
                 painter.drawLine(sx - 35, sy, sx - 5, sy);
                 painter.drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
-                                 x - 10, sy);
+                                 w - 10, sy);
             }
             continue;
         }
 
-
-        QFontMetrics *metrics = 0;
         if (m_model->currentIndex() == i + m_first)
         {
             m_font.setBold(true);
@@ -239,17 +240,17 @@ void ListWidget::paintEvent(QPaintEvent *)
             QString number = QString("%1").arg(m_rows[i]->number);
             sx = 10 + m_number_width - metrics->width(number);
             if(rtl)
-                sx = x - sx - metrics->width(number);
+                sx = w - sx - metrics->width(number);
             painter.drawText(sx, sy, number);
 
             sx = 10 + m_number_width + metrics->width("9");
             if(rtl)
-                sx = x - sx - metrics->width(m_rows[i]->title);
+                sx = w - sx - metrics->width(m_rows[i]->title);
             painter.drawText(sx, sy, m_rows[i]->title);
         }
         else
         {
-            sx = rtl ? x - 10 - metrics->width(m_rows[i]->title) : 10;
+            sx = rtl ? w - 10 - metrics->width(m_rows[i]->title) : 10;
             painter.drawText(sx, sy, m_rows[i]->title);
         }
 
@@ -260,26 +261,26 @@ void ListWidget::paintEvent(QPaintEvent *)
 
             if(m_rows[i]->length.isEmpty())
             {
-                sx = rtl ? 7 : x - 7 - m_extra_metrics->width(extra_string);
+                sx = rtl ? 7 : w - 7 - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             else
             {
-                sx = x - 10 - m_extra_metrics->width(extra_string) - metrics->width(m_rows[i]->length);
+                sx = w - 10 - m_extra_metrics->width(extra_string) - metrics->width(m_rows[i]->length);
                 if(rtl)
-                    sx = x - sx - m_extra_metrics->width(extra_string);
+                    sx = w - sx - m_extra_metrics->width(extra_string);
                 painter.drawText(sx, sy, extra_string);
             }
             painter.setFont(m_font);
         }
-        sx = rtl ? 9 : x - 7 - metrics->width(m_rows[i]->length);
+        sx = rtl ? 9 : w - 7 - metrics->width(m_rows[i]->length);
         painter.drawText(sx, sy, m_rows[i]->length);
     }
     //draw line
     if(m_number_width)
     {
         painter.setPen(m_normal);
-        sx = rtl ? x - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+        sx = rtl ? w - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                    10 + m_number_width + m_metrics->width("9")/2 - 1;
         painter.drawLine(sx, 2, sx, sy);
     }
@@ -460,8 +461,11 @@ void ListWidget::updateList()
     while(m_rows.count() > qMin(m_row_count, items.count()))
         delete m_rows.takeFirst();
 
+    int w = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
+
     for(int i = 0; i < items.count(); ++i)
     {
+        QFontMetrics *metrics = (m_model->currentTrack() == items[i]) ? m_bold_metrics : m_metrics;
         ListWidgetRow *row = m_rows[i];
         row->title = items[i]->formattedTitle();
         row->selected = items[i]->isSelected();
@@ -471,7 +475,7 @@ void ListWidget::updateList()
             row->number = 0;
             row->length.clear();
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                                                width() -  m_number_width - 22 - 70);
+                                                w -  m_number_width - 22 - 70);
         }
         else
         {
@@ -482,11 +486,11 @@ void ListWidget::updateList()
                 row->title.prepend(QString("%1").arg(row->number)+". ");
             row->extraString = getExtraString(m_first + i);
             //elide titles
-            int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
+            int extra_string_width = row->extraString.isEmpty() ? 0 : m_extra_metrics->width(row->extraString);
             if(m_number_width)
                 extra_string_width += m_number_width + m_metrics->width("9");
-            row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                                                width() -  m_metrics->width(row->length) - 22 - extra_string_width);
+            row->title = metrics->elidedText (row->title, Qt::ElideRight,
+                                              w -  metrics->width(row->length) - 22 - extra_string_width);
         }
     }
     m_scroll = false;
