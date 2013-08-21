@@ -402,7 +402,7 @@ void MainWindow::createActions()
                                         SLOT(removeUnselected())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_INVALID, m_pl_manager,
-                                        SLOT(removeInvalidItems())));
+                                        SLOT(removeInvalidTracks())));
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_DUPLICATES, m_pl_manager,
                                         SLOT(removeDuplicates())));
     m_ui.menuEdit->addSeparator();
