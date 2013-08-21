@@ -84,6 +84,7 @@ public:
         PL_RENAME,
         PL_SELECT_NEXT,
         PL_SELECT_PREVIOUS,
+        PL_GROUP_TRACKS,
 
         EQUALIZER,
         SETTINGS,

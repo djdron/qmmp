@@ -500,6 +500,8 @@ void MainWindow::createActions()
                               m_pl_manager, SLOT(randomizeList()));
     m_ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                               m_pl_manager, SLOT(reverseList()));
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_pl_manager, SLOT(setGroupsEnabled(bool))));
+    ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_pl_manager->isGroupsEnabled());
     m_ui.menuEdit->addSeparator();
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
