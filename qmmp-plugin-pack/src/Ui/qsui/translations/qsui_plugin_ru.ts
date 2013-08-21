@@ -350,7 +350,8 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>&amp;Группировать треки</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
