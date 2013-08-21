@@ -45,18 +45,18 @@
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="83"/>
-        <location filename="../playlistoption.cpp" line="101"/>
-        <location filename="../playlistoption.cpp" line="116"/>
+        <location filename="../playlistoption.cpp" line="104"/>
+        <location filename="../playlistoption.cpp" line="119"/>
         <source>Invalid playlist ID</source>
         <translation>Невірний номер списка відтворення</translation>
     </message>
     <message>
-        <location filename="../playlistoption.cpp" line="95"/>
+        <location filename="../playlistoption.cpp" line="98"/>
         <source>Invalid number of arguments</source>
         <translation>Невірне число аргументів</translation>
     </message>
     <message>
-        <location filename="../playlistoption.cpp" line="104"/>
+        <location filename="../playlistoption.cpp" line="107"/>
         <source>Invalid track ID</source>
         <translation>Невірний номер трека</translation>
     </message>
