@@ -350,12 +350,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Групувати треки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
