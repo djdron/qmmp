@@ -450,6 +450,10 @@ void MainWindow::createActions()
     connect (fileCreationDateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (fileCreationDateAct, PlayListModel::FILE_CREATION_DATE);
 
+    QAction* groupAct = sort_mode_menu->addAction (tr("By Group"));
+    connect (groupAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (groupAct, PlayListModel::GROUP);
+
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
     m_ui.menuEdit->addMenu (sort_mode_menu);
