@@ -793,7 +793,7 @@
     <message>
         <location filename="../playlist.cpp" line="246"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>По группе</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="254"/>
