@@ -299,7 +299,8 @@ void GroupedContainer::randomizeList()
 
 void GroupedContainer::sort(int mode)
 {
-    if(mode == PlayListModel::ARTIST || mode == PlayListModel::ALBUM || mode == PlayListModel::DATE)
+    if(mode == PlayListModel::ARTIST || mode == PlayListModel::ALBUM
+            || mode == PlayListModel::DATE || mode == PlayListModel::GROUP)
     {
         QList<PlayListTrack *> tracks = takeAllTracks();
         doSort(mode, tracks, m_reverted);

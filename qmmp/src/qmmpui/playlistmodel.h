@@ -268,7 +268,8 @@ public:
         DATE,                   /*!< by date */
         TRACK,                  /*!< by track */
         FILE_CREATION_DATE,     /*!< by file creation date */
-        FILE_MODIFICATION_DATE  /*!< by file modification date */
+        FILE_MODIFICATION_DATE, /*!< by file modification date */
+        GROUP                   /*!< by group name */
     };
 
     int numberOfTrack(int index) const;

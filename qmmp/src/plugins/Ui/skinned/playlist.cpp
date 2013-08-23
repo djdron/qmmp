@@ -243,6 +243,10 @@ void PlayList::createActions()
     connect (fileCreationDateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (fileCreationDateAct, PlayListModel::FILE_CREATION_DATE);
 
+    QAction* groupAct = sort_mode_menu->addAction (tr("By Group"));
+    connect (groupAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (groupAct, PlayListModel::GROUP);
+
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
     m_sortMenu->addMenu (sort_mode_menu);
@@ -285,6 +289,10 @@ void PlayList::createActions()
     fileCreationDateAct = sort_mode_menu->addAction (tr("By File Creation Date"));
     connect (fileCreationDateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (fileCreationDateAct, PlayListModel::FILE_CREATION_DATE);
+
+    groupAct = sort_mode_menu->addAction (tr("By Group"));
+    connect (groupAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (groupAct, PlayListModel::GROUP);
 
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sortSelection (int)));
 
