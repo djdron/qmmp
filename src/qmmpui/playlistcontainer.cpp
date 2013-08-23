@@ -30,34 +30,6 @@ void PlayListContainer::addTracks(QList<PlayListTrack *> tracks)
         addTrack(t);
 }
 
-void PlayListContainer::sort(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    doSort(mode, tracks);
-    addTracks(tracks);
-}
-
-void PlayListContainer::sortSelection(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    QList<PlayListTrack *> selected_tracks;
-    QList<int> selected_indexes;
-    for(int i = 0; i < tracks.count(); ++i)
-    {
-        if(tracks[i]->isSelected())
-        {
-            selected_tracks.append(tracks[i]);
-            selected_indexes.append(i);
-        }
-    }
-    doSort(mode, selected_tracks);
-
-    for (int i = 0; i < selected_indexes.count(); i++)
-        tracks.replace(selected_indexes[i], selected_tracks[i]);
-
-    addTracks(tracks);
-}
-
 ////===============THE BEGINNING OF SORT IMPLEMENTATION =======================////
 
 // First we'll implement bundle of static compare procedures
@@ -168,7 +140,7 @@ static bool _fileModificationDateGreaterComparator(PlayListTrack* s1,PlayListTra
     return QFileInfo(s1->value(Qmmp::URL)).lastModified() > QFileInfo(s2->value(Qmmp::URL)).lastModified();
 }
 
-void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sort)
+void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sort, bool reverted)
 {
     QList<PlayListTrack*>::iterator begin;
     QList<PlayListTrack*>::iterator end;
@@ -226,17 +198,10 @@ void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sor
         compareGreaterFunc = _titleGreaterComparator;
     }
 
-    static bool sorted_asc = false;
-    if (!sorted_asc)
-    {
-        qStableSort(begin,end,compareLessFunc);
-        sorted_asc = true;
-    }
-    else
-    {
+    if(reverted)
         qStableSort(begin,end,compareGreaterFunc);
-        sorted_asc = false;
-    }
+    else
+        qStableSort(begin,end,compareLessFunc);
 }
 
 ////=============== THE END OF SORT IMPLEMENTATION =======================////

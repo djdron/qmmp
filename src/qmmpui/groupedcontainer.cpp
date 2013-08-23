@@ -18,10 +18,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "playlistmodel.h"
 #include "groupedcontainer_p.h"
 
 GroupedContainer::GroupedContainer()
 {
+    m_reverted = false;
 }
 
 GroupedContainer::~GroupedContainer()
@@ -295,6 +297,56 @@ void GroupedContainer::randomizeList()
     addTracks(tracks);
 }
 
+void GroupedContainer::sort(int mode)
+{
+    if(mode == PlayListModel::ARTIST || mode == PlayListModel::ALBUM || mode == PlayListModel::DATE)
+    {
+        QList<PlayListTrack *> tracks = takeAllTracks();
+        doSort(mode, tracks, m_reverted);
+        addTracks(tracks);
+    }
+    else
+    {
+        m_items.clear();
+        foreach (PlayListGroup *g, m_groups)
+        {
+            QList<PlayListTrack *> tracks = g->takeAll();
+            doSort(mode, tracks, m_reverted);
+            g->addTracks(tracks);
+            m_items.append(g);
+            foreach (PlayListTrack *t, tracks)
+            {
+                m_items.append(t);
+            }
+        }
+        updateIndex();
+    }
+    m_reverted = !m_reverted;
+}
+
+void GroupedContainer::sortSelection(int mode)
+{
+    QList<PlayListTrack *> tracks = takeAllTracks();
+    QList<PlayListTrack *> selected_tracks;
+    QList<int> selected_indexes;
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        if(tracks[i]->isSelected())
+        {
+            selected_tracks.append(tracks[i]);
+            selected_indexes.append(i);
+        }
+    }
+    doSort(mode, selected_tracks, m_reverted);
+
+    for (int i = 0; i < selected_indexes.count(); i++)
+        tracks.replace(selected_indexes[i], selected_tracks[i]);
+
+    addTracks(tracks);
+
+    m_reverted = !m_reverted;
+}
+
 void GroupedContainer::updateIndex()
 {
     for(int i = 0; i < m_groups.count(); ++i)
@@ -311,4 +363,3 @@ void GroupedContainer::updateIndex()
         }
     }
 }
-

@@ -36,6 +36,7 @@ public:
 
     const QString formattedTitle();
     void addTrack(PlayListTrack *track);
+    void addTracks(QList<PlayListTrack *> tracks);
     bool contains(PlayListTrack *track) const;
     bool isEmpty() const;
     void remove(PlayListTrack *track);
