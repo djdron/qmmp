@@ -739,69 +739,74 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="257"/>
         <source>By Title</source>
         <translation>Nach Titel</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>By Album</source>
         <translation>Nach Album</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="265"/>
         <source>By Disc Number</source>
         <translation>Nach CD-Nummer</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>By Artist</source>
         <translation>Nach Interpret</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>By Filename</source>
         <translation>Nach Dateinamen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>By Path + Filename</source>
         <translation>Nach Pfad + Dateinamen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>By Date</source>
         <translation>Nach Datum</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="242"/>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="289"/>
         <source>By File Creation Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="250"/>
+        <location filename="../playlist.cpp" line="246"/>
+        <source>By Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="254"/>
         <source>Sort Selection</source>
         <translation>Auswahl sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="293"/>
+        <location filename="../playlist.cpp" line="297"/>
         <source>Randomize List</source>
         <translation>Wiedergabeliste mischen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="295"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>Reverse List</source>
         <translation>Wiedergabeliste umkehren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="571"/>
+        <location filename="../playlist.cpp" line="575"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Neue Wiedergabeliste</translation>
     </message>
@@ -817,12 +822,12 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="285"/>
         <source>By Track Number</source>
         <translation>Nach Titelnummer</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>Actions</source>
         <translation>Aktionen</translation>
     </message>
