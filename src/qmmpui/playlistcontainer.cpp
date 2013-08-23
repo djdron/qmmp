@@ -140,6 +140,17 @@ static bool _fileModificationDateGreaterComparator(PlayListTrack* s1,PlayListTra
     return QFileInfo(s1->value(Qmmp::URL)).lastModified() > QFileInfo(s2->value(Qmmp::URL)).lastModified();
 }
 
+//by group
+static bool _groupLessComparator(PlayListTrack* s1,PlayListTrack* s2)
+{
+    return QString::localeAwareCompare (s1->groupName(), s2->groupName()) < 0;
+}
+
+static bool _groupGreaterComparator(PlayListTrack* s1,PlayListTrack* s2)
+{
+    return QString::localeAwareCompare (s1->groupName(), s2->groupName()) > 0;
+}
+
 void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sort, bool reverted)
 {
     QList<PlayListTrack*>::iterator begin;
@@ -192,6 +203,10 @@ void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sor
     case PlayListModel::FILE_MODIFICATION_DATE:
         compareLessFunc = _fileModificationDateLessComparator;
         compareGreaterFunc = _fileModificationDateGreaterComparator;
+        break;
+    case PlayListModel::GROUP:
+        compareLessFunc = _groupLessComparator;
+        compareGreaterFunc = _groupGreaterComparator;
         break;
     default:
         compareLessFunc = _titleLessComparator;
