@@ -53,9 +53,12 @@ public:
 
     void reverseList();
     void randomizeList();
+    void sort(int mode);
+    void sortSelection(int mode);
 
 private:
     QList<PlayListItem *> m_items;
+    bool m_reverted;
 };
 
 #endif // NORMALCONTAINER_P_H

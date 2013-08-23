@@ -54,12 +54,15 @@ public:
 
     void reverseList();
     void randomizeList();
+    void sort(int mode);
+    void sortSelection(int mode);
 
 private:
     void addGroup(PlayListGroup *group);
     void updateIndex();
     QList<PlayListGroup *> m_groups;
     QList<PlayListItem *> m_items;
+    bool m_reverted;
 };
 
 #endif // GROUPEDCONTAINER_P_H
