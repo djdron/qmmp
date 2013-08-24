@@ -95,7 +95,7 @@ PlayListItem *NormalContainer::item(int index) const
 {
     if(index >= count() || index < 0)
     {
-        qWarning("PlayListItem: index is out of range");
+        qWarning("NormalContainer index is out of range");
         return 0;
     }
     return m_items.at(index);

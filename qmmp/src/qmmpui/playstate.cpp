@@ -120,7 +120,9 @@ bool NormalPlayState::next()
             return false;
     }
 
-    if(m_model->track((m_model->currentIndex() + 1)))
+    if(m_model->currentIndex() + 1 >= m_model->count())
+        return false;
+    else if(m_model->track((m_model->currentIndex() + 1)))
         return m_model->setCurrent(m_model->currentIndex() + 1);
     else if(m_model->currentIndex() + 2 > m_model->count() - 1)
         return false;
