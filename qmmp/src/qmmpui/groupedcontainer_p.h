@@ -23,6 +23,10 @@
 
 #include "playlistcontainer_p.h"
 
+/*! @internal
+ * @brief Playlist container with groups support.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class GroupedContainer : public PlayListContainer
 {
 public:

@@ -23,6 +23,11 @@
 
 #include "playlistcontainer_p.h"
 
+
+/*! @internal
+ * @brief Normal playlist container (i.e. without groups).
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class NormalContainer : public PlayListContainer
 {
 public:

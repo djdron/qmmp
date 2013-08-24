@@ -26,6 +26,12 @@
 #include "playlisttrack.h"
 #include "playlistgroup.h"
 
+
+/*! @internal
+ * @brief Base class of playlist containers.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
+ */
 class PlayListContainer
 {
 public:
