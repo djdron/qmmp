@@ -12,9 +12,9 @@ if [ ! -d "qmmp-plugin-pack-svn" ]; then
 svn checkout http://qmmp.googlecode.com/svn/branches/qmmp-plugin-pack-0.7/ qmmp-plugin-pack-svn
 fi
 
-echo "Creating changelog..."
 cd qmmp-plugin-pack-svn
 svn up
+echo "Creating changelog.."
 svn log > ChangeLog.svn
 
 VERSION=`cat qmmp-plugin-pack.pri | grep "QMMP_PLUGIN_PACK_VERSION" | cut -d " " -f3`

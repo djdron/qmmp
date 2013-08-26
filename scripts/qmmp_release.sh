@@ -12,9 +12,9 @@ if [ ! -d "qmmp-svn" ]; then
 svn checkout http://qmmp.googlecode.com/svn/branches/qmmp-0.7/ qmmp-svn
 fi
 
-echo "Creating changelog.."
 cd qmmp-svn
 svn up
+echo "Creating changelog.."
 svn log > ChangeLog.svn
 
 MAJOR=`cat src/qmmp/qmmp.h | grep "#define QMMP_VERSION_MAJOR" | cut -d " " -f3`
