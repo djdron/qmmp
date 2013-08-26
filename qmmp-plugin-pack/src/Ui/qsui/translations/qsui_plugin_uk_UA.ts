@@ -586,7 +586,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="453"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>За групою</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="461"/>
