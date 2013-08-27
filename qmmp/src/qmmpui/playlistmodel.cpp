@@ -179,6 +179,11 @@ PlayListTrack* PlayListModel::track(int index) const
     return m_container->track(index);
 }
 
+PlayListGroup* PlayListModel::group(int index) const
+{
+    return m_container->group(index);
+}
+
 int PlayListModel::currentIndex() const
 {
     return m_current;
@@ -190,7 +195,10 @@ bool PlayListModel::setCurrent(int index)
         return false;
     PlayListItem *item = m_container->item(index);
     if(item->isGroup())
-        return false;
+    {
+        index++;
+        item = m_container->item(index);
+    }
     m_current = index;
     m_current_track = dynamic_cast<PlayListTrack*> (item);
     emit currentChanged();
@@ -206,6 +214,13 @@ bool PlayListModel::setCurrent(PlayListTrack *track)
 }
 
 bool PlayListModel::isTrack(int index) const
+{
+    if (index > count()-1 || index < 0)
+        return false;
+    return !m_container->item(index)->isGroup();
+}
+
+bool PlayListModel::isGroup(int index) const
 {
     if (index > count()-1 || index < 0)
         return false;

@@ -47,6 +47,7 @@ public:
     int indexOf(PlayListItem *item) const;
     PlayListItem *item(int index) const;
     PlayListTrack *track(int index) const;
+    PlayListGroup *group(int index) const;
     bool contains(PlayListItem *item) const;
     int numberOfTrack(int index) const;
     void removeTrack(int index);
