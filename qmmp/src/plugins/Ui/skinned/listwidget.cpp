@@ -66,7 +66,6 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
 }
 
-
 ListWidget::~ListWidget()
 {
     if(m_metrics)
@@ -426,9 +425,6 @@ void ListWidget::updateList()
     }
     else
         m_number_width = 0;
-
-    //qDeleteAll(m_rows);
-    //m_rows.clear();
 
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
 
