@@ -52,6 +52,7 @@ public:
     virtual int indexOf(PlayListItem *item) const = 0;
     virtual PlayListItem *item(int index) const = 0;
     virtual PlayListTrack *track(int index) const = 0;
+    virtual PlayListGroup *group(int index) const = 0;
     virtual bool contains(PlayListItem *item) const = 0;
     virtual int numberOfTrack(int index) const = 0;
     virtual void removeTrack(int index) = 0;

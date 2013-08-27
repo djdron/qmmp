@@ -128,6 +128,7 @@ public:
      */
     PlayListItem* item(int index) const;
     PlayListTrack* track(int index) const;
+    PlayListGroup* group(int index) const;
     /*!
      * Returns index of the current item.
      */
@@ -146,6 +147,8 @@ public:
 
 
     bool isTrack(int index) const;
+
+    bool isGroup(int index) const;
 
     /*!
      * Returns \b true if item with \b index is selected, otherwise returns \b false

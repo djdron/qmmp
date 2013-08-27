@@ -142,6 +142,14 @@ PlayListTrack *GroupedContainer::track(int index) const
     return dynamic_cast<PlayListTrack *> (i);
 }
 
+PlayListGroup *GroupedContainer::group(int index) const
+{
+    PlayListItem *i = item(index);
+    if(i && i->isGroup())
+        return dynamic_cast<PlayListGroup *> (i);
+    return 0;
+}
+
 bool GroupedContainer::contains(PlayListItem *item) const
 {
     return m_items.contains(item);

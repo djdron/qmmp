@@ -95,7 +95,7 @@ PlayListItem *NormalContainer::item(int index) const
 {
     if(index >= count() || index < 0)
     {
-        qWarning("NormalContainer index is out of range");
+        qWarning("NormalContainer: index is out of range");
         return 0;
     }
     return m_items.at(index);
@@ -105,6 +105,12 @@ PlayListTrack *NormalContainer::track(int index) const
 {
     PlayListItem *i = item(index);
     return dynamic_cast<PlayListTrack *> (i);
+}
+
+PlayListGroup *NormalContainer::group(int index) const
+{
+    Q_UNUSED(index);
+    return 0;
 }
 
 bool NormalContainer::contains(PlayListItem *item) const
