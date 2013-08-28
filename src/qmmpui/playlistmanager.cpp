@@ -352,7 +352,7 @@ void PlayListManager::readPlayLists()
         if(m_groups_enabled)
             m_models.last()->prepareGroups(true);
     }
-    else
+    else if(!tracks.isEmpty())
     {
         m_models.last()->add(tracks);
         m_models.last()->setCurrent(tracks.at(qBound(0, current, tracks.count()-1)));
