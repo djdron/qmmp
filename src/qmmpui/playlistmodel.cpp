@@ -530,7 +530,6 @@ int PlayListModel::bottommostInSelection(int row)
 const SimpleSelection& PlayListModel::getSelection(int row)
 {
     m_selection.m_top = topmostInSelection(row);
-    m_selection.m_anchor = row;
     m_selection.m_bottom = bottommostInSelection(row);
     m_selection.m_selected_indexes = selectedIndexes();
     return m_selection;
