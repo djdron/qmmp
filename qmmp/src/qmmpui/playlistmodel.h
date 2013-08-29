@@ -55,14 +55,14 @@ struct SimpleSelection
      */
     inline bool isValid()const
     {
-        return (m_bottom != -1) && (m_anchor != -1) && (m_top != -1);
+        return (m_bottom != -1) && (m_top != -1);
     }
     /*!
      * Prints object state.
      */
     inline void dump()const
     {
-        qWarning("top: %d\tbotom: %d\tanchor: %d", m_top, m_bottom, m_anchor);
+        qWarning("top: %d\tbotom: %d", m_top, m_bottom);
     }
     /*!
      * Returns number of selected items.
@@ -73,7 +73,6 @@ struct SimpleSelection
     }
     int m_bottom;               /*!< Bottom of the selection */
     int m_top;                  /*!< Top of the selection   */
-    int m_anchor;               /*!< Main index of the selection  */
     QList<int> m_selected_indexes;  /*!< Selected items numbers */
 };
 /*! @brief The PlayListModel class provides a data model for the playlist.
