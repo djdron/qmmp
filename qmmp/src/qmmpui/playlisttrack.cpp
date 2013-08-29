@@ -59,6 +59,7 @@ void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaDat
 {
     QMap <Qmmp::MetaData, QString>::operator =(metaData);
     formatTitle();
+    formatGroup();
 }
 
 void PlayListTrack::updateMetaData()
@@ -71,6 +72,7 @@ void PlayListTrack::updateMetaData()
         QMap <Qmmp::MetaData, QString>::operator =(info->metaData());
         insert(Qmmp::URL, info->path());
         formatTitle();
+        formatGroup();
     }
     while(list.size() > 1)
         delete list.takeLast();
