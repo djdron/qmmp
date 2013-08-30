@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -60,59 +60,65 @@ void KeyboardManager::processUp()
     int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
 
     QList<int> rows = m_listWidget->model()->selectedIndexes();
-    int first_visible = m_listWidget->firstVisibleRow();
-    int last_visible = m_listWidget->visibleRows() + first_visible - 1;
+
     if(rows.isEmpty())
     {
-        m_listWidget->setAnchorRow(first_visible);
-        m_listWidget->model()->setSelected(first_visible, true);
+        m_listWidget->model()->setSelected(m_listWidget->firstVisibleRow(), true);
+        m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
+        return;
     }
+
+    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
+    {
+        m_listWidget->model()->clearSelection();
+        m_listWidget->setAnchorRow(-1);
+    }
+
+    int first_visible = m_listWidget->firstVisibleRow();
+    int last_visible = m_listWidget->visibleRows() + first_visible - 1;
+
+    int s = SELECT_NEXT;
+
+    if(rows.last() < first_visible)
+        s = SELECT_TOP;
+    else if(rows.first() > last_visible)
+        s = SELECT_BOTTOM;
+
+    if (keys == Qt::AltModifier)
+    {
+        if(rows.first() == 0)
+            return;
+        m_listWidget->model()->moveItems (rows.first(), rows.first() - 1);
+        m_listWidget->setAnchorRow (rows.first() - 1);
+    }
+
     else
     {
-        int select_row = rows.first();
-
-        if(select_row > 0)
-            select_row--;
-
-        if(keys & Qt::ShiftModifier)
+        if(s == SELECT_TOP)
         {
-            if(m_listWidget->anchorRow() != rows.last())
-            {
-                select_row = rows.last();
-                if(select_row == first_visible)
-                    m_listWidget->scroll(select_row - 1);
-            }
-            else if(select_row < first_visible)
-                m_listWidget->scroll(select_row);
-            m_listWidget->model()->setSelected(select_row, m_listWidget->anchorRow() == rows.last());
+            m_listWidget->model()->setSelected (first_visible, true);
+            m_listWidget->setAnchorRow(first_visible);
         }
-        else if(keys & Qt::AltModifier)
+        else if(s == SELECT_BOTTOM)
         {
-            if(rows.first() == 0)
-                return;
-            m_listWidget->model()->moveItems (rows.first(),rows.first() - 1);
-            m_listWidget->setAnchorRow (m_listWidget->anchorRow() - 1);
-            if(select_row < first_visible)
-                m_listWidget->scroll(select_row);
+            m_listWidget->model()->setSelected (last_visible, true);
+            m_listWidget->setAnchorRow(last_visible);
+        }
+        else if(rows.first() == 0)
+        {
+            m_listWidget->model()->setSelected (rows.first(), true);
+            m_listWidget->setAnchorRow(rows.first());
         }
         else
         {
-            m_listWidget->model()->clearSelection();
-            foreach(int row, rows)
-            {
-                if(row < first_visible || row > last_visible)
-                {
-                    m_listWidget->setAnchorRow(first_visible);
-                    m_listWidget->model()->setSelected(first_visible, true);
-                    return;
-                }
-            }
-            if(select_row < first_visible)
-                m_listWidget->scroll(select_row);
-            if(!(keys & Qt::ShiftModifier))
-                m_listWidget->setAnchorRow(select_row);
-            m_listWidget->model()->setSelected(select_row, true);
+            m_listWidget->model()->setSelected (rows.first() - 1, true);
+            m_listWidget->setAnchorRow(rows.first() - 1);
         }
+    }
+
+    if(m_listWidget->anchorRow() < first_visible)
+    {
+        m_listWidget->scroll (m_listWidget->firstVisibleRow() - 1);
     }
 }
 
@@ -124,58 +130,64 @@ void KeyboardManager::processDown()
     int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
 
     QList<int> rows = m_listWidget->model()->selectedIndexes();
-    int first_visible = m_listWidget->firstVisibleRow();
-    int last_visible = m_listWidget->visibleRows() + first_visible - 1;
+
     if(rows.isEmpty())
     {
-        m_listWidget->setAnchorRow(first_visible);
-        m_listWidget->model()->setSelected(first_visible, true);
+        m_listWidget->model()->setSelected(m_listWidget->firstVisibleRow(), true);
+        m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
+        return;
+    }
+
+    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
+    {
+        m_listWidget->model()->clearSelection();
+        m_listWidget->setAnchorRow(-1);
+    }
+
+    int first_visible = m_listWidget->firstVisibleRow();
+    int last_visible = m_listWidget->visibleRows() + first_visible - 1;
+
+    int s = SELECT_NEXT;
+
+    if(rows.last() < first_visible)
+        s = SELECT_TOP;
+    else if(rows.first() > last_visible)
+        s = SELECT_BOTTOM;
+
+    if (keys == Qt::AltModifier)
+    {
+        if(rows.last() == m_listWidget->model()->count() - 1)
+            return;
+        m_listWidget->model()->moveItems (rows.last(), rows.last() + 1);
+        m_listWidget->setAnchorRow (rows.last() + 1);
     }
     else
     {
-        int select_row = rows.last();
-
-        if(select_row < m_listWidget->model()->count() - 1)
-            select_row++;
-
-        if(keys & Qt::ShiftModifier)
+        if(s == SELECT_TOP)
         {
-            if(m_listWidget->anchorRow() != rows.first())
-            {
-                select_row = rows.first();
-                if(select_row == last_visible)
-                    m_listWidget->scroll(first_visible + 1);
-            }
-            else if(select_row > last_visible)
-                m_listWidget->scroll(first_visible + 1);
-            m_listWidget->model()->setSelected(select_row, m_listWidget->anchorRow() == rows.first());
+            m_listWidget->model()->setSelected (first_visible, true);
+            m_listWidget->setAnchorRow(first_visible);
         }
-        else if(keys & Qt::AltModifier)
+        else if(s == SELECT_BOTTOM)
         {
-            if(rows.last() == m_listWidget->model()->count() - 1)
-                return;
-            m_listWidget->model()->moveItems (rows.last(),rows.last() + 1);
-            m_listWidget->setAnchorRow (m_listWidget->anchorRow() + 1);
-            if(select_row > last_visible)
-                m_listWidget->scroll(first_visible + 1);
+            m_listWidget->model()->setSelected (last_visible, true);
+            m_listWidget->setAnchorRow(last_visible);
+        }
+        else if(rows.last() == m_listWidget->model()->count() - 1)
+        {
+            m_listWidget->model()->setSelected (rows.last(), true);
+            m_listWidget->setAnchorRow(rows.last());
         }
         else
         {
-            m_listWidget->model()->clearSelection();
-            foreach(int row, rows)
-            {
-                if(row < first_visible || row > last_visible)
-                {
-                    m_listWidget->setAnchorRow(first_visible);
-                    m_listWidget->model()->setSelected(first_visible, true);
-                    return;
-                }
-            }
-            if(select_row > last_visible)
-                m_listWidget->scroll(first_visible + 1);
-            m_listWidget->setAnchorRow(select_row);
-            m_listWidget->model()->setSelected(select_row, true);
+            m_listWidget->model()->setSelected (rows.last() + 1, true);
+            m_listWidget->setAnchorRow(rows.last() + 1);
         }
+    }
+
+    if(m_listWidget->anchorRow() > last_visible)
+    {
+        m_listWidget->scroll (m_listWidget->firstVisibleRow() + 1);
     }
 }
 

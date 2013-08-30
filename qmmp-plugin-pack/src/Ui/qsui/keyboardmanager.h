@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,6 +52,13 @@ private:
     QList<QAction*> m_actions;
     ListWidget *m_listWidget;
     void addAction(int keys, const char * method);
+
+    enum SelectMode
+    {
+        SELECT_TOP = 0,
+        SELECT_BOTTOM,
+        SELECT_NEXT
+    };
 
 };
 
