@@ -33,34 +33,39 @@ class QKeyEvent;
  */
 class KeyboardManager
 {
-    public:
-      /*!
-       * Constructor. Takes \b PlayList object as an argument.
-       */
-        KeyboardManager (ListWidget *l);
+public:
+    /*!
+     * Constructor. Takes \b PlayList object as an argument.
+     */
+    KeyboardManager (ListWidget *l);
+    /*!
+     * Handles key press events from \b PlayList object. Returns \b true
+     * if the key was handled, otherwise \b false.
+     */
+    bool handleKeyPress (QKeyEvent*);
+    /*!
+     * Handles key release events from \b PlayList object. Returns \b true
+     * if the key was handled, otherwise \b false.
+     */
+    bool handleKeyRelease (QKeyEvent*);
 
-        /*!
-         * Handles key press events from \b PlayList object. Returns \b true
-         * if the key was handled, otherwise \b false.
-         */
-        bool handleKeyPress (QKeyEvent*);
+private:
+    void keyUp (QKeyEvent* ke);
+    void keyDown (QKeyEvent* ke);
+    void keyPgUp (QKeyEvent* ke);
+    void keyPgDown (QKeyEvent* ke);
+    void keyEnter (QKeyEvent* ke);
+    void keyHome(QKeyEvent* ke);
+    void keyEnd(QKeyEvent* ke);
 
-        /*!
-         * Handles key release events from \b PlayList object. Returns \b true
-         * if the key was handled, otherwise \b false.
-         */
-        bool handleKeyRelease (QKeyEvent*);
+    ListWidget* m_listWidget;
 
-    protected:
-        void keyUp (QKeyEvent* ke);
-        void keyDown (QKeyEvent* ke);
-        void keyPgUp (QKeyEvent* ke);
-        void keyPgDown (QKeyEvent* ke);
-        void keyEnter (QKeyEvent* ke);
-        void keyHome(QKeyEvent* ke);
-        void keyEnd(QKeyEvent* ke);
-    private:
-        ListWidget* m_listWidget;
+    enum SelectMode
+    {
+        SELECT_TOP = 0,
+        SELECT_BOTTOM,
+        SELECT_NEXT
+    };
 };
 
 #endif
