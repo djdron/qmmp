@@ -46,6 +46,8 @@ DetailsDialog::DetailsDialog(QList<PlayListTrack *> tracks, QWidget *parent)
     setWindowTitle (m_path.section('/',-1));
     m_ui->pathEdit->setText(m_path);
     m_ui->directoryButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
+    m_ui->nextButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowRight));
+    m_ui->prevButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowLeft));
     m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(m_item->url(), this);
 
     if(m_metaDataModel)
