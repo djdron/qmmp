@@ -34,12 +34,12 @@ class TagUpdater : public QObject
     Q_OBJECT
 
 public:
-    TagUpdater(QObject* o, PlayListTrack* track);
+    TagUpdater(QObject* o, QList<PlayListTrack*> tracks);
     QObject* m_observable;
-    PlayListTrack* m_item;
+    QList<PlayListTrack*> m_tracks;
 
 public slots:
-    void updateTag();
+    void updateTags();
 
 };
 

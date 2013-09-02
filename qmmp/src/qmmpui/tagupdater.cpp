@@ -20,23 +20,29 @@
 
 #include "tagupdater_p.h"
 
-TagUpdater::TagUpdater(QObject* o, PlayListTrack* track) : m_observable(o), m_item(track)
+TagUpdater::TagUpdater(QObject* o, QList<PlayListTrack *> tracks) : m_observable(o)
 {
-    m_item->setFlag(PlayListTrack::EDITING);
-    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
+    m_tracks = tracks;
+    foreach(PlayListTrack *t, m_tracks)
+        t->setFlag(PlayListTrack::EDITING);
+    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTags()));
     connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
 }
 
-void TagUpdater::updateTag()
+void TagUpdater::updateTags()
 {
-    if (m_item->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
+    foreach (PlayListTrack *t, m_tracks)
     {
-        delete m_item;
-        m_item = NULL;
+        if (t->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
+        {
+            delete t;
+            t = 0;
+        }
+        else
+        {
+            t->updateMetaData();
+            t->setFlag(PlayListTrack::FREE);
+        }
     }
-    else
-    {
-        m_item->updateMetaData();
-        m_item->setFlag(PlayListTrack::FREE);
-    }
+    m_tracks.clear();
 }

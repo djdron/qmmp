@@ -32,21 +32,21 @@
 #include "tageditor_p.h"
 #include "detailsdialog.h"
 
-DetailsDialog::DetailsDialog(PlayListTrack *item, QWidget *parent)
+DetailsDialog::DetailsDialog(QList<PlayListTrack *> tracks, QWidget *parent)
         : QDialog(parent)
 {
     m_ui = new Ui::DetailsDialog;
     setAttribute(Qt::WA_QuitOnClose, false);
     setAttribute(Qt::WA_DeleteOnClose, false);
     m_metaDataModel = 0;
-    m_item = item;
+    m_item = tracks.at(0);
     m_ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    m_path = item->url();
+    m_path = m_item->url();
     setWindowTitle (m_path.section('/',-1));
     m_ui->pathEdit->setText(m_path);
     m_ui->directoryButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
-    m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
+    m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(m_item->url(), this);
 
     if(m_metaDataModel)
     {

@@ -43,10 +43,10 @@ class DetailsDialog : public QDialog
 public:
     /*!
      * Constructor.
-     * @param item Playlist item which should be used.
+     * @param tracks a list of tracks which should be used.
      * @param parent Parent widget.
      */
-    DetailsDialog(PlayListTrack *item, QWidget *parent = 0);
+    DetailsDialog(QList<PlayListTrack *> tracks, QWidget *parent = 0);
     /*!
      * Destructor.
      */

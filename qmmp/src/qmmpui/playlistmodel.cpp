@@ -430,16 +430,24 @@ void PlayListModel::selectAll()
 
 void PlayListModel::showDetails(QWidget *parent)
 {
+    QList<PlayListTrack *> selected_tracks;
+
     for (int i = 0; i < m_container->count(); ++i)
     {
-        if (m_container->isSelected(i) && m_container->track(i))
-        {
-            QDialog *d = new DetailsDialog(m_container->track(i), parent);
-            TagUpdater *updater = new TagUpdater(d, m_container->track(i));
-            connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
-            d->show();
-            return;
-        }
+        if(!m_container->isSelected(i))
+            continue;
+        PlayListTrack *track = m_container->track(i);
+        if(track && track->flag() != PlayListTrack::FREE)
+            continue;
+        selected_tracks.append(track);
+    }
+
+    if(!selected_tracks.isEmpty())
+    {
+        QDialog *d = new DetailsDialog(selected_tracks, parent);
+        TagUpdater *updater = new TagUpdater(d, selected_tracks);
+        connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
+        d->show();
     }
 }
 
