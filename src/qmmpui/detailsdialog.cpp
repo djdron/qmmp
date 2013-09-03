@@ -36,34 +36,16 @@ DetailsDialog::DetailsDialog(QList<PlayListTrack *> tracks, QWidget *parent)
         : QDialog(parent)
 {
     m_ui = new Ui::DetailsDialog;
-    setAttribute(Qt::WA_QuitOnClose, false);
-    setAttribute(Qt::WA_DeleteOnClose, false);
-    m_metaDataModel = 0;
-    m_item = tracks.at(0);
     m_ui->setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
-    m_path = m_item->url();
-    setWindowTitle (m_path.section('/',-1));
-    m_ui->pathEdit->setText(m_path);
+    setAttribute(Qt::WA_QuitOnClose, false);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     m_ui->directoryButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
     m_ui->nextButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowRight));
     m_ui->prevButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowLeft));
-    m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(m_item->url(), this);
-
-    if(m_metaDataModel)
-    {
-        foreach(TagModel *tagModel, m_metaDataModel->tags())
-            m_ui->tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
-
-        foreach(QString title, m_metaDataModel->descriptions().keys())
-        {
-            QTextEdit *textEdit = new QTextEdit(this);
-            textEdit->setReadOnly(true);
-            textEdit->setPlainText(m_metaDataModel->descriptions().value(title));
-            m_ui->tabWidget->addTab(textEdit, title);
-        }
-    }
-    printInfo();
+    m_metaDataModel = 0;
+    m_page = 0;
+    m_tracks = tracks;
+    updatePage();
 }
 
 DetailsDialog::~DetailsDialog()
@@ -93,15 +75,84 @@ void DetailsDialog:: on_directoryButton_clicked()
 #endif
 }
 
+void DetailsDialog::on_buttonBox_clicked(QAbstractButton *button)
+{
+    if(m_ui->buttonBox->standardButton(button) == QDialogButtonBox::Save)
+    {
+        TagEditor *tab = qobject_cast<TagEditor *> (m_ui->tabWidget->currentWidget());
+        if(tab)
+            tab->save();
+    }
+    else
+        reject();
+}
+
+void DetailsDialog::on_prevButton_clicked()
+{
+    if(m_page == 0)
+        m_page = m_tracks.count() - 1;
+    else
+        m_page--;
+    updatePage();
+}
+
+void DetailsDialog::on_nextButton_clicked()
+{
+    if(m_page >= m_tracks.count() - 1)
+        m_page = 0;
+    else
+        m_page++;
+    updatePage();
+}
+
+void DetailsDialog::updatePage()
+{
+    if(m_metaDataModel)
+    {
+        delete m_metaDataModel;
+        m_metaDataModel = 0;
+    }
+
+    while (m_ui->tabWidget->count() > 1)
+    {
+        int index = m_ui->tabWidget->count() - 1;
+        QWidget *w = m_ui->tabWidget->widget(index);
+        m_ui->tabWidget->removeTab(index);
+        w->deleteLater();
+    }
+
+    m_ui->pageLabel->setText(tr("%1/%2").arg(m_page + 1).arg(m_tracks.count()));
+    m_track = m_tracks.at(m_page);
+    m_path = m_track->url();
+    setWindowTitle (m_path.section('/',-1));
+    m_ui->pathEdit->setText(m_path);
+    m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(m_path, this);
+
+    if(m_metaDataModel)
+    {
+        foreach(TagModel *tagModel, m_metaDataModel->tags())
+            m_ui->tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
+
+        foreach(QString title, m_metaDataModel->descriptions().keys())
+        {
+            QTextEdit *textEdit = new QTextEdit(this);
+            textEdit->setReadOnly(true);
+            textEdit->setPlainText(m_metaDataModel->descriptions().value(title));
+            m_ui->tabWidget->addTab(textEdit, title);
+        }
+    }
+    printInfo();
+}
+
 void DetailsDialog::printInfo()
 {
     SoundCore *core = SoundCore::instance();
     QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, true);
     QMap <Qmmp::MetaData, QString> metaData;
-    if(!flist.isEmpty() && QFile::exists(m_item->url()))
+    if(!flist.isEmpty() && QFile::exists(m_track->url()))
         metaData = flist.at(0)->metaData();
     else
-        metaData = *m_item;
+        metaData = *m_track;
     QString formattedText;
     if(layoutDirection() == Qt::RightToLeft)
         formattedText.append("<DIV align=\"right\" dir=\"rtl\">");
@@ -174,16 +225,4 @@ QString DetailsDialog::formatRow(const QString key, const QString value)
         str.append("<td><b>" + key + "</b></td> <td style=\"padding-left: 15px;\">" + value + "</td>");
     str.append("</tr>");
     return str;
-}
-
-void DetailsDialog::on_buttonBox_clicked(QAbstractButton *button)
-{
-    if(m_ui->buttonBox->standardButton(button) == QDialogButtonBox::Save)
-    {
-        TagEditor *tab = qobject_cast<TagEditor *> (m_ui->tabWidget->currentWidget());
-        if(tab)
-            tab->save();
-    }
-    else
-        reject();
 }

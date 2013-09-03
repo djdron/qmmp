@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -55,14 +55,19 @@ public:
 private slots:
     void on_buttonBox_clicked(QAbstractButton *button);
     void on_directoryButton_clicked();
+    void on_prevButton_clicked();
+    void on_nextButton_clicked();
 
 private:
     Ui::DetailsDialog *m_ui;
+    void updatePage();
     void printInfo();
-    QString m_path;
     QString formatRow(const QString key, const QString value);
+    QString m_path;
     MetaDataModel *m_metaDataModel;
-    PlayListTrack *m_item;
+    PlayListTrack *m_track;
+    QList<PlayListTrack *> m_tracks;
+    int m_page;
 };
 
 #endif
