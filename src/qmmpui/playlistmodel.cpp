@@ -437,7 +437,7 @@ void PlayListModel::showDetails(QWidget *parent)
         if(!m_container->isSelected(i))
             continue;
         PlayListTrack *track = m_container->track(i);
-        if(track && track->flag() != PlayListTrack::FREE)
+        if(!track || track->flag() != PlayListTrack::FREE)
             continue;
         selected_tracks.append(track);
     }
