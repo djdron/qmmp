@@ -113,7 +113,7 @@ Equalizer::Equalizer(QWidget *parent) : QDialog(parent)
     {
         connect(slider, SIGNAL(sliderMoved(int)), SLOT(applySettings()));
     }
-    connect(m_enabled, SIGNAL(toggled(bool)), SLOT(applySettings()));
+    connect(m_enabled, SIGNAL(clicked()), SLOT(applySettings()));
     readSettigs();
     loadPresets();
 }
