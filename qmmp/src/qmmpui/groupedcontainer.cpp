@@ -35,7 +35,7 @@ void GroupedContainer::addGroup(PlayListGroup *group)
 {
     m_groups.append(group);
     m_items.append(group);
-    foreach (PlayListTrack *item, *group->tracks())
+    foreach (PlayListTrack *item, group->tracks())
     {
         m_items.append(item);
     }

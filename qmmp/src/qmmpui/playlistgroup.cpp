@@ -74,9 +74,9 @@ void PlayListGroup::remove(PlayListTrack *track)
     m_tracks.removeAll(track);
 }
 
-QList<PlayListTrack *> *PlayListGroup::tracks()
+QList<PlayListTrack *> PlayListGroup::tracks()
 {
-    return &m_tracks;
+    return m_tracks;
 }
 
 int PlayListGroup::count() const

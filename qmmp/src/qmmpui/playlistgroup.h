@@ -40,7 +40,7 @@ public:
     bool contains(PlayListTrack *track) const;
     bool isEmpty() const;
     void remove(PlayListTrack *track);
-    QList<PlayListTrack *> *tracks();
+    QList<PlayListTrack *> tracks();
     int count() const;
     /*!
      *  Returns formatted length of the item.
