@@ -224,7 +224,7 @@ bool PlayListModel::isGroup(int index) const
 {
     if (index > count()-1 || index < 0)
         return false;
-    return !m_container->item(index)->isGroup();
+    return m_container->item(index)->isGroup();
 }
 
 bool PlayListModel::next()
@@ -303,6 +303,20 @@ int PlayListModel::numberOfTrack(int index) const
 void PlayListModel::setSelected(int index, bool selected)
 {
     m_container->setSelected(index, selected);
+    emit listChanged();
+}
+
+void PlayListModel::setSelected(QList<PlayListTrack *> tracks, bool selected)
+{
+    foreach(PlayListTrack *t, tracks)
+        t->setSelected(selected);
+    emit listChanged();
+}
+
+void PlayListModel::setSelected(QList<PlayListItem *> items, bool selected)
+{
+    foreach(PlayListItem *i, items)
+        i->setSelected(selected);
     emit listChanged();
 }
 

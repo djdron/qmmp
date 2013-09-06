@@ -303,6 +303,11 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
             m_model->clearSelection();
             m_model->setSelected(row, true);
             m_anchor_row = m_pressed_row;
+            if(m_model->isGroup(row))
+            {
+                PlayListGroup *group = m_model->group(row);
+                m_model->setSelected(group->tracks());
+            }
             QWidget::mousePressEvent(e);
             return;
         }
