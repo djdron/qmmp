@@ -163,9 +163,13 @@ int NormalPlayState::nextIndex()
     if (m_model->currentIndex() == m_model->count() - 1)
     {
         if (m_model->isRepeatableList())
-            return 0;
-        else
-            return -1;
+        {
+            if(m_model->isTrack(0))
+                return 0;
+            else if(m_model->isTrack(1))
+                return 1;
+        }
+        return -1;
     }
     if(m_model->isTrack(m_model->currentIndex() + 1))
         return m_model->currentIndex() + 1;

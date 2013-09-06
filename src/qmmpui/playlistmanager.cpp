@@ -176,6 +176,7 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     m_models.append(model);
     model->prepareForRepeatablePlaying(m_repeatable);
     model->prepareForShufflePlaying(m_shuffle);
+    model->prepareGroups(m_groups_enabled);
     connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
     if (m_autosave_playlist)
         connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
@@ -365,6 +366,10 @@ void PlayListManager::readPlayLists()
         connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
         if (m_autosave_playlist)
             connect(model, SIGNAL(countChanged()), m_timer, SLOT(start()));
+        if(m_repeatable)
+            model->prepareForRepeatablePlaying(true);
+        if(m_shuffle)
+            model->prepareForShufflePlaying(true);
     }
 }
 
