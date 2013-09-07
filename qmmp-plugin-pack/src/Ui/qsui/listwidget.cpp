@@ -553,7 +553,6 @@ void ListWidget::dragEnterEvent(QDragEnterEvent *event)
         event->acceptProposedAction();
 }
 
-
 void ListWidget::dropEvent(QDropEvent *event)
 {
     if (event->mimeData()->hasUrls())
@@ -685,7 +684,6 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
-    //qDebug("%d", m_rows);
     if (!m_scroll)
     {
         if (m_first + m_row_count < m_model->currentIndex() + 1)
