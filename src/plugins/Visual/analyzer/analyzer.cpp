@@ -168,7 +168,7 @@ void Analyzer::closeEvent (QCloseEvent *event)
     //save geometry
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Analyzer/geometry", saveGeometry());
-    Visual::closeEvent(event); //removes visualization before class deleting
+    Visual::closeEvent(event); //removes visualization object
 }
 
 void Analyzer::process (short *left, short *right)
