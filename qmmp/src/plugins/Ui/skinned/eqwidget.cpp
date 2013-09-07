@@ -115,9 +115,9 @@ void EqWidget::changeEvent (QEvent * event)
 
 void EqWidget::closeEvent (QCloseEvent* e)
 {
-    if (e->spontaneous ())
-        emit closed();
     writeSettings();
+    if (e->spontaneous ())
+        parentWidget()->close();
 }
 
 void EqWidget::updateSkin()

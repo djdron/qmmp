@@ -332,9 +332,9 @@ void PlayList::createActions()
 
 void PlayList::closeEvent (QCloseEvent *e)
 {
-    if (e->spontaneous ())
-        emit closed();
     writeSettings();
+    if (e->spontaneous ())
+        parentWidget()->close();
 }
 
 void PlayList::paintEvent (QPaintEvent *)
