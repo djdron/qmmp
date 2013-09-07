@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,7 +27,6 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <libprojectM/projectM.hpp>
-
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include "projectmwidget.h"
@@ -36,14 +35,16 @@
 ProjectMPlugin::ProjectMPlugin (QWidget *parent)
         : Visual (parent)
 {
-    setlocale(LC_NUMERIC, "C"); //fixes none-english locales problem
+    setlocale(LC_NUMERIC, "C"); //fixes problem with none-english locales
     setWindowTitle(tr("ProjectM"));
     m_projectMWidget = new ProjectMWidget(this);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(m_projectMWidget);
     layout->setContentsMargins(0,0,0,0);
     setLayout(layout);
-    resize(300,300); //TODO save/load geometry
+    resize(300,300);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    restoreGeometry(settings.value("ProjectM/geometry").toByteArray());
 }
 
 ProjectMPlugin::~ProjectMPlugin()
@@ -60,4 +61,12 @@ void ProjectMPlugin::add (unsigned char *data, qint64 size, int chan)
     //TODO multichannel support
     if (m_projectMWidget->projectMInstance())
         m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)data, size/4);
+}
+
+void ProjectMPlugin::closeEvent (QCloseEvent *event)
+{
+    //save geometry
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("ProjectM/geometry", saveGeometry());
+    Visual::closeEvent(event); //removes visualization object
 }
