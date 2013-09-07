@@ -298,12 +298,15 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
     if (INVALID_ROW != row && m_model->count() > row)
     {
         m_pressed_row = row;
-        if(e->button() == Qt::RightButton && !m_model->isSelected(row))
+        if(e->button() == Qt::RightButton)
         {
-            m_model->clearSelection();
-            m_model->setSelected(row, true);
+            if(!m_model->isSelected(row))
+            {
+                m_model->clearSelection();
+                m_model->setSelected(row, true);
+            }
             m_anchor_row = m_pressed_row;
-            if(m_model->isGroup(row))
+            if(m_model->isGroup(row) && m_model->selectedTracks().isEmpty())
             {
                 PlayListGroup *group = m_model->group(row);
                 m_model->setSelected(group->tracks());
