@@ -45,6 +45,10 @@ public:
      */
     AbstractEngine(QObject *parent = 0);
     /*!
+     * Destructor.
+     */
+    virtual ~AbstractEngine();
+    /*!
      * Prepares decoder for usage.
      * Subclass should reimplement this function.
      */
