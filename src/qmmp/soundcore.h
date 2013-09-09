@@ -31,7 +31,6 @@
 #include "qmmpsettings.h"
 #include "eqsettings.h"
 
-class QIODevice;
 class VolumeControl;
 class AbstractEngine;
 class InputSource;
@@ -226,10 +225,7 @@ private:
     };
     QMap <Qmmp::MetaData, QString> m_metaData;
     QHash <QString, QString> m_streamInfo;
-    Decoder* m_decoder;
     QString m_url;
-    QList <Visual*> m_visuals;
-    QWidget *m_parentWidget;
     static SoundCore* m_instance;
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
