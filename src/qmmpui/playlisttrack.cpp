@@ -74,8 +74,7 @@ void PlayListTrack::updateMetaData()
         formatTitle();
         formatGroup();
     }
-    while(list.size() > 1)
-        delete list.takeLast();
+    qDeleteAll(list);
 }
 
 const QString PlayListTrack::groupName()

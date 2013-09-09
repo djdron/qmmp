@@ -153,6 +153,7 @@ void DetailsDialog::printInfo()
         metaData = flist.at(0)->metaData();
     else
         metaData = *m_track;
+    qDeleteAll(flist);
     QString formattedText;
     if(layoutDirection() == Qt::RightToLeft)
         formattedText.append("<DIV align=\"right\" dir=\"rtl\">");
