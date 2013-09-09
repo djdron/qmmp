@@ -43,12 +43,10 @@ SoundCore::SoundCore(QObject *parent)
     if(m_instance)
         qFatal("SoundCore: only one instance is allowed");
     m_instance = this;
-    m_decoder = 0;
-    m_parentWidget = 0;
     m_engine = 0;
     m_nextState = NO_ENGINE;
     m_handler = new StateHandler(this);
-     m_volumeControl = new VolumeControl(this);
+    m_volumeControl = new VolumeControl(this);
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
     connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
