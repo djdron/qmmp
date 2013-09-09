@@ -558,7 +558,7 @@ void QmmpAudioEngine::sendMetaData()
 
 OutputWriter *QmmpAudioEngine::createOutput()
 {
-    OutputWriter *output = new OutputWriter(this);
+    OutputWriter *output = new OutputWriter(0);
     if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()))
     {
         delete output;
