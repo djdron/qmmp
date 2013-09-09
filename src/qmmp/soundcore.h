@@ -109,6 +109,11 @@ public:
      */
     QHash<QString, QString> streamInfo() const;
     /*!
+     *  Indicates that the current active engine will be used for the next queued track.
+     *  May be useful for some effect plugins.
+     */
+    bool nextTrackAccepted() const;
+    /*!
      * Returns a pointer to the SoundCore instance.
      */
     static SoundCore* instance();
@@ -142,11 +147,6 @@ public slots:
      *  This function returns file path or stream url.
      */
     const QString url() const;
-    /*!
-     *  Indicates that the current active engine will be used for the next queued track.
-     *  May be useful for some effect plugins.
-     */
-    bool nextTrackAccepted() const;
 
 signals:
     /*!
