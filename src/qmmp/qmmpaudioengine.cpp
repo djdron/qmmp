@@ -148,8 +148,10 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
         delete decoder;
         return false;
     }
+    mutex()->lock();
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
+    mutex()->unlock();
     if(!decoder->totalTime())
         source->setOffset(-1);
     source->setParent(this);
