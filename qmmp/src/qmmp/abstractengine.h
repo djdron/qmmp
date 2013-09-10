@@ -54,11 +54,6 @@ public:
      */
     virtual bool enqueue(InputSource *source) = 0;
     /*!
-     * Returns the total time in milliseconds.
-     * Subclass should reimplement this function.
-     */
-    virtual qint64 totalTime() = 0;
-    /*!
      * Starts playback. Returns \b true if playback has been started successful,
      * otherwise returns \b false.
      */

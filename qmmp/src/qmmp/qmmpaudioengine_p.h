@@ -49,7 +49,6 @@ public:
 
     bool play();
     bool enqueue(InputSource *source);
-    qint64 totalTime();
     void seek(qint64 time);
     void stop();
     void pause();

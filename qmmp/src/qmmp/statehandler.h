@@ -53,6 +53,11 @@ public:
      */
     void dispatch(qint64 elapsed, int bitrate, quint32 frequency, int precision, int channels);
     /*!
+     * Sends information about song length
+     * @param length song length in milliseconds
+     */
+    void dispatch(qint64 length);
+    /*!
      * Sends metadata \b metaData
      */
     void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
@@ -74,6 +79,10 @@ public:
      */
     qint64 elapsed();
     /*!
+     * Returns length in milliseconds
+     */
+    qint64 totalTime();
+    /*!
      * Returns current bitrate (in kbps)
      */
     int bitrate();
@@ -92,7 +101,7 @@ public:
     /*!
      * Returns the current state.
      */
-    Qmmp::State state() const;
+    Qmmp::State state();
     /*!
      * Sends next track request.
      */
@@ -141,6 +150,7 @@ signals:
 
 private:
     qint64 m_elapsed;
+    qint64 m_length;
     quint32 m_frequency;
     bool m_sendAboutToFinish;
     int m_bitrate, m_precision, m_channels;
