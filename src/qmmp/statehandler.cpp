@@ -20,6 +20,7 @@
 
 #include <QStringList>
 #include <QApplication>
+#include <QMutexLocker>
 #include "soundcore.h"
 #include "qmmpevents_p.h"
 #include "statehandler.h"
@@ -36,6 +37,7 @@ StateHandler::StateHandler(QObject *parent)
         qFatal("StateHandler: only one instance is allowed");
     m_instance = this;
     m_elapsed = -1;
+    m_length = 0;
     m_bitrate = 0;
     m_frequency = 0;
     m_precision = 0;
@@ -43,7 +45,6 @@ StateHandler::StateHandler(QObject *parent)
     m_sendAboutToFinish = true;
     m_state = Qmmp::Stopped;
 }
-
 
 StateHandler::~StateHandler()
 {
@@ -63,11 +64,11 @@ void StateHandler::dispatch(qint64 elapsed, int bitrate, quint32 frequency, int 
             emit (bitrateChanged(bitrate));
         }
         if((SoundCore::instance()->totalTime() > PREFINISH_TIME)
-                 && (SoundCore::instance()->totalTime() - m_elapsed < PREFINISH_TIME)
+                 && (m_length - m_elapsed < PREFINISH_TIME)
                  && m_sendAboutToFinish)
         {
             m_sendAboutToFinish = false;
-            if(SoundCore::instance()->totalTime() - m_elapsed > PREFINISH_TIME/2)
+            if(m_length - m_elapsed > PREFINISH_TIME/2)
                 qApp->postEvent(parent(), new QEvent(EVENT_NEXT_TRACK_REQUEST));
         }
     }
@@ -86,6 +87,13 @@ void StateHandler::dispatch(qint64 elapsed, int bitrate, quint32 frequency, int 
         m_channels = channels;
         emit channelsChanged(channels);
     }
+    m_mutex.unlock();
+}
+
+void StateHandler::dispatch(qint64 length)
+{
+    m_mutex.lock();
+    m_length = length;
     m_mutex.unlock();
 }
 
@@ -177,7 +185,14 @@ void StateHandler::dispatchBuffer(int percent)
 
 qint64 StateHandler::elapsed()
 {
+    QMutexLocker locker(&m_mutex);
     return m_elapsed;
+}
+
+qint64 StateHandler::totalTime()
+{
+    QMutexLocker locker(&m_mutex);
+    return m_length;
 }
 
 int StateHandler::bitrate()
@@ -200,7 +215,7 @@ int StateHandler::channels()
     return m_channels;
 }
 
-Qmmp::State StateHandler::state() const
+Qmmp::State StateHandler::state()
 {
     return m_state;
 }

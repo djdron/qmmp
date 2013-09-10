@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,7 +52,6 @@ public:
     bool play();
     bool enqueue(InputSource *source);
     bool initialize();
-    qint64 totalTime();
     void seek(qint64);
     void stop();
     void pause();

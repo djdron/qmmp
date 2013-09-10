@@ -154,11 +154,6 @@ bool MplayerEngine::initialize()
     return true;
 }
 
-qint64 MplayerEngine::totalTime()
-{
-    return m_length * 1000;
-}
-
 void MplayerEngine::seek(qint64 pos)
 {
     if (m_process->state() == QProcess::Running)
@@ -244,6 +239,7 @@ void MplayerEngine::startMplayerProcess()
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
     m_process->start ("mplayer", m_args);
     StateHandler::instance()->dispatch(Qmmp::Playing);
+    StateHandler::instance()->dispatch(m_length * 1000);
     FileInfo *info = MplayerInfo::createFileInfo(m_source->url());
     StateHandler::instance()->dispatch(info->metaData());
     delete info;
