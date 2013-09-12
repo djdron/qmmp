@@ -46,10 +46,6 @@ target.path = $$LIB_DIR/qmmp/Visual
 INSTALLS += target
 
 #projectM config path
-exists("/usr/share/projectM/config.inp") {
-
-}
-
 PROJECTM_CONFIG_FILES = /usr/share/projectM/config.inp \
                         /usr/local/share/projectM/config.inp
 
