@@ -56,6 +56,6 @@ PROJECTM_CONFIG_FILES = /usr/share/projectM/config.inp \
 for(path, PROJECTM_CONFIG_FILES) {
   exists($$path) {
      message ("found projectm configuration: "$$path)
-     DEFINES += PROJECTM_CONFIG_FILE=\\\"$$path\\\"
+     DEFINES += PROJECTM_CONFIG=\\\"$$path\\\"
   }
 }
