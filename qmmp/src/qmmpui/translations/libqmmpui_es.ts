@@ -616,47 +616,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="163"/>
+        <location filename="../detailsdialog.cpp" line="164"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="164"/>
+        <location filename="../detailsdialog.cpp" line="165"/>
         <source>Artist</source>
         <translation>Intérprete</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="165"/>
+        <location filename="../detailsdialog.cpp" line="166"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="166"/>
+        <location filename="../detailsdialog.cpp" line="167"/>
         <source>Comment</source>
         <translation>Comentario</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="167"/>
+        <location filename="../detailsdialog.cpp" line="168"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="168"/>
+        <location filename="../detailsdialog.cpp" line="169"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="170"/>
+        <location filename="../detailsdialog.cpp" line="171"/>
         <source>Year</source>
         <translation>Año</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="172"/>
+        <location filename="../detailsdialog.cpp" line="173"/>
         <source>Track</source>
         <translation>Pista</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="174"/>
+        <location filename="../detailsdialog.cpp" line="175"/>
         <source>Disc number</source>
         <translation>Número de disco</translation>
     </message>
@@ -744,7 +744,7 @@
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="160"/>
-        <location filename="../playlistmanager.cpp" line="350"/>
+        <location filename="../playlistmanager.cpp" line="351"/>
         <source>Playlist</source>
         <translation>Lista de reproducción</translation>
     </message>
@@ -752,7 +752,7 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="161"/>
+        <location filename="../playlisttrack.cpp" line="160"/>
         <source>Empty group</source>
         <translation type="unfinished"></translation>
     </message>
