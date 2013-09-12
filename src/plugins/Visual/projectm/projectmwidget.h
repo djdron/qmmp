@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -58,11 +58,9 @@ private slots:
     void updateTitle();
 
 private:
+    void createActions();
     projectM *m_projectM;
     QMenu *m_menu;
-    void createActions();
-
-
 };
 
 #endif
