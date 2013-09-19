@@ -12,7 +12,8 @@ SUBDIRS += statusicon \
            copypaste
 unix:SUBDIRS += mpris \
                 kdenotify \
-                converter
+                converter \
+                rgscan
 
 contains(CONFIG, UDISKS_PLUGIN){
     unix:SUBDIRS += udisks
