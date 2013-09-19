@@ -40,10 +40,11 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
 {
     qsrand(time(0));
     m_name = name;
-    m_shuffle = 0;
+    m_shuffle = false;
     m_total_length = 0;
     m_current = 0;
     m_is_repeatable_list = false;
+    m_groups_enabled = false;
     m_stop_track = 0;
     m_play_state = new NormalPlayState(this);
     m_loader = new FileLoader(this);
@@ -87,6 +88,11 @@ void PlayListModel::add(PlayListTrack *track)
         m_current_track = track;
         m_current = m_container->indexOf(track);
         emit currentChanged();
+    }
+    else if(m_groups_enabled)
+    {
+        //update current index for grouped container only
+        m_current = m_container->indexOf(m_current_track);
     }
     emit itemAdded(track);
     emit listChanged();
@@ -699,6 +705,7 @@ void PlayListModel::prepareGroups(bool enabled)
     m_container = container;
     if(!m_container->isEmpty())
         m_current = m_container->indexOf(m_current_track);
+    m_groups_enabled = enabled;
     emit listChanged();
 }
 

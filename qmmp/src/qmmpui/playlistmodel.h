@@ -453,6 +453,7 @@ private:
     int m_total_length;
     FileLoader *m_loader;
     bool m_shuffle;
+    bool m_groups_enabled;
     QString m_name;
     PlayListContainer *m_container;
 };
