@@ -49,7 +49,7 @@ QMap <Qmmp::ReplayGainKey, double> ReplayGainReader::replayGainInfo() const
 void ReplayGainReader::readVorbisComment(TagLib::Ogg::XiphComment *comment)
 {
     TagLib::Ogg::FieldListMap items = comment->fieldListMap();
-    if (items.contains("REPLAYGAIN_TRACK_GAIN")) 
+    if (items.contains("REPLAYGAIN_TRACK_GAIN"))
         setValue(Qmmp::REPLAYGAIN_TRACK_GAIN,TStringToQString(items["REPLAYGAIN_TRACK_GAIN"].front()));
     if (items.contains("REPLAYGAIN_TRACK_PEAK"))
         setValue(Qmmp::REPLAYGAIN_TRACK_PEAK,TStringToQString(items["REPLAYGAIN_TRACK_PEAK"].front()));

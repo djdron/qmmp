@@ -30,6 +30,7 @@
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
 #include <taglib/mpegfile.h>
+#include "gain_analysis.h"
 #include "rgscaner.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
@@ -138,6 +139,14 @@ void RGScaner::run()
     qint64 total = 0;
     quint64 len = 0;
     qint64 totalSize = m_decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+    double out_left[8192/4];
+    double out_right[8192/4];
+
+
+    GainHandle_t *handle = 0;
+
+    InitGainAnalysis(&handle, 44100);
+
 
     forever
     {
@@ -148,11 +157,23 @@ void RGScaner::run()
             output_at += len;
             total += len;
             emit progress(100 * total / totalSize);
+
+
+            for(int i = 0; i < len/4; ++i)
+            {
+                out_left[i] = ((short *) output_buf)[i*2];
+                out_right[i] = ((short *) output_buf)[i*2+1];
+            }
+            AnalyzeSamples(handle, out_left, out_right, len/4, 2);
+
             output_at = 0;
         }
         else if (len <= 0)
             break;
     }
+
+    qDebug("gain=%f",GetTitleGain(handle));
+
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
     emit progress(100);
     emit finished();
