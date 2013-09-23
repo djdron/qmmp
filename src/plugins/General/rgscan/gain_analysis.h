@@ -41,13 +41,16 @@
 extern "C" {
 #endif
 
+//struct GainStructure;
 typedef double  Float_t;         // Type used for filtering
+typedef struct GainHandle GainHandle_t;
 
-int     InitGainAnalysis ( long samplefreq );
-int     AnalyzeSamples   ( const Float_t* left_samples, const Float_t* right_samples, size_t num_samples, int num_channels );
-int		ResetSampleFrequency ( long samplefreq );
-Float_t   GetTitleGain     ( void );
-Float_t   GetAlbumGain     ( void );
+int InitGainAnalysis (GainHandle_t **handle, long samplefreq);
+int AnalyzeSamples (GainHandle_t *handle, const Float_t* left_samples, const Float_t* right_samples, size_t num_samples, int num_channels);
+int ResetSampleFrequency (GainHandle_t *handle, long samplefreq);
+Float_t GetTitleGain(GainHandle_t *handle);
+Float_t GetAlbumGain(GainHandle_t *handle);
+void DeinitGainAbalysis(GainHandle_t *handle);
 
 #ifdef __cplusplus
 }
