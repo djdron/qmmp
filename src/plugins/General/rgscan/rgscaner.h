@@ -39,12 +39,14 @@ public:
     ~RGScaner();
 
     bool prepare(const QString &url);
-
-
     void stop();
+    bool isRunning();
+    double gain();
+
+
 signals:
     void progress(int percent);
-    void finished();
+    void finished(const QString &url);
     //void desriptionChanged(QString text);
     //void error(QString text);
 
@@ -54,6 +56,9 @@ private:
     Decoder *m_decoder;
     QMutex m_mutex;
     bool m_user_stop;
+    bool m_is_running;
+    QString m_url;
+    double m_gain;
 
 };
 
