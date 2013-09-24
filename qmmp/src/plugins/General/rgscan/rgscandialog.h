@@ -28,6 +28,7 @@
 class QAction;
 class PlayListTrack;
 class ConverterPreset;
+class RGScaner;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -41,9 +42,12 @@ public:
 
 private slots:
     void on_calculateButton_clicked();
+    void onScanFinished(QString url);
 
 private:
+    void stop();
     Ui::RGScanDialog m_ui;
+    QList<RGScaner *> m_scaners;
 };
 
 #endif // RGSCANDIALOG_H

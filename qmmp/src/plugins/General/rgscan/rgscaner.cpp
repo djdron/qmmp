@@ -30,35 +30,19 @@
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
 #include <taglib/mpegfile.h>
+#include <stdio.h>
+#include <stdint.h>
 #include "gain_analysis.h"
 #include "rgscaner.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
-//static functions
-/*static inline void s8_to_s16_2(qint8 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] << 8;
-    return;
-}
-
-static inline void s24_to_s16_2(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 8;
-    return;
-}
-
-static inline void s32_to_s16_2(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 16;
-    return;
-}*/
-
 RGScaner::RGScaner()
-{}
+{
+    m_gain = 0.;
+    m_user_stop = false;
+    m_is_running = false;
+}
 
 RGScaner::~RGScaner()
 {
@@ -67,6 +51,7 @@ RGScaner::~RGScaner()
 
 bool RGScaner::prepare(const QString &url)
 {
+    m_url = url;
     InputSource *source = InputSource::create(url, 0);
     if(!source->initialize())
     {
@@ -115,32 +100,38 @@ bool RGScaner::prepare(const QString &url)
 
 void RGScaner::stop()
 {
-    /*m_mutex.lock();
+    m_mutex.lock();
     m_user_stop = true;
     m_mutex.unlock();
     wait();
-    m_presets.clear();
-    qDeleteAll(m_inputs.values());
-    m_inputs.clear();
-    qDeleteAll(m_decoders);
-    m_decoders.clear();*/
+}
+
+bool RGScaner::isRunning()
+{
+    return m_is_running;
+}
+
+double RGScaner::gain()
+{
+    return m_gain;
 }
 
 void RGScaner::run()
 {
+    m_is_running = true;
     qDebug("RGScaner: staring thread %lu",  QThread::currentThreadId());
     m_user_stop = false;
 
-    const int buf_size = 8192;
+    const int buf_size = 8192; //samples
     AudioParameters ap = m_decoder->audioParameters();
-    Qmmp::AudioFormat format = ap.format();
-    unsigned char output_buf[(format == Qmmp::PCM_S8) ? buf_size : buf_size * 2];
+    //Qmmp::AudioFormat format = ap.format();
+    unsigned char output_buf[buf_size];
     qint64 output_at = 0;
     qint64 total = 0;
-    quint64 len = 0;
+    qint64 len = 0;
     qint64 totalSize = m_decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
-    double out_left[8192/4];
-    double out_right[8192/4];
+    double out_left[buf_size/4];
+    double out_right[buf_size/4];
 
 
     GainHandle_t *handle = 0;
@@ -170,12 +161,19 @@ void RGScaner::run()
         }
         else if (len <= 0)
             break;
+
+        m_mutex.lock();
+        if(m_user_stop)
+        {
+            m_mutex.unlock();
+            break;
+        }
+        m_mutex.unlock();
     }
 
-    qDebug("gain=%f",GetTitleGain(handle));
-
+    m_gain = GetTitleGain(handle);
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
+    m_is_running = false;
     emit progress(100);
-    emit finished();
+    emit finished(m_url);
 }
-

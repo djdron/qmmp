@@ -34,6 +34,8 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
     m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
 
     MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
+
+    //FIXME remove dupliacates
     foreach(PlayListTrack *track , tracks)
     {
         if(track->length() == 0 || track->url().contains("://"))
@@ -54,7 +56,9 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
 }
 
 RGScanDialog::~RGScanDialog()
-{}
+{
+    stop();
+}
 
 void RGScanDialog::on_calculateButton_clicked()
 {
@@ -62,9 +66,51 @@ void RGScanDialog::on_calculateButton_clicked()
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
         RGScaner *scaner = new RGScaner();
-        scaner->setAutoDelete(true);
+        m_scaners.append(scaner);
         scaner->prepare(url);
+        scaner->setAutoDelete(false);
         connect(scaner, SIGNAL(progress(int)), m_ui.tableWidget->cellWidget(i, 1), SLOT(setValue(int)));
+        connect(scaner, SIGNAL(finished(QString)), SLOT(onScanFinished(QString)));
         QThreadPool::globalInstance()->start(scaner);
     }
+}
+
+void RGScanDialog::onScanFinished(QString url)
+{
+    for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
+    {
+        if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
+            continue;
+        m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(m_scaners.at(i)->gain())));
+    }
+
+    bool stopped = true;
+
+    foreach (RGScaner *scaner, m_scaners)
+    {
+        if(scaner->isRunning())
+            stopped = false;
+    }
+
+    if(stopped)
+    {
+        qDebug("RGScanDialog: all threads finished");
+        QThreadPool::globalInstance()->waitForDone();
+        qDeleteAll(m_scaners);
+        m_scaners.clear();
+    }
+}
+
+void RGScanDialog::stop()
+{
+    if(m_scaners.isEmpty())
+        return;
+    foreach (RGScaner *scaner, m_scaners)
+    {
+        scaner->stop();
+    }
+    QThreadPool::globalInstance()->waitForDone();
+
+    qDeleteAll(m_scaners);
+    m_scaners.clear();
 }
