@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,13 +27,13 @@
 
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
-    if(path.endsWith("*.flac"))
+    if(path.endsWith(".flac"))
     {
         TagLib::FLAC::File fileRef(path.toLocal8Bit ().constData());
         if(fileRef.xiphComment())
             readVorbisComment(fileRef.xiphComment());
     }
-    else if(path.endsWith("*.oga"))
+    else if(path.endsWith(".oga"))
     {
         TagLib::Ogg::FLAC::File fileRef(path.toLocal8Bit ().constData());
         if(fileRef.tag())
