@@ -136,7 +136,7 @@ struct GainHandle
     int              freqindex;
     int              first;
     Uint32_t  A [(size_t)(STEPS_per_dB * MAX_dB)];
-    Uint32_t  B [(size_t)(STEPS_per_dB * MAX_dB)];
+//    Uint32_t  B [(size_t)(STEPS_per_dB * MAX_dB)];
 };
 
 // for each filter:
@@ -293,7 +293,7 @@ InitGainAnalysis (GainHandle_t **handle, long samplefreq )
     (*handle)->lout   = (*handle)->loutbuf   + MAX_ORDER;
     (*handle)->rout   = (*handle)->routbuf   + MAX_ORDER;
 
-    memset((*handle)->B, 0, sizeof((*handle)->B));
+    //memset((*handle)->B, 0, sizeof((*handle)->B));
 
     return INIT_GAIN_ANALYSIS_OK;
 }
@@ -445,43 +445,42 @@ int AnalyzeSamples (GainHandle_t *handle, const Float_t* left_samples, const Flo
 }
 
 
-static Float_t
-analyzeResult ( Uint32_t* Array, size_t len )
+static Float_t analyzeResult (Uint32_t* Array, size_t len)
 {
-    Uint32_t  elems;
+    Uint32_t  elems = 0;
     Int32_t   upper;
     size_t    i;
 
     elems = 0;
-    for ( i = 0; i < len; i++ )
+    for (i = 0; i < len; i++)
         elems += Array[i];
-    if ( elems == 0 )
+    if (elems == 0)
         return GAIN_NOT_ENOUGH_SAMPLES;
 
     upper = (Int32_t) ceil (elems * (1. - RMS_PERCENTILE));
-    for ( i = len; i-- > 0; ) {
-        if ( (upper -= Array[i]) <= 0 )
+    for (i = len; i-- > 0; )
+    {
+        if ((upper -= Array[i]) <= 0)
             break;
     }
 
     return (Float_t) ((Float_t)PINK_REF - (Float_t)i / (Float_t)STEPS_per_dB);
 }
 
-
 Float_t GetTitleGain(GainHandle_t *handle)
 {
     Float_t  retval;
     int i = 0;
 
-    retval = analyzeResult (handle->A, sizeof(handle->A)/sizeof(*handle->A) );
+    retval = analyzeResult (handle->A, sizeof(handle->A)/sizeof(*handle->A));
 
-    for (i = 0; i < (int)(sizeof(handle->A)/sizeof(*handle->A)); i++ )
+    /*for (i = 0; i < (int)(sizeof(handle->A)/sizeof(*handle->A)); i++ )
     {
         handle->B[i] += handle->A[i];
         handle->A[i]  = 0;
-    }
+    }*/
 
-    for ( i = 0; i < MAX_ORDER; i++ )
+    for (i = 0; i < MAX_ORDER; i++ )
     {
         handle->linprebuf[i] = handle->lstepbuf[i] = handle->loutbuf[i] = 0.f;
         handle->rinprebuf[i] = handle->rstepbuf[i] = handle->routbuf[i] = 0.f;
@@ -492,11 +491,27 @@ Float_t GetTitleGain(GainHandle_t *handle)
     return retval;
 }
 
+Float_t GetAlbumGain(GainHandle_t **handle, int count)
+{
+    Uint32_t  B [(size_t)(STEPS_per_dB * MAX_dB)];
+    memset (B, 0, sizeof(B));
 
-Float_t GetAlbumGain(GainHandle_t *handle)
+    int i = 0, j = 0;
+
+    for(i = 0; i < count; ++i)
+    {
+        for(j = 0; j < sizeof(handle[i]->A)/sizeof(*handle[i]->A); ++j)
+        {
+            B[j] += handle[i]->A[j];
+        }
+    }
+    return analyzeResult(B, sizeof(B)/sizeof(*B));
+}
+
+/*Float_t GetAlbumGain(GainHandle_t *handle)
 {
     return analyzeResult (handle->B, sizeof(handle->B)/sizeof(*handle->B));
-}
+}*/
 
 void DeinitGainAbalysis(GainHandle_t *handle)
 {
@@ -504,6 +519,8 @@ void DeinitGainAbalysis(GainHandle_t *handle)
 }
 
 /* end of gain_analysis.c */
+
+
 
 
 

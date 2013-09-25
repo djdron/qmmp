@@ -27,10 +27,13 @@
 #include <stdio.h>
 #include <qmmp/decoder.h>
 #include <qmmp/inputsource.h>
+#include "gain_analysis.h"
+
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+
 class RGScaner : public QObject, public QRunnable
 {
     Q_OBJECT
@@ -42,13 +45,11 @@ public:
     void stop();
     bool isRunning();
     double gain();
-
+    GainHandle_t *handle();
 
 signals:
     void progress(int percent);
     void finished(const QString &url);
-    //void desriptionChanged(QString text);
-    //void error(QString text);
 
 private:
     void run();
@@ -59,6 +60,7 @@ private:
     bool m_is_running;
     QString m_url;
     double m_gain;
+    GainHandle_t *m_handle;
 
 };
 

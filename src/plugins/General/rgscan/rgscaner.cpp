@@ -19,34 +19,41 @@
  ***************************************************************************/
 
 #include <stdio.h>
+#include <stdint.h>
 #include <QStringList>
-#include <QDesktopServices>
+#include <QThread>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
-#include <qmmp/metadatamanager.h>
-#include <qmmpui/metadataformatter.h>
-#include <QtEndian>
-#include <QThread>
-#include <taglib/fileref.h>
-#include <taglib/tag.h>
-#include <taglib/mpegfile.h>
-#include <stdio.h>
-#include <stdint.h>
-#include "gain_analysis.h"
 #include "rgscaner.h"
-
-#define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
 RGScaner::RGScaner()
 {
     m_gain = 0.;
     m_user_stop = false;
     m_is_running = false;
+    m_handle = 0;
+    m_decoder = 0;
+    m_source = 0;
 }
 
 RGScaner::~RGScaner()
 {
     stop();
+    if(m_handle)
+    {
+        DeinitGainAbalysis(m_handle);
+        m_handle = 0;
+    }
+    if(m_decoder)
+    {
+        delete m_decoder;
+        m_decoder = 0;
+    }
+    if(m_source)
+    {
+        delete m_source;
+        m_source = 0;
+    }
 }
 
 bool RGScaner::prepare(const QString &url)
@@ -116,6 +123,11 @@ double RGScaner::gain()
     return m_gain;
 }
 
+GainHandle_t *RGScaner::handle()
+{
+    return m_handle;
+}
+
 void RGScaner::run()
 {
     m_is_running = true;
@@ -134,10 +146,13 @@ void RGScaner::run()
     double out_right[buf_size/4];
 
 
-    GainHandle_t *handle = 0;
+    if(m_handle)
+    {
+        DeinitGainAbalysis(m_handle);
+        m_handle = 0;
+    }
 
-    InitGainAnalysis(&handle, 44100);
-
+    InitGainAnalysis(&m_handle, 44100);
 
     forever
     {
@@ -155,7 +170,7 @@ void RGScaner::run()
                 out_left[i] = ((short *) output_buf)[i*2];
                 out_right[i] = ((short *) output_buf)[i*2+1];
             }
-            AnalyzeSamples(handle, out_left, out_right, len/4, 2);
+            AnalyzeSamples(m_handle, out_left, out_right, len/4, 2);
 
             output_at = 0;
         }
@@ -171,7 +186,7 @@ void RGScaner::run()
         m_mutex.unlock();
     }
 
-    m_gain = GetTitleGain(handle);
+    m_gain = GetTitleGain(m_handle);
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
     m_is_running = false;
     emit progress(100);

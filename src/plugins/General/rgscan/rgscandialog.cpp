@@ -25,6 +25,7 @@
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
 #include "rgscaner.h"
+#include "gain_analysis.h"
 #include "rgscandialog.h"
 
 RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : QDialog(parent)
@@ -96,6 +97,23 @@ void RGScanDialog::onScanFinished(QString url)
     {
         qDebug("RGScanDialog: all threads finished");
         QThreadPool::globalInstance()->waitForDone();
+
+
+        GainHandle_t **a = (GainHandle_t **) malloc(m_scaners.count()*sizeof(GainHandle_t *));
+
+        for(int i = 0; i < m_scaners.count(); ++i)
+        {
+            a[i] = m_scaners.at(i)->handle();
+        }
+
+        double album_gain = GetAlbumGain(a, m_scaners.count());
+        free(a);
+
+        for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
+        {
+            m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(QString::number(album_gain)));
+        }
+
         qDeleteAll(m_scaners);
         m_scaners.clear();
     }
