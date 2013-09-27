@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QProgressBar>
 #include <QThreadPool>
+#include <QSettings>
 #include <qmmpui/playlisttrack.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
@@ -49,11 +50,14 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
         m_ui.tableWidget->setItem(m_ui.tableWidget->rowCount() - 1, 0, item);
         QProgressBar *progressBar = new QProgressBar(this);
         progressBar->setRange(0, 100);
-        //progressBar->setValue(50);
         m_ui.tableWidget->setCellWidget(m_ui.tableWidget->rowCount() - 1, 1, progressBar);
     }
 
     m_ui.tableWidget->resizeColumnsToContents();
+    m_ui.writeButton->setEnabled(false);
+
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    restoreGeometry(settings.value("RGScaner/geometry").toByteArray());
 }
 
 RGScanDialog::~RGScanDialog()
@@ -82,7 +86,7 @@ void RGScanDialog::onScanFinished(QString url)
     {
         if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
             continue;
-        m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(m_scaners.at(i)->gain())));
+        m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(m_scaners.at(i)->gain())));
         m_ui.tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(m_scaners.at(i)->peak())));
     }
 
@@ -114,13 +118,22 @@ void RGScanDialog::onScanFinished(QString url)
 
         for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
         {
-            m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(QString::number(album_gain)));
+            m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(album_gain)));
             m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
         }
 
         qDeleteAll(m_scaners);
         m_scaners.clear();
+
+        m_ui.writeButton->setEnabled(true);
     }
+}
+
+void RGScanDialog::reject()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("RGScaner/geometry", saveGeometry());
+    QDialog::reject();
 }
 
 void RGScanDialog::stop()
@@ -128,11 +141,8 @@ void RGScanDialog::stop()
     if(m_scaners.isEmpty())
         return;
     foreach (RGScaner *scaner, m_scaners)
-    {
         scaner->stop();
-    }
     QThreadPool::globalInstance()->waitForDone();
-
     qDeleteAll(m_scaners);
     m_scaners.clear();
 }

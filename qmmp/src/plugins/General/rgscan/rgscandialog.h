@@ -43,6 +43,7 @@ public:
 private slots:
     void on_calculateButton_clicked();
     void onScanFinished(QString url);
+    void reject();
 
 private:
     void stop();
