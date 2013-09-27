@@ -25,6 +25,12 @@
    </property>
    <item row="0" column="0" colspan="3">
     <widget class="QTableWidget" name="tableWidget">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>
@@ -71,7 +77,7 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="writeButton">
      <property name="text">
       <string>Write Tags</string>
      </property>
