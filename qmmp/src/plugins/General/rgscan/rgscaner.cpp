@@ -29,6 +29,7 @@
 RGScaner::RGScaner()
 {
     m_gain = 0.;
+    m_peak = 0.;
     m_user_stop = false;
     m_is_running = false;
     m_handle = 0;
@@ -118,9 +119,14 @@ bool RGScaner::isRunning()
     return m_is_running;
 }
 
-double RGScaner::gain()
+double RGScaner::gain() const
 {
     return m_gain;
+}
+
+double RGScaner::peak() const
+{
+    return m_peak;
 }
 
 GainHandle_t *RGScaner::handle()
@@ -142,6 +148,7 @@ void RGScaner::run()
     qint64 total = 0;
     qint64 len = 0;
     qint64 totalSize = m_decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+    qint32 max = 0;
     double out_left[buf_size/4];
     double out_right[buf_size/4];
 
@@ -169,6 +176,8 @@ void RGScaner::run()
             {
                 out_left[i] = ((short *) output_buf)[i*2];
                 out_right[i] = ((short *) output_buf)[i*2+1];
+                max = qMax(abs(out_left[i]), max);
+                max = qMax(abs(out_right[i]), max);
             }
             AnalyzeSamples(m_handle, out_left, out_right, len/4, 2);
 
@@ -187,6 +196,8 @@ void RGScaner::run()
     }
 
     m_gain = GetTitleGain(m_handle);
+    m_peak = max / 32768.0;
+    qDebug("peak = %f", m_peak);
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
     m_is_running = false;
     emit progress(100);

@@ -44,7 +44,8 @@ public:
     bool prepare(const QString &url);
     void stop();
     bool isRunning();
-    double gain();
+    double gain() const;
+    double peak() const;
     GainHandle_t *handle();
 
 signals:
@@ -60,6 +61,7 @@ private:
     bool m_is_running;
     QString m_url;
     double m_gain;
+    double m_peak;
     GainHandle_t *m_handle;
 
 };

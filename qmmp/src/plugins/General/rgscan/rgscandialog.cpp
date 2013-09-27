@@ -83,6 +83,7 @@ void RGScanDialog::onScanFinished(QString url)
         if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
             continue;
         m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(m_scaners.at(i)->gain())));
+        m_ui.tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(m_scaners.at(i)->peak())));
     }
 
     bool stopped = true;
@@ -98,12 +99,14 @@ void RGScanDialog::onScanFinished(QString url)
         qDebug("RGScanDialog: all threads finished");
         QThreadPool::globalInstance()->waitForDone();
 
+        double album_peak = 0.;
 
         GainHandle_t **a = (GainHandle_t **) malloc(m_scaners.count()*sizeof(GainHandle_t *));
 
         for(int i = 0; i < m_scaners.count(); ++i)
         {
             a[i] = m_scaners.at(i)->handle();
+            album_peak = qMax(m_scaners.at(i)->peak(), album_peak);
         }
 
         double album_gain = GetAlbumGain(a, m_scaners.count());
@@ -112,6 +115,7 @@ void RGScanDialog::onScanFinished(QString url)
         for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
         {
             m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(QString::number(album_gain)));
+            m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
         }
 
         qDeleteAll(m_scaners);
