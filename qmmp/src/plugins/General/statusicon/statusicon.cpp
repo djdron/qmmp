@@ -47,7 +47,7 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_messageDelay = settings.value("message_delay", 2000).toInt();
     m_hideToTray = settings.value("hide_on_close", false).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",false).toBool();
-    m_tooltip = settings.value("show_nicetooltip",true).toBool();
+    m_tooltip = settings.value("show_tooltip",true).toBool();
 #ifdef Q_WS_X11
     m_tray->showNiceToolTip(m_tooltip);
 #endif
