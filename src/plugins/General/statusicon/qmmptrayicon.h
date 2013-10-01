@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,10 +25,12 @@
 
 class QEvent;
 class QWheelEvent;
+#ifdef Q_WS_X11
 class StatusIconPopupWidget;
+#endif
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class QmmpTrayIcon : public QSystemTrayIcon
 {
@@ -37,17 +39,16 @@ public:
     QmmpTrayIcon(QObject *parent = 0);
     ~QmmpTrayIcon();
 
+#ifdef Q_WS_X11
     void showNiceToolTip(bool value);
 
-protected:
-    bool event(QEvent *e);
-
 private:
+    bool event(QEvent *e);
     void wheelEvent(QWheelEvent *e);
     void showToolTip();
     bool m_showNiceToolTip;
     QPointer<StatusIconPopupWidget> m_PopupWidget;
-
+#endif
 };
 
 #endif

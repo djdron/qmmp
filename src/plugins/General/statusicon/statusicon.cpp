@@ -27,11 +27,10 @@
 #include <QEvent>
 #include <QStyle>
 #include <QApplication>
-
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
-
+#include <qmmpui/metadataformatter.h>
 #include "qmmptrayicon.h"
 #include "statusicon.h"
 
@@ -48,11 +47,14 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_messageDelay = settings.value("message_delay", 2000).toInt();
     m_hideToTray = settings.value("hide_on_close", false).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",false).toBool();
-    m_tray->showNiceToolTip(settings.value("show_nicetooltip",true).toBool());
+    m_tooltip = settings.value("show_nicetooltip",true).toBool();
+#ifdef Q_WS_X11
+    m_tray->showNiceToolTip(m_tooltip);
+#endif
     if(m_useStandardIcons)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
     else
-        m_tray->setIcon ( QIcon(":/tray_stop.png"));
+        m_tray->setIcon(QIcon(":/tray_stop.png"));
     m_tray->show();
     settings.endGroup();
     //actions
@@ -109,6 +111,9 @@ void StatusIcon::setState(Qmmp::State state)
             m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
         else
             m_tray->setIcon (QIcon(":/tray_stop.png"));
+#ifndef Q_WS_X11
+        m_tray->setToolTip("");
+#endif
         break;
     }
     }
@@ -116,15 +121,24 @@ void StatusIcon::setState(Qmmp::State state)
 
 void StatusIcon::showMetaData()
 {
-    QString message = m_core->metaData(Qmmp::ARTIST) + " - " + m_core->metaData(Qmmp::TITLE);
-    if (message.startsWith (" - ") || message.endsWith (" - "))
-        message.remove(" - ");
+    MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
+    QString message = f.parse(m_core->metaData());
     if (message.isEmpty())
         message = m_core->metaData(Qmmp::URL).section('/',-1);
 
     if (m_showMessage)
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
+#ifndef Q_WS_X11
+         if(m_tooltip)
+         {
+             MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
+             QString message = f.parse(m_core->metaData());
+             if(message.isEmpty())
+                 message = m_core->metaData(Qmmp::URL).section('/',-1);
+             m_tray->setToolTip(f.parse(m_core->metaData()));
+         }
+#endif
 }
 
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)

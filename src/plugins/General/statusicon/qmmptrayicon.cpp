@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,9 @@
 #include <qmmp/soundcore.h>
 
 #include "qmmptrayicon.h"
+#ifdef Q_WS_X11
 #include "statusiconpopupwidget.h"
+#endif
 
 
 QmmpTrayIcon::QmmpTrayIcon(QObject *parent)
@@ -37,7 +39,7 @@ QmmpTrayIcon::QmmpTrayIcon(QObject *parent)
 QmmpTrayIcon::~QmmpTrayIcon()
 {
 }
-
+#ifdef Q_WS_X11
 void QmmpTrayIcon::showNiceToolTip(bool value)
 {
     m_showNiceToolTip = value;
@@ -84,3 +86,4 @@ void QmmpTrayIcon::showToolTip()
         m_PopupWidget->showInfo(geometry().x(),geometry().y());
     }
 }
+#endif
