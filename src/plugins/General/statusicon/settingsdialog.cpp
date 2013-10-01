@@ -33,16 +33,24 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageGroupBox->setChecked(settings.value("show_message",true).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     ui.niceTooltipGroupBox->setChecked(settings.value("show_tooltip", true).toBool());
+#ifdef Q_WS_X11
     ui.niceTooltipDelaySpinBox->setValue(settings.value("tooltip_delay",2000).toInt());
     ui.transparencySlider->setValue(settings.value("tooltip_transparency",0).toInt());
     ui.coverSizeSlider->setValue(settings.value("tooltip_cover_size", 100).toInt());
-    ui.niceTooltipSplitCheckBox->setChecked(settings.value("split_file_name",true).toBool());
-    ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",false).toBool());
     ui.progressCheckBox->setChecked(settings.value("tooltip_progress",true).toBool());
+    ui.niceTooltipSplitCheckBox->setChecked(settings.value("split_file_name",true).toBool());
+#else
+    ui.niceTooltipDelaySpinBox->setEnabled(false);
+    ui.transparencySlider->setEnabled(false);
+    ui.coverSizeSlider->setEnabled(false);
+    ui.progressCheckBox->setEnabled(false);
+    ui.niceTooltipSplitCheckBox->setEnabled(false);
+    ui.templateButton->setEnabled(false);
+#endif
+    ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",false).toBool());
     m_template = settings.value("tooltip_template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
 }
-
 
 SettingsDialog::~SettingsDialog()
 {}
@@ -53,13 +61,15 @@ void SettingsDialog::accept()
     settings.beginGroup("Tray");
     settings.setValue("show_message", ui.messageGroupBox->isChecked());
     settings.setValue("message_delay", ui.messageDelaySpinBox->value());
-    settings.setValue("split_file_name", ui.niceTooltipSplitCheckBox->isChecked());
     settings.setValue("use_standard_icons", ui.standardIconsCheckBox->isChecked());
     settings.setValue("show_tooltip", ui.niceTooltipGroupBox->isChecked());
+#ifdef Q_WS_X11
+    settings.setValue("split_file_name", ui.niceTooltipSplitCheckBox->isChecked());
     settings.setValue("tooltip_delay", ui.niceTooltipDelaySpinBox->value());
     settings.setValue("tooltip_transparency",  ui.transparencySlider->value());
     settings.setValue("tooltip_cover_size",  ui.coverSizeSlider->value());
     settings.setValue("tooltip_progress", ui.progressCheckBox->isChecked());
+#endif
     settings.setValue("tooltip_template", m_template);
     settings.endGroup();
     QDialog::accept();

@@ -130,14 +130,14 @@ void StatusIcon::showMetaData()
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
 #ifndef Q_WS_X11
-         if(m_tooltip)
-         {
-             MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
-             QString message = f.parse(m_core->metaData());
-             if(message.isEmpty())
-                 message = m_core->metaData(Qmmp::URL).section('/',-1);
-             m_tray->setToolTip(f.parse(m_core->metaData()));
-         }
+    if(m_tooltip)
+    {
+        MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
+        QString message = f.parse(m_core->metaData());
+        if(message.isEmpty())
+            message = m_core->metaData(Qmmp::URL).section('/',-1);
+        m_tray->setToolTip(f.parse(m_core->metaData()));
+    }
 #endif
 }
 
