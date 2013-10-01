@@ -98,7 +98,15 @@ void FileInfo::setLength(qint64 length)
 
 void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 {
-    if (!value.isEmpty() && value != "0")
+    if (value.isEmpty() || value == "0")
+        return;
+
+    //extract track number from "Track Number/Total Tracks Number" string
+    if((key == Qmmp::TRACK || key == Qmmp::DISCNUMBER) && value.contains("/"))
+    {
+        m_metaData.insert(key, value.section("/",0,0));
+    }
+    else
         m_metaData.insert(key, value);
 }
 
