@@ -103,9 +103,7 @@ void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 
     //extract track number from "Track Number/Total Tracks Number" string
     if((key == Qmmp::TRACK || key == Qmmp::DISCNUMBER) && value.contains("/"))
-    {
         m_metaData.insert(key, value.section("/",0,0));
-    }
     else
         m_metaData.insert(key, value);
 }
