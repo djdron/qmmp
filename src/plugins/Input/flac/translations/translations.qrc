@@ -20,5 +20,6 @@
     <file>flac_plugin_sk.qm</file>
     <file>flac_plugin_es.qm</file>
     <file>flac_plugin_he.qm</file>
+    <file>flac_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

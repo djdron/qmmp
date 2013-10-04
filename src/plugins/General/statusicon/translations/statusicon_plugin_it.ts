@@ -65,7 +65,7 @@
         <translation>Usa icone standard</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
         <translation>Modello strumento suggerimento</translation>
     </message>
@@ -73,37 +73,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="65"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Play</source>
         <translation>Esegui</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="66"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Pause</source>
         <translation>Pausa</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Stop</source>
         <translation>Ferma</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Next</source>
         <translation>Successivo</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="70"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Previous</source>
         <translation>Precedente</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="74"/>
         <source>Exit</source>
         <translation>Esci</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="126"/>
+        <location filename="../statusicon.cpp" line="130"/>
         <source>Now Playing</source>
         <translation>Brano in esecuzione: </translation>
     </message>

@@ -20,5 +20,6 @@
     <file>opus_plugin_sk.qm</file>
     <file>opus_plugin_es.qm</file>
     <file>opus_plugin_he.qm</file>
+    <file>opus_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

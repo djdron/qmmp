@@ -20,5 +20,6 @@
     <file>mms_plugin_sk.qm</file>
     <file>mms_plugin_es.qm</file>
     <file>mms_plugin_he.qm</file>
+    <file>mms_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

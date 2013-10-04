@@ -20,5 +20,6 @@
     <file>notifier_plugin_sk.qm</file>
     <file>notifier_plugin_es.qm</file>
     <file>notifier_plugin_he.qm</file>
+    <file>notifier_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

@@ -331,6 +331,7 @@ void ConfigDialog::loadLanguages()
     l["nl"] = tr("Dutch");
     l["en_US"] = tr("English");
     l["fr"] = tr("French");
+    l["gl_ES"] = tr("Galician");
     l["de"] = tr("German");
     l["he"] = tr("Hebrew");
     l["hu"] = tr("Hungarian");

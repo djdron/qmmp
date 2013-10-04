@@ -20,5 +20,6 @@
     <file>vorbis_plugin_sk.qm</file>
     <file>vorbis_plugin_es.qm</file>
     <file>vorbis_plugin_he.qm</file>
+    <file>vorbis_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

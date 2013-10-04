@@ -20,5 +20,6 @@
     <file>udisks2_plugin_sk.qm</file>
     <file>udisks2_plugin_es.qm</file>
     <file>udisks2_plugin_he.qm</file>
+    <file>udisks2_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

@@ -20,5 +20,6 @@
     <file>rgscan_plugin_sk.qm</file>
     <file>rgscan_plugin_es.qm</file>
     <file>rgscan_plugin_he.qm</file>
+    <file>rgscan_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

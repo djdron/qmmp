@@ -20,5 +20,6 @@
     <file>analyzer_plugin_sk.qm</file>
     <file>analyzer_plugin_es.qm</file>
     <file>analyzer_plugin_he.qm</file>
+    <file>analyzer_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

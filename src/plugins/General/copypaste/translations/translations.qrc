@@ -20,5 +20,6 @@
     <file>copypaste_plugin_sk.qm</file>
     <file>copypaste_plugin_es.qm</file>
     <file>copypaste_plugin_he.qm</file>
+    <file>copypaste_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

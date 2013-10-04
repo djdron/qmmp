@@ -57,3 +57,6 @@
 
 Французский:
     Stanislas Zeller <uncensored.assault@gmail.com>
+    
+Галисийский:
+    Óscar Pereira <oscarpereira1989@gmail.com>

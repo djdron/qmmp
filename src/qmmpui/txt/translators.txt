@@ -16,6 +16,9 @@ Dutch:
 
 French:
     Stanislas Zeller <uncensored.assault@gmail.com>
+    
+Galician:
+    Óscar Pereira <oscarpereira1989@gmail.com>
 
 German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
