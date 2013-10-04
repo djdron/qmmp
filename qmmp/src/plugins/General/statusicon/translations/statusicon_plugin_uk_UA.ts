@@ -65,7 +65,7 @@
         <translation>Використовувати стандартні іконки</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
         <translation>Шаблон спливаючої підказки</translation>
     </message>
@@ -73,37 +73,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="65"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Play</source>
         <translation>Грати</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="66"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="70"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="74"/>
         <source>Exit</source>
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="126"/>
+        <location filename="../statusicon.cpp" line="130"/>
         <source>Now Playing</source>
         <translation>Зараз грає</translation>
     </message>

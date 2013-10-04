@@ -65,7 +65,7 @@
         <translation>Gebruik standaard iconen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
         <translation>Tooltip Layout</translation>
     </message>
@@ -73,37 +73,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="65"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Play</source>
         <translation>Afspelen</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="66"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Pause</source>
         <translation>Pauze</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Stop</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Next</source>
         <translation>Volgende</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="70"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Previous</source>
         <translation>Vorige</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="74"/>
         <source>Exit</source>
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="126"/>
+        <location filename="../statusicon.cpp" line="130"/>
         <source>Now Playing</source>
         <translation>Huidig nummer</translation>
     </message>

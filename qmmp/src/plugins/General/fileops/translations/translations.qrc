@@ -20,5 +20,6 @@
     <file>fileops_plugin_sk.qm</file>
     <file>fileops_plugin_es.qm</file>
     <file>fileops_plugin_he.qm</file>
+    <file>fileops_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

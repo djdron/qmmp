@@ -544,66 +544,71 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="334"/>
-        <source>German</source>
+        <source>Galician</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="335"/>
-        <source>Hebrew</source>
+        <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="336"/>
-        <source>Hungarian</source>
+        <source>Hebrew</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="337"/>
-        <source>Italian</source>
+        <source>Hungarian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="338"/>
-        <source>Japanese</source>
+        <source>Italian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="339"/>
-        <source>Kazakh</source>
+        <source>Japanese</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="340"/>
-        <source>Lithuanian</source>
+        <source>Kazakh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="341"/>
-        <source>Polish</source>
+        <source>Lithuanian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="342"/>
-        <source>Russian</source>
+        <source>Polish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="343"/>
-        <source>Slovak</source>
+        <source>Russian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="344"/>
-        <source>Spanish</source>
+        <source>Slovak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="345"/>
-        <source>Turkish</source>
+        <source>Spanish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="346"/>
+        <source>Turkish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="347"/>
         <source>Ukrainian</source>
         <translation type="unfinished"></translation>
     </message>

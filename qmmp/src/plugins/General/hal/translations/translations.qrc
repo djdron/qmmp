@@ -20,5 +20,6 @@
     <file>hal_plugin_sk.qm</file>
     <file>hal_plugin_es.qm</file>
     <file>hal_plugin_he.qm</file>
+    <file>hal_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

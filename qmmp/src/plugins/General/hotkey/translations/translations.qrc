@@ -20,5 +20,6 @@
     <file>hotkey_plugin_sk.qm</file>
     <file>hotkey_plugin_es.qm</file>
     <file>hotkey_plugin_he.qm</file>
+    <file>hotkey_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

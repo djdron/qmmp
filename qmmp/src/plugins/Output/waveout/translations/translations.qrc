@@ -20,5 +20,6 @@
     <file>waveout_plugin_sk.qm</file>
     <file>waveout_plugin_es.qm</file>
     <file>waveout_plugin_he.qm</file>
+    <file>waveout_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

@@ -20,5 +20,6 @@
     <file>oss4_plugin_sk.qm</file>
     <file>oss4_plugin_es.qm</file>
     <file>oss4_plugin_he.qm</file>
+    <file>oss4_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

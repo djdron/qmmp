@@ -20,5 +20,6 @@
     <file>covermanager_plugin_sk.qm</file>
     <file>covermanager_plugin_es.qm</file>
     <file>covermanager_plugin_he.qm</file>
+    <file>covermanager_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

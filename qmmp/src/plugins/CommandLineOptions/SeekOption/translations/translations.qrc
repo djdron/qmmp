@@ -20,5 +20,6 @@
     <file>seek_plugin_sk.qm</file>
     <file>seek_plugin_es.qm</file>
     <file>seek_plugin_he.qm</file>
+    <file>seek_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

@@ -20,5 +20,6 @@
     <file>wavpack_plugin_sk.qm</file>
     <file>wavpack_plugin_es.qm</file>
     <file>wavpack_plugin_he.qm</file>
+    <file>wavpack_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

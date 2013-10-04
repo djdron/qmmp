@@ -1,6 +1,6 @@
 #!/bin/sh
 
-LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he'
+LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he gl_ES'
 
 echo "Locales: ${LOCALES}"
 
@@ -57,7 +57,7 @@ do
         qrc_file="${tr_dir}/translations.qrc"
      fi
 
-     lupdate -no-obsolete -silent -extensions "cpp,ui" ${tr_dir}/../ -ts ${ts_files}
+     lupdate-qt4 -no-obsolete -silent -extensions "cpp,ui" ${tr_dir}/../ -ts ${ts_files}
 
      
 
