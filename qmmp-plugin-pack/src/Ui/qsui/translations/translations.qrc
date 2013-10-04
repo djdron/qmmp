@@ -20,5 +20,6 @@
     <file>qsui_plugin_sk.qm</file>
     <file>qsui_plugin_es.qm</file>
     <file>qsui_plugin_he.qm</file>
+    <file>qsui_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>

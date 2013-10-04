@@ -20,5 +20,6 @@
     <file>mpg123_plugin_sk.qm</file>
     <file>mpg123_plugin_es.qm</file>
     <file>mpg123_plugin_he.qm</file>
+    <file>mpg123_plugin_gl_ES.qm</file>
   </qresource>
 </RCC>
