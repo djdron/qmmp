@@ -46,12 +46,13 @@ public:
     virtual qint64 totalTime() = 0;
     /*!
      * Requests a seek to the time \b time indicated, specified in milliseconds.
+     * Subclass should reimplement this function.
      */
     virtual void seek(qint64 time) = 0;
     /*!
      * Reads up to \b maxSize bytes of decoded audio to \b data
      * Returns the number of bytes read, or -1 if an error occurred.
-     * In most cases subclass should reimplement this function.
+     * Subclass should reimplement this function.
      */
     virtual qint64 read(char *data, qint64 maxSize) = 0;
     /*!
