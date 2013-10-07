@@ -19,22 +19,32 @@
  ***************************************************************************/
 
 #include <math.h>
+#include "buffer.h"
 #include "replaygain_p.h"
 
 ReplayGain::ReplayGain()
 {
-    m_sampleSize = 2;
     m_scale = 1.0;
     m_mode = QmmpSettings::REPLAYGAIN_DISABLED;
+    m_format = Qmmp::PCM_UNKNOWM;
     m_preamp = 0.0;
     m_default_gain = 0.0;
+    m_prebuf = 0;
     m_prevent_clipping = false;
 }
 
-void ReplayGain::setSampleSize(int size)
+ReplayGain::~ReplayGain()
 {
-    m_sampleSize = size;
-    updateScale();
+    if(m_prebuf)
+        delete [] m_prebuf;
+}
+
+void ReplayGain::configure(const AudioParameters &p)
+{
+    m_format = p.format();
+    if(m_prebuf)
+        delete [] m_prebuf;
+    m_prebuf = new float[QMMP_BLOCK_FRAMES * p.channels() * 4];
 }
 
 void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info)
@@ -54,6 +64,56 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
         qDebug("ReplayGain: disabled");
 }
 
+qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
+{
+    if(m_mode == QmmpSettings::REPLAYGAIN_DISABLED || m_scale == 1.0)
+        return decoder->read(data, size);
+
+    qint64 samples = 0;
+
+    switch (m_format)
+    {
+    case Qmmp::PCM_S8:
+        samples = decoder->read(m_prebuf, size);
+        break;
+    case Qmmp::PCM_S16LE:
+        samples = decoder->read(m_prebuf, size >> 1);
+        break;
+    case Qmmp::PCM_S24LE:
+        samples = decoder->read(m_prebuf, size >> 2);
+        break;
+    case Qmmp::PCM_S32LE:
+        samples = decoder->read(m_prebuf, size >> 2);
+        break;
+    default:
+        break;
+    }
+
+    for(qint64 i = 0; i < samples; ++i)
+    {
+        m_prebuf[i] *= m_scale;
+        m_prebuf[i] = qBound((float)-1.0, m_prebuf[i], (float)1.0);
+
+        switch (m_format)
+        {
+        case Qmmp::PCM_S8:
+            ((char*)data)[i] = m_prebuf[i] * 127.0;
+            break;
+        case Qmmp::PCM_S16LE:
+            ((short*)data)[i] = m_prebuf[i] * 32767.0;
+            break;
+        case Qmmp::PCM_S24LE:
+            ((qint32*)data)[i] = m_prebuf[i] * 32767.0;
+            break;
+        case Qmmp::PCM_S32LE:
+            ((qint32*)data)[i] = m_prebuf[i] * 32767.0;
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 void ReplayGain::updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
                                 double default_gain, bool clip)
 {
@@ -62,29 +122,6 @@ void ReplayGain::updateSettings(QmmpSettings::ReplayGainMode mode, double preamp
     m_default_gain = default_gain;
     m_prevent_clipping = clip;
     setReplayGainInfo(m_info);
-}
-
-void ReplayGain::applyReplayGain(char *data, qint64 size)
-{
-    if(m_mode == QmmpSettings::REPLAYGAIN_DISABLED || m_scale == 1.0)
-        return;
-    size = size/m_sampleSize;
-    if(m_sampleSize == 2)
-    {
-        for (qint64 i = 0; i < size; i++)
-            ((short*)data)[i]*= m_scale;
-
-    }
-    else if(m_sampleSize == 1)
-    {
-        for (qint64 i = 0; i < size; i++)
-            ((char*)data)[i]*= m_scale;
-    }
-    else if(m_sampleSize == 4)
-    {
-        for (qint64 i = 0; i < size; i++)
-           ((qint32*)data)[i]*= m_scale;
-    }
 }
 
 void ReplayGain::updateScale()

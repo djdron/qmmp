@@ -22,6 +22,7 @@
 #include <stdint.h>
 #include <QStringList>
 #include <QThread>
+#include <math.h>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
 #include "rgscaner.h"
@@ -143,14 +144,14 @@ void RGScaner::run()
     const int buf_size = 8192; //samples
     AudioParameters ap = m_decoder->audioParameters();
     //Qmmp::AudioFormat format = ap.format();
-    unsigned char output_buf[buf_size];
+    float output_buf[buf_size];
     qint64 output_at = 0;
     qint64 total = 0;
     qint64 len = 0;
-    qint64 totalSize = m_decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
-    qint32 max = 0;
-    double out_left[buf_size/4];
-    double out_right[buf_size/4];
+    qint64 totalSamples = m_decoder->totalTime() * ap.sampleRate() * ap.channels() / 1000;
+    float max = 0;
+    double out_left[buf_size/2];
+    double out_right[buf_size/2];
 
 
     if(m_handle)
@@ -164,22 +165,22 @@ void RGScaner::run()
     forever
     {
         // decode
-        len = m_decoder->read((char *)(output_buf + output_at), buf_size - output_at);
+        len = m_decoder->read((float *)(output_buf + output_at), buf_size - output_at);
         if (len > 0)
         {
             output_at += len;
             total += len;
-            emit progress(100 * total / totalSize);
+            emit progress(100 * total / totalSamples);
 
 
-            for(int i = 0; i < len/4; ++i)
+            for(int i = 0; i < len/2; ++i)
             {
-                out_left[i] = ((short *) output_buf)[i*2];
-                out_right[i] = ((short *) output_buf)[i*2+1];
-                max = qMax(abs(out_left[i]), max);
-                max = qMax(abs(out_right[i]), max);
+                out_left[i] = output_buf[i*2]*32767.0;
+                out_right[i] = output_buf[i*2+1]*32767.0;
+                max = qMax(fabs(out_left[i]), (double)max);
+                max = qMax(fabs(out_right[i]), (double)max);
             }
-            AnalyzeSamples(m_handle, out_left, out_right, len/4, 2);
+            AnalyzeSamples(m_handle, out_left, out_right, len/2, 2);
 
             output_at = 0;
         }
@@ -196,7 +197,7 @@ void RGScaner::run()
     }
 
     m_gain = GetTitleGain(m_handle);
-    m_peak = max / 32768.0;
+    m_peak = max/32767.0;
     qDebug("peak = %f", m_peak);
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
     m_is_running = false;

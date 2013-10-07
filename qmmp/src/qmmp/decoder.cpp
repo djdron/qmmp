@@ -36,6 +36,11 @@ void Decoder::configure(quint32 srate, int chan, Qmmp::AudioFormat format)
     m_parameters = AudioParameters(srate, chan, format);
 }
 
+qint64 Decoder::read(float *data, qint64 samples)
+{
+    return -1;
+}
+
 void Decoder::next()
 {}
 

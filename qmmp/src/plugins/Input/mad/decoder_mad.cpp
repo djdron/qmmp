@@ -340,48 +340,18 @@ int DecoderMAD::bitrate()
 
 qint64 DecoderMAD::read(char *data, qint64 size)
 {
-    forever
-    {
-        if(((m_stream.error == MAD_ERROR_BUFLEN) || !m_stream.buffer) && !m_eof)
-        {
-            m_eof = !fillBuffer();
-        }
-        if(mad_frame_decode(&m_frame, &m_stream) < 0)
-        {
-            switch((int) m_stream.error)
-            {
-            case MAD_ERROR_LOSTSYNC:
-            {
-                //skip ID3v2 tag
-                uint tagSize = findID3v2((uchar *)m_stream.this_frame,
-                                         (ulong) (m_stream.bufend - m_stream.this_frame));
-                if (tagSize > 0)
-                {
-                    mad_stream_skip(&m_stream, tagSize);
-                    qDebug("DecoderMAD: %d bytes skipped", tagSize);
-                }
-                continue;
-            }
-            case MAD_ERROR_BUFLEN:
-                if(m_eof)
-                    return 0;
-                continue;
-            default:
-                if (!MAD_RECOVERABLE(m_stream.error))
-                    return 0;
-                else
-                    continue;
-            }
-        }
-        if(m_skip_frames)
-        {
-            m_skip_frames--;
-            continue;
-        }
-        mad_synth_frame(&m_synth, &m_frame);
+    if(decodeFrame())
         return madOutput(data, size);
-    }
+    return 0;
 }
+
+qint64 DecoderMAD::read(float *data, qint64 samples)
+{
+    if(decodeFrame())
+        return madOutputFloat(data, samples);
+    return 0;
+}
+
 void DecoderMAD::seek(qint64 pos)
 {
     if(m_totalTime > 0)
@@ -508,12 +478,58 @@ long DecoderMAD::audio_linear_round(unsigned int bits, mad_fixed_t sample)
     return sample >> (MAD_F_FRACBITS + 1 - bits);
 }
 
+bool DecoderMAD::decodeFrame()
+{
+    forever
+    {
+        if(((m_stream.error == MAD_ERROR_BUFLEN) || !m_stream.buffer) && !m_eof)
+        {
+            m_eof = !fillBuffer();
+        }
+        if(mad_frame_decode(&m_frame, &m_stream) < 0)
+        {
+            switch((int) m_stream.error)
+            {
+            case MAD_ERROR_LOSTSYNC:
+            {
+                //skip ID3v2 tag
+                uint tagSize = findID3v2((uchar *)m_stream.this_frame,
+                                         (ulong) (m_stream.bufend - m_stream.this_frame));
+                if (tagSize > 0)
+                {
+                    mad_stream_skip(&m_stream, tagSize);
+                    qDebug("DecoderMAD: %d bytes skipped", tagSize);
+                }
+                continue;
+            }
+            case MAD_ERROR_BUFLEN:
+                if(m_eof)
+                    return false;
+                continue;
+            default:
+                if (!MAD_RECOVERABLE(m_stream.error))
+                    return false;
+                else
+                    continue;
+            }
+        }
+        if(m_skip_frames)
+        {
+            m_skip_frames--;
+            continue;
+        }
+        mad_synth_frame(&m_synth, &m_frame);
+        break;
+    }
+    return true;
+}
+
 qint64 DecoderMAD::madOutput(char *data, qint64 size)
 {
-    unsigned int samples, channels;
+    unsigned int samples_per_channel, channels;
     mad_fixed_t const *left, *right;
 
-    samples = m_synth.pcm.length;
+    samples_per_channel = m_synth.pcm.length;
     channels = m_synth.pcm.channels;
     left = m_synth.pcm.samples[0];
     right = m_synth.pcm.samples[1];
@@ -521,13 +537,13 @@ qint64 DecoderMAD::madOutput(char *data, qint64 size)
     m_output_at = 0;
     m_output_bytes = 0;
 
-    if(samples * channels * 2 > size)
+    if(samples_per_channel * channels * 2 > size)
     {
         qWarning("DecoderMad: input buffer is too small");
-        samples = size / channels / 2;
+        samples_per_channel = size / channels / 2;
     }
 
-    while (samples--)
+    while (samples_per_channel--)
     {
         signed int sample;
 #ifdef USE_DITHERING
@@ -552,4 +568,38 @@ qint64 DecoderMAD::madOutput(char *data, qint64 size)
         }
     }
     return m_output_bytes;
+}
+
+qint64 DecoderMAD::madOutputFloat(float *data, qint64 samples)
+{
+    float *data_it = data;
+    unsigned int samples_per_channel, channels;
+    mad_fixed_t const *left, *right;
+
+    samples_per_channel = m_synth.pcm.length;
+    channels = m_synth.pcm.channels;
+    left = m_synth.pcm.samples[0];
+    right = m_synth.pcm.samples[1];
+    m_bitrate = m_frame.header.bitrate / 1000;
+    m_output_at = 0;
+    m_output_bytes = 0;
+    qint64 output_samples = 0;
+
+    if(samples_per_channel * channels > samples)
+    {
+        qWarning("DecoderMad: input buffer is too small");
+        samples_per_channel = samples / channels;
+    }
+
+    while (samples_per_channel--)
+    {
+        *data_it++ = mad_f_todouble(*left++);
+        output_samples++;
+        if (channels == 2)
+        {
+            *data_it++ = mad_f_todouble(*right++);
+            output_samples++;
+        }
+    }
+    return output_samples;
 }

@@ -23,6 +23,7 @@
 
 #include <QtGlobal>
 #include <QMap>
+#include "decoder.h"
 #include "qmmpsettings.h"
 #include "qmmp.h"
 
@@ -33,22 +34,24 @@ class ReplayGain
 {
 public:
     ReplayGain();
+    ~ReplayGain();
 
-    void setSampleSize(int size);
+    void configure(const AudioParameters &p);
     void updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
                         double default_gain, bool clip);
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
-    void applyReplayGain(char *data, qint64 size);
+    qint64 read(Decoder *decoder, char *data, qint64 size);
 
 private:
     void updateScale();
-    int m_sampleSize;
     QMap<Qmmp::ReplayGainKey, double> m_info;
-    double m_scale;
     QmmpSettings::ReplayGainMode m_mode;
+    double m_scale;
     double m_preamp;
     double m_default_gain;
+    float *m_prebuf;
     bool m_prevent_clipping;
+    int m_format;
 };
 
 #endif // REPLAYGAIN_H

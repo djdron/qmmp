@@ -282,7 +282,7 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate)
 {
     Buffer *b = m_output->recycler()->get();
     uint sz = size < m_bks ? size : m_bks;
-    m_replayGain->applyReplayGain(data, sz);
+    //m_replayGain->applyReplayGain(data, sz);
     memcpy(b->data, data, sz);
     b->nbytes = sz;
     b->rate = brate;
@@ -593,6 +593,8 @@ OutputWriter *QmmpAudioEngine::createOutput()
 void QmmpAudioEngine::prepareEffects(Decoder *d)
 {
     m_ap = d->audioParameters();
+
+    m_replayGain->configure(m_ap);
 
     foreach(Effect *e, m_effects) //remove disabled and external effects
     {
