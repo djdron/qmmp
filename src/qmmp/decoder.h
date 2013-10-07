@@ -55,6 +55,7 @@ public:
      * Subclass should reimplement this function.
      */
     virtual qint64 read(char *data, qint64 maxSize) = 0;
+    virtual qint64 read(float *data, qint64 samples);
     /*!
      * Returns current bitrate (in kbps).
      * Subclass should reimplement this function.
