@@ -380,7 +380,8 @@ void QmmpAudioEngine::run()
         {
             delay = 0;
             // decode
-            len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
+            len = m_replayGain->read(m_decoder,(char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
+            //len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
         }
 
         if (len > 0)
