@@ -80,8 +80,6 @@ qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
         samples = decoder->read(m_prebuf, size >> 1);
         break;
     case Qmmp::PCM_S24LE:
-        samples = decoder->read(m_prebuf, size >> 2);
-        break;
     case Qmmp::PCM_S32LE:
         samples = decoder->read(m_prebuf, size >> 2);
         break;
@@ -103,14 +101,27 @@ qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
             ((short*)data)[i] = m_prebuf[i] * 32767.0;
             break;
         case Qmmp::PCM_S24LE:
-            ((qint32*)data)[i] = m_prebuf[i] * 32767.0;
+            ((qint32*)data)[i] = m_prebuf[i] * (1U << 28);
             break;
         case Qmmp::PCM_S32LE:
-            ((qint32*)data)[i] = m_prebuf[i] * 32767.0;
+            ((qint32*)data)[i] = m_prebuf[i] * (1U << 31);
             break;
         default:
             break;
         }
+    }
+
+    switch (m_format)
+    {
+    case Qmmp::PCM_S8:
+        return samples;
+    case Qmmp::PCM_S16LE:
+        return samples << 1;
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S32LE:
+        return samples << 2;
+    default:
+        return -1;
     }
 }
 
@@ -149,4 +160,5 @@ void ReplayGain::updateScale()
         m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
     m_scale = qMin(m_scale, 5.6234); // +15 dB
     m_scale = qMax(m_scale, 0.1778);  // -15 dB*/
+    m_scale = 0.5;
 }
