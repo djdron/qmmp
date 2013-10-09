@@ -132,7 +132,7 @@ qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
         {
             for (qint64 i = 0; i < samples; i++)
             {
-                ((qint32*)data)[i] = qBound((double)(-(1U << 23)),
+                ((qint32*)data)[i] = qBound(-(double)(1U << 23),
                                            ((qint32*)data)[i] * m_scale,
                                            (double)((1U << 23) - 1));
             }
@@ -142,7 +142,7 @@ qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
         {
             for (qint64 i = 0; i < samples; i++)
             {
-                ((qint32*)data)[i] = qBound((double)(-(1U << 31)),
+                ((qint32*)data)[i] = qBound(-(double)(1U << 31),
                                            ((qint32*)data)[i] * m_scale,
                                            (double)((1U << 31) - 1));
             }
