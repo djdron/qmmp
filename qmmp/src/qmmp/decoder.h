@@ -55,6 +55,15 @@ public:
      * Subclass should reimplement this function.
      */
     virtual qint64 read(char *data, qint64 maxSize) = 0;
+    /*!
+     * Reads up of decoded audio using float audio format.
+     * Reimplement this function if a decoder supports peak overflow (i.e. has headroom).
+     * Audio engine uses this function to prevent clipping.
+     * Default implementation doesn nothing and returns -1.
+     * @param data output audio data
+     * @param samples maximum samples count
+     * @return the number of samples read, or -1 if an error occurred.
+     */
     virtual qint64 read(float *data, qint64 samples);
     /*!
      * Returns current bitrate (in kbps).
@@ -84,8 +93,11 @@ public:
     QMap<Qmmp::ReplayGainKey, double> replayGainInfo() const;
     /*!
      * Sets ReplayGain information. Use this function before playback.
+     * @param rg ReplayGain information
+     * @param headroom Indicates that decoder allows peak overflow.
+     * In this case the decoder should support float output.
      */
-    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg);
+    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg, bool headroom = false);
     /*!
      * Returns QIODevice-based input source assigned for this decoder.
      */
@@ -101,13 +113,17 @@ public:
      */
     bool hasMetaData() const;
     /*!
+     * Returns \b true if a decoder allows peak overflow, otherwise returns \b false.
+     */
+    bool hasHeadroom() const;
+    /*!
      * Takes metadata out of decoder and returns it.
      * Attention: hasMetaData() should return \b true before use of this fuction.
      */
     QMap<Qmmp::MetaData, QString> takeMetaData();
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
-     * @param path Full local file path
+     * @param path Full local file path.
      * @param useContent Content-based file type determination (\b true - enabled, \b false - disabled)
      */
     static DecoderFactory *findByPath(const QString &path, bool useContent = false);
@@ -171,6 +187,7 @@ private:
     AudioParameters m_parameters;
     QIODevice *m_input;
     bool m_hasMetaData;
+    bool m_hasHeadroom;
     QMap<Qmmp::MetaData, QString> m_metaData;
     QMap <Qmmp::ReplayGainKey, double> m_rg; //replay gain information
 };
