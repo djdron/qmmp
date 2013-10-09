@@ -330,7 +330,7 @@ void QmmpAudioEngine::run()
     }
     m_decoder = m_decoders.dequeue();
     addOffset(); //offset
-    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
+    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
     mutex()->unlock();
     m_output->start();
     StateHandler::instance()->dispatch(Qmmp::Playing);
@@ -402,7 +402,7 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->dispatch(Qmmp::Playing);
                 m_decoder->next();
                 StateHandler::instance()->dispatch(m_decoder->totalTime());
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
                 m_output->seek(0); //reset counter
                 addOffset(); //offset
                 mutex()->unlock();
@@ -414,7 +414,7 @@ void QmmpAudioEngine::run()
                 delete m_decoder;
                 m_decoder = m_decoders.dequeue();
                 //m_seekTime = m_inputs.value(m_decoder)->offset();
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
                 //use current output if possible
                 prepareEffects(m_decoder);
                 if(m_ap == m_output->audioParameters())
@@ -594,6 +594,8 @@ OutputWriter *QmmpAudioEngine::createOutput()
 void QmmpAudioEngine::prepareEffects(Decoder *d)
 {
     m_ap = d->audioParameters();
+
+    //m_ap = AudioParameters(44100, 2, Qmmp::PCM_S24LE);
 
     m_replayGain->configure(m_ap);
 

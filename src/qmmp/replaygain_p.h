@@ -39,7 +39,7 @@ public:
     void configure(const AudioParameters &p);
     void updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
                         double default_gain, bool clip);
-    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
+    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info, bool headroom);
     qint64 read(Decoder *decoder, char *data, qint64 size);
 
 private:
@@ -51,7 +51,10 @@ private:
     double m_default_gain;
     float *m_prebuf;
     bool m_prevent_clipping;
-    int m_format;
+    Qmmp::AudioFormat m_format;
+    bool m_disabled;
+    bool m_headroom;
+    int m_sample_size;
 };
 
 #endif // REPLAYGAIN_H

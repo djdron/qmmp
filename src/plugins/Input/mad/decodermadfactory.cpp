@@ -100,7 +100,7 @@ Decoder *DecoderMADFactory::create(const QString &url, QIODevice *input)
     if(!url.contains("://")) //local file
     {
         ReplayGainReader rg(url);
-        d->setReplayGainInfo(rg.replayGainInfo());
+        d->setReplayGainInfo(rg.replayGainInfo(), true);
     }
     return d;
 }
