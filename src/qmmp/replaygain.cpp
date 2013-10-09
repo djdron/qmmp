@@ -55,7 +55,6 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
 {
     m_info = info;
     m_headroom = headroom;
-    updateScale();
     if(m_mode != QmmpSettings::REPLAYGAIN_DISABLED)
     {
         qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
@@ -66,6 +65,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
         qDebug("ReplayGain: scale=%f", m_scale);
         qDebug("ReplayGain: headroom=%d", m_headroom);
     }
+    updateScale();
 }
 
 qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
