@@ -141,51 +141,78 @@ void RGScaner::run()
     qDebug("RGScaner: staring thread %lu",  QThread::currentThreadId());
     m_user_stop = false;
 
-    const int buf_size = 8192; //samples
     AudioParameters ap = m_decoder->audioParameters();
-    //Qmmp::AudioFormat format = ap.format();
-    float output_buf[buf_size];
-    qint64 output_at = 0;
-    qint64 total = 0;
-    qint64 len = 0;
+    Qmmp::AudioFormat format = ap.format();
+    bool headroom = m_decoder->hasHeadroom();
+    const int buf_size = 8192; //samples
+    double out_left[buf_size >> 1], out_right[buf_size >> 1]; //replay gain buffers
+    float float_buf[buf_size]; //float buffer
+    char char_buf[buf_size*ap.sampleSize()]; //char buffer
     qint64 totalSamples = m_decoder->totalTime() * ap.sampleRate() * ap.channels() / 1000;
-    float max = 0;
-    double out_left[buf_size/2];
-    double out_right[buf_size/2];
-
+    qint64 sample_count = 0;
+    qint64 samples = 0;
+    double max = 0;
 
     if(m_handle)
-    {
         DeinitGainAbalysis(m_handle);
-        m_handle = 0;
-    }
-
     InitGainAnalysis(&m_handle, 44100);
 
     forever
     {
-        // decode
-        len = m_decoder->read((float *)(output_buf + output_at), buf_size - output_at);
-        if (len > 0)
+        if(headroom)
         {
-            output_at += len;
-            total += len;
-            emit progress(100 * total / totalSamples);
+            samples = m_decoder->read(float_buf, buf_size);
 
+            if(samples <= 0)
+                break;          //TODO add error handler
 
-            for(int i = 0; i < len/2; ++i)
+            for(int i = 0; i < (samples >> 1); ++i)
             {
-                out_left[i] = output_buf[i*2]*32767.0;
-                out_right[i] = output_buf[i*2+1]*32767.0;
-                max = qMax(fabs(out_left[i]), (double)max);
-                max = qMax(fabs(out_right[i]), (double)max);
+                out_left[i] = float_buf[i*2]*32768.0;
+                out_right[i] = float_buf[i*2+1]*32768.0;
+                max = qMax(fabs(out_left[i]), max);
+                max = qMax(fabs(out_right[i]), max);
             }
-            AnalyzeSamples(m_handle, out_left, out_right, len/2, 2);
-
-            output_at = 0;
         }
-        else if (len <= 0)
-            break;
+        else
+        {
+            qint64 len = m_decoder->read(char_buf, buf_size*ap.sampleSize());
+
+            if(len <= 0)
+                break;          //TODO add error handler
+
+            samples = len / ap.sampleSize();
+
+            for(int i = 0; i < (samples >> 1); ++i)
+            {
+                switch (format)
+                {
+                case Qmmp::PCM_S8:
+                    out_left[i] = char_buf[i*2]*32768.0/128.0;
+                    out_right[i] = char_buf[i*2+1]*32768.0/128.0;
+                    break;
+                case Qmmp::PCM_S16LE:
+                    out_left[i] = ((short *)char_buf)[i*2];
+                    out_right[i] = ((short *)char_buf)[i*2+1];
+                    break;
+                case Qmmp::PCM_S24LE:
+                    out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 23));
+                    out_right[i] = ((qint32 *)char_buf)[i*2+1]*32768.0/((1U << 23));
+                case Qmmp::PCM_S32LE:
+                    out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 31));
+                    out_right[i] = ((qint32 *)char_buf)[i*2+1]*32768.0/((1U << 31));
+                default:
+                    break;
+                }
+                max = qMax(fabs(out_left[i]), max);
+                max = qMax(fabs(out_right[i]), max);
+            }
+
+        }
+
+        AnalyzeSamples(m_handle, out_left, out_right, samples >> 1, 2);
+        sample_count += samples;
+        emit progress(100 * sample_count / totalSamples);
 
         m_mutex.lock();
         if(m_user_stop)
@@ -197,8 +224,8 @@ void RGScaner::run()
     }
 
     m_gain = GetTitleGain(m_handle);
-    m_peak = max/32767.0;
-    qDebug("peak = %f", m_peak);
+    m_peak = max/32768.0;
+    qDebug("RGScaner: peak = %f", m_peak);
     qDebug("RGScaner: thread %ld finished", QThread::currentThreadId());
     m_is_running = false;
     emit progress(100);
