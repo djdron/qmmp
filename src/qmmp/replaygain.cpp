@@ -114,17 +114,12 @@ qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
 
         qint64 samples = size >> (m_sample_size >> 1); //size / m_sample_size;
 
-        double s = 0;
-
         switch (m_format)
         {
         case Qmmp::PCM_S8:
         {
             for (qint64 i = 0; i < samples; i++)
-            {
-                s = qBound(-128.0, ((char*)data)[i] * m_scale, 127.0);
-                ((char*)data)[i] = s;
-            }
+                ((char*)data)[i] = qBound(-128.0, ((char*)data)[i] * m_scale, 127.0);
             break;
         }
         case Qmmp::PCM_S16LE:
