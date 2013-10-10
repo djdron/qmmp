@@ -47,8 +47,9 @@ private slots:
 
 private:
     void stop();
+    RGScaner *findScannerByUrl(const QString &url);
     Ui::RGScanDialog m_ui;
-    QList<RGScaner *> m_scaners;
+    QList<RGScaner *> m_scanners;
 };
 
 #endif // RGSCANDIALOG_H
