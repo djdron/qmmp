@@ -18,10 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdint.h>
 #include <QStringList>
-#include <QThread>
 #include <math.h>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
@@ -33,6 +30,7 @@ RGScaner::RGScaner()
     m_peak = 0.;
     m_user_stop = false;
     m_is_running = false;
+    m_has_values = false;
     m_handle = 0;
     m_decoder = 0;
     m_source = 0;
@@ -41,26 +39,19 @@ RGScaner::RGScaner()
 RGScaner::~RGScaner()
 {
     stop();
+    deinit();
     if(m_handle)
     {
         DeinitGainAbalysis(m_handle);
         m_handle = 0;
     }
-    if(m_decoder)
-    {
-        delete m_decoder;
-        m_decoder = 0;
-    }
-    if(m_source)
-    {
-        delete m_source;
-        m_source = 0;
-    }
 }
 
 bool RGScaner::prepare(const QString &url)
 {
+    deinit();
     m_url = url;
+    QString name = m_url.section("/", -1);
     InputSource *source = InputSource::create(url, 0);
     if(!source->initialize())
     {
@@ -69,35 +60,33 @@ bool RGScaner::prepare(const QString &url)
         return false;
     }
 
-    if(source->ioDevice())
+    if(source->ioDevice() && !source->ioDevice()->open(QIODevice::ReadOnly))
     {
-        if(!source->ioDevice()->open(QIODevice::ReadOnly))
-        {
-            delete source;
-            qWarning("RGScaner: unable to open input stream, error: %s",
-                     qPrintable(m_source->ioDevice()->errorString()));
-            return false;
-        }
+        delete source;
+        qWarning("RGScaner: [%s] unable to open input stream, error: %s",
+                 qPrintable(name),
+                 qPrintable(source->ioDevice()->errorString()));
+        return false;
     }
 
     DecoderFactory *factory = Decoder::findByPath(source->url());
 
     if(!factory)
     {
-        qWarning("RGScaner: unsupported file format");
+        qWarning("RGScaner: [%s] unable to find factory", qPrintable(name));
         delete source;
         return false;
     }
-    qDebug("RGScaner: selected decoder: %s",qPrintable(factory->properties().shortName));
+    qDebug("RGScaner: [%s] selected decoder: %s",
+           qPrintable(factory->properties().shortName), qPrintable(name));
 
     if(factory->properties().noInput && source->ioDevice())
         source->ioDevice()->close();
 
-
     Decoder *decoder = factory->create(source->url(), source->ioDevice());
     if(!decoder->initialize())
     {
-        qWarning("RGScaner: invalid file format");
+        qWarning("RGScaner: [%s] invalid file format", qPrintable(name));
         delete source;
         delete decoder;
         return false;
@@ -105,6 +94,7 @@ bool RGScaner::prepare(const QString &url)
     m_decoder = decoder;
     m_source = source;
     m_user_stop = false;
+    m_has_values = false;
     return true;
 }
 
@@ -120,6 +110,11 @@ bool RGScaner::isRunning()
     return m_is_running;
 }
 
+bool RGScaner::hasValues() const
+{
+    return m_has_values;
+}
+
 double RGScaner::gain() const
 {
     return m_gain;
@@ -128,6 +123,11 @@ double RGScaner::gain() const
 double RGScaner::peak() const
 {
     return m_peak;
+}
+
+QString RGScaner::url() const
+{
+    return m_url;
 }
 
 GainHandle_t *RGScaner::handle()
@@ -139,9 +139,10 @@ void RGScaner::run()
 {
     if(m_user_stop)
         return;
+    QString name = m_url.section("/", -1);
+    qDebug("RGScaner: [%s] staring thread", qPrintable(name));
     m_is_running = true;
-    qDebug("RGScaner: staring thread %lu",  QThread::currentThreadId());
-    m_user_stop = false;
+    bool error = false;
 
     AudioParameters ap = m_decoder->audioParameters();
     Qmmp::AudioFormat format = ap.format();
@@ -165,8 +166,13 @@ void RGScaner::run()
         {
             samples = m_decoder->read(float_buf, buf_size);
 
-            if(samples <= 0)
-                break;          //TODO add error handler
+            if(samples < 0)
+            {
+                error = true;
+                break;
+            }
+            else if(samples == 0)
+                break;
 
             if(ap.channels() == 2)
             {
@@ -191,8 +197,13 @@ void RGScaner::run()
         {
             qint64 len = m_decoder->read(char_buf, buf_size*ap.sampleSize());
 
-            if(len <= 0)
-                break;          //TODO add error handler
+            if(samples < 0)
+            {
+                error = true;
+                break;
+            }
+            else if(samples == 0)
+                break;
 
             samples = len / ap.sampleSize();
 
@@ -266,11 +277,38 @@ void RGScaner::run()
         m_mutex.unlock();
     }
 
-    m_gain = GetTitleGain(m_handle);
-    m_peak = max/32768.0;
-    qDebug("RGScaner: peak = %f", m_peak);
-    qDebug("RGScaner: thread %lu finished", QThread::currentThreadId());
-    emit progress(100);
+    if(error)
+    {
+        qWarning("RGScaner: [%s] finished with error", qPrintable(name));
+    }
+    else if(m_user_stop)
+    {
+        qDebug("RGScaner: [%s] stopped by user", qPrintable(name));
+    }
+    else
+    {
+        m_gain = GetTitleGain(m_handle);
+        m_peak = max/32768.0;
+        emit progress(100);
+        qDebug("RGScaner: [%s] peak=%f, gain=%f", qPrintable(name), m_peak, m_gain);
+        qDebug("RGScaner: [%s] finished with success ", qPrintable(name));
+        m_has_values = true;
+    }
+    deinit();
     emit finished(m_url);
     m_is_running = false;
+}
+
+void RGScaner::deinit()
+{
+    if(m_decoder)
+    {
+        delete m_decoder;
+        m_decoder = 0;
+    }
+    if(m_source)
+    {
+        delete m_source;
+        m_source = 0;
+    }
 }

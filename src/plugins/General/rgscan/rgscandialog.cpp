@@ -43,6 +43,9 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
         if(track->length() == 0 || track->url().contains("://"))
             continue;
 
+        if(!track->url().toLower().endsWith(".mp3"))
+            continue;
+
         QString text = formatter.parse(track);
         QTableWidgetItem *item = new QTableWidgetItem(text);
         item->setData(Qt::UserRole, track->url());
@@ -71,9 +74,15 @@ void RGScanDialog::on_calculateButton_clicked()
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
         RGScaner *scaner = new RGScaner();
-        m_scaners.append(scaner);
-        scaner->prepare(url);
+
+        if(!scaner->prepare(url))
+        {
+            m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("Error")));
+            delete scaner;
+            continue;
+        }
         scaner->setAutoDelete(false);
+        m_scanners.append(scaner);
         connect(scaner, SIGNAL(progress(int)), m_ui.tableWidget->cellWidget(i, 1), SLOT(setValue(int)));
         connect(scaner, SIGNAL(finished(QString)), SLOT(onScanFinished(QString)));
         QThreadPool::globalInstance()->start(scaner);
@@ -82,19 +91,24 @@ void RGScanDialog::on_calculateButton_clicked()
 
 void RGScanDialog::onScanFinished(QString url)
 {
+
     for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
         if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
             continue;
-        m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(m_scaners.at(i)->gain())));
-        m_ui.tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(m_scaners.at(i)->peak())));
+        RGScaner *scanner = findScannerByUrl(url);
+        if(!scanner)
+            qFatal("RGScanDialog: unable to find scanner by URL!");
+        m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(scanner->gain())));
+        m_ui.tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(scanner->peak())));
+        break;
     }
 
     bool stopped = true;
 
-    foreach (RGScaner *scaner, m_scaners)
+    foreach (RGScaner *scanner, m_scanners)
     {
-        if(scaner->isRunning())
+        if(scanner->isRunning())
             stopped = false;
     }
 
@@ -105,15 +119,15 @@ void RGScanDialog::onScanFinished(QString url)
 
         double album_peak = 0.;
 
-        GainHandle_t **a = (GainHandle_t **) malloc(m_scaners.count()*sizeof(GainHandle_t *));
+        GainHandle_t **a = (GainHandle_t **) malloc(m_scanners.count()*sizeof(GainHandle_t *));
 
-        for(int i = 0; i < m_scaners.count(); ++i)
+        for(int i = 0; i < m_scanners.count(); ++i)
         {
-            a[i] = m_scaners.at(i)->handle();
-            album_peak = qMax(m_scaners.at(i)->peak(), album_peak);
+            a[i] = m_scanners.at(i)->handle();
+            album_peak = qMax(m_scanners.at(i)->peak(), album_peak);
         }
 
-        double album_gain = GetAlbumGain(a, m_scaners.count());
+        double album_gain = GetAlbumGain(a, m_scanners.count());
         free(a);
 
         for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
@@ -122,8 +136,8 @@ void RGScanDialog::onScanFinished(QString url)
             m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
         }
 
-        qDeleteAll(m_scaners);
-        m_scaners.clear();
+        qDeleteAll(m_scanners);
+        m_scanners.clear();
 
         m_ui.writeButton->setEnabled(true);
     }
@@ -138,13 +152,23 @@ void RGScanDialog::reject()
 
 void RGScanDialog::stop()
 {
-    if(m_scaners.isEmpty())
+    if(m_scanners.isEmpty())
         return;
-    foreach (RGScaner *scaner, m_scaners)
+    foreach (RGScaner *scaner, m_scanners)
     {
         scaner->stop();
     }
     QThreadPool::globalInstance()->waitForDone();
-    qDeleteAll(m_scaners);
-    m_scaners.clear();
+    qDeleteAll(m_scanners);
+    m_scanners.clear();
+}
+
+RGScaner *RGScanDialog::findScannerByUrl(const QString &url)
+{
+    foreach (RGScaner *scanner, m_scanners)
+    {
+        if(scanner->url() == url)
+            return scanner;
+    }
+    return 0;
 }

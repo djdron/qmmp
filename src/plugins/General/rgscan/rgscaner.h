@@ -44,8 +44,10 @@ public:
     bool prepare(const QString &url);
     void stop();
     bool isRunning();
+    bool hasValues() const;
     double gain() const;
     double peak() const;
+    QString url() const;
     GainHandle_t *handle();
 
 signals:
@@ -54,11 +56,11 @@ signals:
 
 private:
     void run();
+    void deinit();
     InputSource *m_source;
     Decoder *m_decoder;
     QMutex m_mutex;
-    bool m_user_stop;
-    bool m_is_running;
+    bool m_user_stop, m_is_running, m_has_values;
     QString m_url;
     double m_gain;
     double m_peak;
