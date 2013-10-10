@@ -20,6 +20,12 @@
  *   $Id: iir_fpu.c,v 1.4 2006/01/15 00:26:32 liebremx Exp $
  */
 
+/*
+     modifications compared to original code:
+     added 48/96 kHz sampling rate support
+     added 24/32bit sample size support
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include "iir_fpu.h"
