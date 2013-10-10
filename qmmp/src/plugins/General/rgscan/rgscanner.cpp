@@ -56,14 +56,14 @@ bool RGScanner::prepare(const QString &url)
     if(!source->initialize())
     {
         delete source;
-        qWarning("RGScaner: Invalid url");
+        qWarning("RGScanner: Invalid url");
         return false;
     }
 
     if(source->ioDevice() && !source->ioDevice()->open(QIODevice::ReadOnly))
     {
         delete source;
-        qWarning("RGScaner: [%s] unable to open input stream, error: %s",
+        qWarning("RGScanner: [%s] unable to open input stream, error: %s",
                  qPrintable(name),
                  qPrintable(source->ioDevice()->errorString()));
         return false;
@@ -73,11 +73,11 @@ bool RGScanner::prepare(const QString &url)
 
     if(!factory)
     {
-        qWarning("RGScaner: [%s] unable to find factory", qPrintable(name));
+        qWarning("RGScanner: [%s] unable to find factory", qPrintable(name));
         delete source;
         return false;
     }
-    qDebug("RGScaner: [%s] selected decoder: %s",
+    qDebug("RGScanner: [%s] selected decoder: %s",
            qPrintable(factory->properties().shortName), qPrintable(name));
 
     if(factory->properties().noInput && source->ioDevice())
@@ -86,7 +86,7 @@ bool RGScanner::prepare(const QString &url)
     Decoder *decoder = factory->create(source->url(), source->ioDevice());
     if(!decoder->initialize())
     {
-        qWarning("RGScaner: [%s] invalid file format", qPrintable(name));
+        qWarning("RGScanner: [%s] invalid file format", qPrintable(name));
         delete source;
         delete decoder;
         return false;
@@ -140,7 +140,7 @@ void RGScanner::run()
     if(m_user_stop)
         return;
     QString name = m_url.section("/", -1);
-    qDebug("RGScaner: [%s] staring thread", qPrintable(name));
+    qDebug("RGScanner: [%s] staring thread", qPrintable(name));
     m_is_running = true;
     bool error = false;
 
@@ -279,19 +279,19 @@ void RGScanner::run()
 
     if(error)
     {
-        qWarning("RGScaner: [%s] finished with error", qPrintable(name));
+        qWarning("RGScanner: [%s] finished with error", qPrintable(name));
     }
     else if(m_user_stop)
     {
-        qDebug("RGScaner: [%s] stopped by user", qPrintable(name));
+        qDebug("RGScanner: [%s] stopped by user", qPrintable(name));
     }
     else
     {
         m_gain = GetTitleGain(m_handle);
         m_peak = max/32768.0;
         emit progress(100);
-        qDebug("RGScaner: [%s] peak=%f, gain=%f", qPrintable(name), m_peak, m_gain);
-        qDebug("RGScaner: [%s] finished with success ", qPrintable(name));
+        qDebug("RGScanner: [%s] peak=%f, gain=%f", qPrintable(name), m_peak, m_gain);
+        qDebug("RGScanner: [%s] finished with success ", qPrintable(name));
         m_has_values = true;
     }
     deinit();
