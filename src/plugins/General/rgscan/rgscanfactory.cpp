@@ -25,8 +25,8 @@
 const GeneralProperties RGScanFactory::properties() const
 {
     GeneralProperties properties;
-    properties.name = tr("ReplayGain Scaner");
-    properties.shortName = "rgscaner";
+    properties.name = tr("ReplayGain Scanner Plugin");
+    properties.shortName = "rgscan";
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.visibilityControl = false;
@@ -46,11 +46,15 @@ QDialog *RGScanFactory::createConfigDialog(QWidget *parent)
 
 void RGScanFactory::showAbout(QWidget *parent)
 {
-    /*QMessageBox::about (parent, tr("About Converter Plugin"),
-                        tr("Qmmp Converter Plugin")+"\n"+
-                        tr("This plugin converts supported audio files to other file formats "
-                           "using external command-line encoders") +"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+    QMessageBox::about (parent, tr("About ReplayGain Scanner Plugin"),
+                        tr("ReplayGain Scanner Plugin for Qmmp")+"\n"+
+                        tr("This plugin scans audio files and gives information for volume normalization") + "\n" +
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
+                        tr("Based on source code by:") + "\n" +
+                        tr("David Robinson <David@Robinson.org>") + "\n" +
+                        tr("Glen Sawyer <mp3gain@hotmail.com>") + "\n" +
+                        tr("Frank Klemm"));
+
 }
 
 QTranslator *RGScanFactory::createTranslator(QObject *parent)
@@ -61,4 +65,4 @@ QTranslator *RGScanFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(rgscaner, RGScanFactory)
+Q_EXPORT_PLUGIN2(rgscan, RGScanFactory)

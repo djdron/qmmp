@@ -20,13 +20,10 @@
 #ifndef RGSCANHELPER_H
 #define RGSCANHELPER_H
 
-#include <QPointer>
-
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
 
 class QAction;
-class QProgressDialog;
 class RGScaner;
 
 /**
@@ -37,16 +34,10 @@ class RGScanHelper : public QObject
 Q_OBJECT
 public:
     RGScanHelper(QObject *parent = 0);
-
     ~RGScanHelper();
 
 private slots:
     void openRGScaner();
-
-private:
-    QAction *m_action;
-    //RGScaner *m_scaner;
-    QProgressDialog *m_progress;
 
 };
 

@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include <QAction>
-#include <QApplication>
-#include <QProgressDialog>
 #include <qmmp/soundcore.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmanager.h>
@@ -32,25 +30,14 @@
 
 RGScanHelper::RGScanHelper(QObject *parent) : QObject(parent)
 {
-    m_action = new QAction(tr("Calculate ReplayGain"), this);
-    m_action->setShortcut(tr("Meta+R"));
-    UiHelper::instance()->addAction(m_action, UiHelper::PLAYLIST_MENU);
-    connect (m_action, SIGNAL(triggered ()), SLOT(openRGScaner()));
-    //m_scaner = new RGScaner(this);
-    m_progress = new QProgressDialog();
-    m_progress->setRange(0,100);
-    m_progress->setWindowTitle(tr("Scaning..."));
-    m_progress->setCancelButtonText(tr("Cancel"));
-    //connect(m_scaner,SIGNAL(progress(int)),m_progress,SLOT(setValue(int)));
-    //connect(m_scaner, SIGNAL(finished()), m_progress, SLOT(reset()));
-    //connect(m_scaner, SIGNAL(desriptionChanged(QString)), m_progress, SLOT(setLabelText(QString)));
-    //connect(m_progress, SIGNAL(canceled()), m_scaner, SLOT(stop()));
+    QAction *action = new QAction(tr("ReplayGain Scanner"), this);
+    action->setShortcut(tr("Meta+R"));
+    UiHelper::instance()->addAction(action, UiHelper::PLAYLIST_MENU);
+    connect (action, SIGNAL(triggered ()), SLOT(openRGScaner()));
 }
 
 RGScanHelper::~RGScanHelper()
-{
-    delete m_progress;
-}
+{}
 
 void RGScanHelper::openRGScaner()
 {
