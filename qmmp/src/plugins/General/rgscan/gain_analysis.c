@@ -33,11 +33,12 @@
 /*
  *  Here's the deal. Call
  *
- *    InitGainAnalysis ( long samplefreq );
+ *    InitGainAnalysis (GainHandle_t **handle, long samplefreq );
  *
  *  to initialize everything. Call
  *
- *    AnalyzeSamples ( const Float_t*  left_samples,
+ *    AnalyzeSamples ( GainHandle_t*   handle,
+ *                     const Float_t*  left_samples,
  *                     const Float_t*  right_samples,
  *                     size_t          num_samples,
  *                     int             num_channels );
@@ -46,12 +47,12 @@
  *  If mono, pass the sample buffer in through left_samples, leave
  *  right_samples NULL, and make sure num_channels = 1.
  *
- *    GetTitleGain()
+ *    GetTitleGain(GainHandle_t *handle)
  *
  *  will return the recommended dB level change for all samples analyzed
  *  SINCE THE LAST TIME you called GetTitleGain() OR InitGainAnalysis().
  *
- *    GetAlbumGain()
+ *    GetAlbumGain(GainHandle_t **handle, int count)
  *
  *  will return the recommended dB level change for all samples analyzed
  *  since InitGainAnalysis() was called and finalized with GetTitleGain().
@@ -63,14 +64,23 @@
  *    size_t        num_samples;
  *    unsigned int  num_songs;
  *    unsigned int  i;
+ *    GainHandle_t **a = (GainHandle_t **) malloc(num_songs*sizeof(GainHandle_t *));
  *
- *    InitGainAnalysis ( 44100 );
- *    for ( i = 1; i <= num_songs; i++ ) {
- *        while ( ( num_samples = getSongSamples ( song[i], left_samples, right_samples ) ) > 0 )
- *            AnalyzeSamples ( left_samples, right_samples, num_samples, 2 );
- *        fprintf ("Recommended dB change for song %2d: %+6.2f dB\n", i, GetTitleGain() );
+ *
+ *    for (i = 0; i < num_songs; i++)
+ *    {
+ *        GainHandle_t *handle;
+ *        InitGainAnalysis (&handle, 44100);
+ *        while((num_samples = getSongSamples(song[i], left_samples, right_samples)) > 0)
+ *        {
+ *            AnalyzeSamples (handle, left_samples, right_samples, num_samples, 2);
+ *        }
+ *        a[i] = handle;
+ *        fprintf("Recommended dB change for song %2d: %+6.2f dB\n", i+1, GetTitleGain(handle));
  *    }
- *    fprintf ("Recommended dB change for whole album: %+6.2f dB\n", GetAlbumGain() );
+ *    fprintf ("Recommended dB change for whole album: %+6.2f dB\n", GetAlbumGain(a, num_songs));
+ *    for (i = 0; i < num_songs; i++)
+ *        DeinitGainAbalysis(a[i]);
  */
 
 /*
@@ -87,6 +97,12 @@
  *
  *  Optimization/clarity suggestions are welcome.
  */
+
+/*
+     modifications compared to original code:
+     added full reentrancy support
+     fixed gcc warnings
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -105,13 +121,13 @@ typedef signed int      Int32_t;
 #define YULE_FILTER     filterYule
 #define BUTTER_FILTER   filterButter
 #define RMS_PERCENTILE      0.95        // percentile which is louder than the proposed level
-#define MAX_SAMP_FREQ   96000.          // maximum allowed sample frequency [Hz]
-#define RMS_WINDOW_TIME     0.050       // Time slice size [s]
-#define STEPS_per_dB      100.          // Table entries per dB
-#define MAX_dB            120.          // Table entries for 0...MAX_dB (normal max. values are 70...80 dB)
+#define MAX_SAMP_FREQ   96000           // maximum allowed sample frequency [Hz]
+#define RMS_WINDOW_TIME    50           // Time slice size [ms]
+#define STEPS_per_dB      100           // Table entries per dB
+#define MAX_dB            120           // Table entries for 0...MAX_dB (normal max. values are 70...80 dB)
 
 #define MAX_ORDER               (BUTTER_ORDER > YULE_ORDER ? BUTTER_ORDER : YULE_ORDER)
-#define MAX_SAMPLES_PER_WINDOW  (size_t) (MAX_SAMP_FREQ * RMS_WINDOW_TIME + 1)      // max. Samples per Time slice
+#define MAX_SAMPLES_PER_WINDOW  (size_t) (MAX_SAMP_FREQ * RMS_WINDOW_TIME / 1000 + 1)    // max. Samples per Time slice
 #define PINK_REF                64.82 //298640883795                              // calibration value
 
 
@@ -136,11 +152,11 @@ struct GainHandle
     int              freqindex;
     int              first;
     Uint32_t  A [(size_t)(STEPS_per_dB * MAX_dB)];
-//    Uint32_t  B [(size_t)(STEPS_per_dB * MAX_dB)];
 };
 
 // for each filter:
-// [0] 48 kHz, [1] 44.1 kHz, [2] 32 kHz, [3] 24 kHz, [4] 22050 Hz, [5] 16 kHz, [6] 12 kHz, [7] is 11025 Hz, [8] 8 kHz
+// [0] 96 kHz, [1] 88.2, [2] 64 kHz, [3] 48 kHz, [4] 44.1 kHz, [5] 32 kHz,
+// [6] 24 kHz, [7] 22050 Hz, [8] 16 kHz, [9] 12 kHz, [10] is 11025 Hz, [11] 8 kHz
 
 #ifdef WIN32
 #ifndef __GNUC__
@@ -267,7 +283,7 @@ int ResetSampleFrequency (GainHandle_t *handle, long samplefreq)
     default: return INIT_GAIN_ANALYSIS_ERROR;
     }
 
-    handle->sampleWindow = (int) ceil (samplefreq * RMS_WINDOW_TIME);
+    handle->sampleWindow = (int) ceil (samplefreq * RMS_WINDOW_TIME / 1000);
 
     handle->lsum    = 0.;
     handle->rsum    = 0.;
@@ -496,7 +512,8 @@ Float_t GetAlbumGain(GainHandle_t **handle, int count)
     Uint32_t  B [(size_t)(STEPS_per_dB * MAX_dB)];
     memset (B, 0, sizeof(B));
 
-    int i = 0, j = 0;
+    int i = 0;
+    unsigned int j = 0;
 
     for(i = 0; i < count; ++i)
     {
@@ -508,19 +525,9 @@ Float_t GetAlbumGain(GainHandle_t **handle, int count)
     return analyzeResult(B, sizeof(B)/sizeof(*B));
 }
 
-/*Float_t GetAlbumGain(GainHandle_t *handle)
-{
-    return analyzeResult (handle->B, sizeof(handle->B)/sizeof(*handle->B));
-}*/
-
 void DeinitGainAbalysis(GainHandle_t *handle)
 {
     free(handle);
 }
 
 /* end of gain_analysis.c */
-
-
-
-
-
