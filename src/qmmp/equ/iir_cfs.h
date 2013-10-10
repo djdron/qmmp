@@ -19,16 +19,24 @@
  *
  *   $Id: iir_cfs.h,v 1.1 2005/10/17 01:57:59 liebremx Exp $
  */
+
+/*
+     modifications compared to original code:
+     added 48/96 kHz sampling rate support
+     added 24/32bit sample size support
+     removed glib dependency
+*/
+
 #ifndef IIR_CFS_H
 #define IIR_CFS_H
 
 //#include <glib.h>
 
 /* Coefficients entry */
-typedef struct 
+typedef struct
 {
     float beta;
-    float alpha; 
+    float alpha;
     float gamma;
     float dummy; // Word alignment
 }sIIRCoefficients;
