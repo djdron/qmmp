@@ -104,6 +104,7 @@ bool RGScaner::prepare(const QString &url)
     }
     m_decoder = decoder;
     m_source = source;
+    m_user_stop = false;
     return true;
 }
 
@@ -112,7 +113,6 @@ void RGScaner::stop()
     m_mutex.lock();
     m_user_stop = true;
     m_mutex.unlock();
-    wait();
 }
 
 bool RGScaner::isRunning()
@@ -137,6 +137,8 @@ GainHandle_t *RGScaner::handle()
 
 void RGScaner::run()
 {
+    if(m_user_stop)
+        return;
     m_is_running = true;
     qDebug("RGScaner: staring thread %lu",  QThread::currentThreadId());
     m_user_stop = false;
@@ -268,7 +270,7 @@ void RGScaner::run()
     m_peak = max/32768.0;
     qDebug("RGScaner: peak = %f", m_peak);
     qDebug("RGScaner: thread %lu finished", QThread::currentThreadId());
-    m_is_running = false;
     emit progress(100);
     emit finished(m_url);
+    m_is_running = false;
 }
