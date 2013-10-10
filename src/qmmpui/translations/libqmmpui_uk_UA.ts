@@ -247,7 +247,7 @@
     <message>
         <location filename="../configdialog.cpp" line="334"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>Галісійська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="335"/>
