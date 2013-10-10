@@ -24,7 +24,6 @@
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
-#include "rgscaner.h"
 #include "rgscandialog.h"
 #include "rgscanhelper.h"
 

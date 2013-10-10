@@ -22,9 +22,9 @@
 #include <math.h>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
-#include "rgscaner.h"
+#include "rgscanner.h"
 
-RGScaner::RGScaner()
+RGScanner::RGScanner()
 {
     m_gain = 0.;
     m_peak = 0.;
@@ -36,7 +36,7 @@ RGScaner::RGScaner()
     m_source = 0;
 }
 
-RGScaner::~RGScaner()
+RGScanner::~RGScanner()
 {
     stop();
     deinit();
@@ -47,7 +47,7 @@ RGScaner::~RGScaner()
     }
 }
 
-bool RGScaner::prepare(const QString &url)
+bool RGScanner::prepare(const QString &url)
 {
     deinit();
     m_url = url;
@@ -98,44 +98,44 @@ bool RGScaner::prepare(const QString &url)
     return true;
 }
 
-void RGScaner::stop()
+void RGScanner::stop()
 {
     m_mutex.lock();
     m_user_stop = true;
     m_mutex.unlock();
 }
 
-bool RGScaner::isRunning()
+bool RGScanner::isRunning()
 {
     return m_is_running;
 }
 
-bool RGScaner::hasValues() const
+bool RGScanner::hasValues() const
 {
     return m_has_values;
 }
 
-double RGScaner::gain() const
+double RGScanner::gain() const
 {
     return m_gain;
 }
 
-double RGScaner::peak() const
+double RGScanner::peak() const
 {
     return m_peak;
 }
 
-QString RGScaner::url() const
+QString RGScanner::url() const
 {
     return m_url;
 }
 
-GainHandle_t *RGScaner::handle()
+GainHandle_t *RGScanner::handle()
 {
     return m_handle;
 }
 
-void RGScaner::run()
+void RGScanner::run()
 {
     if(m_user_stop)
         return;
@@ -299,7 +299,7 @@ void RGScaner::run()
     m_is_running = false;
 }
 
-void RGScaner::deinit()
+void RGScanner::deinit()
 {
     if(m_decoder)
     {
