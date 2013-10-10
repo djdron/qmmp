@@ -24,7 +24,7 @@
 #include <qmmp/qmmp.h>
 
 class QAction;
-class RGScaner;
+class RGScanner;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>

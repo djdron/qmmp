@@ -28,7 +28,7 @@
 class QAction;
 class PlayListTrack;
 class ConverterPreset;
-class RGScaner;
+class RGScanner;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -47,9 +47,9 @@ private slots:
 
 private:
     void stop();
-    RGScaner *findScannerByUrl(const QString &url);
+    RGScanner *findScannerByUrl(const QString &url);
     Ui::RGScanDialog m_ui;
-    QList<RGScaner *> m_scanners;
+    QList<RGScanner *> m_scanners;
 };
 
 #endif // RGSCANDIALOG_H

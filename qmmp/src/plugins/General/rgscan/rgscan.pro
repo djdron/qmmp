@@ -42,14 +42,14 @@ INSTALLS += target
 HEADERS += rgscanfactory.h \
     rgscanhelper.h \
     rgscandialog.h \
-    rgscaner.h \
-    gain_analysis.h
+    gain_analysis.h \
+    rgscanner.h
 
 win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += rgscanfactory.cpp \
     rgscanhelper.cpp \
     rgscandialog.cpp \
-    rgscaner.cpp \
-    gain_analysis.c
+    gain_analysis.c \
+    rgscanner.cpp
 
 FORMS += rgscandialog.ui

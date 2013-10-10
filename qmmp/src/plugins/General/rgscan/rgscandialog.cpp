@@ -25,7 +25,7 @@
 #include <qmmpui/playlisttrack.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
-#include "rgscaner.h"
+#include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
 
@@ -73,7 +73,7 @@ void RGScanDialog::on_calculateButton_clicked()
     for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
-        RGScaner *scaner = new RGScaner();
+        RGScanner *scaner = new RGScanner();
 
         if(!scaner->prepare(url))
         {
@@ -96,7 +96,7 @@ void RGScanDialog::onScanFinished(QString url)
     {
         if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
             continue;
-        RGScaner *scanner = findScannerByUrl(url);
+        RGScanner *scanner = findScannerByUrl(url);
         if(!scanner)
             qFatal("RGScanDialog: unable to find scanner by URL!");
         m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(scanner->gain())));
@@ -106,7 +106,7 @@ void RGScanDialog::onScanFinished(QString url)
 
     bool stopped = true;
 
-    foreach (RGScaner *scanner, m_scanners)
+    foreach (RGScanner *scanner, m_scanners)
     {
         if(scanner->isRunning())
             stopped = false;
@@ -154,7 +154,7 @@ void RGScanDialog::stop()
 {
     if(m_scanners.isEmpty())
         return;
-    foreach (RGScaner *scaner, m_scanners)
+    foreach (RGScanner *scaner, m_scanners)
     {
         scaner->stop();
     }
@@ -163,9 +163,9 @@ void RGScanDialog::stop()
     m_scanners.clear();
 }
 
-RGScaner *RGScanDialog::findScannerByUrl(const QString &url)
+RGScanner *RGScanDialog::findScannerByUrl(const QString &url)
 {
-    foreach (RGScaner *scanner, m_scanners)
+    foreach (RGScanner *scanner, m_scanners)
     {
         if(scanner->url() == url)
             return scanner;

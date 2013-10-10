@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef RGSCANER_H
-#define RGSCANER_H
+#ifndef RGSCANNER_H
+#define RGSCANNER_H
 
 #include <QRunnable>
 #include <QObject>
@@ -34,12 +34,12 @@
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class RGScaner : public QObject, public QRunnable
+class RGScanner : public QObject, public QRunnable
 {
     Q_OBJECT
 public:
-    explicit RGScaner();
-    ~RGScaner();
+    explicit RGScanner();
+    ~RGScanner();
 
     bool prepare(const QString &url);
     void stop();
@@ -68,4 +68,4 @@ private:
 
 };
 
-#endif // RGSCANER_H
+#endif // RGSCANNER_H
