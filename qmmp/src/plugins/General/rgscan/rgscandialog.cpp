@@ -141,7 +141,9 @@ void RGScanDialog::stop()
     if(m_scaners.isEmpty())
         return;
     foreach (RGScaner *scaner, m_scaners)
+    {
         scaner->stop();
+    }
     QThreadPool::globalInstance()->waitForDone();
     qDeleteAll(m_scaners);
     m_scaners.clear();
