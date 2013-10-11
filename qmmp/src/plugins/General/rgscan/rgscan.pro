@@ -16,7 +16,7 @@ unix:LIBS += -lqmmpui -lqmmp
 PKGCONFIG += taglib
 
 win32:QMAKE_LIBDIR += ../../../../bin
-win32:LIBS += -lqmmpui0 -lqmmp0
+win32:LIBS += -lqmmpui0 -lqmmp0 -ltag.dll
 
 TRANSLATIONS = translations/rgscan_plugin_cs.ts \
                translations/rgscan_plugin_de.ts \
@@ -31,7 +31,7 @@ TRANSLATIONS = translations/rgscan_plugin_cs.ts \
                translations/rgscan_plugin_nl.ts \
                translations/rgscan_plugin_ja.ts \
                translations/rgscan_plugin_es.ts
-#RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
