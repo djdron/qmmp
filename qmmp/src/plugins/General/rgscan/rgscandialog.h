@@ -23,6 +23,7 @@
 
 #include <QDialog>
 #include <QStringList>
+#include <qmmp/qmmp.h>
 #include "ui_rgscandialog.h"
 
 class QAction;
@@ -48,6 +49,7 @@ private slots:
 private:
     void stop();
     RGScanner *findScannerByUrl(const QString &url);
+    QString getAlbumName(const QString &url);
     Ui::RGScanDialog m_ui;
     QList<RGScanner *> m_scanners;
 };

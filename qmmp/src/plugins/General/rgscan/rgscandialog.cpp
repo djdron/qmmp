@@ -25,9 +25,17 @@
 #include <qmmpui/playlisttrack.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
+#include <qmmp/metadatamanager.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
+
+struct ReplayGainInfoItem
+{
+    QMap<Qmmp::ReplayGainKey, double> info;
+    QString url;
+    GainHandle_t *handle;
+};
 
 RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : QDialog(parent)
 {
@@ -70,6 +78,7 @@ RGScanDialog::~RGScanDialog()
 
 void RGScanDialog::on_calculateButton_clicked()
 {
+    m_ui.writeButton->setEnabled(false);
     for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
@@ -117,27 +126,63 @@ void RGScanDialog::onScanFinished(QString url)
         qDebug("RGScanDialog: all threads finished");
         QThreadPool::globalInstance()->waitForDone();
 
-        double album_peak = 0.;
+        QMultiMap<QString, ReplayGainInfoItem*> itemGroupMap; //items grouped  by album
 
-        GainHandle_t **a = (GainHandle_t **) malloc(m_scanners.count()*sizeof(GainHandle_t *));
-
-        for(int i = 0; i < m_scanners.count(); ++i)
+        //group by album name
+        foreach (RGScanner *scanner, m_scanners)
         {
-            a[i] = m_scanners.at(i)->handle();
-            album_peak = qMax(m_scanners.at(i)->peak(), album_peak);
+            ReplayGainInfoItem *item = new ReplayGainInfoItem;
+            item->info[Qmmp::REPLAYGAIN_TRACK_GAIN] = scanner->gain();
+            item->info[Qmmp::REPLAYGAIN_TRACK_PEAK] = scanner->peak();
+            item->url = scanner->url();
+            item->handle = scanner->handle();
+            QString album = getAlbumName(item->url);
+            itemGroupMap.insert(album, item);
         }
-
-        double album_gain = GetAlbumGain(a, m_scanners.count());
-        free(a);
-
-        for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
+        //calculate album peak and gain
+        foreach (QString album, itemGroupMap.keys())
         {
-            m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(album_gain)));
-            m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
+            QList<ReplayGainInfoItem*> items = itemGroupMap.values(album);
+            GainHandle_t **a = (GainHandle_t **) malloc(items.count()*sizeof(GainHandle_t *));
+            double album_peak = 0;
+            for(int i = 0; i < items.count(); ++i)
+            {
+                a[i] = items[i]->handle;
+                album_peak = qMax(items[i]->info[Qmmp::REPLAYGAIN_TRACK_PEAK], album_peak);
+            }
+            double album_gain = GetAlbumGain(a, items.count());
+            free(a);
+            foreach (ReplayGainInfoItem *item, items)
+            {
+                item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK] = album_peak;
+                item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN] = album_gain;
+            }
         }
-
+        //clear scanners
         qDeleteAll(m_scanners);
         m_scanners.clear();
+
+        //update table
+        QList<ReplayGainInfoItem*> replayGainItemList = itemGroupMap.values();
+        for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
+        {
+            QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
+            foreach (ReplayGainInfoItem *item, replayGainItemList)
+            {
+                if(item->url == url)
+                {
+                    double album_gain = item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN];
+                    double album_peak = item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK];
+                    m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(album_gain)));
+                    m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
+                }
+            }
+        }
+
+        //clear items
+        qDeleteAll(replayGainItemList);
+        replayGainItemList.clear();
+        itemGroupMap.clear();
 
         m_ui.writeButton->setEnabled(true);
     }
@@ -171,4 +216,14 @@ RGScanner *RGScanDialog::findScannerByUrl(const QString &url)
             return scanner;
     }
     return 0;
+}
+
+QString RGScanDialog::getAlbumName(const QString &url)
+{
+    QList <FileInfo *> infoList = MetaDataManager::instance()->createPlayList(url);
+    if(infoList.isEmpty())
+        return QString();
+    QString album = infoList.first()->metaData(Qmmp::ALBUM);
+    qDeleteAll(infoList);
+    return album;
 }
