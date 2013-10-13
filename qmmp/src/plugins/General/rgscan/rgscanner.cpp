@@ -295,8 +295,8 @@ void RGScanner::run()
         m_has_values = true;
     }
     deinit();
-    emit finished(m_url);
     m_is_running = false;
+    emit finished(m_url);
 }
 
 void RGScanner::deinit()
