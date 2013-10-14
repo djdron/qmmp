@@ -5,52 +5,67 @@
     <name>RGScanDialog</name>
     <message>
         <location filename="../rgscandialog.ui" line="14"/>
-        <source>ReplayGain Calculator</source>
+        <source>ReplayGain Scanner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="42"/>
+        <location filename="../rgscandialog.ui" line="29"/>
+        <source>Write track gain/peak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rgscandialog.ui" line="56"/>
         <source>Title</source>
         <translation type="unfinished">Название</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="47"/>
+        <location filename="../rgscandialog.ui" line="61"/>
         <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="52"/>
+        <location filename="../rgscandialog.ui" line="66"/>
         <source>Track Gain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="57"/>
+        <location filename="../rgscandialog.ui" line="71"/>
         <source>Album Gain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="62"/>
+        <location filename="../rgscandialog.ui" line="76"/>
         <source>Track Peak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="67"/>
+        <location filename="../rgscandialog.ui" line="81"/>
         <source>Album Peak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="75"/>
+        <location filename="../rgscandialog.ui" line="89"/>
         <source>Calculate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="82"/>
+        <location filename="../rgscandialog.ui" line="96"/>
         <source>Write Tags</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="89"/>
-        <location filename="../rgscandialog.cpp" line="121"/>
+        <location filename="../rgscandialog.ui" line="103"/>
+        <source>Write album gain/peak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rgscandialog.cpp" line="97"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rgscandialog.cpp" line="119"/>
+        <location filename="../rgscandialog.cpp" line="186"/>
         <source>%1 dB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,12 +121,12 @@
 <context>
     <name>RGScanHelper</name>
     <message>
-        <location filename="../rgscanhelper.cpp" line="33"/>
+        <location filename="../rgscanhelper.cpp" line="32"/>
         <source>ReplayGain Scanner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscanhelper.cpp" line="34"/>
+        <location filename="../rgscanhelper.cpp" line="33"/>
         <source>Meta+R</source>
         <translation type="unfinished"></translation>
     </message>
