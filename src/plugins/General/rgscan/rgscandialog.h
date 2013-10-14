@@ -24,12 +24,14 @@
 #include <QDialog>
 #include <QStringList>
 #include <qmmp/qmmp.h>
+#include <taglib/tstring.h>
 #include "ui_rgscandialog.h"
 
 class QAction;
 class PlayListTrack;
 class ConverterPreset;
 class RGScanner;
+struct ReplayGainInfoItem;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -45,13 +47,17 @@ private slots:
     void on_calculateButton_clicked();
     void onScanFinished(QString url);
     void reject();
+    void on_writeButton_clicked();
 
 private:
     void stop();
     RGScanner *findScannerByUrl(const QString &url);
     QString getAlbumName(const QString &url);
+    TagLib::String gainToString(double value);
+    TagLib::String peakToString(double value);
     Ui::RGScanDialog m_ui;
     QList<RGScanner *> m_scanners;
+    QList<ReplayGainInfoItem*> m_replayGainItemList;
 };
 
 #endif // RGSCANDIALOG_H
