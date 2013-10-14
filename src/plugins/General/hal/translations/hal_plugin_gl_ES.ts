@@ -6,32 +6,32 @@
     <message>
         <location filename="../halfactory.cpp" line="30"/>
         <source>HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadido HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="50"/>
         <source>About HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobre engadido HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="51"/>
         <source>Qmmp HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadido Qmmp HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation type="unfinished"></translation>
+        <translation>Este engadido provén detección de dispositivos extraíbles usando HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation type="unfinished"></translation>
+        <translation>Baseado en Solid (librería hardware KDE)</translation>
     </message>
 </context>
 <context>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../halplugin.cpp" line="160"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir CD &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../halplugin.cpp" line="166"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir Volume &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -52,37 +52,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>HAL Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcións do engadido HAL</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="28"/>
         <source>CD Audio Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Detección de CD de Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="37"/>
         <source>Add tracks to playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir pistas á lista de reprodución automaticamente</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>Remove tracks from playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar pistas da lista de reprodución automaticamente</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>Removable Device Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Detección de dispositivos extraíbles</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
         <source>Add files to playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir ficheiros á lista de reprodución automaticamente</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="70"/>
         <source>Remove files from playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar ficheiros da lista de reprodución automaticamente</translation>
     </message>
 </context>
 </TS>

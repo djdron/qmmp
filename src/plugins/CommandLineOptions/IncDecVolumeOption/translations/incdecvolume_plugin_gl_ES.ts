@@ -6,12 +6,12 @@
     <message>
         <location filename="../incdecvolumeoption.cpp" line="44"/>
         <source>Increase volume with step 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Incrementar o volume en 5</translation>
     </message>
     <message>
         <location filename="../incdecvolumeoption.cpp" line="45"/>
         <source>Decrease volume with step 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuír o volume en 5</translation>
     </message>
 </context>
 </TS>
