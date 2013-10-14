@@ -6,22 +6,22 @@
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="30"/>
         <source>PulseAudio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadido PulseAudio</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="54"/>
         <source>About PulseAudio Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobre o engadido PulseAudio</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="55"/>
         <source>Qmmp PulseAudio Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadido para PulseAudio de Qmmp</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="56"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

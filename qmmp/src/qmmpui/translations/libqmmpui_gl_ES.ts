@@ -530,7 +530,7 @@
     <message>
         <location filename="../configdialog.cpp" line="331"/>
         <source>Dutch</source>
-        <translation>Danés</translation>
+        <translation>Holandés</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="332"/>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../configdialog.cpp" line="334"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>Galego</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="335"/>
