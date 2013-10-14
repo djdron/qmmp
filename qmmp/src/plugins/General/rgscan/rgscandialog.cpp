@@ -270,6 +270,6 @@ void RGScanDialog::on_writeButton_clicked()
             tag->addValue("REPLAYGAIN_ALBUM_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
             tag->addValue("REPLAYGAIN_ALBUM_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
         }
-        file.save(TagLib::MPEG::File::APE);
+        file.save(TagLib::MPEG::File::APE, false);
     }
 }
