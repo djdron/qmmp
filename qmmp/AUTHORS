@@ -132,3 +132,9 @@ TagLib - audio meta-data library (C) 2002-2012
 
     Lukáš Lalinský <wheeler@kde.org>
     Scott Wheeler <wheeler@kde.org>
+
+ReplayGainAnalysis (from MP3Gain) - analyzes input samples and give the recommended dB change (C) 2001-2009
+
+    David Robinson <David@Robinson.org>
+    Glen Sawyer <mp3gain@hotmail.com>
+    Frank Klemm
