@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>ReplayGain Calculator</string>
+   <string>ReplayGain Scanner</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
