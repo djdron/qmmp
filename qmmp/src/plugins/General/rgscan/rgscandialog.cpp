@@ -26,9 +26,13 @@
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
 #include <qmmp/metadatamanager.h>
+#include <taglib/mpegfile.h>
+#include <taglib/apetag.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
+
+#define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
 struct ReplayGainInfoItem
 {
@@ -66,14 +70,18 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
 
     m_ui.tableWidget->resizeColumnsToContents();
     m_ui.writeButton->setEnabled(false);
-
+    //read settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    restoreGeometry(settings.value("RGScaner/geometry").toByteArray());
+    restoreGeometry(settings.value("RGScanner/geometry").toByteArray());
+    m_ui.trackCheckBox->setChecked(settings.value("RGScanner/write_track",true).toBool());
+    m_ui.albumCheckBox->setChecked(settings.value("RGScanner/write_album",true).toBool());
 }
 
 RGScanDialog::~RGScanDialog()
 {
     stop();
+    qDeleteAll(m_replayGainItemList);
+    m_replayGainItemList.clear();
 }
 
 void RGScanDialog::on_calculateButton_clicked()
@@ -161,13 +169,15 @@ void RGScanDialog::onScanFinished(QString url)
         //clear scanners
         qDeleteAll(m_scanners);
         m_scanners.clear();
-
+        //clear previous replaygain information
+        qDeleteAll(m_replayGainItemList);
+        m_replayGainItemList.clear();
         //update table
-        QList<ReplayGainInfoItem*> replayGainItemList = itemGroupMap.values();
+        m_replayGainItemList = itemGroupMap.values();
         for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
         {
             QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
-            foreach (ReplayGainInfoItem *item, replayGainItemList)
+            foreach (ReplayGainInfoItem *item, m_replayGainItemList)
             {
                 if(item->url == url)
                 {
@@ -180,8 +190,6 @@ void RGScanDialog::onScanFinished(QString url)
         }
 
         //clear items
-        qDeleteAll(replayGainItemList);
-        replayGainItemList.clear();
         itemGroupMap.clear();
 
         m_ui.writeButton->setEnabled(true);
@@ -191,7 +199,9 @@ void RGScanDialog::onScanFinished(QString url)
 void RGScanDialog::reject()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("RGScaner/geometry", saveGeometry());
+    settings.setValue("RGScanner/geometry", saveGeometry());
+    settings.setValue("RGScanner/write_track", m_ui.trackCheckBox->isChecked());
+    settings.setValue("RGScanner/write_album", m_ui.albumCheckBox->isChecked());
     QDialog::reject();
 }
 
@@ -226,4 +236,40 @@ QString RGScanDialog::getAlbumName(const QString &url)
     QString album = infoList.first()->metaData(Qmmp::ALBUM);
     qDeleteAll(infoList);
     return album;
+}
+
+TagLib::String RGScanDialog::gainToString(double value)
+{
+    return QStringToTString_qt4(QString("%1 dB").arg(value, 0, 'f', 2));
+}
+
+TagLib::String RGScanDialog::peakToString(double value)
+{
+    return QStringToTString_qt4(QString("%1").arg(value, 0, 'f', 6));
+}
+
+void RGScanDialog::on_writeButton_clicked()
+{
+    if(m_replayGainItemList.isEmpty())
+        return;
+
+    qDebug("RGScanDialog: writing ReplayGain values...");
+
+    foreach (ReplayGainInfoItem *item, m_replayGainItemList)
+    {
+        TagLib::MPEG::File file(qPrintable(item->url));
+        TagLib::APE::Tag *tag = file.APETag(true);
+
+        if(m_ui.trackCheckBox->isChecked())
+        {
+            tag->addValue("REPLAYGAIN_TRACK_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_TRACK_GAIN]));
+            tag->addValue("REPLAYGAIN_TRACK_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_TRACK_PEAK]));
+        }
+        if(m_ui.albumCheckBox->isChecked())
+        {
+            tag->addValue("REPLAYGAIN_ALBUM_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
+            tag->addValue("REPLAYGAIN_ALBUM_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
+        }
+        file.save(TagLib::MPEG::File::APE);
+    }
 }
