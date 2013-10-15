@@ -28,6 +28,9 @@
 #include <qmmp/metadatamanager.h>
 #include <taglib/mpegfile.h>
 #include <taglib/apetag.h>
+#include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
+#include <taglib/oggflacfile.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
@@ -47,25 +50,33 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
     m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height() + 2);
     m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
 
-    MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
-
-    //FIXME remove dupliacates
-    foreach(PlayListTrack *track , tracks)
+    QStringList paths;
+    MetaDataFormatter formatter("%if(%p&%t,%p - %t,%f) - %l");
+    foreach(PlayListTrack *track, tracks)
     {
+        //skip streams
         if(track->length() == 0 || track->url().contains("://"))
             continue;
-
-        if(!track->url().toLower().endsWith(".mp3"))
+        //skip duplicates
+        if(paths.contains(track->url()))
             continue;
 
-        QString text = formatter.parse(track);
-        QTableWidgetItem *item = new QTableWidgetItem(text);
-        item->setData(Qt::UserRole, track->url());
-        m_ui.tableWidget->insertRow(m_ui.tableWidget->rowCount());
-        m_ui.tableWidget->setItem(m_ui.tableWidget->rowCount() - 1, 0, item);
-        QProgressBar *progressBar = new QProgressBar(this);
-        progressBar->setRange(0, 100);
-        m_ui.tableWidget->setCellWidget(m_ui.tableWidget->rowCount() - 1, 1, progressBar);
+        QString ext = track->url().section(".", -1).toLower();
+        if(ext == "mp3" || //mpeg 1 layer 3
+                ext == "flac" || //flac
+                ext == "oga") //native flac
+        {
+            paths.append(track->url());
+            QString name = formatter.parse(track);
+            QTableWidgetItem *item = new QTableWidgetItem(name);
+            item->setData(Qt::UserRole, track->url());
+            item->setData(Qt::ToolTipRole, track->url());
+            m_ui.tableWidget->insertRow(m_ui.tableWidget->rowCount());
+            m_ui.tableWidget->setItem(m_ui.tableWidget->rowCount() - 1, 0, item);
+            QProgressBar *progressBar = new QProgressBar(this);
+            progressBar->setRange(0, 100);
+            m_ui.tableWidget->setCellWidget(m_ui.tableWidget->rowCount() - 1, 1, progressBar);
+        }
     }
 
     m_ui.tableWidget->resizeColumnsToContents();
@@ -254,6 +265,34 @@ TagLib::String RGScanDialog::peakToString(double value)
     return QStringToTString_qt4(QString("%1").arg(value, 0, 'f', 6));
 }
 
+void RGScanDialog::writeAPETag(TagLib::APE::Tag *tag, ReplayGainInfoItem *item)
+{
+    if(m_ui.trackCheckBox->isChecked())
+    {
+        tag->addValue("REPLAYGAIN_TRACK_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_TRACK_GAIN]));
+        tag->addValue("REPLAYGAIN_TRACK_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_TRACK_PEAK]));
+    }
+    if(m_ui.albumCheckBox->isChecked())
+    {
+        tag->addValue("REPLAYGAIN_ALBUM_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
+        tag->addValue("REPLAYGAIN_ALBUM_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
+    }
+}
+
+void RGScanDialog::writeVorbisComment(TagLib::Ogg::XiphComment *tag, ReplayGainInfoItem *item)
+{
+    if(m_ui.trackCheckBox->isChecked())
+    {
+        tag->addField("REPLAYGAIN_TRACK_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_TRACK_GAIN]));
+        tag->addField("REPLAYGAIN_TRACK_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_TRACK_PEAK]));
+    }
+    if(m_ui.albumCheckBox->isChecked())
+    {
+        tag->addField("REPLAYGAIN_ALBUM_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
+        tag->addField("REPLAYGAIN_ALBUM_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
+    }
+}
+
 void RGScanDialog::on_writeButton_clicked()
 {
     if(m_replayGainItemList.isEmpty())
@@ -263,19 +302,25 @@ void RGScanDialog::on_writeButton_clicked()
 
     foreach (ReplayGainInfoItem *item, m_replayGainItemList)
     {
-        TagLib::MPEG::File file(qPrintable(item->url));
-        TagLib::APE::Tag *tag = file.APETag(true);
+        QString ext = item->url.section(".", -1).toLower();
 
-        if(m_ui.trackCheckBox->isChecked())
+        if(ext == "mp3") //mpeg 1 layer 3
         {
-            tag->addValue("REPLAYGAIN_TRACK_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_TRACK_GAIN]));
-            tag->addValue("REPLAYGAIN_TRACK_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_TRACK_PEAK]));
+            TagLib::MPEG::File file(qPrintable(item->url));
+            writeAPETag(file.APETag(true), item);
+            file.save(TagLib::MPEG::File::APE, false);
         }
-        if(m_ui.albumCheckBox->isChecked())
+        else if(ext == "flac") //flac
         {
-            tag->addValue("REPLAYGAIN_ALBUM_GAIN", gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
-            tag->addValue("REPLAYGAIN_ALBUM_PEAK", peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
+            TagLib::FLAC::File file(qPrintable(item->url));
+            writeVorbisComment(file.xiphComment(true), item);
+            file.save();
         }
-        file.save(TagLib::MPEG::File::APE, false);
+        else if(ext == "oga")
+        {
+            TagLib::Ogg::FLAC::File file(qPrintable(item->url));
+            writeVorbisComment(file.tag(), item);
+            file.save();
+        }
     }
 }

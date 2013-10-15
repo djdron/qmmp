@@ -33,6 +33,18 @@ class ConverterPreset;
 class RGScanner;
 struct ReplayGainInfoItem;
 
+namespace TagLib
+{
+    namespace APE
+    {
+        class Tag;
+    }
+    namespace Ogg
+    {
+        class XiphComment;
+    }
+}
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -55,6 +67,8 @@ private:
     QString getAlbumName(const QString &url);
     TagLib::String gainToString(double value);
     TagLib::String peakToString(double value);
+    void writeAPETag(TagLib::APE::Tag *tag, ReplayGainInfoItem *item);
+    void writeVorbisComment(TagLib::Ogg::XiphComment *tag, ReplayGainInfoItem *item);
     Ui::RGScanDialog m_ui;
     QList<RGScanner *> m_scanners;
     QList<ReplayGainInfoItem*> m_replayGainItemList;
