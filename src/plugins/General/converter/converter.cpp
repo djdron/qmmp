@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -290,7 +290,7 @@ void Converter::run()
                 file.tag()->setYear(metadata[Qmmp::YEAR].toUInt());
                 file.tag()->setTrack(metadata[Qmmp::TRACK].toUInt());
 
-                if(full_path.endsWith(".mp3"))
+                if(full_path.endsWith(".mp3"), Qt::CaseInsensitive)
                 {
                     TagLib::MPEG::File *mpeg_file = dynamic_cast <TagLib::MPEG::File *> (file.file());
                     mpeg_file->save(TagLib::MPEG::File::ID3v2, true);
