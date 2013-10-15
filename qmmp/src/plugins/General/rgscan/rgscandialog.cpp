@@ -139,6 +139,8 @@ void RGScanDialog::onScanFinished(QString url)
         //group by album name
         foreach (RGScanner *scanner, m_scanners)
         {
+            if(!scanner->hasValues())
+                continue;
             ReplayGainInfoItem *item = new ReplayGainInfoItem;
             item->info[Qmmp::REPLAYGAIN_TRACK_GAIN] = scanner->gain();
             item->info[Qmmp::REPLAYGAIN_TRACK_PEAK] = scanner->peak();
@@ -177,16 +179,20 @@ void RGScanDialog::onScanFinished(QString url)
         for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
         {
             QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
+            bool found = false;
             foreach (ReplayGainInfoItem *item, m_replayGainItemList)
             {
                 if(item->url == url)
                 {
+                    found = true;
                     double album_gain = item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN];
                     double album_peak = item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK];
                     m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(album_gain)));
                     m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
                 }
             }
+            if(!found)
+                m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("Error")));
         }
 
         //clear items
