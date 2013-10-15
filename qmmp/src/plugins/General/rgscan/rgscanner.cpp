@@ -77,8 +77,8 @@ bool RGScanner::prepare(const QString &url)
         delete source;
         return false;
     }
-    qDebug("RGScanner: [%s] selected decoder: %s",
-           qPrintable(factory->properties().shortName), qPrintable(name));
+    qDebug("RGScanner: [%s] selected decoder: %s",qPrintable(name),
+           qPrintable(factory->properties().shortName));
 
     if(factory->properties().noInput && source->ioDevice())
         source->ioDevice()->close();
@@ -195,14 +195,15 @@ void RGScanner::run()
         }
         else
         {
+
             qint64 len = m_decoder->read(char_buf, buf_size*ap.sampleSize());
 
-            if(samples < 0)
+            if(len < 0)
             {
                 error = true;
                 break;
             }
-            else if(samples == 0)
+            else if(len == 0)
                 break;
 
             samples = len / ap.sampleSize();
