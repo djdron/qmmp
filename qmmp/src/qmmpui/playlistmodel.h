@@ -291,10 +291,10 @@ signals:
      */
     void currentChanged();
     /*!
-     * Emitted when new item has added.
-     * @param item New playlist item pointer.
+     * Emitted when new track has added.
+     * @param track Pointer of the new playlist track.
      */
-    void itemAdded(PlayListItem *item);
+    void trackAdded(PlayListTrack *track);
     /*!
      * Emitted when playlist name has chanded.
      * @param name New playlist name.

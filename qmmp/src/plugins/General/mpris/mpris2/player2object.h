@@ -97,7 +97,7 @@ private slots:
     void updateId();
     void checkState(Qmmp::State state);
     void checkSeeking(qint64 elapsed);
-    void playItem(PlayListTrack *item);
+    void playTrack(PlayListTrack *item);
     void disconnectPl();
     void setModel(PlayListModel *selected, PlayListModel *previous);
 
