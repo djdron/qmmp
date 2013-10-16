@@ -94,7 +94,7 @@ void PlayListModel::add(PlayListTrack *track)
         //update current index for grouped container only
         m_current = m_container->indexOf(m_current_track);
     }
-    emit itemAdded(track);
+    emit trackAdded(track);
     emit listChanged();
     emit countChanged();
 }
@@ -114,7 +114,7 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
             m_current = m_container->indexOf(track);
             emit currentChanged();
         }
-        emit itemAdded(track);
+        emit trackAdded(track);
     }
     preparePlayState();
     emit listChanged();
