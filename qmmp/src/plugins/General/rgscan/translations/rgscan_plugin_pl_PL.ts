@@ -59,13 +59,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="97"/>
+        <location filename="../rgscandialog.cpp" line="108"/>
+        <location filename="../rgscandialog.cpp" line="206"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="119"/>
-        <location filename="../rgscandialog.cpp" line="186"/>
+        <location filename="../rgscandialog.cpp" line="130"/>
+        <location filename="../rgscandialog.cpp" line="201"/>
         <source>%1 dB</source>
         <translation type="unfinished"></translation>
     </message>
