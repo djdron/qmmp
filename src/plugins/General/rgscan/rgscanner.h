@@ -43,7 +43,8 @@ public:
 
     bool prepare(const QString &url);
     void stop();
-    bool isRunning();
+    bool isRunning() const;
+    bool isPending() const;
     bool hasValues() const;
     double gain() const;
     double peak() const;
@@ -60,7 +61,7 @@ private:
     InputSource *m_source;
     Decoder *m_decoder;
     QMutex m_mutex;
-    bool m_user_stop, m_is_running, m_has_values;
+    bool m_user_stop, m_is_running, m_is_pending, m_has_values;
     QString m_url;
     double m_gain;
     double m_peak;

@@ -136,7 +136,7 @@ void RGScanDialog::onScanFinished(QString url)
 
     foreach (RGScanner *scanner, m_scanners)
     {
-        if(scanner->isRunning())
+        if(scanner->isRunning() || scanner->isPending())
             stopped = false;
     }
 
