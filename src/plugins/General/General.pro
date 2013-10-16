@@ -9,11 +9,11 @@ SUBDIRS += statusicon \
            streambrowser \
            trackchange \
            hotkey \
-           copypaste
+           copypaste \
+           rgscan
 unix:SUBDIRS += mpris \
                 kdenotify \
-                converter \
-                rgscan
+                converter
 
 contains(CONFIG, UDISKS_PLUGIN){
     unix:SUBDIRS += udisks
