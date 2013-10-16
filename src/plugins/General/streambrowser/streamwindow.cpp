@@ -350,8 +350,13 @@ void StreamWindow::readXml(QIODevice *input, QStandardItemModel *model)
                 server_type += xml.text().toString();
         }
     }
+
     if (xml.error() && xml.error() != QXmlStreamReader::PrematureEndOfDocumentError)
     {
+#ifdef Q_OS_WIN
+        qWarning("StreamWindow: xml error: %d: %s", (int)xml.lineNumber(), qPrintable(xml.errorString()));
+#else
         qWarning("StreamWindow: xml error: %lld: %s", xml.lineNumber(), qPrintable(xml.errorString()));
+#endif
     }
 }
