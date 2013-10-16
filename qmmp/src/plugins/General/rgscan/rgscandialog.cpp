@@ -47,7 +47,7 @@ struct ReplayGainInfoItem
 RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : QDialog(parent)
 {
     m_ui.setupUi(this);
-    m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height() + 2);
+    m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height() + 3);
     m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
 
     QStringList paths;
