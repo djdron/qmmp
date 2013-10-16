@@ -235,3 +235,32 @@ qint64 DecoderVorbis::read(char *data, qint64 maxSize)
         m_bitrate = ov_bitrate_instant(&oggfile) / 1000;
     return len;
 }
+
+qint64 DecoderVorbis::read(float *data, qint64 samples)
+{
+    len = -1;
+    float **pcm = 0;
+    while (len < 0)
+        len = ov_read_float(&oggfile, &pcm, samples, &m_section);
+
+    if(len == 0)
+        return 0;
+
+    int channels = audioParameters().channels();
+
+    for(int i = 0; i < channels; ++i)
+    {
+        float *ptr = &data[i];
+        for(int j = 0; j < len; ++j)
+        {
+            *ptr = pcm[i][j];
+            ptr += channels;
+        }
+    }
+
+    if (m_section != m_last_section)
+        updateTags();
+
+    m_bitrate = ov_bitrate_instant(&oggfile) / 1000;
+    return len*channels;
+}

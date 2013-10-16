@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,7 +64,7 @@ Decoder *DecoderVorbisFactory::create(const QString &url, QIODevice *input)
     if(!url.contains("://")) //local file
     {
         ReplayGainReader rg(url);
-        d->setReplayGainInfo(rg.replayGainInfo());
+        d->setReplayGainInfo(rg.replayGainInfo(), true);
     }
     return d;
 }
