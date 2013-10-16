@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QApplication>
+#include <QFileInfo>
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
@@ -92,7 +93,7 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
         QStringList full_path_list, remote_pls_list;
         foreach(QString s, args)
         {
-            if (s.startsWith("/")) //absolute path
+            if (QFileInfo(s).isAbsolute()) //absolute path
                     full_path_list << s;
             else if(s.contains("://")) //url
             {
