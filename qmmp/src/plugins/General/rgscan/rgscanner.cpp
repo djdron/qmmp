@@ -30,6 +30,7 @@ RGScanner::RGScanner()
     m_peak = 0.;
     m_user_stop = false;
     m_is_running = false;
+    m_is_pending = false;
     m_has_values = false;
     m_handle = 0;
     m_decoder = 0;
@@ -49,6 +50,7 @@ RGScanner::~RGScanner()
 
 bool RGScanner::prepare(const QString &url)
 {
+    m_is_pending = false;
     deinit();
     m_url = url;
     QString name = m_url.section("/", -1);
@@ -95,6 +97,7 @@ bool RGScanner::prepare(const QString &url)
     m_source = source;
     m_user_stop = false;
     m_has_values = false;
+    m_is_pending = true;
     return true;
 }
 
@@ -105,9 +108,14 @@ void RGScanner::stop()
     m_mutex.unlock();
 }
 
-bool RGScanner::isRunning()
+bool RGScanner::isRunning() const
 {
     return m_is_running;
+}
+
+bool RGScanner::isPending() const
+{
+    return m_is_pending;
 }
 
 bool RGScanner::hasValues() const
@@ -138,10 +146,14 @@ GainHandle_t *RGScanner::handle()
 void RGScanner::run()
 {
     if(m_user_stop)
+    {
+        m_is_pending = false;
         return;
+    }
     QString name = m_url.section("/", -1);
     qDebug("RGScanner: [%s] staring thread", qPrintable(name));
     m_is_running = true;
+    m_is_pending = false;
     bool error = false;
 
     AudioParameters ap = m_decoder->audioParameters();
