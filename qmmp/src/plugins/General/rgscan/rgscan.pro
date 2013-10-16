@@ -13,7 +13,7 @@ TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
 unix:LIBS += -lqmmpui -lqmmp
 
-PKGCONFIG += taglib
+
 
 win32:QMAKE_LIBDIR += ../../../../bin
 win32:LIBS += -lqmmpui0 -lqmmp0 -ltag.dll
@@ -35,6 +35,7 @@ RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
+    PKGCONFIG += taglib
 }
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
