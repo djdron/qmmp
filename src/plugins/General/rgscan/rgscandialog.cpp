@@ -101,19 +101,19 @@ void RGScanDialog::on_calculateButton_clicked()
     for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
-        RGScanner *scaner = new RGScanner();
+        RGScanner *scanner = new RGScanner();
 
-        if(!scaner->prepare(url))
+        if(!scanner->prepare(url))
         {
             m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("Error")));
-            delete scaner;
+            delete scanner;
             continue;
         }
-        scaner->setAutoDelete(false);
-        m_scanners.append(scaner);
-        connect(scaner, SIGNAL(progress(int)), m_ui.tableWidget->cellWidget(i, 1), SLOT(setValue(int)));
-        connect(scaner, SIGNAL(finished(QString)), SLOT(onScanFinished(QString)));
-        QThreadPool::globalInstance()->start(scaner);
+        scanner->setAutoDelete(false);
+        m_scanners.append(scanner);
+        connect(scanner, SIGNAL(progress(int)), m_ui.tableWidget->cellWidget(i, 1), SLOT(setValue(int)));
+        connect(scanner, SIGNAL(finished(QString)), SLOT(onScanFinished(QString)));
+        QThreadPool::globalInstance()->start(scanner);
     }
 }
 
