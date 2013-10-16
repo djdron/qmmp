@@ -93,6 +93,15 @@ bool RGScanner::prepare(const QString &url)
         delete decoder;
         return false;
     }
+    if(decoder->audioParameters().channels() > 2)
+    {
+        qWarning("RGScanner: [%s] unsupported channel count: %d",
+                 qPrintable(name),
+                 decoder->audioParameters().channels());
+        delete source;
+        delete decoder;
+        return false;
+    }
     m_decoder = decoder;
     m_source = source;
     m_user_stop = false;
