@@ -31,6 +31,7 @@
 #include <taglib/flacfile.h>
 #include <taglib/xiphcomment.h>
 #include <taglib/oggflacfile.h>
+#include <taglib/vorbisfile.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
@@ -63,8 +64,9 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
 
         QString ext = track->url().section(".", -1).toLower();
         if(ext == "mp3" || //mpeg 1 layer 3
-                ext == "flac" || //flac
-                ext == "oga") //native flac
+                ext == "flac" || //native flac
+                ext == "oga" || //ogg flac
+                ext == "ogg") //ogg vorbis
         {
             paths.append(track->url());
             QString name = formatter.parse(track);
@@ -319,6 +321,12 @@ void RGScanDialog::on_writeButton_clicked()
         else if(ext == "oga")
         {
             TagLib::Ogg::FLAC::File file(qPrintable(item->url));
+            writeVorbisComment(file.tag(), item);
+            file.save();
+        }
+        else if(ext == "ogg")
+        {
+            TagLib::Ogg::Vorbis::File file(qPrintable(item->url));
             writeVorbisComment(file.tag(), item);
             file.save();
         }
