@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QString>
 #include <taglib/apetag.h>
+#include <taglib/id3v2tag.h>
 #include <qmmp/qmmp.h>
 
 /**
@@ -36,6 +37,7 @@ public:
     QMap <Qmmp::ReplayGainKey, double> replayGainInfo() const;
 
 private:
+    void readID3v2(TagLib::ID3v2::Tag *tag);
     void readAPE(TagLib::APE::Tag *tag);
     void setValue(Qmmp::ReplayGainKey key, QString value);
     QMap <Qmmp::ReplayGainKey, double> m_values;

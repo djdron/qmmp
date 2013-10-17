@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -119,7 +119,7 @@ QPixmap MPEGMetaDataModel::cover()
 
     for(TagLib::ID3v2::FrameList::Iterator it = frames.begin(); it != frames.end(); ++it)
     {
-        TagLib::ID3v2::AttachedPictureFrame *frame = static_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
+        TagLib::ID3v2::AttachedPictureFrame *frame = dynamic_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
         if(frame && frame->type() == TagLib::ID3v2::AttachedPictureFrame::FrontCover)
         {
             QPixmap cover;
