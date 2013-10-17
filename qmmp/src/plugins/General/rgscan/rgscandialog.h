@@ -35,6 +35,10 @@ struct ReplayGainInfoItem;
 
 namespace TagLib
 {
+    namespace ID3v2
+    {
+        class Tag;
+    }
     namespace APE
     {
         class Tag;
@@ -68,6 +72,7 @@ private:
     TagLib::String gainToString(double value);
     TagLib::String peakToString(double value);
     void writeAPETag(TagLib::APE::Tag *tag, ReplayGainInfoItem *item);
+    void writeID3v2Tag(TagLib::ID3v2::Tag *tag, ReplayGainInfoItem *item);
     void writeVorbisComment(TagLib::Ogg::XiphComment *tag, ReplayGainInfoItem *item);
     Ui::RGScanDialog m_ui;
     QList<RGScanner *> m_scanners;

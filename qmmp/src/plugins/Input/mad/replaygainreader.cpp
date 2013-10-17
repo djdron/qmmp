@@ -43,7 +43,7 @@ QMap <Qmmp::ReplayGainKey, double> ReplayGainReader::replayGainInfo() const
 void ReplayGainReader::readID3v2(TagLib::ID3v2::Tag *tag)
 {
     TagLib::ID3v2::UserTextIdentificationFrame* frame = 0;
-    TagLib::ID3v2::FrameList frames = tag->frameListMap()["TXXX"];
+    TagLib::ID3v2::FrameList frames = tag->frameList("TXXX");
     for(TagLib::ID3v2::FrameList::Iterator it = frames.begin(); it != frames.end(); ++it)
     {
         frame = dynamic_cast<TagLib::ID3v2::UserTextIdentificationFrame*>(*it);

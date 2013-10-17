@@ -33,6 +33,8 @@
 #include <taglib/oggflacfile.h>
 #include <taglib/vorbisfile.h>
 #include <taglib/wavpackfile.h>
+#include <taglib/id3v2tag.h>
+#include <taglib/textidentificationframe.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
@@ -283,6 +285,43 @@ void RGScanDialog::writeAPETag(TagLib::APE::Tag *tag, ReplayGainInfoItem *item)
     }
 }
 
+void RGScanDialog::writeID3v2Tag(TagLib::ID3v2::Tag *tag, ReplayGainInfoItem *item)
+{
+    tag->removeFrames("TXXX");
+    if(m_ui.trackCheckBox->isChecked())
+    {
+        TagLib::ID3v2::UserTextIdentificationFrame *frame = new TagLib::ID3v2::UserTextIdentificationFrame();
+        TagLib::StringList fields;
+        fields.append("REPLAYGAIN_TRACK_GAIN");
+        fields.append(gainToString(item->info[Qmmp::REPLAYGAIN_TRACK_GAIN]));
+        frame->setText(fields);
+        tag->addFrame(frame);
+
+        fields.clear();
+        frame = new TagLib::ID3v2::UserTextIdentificationFrame();
+        fields.append("REPLAYGAIN_TRACK_PEAK");
+        fields.append(peakToString(item->info[Qmmp::REPLAYGAIN_TRACK_PEAK]));
+        frame->setText(fields);
+        tag->addFrame(frame);
+    }
+    if(m_ui.albumCheckBox->isChecked())
+    {
+        TagLib::ID3v2::UserTextIdentificationFrame *frame = new TagLib::ID3v2::UserTextIdentificationFrame();
+        TagLib::StringList fields;
+        fields.append("REPLAYGAIN_ALBUM_GAIN");
+        fields.append(gainToString(item->info[Qmmp::REPLAYGAIN_ALBUM_GAIN]));
+        frame->setText(fields);
+        tag->addFrame(frame);
+
+        fields.clear();
+        frame = new TagLib::ID3v2::UserTextIdentificationFrame();
+        fields.append("REPLAYGAIN_ALBUM_PEAK");
+        fields.append(peakToString(item->info[Qmmp::REPLAYGAIN_ALBUM_PEAK]));
+        frame->setText(fields);
+        tag->addFrame(frame);
+    }
+}
+
 void RGScanDialog::writeVorbisComment(TagLib::Ogg::XiphComment *tag, ReplayGainInfoItem *item)
 {
     if(m_ui.trackCheckBox->isChecked())
@@ -312,7 +351,8 @@ void RGScanDialog::on_writeButton_clicked()
         {
             TagLib::MPEG::File file(qPrintable(item->url));
             writeAPETag(file.APETag(true), item);
-            file.save(TagLib::MPEG::File::APE, false);
+            writeID3v2Tag(file.ID3v2Tag(true), item);
+            file.save(TagLib::MPEG::File::APE | TagLib::MPEG::File::ID3v2, false);
         }
         else if(ext == "flac") //flac
         {
