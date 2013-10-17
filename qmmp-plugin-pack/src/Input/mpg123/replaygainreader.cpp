@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,12 +24,14 @@
 #include <taglib/tag.h>
 #include <taglib/id3v1tag.h>
 #include <taglib/id3v2header.h>
+#include <taglib/textidentificationframe.h>
 #include "replaygainreader.h"
 
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
-    TagLib::MPEG::File fileRef(path.toLocal8Bit ().constData());
-    if(fileRef.APETag())
+    TagLib::MPEG::File fileRef(path.toLocal8Bit().constData());
+    readID3v2(fileRef.ID3v2Tag());
+    if(m_values.isEmpty() && fileRef.APETag())
         readAPE(fileRef.APETag());
 }
 
@@ -38,10 +40,32 @@ QMap <Qmmp::ReplayGainKey, double> ReplayGainReader::replayGainInfo() const
     return m_values;
 }
 
+void ReplayGainReader::readID3v2(TagLib::ID3v2::Tag *tag)
+{
+    TagLib::ID3v2::UserTextIdentificationFrame* frame = 0;
+    TagLib::ID3v2::FrameList frames = tag->frameListMap()["TXXX"];
+    for(TagLib::ID3v2::FrameList::Iterator it = frames.begin(); it != frames.end(); ++it)
+    {
+        frame = dynamic_cast<TagLib::ID3v2::UserTextIdentificationFrame*>(*it);
+        if(frame && frame->fieldList().size() >= 2)
+        {
+            TagLib::String desc = frame->description().upper();
+            if (desc == "REPLAYGAIN_TRACK_GAIN")
+                setValue(Qmmp::REPLAYGAIN_TRACK_GAIN, TStringToQString(frame->fieldList()[1]));
+            else if (desc == "REPLAYGAIN_TRACK_PEAK")
+                setValue(Qmmp::REPLAYGAIN_TRACK_PEAK, TStringToQString(frame->fieldList()[1]));
+            else if (desc == "REPLAYGAIN_ALBUM_GAIN")
+                setValue(Qmmp::REPLAYGAIN_ALBUM_GAIN, TStringToQString(frame->fieldList()[1]));
+            else if (desc == "REPLAYGAIN_ALBUM_PEAK")
+                setValue(Qmmp::REPLAYGAIN_ALBUM_PEAK, TStringToQString(frame->fieldList()[1]));
+        }
+    }
+}
+
 void ReplayGainReader::readAPE(TagLib::APE::Tag *tag)
 {
     TagLib::APE::ItemListMap items = tag->itemListMap();
-    if (items.contains("REPLAYGAIN_TRACK_GAIN")) 
+    if (items.contains("REPLAYGAIN_TRACK_GAIN"))
         setValue(Qmmp::REPLAYGAIN_TRACK_GAIN,TStringToQString(items["REPLAYGAIN_TRACK_GAIN"].values()[0]));
     if (items.contains("REPLAYGAIN_TRACK_PEAK"))
         setValue(Qmmp::REPLAYGAIN_TRACK_PEAK,TStringToQString(items["REPLAYGAIN_TRACK_PEAK"].values()[0]));
