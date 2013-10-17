@@ -32,6 +32,7 @@
 #include <taglib/xiphcomment.h>
 #include <taglib/oggflacfile.h>
 #include <taglib/vorbisfile.h>
+#include <taglib/wavpackfile.h>
 #include "rgscanner.h"
 #include "gain_analysis.h"
 #include "rgscandialog.h"
@@ -66,7 +67,8 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
         if(ext == "mp3" || //mpeg 1 layer 3
                 ext == "flac" || //native flac
                 ext == "oga" || //ogg flac
-                ext == "ogg") //ogg vorbis
+                ext == "ogg" ||  //ogg vorbis
+                ext == "wv") //wavpack
         {
             paths.append(track->url());
             QString name = formatter.parse(track);
@@ -318,16 +320,22 @@ void RGScanDialog::on_writeButton_clicked()
             writeVorbisComment(file.xiphComment(true), item);
             file.save();
         }
-        else if(ext == "oga")
+        else if(ext == "oga") //ogg flac
         {
             TagLib::Ogg::FLAC::File file(qPrintable(item->url));
             writeVorbisComment(file.tag(), item);
             file.save();
         }
-        else if(ext == "ogg")
+        else if(ext == "ogg") //ogg vorbis
         {
             TagLib::Ogg::Vorbis::File file(qPrintable(item->url));
             writeVorbisComment(file.tag(), item);
+            file.save();
+        }
+        else if(ext == "wv") //wavpack
+        {
+            TagLib::WavPack::File file(qPrintable(item->url));
+            writeAPETag(file.APETag(true), item);
             file.save();
         }
     }
