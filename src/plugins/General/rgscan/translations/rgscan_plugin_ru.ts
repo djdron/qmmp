@@ -51,7 +51,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="96"/>
         <source>Write Tags</source>
-        <translation>Записатьтеги</translation>
+        <translation>Записать теги</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="103"/>
@@ -59,14 +59,14 @@
         <translation>Записывать пик/усиление для альбома</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="108"/>
-        <location filename="../rgscandialog.cpp" line="206"/>
+        <location filename="../rgscandialog.cpp" line="114"/>
+        <location filename="../rgscandialog.cpp" line="212"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="130"/>
-        <location filename="../rgscandialog.cpp" line="201"/>
+        <location filename="../rgscandialog.cpp" line="136"/>
+        <location filename="../rgscandialog.cpp" line="207"/>
         <source>%1 dB</source>
         <translation>%1 дБ</translation>
     </message>
@@ -86,12 +86,12 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="50"/>
         <source>ReplayGain Scanner Plugin for Qmmp</source>
-        <translation type="unfinished">Модуль сканирования ReplayGain для Qmmp</translation>
+        <translation>Модуль сканирования ReplayGain для Qmmp</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="51"/>
         <source>This plugin scans audio files and gives information for volume normalization</source>
-        <translation type="unfinished">Данный модуль сканирует аудио-файлы и выдаёт информацию для нормализации громкости</translation>
+        <translation>Данный модуль сканирует аудио-файлы и выдаёт информацию для нормализации громкости</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="52"/>
