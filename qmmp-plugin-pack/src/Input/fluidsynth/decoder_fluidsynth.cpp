@@ -91,6 +91,9 @@ int DecoderFluidSynth::bitrate()
 
 qint64 DecoderFluidSynth::read(char *data, qint64 size)
 {
+    if(fluid_player_get_status(m_player) == FLUID_PLAYER_DONE)
+        return 0;
+
     if(fluid_synth_write_s16(synth, size/4, (int16_t*)data,0,2, (int16_t*)data,1,2) == FLUID_OK)
         return size;
     return 0;
