@@ -20,7 +20,6 @@
 
 #include <QtGui>
 #include "decoder_fluidsynth.h"
-#include "settingsdialog.h"
 #include "decoderfluidsynthfactory.h"
 
 // DecoderFluidSynthFactory
@@ -44,7 +43,7 @@ const DecoderProperties DecoderFluidSynthFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "fluidsynth";
     properties.hasAbout = true;
-    properties.hasSettings = true;
+    properties.hasSettings = false;
     properties.noInput = true;
     properties.protocols << "file";
     properties.priority = 10;
@@ -62,22 +61,8 @@ QList<FileInfo *> DecoderFluidSynthFactory::createPlayList(const QString &fileNa
 {
     Q_UNUSED(useMetaData);
     QList <FileInfo*> list;
-    /*FileInfo *info = new FileInfo(fileName);
-
-    if(FluidSynthHelper::instance()->initialize() && FluidSynthHelper::instance()->sampleRate())
-    {
-        void *midi_ptr = FluidSynth_Open (fileName.toLocal8Bit());
-        if(midi_ptr)
-        {
-            FluidSynthHelper::instance()->addPtr(midi_ptr);
-            _WM_Info *wm_info = FluidSynth_GetInfo(midi_ptr);
-            info->setLength((qint64)wm_info->approx_total_samples
-                            / FluidSynthHelper::instance()->sampleRate());
-            FluidSynth_Close(midi_ptr);
-            FluidSynthHelper::instance()->removePtr(midi_ptr);
-        }
-    }
-    list << info;*/
+    FileInfo *info = new FileInfo(fileName);
+    list << info;
     return list;
 }
 
@@ -90,8 +75,8 @@ MetaDataModel* DecoderFluidSynthFactory::createMetaDataModel(const QString &path
 
 void DecoderFluidSynthFactory::showSettings(QWidget *parent)
 {
-    SettingsDialog *d = new SettingsDialog(parent);
-    d->show();
+    /*SettingsDialog *d = new SettingsDialog(parent);
+    d->show();*/
 }
 
 void DecoderFluidSynthFactory::showAbout(QWidget *parent)

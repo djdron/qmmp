@@ -47,27 +47,6 @@ bool DecoderFluidSynth::initialize()
     m_player = new_fluid_player(synth);
     fluid_player_add(m_player, qPrintable(m_path));
     fluid_player_play(m_player);
-
-
-    /*if(!FluidSynthHelper::instance()->initialize())
-    {
-        qWarning("DecoderFluidSynth: initialization failed");
-        return false;
-    }
-    FluidSynthHelper::instance()->readSettings();
-    midi_ptr = FluidSynth_Open (m_path.toLocal8Bit());
-
-    if(!midi_ptr)
-    {
-        qWarning("DecoderFluidSynth: unable to open file");
-        return false;
-    }
-    FluidSynthHelper::instance()->addPtr(midi_ptr);
-
-
-    m_sample_rate = FluidSynthHelper::instance()->sampleRate();
-    _WM_Info *wm_info = FluidSynth_GetInfo(midi_ptr);
-    m_totalTime = (qint64)wm_info->approx_total_samples * 1000 / FluidSynthHelper::instance()->sampleRate();*/
     configure(48000/*m_sample_rate*/, 2, Qmmp::PCM_S16LE);
     qDebug("DecoderFluidSynth: initialize succes");
     return true;
@@ -80,8 +59,6 @@ qint64 DecoderFluidSynth::totalTime()
 
 void DecoderFluidSynth::seek(qint64 pos)
 {
-    //ulong sample = (ulong)m_sample_rate * pos / 1000;
-    //FluidSynth_FastSeek(midi_ptr, &sample);
 }
 
 int DecoderFluidSynth::bitrate()

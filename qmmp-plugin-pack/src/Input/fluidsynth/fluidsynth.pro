@@ -1,11 +1,9 @@
 include(../../plugins.pri)
 FORMS += settingsdialog.ui
 HEADERS += decoderfluidsynthfactory.h \
-    decoder_fluidsynth.h \
-    settingsdialog.h
+    decoder_fluidsynth.h
 SOURCES += decoder_fluidsynth.cpp \
-    decoderfluidsynthfactory.cpp \
-    settingsdialog.cpp
+    decoderfluidsynthfactory.cpp
 TARGET = $$PLUGINS_PREFIX/Input/fluidsynth
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libfluidsynth.so
 INCLUDEPATH += ../../../
