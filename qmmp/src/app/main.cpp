@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <qmmp/qmmp.h>
-#include "lxdesupport.h"
 #include "qmmpapplication.h"
 #include "qmmpstarter.h"
 
@@ -35,13 +34,6 @@ int main(int argc, char *argv[])
     QmmpApplication a (argc, argv );
     a.setApplicationName("qmmp");
     a.setWindowIcon(QIcon(":/32x32/qmmp.png"));
-
-    LXDESupport::load(); //load lxde icons
-
-#ifdef Q_OS_WIN
-    QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
-    QIcon::setThemeName("oxygen");
-#endif
 
     QTranslator translator;
     QString locale = Qmmp::systemLanguageID();

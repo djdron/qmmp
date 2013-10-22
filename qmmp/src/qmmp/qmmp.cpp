@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -84,7 +84,7 @@ QString Qmmp::systemLanguageID()
     if(m_langID.isEmpty())
     {
         m_langID = uiLanguageID();
-        qDebug("Qmmp: setting ui language to '%s'", qPrintable(m_langID));
+        //qDebug("Qmmp: setting ui language to '%s'", qPrintable(m_langID));
     }
 
     if(m_langID != "auto")
