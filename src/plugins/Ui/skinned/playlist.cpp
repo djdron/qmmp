@@ -384,7 +384,7 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
 {
     if (m_resize)
     {
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
         int sx = (width()-275) /25;
         int sy = (height()-116) /29;
     if(width() < e->x() - 14)
