@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,6 +36,7 @@
 #include <qmmpui/uiloader.h>
 #include <qmmpui/qmmpuisettings.h>
 #include "qmmpstarter.h"
+#include "lxdesupport.h"
 #include "builtincommandlineoption.h"
 
 #ifdef Q_OS_WIN
@@ -159,6 +160,13 @@ void QMMPStarter::startPlayer()
 {
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
     QStringList args = argString.split("\n", QString::SkipEmptyParts);
+
+    //load lxde icons
+    LXDESupport::load();
+#ifdef Q_OS_WIN
+    QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
+    QIcon::setThemeName("oxygen");
+#endif
 
     //prepare libqmmp and libqmmpui libraries for usage
     m_player = new MediaPlayer(this);
