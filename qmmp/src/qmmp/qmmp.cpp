@@ -70,7 +70,7 @@ const QString Qmmp::pluginsPath()
     QDir dir(QMMP_INSTALL_PREFIX"/"LIB_DIR"/qmmp");
     //qDebug(QMMP_INSTALL_PREFIX"/"LIB_DIR"/qmmp");
 #else
-#if defined(Q_OS_WIN32) && !defined(Q_OS_CYGWIN)
+#if defined(Q_OS_WIN) && !defined(Q_OS_CYGWIN)
     QDir dir(qApp->applicationDirPath() + "/plugins");
 #else
     QDir dir(qApp->applicationDirPath() + "/../"LIB_DIR"/qmmp");
