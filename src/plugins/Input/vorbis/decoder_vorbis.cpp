@@ -23,7 +23,7 @@ static size_t oggread (void *buf, size_t size, size_t nmemb, void *src)
     return len / size;
 }
 
-static int oggseek(void *src, int64_t offset, int whence)
+static int oggseek(void *src, ogg_int64_t offset, int whence)
 {
     DecoderVorbis *dogg = (DecoderVorbis *) src;
 
