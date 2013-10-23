@@ -23,6 +23,7 @@
 #include <QLocalServer>
 #include <QLocalSocket>
 #include <QSettings>
+#include <QIcon>
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
