@@ -40,6 +40,9 @@ static WAVEHDR*          PlayedWaveHeaders [MAX_WAVEBLOCKS];
 
 static void CALLBACK wave_callback (HWAVE hWave, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
 {
+    Q_UNUSED(hWave);
+    Q_UNUSED(dwInstance);
+    Q_UNUSED(dwParam2);
     if (uMsg == WOM_DONE)
     {
         EnterCriticalSection (&cs);
@@ -83,6 +86,7 @@ OutputWaveOut::~OutputWaveOut()
 
 bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
+    Q_UNUSED(format);
     if (!waveOutGetNumDevs ())
     {
         qWarning("OutputWaveOut: no audio device found");
