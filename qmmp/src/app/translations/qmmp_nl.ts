@@ -72,52 +72,52 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="286"/>
+        <location filename="../qmmpstarter.cpp" line="295"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Gebruik: qmmp [opties] [bestanden]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="287"/>
+        <location filename="../qmmpstarter.cpp" line="296"/>
         <source>Options:</source>
         <translation>Opties:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="291"/>
+        <location filename="../qmmpstarter.cpp" line="300"/>
         <source>Don&apos;t start the application</source>
         <translation>Niet de applicatie starten</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="293"/>
+        <location filename="../qmmpstarter.cpp" line="302"/>
         <source>Print version number and exit</source>
         <translation>Print versienummer en sluit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="294"/>
+        <location filename="../qmmpstarter.cpp" line="303"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ideëen, patches, foutrapporten zenden naar forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="299"/>
+        <location filename="../qmmpstarter.cpp" line="308"/>
         <source>QMMP version: %1</source>
         <translation>QMMP versie: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="300"/>
+        <location filename="../qmmpstarter.cpp" line="309"/>
         <source>Compiled with Qt version: %1</source>
         <translation>Gecompileerd met QT versie: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="301"/>
+        <location filename="../qmmpstarter.cpp" line="310"/>
         <source>Using Qt version: %1</source>
         <translation>Gebruikt QT versie: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="292"/>
+        <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Display this text and exit</source>
         <translation>Toon deze tekst en sluit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="83"/>
+        <location filename="../qmmpstarter.cpp" line="85"/>
         <source>Unknown command</source>
         <translation>Onbekend commando</translation>
     </message>
