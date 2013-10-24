@@ -154,6 +154,11 @@ void PlayListTrack::formatTitle()
 
 void PlayListTrack::formatGroup()
 {
+    if(length() == 0 && url().contains("://"))
+    {
+        m_group = qApp->translate("PlayListTrack", "Streams");
+        return;
+    }
     MetaDataFormatter f(m_settings->groupFormat());
     m_group = f.parse(this);
     if (m_group.isEmpty())

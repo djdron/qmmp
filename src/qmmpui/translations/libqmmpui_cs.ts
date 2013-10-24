@@ -759,7 +759,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="160"/>
+        <location filename="../playlisttrack.cpp" line="159"/>
+        <source>Streams</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlisttrack.cpp" line="165"/>
         <source>Empty group</source>
         <translation type="unfinished"></translation>
     </message>
