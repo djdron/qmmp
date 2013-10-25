@@ -18,7 +18,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QApplication>
 #include <QSettings>
 #include <QFile>
 extern "C"{
@@ -34,6 +33,7 @@ WildMidiHelper::WildMidiHelper(QObject *parent) :
 {
     m_inited = false;
     m_sample_rate = 0;
+    m_instance = this;
 }
 
 WildMidiHelper::~WildMidiHelper()
@@ -131,7 +131,5 @@ quint32 WildMidiHelper::sampleRate()
 
 WildMidiHelper *WildMidiHelper::instance()
 {
-    if(!m_instance)
-        m_instance = new WildMidiHelper(qApp);
     return m_instance;
 }

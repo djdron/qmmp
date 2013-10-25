@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,19 +24,18 @@
 #include <QString>
 #include <QIODevice>
 #include <QWidget>
-
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
-
 class DecoderWildMidiFactory : public QObject, DecoderFactory
 {
     Q_OBJECT
-    Q_INTERFACES(DecoderFactory);
+    Q_INTERFACES(DecoderFactory)
 
 public:
+    DecoderWildMidiFactory();
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;

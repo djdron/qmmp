@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QtGui>
-
 #include "wildmidihelper.h"
 #include "decoder_wildmidi.h"
 #include "settingsdialog.h"
@@ -27,14 +26,20 @@
 
 // DecoderWildMidiFactory
 
-bool DecoderWildMidiFactory::supports(const QString &source) const
+DecoderWildMidiFactory::DecoderWildMidiFactory()
 {
-    return (source.right(4).toLower() == ".mid");
+    new WildMidiHelper(qApp);
 }
 
-bool DecoderWildMidiFactory::canDecode(QIODevice *) const
+bool DecoderWildMidiFactory::supports(const QString &source) const
 {
-    return false;
+    return source.endsWith(".mid", Qt::CaseInsensitive);
+}
+
+bool DecoderWildMidiFactory::canDecode(QIODevice *input) const
+{
+    char buf[4];
+    return (input->peek(buf, 4) == 4 && !memcmp(buf, "MThd", 4));
 }
 
 const DecoderProperties DecoderWildMidiFactory::properties() const
@@ -49,7 +54,6 @@ const DecoderProperties DecoderWildMidiFactory::properties() const
     properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols << "file";
-    WildMidiHelper::instance()->initialize();
     return properties;
 }
 
