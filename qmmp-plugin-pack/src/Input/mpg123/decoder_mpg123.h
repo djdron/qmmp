@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,15 +38,19 @@ public:
     qint64 totalTime();
     int bitrate();
     qint64 read(char *data, qint64 size);
+    qint64 read(float *data, qint64 samples);
     void seek(qint64);
 
 private:
     void cleanup(mpg123_handle *handle);
+    void updateMPG123Format(int encoding);
+    void setMPG123Format(int encoding);
     mpg123_handle *m_handle;
     mpg123_frameinfo m_frame_info;
     QString m_url;
     qint64 m_totalTime;
     long m_rate;
+    int m_mpg123_encoding;
 };
 
 
