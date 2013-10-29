@@ -73,6 +73,10 @@ public:
      */
     int rightVolume();
     /*!
+     * Returns \b true if volume is unmuted, otherwise returns \b false
+     */
+    bool isMuted() const;
+    /*!
      * Returns the current time (in milliseconds).
      */
     qint64 elapsed();
@@ -125,6 +129,11 @@ public slots:
      * @param right - volume of the right channel \b [0..100].
      */
     void setVolume(int left, int right);
+    /*!
+     * Mutes/Restores volume
+     * @param mute - state of volume (\b true - mute, \b false - restore)
+     */
+    void setMuted(bool mute);
     /*!
      * This function plays file or stream with the given path \p source.
      * Returns \b true if playback has been started successful or source is not a local file,
@@ -202,6 +211,11 @@ signals:
      */
     void volumeChanged(int left, int right);
     /*!
+     * Emitted when volume has muted or restored
+     * @param muted - new state of volume (\b true - muted, \b false - unmuted)
+     */
+    void mutedChanged(bool muted);
+    /*!
      * Emitted when equalizer settings have changed.
      */
     void eqSettingsChanged();
@@ -232,6 +246,7 @@ private:
     AbstractEngine *m_engine;
     QQueue<InputSource *> m_sources;
     int m_nextState;
+    bool m_muted;
 };
 
 #endif

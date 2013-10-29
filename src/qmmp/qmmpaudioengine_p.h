@@ -52,6 +52,7 @@ public:
     void seek(qint64 time);
     void stop();
     void pause();
+    void setMuted(bool muted);
     void addEffect(EffectFactory *factory);
     void removeEffect(EffectFactory *factory);
 
@@ -88,6 +89,7 @@ private:
     QHash <Decoder*, InputSource*> m_inputs;
     AudioParameters m_ap;
     bool m_next;
+    bool m_muted;
     static QmmpAudioEngine *m_instance;
     ReplayGain *m_replayGain;
     QmmpSettings *m_settings;

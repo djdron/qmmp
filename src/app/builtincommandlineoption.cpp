@@ -42,6 +42,7 @@ BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(pa
               << "--jump-to-file" << "-j"
               << "--quit" << "-q"
               << "--volume"
+              << "--toggle-mute"
               << "--next" << "--previous"
               << "--toggle-visibility"
               << "--add-file" << "--add-dir";
@@ -68,6 +69,7 @@ const QString BuiltinCommandLineOption::helpString() const
                "-j, --jump-to-file       "+tr("Display Jump to File dialog")+ "\n" +
                "-q, --quit               "+tr("Quit application") + "\n" +
                "--volume <0..100>        "+tr("Set playback volume (example: qmmp --volume 20)") + "\n"
+               "--toggle-mute            "+tr("Mute/Restore volume") + "\n"
                "--next                   "+tr("Skip forward in playlist")+ "\n" +
                "--previous               "+tr("Skip backwards in playlist")+"\n" +
                "--toggle-visibility      "+tr("Show/hide application")+ "\n" +
@@ -200,6 +202,10 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
         int volume = args.at(0).toInt(&ok);
         if (ok)
             core->setVolume(volume,volume);
+    }
+    else if (option_string == "--toggle-mute")
+    {
+        core->setMuted(!core->isMuted());
     }
 }
 

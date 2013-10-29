@@ -45,6 +45,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_bks = 0;
     m_decoder = 0;
     m_output = 0;
+    m_muted = false;
     m_replayGain = new ReplayGain;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
@@ -239,6 +240,17 @@ void QmmpAudioEngine::pause()
         m_output->recycler()->mutex()->unlock();
     }
 
+}
+
+void QmmpAudioEngine::setMuted(bool muted)
+{
+    m_muted = muted;
+    if(m_output)
+    {
+        m_output->mutex()->lock();
+        m_output->setMuted(muted);
+        m_output->mutex()->unlock();
+    }
 }
 
 void QmmpAudioEngine::stop()
@@ -558,6 +570,7 @@ void QmmpAudioEngine::sendMetaData()
 OutputWriter *QmmpAudioEngine::createOutput()
 {
     OutputWriter *output = new OutputWriter(0);
+    output->setMuted(m_muted);
     if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()))
     {
         delete output;

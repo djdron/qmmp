@@ -55,6 +55,7 @@ public:
     void seek(qint64);
     void stop();
     void pause();
+    void setMuted(bool muted);
 
 private slots:
     void readStdOut();
@@ -68,6 +69,7 @@ private:
     int m_samplerate;
     int m_channels;
     int m_bitsPerSample;
+    bool m_muted;
     qint64 m_currentTime;
     qint64 m_length;
     QQueue <InputSource*> m_sources;

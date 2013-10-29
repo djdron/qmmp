@@ -59,6 +59,11 @@ public:
      */
     void stop();
     /*!
+     * Mutes/Restores volume
+     * @param mute state of volume (\b true - mute, \b false - restore)
+     */
+    void setMuted(bool muted);
+    /*!
      * Requests playback to finish.
      */
     void finish();
@@ -128,6 +133,7 @@ private:
     qint64 m_visBufferSize;
     QmmpSettings *m_settings;
     Output *m_output;
+    bool m_muted;
 
 };
 

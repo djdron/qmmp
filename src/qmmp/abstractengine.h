@@ -71,6 +71,11 @@ public:
      */
     virtual void pause() = 0;
     /*!
+     * Mutes/Restores volume. Subclass should reimplement this function.
+     * @param mute - state of volume (\b true - mute, \b false - restore)
+     */
+    virtual void setMuted(bool muted) = 0;
+    /*!
      * Returns mutex pointer.
      */
     QMutex *mutex();

@@ -88,6 +88,7 @@ MplayerEngine::MplayerEngine(QObject *parent)
     m_bitsPerSample = 0;
     m_length = 0;
     m_currentTime = 0;
+    m_muted = false;
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
 }
@@ -174,6 +175,14 @@ void MplayerEngine::pause()
     m_process->write("pause\n");
 }
 
+void MplayerEngine::setMuted(bool muted)
+{
+    if(m_process->state() == QProcess::Running)
+    {
+        m_process->write(muted ? "mute 1\n" : "mute 0\n");
+    }
+}
+
 void MplayerEngine::readStdOut()
 {
     QString line = QString::fromLocal8Bit(m_process->readAll ()).trimmed();
@@ -246,4 +255,6 @@ void MplayerEngine::startMplayerProcess()
     m_source->deleteLater();
     m_source = 0;
     m_currentTime = 0;
+    if(m_muted)
+        setMuted(true);
 }
