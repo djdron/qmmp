@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,14 +42,14 @@
 #include "actionmanager.h"
 #include "display.h"
 
-MainDisplay::MainDisplay (QWidget *parent)
+MainDisplay::MainDisplay (MainWindow *parent)
         : PixmapWidget (parent)
 {
     m_shaded = false;
     m_skin = Skin::instance();
     setPixmap (m_skin->getMain());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
-    m_mw = qobject_cast<MainWindow*>(parent);
+    m_mw = parent;
     m_titlebar = new TitleBar(this);
     m_titlebar->move(0,0);
     m_titlebar->setActive(true);

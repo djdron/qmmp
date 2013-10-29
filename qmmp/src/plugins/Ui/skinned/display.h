@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,7 +49,7 @@ class MainDisplay : public PixmapWidget
 {
     Q_OBJECT
 public:
-    MainDisplay(QWidget *parent = 0);
+    MainDisplay(MainWindow *parent = 0);
 
     ~MainDisplay();
 
