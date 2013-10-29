@@ -65,6 +65,10 @@ public:
         WM_STICKY,
         WM_DOUBLE_SIZE,
 
+        VOL_ENC,
+        VOL_DEC,
+        VOL_MUTE,
+
         PL_ADD_FILE,
         PL_ADD_DIRECTORY,
         PL_ADD_URL,

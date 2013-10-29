@@ -135,6 +135,10 @@ public slots:
      */
     void setMuted(bool mute);
     /*!
+     * Changes volume by \b delta percent
+     */
+    void changeVolume(int delta);
+    /*!
      * This function plays file or stream with the given path \p source.
      * Returns \b true if playback has been started successful or source is not a local file,
      * otherwise returns \b false. Useful for invalid files skipping.

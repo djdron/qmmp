@@ -168,6 +168,16 @@ void SoundCore::setMuted(bool mute)
     }
 }
 
+void SoundCore::changeVolume(int delta)
+{
+    int left = leftVolume();
+    int right = rightVolume();
+    int volume = qMax(left, right);
+    int balance = volume > 0 ? (right - left)*100/volume : 0;
+    volume = delta > 0 ? qMin(100, volume + 5) : qMax(0, volume - 5);
+    setVolume(volume-qMax(balance,0)*volume/100, volume+qMin(balance,0)*volume/100);
+}
+
 int SoundCore::leftVolume()
 {
     return m_volumeControl->left();

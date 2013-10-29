@@ -178,21 +178,10 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 UiHelper::instance()->toggleVisibility();
                 break;
             case Hotkey::VOLUME_UP:
+                core->changeVolume(+5);
+                break;
             case Hotkey::VOLUME_DOWN:
-            {
-                int volume = qMax(core->leftVolume(), core->rightVolume());
-                int balance = 0;
-                int left = core->leftVolume();
-                int right = core->rightVolume();
-                if (left || right)
-                    balance = (right - left)*100/volume;
-                if(hotkey->action == Hotkey::VOLUME_UP)
-                    volume = qMin (100, volume + 5);
-                else
-                    volume = qMax (0, volume - 5);
-                core->setVolume(volume-qMax(balance,0)*volume/100,
-                                volume+qMin(balance,0)*volume/100);
-            }
+                core->changeVolume(-5);
                 break;
             case Hotkey::FORWARD:
                 core->seek(core->elapsed() + 5000);

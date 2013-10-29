@@ -99,8 +99,6 @@ private:
     MainDisplay *m_display;
     PlayList *m_playlist;
     PlayListManager *m_pl_manager;
-    QPointer <PlayListModel> m_model;
-    int m_preamp;
     EqWidget *m_equalizer;
     MainVisual *m_vis;
     bool m_update;
