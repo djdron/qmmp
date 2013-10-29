@@ -51,10 +51,18 @@ int VolumeControl::left()
 void VolumeControl::setVolume(int left, int right)
 {
     VolumeSettings v;
-    v.left = left;
-    v.right = right;
+    v.left = qBound(0,left,100);
+    v.right = qBound(0,right,100);
     m_volume->setVolume(v);
     checkVolume();
+}
+
+void VolumeControl::changeVolume(int delta)
+{
+    int volume = qMax(m_left, m_right);
+    int balance = volume > 0 ? (m_right - m_left)*100/volume : 0;
+    volume = delta > 0 ? qMin(100, volume + 5) : qMax(0, volume - 5);
+    setVolume(volume-qMax(balance,0)*volume/100, volume+qMin(balance,0)*volume/100);
 }
 
 int VolumeControl::right()

@@ -53,6 +53,10 @@ public:
      */
     void setVolume(int left, int right);
     /*!
+     * Changes volume by \b delta percent
+     */
+    void changeVolume(int delta);
+    /*!
      * Returns left channel volume.
      */
     int left();
