@@ -4,67 +4,72 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Skip forward in playlist</source>
         <translation>Posunúť sa v plaliste</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Skip backwards in playlist</source>
         <translation>Vrátiť sa v playliste</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Start playing current song</source>
         <translation>Začať prehrávanie súčasnej piesne</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nevyčisťovať playlist</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Pause current song</source>
         <translation>Pozastaviť súčasnú pieseň</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Pozastaviť ak hrá, inak hrať</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Stop current song</source>
         <translation>Zastaviť súčasnú pieseň</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Display Jump to File dialog</source>
         <translation>Zobraziť dialóg Preskočiť na súbor</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Quit application</source>
         <translation>Ukončiť program</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Nastaviť hlasitosť prehrávania (napríklad: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="73"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <source>Mute/Restore volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="75"/>
         <source>Show/hide application</source>
         <translation>Zobraziť/skryť program</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="74"/>
+        <location filename="../builtincommandlineoption.cpp" line="76"/>
         <source>Display Add File dialog</source>
         <translation>Zobraziť dialóg Pridať súbor</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="75"/>
+        <location filename="../builtincommandlineoption.cpp" line="77"/>
         <source>Display Add Directory dialog</source>
         <translation>Zobraziť dialóg Pridať priečinok</translation>
     </message>
