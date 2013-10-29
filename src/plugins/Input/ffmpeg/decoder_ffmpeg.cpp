@@ -71,6 +71,7 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
     m_skipBytes = 0;
     m_stream = 0;
     m_decoded_frame = 0;
+    m_channels = 0;
     av_init_packet(&m_pkt);
     av_init_packet(&m_temp_pkt);
 }
@@ -186,10 +187,24 @@ bool DecoderFFmpeg::initialize()
             break;
     }
 
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(39<<8)+100)) //ffmpeg 2.1
+    if (c->channels == 1)
+    {
+        c->request_channel_layout = AV_CH_LAYOUT_MONO;
+        m_channels = c->channels;
+    }
+    else
+    {
+        c->request_channel_layout = AV_CH_LAYOUT_STEREO;
+        m_channels = 2;
+    }
+#else
     if (c->channels > 0)
          c->request_channels = qMin(2, c->channels);
     else
          c->request_channels = 2;
+    m_channels = c->request_channels;
+#endif
 
     av_dump_format(ic,0,0,0);
 
@@ -227,6 +242,7 @@ bool DecoderFFmpeg::initialize()
         format = Qmmp::PCM_S16LE;
         break;
     case AV_SAMPLE_FMT_S32:
+    case AV_SAMPLE_FMT_S32P:
     case AV_SAMPLE_FMT_FLT:
     case AV_SAMPLE_FMT_FLTP:
         format = Qmmp::PCM_S32LE;
@@ -236,7 +252,7 @@ bool DecoderFFmpeg::initialize()
         return false;
     }
 
-    configure(c->sample_rate, c->request_channels, format);
+    configure(c->sample_rate, m_channels, format);
 
     if(ic->bit_rate)
         m_bitrate = ic->bit_rate/1000;
@@ -273,10 +289,10 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
         return 0;
     qint64 len = qMin(m_output_at, maxSize);
 
-    if(av_sample_fmt_is_planar(c->sample_fmt) && c->request_channels > 1)
+    if(av_sample_fmt_is_planar(c->sample_fmt) && m_channels > 1)
     {
         int bps = av_get_bytes_per_sample(c->sample_fmt);
-        for(int i = 0; i < len >> 1; i+=bps)
+        for(int i = 0; i < (len >> 1); i+=bps)
         {
             memcpy(audio + 2*i, m_decoded_frame->extended_data[0] + i, bps);
             memcpy(audio + 2*i + bps, m_decoded_frame->extended_data[1] + i, bps);
@@ -297,7 +313,7 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
     if(c->sample_fmt == AV_SAMPLE_FMT_FLTP || c->sample_fmt == AV_SAMPLE_FMT_FLT)
     {
         //convert float to signed 32 bit LE
-        for(int i = 0; i < len >> 2; i++)
+        for(int i = 0; i < (len >> 2); i++)
         {
             int32_t *out = (int32_t *)audio;
             float *in = (float *) audio;
@@ -400,9 +416,19 @@ void DecoderFFmpeg::fillBuffer()
                 qint64 size = m_output_at;
                 m_output_at = - m_skipBytes;
                 m_output_at = m_output_at/4*4;
-                memmove(m_decoded_frame->data[0],
-                        (m_decoded_frame->data[0] + size - m_output_at),
-                        m_output_at);
+
+                if(av_sample_fmt_is_planar(c->sample_fmt) && m_channels > 1)
+                {
+                    memmove(m_decoded_frame->extended_data[0],
+                            m_decoded_frame->extended_data[0] + (size - m_output_at)/2, m_output_at/2);
+                    memmove(m_decoded_frame->extended_data[1],
+                            m_decoded_frame->extended_data[1] + (size - m_output_at)/2, m_output_at/2);
+                }
+                else
+                {
+                    memmove(m_decoded_frame->extended_data[0],
+                            m_decoded_frame->extended_data[0] + size - m_output_at, m_output_at);
+                }
                 m_skipBytes = 0;
             }
         }
