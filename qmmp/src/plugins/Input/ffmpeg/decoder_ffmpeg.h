@@ -65,6 +65,7 @@ private:
     uchar m_input_buf[INPUT_BUFFER_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
     int64_t m_seekTime;
     qint64  m_skipBytes;
+    int m_channels;
 
     qint64 ffmpeg_decode();
     AVIOContext *m_stream;
