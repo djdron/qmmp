@@ -152,8 +152,6 @@ void SoundCore::setEqSettings(const EqSettings &settings)
 void SoundCore::setVolume(int L, int R)
 {
     setMuted(false);
-    L = qBound(0, L, 100);
-    R = qBound(0, R, 100);
     m_volumeControl->setVolume(L, R);
 }
 
@@ -170,12 +168,8 @@ void SoundCore::setMuted(bool mute)
 
 void SoundCore::changeVolume(int delta)
 {
-    int left = leftVolume();
-    int right = rightVolume();
-    int volume = qMax(left, right);
-    int balance = volume > 0 ? (right - left)*100/volume : 0;
-    volume = delta > 0 ? qMin(100, volume + 5) : qMax(0, volume - 5);
-    setVolume(volume-qMax(balance,0)*volume/100, volume+qMin(balance,0)*volume/100);
+    setMuted(false);
+    m_volumeControl->changeVolume(delta);
 }
 
 int SoundCore::leftVolume()
