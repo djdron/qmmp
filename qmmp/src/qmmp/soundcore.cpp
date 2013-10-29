@@ -45,6 +45,7 @@ SoundCore::SoundCore(QObject *parent)
     m_instance = this;
     m_engine = 0;
     m_nextState = NO_ENGINE;
+    m_muted = false;
     m_handler = new StateHandler(this);
     m_volumeControl = new VolumeControl(this);
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
@@ -150,9 +151,21 @@ void SoundCore::setEqSettings(const EqSettings &settings)
 
 void SoundCore::setVolume(int L, int R)
 {
+    setMuted(false);
     L = qBound(0, L, 100);
     R = qBound(0, R, 100);
     m_volumeControl->setVolume(L, R);
+}
+
+void SoundCore::setMuted(bool mute)
+{
+    if(m_muted != mute)
+    {
+        m_muted = mute;
+        emit mutedChanged(mute);
+        if(m_engine)
+            m_engine->setMuted(mute);
+    }
 }
 
 int SoundCore::leftVolume()
@@ -163,6 +176,11 @@ int SoundCore::leftVolume()
 int SoundCore::rightVolume()
 {
     return m_volumeControl->right();
+}
+
+bool SoundCore::isMuted() const
+{
+    return m_muted;
 }
 
 qint64 SoundCore::elapsed()
@@ -233,6 +251,7 @@ void SoundCore::startNextSource()
     {
         if((m_engine = AbstractEngine::create(s, this)))
         {
+            m_engine->setMuted(m_muted);
             m_engine->play();
             m_nextState = NO_ENGINE;
             return;

@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <string.h>
 #include "statehandler.h"
 #include "visual.h"
 #include "output.h"
@@ -70,6 +71,7 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_prev_pause = false;
     m_useEq = false;
     m_eqEnabled = false;
+    m_muted = false;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
     updateEqSettings();
@@ -145,6 +147,11 @@ void OutputWriter::pause()
 void OutputWriter::stop()
 {
     m_userStop = true;
+}
+
+void OutputWriter::setMuted(bool muted)
+{
+    m_muted = muted;
 }
 
 void OutputWriter::finish()
@@ -342,6 +349,8 @@ void OutputWriter::run()
             dispatchVisual(b);
             if (SoftwareVolume::instance())
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
+            if (m_muted)
+                memset(b->data, 0, b->nbytes);
             l = 0;
             m = 0;
             while (l < b->nbytes && !m_pause)
