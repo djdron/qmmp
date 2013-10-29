@@ -175,211 +175,241 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
+        <source>Volume &amp;+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="60"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>Volume &amp;-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>9</source>
+        <translation type="unfinished">9</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Add File</source>
         <translation>ファイルを追加(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="60"/>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>F</source>
         <translation>F</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Add Directory</source>
         <translation>ディレクトリを追加(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>D</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="66"/>
         <source>&amp;Add Url</source>
         <translation>URL を追加(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="66"/>
         <source>U</source>
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="63"/>
+        <location filename="../actionmanager.cpp" line="67"/>
         <source>&amp;Remove Selected</source>
         <translation>選択したものを除去(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="64"/>
+        <location filename="../actionmanager.cpp" line="68"/>
         <source>Del</source>
         <translation>Delele</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="65"/>
+        <location filename="../actionmanager.cpp" line="69"/>
         <source>&amp;Remove All</source>
         <translation>すべて除去(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="66"/>
+        <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Remove Unselected</source>
         <translation>選択外のものを除去(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="68"/>
+        <location filename="../actionmanager.cpp" line="72"/>
         <source>Remove unavailable files</source>
         <translation>無効なファイルを除去</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="70"/>
+        <location filename="../actionmanager.cpp" line="74"/>
         <source>Remove duplicates</source>
         <translation>重複分を除去</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;Queue Toggle</source>
         <translation>選んだプレイリストを キューに追加/キューから撤去</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="72"/>
+        <location filename="../actionmanager.cpp" line="76"/>
         <source>Invert Selection</source>
         <translation>選択範囲を反転</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="73"/>
+        <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;Select None</source>
         <translation>選択を解除(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="74"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Select All</source>
         <translation>すべて選択(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;View Track Details</source>
         <translation>トラックの詳細を表示(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>&amp;New List</source>
         <translation>新規リスト(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Delete List</source>
         <translation>リストを削除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>&amp;Load List</source>
         <translation>リストを読込(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="81"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Save List</source>
         <translation>リストを保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="81"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="82"/>
+        <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Select Next Playlist</source>
         <translation>次のプレイリストを選択(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="83"/>
+        <location filename="../actionmanager.cpp" line="87"/>
         <source>Ctrl+PgDown</source>
         <translation>Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="84"/>
+        <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Select Previous Playlist</source>
         <translation>前のプレイリストを選択(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="85"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>Ctrl+PgUp</source>
         <translation>Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="86"/>
+        <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;Show Playlists</source>
         <translation>プレイリストを表示(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="87"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Settings</source>
         <translation>設定(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="95"/>
         <source>&amp;About</source>
         <translation>QMMP について(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="96"/>
         <source>&amp;About Qt</source>
         <translation>Qt について(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="97"/>
         <source>&amp;Exit</source>
         <translation>終了(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="97"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
@@ -726,7 +756,12 @@
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="407"/>
+        <location filename="../mainwindow.cpp" line="405"/>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>

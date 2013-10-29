@@ -175,211 +175,241 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
+        <source>Volume &amp;+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="60"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>Volume &amp;-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="61"/>
+        <source>9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="62"/>
+        <source>M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Add File</source>
         <translation type="unfinished">添加檔案(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="60"/>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>F</source>
         <translation type="unfinished">F</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Add Directory</source>
         <translation type="unfinished">添加檔案夾(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>D</source>
         <translation type="unfinished">D</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="66"/>
         <source>&amp;Add Url</source>
         <translation type="unfinished">添加 URL (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="66"/>
         <source>U</source>
         <translation type="unfinished">U</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="63"/>
+        <location filename="../actionmanager.cpp" line="67"/>
         <source>&amp;Remove Selected</source>
         <translation type="unfinished">移除所選(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="64"/>
+        <location filename="../actionmanager.cpp" line="68"/>
         <source>Del</source>
         <translation type="unfinished">Del</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="65"/>
+        <location filename="../actionmanager.cpp" line="69"/>
         <source>&amp;Remove All</source>
         <translation type="unfinished">移除全部(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="66"/>
+        <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Remove Unselected</source>
         <translation type="unfinished">移除未選(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="68"/>
+        <location filename="../actionmanager.cpp" line="72"/>
         <source>Remove unavailable files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="70"/>
+        <location filename="../actionmanager.cpp" line="74"/>
         <source>Remove duplicates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;Queue Toggle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>Q</source>
         <translation type="unfinished">Q</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="72"/>
+        <location filename="../actionmanager.cpp" line="76"/>
         <source>Invert Selection</source>
         <translation type="unfinished">反選</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="73"/>
+        <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;Select None</source>
         <translation type="unfinished">無選取(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="74"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Select All</source>
         <translation type="unfinished">選取全部(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>Ctrl+A</source>
         <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;View Track Details</source>
         <translation type="unfinished">檢視音軌詳細資訊(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>Alt+I</source>
         <translation type="unfinished">Alt+I</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>&amp;New List</source>
         <translation type="unfinished">新建清單(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Delete List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>Ctrl+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>&amp;Load List</source>
         <translation type="unfinished">載入清單(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>O</source>
         <translation type="unfinished">O</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="81"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Save List</source>
         <translation type="unfinished">儲存清單(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="81"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>Shift+S</source>
         <translation type="unfinished">Shift+S</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="82"/>
+        <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Select Next Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="83"/>
+        <location filename="../actionmanager.cpp" line="87"/>
         <source>Ctrl+PgDown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="84"/>
+        <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Select Previous Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="85"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>Ctrl+PgUp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="86"/>
+        <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;Show Playlists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="87"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Settings</source>
         <translation type="unfinished">設定(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="95"/>
         <source>&amp;About</source>
         <translation type="unfinished">關於(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="96"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished">關於 Qt (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="97"/>
         <source>&amp;Exit</source>
         <translation type="unfinished">結束(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="97"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
@@ -725,7 +755,12 @@
         <translation type="unfinished">播放清單</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="407"/>
+        <location filename="../mainwindow.cpp" line="405"/>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
