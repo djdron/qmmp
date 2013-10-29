@@ -70,13 +70,10 @@ void QmmpAudioEngine::reset()
 {
     m_done = false;
     m_finish = false;
-    m_totalTime = 0;
     m_seekTime = -1;
     m_output_at = 0;
     m_user_stop = false;
     m_bitrate = 0;
-    m_chan = 0;
-    m_bps = 0;
     m_next = false;
 }
 
@@ -661,7 +658,6 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         m_effects << effect;
         tmp_effects.removeAll(effect);
     }
-    m_chan = m_ap.channels();
 }
 
 //static members
