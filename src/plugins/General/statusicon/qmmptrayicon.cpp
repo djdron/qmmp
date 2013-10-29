@@ -64,15 +64,7 @@ bool QmmpTrayIcon::event(QEvent *e)
 
 void QmmpTrayIcon::wheelEvent(QWheelEvent *e)
 {
-    SoundCore *core = SoundCore::instance();
-    int volume = qMax(core->leftVolume(), core->rightVolume());
-    int balance = volume ? (core->rightVolume() - core->leftVolume()) * 100 / volume : volume;
-    volume += e->delta()/20;
-    volume = qMax(volume,0);
-    volume = qMin(volume,100);
-    core->setVolume(volume - qMax(balance,0)*volume/100,
-                    volume + qMin(balance,0)*volume/100);
-
+    SoundCore::instance()->changeVolume(e->delta()/20);
 }
 
 void QmmpTrayIcon::showToolTip()
