@@ -402,9 +402,20 @@ void MainWindow::createActions()
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
 
+    QMenu *audioMenu = m_mainMenu->addMenu(tr("Audio"));
+    QSignalMapper *mapper = new QSignalMapper(this);
+    mapper->setMapping(ACTION(ActionManager::VOL_ENC), 5);
+    mapper->setMapping(ACTION(ActionManager::VOL_DEC), -5);
+    connect(mapper, SIGNAL(mapped(int)), m_core, SLOT(changeVolume(int)));
+    audioMenu->addAction(SET_ACTION(ActionManager::VOL_ENC, mapper, SLOT(map())));
+    audioMenu->addAction(SET_ACTION(ActionManager::VOL_DEC, mapper, SLOT(map())));
+    audioMenu->addAction(SET_ACTION(ActionManager::VOL_MUTE, m_core, SLOT(setMuted(bool))));
+    connect(m_core, SIGNAL(mutedChanged(bool)), ACTION(ActionManager::VOL_MUTE), SLOT(setChecked(bool)));
+
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
     m_mainMenu->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Tools"), this));
+
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     m_mainMenu->addSeparator();
