@@ -141,12 +141,6 @@ void MainWindow::backward()
     m_core->seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
 }
 
-void MainWindow::setVolume(int volume, int balance)
-{
-    m_core->setVolume(volume-qMax(balance,0)*volume/100,
-                      volume+qMin(balance,0)*volume/100);
-}
-
 void MainWindow::pause(void)
 {
     m_core->pause();
