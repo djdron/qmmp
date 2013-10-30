@@ -422,53 +422,53 @@
         <translation>Equalizer</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="158"/>
-        <location filename="../eqwidget.cpp" line="179"/>
+        <location filename="../eqwidget.cpp" line="157"/>
+        <location filename="../eqwidget.cpp" line="178"/>
         <source>preset</source>
         <translation>Voreinstellung</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="265"/>
+        <location filename="../eqwidget.cpp" line="264"/>
         <source>&amp;Load/Delete</source>
         <translation>&amp;Laden/Löschen</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="267"/>
+        <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Save Preset</source>
         <translation>&amp;Voreinstellung speichern</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="269"/>
+        <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>&amp;Automatische Voreinstellungen speichern</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="271"/>
+        <location filename="../eqwidget.cpp" line="270"/>
         <source>&amp;Import</source>
         <translation>&amp;Importieren</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="274"/>
+        <location filename="../eqwidget.cpp" line="273"/>
         <source>&amp;Clear</source>
         <translation>&amp;Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="303"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Saving Preset</source>
         <translation>Voreinstellung speichern</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="304"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>Preset name:</source>
         <translation>Name der Voreinstellung:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="305"/>
+        <location filename="../eqwidget.cpp" line="304"/>
         <source>preset #</source>
         <translation>Voreinstellung #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="396"/>
+        <location filename="../eqwidget.cpp" line="395"/>
         <source>Import Preset</source>
         <translation>Voreinstellung importieren</translation>
     </message>
@@ -574,27 +574,27 @@
         <translation>Balance</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="296"/>
+        <location filename="../display.cpp" line="294"/>
         <source>Volume: %1%</source>
         <translation>Lautstärke: %1 %</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="300"/>
+        <location filename="../display.cpp" line="298"/>
         <source>Balance: %1% right</source>
         <translation>Balance: %1 % rechts</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="302"/>
+        <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% left</source>
         <translation>Balance: %1 % links</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="304"/>
+        <location filename="../display.cpp" line="302"/>
         <source>Balance: center</source>
         <translation>Balance: Mitte</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="315"/>
+        <location filename="../display.cpp" line="312"/>
         <source>Seek to: %1</source>
         <translation>Springen zu: %1</translation>
     </message>
@@ -735,32 +735,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="310"/>
         <source>Appearance</source>
         <translation>Erscheinungsbild</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="311"/>
         <source>Shortcuts</source>
         <translation>Kurzbefehle</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="373"/>
         <source>View</source>
         <translation>Ansicht</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="387"/>
+        <location filename="../mainwindow.cpp" line="381"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="399"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="411"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
     </message>
