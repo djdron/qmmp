@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,24 +49,12 @@ const QString IncDecVolumeCommandLineOption::helpString() const
 QString IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, const QStringList &args)
 {
     Q_UNUSED(args);
-    SoundCore *core = SoundCore::instance();
-    int volume = qMax(core->leftVolume(), core->rightVolume());
-    int balance = 0;
-    int left = core->leftVolume();
-    int right = core->rightVolume();
-    if (left || right)
-        balance = (right - left)*100/volume;
 
     if (opt_str == "--volume-inc")
-    {
-        volume = qMin (100, volume + 5);
-    }
+        SoundCore::instance()->changeVolume(5);
     else if (opt_str == "--volume-dec")
-    {
-        volume = qMax (0, volume - 5);
-    }
-    core->setVolume(volume-qMax(balance,0)*volume/100,
-                    volume+qMin(balance,0)*volume/100);
+        SoundCore::instance()->changeVolume(-5);
+
     return QString();
 }
 
