@@ -203,7 +203,7 @@ int SoundCore::volume() const
 
 int SoundCore::balance() const
 {
-    return m_volumeControl->left();
+    return m_volumeControl->balance();
 }
 
 bool SoundCore::isMuted() const
