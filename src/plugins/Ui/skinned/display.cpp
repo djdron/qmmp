@@ -99,14 +99,14 @@ MainDisplay::MainDisplay (MainWindow *parent)
 
     m_volumeBar = new VolumeBar(this);
     m_volumeBar->setToolTip(tr("Volume"));
-    connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
-    connect(m_volumeBar, SIGNAL(sliderPressed()),SLOT(updateVolume()));
+    connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(displayVolume()));
+    connect(m_volumeBar, SIGNAL(sliderPressed()),SLOT(displayVolume()));
     connect(m_volumeBar, SIGNAL(sliderReleased()),m_text,SLOT(clear()));
 
     m_balanceBar = new BalanceBar(this);
     m_balanceBar->setToolTip(tr("Balance"));
-    connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
-    connect(m_balanceBar, SIGNAL(sliderPressed()),SLOT(updateVolume()));
+    connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(displayVolume()));
+    connect(m_balanceBar, SIGNAL(sliderPressed()),SLOT(displayVolume()));
     connect(m_balanceBar, SIGNAL(sliderReleased()),m_text,SLOT(clear()));
 
     m_posbar = new PositionBar(this);
@@ -122,8 +122,14 @@ MainDisplay::MainDisplay (MainWindow *parent)
     connect(m_core, SIGNAL(frequencyChanged(quint32)), SLOT(setSampleRate(quint32)));
     connect(m_core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
-    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
+    connect(m_core, SIGNAL(volumeChanged(int)), m_volumeBar, SLOT(setValue(int)));
+    connect(m_core, SIGNAL(balanceChanged(int)), m_balanceBar, SLOT(setValue(int)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
+    connect(m_balanceBar, SIGNAL(sliderMoved(int)), m_core, SLOT(setBalance(int)));
+    connect(m_volumeBar, SIGNAL(sliderMoved(int)), m_core, SLOT(setVolume(int)));
+    m_volumeBar->setValue(m_core->volume());
+    m_balanceBar->setValue(m_core->balance());
+
     PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
     connect(pl_manager, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setChecked(bool)));
     connect(pl_manager, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setChecked(bool)));
@@ -196,14 +202,6 @@ void MainDisplay::setState(Qmmp::State state)
         m_posbar->setMaximum (0);
         m_titlebar->setTime(-1);
     }
-}
-
-void MainDisplay::setVolume(int left, int right)
-{
-    int maxVol = qMax(left, right);
-    m_volumeBar->setValue(maxVol);
-    if (maxVol && !m_volumeBar->isPressed())
-        m_balanceBar->setValue((right - left) * 100/maxVol);
 }
 
 void MainDisplay::updateSkin()
@@ -290,7 +288,7 @@ bool MainDisplay::isEqualizerVisible() const
     return m_eqButton->isChecked();
 }
 
-void MainDisplay::updateVolume()
+void MainDisplay::displayVolume()
 {
     if(sender() == m_volumeBar)
         m_text->setText(tr("Volume: %1%").arg(m_volumeBar->value()));
@@ -303,7 +301,6 @@ void MainDisplay::updateVolume()
         else
             m_text->setText(tr("Balance: center"));
     }
-    m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
 }
 
 void MainDisplay::showPosition()
@@ -323,7 +320,7 @@ void MainDisplay::updatePosition()
 
 void MainDisplay::wheelEvent (QWheelEvent *e)
 {
-    m_mw->setVolume(m_volumeBar->value()+e->delta()/10, m_balanceBar->value());
+    m_core->changeVolume(e->delta()/10);
 }
 
 bool MainDisplay::isRepeatable() const

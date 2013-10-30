@@ -55,7 +55,6 @@ public:
     PlayList *playlist(){return m_playlist;}
 
     QMenu* menu();
-    void setVolume(int volume, int balance);
     MainDisplay* mainDisplay()const;
 
 public slots:

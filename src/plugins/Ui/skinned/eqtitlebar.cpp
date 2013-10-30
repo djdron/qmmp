@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 #include <QMouseEvent>
 #include <QMenu>
 #include <QSettings>
+#include <qmmp/soundcore.h>
 #include "eqwidget.h"
 #include "skin.h"
 #include "shadedbar.h"
@@ -93,19 +94,6 @@ void EqTitleBar::setActive(bool active)
     }
 }
 
-void EqTitleBar::setVolume(int left, int right)
-{
-    m_left = left;
-    m_right = right;
-    if (m_volumeBar && m_balanceBar)
-    {
-        int maxVol = qMax(left, right);
-        m_volumeBar->setValue(maxVol);
-        if (maxVol && !m_volumeBar->isPressed())
-            m_balanceBar->setValue((right - left)*100/maxVol);
-    }
-}
-
 void EqTitleBar::mousePressEvent(QMouseEvent* event)
 {
     switch ((int) event->button ())
@@ -153,13 +141,17 @@ void EqTitleBar::shade()
         m_volumeBar = new ShadedBar(this, Skin::EQ_VOLUME1, Skin::EQ_VOLUME2, Skin::EQ_VOLUME3);
         m_volumeBar->move(r*61,r*4);
         m_volumeBar->show();
-        connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
         m_balanceBar = new ShadedBar(this, Skin::EQ_BALANCE1, Skin::EQ_BALANCE2, Skin::EQ_BALANCE3);
         m_balanceBar->move(r*164,r*4);
         m_balanceBar->setRange(-100, 100);
         m_balanceBar->show();
-        connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
-        setVolume(m_left, m_right); //show current volume and balance
+        SoundCore *core = SoundCore::instance();
+        connect(core, SIGNAL(volumeChanged(int)), m_volumeBar, SLOT(setValue(int)));
+        connect(core, SIGNAL(balanceChanged(int)), m_balanceBar, SLOT(setValue(int)));
+        connect(m_volumeBar, SIGNAL(sliderMoved(int)), core, SLOT(setVolume(int)));
+        connect(m_balanceBar, SIGNAL(sliderMoved(int)), core, SLOT(setBalance(int)));
+        m_volumeBar->setValue(core->volume());
+        m_balanceBar->setValue(core->balance());
     }
     else
     {
@@ -175,11 +167,6 @@ void EqTitleBar::shade()
     qobject_cast<EqWidget *>(m_eq)->setMimimalMode(m_shaded);
     if (m_align)
         Dock::instance()->align(m_eq, m_shaded? -102*r: 102*r);
-}
-
-void EqTitleBar::updateVolume()
-{
-    m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
 }
 
 void EqTitleBar::updateSkin()

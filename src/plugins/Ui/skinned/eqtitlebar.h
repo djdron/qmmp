@@ -41,12 +41,8 @@ public:
 
     void setActive(bool);
 
-public slots:
-    void setVolume(int left, int right);
-
 private slots:
     void shade();
-    void updateVolume();
     void updateSkin();
 
 private:

@@ -74,7 +74,6 @@ EqWidget::EqWidget (QWidget *parent)
     createActions();
     updatePositions();
     updateMask();
-    connect(SoundCore::instance(), SIGNAL(volumeChanged(int, int)), m_titleBar, SLOT(setVolume(int, int)));
 #ifdef Q_WS_X11
     QString wm_name = WindowSystem::netWindowManagerName();
     if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
