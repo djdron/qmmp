@@ -57,13 +57,32 @@ public:
      */
     void changeVolume(int delta);
     /*!
+     * Sets the volume of the left and right channels with keeping of the balance.
+     * @param volume volume of the left and right channels \b[0..100].
+     */
+    void setVolume(int volume);
+    /*!
+     * Sets the balance between left and right channels.
+     * @param balance balance between left and right channels \b [-100..100].
+     */
+    void setBalance(int balance);
+    /*!
      * Returns left channel volume.
      */
-    int left();
+    int left() const;
     /*!
      * Returns right channel volume.
      */
-    int right();
+    int right() const;
+    /*!
+     * Returns the maximum volume of the left and right channels.
+     */
+    int volume() const;
+    /*!
+     * Returns the balance between left and right channels.
+     */
+    int balance() const;
+
 
 signals:
     /*!
@@ -72,6 +91,16 @@ signals:
      * @param right Right channel volume level. It should be \b 0..100
      */
     void volumeChanged(int left, int right);
+    /*!
+     * Emitted when the highest volume of the left and right channels has changed.
+     * @param volume new value of the highest volume of the left and right channels.
+     */
+    void volumeChanged(int volume);
+    /*!
+     * Emitted when the balance between left and right channels has changed.
+     * @param volume new balance value.
+     */
+    void balanceChanged(int balance);
 
 public slots:
     /*!
