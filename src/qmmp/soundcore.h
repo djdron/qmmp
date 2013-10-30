@@ -67,11 +67,19 @@ public:
     /*!
      * Returns left volume level.
      */
-    int leftVolume();
+    int leftVolume() const;
     /*!
      * Returns left volume level.
      */
-    int rightVolume();
+    int rightVolume() const;
+    /*!
+     * Returns the highest volume of the left and right channels.
+     */
+    int volume() const;
+    /*!
+     * Returns the balance between left and right channels.
+     */
+    int balance() const;
     /*!
      * Returns \b true if volume is unmuted, otherwise returns \b false
      */
@@ -138,6 +146,16 @@ public slots:
      * Changes volume by \b delta percent
      */
     void changeVolume(int delta);
+    /*!
+     * Sets the volume of the left and right channels with keeping of the balance.
+     * @param volume volume of the left and right channels \b[0..100].
+     */
+    void setVolume(int volume);
+    /*!
+     * Sets the balance between left and right channels.
+     * @param balance balance between left and right channels \b [-100..100].
+     */
+    void setBalance(int balance);
     /*!
      * This function plays file or stream with the given path \p source.
      * Returns \b true if playback has been started successful or source is not a local file,
@@ -216,11 +234,21 @@ signals:
     void volumeChanged(int left, int right);
     /*!
      * Emitted when volume has muted or restored
-     * @param muted - new state of volume (\b true - muted, \b false - unmuted)
+     * @param muted new state of the volume (\b true - muted, \b false - unmuted)
      */
     void mutedChanged(bool muted);
     /*!
-     * Emitted when equalizer settings have changed.
+     * Emitted when the highest volume of the left and right channels has changed.
+     * @param volume new value of the highest volume of the left and right channels.
+     */
+    void volumeChanged(int volume);
+    /*!
+     * Emitted when the balance between left and right channels has changed.
+     * @param volume new balance value.
+     */
+    void balanceChanged(int balance);
+    /*!
+     * Emitted when equalizer settings has changed.
      */
     void eqSettingsChanged();
     /*!

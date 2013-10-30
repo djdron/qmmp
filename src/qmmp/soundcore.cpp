@@ -57,6 +57,8 @@ SoundCore::SoundCore(QObject *parent)
     connect(QmmpSettings::instance(), SIGNAL(eqSettingsChanged()), SIGNAL(eqSettingsChanged()));
     connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), m_volumeControl, SLOT(reload()));
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    connect(m_volumeControl, SIGNAL(volumeChanged(int)), SIGNAL(volumeChanged(int)));
+    connect(m_volumeControl, SIGNAL(balanceChanged(int)), SIGNAL(balanceChanged(int)));
 }
 
 SoundCore::~SoundCore()
@@ -172,14 +174,36 @@ void SoundCore::changeVolume(int delta)
     m_volumeControl->changeVolume(delta);
 }
 
-int SoundCore::leftVolume()
+void SoundCore::setVolume(int volume)
+{
+    setMuted(false);
+    m_volumeControl->setVolume(volume);
+}
+
+void SoundCore::setBalance(int balance)
+{
+    setMuted(false);
+    m_volumeControl->setBalance(balance);
+}
+
+int SoundCore::leftVolume() const
 {
     return m_volumeControl->left();
 }
 
-int SoundCore::rightVolume()
+int SoundCore::rightVolume() const
 {
     return m_volumeControl->right();
+}
+
+int SoundCore::volume() const
+{
+    return m_volumeControl->volume();
+}
+
+int SoundCore::balance() const
+{
+    return m_volumeControl->left();
 }
 
 bool SoundCore::isMuted() const
