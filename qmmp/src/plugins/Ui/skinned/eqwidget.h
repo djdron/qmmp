@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -88,14 +88,12 @@ private:
     EqSlider *m_preamp;
     Button *m_presetButton;
     QList<EqSlider*> m_sliders;
-    QPoint m_pos;
     ToggleButton *m_on;
     ToggleButton *m_autoButton;
     EQGraph *m_eqg;
     QMenu *m_presetsMenu;
     QList<EQPreset*> m_presets;
     QList<EQPreset*> m_autoPresets;
-    QString m_autoName;
     bool m_shaded;
 };
 

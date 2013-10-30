@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -55,7 +55,6 @@ private:
     QList <QFileInfo> m_skinList;
     QString m_currentSkinName;
     Skin *m_skin;
-    QPixmap pixmap;
     SkinReader *m_reader;
 
 };
