@@ -190,7 +190,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Громкость &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Громкость &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
@@ -210,7 +210,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Выключить звук</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
