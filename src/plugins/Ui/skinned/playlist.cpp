@@ -370,7 +370,7 @@ void PlayList::resizeEvent (QResizeEvent *)
 
 void PlayList::mousePressEvent (QMouseEvent *e)
 {
-    m_pos = e->pos ();
+    Q_UNUSED(e);
     if (m_resizeWidget->underMouse())
     {
         m_resize = true;

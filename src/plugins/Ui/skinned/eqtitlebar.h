@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,7 +52,6 @@ private slots:
 private:
     void updatePositions();
     Skin* m_skin;
-    bool m_active;
     int m_left;
     int m_right;
     QPoint m_pos;

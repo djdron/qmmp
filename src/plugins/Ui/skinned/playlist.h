@@ -124,7 +124,6 @@ class PlayList : public QWidget
         ListWidget *m_listWidget;
         PlayListTitleBar *m_titleBar;
         PlayListSlider *m_plslider;
-        QPoint m_pos;
         bool m_resize;
         bool m_update;
         int m_ratio;

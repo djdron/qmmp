@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,7 +56,6 @@ private:
     QLabel *m_label1;
     QLabel *m_pixlabel;
     QString m_template;
-    uint m_pos;
     int m_coverSize;
     QString m_url;
 };

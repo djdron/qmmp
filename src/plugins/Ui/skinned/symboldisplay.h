@@ -48,7 +48,6 @@ private slots:
 
 private:
     Skin* m_skin;
-    QPixmap m_pixmap;
     QString m_text;
     Qt::Alignment m_alignment;
     int m_digits;
