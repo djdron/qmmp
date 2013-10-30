@@ -66,8 +66,7 @@ private slots:
     void about();
     void toggleVisibility();
     void showSettings();
-    void setVolume(int volume);
-    void updateVolume();
+    void updateVolumeIcon();
     void jumpTo();
     void playPause();
     void readSettings();

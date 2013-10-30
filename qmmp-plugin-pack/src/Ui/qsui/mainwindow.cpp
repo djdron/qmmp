@@ -124,10 +124,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui.progressToolBar->addWidget(m_volumeSlider);
     QIcon volumeIcon = QIcon::fromTheme("audio-volume-high", QIcon(":/qsui/audio-volume-high.png"));
     m_volumeAction = m_ui.progressToolBar->addAction(volumeIcon, tr("Volume"));
-    connect(m_volumeSlider, SIGNAL(valueChanged(int)), SLOT(setVolume(int)));
-    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
+    m_volumeAction->setCheckable(true);
+    connect(m_volumeAction, SIGNAL(triggered(bool)), m_core, SLOT(setMuted(bool)));
+    connect(m_volumeSlider, SIGNAL(valueChanged(int)), m_core, SLOT(setVolume(int)));
+    connect(m_core, SIGNAL(volumeChanged(int)), m_volumeSlider, SLOT(setValue(int)));
+    connect(m_core, SIGNAL(volumeChanged(int)), SLOT(updateVolumeIcon()));
+    connect(m_core, SIGNAL(mutedChanged(bool)), SLOT(updateVolumeIcon()));
 
-    updateVolume();
+    m_volumeSlider->setValue(m_core->volume());
+    updateVolumeIcon();
     createActions();
     readSettings();
 
@@ -289,19 +294,12 @@ void MainWindow::showSettings()
     m_ui.visualWidget->readSettings();
 }
 
-void MainWindow::setVolume(int volume)
+void MainWindow::updateVolumeIcon()
 {
-    m_core->setVolume(volume-qMax(m_balance,0)*volume/100,
-                      volume+qMin(m_balance,0)*volume/100);
-}
-
-void MainWindow::updateVolume()
-{
-    int maxVol = qMax(m_core->leftVolume(), m_core->rightVolume());
-    m_volumeSlider->setValue(maxVol);
+    int maxVol = m_core->volume();
 
     QString iconName = "audio-volume-high";
-    if(maxVol == 0)
+    if(maxVol == 0 || m_core->isMuted())
         iconName = "audio-volume-muted";
     else if(maxVol < 30)
         iconName = "audio-volume-low";
@@ -309,9 +307,6 @@ void MainWindow::updateVolume()
         iconName = "audio-volume-medium";
 
     m_volumeAction->setIcon(QIcon::fromTheme(iconName, QIcon(QString(":/qsui/") + iconName + ".png")));
-
-    if (maxVol)
-        m_balance = (m_core->leftVolume() - m_core->rightVolume()) * 100 / maxVol;
 }
 
 void MainWindow::jumpTo()
@@ -348,14 +343,6 @@ void MainWindow::closeEvent(QCloseEvent *)
 void MainWindow::createActions()
 {
     //preprare cheackable actions
-    connect(ACTION(ActionManager::REPEAT_ALL), SIGNAL(triggered(bool)),
-            m_pl_manager, SLOT(setRepeatableList(bool)));
-    connect(ACTION(ActionManager::REPEAT_TRACK), SIGNAL(triggered(bool)),
-            m_player, SLOT(setRepeatable(bool)));
-    connect(ACTION(ActionManager::SHUFFLE), SIGNAL(triggered(bool)),
-            m_pl_manager, SLOT(setShuffle(bool)));
-    connect(ACTION(ActionManager::NO_PL_ADVANCE), SIGNAL(triggered(bool)),
-            m_player, SLOT(setNoPlaylistAdvance(bool)));
 
     ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
     ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
@@ -523,12 +510,26 @@ void MainWindow::createActions()
     m_ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
     m_ui.menuPlayback->addSeparator();
-    m_ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_ALL));
-    m_ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_TRACK));
-    m_ui.menuPlayback->addAction(ACTION(ActionManager::SHUFFLE));
-    m_ui.menuPlayback->addAction(ACTION(ActionManager::NO_PL_ADVANCE));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_pl_manager,
+                                            SLOT(setRepeatableList(bool))));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_player,
+                                            SLOT(setRepeatable(bool))));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::SHUFFLE, m_pl_manager,
+                                            SLOT(setShuffle(bool))));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_player,
+                                            SLOT(setNoPlaylistAdvance(bool))));
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                             SLOT(stopAfterSelected())));
+    m_ui.menuPlayback->addSeparator();
+    signalMapper = new QSignalMapper(this);
+    signalMapper->setMapping(ACTION(ActionManager::VOL_ENC), 5);
+    signalMapper->setMapping(ACTION(ActionManager::VOL_DEC), -5);
+    connect(signalMapper, SIGNAL(mapped(int)), m_core, SLOT(changeVolume(int)));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::VOL_ENC, signalMapper, SLOT(map())));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::VOL_DEC, signalMapper, SLOT(map())));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::VOL_MUTE, m_core, SLOT(setMuted(bool))));
+    connect(m_core, SIGNAL(mutedChanged(bool)), ACTION(ActionManager::VOL_MUTE), SLOT(setChecked(bool)));
+
     //help menu
     m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_UI, this, SLOT(aboutUi())));
     m_ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));

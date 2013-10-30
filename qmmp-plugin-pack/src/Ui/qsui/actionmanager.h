@@ -62,6 +62,10 @@ public:
         WM_ALLWAYS_ON_TOP,
         WM_STICKY,
 
+        VOL_ENC,
+        VOL_DEC,
+        VOL_MUTE,
+
         UI_ANALYZER,
 
         PL_ADD_FILE,
