@@ -56,7 +56,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Mute/Restore volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Приглушить/Восстановить громкость</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
