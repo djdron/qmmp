@@ -690,7 +690,7 @@ int ffap_init(FFap_decoder *decoder)
             || !decoder->getlength || !decoder->client_data)
         return -1;
 
-    memset(decoder->ape_ctx, 0, sizeof(decoder->ape_ctx));
+    memset(decoder->ape_ctx, 0, sizeof(*(decoder->ape_ctx)));
 
     /*int skip = deadbeef->junk_get_leading_size (info->fp);
     if (skip > 0) {
