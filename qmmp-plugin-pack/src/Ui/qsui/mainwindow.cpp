@@ -39,6 +39,7 @@
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
 #include "actionmanager.h"
+#include "qsuianalyzer.h"
 #include "visualmenu.h"
 #include "listwidget.h"
 #include "positionslider.h"
@@ -130,16 +131,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(volumeChanged(int)), m_volumeSlider, SLOT(setValue(int)));
     connect(m_core, SIGNAL(volumeChanged(int)), SLOT(updateVolumeIcon()));
     connect(m_core, SIGNAL(mutedChanged(bool)), SLOT(updateVolumeIcon()));
-
     m_volumeSlider->setValue(m_core->volume());
     updateVolumeIcon();
+    //visualization
+    m_analyzer = new QSUiAnalyzer(this);
+    m_ui.analyzerDockWidget->setWidget(m_analyzer);
+    Visual::add(m_analyzer);
+
     createActions();
     readSettings();
-
-    //visualization
-    Visual::add(m_ui.visualWidget);
-
-    m_ui.splitter->setStretchFactor(0,1);
 }
 
 MainWindow::~MainWindow()
@@ -183,7 +183,7 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
         showBitrate(m_core->bitrate());
-        m_ui.visualWidget->setCover(MetaDataManager::instance()->getCover(m_core->url()));
+        m_analyzer->setCover(MetaDataManager::instance()->getCover(m_core->url()));
         break;
     case Qmmp::Paused:
         m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
@@ -192,7 +192,7 @@ void MainWindow::showState(Qmmp::State state)
         m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
         m_timeLabel->clear();
         m_slider->setValue(0);
-        m_ui.visualWidget->clearCover();
+        m_analyzer->clearCover();
         setWindowTitle("Qmmp");
         break;
     }
@@ -291,7 +291,7 @@ void MainWindow::showSettings()
     confDialog->deleteLater();
     readSettings();
     ActionManager::instance()->saveActions();
-    m_ui.visualWidget->readSettings();
+    m_analyzer->readSettings();
 }
 
 void MainWindow::updateVolumeIcon()
@@ -343,7 +343,6 @@ void MainWindow::closeEvent(QCloseEvent *)
 void MainWindow::createActions()
 {
     //preprare cheackable actions
-
     ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
     ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
 
@@ -355,6 +354,8 @@ void MainWindow::createActions()
             ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
+    connect(m_ui.analyzerDockWidget, SIGNAL(visibilityChanged(bool)),
+            ACTION(ActionManager::UI_ANALYZER), SLOT(setChecked(bool)));
     //main toolbar
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
@@ -396,7 +397,7 @@ void MainWindow::createActions()
     //view menu
     m_ui.menuView->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(readSettings())));
     m_ui.menuView->addSeparator();
-    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, this, SLOT(readSettings())));
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, m_ui.analyzerDockWidget, SLOT(setVisible(bool))));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -581,10 +582,7 @@ void MainWindow::readSettings()
         if(settings.value("start_hidden").toBool())
             hide();
 
-        ACTION(ActionManager::UI_ANALYZER)->setChecked(settings.value("show_analyzer", true).toBool());
-        m_ui.splitter->setSizes(QList<int>() << 200 << 100);
-        m_ui.splitter->restoreState(settings.value("splitter_sizes").toByteArray());
-
+        ACTION(ActionManager::UI_ANALYZER)->setChecked(m_ui.analyzerDockWidget->isVisible());
         m_update = true;
     }
     else
@@ -602,7 +600,6 @@ void MainWindow::readSettings()
     }
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     m_ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
-    m_ui.visualWidget->setVisible(ACTION(ActionManager::UI_ANALYZER)->isChecked());
     settings.endGroup();
 
     addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
@@ -628,7 +625,6 @@ void MainWindow::writeSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Simple/mw_geometry", saveGeometry());
     settings.setValue("Simple/mw_state", saveState());
-    settings.setValue("Simple/splitter_sizes", m_ui.splitter->saveState());
     settings.setValue("Simple/always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("Simple/show_analyzer", ACTION(ActionManager::UI_ANALYZER)->isChecked());
 }

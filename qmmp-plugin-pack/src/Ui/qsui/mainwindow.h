@@ -36,6 +36,7 @@ class GeneralHandler;
 class VisualMenu;
 class PositionSlider;
 class KeyboardManager;
+class QSUiAnalyzer;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -99,6 +100,7 @@ private:
     QSlider *m_volumeSlider;
     QAction *m_volumeAction;
     KeyboardManager *m_key_manager;
+    QSUiAnalyzer *m_analyzer;
     int m_balance;
     bool m_update;
     bool m_hideOnClose;
