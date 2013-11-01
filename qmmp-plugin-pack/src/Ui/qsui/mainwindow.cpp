@@ -45,6 +45,7 @@
 #include "positionslider.h"
 #include "mainwindow.h"
 #include "qsuisettings.h"
+#include "filesystembrowser.h"
 #include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
 #include "equalizer.h"
@@ -137,6 +138,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_analyzer = new QSUiAnalyzer(this);
     m_ui.analyzerDockWidget->setWidget(m_analyzer);
     Visual::add(m_analyzer);
+    //filesystem browser
+    m_ui.fileSystemDockWidget->setWidget(new FileSystemBrowser(this));
 
     createActions();
     readSettings();

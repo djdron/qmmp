@@ -31,7 +31,8 @@ SOURCES += \
     colorwidget.cpp \
     qsuitabwidget.cpp \
     qsuitabbar.cpp \
-    eqpreset.cpp
+    eqpreset.cpp \
+    filesystembrowser.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -53,7 +54,8 @@ HEADERS += mainwindow.h \
     colorwidget.h \
     qsuitabwidget.h \
     qsuitabbar.h \
-    eqpreset.h
+    eqpreset.h \
+    filesystembrowser.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
