@@ -62,7 +62,8 @@ FORMS += forms/mainwindow.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
-    forms/qsuisettings.ui
+    forms/qsuisettings.ui \
+    forms/filesystembrowser.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 TRANSLATIONS = translations/qsui_plugin_ru.ts \
