@@ -510,7 +510,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="126"/>
+        <location filename="../mainwindow.cpp" line="127"/>
         <source>Volume</source>
         <translation>Garsumas</translation>
     </message>
@@ -555,92 +555,92 @@
         <translation>Mono</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="402"/>
         <source>Sort List</source>
         <translation>Rūšiuoti sąrašą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>By Title</source>
         <translation>Pagal dainos pavadinimą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
-        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="409"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>By Album</source>
         <translation>Pagal albumą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="412"/>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="460"/>
         <source>By Artist</source>
         <translation>Pagal atlikėją</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="416"/>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="464"/>
         <source>By Filename</source>
         <translation>Pagal bylos pavadinimą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="468"/>
         <source>By Path + Filename</source>
         <translation>Pagal kelią iki bylos ir pavadinimą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
-        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="472"/>
         <source>By Date</source>
         <translation>Pagal datą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
-        <location filename="../mainwindow.cpp" line="475"/>
+        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="476"/>
         <source>By Track Number</source>
         <translation>Pagal takelio numerį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <location filename="../mainwindow.cpp" line="479"/>
+        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="480"/>
         <source>By Disc Number</source>
         <translation>Pagal disko numerį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
-        <location filename="../mainwindow.cpp" line="483"/>
+        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="484"/>
         <source>By File Creation Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>By Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>Sort Selection</source>
         <translation>Rūšiuoti pasirinktus</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>Randomize List</source>
         <translation>Sumaišyti sąrašą</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
+        <location filename="../mainwindow.cpp" line="493"/>
         <source>Reverse List</source>
         <translation>Apversti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <location filename="../mainwindow.cpp" line="544"/>
+        <location filename="../mainwindow.cpp" line="500"/>
+        <location filename="../mainwindow.cpp" line="545"/>
         <source>Actions</source>
         <translation>Veiksmai</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="654"/>
+        <location filename="../mainwindow.cpp" line="650"/>
         <source>Buffering: %1%</source>
         <translation>Buferis: %1%</translation>
     </message>
@@ -655,137 +655,142 @@
         <translation>Qmmp</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="66"/>
+        <location filename="../forms/mainwindow.ui" line="48"/>
         <source>&amp;File</source>
         <translation>&amp;Byla</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="71"/>
+        <location filename="../forms/mainwindow.ui" line="53"/>
         <source>&amp;Tools</source>
         <translation>&amp;Įrankiai</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="79"/>
+        <location filename="../forms/mainwindow.ui" line="61"/>
         <source>&amp;Help</source>
         <translation>&amp;Pagalba</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="84"/>
+        <location filename="../forms/mainwindow.ui" line="66"/>
         <source>&amp;Edit</source>
         <translation>&amp;Taisa</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="89"/>
+        <location filename="../forms/mainwindow.ui" line="71"/>
         <source>&amp;Playback</source>
         <translation>&amp;Grojimas</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="94"/>
+        <location filename="../forms/mainwindow.ui" line="76"/>
         <source>&amp;View</source>
         <translation>&amp;Rodyti</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="106"/>
+        <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
         <translation>Grojimas</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="129"/>
+        <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
         <translation>Progresas</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="151"/>
+        <location filename="../forms/mainwindow.ui" line="134"/>
+        <source>Spectrum Analyzer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="148"/>
         <source>Previous</source>
         <translation>Ankstesnis</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="161"/>
+        <location filename="../forms/mainwindow.ui" line="158"/>
         <source>Play</source>
         <translation>Groti</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="171"/>
+        <location filename="../forms/mainwindow.ui" line="168"/>
         <source>Pause</source>
         <translation>Pristabdyti</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="181"/>
+        <location filename="../forms/mainwindow.ui" line="178"/>
         <source>Next</source>
         <translation>Sekantis</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="191"/>
+        <location filename="../forms/mainwindow.ui" line="188"/>
         <source>Stop</source>
         <translation>Sustoti</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="196"/>
+        <location filename="../forms/mainwindow.ui" line="193"/>
         <source>&amp;Add File</source>
         <translation>&amp;Pridėti bylą</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="201"/>
+        <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Remove All</source>
         <translation>&amp;Pašalinti visus</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="206"/>
+        <location filename="../forms/mainwindow.ui" line="203"/>
         <source>New Playlist</source>
         <translation>Naujas grojaraštis</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="211"/>
+        <location filename="../forms/mainwindow.ui" line="208"/>
         <source>Remove Playlist</source>
         <translation>Pašalinti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="216"/>
+        <location filename="../forms/mainwindow.ui" line="213"/>
         <source>&amp;Add Directory</source>
         <translation>&amp;Pridėti aplanką</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="221"/>
+        <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Exit</source>
         <translation>&amp;Išeiti</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="226"/>
+        <location filename="../forms/mainwindow.ui" line="223"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="231"/>
+        <location filename="../forms/mainwindow.ui" line="228"/>
         <source>About Qt</source>
         <translation>Apie Qt</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="236"/>
+        <location filename="../forms/mainwindow.ui" line="233"/>
         <source>&amp;Select All</source>
         <translation>&amp;Pasirinkti visus</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="241"/>
+        <location filename="../forms/mainwindow.ui" line="238"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Pašalinti pasirinktus</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="246"/>
+        <location filename="../forms/mainwindow.ui" line="243"/>
         <source>&amp;Remove Unselected</source>
         <translation>&amp;Pašalinti NEpasirinktus</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="251"/>
+        <location filename="../forms/mainwindow.ui" line="248"/>
         <source>Visualization</source>
         <translation>Vizualizacija</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="256"/>
+        <location filename="../forms/mainwindow.ui" line="253"/>
         <source>Settings</source>
         <translation>Nustatymai</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="261"/>
+        <location filename="../forms/mainwindow.ui" line="258"/>
         <location filename="../mainwindow.cpp" line="252"/>
         <source>Rename Playlist</source>
         <translation>Pervadinti grojaraštį</translation>
