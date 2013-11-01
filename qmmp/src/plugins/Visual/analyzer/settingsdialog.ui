@@ -6,14 +6,23 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>314</width>
-    <height>310</height>
+    <width>312</width>
+    <height>223</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Analyzer Plugin Settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="sizePolicy">
@@ -25,146 +34,15 @@
      <property name="title">
       <string>General</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" colspan="2">
-       <widget class="QCheckBox" name="peaksCheckBox">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>Show peaks</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Analyzer falloff:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="analyzerComboBox">
-        <property name="currentIndex">
-         <number>2</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Slowest</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Slow</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Medium</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fast</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fastest</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Peaks falloff:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="peaksComboBox">
-        <property name="currentIndex">
-         <number>2</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>Slowest</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Slow</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Medium</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fast</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fastest</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>Refresh rate:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="fpsComboBox">
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>50 FPS</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>25 FPS</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>10 FPS</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>5 FPS</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="4" column="0">
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Cells size:</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="0" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QSpinBox" name="cellWidthSpinBox">
