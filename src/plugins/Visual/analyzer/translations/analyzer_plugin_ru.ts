@@ -11,72 +11,72 @@
     <message>
         <location filename="../analyzer.cpp" line="364"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Пики</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="367"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота обновления</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="370"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 кадр/c</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="371"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 кадр/c</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="372"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 кадр/c</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="373"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 кадр/c</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="380"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Падение анализатора</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="383"/>
         <location filename="../analyzer.cpp" line="397"/>
         <source>Slowest</source>
-        <translation type="unfinished">Самое медленное</translation>
+        <translation>Самое медленное</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="384"/>
         <location filename="../analyzer.cpp" line="398"/>
         <source>Slow</source>
-        <translation type="unfinished">Медленное</translation>
+        <translation>Медленное</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="385"/>
         <location filename="../analyzer.cpp" line="399"/>
         <source>Medium</source>
-        <translation type="unfinished">Среднее</translation>
+        <translation>Среднее</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="386"/>
         <location filename="../analyzer.cpp" line="400"/>
         <source>Fast</source>
-        <translation type="unfinished">Быстрое</translation>
+        <translation>Быстрое</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="387"/>
         <location filename="../analyzer.cpp" line="401"/>
         <source>Fastest</source>
-        <translation type="unfinished">Самое быстрое</translation>
+        <translation>Самое быстрое</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="394"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Падение пиков</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../analyzer.cpp" line="408"/>
         <source>&amp;Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Полноэкранный режим экран</translation>
     </message>
 </context>
 <context>
