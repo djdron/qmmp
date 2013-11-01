@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,12 +22,11 @@
 #include <QPainter>
 #include <QMenu>
 #include <QActionGroup>
-
-#include <qmmp/buffer.h>
-#include <qmmp/output.h>
+#include <QPaintEvent>
 #include <math.h>
 #include <stdlib.h>
-
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
 #include "fft.h"
 #include "inlines.h"
 #include "analyzer.h"
@@ -35,7 +34,7 @@
 #define VISUAL_NODE_SIZE 512 //samples
 #define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
 
-Analyzer::Analyzer (QWidget *parent) : Visual (parent), m_fps (20)
+Analyzer::Analyzer (QWidget *parent) : Visual (parent)
 {
     m_intern_vis_data = 0;
     m_peaks = 0;
@@ -43,9 +42,9 @@ Analyzer::Analyzer (QWidget *parent) : Visual (parent), m_fps (20)
     m_buffer_at = 0;
     m_rows = 0;
     m_cols = 0;
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    restoreGeometry(settings.value("Analyzer/geometry").toByteArray());
-    //setAttribute(Qt::WA_TranslucentBackground);
+    m_update = false;
+
+    setWindowTitle (tr("Qmmp Analyzer"));
     setMinimumSize(2*300-30,105);
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
@@ -53,30 +52,8 @@ Analyzer::Analyzer (QWidget *parent) : Visual (parent), m_fps (20)
     m_right_buffer = new short[VISUAL_BUFFER_SIZE];
 
     clear();
-    setWindowTitle (tr("Qmmp Analyzer"));
-
-    double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
-    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.4, 2.8 };
-    int intervals[] = { 20 , 40 , 100 , 200 };
-
-    m_peaks_falloff =
-        peaks_speed[settings.value("Analyzer/peaks_falloff", 3).toInt()-1];
-    m_analyzer_falloff =
-        analyzer_speed[settings.value("Analyzer/analyzer_falloff", 3).toInt()-1];
-    m_show_peaks = settings.value("Analyzer/show_peaks", true).toBool();
-    m_timer->setInterval(intervals[settings.value("Analyzer/refresh_rate", 2).toInt() - 1]);
-    m_color1.setNamedColor(settings.value("Analyzer/color1", "Green").toString());
-    m_color2.setNamedColor(settings.value("Analyzer/color2", "Yellow").toString());
-    m_color3.setNamedColor(settings.value("Analyzer/color3", "Red").toString());
-    m_bgColor.setNamedColor(settings.value("Analyzer/bg_color", "Black").toString());
-    //m_bgColor.setAlpha(0);
-    m_peakColor.setNamedColor(settings.value("Analyzer/peak_color", "Cyan").toString());
-    m_cell_size = settings.value("Analyzer/cells_size", QSize(15, 6)).toSize();
-
-    QAction *fullScreenAction = new QAction(this);
-    fullScreenAction->setShortcut(tr("F"));
-    connect(fullScreenAction, SIGNAL(triggered()), SLOT(toggleFullScreen()));
-    addAction(fullScreenAction);
+    createMenu();
+    readSettings();
 }
 
 Analyzer::~Analyzer()
@@ -90,14 +67,6 @@ Analyzer::~Analyzer()
         delete [] m_intern_vis_data;
     if(m_x_scale)
         delete [] m_x_scale;
-}
-
-void Analyzer::clear()
-{
-    m_buffer_at = 0;
-    m_rows = 0;
-    m_cols = 0;
-    update();
 }
 
 void Analyzer::add (unsigned char *data, qint64 size, int chan)
@@ -129,6 +98,15 @@ void Analyzer::add (unsigned char *data, qint64 size, int chan)
     m_buffer_at += frames;
 }
 
+void Analyzer::clear()
+{
+    m_buffer_at = 0;
+    m_rows = 0;
+    m_cols = 0;
+    update();
+}
+
+
 void Analyzer::timeout()
 {
     mutex()->lock ();
@@ -146,11 +124,81 @@ void Analyzer::timeout()
     update();
 }
 
-void Analyzer::paintEvent (QPaintEvent * e)
+void Analyzer::toggleFullScreen()
 {
-    QPainter painter (this);
-    painter.fillRect(e->rect(),m_bgColor);
-    draw(&painter);
+    setWindowState(windowState() ^Qt::WindowFullScreen);
+}
+
+void Analyzer::readSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Analyzer");
+    m_peaks_falloff = settings.value("peak_falloff", 0.2).toDouble();
+    m_analyzer_falloff = settings.value("analyzer_falloff", 2.2).toDouble();
+    m_show_peaks = settings.value("show_peaks", true).toBool();
+    m_timer->setInterval(1000 / settings.value("refresh_rate", 25).toInt());
+    m_color1.setNamedColor(settings.value("color1", "Green").toString());
+    m_color2.setNamedColor(settings.value("color2", "Yellow").toString());
+    m_color3.setNamedColor(settings.value("color3", "Red").toString());
+    m_bgColor.setNamedColor(settings.value("bg_color", "Black").toString());
+    m_peakColor.setNamedColor(settings.value("peak_color", "Cyan").toString());
+    m_cell_size = settings.value("cells_size", QSize(15, 6)).toSize();
+
+
+    if(!m_update)
+    {
+        m_update = true;
+        m_peaksAction->setChecked(m_show_peaks);
+
+        foreach(QAction *act, m_fpsGroup->actions ())
+        {
+            if (m_timer->interval() == 1000 / act->data().toInt())
+                act->setChecked(true);
+        }
+        foreach(QAction *act, m_peaksFalloffGroup->actions ())
+        {
+            if (m_peaks_falloff == act->data().toDouble())
+                act->setChecked(true);
+        }
+        foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+        {
+            if (m_analyzer_falloff == act->data().toDouble())
+                act->setChecked(true);
+        }
+
+        //fallback
+        if(!m_fpsGroup->checkedAction())
+        {
+            m_fpsGroup->actions().at(1)->setChecked(true);
+            m_timer->setInterval(1000 / 25);
+        }
+        if(!m_peaksFalloffGroup->checkedAction())
+        {
+            m_peaksFalloffGroup->actions().at(1)->setChecked(2);
+            m_peaks_falloff = 0.2;
+        }
+        if(!m_peaksFalloffGroup->checkedAction())
+        {
+            m_peaksFalloffGroup->actions().at(1)->setChecked(2);
+            m_analyzer_falloff = 2.2;
+        }
+
+        restoreGeometry(settings.value("geometry").toByteArray());
+    }
+}
+
+void Analyzer::writeSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Analyzer");
+    QAction *act = m_fpsGroup->checkedAction ();
+    settings.setValue("refresh_rate", act ? act->data().toInt() : 25);
+    act = m_peaksFalloffGroup->checkedAction ();
+    settings.setValue("peak_falloff", act ? act->data().toDouble() : 0.2);
+    act = m_analyzerFalloffGroup->checkedAction ();
+    settings.setValue("analyzer_falloff", act ? act->data().toDouble() : 2.2);
+    settings.setValue("show_peaks", m_peaksAction->isChecked());
+    settings.endGroup();
 }
 
 void Analyzer::hideEvent (QHideEvent *)
@@ -169,6 +217,19 @@ void Analyzer::closeEvent (QCloseEvent *event)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Analyzer/geometry", saveGeometry());
     Visual::closeEvent(event); //removes visualization object
+}
+
+void Analyzer::paintEvent (QPaintEvent * e)
+{
+    QPainter painter (this);
+    painter.fillRect(e->rect(),m_bgColor);
+    draw(&painter);
+}
+
+void Analyzer::mousePressEvent(QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
 }
 
 void Analyzer::process (short *left, short *right)
@@ -294,7 +355,57 @@ void Analyzer::draw (QPainter *p)
     }
 }
 
-void Analyzer::toggleFullScreen()
+void Analyzer::createMenu()
 {
-    setWindowState(windowState() ^Qt::WindowFullScreen);
+    m_menu = new QMenu (this);
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(writeSettings()));
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(readSettings()));
+
+    m_peaksAction = m_menu->addAction(tr("Peaks"));
+    m_peaksAction->setCheckable(true);
+
+    QMenu *refreshRate = m_menu->addMenu(tr("Refresh Rate"));
+    m_fpsGroup = new QActionGroup(this);
+    m_fpsGroup->setExclusive(true);
+    m_fpsGroup->addAction(tr("50 fps"))->setData(50);
+    m_fpsGroup->addAction(tr("25 fps"))->setData(25);
+    m_fpsGroup->addAction(tr("10 fps"))->setData(10);
+    m_fpsGroup->addAction(tr("5 fps"))->setData(5);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    {
+        act->setCheckable(true);
+        refreshRate->addAction(act);
+    }
+
+    QMenu *analyzerFalloff = m_menu->addMenu(tr("Analyzer Falloff"));
+    m_analyzerFalloffGroup = new QActionGroup(this);
+    m_analyzerFalloffGroup->setExclusive(true);
+    m_analyzerFalloffGroup->addAction(tr("Slowest"))->setData(1.2);
+    m_analyzerFalloffGroup->addAction(tr("Slow"))->setData(1.8);
+    m_analyzerFalloffGroup->addAction(tr("Medium"))->setData(2.2);
+    m_analyzerFalloffGroup->addAction(tr("Fast"))->setData(2.4);
+    m_analyzerFalloffGroup->addAction(tr("Fastest"))->setData(2.8);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    {
+        act->setCheckable(true);
+        analyzerFalloff->addAction(act);
+    }
+
+    QMenu *peaksFalloff = m_menu->addMenu(tr("Peaks Falloff"));
+    m_peaksFalloffGroup = new QActionGroup(this);
+    m_peaksFalloffGroup->setExclusive(true);
+    m_peaksFalloffGroup->addAction(tr("Slowest"))->setData(0.05);
+    m_peaksFalloffGroup->addAction(tr("Slow"))->setData(0.1);
+    m_peaksFalloffGroup->addAction(tr("Medium"))->setData(0.2);
+    m_peaksFalloffGroup->addAction(tr("Fast"))->setData(0.4);
+    m_peaksFalloffGroup->addAction(tr("Fastest"))->setData(0.8);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    {
+        act->setCheckable(true);
+        peaksFalloff->addAction(act);
+    }
+    m_menu->addSeparator();
+    QAction *fullScreenAction = m_menu->addAction(tr("&Full Screen"), this, SLOT(toggleFullScreen()), tr("F"));
+    addAction(fullScreenAction);
+    update();
 }

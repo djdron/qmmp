@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,12 +21,16 @@
 #define ANALYZER_H
 
 #include <QWidget>
-#include <QResizeEvent>
 #include <qmmp/visual.h>
 
 class QTimer;
 class QMenu;
+class QAction;
 class QActionGroup;
+class QPainter;
+class QPaintEvent;
+class QHideEvent;
+class QShowEvent;
 
 
 class Analyzer : public Visual
@@ -39,25 +43,25 @@ public:
 
     void add(unsigned char *data, qint64 size, int chan);
     void clear();
-    void paintEvent( QPaintEvent * );
 
-protected:
+
+private slots:
+    void timeout();
+    void toggleFullScreen();
+    void readSettings();
+    void writeSettings();
+
+
+private:
     virtual void hideEvent (QHideEvent *);
     virtual void showEvent (QShowEvent *);
     virtual void closeEvent (QCloseEvent *);
-
-public slots:
-    void timeout();
-
-private slots:
-    void toggleFullScreen();
-
-private:
+    void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *e);
     void process(short *l, short *r);
     void draw(QPainter *p);
-    QPixmap m_bg;
+    void createMenu();
     QTimer *m_timer;
-    int m_fps;
     double *m_intern_vis_data;
     double *m_peaks;
     int *m_x_scale;
@@ -68,6 +72,7 @@ private:
     short *m_right_buffer;
     int m_buffer_at;
     int m_cols, m_rows;
+    bool m_update;
     //colors
     QColor m_color1;
     QColor m_color2;
@@ -75,6 +80,11 @@ private:
     QColor m_bgColor;
     QColor m_peakColor;
     QSize m_cell_size;
+    QMenu *m_menu;
+    QAction *m_peaksAction;
+    QActionGroup *m_fpsGroup;
+    QActionGroup *m_analyzerFalloffGroup;
+    QActionGroup *m_peaksFalloffGroup;
 };
 
 
