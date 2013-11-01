@@ -4,14 +4,89 @@
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="56"/>
+        <location filename="../analyzer.cpp" line="47"/>
         <source>Qmmp Analyzer</source>
         <translation>Qmmp Analizator</translation>
     </message>
     <message>
-        <location filename="../analyzer.cpp" line="77"/>
+        <location filename="../analyzer.cpp" line="364"/>
+        <source>Peaks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="367"/>
+        <source>Refresh Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="370"/>
+        <source>50 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="371"/>
+        <source>25 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="372"/>
+        <source>10 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="373"/>
+        <source>5 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="380"/>
+        <source>Analyzer Falloff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="383"/>
+        <location filename="../analyzer.cpp" line="397"/>
+        <source>Slowest</source>
+        <translation type="unfinished">Najwolniej</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="384"/>
+        <location filename="../analyzer.cpp" line="398"/>
+        <source>Slow</source>
+        <translation type="unfinished">Wolno</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="385"/>
+        <location filename="../analyzer.cpp" line="399"/>
+        <source>Medium</source>
+        <translation type="unfinished">Średnio</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="386"/>
+        <location filename="../analyzer.cpp" line="400"/>
+        <source>Fast</source>
+        <translation type="unfinished">Szybko</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="387"/>
+        <location filename="../analyzer.cpp" line="401"/>
+        <source>Fastest</source>
+        <translation type="unfinished">Najszybciej</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="394"/>
+        <source>Peaks Falloff</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="408"/>
         <source>F</source>
         <translation>F</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="408"/>
+        <source>&amp;Full Screen</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -30,112 +105,42 @@
         <translation>Ustawienia Wtyczki Analizator</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="26"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>General</source>
         <translation>Ogólne</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>Show peaks</source>
-        <translation>Pokaż piki</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Analyzer falloff:</source>
-        <translation>Analizator opadanie:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="56"/>
-        <location filename="../settingsdialog.ui" line="98"/>
-        <source>Slowest</source>
-        <translation>Najwolniej</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <location filename="../settingsdialog.ui" line="103"/>
-        <source>Slow</source>
-        <translation>Wolno</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="66"/>
-        <location filename="../settingsdialog.ui" line="108"/>
-        <source>Medium</source>
-        <translation>Średnio</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="71"/>
-        <location filename="../settingsdialog.ui" line="113"/>
-        <source>Fast</source>
-        <translation>Szybko</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="76"/>
-        <location filename="../settingsdialog.ui" line="118"/>
-        <source>Fastest</source>
-        <translation>Najszybciej</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="84"/>
-        <source>Peaks falloff:</source>
-        <translation>Opadanie pików:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <source>Refresh rate:</source>
-        <translation>Odświeżanie:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="140"/>
-        <source>50 FPS</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="145"/>
-        <source>25 FPS</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="150"/>
-        <source>10 FPS</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="155"/>
-        <source>5 FPS</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="163"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Cells size:</source>
         <translation>Rozmiar komórki:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="223"/>
+        <location filename="../settingsdialog.ui" line="101"/>
         <source>Colors</source>
         <translation>Kolory</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="107"/>
         <source>Peaks:</source>
         <translation>Piki:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="261"/>
+        <location filename="../settingsdialog.ui" line="139"/>
         <source>Analyzer #1:</source>
         <translation>Analizator #1:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="293"/>
+        <location filename="../settingsdialog.ui" line="171"/>
         <source>Background:</source>
         <translation>Tło:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="325"/>
+        <location filename="../settingsdialog.ui" line="203"/>
         <source>Analyzer #2:</source>
         <translation>Analizator #2:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="370"/>
+        <location filename="../settingsdialog.ui" line="248"/>
         <source>Analyzer #3:</source>
         <translation>Analizator #3:</translation>
     </message>
