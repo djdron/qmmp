@@ -32,7 +32,8 @@ SOURCES += \
     qsuitabwidget.cpp \
     qsuitabbar.cpp \
     eqpreset.cpp \
-    filesystembrowser.cpp
+    filesystembrowser.cpp \
+    elidinglabel.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -55,15 +56,15 @@ HEADERS += mainwindow.h \
     qsuitabwidget.h \
     qsuitabbar.h \
     eqpreset.h \
-    filesystembrowser.h
+    filesystembrowser.h \
+    elidinglabel.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
-    forms/qsuisettings.ui \
-    forms/filesystembrowser.ui
+    forms/qsuisettings.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 TRANSLATIONS = translations/qsui_plugin_ru.ts \

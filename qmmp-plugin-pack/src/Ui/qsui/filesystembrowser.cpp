@@ -1,27 +1,58 @@
+/***************************************************************************
+ *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
+ ***************************************************************************/
+
 #include <QFileSystemModel>
+#include <QListView>
+#include <QVBoxLayout>
 #include <qmmp/metadatamanager.h>
-#include "ui_filesystembrowser.h"
+#include "elidinglabel.h"
 #include "filesystembrowser.h"
 
 FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     QWidget(parent)
 {
-    m_ui = new Ui::FileSystemBrowser;
-    m_ui->setupUi(this);
+    m_listView = new QListView(this);
+    m_listView->setFrameStyle(QFrame::NoFrame);
+    m_listView->setDragEnabled(true);
+    connect(m_listView, SIGNAL(activated(QModelIndex)), SLOT(onListViewActivated(QModelIndex)));
+
+    m_label = new Utils::ElidingLabel(this);
+    m_label->setMargin(0);
+
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setContentsMargins(0,0,0,0);
+    layout->addWidget(m_listView);
+    layout->addWidget(m_label);
+    setLayout(layout);
+
     m_model = new QFileSystemModel(this);
     m_model->setReadOnly(true);
     m_model->setNameFilterDisables(false);
     m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDot);
-    m_ui->listView->setFrameStyle(QFrame::NoFrame);
-    m_ui->listView->setDragEnabled(true);
-    m_ui->listView->setModel(m_model);
+    m_listView->setModel(m_model);
+
     readSettings();
 }
 
 FileSystemBrowser::~FileSystemBrowser()
-{
-    delete m_ui;
-}
+{}
 
 void FileSystemBrowser::readSettings()
 {
@@ -29,7 +60,7 @@ void FileSystemBrowser::readSettings()
     m_model->setNameFilters(MetaDataManager::instance()->nameFilters());
 }
 
-void FileSystemBrowser::on_listView_activated(const QModelIndex &index)
+void FileSystemBrowser::onListViewActivated(const QModelIndex &index)
 {
     if (!index.isValid())
         return;
@@ -56,9 +87,9 @@ void FileSystemBrowser::setCurrentDirectory(const QString &path)
     QModelIndex index = m_model->setRootPath(path);
     if(index.isValid())
     {
-        m_ui->listView->setRootIndex(index);
-        m_ui->directoryLabel->setText(QDir(QDir::cleanPath(path)).dirName());
+        m_listView->setRootIndex(index);
+        m_label->setText(QDir(QDir::cleanPath(path)).dirName());
     }
     else
-        m_ui->directoryLabel->clear();
+        m_label->clear();
 }
