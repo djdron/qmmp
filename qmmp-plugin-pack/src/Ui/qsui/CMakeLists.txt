@@ -55,6 +55,7 @@ SET(libqsui_SRCS
     qsuitabbar.cpp
     eqpreset.cpp
     filesystembrowser.cpp
+    elidinglabel.cpp
 )
 
 SET(libqsui_HDRS
@@ -84,6 +85,7 @@ SET(libqsui_MOC_HDRS
     qsuitabwidget.h
     qsuitabbar.h
     filesystembrowser.h
+    elidinglabel.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
@@ -100,7 +102,6 @@ SET(libqsui_UIS
     forms/shortcutdialog.ui
     forms/qsuisettings.ui
     forms/aboutqsuidialog.ui
-    forms/filesystembrowser.ui
 )
 
 QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
