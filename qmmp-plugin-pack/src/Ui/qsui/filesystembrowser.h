@@ -49,6 +49,7 @@ private slots:
 
 private:
     void setCurrentDirectory(const QString &path);
+    bool m_update;
     Utils::ElidingLabel *m_label;
     QFileSystemModel *m_model;
     QListView *m_listView;

@@ -55,7 +55,8 @@ ActionManager::ActionManager(QObject *parent) :
     //view
     m_actions[WM_ALLWAYS_ON_TOP] = createAction2(tr("Always on Top"), "always_on_top", "");
     m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "sticky", "");
-    m_actions[UI_ANALYZER] = createAction2(tr("Analyzer"), "analyzer", "");
+    m_actions[UI_ANALYZER] = 0; //external action
+    m_actions[UI_FILEBROWSER] = 0; //external action
     //volume
     m_actions[VOL_ENC] = createAction(tr("Volume &+"), "vol_enc", tr("0"));
     m_actions[VOL_DEC] = createAction(tr("Volume &-"), "vol_dec", tr("9"));
@@ -160,4 +161,16 @@ void ActionManager::saveActions()
     {
         settings.setValue(QString("SimpleUiShortcuts/")+action->objectName(), action->shortcut());
     }
+}
+
+void ActionManager::registerAction(int id, QAction *action, QString confKey, QString key)
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("SimpleUiShortcuts");
+    action->setShortcut(settings.value(confKey, key).toString());
+    action->setObjectName(confKey);
+    if(m_actions.value(id))
+        qFatal("ActionManager: invalid action id");
+    m_actions[id] = action;
+    settings.endGroup();
 }

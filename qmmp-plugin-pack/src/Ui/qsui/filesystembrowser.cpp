@@ -21,13 +21,17 @@
 #include <QFileSystemModel>
 #include <QListView>
 #include <QVBoxLayout>
+#include <QSettings>
 #include <qmmp/metadatamanager.h>
+#include <qmmp/qmmp.h>
 #include "elidinglabel.h"
 #include "filesystembrowser.h"
 
 FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     QWidget(parent)
 {
+    m_update = false;
+
     m_listView = new QListView(this);
     m_listView->setFrameStyle(QFrame::NoFrame);
     m_listView->setDragEnabled(true);
@@ -47,16 +51,28 @@ FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     m_model->setNameFilterDisables(false);
     m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDot);
     m_listView->setModel(m_model);
-
     readSettings();
 }
 
 FileSystemBrowser::~FileSystemBrowser()
-{}
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    settings.setValue("fsbrowser_current_dir", m_model->rootPath());
+    settings.endGroup();
+}
 
 void FileSystemBrowser::readSettings()
 {
-    setCurrentDirectory(QDir::currentPath());
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    if(!m_update)
+    {
+        m_update = true;
+        setCurrentDirectory(settings.value("fsbrowser_current_dir",
+                                           QDir::homePath()).toString());
+    }
+    settings.endGroup();
     m_model->setNameFilters(MetaDataManager::instance()->nameFilters());
 }
 

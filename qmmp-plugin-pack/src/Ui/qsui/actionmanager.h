@@ -61,12 +61,12 @@ public:
 
         WM_ALLWAYS_ON_TOP,
         WM_STICKY,
+        UI_ANALYZER,
+        UI_FILEBROWSER,
 
         VOL_ENC,
         VOL_DEC,
         VOL_MUTE,
-
-        UI_ANALYZER,
 
         PL_ADD_FILE,
         PL_ADD_DIRECTORY,
@@ -102,6 +102,7 @@ public:
     QAction *use(int type, const QObject *receiver, const char *member);
     QList<QAction *> actions();
     void saveActions();
+    void registerAction(int id, QAction *action, QString confKey, QString key);
     static ActionManager* instance();
 
 private:

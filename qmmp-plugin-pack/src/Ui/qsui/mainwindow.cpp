@@ -357,8 +357,13 @@ void MainWindow::createActions()
             ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
-    connect(m_ui.analyzerDockWidget, SIGNAL(visibilityChanged(bool)),
-            ACTION(ActionManager::UI_ANALYZER), SLOT(setChecked(bool)));
+    //register external actions
+    ActionManager::instance()->registerAction(ActionManager::UI_ANALYZER,
+                                              m_ui.analyzerDockWidget->toggleViewAction(),
+                                              "analyzer", "");
+    ActionManager::instance()->registerAction(ActionManager::UI_FILEBROWSER,
+                                              m_ui.fileSystemDockWidget->toggleViewAction(),
+                                              "file_browser", tr("Ctrl+0"));
     //main toolbar
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
@@ -400,7 +405,9 @@ void MainWindow::createActions()
     //view menu
     m_ui.menuView->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(readSettings())));
     m_ui.menuView->addSeparator();
-    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, m_ui.analyzerDockWidget, SLOT(setVisible(bool))));
+    m_ui.menuView->addAction(m_ui.analyzerDockWidget->toggleViewAction());
+    m_ui.menuView->addAction(m_ui.fileSystemDockWidget->toggleViewAction());
+    //m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, m_ui.analyzerDockWidget, SLOT(setVisible(bool))));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -594,6 +601,8 @@ void MainWindow::readSettings()
         {
             qobject_cast<ListWidget *>(m_ui.tabWidget->widget(i))->readSettings();
         }
+        qobject_cast<FileSystemBrowser *> (m_ui.fileSystemDockWidget->widget())->readSettings();
+
         if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         else
@@ -604,7 +613,6 @@ void MainWindow::readSettings()
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     m_ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
     settings.endGroup();
-
     addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
     addActions(m_uiHelper->actions(UiHelper::PLAYLIST_MENU));
 }
