@@ -74,6 +74,7 @@ quint32 Hotkey::defaultKey(int act)
     keyMap[FORWARD] = 0;
     keyMap[REWIND] = 0;
     keyMap[JUMP_TO_TRACK] = 0;
+    keyMap[VOLUME_MUTE] = XF86XK_AudioMute;
     return keyMap[act];
 }
 

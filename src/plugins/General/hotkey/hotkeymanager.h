@@ -48,7 +48,8 @@ public:
         VOLUME_DOWN,
         FORWARD,
         REWIND,
-        JUMP_TO_TRACK
+        JUMP_TO_TRACK,
+        VOLUME_MUTE
     };
 
     Hotkey()
