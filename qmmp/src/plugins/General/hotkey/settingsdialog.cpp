@@ -45,6 +45,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->setItem(9,0, new QTableWidgetItem(tr("Forward 5 seconds")));
     ui.tableWidget->setItem(10,0, new QTableWidgetItem(tr("Rewind 5 seconds")));
     ui.tableWidget->setItem(11,0, new QTableWidgetItem(tr("Jump to track")));
+    ui.tableWidget->setItem(12,0, new QTableWidgetItem(tr("Mute")));
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Hotkey");
