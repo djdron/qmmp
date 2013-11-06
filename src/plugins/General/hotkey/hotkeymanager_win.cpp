@@ -57,6 +57,7 @@ quint32 Hotkey::defaultKey(int act)
     keyMap[FORWARD] = 0;
     keyMap[REWIND] = 0;
     keyMap[JUMP_TO_TRACK] = 0;
+    keyMap[VOLUME_MUTE] = 0;
     return keyMap[act];
 }
 
@@ -144,7 +145,9 @@ public:
             case Hotkey::JUMP_TO_TRACK:
                 UiHelper::instance()->jumpToTrack();
                 break;
-
+            case Hotkey::VOLUME_MUTE:
+                SoundCore::instance()->setMuted(!SoundCore::instance()->isMuted());
+                break;
             }
             qApp->processEvents();
             return true;
