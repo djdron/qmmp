@@ -185,7 +185,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Hide Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрыть заголовки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
@@ -701,12 +701,12 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="134"/>
         <source>Spectrum Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Анализатор спектра</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="149"/>
         <source>File System</source>
-        <translation type="unfinished"></translation>
+        <translation>Файловая система</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="163"/>
