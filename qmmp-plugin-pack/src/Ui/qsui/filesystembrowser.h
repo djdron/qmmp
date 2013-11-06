@@ -46,6 +46,8 @@ public:
 
 private slots:
     void onListViewActivated(const QModelIndex &index);
+    void addToPlayList();
+    void selectDirectory();
 
 private:
     void setCurrentDirectory(const QString &path);

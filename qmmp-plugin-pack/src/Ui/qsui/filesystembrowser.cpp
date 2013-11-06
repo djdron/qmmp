@@ -22,7 +22,12 @@
 #include <QListView>
 #include <QVBoxLayout>
 #include <QSettings>
+#include <QAction>
+#include <QApplication>
 #include <qmmp/metadatamanager.h>
+#include <qmmpui/playlistmanager.h>
+#include <qmmpui/filedialog.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmp/qmmp.h>
 #include "elidinglabel.h"
 #include "filesystembrowser.h"
@@ -51,6 +56,15 @@ FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     m_model->setNameFilterDisables(false);
     m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDot);
     m_listView->setModel(m_model);
+
+    setContextMenuPolicy(Qt::ActionsContextMenu);
+    QAction *addToPlaylistAction = new QAction(tr("Add to Playlist"), this);
+    connect(addToPlaylistAction, SIGNAL(triggered()), SLOT(addToPlayList()));
+    addAction(addToPlaylistAction);
+    QAction *selectDirAction = new QAction(tr("Select Directory"), this);
+    connect(selectDirAction, SIGNAL(triggered()), SLOT(selectDirectory()));
+    addAction(selectDirAction);
+
     readSettings();
 }
 
@@ -93,6 +107,28 @@ void FileSystemBrowser::onListViewActivated(const QModelIndex &index)
         if(info.isExecutable() && info.isReadable())
             setCurrentDirectory(m_model->filePath(index));
     }
+}
+
+void FileSystemBrowser::addToPlayList()
+{
+    foreach (QModelIndex index, m_listView->selectionModel()->selectedIndexes())
+    {
+        if(!index.isValid())
+            continue;
+
+        QString name = m_model->fileName(index);
+        if(name == "..")
+            continue;
+        PlayListManager::instance()->selectedPlayList()->add(m_model->filePath(index));
+    }
+}
+
+void FileSystemBrowser::selectDirectory()
+{
+    QString dir = FileDialog::getExistingDirectory(qApp->activeWindow(),
+                                                   tr("Change Directory"), m_model->rootPath());
+    if(!dir.isEmpty())
+        setCurrentDirectory(dir);
 }
 
 void FileSystemBrowser::setCurrentDirectory(const QString &path)
