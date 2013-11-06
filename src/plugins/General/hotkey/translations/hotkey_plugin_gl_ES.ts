@@ -129,5 +129,10 @@
         <source>Jump to track</source>
         <translation>Saltar á pista</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="48"/>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

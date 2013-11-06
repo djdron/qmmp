@@ -129,5 +129,10 @@
         <source>Jump to track</source>
         <translation>トラックを指定して移動</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="48"/>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

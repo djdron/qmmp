@@ -110,6 +110,11 @@
         <translation>Skočit na stopu</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="48"/>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
         <translation>Nastavení modulu klávesových zkratek</translation>
