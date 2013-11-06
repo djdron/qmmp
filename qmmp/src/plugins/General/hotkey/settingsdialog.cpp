@@ -49,7 +49,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::JUMP_TO_TRACK; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_MUTE; ++i, ++j)
     {
         Hotkey *hotkey = new Hotkey;
         hotkey->action = i;
