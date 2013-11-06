@@ -514,12 +514,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="64"/>
+        <location filename="../filesystembrowser.cpp" line="129"/>
         <source>Select Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="129"/>
+        <location filename="../filesystembrowser.cpp" line="64"/>
         <source>Change Directory</source>
         <translation type="unfinished"></translation>
     </message>

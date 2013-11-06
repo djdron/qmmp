@@ -61,7 +61,7 @@ FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     QAction *addToPlaylistAction = new QAction(tr("Add to Playlist"), this);
     connect(addToPlaylistAction, SIGNAL(triggered()), SLOT(addToPlayList()));
     addAction(addToPlaylistAction);
-    QAction *selectDirAction = new QAction(tr("Select Directory"), this);
+    QAction *selectDirAction = new QAction(tr("Change Directory"), this);
     connect(selectDirAction, SIGNAL(triggered()), SLOT(selectDirectory()));
     addAction(selectDirAction);
 
@@ -126,7 +126,7 @@ void FileSystemBrowser::addToPlayList()
 void FileSystemBrowser::selectDirectory()
 {
     QString dir = FileDialog::getExistingDirectory(qApp->activeWindow(),
-                                                   tr("Change Directory"), m_model->rootPath());
+                                                   tr("Select Directory"), m_model->rootPath());
     if(!dir.isEmpty())
         setCurrentDirectory(dir);
 }
