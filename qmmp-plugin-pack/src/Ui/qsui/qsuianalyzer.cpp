@@ -161,8 +161,8 @@ void QSUiAnalyzer::resizeEvent(QResizeEvent *)
 
 void QSUiAnalyzer::process (short *left, short *right)
 {
-    int rows = (height() - 2) / m_cell_size.height();
-    int cols = (width() - m_offset - 2) / m_cell_size.width();// / 2;
+    int rows = qMax((height() - 2) / m_cell_size.height(),2);
+    int cols = qMax((width() - m_offset - 2) / m_cell_size.width(),1);
 
     if(m_rows != rows || m_cols != cols)
     {
