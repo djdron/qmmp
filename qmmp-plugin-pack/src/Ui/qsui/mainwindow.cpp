@@ -407,7 +407,8 @@ void MainWindow::createActions()
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(m_ui.analyzerDockWidget->toggleViewAction());
     m_ui.menuView->addAction(m_ui.fileSystemDockWidget->toggleViewAction());
-    //m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_ANALYZER, m_ui.analyzerDockWidget, SLOT(setVisible(bool))));
+    m_ui.menuView->addSeparator();
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_HIDE_TITLEBARS, this, SLOT(setTitleBarsHidden(bool))));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -592,7 +593,12 @@ void MainWindow::readSettings()
         if(settings.value("start_hidden").toBool())
             hide();
 
-        ACTION(ActionManager::UI_ANALYZER)->setChecked(m_ui.analyzerDockWidget->isVisible());
+        if(settings.value("hide_titlebars", false).toBool())
+        {
+            ACTION(ActionManager::UI_HIDE_TITLEBARS)->setChecked(true);
+            setTitleBarsHidden(true);
+        }
+
         m_update = true;
     }
     else
@@ -638,6 +644,7 @@ void MainWindow::writeSettings()
     settings.setValue("Simple/mw_state", saveState());
     settings.setValue("Simple/always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("Simple/show_analyzer", ACTION(ActionManager::UI_ANALYZER)->isChecked());
+    settings.setValue("Simple/hide_titlebars", ACTION(ActionManager::UI_HIDE_TITLEBARS)->isChecked());
 }
 
 void MainWindow::savePlayList()
@@ -684,5 +691,31 @@ void MainWindow::showMetaData()
     if(track && track->url() == m_core->metaData().value(Qmmp::URL))
     {
         setWindowTitle(track->formattedTitle());
+    }
+}
+
+void MainWindow::setTitleBarsHidden(bool hidden)
+{
+    if(hidden)
+    {
+        if(!m_ui.analyzerDockWidget->titleBarWidget())
+            m_ui.analyzerDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.fileSystemDockWidget->titleBarWidget())
+            m_ui.fileSystemDockWidget->setTitleBarWidget(new QWidget());
+    }
+    else
+    {
+        QWidget *widget = 0;
+        if((widget = m_ui.analyzerDockWidget->titleBarWidget()))
+        {
+            m_ui.analyzerDockWidget->setTitleBarWidget(0);
+            delete widget;
+        }
+        if((widget = m_ui.fileSystemDockWidget->titleBarWidget()))
+        {
+            m_ui.fileSystemDockWidget->setTitleBarWidget(0);
+            delete widget;
+        }
     }
 }

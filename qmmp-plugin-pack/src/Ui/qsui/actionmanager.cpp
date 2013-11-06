@@ -57,6 +57,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "sticky", "");
     m_actions[UI_ANALYZER] = 0; //external action
     m_actions[UI_FILEBROWSER] = 0; //external action
+    m_actions[UI_HIDE_TITLEBARS] = createAction2(tr("Hide Title Bars"), "hide_titlebars", "");
     //volume
     m_actions[VOL_ENC] = createAction(tr("Volume &+"), "vol_enc", tr("0"));
     m_actions[VOL_DEC] = createAction(tr("Volume &-"), "vol_dec", tr("9"));

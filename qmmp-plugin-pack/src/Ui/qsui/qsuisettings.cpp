@@ -156,7 +156,7 @@ void QSUISettings::loadShortcuts()
     m_ui.shortcutTreeWidget->addTopLevelItem(item);
     //view
     item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("View"));
-    for(int i = ActionManager::WM_ALLWAYS_ON_TOP; i <= ActionManager::UI_FILEBROWSER; ++i)
+    for(int i = ActionManager::WM_ALLWAYS_ON_TOP; i <= ActionManager::UI_HIDE_TITLEBARS; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     m_ui.shortcutTreeWidget->addTopLevelItem(item);
