@@ -84,7 +84,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
     WId rootWindow = QX11Info::appRootWindow();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat); //load settings
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::JUMP_TO_TRACK; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_MUTE; ++i, ++j)
     {
         quint32 key = settings.value(QString("key_%1").arg(i), Hotkey::defaultKey(i)).toUInt();
         quint32 mod = settings.value(QString("modifiers_%1").arg(i), 0).toUInt();
@@ -192,6 +192,9 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 break;
             case Hotkey::JUMP_TO_TRACK:
                 UiHelper::instance()->jumpToTrack();
+                break;
+            case Hotkey::VOLUME_MUTE:
+                SoundCore::instance()->setMuted(!SoundCore::instance()->isMuted());
                 break;
 
             }
