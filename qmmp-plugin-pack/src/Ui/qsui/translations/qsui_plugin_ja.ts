@@ -507,6 +507,24 @@
     </message>
 </context>
 <context>
+    <name>FileSystemBrowser</name>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="61"/>
+        <source>Add to Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="64"/>
+        <source>Select Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="129"/>
+        <source>Change Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="128"/>
@@ -659,147 +677,147 @@
         <translation>QMMP</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="48"/>
+        <location filename="../forms/mainwindow.ui" line="51"/>
         <source>&amp;File</source>
         <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="53"/>
+        <location filename="../forms/mainwindow.ui" line="56"/>
         <source>&amp;Tools</source>
         <translation>ツール(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="61"/>
+        <location filename="../forms/mainwindow.ui" line="64"/>
         <source>&amp;Help</source>
         <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="66"/>
+        <location filename="../forms/mainwindow.ui" line="69"/>
         <source>&amp;Edit</source>
         <translation>編集(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="71"/>
+        <location filename="../forms/mainwindow.ui" line="74"/>
         <source>&amp;Playback</source>
         <translation>再生(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="76"/>
+        <location filename="../forms/mainwindow.ui" line="79"/>
         <source>&amp;View</source>
         <translation>表示(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="88"/>
+        <location filename="../forms/mainwindow.ui" line="91"/>
         <source>Playback</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="111"/>
+        <location filename="../forms/mainwindow.ui" line="114"/>
         <source>Progress</source>
         <translation>進捗</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="134"/>
+        <location filename="../forms/mainwindow.ui" line="137"/>
         <source>Spectrum Analyzer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="149"/>
+        <location filename="../forms/mainwindow.ui" line="152"/>
         <source>File System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="163"/>
+        <location filename="../forms/mainwindow.ui" line="166"/>
         <source>Previous</source>
         <translation>前の曲</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="173"/>
+        <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Play</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="183"/>
+        <location filename="../forms/mainwindow.ui" line="186"/>
         <source>Pause</source>
         <translation>一時停止</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="193"/>
+        <location filename="../forms/mainwindow.ui" line="196"/>
         <source>Next</source>
         <translation>次の曲</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="203"/>
+        <location filename="../forms/mainwindow.ui" line="206"/>
         <source>Stop</source>
         <translation>終止</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="208"/>
+        <location filename="../forms/mainwindow.ui" line="211"/>
         <source>&amp;Add File</source>
         <translation>ファイルを追加(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="213"/>
+        <location filename="../forms/mainwindow.ui" line="216"/>
         <source>&amp;Remove All</source>
         <translation>すべて除去(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="218"/>
+        <location filename="../forms/mainwindow.ui" line="221"/>
         <source>New Playlist</source>
         <translation>新しいプレイリスト</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="223"/>
+        <location filename="../forms/mainwindow.ui" line="226"/>
         <source>Remove Playlist</source>
         <translation>プレイリストを削除</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="228"/>
+        <location filename="../forms/mainwindow.ui" line="231"/>
         <source>&amp;Add Directory</source>
         <translation>ディレクトリを追加(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="233"/>
+        <location filename="../forms/mainwindow.ui" line="236"/>
         <source>&amp;Exit</source>
         <translation>終了(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="238"/>
+        <location filename="../forms/mainwindow.ui" line="241"/>
         <source>About</source>
         <translation>QMMP について</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="243"/>
+        <location filename="../forms/mainwindow.ui" line="246"/>
         <source>About Qt</source>
         <translation>Qt について</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="248"/>
+        <location filename="../forms/mainwindow.ui" line="251"/>
         <source>&amp;Select All</source>
         <translation>すべて選択(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="253"/>
+        <location filename="../forms/mainwindow.ui" line="256"/>
         <source>&amp;Remove Selected</source>
         <translation>選択したものを除去(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="258"/>
+        <location filename="../forms/mainwindow.ui" line="261"/>
         <source>&amp;Remove Unselected</source>
         <translation>選択外のものを除去(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="263"/>
+        <location filename="../forms/mainwindow.ui" line="266"/>
         <source>Visualization</source>
         <translation>視覚効果</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="268"/>
+        <location filename="../forms/mainwindow.ui" line="271"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="273"/>
+        <location filename="../forms/mainwindow.ui" line="276"/>
         <location filename="../mainwindow.cpp" line="255"/>
         <source>Rename Playlist</source>
         <translation>プレイリスト名を変更</translation>

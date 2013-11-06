@@ -507,6 +507,24 @@
     </message>
 </context>
 <context>
+    <name>FileSystemBrowser</name>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="61"/>
+        <source>Add to Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="64"/>
+        <source>Select Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="129"/>
+        <source>Change Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="128"/>
@@ -659,147 +677,147 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="48"/>
+        <location filename="../forms/mainwindow.ui" line="51"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="53"/>
+        <location filename="../forms/mainwindow.ui" line="56"/>
         <source>&amp;Tools</source>
         <translation>&amp;Инструменты</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="61"/>
+        <location filename="../forms/mainwindow.ui" line="64"/>
         <source>&amp;Help</source>
         <translation>&amp;Справка</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="66"/>
+        <location filename="../forms/mainwindow.ui" line="69"/>
         <source>&amp;Edit</source>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="71"/>
+        <location filename="../forms/mainwindow.ui" line="74"/>
         <source>&amp;Playback</source>
         <translation>&amp;Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="76"/>
+        <location filename="../forms/mainwindow.ui" line="79"/>
         <source>&amp;View</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="88"/>
+        <location filename="../forms/mainwindow.ui" line="91"/>
         <source>Playback</source>
         <translation>Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="111"/>
+        <location filename="../forms/mainwindow.ui" line="114"/>
         <source>Progress</source>
         <translation>Прогресс</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="134"/>
+        <location filename="../forms/mainwindow.ui" line="137"/>
         <source>Spectrum Analyzer</source>
         <translation>Анализатор спектра</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="149"/>
+        <location filename="../forms/mainwindow.ui" line="152"/>
         <source>File System</source>
         <translation>Файловая система</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="163"/>
+        <location filename="../forms/mainwindow.ui" line="166"/>
         <source>Previous</source>
         <translation>Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="173"/>
+        <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Play</source>
         <translation>Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="183"/>
+        <location filename="../forms/mainwindow.ui" line="186"/>
         <source>Pause</source>
         <translation>Приостановить</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="193"/>
+        <location filename="../forms/mainwindow.ui" line="196"/>
         <source>Next</source>
         <translation>Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="203"/>
+        <location filename="../forms/mainwindow.ui" line="206"/>
         <source>Stop</source>
         <translation>Остановить</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="208"/>
+        <location filename="../forms/mainwindow.ui" line="211"/>
         <source>&amp;Add File</source>
         <translation>&amp;Добавить файл</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="213"/>
+        <location filename="../forms/mainwindow.ui" line="216"/>
         <source>&amp;Remove All</source>
         <translation>&amp;Удалить всё</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="218"/>
+        <location filename="../forms/mainwindow.ui" line="221"/>
         <source>New Playlist</source>
         <translation>Создать список</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="223"/>
+        <location filename="../forms/mainwindow.ui" line="226"/>
         <source>Remove Playlist</source>
         <translation>Удалить список</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="228"/>
+        <location filename="../forms/mainwindow.ui" line="231"/>
         <source>&amp;Add Directory</source>
         <translation>&amp;Добавить директорию</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="233"/>
+        <location filename="../forms/mainwindow.ui" line="236"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="238"/>
+        <location filename="../forms/mainwindow.ui" line="241"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="243"/>
+        <location filename="../forms/mainwindow.ui" line="246"/>
         <source>About Qt</source>
         <translation>О Qt</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="248"/>
+        <location filename="../forms/mainwindow.ui" line="251"/>
         <source>&amp;Select All</source>
         <translation>&amp;Выделить всё</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="253"/>
+        <location filename="../forms/mainwindow.ui" line="256"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Удалить выделенное</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="258"/>
+        <location filename="../forms/mainwindow.ui" line="261"/>
         <source>&amp;Remove Unselected</source>
         <translation>&amp;Удалить невыделенное</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="263"/>
+        <location filename="../forms/mainwindow.ui" line="266"/>
         <source>Visualization</source>
         <translation>Визуализация</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="268"/>
+        <location filename="../forms/mainwindow.ui" line="271"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="273"/>
+        <location filename="../forms/mainwindow.ui" line="276"/>
         <location filename="../mainwindow.cpp" line="255"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
