@@ -759,7 +759,7 @@
     <message>
         <location filename="../playlisttrack.cpp" line="159"/>
         <source>Streams</source>
-        <translation type="unfinished"></translation>
+        <translation>Онлайн-потоки</translation>
     </message>
     <message>
         <location filename="../playlisttrack.cpp" line="165"/>

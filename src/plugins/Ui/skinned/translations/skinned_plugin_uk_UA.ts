@@ -176,32 +176,32 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Гучність &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Гучність &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Вимкнути звук</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
@@ -757,7 +757,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="399"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Звук</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="411"/>

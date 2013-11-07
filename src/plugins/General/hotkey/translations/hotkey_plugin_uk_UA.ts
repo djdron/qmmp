@@ -112,7 +112,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути звук</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
