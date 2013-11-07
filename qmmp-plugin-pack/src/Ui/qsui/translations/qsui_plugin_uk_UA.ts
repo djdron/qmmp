@@ -185,37 +185,37 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Hide Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Сховати заголовки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Гучність &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Гучність &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Вимкнути звук</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="66"/>
@@ -512,17 +512,17 @@
     <message>
         <location filename="../filesystembrowser.cpp" line="61"/>
         <source>Add to Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати до списку відтворення</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="129"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть теку</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="64"/>
         <source>Change Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити теку</translation>
     </message>
 </context>
 <context>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="366"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="413"/>
@@ -720,12 +720,12 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="137"/>
         <source>Spectrum Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Аналізато спектру</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="152"/>
         <source>File System</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлова система</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="166"/>
