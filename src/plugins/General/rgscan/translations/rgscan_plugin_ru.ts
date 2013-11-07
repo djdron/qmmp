@@ -21,7 +21,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="61"/>
         <source>Progress</source>
-        <translation>Прогресс</translation>
+        <translation>Завершено</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="66"/>
