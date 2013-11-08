@@ -147,6 +147,8 @@ void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
+    if(!curr.isValid())
+        return;
     int row = m_proxyModel->mapToSource(curr).row();
     if (m_model->isQueued(m_model->track(m_indexes[row])))
         queuePushButton->setText(tr("Unqueue"));
