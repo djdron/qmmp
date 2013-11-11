@@ -63,6 +63,7 @@ public:
         WM_STICKY,
         UI_ANALYZER,
         UI_FILEBROWSER,
+        UI_COVER,
         UI_HIDE_TITLEBARS,
 
         VOL_ENC,

@@ -33,7 +33,8 @@ SOURCES += \
     qsuitabbar.cpp \
     eqpreset.cpp \
     filesystembrowser.cpp \
-    elidinglabel.cpp
+    elidinglabel.cpp \
+    coverwidget.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -57,7 +58,8 @@ HEADERS += mainwindow.h \
     qsuitabbar.h \
     eqpreset.h \
     filesystembrowser.h \
-    elidinglabel.h
+    elidinglabel.h \
+    coverwidget.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \

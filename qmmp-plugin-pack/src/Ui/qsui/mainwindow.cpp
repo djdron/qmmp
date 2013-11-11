@@ -48,6 +48,7 @@
 #include "filesystembrowser.h"
 #include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
+#include "coverwidget.h"
 #include "equalizer.h"
 
 #define KEY_OFFSET 10000
@@ -140,6 +141,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     Visual::add(m_analyzer);
     //filesystem browser
     m_ui.fileSystemDockWidget->setWidget(new FileSystemBrowser(this));
+    //cover
+    m_ui.coverDockWidget->setWidget(new CoverWidget(this));
 
     createActions();
     readSettings();
@@ -185,8 +188,12 @@ void MainWindow::showState(Qmmp::State state)
     switch((int) state)
     {
     case Qmmp::Playing:
+    {
         showBitrate(m_core->bitrate());
         m_analyzer->setCover(MetaDataManager::instance()->getCover(m_core->url()));
+        CoverWidget *cw = qobject_cast<CoverWidget *>(m_ui.coverDockWidget->widget());
+        cw->setCover(MetaDataManager::instance()->getCover(m_core->url()));
+    }
         break;
     case Qmmp::Paused:
         m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
@@ -196,6 +203,7 @@ void MainWindow::showState(Qmmp::State state)
         m_timeLabel->clear();
         m_slider->setValue(0);
         m_analyzer->clearCover();
+        qobject_cast<CoverWidget *>(m_ui.coverDockWidget->widget())->clearCover();
         setWindowTitle("Qmmp");
         break;
     }
@@ -364,6 +372,9 @@ void MainWindow::createActions()
     ActionManager::instance()->registerAction(ActionManager::UI_FILEBROWSER,
                                               m_ui.fileSystemDockWidget->toggleViewAction(),
                                               "file_browser", tr("Ctrl+0"));
+    ActionManager::instance()->registerAction(ActionManager::UI_COVER,
+                                              m_ui.coverDockWidget->toggleViewAction(),
+                                              "cover", "");
     //main toolbar
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
@@ -407,6 +418,7 @@ void MainWindow::createActions()
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(m_ui.analyzerDockWidget->toggleViewAction());
     m_ui.menuView->addAction(m_ui.fileSystemDockWidget->toggleViewAction());
+    m_ui.menuView->addAction(m_ui.coverDockWidget->toggleViewAction());
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_HIDE_TITLEBARS, this, SLOT(setTitleBarsHidden(bool))));
 
@@ -703,6 +715,9 @@ void MainWindow::setTitleBarsHidden(bool hidden)
 
         if(!m_ui.fileSystemDockWidget->titleBarWidget())
             m_ui.fileSystemDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.coverDockWidget->titleBarWidget())
+            m_ui.coverDockWidget->setTitleBarWidget(new QWidget());
     }
     else
     {
@@ -717,5 +732,11 @@ void MainWindow::setTitleBarsHidden(bool hidden)
             m_ui.fileSystemDockWidget->setTitleBarWidget(0);
             delete widget;
         }
+        if((widget = m_ui.coverDockWidget->titleBarWidget()))
+        {
+            m_ui.coverDockWidget->setTitleBarWidget(0);
+            delete widget;
+        }
+
     }
 }
