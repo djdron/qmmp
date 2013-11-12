@@ -54,7 +54,10 @@ void CoverWidget::paintEvent(QPaintEvent *p)
 {
     QPainter paint(this);
     if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+    {
+        int w = qMin(p->rect().width(), p->rect().height());
+        paint.drawPixmap(0,0, m_pixmap.scaled(w,w));
+    }
 }
 
 void CoverWidget::saveAs()

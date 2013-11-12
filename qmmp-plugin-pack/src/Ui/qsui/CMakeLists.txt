@@ -56,6 +56,7 @@ SET(libqsui_SRCS
     eqpreset.cpp
     filesystembrowser.cpp
     elidinglabel.cpp
+    coverwidget.cpp
 )
 
 SET(libqsui_HDRS
@@ -86,6 +87,7 @@ SET(libqsui_MOC_HDRS
     qsuitabbar.h
     filesystembrowser.h
     elidinglabel.h
+    coverwidget.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
