@@ -25,6 +25,9 @@
 #include "ui_playlistbrowser.h"
 
 class PlayListManager;
+class QStandardItemModel;
+class QSortFilterProxyModel;
+class QStandardItem;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -38,18 +41,21 @@ public:
 
 private slots:
     void updateList();
-    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
-    void on_listWidget_itemChanged(QListWidgetItem *item);
-    void on_listWidget_itemPressed (QListWidgetItem *item);
+    void on_filterLineEdit_textChanged(const QString &str);
+    void on_listView_activated(const QModelIndex & index);
+    void updatePlayListName(QStandardItem *item);
+    void updateCurrentRow(QModelIndex index, QModelIndex);
     void rename();
     void on_deleteButton_clicked();
     void on_downButton_clicked();
     void on_upButton_clicked();
 
 private:
-    void keyPressEvent(QKeyEvent *e);
-    Ui::PlayListBrowser ui;
+    bool eventFilter(QObject *o, QEvent *e);
+    Ui::PlayListBrowser m_ui;
     PlayListManager *m_pl_manager;
+    QStandardItemModel* m_listModel;
+    QSortFilterProxyModel* m_proxyModel;
 };
 
 #endif // PLAYLISTBROWSER_H
