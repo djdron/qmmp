@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,8 @@
 #include "mediaplayer.h"
 #include <qmmp/soundcore.h>
 #include <QAction>
+#include <QEvent>
+#include <QKeyEvent>
 #include <QStringListModel>
 #include <QSortFilterProxyModel>
 #include <QShortcut>
@@ -60,11 +62,10 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListModel *model, QWidget* parent)
     new QShortcut(tr("J"),this,SLOT(on_jumpToPushButton_clicked()));
     new QShortcut(tr("F5"),this,SLOT(on_refreshPushButton_clicked()));
 
-    QAction *selectSongViewAction = new QAction(filterLineEdit);
-    selectSongViewAction->setShortcut(Qt::Key_Down);
-    selectSongViewAction->setShortcutContext(Qt::WidgetShortcut);
-    filterLineEdit->addAction(selectSongViewAction);
-    connect(selectSongViewAction, SIGNAL(triggered()),songsListView, SLOT(setFocus()));
+    filterLineEdit->installEventFilter(this);
+    connect(filterLineEdit, SIGNAL(textChanged(QString)),
+            m_proxyModel, SLOT(setFilterFixedString(QString)));
+
     //setup icons
     refreshPushButton->setIcon(QIcon::fromTheme("view-refresh"));
     jumpToPushButton->setIcon(QIcon::fromTheme("go-top"));
@@ -119,23 +120,6 @@ void JumpToTrackDialog::refresh()
     filterLineEdit->setFocus();
 }
 
-void JumpToTrackDialog::on_filterLineEdit_textChanged(const QString &str)
-{
-    m_proxyModel->setFilterFixedString(str);
-    if (m_proxyModel->hasIndex(0,0))
-        songsListView->setCurrentIndex (m_proxyModel->index (0,0));
-}
-
-void JumpToTrackDialog::on_filterLineEdit_returnPressed ()
-{
-    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
-    if (!mi_list.isEmpty())
-    {
-        jumpTo(mi_list.at(0));
-        accept();
-    }
-}
-
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 {
     int selected = (m_proxyModel->mapToSource(index)).row();
@@ -154,4 +138,46 @@ void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
         queuePushButton->setText(tr("Unqueue"));
     else
         queuePushButton->setText(tr("Queue"));
+}
+
+bool JumpToTrackDialog::eventFilter(QObject *o, QEvent *e)
+{
+    if(o == filterLineEdit && e->type() == QEvent::KeyPress)
+    {
+        QKeyEvent *key_event = static_cast<QKeyEvent *>(e);
+        QModelIndex index = songsListView->currentIndex();
+        bool select_first = false;
+        if(!index.isValid() && m_proxyModel->rowCount())
+        {
+            select_first = true;
+            index = m_proxyModel->index(0,0);
+        }
+
+        if(key_event->key() == Qt::Key_Up)
+        {
+            if(!select_first)
+                index = m_proxyModel->index(index.row() - 1, index.column());
+            if(index.isValid())
+                songsListView->setCurrentIndex(index);
+            return true;
+        }
+        else if(key_event->key() == Qt::Key_Down)
+        {
+            if(!select_first)
+                index = m_proxyModel->index(index.row() + 1, index.column());
+            if(index.isValid())
+                songsListView->setCurrentIndex(index);
+            return true;
+        }
+        else if(key_event->key() == Qt::Key_Return)
+        {
+            if(index.isValid())
+            {
+                jumpTo(index);
+                accept();
+            }
+            return true;
+        }
+    }
+    return QDialog::eventFilter(o, e);
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,7 @@
 
 class QStringListModel;
 class QSortFilterProxyModel;
+class QEvent;
 class PlayListManager;
 class PlayListModel;
 
@@ -47,12 +48,11 @@ private slots:
     void on_refreshPushButton_clicked();
     void on_queuePushButton_clicked();
     void on_jumpToPushButton_clicked();
-    void on_filterLineEdit_textChanged(const QString&);
-    void on_filterLineEdit_returnPressed ();
     void jumpTo(const QModelIndex&);
     void queueUnqueue(const QModelIndex&,const QModelIndex&);
 
 private:
+    bool eventFilter(QObject *o, QEvent *e);
     QStringListModel* m_listModel;
     QSortFilterProxyModel* m_proxyModel;
     PlayListManager *m_pl_manager;

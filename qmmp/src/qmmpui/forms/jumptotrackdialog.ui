@@ -114,6 +114,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>filterLineEdit</tabstop>
+  <tabstop>songsListView</tabstop>
+  <tabstop>queuePushButton</tabstop>
+  <tabstop>refreshPushButton</tabstop>
+  <tabstop>jumpToPushButton</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
