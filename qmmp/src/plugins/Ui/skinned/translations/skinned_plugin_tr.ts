@@ -875,24 +875,29 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/playlistbrowser.ui" line="45"/>
+        <location filename="../forms/playlistbrowser.ui" line="31"/>
+        <source>Filter:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/playlistbrowser.ui" line="43"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/playlistbrowser.ui" line="52"/>
-        <location filename="../playlistbrowser.cpp" line="40"/>
+        <location filename="../forms/playlistbrowser.ui" line="50"/>
+        <location filename="../playlistbrowser.cpp" line="42"/>
         <source>Delete</source>
         <translation type="unfinished">Sil</translation>
     </message>
     <message>
-        <location filename="../forms/playlistbrowser.ui" line="69"/>
-        <location filename="../forms/playlistbrowser.ui" line="79"/>
+        <location filename="../forms/playlistbrowser.ui" line="57"/>
+        <location filename="../forms/playlistbrowser.ui" line="67"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../playlistbrowser.cpp" line="39"/>
+        <location filename="../playlistbrowser.cpp" line="41"/>
         <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
