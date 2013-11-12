@@ -34,7 +34,8 @@ SOURCES += \
     eqpreset.cpp \
     filesystembrowser.cpp \
     elidinglabel.cpp \
-    coverwidget.cpp
+    coverwidget.cpp \
+    playlistbrowser.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -59,7 +60,8 @@ HEADERS += mainwindow.h \
     eqpreset.h \
     filesystembrowser.h \
     elidinglabel.h \
-    coverwidget.h
+    coverwidget.h \
+    playlistbrowser.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \

@@ -57,6 +57,7 @@ SET(libqsui_SRCS
     filesystembrowser.cpp
     elidinglabel.cpp
     coverwidget.cpp
+    playlistbrowser.cpp
 )
 
 SET(libqsui_HDRS
@@ -88,6 +89,7 @@ SET(libqsui_MOC_HDRS
     filesystembrowser.h
     elidinglabel.h
     coverwidget.h
+    playlistbrowser.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)

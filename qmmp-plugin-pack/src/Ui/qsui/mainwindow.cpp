@@ -49,6 +49,7 @@
 #include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
 #include "coverwidget.h"
+#include "playlistbrowser.h"
 #include "equalizer.h"
 
 #define KEY_OFFSET 10000
@@ -143,6 +144,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui.fileSystemDockWidget->setWidget(new FileSystemBrowser(this));
     //cover
     m_ui.coverDockWidget->setWidget(new CoverWidget(this));
+    //playlists
+    m_ui.playlistsDockWidget->setWidget(new PlayListBrowser(m_pl_manager, this));
 
     createActions();
     readSettings();
@@ -375,6 +378,9 @@ void MainWindow::createActions()
     ActionManager::instance()->registerAction(ActionManager::UI_COVER,
                                               m_ui.coverDockWidget->toggleViewAction(),
                                               "cover", "");
+    ActionManager::instance()->registerAction(ActionManager::UI_PLAYLISTBROWSER,
+                                              m_ui.playlistsDockWidget->toggleViewAction(),
+                                              "playlist_browser", tr("P"));
     //main toolbar
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
     m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
@@ -419,6 +425,7 @@ void MainWindow::createActions()
     m_ui.menuView->addAction(m_ui.analyzerDockWidget->toggleViewAction());
     m_ui.menuView->addAction(m_ui.fileSystemDockWidget->toggleViewAction());
     m_ui.menuView->addAction(m_ui.coverDockWidget->toggleViewAction());
+    m_ui.menuView->addAction(m_ui.playlistsDockWidget->toggleViewAction());
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_HIDE_TITLEBARS, this, SLOT(setTitleBarsHidden(bool))));
 

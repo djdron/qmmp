@@ -177,6 +177,15 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_3"/>
   </widget>
+  <widget class="QDockWidget" name="playlistsDockWidget">
+   <property name="windowTitle">
+    <string>Playlist Browser</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4"/>
+  </widget>
   <action name="actionPrevious">
    <property name="icon">
     <iconset>

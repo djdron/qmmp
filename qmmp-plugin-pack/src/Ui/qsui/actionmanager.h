@@ -64,6 +64,7 @@ public:
         UI_ANALYZER,
         UI_FILEBROWSER,
         UI_COVER,
+        UI_PLAYLISTBROWSER,
         UI_HIDE_TITLEBARS,
 
         VOL_ENC,
