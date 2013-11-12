@@ -696,13 +696,13 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
-        <source>Filter</source>
-        <translation>Filtr</translation>
+        <source>Filter:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="154"/>
+        <location filename="../jumptotrackdialog.cpp" line="156"/>
         <source>Queue</source>
         <translation>Zařadit</translation>
     </message>
@@ -734,7 +734,7 @@
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="152"/>
+        <location filename="../jumptotrackdialog.cpp" line="154"/>
         <source>Unqueue</source>
         <translation type="unfinished"></translation>
     </message>
