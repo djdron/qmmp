@@ -700,8 +700,8 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="92"/>
-        <location filename="../jumptotrackdialog.cpp" line="156"/>
+        <location filename="../jumptotrackdialog.cpp" line="93"/>
+        <location filename="../jumptotrackdialog.cpp" line="140"/>
         <source>Queue</source>
         <translation type="unfinished">加入佇列</translation>
     </message>
@@ -716,23 +716,23 @@
         <translation type="unfinished">跳到</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="59"/>
+        <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>Q</source>
         <translation type="unfinished">Q</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="60"/>
+        <location filename="../jumptotrackdialog.cpp" line="62"/>
         <source>J</source>
         <translation type="unfinished">J</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="61"/>
+        <location filename="../jumptotrackdialog.cpp" line="63"/>
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="90"/>
-        <location filename="../jumptotrackdialog.cpp" line="154"/>
+        <location filename="../jumptotrackdialog.cpp" line="91"/>
+        <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
         <translation type="unfinished"></translation>
     </message>
