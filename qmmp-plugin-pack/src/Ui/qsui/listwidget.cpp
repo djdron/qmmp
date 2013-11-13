@@ -40,6 +40,7 @@
 
 ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 {
+    setFocusPolicy(Qt::StrongFocus);
     m_update = false;
     m_use_system_colors = true;
     m_popupWidget = 0;

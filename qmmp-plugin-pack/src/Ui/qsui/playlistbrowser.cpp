@@ -39,6 +39,7 @@ PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QW
     m_listView = new QListView(this);
     m_listView->setFrameStyle(QFrame::NoFrame);
     m_listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    m_listView->installEventFilter(this);
 
     QVBoxLayout *layout = new QVBoxLayout();
     layout->setContentsMargins(0,0,0,0);
@@ -117,6 +118,12 @@ void PlayListBrowser::updateCurrentRow(QModelIndex index, QModelIndex)
 
 bool PlayListBrowser::eventFilter(QObject *o, QEvent *e)
 {
+    if((o == m_lineEdit || o == m_listView) && e->type() == QEvent::ShortcutOverride)
+    {
+        e->accept();
+        return false;
+    }
+
     if(o == m_lineEdit && e->type() == QEvent::KeyPress)
     {
         QKeyEvent *key_event = static_cast<QKeyEvent *>(e);

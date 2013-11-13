@@ -26,6 +26,9 @@
     </property>
     <item>
      <widget class="QSUiTabWidget" name="tabWidget">
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
       <property name="currentIndex">
        <number>-1</number>
       </property>
@@ -43,7 +46,7 @@
      <x>0</x>
      <y>0</y>
      <width>614</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
