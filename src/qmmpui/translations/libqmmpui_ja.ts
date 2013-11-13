@@ -235,7 +235,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="160"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation>グループの書式:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="196"/>
@@ -495,12 +495,12 @@
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト/アルバム</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト/年/アルバム</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../configdialog.cpp" line="334"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>ガリシア語</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="335"/>
@@ -638,7 +638,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="164"/>
@@ -696,7 +696,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>フィルター:</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
@@ -734,7 +734,7 @@
         <location filename="../jumptotrackdialog.cpp" line="91"/>
         <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>キューから除く</translation>
     </message>
 </context>
 <context>
@@ -759,12 +759,12 @@
     <message>
         <location filename="../playlisttrack.cpp" line="159"/>
         <source>Streams</source>
-        <translation type="unfinished"></translation>
+        <translation>ストリーム(放送)</translation>
     </message>
     <message>
         <location filename="../playlisttrack.cpp" line="165"/>
         <source>Empty group</source>
-        <translation type="unfinished"></translation>
+        <translation>空のグループ</translation>
     </message>
 </context>
 <context>

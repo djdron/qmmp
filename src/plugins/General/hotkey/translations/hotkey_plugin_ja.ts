@@ -132,7 +132,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>消音</translation>
     </message>
 </context>
 </TS>
