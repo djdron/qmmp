@@ -185,12 +185,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>Show Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать вкладки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать заголовки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
@@ -752,7 +752,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлы</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="176"/>
@@ -762,7 +762,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="185"/>
         <source>Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Списки</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
