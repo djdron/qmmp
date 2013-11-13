@@ -43,12 +43,13 @@ FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     connect(m_listView, SIGNAL(activated(QModelIndex)), SLOT(onListViewActivated(QModelIndex)));
 
     m_label = new Utils::ElidingLabel(this);
+    m_label->setContentsMargins(5,0,5,0);
     m_label->setMargin(0);
 
     QVBoxLayout *layout = new QVBoxLayout();
     layout->setContentsMargins(0,0,0,0);
-    layout->addWidget(m_listView);
     layout->addWidget(m_label);
+    layout->addWidget(m_listView);
     setLayout(layout);
 
     m_model = new QFileSystemModel(this);
