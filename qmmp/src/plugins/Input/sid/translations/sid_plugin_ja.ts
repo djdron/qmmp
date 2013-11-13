@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodersidfactory.cpp" line="67"/>
         <source>SID Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>SID プラグイン</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="69"/>
         <source>SID Files</source>
-        <translation type="unfinished"></translation>
+        <translation>SID ファイル</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="123"/>
         <source>About SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>SID 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="124"/>
         <source>Qmmp SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP SID 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="125"/>
         <source>This plugin plays Commodore 64 music files using libsidplayfp library</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは libsidplayfp ライブラリーを用いて Commodore 64 形式音楽ファイルを再生します</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="126"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>SID Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>SID プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Fast resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>高速リサンプリング</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
@@ -54,27 +54,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>HVSC database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>HVSC データベースファイル:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Resampling method:</source>
-        <translation type="unfinished"></translation>
+        <translation>リサンプリングの方法:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Defaults song length, sec:</source>
-        <translation type="unfinished"></translation>
+        <translation>初期設定の演奏時間(秒数):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Enable HVSC song length database</source>
-        <translation type="unfinished"></translation>
+        <translation>HVSC 演奏時間データベースを有効にする</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Emulation:</source>
-        <translation type="unfinished"></translation>
+        <translation>エミュレーション:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="41"/>

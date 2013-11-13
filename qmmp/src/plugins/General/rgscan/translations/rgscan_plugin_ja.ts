@@ -6,69 +6,69 @@
     <message>
         <location filename="../rgscandialog.ui" line="14"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>リプレイゲイン スキャナー</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="29"/>
         <source>Write track gain/peak</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック利得とトラックピーク値を書き込む</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="56"/>
         <source>Title</source>
-        <translation type="unfinished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="61"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進捗</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="66"/>
         <source>Track Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック毎の利得</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="71"/>
         <source>Album Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバム全体利得</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="76"/>
         <source>Track Peak</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックピーク値</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="81"/>
         <source>Album Peak</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムピーク値</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="89"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>算出する</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="96"/>
         <source>Write Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>タグを書き込む</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="103"/>
         <source>Write album gain/peak</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバム全体利得とアルバムピーク値を書き込む</translation>
     </message>
     <message>
         <location filename="../rgscandialog.cpp" line="114"/>
         <location filename="../rgscandialog.cpp" line="212"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../rgscandialog.cpp" line="136"/>
         <location filename="../rgscandialog.cpp" line="207"/>
         <source>%1 dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 dB</translation>
     </message>
 </context>
 <context>
@@ -76,47 +76,47 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="28"/>
         <source>ReplayGain Scanner Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>リプレイゲイン スキャナー プラグイン</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="49"/>
         <source>About ReplayGain Scanner Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>リプレイゲイン スキャナー プラグインについて</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="50"/>
         <source>ReplayGain Scanner Plugin for Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP リプレイゲイン スキャナー プラグイン</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="51"/>
         <source>This plugin scans audio files and gives information for volume normalization</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは音声ファイルの音量を計測し適正音量レベルに直すための情報を提供します</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="53"/>
         <source>Based on source code by:</source>
-        <translation type="unfinished"></translation>
+        <translation>元になったコードの作者:</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="54"/>
         <source>David Robinson &lt;David@Robinson.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>David Robinson &lt;David@Robinson.org&gt;</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="55"/>
         <source>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="56"/>
         <source>Frank Klemm</source>
-        <translation type="unfinished"></translation>
+        <translation>Frank Klemm</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../rgscanhelper.cpp" line="32"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>リプレイゲイン スキャナー</translation>
     </message>
     <message>
         <location filename="../rgscanhelper.cpp" line="33"/>

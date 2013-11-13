@@ -185,42 +185,42 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>Show Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>タブを表示</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトルバーを表示</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>音量増加(&amp;+)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="66"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>音量減少(&amp;-)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="66"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>消音(&amp;M)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
@@ -385,12 +385,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="97"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックをグループ化(&amp;G)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="97"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
@@ -451,17 +451,17 @@
     <message>
         <location filename="../coverwidget.cpp" line="32"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を付けて保存(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="65"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を付けて表紙画像を保存</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="67"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>画像</translation>
     </message>
 </context>
 <context>
@@ -534,17 +534,17 @@
     <message>
         <location filename="../filesystembrowser.cpp" line="62"/>
         <source>Add to Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストに追加</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="130"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>ディレクトリーを選択</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="65"/>
         <source>Change Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>ディレクトリーを変更</translation>
     </message>
 </context>
 <context>
@@ -602,17 +602,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="377"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="383"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="433"/>
         <source>Sort List</source>
-        <translation>リストを並び換え</translation>
+        <translation>リストを並べ換え</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
@@ -671,7 +671,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="472"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループ名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="480"/>
@@ -747,22 +747,22 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="146"/>
         <source>Spectrum Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>スペクトルアナライザー</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Cover</source>
-        <translation type="unfinished">表紙画像</translation>
+        <translation>表紙画像</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="185"/>
         <source>Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>

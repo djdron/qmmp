@@ -176,32 +176,32 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>音量増加(&amp;+)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>音量減少(&amp;-)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>9</source>
-        <translation type="unfinished">9</translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>消音(&amp;M)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
@@ -376,12 +376,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックのグループをつくる(&amp;G)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
@@ -758,7 +758,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="399"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>音響</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="411"/>
@@ -781,7 +781,7 @@
     <message>
         <location filename="../playlist.cpp" line="207"/>
         <source>Sort List</source>
-        <translation>リストを並び換え</translation>
+        <translation>リストを並べ換え</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="210"/>
@@ -840,12 +840,12 @@
     <message>
         <location filename="../playlist.cpp" line="246"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループ名順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="254"/>
         <source>Sort Selection</source>
-        <translation>選択範囲内で並び換え</translation>
+        <translation>選択範囲内で並べ換え</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="297"/>

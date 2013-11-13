@@ -47,7 +47,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止トラックの中途再生でも再度通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="368"/>

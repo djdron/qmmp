@@ -13,6 +13,9 @@
 スペイン語:
     Félix Medrano <xukosky@yahoo.es>
 
+ガリシア語 (スペイン北西部):
+    Óscar Pereira <oscarpereira1989@gmail.com>
+
 スロバキア語:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
@@ -56,4 +59,4 @@
     李红昆 (lon) <lon83129@126.com>
 
 日本語:
-    島本良太 <liangtai.s4@gmail.com>
+    島本良太 <liangtai.s16@gmail.com>
