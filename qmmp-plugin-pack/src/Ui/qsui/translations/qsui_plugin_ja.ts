@@ -695,7 +695,7 @@
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="691"/>
+        <location filename="../mainwindow.cpp" line="699"/>
         <source>Buffering: %1%</source>
         <translation>バッファーへ先読み: %1%</translation>
     </message>
@@ -1180,77 +1180,77 @@
 <context>
     <name>QSUiAnalyzer</name>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="273"/>
+        <location filename="../qsuianalyzer.cpp" line="278"/>
         <source>Cover</source>
         <translation>表紙画像</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="276"/>
+        <location filename="../qsuianalyzer.cpp" line="281"/>
         <source>Peaks</source>
         <translation>峰</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="279"/>
+        <location filename="../qsuianalyzer.cpp" line="284"/>
         <source>Refresh Rate</source>
         <translation>再描画の頻度</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="282"/>
+        <location filename="../qsuianalyzer.cpp" line="287"/>
         <source>50 fps</source>
         <translation>50 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="283"/>
+        <location filename="../qsuianalyzer.cpp" line="288"/>
         <source>25 fps</source>
         <translation>25 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="284"/>
+        <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>10 fps</source>
         <translation>10 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="285"/>
+        <location filename="../qsuianalyzer.cpp" line="290"/>
         <source>5 fps</source>
         <translation>5 フレーム毎秒</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="292"/>
+        <location filename="../qsuianalyzer.cpp" line="297"/>
         <source>Analyzer Falloff</source>
         <translation>アナライザー減衰速度</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="295"/>
-        <location filename="../qsuianalyzer.cpp" line="309"/>
+        <location filename="../qsuianalyzer.cpp" line="300"/>
+        <location filename="../qsuianalyzer.cpp" line="314"/>
         <source>Slowest</source>
         <translation>さらに遅く</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="296"/>
-        <location filename="../qsuianalyzer.cpp" line="310"/>
+        <location filename="../qsuianalyzer.cpp" line="301"/>
+        <location filename="../qsuianalyzer.cpp" line="315"/>
         <source>Slow</source>
         <translation>遅く</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="297"/>
-        <location filename="../qsuianalyzer.cpp" line="311"/>
+        <location filename="../qsuianalyzer.cpp" line="302"/>
+        <location filename="../qsuianalyzer.cpp" line="316"/>
         <source>Medium</source>
         <translation>適度</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="298"/>
-        <location filename="../qsuianalyzer.cpp" line="312"/>
+        <location filename="../qsuianalyzer.cpp" line="303"/>
+        <location filename="../qsuianalyzer.cpp" line="317"/>
         <source>Fast</source>
         <translation>速く</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="299"/>
-        <location filename="../qsuianalyzer.cpp" line="313"/>
+        <location filename="../qsuianalyzer.cpp" line="304"/>
+        <location filename="../qsuianalyzer.cpp" line="318"/>
         <source>Fastest</source>
         <translation>さらに速く</translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="306"/>
+        <location filename="../qsuianalyzer.cpp" line="311"/>
         <source>Peaks Falloff</source>
         <translation>ピーク減衰速度</translation>
     </message>

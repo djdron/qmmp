@@ -690,7 +690,7 @@
         <translation type="unfinished">Činnosti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="691"/>
+        <location filename="../mainwindow.cpp" line="699"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1180,77 +1180,77 @@
 <context>
     <name>QSUiAnalyzer</name>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="273"/>
+        <location filename="../qsuianalyzer.cpp" line="278"/>
         <source>Cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="276"/>
+        <location filename="../qsuianalyzer.cpp" line="281"/>
         <source>Peaks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="279"/>
+        <location filename="../qsuianalyzer.cpp" line="284"/>
         <source>Refresh Rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="282"/>
+        <location filename="../qsuianalyzer.cpp" line="287"/>
         <source>50 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="283"/>
+        <location filename="../qsuianalyzer.cpp" line="288"/>
         <source>25 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="284"/>
+        <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>10 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="285"/>
+        <location filename="../qsuianalyzer.cpp" line="290"/>
         <source>5 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="292"/>
+        <location filename="../qsuianalyzer.cpp" line="297"/>
         <source>Analyzer Falloff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="295"/>
-        <location filename="../qsuianalyzer.cpp" line="309"/>
+        <location filename="../qsuianalyzer.cpp" line="300"/>
+        <location filename="../qsuianalyzer.cpp" line="314"/>
         <source>Slowest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="296"/>
-        <location filename="../qsuianalyzer.cpp" line="310"/>
+        <location filename="../qsuianalyzer.cpp" line="301"/>
+        <location filename="../qsuianalyzer.cpp" line="315"/>
         <source>Slow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="297"/>
-        <location filename="../qsuianalyzer.cpp" line="311"/>
+        <location filename="../qsuianalyzer.cpp" line="302"/>
+        <location filename="../qsuianalyzer.cpp" line="316"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="298"/>
-        <location filename="../qsuianalyzer.cpp" line="312"/>
+        <location filename="../qsuianalyzer.cpp" line="303"/>
+        <location filename="../qsuianalyzer.cpp" line="317"/>
         <source>Fast</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="299"/>
-        <location filename="../qsuianalyzer.cpp" line="313"/>
+        <location filename="../qsuianalyzer.cpp" line="304"/>
+        <location filename="../qsuianalyzer.cpp" line="318"/>
         <source>Fastest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="306"/>
+        <location filename="../qsuianalyzer.cpp" line="311"/>
         <source>Peaks Falloff</source>
         <translation type="unfinished"></translation>
     </message>
