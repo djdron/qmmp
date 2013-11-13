@@ -752,3 +752,29 @@ Version 0.7.0
 * updated Japanese translation (Ryota Shimamoto)
 * updated Hebrew translation (Genghis Khan)
 * updated Chezh translation (Karel Volny)
+
+Version 0.8.0
+* added sid plugin
+* added ReplayGain scanner
+* added playlist groups
+* added plugin cache
+* added feature to disable transport plugins
+* added timeout for transport plugins
+* added peak overflow support
+* added ogg opus preset to the converter plugin
+* added support for id3v2-based replaygain tags
+* added '--toggle-mute' command line option
+* added volume control hotkeys
+* added context menu in the analyzer plugin
+* added delayed initialization in the wildmidi plugin
+* added 'mute' global hotkey
+* added quick search to the playlist browser dialog
+* added multiple tracks support to the details dialog
+* added float output for lossy decoders
+* improved 'jump to track' dialog
+* improved ReplayGain
+* fixed noise on buffer underrun
+* fixed title format in the shaded mode
+* fixed alt-f4 behaviour
+* fixed possible race condition
+
