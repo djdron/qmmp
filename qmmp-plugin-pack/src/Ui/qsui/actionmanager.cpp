@@ -59,7 +59,8 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[UI_FILEBROWSER] = 0; //external action
     m_actions[UI_COVER] = 0; //external action
     m_actions[UI_PLAYLISTBROWSER] = 0; //external action
-    m_actions[UI_HIDE_TITLEBARS] = createAction2(tr("Hide Title Bars"), "hide_titlebars", "");
+    m_actions[UI_SHOW_TABS] = createAction2(tr("Show Tabs"), "show_tabs", "");
+    m_actions[UI_SHOW_TITLEBARS] = createAction2(tr("Show Title Bars"), "show_titlebars", "");
     //volume
     m_actions[VOL_ENC] = createAction(tr("Volume &+"), "vol_enc", tr("0"));
     m_actions[VOL_DEC] = createAction(tr("Volume &-"), "vol_dec", tr("9"));

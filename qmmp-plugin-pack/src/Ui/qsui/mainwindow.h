@@ -80,7 +80,7 @@ private slots:
     void forward();
     void backward();
     void showMetaData();
-    void setTitleBarsHidden(bool hidden);
+    void setTitleBarsVisible(bool visible);
 
 private:
     void closeEvent(QCloseEvent *);

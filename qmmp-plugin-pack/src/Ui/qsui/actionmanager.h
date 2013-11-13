@@ -65,7 +65,8 @@ public:
         UI_FILEBROWSER,
         UI_COVER,
         UI_PLAYLISTBROWSER,
-        UI_HIDE_TITLEBARS,
+        UI_SHOW_TABS,
+        UI_SHOW_TITLEBARS,
 
         VOL_ENC,
         VOL_DEC,

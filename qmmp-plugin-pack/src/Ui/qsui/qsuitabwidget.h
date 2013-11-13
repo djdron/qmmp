@@ -35,6 +35,9 @@ public:
 signals:
     void tabMoved(int from, int to);
 
+public slots:
+    void setTabsVisible(bool visible);
+
 private slots:
     void onTabCloseRequest(int i);
 

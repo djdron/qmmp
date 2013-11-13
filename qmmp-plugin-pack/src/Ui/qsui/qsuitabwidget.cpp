@@ -35,3 +35,9 @@ void QSUiTabWidget::onTabCloseRequest(int i)
     if(!tabsClosable())
         emit tabCloseRequested(i);
 }
+
+
+void QSUiTabWidget::setTabsVisible(bool visible)
+{
+    tabBar()->setVisible(visible);
+}

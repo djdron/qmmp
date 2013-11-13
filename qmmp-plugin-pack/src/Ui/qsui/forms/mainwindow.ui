@@ -158,7 +158,7 @@
     </size>
    </property>
    <property name="windowTitle">
-    <string>File System</string>
+    <string>Files</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -182,7 +182,7 @@
   </widget>
   <widget class="QDockWidget" name="playlistsDockWidget">
    <property name="windowTitle">
-    <string>Playlist Browser</string>
+    <string>Playlists</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>

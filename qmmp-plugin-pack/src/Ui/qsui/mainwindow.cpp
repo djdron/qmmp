@@ -427,7 +427,8 @@ void MainWindow::createActions()
     m_ui.menuView->addAction(m_ui.coverDockWidget->toggleViewAction());
     m_ui.menuView->addAction(m_ui.playlistsDockWidget->toggleViewAction());
     m_ui.menuView->addSeparator();
-    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_HIDE_TITLEBARS, this, SLOT(setTitleBarsHidden(bool))));
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TABS, m_ui.tabWidget, SLOT(setTabsVisible(bool))));
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TITLEBARS, this, SLOT(setTitleBarsVisible(bool))));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -612,11 +613,13 @@ void MainWindow::readSettings()
         if(settings.value("start_hidden").toBool())
             hide();
 
-        if(settings.value("hide_titlebars", false).toBool())
-        {
-            ACTION(ActionManager::UI_HIDE_TITLEBARS)->setChecked(true);
-            setTitleBarsHidden(true);
-        }
+        bool state = settings.value("show_titlebars", true).toBool();
+        ACTION(ActionManager::UI_SHOW_TITLEBARS)->setChecked(state);
+        setTitleBarsVisible(state);
+
+        state = settings.value("show_tabs", true).toBool();
+        ACTION(ActionManager::UI_SHOW_TABS)->setChecked(state);
+        m_ui.tabWidget->setTabsVisible(state);
 
         m_update = true;
     }
@@ -663,7 +666,8 @@ void MainWindow::writeSettings()
     settings.setValue("Simple/mw_state", saveState());
     settings.setValue("Simple/always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("Simple/show_analyzer", ACTION(ActionManager::UI_ANALYZER)->isChecked());
-    settings.setValue("Simple/hide_titlebars", ACTION(ActionManager::UI_HIDE_TITLEBARS)->isChecked());
+    settings.setValue("Simple/show_tabs", ACTION(ActionManager::UI_SHOW_TABS)->isChecked());
+    settings.setValue("Simple/show_titlebars", ACTION(ActionManager::UI_SHOW_TITLEBARS)->isChecked());
 }
 
 void MainWindow::savePlayList()
@@ -713,23 +717,9 @@ void MainWindow::showMetaData()
     }
 }
 
-void MainWindow::setTitleBarsHidden(bool hidden)
+void MainWindow::setTitleBarsVisible(bool visible)
 {
-    if(hidden)
-    {
-        if(!m_ui.analyzerDockWidget->titleBarWidget())
-            m_ui.analyzerDockWidget->setTitleBarWidget(new QWidget());
-
-        if(!m_ui.fileSystemDockWidget->titleBarWidget())
-            m_ui.fileSystemDockWidget->setTitleBarWidget(new QWidget());
-
-        if(!m_ui.coverDockWidget->titleBarWidget())
-            m_ui.coverDockWidget->setTitleBarWidget(new QWidget());
-
-        if(!m_ui.playlistsDockWidget->titleBarWidget())
-            m_ui.playlistsDockWidget->setTitleBarWidget(new QWidget());
-    }
-    else
+    if(visible)
     {
         QWidget *widget = 0;
         if((widget = m_ui.analyzerDockWidget->titleBarWidget()))
@@ -752,5 +742,19 @@ void MainWindow::setTitleBarsHidden(bool hidden)
             m_ui.playlistsDockWidget->setTitleBarWidget(0);
             delete widget;
         }
+    }
+    else
+    {
+        if(!m_ui.analyzerDockWidget->titleBarWidget())
+            m_ui.analyzerDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.fileSystemDockWidget->titleBarWidget())
+            m_ui.fileSystemDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.coverDockWidget->titleBarWidget())
+            m_ui.coverDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.playlistsDockWidget->titleBarWidget())
+            m_ui.playlistsDockWidget->setTitleBarWidget(new QWidget());
     }
 }
