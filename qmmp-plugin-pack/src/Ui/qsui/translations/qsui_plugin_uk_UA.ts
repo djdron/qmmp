@@ -185,12 +185,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>Show Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати вкладки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати заголовки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
@@ -451,17 +451,17 @@
     <message>
         <location filename="../coverwidget.cpp" line="32"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Зберегти як...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="65"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти обкладинку як</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="67"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Зображення</translation>
     </message>
 </context>
 <context>
@@ -603,7 +603,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="383"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="433"/>
@@ -753,17 +753,17 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Cover</source>
-        <translation type="unfinished">Обкладинка</translation>
+        <translation>Обкладинка</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="185"/>
         <source>Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Списки</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
