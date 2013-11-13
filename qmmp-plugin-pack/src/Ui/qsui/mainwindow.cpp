@@ -725,6 +725,9 @@ void MainWindow::setTitleBarsHidden(bool hidden)
 
         if(!m_ui.coverDockWidget->titleBarWidget())
             m_ui.coverDockWidget->setTitleBarWidget(new QWidget());
+
+        if(!m_ui.playlistsDockWidget->titleBarWidget())
+            m_ui.playlistsDockWidget->setTitleBarWidget(new QWidget());
     }
     else
     {
@@ -744,6 +747,10 @@ void MainWindow::setTitleBarsHidden(bool hidden)
             m_ui.coverDockWidget->setTitleBarWidget(0);
             delete widget;
         }
-
+        if((widget = m_ui.playlistsDockWidget->titleBarWidget()))
+        {
+            m_ui.playlistsDockWidget->setTitleBarWidget(0);
+            delete widget;
+        }
     }
 }
