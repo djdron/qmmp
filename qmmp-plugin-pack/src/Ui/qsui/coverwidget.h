@@ -40,7 +40,6 @@ public:
     void clearCover();
 
 private slots:
-    void updateCover();
     void saveAs();
 
 private:
