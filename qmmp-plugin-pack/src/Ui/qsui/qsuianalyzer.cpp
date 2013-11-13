@@ -85,6 +85,11 @@ void QSUiAnalyzer::clearCover()
     update();
 }
 
+QSize QSUiAnalyzer::sizeHint() const
+{
+    return QSize(200, 100);
+}
+
 void QSUiAnalyzer::add (unsigned char *data, qint64 size, int chan)
 {
     if (!m_timer->isActive ())

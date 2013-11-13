@@ -602,7 +602,15 @@ void MainWindow::readSettings()
     if(!m_update)
     {
         restoreGeometry(settings.value("mw_geometry").toByteArray());
-        restoreState(settings.value("mw_state").toByteArray());
+        QByteArray wstate = settings.value("mw_state").toByteArray();
+        if(wstate.isEmpty())
+        {
+            m_ui.fileSystemDockWidget->hide();
+            m_ui.coverDockWidget->hide();
+            m_ui.playlistsDockWidget->hide();
+        }
+        else
+            restoreState(settings.value("mw_state").toByteArray());
         if(settings.value("always_on_top", false).toBool())
         {
             ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->setChecked(true);

@@ -41,6 +41,7 @@ public:
     void setCover(const QPixmap &pixmap);
     void clear();
     void clearCover();
+    QSize sizeHint() const;
 
 public slots:
     void readSettings();
