@@ -19,7 +19,7 @@ Italienisch:
     Gian Paolo Renello <emmerkar@gmail.com>
 
 Japanisch:
-    Ryota Shimamoto <liangtai.s4@gmail.com>
+    Ryota Shimamoto <liangtai.s16@gmail.com>
 
 Kasachisch:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
