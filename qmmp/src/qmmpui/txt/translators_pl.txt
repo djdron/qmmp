@@ -31,7 +31,7 @@ Włoski:
     Gian Paolo Renello <emmerkar@gmail.com>
 
 Japoński:
-    Rjota Šimamoto <liangtai.s4@gmail.com>
+    Rjota Šimamoto <liangtai.s16@gmail.com>
 
 Kazachski:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
