@@ -32,97 +32,90 @@
         <translation>Scrobbler Eklentisi Ayarları</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="32"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Last.fm</source>
         <translation>Last.fm</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="43"/>
+        <location filename="../settingsdialog.ui" line="40"/>
+        <location filename="../settingsdialog.ui" line="113"/>
         <source>Session:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="53"/>
+        <location filename="../settingsdialog.ui" line="50"/>
+        <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="104"/>
         <source>Register new session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
-        <source>User name:</source>
-        <translation>Kullanıcı adı:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="104"/>
-        <source>Password:</source>
-        <translation>Parola:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="85"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
         <translation>Libre.fm</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="73"/>
-        <location filename="../settingsdialog.cpp" line="96"/>
-        <location filename="../settingsdialog.cpp" line="128"/>
+        <location filename="../settingsdialog.cpp" line="86"/>
+        <location filename="../settingsdialog.cpp" line="121"/>
+        <location filename="../settingsdialog.cpp" line="172"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="74"/>
+        <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="75"/>
-        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
+        <location filename="../settingsdialog.cpp" line="88"/>
+        <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="76"/>
+        <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="96"/>
+        <location filename="../settingsdialog.cpp" line="121"/>
         <source>New session has been received successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="128"/>
+        <location filename="../settingsdialog.cpp" line="172"/>
         <source>Permission granted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <location filename="../settingsdialog.cpp" line="137"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
