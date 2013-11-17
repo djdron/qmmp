@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include "lastfmscrobbler.h"
-#include "librefmscrobbler.h"
+#include "scrobbler.h"
+#include "defines.h"
 #include "scrobblerhandler.h"
 
 ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
@@ -28,15 +28,9 @@ ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     if(settings.value("use_lastfm", false).toBool())
-    {
-        new LastfmScrobbler(this);
-    }
+        new Scrobbler(SCROBBLER_LASTFM_URL, "lastfm", this);
     if(settings.value("use_librefm", false).toBool())
-    {
-        new LibrefmScrobbler(settings.value("librefm_login").toString(),
-                             settings.value("librefm_password").toString(), this);
-
-    }
+        new Scrobbler(SCROBBLER_LIBREFM_URL, "librefm", this);
     settings.endGroup();
 }
 

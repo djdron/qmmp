@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2013 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,65 +17,14 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef LIBREFMSCROBBLER_H
-#define LIBREFMSCROBBLER_H
 
-#include <QMap>
-#include <QObject>
-#include <qmmp/qmmp.h>
-#include "scrobblercache.h"
+#ifndef DEFINES_H
+#define DEFINES_H
 
-class QNetworkAccessManager;
-class QNetworkReply;
-class QTime;
-class SoundCore;
+#define SCROBBLER_LASTFM_URL "http://ws.audioscrobbler.com/2.0/"
+#define SCROBBLER_LIBREFM_URL "http://libre.fm/2.0/"
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class LibrefmScrobbler : public QObject
-{
-    Q_OBJECT
-public:
-    LibrefmScrobbler(const QString &login, const QString &passw, QObject *parent = 0);
+#define LASTFM_AUTH_URL "http://www.last.fm/api/auth/"
+#define LIBREFM_AUTH_URL "http://libre.fm/api/auth/"
 
-    ~LibrefmScrobbler();
-
-private slots:
-    void setState(Qmmp::State state);
-    void updateMetaData();
-    void processResponse(QNetworkReply *reply);
-    void setupProxy();
-    void handshake();
-
-private:
-    enum { MIN_SONG_LENGTH = 30 };
-
-    void submit();
-    void sendNotification(const SongInfo &info);
-    bool isReady();
-
-    uint m_start_ts;
-    SongInfo m_song;
-    QString m_login;
-    QString m_passw;
-    QString m_submitUrl;
-    QString m_nowPlayingUrl;
-    QString m_session;
-    QList <SongInfo> m_cachedSongs;
-    QByteArray m_ua;
-    int m_submitedSongs;
-    int m_failure_count;
-    int m_handshake_count;
-    bool m_disabled;
-    QNetworkAccessManager *m_http;
-    SoundCore *m_core;
-    QNetworkReply *m_handshakeReply;
-    QNetworkReply *m_submitReply;
-    QNetworkReply *m_notificationReply;
-    QTime* m_time;
-    ScrobblerCache *m_cache;
-
-};
-
-#endif
+#endif // DEFINES_H

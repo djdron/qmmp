@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef LASTFMSCROBBLER_H
-#define LASTFMSCROBBLER_H
+#ifndef SCROBBLER_H
+#define SCROBBLER_H
 
 #include <QMap>
 #include <QObject>
@@ -35,7 +35,7 @@ class SoundCore;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class LastfmResponse
+class ScrobblerResponse
 {
 public:
     QString status;
@@ -52,12 +52,12 @@ public:
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class LastfmScrobbler : public QObject
+class Scrobbler : public QObject
 {
     Q_OBJECT
 public:
-    LastfmScrobbler(QObject *parent = 0);
-    ~LastfmScrobbler();
+    Scrobbler(const QString &scrobblerUrl, const QString &name,QObject *parent = 0);
+    ~Scrobbler();
 
 private slots:
     void setState(Qmmp::State state);
@@ -82,16 +82,18 @@ private:
     QNetworkReply *m_submitReply, *m_notificationReply;
     QTime *m_time;
     ScrobblerCache *m_cache;
+    QString m_scrobblerUrl, m_name;
 };
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class LastfmAuth : public QObject
+class ScrobblerAuth : public QObject
 {
     Q_OBJECT
 public:
-    explicit LastfmAuth(QObject *parent = 0);
+    explicit ScrobblerAuth(const QString &scrobblerUrl, const QString &authUrl,
+                           const QString &name, QObject *parent = 0);
     void getToken();
     void getSession();
     void checkSession(const QString &session);
@@ -117,6 +119,7 @@ private:
     QByteArray m_ua;
     QNetworkAccessManager *m_http;
     QNetworkReply *m_getTokenReply, *m_getSessionReply, *m_checkSessionReply;
+    QString m_scrobblerUrl, m_authUrl, m_name;
 };
 
-#endif
+#endif //SCROBBLER_H

@@ -23,7 +23,7 @@
 #include <QDialog>
 #include "ui_settingsdialog.h"
 
-class LastfmAuth;
+class ScrobblerAuth;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -41,14 +41,17 @@ public slots:
 
 private slots:
     void on_newSessionButton_lastfm_clicked();
+    void on_newSessionButton_librefm_clicked();
     void processTokenResponse(int error);
     void processSessionResponse(int error);
     void on_checkButton_lastfm_clicked();
+    void on_checkButton_librefm_clicked();
     void processCheckResponse(int error);
 
 private:
     Ui::SettingsDialog m_ui;
-    LastfmAuth *m_lastfmAuth;
+    ScrobblerAuth *m_lastfmAuth;
+    ScrobblerAuth *m_librefmAuth;
 
 };
 

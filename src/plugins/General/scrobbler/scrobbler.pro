@@ -29,16 +29,15 @@ unix {
 HEADERS += scrobblerfactory.h \
     settingsdialog.h \
     scrobblerhandler.h \
-    lastfmscrobbler.h \
-    librefmscrobbler.h \
-    scrobblercache.h
+    scrobblercache.h \
+    scrobbler.h \
+    defines.h
 win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += scrobblerfactory.cpp \
     settingsdialog.cpp \
     scrobblerhandler.cpp \
-    lastfmscrobbler.cpp \
-    librefmscrobbler.cpp \
-    scrobblercache.cpp
+    scrobblercache.cpp \
+    scrobbler.cpp
 QT += network
 INCLUDEPATH += ../../../
 unix:LIBS += -lqmmpui \
