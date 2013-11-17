@@ -32,97 +32,90 @@
         <translation>Настройки модуля scrobbler</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="32"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Last.fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="43"/>
+        <location filename="../settingsdialog.ui" line="40"/>
+        <location filename="../settingsdialog.ui" line="113"/>
         <source>Session:</source>
         <translation>Сессия:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="53"/>
+        <location filename="../settingsdialog.ui" line="50"/>
+        <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
         <translation>Проверить</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="104"/>
         <source>Register new session</source>
         <translation>Зарегистрировать новую сессию</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
-        <source>User name:</source>
-        <translation>Имя пользователя:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="104"/>
-        <source>Password:</source>
-        <translation>Пароль:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="85"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="73"/>
-        <location filename="../settingsdialog.cpp" line="96"/>
-        <location filename="../settingsdialog.cpp" line="128"/>
+        <location filename="../settingsdialog.cpp" line="86"/>
+        <location filename="../settingsdialog.cpp" line="121"/>
+        <location filename="../settingsdialog.cpp" line="172"/>
         <source>Message</source>
         <translation>Сообщение</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="74"/>
+        <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
         <translation>1. Дождитесь загрузки браузера</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="75"/>
-        <source>2. Allow Qmmp to scrobble tracks to your Last.fm account</source>
-        <translation>2. Разрешите Qmmp доступ к вашей учётной записи last.fm</translation>
+        <location filename="../settingsdialog.cpp" line="88"/>
+        <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
+        <translation>2. Разрешите Qmmp доступ к вашей учётной записи %1</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="76"/>
+        <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
         <translation>3. Нажмите &quot;OK&quot;</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
         <translation>Ошибка соединения</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
         <translation>Невозможно зарегистрировать новую сессию</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="96"/>
+        <location filename="../settingsdialog.cpp" line="121"/>
         <source>New session has been received successfully</source>
         <translation>Новая сессия успешно получена</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="128"/>
+        <location filename="../settingsdialog.cpp" line="172"/>
         <source>Permission granted</source>
         <translation>Доступ разрешён</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>Доступ запрещён</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="81"/>
-        <location filename="../settingsdialog.cpp" line="85"/>
-        <location filename="../settingsdialog.cpp" line="104"/>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <location filename="../settingsdialog.cpp" line="137"/>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>

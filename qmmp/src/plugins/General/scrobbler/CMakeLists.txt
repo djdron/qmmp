@@ -33,20 +33,19 @@ SET(libscrobbler_SRCS
     scrobblerhandler.cpp
     scrobblerfactory.cpp
     scrobblercache.cpp
-    lastfmscrobbler.cpp
-    librefmscrobbler.cpp
+    scrobbler.cpp
 )
 
 SET(libscrobbler_MOC_HDRS
     settingsdialog.h
     scrobblerfactory.h
     scrobblerhandler.h
-    lastfmscrobbler.h
-    librefmscrobbler.h
+    scrobbler.h
 )
 
 SET(libscrobbler_HDRS
     scrobblercache.h
+    defines.h
 )
 
 SET(libscrobbler_RCCS translations/translations.qrc)
