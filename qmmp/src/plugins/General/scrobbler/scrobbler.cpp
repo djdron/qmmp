@@ -35,14 +35,12 @@
 #include <qmmp/soundcore.h>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
-#include "lastfmscrobbler.h"
+#include "scrobbler.h"
 
-#define SCROBBLER_LASTFM_URL "http://ws.audioscrobbler.com/2.0/"
 #define API_KEY "d71c6f01b2ea562d7042bd5f5970041f"
 #define SECRET "32d47bc0010473d40e1d38bdcff20968"
 
-
-void LastfmResponse::parse(QIODevice *device)
+void ScrobblerResponse::parse(QIODevice *device)
 {
     QXmlStreamReader reader(device);
     QStringList tags;
@@ -80,19 +78,22 @@ void LastfmResponse::parse(QIODevice *device)
     }
 }
 
-LastfmScrobbler::LastfmScrobbler(QObject *parent) : QObject(parent)
+Scrobbler::Scrobbler(const QString &scrobblerUrl, const QString &name, QObject *parent)
+    : QObject(parent)
 {
     m_notificationReply = 0;
     m_submitedSongs = 0;
     m_submitReply = 0;
+    m_scrobblerUrl = scrobblerUrl;
+    m_name = name;
     m_state = Qmmp::Stopped;
     m_time = new QTime();
-    m_cache = new ScrobblerCache(QDir::homePath() +"/.qmmp/scrobbler_lastfm.cache");
+    m_cache = new ScrobblerCache(QDir::homePath() +"/.qmmp/scrobbler_"+name+".cache");
     m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
     m_http = new QNetworkAccessManager(this);
     m_core = SoundCore::instance();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_session = settings.value("Scrobbler/lastfm_session").toString();
+    m_session = settings.value("Scrobbler/"+name+"_session").toString();
 
     connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
     connect(QmmpSettings::instance(), SIGNAL(networkSettingsChanged()), SLOT(setupProxy()));
@@ -113,7 +114,7 @@ LastfmScrobbler::LastfmScrobbler(QObject *parent) : QObject(parent)
     }
 }
 
-LastfmScrobbler::~LastfmScrobbler()
+Scrobbler::~Scrobbler()
 {
     m_cache->save(m_cachedSongs);
     delete m_time;
@@ -121,7 +122,7 @@ LastfmScrobbler::~LastfmScrobbler()
 
 }
 
-void LastfmScrobbler::setState(Qmmp::State state)
+void Scrobbler::setState(Qmmp::State state)
 {
     static Qmmp::State previousState = state;
     static int elapsed = 0;
@@ -131,13 +132,13 @@ void LastfmScrobbler::setState(Qmmp::State state)
     case Qmmp::Playing:
         if (previousState != Qmmp::Paused)
         {
-            qDebug("LastfmScrobbler: new song started");
+            qDebug("Scrobbler[%s]: new song started", qPrintable(m_name));
             m_start_ts = QDateTime::currentDateTime().toTime_t();
             elapsed = 0;
         }
         else
         {
-            qDebug("LastfmScrobbler: resuming from %d seconds played", elapsed / 1000);
+            qDebug("Scrobbler[%s]: resuming from %d seconds played", qPrintable(m_name), elapsed / 1000);
         }
         m_time->restart();
         break;
@@ -162,7 +163,7 @@ void LastfmScrobbler::setState(Qmmp::State state)
         break;
     case Qmmp::Paused:
         elapsed += m_time->elapsed();
-        qDebug("LastfmScrobbler: pausing after %d seconds played", elapsed / 1000);
+        qDebug("Scrobbler[%s]: pausing after %d seconds played", qPrintable(m_name), elapsed / 1000);
         break;
     default:
         ;
@@ -170,7 +171,7 @@ void LastfmScrobbler::setState(Qmmp::State state)
     previousState = state;
 }
 
-void LastfmScrobbler::updateMetaData()
+void Scrobbler::updateMetaData()
 {
     QMap <Qmmp::MetaData, QString> metadata = m_core->metaData();
     if(m_state != Qmmp::Playing || m_core->totalTime() <= 0) //skip stream
@@ -184,14 +185,14 @@ void LastfmScrobbler::updateMetaData()
     sendNotification(m_song);
 }
 
-void LastfmScrobbler::processResponse(QNetworkReply *reply)
+void Scrobbler::processResponse(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NoError)
     {
-        qWarning("LastfmScrobbler: http error: %s", qPrintable(reply->errorString()));
+        qWarning("Scrobbler[%s]: http error: %s", qPrintable(m_name), qPrintable(reply->errorString()));
     }
 
-    LastfmResponse response;
+    ScrobblerResponse response;
     response.parse(reply);
 
     QString error_code;
@@ -199,12 +200,12 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
     {
         if(!response.error.isEmpty())
         {
-            qWarning("LastfmScrobbler: status=%s, %s-%s", qPrintable(response.status),
+            qWarning("Scrobbler[%s]: status=%s, %s-%s", qPrintable(m_name), qPrintable(response.status),
                      qPrintable(response.code), qPrintable(response.error));
             error_code = response.code;
         }
         else
-            qWarning("LastfmScrobbler: invalid content");
+            qWarning("Scrobbler[%s]: invalid content", qPrintable(m_name));
     }
 
     if (reply == m_submitReply)
@@ -212,7 +213,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         m_submitReply = 0;
         if (response.status == "ok")
         {
-            qDebug("LastfmScrobbler: submited %d song(s)", m_submitedSongs);
+            qDebug("Scrobbler[%s]: submited %d song(s)", qPrintable(m_name), m_submitedSongs);
             while (m_submitedSongs)
             {
                 m_submitedSongs--;
@@ -231,7 +232,7 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         else if(error_code == "9") //invalid session key
         {
             m_session.clear();
-            qWarning("LastfmScrobbler: invalid session key, scrobbling disabled");
+            qWarning("Scrobbler[%s]: invalid session key, scrobbling disabled", qPrintable(m_name));
         }
         else if(error_code == "11" || error_code == "16" || error_code.isEmpty()) //unavailable
         {
@@ -240,7 +241,8 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         else
         {
             m_session.clear();
-            qWarning("LastfmScrobbler: service returned unrecoverable error, scrobbling disabled");
+            qWarning("Scrobbler[%s]: service returned unrecoverable error, scrobbling disabled",
+                     qPrintable(m_name));
         }
     }
     else if (reply == m_notificationReply)
@@ -248,18 +250,18 @@ void LastfmScrobbler::processResponse(QNetworkReply *reply)
         m_notificationReply = 0;
         if(response.status == "ok")
         {
-            qDebug("LastfmScrobbler: Now-Playing notification done");
+            qDebug("Scrobbler[%s]: Now-Playing notification done", qPrintable(m_name));
         }
         else if(error_code == "9") //invalid session key
         {
             m_session.clear();
-            qWarning("LastfmScrobbler: invalid session key, scrobbling disabled");
+            qWarning("Scrobbler[%s]: invalid session key, scrobbling disabled", qPrintable(m_name));
         }
     }
     reply->deleteLater();
 }
 
-void LastfmScrobbler::setupProxy()
+void Scrobbler::setupProxy()
 {
     QmmpSettings *gs = QmmpSettings::instance();
     if (gs->isProxyEnabled())
@@ -276,12 +278,12 @@ void LastfmScrobbler::setupProxy()
         m_http->setProxy(QNetworkProxy::NoProxy);
 }
 
-void LastfmScrobbler::submit()
+void Scrobbler::submit()
 {
     if (m_cachedSongs.isEmpty() || m_session.isEmpty() || m_submitReply)
         return;
 
-    qDebug("LastfmScrobbler: submit request");
+    qDebug("Scrobbler[%s]: submit request", qPrintable(m_name));
     m_submitedSongs = qMin(m_cachedSongs.size(),25);
 
     QMap <QString, QString> params;
@@ -306,7 +308,7 @@ void LastfmScrobbler::submit()
             params.remove(key);
     }
 
-    QUrl url(SCROBBLER_LASTFM_URL);
+    QUrl url(m_scrobblerUrl);
     url.setPort(80);
 
     QUrl body("");
@@ -330,11 +332,11 @@ void LastfmScrobbler::submit()
     m_submitReply = m_http->post(request, bodyData);
 }
 
-void LastfmScrobbler::sendNotification(const SongInfo &info)
+void Scrobbler::sendNotification(const SongInfo &info)
 {
     if(m_session.isEmpty())
         return;
-    qDebug("LastfmScrobbler: sending notification");
+    qDebug("Scrobbler[%s]: sending notification", qPrintable(m_name));
 
     QMap <QString, QString> params;
     params.insert("track", info.metaData(Qmmp::TITLE));
@@ -354,7 +356,7 @@ void LastfmScrobbler::sendNotification(const SongInfo &info)
             params.remove(key);
     }
 
-    QUrl url(SCROBBLER_LASTFM_URL);
+    QUrl url(m_scrobblerUrl);
     url.setPort(80);
 
     QUrl body("");
@@ -378,10 +380,14 @@ void LastfmScrobbler::sendNotification(const SongInfo &info)
     m_notificationReply = m_http->post(request, bodyData);
 }
 
-LastfmAuth::LastfmAuth(QObject *parent) : QObject(parent)
+ScrobblerAuth::ScrobblerAuth(const QString &scrobblerUrl, const QString &authUrl,
+                             const QString &name, QObject *parent) : QObject(parent)
 {
     m_getTokenReply = 0;
     m_getSessionReply = 0;
+    m_scrobblerUrl = scrobblerUrl;
+    m_authUrl = authUrl;
+    m_name = name;
     m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
     m_http = new QNetworkAccessManager(this);
     connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
@@ -401,11 +407,11 @@ LastfmAuth::LastfmAuth(QObject *parent) : QObject(parent)
         m_http->setProxy(QNetworkProxy::NoProxy);
 }
 
-void LastfmAuth::getToken()
+void ScrobblerAuth::getToken()
 {
-    qDebug("LastfmAuth: new token request");
+    qDebug("ScrobblerAuth[%s]: new token request", qPrintable(m_name));
     m_session.clear();
-    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
+    QUrl url(m_scrobblerUrl + "?");
     url.setPort(80);
     url.addQueryItem("method", "auth.getToken");
     url.addQueryItem("api_key", API_KEY);
@@ -423,10 +429,10 @@ void LastfmAuth::getToken()
     m_getTokenReply = m_http->get(request);
 }
 
-void LastfmAuth::getSession()
+void ScrobblerAuth::getSession()
 {
-    qDebug("LastfmAuth: new session request");
-    QUrl url(QString(SCROBBLER_LASTFM_URL) + "?");
+    qDebug("ScrobblerAuth[%s]: new session request", qPrintable(m_name));
+    QUrl url(m_scrobblerUrl + "?");
     url.setPort(80);
     url.addQueryItem("api_key", API_KEY);
     url.addQueryItem("method", "auth.getSession");
@@ -446,9 +452,9 @@ void LastfmAuth::getSession()
     m_getSessionReply = m_http->get(request);
 }
 
-void LastfmAuth::checkSession(const QString &session)
+void ScrobblerAuth::checkSession(const QString &session)
 {
-    qDebug("LastfmAuth: checking session...");
+    qDebug("ScrobblerAuth[%s]: checking session...", qPrintable(m_name));
     m_session = session;
     QMap <QString, QString> params;
     params.insert("api_key", API_KEY);
@@ -456,7 +462,7 @@ void LastfmAuth::checkSession(const QString &session)
     params.insert("method", "user.getRecommendedArtists");
     params.insert("limit", "1");
 
-    QUrl url(SCROBBLER_LASTFM_URL);
+    QUrl url(m_scrobblerUrl);
     url.setPort(80);
 
     QUrl body("");
@@ -480,19 +486,19 @@ void LastfmAuth::checkSession(const QString &session)
     m_checkSessionReply = m_http->post(request, bodyData);
 }
 
-QString LastfmAuth::session() const
+QString ScrobblerAuth::session() const
 {
     return m_session;
 }
 
-void LastfmAuth::processResponse(QNetworkReply *reply)
+void ScrobblerAuth::processResponse(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NoError)
     {
-        qWarning("LastfmAuth: http error: %s", qPrintable(reply->errorString()));
+        qWarning("ScrobblerAuth[%s]: http error: %s", qPrintable(m_name), qPrintable(reply->errorString()));
     }
 
-    LastfmResponse response;
+    ScrobblerResponse response;
     response.parse(reply);
 
     QString error_code;
@@ -500,12 +506,12 @@ void LastfmAuth::processResponse(QNetworkReply *reply)
     {
         if(!response.error.isEmpty())
         {
-            qWarning("LastfmAuth: status=%s, %s-%s", qPrintable(response.status),
+            qWarning("ScrobblerAuth[%s]: status=%s, %s-%s", qPrintable(m_name), qPrintable(response.status),
                      qPrintable(response.code), qPrintable(response.error));
             error_code = response.code;
         }
         else
-            qWarning("LastfmAuth: invalid content");
+            qWarning("ScrobblerAuth[%s]: invalid content", qPrintable(m_name));
     }
 
     if (reply == m_getTokenReply)
@@ -514,8 +520,8 @@ void LastfmAuth::processResponse(QNetworkReply *reply)
         if(response.status == "ok")
         {
             m_token = response.token;
-            qDebug("LastfmAuth: token: %s", qPrintable(m_token));
-            QDesktopServices::openUrl("http://www.last.fm/api/auth/?api_key="API_KEY"&token="+m_token);
+            qDebug("ScrobblerAuth[%s]: token: %s", qPrintable(m_name), qPrintable(m_token));
+            QDesktopServices::openUrl(m_authUrl + "?api_key="API_KEY"&token="+m_token);
             emit(tokenRequestFinished(NO_ERROR));
         }
         else if(error_code.isEmpty())
@@ -541,9 +547,9 @@ void LastfmAuth::processResponse(QNetworkReply *reply)
         if(response.status == "ok")
         {
             m_session = response.key;
-            qDebug("LastfmAuth: name: %s", qPrintable(response.name));
-            qDebug("LastfmAuth: key: %s", qPrintable(m_session));
-            qDebug("LastfmAuth: subscriber: %s", qPrintable(response.subscriber));
+            qDebug("ScrobblerAuth[%s]: name: %s", qPrintable(m_name), qPrintable(response.name));
+            qDebug("ScrobblerAuth[%s]: key: %s", qPrintable(m_name), qPrintable(m_session));
+            qDebug("ScrobblerAuth[%s]: subscriber: %s", qPrintable(m_name), qPrintable(response.subscriber));
             emit sessionRequestFinished(NO_ERROR);
         }
         else if(error_code == "4" || error_code == "15") //invalid token
@@ -577,17 +583,18 @@ void LastfmAuth::processResponse(QNetworkReply *reply)
         m_checkSessionReply = 0;
         if(response.status == "ok")
         {
-            qDebug("LastfmAuth: session ok");
+            qDebug("ScrobblerAuth[%s]: session ok", qPrintable(m_name));
             emit checkSessionFinished(NO_ERROR);
         }
         else if(error_code.isEmpty())
         {
-            qWarning("LastfmAuth: network error");
+            qWarning("ScrobblerAuth[%s]: network error", qPrintable(m_name));
             emit checkSessionFinished(NETWORK_ERROR);
         }
         else
         {
-            qWarning("LastfmAuth: received last.fm error (code=%s)", qPrintable(error_code));
+            qWarning("ScrobblerAuth[%s]: received last.fm error (code=%s)",
+                     qPrintable(m_name), qPrintable(error_code));
             emit checkSessionFinished(LASTFM_ERROR);
         }
     }
