@@ -75,7 +75,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Дозволити доступ Qmmp до Вашого облікового запису %1</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
