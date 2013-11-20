@@ -35,7 +35,7 @@
 Польська:
    Grzegorz Gibas <amigib@gmail.com>
 
-Xеська:
+Чеська:
     Karel Volný <kvolny@redhat.com>
 
 Німецька:
@@ -58,5 +58,5 @@ Xеська:
 Українська:
     Геннадій Моцьо <drool@altlinux.ru>
 
-французька:
+Французька:
     Stanislas Zeller <uncensored.assault@gmail.com>
