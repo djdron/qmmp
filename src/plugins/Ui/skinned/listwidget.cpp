@@ -46,6 +46,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_popupWidget = 0;
     m_metrics = 0;
     m_extra_metrics = 0;
+    m_drop_row = -1;
     loadColors();
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
@@ -264,6 +265,14 @@ void ListWidget::paintEvent(QPaintEvent *)
         }
         sx = rtl ? 9 : width() - 7 - m_metrics->width(m_rows[i]->length);
         painter.drawText(sx, sy, m_rows[i]->length);
+
+        //draw drop line
+        if(m_drop_row == (m_first + i))
+        {
+            painter.setPen(m_current);
+            painter.drawLine (6, i * (m_metrics->lineSpacing() + 2),
+                              width() - 4 , i * (m_metrics->lineSpacing() + 2));
+        }
     }
     //draw line
     if(m_number_width)
@@ -547,6 +556,23 @@ void ListWidget::dropEvent(QDropEvent *event)
             else
                 m_model->add(u.toString());
         }
+    }
+    m_drop_row = -1;
+}
+
+void ListWidget::dragLeaveEvent(QDragLeaveEvent *)
+{
+    m_drop_row = -1;
+    update();
+}
+
+void ListWidget::dragMoveEvent(QDragMoveEvent *event)
+{
+    int row = rowAt(event->pos().y());
+    if(row != m_drop_row)
+    {
+        m_drop_row = row;
+        update();
     }
 }
 

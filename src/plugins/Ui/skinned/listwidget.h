@@ -98,6 +98,8 @@ protected:
     int rowAt(int)const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
+    void dragLeaveEvent(QDragLeaveEvent *);
+    void dragMoveEvent(QDragMoveEvent *event);
     void contextMenuEvent (QContextMenuEvent * event);
     bool event (QEvent *e);
 
@@ -140,6 +142,7 @@ private:
     bool m_show_anchor;
     bool m_align_numbres;
     int m_number_width;
+    int m_drop_row;
     QList<ListWidgetRow *> m_rows;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;

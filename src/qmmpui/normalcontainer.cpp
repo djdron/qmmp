@@ -35,6 +35,14 @@ void NormalContainer::addTrack(PlayListTrack *track)
     m_items.append(track);
 }
 
+void NormalContainer::insertTrack(int index, PlayListTrack *track)
+{
+    if(index >= 0 && index < m_items.count())
+        m_items.insert(index, track);
+    else
+        m_items.append(track);
+}
+
 QList<PlayListGroup *> NormalContainer::groups()
 {
     return QList<PlayListGroup *>();

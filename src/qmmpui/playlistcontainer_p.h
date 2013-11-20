@@ -40,6 +40,7 @@ public:
 
     virtual void addTrack(PlayListTrack *track) = 0;
     void addTracks(QList<PlayListTrack *> tracks);
+    virtual void insertTrack(int index, PlayListTrack *track) = 0;
     virtual QList<PlayListGroup *> groups() = 0;
     virtual QList<PlayListItem *> items() const = 0;
     virtual int count() const = 0;

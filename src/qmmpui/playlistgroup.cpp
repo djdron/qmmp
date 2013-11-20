@@ -59,6 +59,11 @@ void PlayListGroup::addTracks(QList<PlayListTrack *> tracks)
     m_tracks.append(tracks);
 }
 
+void PlayListGroup::insertTrack(int pos, PlayListTrack *track)
+{
+    m_tracks.insert(pos, track);
+}
+
 bool PlayListGroup::contains(PlayListTrack *track) const
 {
     return m_tracks.contains(track);
