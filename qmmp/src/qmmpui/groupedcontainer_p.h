@@ -35,6 +35,7 @@ public:
     virtual ~GroupedContainer();
 
     void addTrack(PlayListTrack *track);
+    void insertTrack(int index, PlayListTrack *track);
     QList<PlayListGroup *> groups();
     QList<PlayListItem *> items() const;
     int count() const;

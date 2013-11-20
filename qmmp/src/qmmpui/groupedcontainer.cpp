@@ -68,6 +68,24 @@ void GroupedContainer::addTrack(PlayListTrack *track)
     addGroup(group);
 }
 
+void GroupedContainer::insertTrack(int index, PlayListTrack *track)
+{
+    //insert if possible
+    foreach(PlayListGroup *group, m_groups)
+    {
+        if(track->groupName() == group->formattedTitle() &&
+                index > group->firstIndex && index <= group->lastIndex + 1)
+        {
+            group->insertTrack(index - group->firstIndex - 1, track);
+            m_items.insert(index, track);
+            updateIndex();
+            return;
+        }
+    }
+    //just add otherwise
+    addTrack(track);
+}
+
 QList<PlayListGroup *> GroupedContainer::groups()
 {
     return m_groups;

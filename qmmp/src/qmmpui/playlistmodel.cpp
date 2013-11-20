@@ -51,6 +51,8 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_container = new NormalContainer;
     connect(m_loader, SIGNAL(newPlayListTrack(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
+    connect(m_loader, SIGNAL(newPlayListTrack(int, PlayListTrack*)),
+            SLOT(insert(int, PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
     connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
 }
@@ -114,6 +116,11 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
             m_current = m_container->indexOf(track);
             emit currentChanged();
         }
+        else if(m_groups_enabled)
+        {
+            //update current index for grouped container only
+            m_current = m_container->indexOf(m_current_track);
+        }
         emit trackAdded(track);
     }
     preparePlayState();
@@ -139,6 +146,74 @@ void PlayListModel::add(const QStringList &paths)
     {
         add(str);
     }
+}
+
+void PlayListModel::insert(int index, PlayListTrack *track)
+{
+    m_container->insertTrack(index, track);
+    m_total_length += track->length();
+
+    if(m_container->trackCount() == 1)
+    {
+        m_current_track = track;
+        m_current = m_container->indexOf(track);
+        emit currentChanged();
+    }
+    else
+    {
+        //update current index
+        m_current = m_container->indexOf(m_current_track);
+    }
+    emit trackAdded(track);
+    emit listChanged();
+    emit countChanged();
+}
+
+void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
+{
+    if(tracks.isEmpty())
+        return;
+
+    PlayListItem *prevItem = m_container->item(index);
+    foreach(PlayListTrack *track, tracks)
+    {
+        m_container->insertTrack(index, track);
+        index = prevItem ? m_container->indexOf(prevItem) : m_container->count();
+
+        m_total_length += track->length();
+        if(m_container->trackCount() == 1)
+        {
+            m_current_track = track;
+            m_current = m_container->indexOf(track);
+            emit currentChanged();
+        }
+        emit trackAdded(track);
+    }
+    //update current index
+    m_current = m_container->indexOf(m_current_track);
+    preparePlayState();
+    emit listChanged();
+    emit countChanged();
+}
+
+void PlayListModel::insert(int index, const QString &path)
+{
+    /*QFileInfo f_info(path);
+    if (f_info.isDir())
+        m_loader->loadDirectory(path);
+    else
+    {
+        m_loader->loadFile(path);
+        loadPlaylist(path);
+    }*/
+}
+
+void PlayListModel::insert(int index, const QStringList &paths)
+{
+    /*foreach(QString str, paths)
+    {
+        add(str);
+    }*/
 }
 
 int PlayListModel::count() const

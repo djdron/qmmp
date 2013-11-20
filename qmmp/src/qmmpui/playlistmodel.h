@@ -311,9 +311,9 @@ signals:
 
 public slots:
     /*!
-     * Adds \b item to the playlist.
+     * Adds \b track to the playlist.
      */
-    void add(PlayListTrack *item);
+    void add(PlayListTrack *track);
     /*!
      * Adds a list of items to the playlist.
      * @param items List of items.
@@ -329,6 +329,26 @@ public slots:
      * @param paths Full paths of files and directories.
      */
     void add(const QStringList &paths);
+    /*!
+     * Inserts \b track at index position \b index in the playlist.
+     */
+    void insert(int index, PlayListTrack *track);
+    /*!
+     * Inserts \b tracks at index position \b index in the playlist.
+     */
+    void insert(int index, QList <PlayListTrack *> tracks);
+    /*!
+     * Inserts file or directory at index position \b index in the playlist.
+     * @param path Full path of file or directory.
+     * @param index Position in the playlist.
+     */
+    void insert(int index, const QString &path);
+    /*!
+     * Adds a list of files and directories at index position \b index in the playlist.
+     * @param paths Full paths of files and directories.
+     * @param index Position in the playlist.
+     */
+    void insert(int index, const QStringList &paths);
     /*!
      * Removes all items.
      */
