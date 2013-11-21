@@ -58,25 +58,27 @@ public:
     /*!
      * Sets file/directory to load
      */
-    void load(const QString &path);
+    void add(const QString &path);
     /*!
      * Sets files/directories to load
      */
-    void load(const QStringList &paths);
+    void add(const QStringList &paths);
+
+    void insert(int index, const QString &path);
+    void insert(int index, const QStringList &paths);
 
 signals:
     /*!
-     * Emitted when new playlist item is available.
-     * @param item Pointer of the new PlayListItem object.
+     * Emitted when new playlist track is available.
+     * @param item Pointer of the new PlayListTrack object.
      */
-    void newPlayListTrack(PlayListTrack *item);
+    void newTrackToAdd(PlayListTrack *track);
+    void newTrackToInsert(PlayListTrack *track);
 
-protected:
+private:
     virtual void run();
     void addFile(const QString &path);
     void addDirectory(const QString &s);
-
-private:
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
     QQueue <QString> m_paths;
