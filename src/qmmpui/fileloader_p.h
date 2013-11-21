@@ -56,17 +56,13 @@ public:
      */
     void finish();
     /*!
-     * Sets file to load
+     * Sets file/directory to load
      */
-    void loadFile(const QString &path);
+    void load(const QString &path);
     /*!
-     * Sets files to load
+     * Sets files/directories to load
      */
-    void loadFiles(const QStringList &paths);
-    /*!
-     * Sets directory to load
-     */
-    void loadDirectory(const QString &path);
+    void load(const QStringList &paths);
 
 signals:
     /*!
@@ -83,8 +79,7 @@ protected:
 private:
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
-    QQueue <QString> m_files;
-    QQueue <QString> m_directories;
+    QQueue <QString> m_paths;
     QStringList m_filters;
     QmmpUiSettings *m_settings;
     bool m_finished;

@@ -70,40 +70,34 @@ void FileLoader::addDirectory(const QString& s)
 void FileLoader::run()
 {
     m_finished = false;
-    while(!m_files.isEmpty() || !m_directories.isEmpty())
+    while(!m_paths.isEmpty() && !m_finished)
     {
-        if(!m_files.isEmpty())
+        QString path = m_paths.dequeue();
+
+        QFileInfo info(path);
+
+        if(info.isDir())
         {
-            addFile(m_files.dequeue());
+            addDirectory(path);
             continue;
         }
-        if(!m_directories.isEmpty())
+        else if(info.isFile())
         {
-            addDirectory(m_directories.dequeue());
+            addFile(path);
             continue;
         }
     }
 }
 
-void FileLoader::loadFile(const QString &path)
+void FileLoader::load(const QString &path)
 {
-    m_files.enqueue(path);
-    MetaDataManager::instance()->prepareForAnotherThread();
-    m_filters = MetaDataManager::instance()->nameFilters();
-    start(QThread::IdlePriority);
+    load(QStringList() << path);
 }
 
-void FileLoader::loadFiles(const QStringList &paths)
+void FileLoader::load(const QStringList &paths)
 {
-    m_files << paths;
+    m_paths << paths;
     MetaDataManager::instance()->prepareForAnotherThread();
-    m_filters = MetaDataManager::instance()->nameFilters();
-    start(QThread::IdlePriority);
-}
-
-void FileLoader::loadDirectory(const QString &path)
-{
-    m_directories.enqueue(path);
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
@@ -111,9 +105,8 @@ void FileLoader::loadDirectory(const QString &path)
 void FileLoader::finish()
 {
     m_finished = true;
-    m_files.clear();
-    m_directories.clear();
     wait();
+    m_paths.clear();
 }
 
 bool FileLoader::checkRestrictFilters(const QFileInfo &info)
