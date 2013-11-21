@@ -130,13 +130,13 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
 
 void PlayListModel::add(const QString &path)
 {
-    m_loader->load(path);
+    m_loader->add(path);
     loadPlaylist(path);
 }
 
 void PlayListModel::add(const QStringList &paths)
 {
-    m_loader->load(paths);
+    m_loader->add(paths);
     foreach(QString str, paths)
     {
         loadPlaylist(str);
@@ -193,6 +193,7 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
 
 void PlayListModel::insert(int index, const QString &path)
 {
+    m_loader->insert(index, path);
     /*QFileInfo f_info(path);
     if (f_info.isDir())
         m_loader->loadDirectory(path);
@@ -205,6 +206,7 @@ void PlayListModel::insert(int index, const QString &path)
 
 void PlayListModel::insert(int index, const QStringList &paths)
 {
+    m_loader->insert(index, paths);
     /*foreach(QString str, paths)
     {
         add(str);
@@ -814,7 +816,7 @@ void PlayListModel::loadPlaylist(const QString &f_name)
         if (QFileInfo(list.at(i)).isRelative())
             list[i].prepend(QFileInfo(f_name).canonicalPath () + QDir::separator ());
     }
-    m_loader->load(list);
+    m_loader->add(list);
     file.close();
 }
 

@@ -38,7 +38,7 @@ void FileLoader::addFile(const QString &path)
     bool use_meta = m_settings->useMetadata();
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
     foreach(FileInfo *info, playList)
-        emit newPlayListTrack(new PlayListTrack(info));
+        emit newTrackToAdd(new PlayListTrack(info));
     qDeleteAll(playList);
 }
 
@@ -89,17 +89,26 @@ void FileLoader::run()
     }
 }
 
-void FileLoader::load(const QString &path)
+void FileLoader::add(const QString &path)
 {
-    load(QStringList() << path);
+    add(QStringList() << path);
 }
 
-void FileLoader::load(const QStringList &paths)
+void FileLoader::add(const QStringList &paths)
 {
     m_paths << paths;
     MetaDataManager::instance()->prepareForAnotherThread();
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
+}
+
+void FileLoader::insert(int index, const QString &path)
+{
+    insert(index, QStringList() << path);
+}
+
+void FileLoader::insert(int index, const QStringList &paths)
+{
 }
 
 void FileLoader::finish()
