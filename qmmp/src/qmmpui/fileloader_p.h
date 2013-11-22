@@ -73,7 +73,7 @@ signals:
      * @param item Pointer of the new PlayListTrack object.
      */
     void newTrackToAdd(PlayListTrack *track);
-    void newTrackToInsert(PlayListTrack *track);
+    void newTrackToInsert(int index, PlayListTrack *track);
 
 private:
     virtual void run();

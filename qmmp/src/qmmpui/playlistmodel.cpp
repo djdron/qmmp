@@ -49,9 +49,9 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_play_state = new NormalPlayState(this);
     m_loader = new FileLoader(this);
     m_container = new NormalContainer;
-    connect(m_loader, SIGNAL(newPlayListTrack(PlayListTrack*)),
+    connect(m_loader, SIGNAL(newTrackToAdd(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
-    connect(m_loader, SIGNAL(newPlayListTrack(int, PlayListTrack*)),
+    connect(m_loader, SIGNAL(newTrackToInsert(int, PlayListTrack*)),
             SLOT(insert(int, PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
     connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
