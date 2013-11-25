@@ -111,7 +111,7 @@ private:
     void loadColors();
     bool m_update;
     bool m_scroll;
-    int m_pressed_row;
+    int m_pressed_index;
     QMenu *m_menu;
     PlayListModel *m_model;
     /*!
@@ -142,7 +142,7 @@ private:
     bool m_show_anchor;
     bool m_align_numbres;
     int m_number_width;
-    int m_drop_row;
+    int m_drop_index;
     QList<ListWidgetRow *> m_rows;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;
