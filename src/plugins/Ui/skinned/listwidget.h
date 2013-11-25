@@ -68,12 +68,12 @@ public:
      */
     int visibleRows() const;
     /*!
-     * Returns number of first visible row.
+     * Returns index of the first visible item.
      */
-    int firstVisibleRow() const;
+    int firstVisibleIndex() const;
 
-    int anchorRow() const;
-    void setAnchorRow(int r);
+    int anchorIndex() const;
+    void setAnchorIndex(int index);
     QMenu *menu();
     PlayListModel *model();
 

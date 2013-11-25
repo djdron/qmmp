@@ -119,19 +119,19 @@ int ListWidget::visibleRows() const
     return m_row_count;
 }
 
-int ListWidget::firstVisibleRow() const
+int ListWidget::firstVisibleIndex() const
 {
     return m_first;
 }
 
-int ListWidget::anchorRow() const
+int ListWidget::anchorIndex() const
 {
     return m_anchor_index;
 }
 
-void ListWidget::setAnchorRow(int r)
+void ListWidget::setAnchorIndex(int index)
 {
-    m_anchor_index = r;
+    m_anchor_index = index;
     update();
 }
 
