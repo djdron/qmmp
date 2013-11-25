@@ -66,46 +66,17 @@ public:
     /*!
      * Returns count of currently visible rows.
      */
-    int visibleRows()const
-    {
-        return m_row_count;
-    }
-
+    int visibleRows() const;
     /*!
-     * Returns number of first visible row.
+     * Returns index of the first visible item.
      */
-    int firstVisibleRow()const
-    {
-        return m_first;
-    }
+    int firstVisibleIndex() const;
 
-    int anchorRow()const
-    {
-        return m_anchor_row;
-    }
-
-    void setAnchorRow(int r)
-    {
-        m_anchor_row = r;
-        update();
-    }
-
-    QMenu *menu()
-    {
-        return m_menu;
-    }
-
-    PlayListModel *model()
-    {
-        Q_ASSERT(m_model);
-        return m_model;
-    }
-
-    void setMenu(QMenu *menu)
-    {
-        m_menu = menu;
-    }
-
+    int anchorIndex() const;
+    void setAnchorIndex(int index);
+    QMenu *menu();
+    PlayListModel *model();
+    void setMenu(QMenu *menu);
 
 public slots:
     void updateList();
@@ -122,12 +93,13 @@ protected:
     void mousePressEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
-
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
-    int rowAt(int)const;
+    int indexAt(int y) const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
+    void dragLeaveEvent(QDragLeaveEvent *);
+    void dragMoveEvent(QDragMoveEvent *event);
     void contextMenuEvent (QContextMenuEvent * event);
     bool event (QEvent *e);
 
@@ -138,7 +110,7 @@ private:
     void loadSystemColors();
     bool m_update;
     bool m_scroll;
-    int m_pressed_row;
+    int m_pressed_index;
     QMenu *m_menu;
     PlayListModel *m_model;
     /*!
@@ -149,7 +121,7 @@ private:
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics, *m_bold_metrics, *m_extra_metrics;
     QColor m_normal, m_alternate, m_current, m_highlighted, m_normal_bg, m_selected_bg;
-    int m_anchor_row;
+    int m_anchor_index;
 
     enum ScrollDirection
     {
@@ -170,6 +142,7 @@ private:
     QScrollBar *m_scrollBar;
     bool m_show_anchor;
     int m_number_width;
+    int m_drop_index;
     QList<ListWidgetRow *> m_rows;
     bool m_align_numbres;
     bool m_use_system_colors;

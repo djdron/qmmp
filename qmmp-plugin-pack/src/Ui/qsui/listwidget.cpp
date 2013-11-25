@@ -36,7 +36,7 @@
 #include "popupwidget.h"
 #include "listwidget.h"
 
-#define INVALID_ROW -1
+#define INVALID_INDEX -1
 
 ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 {
@@ -47,7 +47,9 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
     m_menu = 0;
     m_scroll_direction = NONE;
     m_prev_y = 0;
-    m_anchor_row = INVALID_ROW;
+    m_anchor_index = INVALID_INDEX;
+    m_drop_index = INVALID_INDEX;
+    m_pressed_index = INVALID_INDEX;
     m_player = MediaPlayer::instance();
     connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
     m_first = 0;
@@ -129,6 +131,43 @@ void ListWidget::readSettings()
 
 }
 
+int ListWidget::visibleRows() const
+{
+    return m_row_count;
+}
+
+int ListWidget::firstVisibleIndex() const
+{
+    return m_first;
+}
+
+int ListWidget::anchorIndex() const
+{
+    return m_anchor_index;
+}
+
+void ListWidget::setAnchorIndex(int index)
+{
+    m_anchor_index = index;
+    update();
+}
+
+QMenu *ListWidget::menu()
+{
+    return m_menu;
+}
+
+PlayListModel *ListWidget::model()
+{
+    Q_ASSERT(m_model);
+    return m_model;
+}
+
+void ListWidget::setMenu(QMenu *menu)
+{
+    m_menu = menu;
+}
+
 void ListWidget::paintEvent(QPaintEvent *)
 {
     if(m_use_system_colors)
@@ -167,7 +206,7 @@ void ListWidget::paintEvent(QPaintEvent *)
                                 w - 10, m_metrics->lineSpacing() + 1);
         }
 
-        if (m_show_anchor && i == m_anchor_row - m_first)
+        if (m_show_anchor && i == m_anchor_index - m_first)
         {
             painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
             painter.setPen(m_normal);
@@ -277,6 +316,13 @@ void ListWidget::paintEvent(QPaintEvent *)
         sx = rtl ? 9 : w - 7 - metrics->width(m_rows[i]->length);
         painter.drawText(sx, sy, m_rows[i]->length);
     }
+    //draw drop line
+    if(m_drop_index != INVALID_INDEX)
+    {
+        painter.setPen(m_current);
+        painter.drawLine (6, (m_drop_index - m_first) * (m_metrics->lineSpacing() + 2),
+                              width() - 4 , (m_drop_index - m_first) * (m_metrics->lineSpacing() + 2));
+    }
     //draw line
     if(m_number_width)
     {
@@ -290,10 +336,10 @@ void ListWidget::paintEvent(QPaintEvent *)
 void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
 {
     int y = e->y();
-    int row = rowAt(y);
-    if (INVALID_ROW != row)
+    int index = indexAt(y);
+    if (INVALID_INDEX != index)
     {
-        m_model->setCurrent(row);
+        m_model->setCurrent(index);
         MediaPlayer::instance()->playListManager()->selectPlayList(m_model);
         MediaPlayer::instance()->playListManager()->activatePlayList(m_model);
         MediaPlayer::instance()->stop();
@@ -309,29 +355,29 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
         m_popupWidget->hide();
     m_scroll = true;
     int y = e->y();
-    int row = rowAt(y);
+    int index = indexAt(y);
 
-    if (INVALID_ROW != row && m_model->count() > row)
+    if (INVALID_INDEX != index && m_model->count() > index)
     {
-        m_pressed_row = row;
+        m_pressed_index = index;
         if(e->button() == Qt::RightButton)
         {
-            if(!m_model->isSelected(row))
+            if(!m_model->isSelected(index))
             {
                 m_model->clearSelection();
-                m_model->setSelected(row, true);
+                m_model->setSelected(index, true);
             }
-            m_anchor_row = m_pressed_row;
-            if(m_model->isGroup(row) && m_model->selectedTracks().isEmpty())
+            m_anchor_index = m_pressed_index;
+            if(m_model->isGroup(index) && m_model->selectedTracks().isEmpty())
             {
-                PlayListGroup *group = m_model->group(row);
+                PlayListGroup *group = m_model->group(index);
                 m_model->setSelected(group->tracks());
             }
             QWidget::mousePressEvent(e);
             return;
         }
 
-        if (m_model->isSelected(row) && (e->modifiers() == Qt::NoModifier))
+        if (m_model->isSelected(index) && (e->modifiers() == Qt::NoModifier))
         {
             m_select_on_release = true;
             QWidget::mousePressEvent(e);
@@ -341,34 +387,34 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
         if ((Qt::ShiftModifier & e->modifiers()))
         {
             bool select = true;
-            if (m_pressed_row > m_anchor_row)
+            if (m_pressed_index > m_anchor_index)
             {
-                for (int j = m_anchor_row;j <= m_pressed_row;j++)
+                for (int j = m_anchor_index;j <= m_pressed_index;j++)
                 {
                     m_model->setSelected(j, select);
                 }
             }
             else
             {
-                for (int j = m_anchor_row;j >= m_pressed_row;j--)
+                for (int j = m_anchor_index;j >= m_pressed_index;j--)
                 {
                     m_model->setSelected(j, select);
                 }
             }
-            m_anchor_row = m_pressed_row;
+            m_anchor_index = m_pressed_index;
         }
         else //ShiftModifier released
         {
             if ((Qt::ControlModifier & e->modifiers()))
             {
-                m_model->setSelected(row, !m_model->isSelected(row));
+                m_model->setSelected(index, !m_model->isSelected(index));
             }
             else //ControlModifier released
             {
                 m_model->clearSelection();
-                m_model->setSelected(row, true);
+                m_model->setSelected(index, true);
             }
-            m_anchor_row = m_pressed_row;
+            m_anchor_index = m_pressed_index;
         }
         update();
     }
@@ -413,14 +459,14 @@ bool ListWidget::event (QEvent *e)
         if(e->type() == QEvent::ToolTip)
         {
             QHelpEvent *helpEvent = (QHelpEvent *) e;
-            int row = rowAt(helpEvent->y());
-            if(row < 0 || !m_model->isTrack(row))
+            int index = indexAt(helpEvent->y());
+            if(index < 0 || !m_model->isTrack(index))
             {
                 m_popupWidget->deactivate();
                 return QWidget::event(e);
             }
             e->accept();
-            m_popupWidget->prepare(m_model->track(row), helpEvent->globalPos());
+            m_popupWidget->prepare(m_model->track(index), helpEvent->globalPos());
             return true;
         }
         else if(e->type() == QEvent::Leave)
@@ -509,7 +555,7 @@ void ListWidget::updateList()
 
 void ListWidget::autoscroll()
 {
-    SimpleSelection sel = m_model->getSelection(m_pressed_row);
+    SimpleSelection sel = m_model->getSelection(m_pressed_index);
     if ((sel.m_top == 0 && m_scroll_direction == TOP && sel.count() > 1) ||
             (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1))
         return;
@@ -518,14 +564,14 @@ void ListWidget::autoscroll()
     {
         int row = m_first + m_row_count;
         (m_first + m_row_count < m_model->count()) ? m_first ++ : m_first;
-        m_model->moveItems(m_pressed_row,row);
-        m_pressed_row = row;
+        m_model->moveItems(m_pressed_index,row);
+        m_pressed_index = row;
     }
     else if(m_scroll_direction == TOP && m_first > 0)
     {
         m_first --;
-        m_model->moveItems(m_pressed_row, m_first);
-        m_pressed_row = m_first;
+        m_model->moveItems(m_pressed_index, m_first);
+        m_pressed_index = m_first;
     }
 }
 
@@ -562,13 +608,31 @@ void ListWidget::dropEvent(QDropEvent *event)
         event->acceptProposedAction();
         QApplication::restoreOverrideCursor();
 
-        foreach(QUrl u, list_urls)
+        int index = indexAt(event->pos().y());
+        if(index == INVALID_INDEX)
         {
-            if(u.scheme() == "file")
-                m_model->add(QFileInfo(u.toLocalFile()).absoluteFilePath());
-            else
-                m_model->add(u.toString());
+            index = qMin(m_first + m_row_count, m_model->count());
         }
+        m_model->insert(index, list_urls);
+    }
+    m_drop_index = INVALID_INDEX;
+}
+
+void ListWidget::dragLeaveEvent(QDragLeaveEvent *)
+{
+    m_drop_index = INVALID_INDEX;
+    update();
+}
+
+void ListWidget::dragMoveEvent(QDragMoveEvent *event)
+{
+    int index = indexAt(event->pos().y());
+    if(index == INVALID_INDEX)
+        index = qMin(m_first + m_row_count, m_model->count());
+    if(index != m_drop_index)
+    {
+        m_drop_index = index;
+        update();
     }
 }
 
@@ -620,11 +684,11 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
         }
         m_timer->stop();
 
-        int row = rowAt(e->y());
+        int index = indexAt(e->y());
 
-        if (INVALID_ROW != row)
+        if (INVALID_INDEX != index)
         {
-            SimpleSelection sel = m_model->getSelection(m_pressed_row);
+            SimpleSelection sel = m_model->getSelection(m_pressed_index);
             if(sel.count() > 1 && m_scroll_direction == TOP)
             {
                 if(sel.m_top == 0 || sel.m_top == m_first)
@@ -635,17 +699,17 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
                 if(sel.m_bottom == m_model->count() - 1 || sel.m_bottom == m_first + m_row_count)
                     return;
             }
-            m_model->moveItems(m_pressed_row,row);
+            m_model->moveItems(m_pressed_index,index);
 
             m_prev_y = e->y();
             m_scroll = false;
-            m_pressed_row = row;
+            m_pressed_index = index;
         }
     }
     else if(m_popupWidget)
     {
-        int row = rowAt(e->y());
-        if(row < 0 || !m_model->isTrack(row) || m_popupWidget->url() != m_model->track(row)->url())
+        int index = indexAt(e->y());
+        if(index < 0 || !m_model->isTrack(index) || m_popupWidget->url() != m_model->track(index)->url())
             m_popupWidget->deactivate();
     }
 }
@@ -655,26 +719,26 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
     if (false != m_select_on_release)
     {
         m_model->clearSelection();
-        m_model->setSelected(m_pressed_row,true);
+        m_model->setSelected(m_pressed_index,true);
         //if(e->modifiers() != Qt::ShiftModifier)
-        m_anchor_row = m_pressed_row;
+        m_anchor_index = m_pressed_index;
         m_select_on_release = false;
     }
-    m_pressed_row = INVALID_ROW;
+    m_pressed_index = INVALID_INDEX;
     m_scroll_direction = NONE;
     m_timer->stop();
     m_scroll = false;
     QWidget::mouseReleaseEvent(e);
 }
 
-int ListWidget::rowAt(int y) const
+int ListWidget::indexAt(int y) const
 {
     for (int i = 0; i < qMin(m_row_count, m_model->count() - m_first); ++i)
     {
         if ((y >= i * (m_metrics->lineSpacing() + 2)) && (y <= (i+1) * (m_metrics->lineSpacing() + 2)))
             return m_first + i;
     }
-    return INVALID_ROW;
+    return INVALID_INDEX;
 }
 
 void ListWidget::contextMenuEvent(QContextMenuEvent * event)

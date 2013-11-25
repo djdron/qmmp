@@ -63,18 +63,18 @@ void KeyboardManager::processUp()
 
     if(rows.isEmpty())
     {
-        m_listWidget->model()->setSelected(m_listWidget->firstVisibleRow(), true);
-        m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
+        m_listWidget->model()->setSelected(m_listWidget->firstVisibleIndex(), true);
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex());
         return;
     }
 
     if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
     {
         m_listWidget->model()->clearSelection();
-        m_listWidget->setAnchorRow(-1);
+        m_listWidget->setAnchorIndex(-1);
     }
 
-    int first_visible = m_listWidget->firstVisibleRow();
+    int first_visible = m_listWidget->firstVisibleIndex();
     int last_visible = m_listWidget->visibleRows() + first_visible - 1;
 
     int s = SELECT_NEXT;
@@ -89,7 +89,7 @@ void KeyboardManager::processUp()
         if(rows.first() == 0)
             return;
         m_listWidget->model()->moveItems (rows.first(), rows.first() - 1);
-        m_listWidget->setAnchorRow (rows.first() - 1);
+        m_listWidget->setAnchorIndex (rows.first() - 1);
     }
 
     else
@@ -97,28 +97,28 @@ void KeyboardManager::processUp()
         if(s == SELECT_TOP)
         {
             m_listWidget->model()->setSelected (first_visible, true);
-            m_listWidget->setAnchorRow(first_visible);
+            m_listWidget->setAnchorIndex(first_visible);
         }
         else if(s == SELECT_BOTTOM)
         {
             m_listWidget->model()->setSelected (last_visible, true);
-            m_listWidget->setAnchorRow(last_visible);
+            m_listWidget->setAnchorIndex(last_visible);
         }
         else if(rows.first() == 0)
         {
             m_listWidget->model()->setSelected (rows.first(), true);
-            m_listWidget->setAnchorRow(rows.first());
+            m_listWidget->setAnchorIndex(rows.first());
         }
         else
         {
             m_listWidget->model()->setSelected (rows.first() - 1, true);
-            m_listWidget->setAnchorRow(rows.first() - 1);
+            m_listWidget->setAnchorIndex(rows.first() - 1);
         }
     }
 
-    if(m_listWidget->anchorRow() < first_visible)
+    if(m_listWidget->anchorIndex() < first_visible)
     {
-        m_listWidget->scroll (m_listWidget->firstVisibleRow() - 1);
+        m_listWidget->scroll (m_listWidget->firstVisibleIndex() - 1);
     }
 }
 
@@ -133,18 +133,18 @@ void KeyboardManager::processDown()
 
     if(rows.isEmpty())
     {
-        m_listWidget->model()->setSelected(m_listWidget->firstVisibleRow(), true);
-        m_listWidget->setAnchorRow(m_listWidget->firstVisibleRow());
+        m_listWidget->model()->setSelected(m_listWidget->firstVisibleIndex(), true);
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex());
         return;
     }
 
     if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
     {
         m_listWidget->model()->clearSelection();
-        m_listWidget->setAnchorRow(-1);
+        m_listWidget->setAnchorIndex(-1);
     }
 
-    int first_visible = m_listWidget->firstVisibleRow();
+    int first_visible = m_listWidget->firstVisibleIndex();
     int last_visible = m_listWidget->visibleRows() + first_visible - 1;
 
     int s = SELECT_NEXT;
@@ -159,35 +159,35 @@ void KeyboardManager::processDown()
         if(rows.last() == m_listWidget->model()->count() - 1)
             return;
         m_listWidget->model()->moveItems (rows.last(), rows.last() + 1);
-        m_listWidget->setAnchorRow (rows.last() + 1);
+        m_listWidget->setAnchorIndex (rows.last() + 1);
     }
     else
     {
         if(s == SELECT_TOP)
         {
             m_listWidget->model()->setSelected (first_visible, true);
-            m_listWidget->setAnchorRow(first_visible);
+            m_listWidget->setAnchorIndex(first_visible);
         }
         else if(s == SELECT_BOTTOM)
         {
             m_listWidget->model()->setSelected (last_visible, true);
-            m_listWidget->setAnchorRow(last_visible);
+            m_listWidget->setAnchorIndex(last_visible);
         }
         else if(rows.last() == m_listWidget->model()->count() - 1)
         {
             m_listWidget->model()->setSelected (rows.last(), true);
-            m_listWidget->setAnchorRow(rows.last());
+            m_listWidget->setAnchorIndex(rows.last());
         }
         else
         {
             m_listWidget->model()->setSelected (rows.last() + 1, true);
-            m_listWidget->setAnchorRow(rows.last() + 1);
+            m_listWidget->setAnchorIndex(rows.last() + 1);
         }
     }
 
-    if(m_listWidget->anchorRow() > last_visible)
+    if(m_listWidget->anchorIndex() > last_visible)
     {
-        m_listWidget->scroll (m_listWidget->firstVisibleRow() + 1);
+        m_listWidget->scroll (m_listWidget->firstVisibleIndex() + 1);
     }
 }
 
@@ -214,7 +214,7 @@ void KeyboardManager::processPgUp()
     if(!m_listWidget)
         return;
 
-    int offset = qMax(m_listWidget->firstVisibleRow() - m_listWidget->visibleRows(), 0);
+    int offset = qMax(m_listWidget->firstVisibleIndex() - m_listWidget->visibleRows(), 0);
     m_listWidget->scroll (offset);
 }
 
@@ -223,7 +223,7 @@ void KeyboardManager::processPgDown()
     if(!m_listWidget)
         return;
 
-    int offset = qMin(m_listWidget->firstVisibleRow() + m_listWidget->visibleRows(),
+    int offset = qMin(m_listWidget->firstVisibleIndex() + m_listWidget->visibleRows(),
                       m_listWidget->model()->count() - 1);
     m_listWidget->scroll (offset);
 }
