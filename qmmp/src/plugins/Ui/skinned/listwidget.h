@@ -95,7 +95,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *);
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
-    int rowAt(int)const;
+    int indexAt(int)const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *);
@@ -124,7 +124,7 @@ private:
     QFontMetrics *m_extra_metrics;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
-    int m_anchor_row;
+    int m_anchor_index;
 
     enum ScrollDirection
     {
