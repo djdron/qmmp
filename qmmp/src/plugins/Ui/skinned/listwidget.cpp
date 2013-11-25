@@ -549,13 +549,11 @@ void ListWidget::dropEvent(QDropEvent *event)
         event->acceptProposedAction();
         QApplication::restoreOverrideCursor();
 
-        foreach(QUrl u, list_urls)
-        {
-            if(u.scheme() == "file")
-                m_model->add(QFileInfo(u.toLocalFile()).absoluteFilePath());
-            else
-                m_model->add(u.toString());
-        }
+        int index = rowAt(event->pos().y());
+        if(index != INVALID_ROW)
+            index += m_first;
+
+        m_model->insert(index, list_urls);
     }
     m_drop_row = -1;
 }

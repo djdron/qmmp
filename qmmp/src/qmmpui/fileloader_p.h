@@ -27,6 +27,7 @@
 #include <QThread>
 
 class PlayListTrack;
+class PlayListItem;
 class QmmpUiSettings;
 
 /*! @internal
@@ -64,8 +65,8 @@ public:
      */
     void add(const QStringList &paths);
 
-    void insert(int index, const QString &path);
-    void insert(int index, const QStringList &paths);
+    void insert(PlayListItem *before, const QString &path);
+    void insert(PlayListItem *before, const QStringList &paths);
 
 signals:
     /*!
@@ -73,15 +74,22 @@ signals:
      * @param item Pointer of the new PlayListTrack object.
      */
     void newTrackToAdd(PlayListTrack *track);
-    void newTrackToInsert(int index, PlayListTrack *track);
+    void newTrackToInsert(PlayListItem *before, PlayListTrack *track);
 
 private:
     virtual void run();
-    void addFile(const QString &path);
-    void addDirectory(const QString &s);
+    void addFile(const QString &path, PlayListItem *before = 0);
+    void addDirectory(const QString &s, PlayListItem *before = 0);
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
+    struct InsertItem
+    {
+        PlayListItem *before;
+        QString path;
+
+    };
     QQueue <QString> m_paths;
+    QQueue <InsertItem> m_insertItems;
     QStringList m_filters;
     QmmpUiSettings *m_settings;
     bool m_finished;

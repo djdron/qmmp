@@ -22,6 +22,7 @@
 #include <QRegExp>
 #include "fileloader_p.h"
 #include "qmmpuisettings.h"
+#include "playlistitem.h"
 #include "playlisttrack.h"
 
 FileLoader::FileLoader(QObject *parent) : QThread(parent)
@@ -33,16 +34,24 @@ FileLoader::FileLoader(QObject *parent) : QThread(parent)
 FileLoader::~FileLoader()
 {}
 
-void FileLoader::addFile(const QString &path)
+void FileLoader::addFile(const QString &path, PlayListItem *before)
 {
     bool use_meta = m_settings->useMetadata();
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
-    foreach(FileInfo *info, playList)
-        emit newTrackToAdd(new PlayListTrack(info));
+    if(before)
+    {
+        foreach(FileInfo *info, playList)
+            emit newTrackToInsert(before, new PlayListTrack(info));
+    }
+    else
+    {
+        foreach(FileInfo *info, playList)
+            emit newTrackToAdd(new PlayListTrack(info));
+    }
     qDeleteAll(playList);
 }
 
-void FileLoader::addDirectory(const QString& s)
+void FileLoader::addDirectory(const QString& s, PlayListItem *before)
 {
     QDir dir(s);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
@@ -51,7 +60,7 @@ void FileLoader::addDirectory(const QString& s)
     foreach(QFileInfo info, l)
     {
         if(checkRestrictFilters(info) && checkExcludeFilters(info))
-            addFile(info.absoluteFilePath ());
+            addFile(info.absoluteFilePath (), before);
         if (m_finished) return;
     }
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -62,7 +71,7 @@ void FileLoader::addDirectory(const QString& s)
         for (int i = 0; i < l.size(); ++i)
         {
             QFileInfo fileInfo = l.at(i);
-            addDirectory(fileInfo.absoluteFilePath ());
+            addDirectory(fileInfo.absoluteFilePath (), before);
             if (m_finished) return;
         }
 }
@@ -70,20 +79,29 @@ void FileLoader::addDirectory(const QString& s)
 void FileLoader::run()
 {
     m_finished = false;
-    while(!m_paths.isEmpty() && !m_finished)
+    while((!m_paths.isEmpty() || !m_insertItems.isEmpty()) && !m_finished)
     {
-        QString path = m_paths.dequeue();
+        PlayListItem *before = 0;
+        QString path;
+        if(!m_insertItems.isEmpty())
+        {
+            InsertItem i = m_insertItems.dequeue();
+            before = i.before;
+            path = i.path;
+        }
+        else if(!m_paths.isEmpty())
+            path = m_paths.dequeue();
 
         QFileInfo info(path);
 
         if(info.isDir())
         {
-            addDirectory(path);
+            addDirectory(path, before);
             continue;
         }
         else if(info.isFile())
         {
-            addFile(path);
+            addFile(path, before);
             continue;
         }
     }
@@ -102,13 +120,24 @@ void FileLoader::add(const QStringList &paths)
     start(QThread::IdlePriority);
 }
 
-void FileLoader::insert(int index, const QString &path)
+void FileLoader::insert(PlayListItem *before, const QString &path)
 {
-    insert(index, QStringList() << path);
+    insert(before, QStringList() << path);
 }
 
-void FileLoader::insert(int index, const QStringList &paths)
+void FileLoader::insert(PlayListItem *before, const QStringList &paths)
 {
+    foreach (QString path, paths)
+    {
+        InsertItem item;
+        item.before = before;
+        item.path = path;
+        m_insertItems.append(item);
+    }
+
+    MetaDataManager::instance()->prepareForAnotherThread();
+    m_filters = MetaDataManager::instance()->nameFilters();
+    start(QThread::IdlePriority);
 }
 
 void FileLoader::finish()

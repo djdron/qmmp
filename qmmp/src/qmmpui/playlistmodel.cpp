@@ -51,8 +51,8 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_container = new NormalContainer;
     connect(m_loader, SIGNAL(newTrackToAdd(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
-    connect(m_loader, SIGNAL(newTrackToInsert(int, PlayListTrack*)),
-            SLOT(insert(int, PlayListTrack*)), Qt::QueuedConnection);
+    connect(m_loader, SIGNAL(newTrackToInsert(PlayListItem*, PlayListTrack*)),
+            SLOT(insert(PlayListItem*, PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
     connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
 }
@@ -164,6 +164,11 @@ void PlayListModel::insert(int index, PlayListTrack *track)
     emit countChanged();
 }
 
+void PlayListModel::insert(PlayListItem *before, PlayListTrack *track)
+{
+    insert(m_container->indexOf(before), track);
+}
+
 void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
 {
     if(tracks.isEmpty())
@@ -193,24 +198,39 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
 
 void PlayListModel::insert(int index, const QString &path)
 {
-    m_loader->insert(index, path);
-    /*QFileInfo f_info(path);
-    if (f_info.isDir())
-        m_loader->loadDirectory(path);
+    if(index < 0 || index >= m_container->count())
+        add(path);
     else
     {
-        m_loader->loadFile(path);
-        loadPlaylist(path);
-    }*/
+        PlayListItem *before = m_container->item(index);
+        m_loader->insert(before, path);
+    }
+    //TODO insert playlist
 }
 
 void PlayListModel::insert(int index, const QStringList &paths)
 {
-    m_loader->insert(index, paths);
-    /*foreach(QString str, paths)
+    if(index < 0 || index >= m_container->count())
+        add(paths);
+    else
     {
-        add(str);
-    }*/
+        PlayListItem *before = m_container->item(index);
+        m_loader->insert(before, paths);
+    }
+    //TODO insert playlist
+}
+
+void PlayListModel::insert(int index, const QList<QUrl> &urls)
+{
+    QStringList paths;
+    foreach (QUrl url, urls)
+    {
+        if(url.scheme() == "file")
+            paths.append(QFileInfo(url.toLocalFile()).absoluteFilePath());
+        else
+            paths.append(url.toString());
+    }
+    insert(index, paths);
 }
 
 int PlayListModel::count() const

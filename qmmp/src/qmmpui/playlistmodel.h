@@ -333,6 +333,8 @@ public slots:
      * Inserts \b track at index position \b index in the playlist.
      */
     void insert(int index, PlayListTrack *track);
+
+    void insert(PlayListItem *before, PlayListTrack *track);
     /*!
      * Inserts \b tracks at index position \b index in the playlist.
      */
@@ -349,6 +351,12 @@ public slots:
      * @param index Position in the playlist.
      */
     void insert(int index, const QStringList &paths);
+    /*!
+     * Adds a list of URLs at index position \b index in the playlist.
+     * @param paths urls a list of URLs.
+     * @param index Position in the playlist.
+     */
+    void insert(int index, const QList<QUrl> &urls);
     /*!
      * Removes all items.
      */
