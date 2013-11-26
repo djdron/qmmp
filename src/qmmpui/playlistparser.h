@@ -22,6 +22,7 @@
 
 #include <QStringList>
 #include <QUrl>
+#include "playlisttrack.h"
 #include "playlistformat.h"
 
 /*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
@@ -53,6 +54,18 @@ public:
      * Returns \b 0 if file \b filePath is unsupported.
      */
     static PlayListFormat *findByUrl(const QUrl &url);
+    /*!
+     * Saves a list of tracks to the file.
+     * @param tracks A list of tracks.
+     * @param f_name File name the  playlist.
+     */
+    static void savePlayList(QList <PlayListTrack *> tracks, const QString &f_name);
+    /*!
+     * Loads playlist from file \b f_name
+     * @param f_name File name.
+     * @return A list of URLs or file paths.
+     */
+    static QStringList loadPlaylist(const QString &f_name);
 
 private:
     PlayListParser(){}
