@@ -23,6 +23,7 @@
 #include <QList>
 #include <QDir>
 #include <QApplication>
+#include <QTextStream>
 #include <qmmp/qmmp.h>
 #include "playlistformat.h"
 #include "playlistparser.h"
@@ -76,6 +77,56 @@ PlayListFormat *PlayListParser::findByUrl(const QUrl &url)
 {
     QString path = url.encodedPath();
     return findByPath(path);
+}
+
+void PlayListParser::savePlayList(QList<PlayListTrack *> tracks, const QString &f_name)
+{
+    if(tracks.isEmpty())
+        return;
+    PlayListFormat* prs = PlayListParser::findByPath(f_name);
+    if (!prs)
+        return;
+    QFile file(f_name);
+    if (file.open(QIODevice::WriteOnly))
+    {
+        QTextStream ts(&file);
+        ts << prs->encode(tracks);
+        file.close();
+    }
+    else
+        qWarning("PlayListParser: unable to save playlist, error: %s", qPrintable(file.errorString()));
+}
+
+QStringList PlayListParser::loadPlaylist(const QString &f_name)
+{
+    QStringList list;
+    if(!QFile::exists(f_name))
+        return list;
+    PlayListFormat* prs = PlayListParser::findByPath(f_name);
+    if(!prs)
+        return list;
+
+    QFile file(f_name);
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        qWarning("PlayListParser: unable to open playlist, error: %s", qPrintable(file.errorString()));
+        return;
+    }
+
+    list = prs->decode(QTextStream(&file).readAll());
+    if(list.isEmpty())
+        qWarning("PlayListParser: error opening %s",qPrintable(f_name));
+
+    for (int i = 0; i < list.size(); ++i)
+    {
+        if(list.at(i).contains("://"))
+            continue;
+
+        if (QFileInfo(list.at(i)).isRelative())
+            list[i].prepend(QFileInfo(f_name).canonicalPath () + "/");
+    }
+    file.close();
+    return list;
 }
 
 void PlayListParser::checkFormats()
