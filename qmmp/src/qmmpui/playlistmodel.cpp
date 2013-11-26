@@ -198,14 +198,7 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
 
 void PlayListModel::insert(int index, const QString &path)
 {
-    if(index < 0 || index >= m_container->count())
-        add(path);
-    else
-    {
-        PlayListItem *before = m_container->item(index);
-        m_loader->insert(before, path);
-    }
-    //TODO insert playlist
+    insert(index, QStringList() << path);
 }
 
 void PlayListModel::insert(int index, const QStringList &paths)
@@ -215,9 +208,12 @@ void PlayListModel::insert(int index, const QStringList &paths)
     else
     {
         PlayListItem *before = m_container->item(index);
-        m_loader->insert(before, paths);
+
+        QStringList list = paths;
+        foreach (QString path, paths)
+            list.append(PlayListParser::loadPlaylist(path));
+        m_loader->insert(before, list);
     }
-    //TODO insert playlist
 }
 
 void PlayListModel::insert(int index, const QList<QUrl> &urls)
