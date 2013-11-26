@@ -110,7 +110,7 @@ QStringList PlayListParser::loadPlaylist(const QString &f_name)
     if (!file.open(QIODevice::ReadOnly))
     {
         qWarning("PlayListParser: unable to open playlist, error: %s", qPrintable(file.errorString()));
-        return;
+        return list;
     }
 
     list = prs->decode(QTextStream(&file).readAll());
