@@ -185,6 +185,8 @@ CUEParser::CUEParser(const QString &url)
                 m_tracks[i]->info.setLength(l - m_tracks[i]->offset);
             else
                 m_tracks[i]->info.setLength(0);
+            qDeleteAll(f_list);
+            f_list.clear();
         }
     }
 }
