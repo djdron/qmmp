@@ -676,6 +676,7 @@ ape_free_ctx (APEContext *ape_ctx) {
             ape_ctx->filterbuf[i] = NULL;
         }
     }
+    free(ape_ctx);
 }
 
 void ffap_free (FFap_decoder *decoder)
@@ -690,7 +691,7 @@ int ffap_init(FFap_decoder *decoder)
             || !decoder->getlength || !decoder->client_data)
         return -1;
 
-    memset(decoder->ape_ctx, 0, sizeof(*(decoder->ape_ctx)));
+    memset(decoder->ape_ctx, 0, sizeof(APEContext));
 
     /*int skip = deadbeef->junk_get_leading_size (info->fp);
     if (skip > 0) {
