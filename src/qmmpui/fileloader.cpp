@@ -99,7 +99,7 @@ void FileLoader::run()
             addDirectory(path, before);
             continue;
         }
-        else if(info.isFile())
+        else if(info.isFile() || path.contains("://"))
         {
             addFile(path, before);
             continue;
