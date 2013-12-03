@@ -95,6 +95,9 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
         QStringList full_path_list, remote_pls_list;
         foreach(QString s, args)
         {
+#ifdef Q_OS_WIN
+            s.replace("\\","/");
+#endif
             if (QFileInfo(s).isAbsolute()) //absolute path
                     full_path_list << s;
             else if(s.contains("://")) //url
