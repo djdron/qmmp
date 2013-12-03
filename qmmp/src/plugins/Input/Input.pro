@@ -31,15 +31,16 @@ contains(CONFIG, OPUS_PLUGIN){
   SUBDIRS += opus
 }
 
+contains(CONFIG, CDAUDIO_PLUGIN){
+  SUBDIRS += cdaudio
+}
+
 unix{
 
 contains(CONFIG, AAC_PLUGIN){
   SUBDIRS += aac
 }
 
-contains(CONFIG, CDAUDIO_PLUGIN){
-  SUBDIRS += cdaudio
-}
 
 contains(CONFIG, WILDMIDI_PLUGIN){
   SUBDIRS += wildmidi
