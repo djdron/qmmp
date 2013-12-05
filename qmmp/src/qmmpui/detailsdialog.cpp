@@ -199,7 +199,7 @@ void DetailsDialog::printInfo()
     }
     QHash <QString, QString> ap = m_metaDataModel->audioProperties();
     //line
-    if(m_metaData.keys().count() != 1)
+    if(formattedText.contains("<tr>"))
     {
         formattedText.append("<tr>");
         formattedText.append("<td colspan=2>");
