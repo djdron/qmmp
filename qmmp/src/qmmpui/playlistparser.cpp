@@ -124,6 +124,10 @@ QStringList PlayListParser::loadPlaylist(const QString &f_name)
 
         if (QFileInfo(list.at(i)).isRelative())
             list[i].prepend(QFileInfo(f_name).canonicalPath () + "/");
+#ifdef Q_OS_WIN
+        list[i].replace("\\","/");
+        list[i].replace("//","/");
+#endif
     }
     file.close();
     return list;

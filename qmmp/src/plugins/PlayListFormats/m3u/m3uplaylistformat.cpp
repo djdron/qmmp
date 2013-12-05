@@ -25,7 +25,7 @@
 const PlayListFormatProperties M3UPlaylistFormat::properties() const
 {
     PlayListFormatProperties p;
-    p.filters << "*.m3u";
+    p.filters << "*.m3u" << "*.m3u8";
     p.shortName = "m3u";
     p.contentTypes << "audio/x-mpegurl";
     return p;
