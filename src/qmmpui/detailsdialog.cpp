@@ -126,6 +126,14 @@ void DetailsDialog::updatePage()
     m_path = m_track->url();
     setWindowTitle (m_path.section('/',-1));
     m_ui->pathEdit->setText(m_path);
+
+    //load metadata and create metadata model
+    QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, true);
+    if(!flist.isEmpty() && QFile::exists(m_track->url()))
+        m_metaData = flist.at(0)->metaData();
+    else
+        m_metaData = *m_track;
+    qDeleteAll(flist);
     m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(m_path, this);
 
     if(m_metaDataModel)
@@ -147,13 +155,6 @@ void DetailsDialog::updatePage()
 void DetailsDialog::printInfo()
 {
     SoundCore *core = SoundCore::instance();
-    QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, true);
-    QMap <Qmmp::MetaData, QString> metaData;
-    if(!flist.isEmpty() && QFile::exists(m_track->url()))
-        metaData = flist.at(0)->metaData();
-    else
-        metaData = *m_track;
-    qDeleteAll(flist);
     QString formattedText;
     if(layoutDirection() == Qt::RightToLeft)
         formattedText.append("<DIV align=\"right\" dir=\"rtl\">");
@@ -161,20 +162,20 @@ void DetailsDialog::printInfo()
         formattedText.append("<DIV>");
     formattedText.append("<TABLE>");
     //tags
-    formattedText += formatRow(tr("Title"), metaData[Qmmp::TITLE]);
-    formattedText += formatRow(tr("Artist"), metaData[Qmmp::ARTIST]);
-    formattedText += formatRow(tr("Album"), metaData[Qmmp::ALBUM]);
-    formattedText += formatRow(tr("Comment"), metaData[Qmmp::COMMENT]);
-    formattedText += formatRow(tr("Genre"), metaData[Qmmp::GENRE]);
-    formattedText += formatRow(tr("Composer"), metaData[Qmmp::COMPOSER]);
-    if(metaData[Qmmp::YEAR] != "0")
-        formattedText += formatRow(tr("Year"), metaData[Qmmp::YEAR]);
-    if(metaData[Qmmp::TRACK] != "0")
-        formattedText += formatRow(tr("Track"), metaData[Qmmp::TRACK]);
-    if(metaData[Qmmp::DISCNUMBER] != "0")
-        formattedText += formatRow(tr("Disc number"), metaData[Qmmp::DISCNUMBER]);
+    formattedText += formatRow(tr("Title"), m_metaData[Qmmp::TITLE]);
+    formattedText += formatRow(tr("Artist"), m_metaData[Qmmp::ARTIST]);
+    formattedText += formatRow(tr("Album"), m_metaData[Qmmp::ALBUM]);
+    formattedText += formatRow(tr("Comment"), m_metaData[Qmmp::COMMENT]);
+    formattedText += formatRow(tr("Genre"), m_metaData[Qmmp::GENRE]);
+    formattedText += formatRow(tr("Composer"), m_metaData[Qmmp::COMPOSER]);
+    if(m_metaData[Qmmp::YEAR] != "0")
+        formattedText += formatRow(tr("Year"), m_metaData[Qmmp::YEAR]);
+    if(m_metaData[Qmmp::TRACK] != "0")
+        formattedText += formatRow(tr("Track"), m_metaData[Qmmp::TRACK]);
+    if(m_metaData[Qmmp::DISCNUMBER] != "0")
+        formattedText += formatRow(tr("Disc number"), m_metaData[Qmmp::DISCNUMBER]);
     //stream information
-    if(core->state() == Qmmp::Playing && core->url() == metaData.value(Qmmp::URL))
+    if(core->state() == Qmmp::Playing && core->url() == m_metaData.value(Qmmp::URL))
     {
         if(!core->streamInfo().isEmpty())
         {
