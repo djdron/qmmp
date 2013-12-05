@@ -96,7 +96,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
     CdIo_t *cdio = 0;
     QString device_path = device;
     if (device_path.isEmpty() || device_path == "/")
-        device_path = settings.value("device").toString();
+        device_path = settings.value("cdaudio/device").toString();
     if (device_path.isEmpty() || device_path == "/")
     {
         char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, true); //get drive list with CDA disks
@@ -213,22 +213,22 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             cddb_set_server_name (cddb_conn, settings.value("cddb_server", "freedb.org").toByteArray());
             cddb_set_server_port (cddb_conn, settings.value("cddb_port", 8880).toInt());
 
-            if (QmmpSettings::instance()->isProxyEnabled())
-            {
-                QUrl proxy = QmmpSettings::instance()->proxy();
-                cddb_http_proxy_enable (cddb_conn);
-                cddb_set_http_proxy_server_name (cddb_conn, proxy.host().toAscii ());
-                cddb_set_http_proxy_server_port (cddb_conn, proxy.port());
-                if(QmmpSettings::instance()->useProxyAuth())
-                {
-                    cddb_set_http_proxy_username (cddb_conn, proxy.userName().toAscii());
-                    cddb_set_http_proxy_password (cddb_conn, proxy.password().toAscii());
-                }
-            }
-            else if (settings.value("cddb_http", false).toBool())
+            if (settings.value("cddb_http", false).toBool())
             {
                 cddb_http_enable (cddb_conn);
                 cddb_set_http_path_query (cddb_conn, settings.value("cddb_path").toByteArray());
+                if (QmmpSettings::instance()->isProxyEnabled())
+                {
+                    QUrl proxy = QmmpSettings::instance()->proxy();
+                    cddb_http_proxy_enable (cddb_conn);
+                    cddb_set_http_proxy_server_name (cddb_conn, proxy.host().toAscii ());
+                    cddb_set_http_proxy_server_port (cddb_conn, proxy.port());
+                    if(QmmpSettings::instance()->useProxyAuth())
+                    {
+                        cddb_set_http_proxy_username (cddb_conn, proxy.userName().toAscii());
+                        cddb_set_http_proxy_password (cddb_conn, proxy.password().toAscii());
+                    }
+                }
             }
             settings.endGroup();
 
@@ -350,6 +350,10 @@ bool DecoderCDAudio::initialize()
     m_totalTime = 0;
     //extract track from url
     int track_number = m_url.section("#", -1).toInt();
+    QString device_path = m_url;
+    device_path.remove("cdda://");
+    device_path.remove(QRegExp("#\\d+$"));
+
     track_number = qMax(track_number, 1);
     QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(m_url).path()); //generate track list
     if (tracks.isEmpty())
@@ -371,13 +375,14 @@ bool DecoderCDAudio::initialize()
         return false;
     }
 
-    if (QUrl(m_url).path().isEmpty() || QUrl(m_url).path() == "/") //try default path from config
+    if (device_path.isEmpty() || device_path == "/") //try default path from config
     {
         QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-        m_url = QString("cdda://%1#%2").arg(settings.value("device").toString()).arg(track_number);
+        device_path = settings.value("cdaudio/device").toString();
+        m_url = QString("cdda://%1#%2").arg(device_path).arg(track_number);
     }
 
-    if (QUrl(m_url).path() == "/")
+    if (device_path.isEmpty() || device_path == "/")
     {
         char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, true); //get drive list with CDA disks
         // open first audio capable cd drive
@@ -402,13 +407,13 @@ bool DecoderCDAudio::initialize()
     }
     else
     {
-        m_cdio = cdio_open_cd(QUrl(m_url).path().toAscii().constData());
+        m_cdio = cdio_open_cd(device_path.toAscii().constData());
         if (!m_cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
             return false;
         }
-        qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", QUrl(m_url).path().toAscii().constData());
+        qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", qPrintable(device_path));
     }
     configure(44100, 2, Qmmp::PCM_S16LE);
     m_bitrate = 1411;
