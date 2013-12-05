@@ -67,6 +67,7 @@ private:
     MetaDataModel *m_metaDataModel;
     PlayListTrack *m_track;
     QList<PlayListTrack *> m_tracks;
+    QMap <Qmmp::MetaData, QString> m_metaData;
     int m_page;
 };
 
