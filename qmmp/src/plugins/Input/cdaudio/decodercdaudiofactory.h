@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,6 @@
 #include <QString>
 #include <QIODevice>
 #include <QWidget>
-
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
@@ -33,7 +32,7 @@
 class DecoderCDAudioFactory : public QObject, DecoderFactory
 {
     Q_OBJECT
-    Q_INTERFACES(DecoderFactory);
+    Q_INTERFACES(DecoderFactory)
 public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
