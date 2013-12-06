@@ -247,26 +247,21 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             qDebug ("DecoderCDAudio: disc id = %x", cddb_disc_get_discid (cddb_disc));
             uint id = cddb_disc_get_discid (cddb_disc);
 
-            int matches = 0;
             if(readFromCache(&tracks, id))
                 qDebug("DecoderCDAudio: using local cddb cache");
-            else if ((matches = cddb_query (cddb_conn, cddb_disc)) == -1)
-            {
-
-                qWarning ("DecoderCDAudio: unable to query the CDDB server, error: %s",
-                          cddb_error_str (cddb_errno(cddb_conn)));
-            }
-            else if (!matches)
-                qDebug ("DecoderCDAudio: no CDDB info found");
             else
             {
-                cddb_read(cddb_conn, cddb_disc);
-                if (cddb_errno (cddb_conn) != CDDB_ERR_OK)
+                int matches = cddb_query (cddb_conn, cddb_disc);
+                if(matches == -1)
                 {
-                    qWarning ("DecoderCDAudio: unable to read the CDDB info: %s",
+                    qWarning ("DecoderCDAudio: unable to query the CDDB server, error: %s",
                               cddb_error_str (cddb_errno(cddb_conn)));
                 }
-                else
+                else if(matches == 0)
+                {
+                    qDebug ("DecoderCDAudio: no CDDB info found");
+                }
+                else if(cddb_read(cddb_conn, cddb_disc))
                 {
                     for (int i = first_track_number; i <= last_track_number; ++i)
                     {
@@ -282,6 +277,11 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
                                                    QString::fromUtf8(cddb_disc_get_title(cddb_disc)));
                     }
                     saveToCache(tracks,  id);
+                }
+                else
+                {
+                    qWarning ("DecoderCDAudio: unable to read the CDDB info: %s",
+                              cddb_error_str (cddb_errno(cddb_conn)));
                 }
             }
         }
