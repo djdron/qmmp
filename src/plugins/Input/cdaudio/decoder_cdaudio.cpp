@@ -355,7 +355,7 @@ bool DecoderCDAudio::initialize()
     device_path.remove(QRegExp("#\\d+$"));
 
     track_number = qMax(track_number, 1);
-    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(m_url).path()); //generate track list
+    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(device_path); //generate track list
     if (tracks.isEmpty())
     {
         qWarning("DecoderCDAudio: initialize failed");

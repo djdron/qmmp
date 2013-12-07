@@ -61,10 +61,10 @@ QList<FileInfo *> DecoderCDAudioFactory::createPlayList(const QString &url, bool
 {
     Q_UNUSED(useMetaData);
     QList <FileInfo*> list;
-    QString device_path;
+    QString device_path = url;
     device_path.remove("cdda://");
     device_path.remove(QRegExp("#\\d+$"));
-    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(url).path());
+    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(device_path);
     foreach(CDATrack t, tracks)
     {
         list << new FileInfo(t.info);
