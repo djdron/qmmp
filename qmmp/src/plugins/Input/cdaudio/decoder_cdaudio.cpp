@@ -45,7 +45,7 @@
 
 QList <CDATrack> DecoderCDAudio::m_track_cache;
 
-static void log_handler (cdio_log_level_t level, const char message[])
+static void log_handler (cdio_log_level_t level, const char *message)
 {
     QString str = QString::fromLocal8Bit(message).trimmed();
     switch (level)
@@ -57,6 +57,21 @@ static void log_handler (cdio_log_level_t level, const char message[])
         return;
     default:
         qWarning("DecoderCDAudio: cdio message: %s (level=error)", qPrintable(str));
+    }
+}
+
+static void cddb_log_handler(cddb_log_level_t level, const char *message)
+{
+    QString str = QString::fromLocal8Bit(message).trimmed();
+    switch (level)
+    {
+    case CDDB_LOG_DEBUG:
+        qDebug("DecoderCDAudio: cddb message: %s (level=debug)", qPrintable(str));
+    case CDDB_LOG_INFO:
+        qDebug("DecoderCDAudio: cddb message: %s (level=info)", qPrintable(str));
+        return;
+    default:
+        qWarning("DecoderCDAudio: cddb message: %s (level=error)", qPrintable(str));
     }
 }
 
@@ -74,7 +89,6 @@ DecoderCDAudio::DecoderCDAudio(const QString &url) : Decoder()
     m_buffer_at = 0;
     m_buffer = new char[CDDA_BUFFER_SIZE];
 }
-
 
 DecoderCDAudio::~DecoderCDAudio()
 {
@@ -209,6 +223,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
     if(use_cddb)
     {
         qDebug("DecoderCDAudio: reading CDDB...");
+        cddb_log_set_handler(cddb_log_handler);
         cddb_conn_t *cddb_conn = cddb_new ();
         cddb_disc_t *cddb_disc = NULL;
         cddb_track_t *cddb_track = NULL;
@@ -253,8 +268,9 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             }
 
             cddb_disc_calc_discid (cddb_disc);
-            qDebug ("DecoderCDAudio: disc id = %x", cddb_disc_get_discid (cddb_disc));
             uint id = cddb_disc_get_discid (cddb_disc);
+            qDebug ("DecoderCDAudio: disc id = %x", id);
+
 
             if(readFromCache(&tracks, id))
                 qDebug("DecoderCDAudio: using local cddb cache");
