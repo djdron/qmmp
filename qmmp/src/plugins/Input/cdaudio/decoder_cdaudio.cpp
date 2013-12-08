@@ -52,6 +52,7 @@ static void log_handler (cdio_log_level_t level, const char *message)
     {
     case CDIO_LOG_DEBUG:
         qDebug("DecoderCDAudio: cdio message: %s (level=debug)", qPrintable(str));
+        return;
     case CDIO_LOG_INFO:
         qDebug("DecoderCDAudio: cdio message: %s (level=info)", qPrintable(str));
         return;
@@ -67,6 +68,7 @@ static void cddb_log_handler(cddb_log_level_t level, const char *message)
     {
     case CDDB_LOG_DEBUG:
         qDebug("DecoderCDAudio: cddb message: %s (level=debug)", qPrintable(str));
+        return;
     case CDDB_LOG_INFO:
         qDebug("DecoderCDAudio: cddb message: %s (level=info)", qPrintable(str));
         return;
