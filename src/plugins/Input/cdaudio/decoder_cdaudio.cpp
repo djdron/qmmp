@@ -43,6 +43,8 @@
 
 #include "decoder_cdaudio.h"
 
+QList <CDATrack> DecoderCDAudio::m_track_cache;
+
 static void log_handler (cdio_log_level_t level, const char message[])
 {
     QString str = QString::fromLocal8Bit(message).trimmed();
@@ -131,6 +133,13 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             return tracks;
         }
         qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", qPrintable(device_path));
+    }
+
+    if(!m_track_cache.isEmpty() && !cdio_get_media_changed(cdio))
+    {
+        qDebug("DecoderCDAudio: using track cache...");
+        cdio_destroy(cdio);
+        return m_track_cache;
     }
 
     if (cd_speed)
@@ -294,6 +303,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
 
     cdio_destroy(cdio);
     cdio = 0;
+    m_track_cache = tracks;
     return tracks;
 }
 
@@ -342,6 +352,11 @@ bool DecoderCDAudio::readFromCache(QList <CDATrack> *tracks, uint disc_id)
 qint64 DecoderCDAudio::calculateTrackLength(lsn_t startlsn, lsn_t endlsn)
 {
     return ((endlsn - startlsn + 1) * 1000) / 75;
+}
+
+void DecoderCDAudio::clearTrackCache()
+{
+    m_track_cache.clear();
 }
 
 bool DecoderCDAudio::initialize()

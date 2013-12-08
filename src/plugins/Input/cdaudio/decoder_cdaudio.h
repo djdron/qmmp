@@ -48,6 +48,7 @@ public:
 
     static QList <CDATrack> generateTrackList(const QString &device);
     static qint64 calculateTrackLength(lsn_t startlsn, lsn_t endlsn);
+    static void clearTrackCache();
 
      // Standard Decoder API
     bool initialize();
@@ -71,6 +72,8 @@ private:
     qint64 m_totalTime;
     char *m_buffer;
     qint64 m_buffer_at;
+    //tracks cache
+    static QList <CDATrack> m_track_cache;
 };
 
 #endif // DECODER_CDAUIDO_H
