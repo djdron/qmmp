@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <qmmp/qmmp.h>
+#include "decoder_cdaudio.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -67,6 +68,8 @@ void SettingsDialog::accept()
     settings.setValue("cddb_path", ui.pathLineEdit->text());
     settings.setValue("cddb_port", ui.portLineEdit->text());
     settings.endGroup();
+    settings.sync();
+    DecoderCDAudio::clearCacheCache();
     QDialog::accept();
 }
 
