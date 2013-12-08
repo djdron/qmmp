@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -69,7 +69,7 @@ void SettingsDialog::accept()
     settings.setValue("cddb_port", ui.portLineEdit->text());
     settings.endGroup();
     settings.sync();
-    DecoderCDAudio::clearCacheCache();
+    DecoderCDAudio::clearTrackCache();
     QDialog::accept();
 }
 
