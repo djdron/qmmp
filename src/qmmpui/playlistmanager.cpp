@@ -41,6 +41,7 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_shuffle = false;
     m_autosave_playlist = false;
     m_groups_enabled = false;
+    m_update = false;
     m_timer = new QTimer(this);
     m_timer->setInterval(5000);
     m_timer->setSingleShot(true);
@@ -516,10 +517,14 @@ void PlayListManager::setGroupsEnabled(bool enabled)
 
 void PlayListManager::readSettings()
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
-    setShuffle(settings.value("Playlist/shuffle",false).toBool());
-    setGroupsEnabled(settings.value("Playlist/groups",false).toBool());
+    if(!m_update)
+    {
+        m_update = true;
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+        setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
+        setShuffle(settings.value("Playlist/shuffle",false).toBool());
+        setGroupsEnabled(settings.value("Playlist/groups",false).toBool());
+    }
 
     QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
     if (m_autosave_playlist != ui_settings->autoSavePlayList())
