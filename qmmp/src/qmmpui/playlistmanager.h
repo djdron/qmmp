@@ -288,6 +288,7 @@ private:
     bool m_repeatable, m_shuffle, m_autosave_playlist;
     bool m_groups_enabled;
     QTimer *m_timer;
+    bool m_update;
 };
 
 #endif // PLAYLISTMANAGER_H
