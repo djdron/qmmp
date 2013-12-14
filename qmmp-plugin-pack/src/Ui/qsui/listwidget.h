@@ -32,7 +32,7 @@ class QTimer;
 class QScrollBar;
 class PlayListModel;
 class PlayListItem;
-class MediaPlayer;
+class QmmpUiSettings;
 namespace PlayListPopup{
 class PopupWidget;
 }
@@ -136,7 +136,7 @@ private:
     bool m_select_on_release;
     bool m_show_protocol;
     bool m_show_number;
-    MediaPlayer *m_player;
+    QmmpUiSettings *m_ui_settings;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
     QScrollBar *m_scrollBar;

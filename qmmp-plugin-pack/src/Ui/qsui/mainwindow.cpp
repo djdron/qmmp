@@ -38,6 +38,7 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "actionmanager.h"
 #include "qsuianalyzer.h"
 #include "visualmenu.h"
@@ -64,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_core = SoundCore::instance();
     m_pl_manager = PlayListManager::instance();
     m_uiHelper = UiHelper::instance();
+    m_ui_settings = QmmpUiSettings::instance();
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
     m_ui.actionVisualization->setMenu(m_visMenu);
@@ -357,16 +359,18 @@ void MainWindow::closeEvent(QCloseEvent *)
 void MainWindow::createActions()
 {
     //preprare cheackable actions
-    ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
-    ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
+    ACTION(ActionManager::REPEAT_ALL)->setChecked(m_ui_settings->isRepeatableList());
+    ACTION(ActionManager::REPEAT_TRACK)->setChecked(m_ui_settings->isRepeatableTrack());
+    ACTION(ActionManager::SHUFFLE)->setChecked(m_ui_settings->isShuffle());
+    ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlayListAdvance());
 
-    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)),
+    connect(m_ui_settings, SIGNAL(repeatableListChanged(bool)),
             ACTION(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (repeatableChanged(bool)),
+    connect(m_ui_settings, SIGNAL (repeatableTrackChanged(bool)),
             ACTION(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)),
+    connect(m_ui_settings, SIGNAL (noPlayListAdvanceChanged(bool)),
             ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
-    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
+    connect(m_ui_settings, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
     //register external actions
     ActionManager::instance()->registerAction(ActionManager::UI_ANALYZER,
@@ -523,8 +527,8 @@ void MainWindow::createActions()
                               m_pl_manager, SLOT(randomizeList()));
     m_ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                               m_pl_manager, SLOT(reverseList()));
-    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_pl_manager, SLOT(setGroupsEnabled(bool))));
-    ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_pl_manager->isGroupsEnabled());
+    m_ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_ui_settings, SLOT(setGroupsEnabled(bool))));
+    ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_ui_settings->isGroupsEnabled());
     m_ui.menuEdit->addSeparator();
     m_ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
@@ -542,14 +546,14 @@ void MainWindow::createActions()
     m_ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
     m_ui.menuPlayback->addSeparator();
-    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_pl_manager,
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_ui_settings,
                                             SLOT(setRepeatableList(bool))));
-    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_player,
-                                            SLOT(setRepeatable(bool))));
-    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::SHUFFLE, m_pl_manager,
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_ui_settings,
+                                            SLOT(setRepeatableTrack(bool))));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::SHUFFLE, m_ui_settings,
                                             SLOT(setShuffle(bool))));
-    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_player,
-                                            SLOT(setNoPlaylistAdvance(bool))));
+    m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_ui_settings,
+                                            SLOT(setNoPlayListAdvance(bool))));
     m_ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                             SLOT(stopAfterSelected())));
     m_ui.menuPlayback->addSeparator();

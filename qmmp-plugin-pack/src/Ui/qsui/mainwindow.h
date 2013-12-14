@@ -31,6 +31,7 @@ class UiHelper;
 class PlayListModel;
 class MediaPlayer;
 class SoundCore;
+class QmmpUiSettings;
 class PlayListManager;
 class GeneralHandler;
 class VisualMenu;
@@ -90,6 +91,7 @@ private:
     PlayListManager *m_pl_manager;
     Ui::MainWindow m_ui;
     MediaPlayer *m_player;
+    QmmpUiSettings *m_ui_settings;
     PositionSlider *m_slider;
     QLabel *m_timeLabel;
     SoundCore *m_core;
