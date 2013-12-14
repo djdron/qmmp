@@ -134,7 +134,7 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
         out += "SHUFFLE:             " + boolToText(ui_settings->isShuffle()) + "\n";
         out += "REPEAT PLAYLIST:     " + boolToText(ui_settings->isRepeatableList()) + "\n";
         out += "REPEAT TRACK:        " + boolToText(ui_settings->isRepeatableTrack()) + "\n";
-        out += "NO PLAYLIST ADVANCE: " + boolToText(ui_settings->isNoPlaylistAdvance()) + "\n";
+        out += "NO PLAYLIST ADVANCE: " + boolToText(ui_settings->isNoPlayListAdvance()) + "\n";
     }
     return out;
 }

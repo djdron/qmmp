@@ -121,7 +121,7 @@ void MediaPlayer::playNext()
         play();
         return;
     }
-    if(m_settings->isNoPlaylistAdvance())
+    if(m_settings->isNoPlayListAdvance())
     {
         stop();
         return;
@@ -140,7 +140,7 @@ void MediaPlayer::updateNextUrl()
     PlayListTrack *track = 0;
     if(m_settings->isRepeatableTrack())
         track = m_pl_manager->currentPlayList()->currentTrack();
-    else if(!m_settings->isNoPlaylistAdvance())
+    else if(!m_settings->isNoPlayListAdvance())
         track = m_pl_manager->currentPlayList()->nextTrack();
 
     if(track)

@@ -91,7 +91,7 @@ bool QmmpUiSettings::isRepeatableTrack() const
     return m_repeat_track;
 }
 
-bool QmmpUiSettings::isNoPlaylistAdvance() const
+bool QmmpUiSettings::isNoPlayListAdvance() const
 {
     return m_no_pl_advance;
 }
@@ -224,12 +224,12 @@ void QmmpUiSettings::setRepeatableTrack(bool enabled)
     emit repeatableTrackChanged(enabled);
 }
 
-void QmmpUiSettings::setNoPlaylistAdvance(bool enabled)
+void QmmpUiSettings::setNoPlayListAdvance(bool enabled)
 {
     if(m_no_pl_advance == enabled)
         return;
     m_no_pl_advance = enabled;
-    emit noPlaylistAdvanceChanged(enabled);
+    emit noPlayListAdvanceChanged(enabled);
 }
 
 QStringList QmmpUiSettings::restrictFilters() const
