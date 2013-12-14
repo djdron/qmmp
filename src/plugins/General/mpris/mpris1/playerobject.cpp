@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 #include <qmmp/metadatamanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
-
+#include <qmmpui/qmmpuisettings.h>
 #include "playerobject.h"
 
 
@@ -59,12 +59,13 @@ PlayerObject::PlayerObject(QObject *parent) : QObject(parent)
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
     m_pl_manager =  m_player->playListManager();
+    m_ui_settings = QmmpUiSettings::instance();
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateCaps()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateTrack()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
-    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
-    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
-    connect(m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateStatus()));
+    connect(m_ui_settings, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
+    connect(m_ui_settings, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
+    connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateStatus()));
 }
 
 PlayerObject::~PlayerObject()
@@ -97,7 +98,7 @@ void PlayerObject::Play()
 
 void PlayerObject::Repeat(bool in0)
 {
-    m_player->setRepeatable(in0);
+    m_ui_settings->setRepeatableTrack(in0);
 }
 
 PlayerStatus PlayerObject::GetStatus()
@@ -117,9 +118,9 @@ PlayerStatus PlayerObject::GetStatus()
     case Qmmp::Paused:
         st.state = 1;
     };
-    st.random = int(m_pl_manager->isShuffle());
-    st.repeat = int(m_player->isRepeatable());
-    st.repeatPlayList = int(m_pl_manager->isRepeatableList());
+    st.random = int(m_ui_settings->isShuffle());
+    st.repeat = int(m_ui_settings->isRepeatableTrack());
+    st.repeatPlayList = int(m_ui_settings->isRepeatableList());
     return st;
 }
 

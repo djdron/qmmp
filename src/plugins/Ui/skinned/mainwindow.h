@@ -40,6 +40,7 @@ class UiHelper;
 class MediaPlayer;
 class QMenu;
 class QKeyEvent;
+class QmmpUiSettings;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -105,6 +106,7 @@ private:
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;
     UiHelper *m_uiHelper;
+    QmmpUiSettings *m_ui_settings;
     MediaPlayer *m_player;
 };
 

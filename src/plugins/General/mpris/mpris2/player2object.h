@@ -32,6 +32,7 @@ class MediaPlayer;
 class PlayListManager;
 class PlayListTrack;
 class PlayListModel;
+class QmmpUiSettings;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -107,6 +108,7 @@ private:
     SoundCore *m_core;
     MediaPlayer *m_player;
     PlayListManager *m_pl_manager;
+    QmmpUiSettings *m_ui_settings;
     QMap<QString, QVariant> m_props;
     QDBusObjectPath m_trackID;
     PlayListTrack *m_prev_track;

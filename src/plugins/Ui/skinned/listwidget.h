@@ -33,7 +33,7 @@ class QTimer;
 class PlayListModel;
 class Skin;
 class PlayListItem;
-class MediaPlayer;
+class QmmpUiSettings;
 namespace PlayListPopup{
 class PopupWidget;
 }
@@ -144,7 +144,7 @@ private:
     int m_number_width;
     int m_drop_index;
     QList<ListWidgetRow *> m_rows;
-    MediaPlayer *m_player;
+    QmmpUiSettings *m_ui_settings;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
 };

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,8 +37,6 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_pl_manager = 0;
     m_core = 0;
     m_skips = 0;
-    m_repeat = false;
-    m_noPlaylistAdvance = false;
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
@@ -65,16 +63,6 @@ MediaPlayer* MediaPlayer::instance()
 PlayListManager *MediaPlayer::playListManager()
 {
     return m_pl_manager;
-}
-
-bool MediaPlayer::isRepeatable() const
-{
-    return m_repeat;
-}
-
-bool MediaPlayer::isNoPlaylistAdvance() const
-{
-    return m_noPlaylistAdvance;
 }
 
 void MediaPlayer::play(qint64 offset)
@@ -126,28 +114,14 @@ void MediaPlayer::previous()
         play();
 }
 
-void MediaPlayer::setRepeatable(bool r)
-{
-    if (r != m_repeat)
-    {
-        if(r)
-        {
-            disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
-            connect(m_core, SIGNAL(finished()), SLOT(play()));
-        }
-        else
-        {
-            disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
-            connect(m_core, SIGNAL(finished()), SLOT(playNext()));
-        }
-        m_repeat = r;
-        emit repeatableChanged(r);
-    }
-}
-
 void MediaPlayer::playNext()
 {
-    if(m_noPlaylistAdvance)
+    if(m_settings->isRepeatableTrack())
+    {
+        play();
+        return;
+    }
+    if(m_settings->isNoPlaylistAdvance())
     {
         stop();
         return;
@@ -160,22 +134,13 @@ void MediaPlayer::playNext()
     play();
 }
 
-void MediaPlayer::setNoPlaylistAdvance(bool enabled)
-{
-    if (enabled != m_noPlaylistAdvance)
-    {
-        m_noPlaylistAdvance = enabled;
-        emit noPlaylistAdvanceChanged(enabled);
-    }
-}
-
 void MediaPlayer::updateNextUrl()
 {
     m_nextUrl.clear();
     PlayListTrack *track = 0;
-    if(isRepeatable())
+    if(m_settings->isRepeatableTrack())
         track = m_pl_manager->currentPlayList()->currentTrack();
-    else if(!m_noPlaylistAdvance)
+    else if(!m_settings->isNoPlaylistAdvance())
         track = m_pl_manager->currentPlayList()->nextTrack();
 
     if(track)

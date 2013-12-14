@@ -31,6 +31,7 @@
 #include "playstate_p.h"
 #include "detailsdialog.h"
 #include "tagupdater_p.h"
+#include "qmmpuisettings.h"
 #include "playlistmodel.h"
 
 #define INVALID_INDEX -1
@@ -39,16 +40,22 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
         : QObject(parent) , m_selection()
 {
     qsrand(time(0));
-    m_name = name;
-    m_shuffle = false;
+    m_ui_settings = QmmpUiSettings::instance();
     m_total_length = 0;
     m_current = 0;
-    m_is_repeatable_list = false;
-    m_groups_enabled = false;
     m_stop_track = 0;
-    m_play_state = new NormalPlayState(this);
+    m_name = name;
     m_loader = new FileLoader(this);
-    m_container = new NormalContainer;
+    if(m_ui_settings->isGroupsEnabled())
+        m_container = new GroupedContainer;
+    else
+        m_container = new NormalContainer;
+    if(m_ui_settings->isShuffle())
+        m_play_state = new ShufflePlayState(this);
+    else
+        m_play_state = new NormalPlayState(this);
+    connect(m_ui_settings, SIGNAL(groupsChanged(bool)), SLOT(prepareGroups(bool)));
+    connect(m_ui_settings, SIGNAL(shuffleChanged(bool)), SLOT(prepareForShufflePlaying(bool)));
     connect(m_loader, SIGNAL(newTrackToAdd(PlayListTrack*)),
             SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(newTrackToInsert(PlayListItem*, PlayListTrack*)),
@@ -91,7 +98,7 @@ void PlayListModel::add(PlayListTrack *track)
         m_current = m_container->indexOf(track);
         emit currentChanged();
     }
-    else if(m_groups_enabled)
+    else if(m_ui_settings->isGroupsEnabled())
     {
         //update current index for grouped container only
         m_current = m_container->indexOf(m_current_track);
@@ -116,7 +123,7 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
             m_current = m_container->indexOf(track);
             emit currentChanged();
         }
-        else if(m_groups_enabled)
+        else if(m_ui_settings->isGroupsEnabled())
         {
             //update current index for grouped container only
             m_current = m_container->indexOf(m_current_track);
@@ -772,13 +779,6 @@ void PlayListModel::prepareForShufflePlaying(bool val)
         m_play_state = new ShufflePlayState(this);
     else
         m_play_state = new NormalPlayState(this);
-
-    m_shuffle = val;
-}
-
-void PlayListModel::prepareForRepeatablePlaying(bool val)
-{
-    m_is_repeatable_list = val;
 }
 
 void PlayListModel::prepareGroups(bool enabled)
@@ -793,7 +793,6 @@ void PlayListModel::prepareGroups(bool enabled)
     m_container = container;
     if(!m_container->isEmpty())
         m_current = m_container->indexOf(m_current_track);
-    m_groups_enabled = enabled;
     emit listChanged();
 }
 
@@ -818,16 +817,6 @@ void PlayListModel::savePlaylist(const QString &f_name)
             songs << m_container->track(i);
     }
     PlayListParser::savePlayList(songs, f_name);
-}
-
-bool PlayListModel::isRepeatableList() const
-{
-    return m_is_repeatable_list;
-}
-
-bool PlayListModel::isShuffle() const
-{
-    return m_shuffle;
 }
 
 bool PlayListModel::isLoaderRunning() const
@@ -906,4 +895,10 @@ void PlayListModel::stopAfterSelected()
     else
         return;
     emit listChanged();
+}
+
+void PlayListModel::updateGroups()
+{
+    if(m_ui_settings->isGroupsEnabled())
+        prepareGroups(true);
 }

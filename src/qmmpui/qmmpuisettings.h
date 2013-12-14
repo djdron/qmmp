@@ -62,6 +62,26 @@ public:
      */
     const QString groupFormat() const;
     /*!
+     * Returns state of "Repeat All" option.
+     */
+    bool isRepeatableList() const;
+    /*!
+     * Returns state of "Shuffle" option.
+     */
+    bool isShuffle() const;
+    /*!
+     * Returns \b true if the playlist groups are enabled. Otherwise returns \b false.
+     */
+    bool isGroupsEnabled() const;
+    /*!
+     * Returns \b true if "Repeate Track" option is enabled, otherwise returns \b false
+     */
+    bool isRepeatableTrack() const;
+    /*!
+     * Returns \b true if "No playlist advance" option is enabled, otherwise returns \b false
+     */
+    bool isNoPlaylistAdvance() const;
+    /*!
      * Sets the "Convert underscores to blanks" option state to \b enabled
      * @param enabled Option state (\b true - enabled, \b false - disabled)
      */
@@ -152,27 +172,87 @@ public:
      */
     static QmmpUiSettings* instance();
 
+
+signals:
+    /*!
+     * Emitted when state of the "Repeat All" option has changed.
+     * @param state New state of the "Repeat All" option (\b true - enabled, \b false disabled)
+     */
+    void repeatableListChanged(bool state);
+    /*!
+     * Emitted when state of the "Shuffle" option has changed.
+     * @param state New state of the "Shuffle" option (\b true - enabled, \b false disabled)
+     */
+    void shuffleChanged(bool state);
+    /*!
+     * Emitted when state of the "Group tracks" option has changed.
+     * @param state New state of the "Group tracks" option (\b true - enabled, \b false disabled
+     */
+    void groupsChanged(bool state);
+    /*!
+     * Tracks current track repeat state;
+     * @param enabled New repeate state of the current track (\b true - enabled, \b false - disabled)
+     */
+    void repeatableTrackChanged(bool enabled);
+    /*!
+     * Emitted when state of the "No playlist advance" option changes.
+     * @param enabled New state of this option (\b true - no playlist advance,
+     * \b false - normal playlist behaviour)
+     */
+    void noPlaylistAdvanceChanged(bool enabled);
+
 public slots:
     /*!
      * Writes all unsaved settings to configuration file
      */
     void sync();
+    /*!
+     * Prepares all playlists for repeatable playing (loop mode).
+     * @param r State of the repeatable mode (\b true - enabled, \b false - disabled)
+     */
+    void setRepeatableList(bool r);
+    /*!
+     * Prepares all playlists for shuffle playing.
+     * @param s State of the shuffle mode (\b true - enabled, \b false - disabled)
+     */
+    void setShuffle(bool s);
+    /*!
+     * Enables or disables playlist groups
+     * * @param enabled State of the groups (\b true - enabled, \b false - disabled)
+     */
+    void setGroupsEnabled(bool enabled);
+    /*!
+     * Toggles the current track repeat.
+     * @param enabled Repeate state of the current track (\b true - to repeat, \b false - to stop repeating)
+     */
+    void setRepeatableTrack(bool enabled);
+    /*!
+     * When finished playing a song, don't automatically advance to the next
+     * @param enabled State of the 'No playlist advance' option
+     * (\b true - enabled, \b false - normal playback)
+     */
+    void setNoPlaylistAdvance(bool enabled);
+
 
 private:
     static QmmpUiSettings* m_instance;
     //playlist
-    bool m_convertUnderscore, m_convertTwenty;
-    bool m_useMetadata;
     QString m_title_format;
     QString m_group_format;
+    bool m_convertUnderscore, m_convertTwenty;
+    bool m_useMetadata;
+    bool m_autosave_playlist;
+    bool m_repeate_list;
+    bool m_shuffle;
+    bool m_groups_enabled;
+    bool m_repeat_track;
+    bool m_no_pl_advance;
     //general
     bool m_resume_on_startup;
     QStringList m_exclude_filters, m_restrict_filters;
     //default playlist
     bool m_use_default_pl;
     QString m_default_pl_name;
-    //playlist auto-save option
-    bool m_autosave_playlist;
     //url dialog
     bool m_use_clipboard;
 };

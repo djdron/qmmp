@@ -30,17 +30,26 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
 {
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
+    s.beginGroup("PlayList");
     m_title_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
     m_group_format = s.value("PlayList/group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
-    m_convertUnderscore = s.value ("PlayList/convert_underscore", true).toBool();
-    m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
-    m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();
-    m_autosave_playlist = s.value("PlayList/autosave", true).toBool();
-    m_resume_on_startup = s.value("General/resume_on_startup", false).toBool();
-    m_restrict_filters = s.value("General/restrict_filters").toStringList();
-    m_exclude_filters = s.value("General/exclude_filters", QStringList() << "*.cue").toStringList();
-    m_use_default_pl = s.value("General/use_default_pl", false).toBool();
-    m_default_pl_name = s.value("General/default_pl_name", tr("Playlist")).toString();
+    m_convertUnderscore = s.value ("convert_underscore", true).toBool();
+    m_convertTwenty = s.value ("convert_twenty", true).toBool();
+    m_useMetadata = s.value ("load_metadata", true).toBool();
+    m_autosave_playlist = s.value("autosave", true).toBool();
+    m_repeate_list = s.value("repeate_list",false).toBool();
+    m_shuffle = s.value("shuffle",false).toBool();
+    m_groups_enabled = s.value("groups",false).toBool();
+    m_repeat_track = s.value("repeate_track",false).toBool();
+    m_no_pl_advance = s.value("no_advance",false).toBool();
+    s.endGroup();
+    s.beginGroup("General");
+    m_resume_on_startup = s.value("resume_on_startup", false).toBool();
+    m_restrict_filters = s.value("restrict_filters").toStringList();
+    m_exclude_filters = s.value("exclude_filters", QStringList() << "*.cue").toStringList();
+    m_use_default_pl = s.value("use_default_pl", false).toBool();
+    m_default_pl_name = s.value("default_pl_name", tr("Playlist")).toString();
+    s.endGroup();
     m_use_clipboard = s.value("URLDialog/use_clipboard", false).toBool();
 }
 
@@ -58,6 +67,31 @@ const QString QmmpUiSettings::titleFormat() const
 const QString QmmpUiSettings::groupFormat() const
 {
     return m_group_format;
+}
+
+bool QmmpUiSettings::isRepeatableList() const
+{
+    return m_repeate_list;
+}
+
+bool QmmpUiSettings::isShuffle() const
+{
+    return m_shuffle;
+}
+
+bool QmmpUiSettings::isGroupsEnabled() const
+{
+    return m_groups_enabled;
+}
+
+bool QmmpUiSettings::isRepeatableTrack() const
+{
+    return m_repeat_track;
+}
+
+bool QmmpUiSettings::isNoPlaylistAdvance() const
+{
+    return m_no_pl_advance;
 }
 
 bool QmmpUiSettings::convertUnderscore() const
@@ -102,11 +136,9 @@ void QmmpUiSettings::setGroupFormat(const QString &groupFormat)
     if(groupFormat != m_group_format)
     {
         m_group_format = groupFormat;
-        if(!PlayListManager::instance()->isGroupsEnabled())
-            return;
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
-            model->prepareGroups(true);
+            model->updateGroups();
         }
     }
 }
@@ -145,12 +177,57 @@ void QmmpUiSettings::sync()
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
     s.setValue("PlayList/load_metadata", m_useMetadata);
     s.setValue("PlayList/autosave", m_autosave_playlist);
+    s.setValue("PlayList/repeate_list", m_repeate_list);
+    s.setValue("PlayList/shuffle", m_shuffle);
+    s.setValue("PlayList/groups", m_groups_enabled);
+    s.setValue("PlayList/repeate_track", m_repeat_track);
+    s.setValue("PlayList/no_advance", m_no_pl_advance);
     s.setValue("General/resume_on_startup", m_resume_on_startup);
     s.setValue("General/restrict_filters", m_restrict_filters);
     s.setValue("General/exclude_filters", m_exclude_filters);
     s.setValue("General/use_default_pl", m_use_default_pl);
     s.setValue("General/default_pl_name", m_default_pl_name);
     s.setValue("URLDialog/use_clipboard", m_use_clipboard);
+}
+
+void QmmpUiSettings::setRepeatableList(bool r)
+{
+    if(m_repeate_list == r)
+        return;
+    m_repeate_list = r;
+    emit repeatableListChanged(r);
+}
+
+void QmmpUiSettings::setShuffle(bool s)
+{
+    if(m_shuffle == s)
+        return;
+    m_shuffle = s;
+    emit shuffleChanged(s);
+}
+
+void QmmpUiSettings::setGroupsEnabled(bool enabled)
+{
+    if(m_groups_enabled == enabled)
+        return;
+    m_groups_enabled = enabled;
+    emit groupsChanged(enabled);
+}
+
+void QmmpUiSettings::setRepeatableTrack(bool enabled)
+{
+    if(m_repeat_track == enabled)
+        return;
+    m_repeat_track = enabled;
+    emit repeatableTrackChanged(enabled);
+}
+
+void QmmpUiSettings::setNoPlaylistAdvance(bool enabled)
+{
+    if(m_no_pl_advance == enabled)
+        return;
+    m_no_pl_advance = enabled;
+    emit noPlaylistAdvanceChanged(enabled);
 }
 
 QStringList QmmpUiSettings::restrictFilters() const
@@ -183,7 +260,7 @@ QString QmmpUiSettings::defaultPlayListName() const
     return m_default_pl_name;
 }
 
-QmmpUiSettings * QmmpUiSettings::instance()
+QmmpUiSettings *QmmpUiSettings::instance()
 {
     if(!m_instance)
         return new QmmpUiSettings(qApp);
@@ -199,11 +276,9 @@ void QmmpUiSettings::setDefaultPlayList(const QString &name, bool enabled)
 void QmmpUiSettings::setAutoSavePlayList(bool enabled)
 {
     m_autosave_playlist = enabled;
-    PlayListManager::instance()->readSettings();
 }
 
 bool QmmpUiSettings::autoSavePlayList() const
 {
     return m_autosave_playlist;
 }
-

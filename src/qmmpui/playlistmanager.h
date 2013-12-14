@@ -24,6 +24,7 @@
 #include "playlistmodel.h"
 
 class QTimer;
+class QmmpUiSettings;
 
 /*! @brief The PlayListManager class is used to handle multiple playlists.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -82,18 +83,6 @@ public:
      * \b i must be a valid index position in the list (i.e., 0 <= i < count()).
      */
     PlayListModel *playListAt(int i) const;
-    /*!
-     * Returns state of "Repeat All" option.
-     */
-    bool isRepeatableList() const;
-    /*!
-     * Returns state of "Shuffle" option.
-     */
-    bool isShuffle() const;
-    /*!
-     * Returns \b true if the playlist groups are enabled. Otherwise returns \b false.
-     */
-    bool isGroupsEnabled() const;
 
 signals:
     /*!
@@ -124,16 +113,7 @@ signals:
      * Emitted when the list of playlists is changed.
      */
     void playListsChanged();
-    /*!
-     * Emitted when state of the "Repeat All" option has changed.
-     * @param state New state of the "Repeat All" option (\b true - enabled, \b false disabled)
-     */
-    void repeatableListChanged(bool state);
-    /*!
-     * Emitted when state of the "Shuffle" option has changed.
-     * @param state New state of the "Shuffle" option (\b true - enabled, \b false disabled)
-     */
-    void shuffleChanged(bool state);
+
 
 public slots:
     /*!
@@ -180,16 +160,6 @@ public slots:
      * Moves playlist with index \b i to index \b j.
      */
     void move(int i, int j);
-    /*!
-     * Prepares all playlists for repeatable playing (loop mode).
-     * @param r State of the repeatable mode (\b true - enabled, \b false - disabled)
-     */
-    void setRepeatableList(bool r);
-    /*!
-     * Prepares all playlists for shuffle playing.
-     * @param s State of the shuffle mode (\b true - enabled, \b false - disabled)
-     */
-    void setShuffle(bool s);
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->clear()
      */
@@ -266,18 +236,10 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->stopAfterSelected()
      */
     void stopAfterSelected();
-    /*!
-     * Enables or disables playlist groups
-     * * @param enabled State of the groups (\b true - enabled, \b false - disabled)
-     */
-    void setGroupsEnabled(bool enabled);
-    /*!
-     * Read the relevant settings.
-     */
-    void readSettings();
 
 private slots:
     void writePlayLists();
+    void onCountChanged();
 
 private:
     void readPlayLists();
@@ -285,10 +247,8 @@ private:
     QList <PlayListModel *> m_models;
     PlayListModel *m_current;
     PlayListModel *m_selected;
-    bool m_repeatable, m_shuffle, m_autosave_playlist;
-    bool m_groups_enabled;
     QTimer *m_timer;
-    bool m_update;
+    QmmpUiSettings *m_ui_settings;
 };
 
 #endif // PLAYLISTMANAGER_H

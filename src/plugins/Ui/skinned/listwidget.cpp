@@ -30,7 +30,7 @@
 #include <QTimer>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
-#include <qmmpui/mediaplayer.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "listwidget.h"
 #include "skin.h"
 #include "popupwidget.h"
@@ -53,8 +53,8 @@ ListWidget::ListWidget(QWidget *parent)
     m_prev_y = 0;
     m_anchor_index = INVALID_INDEX;
     m_pressed_index = INVALID_INDEX;
-    m_player = MediaPlayer::instance();
-    connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
+    m_ui_settings = QmmpUiSettings::instance();
+    connect (m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateList()));
     m_first = 0;
     m_row_count = 0;
     m_scroll = false;
@@ -594,7 +594,7 @@ const QString ListWidget::getExtraString(int i)
         extra_string += "|"+QString::number(index + 1)+"|";
     }
 
-    if(m_model->currentIndex() == i && m_player->isRepeatable())
+    if(m_model->currentIndex() == i && m_ui_settings->isRepeatableTrack())
         extra_string += "|R|";
     else if(m_model->isStopAfter(track))
         extra_string += "|S|";
