@@ -25,6 +25,7 @@
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "playlistoption.h"
 
 bool PlayListOption::identify(const QString & str) const
@@ -52,6 +53,7 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
     QString out;
     PlayListManager *pl_manager = PlayListManager::instance();
     MediaPlayer *player = MediaPlayer::instance();
+    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
 
     if(opt_str == "--pl-help")
     {
@@ -121,18 +123,18 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
     }
     else if(opt_str == "--pl-repeat-toggle")
     {
-        player->setRepeatable(!player->isRepeatable());
+        ui_settings->setRepeatableTrack(!ui_settings->isRepeatableTrack());
     }
     else if(opt_str == "--pl-shuffle-toggle")
     {
-        pl_manager->setShuffle(!pl_manager->isShuffle());
+        ui_settings->setShuffle(!ui_settings->isShuffle());
     }
     else if(opt_str == "--pl-state")
     {
-        out += "SHUFFLE:             " + boolToText(pl_manager->isShuffle()) + "\n";
-        out += "REPEAT PLAYLIST:     " + boolToText(pl_manager->isRepeatableList()) + "\n";
-        out += "REPEAT TRACK:        " + boolToText(player->isRepeatable()) + "\n";
-        out += "NO PLAYLIST ADVANCE: " + boolToText(player->isNoPlaylistAdvance()) + "\n";
+        out += "SHUFFLE:             " + boolToText(ui_settings->isShuffle()) + "\n";
+        out += "REPEAT PLAYLIST:     " + boolToText(ui_settings->isRepeatableList()) + "\n";
+        out += "REPEAT TRACK:        " + boolToText(ui_settings->isRepeatableTrack()) + "\n";
+        out += "NO PLAYLIST ADVANCE: " + boolToText(ui_settings->isNoPlaylistAdvance()) + "\n";
     }
     return out;
 }

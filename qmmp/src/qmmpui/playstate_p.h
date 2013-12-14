@@ -30,6 +30,7 @@
 class PlayState
 {
 public:
+
     /*! Makes single step forward through songs list.
      *  If the step has done returns \b true, otherwise returns \b false
      */
@@ -61,14 +62,12 @@ public:
     {
         ;
     }
-    PlayState(PlayListModel* model) : m_model(model)
-    {
-        ;
-    }
-protected:
+    PlayState(PlayListModel* model);
 
+protected:
     /// Data model
     PlayListModel* m_model;
+    QmmpUiSettings *m_ui_settings;
 };
 
 /*! @internal

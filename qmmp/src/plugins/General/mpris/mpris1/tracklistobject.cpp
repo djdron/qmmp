@@ -24,12 +24,13 @@
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistitem.h>
-
+#include <qmmpui/qmmpuisettings.h>
 #include "tracklistobject.h"
 
 TrackListObject::TrackListObject(QObject *parent) : QObject(parent)
 {
     m_player = MediaPlayer::instance();
+    m_ui_settings = QmmpUiSettings::instance();
     m_pl_manager = m_player->playListManager();
     m_model = m_pl_manager->currentPlayList();
     connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
@@ -104,12 +105,12 @@ QVariantMap TrackListObject::GetMetadata(int in0)
 
 void TrackListObject::SetLoop(bool in0)
 {
-    m_pl_manager->setRepeatableList(in0);
+    m_ui_settings->setRepeatableList(in0);
 }
 
 void TrackListObject::SetRandom(bool in0)
 {
-    m_pl_manager->setShuffle(in0);
+    m_ui_settings->setShuffle(in0);
 }
 
 void TrackListObject::disconnectPl()

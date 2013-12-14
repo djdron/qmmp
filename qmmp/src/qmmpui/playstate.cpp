@@ -18,7 +18,13 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "qmmpuisettings.h"
 #include "playstate_p.h"
+
+PlayState::PlayState(PlayListModel *model) : m_model(model)
+{
+    m_ui_settings = QmmpUiSettings::instance();
+}
 
 ShufflePlayState::ShufflePlayState(PlayListModel * model) : PlayState(model)
 {
@@ -32,7 +38,7 @@ bool ShufflePlayState::next()
 
     if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
     {
-        if (!m_model->isRepeatableList())
+        if (!m_ui_settings->isRepeatableList())
             return false;
         else
             prepare();
@@ -51,7 +57,7 @@ int ShufflePlayState::nextIndex()
 
     if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
     {
-        if (!m_model->isRepeatableList())
+        if (!m_ui_settings->isRepeatableList())
             return -1;
         else
             prepare();
@@ -66,7 +72,7 @@ bool ShufflePlayState::previous()
 
     if (m_shuffled_current <= 0)
     {
-        if (!m_model->isRepeatableList())
+        if (!m_ui_settings->isRepeatableList())
             return false;
         else
         {
@@ -110,7 +116,7 @@ bool NormalPlayState::next()
     if(!m_model->count())
         return false;
 
-    if (m_model->isRepeatableList() && m_model->currentIndex() == m_model->count() - 1)
+    if (m_ui_settings->isRepeatableList() && m_model->currentIndex() == m_model->count() - 1)
     {
         if(m_model->track(0))
             return m_model->setCurrent(0);
@@ -136,7 +142,7 @@ bool NormalPlayState::previous()
     if(!m_model->count())
         return false;
 
-    if(m_model->isRepeatableList())
+    if(m_ui_settings->isRepeatableList())
     {
         if(m_model->currentIndex() == 1 && !m_model->isTrack(0))
             return (m_model->setCurrent(m_model->count() - 1));
@@ -162,7 +168,7 @@ int NormalPlayState::nextIndex()
 
     if (m_model->currentIndex() == m_model->count() - 1)
     {
-        if (m_model->isRepeatableList())
+        if (m_ui_settings->isRepeatableList())
         {
             if(m_model->isTrack(0))
                 return 0;

@@ -24,6 +24,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "skin.h"
 #include "mainvisual.h"
 #include "button.h"
@@ -130,9 +131,9 @@ MainDisplay::MainDisplay (MainWindow *parent)
     m_volumeBar->setValue(m_core->volume());
     m_balanceBar->setValue(m_core->balance());
 
-    PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
-    connect(pl_manager, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setChecked(bool)));
-    connect(pl_manager, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setChecked(bool)));
+    QmmpUiSettings *ui_settings = QmmpUiSettings::instance();
+    connect(ui_settings, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setChecked(bool)));
+    connect(ui_settings, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setChecked(bool)));
     updatePositions();
     updateMask();
 }

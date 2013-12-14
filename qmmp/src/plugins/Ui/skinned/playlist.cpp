@@ -30,6 +30,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/uihelper.h>
+#include <qmmpui/qmmpuisettings.h>
 #include <qmmp/soundcore.h>
 #include "dock.h"
 #include "skin.h"
@@ -53,6 +54,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     setAttribute(Qt::WA_AlwaysShowToolTips,true);
     setWindowTitle(tr("Playlist"));
     m_pl_manager = manager;
+    m_ui_settings = QmmpUiSettings::instance();
     m_update = false;
     m_resize = false;
     m_skin = Skin::instance();
@@ -299,8 +301,8 @@ void PlayList::createActions()
     m_sortMenu->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                            m_pl_manager, SLOT(reverseList()));
 
-    m_sortMenu->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_pl_manager, SLOT(setGroupsEnabled(bool))));
-    ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_pl_manager->isGroupsEnabled());
+    m_sortMenu->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_ui_settings, SLOT(setGroupsEnabled(bool))));
+    ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_ui_settings->isGroupsEnabled());
     //playlist context menu
     m_listWidget->menu()->addAction(ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));
     m_listWidget->menu()->addSeparator();

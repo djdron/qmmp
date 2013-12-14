@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,7 @@
 class SoundCore;
 class MediaPlayer;
 class PlayListManager;
+class QmmpUiSettings;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -39,7 +40,7 @@ struct PlayerStatus
     int repeatPlayList; // 0 = Stop playing once the last element has been played, 1 = Never give up playing
 };
 
-Q_DECLARE_METATYPE(PlayerStatus);
+Q_DECLARE_METATYPE(PlayerStatus)
 
 class PlayerObject : public QObject
 {
@@ -95,6 +96,7 @@ private:
     SoundCore *m_core;
     MediaPlayer *m_player;
     PlayListManager *m_pl_manager;
+    QmmpUiSettings *m_ui_settings;
 
 };
 

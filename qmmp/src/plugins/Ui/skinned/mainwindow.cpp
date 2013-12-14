@@ -36,6 +36,7 @@
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/configdialog.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "hotkeyeditor.h"
 #include "skinnedsettings.h"
 #include "mainwindow.h"
@@ -68,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_core = SoundCore::instance();
     m_pl_manager = PlayListManager::instance();
     m_uiHelper = UiHelper::instance();
+    m_ui_settings = QmmpUiSettings::instance();
 
     //user interface
     m_skin = new Skin(this);
@@ -99,8 +101,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
     connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
 
-    connect(m_display,SIGNAL(shuffleToggled(bool)),m_pl_manager,SLOT(setShuffle(bool)));
-    connect(m_display,SIGNAL(repeatableToggled(bool)),m_pl_manager,SLOT(setRepeatableList(bool)));
+    connect(m_display,SIGNAL(shuffleToggled(bool)),m_ui_settings,SLOT(setShuffle(bool)));
+    connect(m_display,SIGNAL(repeatableToggled(bool)),m_ui_settings,SLOT(setRepeatableList(bool)));
 
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
@@ -241,10 +243,12 @@ void MainWindow::readSettings()
         m_equalizer->setVisible(settings.value("eq_visible",true).toBool());
         qApp->processEvents();
         // Repeat/Shuffle
-        m_display->setIsRepeatable(m_pl_manager->isRepeatableList());
-        m_display->setIsShuffle(m_pl_manager->isShuffle());
-        ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
-        ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
+        m_display->setIsRepeatable(m_ui_settings->isRepeatableList());
+        m_display->setIsShuffle(m_ui_settings->isShuffle());
+        ACTION(ActionManager::REPEAT_ALL)->setChecked(m_ui_settings->isRepeatableList());
+        ACTION(ActionManager::SHUFFLE)->setChecked(m_ui_settings->isShuffle());
+        ACTION(ActionManager::REPEAT_TRACK)->setChecked(m_ui_settings->isRepeatableTrack());
+        ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlaylistAdvance());
         m_update = true;
     }
     else
@@ -379,21 +383,21 @@ void MainWindow::createActions()
     viewMenu->addAction(SET_ACTION(ActionManager::WM_DOUBLE_SIZE, this, SLOT(updateSettings())));
 
     QMenu *plMenu = m_mainMenu->addMenu(tr("Playlist"));
-    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_pl_manager, SLOT(setRepeatableList(bool))));
-    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_player, SLOT(setRepeatable(bool))));
-    plMenu->addAction(SET_ACTION(ActionManager::SHUFFLE, m_pl_manager, SLOT(setShuffle(bool))));
-    plMenu->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_player,
+    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_ui_settings, SLOT(setRepeatableList(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_ui_settings, SLOT(setRepeatableTrack(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::SHUFFLE, m_ui_settings, SLOT(setShuffle(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_ui_settings,
                                  SLOT(setNoPlaylistAdvance(bool))));
     plMenu->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                  SLOT(stopAfterSelected())));
     plMenu->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
-    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)),
+    connect(m_ui_settings, SIGNAL(repeatableListChanged(bool)),
             ACTION(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (repeatableChanged(bool)),
+    connect(m_ui_settings, SIGNAL (repeatableTrackChanged(bool)),
             ACTION(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)),
+    connect(m_ui_settings, SIGNAL (noPlaylistAdvanceChanged(bool)),
             ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
-    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
+    connect(m_ui_settings, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
 
     QMenu *audioMenu = m_mainMenu->addMenu(tr("Audio"));

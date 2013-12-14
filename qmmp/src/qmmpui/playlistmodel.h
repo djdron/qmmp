@@ -36,6 +36,7 @@ class PlayState;
 class PlayListFormat;
 class PlayListModel;
 class PlayListContainer;
+class QmmpUiSettings;
 
 /*! @brief Helper class that keeps track of a view's selected items.
  *
@@ -246,14 +247,6 @@ public:
      */
     void savePlaylist(const QString& f_name);
     /*!
-     * Returns state of "Repeat All" option.
-     */
-    bool isRepeatableList() const;
-    /*!
-     * Returns state of "Shuffle" option.
-     */
-    bool isShuffle() const;
-    /*!
      * Returns \b true if the file loader thread is active; otherwise returns \b false.
      */
     bool isLoaderRunning() const;
@@ -407,19 +400,6 @@ public slots:
      */
     void reverseList();
     /*!
-     * Prepares model for shuffle playing. \b yes parameter is \b true - model iterates in shuffle mode.
-     */
-    void prepareForShufflePlaying(bool yes);
-    /*!
-     * Prepares model for shuffle playing. \b yes parameter is true - model iterates in repeat mode.
-     */
-    void prepareForRepeatablePlaying(bool);
-    /*!
-     * Enabled/Disabled groped mode
-     * @param enabled State of the groups (\b true - enabled, \b false - disabled)
-     */
-    void prepareGroups(bool enabled);
-    /*!
      * Sorts selected items in \b mode sort mode.
      */
     void sortSelection(int mode);
@@ -451,6 +431,10 @@ public slots:
      * Toggles 'stop after selected' feature.
      */
     void stopAfterSelected();
+    /*!
+     * Rebuilds groups
+     */
+    void updateGroups();
 
 private:
     /*!
@@ -468,7 +452,19 @@ private:
     void removeSelection(bool inverted = false);
 
 private slots:
+    /*!
+     * Prepares play state object
+     */
     void preparePlayState();
+    /*!
+     * Prepares model for shuffle playing. \b yes parameter is \b true - model iterates in shuffle mode.
+     */
+    void prepareForShufflePlaying(bool yes);
+    /*!
+     * Enabled/Disabled groped mode
+     * @param enabled State of the groups (\b true - enabled, \b false - disabled)
+     */
+    void prepareGroups(bool enabled);
 
 private:
     PlayListTrack* m_current_track;
@@ -476,14 +472,12 @@ private:
     int m_current;
     SimpleSelection m_selection;  /*!< This flyweight object represents current selection. */
     QQueue <PlayListTrack*> m_queued_songs; /*!< Songs in play queue. */
-    bool m_is_repeatable_list; /*!< Is playlist repeatable? */
     PlayState* m_play_state; /*!< Current playing state (Normal or Shuffle) */
     int m_total_length;
     FileLoader *m_loader;
-    bool m_shuffle;
-    bool m_groups_enabled;
     QString m_name;
     PlayListContainer *m_container;
+    QmmpUiSettings *m_ui_settings;
 };
 
 #endif

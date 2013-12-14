@@ -27,6 +27,7 @@
 #include <qmmp/metadatamanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "player2object.h"
 
 Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
@@ -36,17 +37,18 @@ Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
     m_pl_manager =  m_player->playListManager();
+    m_ui_settings = QmmpUiSettings::instance();
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateId()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(checkState(Qmmp::State)));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(emitPropertiesChanged()));
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(checkSeeking(qint64)));
-    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), SLOT(emitPropertiesChanged()));
-    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), SLOT(emitPropertiesChanged()));
+    connect(m_ui_settings, SIGNAL(repeatableListChanged(bool)), SLOT(emitPropertiesChanged()));
+    connect(m_ui_settings, SIGNAL(shuffleChanged(bool)), SLOT(emitPropertiesChanged()));
     connect(m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
             SLOT(setModel(PlayListModel*,PlayListModel*)));
-    connect(m_player, SIGNAL(repeatableChanged(bool)), SLOT(emitPropertiesChanged()));
+    connect(m_ui_settings, SIGNAL(repeatableListChanged(bool)), SLOT(emitPropertiesChanged()));
     setModel(m_pl_manager->currentPlayList(), 0);
     updateId();
     syncProperties();
@@ -86,9 +88,9 @@ bool Player2Object::canSeek() const
 
 QString Player2Object::loopStatus() const
 {
-    if(m_player->isRepeatable())
+    if(m_ui_settings->isRepeatableTrack())
         return "Track";
-    else if(m_pl_manager->isRepeatableList())
+    else if(m_ui_settings->isRepeatableList())
         return "Playlist";
     else
         return "None";
@@ -98,17 +100,18 @@ void Player2Object::setLoopStatus(const QString &value)
 {
     if(value == "Track")
     {
-        m_player->setRepeatable(true);
+        m_ui_settings->setRepeatableList(false);
+        m_ui_settings->setRepeatableTrack(true);
     }
     else if(value == "Playlist")
     {
-        m_pl_manager->setRepeatableList(true);
-        m_player->setRepeatable(false);
+        m_ui_settings->setRepeatableList(true);
+        m_ui_settings->setRepeatableTrack(false);
     }
     else
     {
-        m_pl_manager->setRepeatableList(false);
-        m_player->setRepeatable(false);
+        m_ui_settings->setRepeatableList(false);
+        m_ui_settings->setRepeatableTrack(false);
     }
 }
 
@@ -184,12 +187,12 @@ void Player2Object::setRate(double value)
 
 bool Player2Object::shuffle() const
 {
-    return m_pl_manager->isShuffle();
+    return m_ui_settings->isShuffle();
 }
 
 void Player2Object::setShuffle(bool value)
 {
-    m_pl_manager->setShuffle(value);
+    m_ui_settings->setShuffle(value);
 }
 
 double Player2Object::volume() const

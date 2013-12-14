@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,7 @@
 class PlayListModel;
 class PlayListManager;
 class MediaPlayer;
+class QmmpUiSettings;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -63,6 +64,7 @@ private:
     PlayListModel *m_model;
     PlayListManager *m_pl_manager;
     MediaPlayer *m_player;
+    QmmpUiSettings *m_ui_settings;
     int m_prev_count;
 
 };

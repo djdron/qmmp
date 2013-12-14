@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,14 +52,6 @@ public:
      * Returns playlist manager pointer
      */
     PlayListManager *playListManager();
-    /*!
-     * Returns \b true if "Repeate Track" option is enabled, otherwise returns \b false
-     */
-    bool isRepeatable() const;
-    /*!
-     * Returns \b true if "No playlist advance" option is enabled, otherwise returns \b false
-     */
-    bool isNoPlaylistAdvance() const;
 
 public slots:
     /*!
@@ -78,30 +70,6 @@ public slots:
      * Sets previous playlist item for playing.
      */
     void previous();
-    /*!
-     * Toggles the current track repeat.
-     * @param enable Repeate state of the current track (\b true - to repeat, \b false - to stop repeating)
-     */
-    void setRepeatable(bool enable);
-    /*!
-     * When finished playing a song, don't automatically advance to the next
-     * @param enable State of the 'No playlist advance' option
-     * (\b true - enabled, \b false - normal playback)
-     */
-    void setNoPlaylistAdvance(bool enable);
-
-signals:
-    /*!
-     * Tracks current track repeat state;
-     * @param enabled New repeate state of the current track (\b true - enabled, \b false - disabled)
-     */
-    void repeatableChanged(bool enabled);
-    /*!
-     * Emitted when state of the "No playlist advance" option changes.
-     * @param enabled New state of this option (\b true - no playlist advance,
-     * \b false - normal playlist behaviour)
-     */
-    void noPlaylistAdvanceChanged(bool enabled);
 
 private slots:
     void playNext();
@@ -114,8 +82,6 @@ private:
     PlayListManager *m_pl_manager;
     SoundCore *m_core;
     static MediaPlayer* m_instance;
-    bool m_repeat;
-    bool m_noPlaylistAdvance;
     int m_skips;
     QString m_nextUrl;
 };
