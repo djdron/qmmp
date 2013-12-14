@@ -453,7 +453,7 @@ void PlayListModel::removeTrack (int i)
             else
             {
                 current_changed = true;
-                int current = qMin(i - 1, m_container->count() - 2);
+                int current = qMin(i - 1, m_container->count() - 1);
                 current = qMax(current, 0);
                 m_current_track = m_container->track(current);
                 if(!m_current_track)
