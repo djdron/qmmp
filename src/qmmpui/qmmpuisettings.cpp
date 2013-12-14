@@ -28,6 +28,8 @@ QmmpUiSettings *QmmpUiSettings::m_instance = 0;
 
 QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
 {
+    if(m_instance)
+        qFatal("QmmpUiSettings: only one instance is allowed");
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");

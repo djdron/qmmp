@@ -35,7 +35,7 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     if(m_instance)
         qFatal("PlayListManager: only one instance is allowed");
     m_instance = this;
-    m_ui_settings = new QmmpUiSettings(this);
+    m_ui_settings = QmmpUiSettings::instance();
     m_current = 0;
     m_selected = 0;
     m_timer = new QTimer(this);
