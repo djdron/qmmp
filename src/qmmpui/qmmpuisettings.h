@@ -80,7 +80,7 @@ public:
     /*!
      * Returns \b true if "No playlist advance" option is enabled, otherwise returns \b false
      */
-    bool isNoPlaylistAdvance() const;
+    bool isNoPlayListAdvance() const;
     /*!
      * Sets the "Convert underscores to blanks" option state to \b enabled
      * @param enabled Option state (\b true - enabled, \b false - disabled)
@@ -172,7 +172,6 @@ public:
      */
     static QmmpUiSettings* instance();
 
-
 signals:
     /*!
      * Emitted when state of the "Repeat All" option has changed.
@@ -199,7 +198,7 @@ signals:
      * @param enabled New state of this option (\b true - no playlist advance,
      * \b false - normal playlist behaviour)
      */
-    void noPlaylistAdvanceChanged(bool enabled);
+    void noPlayListAdvanceChanged(bool enabled);
 
 public slots:
     /*!
@@ -231,7 +230,7 @@ public slots:
      * @param enabled State of the 'No playlist advance' option
      * (\b true - enabled, \b false - normal playback)
      */
-    void setNoPlaylistAdvance(bool enabled);
+    void setNoPlayListAdvance(bool enabled);
 
 
 private:

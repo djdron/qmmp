@@ -248,7 +248,7 @@ void MainWindow::readSettings()
         ACTION(ActionManager::REPEAT_ALL)->setChecked(m_ui_settings->isRepeatableList());
         ACTION(ActionManager::SHUFFLE)->setChecked(m_ui_settings->isShuffle());
         ACTION(ActionManager::REPEAT_TRACK)->setChecked(m_ui_settings->isRepeatableTrack());
-        ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlaylistAdvance());
+        ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlayListAdvance());
         m_update = true;
     }
     else
@@ -387,7 +387,7 @@ void MainWindow::createActions()
     plMenu->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_ui_settings, SLOT(setRepeatableTrack(bool))));
     plMenu->addAction(SET_ACTION(ActionManager::SHUFFLE, m_ui_settings, SLOT(setShuffle(bool))));
     plMenu->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_ui_settings,
-                                 SLOT(setNoPlaylistAdvance(bool))));
+                                 SLOT(setNoPlayListAdvance(bool))));
     plMenu->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                  SLOT(stopAfterSelected())));
     plMenu->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
@@ -395,7 +395,7 @@ void MainWindow::createActions()
             ACTION(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
     connect(m_ui_settings, SIGNAL (repeatableTrackChanged(bool)),
             ACTION(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
-    connect(m_ui_settings, SIGNAL (noPlaylistAdvanceChanged(bool)),
+    connect(m_ui_settings, SIGNAL (noPlayListAdvanceChanged(bool)),
             ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
     connect(m_ui_settings, SIGNAL(shuffleChanged(bool)),
             ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
