@@ -201,7 +201,7 @@ const QString HotkeyManager::getKeyString(quint32 key, quint32 modifiers)
     quint32 modList[] = { HOTKEYF_CONTROL, HOTKEYF_SHIFT, HOTKEYF_ALT, HOTKEYF_EXT};
 
     QString keyStr;
-    for (int j = 0; j < 3; j++)
+    for (int j = 0; j < 4; j++)
     {
         if (modifiers & modList[j])
             keyStr.append(strModList[j] + "+");
