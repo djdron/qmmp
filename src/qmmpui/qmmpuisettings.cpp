@@ -20,6 +20,7 @@
 
 #include <QSettings>
 #include <QApplication>
+#include <QTimer>
 #include <qmmp/qmmp.h>
 #include "playlistmanager.h"
 #include "qmmpuisettings.h"
@@ -53,6 +54,10 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_default_pl_name = s.value("default_pl_name", tr("Playlist")).toString();
     s.endGroup();
     m_use_clipboard = s.value("URLDialog/use_clipboard", false).toBool();
+    m_timer = new QTimer(this);
+    m_timer->setInterval(5000);
+    m_timer->setSingleShot(true);
+    connect(m_timer, SIGNAL(timeout()), SLOT(sync()));
 }
 
 QmmpUiSettings::~QmmpUiSettings()
@@ -172,6 +177,7 @@ bool QmmpUiSettings::useClipboard() const
 
 void QmmpUiSettings::sync()
 {
+    qDebug("%s", Q_FUNC_INFO);
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
     s.setValue("PlayList/title_format", m_title_format);
     s.setValue("PlayList/group_format", m_group_format);
@@ -197,6 +203,7 @@ void QmmpUiSettings::setRepeatableList(bool r)
     if(m_repeate_list == r)
         return;
     m_repeate_list = r;
+    m_timer->start();
     emit repeatableListChanged(r);
 }
 
@@ -205,6 +212,7 @@ void QmmpUiSettings::setShuffle(bool s)
     if(m_shuffle == s)
         return;
     m_shuffle = s;
+    m_timer->start();
     emit shuffleChanged(s);
 }
 
@@ -213,6 +221,7 @@ void QmmpUiSettings::setGroupsEnabled(bool enabled)
     if(m_groups_enabled == enabled)
         return;
     m_groups_enabled = enabled;
+    m_timer->start();
     emit groupsChanged(enabled);
 }
 
@@ -221,6 +230,7 @@ void QmmpUiSettings::setRepeatableTrack(bool enabled)
     if(m_repeat_track == enabled)
         return;
     m_repeat_track = enabled;
+    m_timer->start();
     emit repeatableTrackChanged(enabled);
 }
 
@@ -229,6 +239,7 @@ void QmmpUiSettings::setNoPlayListAdvance(bool enabled)
     if(m_no_pl_advance == enabled)
         return;
     m_no_pl_advance = enabled;
+    m_timer->start();
     emit noPlayListAdvanceChanged(enabled);
 }
 
@@ -240,6 +251,7 @@ QStringList QmmpUiSettings::restrictFilters() const
 void QmmpUiSettings::setRestrictFilters(const QString &filters)
 {
     m_restrict_filters = filters.trimmed().split(";", QString::SkipEmptyParts);
+    m_timer->start();
 }
 
 QStringList QmmpUiSettings::excludeFilters() const
@@ -250,6 +262,7 @@ QStringList QmmpUiSettings::excludeFilters() const
 void QmmpUiSettings::setExcludeFilters(const QString &filters)
 {
     m_exclude_filters = filters.trimmed().split(";", QString::SkipEmptyParts);
+    m_timer->start();
 }
 
 bool QmmpUiSettings::useDefaultPlayList() const
@@ -273,11 +286,13 @@ void QmmpUiSettings::setDefaultPlayList(const QString &name, bool enabled)
 {
     m_use_default_pl = enabled;
     m_default_pl_name = name;
+    m_timer->start();
 }
 
 void QmmpUiSettings::setAutoSavePlayList(bool enabled)
 {
     m_autosave_playlist = enabled;
+    m_timer->start();
 }
 
 bool QmmpUiSettings::autoSavePlayList() const
