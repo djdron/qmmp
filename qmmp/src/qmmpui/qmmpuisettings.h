@@ -24,6 +24,8 @@
 #include <QObject>
 #include <QStringList>
 
+class QTimer;
+
 /*! @brief The QmmpUiSettings class provides access to global libqmmpui library settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -202,10 +204,6 @@ signals:
 
 public slots:
     /*!
-     * Writes all unsaved settings to configuration file
-     */
-    void sync();
-    /*!
      * Prepares all playlists for repeatable playing (loop mode).
      * @param r State of the repeatable mode (\b true - enabled, \b false - disabled)
      */
@@ -232,6 +230,12 @@ public slots:
      */
     void setNoPlayListAdvance(bool enabled);
 
+private slots:
+    /*!
+     * Writes all unsaved settings to configuration file
+     */
+    void sync();
+
 
 private:
     static QmmpUiSettings* m_instance;
@@ -254,6 +258,8 @@ private:
     QString m_default_pl_name;
     //url dialog
     bool m_use_clipboard;
+    //timer
+    QTimer *m_timer;
 };
 
 #endif // QMMPUISETTINGS_H

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,8 @@
 #include <QUrl>
 #include <QStringList>
 #include "eqsettings.h"
+
+class QTimer;
 
 /*! @brief The QmmpSettings class provides access to global settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -191,7 +193,7 @@ signals:
      */
     void eqSettingsChanged();
 
-public slots:
+private slots:
     /*!
      * Writes all unsaved settings to configuration file
      */
@@ -221,6 +223,8 @@ private:
     int m_buffer_size;
     //file type determination
     bool m_determine_by_content;
+    //timer
+    QTimer *m_timer;
 
     static QmmpSettings* m_instance;
 

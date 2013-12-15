@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 
 #include <QSettings>
 #include <QApplication>
+#include <QTimer>
 #include "metadatamanager.h"
 #include "qmmp.h"
 #include "qmmpsettings.h"
@@ -28,6 +29,8 @@ QmmpSettings *QmmpSettings::m_instance = 0;
 
 QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
 {
+    if(m_instance)
+        qFatal("QmmpSettings: only one instance is allowed");
     m_instance = this;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     //replaygain settings
@@ -55,6 +58,11 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_buffer_size = settings.value("Output/buffer_size", 500).toInt();
     //file type determination
     m_determine_by_content = settings.value("Misc/determine_file_by_content", false).toBool();
+    //timer
+    m_timer = new QTimer(this);
+    m_timer->setSingleShot(true);
+    m_timer->setInterval(5000);
+    connect(m_timer, SIGNAL(timeout()), SLOT(sync()));
 }
 
 QmmpSettings::~QmmpSettings()
@@ -89,6 +97,7 @@ void QmmpSettings::setReplayGainSettings(ReplayGainMode mode, double preamp, dou
     m_rg_preamp = preamp;
     m_rg_defaut_gain = def_gain;
     m_rg_prevent_clipping = clip;
+    m_timer->start();
     emit replayGainSettingsChanged();
 }
 
@@ -106,6 +115,7 @@ void QmmpSettings::setAudioSettings(bool soft_volume, bool use_16bit)
 {
     m_aud_software_volume = soft_volume;
     m_aud_16bit = use_16bit;
+    m_timer->start();
     emit audioSettingsChanged();
 }
 
@@ -131,6 +141,7 @@ void QmmpSettings::setCoverSettings(QStringList inc, QStringList exc, int depth,
     m_cover_depth = depth;
     m_cover_use_files = use_files;
     MetaDataManager::instance()->clearCoverChache();
+    m_timer->start();
     emit coverSettingsChanged();
 }
 
@@ -154,6 +165,7 @@ void QmmpSettings::setNetworkSettings(bool use_proxy, bool auth, const QUrl &pro
     m_proxy_enabled = use_proxy;
     m_proxy_auth = auth;
     m_proxy_url = proxy;
+    m_timer->start();
     emit networkSettingsChanged();
 }
 
@@ -165,6 +177,7 @@ EqSettings QmmpSettings::eqSettings() const
 void QmmpSettings::setEqSettings(const EqSettings &settings)
 {
     m_eq_settings = settings;
+    m_timer->start();
     emit eqSettingsChanged();
 }
 
@@ -193,6 +206,7 @@ void QmmpSettings::setBufferSize(int msec)
 
 void QmmpSettings::sync()
 {
+    qDebug("%s", Q_FUNC_INFO);
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     //replaygain settings
     settings.beginGroup("ReplayGain");

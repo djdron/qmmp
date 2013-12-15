@@ -391,7 +391,6 @@ void ConfigDialog::saveSettings()
                                  m_ui->defaultPlayListCheckBox->isChecked());
         guis->setAutoSavePlayList(m_ui->autoSavePlayListCheckBox->isChecked());
         guis->setUseClipboard(m_ui->clipboardCheckBox->isChecked());
-        guis->sync();
     }
 
     QmmpSettings *gs = QmmpSettings::instance();
@@ -418,7 +417,6 @@ void ConfigDialog::saveSettings()
     gs->setAudioSettings(m_ui->softVolumeCheckBox->isChecked(), m_ui->use16BitCheckBox->isChecked());
     gs->setBufferSize(m_ui->bufferSizeSpinBox->value());
     gs->setDetermineFileTypeByContent(m_ui->byContentCheckBox->isChecked());
-    gs->sync();
     QList<QVariant> var_sizes;
     var_sizes << m_ui->splitter->sizes().first() << m_ui->splitter->sizes().last();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
