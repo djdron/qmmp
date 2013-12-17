@@ -78,6 +78,8 @@ ListWidget::~ListWidget()
         delete m_bold_metrics;
     if(m_extra_metrics)
         delete m_extra_metrics;
+    qDeleteAll(m_rows);
+    m_rows.clear();
 }
 
 void ListWidget::readSettings()
