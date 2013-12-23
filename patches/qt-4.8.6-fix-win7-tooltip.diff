@@ -1,0 +1,12 @@
+diff --git a/src/gui/util/qsystemtrayicon_win.cpp b/src/gui/util/qsystemtrayicon_win.cpp
+index 6cc3898..25a98b3 100644
+--- a/src/gui/util/qsystemtrayicon_win.cpp
++++ b/src/gui/util/qsystemtrayicon_win.cpp
+@@ -50,6 +50,7 @@
+ #define _WIN32_IE 0x600
+ #endif
+ 
++#define NTDDI_VERSION NTDDI_VISTA
+ #include <qt_windows.h>
+ #include <windowsx.h>
+ #include <commctrl.h>

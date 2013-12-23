@@ -1,2 +1,3 @@
 qt-4.6.0-reduce-cpu-usage.patch - reduses cpu usage when using terminus font
-taglib-1.9.1-bug-308.diff - fixed  crash on the flac files with id3v2 tags
+qt-4.8.6-fix-win7-tooltip.diff - fixes tooltip in QSystemTrayIcon under Windows 7
+taglib-1.9.1-bug-308.diff - fixes crash on the flac files with id3v2 tags
