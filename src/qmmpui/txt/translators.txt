@@ -1,6 +1,7 @@
 Brazilian Portuguese:
     Klaos Lacerda
     Bruno Gonçalves
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
 Chinese Traditional:
     lon <lon83129@126.com>
