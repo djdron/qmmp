@@ -111,7 +111,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeTab(int)));
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(m_ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
-    connect(m_ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
+    connect(m_ui.tabWidget, SIGNAL(tabCloseRequested(int)), m_pl_manager, SLOT(removePlayList(int)));
     connect(m_ui.tabWidget, SIGNAL(tabMoved(int,int)), m_pl_manager, SLOT(move(int,int)));
 
     m_ui.tabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -690,11 +690,6 @@ void MainWindow::savePlayList()
 void MainWindow::loadPlayList()
 {
     m_uiHelper->loadPlayList(this);
-}
-
-void MainWindow::on_tabWidget_tabCloseRequested(int index)
-{
-    m_pl_manager->removePlayList(index);
 }
 
 void MainWindow::showBuffering(int percent)
