@@ -27,13 +27,13 @@
 
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
-    if(path.endsWith(".flac"), Qt::CaseInsensitive)
+    if(path.endsWith(".flac", Qt::CaseInsensitive))
     {
         TagLib::FLAC::File fileRef(path.toLocal8Bit ().constData());
         if(fileRef.xiphComment())
             readVorbisComment(fileRef.xiphComment());
     }
-    else if(path.endsWith(".oga"), Qt::CaseInsensitive)
+    else if(path.endsWith(".oga", Qt::CaseInsensitive))
     {
         TagLib::Ogg::FLAC::File fileRef(path.toLocal8Bit ().constData());
         if(fileRef.tag())
