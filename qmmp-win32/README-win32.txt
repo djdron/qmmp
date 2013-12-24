@@ -44,6 +44,8 @@ List of the third-party libraries.
   game-music-emu      http://code.google.com/p/game-music-emu/
   libopus             http://www.opus-codec.org/
   libopusfile         http://www.opus-codec.org/
+  libcdio             http://www.gnu.org/software/libcdio/
+  libcddb             http://libcddb.sourceforge.net/
 
 List of the third-party artwork.
 
