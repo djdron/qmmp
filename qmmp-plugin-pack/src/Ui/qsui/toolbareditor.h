@@ -39,13 +39,18 @@ public:
     explicit ToolBarEditor(QWidget *parent = 0);
     ~ToolBarEditor();
 
+public slots:
+    void accept();
+
+private slots:
+    void on_addToolButton_clicked();
+    void on_removeToolButton_clicked();
+    void on_upToolButton_clicked();
+    void on_downToolButton_clicked();
+
 private:
     void populateActionList();
-    void populateActiveActionList();
-
     Ui::ToolBarEditor *m_ui;
-    QList<ActionManager::Type> m_defaultIdList;
-
 };
 
 #endif // TOOLBAREDITOR_H

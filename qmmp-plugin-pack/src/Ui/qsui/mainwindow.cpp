@@ -386,13 +386,13 @@ void MainWindow::createActions()
     ActionManager::instance()->registerAction(ActionManager::UI_PLAYLISTBROWSER,
                                               m_ui.playlistsDockWidget->toggleViewAction(),
                                               "playlist_browser", tr("P"));
-    //main toolbar
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause())));
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::STOP, m_player, SLOT(stop())));
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::NEXT, m_player, SLOT(next())));
-    m_ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles())));
+    //playback
+    SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous()));
+    SET_ACTION(ActionManager::PLAY, m_player, SLOT(play()));
+    SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause()));
+    SET_ACTION(ActionManager::STOP, m_player, SLOT(stop()));
+    SET_ACTION(ActionManager::NEXT, m_player, SLOT(next()));
+    SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles()));
 
     //file menu
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
@@ -653,6 +653,22 @@ void MainWindow::readSettings()
 
         show();
     }
+    //load toolbar actions
+    m_ui.buttonsToolBar->clear();
+    QStringList names = ActionManager::instance()->toolBarActionNames();
+    names = settings.value("toolbar_actions", names).toStringList();
+    foreach (QString name, names)
+    {
+        if(name == "separator")
+        {
+            m_ui.buttonsToolBar->addSeparator();
+            continue;
+        }
+        QAction *action = ActionManager::instance()->findChild<QAction *>(name);
+        if(action)
+            m_ui.buttonsToolBar->addAction(action);
+    }
+
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     m_ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
     settings.endGroup();
@@ -772,6 +788,9 @@ void MainWindow::setTitleBarsVisible(bool visible)
 void MainWindow::editToolBar()
 {
     ToolBarEditor *e = new ToolBarEditor(this);
-    e->exec();
+    if(e->exec() == QDialog::Accepted)
+    {
+        readSettings();
+    }
     e->deleteLater();
 }

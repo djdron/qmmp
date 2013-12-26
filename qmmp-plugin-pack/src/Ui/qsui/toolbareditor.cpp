@@ -34,15 +34,7 @@ ToolBarEditor::ToolBarEditor(QWidget *parent) :
     m_ui->addToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowRight));
     m_ui->removeToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowLeft));
 
-    m_defaultIdList << ActionManager::PREVIOUS
-                        << ActionManager::PLAY
-                        << ActionManager::PAUSE
-                        << ActionManager::STOP
-                        << ActionManager::NEXT
-                        << ActionManager::EJECT;
-
     populateActionList();
-    populateActiveActionList();
 }
 
 ToolBarEditor::~ToolBarEditor()
@@ -50,8 +42,23 @@ ToolBarEditor::~ToolBarEditor()
     delete m_ui;
 }
 
+void ToolBarEditor::accept()
+{
+    QStringList names;
+    for(int row = 0; row < m_ui->activeActionsListWidget->count(); ++row)
+        names.append(m_ui->activeActionsListWidget->item(row)->data(Qt::UserRole).toString());
+
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Simple/toolbar_actions", names);
+    QDialog::accept();
+}
+
 void ToolBarEditor::populateActionList()
 {
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    QStringList names = ActionManager::instance()->toolBarActionNames();
+    names = settings.value("Simple/toolbar_actions", names).toStringList();
+
     for(int id = ActionManager::PLAY; id <= ActionManager::QUIT; ++id)
     {
         QAction *action = ACTION(id);
@@ -61,30 +68,77 @@ void ToolBarEditor::populateActionList()
         item->setIcon(action->icon());
         item->setText(action->text().replace("&", ""));
         item->setData(Qt::UserRole, action->objectName());
+        if(!names.contains(action->objectName()))
+            m_ui->actionsListWidget->addItem(item);
+    }
+
+    if(!names.contains("separator"))
+    {
+        QListWidgetItem *item = new QListWidgetItem();
+        item->setText(tr("Separator"));
+        item->setData(Qt::UserRole, "separator");
+        m_ui->actionsListWidget->addItem(item);
+    }
+
+    foreach (QString name, names)
+    {
+        QAction *action = ActionManager::instance()->findChild<QAction *>(name);
+        if(action)
+        {
+            QListWidgetItem *item = new QListWidgetItem();
+            item->setIcon(action->icon());
+            item->setText(action->text().replace("&", ""));
+            item->setData(Qt::UserRole, action->objectName());
+            m_ui->activeActionsListWidget->addItem(item);
+        }
+        else if(name == "separator")
+        {
+            QListWidgetItem *item = new QListWidgetItem();
+            item->setText(tr("Separator"));
+            item->setData(Qt::UserRole, "separator");
+            m_ui->activeActionsListWidget->addItem(item);
+        }
+    }
+}
+
+void ToolBarEditor::on_addToolButton_clicked()
+{
+    int row = m_ui->actionsListWidget->currentRow();
+    if(row > -1)
+    {
+        QListWidgetItem *item = m_ui->actionsListWidget->takeItem(row);
+        m_ui->activeActionsListWidget->addItem(item);
+    }
+}
+
+void ToolBarEditor::on_removeToolButton_clicked()
+{
+    int row = m_ui->activeActionsListWidget->currentRow();
+    if(row > -1)
+    {
+        QListWidgetItem *item = m_ui->activeActionsListWidget->takeItem(row);
         m_ui->actionsListWidget->addItem(item);
     }
 }
 
-void ToolBarEditor::populateActiveActionList()
+void ToolBarEditor::on_upToolButton_clicked()
 {
-    ActionManager *manager = ActionManager::instance();
-    QStringList defaultActionNames;
-    foreach (ActionManager::Type id, m_defaultIdList)
+    int row = m_ui->activeActionsListWidget->currentRow();
+    if(row > 0)
     {
-        defaultActionNames << manager->action(id)->objectName();
+        QListWidgetItem *item = m_ui->activeActionsListWidget->takeItem(row);
+        m_ui->activeActionsListWidget->insertItem(row - 1, item);
+        m_ui->activeActionsListWidget->setCurrentItem(item);
     }
+}
 
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QStringList names = settings.value("Simple/toolbar_actions", defaultActionNames).toStringList();
-    foreach (QString name, names)
+void ToolBarEditor::on_downToolButton_clicked()
+{
+    int row = m_ui->activeActionsListWidget->currentRow();
+    if(row > -1 && row < m_ui->activeActionsListWidget->count())
     {
-        QAction *action = manager->findChild<QAction *>(name);
-        if(!action)
-            continue;
-        QListWidgetItem *item = new QListWidgetItem();
-        item->setIcon(action->icon());
-        item->setText(action->text().replace("&", ""));
-        item->setData(Qt::UserRole, action->objectName());
-        m_ui->activeActionsListWidget->addItem(item);
+        QListWidgetItem *item = m_ui->activeActionsListWidget->takeItem(row);
+        m_ui->activeActionsListWidget->insertItem(row + 1, item);
+        m_ui->activeActionsListWidget->setCurrentItem(item);
     }
 }

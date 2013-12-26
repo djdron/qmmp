@@ -107,6 +107,7 @@ public:
     QList<QAction *> actions();
     void saveActions();
     void registerAction(int id, QAction *action, QString confKey, QString key);
+    QStringList toolBarActionNames() const;
     static ActionManager* instance();
 
 private:

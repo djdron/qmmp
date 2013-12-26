@@ -178,3 +178,15 @@ void ActionManager::registerAction(int id, QAction *action, QString confKey, QSt
     m_actions[id] = action;
     settings.endGroup();
 }
+
+QStringList ActionManager::toolBarActionNames() const
+{
+    QList <Type> idList;
+    idList << PL_ADD_FILE << PL_ADD_DIRECTORY << PREVIOUS << PLAY << PAUSE << STOP << NEXT << EJECT;
+    QStringList names;
+    foreach (Type id, idList)
+    {
+        names << m_actions.value(id)->objectName();
+    }
+    return names;
+}
