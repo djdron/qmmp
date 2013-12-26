@@ -35,7 +35,8 @@ SOURCES += \
     filesystembrowser.cpp \
     elidinglabel.cpp \
     coverwidget.cpp \
-    playlistbrowser.cpp
+    playlistbrowser.cpp \
+    toolbareditor.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -61,14 +62,16 @@ HEADERS += mainwindow.h \
     filesystembrowser.h \
     elidinglabel.h \
     coverwidget.h \
-    playlistbrowser.h
+    playlistbrowser.h \
+    toolbareditor.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
-    forms/qsuisettings.ui
+    forms/qsuisettings.ui \
+    forms/toolbareditor.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 TRANSLATIONS = translations/qsui_plugin_ru.ts \

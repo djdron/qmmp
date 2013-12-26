@@ -39,6 +39,7 @@
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
 #include <qmmpui/qmmpuisettings.h>
+#include "toolbareditor.h"
 #include "actionmanager.h"
 #include "qsuianalyzer.h"
 #include "visualmenu.h"
@@ -433,6 +434,8 @@ void MainWindow::createActions()
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TABS, m_ui.tabWidget, SLOT(setTabsVisible(bool))));
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TITLEBARS, this, SLOT(setTitleBarsVisible(bool))));
+    m_ui.menuView->addSeparator();
+    m_ui.menuView->addAction(tr("Edit Toolbar"), this, SLOT(editToolBar()));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -764,4 +767,11 @@ void MainWindow::setTitleBarsVisible(bool visible)
         if(!m_ui.playlistsDockWidget->titleBarWidget())
             m_ui.playlistsDockWidget->setTitleBarWidget(new QWidget());
     }
+}
+
+void MainWindow::editToolBar()
+{
+    ToolBarEditor *e = new ToolBarEditor(this);
+    e->exec();
+    e->deleteLater();
 }

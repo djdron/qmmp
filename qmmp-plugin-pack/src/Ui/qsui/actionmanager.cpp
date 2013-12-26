@@ -146,7 +146,7 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
         action->setIcon(QIcon(iconName));
     else if(QIcon::hasThemeIcon(iconName))
         action->setIcon(QIcon::fromTheme(iconName));
-    else
+    else if(QFile::exists(QString(":/qsui/")+iconName+".png"))
         action->setIcon(QIcon(QString(":/qsui/")+iconName+".png"));
     return action;
 }

@@ -81,6 +81,7 @@ private slots:
     void backward();
     void showMetaData();
     void setTitleBarsVisible(bool visible);
+    void editToolBar();
 
 private:
     void closeEvent(QCloseEvent *);
