@@ -33,7 +33,10 @@ ToolBarEditor::ToolBarEditor(QWidget *parent) :
     m_ui->downToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowDown));
     m_ui->addToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowRight));
     m_ui->removeToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowLeft));
-
+    connect(m_ui->actionsListWidget->model(), SIGNAL(rowsAboutToBeRemoved(const QModelIndex &,int,int)),
+            SLOT(onRowsAboutToBeRemoved(const QModelIndex &, int, int)));
+    connect(m_ui->activeActionsListWidget->model(), SIGNAL(rowsAboutToBeRemoved(const QModelIndex &,int,int)),
+            SLOT(onRowsAboutToBeRemoved(const QModelIndex &, int, int)));
     populateActionList();
 }
 
@@ -53,11 +56,14 @@ void ToolBarEditor::accept()
     QDialog::accept();
 }
 
-void ToolBarEditor::populateActionList()
+void ToolBarEditor::populateActionList(bool reset)
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QStringList names = ActionManager::instance()->toolBarActionNames();
-    names = settings.value("Simple/toolbar_actions", names).toStringList();
+    if(!reset)
+    {
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        names = settings.value("Simple/toolbar_actions", names).toStringList();
+    }
 
     for(int id = ActionManager::PLAY; id <= ActionManager::QUIT; ++id)
     {
@@ -72,10 +78,9 @@ void ToolBarEditor::populateActionList()
             m_ui->actionsListWidget->addItem(item);
     }
 
-    if(!names.contains("separator"))
     {
         QListWidgetItem *item = new QListWidgetItem();
-        item->setText(tr("Separator"));
+        item->setText("-- " + tr("Separator") + " --");
         item->setData(Qt::UserRole, "separator");
         m_ui->actionsListWidget->addItem(item);
     }
@@ -94,7 +99,7 @@ void ToolBarEditor::populateActionList()
         else if(name == "separator")
         {
             QListWidgetItem *item = new QListWidgetItem();
-            item->setText(tr("Separator"));
+            item->setText("-- " + tr("Separator") + " --");
             item->setData(Qt::UserRole, "separator");
             m_ui->activeActionsListWidget->addItem(item);
         }
@@ -140,5 +145,41 @@ void ToolBarEditor::on_downToolButton_clicked()
         QListWidgetItem *item = m_ui->activeActionsListWidget->takeItem(row);
         m_ui->activeActionsListWidget->insertItem(row + 1, item);
         m_ui->activeActionsListWidget->setCurrentItem(item);
+    }
+}
+
+void ToolBarEditor::on_resetPushButton_clicked()
+{
+    m_ui->actionsListWidget->clear();
+    m_ui->activeActionsListWidget->clear();
+    populateActionList(true);
+}
+
+void ToolBarEditor::onRowsAboutToBeRemoved(const QModelIndex &, int start, int)
+{
+    if(sender() == m_ui->actionsListWidget->model())
+    {
+        //recreate separator
+        QListWidgetItem *item = m_ui->actionsListWidget->item(start);
+        if(item && item->data(Qt::UserRole).toString() == "separator")
+            m_ui->actionsListWidget->addItem(item->clone());
+    }
+    else if(sender() == m_ui->activeActionsListWidget->model())
+    {
+        //remove separator
+        QListWidgetItem *item = m_ui->activeActionsListWidget->item(start);
+        if(item && item->data(Qt::UserRole).toString() == "separator")
+        {
+            for(int i = 0; i < m_ui->actionsListWidget->count(); ++i)
+            {
+                if(m_ui->actionsListWidget->item(i)->data(Qt::UserRole).toString() == "separator")
+                {
+                    m_ui->actionsListWidget->model()->blockSignals(true);
+                    delete m_ui->actionsListWidget->takeItem(i);
+                    m_ui->actionsListWidget->model()->blockSignals(false);
+                    break;
+                }
+            }
+        }
     }
 }

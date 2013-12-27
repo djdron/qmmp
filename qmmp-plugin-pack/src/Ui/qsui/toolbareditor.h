@@ -22,6 +22,7 @@
 #define TOOLBAREDITOR_H
 
 #include <QDialog>
+#include <QModelIndex>
 #include "actionmanager.h"
 
 namespace Ui {
@@ -47,9 +48,11 @@ private slots:
     void on_removeToolButton_clicked();
     void on_upToolButton_clicked();
     void on_downToolButton_clicked();
+    void on_resetPushButton_clicked();
+    void onRowsAboutToBeRemoved(const QModelIndex &, int start, int);
 
 private:
-    void populateActionList();
+    void populateActionList(bool reset = false);
     Ui::ToolBarEditor *m_ui;
 };
 
