@@ -63,6 +63,12 @@ void HotkeyEditor::loadShortcuts()
         new ShortcutItem(item, i);
     item->setExpanded(true);
     m_ui->shortcutTreeWidget->addTopLevelItem(item);
+    //volume
+    item = new QTreeWidgetItem (m_ui->shortcutTreeWidget, QStringList() << tr("Volume"));
+    for(int i = ActionManager::VOL_ENC; i <= ActionManager::VOL_MUTE; ++i)
+        new ShortcutItem(item, i);
+    item->setExpanded(true);
+    m_ui->shortcutTreeWidget->addTopLevelItem(item);
     //playlist
     item = new QTreeWidgetItem (m_ui->shortcutTreeWidget, QStringList() << tr("Playlist"));
     for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_GROUP_TRACKS; ++i)
