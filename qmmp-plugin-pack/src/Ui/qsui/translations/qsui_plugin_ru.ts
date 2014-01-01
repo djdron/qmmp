@@ -1174,7 +1174,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="164"/>
         <source>Volume</source>
-        <translation type="unfinished">Громкость</translation>
+        <translation>Громкость</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
