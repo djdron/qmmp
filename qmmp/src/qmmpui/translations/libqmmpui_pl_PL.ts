@@ -621,47 +621,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="164"/>
+        <location filename="../detailsdialog.cpp" line="165"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="165"/>
+        <location filename="../detailsdialog.cpp" line="166"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="166"/>
+        <location filename="../detailsdialog.cpp" line="167"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="167"/>
+        <location filename="../detailsdialog.cpp" line="168"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="168"/>
+        <location filename="../detailsdialog.cpp" line="169"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="169"/>
+        <location filename="../detailsdialog.cpp" line="170"/>
         <source>Composer</source>
         <translation>Kompozytor</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="171"/>
+        <location filename="../detailsdialog.cpp" line="172"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="173"/>
+        <location filename="../detailsdialog.cpp" line="174"/>
         <source>Track</source>
         <translation>Ścieżka</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="175"/>
+        <location filename="../detailsdialog.cpp" line="176"/>
         <source>Disc number</source>
         <translation>Numer płyty</translation>
     </message>
@@ -748,8 +748,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="160"/>
-        <location filename="../playlistmanager.cpp" line="351"/>
+        <location filename="../playlistmanager.cpp" line="151"/>
+        <location filename="../playlistmanager.cpp" line="301"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
@@ -770,7 +770,7 @@
 <context>
     <name>QmmpUiSettings</name>
     <message>
-        <location filename="../qmmpuisettings.cpp" line="43"/>
+        <location filename="../qmmpuisettings.cpp" line="54"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>

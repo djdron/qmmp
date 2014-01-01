@@ -9,27 +9,27 @@
         <translation>CD 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>About CD Audio Plugin</source>
         <translation>CD 音響プラグインについて</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="89"/>
+        <location filename="../decodercdaudiofactory.cpp" line="91"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation>QMMP CD 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="90"/>
+        <location filename="../decodercdaudiofactory.cpp" line="92"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
         <translation>libcdio-%1 と libcddb-%2 対応でコンパイル</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="92"/>
+        <location filename="../decodercdaudiofactory.cpp" line="94"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="93"/>
+        <location filename="../decodercdaudiofactory.cpp" line="95"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
         <translation>使い方: コマンド入力行もしくは「URL を追加」ダイアログで cdda:/// を開く</translation>
     </message>

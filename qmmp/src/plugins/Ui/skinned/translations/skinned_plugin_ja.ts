@@ -502,11 +502,16 @@
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
+        <source>Volume</source>
+        <translation type="unfinished">音量</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <location filename="../hotkeyeditor.cpp" line="79"/>
         <source>Misc</source>
         <translation>その他いろいろ</translation>
     </message>
@@ -514,87 +519,87 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="57"/>
+        <location filename="../display.cpp" line="58"/>
         <source>Previous</source>
         <translation>前の曲</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="61"/>
+        <location filename="../display.cpp" line="62"/>
         <source>Play</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="64"/>
+        <location filename="../display.cpp" line="65"/>
         <source>Pause</source>
         <translation>一時停止</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="67"/>
+        <location filename="../display.cpp" line="68"/>
         <source>Stop</source>
         <translation>終止</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="70"/>
+        <location filename="../display.cpp" line="71"/>
         <source>Next</source>
         <translation>次の曲</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="73"/>
+        <location filename="../display.cpp" line="74"/>
         <source>Add file</source>
         <translation>ファイルを追加</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="80"/>
+        <location filename="../display.cpp" line="81"/>
         <source>Equalizer</source>
         <translation>イコライザー</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="83"/>
+        <location filename="../display.cpp" line="84"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="88"/>
+        <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
         <translation>プレイリストを繰り返し</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="91"/>
+        <location filename="../display.cpp" line="92"/>
         <source>Shuffle</source>
         <translation>シャッフル</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="101"/>
+        <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
         <translation>音量</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="107"/>
+        <location filename="../display.cpp" line="108"/>
         <source>Balance</source>
         <translation>バランス</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="294"/>
+        <location filename="../display.cpp" line="295"/>
         <source>Volume: %1%</source>
         <translation>音量: %1%</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="298"/>
+        <location filename="../display.cpp" line="299"/>
         <source>Balance: %1% right</source>
         <translation>バランス: %1% 右へ</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="300"/>
+        <location filename="../display.cpp" line="301"/>
         <source>Balance: %1% left</source>
         <translation>バランス: %1% 左へ</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="302"/>
+        <location filename="../display.cpp" line="303"/>
         <source>Balance: center</source>
         <translation>バランス: 中央に</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="312"/>
+        <location filename="../display.cpp" line="313"/>
         <source>Seek to: %1</source>
         <translation>%1 に移動</translation>
     </message>
@@ -736,32 +741,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="381"/>
+        <location filename="../mainwindow.cpp" line="385"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="314"/>
         <source>Appearance</source>
         <translation>外観</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Shortcuts</source>
         <translation>ショートカット</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="377"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="399"/>
+        <location filename="../mainwindow.cpp" line="403"/>
         <source>Audio</source>
         <translation>音響</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
@@ -769,101 +774,101 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="54"/>
+        <location filename="../playlist.cpp" line="55"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="179"/>
+        <location filename="../playlist.cpp" line="181"/>
         <source>&amp;Copy Selection To</source>
         <translation>選んだ曲目で新しいプレイリストを作る(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="207"/>
+        <location filename="../playlist.cpp" line="209"/>
         <source>Sort List</source>
         <translation>リストを並べ換え</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>By Title</source>
         <translation>タイトル順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Album</source>
         <translation>アルバム名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Disc Number</source>
         <translation>ディスク番号順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Artist</source>
         <translation>アーティスト名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Filename</source>
         <translation>ファイル名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="279"/>
         <source>By Path + Filename</source>
         <translation>パスとファイル名の順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>By Date</source>
         <translation>日付順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>By Track Number</source>
         <translation>トラック番号順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="242"/>
-        <location filename="../playlist.cpp" line="289"/>
+        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>By File Creation Date</source>
         <translation>ファイルの作成日順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="248"/>
         <source>By Group</source>
         <translation>グループ名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="256"/>
         <source>Sort Selection</source>
         <translation>選択範囲内で並べ換え</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>Randomize List</source>
         <translation>リストを順不同に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="301"/>
         <source>Reverse List</source>
         <translation>リストを逆順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="309"/>
+        <location filename="../playlist.cpp" line="311"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="575"/>
+        <location filename="../playlist.cpp" line="577"/>
         <source>&amp;New PlayList</source>
         <translation>新しいプレイリスト(&amp;N)</translation>
     </message>
