@@ -502,11 +502,16 @@
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
+        <source>Volume</source>
+        <translation type="unfinished">Lautstärke</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <location filename="../hotkeyeditor.cpp" line="79"/>
         <source>Misc</source>
         <translation>Verschiedenes</translation>
     </message>
@@ -514,87 +519,87 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="57"/>
+        <location filename="../display.cpp" line="58"/>
         <source>Previous</source>
         <translation>Vorheriger Titel</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="61"/>
+        <location filename="../display.cpp" line="62"/>
         <source>Play</source>
         <translation>Wiedergabe</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="64"/>
+        <location filename="../display.cpp" line="65"/>
         <source>Pause</source>
         <translation>Pause</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="67"/>
+        <location filename="../display.cpp" line="68"/>
         <source>Stop</source>
         <translation>Stopp</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="70"/>
+        <location filename="../display.cpp" line="71"/>
         <source>Next</source>
         <translation>Nächster Titel</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="73"/>
+        <location filename="../display.cpp" line="74"/>
         <source>Add file</source>
         <translation>Datei hinzufügen</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="80"/>
+        <location filename="../display.cpp" line="81"/>
         <source>Equalizer</source>
         <translation>Equalizer</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="83"/>
+        <location filename="../display.cpp" line="84"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="88"/>
+        <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
         <translation>Wiedergabeliste wiederholen</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="91"/>
+        <location filename="../display.cpp" line="92"/>
         <source>Shuffle</source>
         <translation>Zufallswiedergabe</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="101"/>
+        <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
         <translation>Lautstärke</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="107"/>
+        <location filename="../display.cpp" line="108"/>
         <source>Balance</source>
         <translation>Balance</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="294"/>
+        <location filename="../display.cpp" line="295"/>
         <source>Volume: %1%</source>
         <translation>Lautstärke: %1 %</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="298"/>
+        <location filename="../display.cpp" line="299"/>
         <source>Balance: %1% right</source>
         <translation>Balance: %1 % rechts</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="300"/>
+        <location filename="../display.cpp" line="301"/>
         <source>Balance: %1% left</source>
         <translation>Balance: %1 % links</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="302"/>
+        <location filename="../display.cpp" line="303"/>
         <source>Balance: center</source>
         <translation>Balance: Mitte</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="312"/>
+        <location filename="../display.cpp" line="313"/>
         <source>Seek to: %1</source>
         <translation>Springen zu: %1</translation>
     </message>
@@ -735,32 +740,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="314"/>
         <source>Appearance</source>
         <translation>Erscheinungsbild</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Shortcuts</source>
         <translation>Kurzbefehle</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="377"/>
         <source>View</source>
         <translation>Ansicht</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="381"/>
+        <location filename="../mainwindow.cpp" line="385"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="399"/>
+        <location filename="../mainwindow.cpp" line="403"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
     </message>
@@ -768,101 +773,101 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="207"/>
+        <location filename="../playlist.cpp" line="209"/>
         <source>Sort List</source>
         <translation>Wiedergabeliste sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>By Title</source>
         <translation>Nach Titel</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Album</source>
         <translation>Nach Album</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Disc Number</source>
         <translation>Nach CD-Nummer</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Artist</source>
         <translation>Nach Interpret</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Filename</source>
         <translation>Nach Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="279"/>
         <source>By Path + Filename</source>
         <translation>Nach Pfad + Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>By Date</source>
         <translation>Nach Datum</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="242"/>
-        <location filename="../playlist.cpp" line="289"/>
+        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>By File Creation Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="248"/>
         <source>By Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="256"/>
         <source>Sort Selection</source>
         <translation>Auswahl sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>Randomize List</source>
         <translation>Wiedergabeliste mischen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="301"/>
         <source>Reverse List</source>
         <translation>Wiedergabeliste umkehren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="575"/>
+        <location filename="../playlist.cpp" line="577"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Neue Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="179"/>
+        <location filename="../playlist.cpp" line="181"/>
         <source>&amp;Copy Selection To</source>
         <translation>Auswahl kopieren na&amp;ch</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="54"/>
+        <location filename="../playlist.cpp" line="55"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>By Track Number</source>
         <translation>Nach Titelnummer</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="309"/>
+        <location filename="../playlist.cpp" line="311"/>
         <source>Actions</source>
         <translation>Aktionen</translation>
     </message>

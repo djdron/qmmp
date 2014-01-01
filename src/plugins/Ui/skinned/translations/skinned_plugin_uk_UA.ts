@@ -502,11 +502,16 @@
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
+        <source>Volume</source>
+        <translation type="unfinished">Гучність</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <location filename="../hotkeyeditor.cpp" line="79"/>
         <source>Misc</source>
         <translation>Інші</translation>
     </message>
@@ -514,87 +519,87 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="57"/>
+        <location filename="../display.cpp" line="58"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="61"/>
+        <location filename="../display.cpp" line="62"/>
         <source>Play</source>
         <translation>Відтворити</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="64"/>
+        <location filename="../display.cpp" line="65"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="67"/>
+        <location filename="../display.cpp" line="68"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="70"/>
+        <location filename="../display.cpp" line="71"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="73"/>
+        <location filename="../display.cpp" line="74"/>
         <source>Add file</source>
         <translation>Додати файл</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="80"/>
+        <location filename="../display.cpp" line="81"/>
         <source>Equalizer</source>
         <translation>Еквалайзер</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="83"/>
+        <location filename="../display.cpp" line="84"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="88"/>
+        <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
         <translation>Повторити список</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="91"/>
+        <location filename="../display.cpp" line="92"/>
         <source>Shuffle</source>
         <translation>Перемішати</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="101"/>
+        <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
         <translation>Гучність</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="107"/>
+        <location filename="../display.cpp" line="108"/>
         <source>Balance</source>
         <translation>Баланс</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="294"/>
+        <location filename="../display.cpp" line="295"/>
         <source>Volume: %1%</source>
         <translation>Гучність: %1%</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="298"/>
+        <location filename="../display.cpp" line="299"/>
         <source>Balance: %1% right</source>
         <translation>Баланс: %1% вправо</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="300"/>
+        <location filename="../display.cpp" line="301"/>
         <source>Balance: %1% left</source>
         <translation>Баланс: %1% вліво</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="302"/>
+        <location filename="../display.cpp" line="303"/>
         <source>Balance: center</source>
         <translation>Баланс: центр</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="312"/>
+        <location filename="../display.cpp" line="313"/>
         <source>Seek to: %1</source>
         <translation>Пошук: %1</translation>
     </message>
@@ -735,32 +740,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="314"/>
         <source>Appearance</source>
         <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Shortcuts</source>
         <translation>Комбінації клавіш</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="377"/>
         <source>View</source>
         <translation>Вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="381"/>
+        <location filename="../mainwindow.cpp" line="385"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="399"/>
+        <location filename="../mainwindow.cpp" line="403"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>Tools</source>
         <translation>Утиліти</translation>
     </message>
@@ -768,101 +773,101 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="179"/>
+        <location filename="../playlist.cpp" line="181"/>
         <source>&amp;Copy Selection To</source>
         <translation>&amp;Копіювати вибране в</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="207"/>
+        <location filename="../playlist.cpp" line="209"/>
         <source>Sort List</source>
         <translation>Сортувати</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>By Title</source>
         <translation>За назвою</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="214"/>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Album</source>
         <translation>За альбомом</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Disc Number</source>
         <translation>За номером диску</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Artist</source>
         <translation>За артистом</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Filename</source>
         <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="279"/>
         <source>By Path + Filename</source>
         <translation>За шляхом та файлом</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>By Date</source>
         <translation>За датою</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="242"/>
-        <location filename="../playlist.cpp" line="289"/>
+        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>By File Creation Date</source>
         <translation>За датою створення файлу</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="248"/>
         <source>By Group</source>
         <translation>За групою</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="256"/>
         <source>Sort Selection</source>
         <translation>Сортувати вибране</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>Randomize List</source>
         <translation>Перемішати</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="301"/>
         <source>Reverse List</source>
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="575"/>
+        <location filename="../playlist.cpp" line="577"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новий список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>By Track Number</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="54"/>
+        <location filename="../playlist.cpp" line="55"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="309"/>
+        <location filename="../playlist.cpp" line="311"/>
         <source>Actions</source>
         <translation>Дії</translation>
     </message>
