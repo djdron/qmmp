@@ -1173,11 +1173,16 @@
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="164"/>
-        <source>Playlist</source>
+        <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
+        <source>Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="176"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>

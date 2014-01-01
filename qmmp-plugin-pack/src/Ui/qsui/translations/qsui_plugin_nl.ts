@@ -1174,12 +1174,17 @@ Instellingen</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="164"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Playlist</source>
         <translation>
 Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="170"/>
+        <location filename="../qsuisettings.cpp" line="176"/>
         <source>Misc</source>
         <translation>Overig</translation>
     </message>
