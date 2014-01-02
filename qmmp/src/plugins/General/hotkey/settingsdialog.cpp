@@ -32,7 +32,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.tableWidget->verticalHeader()->hide();
     ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui.tableWidget->setRowCount (12);
+    ui.tableWidget->setRowCount (13);
     ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
     ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));
     ui.tableWidget->setItem(2,0, new QTableWidgetItem(tr("Pause")));
