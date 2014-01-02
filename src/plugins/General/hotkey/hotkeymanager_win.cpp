@@ -36,6 +36,26 @@
 #include <qmmpui/uihelper.h>
 #include "hotkeymanager.h"
 
+static struct
+{
+    unsigned int key; //virtual key
+    unsigned long code; //scan code
+} keyMap [] = {
+    { VK_LEFT,    0x14b },
+    { VK_UP,      0x148 },
+    { VK_RIGHT,   0x14d },
+    { VK_DOWN,    0x150 },
+    { VK_PRIOR,   0x149 },
+    { VK_NEXT,    0x151 },
+    { VK_END,     0x14F },
+    { VK_HOME,    0x147 },
+    { VK_INSERT,  0x152 },
+    { VK_DELETE,  0x153 },
+    { VK_DIVIDE,  0x135 },
+    { VK_NUMLOCK, 0x145 },
+{ 0, 0 }
+};
+
 quint32 Hotkey::defaultKey()
 {
     return defaultKey(action);
@@ -207,10 +227,19 @@ const QString HotkeyManager::getKeyString(quint32 key, quint32 modifiers)
             keyStr.append(strModList[j] + "+");
     }
 
-    LONG lScan = MapVirtualKey(key, 0) << 16;
-
     if(key == VK_SHIFT || key == VK_CONTROL || key == VK_LWIN || key == VK_RWIN || key == VK_MENU)
         return keyStr;
+
+    LONG lScan = MapVirtualKey(key, 0) << 16;
+
+    for(int i = 0; i < 12; ++i)
+    {
+        if(keyMap[i].key == key)
+        {
+            lScan |= 0x1000000; // set extended bit
+            break;
+        }
+    }
 
     int nBufferLen = 64;
     std::wstring str;
@@ -235,6 +264,13 @@ QList<long> HotkeyManager::ignModifiersList()
 
 quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
 {
+    //MapVirtualKey does not work with some scan codes
+    //using hardcoded key map instead
+    for(int i = 0; i < 12; ++i)
+    {
+        if(keyMap[i].code == keycode)
+            return keyMap[i].key;
+    }
     return MapVirtualKey(keycode, 1);
 }
 #endif
