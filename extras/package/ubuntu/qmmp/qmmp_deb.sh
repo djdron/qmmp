@@ -26,6 +26,16 @@ build ()
     cd ..
 }
 
+update ()
+{
+	dch -m --newversion 0.8.0-1ubuntu1~${1}0 -D ${1} -c debian-$1/changelog "New upstream release."
+}
+
+upload ()
+{
+	dput ppa:forkotov02/ppa $1/*.changes
+}
+
 clean ()
 {
     rm -rf $BUILD_ROOT
@@ -36,6 +46,12 @@ case $1 in
     --download)
 		wget http://qmmp.ylsoftware.com/files/qmmp-$QMMP_VERSION.tar.bz2
     ;;
+    --update)
+		for CODENAME in $UBUNTU_CODENAMES
+		do
+			update $CODENAME
+		done
+    ;;
     --build)
 		rm -rf $BUILD_ROOT
 		mkdir $BUILD_ROOT
@@ -43,6 +59,13 @@ case $1 in
 		for CODENAME in $UBUNTU_CODENAMES
 		do
 			build $CODENAME
+		done
+    ;;
+    --upload)
+       cd $BUILD_ROOT
+       for CODENAME in $UBUNTU_CODENAMES
+		do
+			upload $CODENAME
 		done
     ;;
     --clean)
