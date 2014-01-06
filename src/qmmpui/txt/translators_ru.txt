@@ -42,6 +42,9 @@
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
 
+Сербский:
+    Mladen Pejaković <pejakm@autistici.org>
+
 Словацкий:
     Ján Ďanovský <dagsoftware@yahoo.co>
 

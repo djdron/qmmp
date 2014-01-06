@@ -48,6 +48,9 @@ Polish:
 
 Russian:
     Ilya Kotov <forkotov02@hotmail.ru>
+    
+Serbian:
+    Mladen Pejaković <pejakm@autistici.org>
 
 Slovak:
     Ján Ďanovský <dagsoftware@yahoo.com>
@@ -62,5 +65,4 @@ Turkish:
 Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>
 
-Serbian:
-    Mladen Pejaković <pejakm@autistici.org>
+
