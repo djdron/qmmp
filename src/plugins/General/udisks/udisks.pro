@@ -23,7 +23,9 @@ TRANSLATIONS = translations/udisks_plugin_cs.ts \
                translations/udisks_plugin_lt.ts \
                translations/udisks_plugin_nl.ts \
                translations/udisks_plugin_ja.ts \
-               translations/udisks_plugin_es.ts
+               translations/udisks_plugin_es.ts \
+               translations/udisks_plugin_sr_BA.ts \
+               translations/udisks_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

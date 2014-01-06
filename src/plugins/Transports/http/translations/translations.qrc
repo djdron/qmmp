@@ -21,5 +21,7 @@
     <file>http_plugin_es.qm</file>
     <file>http_plugin_he.qm</file>
     <file>http_plugin_gl_ES.qm</file>
+    <file>http_plugin_sr_BA.qm</file>
+    <file>http_plugin_sr_RS.qm</file>
   </qresource>
 </RCC>

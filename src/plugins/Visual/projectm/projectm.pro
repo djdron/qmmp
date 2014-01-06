@@ -36,7 +36,9 @@ TRANSLATIONS = translations/projectm_plugin_cs.ts \
                translations/projectm_plugin_lt.ts \
                translations/projectm_plugin_nl.ts \
                translations/projectm_plugin_ja.ts \
-               translations/projectm_plugin_es.ts
+               translations/projectm_plugin_es.ts \
+               translations/projectm_plugin_sr_BA.ts \
+               translations/projectm_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

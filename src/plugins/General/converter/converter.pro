@@ -30,7 +30,9 @@ TRANSLATIONS = translations/converter_plugin_cs.ts \
                translations/converter_plugin_lt.ts \
                translations/converter_plugin_nl.ts \
                translations/converter_plugin_ja.ts \
-               translations/converter_plugin_es.ts
+               translations/converter_plugin_es.ts \
+               translations/converter_plugin_sr_BA.ts \
+               translations/converter_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc presets.qrc
 unix{
 isEmpty(LIB_DIR){

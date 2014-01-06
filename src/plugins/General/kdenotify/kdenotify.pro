@@ -40,7 +40,9 @@ TRANSLATIONS = translations/kdenotify_plugin_cs.ts \
                translations/kdenotify_plugin_lt.ts \
                translations/kdenotify_plugin_nl.ts \
                translations/kdenotify_plugin_ja.ts \
-               translations/kdenotify_plugin_es.ts
+               translations/kdenotify_plugin_es.ts \
+               translations/kdenotify_plugin_sr_BA.ts \
+               translations/kdenotify_plugin_sr_RS.ts
 
 images.files = images/app_icon.png \
                images/empty_cover.png

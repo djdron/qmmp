@@ -29,7 +29,9 @@ TRANSLATIONS = translations/cdaudio_plugin_ru.ts \
                translations/cdaudio_plugin_lt.ts \
                translations/cdaudio_plugin_nl.ts \
                translations/cdaudio_plugin_ja.ts \
-               translations/cdaudio_plugin_es.ts
+               translations/cdaudio_plugin_es.ts \
+               translations/cdaudio_plugin_sr_BA.ts \
+               translations/cdaudio_plugin_sr_RS.ts
  
 RESOURCES = translations/translations.qrc
 

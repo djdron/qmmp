@@ -32,7 +32,9 @@ TRANSLATIONS = translations/bs2b_plugin_cs.ts \
                translations/bs2b_plugin_lt.ts \
                translations/bs2b_plugin_nl.ts \
                translations/bs2b_plugin_ja.ts \
-               translations/bs2b_plugin_es.ts
+               translations/bs2b_plugin_es.ts \
+               translations/bs2b_plugin_sr_BA.ts \
+               translations/bs2b_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

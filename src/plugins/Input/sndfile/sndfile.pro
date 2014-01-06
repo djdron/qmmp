@@ -30,7 +30,9 @@ TRANSLATIONS = translations/sndfile_plugin_cs.ts \
                translations/sndfile_plugin_lt.ts \
                translations/sndfile_plugin_nl.ts \
                translations/sndfile_plugin_ja.ts \
-               translations/sndfile_plugin_es.ts
+               translations/sndfile_plugin_es.ts \
+               translations/sndfile_plugin_sr_BA.ts \
+               translations/sndfile_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

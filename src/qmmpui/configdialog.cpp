@@ -345,6 +345,8 @@ void ConfigDialog::loadLanguages()
     l["es"] = tr("Spanish");
     l["tr"] = tr("Turkish");
     l["uk_UA"] = tr("Ukrainian");
+    l["sr_BA"] = tr("Serbian (Ijekavian)");
+    l["sr_RS"] = tr("Serbian (Ekavian)");
 
     foreach(QString code, l.keys())
     {

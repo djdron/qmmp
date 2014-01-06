@@ -1,6 +1,6 @@
 #!/bin/sh
 
-LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he gl_ES'
+LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he gl_ES sr_BA sr_RS'
 
 echo "Locales: ${LOCALES}"
 

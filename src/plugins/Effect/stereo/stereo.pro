@@ -29,7 +29,9 @@ TRANSLATIONS = translations/stereo_plugin_cs.ts \
                translations/stereo_plugin_lt.ts \
                translations/stereo_plugin_nl.ts \
                translations/stereo_plugin_ja.ts \
-               translations/stereo_plugin_es.ts
+               translations/stereo_plugin_es.ts \
+               translations/stereo_plugin_sr_BA.ts \
+               translations/stereo_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

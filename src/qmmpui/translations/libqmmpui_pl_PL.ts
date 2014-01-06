@@ -315,6 +315,16 @@
         <translation>Ukraiński</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="348"/>
+        <source>Serbian (Ijekavian)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="349"/>
+        <source>Serbian (Ekavian)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="292"/>
         <location filename="../configdialog.cpp" line="309"/>
         <source>Genre</source>

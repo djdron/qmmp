@@ -33,7 +33,9 @@ TRANSLATIONS = translations/waveout_plugin_cs.ts \
                translations/waveout_plugin_lt.ts \
                translations/waveout_plugin_nl.ts \
                translations/waveout_plugin_ja.ts \
-               translations/waveout_plugin_es.ts
+               translations/waveout_plugin_es.ts \
+               translations/waveout_plugin_sr_BA.ts \
+               translations/waveout_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

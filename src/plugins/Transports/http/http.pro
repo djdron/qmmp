@@ -51,6 +51,8 @@ TRANSLATIONS = translations/http_plugin_ru.ts \
     translations/http_plugin_lt.ts \
     translations/http_plugin_nl.ts \
     translations/http_plugin_ja.ts \
-    translations/http_plugin_es.ts
+    translations/http_plugin_es.ts \
+    translations/http_plugin_sr_BA.ts \
+    translations/http_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc

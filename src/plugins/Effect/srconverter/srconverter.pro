@@ -32,7 +32,9 @@ TRANSLATIONS = translations/srconverter_plugin_cs.ts \
                translations/srconverter_plugin_lt.ts \
                translations/srconverter_plugin_nl.ts \
                translations/srconverter_plugin_ja.ts \
-               translations/srconverter_plugin_es.ts
+               translations/srconverter_plugin_es.ts \
+               translations/srconverter_plugin_sr_BA.ts \
+               translations/srconverter_plugin_sr_RS.ts
                
 RESOURCES = translations/translations.qrc
 

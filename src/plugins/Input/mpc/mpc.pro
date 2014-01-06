@@ -27,7 +27,9 @@ TRANSLATIONS = translations/mpc_plugin_ru.ts \
     translations/mpc_plugin_lt.ts \
     translations/mpc_plugin_nl.ts \
     translations/mpc_plugin_ja.ts \
-    translations/mpc_plugin_es.ts
+    translations/mpc_plugin_es.ts \
+    translations/mpc_plugin_sr_BA.ts \
+    translations/mpc_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 unix {

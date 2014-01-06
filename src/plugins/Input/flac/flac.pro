@@ -32,7 +32,9 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
     translations/flac_plugin_lt.ts \
     translations/flac_plugin_nl.ts \
     translations/flac_plugin_ja.ts \
-    translations/flac_plugin_es.ts
+    translations/flac_plugin_es.ts \
+    translations/flac_plugin_sr_BA.ts \
+    translations/flac_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

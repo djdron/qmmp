@@ -30,7 +30,9 @@ TRANSLATIONS = translations/vorbis_plugin_ru.ts \
     translations/vorbis_plugin_lt.ts \
     translations/vorbis_plugin_nl.ts \
     translations/vorbis_plugin_ja.ts \
-    translations/vorbis_plugin_es.ts
+    translations/vorbis_plugin_es.ts \
+    translations/vorbis_plugin_sr_BA.ts \
+    translations/vorbis_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

@@ -30,7 +30,9 @@ TRANSLATIONS = translations/rgscan_plugin_cs.ts \
                translations/rgscan_plugin_lt.ts \
                translations/rgscan_plugin_nl.ts \
                translations/rgscan_plugin_ja.ts \
-               translations/rgscan_plugin_es.ts
+               translations/rgscan_plugin_es.ts \
+               translations/rgscan_plugin_sr_BA.ts \
+               translations/rgscan_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){
