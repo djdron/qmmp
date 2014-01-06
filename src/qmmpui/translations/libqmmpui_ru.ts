@@ -317,12 +317,12 @@
     <message>
         <location filename="../configdialog.cpp" line="348"/>
         <source>Serbian (Ijekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Сербский (иекавский)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="349"/>
         <source>Serbian (Ekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Сербский (экавский)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="292"/>
