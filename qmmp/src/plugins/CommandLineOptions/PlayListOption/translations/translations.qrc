@@ -21,5 +21,7 @@
     <file>playlist_plugin_es.qm</file>
     <file>playlist_plugin_he.qm</file>
     <file>playlist_plugin_gl_ES.qm</file>
+    <file>playlist_plugin_sr_BA.qm</file>
+    <file>playlist_plugin_sr_RS.qm</file>
   </qresource>
 </RCC>

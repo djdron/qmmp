@@ -113,7 +113,9 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_nl.ts \
     translations/libqmmpui_ja.ts \
     translations/libqmmpui_es.ts \
-    translations/libqmmpui_sk.ts
+    translations/libqmmpui_sk.ts \
+    translations/libqmmpui_sr_BA.ts \
+    translations/libqmmpui_sr_RS.ts
 unix {
     devel.files += commandlinemanager.h \
                    commandlineoption.h \

@@ -35,7 +35,9 @@ TRANSLATIONS = translations/alsa_plugin_ru.ts \
                translations/alsa_plugin_lt.ts \
                translations/alsa_plugin_nl.ts \
                translations/alsa_plugin_ja.ts \
-               translations/alsa_plugin_es.ts
+               translations/alsa_plugin_es.ts \
+               translations/alsa_plugin_sr_BA.ts \
+               translations/alsa_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

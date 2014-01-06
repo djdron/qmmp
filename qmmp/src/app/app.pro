@@ -76,6 +76,8 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_nl.ts \
     translations/qmmp_ja.ts \
     translations/qmmp_es.ts \
-    translations/qmmp_sk.ts
+    translations/qmmp_sk.ts \
+    translations/qmmp_sr_BA.ts \
+    translations/qmmp_sr_RS.ts
 
 

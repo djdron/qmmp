@@ -32,7 +32,9 @@ TRANSLATIONS = translations/wavpack_plugin_cs.ts \
     translations/wavpack_plugin_lt.ts \
     translations/wavpack_plugin_nl.ts \
     translations/wavpack_plugin_ja.ts \
-    translations/wavpack_plugin_es.ts
+    translations/wavpack_plugin_es.ts \
+    translations/wavpack_plugin_sr_BA.ts \
+    translations/wavpack_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

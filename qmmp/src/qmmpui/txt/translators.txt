@@ -61,3 +61,6 @@ Turkish:
 
 Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>
+
+Serbian:
+    Mladen Pejaković <pejakm@autistici.org>

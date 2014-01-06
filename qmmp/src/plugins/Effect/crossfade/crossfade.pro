@@ -30,7 +30,9 @@ TRANSLATIONS = translations/crossfade_plugin_cs.ts \
                translations/crossfade_plugin_lt.ts \
                translations/crossfade_plugin_nl.ts \
                translations/crossfade_plugin_ja.ts \
-               translations/crossfade_plugin_es.ts
+               translations/crossfade_plugin_es.ts \
+               translations/crossfade_plugin_sr_BA.ts \
+               translations/crossfade_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

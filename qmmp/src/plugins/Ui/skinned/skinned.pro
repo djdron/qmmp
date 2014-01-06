@@ -151,4 +151,6 @@ TRANSLATIONS = translations/skinned_plugin_ru.ts \
     translations/skinned_plugin_nl.ts \
     translations/skinned_plugin_ja.ts \
     translations/skinned_plugin_es.ts \
-    translations/skinned_plugin_sk.ts
+    translations/skinned_plugin_sk.ts \
+    translations/skinned_plugin_sr_BA.ts \
+    translations/skinned_plugin_sr_RS.ts

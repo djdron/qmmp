@@ -22,7 +22,9 @@ TRANSLATIONS = translations/status_plugin_cs.ts \
                translations/status_plugin_lt.ts \
                translations/status_plugin_nl.ts \
                translations/status_plugin_ja.ts \
-               translations/status_plugin_es.ts
+               translations/status_plugin_es.ts \
+               translations/status_plugin_sr_BA.ts \
+               translations/status_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

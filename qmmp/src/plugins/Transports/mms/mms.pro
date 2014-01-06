@@ -41,7 +41,9 @@ TRANSLATIONS = translations/mms_plugin_ru.ts \
     translations/mms_plugin_lt.ts \
     translations/mms_plugin_nl.ts \
     translations/mms_plugin_ja.ts \
-    translations/mms_plugin_es.ts
+    translations/mms_plugin_es.ts \
+    translations/mms_plugin_sr_BA.ts \
+    translations/mms_plugin_sr_RS.ts
 
 
 RESOURCES = translations/translations.qrc

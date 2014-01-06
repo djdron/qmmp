@@ -22,7 +22,9 @@ TRANSLATIONS = translations/seek_plugin_cs.ts \
                translations/seek_plugin_lt.ts \
                translations/seek_plugin_nl.ts \
                translations/seek_plugin_ja.ts \
-               translations/seek_plugin_es.ts
+               translations/seek_plugin_es.ts \
+               translations/seek_plugin_sr_BA.ts \
+               translations/seek_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

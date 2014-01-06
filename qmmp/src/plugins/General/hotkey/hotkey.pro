@@ -24,7 +24,9 @@ TRANSLATIONS = translations/hotkey_plugin_cs.ts \
                translations/hotkey_plugin_lt.ts \
                translations/hotkey_plugin_nl.ts \
                translations/hotkey_plugin_ja.ts \
-               translations/hotkey_plugin_es.ts
+               translations/hotkey_plugin_es.ts \
+               translations/hotkey_plugin_sr_BA.ts \
+               translations/hotkey_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 target.path = $$LIB_DIR/qmmp/General

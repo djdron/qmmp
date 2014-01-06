@@ -24,7 +24,9 @@ TRANSLATIONS = translations/gme_plugin_it.ts \
                translations/gme_plugin_tr.ts \
                translations/gme_plugin_lt.ts \
                translations/gme_plugin_nl.ts \
-               translations/gme_plugin_ja.ts
+               translations/gme_plugin_ja.ts \
+               translations/gme_plugin_sr_BA.ts \
+               translations/gme_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

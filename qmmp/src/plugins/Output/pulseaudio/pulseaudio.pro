@@ -35,7 +35,9 @@ TRANSLATIONS = translations/pulseaudio_plugin_cs.ts \
                translations/pulseaudio_plugin_lt.ts \
                translations/pulseaudio_plugin_nl.ts \
                translations/pulseaudio_plugin_ja.ts \
-               translations/pulseaudio_plugin_es.ts
+               translations/pulseaudio_plugin_es.ts \
+               translations/pulseaudio_plugin_sr_BA.ts \
+               translations/pulseaudio_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

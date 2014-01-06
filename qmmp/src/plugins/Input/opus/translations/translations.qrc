@@ -21,5 +21,7 @@
     <file>opus_plugin_es.qm</file>
     <file>opus_plugin_he.qm</file>
     <file>opus_plugin_gl_ES.qm</file>
+    <file>opus_plugin_sr_BA.qm</file>
+    <file>opus_plugin_sr_RS.qm</file>
   </qresource>
 </RCC>

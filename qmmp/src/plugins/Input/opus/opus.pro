@@ -36,7 +36,9 @@ TRANSLATIONS = translations/opus_plugin_ru.ts \
     translations/opus_plugin_lt.ts \
     translations/opus_plugin_nl.ts \
     translations/opus_plugin_ja.ts \
-    translations/opus_plugin_es.ts
+    translations/opus_plugin_es.ts \
+    translations/opus_plugin_sr_BA.ts \
+    translations/opus_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

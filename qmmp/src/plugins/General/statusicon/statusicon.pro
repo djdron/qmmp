@@ -28,7 +28,9 @@ TRANSLATIONS = translations/statusicon_plugin_cs.ts \
     translations/statusicon_plugin_lt.ts \
     translations/statusicon_plugin_nl.ts \
     translations/statusicon_plugin_ja.ts \
-    translations/statusicon_plugin_es.ts
+    translations/statusicon_plugin_es.ts \
+    translations/statusicon_plugin_sr_BA.ts \
+    translations/statusicon_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 unix { 

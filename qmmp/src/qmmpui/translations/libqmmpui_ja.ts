@@ -612,6 +612,16 @@
         <source>Ukrainian</source>
         <translation>ウクライナ語</translation>
     </message>
+    <message>
+        <location filename="../configdialog.cpp" line="348"/>
+        <source>Serbian (Ijekavian)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="349"/>
+        <source>Serbian (Ekavian)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DetailsDialog</name>

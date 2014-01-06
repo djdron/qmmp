@@ -27,7 +27,9 @@ TRANSLATIONS = translations/streambrowser_plugin_cs.ts \
                translations/streambrowser_plugin_lt.ts \
                translations/streambrowser_plugin_nl.ts \
                translations/streambrowser_plugin_ja.ts \
-               translations/streambrowser_plugin_es.ts
+               translations/streambrowser_plugin_es.ts \
+               translations/streambrowser_plugin_sr_BA.ts \
+               translations/streambrowser_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){

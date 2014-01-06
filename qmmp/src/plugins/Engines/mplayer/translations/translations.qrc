@@ -21,5 +21,7 @@
     <file>mplayer_plugin_es.qm</file>
     <file>mplayer_plugin_he.qm</file>
     <file>mplayer_plugin_gl_ES.qm</file>
+    <file>mplayer_plugin_sr_BA.qm</file>
+    <file>mplayer_plugin_sr_RS.qm</file>
   </qresource>
 </RCC>

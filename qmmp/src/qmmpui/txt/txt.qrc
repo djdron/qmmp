@@ -73,5 +73,15 @@
     <file>translators_he.txt</file>
     <file>description_he.txt</file>
 
+    <file>authors_sr_BA.txt</file>
+    <file>thanks_sr_BA.txt</file>
+    <file>translators_sr_BA.txt</file>
+    <file>description_sr_BA.txt</file>
+
+    <file>authors_sr_RS.txt</file>
+    <file>thanks_sr_RS.txt</file>
+    <file>translators_sr_RS.txt</file>
+    <file>description_sr_RS.txt</file>
+
   </qresource>
 </RCC>
