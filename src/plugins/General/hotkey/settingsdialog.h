@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@
 #include "ui_settingsdialog.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
@@ -45,7 +45,7 @@ private slots:
     void on_resetButton_clicked();
 
 private:
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
     QList <Hotkey*> m_hotkeys;
 };
 
