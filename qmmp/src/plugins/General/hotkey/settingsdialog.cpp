@@ -28,25 +28,25 @@
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
-    ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
-    ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
-    ui.tableWidget->verticalHeader()->hide();
-    ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui.tableWidget->setRowCount (13);
-    ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
-    ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));
-    ui.tableWidget->setItem(2,0, new QTableWidgetItem(tr("Pause")));
-    ui.tableWidget->setItem(3,0, new QTableWidgetItem(tr("Play/Pause")));
-    ui.tableWidget->setItem(4,0, new QTableWidgetItem(tr("Next")));
-    ui.tableWidget->setItem(5,0, new QTableWidgetItem(tr("Previous")));
-    ui.tableWidget->setItem(6,0, new QTableWidgetItem(tr("Show/Hide")));
-    ui.tableWidget->setItem(7,0, new QTableWidgetItem(tr("Volume +")));
-    ui.tableWidget->setItem(8,0, new QTableWidgetItem(tr("Volume -")));
-    ui.tableWidget->setItem(9,0, new QTableWidgetItem(tr("Forward 5 seconds")));
-    ui.tableWidget->setItem(10,0, new QTableWidgetItem(tr("Rewind 5 seconds")));
-    ui.tableWidget->setItem(11,0, new QTableWidgetItem(tr("Jump to track")));
-    ui.tableWidget->setItem(12,0, new QTableWidgetItem(tr("Mute")));
+    m_ui.setupUi(this);
+    m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
+    m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    m_ui.tableWidget->verticalHeader()->hide();
+    m_ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    m_ui.tableWidget->setRowCount (13);
+    m_ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
+    m_ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));
+    m_ui.tableWidget->setItem(2,0, new QTableWidgetItem(tr("Pause")));
+    m_ui.tableWidget->setItem(3,0, new QTableWidgetItem(tr("Play/Pause")));
+    m_ui.tableWidget->setItem(4,0, new QTableWidgetItem(tr("Next")));
+    m_ui.tableWidget->setItem(5,0, new QTableWidgetItem(tr("Previous")));
+    m_ui.tableWidget->setItem(6,0, new QTableWidgetItem(tr("Show/Hide")));
+    m_ui.tableWidget->setItem(7,0, new QTableWidgetItem(tr("Volume +")));
+    m_ui.tableWidget->setItem(8,0, new QTableWidgetItem(tr("Volume -")));
+    m_ui.tableWidget->setItem(9,0, new QTableWidgetItem(tr("Forward 5 seconds")));
+    m_ui.tableWidget->setItem(10,0, new QTableWidgetItem(tr("Rewind 5 seconds")));
+    m_ui.tableWidget->setItem(11,0, new QTableWidgetItem(tr("Jump to track")));
+    m_ui.tableWidget->setItem(12,0, new QTableWidgetItem(tr("Mute")));
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Hotkey");
@@ -56,7 +56,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         hotkey->action = i;
         hotkey->key = settings.value(QString("key_%1").arg(i), hotkey->defaultKey()).toUInt();
         hotkey->mod = settings.value(QString("modifiers_%1").arg(i), 0).toUInt();
-        ui.tableWidget->setItem(j,1, new QTableWidgetItem(HotkeyManager::getKeyString(hotkey->key,
+        m_ui.tableWidget->setItem(j,1, new QTableWidgetItem(HotkeyManager::getKeyString(hotkey->key,
                                                                                       hotkey->mod), i));
         m_hotkeys << hotkey;
     }
@@ -100,7 +100,7 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
             dialog->exec() == QDialog::Accepted)
     {
         QString keyString = HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ());
-        if(ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
+        if(m_ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
         {
             item->setText(keyString);
             k->key = dialog->keySym ();
@@ -118,6 +118,6 @@ void SettingsDialog::on_resetButton_clicked ()
     {
         m_hotkeys[i]->key = m_hotkeys[i]->defaultKey();
         m_hotkeys[i]->mod = 0;
-        ui.tableWidget->item(i, 1)->setText(HotkeyManager::getKeyString(m_hotkeys[i]->key, m_hotkeys[i]->mod));
+        m_ui.tableWidget->item(i, 1)->setText(HotkeyManager::getKeyString(m_hotkeys[i]->key, m_hotkeys[i]->mod));
     }
 }
