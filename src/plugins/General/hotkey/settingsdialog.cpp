@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 
 #include <QSettings>
 #include <QHeaderView>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "hotkeydialog.h"
 #include "settingsdialog.h"
@@ -98,9 +99,15 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
     if (item->type() >= QTableWidgetItem::UserType &&
             dialog->exec() == QDialog::Accepted)
     {
-        item->setText(HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ()));
-        k->key = dialog->keySym ();
-        k->mod = dialog->nativeModifiers ();
+        QString keyString = HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ());
+        if(ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
+        {
+            item->setText(keyString);
+            k->key = dialog->keySym ();
+            k->mod = dialog->nativeModifiers ();
+        }
+        else
+            QMessageBox::warning(this, tr("Warning"), tr("Key sequence '%1' is already used").arg(keyString));
     }
     delete dialog;
 }
