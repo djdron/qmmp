@@ -1,0 +1,69 @@
+diff --git a/doc/doc.pri b/doc/doc.pri
+index ea2fb2e..67c154b 100644
+--- a/doc/doc.pri
++++ b/doc/doc.pri
+@@ -37,9 +37,43 @@ $$unixstyle {
+ }
+ ADP_DOCS_QDOCCONF_FILE = qt-build-docs-online.qdocconf
+ DITA_DOCS_QDOCCONF_FILE = qt-ditaxml.qdocconf
+-QT_DOCUMENTATION = ($$QDOC qt-api-only.qdocconf assistant.qdocconf designer.qdocconf \
+-                    linguist.qdocconf qmake.qdocconf qdeclarative.qdocconf) && \
++#QT_DOCUMENTATION = ($$QDOC qt-api-only.qdocconf assistant.qdocconf designer.qdocconf \
++#                    linguist.qdocconf qmake.qdocconf qdeclarative.qdocconf) && \
++#               (cd $$QT_BUILD_TREE && \
++#                    $$QMAKE_COPY_DIR $$COPYWEBKITGUIDE $$COPYWEBKITTARGA && \
++#                    $$QMAKE_COPY $$EXAMPLESMANIFEST $$EXAMPLESMANIFESTTARGET && \
++#                    $$QMAKE_COPY $$DEMOSMANIFEST $$DEMOSMANIFESTTARGET && \
++#                    $$GENERATOR doc-build/html-qt/qt.qhp -o doc/qch/qt.qch && \
++#                    $$GENERATOR doc-build/html-assistant/assistant.qhp -o doc/qch/assistant.qch && \
++#                    $$GENERATOR doc-build/html-designer/designer.qhp -o doc/qch/designer.qch && \
++#                    $$GENERATOR doc-build/html-linguist/linguist.qhp -o doc/qch/linguist.qch && \
++#                    $$GENERATOR doc-build/html-qmake/qmake.qhp -o doc/qch/qmake.qch && \
++#                    $$GENERATOR doc-build/html-qml/qml.qhp -o doc/qch/qml.qch \
++#               )
++
++QT_ZH_CN_DOCUMENTATION = ($$QDOC qt-api-only_zh_CN.qdocconf) && \
++               (cd $$QT_BUILD_TREE && \
++                    $$GENERATOR doc-build/html-qt_zh_CN/qt.qhp -o doc/qch/qt_zh_CN.qch \
++               )
++
++QT_JA_JP_DOCUMENTATION = ($$QDOC qt-api-only_ja_JP.qdocconf) && \
+                (cd $$QT_BUILD_TREE && \
++                    $$GENERATOR doc-build/html-qt_ja_JP/qt.qhp -o doc/qch/qt_ja_JP.qch \
++               )
++
++win32-g++*:isEmpty(QMAKE_SH) {
++        #QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "/", "\\")
++        #QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "xcopy \\s \\q \\y \\i", "xcopy /s /q /y /i")
++        #QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "\\\\q", "/q")
++        #QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "\\\\y", "/y")
++        #QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "\\\\i", "/i")
++
++
++
++
++        QT_DOCUMENTATION = ($$QDOC qt-api-only.qdocconf assistant.qdocconf designer.qdocconf \
++                    linguist.qdocconf qmake.qdocconf qdeclarative.qdocconf) && \
++               (cd $$replace(QT_BUILD_TREE, "/", "\\") && \
+                     $$QMAKE_COPY_DIR $$COPYWEBKITGUIDE $$COPYWEBKITTARGA && \
+                     $$QMAKE_COPY $$EXAMPLESMANIFEST $$EXAMPLESMANIFESTTARGET && \
+                     $$QMAKE_COPY $$DEMOSMANIFEST $$DEMOSMANIFESTTARGET && \
+@@ -51,18 +85,7 @@ QT_DOCUMENTATION = ($$QDOC qt-api-only.qdocconf assistant.qdocconf designer.qdoc
+                     $$GENERATOR doc-build/html-qml/qml.qhp -o doc/qch/qml.qch \
+                )
+ 
+-QT_ZH_CN_DOCUMENTATION = ($$QDOC qt-api-only_zh_CN.qdocconf) && \
+-               (cd $$QT_BUILD_TREE && \
+-                    $$GENERATOR doc-build/html-qt_zh_CN/qt.qhp -o doc/qch/qt_zh_CN.qch \
+-               )
+ 
+-QT_JA_JP_DOCUMENTATION = ($$QDOC qt-api-only_ja_JP.qdocconf) && \
+-               (cd $$QT_BUILD_TREE && \
+-                    $$GENERATOR doc-build/html-qt_ja_JP/qt.qhp -o doc/qch/qt_ja_JP.qch \
+-               )
+-
+-win32-g++*:isEmpty(QMAKE_SH) {
+-	QT_DOCUMENTATION = $$replace(QT_DOCUMENTATION, "/", "\\\\")
+ 	QT_ZH_CN_DOCUMENTATION = $$replace(QT_ZH_CN_DOCUMENTATION, "/", "\\\\")
+ 	QT_JA_JP_DOCUMENTATION = $$replace(QT_JA_JP_DOCUMENTATION, "/", "\\\\")
+ }
