@@ -1,0 +1,29 @@
+diff --git a/src/gui/kernel/qkeymapper_win.cpp b/src/gui/kernel/qkeymapper_win.cpp
+index 159c47d..eab19db 100644
+--- a/src/gui/kernel/qkeymapper_win.cpp
++++ b/src/gui/kernel/qkeymapper_win.cpp
+@@ -774,6 +774,8 @@ QList<int> QKeyMapperPrivate::possibleKeys(QKeyEvent *e)
+ {
+     QList<int> result;
+ 
++    if(e->nativeVirtualKey() > 255)
++        return result;
+     KeyboardLayoutItem *kbItem = keyLayout[e->nativeVirtualKey()];
+     if(!kbItem)
+         return result;
+@@ -803,9 +805,12 @@ bool QKeyMapperPrivate::translateKeyEvent(QWidget *widget, const MSG &msg, bool
+     bool k0 = false;
+     bool k1 = false;
+     int  msgType = msg.message;
+-    // Add this key to the keymap if it is not present yet.
+-    updateKeyMap(msg);
+-
++    // WM_CHAR messages already contain the character in question so there is
++    // no need to fiddle with our key map. In any other case add this key to the
++    // keymap if it is not present yet.
++    if (msgType != WM_CHAR)
++        updateKeyMap(msg); 
++   
+     const quint32 scancode = (msg.lParam >> 16) & scancodeBitmask;
+     const quint32 vk_key = msg.wParam;
+ 
