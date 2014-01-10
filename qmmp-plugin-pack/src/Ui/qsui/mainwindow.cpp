@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -137,6 +137,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(volumeChanged(int)), m_volumeSlider, SLOT(setValue(int)));
     connect(m_core, SIGNAL(volumeChanged(int)), SLOT(updateVolumeIcon()));
     connect(m_core, SIGNAL(mutedChanged(bool)), SLOT(updateVolumeIcon()));
+    connect(m_core, SIGNAL(mutedChanged(bool)), m_volumeAction, SLOT(setChecked(bool)));
     m_volumeSlider->setValue(m_core->volume());
     updateVolumeIcon();
     //visualization
