@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -179,7 +179,16 @@ QPixmap MetaDataManager::getCover(const QString &url)
     {
         QString p = getCoverPath(url);
         if(!p.isEmpty())
-            return QPixmap(p);
+        {
+            if(m_cached_path == p)
+                return m_cached_cover;
+            QPixmap pix(p);
+            if(pix.width() > 1024 || pix.height() > 1024)
+                pix = pix.scaled(1024, 1024, Qt::KeepAspectRatio);
+            m_cached_path = p;
+            m_cached_cover = pix;
+            return pix;
+        }
     }
     MetaDataModel *model = createMetaDataModel(url);
     if(model)
@@ -208,11 +217,11 @@ QString MetaDataManager::getCoverPath(const QString &url)
     else //local file
     {
         QString p = QFileInfo(url).absolutePath();
-        if(m_cover_cache.keys().contains(p))
-            return m_cover_cache.value(p);
+        if(m_cover_path_cache.keys().contains(p))
+            return m_cover_path_cache.value(p);
         QFileInfoList l = findCoverFiles(p, m_settings->coverSearchDepth());
         QString cover_path = l.isEmpty() ? QString() : l.at(0).filePath();
-        m_cover_cache.insert (p, cover_path);
+        m_cover_path_cache.insert (p, cover_path);
         return cover_path;
     }
     return QString();
@@ -249,7 +258,7 @@ QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
 
 void MetaDataManager::clearCoverChache()
 {
-    m_cover_cache.clear();
+    m_cover_path_cache.clear();
 }
 
 void MetaDataManager::prepareForAnotherThread()
