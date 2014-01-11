@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -109,9 +109,12 @@ public:
 
 private:
     QFileInfoList findCoverFiles(QDir dir, int depth) const;
-    QMap <QString, QString> m_cover_cache;
+    QMap <QString, QString> m_cover_path_cache;
+    QPixmap m_cached_cover;
+    QString m_cached_path;
     QmmpSettings *m_settings;
     mutable QMutex m_mutex;
+
     static MetaDataManager* m_instance;
 };
 
