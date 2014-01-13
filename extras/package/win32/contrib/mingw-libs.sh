@@ -1,25 +1,33 @@
 #!/bin/sh
 
-export PREFIX=/usr 
+export PREFIX=C:/devel/mingw32-libs
 
-./test.sh
-
+LIB_NAMES='taglib'
 
 case $1 in
-    --download)
-                mkdir -p temp
-                cd temp
-		wget http://taglib.github.io/releases/taglib-1.9.1.tar.gz
-    ;;
-    --build)
-                cd temp
-                tar xvzf taglib-1.9.1.tar.gz
-                cd taglib-1.9.1
-                cmake ./ -DCMAKE_INSTALL_PREFIX=C:/devel/mingw32-libs -G "MSYS Makefiles"
-                mingw32-make -j3
-                mingw32-make install
-    ;;
-        *)
-		echo "Commands:"
-		echo "--download"
+  --download | --install | --clean)
+    for NAME in $LIB_NAMES
+    do
+        cd $NAME
+        if [ "$1" = "--install" ];  then
+          sh ./$NAME.sh --clean
+        fi
+        sh ./$NAME.sh $1
+    cd ..
+    done
+  ;;
+  --clean-src)
+    for NAME in $LIB_NAMES
+    do
+        cd $NAME
+        rm -rf temp
+        cd ..
+    done
+  ;;
+  *)
+    echo "Commands:"
+    echo "--download"
+    echo "--install"
+    echo "--clean"
+    echo "--clean-src"
 esac
