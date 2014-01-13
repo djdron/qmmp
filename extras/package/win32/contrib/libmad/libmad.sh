@@ -14,6 +14,7 @@ case $1 in
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
     cat ../../libmad-01-force-mem.patch | patch -p0 --verbose
+    cat ../../libmad-0.15.1b-autotool-lt-init.diff -p1 --verbose
     ./configure --prefix=$PREFIX
     mingw32-make -j3
     mingw32-make install
