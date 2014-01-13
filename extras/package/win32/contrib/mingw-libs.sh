@@ -1,8 +1,10 @@
 #!/bin/sh
 
-export PREFIX=C:/devel/mingw32-libs
+export PREFIX=D:/devel/mingw32-libs
 
-LIB_NAMES='taglib libmad'
+#LIB_NAMES='taglib libmad'
+LIB_NAMES='autoconf'
+#LIB_NAMES='m4'
 
 case $1 in
   --download | --install | --clean)

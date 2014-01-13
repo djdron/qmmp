@@ -1,0 +1,11 @@
+--- autoconf-2.67/lib/autoconf/status.m4.orig	2010-07-20 15:02:36.000000000 +0000
++++ autoconf-2.67/lib/autoconf/status.m4	2013-08-04 18:10:16.513683200 +0000
+@@ -364,7 +364,7 @@
+ fi
+ ac_cs_awk_cr=`$AWK 'BEGIN { print "a\rb" }' </dev/null 2>/dev/null`
+ if test "$ac_cs_awk_cr" = "a${ac_cr}b"; then
+-  ac_cs_awk_cr='\\r'
++  ac_cs_awk_cr='\r'
+ else
+   ac_cs_awk_cr=$ac_cr
+ fi

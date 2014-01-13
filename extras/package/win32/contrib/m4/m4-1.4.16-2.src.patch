@@ -1,0 +1,50 @@
+--- origsrc/m4-1.4.16/src/freeze.c	2011-02-26 23:42:45 +0000
++++ src/m4-1.4.16/src/freeze.c	2013-02-22 21:17:30 +0000
+@@ -242,6 +242,17 @@ reload_frozen_state (const char *name)
+         }                                                       \
+     }                                                           \
+   while (character == '\n')
++#ifdef __MSYS__
++# define SKIP_CARRIAGE_RETURNS                                 \
++  do                                                           \
++    {                                                          \
++      while (character == '\r')                                \
++       GET_CHARACTER;                                          \
++    }                                                          \
++  while (0)
++#else /* ! __MSYS__ */
++# define SKIP_CARRIAGE_RETURNS do { } while (0)
++#endif /* ! __MSYS__ */
+ 
+ #define GET_STRING(i)                                                   \
+   do                                                                    \
+@@ -290,6 +301,7 @@ reload_frozen_state (const char *name)
+   else if (number[0] < 1)
+     M4ERROR ((EXIT_FAILURE, 0,
+               "ill-formed frozen file, version directive expected"));
++  SKIP_CARRIAGE_RETURNS;
+   VALIDATE ('\n');
+ 
+   GET_DIRECTIVE;
+@@ -321,12 +333,14 @@ reload_frozen_state (const char *name)
+           VALIDATE (',');
+           GET_CHARACTER;
+           GET_NUMBER (number[1], false);
++	  SKIP_CARRIAGE_RETURNS;
+           VALIDATE ('\n');
+ 
+           if (operation != 'D')
+             GET_STRING (0);
+           GET_STRING (1);
+           GET_CHARACTER;
++	  SKIP_CARRIAGE_RETURNS;
+           VALIDATE ('\n');
+ 
+           /* Act according to operation letter.  */
+@@ -394,5 +408,6 @@ reload_frozen_state (const char *name)
+ #undef GET_DIRECTIVE
+ #undef GET_NUMBER
+ #undef VALIDATE
++#undef SKIP_CARRIAGE_RETURNS
+ #undef GET_STRING
+ }

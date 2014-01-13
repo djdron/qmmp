@@ -1,0 +1,18 @@
+--- autoconf-2.69/lib/m4sugar/m4sh.m4.orig	2013-07-16 18:07:52.374599000 +0000
++++ autoconf-2.69/lib/m4sugar/m4sh.m4	2013-07-16 18:08:37.830371200 +0000
+@@ -1232,10 +1232,13 @@
+   if ln -s conf$$.file conf$$ 2>/dev/null; then
+     as_ln_s='ln -s'
+     # ... but there are two gotchas:
+-    # 1) On MSYS, both `ln -s file dir' and `ln file dir' fail.
++    # 1) On MSYS2, both `ln -s file dir' and `ln file dir' fail.
++    #    This is ignored, since MSYS=winsymlinks:nativestrict is close
++    #    enough to POSIX compliance for most uses, and if it fails,
++    #    it'll throw an error and not go unnoticed.
+     # 2) DJGPP < 2.04 has no symlinks; `ln -s' creates a wrapper executable.
+     # In both cases, we have to default to `cp -pR'.
+-    ln -s conf$$.file conf$$.dir 2>/dev/null && test ! -f conf$$.exe ||
++    test ! -f conf$$.exe ||
+       as_ln_s='cp -pR'
+   elif ln conf$$.file conf$$ 2>/dev/null; then
+     as_ln_s=ln

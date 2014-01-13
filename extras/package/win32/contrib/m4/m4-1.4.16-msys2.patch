@@ -1,0 +1,210 @@
+diff -Naur m4-1.4.16-orig/build-aux/compile m4-1.4.16/build-aux/compile
+--- m4-1.4.16-orig/build-aux/compile	2011-02-27 00:10:08.000000000 +0000
++++ m4-1.4.16/build-aux/compile	2013-06-10 06:33:33.690429700 +0000
+@@ -54,7 +54,7 @@
+ 	  MINGW*)
+ 	    file_conv=mingw
+ 	    ;;
+-	  CYGWIN*)
++	  CYGWIN*|MSYS*)
+ 	    file_conv=cygwin
+ 	    ;;
+ 	  *)
+@@ -68,7 +68,7 @@
+ 	mingw/*)
+ 	  file=`cmd //C echo "$file " | sed -e 's/"\(.*\) " *$/\1/'`
+ 	  ;;
+-	cygwin/*)
++	cygwin/*|msys/*)
+ 	  file=`cygpath -m "$file" || echo "$file"`
+ 	  ;;
+ 	wine/*)
+diff -Naur m4-1.4.16-orig/build-aux/config.guess m4-1.4.16/build-aux/config.guess
+--- m4-1.4.16-orig/build-aux/config.guess	2011-02-27 00:10:08.000000000 +0000
++++ m4-1.4.16/build-aux/config.guess	2013-06-10 06:34:18.346679700 +0000
+@@ -804,6 +804,9 @@
+     i*:CYGWIN*:*)
+ 	echo ${UNAME_MACHINE}-pc-cygwin
+ 	exit ;;
++    i*:MSYS*:*)
++	echo ${UNAME_MACHINE}-pc-msys
++	exit ;;
+     *:MINGW*:*)
+ 	echo ${UNAME_MACHINE}-pc-mingw32
+ 	exit ;;
+@@ -844,6 +847,9 @@
+     amd64:CYGWIN*:*:* | x86_64:CYGWIN*:*:*)
+ 	echo x86_64-unknown-cygwin
+ 	exit ;;
++    amd64:MSYS*:*:* | x86_64:MSYS*:*:*)
++	echo x86_64-unknown-msys
++	exit ;;
+     p*:CYGWIN*:*)
+ 	echo powerpcle-unknown-cygwin
+ 	exit ;;
+diff -Naur m4-1.4.16-orig/build-aux/config.rpath m4-1.4.16/build-aux/config.rpath
+--- m4-1.4.16-orig/build-aux/config.rpath	2011-03-01 16:39:26.000000000 +0000
++++ m4-1.4.16/build-aux/config.rpath	2013-06-10 06:35:11.159179700 +0000
+@@ -57,7 +57,7 @@
+     aix*)
+       wl='-Wl,'
+       ;;
+-    mingw* | cygwin* | pw32* | os2* | cegcc*)
++    mingw* | cygwin* | msys* | pw32* | os2* | cegcc*)
+       ;;
+     hpux9* | hpux10* | hpux11*)
+       wl='-Wl,'
+@@ -149,7 +149,7 @@
+ hardcode_minus_L=no
+ 
+ case "$host_os" in
+-  cygwin* | mingw* | pw32* | cegcc*)
++  cygwin* | msys* | mingw* | pw32* | cegcc*)
+     # FIXME: the MSVC++ port hasn't been tested in a loooong time
+     # When not using gcc, we currently assume that we are using
+     # Microsoft Visual C++.
+@@ -198,7 +198,7 @@
+         ld_shlibs=no
+       fi
+       ;;
+-    cygwin* | mingw* | pw32* | cegcc*)
++    cygwin* | msys* | mingw* | pw32* | cegcc*)
+       # hardcode_libdir_flag_spec is actually meaningless, as there is
+       # no search path for DLLs.
+       hardcode_libdir_flag_spec='-L$libdir'
+@@ -348,7 +348,7 @@
+       ;;
+     bsdi[45]*)
+       ;;
+-    cygwin* | mingw* | pw32* | cegcc*)
++    cygwin* | msys* | mingw* | pw32* | cegcc*)
+       # When not using gcc, we currently assume that we are using
+       # Microsoft Visual C++.
+       # hardcode_libdir_flag_spec is actually meaningless, as there is
+@@ -537,7 +537,7 @@
+   bsdi[45]*)
+     library_names_spec='$libname$shrext'
+     ;;
+-  cygwin* | mingw* | pw32* | cegcc*)
++  cygwin* | msys* | mingw* | pw32* | cegcc*)
+     shrext=.dll
+     library_names_spec='$libname.dll.a $libname.lib'
+     ;;
+diff -Naur m4-1.4.16-orig/build-aux/config.sub m4-1.4.16/build-aux/config.sub
+--- m4-1.4.16-orig/build-aux/config.sub	2011-03-01 16:38:25.000000000 +0000
++++ m4-1.4.16/build-aux/config.sub	2013-06-10 06:35:45.268554700 +0000
+@@ -1315,7 +1315,7 @@
+ 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
+ 	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* \
+ 	      | -chorusos* | -chorusrdb* | -cegcc* \
+-	      | -cygwin* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
++	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
+ 	      | -mingw32* | -linux-gnu* | -linux-android* \
+ 	      | -linux-newlib* | -linux-uclibc* \
+ 	      | -uxpv* | -beos* | -mpeix* | -udk* \
+diff -Naur m4-1.4.16-orig/configure m4-1.4.16/configure
+--- m4-1.4.16-orig/configure	2011-03-01 17:36:39.000000000 +0000
++++ m4-1.4.16/configure	2013-06-10 06:44:46.803711000 +0000
+@@ -6022,7 +6022,7 @@
+      else
+        case "$host_os" in
+                                                                osf*) gl_use_threads=no ;;
+-         cygwin*)
++         cygwin* | msys*)
+                case `uname -r` in
+                  1.[0-5].*) gl_use_threads=no ;;
+                  *)         gl_use_threads=yes ;;
+@@ -8637,7 +8637,7 @@
+         # special semantics and is distinct from /, please report it to
+         # <bug-gnulib@gnu.org>.
+         case $host in
+-          *-cygwin | i370-ibm-openedition)
++          *-cygwin | *-msys | i370-ibm-openedition)
+             gl_cv_double_slash_root=yes ;;
+           *)
+             # Be optimistic and assume that / and // are the same when we
+@@ -15585,7 +15585,7 @@
+            openbsd*)        gl_cv_func_printf_directive_ls="guessing no";;
+            irix*)           gl_cv_func_printf_directive_ls="guessing no";;
+            solaris*)        gl_cv_func_printf_directive_ls="guessing no";;
+-           cygwin*)         gl_cv_func_printf_directive_ls="guessing no";;
++           cygwin* | msys*) gl_cv_func_printf_directive_ls="guessing no";;
+            beos* | haiku*)  gl_cv_func_printf_directive_ls="guessing no";;
+            *)               gl_cv_func_printf_directive_ls="guessing yes";;
+          esac
+@@ -15717,7 +15717,7 @@
+       if test "$cross_compiling" = yes; then :
+ 
+          case "$host_os" in
+-           cygwin*)      gl_cv_func_printf_flag_grouping="guessing no";;
++           cygwin* | msys*) gl_cv_func_printf_flag_grouping="guessing no";;
+            netbsd*)      gl_cv_func_printf_flag_grouping="guessing no";;
+            mingw* | pw*) gl_cv_func_printf_flag_grouping="guessing no";;
+            *)            gl_cv_func_printf_flag_grouping="guessing yes";;
+@@ -16603,7 +16603,7 @@
+ 
+            case "$host_os" in
+                       # Guess no on Cygwin.
+-             cygwin*) gl_cv_func_btowc_nul="guessing no" ;;
++             cygwin* | msys*) gl_cv_func_btowc_nul="guessing no" ;;
+                       # Guess yes otherwise.
+              *)       gl_cv_func_btowc_nul="guessing yes" ;;
+            esac
+@@ -17060,7 +17060,7 @@
+         # special semantics and is distinct from /, please report it to
+         # <bug-gnulib@gnu.org>.
+         case $host in
+-          *-cygwin | i370-ibm-openedition)
++          *-cygwin | *-msys | i370-ibm-openedition)
+             gl_cv_double_slash_root=yes ;;
+           *)
+             # Be optimistic and assume that / and // are the same when we
+@@ -17111,7 +17111,7 @@
+   case "$host_os" in
+            mingw*) # on this platform, dup2 always returns 0 for success
+              gl_cv_func_dup2_works=no;;
+-           cygwin*) # on cygwin 1.5.x, dup2(1,1) returns 0
++           cygwin* | msys*) # on cygwin 1.5.x, dup2(1,1) returns 0
+              gl_cv_func_dup2_works=no;;
+            linux*) # On linux between 2008-07-27 and 2009-05-11, dup2 of a
+                    # closed fd may yield -EBADF instead of -1 / errno=EBADF.
+@@ -33902,13 +33902,13 @@
+ 
+                         case "$host_os" in
+             # Guess no on Solaris <= 9 and Cygwin.
+-          solaris2.[1-9] | solaris2.[1-9].* | cygwin*)
++          solaris2.[1-9] | solaris2.[1-9].* | cygwin* | msys*)
+             gl_cv_func_wctob_works="guessing no" ;;
+             # Guess yes otherwise.
+           *) gl_cv_func_wctob_works="guessing yes" ;;
+         esac
+         case "$host_os" in
+-          cygwin*)
++          cygwin* | msys*)
+             if test "$cross_compiling" = yes; then :
+   :
+ else
+diff -Naur m4-1.4.16-orig/lib/gnulib.mk m4-1.4.16/lib/gnulib.mk
+--- m4-1.4.16-orig/lib/gnulib.mk	2011-03-01 16:39:39.000000000 +0000
++++ m4-1.4.16/lib/gnulib.mk	2013-06-10 06:36:36.169921900 +0000
+@@ -734,7 +734,7 @@
+ 	  case '$(host_os)' in \
+ 	    darwin[56]*) \
+ 	      need_charset_alias=true ;; \
+-	    darwin* | cygwin* | mingw* | pw32* | cegcc*) \
++	    darwin* | cygwin* | msys* | mingw* | pw32* | cegcc*) \
+ 	      need_charset_alias=false ;; \
+ 	    *) \
+ 	      need_charset_alias=true ;; \
+diff -Naur m4-1.4.16-orig/lib/Makefile.in m4-1.4.16/lib/Makefile.in
+--- m4-1.4.16-orig/lib/Makefile.in	2011-03-01 16:57:32.000000000 +0000
++++ m4-1.4.16/lib/Makefile.in	2013-06-10 06:36:58.779296900 +0000
+@@ -1840,7 +1840,7 @@
+ 	  case '$(host_os)' in \
+ 	    darwin[56]*) \
+ 	      need_charset_alias=true ;; \
+-	    darwin* | cygwin* | mingw* | pw32* | cegcc*) \
++	    darwin* | cygwin* | msys* | mingw* | pw32* | cegcc*) \
+ 	      need_charset_alias=false ;; \
+ 	    *) \
+ 	      need_charset_alias=true ;; \

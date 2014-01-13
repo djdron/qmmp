@@ -1,0 +1,17 @@
+--- src/m4-1.4.16/lib/fpending.c.orig	2011-03-01 19:39:27.000000000 +0300
++++ src/m4-1.4.16/lib/fpending.c	2013-08-11 21:01:29.000000000 +0400
+@@ -21,6 +21,7 @@
+ 
+ #include "fpending.h"
+ 
++#ifndef __CYGWIN__
+ /* Return the number of pending (aka buffered, unflushed)
+    bytes on the stream, FP, that is open for writing.  */
+ size_t
+@@ -28,3 +29,5 @@
+ {
+   return PENDING_OUTPUT_N_BYTES;
+ }
++
++#endif
+\ No newline at end of file

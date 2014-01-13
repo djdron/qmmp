@@ -1,0 +1,14 @@
+diff -U 4 -r ./autoconf-2.69-old//cfg.mk ./autoconf-2.69-new//cfg.mk
+--- ./autoconf-2.69-old//cfg.mk	2012-04-25 06:32:18 +0400
++++ ./autoconf-2.69-new//cfg.mk	2014-01-13 20:32:47 +0400
+@@ -17,9 +17,9 @@
+ 
+ # This file is '-include'd into GNUmakefile.
+ 
+ # Build with our own versions of these tools, when possible.
+-export PATH = $(shell echo "`pwd`/tests:$$PATH")
++export PATH := $(shell echo "`pwd`/tests:$$PATH")
+ 
+ # Remove the autoreconf-provided INSTALL, so that we regenerate it.
+ _autoreconf = autoreconf -i -v && rm -f INSTALL
+ 
