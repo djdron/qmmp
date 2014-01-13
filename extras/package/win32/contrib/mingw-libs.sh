@@ -2,7 +2,7 @@
 
 export PREFIX=C:/devel/mingw32-libs
 
-LIB_NAMES='taglib'
+LIB_NAMES='taglib libmad'
 
 case $1 in
   --download | --install | --clean)

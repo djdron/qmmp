@@ -1,20 +1,19 @@
 #!/bin/sh
 
-NAME=taglib
-VERSION=1.9.1
+NAME=libmad
+VERSION=0.15.1b
 
 case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc http://taglib.github.io/releases/$NAME-$VERSION.tar.gz
+    wget -nc ftp://ftp.mars.org/pub/mpeg/$NAME-$VERSION.tar.gz
   ;;
   --install)
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
-    cat ../../taglib-1.9.1-bug-308.diff | patch -p1 --verbose
-    cmake ./ -DCMAKE_INSTALL_PREFIX=C:/devel/mingw32-libs -G "MSYS Makefiles"
+    ./configure --prefix=$PREFIX
     mingw32-make -j3
     mingw32-make install
 
