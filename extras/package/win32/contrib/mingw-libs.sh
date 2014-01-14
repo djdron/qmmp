@@ -1,8 +1,8 @@
 #!/bin/sh
 
 
-LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack'
-#LIB_NAMES='wavpack'
+LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b'
+#LIB_NAMES='curl'
 
 export PREFIX=C:/devel/mingw32-libs
 export STRIP=true
