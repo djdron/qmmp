@@ -15,7 +15,7 @@ case $1 in
     cd $NAME-$VERSION
     cat ../../taglib-1.9.1-bug-308.diff | patch -p1 --verbose
     cmake ./ -DCMAKE_INSTALL_PREFIX=C:/devel/mingw32-libs -G "MSYS Makefiles"
-    mingw32-make -j3
+    mingw32-make -j${JOBS}
     mingw32-make install
 
   ;;

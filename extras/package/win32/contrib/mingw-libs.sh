@@ -1,10 +1,12 @@
 #!/bin/sh
 
 
-LIB_NAMES='taglib libmad'
+LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack'
+#LIB_NAMES='wavpack'
 
 export PREFIX=C:/devel/mingw32-libs
 export STRIP=true
+export JOBS=2
 
 
 mkdir -p ${PREFIX} ${PREFIX}/bin ${PREFIX}/lib/pkgconfig ${PREFIX}/share/doc
