@@ -2,9 +2,10 @@
 
 
 LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b'
+#LIB_NAMES='libsndfile'
 #LIB_NAMES='curl'
 
-export PREFIX=C:/devel/mingw32-libs
+export PREFIX=D:/devel/mingw32-libs
 export STRIP=true
 export JOBS=2
 

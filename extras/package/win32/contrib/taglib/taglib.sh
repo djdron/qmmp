@@ -14,7 +14,8 @@ case $1 in
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
     cat ../../taglib-1.9.1-bug-308.diff | patch -p1 --verbose
-    cmake ./ -DCMAKE_INSTALL_PREFIX=C:/devel/mingw32-libs -G "MSYS Makefiles"
+    cmake ./ -DCMAKE_INSTALL_PREFIX=${PREFIX} -G "MSYS Makefiles" -DZLIB_ROOT=${ZLIB_ROOT} \
+    -DCMAKE_COLOR_MAKEFILE:BOOL=OFF
     mingw32-make -j${JOBS}
     mingw32-make install
 
