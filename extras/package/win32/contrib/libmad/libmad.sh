@@ -13,9 +13,11 @@ case $1 in
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
+    cat ../../0001*.patch | patch -p1
     cat ../../libmad-01-force-mem.patch | patch -p0 --verbose
-    cat ../../libmad-0.15.1b-autotool-lt-init.diff -p1 --verbose
-    ./configure --prefix=$PREFIX
+    touch NEWS AUTHORS ChangeLog
+    autoreconf -i
+    ./configure --prefix=$PREFIX --enable-shared --enable-accuracy --disable-debugging --enable-shared --disable-static
     mingw32-make -j3
     mingw32-make install
 

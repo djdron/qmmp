@@ -1,10 +1,14 @@
 #!/bin/sh
 
-export PREFIX=D:/devel/mingw32-libs
 
-#LIB_NAMES='taglib libmad'
-LIB_NAMES='autoconf'
-#LIB_NAMES='m4'
+LIB_NAMES='taglib libmad'
+
+export PREFIX=C:/devel/mingw32-libs
+export STRIP=true
+
+
+mkdir -p ${PREFIX} ${PREFIX}/bin ${PREFIX}/lib/pkgconfig ${PREFIX}/share/doc
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig 
 
 case $1 in
   --download | --install | --clean)
