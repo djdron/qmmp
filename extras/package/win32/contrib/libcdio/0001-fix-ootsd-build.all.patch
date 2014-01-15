@@ -1,0 +1,11 @@
+--- libcdio-0.83/include/cdio/Makefile.am.orig	2011-10-21 05:43:36 +0400
++++ libcdio-0.83/include/cdio/Makefile.am	2012-04-13 17:20:04 +0400
+@@ -22,7 +22,7 @@
+ paranoiaheaders = cdda.h cdtext.h 
+ endif
+ 
+-cdio_config.h: $(top_srcdir)/config.h
++cdio_config.h: $(top_builddir)/config.h
+ 	echo  '#ifndef __CDIO_CONFIG_H__' > cdio_config.h
+ 	echo  '#define __CDIO_CONFIG_H__' >> cdio_config.h
+ 	cat  $(top_builddir)/config.h >>cdio_config.h

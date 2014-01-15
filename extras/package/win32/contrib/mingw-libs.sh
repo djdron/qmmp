@@ -1,13 +1,12 @@
 #!/bin/sh
 
 
-LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b'
-#LIB_NAMES='libsndfile'
-#LIB_NAMES='curl'
+#LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b curl'
+LIB_NAMES='libcdio'
 
-export PREFIX=D:/devel/mingw32-libs
+export PREFIX=C:/devel/mingw32-libs
 export STRIP=true
-export JOBS=2
+export JOBS=4
 
 
 mkdir -p ${PREFIX} ${PREFIX}/bin ${PREFIX}/lib/pkgconfig ${PREFIX}/share/doc

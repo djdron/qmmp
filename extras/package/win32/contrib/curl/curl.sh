@@ -13,11 +13,11 @@ case $1 in
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
-    ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-ftp --disable-file --disable-ldap \
-    --disable-tftp --disable-pop3 --disable-imap --disable-manual --disable-libcurl-option --disable-crypto-auth \
-    --disable-tls-srp --without-winssl --without-ssl  --without-gnutls --without-libssh2 --enable-debug --enable-optimize
-    make -j${JOBS}
-    make install
+    mingw32-make mingw32
+    mkdir -p ${PREFIX}/include/curl
+    cp -v include/curl/*.h ${PREFIX}/include/curl
+    cp -v lib/libcurl.dll ${PREFIX}/bin
+    cp -v lib/libcurldll.a ${PREFIX}/lib
 
   ;;
   --clean)
