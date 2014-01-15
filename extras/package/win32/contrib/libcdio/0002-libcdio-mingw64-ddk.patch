@@ -1,0 +1,29 @@
+diff -U 2 -r libcdio-0.83-old//lib/driver/MSWindows/win32_ioctl.c libcdio-0.83-new//lib/driver/MSWindows/win32_ioctl.c
+--- libcdio-0.83-old//lib/driver/MSWindows/win32_ioctl.c	2011-08-25 08:18:15 +0400
++++ libcdio-0.83-new//lib/driver/MSWindows/win32_ioctl.c	2014-01-15 15:51:48 +0400
+@@ -26,4 +26,8 @@
+ #ifdef HAVE_WIN32_CDROM
+ 
++#ifdef WIN32
++#include <windows.h>
++#endif
++
+ #if defined (_XBOX)
+ # include "inttypes.h"
+@@ -31,13 +35,10 @@
+ # include "undocumented.h"
+ #else
+-# include <ddk/ntddcdrm.h>
+-# include <ddk/ntddscsi.h>
+-# include <ddk/scsi.h>
+-#endif
+ 
+-#ifdef WIN32
+-#include <windows.h>
++# include <ntddcdrm.h>
++# include <ntddscsi.h>
+ #endif
+ 
++
+ #include <stdio.h>
+ #include <stddef.h>  /* offsetof() macro */

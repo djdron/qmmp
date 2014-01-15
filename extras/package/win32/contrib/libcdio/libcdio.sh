@@ -14,13 +14,14 @@ case $1 in
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
     cat ../../0001*.patch | patch -p1
-    #cat ../../libcdio-02-ddk.patch | patch -p1
+    cat ../../0002*.patch | patch -p1
+    cat ../../0003*.patch | patch -p1
     autoreconf -fi
     CFLAGS="-march=i686" ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-cxx --disable-example-progs \
-    --disable-cddb --without-cd-drive --without-cd-info --without-cd-drive --without-cd-paranoia --without-cdda-player \
-    --disable-iso-info --disable-iso-read
+    --disable-cddb --without-cd-drive --without-cd-info --without-cdda-player \
+    --without-iso-info --without-iso-read --without-cd-read
     make -j${JOBS}
-    #make install
+    make install
 
   ;;
   --clean)

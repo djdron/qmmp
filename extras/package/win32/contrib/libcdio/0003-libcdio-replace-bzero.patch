@@ -1,0 +1,30 @@
+diff -U 2 -r libcdio-0.83-old//lib/driver/cdtext.c libcdio-0.83-new//lib/driver/cdtext.c
+--- libcdio-0.83-old//lib/driver/cdtext.c	2011-10-21 02:46:20 +0400
++++ libcdio-0.83-new//lib/driver/cdtext.c	2014-01-15 19:04:06 +0400
+@@ -214,6 +214,6 @@
+   idx = 0;
+   
+-  bzero(encoding,16);
+-  bzero(&p_blocksize, sizeof(CDText_blocksize_t));
++  memset(encoding,0,16);
++  memset(&p_blocksize, 0, sizeof(CDText_blocksize_t));
+ 
+   p_data = (CDText_data_t *) (&wdata[4]);
+diff -U 2 -r libcdio-0.83-old//src/cd-info.c libcdio-0.83-new//src/cd-info.c
+--- libcdio-0.83-old//src/cd-info.c	2011-10-21 01:17:31 +0400
++++ libcdio-0.83-new//src/cd-info.c	2014-01-15 19:04:29 +0400
+@@ -27,4 +27,7 @@
+ #include <stdarg.h>
+ 
++#ifdef HAVE_STRING_H
++#include <string.h>
++#endif
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>
+@@ -1104,5 +1107,5 @@
+       driver_return_code_t status;
+       for (i = 1; i <= i_tracks; i++) {
+-        bzero(&isrc, sizeof(isrc));
++        memset(&isrc, 0, sizeof(isrc));
+         status = mmc_isrc_track_read_subchannel (p_cdio, i, isrc);
+         if (status == DRIVER_OP_SUCCESS && isrc[0] != '\0') {
