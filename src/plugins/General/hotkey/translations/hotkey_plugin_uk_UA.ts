@@ -117,12 +117,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Увага</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translation type="unfinished"></translation>
+        <translation>Комбінація клавіш &quot;%1&quot; вже використовується</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
