@@ -503,7 +503,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Volume</source>
-        <translation type="unfinished">Гучність</translation>
+        <translation>Гучність</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>

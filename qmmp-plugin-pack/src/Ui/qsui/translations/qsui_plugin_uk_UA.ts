@@ -608,7 +608,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Edit Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати панель інструментів</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="441"/>
@@ -1175,7 +1175,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="164"/>
         <source>Volume</source>
-        <translation type="unfinished">Гучність</translation>
+        <translation>Гучність</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
@@ -1289,18 +1289,18 @@
     <message>
         <location filename="../forms/toolbareditor.ui" line="14"/>
         <source>ToolBar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактор панелі інструментів</translation>
     </message>
     <message>
         <location filename="../forms/toolbareditor.ui" line="175"/>
         <source>Reset</source>
-        <translation type="unfinished">Скинути</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../toolbareditor.cpp" line="83"/>
         <location filename="../toolbareditor.cpp" line="102"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Розділювач</translation>
     </message>
 </context>
 <context>
