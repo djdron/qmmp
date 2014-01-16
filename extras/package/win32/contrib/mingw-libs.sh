@@ -1,9 +1,11 @@
 #!/bin/sh
 
 
-LIB_NAMES='pkg-config taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b curl libcdio libgnurx libcddb'
+LIB_NAMES='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b curl libcdio libgnurx libcddb ffmpeg'
+#LIB_NAMES='ffmpeg'
 
-export PREFIX=D:/devel/mingw32-libs
+
+export PREFIX=C:/devel/mingw32-libs
 export STRIP=true
 export JOBS=4
 
@@ -25,9 +27,10 @@ case $1 in
     for NAME in $LIB_NAMES
     do
         echo 'installing '${NAME}'...'
+        cd $NAME
         sh ./$NAME.sh --clean
         sh ./$NAME.sh --install
-        sh ./$NAME.sh --clean
+        #sh ./$NAME.sh --clean
         cd ..
     done
   ;;
