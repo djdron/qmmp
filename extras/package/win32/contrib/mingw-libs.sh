@@ -1,11 +1,12 @@
 #!/bin/sh
 
 
-LIB_NAMES='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile libbs2b curl libcdio libgnurx libcddb ffmpeg'
-#LIB_NAMES='ffmpeg'
+
+LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
+LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug'
 
 
-export PREFIX=C:/devel/mingw32-libs
+export PREFIX=D:/devel/mingw32-libs
 export STRIP=true
 export JOBS=4
 
@@ -30,7 +31,7 @@ case $1 in
         cd $NAME
         sh ./$NAME.sh --clean
         sh ./$NAME.sh --install
-        #sh ./$NAME.sh --clean
+        sh ./$NAME.sh --clean
         cd ..
     done
   ;;
