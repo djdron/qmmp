@@ -3,10 +3,10 @@
 
 
 LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
-LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug'
+LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack'
 
 
-export PREFIX=D:/devel/mingw32-libs
+export PREFIX=C:/devel/mingw32-libs
 export STRIP=true
 export JOBS=4
 
@@ -34,6 +34,7 @@ case $1 in
         sh ./$NAME.sh --clean
         cd ..
     done
+    strip -v ${PREFIX}/bin/*.dll
   ;;
   --clean)
     for NAME in $LIB_NAMES

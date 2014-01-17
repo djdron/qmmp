@@ -1,0 +1,22 @@
+--- origsrc/musepack_src_r475/include/CMakeLists.txt	2009-08-03 04:44:13.000000000 -0500
++++ src/musepack_src_r475/include/CMakeLists.txt	2013-09-15 18:17:29.748091800 -0500
+@@ -1 +1 @@
+-INSTALL(DIRECTORY mpc DESTINATION include)
++INSTALL(DIRECTORY mpc DESTINATION include PATTERN ".svn" EXCLUDE)
+--- origsrc/musepack_src_r475/libmpcdec/CMakeLists.txt	2010-08-21 10:55:01.000000000 -0500
++++ src/musepack_src_r475/libmpcdec/CMakeLists.txt	2013-11-25 00:29:05.993543200 -0600
+@@ -1,7 +1,12 @@
+ include_directories(${libmpc_SOURCE_DIR}/include)
+ if(SHARED)
+   add_library(mpcdec SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
+-else(SHARED)
+-  add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  set_target_properties(mpcdec PROPERTIES SOVERSION 7)
++  install(TARGETS mpcdec LIBRARY DESTINATION lib
++                         RUNTIME DESTINATION bin
++                         ARCHIVE DESTINATION lib)
+ endif(SHARED)
++  add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  set_target_properties(mpcdec_static PROPERTIES OUTPUT_NAME mpcdec)
++  install(TARGETS mpcdec_static DESTINATION lib)
+ 

@@ -1,0 +1,11 @@
+--- origsrc/musepack_src_r475/CMakeLists.txt	2010-07-13 06:15:24.000000000 -0500
++++ src/musepack_src_r475/CMakeLists.txt	2013-09-15 18:08:48.790294700 -0500
+@@ -16,7 +16,7 @@ endif(WIN32)
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+ if(NOT MSVC)
+-  set(CMAKE_C_FLAGS "-O3 -Wall -fomit-frame-pointer -pipe")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall -fomit-frame-pointer -pipe")
+ endif(NOT MSVC)
+ 
+ add_subdirectory(libmpcdec)

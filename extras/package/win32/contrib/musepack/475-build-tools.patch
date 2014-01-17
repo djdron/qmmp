@@ -1,0 +1,27 @@
+Avoid dependencies on libcuefile and libreplaygain, which are not used in
+libmpcdec itself nor elsewhere.
+
+--- origsrc/musepack_src_r475/CMakeLists.txt	2013-11-25 00:23:46.644277400 -0600
++++ src/musepack_src_r475/CMakeLists.txt	2013-11-25 00:31:43.803569400 -0600
+@@ -12,6 +12,7 @@ if(WIN32)
+ else(WIN32)
+   option(SHARED "Use shared libmpcdec" ON)
+ endif(WIN32)
++option(BUILD_TOOLS "Build command-line utilities" ON)
+ 
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+@@ -20,6 +21,7 @@ if(NOT MSVC)
+ endif(NOT MSVC)
+ 
+ add_subdirectory(libmpcdec)
++if(BUILD_TOOLS)
+ add_subdirectory(libmpcpsy)
+ add_subdirectory(libmpcenc)
+ add_subdirectory(libwavformat)
+@@ -30,4 +32,5 @@ add_subdirectory(mpc2sv8)
+ add_subdirectory(mpccut)
+ add_subdirectory(mpcchap)
+ add_subdirectory(wavcmp)
++endif(BUILD_TOOLS)
+ add_subdirectory(include)
