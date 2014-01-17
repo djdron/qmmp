@@ -58,7 +58,7 @@ SET(libqsui_SRCS
     elidinglabel.cpp
     coverwidget.cpp
     playlistbrowser.cpp
-    titlebareditor.cpp
+    toolbareditor.cpp
 )
 
 SET(libqsui_HDRS
@@ -91,7 +91,7 @@ SET(libqsui_MOC_HDRS
     elidinglabel.h
     coverwidget.h
     playlistbrowser.h
-    titlebareditor.h
+    toolbareditor.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
@@ -108,7 +108,7 @@ SET(libqsui_UIS
     forms/shortcutdialog.ui
     forms/qsuisettings.ui
     forms/aboutqsuidialog.ui
-    forms/titlebareditor.ui
+    forms/toolbareditor.ui
 )
 
 QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
