@@ -48,5 +48,5 @@ win32 {
                ../../../../src/qmmp/decoderfactory.h
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lmpcdec -ltag.dll
-    DEFINES += MPC_OLD_API
+    #DEFINES += MPC_OLD_API
 }
