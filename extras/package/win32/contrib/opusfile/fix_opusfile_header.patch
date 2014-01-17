@@ -1,0 +1,12 @@
+diff -U 3 -r opusfile-0.4-old//include/opusfile.h opusfile-0.4-new//include/opusfile.h
+--- opusfile-0.4-old//include/opusfile.h	2013-08-19 23:47:21 +0000
++++ opusfile-0.4-new//include/opusfile.h	2014-01-17 07:04:02 +0000
+@@ -106,7 +106,7 @@
+ # include <stdarg.h>
+ # include <stdio.h>
+ # include <ogg/ogg.h>
+-# include <opus_multistream.h>
++# include "opus_multistream.h"
+ 
+ /*Enable special features for gcc and gcc-compatible compilers.*/
+ # if !defined(OP_GNUC_PREREQ)

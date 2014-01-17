@@ -2,9 +2,9 @@
 
 
 
-LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
-LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack'
-
+#LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
+#LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack'
+LIB_NAMES+='opusfile'
 
 export PREFIX=C:/devel/mingw32-libs
 export STRIP=true

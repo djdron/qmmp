@@ -13,7 +13,8 @@ case $1 in
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
-    ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-http
+    cat ../../fix_opusfile_header.patch | patch -p1
+    ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-http --disable-doc
     make -j${JOBS}
     make install
 
