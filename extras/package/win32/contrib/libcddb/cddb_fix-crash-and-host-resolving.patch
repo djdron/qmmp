@@ -1,0 +1,44 @@
+diff -U 3 -r libcddb-1.3.2-old//lib/cddb_conn.c libcddb-1.3.2-new//lib/cddb_conn.c
+--- libcddb-1.3.2-old//lib/cddb_conn.c	2014-01-18 13:31:24 +0400
++++ libcddb-1.3.2-new//lib/cddb_conn.c	2014-01-18 13:20:06 +0400
+@@ -104,13 +104,14 @@
+         {
+             c->cache_dir = (char*)malloc(strlen(s) + 1 + sizeof(DEFAULT_CACHE) + 1);
+             sprintf(c->cache_dir, "%s/%s", s, DEFAULT_CACHE);
+-            c->cache_read = FALSE;
++            //c->cache_read = FALSE;
+         }
+         else
+         {
+             c->cache_dir = NULL;
+             c->use_cache = CACHE_OFF;
+         }
++        c->cache_read = FALSE;
+ 
+         /* use anonymous@localhost */
+         c->user = strdup(DEFAULT_USER);
+@@ -667,6 +668,16 @@
+     if (!CONNECTION_OK(c)) {
+         struct hostent *he;
+ 
++          
++        WSADATA wsaData;        
++        int err = WSAStartup(MAKEWORD(2, 2), &wsaData);
++        if(err != 0)
++        {
++           cddb_log_debug("WSAStartup failed with error: %d", err);
++           cddb_errno_log_error(c, CDDB_ERR_UNKNOWN_HOST_NAME);
++           return FALSE;
++        }
++
+         /* resolve host name */
+         if (c->is_http_proxy_enabled) {
+             /* use HTTP proxy server name */
+@@ -714,6 +725,7 @@
+     if (CONNECTION_OK(c)) {
+         close(c->socket);
+         c->socket = -1;
++        WSACleanup();
+     }
+     cddb_errno_set(c, CDDB_ERR_OK);
+ }
