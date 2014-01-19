@@ -22,7 +22,9 @@ case $1 in
     --disable-filters \
     --disable-decoders \
     --enable-protocol=file --enable-protocol=data --enable-protocol=data --enable-protocol=pipe \
-    --enable-filter=aconvert --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
+    --enable-parser=aac --enable-parser=aac_latm --enable-parser=ac3 --enable-parser=flac \
+    --enable-filter=aconvert --enable-filter=convert --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
+    --enable-filter=aformat --enable-filter=format --enable-filter=aresample --enable-filter=resample \
     --enable-decoder=ape --enable-decoder=wmav1 --enable-decoder=wmav2 --enable-decoder=truehd \
     --enable-decoder=aac --enable-decoder=alac --enable-decoder=shorten --enable-decoder=twinvq \
     --enable-decoder=tta --enable-decoder=ra_288 --enable-decoder=ra_144 \
