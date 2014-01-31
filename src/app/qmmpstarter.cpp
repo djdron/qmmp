@@ -244,7 +244,10 @@ void QMMPStarter::readCommand()
     socket->waitForReadyRead();
     QByteArray inputArray = socket->readAll();
     if(inputArray.isEmpty())
+    {
+        socket->deleteLater();
         return;
+    }
     QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
     QString out = processCommandArgs(slist, cwd);
