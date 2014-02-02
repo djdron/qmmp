@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,8 +44,8 @@ void FileInfo::operator=(const FileInfo &info)
 bool FileInfo::operator==(const FileInfo &info)
 {
     return metaData () == info.metaData () &&
-           length () == info.length ();
-    path() == info.path();
+            length () == info.length () &&
+            path() == info.path();
 }
 
 bool FileInfo::operator!=(const FileInfo &info)

@@ -83,11 +83,7 @@ private:
     void deinit();
     uint findID3v2(char *data, ulong size); //retuns ID3v2 tag size
 
-    // FLAC Decoder
-    FLAC__StreamDecoder *m_flacDecoder;
-
     struct flac_data *m_data;
-    qint64 m_totalTime;
     qint64 length_in_bytes;
     qint64 m_totalBytes;
     qint64 m_offset;
