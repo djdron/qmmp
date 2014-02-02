@@ -52,7 +52,6 @@ public:
 class VisualFactory
 {
 public:
-    VisualFactory();
     /*!
      * Destructor.
      */
