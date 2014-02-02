@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,7 +27,7 @@
 #include "output.h"
 #include "visual.h"
 
-Visual::Visual(QWidget *parent) : QWidget(parent)
+Visual::Visual(QWidget *parent, Qt::WindowFlags f) : QWidget(parent, f)
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
     setAttribute(Qt::WA_QuitOnClose, false);
@@ -159,7 +159,7 @@ void Visual::initialize(QWidget *parent , QObject *receiver, const char *member)
             Visual* visual = factory->create(parent);
             if (m_receiver && m_member)
                 connect(visual, SIGNAL(closedByUser()), m_receiver, m_member);
-            visual->setWindowFlags(Qt::Window);
+            visual->setWindowFlags(visual->windowFlags() | Qt::Window);
             qDebug("Visual: added visualization: %s", qPrintable(factory->properties().name));
             m_vis_map.insert (factory, visual);
             m_visuals.append(visual);
