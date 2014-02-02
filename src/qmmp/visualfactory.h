@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -84,6 +84,6 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(VisualFactory, "VisualFactory/1.0");
+Q_DECLARE_INTERFACE(VisualFactory, "VisualFactory/1.0")
 
 #endif
