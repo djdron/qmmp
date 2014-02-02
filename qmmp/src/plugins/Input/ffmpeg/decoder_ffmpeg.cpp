@@ -328,7 +328,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode()
 {
     int out_size = 0;
     int got_frame = 0;
-    if((m_pkt.stream_index == wma_idx))
+    if(m_pkt.stream_index == wma_idx)
     {
         avcodec_get_frame_defaults(m_decoded_frame);
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,8 +57,7 @@ private:
     int m_sample_buf_at;
     qint64 m_sample_buf_size;
     int m_bitrate;
-    ulong  m_input_at, m_output_at;
-    double m_frameSize;
+    ulong  m_input_at;
     qint64 m_totalTime;
 };
 
