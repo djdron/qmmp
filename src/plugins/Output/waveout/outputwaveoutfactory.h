@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef OUTPUTPULSEAUDIOFACTORY_H
-#define OUTPUTPULSEAUDIOFACTORY_H
+#ifndef OUTPUTWAVEOUTFACTORY_H
+#define OUTPUTWAVEOUTFACTORY_H
 
 #include <QObject>
 #include <QString>
