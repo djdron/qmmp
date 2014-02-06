@@ -77,42 +77,42 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="295"/>
+        <location filename="../qmmpstarter.cpp" line="298"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Uso: qmmp [opciones] [archivos]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="296"/>
+        <location filename="../qmmpstarter.cpp" line="299"/>
         <source>Options:</source>
         <translation>Opciones: </translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="302"/>
+        <location filename="../qmmpstarter.cpp" line="305"/>
         <source>Print version number and exit</source>
         <translation>Mostrar el número de versión y salir</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="303"/>
+        <location filename="../qmmpstarter.cpp" line="306"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Enviar ideas, parches, errores a: forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="308"/>
+        <location filename="../qmmpstarter.cpp" line="311"/>
         <source>QMMP version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="309"/>
+        <location filename="../qmmpstarter.cpp" line="312"/>
         <source>Compiled with Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="310"/>
+        <location filename="../qmmpstarter.cpp" line="313"/>
         <source>Using Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="301"/>
+        <location filename="../qmmpstarter.cpp" line="304"/>
         <source>Display this text and exit</source>
         <translation>Muestra este texto y sale</translation>
     </message>
@@ -122,7 +122,7 @@
         <translation>Comando desconocido</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="300"/>
+        <location filename="../qmmpstarter.cpp" line="303"/>
         <source>Don&apos;t start the application</source>
         <translation>No iniciar la aplicación</translation>
     </message>
