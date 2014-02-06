@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
-        <translation>Поставке промјене нумере</translation>
+        <translation>Поставке измјене нумере</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
@@ -112,22 +112,22 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="29"/>
         <source>Track Change Plugin</source>
-        <translation>Промјена нумере</translation>
+        <translation>Измјена нумере</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="49"/>
         <source>About Track Change Plugin</source>
-        <translation>О прикључку промјене нумере</translation>
+        <translation>О прикључку измјене нумере</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
-        <translation>Кумп прикључак промјене нумере</translation>
+        <translation>Кумп прикључак измјене нумере</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation>Овај прикључак извршава спољашњу наредбу при промјени нумере</translation>
+        <translation>Овај прикључак извршава спољашњу наредбу при измјени нумере</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>

@@ -269,7 +269,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="577"/>
         <source>Preamp</source>
-        <translation>Предпојачање</translation>
+        <translation>Претпојачање</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="586"/>

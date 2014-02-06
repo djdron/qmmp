@@ -44,17 +44,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Best Sinc Interpolation</source>
-        <translation>Најбоља sinc</translation>
+        <translation>најбоља sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Medium Sinc Interpolation</source>
-        <translation>Умерена sinc</translation>
+        <translation>умерена sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation>Најбржа sinc</translation>
+        <translation>најбржа sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Linear Interpolation</source>
-        <translation>Линеарна</translation>
+        <translation>линеарна</translation>
     </message>
 </context>
 </TS>

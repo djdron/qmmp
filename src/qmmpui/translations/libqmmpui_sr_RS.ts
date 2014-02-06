@@ -118,7 +118,7 @@
         <location filename="../configdialog.cpp" line="287"/>
         <location filename="../configdialog.cpp" line="307"/>
         <source>Artist</source>
-        <translation>Извођач</translation>
+        <translation>извођач</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="68"/>
@@ -170,39 +170,39 @@
     <message>
         <location filename="../configdialog.cpp" line="289"/>
         <source>Title</source>
-        <translation>Наслов</translation>
+        <translation>наслов</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="290"/>
         <source>Track number</source>
-        <translation>Број нумере</translation>
+        <translation>нумера</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="291"/>
         <source>Two-digit track number</source>
-        <translation>Двоцифрени број нумере</translation>
+        <translation>двоцифрена нумера</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="295"/>
         <location filename="../configdialog.cpp" line="312"/>
         <source>Disc number</source>
-        <translation>Број диска</translation>
+        <translation>диск</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="299"/>
         <location filename="../configdialog.cpp" line="314"/>
         <source>Condition</source>
-        <translation>Услов</translation>
+        <translation>услов</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="315"/>
         <source>Artist/Album</source>
-        <translation>Извођач/албум</translation>
+        <translation>извођач/албум</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="316"/>
         <source>Artist/Year/Album</source>
-        <translation>Извођач/година/албум</translation>
+        <translation>извођач/година/албум</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
@@ -328,35 +328,35 @@
         <location filename="../configdialog.cpp" line="292"/>
         <location filename="../configdialog.cpp" line="309"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>жанр</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="294"/>
         <location filename="../configdialog.cpp" line="311"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation>композитор</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="296"/>
         <source>File name</source>
-        <translation>Име фајла</translation>
+        <translation>име фајла</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>File path</source>
-        <translation>Путања фајла</translation>
+        <translation>путања фајла</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
         <location filename="../configdialog.cpp" line="313"/>
         <source>Year</source>
-        <translation>Година</translation>
+        <translation>година</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="293"/>
         <location filename="../configdialog.cpp" line="310"/>
         <source>Comment</source>
-        <translation>Коментар</translation>
+        <translation>коментар</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
@@ -503,7 +503,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="664"/>
         <source>Preamp:</source>
-        <translation>Предпојачање:</translation>
+        <translation>Претпојачање:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="696"/>
@@ -701,7 +701,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation>Скочи на нумеру</translation>
+        <translation>Скок на нумеру</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
@@ -823,7 +823,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="244"/>
         <source>Disc number:</source>
-        <translation>Број диска:</translation>
+        <translation>Диск:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="184"/>
@@ -878,72 +878,72 @@
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation>Извођач</translation>
+        <translation>извођача</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation>Албум</translation>
+        <translation>албум</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation>Наслов</translation>
+        <translation>наслов</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation>Број нумере</translation>
+        <translation>нумеру</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation>Двоцифрени број нумере</translation>
+        <translation>двоцифрену нумеру</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>жанр</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation>Коментар</translation>
+        <translation>коментар</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation>композитора</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation>Дужина</translation>
+        <translation>дужину</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation>Број диска</translation>
+        <translation>диск</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation>Име фајла</translation>
+        <translation>име фајла</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation>Путања фајла</translation>
+        <translation>путању фајла</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation>Година</translation>
+        <translation>годину</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation>Услов</translation>
+        <translation>услов</translation>
     </message>
 </context>
 <context>
@@ -972,12 +972,12 @@
     <message>
         <location filename="../uihelper.cpp" line="164"/>
         <source>Open Playlist</source>
-        <translation>Отвори листу нумера</translation>
+        <translation>Отварање листе нумера</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="184"/>
         <source>Save Playlist</source>
-        <translation>Сачувај листу нумера</translation>
+        <translation>Уписивање листе нумера</translation>
     </message>
 </context>
 </TS>

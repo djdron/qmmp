@@ -71,7 +71,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>Измени пречицу</translation>
+        <translation>Измена пречице</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
@@ -159,72 +159,72 @@
     <message>
         <location filename="../settingsdialog.cpp" line="193"/>
         <source>Artist</source>
-        <translation>Извођач</translation>
+        <translation>извођач</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="194"/>
         <source>Album</source>
-        <translation>Албум</translation>
+        <translation>албум</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Title</source>
-        <translation>Наслов</translation>
+        <translation>наслов</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Track number</source>
-        <translation>Број нумере</translation>
+        <translation>нумера</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit track number</source>
-        <translation>Двоцифрени број нумере</translation>
+        <translation>двоцифрена нумера</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>жанр</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
-        <translation>Коментар</translation>
+        <translation>коментар</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation>композитор</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="201"/>
         <source>Duration</source>
-        <translation>Дужина</translation>
+        <translation>дужина</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>Disc number</source>
-        <translation>Број диска</translation>
+        <translation>диск</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>File name</source>
-        <translation>Име фајла</translation>
+        <translation>име фајла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="204"/>
         <source>File path</source>
-        <translation>Путања фајла</translation>
+        <translation>путања фајла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>Year</source>
-        <translation>Година</translation>
+        <translation>година</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
-        <translation>Услов</translation>
+        <translation>услов</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="222"/>

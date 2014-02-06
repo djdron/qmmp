@@ -160,7 +160,7 @@
         <location filename="../settingsdialog.ui" line="125"/>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Disabled</source>
-        <translation>Онемогућена</translation>
+        <translation>онемогућена</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="90"/>

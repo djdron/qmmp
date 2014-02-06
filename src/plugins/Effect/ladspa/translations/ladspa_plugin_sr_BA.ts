@@ -69,12 +69,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation>УИД</translation>
+        <translation>уид</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
         <source>Name</source>
-        <translation>Име</translation>
+        <translation>име</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="126"/>

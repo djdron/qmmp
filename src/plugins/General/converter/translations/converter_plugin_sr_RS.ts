@@ -59,67 +59,67 @@
     <message>
         <location filename="../converterdialog.cpp" line="110"/>
         <source>Artist</source>
-        <translation>Извођач</translation>
+        <translation>извођач</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="111"/>
         <source>Album</source>
-        <translation>Албум</translation>
+        <translation>албум</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
         <source>Title</source>
-        <translation>Наслов</translation>
+        <translation>наслов</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
         <source>Track number</source>
-        <translation>Број нумере</translation>
+        <translation>нумера</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
         <source>Two-digit track number</source>
-        <translation>Двоцифрени број нумере</translation>
+        <translation>двоцифрена нумера</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>жанр</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Comment</source>
-        <translation>Коментар</translation>
+        <translation>коментар</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="117"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation>композитор</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="118"/>
         <source>Duration</source>
-        <translation>Дужина</translation>
+        <translation>дужина</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="119"/>
         <source>Disc number</source>
-        <translation>Број диска</translation>
+        <translation>диск</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="120"/>
         <source>File name</source>
-        <translation>Име фајла</translation>
+        <translation>име фајла</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>Year</source>
-        <translation>Година</translation>
+        <translation>година</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="122"/>
         <source>Condition</source>
-        <translation>Услов</translation>
+        <translation>услов</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="128"/>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="42"/>
         <source>Converting...</source>
-        <translation>Претварање...</translation>
+        <translation>Кодирам...</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="43"/>
