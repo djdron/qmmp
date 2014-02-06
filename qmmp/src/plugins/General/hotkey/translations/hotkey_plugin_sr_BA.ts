@@ -137,12 +137,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Упозорење</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translation type="unfinished"></translation>
+        <translation>Комбинација „%1“ је већ у употреби</translation>
     </message>
 </context>
 </TS>

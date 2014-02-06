@@ -136,7 +136,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Playlist</source>
-        <translation>Прикажи листу нумера</translation>
+        <translation>Листа нумера</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Show Equalizer</source>
-        <translation>Прикажи еквилајзер</translation>
+        <translation>Еквилајзер</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="302"/>
         <source>Saving Preset</source>
-        <translation>Спремање поставке</translation>
+        <translation>Уписивање поставке</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="303"/>
@@ -561,7 +561,7 @@
     <message>
         <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
-        <translation>Понављај листу</translation>
+        <translation>Понављање</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="92"/>
@@ -854,7 +854,7 @@
     <message>
         <location filename="../playlist.cpp" line="299"/>
         <source>Randomize List</source>
-        <translation>Измијешај</translation>
+        <translation>Претумбај</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="301"/>
@@ -932,7 +932,7 @@
     <message>
         <location filename="../playlistselector.cpp" line="125"/>
         <source>Rename Playlist</source>
-        <translation>Преименуј листу</translation>
+        <translation>Преименовање листе</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="125"/>
@@ -945,7 +945,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation>Подешавање искачућих података</translation>
+        <translation>Поставке облачића података</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
@@ -990,72 +990,72 @@
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation>Извођач</translation>
+        <translation>извођача</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
-        <translation>Албум</translation>
+        <translation>албум</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
-        <translation>Наслов</translation>
+        <translation>наслов</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
-        <translation>Број нумере</translation>
+        <translation>нумеру</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
-        <translation>Двоцифрени број нумере</translation>
+        <translation>двоцифрену нумеру</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>жанр</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
-        <translation>Коментар</translation>
+        <translation>коментар</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation>композитора</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation>Дужина</translation>
+        <translation>дужину</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation>Број диска</translation>
+        <translation>диск</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
-        <translation>Име фајла</translation>
+        <translation>име фајла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
-        <translation>Путања фајла</translation>
+        <translation>путању фајла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
-        <translation>Година</translation>
+        <translation>годину</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
-        <translation>Услов</translation>
+        <translation>услов</translation>
     </message>
 </context>
 <context>
@@ -1091,7 +1091,7 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation>Измијени пречицу</translation>
+        <translation>Измјена пречице</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
@@ -1278,7 +1278,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
-        <translation>Искачући подаци</translation>
+        <translation>Облачић с подацима</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="406"/>

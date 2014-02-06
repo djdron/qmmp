@@ -57,7 +57,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation>Стварна</translation>
+        <translation>стварна</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>

@@ -1,6 +1,7 @@
 Португалски (Бразил):
     Klaos Lacerda
     Bruno Gonçalves
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
 Традиционални кинески:
     lon <lon83129@126.com>
@@ -47,6 +48,9 @@
 
 Руски:
     Ilya Kotov <forkotov02@hotmail.ru>
+    
+Српски:
+    Mladen Pejaković <pejakm@autistici.org>
 
 Словачки:
     Ján Ďanovský <dagsoftware@yahoo.com>
@@ -61,5 +65,4 @@
 Украјински:
     Gennadi Motsyo <drool@altlinux.ru>
 
-Српски:
-    Mladen Pejaković <pejakm@autistici.org>
+

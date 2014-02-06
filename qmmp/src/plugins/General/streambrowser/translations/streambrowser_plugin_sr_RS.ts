@@ -62,7 +62,7 @@
     <message>
         <location filename="../streamwindow.ui" line="73"/>
         <source>IceCast</source>
-        <translation>АјсКаст</translation>
+        <translation>Ајскаст</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="102"/>

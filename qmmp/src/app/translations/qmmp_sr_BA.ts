@@ -109,7 +109,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="309"/>
         <source>Compiled with Qt version: %1</source>
-        <translation>Компајлирано Кут издањем: %1</translation>
+        <translation>Комилован Кут издањем: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="310"/>

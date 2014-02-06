@@ -11,7 +11,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation>Порука балона</translation>
+        <translation>Порука</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -22,7 +22,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation>Балон</translation>
+        <translation>Облачић</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
-        <translation>Шаблон балона</translation>
+        <translation>Шаблон облачића</translation>
     </message>
 </context>
 <context>
