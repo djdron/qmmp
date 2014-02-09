@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,9 +20,7 @@
 #ifndef VISUALPROJECTMFACTORY_H
 #define VISUALPROJECTMFACTORY_H
 
-
 #include <QObject>
-
 #include <qmmp/visualfactory.h>
 #include <qmmp/visual.h>
 
@@ -32,7 +30,7 @@
 class VisualProjectMFactory : public QObject, public VisualFactory
 {
 Q_OBJECT
-Q_INTERFACES(VisualFactory);
+Q_INTERFACES(VisualFactory)
 
 public:
     const VisualProperties properties() const;

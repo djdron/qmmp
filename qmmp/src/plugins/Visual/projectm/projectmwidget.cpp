@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Copyright (C) 2007 by  projectM team                                  *
@@ -40,11 +40,13 @@ ProjectMWidget::ProjectMWidget(QWidget *parent)
 {
     setMouseTracking(true);
     m_projectM = 0;
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),SLOT(updateGL ()));
-    timer->start(0);
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()),SLOT(updateGL ()));
     m_menu = new QMenu(this);
     connect(SoundCore::instance(), SIGNAL(metaDataChanged()), SLOT(updateTitle()));
+    qDebug("ProjectMWidget: opengl version: %d.%d",
+           context()->format().majorVersion(),
+           context()->format().minorVersion());
 }
 
 
@@ -81,10 +83,32 @@ void ProjectMWidget::initializeGL()
     glEnable(GL_POINT_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glLineStipple(2, 0xAAAA);
+
     if (!m_projectM)
     {
+#ifdef Q_OS_WIN
+        projectM::Settings settings;
+        settings.meshX = 32;
+        settings.meshY = 24;
+        settings.fps = 35;
+        settings.textureSize = 1024;
+        settings.windowWidth = 512;
+        settings.windowHeight = 512;
+        settings.presetURL = "D:/devel/mingw32-libs/share/projectM/presets";
+        settings.titleFontURL = "D:/devel/mingw32-libs/share/projectM/fonts";
+        settings.menuFontURL = "D:/devel/mingw32-libs/share/projectM/fonts";
+        settings.smoothPresetDuration = 5;
+        settings.presetDuration = 30;
+        settings.beatSensitivity = 1.0;
+        settings.aspectCorrection = true;
+        settings.easterEgg = 1.0;
+        settings.shuffleEnabled = false;
+        settings.softCutRatingsEnabled = false;
+        m_projectM = new projectM(settings, projectM::FLAG_DISABLE_PLAYLIST_LOAD);
+#else
         m_projectM = new projectM(PROJECTM_CONFIG, projectM::FLAG_DISABLE_PLAYLIST_LOAD);
-        QString presetPath (m_projectM->settings().presetURL.c_str());
+#endif
+        QString presetPath = QString::fromLocal8Bit(m_projectM->settings().presetURL.c_str());
         QDir presetDir(presetPath);
         presetDir.setFilter(QDir::Files);
         QStringList filters;
@@ -105,6 +129,7 @@ void ProjectMWidget::initializeGL()
         }
         createActions();
         updateTitle();
+        m_timer->start(0);
     }
 }
 

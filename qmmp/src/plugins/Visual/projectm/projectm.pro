@@ -18,8 +18,6 @@ CONFIG += warn_on \
 plugin \
 link_pkgconfig
 
-PKGCONFIG += libprojectM
-
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 QT += opengl
@@ -41,19 +39,23 @@ TRANSLATIONS = translations/projectm_plugin_cs.ts \
                translations/projectm_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/Visual
-INSTALLS += target
-
-#projectM config path
-PROJECTM_CONFIG_FILES = /usr/share/projectM/config.inp \
-                        /usr/local/share/projectM/config.inp
-
-for(path, PROJECTM_CONFIG_FILES) {
-  exists($$path) {
-     message ("found projectm configuration: "$$path)
-     DEFINES += PROJECTM_CONFIG=\\\"$$path\\\"
+unix {
+  PKGCONFIG += libprojectM
+  isEmpty(LIB_DIR):LIB_DIR = /lib
+  target.path = $$LIB_DIR/qmmp/Visual
+  INSTALLS += target
+  #projectM config path
+  PROJECTM_CONFIG_FILES = /usr/share/projectM/config.inp \
+                          /usr/local/share/projectM/config.inp
+  for(path, PROJECTM_CONFIG_FILES) {
+    exists($$path) {
+      message ("found projectm configuration: "$$path)
+      DEFINES += PROJECTM_CONFIG=\\\"$$path\\\"
+    }
   }
+}
+
+win32 {
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lprojectM.dll
 }
