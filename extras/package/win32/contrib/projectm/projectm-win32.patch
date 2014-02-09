@@ -1,0 +1,216 @@
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/CMakeLists.txt projectM-complete-2.1.0-Source-new//src/libprojectM/CMakeLists.txt
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/CMakeLists.txt	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/CMakeLists.txt	2014-02-09 13:10:47 +0400
+@@ -60,6 +60,8 @@
+ 	SET(PRESET_FACTORY_SOURCES ${PRESET_FACTORY_SOURCES} ${NativePresetFactory_SOURCE_DIR})
+ 	SET(PRESET_FACTORY_BINARY_DIR ${PRESET_FACTORY_BINARY_DIR} ${NativePresetFactory_BINARY_DIR})
+ 	SET(PRESET_FACTORY_LINK_TARGETS ${PRESET_FACTORY_LINK_TARGETS} NativePresetFactory)
++elseif (NOT DISABLE_NATIVE_PRESETS)
++        ADD_DEFINITIONS(-DDISABLE_NATIVE_PRESETS)
+ endif(NOT DISABLE_NATIVE_PRESETS)
+ 
+ if (NOT DISABLE_MILKDROP_PRESETS)
+@@ -113,16 +115,16 @@
+ set_property(TARGET projectM PROPERTY IMPORTED_LINK_DEPENDENT_LIBRARIES "")
+ SET_TARGET_PROPERTIES(projectM PROPERTIES VERSION ${PROJECTM_VERSION} SOVERSION ${PROJECTM_ABI_LEVEL})
+ 
+-if (USE_THREADS)
+-ADD_DEFINITIONS(-DUSE_THREADS)
+-endif(USE_THREADS)
++#if (USE_THREADS)
++#ADD_DEFINITIONS(-DUSE_THREADS)
++#endif(USE_THREADS)
+ 
+ if (APPLE)
+ 	ADD_DEFINITIONS(-DMACOS -DSTBI_NO_DDS)
+ 	set(RESOURCE_PREFIX "Resources")
+ else (APPLE)
+ 	if (WIN32)
+-		set (RESOURCE_PREFIX "Resources")
++		set (RESOURCE_PREFIX "share/projectM")
+ 		ADD_DEFINITIONS(-DWIN32 -DSTBI_NO_DDS)
+ 	else(WIN32)
+ 		set (RESOURCE_PREFIX "share/projectM")
+@@ -199,7 +201,9 @@
+ 				${GLEW_LIBRARY}
+ 				${FTGL_LINK_TARGETS}
+ 				${MATH_LIBRARIES}
+-				dl
++                                glew32.dll
++                                opengl32
++                                glu32
+ 				${OPENGL_LIBRARIES}
+ 	)
+ else(BUILD_PROJECTM_STATIC)
+@@ -210,7 +214,6 @@
+ 				${GLEW_LIBRARY}
+ 				${FTGL_LINK_TARGETS}
+ 				${MATH_LIBRARIES}
+-				dl
+ 				${OPENGL_LIBRARIES}
+ 	)
+ endif(BUILD_PROJECTM_STATIC)
+@@ -224,7 +227,7 @@
+ CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/config.inp.in" "${CMAKE_CURRENT_BINARY_DIR}/config.inp" @ONLY)
+ 
+ IF(projectM_FONT_MENU MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/Vera.ttf" OR projectM_FONT_TITLE MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/Vera.ttf")
+-	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fonts/VeraMono.ttf DESTINATION ${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts)
++	INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fonts/Vera.ttf DESTINATION ${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts)
+ ENDIF(projectM_FONT_MENU MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/Vera.ttf" OR projectM_FONT_TITLE MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/Vera.ttf")
+ 
+ IF(projectM_FONT_MENU MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/VeraMono.ttf" OR projectM_FONT_TITLE MATCHES "${CMAKE_INSTALL_PREFIX}/${RESOURCE_PREFIX}/fonts/VeraMono.ttf")
+@@ -237,4 +240,13 @@
+ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libprojectM.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.inp DESTINATION ${CMAKE_INSTALL_PREFIX}/share/projectM)
+ INSTALL(FILES projectM.hpp event.h dlldefs.h fatal.h PCM.hpp Common.hpp DESTINATION include/libprojectM)
+-INSTALL(TARGETS projectM DESTINATION lib)
++
++install(TARGETS projectM
++        LIBRARY DESTINATION lib
++        RUNTIME DESTINATION bin
++        ARCHIVE DESTINATION lib
++)
++
++
++
++
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/MilkdropPresetFactory/CMakeLists.txt projectM-complete-2.1.0-Source-new//src/libprojectM/MilkdropPresetFactory/CMakeLists.txt
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/MilkdropPresetFactory/CMakeLists.txt	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/MilkdropPresetFactory/CMakeLists.txt	2014-02-09 13:07:39 +0400
+@@ -15,9 +15,6 @@
+ 	IdlePreset.cpp
+ )
+ 
+-IF(NOT MSVC)
+-	SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+-ENDIF(NOT MSVC)
+ 
+ INCLUDE_DIRECTORIES(${projectM_SOURCE_DIR} ${Renderer_SOURCE_DIR})
+ LINK_DIRECTORIES(${projectM_BINARY_DIR} ${Renderer_BINARY_DIR})
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/MilkdropPresetFactory/MilkdropPreset.cpp projectM-complete-2.1.0-Source-new//src/libprojectM/MilkdropPresetFactory/MilkdropPreset.cpp
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/MilkdropPresetFactory/MilkdropPreset.cpp	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/MilkdropPresetFactory/MilkdropPreset.cpp	2014-02-09 13:07:39 +0400
+@@ -23,11 +23,11 @@
+ #include <cstring>
+ #include <cstdlib>
+ 
+-#ifdef WIN32
+-#include "win32-dirent.h"
+-#else
++//#ifdef WIN32
++//#include "win32-dirent.h"
++//#else
+ #include <dirent.h>
+-#endif /** WIN32 */
++//#endif /** WIN32 */
+ #include <time.h>
+
+ 
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/PresetFactoryManager.cpp projectM-complete-2.1.0-Source-new//src/libprojectM/PresetFactoryManager.cpp
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/PresetFactoryManager.cpp	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/PresetFactoryManager.cpp	2014-02-09 13:07:39 +0400
+@@ -51,8 +51,8 @@
+ 	#endif
+ 	
+ 	#ifndef DISABLE_NATIVE_PRESETS
+-	factory = new NativePresetFactory();
+-	registerFactory(factory->supportedExtensions(), factory);
++	//factory = new NativePresetFactory();
++	//registerFactory(factory->supportedExtensions(), factory);
+ 	#endif
+ }
+ 
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/PresetLoader.hpp projectM-complete-2.1.0-Source-new//src/libprojectM/PresetLoader.hpp
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/PresetLoader.hpp	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/PresetLoader.hpp	2014-02-09 13:07:39 +0400
+@@ -5,13 +5,13 @@
+ #include <memory> // for auto pointers
+ #include <sys/types.h>
+ 
+-#ifdef WIN32
+-#include "win32-dirent.h"
+-#endif
++//#ifdef WIN32
++//#include "win32-dirent.h"
++//#endif
+ 
+-#ifdef LINUX
++//#ifdef LINUX
+ #include <dirent.h>
+-#endif
++//#endif
+ 
+ #ifdef MACOS
+ #include <dirent.h>
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/Renderer/CMakeLists.txt projectM-complete-2.1.0-Source-new//src/libprojectM/Renderer/CMakeLists.txt
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/Renderer/CMakeLists.txt	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/Renderer/CMakeLists.txt	2014-02-09 13:07:39 +0400
+@@ -29,11 +29,6 @@
+ 	${SOIL_SOURCES}
+ )
+ 
+-IF(NOT MSVC)
+-	SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+-	SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+-ENDIF(NOT MSVC)
+-
+ if(MSVC)
+ 	SET (MATH_LIBRARIES )
+ else(MSVC)
+@@ -49,6 +44,7 @@
+ 			${OPENGL_LIBRARIES}
+ 			${IMAGE_LINK_TARGETS}
+ 			${CG_LINK_TARGETS}
++                        opengl32
+ 			${FREETYPE2_LIBRARIES}
+ )
+ set_target_properties(Renderer PROPERTIES COMPILE_FLAGS "-Wno-parentheses")
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/projectM.cpp projectM-complete-2.1.0-Source-new//src/libprojectM/projectM.cpp
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/projectM.cpp	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/projectM.cpp	2014-02-09 13:07:39 +0400
+@@ -24,9 +24,9 @@
+ #include "fatal.h"
+ #include "Common.hpp"
+ 
+-#ifdef WIN32
+-#include "win32-dirent.h"
+-#endif
++//#ifdef WIN32
++//#include "win32-dirent.h"
++//#endif
+ 
+ #include "timer.h"
+ #include <iostream>
+@@ -90,6 +90,13 @@
+     printf("p");
+     std::cout << std::endl;
+     #endif
++
++    if(m_activePreset.get())
++        delete m_activePreset.release();
++
++    if(m_activePreset2.get())
++        delete m_activePreset2.release();
++
+     destroyPresetTools();
+ 
+     if ( renderer )
+diff -U 3 -r projectM-complete-2.1.0-Source-old//src/libprojectM/projectM.hpp projectM-complete-2.1.0-Source-new//src/libprojectM/projectM.hpp
+--- projectM-complete-2.1.0-Source-old//src/libprojectM/projectM.hpp	2012-05-20 07:43:26 +0400
++++ projectM-complete-2.1.0-Source-new//src/libprojectM/projectM.hpp	2014-02-09 13:07:39 +0400
+@@ -29,11 +29,11 @@
+ #ifndef _PROJECTM_HPP
+ #define _PROJECTM_HPP
+ 
+-#ifdef WIN32
+-#include "win32-dirent.h"
+-#else
++//#ifdef WIN32
++//#include "win32-dirent.h"
++//#else
+ #include <dirent.h>
+-#endif /** WIN32 */
++//#endif /** WIN32 */
+ #include <cmath>
+ #include <cstdio>
+ #include <string>

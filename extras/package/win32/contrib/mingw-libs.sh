@@ -1,11 +1,13 @@
 #!/bin/sh
 
 LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
-LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack'
+LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack '
+LIB_NAMES+='glew projectm'
+
 
 export PREFIX=D:/devel/mingw32-libs
 export STRIP=true
-export JOBS=1
+export JOBS=2
 
 
 mkdir -p ${PREFIX} ${PREFIX}/bin ${PREFIX}/lib/pkgconfig ${PREFIX}/share/doc
