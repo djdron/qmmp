@@ -26,6 +26,7 @@
 #include <QDir>
 #include <QKeyEvent>
 #include <QMenu>
+#include <QApplication>
 #include <libprojectM/projectM.hpp>
 #include <qmmp/soundcore.h>
 #include <qmmp/qmmp.h>
@@ -84,6 +85,8 @@ void ProjectMWidget::initializeGL()
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glLineStipple(2, 0xAAAA);
 
+    ;
+
     if (!m_projectM)
     {
 #ifdef Q_OS_WIN
@@ -94,9 +97,9 @@ void ProjectMWidget::initializeGL()
         settings.textureSize = 1024;
         settings.windowWidth = 512;
         settings.windowHeight = 512;
-        settings.presetURL = "D:/devel/mingw32-libs/share/projectM/presets";
-        settings.titleFontURL = "D:/devel/mingw32-libs/share/projectM/fonts";
-        settings.menuFontURL = "D:/devel/mingw32-libs/share/projectM/fonts";
+        settings.presetURL = QString(qApp->applicationDirPath() + "/projectM/presets").toLocal8Bit().constData();
+        settings.titleFontURL = QString(qApp->applicationDirPath() + "/projectM/fonts/Vera.ttf").toLocal8Bit().constData();
+        settings.menuFontURL = QString(qApp->applicationDirPath() + "/projectM/fonts/VeraMono.ttf").toLocal8Bit().constData();
         settings.smoothPresetDuration = 5;
         settings.presetDuration = 30;
         settings.beatSensitivity = 1.0;
