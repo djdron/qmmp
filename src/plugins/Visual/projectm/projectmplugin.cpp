@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,10 +33,11 @@
 #include "projectmplugin.h"
 
 ProjectMPlugin::ProjectMPlugin (QWidget *parent)
-        : Visual (parent)
+        : Visual (parent, Qt::Window | Qt::MSWindowsOwnDC)
 {
     setlocale(LC_NUMERIC, "C"); //fixes problem with none-english locales
     setWindowTitle(tr("ProjectM"));
+
     m_projectMWidget = new ProjectMWidget(this);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(m_projectMWidget);
