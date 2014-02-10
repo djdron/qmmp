@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,7 +56,7 @@ void RadioItemDelegate::paint(QPainter *painter,
 
         if(opt.state.testFlag(QStyle::State_Selected))
         {
-            buttonOption.palette.setBrush(QPalette::ButtonText,
+            buttonOption.palette.setBrush(QPalette::WindowText,
                                           opt.palette.brush(QPalette::HighlightedText));
             qApp->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, painter);
         }
