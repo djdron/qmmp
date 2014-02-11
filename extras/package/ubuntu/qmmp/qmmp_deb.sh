@@ -1,6 +1,6 @@
 #!/bin/sh
 
-QMMP_VERSION=0.7.4
+QMMP_VERSION=0.7.5
 UBUNTU_CODENAMES='precise quantal raring saucy'
 BUILD_ROOT=build-root
 
@@ -28,7 +28,7 @@ build ()
 
 update ()
 {
-	dch -m --newversion 0.8.0-1ubuntu1~${1}0 -D ${1} -c debian-$1/changelog "New upstream release."
+	dch -m --newversion ${QMMP_VERSION}-1ubuntu1~${1}0 -D ${1} -c debian-$1/changelog "New upstream release."
 }
 
 upload ()
