@@ -1,2 +1,0 @@
-?package(qmmp):needs="X11" section="Applications/Sound"\
-  title="qmmp" command="/usr/bin/qmmp"

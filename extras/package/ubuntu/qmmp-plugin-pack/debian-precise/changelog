@@ -1,3 +1,9 @@
+qmmp-plugin-pack (0.7.5-1ubuntu3~precise0) precise; urgency=low
+
+  * Fixed original sources.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Feb 2014 19:13:32 +0400
+
 qmmp-plugin-pack (0.7.5-1ubuntu1~precise0) precise; urgency=low
 
   * New upstream release.

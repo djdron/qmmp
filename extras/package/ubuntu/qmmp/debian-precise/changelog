@@ -1,3 +1,15 @@
+qmmp (0.7.5-1ubuntu3~precise0) precise; urgency=low
+
+  * Fixed original sources again.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Feb 2014 18:46:53 +0400
+
+qmmp (0.7.5-1ubuntu2~precise0) precise; urgency=low
+
+  * Fixed original sources.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Feb 2014 18:41:19 +0400
+
 qmmp (0.7.5-1ubuntu1~precise0) precise; urgency=low
 
   * New upstream release.
