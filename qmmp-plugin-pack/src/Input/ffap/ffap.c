@@ -31,7 +31,9 @@
    main changes compared to DeaDBeeF:
      removed deadbeef functions and structures
      added public callback api
+     added mingw support
      fixed some gcc warnings
+
 */
 
 #if HAVE_CONFIG_H
@@ -672,7 +674,11 @@ ape_free_ctx (APEContext *ape_ctx) {
     }
     for (i = 0; i < APE_FILTER_LEVELS; i++) {
         if (ape_ctx->filterbuf[i]) {
+#if defined(_WIN32) && ! defined(_MSC_VER)
+            __mingw_aligned_free(ape_ctx->filterbuf[i]);
+#else
             free (ape_ctx->filterbuf[i]);
+#endif
             ape_ctx->filterbuf[i] = NULL;
         }
     }
