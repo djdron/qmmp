@@ -12,82 +12,82 @@
 <context>
     <name>ProjectMWidget</name>
     <message>
-        <location filename="../projectmwidget.cpp" line="134"/>
+        <location filename="../projectmwidget.cpp" line="162"/>
         <source>&amp;Help</source>
         <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="134"/>
+        <location filename="../projectmwidget.cpp" line="162"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="135"/>
+        <location filename="../projectmwidget.cpp" line="163"/>
         <source>&amp;Show Song Title</source>
         <translation>曲名を表示(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="135"/>
+        <location filename="../projectmwidget.cpp" line="163"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="136"/>
+        <location filename="../projectmwidget.cpp" line="164"/>
         <source>&amp;Show Preset Name</source>
         <translation>プリセット名を表示(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="136"/>
+        <location filename="../projectmwidget.cpp" line="164"/>
         <source>F3</source>
         <translation>F3</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="138"/>
+        <location filename="../projectmwidget.cpp" line="166"/>
         <source>&amp;Next Preset</source>
         <translation>次のプリセット(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="138"/>
+        <location filename="../projectmwidget.cpp" line="166"/>
         <source>N</source>
         <translation>N</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="139"/>
+        <location filename="../projectmwidget.cpp" line="167"/>
         <source>&amp;Previous Preset</source>
         <translation>前のプリセット(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="139"/>
+        <location filename="../projectmwidget.cpp" line="167"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="140"/>
+        <location filename="../projectmwidget.cpp" line="168"/>
         <source>&amp;Random Preset</source>
         <translation>プリセットを無作為に(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="140"/>
+        <location filename="../projectmwidget.cpp" line="168"/>
         <source>R</source>
         <translation>R</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="141"/>
+        <location filename="../projectmwidget.cpp" line="169"/>
         <source>&amp;Lock Preset</source>
         <translation>プリセットをロック(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="141"/>
+        <location filename="../projectmwidget.cpp" line="169"/>
         <source>L</source>
         <translation>L</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="143"/>
+        <location filename="../projectmwidget.cpp" line="171"/>
         <source>&amp;Fullscreen</source>
         <translation>フルスクリーン(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="143"/>
+        <location filename="../projectmwidget.cpp" line="171"/>
         <source>F</source>
         <translation>F</translation>
     </message>
