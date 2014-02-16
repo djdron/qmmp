@@ -46,6 +46,8 @@ private:
     QTimer *m_timer;
     ProjectMWidget *m_projectMWidget;
     QSplitter *m_splitter;
+    short *m_buf;
+    int m_buf_size;
 };
 
 
