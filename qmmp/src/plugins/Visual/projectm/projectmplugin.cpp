@@ -41,19 +41,25 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
     setWindowTitle(tr("ProjectM"));
 
     QListWidget *listWidget = new QListWidget(this);
+    listWidget->setAlternatingRowColors(true);
     m_projectMWidget = new ProjectMWidget(listWidget, this);
     m_splitter = new QSplitter(Qt::Horizontal, this);
     m_splitter->addWidget(listWidget);
     m_splitter->addWidget(m_projectMWidget);
+    m_splitter->setStretchFactor(1,1);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(m_splitter);
     layout->setContentsMargins(0,0,0,0);
     setLayout(layout);
     addActions(m_projectMWidget->actions());
     connect(m_projectMWidget, SIGNAL(showMenuToggled(bool)), listWidget, SLOT(setVisible(bool)));
-    resize(300,300);
+    connect(m_projectMWidget, SIGNAL(fullscreenToggled(bool)), SLOT(setFullScreen(bool)));
+    listWidget->hide();
+    resize(600,400);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     restoreGeometry(settings.value("ProjectM/geometry").toByteArray());
+    m_splitter->setSizes(QList<int>() << 300 << 300);
+    m_splitter->restoreState(settings.value("ProjectM/splitter_sizes").toByteArray());
 }
 
 ProjectMPlugin::~ProjectMPlugin()
@@ -62,6 +68,14 @@ ProjectMPlugin::~ProjectMPlugin()
 void ProjectMPlugin::clear()
 {
     update();
+}
+
+void ProjectMPlugin::setFullScreen(bool yes)
+{
+    if(yes)
+        setWindowState(windowState() | Qt::WindowFullScreen);
+    else
+        setWindowState(windowState() & ~Qt::WindowFullScreen);
 }
 
 void ProjectMPlugin::add (unsigned char *data, qint64 size, int chan)
@@ -77,5 +91,6 @@ void ProjectMPlugin::closeEvent (QCloseEvent *event)
     //save geometry
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("ProjectM/geometry", saveGeometry());
+    settings.setValue("ProjectM/splitter_sizes", m_splitter->saveState());
     Visual::closeEvent(event); //removes visualization object
 }

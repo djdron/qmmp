@@ -169,7 +169,7 @@ void ProjectMWidget::createActions()
     m_menu->addAction(tr("&Random Preset"), this, SLOT(randomPreset()), tr("R"));
     m_menu->addAction(tr("&Lock Preset"), this, SLOT(lockPreset(bool)), tr("L"))->setCheckable(true);
     m_menu->addSeparator();
-    m_menu->addAction(tr("&Fullscreen"), this, SLOT(fullScreen()), tr("F"));
+    m_menu->addAction(tr("&Fullscreen"), this, SIGNAL(fullscreenToggled(bool)), tr("F"))->setCheckable(true);
     m_menu->addSeparator();
     addActions(m_menu->actions());
 }
@@ -207,11 +207,6 @@ void ProjectMWidget::randomPreset()
 void ProjectMWidget::lockPreset(bool lock)
 {
     m_projectM->setPresetLock(lock);
-}
-
-void ProjectMWidget::fullScreen()
-{
-    parentWidget()->setWindowState (parentWidget()->windowState() ^Qt::WindowFullScreen);
 }
 
 void ProjectMWidget::updateTitle()
