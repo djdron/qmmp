@@ -9,10 +9,12 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/Visual/libprojectm.so
 
 HEADERS += projectmwidget.h \
            visualprojectmfactory.h \
-           projectmplugin.h
+           projectmplugin.h \
+    projectmwrapper.h
 SOURCES += projectmplugin.cpp \
            visualprojectmfactory.cpp \
-           projectmwidget.cpp
+           projectmwidget.cpp \
+    projectmwrapper.cpp
 INCLUDEPATH += ../../../
 CONFIG += warn_on \
 plugin \

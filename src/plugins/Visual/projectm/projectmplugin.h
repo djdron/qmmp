@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,13 +24,13 @@
 #include <qmmp/visual.h>
 
 class QTimer;
+class QSplitter;
 class Buffer;
 class ProjectMWidget;
 
 class ProjectMPlugin : public Visual
 {
     Q_OBJECT
-
 public:
     ProjectMPlugin(QWidget *parent = 0);
     virtual ~ProjectMPlugin();
@@ -42,6 +42,7 @@ private:
     void closeEvent(QCloseEvent *event);
     QTimer *m_timer;
     ProjectMWidget *m_projectMWidget;
+    QSplitter *m_splitter;
 };
 
 
