@@ -43,6 +43,7 @@ public:
 
 signals:
     void showMenuToggled(bool);
+    void fullscreenToggled(bool);
 
 protected:
     virtual void initializeGL();
@@ -58,7 +59,6 @@ private slots:
     void previousPreset();
     void randomPreset();
     void lockPreset(bool lock);
-    void fullScreen();
     void updateTitle();
     void setCurrentRow(int row);
 

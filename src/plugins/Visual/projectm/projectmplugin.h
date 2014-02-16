@@ -38,6 +38,9 @@ public:
     void add(unsigned char *data, qint64 size, int chan);
     void clear();
 
+private slots:
+    void setFullScreen(bool yes);
+
 private:
     void closeEvent(QCloseEvent *event);
     QTimer *m_timer;
