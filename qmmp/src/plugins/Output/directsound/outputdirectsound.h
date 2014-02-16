@@ -28,6 +28,8 @@
 #include <qmmp/volume.h>
 #include <qmmp/output.h>
 
+class VolumeDirectSound;
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -47,6 +49,12 @@ public:
     void resume();
     void reset();
 
+    //volume control
+    static OutputDirectSound *instance;
+    static VolumeDirectSound *volumeControl;
+    IDirectSoundBuffer8 *secondaryBuffer();
+
+
 private:
     // helper functions
     void status();
@@ -59,6 +67,9 @@ private:
     DWORD m_dsBufferAt;
 };
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class VolumeDirectSound : public Volume
 {
 public:
@@ -67,6 +78,10 @@ public:
 
     void setVolume(const VolumeSettings &vol);
     VolumeSettings volume() const;
+    void restore();
+
+private:
+    VolumeSettings m_volume;
 };
 
 
