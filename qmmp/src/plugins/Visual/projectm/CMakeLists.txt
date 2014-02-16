@@ -51,12 +51,14 @@ SET(libprojectm_SRCS
     projectmwidget.cpp
     projectmplugin.cpp
     visualprojectmfactory.cpp
+    projectmwrapper.cpp
 )
 
 SET(libprojectm_MOC_HDRS
     projectmwidget.h
     projectmplugin.h
     visualprojectmfactory.h
+    projectmwrapper.h
 )
 
 SET(libprojectm_RCCS translations/translations.qrc)

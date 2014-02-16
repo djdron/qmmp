@@ -23,6 +23,8 @@
 #include <QMenu>
 #include <QActionGroup>
 #include <QHBoxLayout>
+#include <QSplitter>
+#include <QListWidget>
 #include <math.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -38,11 +40,17 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
     setlocale(LC_NUMERIC, "C"); //fixes problem with none-english locales
     setWindowTitle(tr("ProjectM"));
 
-    m_projectMWidget = new ProjectMWidget(this);
+    QListWidget *listWidget = new QListWidget(this);
+    m_projectMWidget = new ProjectMWidget(listWidget, this);
+    m_splitter = new QSplitter(Qt::Horizontal, this);
+    m_splitter->addWidget(listWidget);
+    m_splitter->addWidget(m_projectMWidget);
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(m_projectMWidget);
+    layout->addWidget(m_splitter);
     layout->setContentsMargins(0,0,0,0);
     setLayout(layout);
+    addActions(m_projectMWidget->actions());
+    connect(m_projectMWidget, SIGNAL(showMenuToggled(bool)), listWidget, SLOT(setVisible(bool)));
     resize(300,300);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     restoreGeometry(settings.value("ProjectM/geometry").toByteArray());

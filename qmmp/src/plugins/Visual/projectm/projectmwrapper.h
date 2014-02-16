@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,57 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef PROJECTMWIDGET_H
-#define PROJECTMWIDGET_H
 
-#include <QGLWidget>
+#ifndef PROJECTMWRAPPER_H
+#define PROJECTMWRAPPER_H
 
-class QMenu;
-class QTimer;
-class QListWidget;
-class ProjectMWrapper;
-class projectM;
+#include <QObject>
+#include <libprojectM/projectM.hpp>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class ProjectMWidget : public QGLWidget
+class ProjectMWrapper : public QObject, public projectM
 {
     Q_OBJECT
 public:
-    ProjectMWidget(QListWidget *listWidget, QWidget *parent = 0);
+    explicit ProjectMWrapper(std::string config_file, int flags, QObject *parent = 0);
+    explicit ProjectMWrapper(Settings settings, int flags, QObject *parent = 0);
 
-    ~ProjectMWidget();
-
-    projectM *projectMInstance();
+    virtual ~ProjectMWrapper();
 
 signals:
-    void showMenuToggled(bool);
+    void currentPresetChanged(int index) const;
 
-protected:
-    virtual void initializeGL();
-    virtual void resizeGL(int width, int height);
-    virtual void paintGL();
-    virtual void mousePressEvent (QMouseEvent *event);
-
-private slots:
-    void showHelp();
-    void showPresetName();
-    void showTitle();
-    void nextPreset();
-    void previousPreset();
-    void randomPreset();
-    void lockPreset(bool lock);
-    void fullScreen();
-    void updateTitle();
-    void setCurrentRow(int row);
+public slots:
+    void selectPreset(int index);
 
 private:
-    void createActions();
-    ProjectMWrapper *m_projectM;
-    QMenu *m_menu;
-    QTimer *m_timer;
-    QListWidget *m_listWidget;
+    void presetSwitchedEvent(bool isHardCut, unsigned int index) const;
+
+
 };
 
-#endif
+#endif // PROJECTMWRAPPER_H

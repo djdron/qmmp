@@ -27,36 +27,35 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QApplication>
-#include <libprojectM/projectM.hpp>
+#include <QListWidget>
 #include <qmmp/soundcore.h>
 #include <qmmp/qmmp.h>
+#include "projectmwrapper.h"
 #include "projectmwidget.h"
 
 #ifndef PROJECTM_CONFIG
 #define PROJECTM_CONFIG "/usr/share/projectM/config.inp"
 #endif
 
-ProjectMWidget::ProjectMWidget(QWidget *parent)
+ProjectMWidget::ProjectMWidget(QListWidget *listWidget, QWidget *parent)
         : QGLWidget(parent)
 {
     setMouseTracking(true);
+    m_listWidget = listWidget;
     m_projectM = 0;
     m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()),SLOT(updateGL ()));
+    connect(m_timer, SIGNAL(timeout()),SLOT(updateGL()));
     m_menu = new QMenu(this);
     connect(SoundCore::instance(), SIGNAL(metaDataChanged()), SLOT(updateTitle()));
     qDebug("ProjectMWidget: opengl version: %d.%d",
            context()->format().majorVersion(),
            context()->format().minorVersion());
+    createActions();
 }
 
 
 ProjectMWidget::~ProjectMWidget()
-{
-    if (m_projectM)
-        delete m_projectM;
-    m_projectM = 0;
-}
+{}
 
 projectM *ProjectMWidget::projectMInstance()
 {
@@ -85,8 +84,6 @@ void ProjectMWidget::initializeGL()
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glLineStipple(2, 0xAAAA);
 
-    ;
-
     if (!m_projectM)
     {
 #ifdef Q_OS_WIN
@@ -107,9 +104,9 @@ void ProjectMWidget::initializeGL()
         settings.easterEgg = 1.0;
         settings.shuffleEnabled = false;
         settings.softCutRatingsEnabled = false;
-        m_projectM = new projectM(settings, projectM::FLAG_DISABLE_PLAYLIST_LOAD);
+        m_projectM = new ProjectMWrapper(settings, projectM::FLAG_DISABLE_PLAYLIST_LOAD, this);
 #else
-        m_projectM = new projectM(PROJECTM_CONFIG, projectM::FLAG_DISABLE_PLAYLIST_LOAD);
+        m_projectM = new ProjectMWrapper(PROJECTM_CONFIG, projectM::FLAG_DISABLE_PLAYLIST_LOAD, this);
 #endif
         QString presetPath = QString::fromLocal8Bit(m_projectM->settings().presetURL.c_str());
         QDir presetDir(presetPath);
@@ -129,8 +126,11 @@ void ProjectMWidget::initializeGL()
 #else
             m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), 1);
 #endif
+            m_listWidget->addItem(info.fileName());
+            m_listWidget->setCurrentRow(0,QItemSelectionModel::Select);
         }
-        createActions();
+        connect(m_listWidget, SIGNAL(currentRowChanged(int)), m_projectM, SLOT(selectPreset(int)));
+        connect(m_projectM, SIGNAL(currentPresetChanged(int)), SLOT(setCurrentRow(int)));
         updateTitle();
         m_timer->start(0);
     }
@@ -159,18 +159,19 @@ void ProjectMWidget::mousePressEvent (QMouseEvent *event)
 
 void ProjectMWidget::createActions()
 {
-    m_menu->addAction(tr("&Help"), this, SLOT(showHelp()), tr("F1"));
-    m_menu->addAction(tr("&Show Song Title"), this, SLOT(showTitle()), tr("F2"));
-    m_menu->addAction(tr("&Show Preset Name"), this, SLOT(showPresetName()), tr("F3"));
+    m_menu->addAction(tr("&Help"), this, SLOT(showHelp()), tr("F1"))->setCheckable(true);
+    m_menu->addAction(tr("&Show Song Title"), this, SLOT(showTitle()), tr("F2"))->setCheckable(true);
+    m_menu->addAction(tr("&Show Preset Name"), this, SLOT(showPresetName()), tr("F3"))->setCheckable(true);
+    m_menu->addAction(tr("&Show Menu"), this, SIGNAL(showMenuToggled(bool)), tr("M"))->setCheckable(true);
     m_menu->addSeparator();
     m_menu->addAction(tr("&Next Preset"), this, SLOT(nextPreset()), tr("N"));
     m_menu->addAction(tr("&Previous Preset"), this, SLOT(previousPreset()), tr("P"));
     m_menu->addAction(tr("&Random Preset"), this, SLOT(randomPreset()), tr("R"));
-    m_menu->addAction(tr("&Lock Preset"), this, SLOT(lockPreset()), tr("L"));
+    m_menu->addAction(tr("&Lock Preset"), this, SLOT(lockPreset(bool)), tr("L"))->setCheckable(true);
     m_menu->addSeparator();
     m_menu->addAction(tr("&Fullscreen"), this, SLOT(fullScreen()), tr("F"));
     m_menu->addSeparator();
-    parentWidget()->addActions(m_menu->actions());
+    addActions(m_menu->actions());
 }
 
 void ProjectMWidget::showHelp()
@@ -203,9 +204,9 @@ void ProjectMWidget::randomPreset()
     m_projectM->key_handler(PROJECTM_KEYDOWN, PROJECTM_K_r, PROJECTM_KMOD_LSHIFT);
 }
 
-void ProjectMWidget::lockPreset()
+void ProjectMWidget::lockPreset(bool lock)
 {
-    m_projectM->key_handler(PROJECTM_KEYDOWN, PROJECTM_K_l, PROJECTM_KMOD_LSHIFT);
+    m_projectM->setPresetLock(lock);
 }
 
 void ProjectMWidget::fullScreen()
@@ -218,4 +219,9 @@ void ProjectMWidget::updateTitle()
     std::string artist = SoundCore::instance()->metaData(Qmmp::ARTIST).toLocal8Bit().constData();
     std::string title = SoundCore::instance()->metaData(Qmmp::TITLE).toLocal8Bit().constData();
     m_projectM->projectM_setTitle(artist + " - " + title);
+}
+
+void ProjectMWidget::setCurrentRow(int row)
+{
+    m_listWidget->setCurrentRow(row);
 }
