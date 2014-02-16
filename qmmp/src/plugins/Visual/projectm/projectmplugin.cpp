@@ -40,6 +40,8 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
     setlocale(LC_NUMERIC, "C"); //fixes problem with none-english locales
     setWindowTitle(tr("ProjectM"));
 
+    m_buf = 0;
+    m_buf_size = 0;
     QListWidget *listWidget = new QListWidget(this);
     listWidget->setAlternatingRowColors(true);
     m_projectMWidget = new ProjectMWidget(listWidget, this);
@@ -63,7 +65,10 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
 }
 
 ProjectMPlugin::~ProjectMPlugin()
-{}
+{
+    if(m_buf)
+        free(m_buf);
+}
 
 void ProjectMPlugin::clear()
 {
@@ -80,10 +85,43 @@ void ProjectMPlugin::setFullScreen(bool yes)
 
 void ProjectMPlugin::add (unsigned char *data, qint64 size, int chan)
 {
-    Q_UNUSED(chan);
-    //TODO multichannel support
-    if (m_projectMWidget->projectMInstance())
-        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)data, size/4);
+    projectM *instance = m_projectMWidget->projectMInstance();
+    if (!instance)
+        return;
+    if(chan == 2)
+        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)data, size >> 2);
+    else
+    {
+        int samples = size / chan / 2; //number of samples for each channel (16 bit)
+        if(m_buf_size < samples * 4) //requied bytes
+        {
+            m_buf = (short*)realloc(m_buf, samples * 4);
+            m_buf_size = samples * 4;
+        }
+        short *in_buf = (short *)data;
+
+        if(chan == 1)
+        {
+            //convert mono to stereo
+            for(int i = 0; i < samples; ++i)
+            {
+                ((short *)m_buf)[i*2] = in_buf[0];
+                ((short *)m_buf)[i*2+1] = in_buf[0];
+                in_buf++;
+            }
+        }
+        else
+        {
+            //convert multi-channel to stereo
+            for(int i = 0; i < samples; ++i)
+            {
+                ((short*)m_buf)[i*2] = in_buf[0];
+                ((short*)m_buf)[i*2+1] = in_buf[1];
+                in_buf += chan;
+            }
+        }
+        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data(m_buf, samples);
+    }
 }
 
 void ProjectMPlugin::closeEvent (QCloseEvent *event)
