@@ -19,14 +19,18 @@
  ***************************************************************************/
 
 #include <QObject>
+#include <QSettings>
 #include <string.h>
 #include <iostream>
 #include <unistd.h>
 #include <qmmp/buffer.h>
-#include <qmmp/visual.h>
+#include <math.h>
 #include "outputdirectsound.h"
 
 #define DS_BUFSIZE (48*1024)
+
+OutputDirectSound *OutputDirectSound::instance = 0;
+VolumeDirectSound *OutputDirectSound::volumeControl = 0;
 
 OutputDirectSound::OutputDirectSound() : Output()
 {
@@ -34,10 +38,12 @@ OutputDirectSound::OutputDirectSound() : Output()
     m_primaryBuffer = 0;
     m_dsBuffer = 0;
     m_dsBufferAt = 0;
+    instance = this;
 }
 
 OutputDirectSound::~OutputDirectSound()
 {
+    instance = 0;
     uninitialize();
 }
 
@@ -104,7 +110,7 @@ bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat for
 
     ZeroMemory(&bufferDesc, sizeof(DSBUFFERDESC));
     bufferDesc.dwSize        = sizeof(DSBUFFERDESC);
-    bufferDesc.dwFlags       = DSBCAPS_CTRLFREQUENCY | DSBCAPS_CTRLPAN |
+    bufferDesc.dwFlags       = DSBCAPS_CTRLFREQUENCY | DSBCAPS_CTRLPAN | DSBCAPS_CTRLVOLUME |
             DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_CTRLPOSITIONNOTIFY;
     bufferDesc.lpwfxFormat   = &wfex;
     bufferDesc.dwBufferBytes = DS_BUFSIZE; // buffer size
@@ -128,6 +134,8 @@ bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat for
     m_dsBuffer->Play(0,0,DSBPLAY_LOOPING);
     m_dsBufferAt = 0;
     configure(freq, chan, Qmmp::PCM_S16LE);
+    if(volumeControl)
+        volumeControl->restore();
     return true;
 }
 
@@ -213,6 +221,11 @@ void OutputDirectSound::reset()
     m_dsBuffer->SetCurrentPosition(m_dsBufferAt-128);
 }
 
+IDirectSoundBuffer8 *OutputDirectSound::secondaryBuffer()
+{
+    return m_dsBuffer;
+}
+
 void OutputDirectSound::uninitialize()
 {
     m_dsBufferAt = 0;
@@ -250,15 +263,65 @@ DWORD OutputDirectSound::bytesToWrite()
 
 /***** MIXER *****/
 VolumeDirectSound::VolumeDirectSound()
-{}
+{
+    OutputDirectSound::volumeControl = this;
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_volume.left = settings.value("DirectSound/left_volume", 100).toInt();
+    m_volume.right = settings.value("DirectSound/right_volume", 100).toInt();
+}
 
 VolumeDirectSound::~VolumeDirectSound()
-{}
+{
+    m_volume = volume();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("DirectSound/left_volume", m_volume.left);
+    settings.setValue("DirectSound/right_volume", m_volume.right);
+    OutputDirectSound::volumeControl = 0;
+}
 
 void VolumeDirectSound::setVolume(const VolumeSettings &vol)
 {
+    if(OutputDirectSound::instance && OutputDirectSound::instance->secondaryBuffer())
+    {
+        int maxVol = qMax(vol.left, vol.right);
+        double voldB = -100.0, pandB = 0;
+        if(maxVol)
+        {
+            voldB = 20.0*log(maxVol/100.0)/log(10);
+            int balance = (vol.right - vol.left)*100.0/maxVol;
+            pandB = balance ? 20.0*log((100.0 - fabs(balance))/100.0)/log(10) : 0;
+            if(balance > 0)
+                pandB = -pandB;
+        }
+        OutputDirectSound::instance->secondaryBuffer()->SetVolume(voldB*100);
+        OutputDirectSound::instance->secondaryBuffer()->SetPan(pandB*100);
+    }
+    m_volume = vol;
 }
 
 VolumeSettings VolumeDirectSound::volume() const
 {
+    VolumeSettings vol;
+    if(OutputDirectSound::instance && OutputDirectSound::instance->secondaryBuffer())
+    {
+        long v = 0;
+        double voldB = 0, pandB = 0;
+        OutputDirectSound::instance->secondaryBuffer()->GetVolume(&v);
+        voldB = v / 100.0;
+        OutputDirectSound::instance->secondaryBuffer()->GetPan(&v);
+        pandB = v / 100.0;
+        int volume = 100*pow(10, voldB/20.0);
+        int balance = 100 - 100*pow(10, abs(pandB)/20.0);
+        if(pandB > 0)
+            balance = -balance;
+        vol.left = volume-qMax(balance,0)*volume/100.0;
+        vol.right = volume+qMin(balance,0)*volume/100.0;
+        return vol;
+    }
+    return m_volume;
+}
+
+void VolumeDirectSound::restore()
+{
+    setVolume(m_volume);
 }
