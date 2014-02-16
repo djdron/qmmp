@@ -27,7 +27,6 @@
 #include <qmmp/output.h>
 #include <qmmp/outputfactory.h>
 
-
 class OutputDirectSoundFactory : public QObject, OutputFactory
 {
 Q_OBJECT
