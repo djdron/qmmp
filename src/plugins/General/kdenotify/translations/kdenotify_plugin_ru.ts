@@ -4,7 +4,7 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="122"/>
+        <location filename="../kdenotify.cpp" line="121"/>
         <source>Qmmp now playing:</source>
         <translation>Играет:</translation>
     </message>

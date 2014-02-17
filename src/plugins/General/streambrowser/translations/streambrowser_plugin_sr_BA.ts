@@ -99,33 +99,33 @@
         <translation>формат</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="125"/>
         <source>&amp;Add to favorites</source>
         <translation>Додај у &amp;омиљене</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="127"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to playlist</source>
         <translation>Додај у &amp;листу нумера</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="132"/>
+        <location filename="../streamwindow.cpp" line="131"/>
         <source>&amp;Remove</source>
         <translation>&amp;Уклони</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="142"/>
+        <location filename="../streamwindow.cpp" line="141"/>
         <source>Done</source>
         <translation>Завршено</translation>
     </message>
     <message>
+        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
-        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="165"/>
+        <location filename="../streamwindow.cpp" line="164"/>
         <source>Receiving</source>
         <translation>Примање</translation>
     </message>

@@ -740,32 +740,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Shortcuts</source>
         <translation>Сочетания клавиш</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="397"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>Tools</source>
         <translation>Сервис</translation>
     </message>

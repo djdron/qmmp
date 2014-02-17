@@ -741,32 +741,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="397"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Appearance</source>
         <translation>外観</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Shortcuts</source>
         <translation>ショートカット</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>Audio</source>
         <translation>音響</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>

@@ -99,33 +99,33 @@
         <translation>形式</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="125"/>
         <source>&amp;Add to favorites</source>
         <translation>お気にいりに追加(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="127"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to playlist</source>
         <translation>プレイリストに追加(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="132"/>
+        <location filename="../streamwindow.cpp" line="131"/>
         <source>&amp;Remove</source>
         <translation>削除(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="142"/>
+        <location filename="../streamwindow.cpp" line="141"/>
         <source>Done</source>
         <translation>完了</translation>
     </message>
     <message>
+        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
-        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>事故</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="165"/>
+        <location filename="../streamwindow.cpp" line="164"/>
         <source>Receiving</source>
         <translation>取得中</translation>
     </message>
