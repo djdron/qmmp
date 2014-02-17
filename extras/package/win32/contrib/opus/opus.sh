@@ -13,7 +13,7 @@ case $1 in
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
-    ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-docs --disable-extra-programs
+    ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-extra-programs
     make -j${JOBS}
     make install
 
