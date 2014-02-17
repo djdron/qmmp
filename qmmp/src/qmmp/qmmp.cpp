@@ -37,7 +37,7 @@ QString Qmmp::m_langID;
 
 const QString Qmmp::configFile()
 {
-    return m_configDir + "qmmprc";
+    return configDir() + "qmmprc";
 }
 
 const QString Qmmp::configDir()
