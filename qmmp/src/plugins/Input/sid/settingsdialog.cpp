@@ -34,7 +34,7 @@ SettingsDialog::SettingsDialog(SidDatabase *db, QWidget *parent) : QDialog(paren
     settings.beginGroup("SID");
 
     m_ui.useHVSCCheckBox->setChecked(settings.value("use_hvsc", false).toBool());
-    QString hvsc_default_path = QFileInfo(Qmmp::configFile()).absolutePath() + "/Songlengths.txt";
+    QString hvsc_default_path = Qmmp::configDir() + "/Songlengths.txt";
     m_ui.hvscPathLineEdit->setText(settings.value("hvsc_path", hvsc_default_path).toString());
     m_ui.defaultLengthSpinBox->setValue(settings.value("song_length", 180).toInt());
 

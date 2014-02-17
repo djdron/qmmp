@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -327,12 +327,11 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
 
 void DecoderCDAudio::saveToCache(QList <CDATrack> tracks,  uint disc_id)
 {
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
-    QDir dir(path);
+    QDir dir(Qmmp::configDir());
     if(!dir.exists("cddbcache"))
         dir.mkdir("cddbcache");
     dir.cd("cddbcache");
-    path = dir.absolutePath() + QString("/%1").arg(disc_id, 0, 16);
+    QString path = dir.absolutePath() + QString("/%1").arg(disc_id, 0, 16);
     QSettings settings(path, QSettings::IniFormat);
     settings.clear();
     settings.setValue("count", tracks.size());
@@ -349,7 +348,7 @@ void DecoderCDAudio::saveToCache(QList <CDATrack> tracks,  uint disc_id)
 
 bool DecoderCDAudio::readFromCache(QList <CDATrack> *tracks, uint disc_id)
 {
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    QString path = Qmmp::configDir();
     path += QString("/cddbcache/%1").arg(disc_id, 0, 16);
     if(!QFile::exists(path))
         return false;

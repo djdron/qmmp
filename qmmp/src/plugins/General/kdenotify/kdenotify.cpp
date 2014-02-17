@@ -55,8 +55,7 @@ KdeNotify::KdeNotify(QObject *parent) : QObject(parent),m_useFreedesktopSpec(fal
         m_useFreedesktopSpec = true;
     }
     qWarning() << "KdeNotify: DBus interfece created successfully.";
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
-    QDir dir(path);
+    QDir dir(Qmmp::configDir());
     if(!dir.exists("kdenotifycache"))
         dir.mkdir("kdenotifycache");
     dir.cd("kdenotifycache");
