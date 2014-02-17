@@ -23,7 +23,7 @@ link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 QT += opengl
-LIBS += -lqmmp -L/usr/lib -I/usr/include
+
 TRANSLATIONS = translations/projectm_plugin_cs.ts \
                translations/projectm_plugin_de.ts \
                translations/projectm_plugin_zh_CN.ts \
@@ -46,6 +46,7 @@ unix {
   isEmpty(LIB_DIR):LIB_DIR = /lib
   target.path = $$LIB_DIR/qmmp/Visual
   INSTALLS += target
+  LIBS += -lqmmp -L/usr/lib -I/usr/include
   #projectM config path
   PROJECTM_CONFIG_FILES = /usr/share/projectM/config.inp \
                           /usr/local/share/projectM/config.inp
