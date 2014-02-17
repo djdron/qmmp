@@ -100,33 +100,33 @@
         <translation>פורמט</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="125"/>
         <source>&amp;Add to favorites</source>
         <translation>הוסף אל &amp;מועדפים</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="127"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to playlist</source>
         <translation>הוסף אל &amp;רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="132"/>
+        <location filename="../streamwindow.cpp" line="131"/>
         <source>&amp;Remove</source>
         <translation>הס&amp;ר</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="142"/>
+        <location filename="../streamwindow.cpp" line="141"/>
         <source>Done</source>
         <translation>סיום</translation>
     </message>
     <message>
+        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
-        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="165"/>
+        <location filename="../streamwindow.cpp" line="164"/>
         <source>Receiving</source>
         <translatorcomment>מקבל כעת</translatorcomment>
         <translation>קבלה</translation>

@@ -99,33 +99,33 @@
         <translation>Formato</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="125"/>
         <source>&amp;Add to favorites</source>
         <translation>&amp;Engadir a favoritos</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="127"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to playlist</source>
         <translation>&amp;Engadir á lista de reprodución</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="132"/>
+        <location filename="../streamwindow.cpp" line="131"/>
         <source>&amp;Remove</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="142"/>
+        <location filename="../streamwindow.cpp" line="141"/>
         <source>Done</source>
         <translation>Feito</translation>
     </message>
     <message>
+        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
-        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="165"/>
+        <location filename="../streamwindow.cpp" line="164"/>
         <source>Receiving</source>
         <translation>Recibindo</translation>
     </message>
