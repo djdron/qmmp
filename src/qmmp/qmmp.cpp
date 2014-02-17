@@ -32,17 +32,24 @@
 
 #include "qmmp.h"
 
-QString Qmmp::m_configFile;
+QString Qmmp::m_configDir;
 QString Qmmp::m_langID;
 
 const QString Qmmp::configFile()
 {
-    return m_configFile.isEmpty() ? QDir::homePath() +"/.qmmp/qmmprc" : m_configFile;
+    return m_configDir + "qmmprc";
 }
 
-void Qmmp::setConfigFile(const QString &path)
+const QString Qmmp::configDir()
 {
-    m_configFile = path;
+    return m_configDir.isEmpty() ? QDir::homePath() +"/.qmmp/" : m_configDir;
+}
+
+void Qmmp::setConfigDir(const QString &path)
+{
+    m_configDir = path;
+    if(!m_configDir.endsWith('/'))
+        m_configDir.append('/');
 }
 
 const QString Qmmp::strVersion()

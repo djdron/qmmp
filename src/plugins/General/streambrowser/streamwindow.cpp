@@ -108,17 +108,16 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     ui.tabWidget->setCurrentIndex(settings.value("current_tab", 1).toInt());
     settings.endGroup();
     //create cache dir
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
-    QDir dir(path);
+    QDir dir(Qmmp::configDir());
     if(!dir.exists("streambrowser"))
         dir.mkdir("streambrowser");
     //read cache
-    QFile file(path + "/streambrowser/icecast.xml");
+    QFile file(Qmmp::configDir() + "/streambrowser/icecast.xml");
     if(file.open(QIODevice::ReadOnly))
         readXml(&file, m_iceCastModel);
     else
         on_updatePushButton_clicked();
-    QFile file2(path + "/streambrowser/favorites.xml");
+    QFile file2(Qmmp::configDir() + "/streambrowser/favorites.xml");
     if(file2.open(QIODevice::ReadOnly))
         readXml(&file2, m_favoritesModel);
     //create menus
@@ -255,9 +254,8 @@ void StreamWindow::closeEvent(QCloseEvent *)
     settings.setValue("current_tab", ui.tabWidget->currentIndex());
     settings.endGroup();
 
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
      //save icecast directory
-    QFile file(path + "/streambrowser/icecast.xml");
+    QFile file(Qmmp::configDir() + "/streambrowser/icecast.xml");
     file.open(QIODevice::WriteOnly);
     QXmlStreamWriter writer(&file);
     writer.setCodec("UTF-8");
@@ -278,7 +276,7 @@ void StreamWindow::closeEvent(QCloseEvent *)
     writer.writeEndDocument();
     file.close();
     //save favorites
-    QFile file2(path + "/streambrowser/favorites.xml");
+    QFile file2(Qmmp::configDir() + "/streambrowser/favorites.xml");
     file2.open(QIODevice::WriteOnly);
     QXmlStreamWriter writer2(&file2);
     writer2.setCodec("UTF-8");

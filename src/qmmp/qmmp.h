@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,13 +86,17 @@ public:
         PCM_S32LE   /*!< Signed 32 bit Little Endian */
     };
     /*!
-     * Returns configuration file path.
+     * Returns the configuration file name, including the path.
      */
     static const QString configFile();
     /*!
-     * Overrides default configuration file path.
+     * Returns the configuration directory path.
      */
-    static void setConfigFile(const QString &path);
+    static const QString configDir();
+    /*!
+     * Overrides default configuration directory path.
+     */
+    static void setConfigDir(const QString &path);
     /*!
      * Returns %Qmmp library version.
      */
@@ -116,7 +120,7 @@ public:
     static void setUiLanguageID(const QString &code);
 
 private:
-    static QString m_configFile;
+    static QString m_configDir;
     static QString m_langID;
 
 };

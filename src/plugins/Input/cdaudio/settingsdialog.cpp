@@ -75,8 +75,7 @@ void SettingsDialog::accept()
 
 void SettingsDialog::on_clearCacheButton_clicked()
 {
-    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
-    QDir dir(path);
+    QDir dir(Qmmp::configDir());
     dir.cd("cddbcache");
     QStringList list = dir.entryList(QStringList() << "*", QDir::Files);
     foreach(QString name, list)
