@@ -42,12 +42,14 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
 
     m_buf = 0;
     m_buf_size = 0;
-    QListWidget *listWidget = new QListWidget(this);
-    listWidget->setAlternatingRowColors(true);
-    m_projectMWidget = new ProjectMWidget(listWidget, this);
+
     m_splitter = new QSplitter(Qt::Horizontal, this);
+    QListWidget *listWidget = new QListWidget(m_splitter);
+    listWidget->setAlternatingRowColors(true);
     m_splitter->addWidget(listWidget);
+    m_projectMWidget = new ProjectMWidget(listWidget, m_splitter);
     m_splitter->addWidget(m_projectMWidget);
+
     m_splitter->setStretchFactor(1,1);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(m_splitter);
