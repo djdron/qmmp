@@ -145,6 +145,10 @@ public slots:
      */
     void toggleVisibility();
     /*!
+     * Shows the main window of the player.
+     */
+    void showMainWindow();
+    /*!
      * Tells the player to exit.
      */
     void exit();
@@ -155,6 +159,11 @@ signals:
      * Use it to show/hide player's window.
      */
     void toggleVisibilityCalled();
+    /*!
+     * Emitted when some general plugin requires to show main window.
+     * Use it to show player's window and to raise it to the top.
+     */
+    void showMainWindowCalled();
 
 private slots:
     void removeAction(QObject *action);

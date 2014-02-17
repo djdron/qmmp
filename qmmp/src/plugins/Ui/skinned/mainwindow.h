@@ -68,6 +68,7 @@ public slots:
     void replay();
     void jumpToTrack();
     void toggleVisibility();
+    void showAndRaise();
 
     void addDir();
     void addFile();

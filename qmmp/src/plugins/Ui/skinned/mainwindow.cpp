@@ -108,6 +108,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
+    connect(m_uiHelper, SIGNAL(showMainWindowCalled()), SLOT(showAndRaise()));
 
     readSettings();
     m_display->setEQ(m_equalizer);
@@ -360,6 +361,17 @@ void MainWindow::toggleVisibility()
         hide();
     }
     qApp->processEvents();
+}
+
+void MainWindow::showAndRaise()
+{
+    if(isHidden())
+        toggleVisibility();
+    else
+    {
+        activateWindow();
+        raise();
+    }
 }
 
 void MainWindow::createActions()

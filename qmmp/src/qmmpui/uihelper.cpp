@@ -217,6 +217,11 @@ void UiHelper::toggleVisibility()
     emit toggleVisibilityCalled();
 }
 
+void UiHelper::showMainWindow()
+{
+    emit showMainWindowCalled();
+}
+
 void UiHelper::exit()
 {
 #if QT_VERSION < 0x040700
