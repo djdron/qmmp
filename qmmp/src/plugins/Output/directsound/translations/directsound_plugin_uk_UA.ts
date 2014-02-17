@@ -4,22 +4,22 @@
 <context>
     <name>OutputDirectSoundFactory</name>
     <message>
-        <location filename="../outputdirectsoundfactory.cpp" line="29"/>
+        <location filename="../outputdirectsoundfactory.cpp" line="28"/>
         <source>DirectSound Plugin</source>
         <translation>Модуль DirectSound</translation>
     </message>
     <message>
-        <location filename="../outputdirectsoundfactory.cpp" line="53"/>
+        <location filename="../outputdirectsoundfactory.cpp" line="52"/>
         <source>About DirectSound Output Plugin</source>
         <translation>Про модуль виводу DirectSound</translation>
     </message>
     <message>
-        <location filename="../outputdirectsoundfactory.cpp" line="54"/>
+        <location filename="../outputdirectsoundfactory.cpp" line="53"/>
         <source>Qmmp DirectSound Output Plugin</source>
         <translation>Модуль виводу DirectSound для Qmmp</translation>
     </message>
     <message>
-        <location filename="../outputdirectsoundfactory.cpp" line="55"/>
+        <location filename="../outputdirectsoundfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
