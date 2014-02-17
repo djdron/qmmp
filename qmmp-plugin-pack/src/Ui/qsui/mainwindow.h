@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -67,6 +67,7 @@ private slots:
     void aboutUi();
     void about();
     void toggleVisibility();
+    void showAndRaise();
     void showSettings();
     void updateVolumeIcon();
     void jumpTo();

@@ -68,6 +68,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_uiHelper = UiHelper::instance();
     m_ui_settings = QmmpUiSettings::instance();
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
+    connect(m_uiHelper, SIGNAL(showMainWindowCalled()), SLOT(showAndRaise()));
     m_visMenu = new VisualMenu(this); //visual menu
     m_ui.actionVisualization->setMenu(m_visMenu);
     m_pl_menu = new QMenu(this); //playlist menu
@@ -291,12 +292,16 @@ void MainWindow::about()
 void MainWindow::toggleVisibility()
 {
     if(isHidden())
-    {
-        show();
-        activateWindow();
-    }
+        showAndRaise();
     else
         hide();
+}
+
+void MainWindow::showAndRaise()
+{
+    show();
+    activateWindow();
+    raise();
 }
 
 void MainWindow::showSettings()
