@@ -213,27 +213,22 @@ void QMMPStarter::savePosition()
 
 void QMMPStarter::writeCommand()
 {
-    if (!argString.isEmpty())
+    QString workingDir = QDir::currentPath() + "\n";
+    QByteArray barray;
+    barray.append(workingDir.toUtf8 ());
+    barray.append(argString.isEmpty() ? "--show-mw" : argString.toUtf8 ());
+    while(!barray.isEmpty())
     {
-        QString workingDir = QDir::currentPath() + "\n";
+        qint64 size = m_socket->write(barray);
+        barray.remove(0, size);
+    }
+    m_socket->flush();
+    //reading answer
+    if(m_socket->waitForReadyRead(1500))
+        cout << m_socket->readAll().data();
 
-        QByteArray barray;
-        barray.append(workingDir.toUtf8 ());
-        barray.append(argString.toUtf8 ());
-        while(!barray.isEmpty())
-        {
-            qint64 size = m_socket->write(barray);
-            barray.remove(0, size);
-        }
-        m_socket->flush();
-        //reading answer
-        if(m_socket->waitForReadyRead(1500))
-            cout << m_socket->readAll().data();
-    }
-    else
-    {
+    if (argString.isEmpty())
         printUsage();
-    }
 
     exit(0);
 }

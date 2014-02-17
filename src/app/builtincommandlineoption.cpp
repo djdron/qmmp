@@ -45,6 +45,7 @@ BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(pa
               << "--toggle-mute"
               << "--next" << "--previous"
               << "--toggle-visibility"
+              << "--show-mw"
               << "--add-file" << "--add-dir";
 }
 
@@ -73,6 +74,7 @@ const QString BuiltinCommandLineOption::helpString() const
                "--next                   "+tr("Skip forward in playlist")+ "\n" +
                "--previous               "+tr("Skip backwards in playlist")+"\n" +
                "--toggle-visibility      "+tr("Show/hide application")+ "\n" +
+               "--show-mw                "+tr("Show main window") + "\n" +
                "--add-file               "+tr("Display Add File dialog")+ "\n" +
                "--add-dir                "+tr("Display Add Directory dialog")
            );
@@ -190,6 +192,10 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     else if (option_string == "--toggle-visibility")
     {
         UiHelper::instance()->toggleVisibility();
+    }
+    else if (option_string == "--show-mw")
+    {
+        UiHelper::instance()->showMainWindow();
     }
     else if (option_string == "--add-file")
     {
