@@ -16,7 +16,7 @@ QMAKE_LIBDIR += ../../../../bin
 
 CONFIG += warn_on \
 thread \
-plugin 
+plugin
 
 TEMPLATE = lib
 LIBS += -lqmmp0 -ldxguid -lstrmiids -ldmoguids -lmsdmo -lole32 -loleaut32 -luuid -lgdi32 -ldsound
@@ -36,7 +36,7 @@ TRANSLATIONS = translations/directsound_plugin_cs.ts \
                translations/directsound_plugin_es.ts \
                translations/directsound_plugin_sr_BA.ts \
                translations/directsound_plugin_sr_RS.ts
-#RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
 LIB_DIR = /lib
