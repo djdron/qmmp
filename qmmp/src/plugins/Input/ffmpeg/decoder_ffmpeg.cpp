@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,12 @@
 #include <QObject>
 #include <QFile>
 #include "decoder_ffmpeg.h"
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav-10: 55.34.1; ffmpeg-2.1: 55.39.100
+extern "C"{
+#include <libavutil/channel_layout.h>
+#include <libavutil/frame.h>
+}
+#endif
 
 // callbacks
 
@@ -83,12 +89,18 @@ DecoderFFmpeg::~DecoderFFmpeg()
     m_temp_pkt.size = 0;
     if (ic)
         avformat_free_context(ic);
-   if(m_pkt.data)
+    if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_stream)
         av_free(m_stream);
+
     if(m_decoded_frame)
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav-10: 55.34.1; ffmpeg-2.1:  55.39.100
+        av_frame_free(&m_decoded_frame);
+#else
         av_free(m_decoded_frame);
+#endif
+
 }
 
 bool DecoderFFmpeg::initialize()
@@ -187,7 +199,7 @@ bool DecoderFFmpeg::initialize()
             break;
     }
 
-#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(39<<8)+100)) //ffmpeg 2.1
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav-10: 55.34.1; ffmpeg-2.1:  55.39.100
     if (c->channels == 1)
     {
         c->request_channel_layout = AV_CH_LAYOUT_MONO;
@@ -222,12 +234,21 @@ bool DecoderFFmpeg::initialize()
         return false;
     }
 
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav-10: 55.34.1; ffmpeg-2.1:  55.39.100
+    m_decoded_frame = av_frame_alloc();
+#else
     m_decoded_frame = avcodec_alloc_frame();
+#endif
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
 
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
+    if(c->codec_id == AV_CODEC_ID_SHORTEN) //ffmpeg bug workaround
+        m_totalTime = 0;
+#else
     if(c->codec_id == CODEC_ID_SHORTEN) //ffmpeg bug workaround
         m_totalTime = 0;
+#endif
 
     Qmmp::AudioFormat format = Qmmp::PCM_UNKNOWM;
 
@@ -330,7 +351,12 @@ qint64 DecoderFFmpeg::ffmpeg_decode()
     int got_frame = 0;
     if(m_pkt.stream_index == wma_idx)
     {
+
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav-10: 55.34.1; ffmpeg-2.1:  55.39.100
+
+#else
         avcodec_get_frame_defaults(m_decoded_frame);
+#endif
 
         int  l = avcodec_decode_audio4(c, m_decoded_frame, &got_frame, &m_temp_pkt);
 
@@ -388,7 +414,11 @@ void DecoderFFmpeg::fillBuffer()
                 m_temp_pkt.size = 0;
                 continue;
             }
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
+            if(m_seekTime && c->codec_id == AV_CODEC_ID_APE)
+#else
             if(m_seekTime && c->codec_id == CODEC_ID_APE)
+#endif
             {
                 int64_t rescaledPts = av_rescale(m_pkt.pts,
                                                  AV_TIME_BASE * (int64_t)
@@ -400,8 +430,11 @@ void DecoderFFmpeg::fillBuffer()
                 m_skipBytes = 0;
             m_seekTime = 0;
         }
-
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
+        if(m_skipBytes > 0 && c->codec_id == AV_CODEC_ID_APE)
+#else
         if(m_skipBytes > 0 && c->codec_id == CODEC_ID_APE)
+#endif
         {
             while (m_skipBytes > 0)
             {
@@ -440,7 +473,11 @@ void DecoderFFmpeg::fillBuffer()
             m_output_at = 0;
             m_temp_pkt.size = 0;
 
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
+            if(c->codec_id == AV_CODEC_ID_SHORTEN || c->codec_id == AV_CODEC_ID_TWINVQ)
+#else
             if(c->codec_id == CODEC_ID_SHORTEN || c->codec_id == CODEC_ID_TWINVQ)
+#endif
             {
                 if(m_pkt.data)
                     av_free_packet(&m_pkt);
@@ -451,8 +488,13 @@ void DecoderFFmpeg::fillBuffer()
         }
         else if(m_output_at == 0)
         {
+#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
+            if(c->codec_id == AV_CODEC_ID_SHORTEN || c->codec_id == AV_CODEC_ID_TWINVQ)
+                continue;
+#else
             if(c->codec_id == CODEC_ID_SHORTEN || c->codec_id == CODEC_ID_TWINVQ)
                 continue;
+#endif
 
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
