@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,9 @@
 #define POSITIONSLIDER_H
 
 #include <QSlider>
-#include <QMouseEvent>
+
+class QWheelEvent;
+class QMouseEvent;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -38,6 +40,7 @@ public:
 protected:
     virtual void mousePressEvent (QMouseEvent *event);
     virtual void mouseReleaseEvent (QMouseEvent *event);
+    virtual void wheelEvent(QWheelEvent *event);
 
 };
 
