@@ -53,6 +53,6 @@ void PositionSlider::mouseReleaseEvent (QMouseEvent *)
 
 void PositionSlider::wheelEvent(QWheelEvent *event)
 {
-    setValue(value() - event->delta() / 20);
+    setValue(value() + event->delta() / 20);
     sliderReleased();
 }
