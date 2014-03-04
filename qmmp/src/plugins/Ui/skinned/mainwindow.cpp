@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect (m_playlist,SIGNAL(play()),SLOT(play()));
     connect (m_playlist,SIGNAL(pause()), m_core ,SLOT(pause()));
     connect (m_playlist,SIGNAL(stop()),SLOT(stop()));
-    connect (m_playlist,SIGNAL(eject()),SLOT(addFile()));
+    connect (m_playlist,SIGNAL(eject()),SLOT(playFiles()));
     connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
     connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
 
@@ -210,6 +210,11 @@ void MainWindow::addDir()
 void MainWindow::addFile()
 {
     m_uiHelper->addFile(this);
+}
+
+void MainWindow::playFiles()
+{
+    m_uiHelper->playFiles(this);
 }
 
 void MainWindow::changeEvent (QEvent * event)

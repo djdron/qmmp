@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -95,6 +95,13 @@ public:
     void addFile(QWidget *parent = qApp->activeWindow(),
                  PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     /*!
+     * Opens 'Play Files' dialog
+     * @param parent Parent widget
+     * @param model Destination playlist model
+     */
+    void playFiles(QWidget *parent = qApp->activeWindow(),
+                   PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    /*!
      * Opens 'Add Directory' dialog
      * @param parent Parent widget
      * @param model Destination playlist model
@@ -167,6 +174,8 @@ signals:
 
 private slots:
     void removeAction(QObject *action);
+    void playSelectedFiles(const QStringList &files);
+    void disconnectPl();
 
 private:
     QMap <GeneralFactory*, General*> m_generals;
@@ -176,6 +185,7 @@ private:
     QPointer<QMenu> m_playlistMenu;
     QString m_lastDir;
     QPointer <JumpToTrackDialog> m_jumpDialog;
+    PlayListModel *m_model;
     static UiHelper* m_instance;
 };
 

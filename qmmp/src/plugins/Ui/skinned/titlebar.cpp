@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -168,7 +168,7 @@ void TitleBar::shade()
         connect (m_control, SIGNAL (playClicked()), m_mw, SLOT (play()));
         connect (m_control, SIGNAL (pauseClicked()), m_mw, SLOT (pause()));
         connect (m_control, SIGNAL (stopClicked()), m_mw, SLOT (stop()));
-        connect (m_control, SIGNAL (ejectClicked()), m_mw, SLOT (addFile()));
+        connect (m_control, SIGNAL (ejectClicked()), m_mw, SLOT (playFiles()));
         m_visual = new ShadedVisual(this);
         Visual::add(m_visual);
         m_visual->show();
