@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -71,8 +71,8 @@ MainDisplay::MainDisplay (MainWindow *parent)
     m_next->setToolTip(tr("Next"));
     connect (m_next,SIGNAL (clicked()),parent,SLOT (next()));
     m_eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P, Skin::CUR_NORMAL);
-    m_eject->setToolTip(tr("Add file"));
-    connect (m_eject,SIGNAL (clicked()),parent,SLOT (addFile()));
+    m_eject->setToolTip(tr("Play files"));
+    connect (m_eject,SIGNAL (clicked()),parent, SLOT(playFiles()));
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
     m_vis = new MainVisual (this);
 

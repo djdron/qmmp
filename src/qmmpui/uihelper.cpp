@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QWidget>
 #include <QAction>
 #include <QSettings>
+#include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistparser.h>
@@ -32,6 +33,7 @@
 #include "jumptotrackdialog_p.h"
 #include "aboutdialog_p.h"
 #include "addurldialog_p.h"
+#include "mediaplayer.h"
 #include "uihelper.h"
 
 UiHelper *UiHelper::m_instance = 0;
@@ -43,6 +45,7 @@ UiHelper::UiHelper(QObject *parent)
     m_toolsMenu = 0;
     m_playlistMenu = 0;
     m_jumpDialog = 0;
+    m_model = 0;
     General::create(parent);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_lastDir = settings.value("General/last_dir", QDir::homePath()).toString(); //last directory
@@ -139,6 +142,19 @@ void UiHelper::addFile(QWidget *parent, PlayListModel *model)
                       tr("Select one or more files to open"), filters.join(";;"));
 }
 
+void UiHelper::playFiles(QWidget *parent, PlayListModel *model)
+{
+    QStringList filters;
+    filters << tr("All Supported Bitstreams")+" (" +
+            MetaDataManager::instance()->nameFilters().join (" ") +")";
+    filters << MetaDataManager::instance()->filters();
+    m_model = model;
+    FileDialog::popup(parent, FileDialog::AddDirsFiles, &m_lastDir,
+                      this, SLOT(playSelectedFiles(const QStringList &)),
+                      tr("Select one or more files to play"), filters.join(";;"));
+
+}
+
 void UiHelper::addDirectory(QWidget *parent, PlayListModel *model)
 {
     FileDialog::popup(parent, FileDialog::AddDirs, &m_lastDir,
@@ -161,7 +177,7 @@ void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)
 
     QString mask = tr("Playlist Files") + " (" + PlayListParser::nameFilters().join(" ") + ")";
     //TODO use nonmodal dialog and multiplier playlists
-    QString f_name = FileDialog::getOpenFileName(parent ,tr("Open Playlist"), m_lastDir, mask);
+    QString f_name = FileDialog::getOpenFileName(parent, tr("Open Playlist"), m_lastDir, mask);
     if (!f_name.isEmpty())
     {
         model->clear();
@@ -263,4 +279,27 @@ UiHelper* UiHelper::instance()
 void UiHelper::removeAction(QObject *action)
 {
     removeAction((QAction *) action);
+}
+
+void UiHelper::playSelectedFiles(const QStringList &files)
+{
+    if(files.isEmpty())
+        return;
+    if(!PlayListManager::instance()->playLists().contains(m_model))
+        return;
+    m_model->clear();
+    PlayListManager::instance()->activatePlayList(m_model);
+    connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), MediaPlayer::instance(), SLOT(play()));
+    connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
+    m_model->add(files);
+}
+
+void UiHelper::disconnectPl()
+{
+    PlayListModel *model = qobject_cast<PlayListModel*>(sender());
+    if(model)
+    {
+        disconnect(model, SIGNAL(trackAdded(PlayListTrack*)), MediaPlayer::instance(), SLOT(play()));
+        disconnect(model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+    }
 }
