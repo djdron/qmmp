@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="125"/>
+        <location filename="../decoderffmpegfactory.cpp" line="152"/>
         <source>FFmpeg Plugin</source>
         <translation>תוספת FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="127"/>
+        <location filename="../decoderffmpegfactory.cpp" line="154"/>
         <source>FFmpeg Formats</source>
         <translation>פורמטים של FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="230"/>
+        <location filename="../decoderffmpegfactory.cpp" line="257"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>אודות תוספת שמע FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="231"/>
+        <location filename="../decoderffmpegfactory.cpp" line="258"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>תוספת שמע FFmpeg ‫Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="232"/>
+        <location filename="../decoderffmpegfactory.cpp" line="259"/>
         <source>Compiled against:</source>
         <translation>הודרה כנגד:</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="245"/>
+        <location filename="../decoderffmpegfactory.cpp" line="272"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

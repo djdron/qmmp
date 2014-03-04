@@ -949,33 +949,39 @@
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="134"/>
+        <location filename="../uihelper.cpp" line="137"/>
+        <location filename="../uihelper.cpp" line="148"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished">Todos los flujos soportados</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="139"/>
+        <location filename="../uihelper.cpp" line="142"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">Seleccione uno o más archivos para abrir</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="146"/>
+        <location filename="../uihelper.cpp" line="154"/>
+        <source>Select one or more files to play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="162"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Seleccione un directorio</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="162"/>
-        <location filename="../uihelper.cpp" line="183"/>
+        <location filename="../uihelper.cpp" line="178"/>
+        <location filename="../uihelper.cpp" line="199"/>
         <source>Playlist Files</source>
         <translation type="unfinished">Archivos a reproducir</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="164"/>
+        <location filename="../uihelper.cpp" line="180"/>
         <source>Open Playlist</source>
         <translation type="unfinished">Abrir la lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="184"/>
+        <location filename="../uihelper.cpp" line="200"/>
         <source>Save Playlist</source>
         <translation type="unfinished">Guardar la lista de reproducción</translation>
     </message>
