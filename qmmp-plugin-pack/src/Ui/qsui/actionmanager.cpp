@@ -42,7 +42,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[NEXT] = createAction(tr("&Next"), "next", tr("B"), "media-skip-forward");
     m_actions[PLAY_PAUSE] = createAction(tr("&Play/Pause"), "play_pause", tr("Space"));
     m_actions[JUMP] = createAction(tr("&Jump to Track"), "jump", tr("J"), "go-up");
-    m_actions[EJECT] = createAction(tr("&Open Files"), "eject", tr("E"), "media-eject");
+    m_actions[EJECT] = createAction(tr("&Play Files"), "eject", tr("E"), "media-eject");
 
     m_actions[REPEAT_ALL] = createAction2(tr("&Repeat Playlist"), "repeate_playlist", tr("R"));
     m_actions[REPEAT_TRACK] = createAction2(tr("&Repeat Track"), "repeate_track", tr("Ctrl+R"));
