@@ -170,6 +170,11 @@ void MainWindow::addFiles()
     m_uiHelper->addFile(this);
 }
 
+void MainWindow::playFiles()
+{
+    m_uiHelper->playFiles(this);
+}
+
 void MainWindow::addUrl()
 {
     m_uiHelper->addUrl(this);
@@ -398,7 +403,7 @@ void MainWindow::createActions()
     SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause()));
     SET_ACTION(ActionManager::STOP, m_player, SLOT(stop()));
     SET_ACTION(ActionManager::NEXT, m_player, SLOT(next()));
-    SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles()));
+    SET_ACTION(ActionManager::EJECT,this, SLOT(playFiles()));
 
     //file menu
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
