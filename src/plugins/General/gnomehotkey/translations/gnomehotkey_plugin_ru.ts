@@ -11,7 +11,7 @@
     <message>
         <location filename="../gnomehotkeyfactory.cpp" line="50"/>
         <source>About Gnome Hotkey Plugin</source>
-        <translation>О модуле  горячих клавиш GNOME</translation>
+        <translation>О модуле горячих клавиш GNOME</translation>
     </message>
     <message>
         <location filename="../gnomehotkeyfactory.cpp" line="51"/>
