@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../gnomehotkeyfactory.cpp" line="52"/>
-        <source>This plugin adds support of the GNOME/Cinnamone hotkeys</source>
+        <source>This plugin adds support of the GNOME/Cinnamon hotkeys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
