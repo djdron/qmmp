@@ -49,7 +49,7 @@ void GnomeHotkeyFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Gnome Hotkey Plugin"),
                         tr("Qmmp Gnome Hotkey Plugin") + "\n" +
-                        tr("This plugin adds support of the GNOME/Cinnamone hotkeys") + "\n" +
+                        tr("This plugin adds support of the GNOME/Cinnamon hotkeys") + "\n" +
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
