@@ -239,12 +239,6 @@ void MainWindow::updateTabs()
     }
 }
 
-void MainWindow::addPlaylist()
-{
-    PlayListModel *model = m_pl_manager->createPlayList(tr("Playlist"));
-    m_pl_manager->selectPlayList(model);
-}
-
 void MainWindow::removePlaylist()
 {
     m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
@@ -411,7 +405,7 @@ void MainWindow::createActions()
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, this, SLOT(addDir())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_URL, this, SLOT(addUrl())));
     m_ui.menuFile->addSeparator();
-    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, this, SLOT(addPlaylist())));
+    m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, m_pl_manager, SLOT(createPlayList())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renameTab())));
     m_ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,

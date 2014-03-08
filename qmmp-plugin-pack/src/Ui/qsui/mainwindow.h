@@ -59,7 +59,6 @@ private slots:
     void showState(Qmmp::State);
     void showBitrate(int);
     void updateTabs();
-    void addPlaylist();
     void removePlaylist();
     void removePlaylistWithIndex(int);
     void addTab(int);
