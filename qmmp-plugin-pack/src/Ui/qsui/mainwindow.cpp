@@ -241,7 +241,8 @@ void MainWindow::updateTabs()
 
 void MainWindow::addPlaylist()
 {
-    m_pl_manager->createPlayList(tr("Playlist"));
+    PlayListModel *model = m_pl_manager->createPlayList(tr("Playlist"));
+    m_pl_manager->selectPlayList(model);
 }
 
 void MainWindow::removePlaylist()
