@@ -168,7 +168,7 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
     connect(model, SIGNAL(countChanged()), SLOT(onCountChanged()));
     emit playListAdded(m_models.indexOf(model));
-    emit playListsChanged();
+    selectPlayList(model);
     return model;
 }
 
