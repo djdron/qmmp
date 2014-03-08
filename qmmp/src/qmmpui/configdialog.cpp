@@ -318,6 +318,16 @@ void ConfigDialog::createMenus()
     m_ui->groupButton->setMenu(groupMenu);
     m_ui->groupButton->setPopupMode(QToolButton::InstantPopup);
     connect(groupMenu, SIGNAL(triggered (QAction *)), SLOT(addGroupString(QAction *)));
+
+    m_ui->treeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+    m_preferencesAction = new QAction(QIcon::fromTheme("configure"),tr("Preferences"), m_ui->treeWidget);
+    m_preferencesAction->setEnabled(false);
+    m_ui->treeWidget->addAction(m_preferencesAction);
+    m_informationAction = new QAction(QIcon::fromTheme("dialog-information"),tr("Information"), m_ui->treeWidget);
+    m_informationAction->setEnabled(false);
+    m_ui->treeWidget->addAction(m_informationAction);
+    connect(m_preferencesAction, SIGNAL(triggered()), SLOT(on_preferencesButton_clicked()));
+    connect(m_informationAction, SIGNAL(triggered()), SLOT(on_informationButton_clicked()));
 }
 
 void ConfigDialog::loadLanguages()
@@ -448,4 +458,6 @@ void ConfigDialog::on_treeWidget_currentItemChanged (QTreeWidgetItem *current, Q
         m_ui->preferencesButton->setEnabled(false);
         m_ui->informationButton->setEnabled(false);
     }
+    m_preferencesAction->setEnabled(m_ui->preferencesButton->isEnabled());
+    m_informationAction->setEnabled(m_ui->informationButton->isEnabled());
 }

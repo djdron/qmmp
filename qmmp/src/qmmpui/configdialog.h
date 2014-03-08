@@ -76,6 +76,8 @@ private:
     void loadLanguages();
     int m_insert_row;
     Ui::ConfigDialog *m_ui;
+    QAction *m_preferencesAction;
+    QAction *m_informationAction;
 
 };
 
