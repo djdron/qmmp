@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -145,7 +145,7 @@ public slots:
      */
     void activatePlayList(int index);
     /*!
-     * Creates new playlist with the given name \b name.
+     * Creates and selects new playlist with the given name \b name.
      */
     PlayListModel *createPlayList(const QString &name = QString());
     /*!
