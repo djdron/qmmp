@@ -26,8 +26,10 @@ unix {
 win32 {
     TARGET = ../../../bin/qmmpui
     LIBS += -L../../bin -lqmmp0
-    HEADERS += prefassociations.h
-    SOURCES += prefassociations.cpp
+    HEADERS += prefassociations.h \
+               winfileaccos.h
+    SOURCES += prefassociations.cpp \
+               winfileaccos.cpp
 }
 
 HEADERS += general.h \
