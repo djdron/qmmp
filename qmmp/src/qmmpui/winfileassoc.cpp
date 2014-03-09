@@ -36,6 +36,12 @@
 	Author: Florin Braghis (florin@libertv.ro)
 */
 
+/*
+   main changes compared to SMplayer:
+     replaced SMPlayer by Qmmp
+*/
+
+
 #include "winfileassoc.h"
 #include <QSettings>
 #include <QApplication>
@@ -252,7 +258,7 @@ bool WinFileAssoc::CreateClassId(const QString &executablePath, const QString &f
 
     // Add "Enqueue" command
     Reg.setValue(classId + "/shell/enqueue/.", QObject::tr("Enqueue in Qmmp"));
-    Reg.setValue(classId + "/shell/enqueue/command/.", QString("\"%1\" -add-to-playlist \"%2\"").arg(appPath, "%1"));
+    Reg.setValue(classId + "/shell/enqueue/command/.", QString("\"%1\" -e \"%2\"").arg(appPath, "%1"));
     return true;
 }
 

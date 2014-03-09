@@ -27,10 +27,10 @@ win32 {
     TARGET = ../../../bin/qmmpui
     LIBS += -L../../bin -lqmmp0 -lole32
     HEADERS += winfileassoc.h \
-               prefassociations.h
+               winfileassocpage_p.h
     SOURCES += winfileassoc.cpp \
-               prefassociations.cpp
-    FORMS += forms/prefassociations.ui
+               winfileassocpage.cpp
+    FORMS += forms/winfileassocpage.ui
 }
 
 HEADERS += general.h \
@@ -70,6 +70,7 @@ HEADERS += general.h \
     playlistcontainer_p.h \
     groupedcontainer_p.h \
     normalcontainer_p.h
+
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -102,6 +103,7 @@ SOURCES += general.cpp \
     groupedcontainer.cpp \
     normalcontainer.cpp \
     playlistcontainer.cpp
+
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
@@ -109,6 +111,7 @@ FORMS += forms/detailsdialog.ui \
     forms/configdialog.ui \
     forms/aboutdialog.ui \
     forms/addurldialog.ui
+
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc \
     images/qmmpui_images.qrc \
