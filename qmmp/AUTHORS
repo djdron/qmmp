@@ -139,3 +139,7 @@ ReplayGainAnalysis (from MP3Gain) - analyzes input samples and give the recommen
     David Robinson <David@Robinson.org>
     Glen Sawyer <mp3gain@hotmail.com>
     Frank Klemm
+
+SMPlayer - GUI front-end for mplayer
+
+    Ricardo Villalba <rvm@users.sourceforge.net>
