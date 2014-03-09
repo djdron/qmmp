@@ -23,18 +23,18 @@
 
 
 #include "prefassociations.h"
-#include "images.h"
+//#include "images.h"
 #include <QSettings>
 #include <QApplication>
 #include <QMessageBox>
 #include "winfileassoc.h"
-#include "extensions.h"
+//#include "extensions.h"
 
 static Qt::CheckState CurItemCheckState = Qt::Unchecked; 
 
 
 PrefAssociations::PrefAssociations(QWidget * parent, Qt::WindowFlags f)
-: PrefWidget(parent, f )
+: QWidget(parent, f )
 {
 	setupUi(this);
 
@@ -52,7 +52,7 @@ PrefAssociations::PrefAssociations(QWidget * parent, Qt::WindowFlags f)
 		//connect(lpbButton, SIGNAL(clicked(bool)), this, SLOT(launchAppDefaults()));
 	}
 
-	Extensions e;
+    /*Extensions e;
 	for (int n=0; n < e.multimedia().count(); n++) {
 		addItem( e.multimedia()[n] );
 	}
@@ -60,7 +60,7 @@ PrefAssociations::PrefAssociations(QWidget * parent, Qt::WindowFlags f)
 	for (int n=0; n < e.playlist().count(); n++) {
 		addItem( e.playlist()[n] );
 	}
-	retranslateStrings();
+    retranslateStrings();*/
 
 	something_changed = false;
 }
@@ -126,7 +126,7 @@ void PrefAssociations::addItem(QString label)
 void PrefAssociations::refreshList()
 {
 	m_regExtensions.clear(); 
-	WinFileAssoc ().GetRegisteredExtensions(Extensions().multimedia(), m_regExtensions); 
+    //WinFileAssoc ().GetRegisteredExtensions(Extensions().multimedia(), m_regExtensions);
 
 	for (int k = 0; k < listWidget->count(); k++)
 	{
@@ -207,21 +207,21 @@ QString PrefAssociations::sectionName() {
 	return tr("File Types");
 }
 
-QPixmap PrefAssociations::sectionIcon() {
+/*QPixmap PrefAssociations::sectionIcon() {
 	return Images::icon("pref_associations", 22);
-}
+}*/
 
-void PrefAssociations::retranslateStrings() {
+/*void PrefAssociations::retranslateStrings() {
 
 	retranslateUi(this);
 	createHelp();
-}
+}*/
 
 void PrefAssociations::createHelp() {
 
-	clearHelp();
+    //clearHelp();
 
-	setWhatsThis(selectAll, tr("Select all"), 
+    /*setWhatsThis(selectAll, tr("Select all"),
 		tr("Check all file types in the list"));
 
 	setWhatsThis(selectNone, tr("Select none"), 
@@ -232,7 +232,7 @@ void PrefAssociations::createHelp() {
 		   "When you click Apply, the checked files will be associated with "
 		   "SMPlayer. If you uncheck a media type, the file association will "
 		   "be restored.") +
-        tr(" <b>Note:</b> (Restoration doesn't work on Windows Vista)."));
+        tr(" <b>Note:</b> (Restoration doesn't work on Windows Vista)."));*/
 }
 
 #include "moc_prefassociations.cpp"

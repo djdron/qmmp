@@ -69,7 +69,7 @@ int WinFileAssoc::CreateFileAssociations(const QStringList &fileExtensions)
     // Check if classId exists in the registry
     if (!RegCR.contains(m_ClassId) && !RegCU.contains("Software/Classes/" + m_ClassId)) {
         // If doesn't exist (user didn't run the setup program), try to create the ClassId for current user.
-        if (!CreateClassId(QApplication::applicationFilePath(), "SMPlayer Media Player"))
+        if (!CreateClassId(QApplication::applicationFilePath(), "Qt-based Multimedia Player"))
             return 0;
     }
 
@@ -91,18 +91,18 @@ int WinFileAssoc::CreateFileAssociations(const QStringList &fileExtensions)
         }
 
         if (KeyVal != m_ClassId)
-            RegCU.setValue(CUKeyName + "/MPlayer_Backup", KeyVal);
+            RegCU.setValue(CUKeyName + "/Qmmp_Backup", KeyVal);
 
         // Save last ProgId and Application values from the Exts key
         KeyVal = RegCU.value(ExtKeyName + "/Progid").toString();
 
         if (KeyVal != m_ClassId && KeyVal != m_ClassId2)
-            RegCU.setValue(ExtKeyName + "/MPlayer_Backup_ProgId", KeyVal);
+            RegCU.setValue(ExtKeyName + "/Qmmp_Backup_ProgId", KeyVal);
 
         KeyVal = RegCU.value(ExtKeyName + "/Application").toString();
 
         if (KeyVal != m_ClassId || KeyVal != m_ClassId2)
-            RegCU.setValue(ExtKeyName + "/MPlayer_Backup_Application", KeyVal);
+            RegCU.setValue(ExtKeyName + "/Qmmp_Backup_Application", KeyVal);
 
         // Create the associations
         RegCU.setValue(CUKeyName + "/.", m_ClassId); 		// Extension class
@@ -146,7 +146,7 @@ bool WinFileAssoc::GetRegisteredExtensions(const QStringList &extensionsToCheck,
         if (CurClassId.size()) {	// Registered with Open With... / ProgId ?
             bRegistered = (CurClassId == m_ClassId) || (0 == CurClassId.compare(m_ClassId2, Qt::CaseInsensitive));
         } else if (CurAppId.size()) {
-            // If user uses Open With..., explorer creates it's own ClassId under Application, usually "smplayer.exe"
+            // If user uses Open With..., explorer creates it's own ClassId under Application, usually "qmmp.exe"
             bRegistered = (CurAppId == m_ClassId) || (0 == CurAppId.compare(m_ClassId2, Qt::CaseInsensitive));
         } else {
             // No classId means that no associations exists in Default Programs or Explorer
@@ -185,9 +185,9 @@ int WinFileAssoc::RestoreFileAssociations(const QStringList &fileExtensions)
     int count = 0;
     foreach(const QString & fileExtension, fileExtensions) {
         QString ExtKeyName = QString("Software/Microsoft/Windows/CurrentVersion/Explorer/FileExts/.%1").arg(fileExtension);
-        QString OldProgId = RegCU.value(ExtKeyName + "/MPlayer_Backup_ProgId").toString();
-        QString OldApp  = RegCU.value(ExtKeyName + "/MPlayer_Backup_Application").toString();
-        QString OldClassId = RegCU.value("Software/Classes/." + fileExtension + "/MPlayer_Backup").toString();
+        QString OldProgId = RegCU.value(ExtKeyName + "/Qmmp_Backup_ProgId").toString();
+        QString OldApp  = RegCU.value(ExtKeyName + "/Qmmp_Backup_Application").toString();
+        QString OldClassId = RegCU.value("Software/Classes/." + fileExtension + "/Qmmp_Backup").toString();
 
         // Restore old explorer ProgId
         if (!OldProgId.isEmpty() && OldProgId != m_ClassId)
@@ -218,11 +218,11 @@ int WinFileAssoc::RestoreFileAssociations(const QStringList &fileExtensions)
         }
 
         // Remove our keys:
-        // CurrentUserClasses/.ext/MPlayerBackup
+        // CurrentUserClasses/.ext/Qmmp_Backup
         // Explorer: Backup_Application and Backup_ProgId
-        RegCU.remove("Software/Classes/." + fileExtension + "/MPlayer_Backup");
-        RegCU.remove(ExtKeyName + "/MPlayer_Backup_Application");
-        RegCU.remove(ExtKeyName + "/MPlayer_Backup_ProgId");
+        RegCU.remove("Software/Classes/." + fileExtension + "/Qmmp_Backup");
+        RegCU.remove(ExtKeyName + "/Qmmp_Backup_Application");
+        RegCU.remove(ExtKeyName + "/Qmmp_Backup_ProgId");
     }
     return count;
 }
@@ -251,7 +251,7 @@ bool WinFileAssoc::CreateClassId(const QString &executablePath, const QString &f
     Reg.setValue(classId + "/DefaultIcon/.", QString("\"%1\",1").arg(appPath));
 
     // Add "Enqueue" command
-    Reg.setValue(classId + "/shell/enqueue/.", QObject::tr("Enqueue in SMPlayer"));
+    Reg.setValue(classId + "/shell/enqueue/.", QObject::tr("Enqueue in Qmmp"));
     Reg.setValue(classId + "/shell/enqueue/command/.", QString("\"%1\" -add-to-playlist \"%2\"").arg(appPath, "%1"));
     return true;
 }

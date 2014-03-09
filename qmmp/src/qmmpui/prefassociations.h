@@ -25,11 +25,11 @@
 #define _PREFASSOCIATIONS_H_
 
 #include "ui_prefassociations.h"
-#include "prefwidget.h"
+//#include "prefwidget.h"
 
 class Preferences;
 
-class PrefAssociations : public PrefWidget, public Ui::PrefAssociations
+class PrefAssociations : public QWidget, public Ui::PrefAssociations
 {
 	Q_OBJECT
 
@@ -38,7 +38,7 @@ public:
 	~PrefAssociations();
 
 	virtual QString sectionName();
-	virtual QPixmap sectionIcon();
+    //virtual QPixmap sectionIcon();
 
 	// Pass data to the dialog
 	void setData(Preferences * pref);
@@ -56,8 +56,8 @@ protected:
 protected:
 	virtual void createHelp();
 
-protected:
-	virtual void retranslateStrings();
+/*protected:
+    virtual void retranslateStrings();*/
 
 public slots:
 	void selectAllClicked(bool); 
