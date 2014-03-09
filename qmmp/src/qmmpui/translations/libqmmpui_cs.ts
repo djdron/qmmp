@@ -115,246 +115,251 @@
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
-        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="314"/>
         <source>Artist</source>
         <translation>Umělec</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="68"/>
-        <location filename="../configdialog.cpp" line="288"/>
-        <location filename="../configdialog.cpp" line="308"/>
+        <location filename="../configdialog.cpp" line="69"/>
+        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="67"/>
+        <location filename="../configdialog.cpp" line="68"/>
         <source>Track</source>
         <translation>Stopa</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="69"/>
+        <location filename="../configdialog.cpp" line="70"/>
         <source>Disabled</source>
         <translation>Vypnuto</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="175"/>
+        <location filename="../configdialog.cpp" line="81"/>
+        <source>File Types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="182"/>
         <source>Transports</source>
         <translation>Protokoly</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="185"/>
+        <location filename="../configdialog.cpp" line="192"/>
         <source>Decoders</source>
         <translation>Dekodéry</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="195"/>
+        <location filename="../configdialog.cpp" line="202"/>
         <source>Engines</source>
         <translation>Přehrávače</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="235"/>
+        <location filename="../configdialog.cpp" line="242"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
+        <location filename="../configdialog.cpp" line="252"/>
         <source>File Dialogs</source>
         <translation>Souborové dialogy</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="255"/>
+        <location filename="../configdialog.cpp" line="262"/>
         <source>User Interfaces</source>
         <translation>Uživatelská rozhraní</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Track number</source>
         <translation>Číslo stopy</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Two-digit track number</source>
         <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
-        <location filename="../configdialog.cpp" line="312"/>
+        <location filename="../configdialog.cpp" line="302"/>
+        <location filename="../configdialog.cpp" line="319"/>
         <source>Disc number</source>
         <translation>Číslo disku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
-        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="306"/>
+        <location filename="../configdialog.cpp" line="321"/>
         <source>Condition</source>
         <translation>Stav</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="322"/>
         <source>Artist/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="316"/>
+        <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Year/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="336"/>
+        <location filename="../configdialog.cpp" line="343"/>
         <source>&lt;Autodetect&gt;</source>
         <translation>&lt;Autodetekce&gt;</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="344"/>
         <source>Brazilian Portuguese</source>
         <translation>Brazilská portugalština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="338"/>
+        <location filename="../configdialog.cpp" line="345"/>
         <source>Chinese Simplified</source>
         <translation>Zjednodušená čínština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="346"/>
         <source>Chinese Traditional</source>
         <translation>Tradiční čínština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="340"/>
+        <location filename="../configdialog.cpp" line="347"/>
         <source>Czech</source>
         <translation>Čeština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="341"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Dutch</source>
         <translation>Nizozemština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="342"/>
+        <location filename="../configdialog.cpp" line="349"/>
         <source>English</source>
         <translation>Angličtina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../configdialog.cpp" line="350"/>
         <source>French</source>
         <translation>Francouzština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="344"/>
+        <location filename="../configdialog.cpp" line="351"/>
         <source>Galician</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="345"/>
+        <location filename="../configdialog.cpp" line="352"/>
         <source>German</source>
         <translation>Němčina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="346"/>
+        <location filename="../configdialog.cpp" line="353"/>
         <source>Hebrew</source>
         <translation>Hebrejština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="354"/>
         <source>Hungarian</source>
         <translation>Maďarština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="355"/>
         <source>Italian</source>
         <translation>Italština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="349"/>
+        <location filename="../configdialog.cpp" line="356"/>
         <source>Japanese</source>
         <translation>Japonština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="350"/>
+        <location filename="../configdialog.cpp" line="357"/>
         <source>Kazakh</source>
         <translation>Kazaština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="351"/>
+        <location filename="../configdialog.cpp" line="358"/>
         <source>Lithuanian</source>
         <translation>Litevština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="352"/>
+        <location filename="../configdialog.cpp" line="359"/>
         <source>Polish</source>
         <translation>Polština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="353"/>
+        <location filename="../configdialog.cpp" line="360"/>
         <source>Russian</source>
         <translation>Ruština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="354"/>
+        <location filename="../configdialog.cpp" line="361"/>
         <source>Slovak</source>
         <translation>Slovenština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="355"/>
+        <location filename="../configdialog.cpp" line="362"/>
         <source>Spanish</source>
         <translation>Španělština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="356"/>
+        <location filename="../configdialog.cpp" line="363"/>
         <source>Turkish</source>
         <translation>Turečtina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="357"/>
+        <location filename="../configdialog.cpp" line="364"/>
         <source>Ukrainian</source>
         <translation>Ukrajinština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="358"/>
+        <location filename="../configdialog.cpp" line="365"/>
         <source>Serbian (Ijekavian)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="359"/>
+        <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ekavian)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
-        <location filename="../configdialog.cpp" line="311"/>
+        <location filename="../configdialog.cpp" line="301"/>
+        <location filename="../configdialog.cpp" line="318"/>
         <source>Composer</source>
         <translation>Skladatel</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="303"/>
         <source>File name</source>
         <translation>Název souboru</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="304"/>
         <source>File path</source>
         <translation>Cesta k souboru</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
-        <location filename="../configdialog.cpp" line="309"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="316"/>
         <source>Genre</source>
         <translation>Žánr</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="313"/>
+        <location filename="../configdialog.cpp" line="305"/>
+        <location filename="../configdialog.cpp" line="320"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
-        <location filename="../configdialog.cpp" line="310"/>
+        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="317"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>
@@ -406,13 +411,13 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="276"/>
-        <location filename="../configdialog.cpp" line="323"/>
+        <location filename="../configdialog.cpp" line="330"/>
         <source>Preferences</source>
         <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="289"/>
-        <location filename="../configdialog.cpp" line="326"/>
+        <location filename="../configdialog.cpp" line="333"/>
         <source>Information</source>
         <translation>Informace</translation>
     </message>
@@ -590,17 +595,17 @@
         <translation>Heslo:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="222"/>
         <source>Visualization</source>
         <translation>Vizualizace</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="205"/>
+        <location filename="../configdialog.cpp" line="212"/>
         <source>Effects</source>
         <translation>Efekty</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="225"/>
+        <location filename="../configdialog.cpp" line="232"/>
         <source>General</source>
         <translation>Obecné</translation>
     </message>
@@ -778,6 +783,14 @@
     <message>
         <location filename="../playlisttrack.cpp" line="165"/>
         <source>Empty group</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../winfileassoc.cpp" line="260"/>
+        <source>Enqueue in Qmmp</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -989,6 +1002,54 @@
         <location filename="../uihelper.cpp" line="200"/>
         <source>Save Playlist</source>
         <translation>Uložit seznam skladeb</translation>
+    </message>
+</context>
+<context>
+    <name>WinFileAssocPage</name>
+    <message>
+        <location filename="../forms/winfileassocpage.ui" line="17"/>
+        <source>Media files handled by Qmmp:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/winfileassocpage.ui" line="49"/>
+        <source>Select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/winfileassocpage.ui" line="56"/>
+        <source>Select None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="136"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="137"/>
+        <source>Not all files could be associated. Please check your security permissions and retry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="144"/>
+        <source>Check all file types in the list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="145"/>
+        <source>Uncheck all file types in the list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="146"/>
+        <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../winfileassocpage.cpp" line="150"/>
+        <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
