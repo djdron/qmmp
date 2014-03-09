@@ -6,5 +6,6 @@
         <file>network.png</file>
         <file>logo-qmmp.png</file>
         <file>replaygain.png</file>
+        <file>associations.png</file>
     </qresource>
 </RCC>
