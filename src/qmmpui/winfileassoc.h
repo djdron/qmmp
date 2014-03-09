@@ -27,11 +27,15 @@
 #include <QString>
 #include <QStringList>
 
+
+/**
+    @internal
+*/
 class WinFileAssoc
 {
 protected:
 	QString m_ClassId; //Application ClassId
-	QString m_ClassId2; //The ClassId created by explorer if user selects 'Open With...', usually smplayer.exe
+    QString m_ClassId2; //The ClassId created by explorer if user selects 'Open With...', usually qmmp.exe
 	QString m_AppName;
 
 protected:
@@ -40,7 +44,7 @@ protected:
 	bool VistaGetDefaultApps(const QStringList &extensions, QStringList& registeredExt);
 	int  VistaSetAppsAsDefault(const QStringList& extensions);
 public:
-	WinFileAssoc(const QString ClassId = "MPlayerFileVideo", const QString AppName="SMPlayer");
+    WinFileAssoc(const QString ClassId = "QmmpFileAudio", const QString AppName="Qmmp");
 	//Checks the registry to see which extensions are registered with SMPlayer
 	bool GetRegisteredExtensions(const QStringList& extensionsToCheck, QStringList& registeredExtensions);
 
