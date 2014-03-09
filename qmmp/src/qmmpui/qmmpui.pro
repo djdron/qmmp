@@ -1,24 +1,35 @@
 include(../../qmmp.pri)
-unix:TARGET = ../../lib/qmmpui
-win32:TARGET = ../../../bin/qmmpui
+
+VERSION = $$QMMP_VERSION
+INCLUDEPATH += ../
+TEMPLATE = lib
+QT += network
+
 CONFIG += warn_on \
     shared \
     create_pc create_prl no_install_prl \
     qt \
     thread
+
 QMAKE_LIBDIR += ../../lib \
     qmmpui
+
 LIBS += -Wl,-rpath,./
-unix:LIBS += -L../../lib \
-    -lqmmp
-win32:LIBS += -L../../bin \
-    -lqmmp0
-INCLUDEPATH += ../
-TEMPLATE = lib
-unix:isEmpty(LIB_DIR):LIB_DIR = /lib
-VERSION = $$QMMP_VERSION
-unix:target.path = $$LIB_DIR
-QT += network
+
+unix {
+    TARGET = ../../lib/qmmpui
+    LIBS += -L../../lib -lqmmp
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR
+}
+
+win32 {
+    TARGET = ../../../bin/qmmpui
+    LIBS += -L../../bin -lqmmp0
+    HEADERS += prefassociations.h
+    SOURCES += prefassociations.cpp
+}
+
 HEADERS += general.h \
     generalfactory.h \
     playlistformat.h \
