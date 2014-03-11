@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,7 +30,8 @@
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
     TagLib::MPEG::File fileRef(path.toLocal8Bit().constData());
-    readID3v2(fileRef.ID3v2Tag());
+    if(fileRef.ID3v2Tag())
+        readID3v2(fileRef.ID3v2Tag());
     if(m_values.isEmpty() && fileRef.APETag())
         readAPE(fileRef.APETag());
 }
