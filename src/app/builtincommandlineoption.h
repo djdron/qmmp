@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QHash>
 #include <QStringList>
+#include <QTimer>
 
 class PlayListModel;
 
@@ -49,10 +50,15 @@ public:
 
 private slots:
     void disconnectPl();
+    void addPendingPaths();
 
 private:
     QStringList m_options;
     PlayListModel *m_model;
+    QStringList m_pending_path_list;
+#ifdef Q_OS_WIN
+    QTimer *m_timer;
+#endif
 };
 
 #endif
