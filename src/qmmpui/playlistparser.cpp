@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -140,7 +140,9 @@ void PlayListParser::checkFormats()
     m_formats = new QList<PlayListFormat*>();
     QDir pluginsDir (Qmmp::pluginsPath());
     pluginsDir.cd("PlayListFormats");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    QStringList filters;
+    filters << "*.dll" << "*.so";
+    foreach (QString fileName, pluginsDir.entryList(filters, QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();

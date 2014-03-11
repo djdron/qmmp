@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -55,7 +55,9 @@ void AbstractEngine::loadPlugins()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QDir pluginsDir (Qmmp::pluginsPath());
     pluginsDir.cd("Engines");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    QStringList filters;
+    filters << "*.dll" << "*.so";
+    foreach (QString fileName, pluginsDir.entryList(filters, QDir::Files))
     {
         QmmpPluginCache *item = new QmmpPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
         if(item->hasError())
