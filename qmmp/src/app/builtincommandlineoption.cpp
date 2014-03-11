@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,6 +47,12 @@ BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(pa
               << "--toggle-visibility"
               << "--show-mw"
               << "--add-file" << "--add-dir";
+#ifdef Q_OS_WIN
+    m_timer = new QTimer(this);
+    m_timer->setSingleShot(true);
+    m_timer->setInterval(500);
+    connect(m_timer, SIGNAL(timeout()), SLOT(addPendingPaths()));
+#endif
 }
 
 BuiltinCommandLineOption::~BuiltinCommandLineOption()
@@ -122,23 +128,20 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
         pl_manager->activatePlayList(pl_manager->selectedPlayList());
         m_model = pl_manager->selectedPlayList();
 
-        if(option_string.isEmpty()) //clear playlist if option is empty
+        if(option_string.isEmpty())
         {
-            if (core->state() != Qmmp::Stopped)
-            {
-                core->stop();
-                qApp->processEvents(); //receive stop signal
-            }
-            m_model = pl_manager->selectedPlayList();
-            m_model->clear();
-            if(!full_path_list.isEmpty())
-            {
-                connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), player, SLOT(play()));
-                connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(disconnectPl()));
-                connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
-            }
+            m_model->clear(); //clear playlist if option is empty
+            m_pending_path_list << full_path_list;
+#ifdef Q_OS_WIN
+            //windows starts instance for each selected file,
+            //so we should wait paths from all started qmmp instances
+            m_timer->start();
+#else
+            addPendingPaths();
+#endif
         }
-        m_model->add(full_path_list);
+        else
+            m_model->add(full_path_list);
         if(!remote_pls_list.isEmpty())
         {
             PlayListDownloader *downloader = new PlayListDownloader(this);
@@ -236,8 +239,33 @@ void BuiltinCommandLineOption::disconnectPl()
     if(m_model)
     {
         disconnect(m_model, SIGNAL(trackAdded(PlayListTrack*)), MediaPlayer::instance(), SLOT(play()));
+        disconnect(m_model, SIGNAL(trackAdded(PlayListTrack*)), this, SLOT(disconnectPl()));
         disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
-        disconnect(SoundCore::instance(), SIGNAL(stateChanged(Qmmp::State)), this, SLOT(disconnectPl()));
         m_model = 0;
     }
+}
+
+void BuiltinCommandLineOption::addPendingPaths()
+{
+    if(m_pending_path_list.isEmpty())
+        return;
+
+    SoundCore *core = SoundCore::instance();
+    MediaPlayer *player = MediaPlayer::instance();
+    PlayListManager *pl_manager = PlayListManager::instance();
+
+    if (core->state() != Qmmp::Stopped)
+    {
+        core->stop();
+        qApp->processEvents(); //receive stop signal
+    }
+    m_model = pl_manager->selectedPlayList();
+    m_model->clear();
+
+    connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), player, SLOT(play()));
+    connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), SLOT(disconnectPl()));
+    connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
+
+    m_model->add(m_pending_path_list);
+    m_pending_path_list.clear();
 }
