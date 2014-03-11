@@ -111,7 +111,9 @@ void Decoder::loadPlugins()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QDir pluginsDir (Qmmp::pluginsPath());
     pluginsDir.cd("Input");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    QStringList filters;
+    filters << "*.dll" << "*.so";
+    foreach (QString fileName, pluginsDir.entryList(filters, QDir::Files))
     {
         QmmpPluginCache *item = new QmmpPluginCache(pluginsDir.absoluteFilePath(fileName), &settings);
         if(item->hasError())

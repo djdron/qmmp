@@ -204,7 +204,9 @@ void Visual::checkFactories()
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Visual");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QStringList filters;
+        filters << "*.dll" << "*.so";
+        foreach (QString fileName, pluginsDir.entryList(filters, QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();

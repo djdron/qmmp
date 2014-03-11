@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,7 +44,9 @@ void CommandLineManager::checkOptions()
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("CommandLineOptions");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        QStringList filters;
+        filters << "*.dll" << "*.so";
+        foreach (QString fileName, pluginsDir.entryList(filters, QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
