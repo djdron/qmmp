@@ -1046,7 +1046,7 @@
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
-        <translation>&lt;b&gt;Примечание:&lt;b&gt; Восстановление ассоциаций не работает в Windows Vista/7.</translation>
+        <translation>&lt;b&gt;Примечание:&lt;/b&gt; Восстановление ассоциаций не работает в Windows Vista/7.</translation>
     </message>
 </context>
 </TS>
