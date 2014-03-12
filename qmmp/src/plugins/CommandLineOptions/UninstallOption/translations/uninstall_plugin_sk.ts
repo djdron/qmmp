@@ -5,7 +5,7 @@
     <name>UninstallOption</name>
     <message>
         <location filename="../uninstalloption.cpp" line="39"/>
-        <source>Restores the old file associations and cleans up the registry.</source>
+        <source>Restore the old file associations and clean up the registry</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
