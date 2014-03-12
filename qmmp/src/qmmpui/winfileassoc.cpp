@@ -37,8 +37,9 @@
 */
 
 /*
-   main changes compared to SMplayer:
+   main changes compared to SMPlayer:
      replaced SMPlayer by Qmmp
+     added icon cache update
 */
 
 
@@ -47,6 +48,11 @@
 #include <QApplication>
 #include <QFileInfo>
 #include <windows.h>
+#include <shlobj.h>
+
+#ifndef SHCNE_ASSOCHANGED
+#define SHCNE_ASSOCHANGED __MSABI_LONG(0x08000000)
+#endif
 
 WinFileAssoc::WinFileAssoc(const QString ClassId, const QString AppName)
 {
@@ -117,7 +123,7 @@ int WinFileAssoc::CreateFileAssociations(const QStringList &fileExtensions)
         if (RegCU.status() == QSettings::NoError && RegCR.status() == QSettings::NoError)
             count++;
     }
-
+    SHChangeNotify(SHCNE_ASSOCHANGED, SHCNF_IDLIST, NULL, NULL);
     return count;
 }
 
@@ -230,6 +236,7 @@ int WinFileAssoc::RestoreFileAssociations(const QStringList &fileExtensions)
         RegCU.remove(ExtKeyName + "/Qmmp_Backup_Application");
         RegCU.remove(ExtKeyName + "/Qmmp_Backup_ProgId");
     }
+    SHChangeNotify(SHCNE_ASSOCHANGED, SHCNF_IDLIST, NULL, NULL);
     return count;
 }
 
