@@ -36,7 +36,7 @@ bool UninstallOption::identify(const QString &str) const
 const QString UninstallOption::helpString() const
 {
     QString help;
-    help += QString("--uninstall              ") + tr("Restores the old file associations and cleans up the registry")
+    help += QString("--uninstall              ") + tr("Restore the old file associations and clean up the registry")
             + "\n";
     return  help;
 }
