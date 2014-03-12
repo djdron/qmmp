@@ -789,7 +789,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../winfileassoc.cpp" line="260"/>
+        <location filename="../winfileassoc.cpp" line="267"/>
         <source>Enqueue in Qmmp</source>
         <translation type="unfinished"></translation>
     </message>
