@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,9 +44,10 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[JUMP] = createAction(tr("&Jump to Track"), "jump", tr("J"), "go-up");
     m_actions[EJECT] = createAction(tr("&Play Files"), "eject", tr("E"), "media-eject");
 
-    m_actions[REPEAT_ALL] = createAction2(tr("&Repeat Playlist"), "repeate_playlist", tr("R"));
+    m_actions[REPEAT_ALL] = createAction2(tr("&Repeat Playlist"), "repeate_playlist", tr("R"),
+                                          "media-playlist-repeat");
     m_actions[REPEAT_TRACK] = createAction2(tr("&Repeat Track"), "repeate_track", tr("Ctrl+R"));
-    m_actions[SHUFFLE] = createAction2(tr("&Shuffle"), "shuffle", tr("S"));
+    m_actions[SHUFFLE] = createAction2(tr("&Shuffle"), "shuffle", tr("S"), "media-playlist-shuffle");
     m_actions[NO_PL_ADVANCE] = createAction2(tr("&No Playlist Advance"), "no_playlist_advance",
                                             tr("Ctrl+N"));
     m_actions[STOP_AFTER_SELECTED] = createAction(tr("&Stop After Selected"), "stop_after_selected",
@@ -151,10 +152,19 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
     return action;
 }
 
-QAction *ActionManager::createAction2(QString name, QString confKey, QString key)
+QAction *ActionManager::createAction2(QString name, QString confKey, QString key, QString iconName)
 {
     QAction *action = createAction(name, confKey, key);
     action->setCheckable(true);
+    action->setIconVisibleInMenu(false);
+    if(iconName.isEmpty())
+        return action;
+    if(QFile::exists(iconName))
+        action->setIcon(QIcon(iconName));
+    else if(QIcon::hasThemeIcon(iconName))
+        action->setIcon(QIcon::fromTheme(iconName));
+    else if(QFile::exists(QString(":/qsui/")+iconName+".png"))
+        action->setIcon(QIcon(QString(":/qsui/")+iconName+".png"));
     return action;
 }
 

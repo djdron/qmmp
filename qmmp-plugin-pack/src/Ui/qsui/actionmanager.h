@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -112,7 +112,7 @@ public:
 
 private:
     QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
-    QAction *createAction2(QString name, QString confKey, QString key);
+    QAction *createAction2(QString name, QString confKey, QString key, QString iconName = QString());
 
     QSettings *m_settings;
     QHash <int, QAction *> m_actions;
