@@ -28,6 +28,9 @@ do
         StatusOption)
             plug_name="status"
         ;;
+        UninstallOption)
+            plug_name="uninstall"
+        ;;
         QmmpFileDialog)
             plug_name="qmmp_file_dialog"
         ;;
