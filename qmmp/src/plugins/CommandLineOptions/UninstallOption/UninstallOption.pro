@@ -5,10 +5,9 @@ plugin  \
  lib
 
 TARGET = $$PLUGINS_PREFIX/CommandLineOptions/uninstalloption
-QMAKE_CLEAN = $$PLUGINS_PREFIX/CommandLineOptions/libuninstalloption.so
 
 TEMPLATE = lib
-QMAKE_LIBDIR += ../../../../lib
+QMAKE_LIBDIR += ../../../../bin
 
 TRANSLATIONS = translations/uninstall_plugin_cs.ts \
                translations/uninstall_plugin_de.ts \
@@ -27,15 +26,10 @@ TRANSLATIONS = translations/uninstall_plugin_cs.ts \
                translations/uninstall_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/CommandLineOptions
-INSTALLS += target
 
 INCLUDEPATH += ../../../../src
 
-LIBS += -lqmmpui -lqmmp
+LIBS += -lqmmpui0 -lqmmp0
 
 HEADERS += uninstalloption.h
 

@@ -21,7 +21,7 @@
 #include <QtPlugin>
 #include <QTranslator>
 #include <QLocale>
-#include <QMap>
+#include <QApplication>
 #include <qmmpui/winfileassoc.h>
 #include <qmmp/metadatamanager.h>
 #include "uninstalloption.h"
@@ -36,13 +36,14 @@ bool UninstallOption::identify(const QString &str) const
 const QString UninstallOption::helpString() const
 {
     QString help;
-    help += QString("--uninstall              ") + tr("Restores the old file associations and cleans up the registry.")
+    help += QString("--uninstall              ") + tr("Restores the old file associations and cleans up the registry")
             + "\n";
     return  help;
 }
 
 QString UninstallOption::executeCommand(const QString &opt_str, const QStringList &args)
 {
+    Q_UNUSED(args);
     if(opt_str == "--uninstall")
     {
         WinFileAssoc assoc;
@@ -54,6 +55,7 @@ QString UninstallOption::executeCommand(const QString &opt_str, const QStringLis
         }
         assoc.GetRegisteredExtensions(extsToCheck, regExts);
         assoc.RestoreFileAssociations(regExts);
+        QMetaObject::invokeMethod(qApp, "quit", Qt::QueuedConnection);
     }
     return QString();
 }

@@ -1,3 +1,5 @@
+TEMPLATE = subdirs
+
 SUBDIRS += Input \
            Output \
            General \
@@ -6,9 +8,8 @@ SUBDIRS += Input \
            Effect \
            PlayListFormats \
            FileDialogs \
-           Ui
+           Ui \
+           CommandLineOptions
 
+unix:SUBDIRS += Engines
 
-unix:SUBDIRS += CommandLineOptions \
-                Engines
-TEMPLATE = subdirs
