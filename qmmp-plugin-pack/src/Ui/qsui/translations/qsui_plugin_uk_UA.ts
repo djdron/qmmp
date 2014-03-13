@@ -84,7 +84,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Play/Pause</source>
-        <translation>&amp;Грати/Пауза</translation>
+        <translation>&amp;Відтворення/Пауза</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Play Files</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Відтворити файли</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>

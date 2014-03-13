@@ -66,7 +66,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати головне вікно</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>

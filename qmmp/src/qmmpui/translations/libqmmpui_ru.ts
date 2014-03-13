@@ -1041,7 +1041,7 @@
     <message>
         <location filename="../winfileassocpage.cpp" line="146"/>
         <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
-        <translation>Отметьте типы файлов, которые хотите связать с Qmmp. После нажатия Применить, отмеченные типы файлов будут ассоциированы с SMPlayer. Если убрать отметку, файловая ассоциация будет восстановлена.</translation>
+        <translation>Отметьте типы файлов, которые хотите связать с Qmmp. После нажатия Применить, отмеченные типы файлов будут ассоциированы с Qmmp. Если убрать отметку, файловая ассоциация будет восстановлена.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
