@@ -154,6 +154,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     createActions();
     readSettings();
+
+    QToolButton *addListButton = new QToolButton(m_ui.tabWidget);
+    addListButton->setText("+");
+    addListButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    addListButton->setAutoRaise(true);
+    addListButton->setIcon(QIcon::fromTheme("list-add"));
+    addListButton->setVisible(true);
+    m_ui.tabWidget->setCornerWidget(addListButton);
+    connect(addListButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
 }
 
 MainWindow::~MainWindow()
