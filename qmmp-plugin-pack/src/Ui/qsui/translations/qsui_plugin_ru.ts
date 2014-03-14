@@ -199,7 +199,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>Block Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Заблокировать панели инструментов</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
