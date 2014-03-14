@@ -35,6 +35,10 @@ contains(CONFIG, CDAUDIO_PLUGIN){
   SUBDIRS += cdaudio
 }
 
+contains(CONFIG, SID_PLUGIN){
+  SUBDIRS += sid
+}
+
 unix{
 
 contains(CONFIG, AAC_PLUGIN){
@@ -46,8 +50,6 @@ contains(CONFIG, WILDMIDI_PLUGIN){
   SUBDIRS += wildmidi
 }
 
-contains(CONFIG, SID_PLUGIN){
-  SUBDIRS += sid
-}
+
 
 }
