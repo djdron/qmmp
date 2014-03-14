@@ -67,6 +67,7 @@ public:
         UI_PLAYLISTBROWSER,
         UI_SHOW_TABS,
         UI_SHOW_TITLEBARS,
+        UI_BLOCK_TOOLBARS,
 
         VOL_ENC,
         VOL_DEC,

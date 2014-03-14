@@ -62,6 +62,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[UI_PLAYLISTBROWSER] = 0; //external action
     m_actions[UI_SHOW_TABS] = createAction2(tr("Show Tabs"), "show_tabs", "");
     m_actions[UI_SHOW_TITLEBARS] = createAction2(tr("Show Title Bars"), "show_titlebars", "");
+    m_actions[UI_BLOCK_TOOLBARS] = createAction2(tr("Block Toolbars"), "block_toolbars", "");
     //volume
     m_actions[VOL_ENC] = createAction(tr("Volume &+"), "vol_enc", tr("0"));
     m_actions[VOL_DEC] = createAction(tr("Volume &-"), "vol_dec", tr("9"));

@@ -450,6 +450,7 @@ void MainWindow::createActions()
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TABS, m_ui.tabWidget, SLOT(setTabsVisible(bool))));
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TITLEBARS, this, SLOT(setTitleBarsVisible(bool))));
     m_ui.menuView->addSeparator();
+    m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_BLOCK_TOOLBARS, this, SLOT(setToolBarsBlocked(bool))));
     m_ui.menuView->addAction(tr("Edit Toolbar"), this, SLOT(editToolBar()));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
@@ -651,6 +652,10 @@ void MainWindow::readSettings()
         ACTION(ActionManager::UI_SHOW_TABS)->setChecked(state);
         m_ui.tabWidget->setTabsVisible(state);
 
+        state = settings.value("block_toolbars", false).toBool();
+        ACTION(ActionManager::UI_BLOCK_TOOLBARS)->setChecked(state);
+        setToolBarsBlocked(state);
+
         m_update = true;
     }
     else
@@ -714,6 +719,7 @@ void MainWindow::writeSettings()
     settings.setValue("Simple/show_analyzer", ACTION(ActionManager::UI_ANALYZER)->isChecked());
     settings.setValue("Simple/show_tabs", ACTION(ActionManager::UI_SHOW_TABS)->isChecked());
     settings.setValue("Simple/show_titlebars", ACTION(ActionManager::UI_SHOW_TITLEBARS)->isChecked());
+    settings.setValue("Simple/block_toolbars", ACTION(ActionManager::UI_BLOCK_TOOLBARS)->isChecked());
 }
 
 void MainWindow::savePlayList()
@@ -798,6 +804,12 @@ void MainWindow::setTitleBarsVisible(bool visible)
         if(!m_ui.playlistsDockWidget->titleBarWidget())
             m_ui.playlistsDockWidget->setTitleBarWidget(new QWidget());
     }
+}
+
+void MainWindow::setToolBarsBlocked(bool blocked)
+{
+    m_ui.buttonsToolBar->setMovable(!blocked);
+    m_ui.progressToolBar->setMovable(!blocked);
 }
 
 void MainWindow::editToolBar()

@@ -82,6 +82,7 @@ private slots:
     void backward();
     void showMetaData();
     void setTitleBarsVisible(bool visible);
+    void setToolBarsBlocked(bool blocked);
     void editToolBar();
 
 private:
