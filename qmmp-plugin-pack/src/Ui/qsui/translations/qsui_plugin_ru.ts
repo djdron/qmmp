@@ -706,12 +706,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="623"/>
         <source>Add new playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить новый список воспроизведения</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
         <source>Show playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать списки воспроизведения</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="776"/>
@@ -1083,22 +1083,22 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="726"/>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Вкладки</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="732"/>
         <source>Show close buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать кнопки закрытия</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="739"/>
-        <source>Show playlist menu</source>
-        <translation type="unfinished"></translation>
+        <source>Show tab list menu</source>
+        <translation>Показывать меню со списком вкладок</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="746"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать кномпку &quot;Новый список&quot;</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="204"/>

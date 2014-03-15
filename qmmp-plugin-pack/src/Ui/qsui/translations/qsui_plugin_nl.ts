@@ -1093,7 +1093,7 @@ Instellingen</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="739"/>
-        <source>Show playlist menu</source>
+        <source>Show tab list menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
