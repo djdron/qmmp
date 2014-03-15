@@ -623,14 +623,14 @@ void MainWindow::createButtons()
     m_addListButton->setToolTip(tr("Add new playlist"));
     connect(m_addListButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
     //playlist menu button
-    m_plMenuButton = new QToolButton(m_ui.tabWidget);
-    m_plMenuButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    m_plMenuButton->setAutoRaise(true);
-    m_plMenuButton->setToolTip(tr("Show playlists"));
-    m_plMenuButton->setArrowType(Qt::DownArrow);
-    m_plMenuButton->setStyleSheet("QToolButton::menu-indicator { image: none; }");
-    m_plMenuButton->setPopupMode(QToolButton::InstantPopup);
-    m_plMenuButton->setMenu(m_ui.tabWidget->menu());
+    m_tabListMenuButton = new QToolButton(m_ui.tabWidget);
+    m_tabListMenuButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    m_tabListMenuButton->setAutoRaise(true);
+    m_tabListMenuButton->setToolTip(tr("Show playlists"));
+    m_tabListMenuButton->setArrowType(Qt::DownArrow);
+    m_tabListMenuButton->setStyleSheet("QToolButton::menu-indicator { image: none; }");
+    m_tabListMenuButton->setPopupMode(QToolButton::InstantPopup);
+    m_tabListMenuButton->setMenu(m_ui.tabWidget->menu());
 }
 
 void MainWindow::readSettings()
@@ -718,15 +718,15 @@ void MainWindow::readSettings()
         m_addListButton->setVisible(false);
         m_ui.tabWidget->setCornerWidget(0, Qt::TopLeftCorner);
     }
-    if(settings.value("pl_show_pl_menu", false).toBool())
+    if(settings.value("pl_show_tab_list_menu", false).toBool())
     {
-        m_ui.tabWidget->setCornerWidget(m_plMenuButton, Qt::TopRightCorner);
-        m_plMenuButton->setIconSize(QSize(16, 16));
-        m_plMenuButton->setVisible(true);
+        m_ui.tabWidget->setCornerWidget(m_tabListMenuButton, Qt::TopRightCorner);
+        m_tabListMenuButton->setIconSize(QSize(16, 16));
+        m_tabListMenuButton->setVisible(true);
     }
     else
     {
-        m_plMenuButton->setVisible(false);
+        m_tabListMenuButton->setVisible(false);
         m_ui.tabWidget->setCornerWidget(0, Qt::TopRightCorner);
     }
     settings.endGroup();

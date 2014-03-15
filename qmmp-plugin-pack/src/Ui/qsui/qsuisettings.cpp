@@ -95,7 +95,7 @@ void QSUISettings::readSettings()
     //tabs
     m_ui.tabsClosableCheckBox->setChecked(settings.value("pl_tabs_closable", false).toBool());
     m_ui.showNewPLCheckBox->setChecked(settings.value("pl_show_new_pl_button", false).toBool());
-    m_ui.showPLMenuCheckBox->setChecked(settings.value("pl_show_pl_menu", false).toBool());
+    m_ui.showTabListMenuCheckBox->setChecked(settings.value("pl_show_tab_list_menu", false).toBool());
     //view
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
@@ -134,7 +134,7 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_show_popup", m_ui.popupCheckBox->isChecked());
     settings.setValue("pl_tabs_closable", m_ui.tabsClosableCheckBox->isChecked());
     settings.setValue("pl_show_new_pl_button", m_ui.showNewPLCheckBox->isChecked());
-    settings.setValue("pl_show_pl_menu", m_ui.showPLMenuCheckBox->isChecked());
+    settings.setValue("pl_show_tab_list_menu", m_ui.showTabListMenuCheckBox->isChecked());
     settings.setValue("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
     settings.setValue("vis_color1", m_ui.aColor1->colorName());

@@ -109,7 +109,7 @@ private:
     QAction *m_volumeAction;
     KeyboardManager *m_key_manager;
     QSUiAnalyzer *m_analyzer;
-    QToolButton *m_addListButton, *m_plMenuButton;
+    QToolButton *m_addListButton, *m_tabListMenuButton;
     int m_balance;
     bool m_update;
     bool m_hideOnClose;

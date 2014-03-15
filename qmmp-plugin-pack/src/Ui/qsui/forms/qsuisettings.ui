@@ -734,9 +734,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="showPLMenuCheckBox">
+           <widget class="QCheckBox" name="showTabListMenuCheckBox">
             <property name="text">
-             <string>Show playlist menu</string>
+             <string>Show tab list menu</string>
             </property>
            </widget>
           </item>
