@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>447</width>
-    <height>429</height>
+    <width>463</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -115,22 +115,22 @@
          <property name="title">
           <string>Song Display</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="1" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
            <widget class="QCheckBox" name="protocolCheckBox">
             <property name="text">
              <string>Show protocol</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item>
            <widget class="QCheckBox" name="numbersCheckBox">
             <property name="text">
              <string>Show song numbers</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item>
            <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
@@ -140,21 +140,21 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item>
            <widget class="QCheckBox" name="anchorCheckBox">
             <property name="text">
              <string>Show anchor</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item>
            <widget class="QCheckBox" name="popupCheckBox">
             <property name="text">
              <string>Show popup information</string>
             </property>
            </widget>
           </item>
-          <item row="8" column="0">
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QPushButton" name="popupTemplateButton">
@@ -180,13 +180,6 @@
              </spacer>
             </item>
            </layout>
-          </item>
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="tabsClosableCheckBox">
-            <property name="text">
-             <string>Show close buttons on tabs</string>
-            </property>
-           </widget>
           </item>
          </layout>
         </widget>
@@ -257,7 +250,7 @@
       <attribute name="title">
        <string>Miscellaneous</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
@@ -721,6 +714,36 @@
             </property>
             <property name="checked">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Tabs</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="tabsClosableCheckBox">
+            <property name="text">
+             <string>Show close buttons</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="showPLMenuCheckBox">
+            <property name="text">
+             <string>Show playlist menu</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="showNewPLCheckBox">
+            <property name="text">
+             <string>Show 'New Playlist' button</string>
             </property>
            </widget>
           </item>

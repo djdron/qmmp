@@ -87,12 +87,15 @@ void QSUISettings::readSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
     //playlist
-    m_ui.tabsClosableCheckBox->setChecked(settings.value("pl_tabs_closable", false).toBool());
     m_ui.protocolCheckBox->setChecked(settings.value("pl_show_protocol", false).toBool());
     m_ui.numbersCheckBox->setChecked(settings.value("pl_show_numbers", true).toBool());
     m_ui.alignCheckBox->setChecked(settings.value("pl_align_numbers", false).toBool());
     m_ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
     m_ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
+    //tabs
+    m_ui.tabsClosableCheckBox->setChecked(settings.value("pl_tabs_closable", false).toBool());
+    m_ui.showNewPLCheckBox->setChecked(settings.value("pl_show_new_pl_button", false).toBool());
+    m_ui.showPLMenuCheckBox->setChecked(settings.value("pl_show_pl_menu", false).toBool());
     //view
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
@@ -123,12 +126,15 @@ void QSUISettings::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    settings.setValue("pl_tabs_closable", m_ui.tabsClosableCheckBox->isChecked());
+
     settings.setValue("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
     settings.setValue("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
     settings.setValue("pl_align_numbers", m_ui.alignCheckBox->isChecked());
     settings.setValue("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
     settings.setValue("pl_show_popup", m_ui.popupCheckBox->isChecked());
+    settings.setValue("pl_tabs_closable", m_ui.tabsClosableCheckBox->isChecked());
+    settings.setValue("pl_show_new_pl_button", m_ui.showNewPLCheckBox->isChecked());
+    settings.setValue("pl_show_pl_menu", m_ui.showPLMenuCheckBox->isChecked());
     settings.setValue("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
     settings.setValue("vis_color1", m_ui.aColor1->colorName());

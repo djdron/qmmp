@@ -27,6 +27,7 @@
 class QSlider;
 class QLabel;
 class QMenu;
+class QToolButton;
 class UiHelper;
 class PlayListModel;
 class MediaPlayer;
@@ -38,6 +39,7 @@ class VisualMenu;
 class PositionSlider;
 class KeyboardManager;
 class QSUiAnalyzer;
+
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -88,6 +90,7 @@ private slots:
 private:
     void closeEvent(QCloseEvent *);
     void createActions();
+    void createButtons();
     void writeSettings();
     QString m_lastDir;
     PlayListManager *m_pl_manager;
@@ -106,6 +109,7 @@ private:
     QAction *m_volumeAction;
     KeyboardManager *m_key_manager;
     QSUiAnalyzer *m_analyzer;
+    QToolButton *m_addListButton, *m_plMenuButton;
     int m_balance;
     bool m_update;
     bool m_hideOnClose;

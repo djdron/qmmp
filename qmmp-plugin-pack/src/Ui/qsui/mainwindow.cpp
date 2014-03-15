@@ -153,18 +153,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui.playlistsDockWidget->setWidget(new PlayListBrowser(m_pl_manager, this));
 
     createActions();
+    createButtons();
     readSettings();
-
-    //new playlist button
-    QToolButton *addListButton = new QToolButton(m_ui.tabWidget);
-    addListButton->setText("+");
-    addListButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    addListButton->setAutoRaise(true);
-    addListButton->setVisible(true);
-    addListButton->setIcon(QIcon::fromTheme("list-add"));
-    m_ui.tabWidget->setCornerWidget(addListButton);
-    addListButton->setIconSize(QSize(16,16));
-    connect(addListButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
 }
 
 MainWindow::~MainWindow()
@@ -620,6 +610,27 @@ void MainWindow::createActions()
     addActions(m_key_manager->actions());
 }
 
+void MainWindow::createButtons()
+{
+    //'new playlist' button
+    m_addListButton = new QToolButton(m_ui.tabWidget);
+    m_addListButton->setText("+");
+    m_addListButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    m_addListButton->setAutoRaise(true);
+    m_addListButton->setIcon(QIcon::fromTheme("list-add"));
+    m_addListButton->setToolTip(tr("Add new playlist"));
+    connect(m_addListButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
+    //playlist menu button
+    m_plMenuButton = new QToolButton(m_ui.tabWidget);
+    m_plMenuButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    m_plMenuButton->setAutoRaise(true);
+    m_plMenuButton->setToolTip(tr("Show playlists"));
+    m_plMenuButton->setArrowType(Qt::DownArrow);
+    m_plMenuButton->setStyleSheet("QToolButton::menu-indicator { image: none; }");
+    m_plMenuButton->setPopupMode(QToolButton::InstantPopup);
+    m_plMenuButton->setMenu(m_ui.tabWidget->menu());
+}
+
 void MainWindow::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
@@ -693,6 +704,29 @@ void MainWindow::readSettings()
 
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     m_ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
+
+    if(settings.value("pl_show_new_pl_button", false).toBool())
+    {
+        m_ui.tabWidget->setCornerWidget(m_addListButton, Qt::TopLeftCorner);
+        m_addListButton->setIconSize(QSize(16, 16));
+        m_addListButton->setVisible(true);
+    }
+    else
+    {
+        m_addListButton->setVisible(false);
+        m_ui.tabWidget->setCornerWidget(0, Qt::TopLeftCorner);
+    }
+    if(settings.value("pl_show_pl_menu", false).toBool())
+    {
+        m_ui.tabWidget->setCornerWidget(m_plMenuButton, Qt::TopRightCorner);
+        m_plMenuButton->setIconSize(QSize(16, 16));
+        m_plMenuButton->setVisible(true);
+    }
+    else
+    {
+        m_plMenuButton->setVisible(false);
+        m_ui.tabWidget->setCornerWidget(0, Qt::TopRightCorner);
+    }
     settings.endGroup();
     addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
     addActions(m_uiHelper->actions(UiHelper::PLAYLIST_MENU));

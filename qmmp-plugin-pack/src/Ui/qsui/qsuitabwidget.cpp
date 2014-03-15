@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,8 +26,19 @@ QSUiTabWidget::QSUiTabWidget(QWidget *parent) : QTabWidget(parent)
 {
     setTabBar(new QSUiTabBar(this));
     setMovable(true);
+    m_menu = new QMenu(this);
+    m_group = new QActionGroup(this);
+    m_group->setExclusive(true);
     connect(tabBar(), SIGNAL(tabMoved(int,int)), SIGNAL(tabMoved(int,int)));
+    connect(tabBar(), SIGNAL(tabMoved(int,int)), SLOT(updateActions()));
     connect(tabBar(), SIGNAL(tabCloseRequested(int)), SLOT(onTabCloseRequest(int)));
+    connect(this, SIGNAL(currentChanged(int)), SLOT(onCurrentChanged(int)));
+    connect(m_menu, SIGNAL(triggered(QAction*)), SLOT(onActionTriggered(QAction*)));
+}
+
+QMenu *QSUiTabWidget::menu()
+{
+    return m_menu;
 }
 
 void QSUiTabWidget::onTabCloseRequest(int i)
@@ -36,6 +47,61 @@ void QSUiTabWidget::onTabCloseRequest(int i)
         emit tabCloseRequested(i);
 }
 
+void QSUiTabWidget::onCurrentChanged(int index)
+{
+    if(index >= m_menu->actions().count())
+        return;
+    m_menu->actions().at(index)->setChecked(true);
+}
+
+void QSUiTabWidget::onActionTriggered(QAction *action)
+{
+    setCurrentIndex(m_menu->actions().indexOf(action));
+}
+
+void QSUiTabWidget::updateActions()
+{
+    for(int i = 0; i < m_menu->actions().size(); ++i)
+    {
+         m_menu->actions().at(i)->setText(tabText(i));
+    }
+    m_menu->actions().at(currentIndex())->setChecked(true);
+}
+
+void QSUiTabWidget::tabInserted(int index)
+{
+    QAction *action = new QAction(m_menu);
+    action->setCheckable(true);
+    action->setActionGroup(m_group);
+    action->setText(tabText(index));
+
+    if(m_menu->actions().isEmpty() || index == m_menu->actions().count())
+    {
+        m_menu->addAction(action);
+    }
+    else
+    {
+        QAction *before = m_menu->actions().at(index);
+        m_menu->insertAction(before, action);
+    }
+    if(currentIndex() == index)
+        action->setChecked(true);
+    QTabWidget::tabInserted(index);
+}
+
+void QSUiTabWidget::tabRemoved(int index)
+{
+    QAction *a = m_menu->actions().at(index);
+    m_menu->removeAction(a);
+    delete a;
+    QTabWidget::tabRemoved(index);
+}
+
+void QSUiTabWidget::setTabText(int index, const QString &text)
+{
+    QTabWidget::setTabText(index, text);
+    m_menu->actions().at(index)->setText(text);
+}
 
 void QSUiTabWidget::setTabsVisible(bool visible)
 {

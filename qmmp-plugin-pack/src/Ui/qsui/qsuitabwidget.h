@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,9 @@
 #define QSUITABWIDGET_H
 
 #include <QTabWidget>
+#include <QMenu>
+
+class QActionGroup;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -32,6 +35,9 @@ class QSUiTabWidget : public QTabWidget
 public:
     explicit QSUiTabWidget(QWidget *parent = 0);
 
+    QMenu *menu();
+    void setTabText(int index, const QString &text);
+
 signals:
     void tabMoved(int from, int to);
 
@@ -40,6 +46,15 @@ public slots:
 
 private slots:
     void onTabCloseRequest(int i);
+    void onCurrentChanged(int index);
+    void onActionTriggered(QAction *action);
+    void updateActions();
+
+private:
+    void tabInserted(int index);
+    void tabRemoved(int index);
+    QMenu *m_menu;
+    QActionGroup *m_group;
 
 };
 
