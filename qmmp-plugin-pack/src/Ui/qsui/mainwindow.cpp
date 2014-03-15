@@ -155,13 +155,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     createActions();
     readSettings();
 
+    //new playlist button
     QToolButton *addListButton = new QToolButton(m_ui.tabWidget);
     addListButton->setText("+");
     addListButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
     addListButton->setAutoRaise(true);
-    addListButton->setIcon(QIcon::fromTheme("list-add"));
     addListButton->setVisible(true);
+    addListButton->setIcon(QIcon::fromTheme("list-add"));
     m_ui.tabWidget->setCornerWidget(addListButton);
+    addListButton->setIconSize(QSize(16,16));
     connect(addListButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
 }
 
