@@ -626,7 +626,7 @@ void MainWindow::createButtons()
     m_tabListMenuButton = new QToolButton(m_ui.tabWidget);
     m_tabListMenuButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
     m_tabListMenuButton->setAutoRaise(true);
-    m_tabListMenuButton->setToolTip(tr("Show playlists"));
+    m_tabListMenuButton->setToolTip(tr("Show all tabs"));
     m_tabListMenuButton->setArrowType(Qt::DownArrow);
     m_tabListMenuButton->setStyleSheet("QToolButton::menu-indicator { image: none; }");
     m_tabListMenuButton->setPopupMode(QToolButton::InstantPopup);
