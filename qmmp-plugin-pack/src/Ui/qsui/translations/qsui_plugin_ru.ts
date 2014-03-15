@@ -710,8 +710,8 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
-        <source>Show playlists</source>
-        <translation>Показать списки воспроизведения</translation>
+        <source>Show all tabs</source>
+        <translation>Показать все вкладки</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="776"/>

@@ -711,7 +711,7 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
-        <source>Show playlists</source>
+        <source>Show all tabs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
