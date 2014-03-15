@@ -716,7 +716,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Rename Playlist</source>
         <translation>שנה שם רשימת השמעה</translation>
     </message>
@@ -726,148 +726,158 @@
         <translation>עוצמת שמע</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="213"/>
         <source>Paused</source>
         <translation>השהה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="224"/>
+        <location filename="../mainwindow.cpp" line="216"/>
         <source>Stopped</source>
         <translation>הופסקה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Playlist name:</source>
         <translation>שם רשימת השמעה:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>Appearance</source>
         <translation>הופעה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="359"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translatorcomment>&lt;b&gt;%1&lt;/b&gt; [%2 סיביות/%3/%4 הרץ/%5 kbps]</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="360"/>
+        <location filename="../mainwindow.cpp" line="352"/>
         <source>Playing</source>
         <translation>מנגן</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Stereo</source>
         <translation>סטריאו</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Mono</source>
         <translation>מונו</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>Ctrl+0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Sort List</source>
         <translation>מיין רשימה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
-        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="498"/>
         <source>By Title</source>
         <translation>לפי כותרת</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
-        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="502"/>
         <source>By Album</source>
         <translation>לפי אלבום</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
-        <location filename="../mainwindow.cpp" line="514"/>
+        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>By Artist</source>
         <translation>לפי אמן</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="510"/>
         <source>By Filename</source>
         <translation>לפי שם קובץ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="475"/>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>By Path + Filename</source>
         <translation>לפי נתיב + שם קובץ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="479"/>
-        <location filename="../mainwindow.cpp" line="526"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="518"/>
         <source>By Date</source>
         <translation>לפי תאריך</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="483"/>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="475"/>
+        <location filename="../mainwindow.cpp" line="522"/>
         <source>By Track Number</source>
         <translation>לפי מספר רצועה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="487"/>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="479"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>By Disc Number</source>
         <translation>לפי מספר תקליטור</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="483"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>By File Creation Date</source>
         <translation>לפי תאריך יצירת קובץ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="495"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>By Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="503"/>
+        <location filename="../mainwindow.cpp" line="495"/>
         <source>Sort Selection</source>
         <translation>מיין נבחרות</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="545"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Randomize List</source>
         <translation>הפוך רשימה לאקראית</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Reverse List</source>
         <translation>הפוך רשימה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>Actions</source>
         <translation>פעולות</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="738"/>
+        <location filename="../mainwindow.cpp" line="623"/>
+        <source>Add new playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="629"/>
+        <source>Show playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="776"/>
         <source>Buffering: %1%</source>
         <translation>אוגר כעת: %1%</translation>
     </message>
@@ -1003,7 +1013,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="158"/>
+        <location filename="../qsuisettings.cpp" line="164"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
@@ -1073,122 +1083,137 @@
         <translation>ערוך תבנית</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="187"/>
-        <source>Show close buttons on tabs</source>
-        <translation>הצג לחצני סגירה על כרטיסיות</translation>
+        <location filename="../forms/qsuisettings.ui" line="726"/>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <location filename="../forms/qsuisettings.ui" line="732"/>
+        <source>Show close buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="739"/>
+        <source>Show playlist menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="746"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="204"/>
         <source>Shortcuts</source>
         <translation>קיצורי דרך</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <location filename="../forms/qsuisettings.ui" line="217"/>
         <source>Action</source>
         <translation>פעולה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <location filename="../forms/qsuisettings.ui" line="222"/>
         <source>Shortcut</source>
         <translation>קיצור דרך</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <location filename="../forms/qsuisettings.ui" line="230"/>
         <source>Change shortcut...</source>
         <translation>שנה קיצור דרך...</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <location filename="../forms/qsuisettings.ui" line="251"/>
         <source>Miscellaneous</source>
         <translation>שונות</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer Colors</source>
         <translation>צבעי מאבחן</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <location filename="../forms/qsuisettings.ui" line="263"/>
         <source>Analyzer #1:</source>
         <translation>מאבחן ראשון:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="305"/>
+        <location filename="../forms/qsuisettings.ui" line="298"/>
         <source>Peaks:</source>
         <translation>שיאים:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="337"/>
+        <location filename="../forms/qsuisettings.ui" line="330"/>
         <source>Analyzer #2:</source>
         <translation>מאבחן שני:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="369"/>
+        <location filename="../forms/qsuisettings.ui" line="362"/>
         <source>Background:</source>
         <translation>רקע אחורי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="401"/>
+        <location filename="../forms/qsuisettings.ui" line="394"/>
         <source>Analyzer #3:</source>
         <translation>מאבחן שלישי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="471"/>
         <source>Playlist Colors</source>
         <translation>צבעי רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="720"/>
+        <location filename="../forms/qsuisettings.ui" line="713"/>
         <source>Use system colors</source>
         <translation>השתמש בצבעי מערכת</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <location filename="../forms/qsuisettings.ui" line="477"/>
         <source>Background #1:</source>
         <translation>רקע ראשון:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="532"/>
+        <location filename="../forms/qsuisettings.ui" line="525"/>
         <source>Normal text:</source>
         <translation>טקסט רגיל:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="580"/>
+        <location filename="../forms/qsuisettings.ui" line="573"/>
         <source>Background #2:</source>
         <translation>רקע שני:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="615"/>
+        <location filename="../forms/qsuisettings.ui" line="608"/>
         <source>Current text:</source>
         <translation>טקסט נוכחי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="650"/>
+        <location filename="../forms/qsuisettings.ui" line="643"/>
         <source>Highlighted background:</source>
         <translation>רקע אחורי מודגש:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="685"/>
+        <location filename="../forms/qsuisettings.ui" line="678"/>
         <source>Hightlighted text:</source>
         <translation>טקסט מודגש:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="152"/>
+        <location filename="../qsuisettings.cpp" line="158"/>
         <source>Playback</source>
         <translation>פס קול</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="164"/>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Volume</source>
         <translation type="unfinished">עוצמת שמע</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="170"/>
+        <location filename="../qsuisettings.cpp" line="176"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="176"/>
+        <location filename="../qsuisettings.cpp" line="182"/>
         <source>Misc</source>
         <translation>שונות</translation>
     </message>

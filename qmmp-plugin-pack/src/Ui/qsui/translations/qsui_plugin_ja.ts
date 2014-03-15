@@ -564,147 +564,157 @@
         <translation>音量</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="213"/>
         <source>Paused</source>
         <translation>一時停止しています</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="224"/>
+        <location filename="../mainwindow.cpp" line="216"/>
         <source>Stopped</source>
         <translation>終止しました</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Playlist name:</source>
         <translation>プレイリスト名:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>Appearance</source>
         <translation>外観</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="359"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="360"/>
+        <location filename="../mainwindow.cpp" line="352"/>
         <source>Playing</source>
         <translation>演奏中</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Stereo</source>
         <translation>ステレオ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Mono</source>
         <translation>モノラル</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Sort List</source>
         <translation>リストを並べ換え</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
-        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="498"/>
         <source>By Title</source>
         <translation>タイトル名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
-        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="502"/>
         <source>By Album</source>
         <translation>アルバム名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
-        <location filename="../mainwindow.cpp" line="514"/>
+        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>By Artist</source>
         <translation>アーティスト名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="510"/>
         <source>By Filename</source>
         <translation>ファイル名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="475"/>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>By Path + Filename</source>
         <translation>パスとファイル名の順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="479"/>
-        <location filename="../mainwindow.cpp" line="526"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="518"/>
         <source>By Date</source>
         <translation>日付順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="483"/>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="475"/>
+        <location filename="../mainwindow.cpp" line="522"/>
         <source>By Track Number</source>
         <translation>トラック番号順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="487"/>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="479"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>By Disc Number</source>
         <translation>ディスク番号順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="483"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>By File Creation Date</source>
         <translation>ファイルの作成日順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="495"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>By Group</source>
         <translation>グループ名順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="503"/>
+        <location filename="../mainwindow.cpp" line="495"/>
         <source>Sort Selection</source>
         <translation>選択範囲内で並び換え</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="545"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Randomize List</source>
         <translation>リストを順不同に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Reverse List</source>
         <translation>リストを逆順に</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="738"/>
+        <location filename="../mainwindow.cpp" line="623"/>
+        <source>Add new playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="629"/>
+        <source>Show playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="776"/>
         <source>Buffering: %1%</source>
         <translation>バッファーへ先読み: %1%</translation>
     </message>
@@ -865,7 +875,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Rename Playlist</source>
         <translation>プレイリスト名を変更</translation>
     </message>
@@ -1001,7 +1011,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="158"/>
+        <location filename="../qsuisettings.cpp" line="164"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
@@ -1071,122 +1081,137 @@
         <translation>ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="187"/>
-        <source>Show close buttons on tabs</source>
-        <translation>各タブに「閉じる」ボタンを表示</translation>
+        <location filename="../forms/qsuisettings.ui" line="726"/>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <location filename="../forms/qsuisettings.ui" line="732"/>
+        <source>Show close buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="739"/>
+        <source>Show playlist menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="746"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="204"/>
         <source>Shortcuts</source>
         <translation>ショートカット</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <location filename="../forms/qsuisettings.ui" line="217"/>
         <source>Action</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <location filename="../forms/qsuisettings.ui" line="222"/>
         <source>Shortcut</source>
         <translation>ショートカット</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <location filename="../forms/qsuisettings.ui" line="230"/>
         <source>Change shortcut...</source>
         <translation>ショートカットを変更...</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <location filename="../forms/qsuisettings.ui" line="251"/>
         <source>Miscellaneous</source>
         <translation>その他いろいろ</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer Colors</source>
         <translation>アナライザーの配色</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <location filename="../forms/qsuisettings.ui" line="263"/>
         <source>Analyzer #1:</source>
         <translation>第一アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="305"/>
+        <location filename="../forms/qsuisettings.ui" line="298"/>
         <source>Peaks:</source>
         <translation>峰:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="337"/>
+        <location filename="../forms/qsuisettings.ui" line="330"/>
         <source>Analyzer #2:</source>
         <translation>第二アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="369"/>
+        <location filename="../forms/qsuisettings.ui" line="362"/>
         <source>Background:</source>
         <translation>背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="401"/>
+        <location filename="../forms/qsuisettings.ui" line="394"/>
         <source>Analyzer #3:</source>
         <translation>第三アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="471"/>
         <source>Playlist Colors</source>
         <translation>プレイリストの配色</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="720"/>
+        <location filename="../forms/qsuisettings.ui" line="713"/>
         <source>Use system colors</source>
         <translation>システム標準の配色を使用</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <location filename="../forms/qsuisettings.ui" line="477"/>
         <source>Background #1:</source>
         <translation>第一背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="532"/>
+        <location filename="../forms/qsuisettings.ui" line="525"/>
         <source>Normal text:</source>
         <translation>通常のテキスト:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="580"/>
+        <location filename="../forms/qsuisettings.ui" line="573"/>
         <source>Background #2:</source>
         <translation>第二背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="615"/>
+        <location filename="../forms/qsuisettings.ui" line="608"/>
         <source>Current text:</source>
         <translation>現在位置のテキスト:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="650"/>
+        <location filename="../forms/qsuisettings.ui" line="643"/>
         <source>Highlighted background:</source>
         <translation>ハイライトした背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="685"/>
+        <location filename="../forms/qsuisettings.ui" line="678"/>
         <source>Hightlighted text:</source>
         <translation>ハイライトしたテキスト:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="152"/>
+        <location filename="../qsuisettings.cpp" line="158"/>
         <source>Playback</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="164"/>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Volume</source>
         <translation type="unfinished">音量</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="170"/>
+        <location filename="../qsuisettings.cpp" line="176"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="176"/>
+        <location filename="../qsuisettings.cpp" line="182"/>
         <source>Misc</source>
         <translation>その他いろいろ</translation>
     </message>

@@ -565,147 +565,157 @@
         <translation>Гучність</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="213"/>
         <source>Paused</source>
         <translation>Призупинено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="224"/>
+        <location filename="../mainwindow.cpp" line="216"/>
         <source>Stopped</source>
         <translation>Зупинено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Playlist name:</source>
         <translation>Назва списку:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>Appearance</source>
         <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="359"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 біт/%3/%4 Гц/%5 кбіт/с]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="360"/>
+        <location filename="../mainwindow.cpp" line="352"/>
         <source>Playing</source>
         <translation>Відтворюється</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Stereo</source>
         <translation>Стерео</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Mono</source>
         <translation>Моно</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>Ctrl+0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Edit Toolbar</source>
         <translation>Редагувати панель інструментів</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Sort List</source>
         <translation>Сортувати</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
-        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="498"/>
         <source>By Title</source>
         <translation>За назвою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
-        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="502"/>
         <source>By Album</source>
         <translation>За альбомом</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
-        <location filename="../mainwindow.cpp" line="514"/>
+        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>By Artist</source>
         <translation>За виконавцем</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="510"/>
         <source>By Filename</source>
         <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="475"/>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>By Path + Filename</source>
         <translation>За шляхом та файлом</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="479"/>
-        <location filename="../mainwindow.cpp" line="526"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="518"/>
         <source>By Date</source>
         <translation>За датою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="483"/>
-        <location filename="../mainwindow.cpp" line="530"/>
+        <location filename="../mainwindow.cpp" line="475"/>
+        <location filename="../mainwindow.cpp" line="522"/>
         <source>By Track Number</source>
         <translation>За номером треку</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="487"/>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="479"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>By Disc Number</source>
         <translation>За номером диску</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="483"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>By File Creation Date</source>
         <translation>За датою створення файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="495"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>By Group</source>
         <translation>За групою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="503"/>
+        <location filename="../mainwindow.cpp" line="495"/>
         <source>Sort Selection</source>
         <translation>Сортувати вибране</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="545"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Randomize List</source>
         <translation>Перемішати</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="547"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Reverse List</source>
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>Actions</source>
         <translation>Дії</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="738"/>
+        <location filename="../mainwindow.cpp" line="623"/>
+        <source>Add new playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="629"/>
+        <source>Show playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="776"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>
@@ -866,7 +876,7 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="272"/>
         <source>Rename Playlist</source>
         <translation>Переіменувати список</translation>
     </message>
@@ -1002,7 +1012,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="158"/>
+        <location filename="../qsuisettings.cpp" line="164"/>
         <source>View</source>
         <translation>Вигляд</translation>
     </message>
@@ -1072,122 +1082,137 @@
         <translation>Редагувати шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="187"/>
-        <source>Show close buttons on tabs</source>
-        <translation>Показувати кнопки закриття на вкладках</translation>
+        <location filename="../forms/qsuisettings.ui" line="726"/>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <location filename="../forms/qsuisettings.ui" line="732"/>
+        <source>Show close buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="739"/>
+        <source>Show playlist menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="746"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="204"/>
         <source>Shortcuts</source>
         <translation>Комбінації клавіш</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <location filename="../forms/qsuisettings.ui" line="217"/>
         <source>Action</source>
         <translation>Дія</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <location filename="../forms/qsuisettings.ui" line="222"/>
         <source>Shortcut</source>
         <translation>Комбінація</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <location filename="../forms/qsuisettings.ui" line="230"/>
         <source>Change shortcut...</source>
         <translation>Змінити комбінацію клавіш...</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <location filename="../forms/qsuisettings.ui" line="251"/>
         <source>Miscellaneous</source>
         <translation>Різне</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer Colors</source>
         <translation>Колір аналізатора</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <location filename="../forms/qsuisettings.ui" line="263"/>
         <source>Analyzer #1:</source>
         <translation>Аналізатор #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="305"/>
+        <location filename="../forms/qsuisettings.ui" line="298"/>
         <source>Peaks:</source>
         <translation>Піки:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="337"/>
+        <location filename="../forms/qsuisettings.ui" line="330"/>
         <source>Analyzer #2:</source>
         <translation>Аналізатор #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="369"/>
+        <location filename="../forms/qsuisettings.ui" line="362"/>
         <source>Background:</source>
         <translation>Тло:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="401"/>
+        <location filename="../forms/qsuisettings.ui" line="394"/>
         <source>Analyzer #3:</source>
         <translation>Аналізатор #3:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="471"/>
         <source>Playlist Colors</source>
         <translation>Кольори списку відтворення</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="720"/>
+        <location filename="../forms/qsuisettings.ui" line="713"/>
         <source>Use system colors</source>
         <translation>Використовувати системні кольори</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <location filename="../forms/qsuisettings.ui" line="477"/>
         <source>Background #1:</source>
         <translation>Тло #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="532"/>
+        <location filename="../forms/qsuisettings.ui" line="525"/>
         <source>Normal text:</source>
         <translation>Звичайний текст:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="580"/>
+        <location filename="../forms/qsuisettings.ui" line="573"/>
         <source>Background #2:</source>
         <translation>Тло #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="615"/>
+        <location filename="../forms/qsuisettings.ui" line="608"/>
         <source>Current text:</source>
         <translation>Поточний текст:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="650"/>
+        <location filename="../forms/qsuisettings.ui" line="643"/>
         <source>Highlighted background:</source>
         <translation>Виділене тло:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="685"/>
+        <location filename="../forms/qsuisettings.ui" line="678"/>
         <source>Hightlighted text:</source>
         <translation>Виділений текст:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="152"/>
+        <location filename="../qsuisettings.cpp" line="158"/>
         <source>Playback</source>
         <translation>Відтворення</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="164"/>
+        <location filename="../qsuisettings.cpp" line="170"/>
         <source>Volume</source>
         <translation>Гучність</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="170"/>
+        <location filename="../qsuisettings.cpp" line="176"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="176"/>
+        <location filename="../qsuisettings.cpp" line="182"/>
         <source>Misc</source>
         <translation>Інші</translation>
     </message>
