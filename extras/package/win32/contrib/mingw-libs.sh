@@ -2,7 +2,7 @@
 
 LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
 LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack '
-LIB_NAMES+='glew projectm libsidplayfp'
+LIB_NAMES+='glew projectm libsidplayfp enca'
 
 
 export PREFIX=C:/devel/mingw32-libs
