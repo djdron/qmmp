@@ -26,17 +26,21 @@ unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Transports
     INSTALLS += target
-    contains(CONFIG, WITH_ENCA){
-       CONFIG += link_pkgconfig
-       PKGCONFIG += enca
-       DEFINES += WITH_ENCA
-    }
 }
 win32 { 
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 \
         -lcurldll
 }
+
+contains(CONFIG, WITH_ENCA){
+   CONFIG += link_pkgconfig
+   DEFINES += WITH_ENCA
+   unix:PKGCONFIG += enca
+   win32:LIBS += -lenca.dll
+
+}
+
 FORMS += settingsdialog.ui
 
 TRANSLATIONS = translations/http_plugin_ru.ts \
