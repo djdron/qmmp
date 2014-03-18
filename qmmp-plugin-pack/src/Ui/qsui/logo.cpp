@@ -128,6 +128,7 @@ void Logo::updateLetters()
 {
     if(m_elapsed < 2000)
     {
+        m_value = m_elapsed / 100;
         processPreset1();
     }
     else if (m_elapsed >= 2000 && m_elapsed < 6000)
@@ -156,9 +157,21 @@ void Logo::processPreset1()
 {
     m_lines.clear();
     mutex()->lock();
-    foreach(QString line, m_source_lines)
+    QString line;
+    for(int i = 0; i < m_source_lines.count(); ++i)
     {
+        line = m_source_lines[i];
         line = line.replace("X", ".");
+        if(m_value == i)
+        {
+            line.remove(0,2);
+            line.append("  ");
+        }
+        else if(m_value == i - 1 || m_value == i + 1)
+        {
+            line.remove(0,1);
+            line.append(" ");
+        }
         m_lines.append(line);
     }
     mutex()->unlock();
