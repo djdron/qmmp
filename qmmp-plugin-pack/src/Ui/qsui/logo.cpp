@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -108,43 +108,43 @@ void Logo::paintEvent(QPaintEvent *)
     QPainter painter(this);
     painter.fillRect(rect(), "black");
 
-
     for(int row = 0; row < m_lines.count(); ++row)
     {
         QString text = m_lines.at(row);
         for(int i = 0; i < text.size(); ++i)
         {
-            painter.drawPixmap(50 + i*8,row*14, m_letters.value(text[i]));
+            painter.drawPixmap(width() / 2 - 155 + i*8,row*14, m_letters.value(text[i]));
         }
     }
 }
 
 void Logo::mousePressEvent(QMouseEvent *)
 {
-    m_elapsed = 10000;
+    m_elapsed = 2000;
+    m_value = 0;
 }
 
 void Logo::updateLetters()
 {
-    if(m_elapsed < 10000)
+    if(m_elapsed < 2000)
     {
         processPreset1();
     }
-    else if (m_elapsed > 10000 && m_elapsed < 15000)
+    else if (m_elapsed >= 2000 && m_elapsed < 6000)
     {
+        m_value++;
         processPreset2();
-        m_value = (m_elapsed - 10000) * 16 / 5000;
     }
-    else if(m_elapsed > 15000 && m_elapsed < 20000)
+    else if(m_elapsed >= 6000 && m_elapsed < 9000)
     {
         m_value++;
         processPreset3();
     }
-    else if(m_elapsed > 20000 && m_elapsed < 25000)
+    else if(m_elapsed >= 9000 && m_elapsed < 12000)
     {
         processPreset4();
     }
-    else if(m_elapsed > 25000)
+    else if(m_elapsed >= 12000)
     {
        m_value = 0;
        m_elapsed = 0;
@@ -158,11 +158,7 @@ void Logo::processPreset1()
     mutex()->lock();
     foreach(QString line, m_source_lines)
     {
-        while(line.contains("X"))
-        {
-            line.replace(line.indexOf("X"), 1, "0");
-        }
-
+        line = line.replace("X", ".");
         m_lines.append(line);
     }
     mutex()->unlock();
@@ -173,15 +169,16 @@ void Logo::processPreset2()
 {
     m_lines.clear();
     mutex()->lock();
+    QString str = QString("..0000..");//.arg(Qmmp::strVersion().left(5));
+    int at = m_value % str.size();
+
     foreach(QString line, m_source_lines)
     {
         while(line.contains("X"))
         {
-            if(rand() % 2 == 1)
-                line.replace(line.indexOf("X"), 1, QString("%1").arg(m_value, 0, 16).toUpper());
-            else
-                line.replace(line.indexOf("X"), 1, ".");
-
+            at++;
+            line.replace(line.indexOf("X"), 1, QString("%1").arg(str.at(at % str.size()),
+                                                                 0, 16).toUpper());
         }
 
         m_lines.append(line);
@@ -246,10 +243,19 @@ void Logo::processPreset4()
         int count = line.count("X");
         int k = 0;
 
-        while(k < m_value * count / 2048 / 16)
+        while(k < m_value * count / 2048 / 16 / 2)
         {
             int value = abs(m_buffer[qMin(at++, m_buffer_at)] / 2048);
             line.replace(line.indexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
+            k++;
+        }
+
+        k = 0;
+
+        while(k < m_value * count / 2048 / 16 / 2)
+        {
+            int value = abs(m_buffer[qMin(at++, m_buffer_at)] / 2048);
+            line.replace(line.lastIndexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
             k++;
         }
 
