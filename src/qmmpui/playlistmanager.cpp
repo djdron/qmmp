@@ -319,37 +319,50 @@ void PlayListManager::readPlayLists()
 void PlayListManager::writePlayLists()
 {
     qDebug("PlayListManager: saving playlists...");
-    QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
-    if(!file.open(QIODevice::WriteOnly))
+    QString tmpFilePath = QDir::homePath() +"/.qmmp/playlist.tmp";
+    QString plFilePath = QDir::homePath() +"/.qmmp/playlist.txt";
+    QFile tmpFile(tmpFilePath);
+    if(!tmpFile.open(QIODevice::WriteOnly))
     {
-        qDebug("PlayListManager: error: %s", qPrintable(file.errorString()));
+        qDebug("PlayListManager: error: %s", qPrintable(tmpFile.errorString()));
         return;
     }
-    file.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
+    tmpFile.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
     foreach(PlayListModel *model, m_models)
     {
         QList<PlayListItem *> items = model->items();
-        file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
-        file.write(QString("current=%1\n").arg(model->numberOfTrack(model->currentIndex())).toUtf8());
+        tmpFile.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
+        tmpFile.write(QString("current=%1\n").arg(model->numberOfTrack(model->currentIndex())).toUtf8());
         foreach(PlayListItem* m, items)
         {
             if(m->isGroup())
                 continue;
             PlayListTrack *t = dynamic_cast<PlayListTrack *>(m);
-            file.write(QString("file=%1\n").arg(t->url()).toUtf8());
-            file.write(QString("title=%1\n").arg(t->value(Qmmp::TITLE)).toUtf8());
-            file.write(QString("artist=%1\n").arg(t->value(Qmmp::ARTIST)).toUtf8());
-            file.write(QString("album=%1\n").arg(t->value(Qmmp::ALBUM)).toUtf8());
-            file.write(QString("comment=%1\n").arg(t->value(Qmmp::COMMENT)).toUtf8());
-            file.write(QString("genre=%1\n").arg(t->value(Qmmp::GENRE)).toUtf8());
-            file.write(QString("composer=%1\n").arg(t->value(Qmmp::COMPOSER)).toUtf8());
-            file.write(QString("year=%1\n").arg(t->value(Qmmp::YEAR)).toUtf8());
-            file.write(QString("track=%1\n").arg(t->value(Qmmp::TRACK)).toUtf8());
-            file.write(QString("disc=%1\n").arg(t->value(Qmmp::DISCNUMBER)).toUtf8());
-            file.write(QString("length=%1\n").arg(t->length()).toUtf8());
+            tmpFile.write(QString("file=%1\n").arg(t->url()).toUtf8());
+            tmpFile.write(QString("title=%1\n").arg(t->value(Qmmp::TITLE)).toUtf8());
+            tmpFile.write(QString("artist=%1\n").arg(t->value(Qmmp::ARTIST)).toUtf8());
+            tmpFile.write(QString("album=%1\n").arg(t->value(Qmmp::ALBUM)).toUtf8());
+            tmpFile.write(QString("comment=%1\n").arg(t->value(Qmmp::COMMENT)).toUtf8());
+            tmpFile.write(QString("genre=%1\n").arg(t->value(Qmmp::GENRE)).toUtf8());
+            tmpFile.write(QString("composer=%1\n").arg(t->value(Qmmp::COMPOSER)).toUtf8());
+            tmpFile.write(QString("year=%1\n").arg(t->value(Qmmp::YEAR)).toUtf8());
+            tmpFile.write(QString("track=%1\n").arg(t->value(Qmmp::TRACK)).toUtf8());
+            tmpFile.write(QString("disc=%1\n").arg(t->value(Qmmp::DISCNUMBER)).toUtf8());
+            tmpFile.write(QString("length=%1\n").arg(t->length()).toUtf8());
         }
     }
-    file.close();
+    tmpFile.close();
+
+    QFile plFile(plFilePath);
+    if(!plFile.remove())
+    {
+        qWarning("PlayListManager: unable to remove previous playlist");
+        return;
+    }
+    if(!QFile::rename(tmpFilePath, plFilePath))
+    {
+        qWarning("PlayListManager: unable to rename temporary playlist");
+    }
 }
 
 void PlayListManager::onCountChanged()
