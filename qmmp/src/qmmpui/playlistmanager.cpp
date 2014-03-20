@@ -354,7 +354,7 @@ void PlayListManager::writePlayLists()
     tmpFile.close();
 
     QFile plFile(plFilePath);
-    if(!plFile.remove())
+    if(plFile.exists() && !plFile.remove())
     {
         qWarning("PlayListManager: unable to remove previous playlist");
         return;
