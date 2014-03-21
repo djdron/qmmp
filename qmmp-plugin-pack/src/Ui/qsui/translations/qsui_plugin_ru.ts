@@ -1098,7 +1098,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="746"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation>Показывать кномпку &quot;Новый список&quot;</translation>
+        <translation>Показывать кнопку &quot;Новый список&quot;</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="204"/>
