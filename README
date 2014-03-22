@@ -41,6 +41,7 @@ Output system support:
 - Pulse Audio
 - JACK
 - WaveOut (Win32)
+- DirectSound (Win32)
 
 Other features:
 - XMMS and Winamp 2.x skins support
@@ -100,7 +101,6 @@ Requirements:
 - mplayer (Optional)
 - cmake >= 2.6.0 (for build only)
 
-
 Attention! Qmmp build needs lrelease installed. The libqt4-devel package often contains this utility.
 
 Configure:
@@ -143,7 +143,7 @@ To enable them, run 'cmake ./ -DUSE_OSS:BOOL=TRUE' or 'cmake ./ -DUSE_OSS:UDISKS
 HAL and UDisks2 support.
 Most Linux distributions does not include HAL anymore. To disable HAL plugin run following command before compilation:
 cmake ./ -DUSE_HAL:BOOL=FALSE
-UDisks2 project doesn't have port to FreeBSD, so it's recommended to disable Udisks2 plugin under FreeBSD by
+UDisks2 project doesn't have port to FreeBSD, so it's recommended to disable Udisks2 plugin under FreeBSD by the
 following command:
 cmake ./ -DUSE_UDISKS2:BOOL=FALSE
 
