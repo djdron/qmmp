@@ -351,6 +351,11 @@ void PlayListManager::writePlayLists()
             tmpFile.write(QString("length=%1\n").arg(t->length()).toUtf8());
         }
     }
+    if(tmpFile.error() != QFile::NoError)
+    {
+        qWarning("PlayListManager: error: %s", qPrintable(tmpFile.errorString()));
+        return;
+    }
     tmpFile.close();
 
     QFile plFile(plFilePath);
