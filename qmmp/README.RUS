@@ -41,6 +41,7 @@ Qmmp - Qt-based multimedia player
 - Pulse Audio
 - JACK
 - WaveOut (Win32)
+- DirectSound (Win32)
 
 Другие возможности:
 - поддержка обложек XMMS и Winamp 2.x
