@@ -1,0 +1,11 @@
+LEGEND
+[+] New component
+[*] Updated component
+[-] Bug fix
+[!] Enhancement
+
+0.7.6
+[*] ffmpeg-2.1.4
+[*] opusfile-0.5
+[*] qmmp-0.6.6
+[*] qmmp-plugin-pack-0.6.6
