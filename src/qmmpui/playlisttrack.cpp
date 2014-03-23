@@ -146,6 +146,8 @@ void PlayListTrack::formatTitle()
     m_formattedTitle = f.parse(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
+    if (m_formattedTitle.isEmpty())
+        m_formattedTitle = value(Qmmp::URL);
     if (m_settings->convertUnderscore())
         m_formattedTitle.replace("_", " ");
     if (m_settings->convertTwenty())
