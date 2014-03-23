@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -216,23 +216,21 @@ void ListWidget::paintEvent(QPaintEvent *)
             painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
                                 w - 10, m_metrics->lineSpacing() + 1);
         }
-        else
+        else if (m_rows[i]->selected)
         {
-            if (m_rows[i]->selected)
-            {
-                painter.setBrush(QBrush(m_selected_bg));
-                painter.setPen(m_selected_bg);
-                painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                    w - 10, m_metrics->lineSpacing() + 1);
-            }
+            painter.setBrush(QBrush(m_selected_bg));
+            painter.setPen(m_selected_bg);
+            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                              w - 10, m_metrics->lineSpacing() + 1);
         }
+
 
         QFontMetrics *metrics = 0;
         if(m_rows[i]->separator)
         {
             m_font.setBold(false);
             painter.setFont(m_font);
-            painter.setPen(m_normal);
+            painter.setPen(m_rows[i]->selected ? m_highlighted : m_normal);
             sx = 45;
 
             if(m_number_width)
@@ -272,11 +270,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         }
 
         painter.setFont(m_font);
-
-        if (m_model->isSelected(i + m_first))
-            painter.setPen(m_highlighted);
-        else
-            painter.setPen(m_normal);
+        painter.setPen(m_rows[i]->selected ? m_highlighted : m_normal);
 
         if(m_number_width)
         {
