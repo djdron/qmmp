@@ -47,10 +47,12 @@ ProjectMWidget::ProjectMWidget(QListWidget *listWidget, QWidget *parent)
     connect(m_timer, SIGNAL(timeout()),SLOT(updateGL()));
     m_menu = new QMenu(this);
     connect(SoundCore::instance(), SIGNAL(metaDataChanged()), SLOT(updateTitle()));
+#if QT_VERSION >= 0x040700
     qDebug("ProjectMWidget: opengl version: %d.%d",
            context()->format().majorVersion(),
            context()->format().minorVersion());
     createActions();
+#endif
 }
 
 
