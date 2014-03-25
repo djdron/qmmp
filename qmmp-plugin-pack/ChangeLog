@@ -58,3 +58,25 @@ Version 0.7.0
 * updated Japanese translation (Ryota Shimamoto)
 * updated Hebrew translation (Genghis Khan)
 * updated Chezh translation (Karel Volny)
+
+Version 0.8.0
+* ported to qmmp 0.8 api
+* improved mpg123 support:
+  - added floating point output format
+  - added peak overflow support
+  - added id3v2-based replaygain tags support
+  - fixed possible segmentation fault
+* improved qsui plugin:
+  - added sorting by group
+  - added volume control hotkeys
+  - added file browser
+  - added playlist browser
+  - added cover widget
+  - added feature to hide tabs
+  - added feature to configure toolbar
+  - added feature to block toobars 
+  - added 'new playlist' button
+  - added menu with tab list
+  - improved drag&drop support
+  - improved look&feel customization (with use of QDockWidget)
+  - fixed 'eject' button function

@@ -758,7 +758,8 @@ Version 0.8.0
 * added ReplayGain scanner
 * added gnome hotkey plugin
 * added DirectSound plugin
-* added playlist group mode
+* added track grouping
+* added sorting by group
 * added quick search to the playlist browser
 * added multiple tracks support to the details dialog
 * added context menu in the plugin settings page
@@ -795,7 +796,7 @@ Version 0.8.0
   - added uninstall support
 * fixed noise on buffer underrun
 * fixed title format in the shaded mode
-* fixed alt-f4 behaviour
+* fixed alt-f4 behavior
 * fixed possible race condition
 * fixed possible segmentation in the mad plugin
 * fixed 'eject' button function
