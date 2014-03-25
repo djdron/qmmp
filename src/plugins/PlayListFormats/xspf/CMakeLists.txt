@@ -6,11 +6,6 @@ if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-SET(QT_USE_QTXML TRUE)
-
-INCLUDE(FindQt4)
-INCLUDE(${QT_USE_FILE})
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
