@@ -756,25 +756,47 @@ Version 0.7.0
 Version 0.8.0
 * added sid plugin
 * added ReplayGain scanner
-* added playlist groups
+* added gnome hotkey plugin
+* added DirectSound plugin
+* added playlist group mode
+* added quick search to the playlist browser
+* added multiple tracks support to the details dialog
+* added context menu in the plugin settings page
 * added plugin cache
 * added feature to disable transport plugins
 * added timeout for transport plugins
-* added peak overflow support
-* added ogg opus preset to the converter plugin
-* added support for id3v2-based replaygain tags
-* added '--toggle-mute' command line option
-* added volume control hotkeys
-* added context menu in the analyzer plugin
-* added delayed initialization in the wildmidi plugin
-* added 'mute' global hotkey
-* added quick search to the playlist browser dialog
-* added multiple tracks support to the details dialog
 * added float output for lossy decoders
+* added peak overflow support for lossy decoders
+* added support for id3v2-based ReplayGain tags
+* added clipping prevention using ReplayGain information
+* added delayed initialization in the wildmidi plugin
+* added volume control hotkeys
+* added 'mute' global hotkey
+* added '--toggle-mute' command line option
+* added '--show-mw' command line option
+* added ogg opus preset to the converter plugin
+* added scrobbler 2.0 api for libre.fm
+* added context menu in the analyzer plugin
+* added window flags access to the visual plugin api
+* added atomic playlist saving operation
+* added created playlist auto-selection
+* blocked one hotkey assignment for several commands in the hotkey plugin
+* limited cover cache size
 * improved 'jump to track' dialog
-* improved ReplayGain
+* improved projectm plugin:
+  - added context menu
+  - added multi-channel mode
+  - added list of presets
+  - added win32 support
+* improved win32 support
+  - enabled support for the enca library
+  - added feature to add files from multiple instances
+  - added file associations support
+  - added uninstall support
 * fixed noise on buffer underrun
 * fixed title format in the shaded mode
 * fixed alt-f4 behaviour
 * fixed possible race condition
-
+* fixed possible segmentation in the mad plugin
+* fixed 'eject' button function
+* fixed raise of the main window when starting another instance
