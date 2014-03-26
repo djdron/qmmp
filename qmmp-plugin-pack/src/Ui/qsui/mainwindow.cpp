@@ -98,6 +98,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
             m_ui.tabWidget->setCurrentWidget(list);
             m_key_manager->setListWidget(list);
         }
+        connect(model, SIGNAL(nameChanged(QString)), SLOT(updateTabs()));
     }
     m_slider = new PositionSlider(this);
     m_slider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -255,6 +256,7 @@ void MainWindow::addTab(int index)
     ListWidget *list = new ListWidget(m_pl_manager->playListAt(index), this);
     list->setMenu(m_pl_menu);
     m_ui.tabWidget->insertTab(index, list, m_pl_manager->playListAt(index)->name());
+    connect(m_pl_manager->playListAt(index), SIGNAL(nameChanged(QString)), SLOT(updateTabs()));
     updateTabs();
 }
 
@@ -273,10 +275,7 @@ void MainWindow::renameTab()
                                           QLineEdit::Normal,
                                           m_pl_manager->selectedPlayList()->name(), &ok);
     if(ok)
-    {
         m_pl_manager->selectedPlayList()->setName(name);
-        updateTabs();
-    }
 }
 
 void MainWindow::aboutUi()
