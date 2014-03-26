@@ -28,6 +28,7 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistmanager.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "general.h"
 #include "generalfactory.h"
 #include "jumptotrackdialog_p.h"
@@ -177,13 +178,16 @@ void UiHelper::loadPlayList(QWidget *parent, PlayListModel *model)
 
     QString mask = tr("Playlist Files") + " (" + PlayListParser::nameFilters().join(" ") + ")";
     //TODO use nonmodal dialog and multiplier playlists
-    QString f_name = FileDialog::getOpenFileName(parent, tr("Open Playlist"), m_lastDir, mask);
-    if (!f_name.isEmpty())
+    QString f_path = FileDialog::getOpenFileName(parent, tr("Open Playlist"), m_lastDir, mask);
+    if (!f_path.isEmpty())
     {
-        model->clear();
-        model->loadPlaylist(f_name);
-        model->setName(QFileInfo(f_name).baseName());
-        m_lastDir = QFileInfo(f_name).absoluteDir().path();
+        if(QmmpUiSettings::instance()->clearPreviousPlayList())
+        {
+            model->clear();
+            model->setName(QFileInfo(f_path).baseName());
+        }
+        model->loadPlaylist(f_path);
+        m_lastDir = QFileInfo(f_path).absoluteDir().path();
     }
 }
 

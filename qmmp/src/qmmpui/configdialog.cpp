@@ -108,6 +108,7 @@ void ConfigDialog::readSettings()
         m_ui->metadataCheckBox->setChecked(guis->useMetadata());
         m_ui->underscoresCheckBox->setChecked(guis->convertUnderscore());
         m_ui->per20CheckBox->setChecked(guis->convertTwenty());
+        m_ui->clearPrevPLCheckBox->setChecked(guis->clearPreviousPlayList());
         //resume playback on startup
         m_ui->continuePlaybackCheckBox->setChecked(guis->resumeOnStartup());
         //directory filters
@@ -403,6 +404,7 @@ void ConfigDialog::saveSettings()
         guis->setUseMetadata(m_ui->metadataCheckBox->isChecked());
         guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
         guis->setConvertTwenty(m_ui->per20CheckBox->isChecked());
+        guis->setClearPreviousPlayList(m_ui->clearPrevPLCheckBox->isChecked());
         guis->setResumeOnStartup(m_ui->continuePlaybackCheckBox->isChecked());
         guis->setRestrictFilters(m_ui->dirRestrictLineEdit->text());
         guis->setExcludeFilters(m_ui->dirExcludeLineEdit->text());

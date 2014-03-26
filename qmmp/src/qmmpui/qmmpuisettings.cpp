@@ -45,6 +45,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_groups_enabled = s.value("groups",false).toBool();
     m_repeat_track = s.value("repeate_track",false).toBool();
     m_no_pl_advance = s.value("no_advance",false).toBool();
+    m_clear_prev_playlist = s.value("clear_previous", false).toBool();
     s.endGroup();
     s.beginGroup("General");
     m_resume_on_startup = s.value("resume_on_startup", false).toBool();
@@ -190,6 +191,7 @@ void QmmpUiSettings::sync()
     s.setValue("PlayList/groups", m_groups_enabled);
     s.setValue("PlayList/repeate_track", m_repeat_track);
     s.setValue("PlayList/no_advance", m_no_pl_advance);
+    s.setValue("PlayList/clear_previous", m_clear_prev_playlist);
     s.setValue("General/resume_on_startup", m_resume_on_startup);
     s.setValue("General/restrict_filters", m_restrict_filters);
     s.setValue("General/exclude_filters", m_exclude_filters);
@@ -298,4 +300,15 @@ void QmmpUiSettings::setAutoSavePlayList(bool enabled)
 bool QmmpUiSettings::autoSavePlayList() const
 {
     return m_autosave_playlist;
+}
+
+void QmmpUiSettings::setClearPreviousPlayList(bool enabled)
+{
+    m_clear_prev_playlist = enabled;
+    m_timer->start();
+}
+
+bool QmmpUiSettings::clearPreviousPlayList() const
+{
+    return m_clear_prev_playlist;
 }
