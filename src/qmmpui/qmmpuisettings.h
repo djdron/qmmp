@@ -170,6 +170,17 @@ public:
      */
     bool autoSavePlayList() const;
     /*!
+     * Enable/disable feature to clear previous playlist when opening new one.
+     * @param enabled New setting for this option (\b true to enable)
+     */
+    void setClearPreviousPlayList(bool enabled);
+    /*!
+     * Return the current setting for the option to clear playlist  when opening new one.
+     * @return \b true if the playlist should be saved automatically, \b false
+     *         otherwise.
+     */
+    bool clearPreviousPlayList() const;
+    /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
     static QmmpUiSettings* instance();
@@ -250,6 +261,7 @@ private:
     bool m_groups_enabled;
     bool m_repeat_track;
     bool m_no_pl_advance;
+    bool m_clear_prev_playlist;
     //general
     bool m_resume_on_startup;
     QStringList m_exclude_filters, m_restrict_filters;

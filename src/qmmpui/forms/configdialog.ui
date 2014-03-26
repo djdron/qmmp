@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>479</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -113,7 +113,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -226,6 +226,13 @@
             <widget class="QCheckBox" name="autoSavePlayListCheckBox">
              <property name="text">
               <string>Auto-save playlist when modified</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="clearPrevPLCheckBox">
+             <property name="text">
+              <string>Clear previous playlist when opening new one</string>
              </property>
             </widget>
            </item>
