@@ -131,7 +131,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="774"/>
+        <location filename="../forms/configdialog.ui" line="781"/>
         <source>Audio</source>
         <translation>שמע</translation>
     </message>
@@ -178,7 +178,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="209"/>
-        <location filename="../forms/configdialog.ui" line="453"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
         <source>Exclude files:</source>
         <translation>הוצא קבצים:</translation>
     </message>
@@ -193,38 +193,38 @@
         <translation>שמור אוטומטית רשימת השמעה כאשר משתנה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="348"/>
+        <location filename="../forms/configdialog.ui" line="355"/>
         <source>Look and Feel</source>
         <translation>מראה ותחושה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="354"/>
+        <location filename="../forms/configdialog.ui" line="361"/>
         <source>Language:</source>
         <translation>שפה:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="427"/>
+        <location filename="../forms/configdialog.ui" line="434"/>
         <source>Cover Image Retrieve</source>
         <translation>אחזור תמונת כיסוי</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="433"/>
+        <location filename="../forms/configdialog.ui" line="440"/>
         <source>Use separate image files</source>
         <translation>השתמש בקבצי תמונה פרודים</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="443"/>
+        <location filename="../forms/configdialog.ui" line="450"/>
         <source>Include files:</source>
         <translation>הכלל קבצים:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="465"/>
+        <location filename="../forms/configdialog.ui" line="472"/>
         <source>Recursive search depth:</source>
         <translation>חיפוש עומק רקורסיבי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="276"/>
-        <location filename="../configdialog.cpp" line="330"/>
+        <location filename="../forms/configdialog.ui" line="283"/>
+        <location filename="../configdialog.cpp" line="331"/>
         <source>Preferences</source>
         <translation>העדפות</translation>
     </message>
@@ -234,134 +234,139 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="289"/>
-        <location filename="../configdialog.cpp" line="333"/>
+        <location filename="../forms/configdialog.ui" line="235"/>
+        <source>Clear previous playlist when opening new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="296"/>
+        <location filename="../configdialog.cpp" line="334"/>
         <source>Information</source>
         <translation>מידע</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
+        <location filename="../forms/configdialog.ui" line="338"/>
         <source>Description</source>
         <translation>תיאור</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="336"/>
+        <location filename="../forms/configdialog.ui" line="343"/>
         <source>Filename</source>
         <translation>שם קובץ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="390"/>
+        <location filename="../forms/configdialog.ui" line="397"/>
         <source>Playback</source>
         <translation>פס קול</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="396"/>
+        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Continue playback on startup</source>
         <translation>המשך ניגון פס קול בעת הפעלה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
+        <location filename="../forms/configdialog.ui" line="410"/>
         <source>Determine file type by content</source>
         <translation>קבע טיפוס קובץ על פי תוכן</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="410"/>
+        <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
         <translation>הוסף קבצים מן שורת פקודה אל רשימת השמעה זו:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="497"/>
+        <location filename="../forms/configdialog.ui" line="504"/>
         <source>URL Dialog</source>
         <translation>דו שיח URL</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="503"/>
+        <location filename="../forms/configdialog.ui" line="510"/>
         <source>Auto-paste URL from clipboard</source>
         <translation>הדבק אוטומטית URL מן לוח גזירה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="542"/>
+        <location filename="../forms/configdialog.ui" line="549"/>
         <source>Proxy</source>
         <translation>פרוקסי</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="554"/>
+        <location filename="../forms/configdialog.ui" line="561"/>
         <source>Enable proxy usage</source>
         <translation>אפשר שימוש בפרוקסי</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="561"/>
+        <location filename="../forms/configdialog.ui" line="568"/>
         <source>Proxy host name:</source>
         <translation>שם מארח פרוקסי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="574"/>
+        <location filename="../forms/configdialog.ui" line="581"/>
         <source>Proxy port:</source>
         <translation>פורט פרוקסי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
+        <location filename="../forms/configdialog.ui" line="594"/>
         <source>Use authentication with proxy</source>
         <translation>השתמש באימות עם פרוקסי</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="594"/>
+        <location filename="../forms/configdialog.ui" line="601"/>
         <source>Proxy user name:</source>
         <translation>שם משתמש פרוקסי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="607"/>
+        <location filename="../forms/configdialog.ui" line="614"/>
         <source>Proxy password:</source>
         <translation>סיסמת פרוקסי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="644"/>
+        <location filename="../forms/configdialog.ui" line="651"/>
         <source>Replay Gain</source>
         <translation>הגברת שמע</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="650"/>
+        <location filename="../forms/configdialog.ui" line="657"/>
         <source>Replay Gain mode:</source>
         <translation>מצב הגברת שמע:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="667"/>
+        <location filename="../forms/configdialog.ui" line="674"/>
         <source>Preamp:</source>
         <translation>מגבר קדמי:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="744"/>
+        <location filename="../forms/configdialog.ui" line="706"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
         <source>dB</source>
         <translation>דציבל</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="712"/>
+        <location filename="../forms/configdialog.ui" line="719"/>
         <source>Default gain:</source>
         <translation>מגבר משתמט:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="764"/>
+        <location filename="../forms/configdialog.ui" line="771"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>השתמש במידע שיא למניעת קיצץ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="780"/>
+        <location filename="../forms/configdialog.ui" line="787"/>
         <source>Buffer size:</source>
         <translation>שיעור אגירה:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="799"/>
+        <location filename="../forms/configdialog.ui" line="806"/>
         <source>ms</source>
         <translation>מ״ש</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="828"/>
+        <location filename="../forms/configdialog.ui" line="835"/>
         <source>Use software volume control</source>
         <translation>נצל בקרת שמע של תוכנה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="835"/>
+        <location filename="../forms/configdialog.ui" line="842"/>
         <source>16-bit output</source>
         <translation>פלט 16 סיביות</translation>
     </message>
@@ -372,8 +377,8 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="69"/>
-        <location filename="../configdialog.cpp" line="295"/>
-        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="316"/>
         <source>Album</source>
         <translation>אלבום</translation>
     </message>
@@ -388,244 +393,244 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="182"/>
+        <location filename="../configdialog.cpp" line="183"/>
         <source>Transports</source>
         <translation>מובילים</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="192"/>
+        <location filename="../configdialog.cpp" line="193"/>
         <source>Decoders</source>
         <translation>מפענחים</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="202"/>
+        <location filename="../configdialog.cpp" line="203"/>
         <source>Engines</source>
         <translation>מנועים</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="212"/>
+        <location filename="../configdialog.cpp" line="213"/>
         <source>Effects</source>
         <translation>אפקטים</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="222"/>
+        <location filename="../configdialog.cpp" line="223"/>
         <source>Visualization</source>
         <translation>חיזוי</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="232"/>
+        <location filename="../configdialog.cpp" line="233"/>
         <source>General</source>
         <translation>כללי</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="242"/>
+        <location filename="../configdialog.cpp" line="243"/>
         <source>Output</source>
         <translation>פלט</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="252"/>
+        <location filename="../configdialog.cpp" line="253"/>
         <source>File Dialogs</source>
         <translation>תיבות דו שיח קובץ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="262"/>
+        <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
         <translation>ממשקי משתמש</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
-        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <source>Artist</source>
         <translation>אמן</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Title</source>
         <translation>כותרת</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Track number</source>
         <translation>מספר רצועה</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Two-digit track number</source>
         <translation>מספר רצועה דו ספרתי</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
-        <location filename="../configdialog.cpp" line="316"/>
+        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="317"/>
         <source>Genre</source>
         <translation>ז&apos;אנר</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
-        <location filename="../configdialog.cpp" line="317"/>
+        <location filename="../configdialog.cpp" line="301"/>
+        <location filename="../configdialog.cpp" line="318"/>
         <source>Comment</source>
         <translation>הערה</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="301"/>
-        <location filename="../configdialog.cpp" line="318"/>
+        <location filename="../configdialog.cpp" line="302"/>
+        <location filename="../configdialog.cpp" line="319"/>
         <source>Composer</source>
         <translation>מלחין</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="302"/>
-        <location filename="../configdialog.cpp" line="319"/>
+        <location filename="../configdialog.cpp" line="303"/>
+        <location filename="../configdialog.cpp" line="320"/>
         <source>Disc number</source>
         <translation>מספר תקליטור</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="303"/>
+        <location filename="../configdialog.cpp" line="304"/>
         <source>File name</source>
         <translation>שם קובץ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="304"/>
+        <location filename="../configdialog.cpp" line="305"/>
         <source>File path</source>
         <translation>נתיב קובץ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="320"/>
+        <location filename="../configdialog.cpp" line="306"/>
+        <location filename="../configdialog.cpp" line="321"/>
         <source>Year</source>
         <translation>שנה</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="306"/>
-        <location filename="../configdialog.cpp" line="321"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="322"/>
         <source>Condition</source>
         <translation>תנאי</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="322"/>
+        <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="323"/>
+        <location filename="../configdialog.cpp" line="324"/>
         <source>Artist/Year/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../configdialog.cpp" line="344"/>
         <source>&lt;Autodetect&gt;</source>
         <translation>&lt;איתור אוטומטי&gt;</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="344"/>
+        <location filename="../configdialog.cpp" line="345"/>
         <source>Brazilian Portuguese</source>
         <translation>ברזילאית פורטוגזית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="345"/>
+        <location filename="../configdialog.cpp" line="346"/>
         <source>Chinese Simplified</source>
         <translation>סינית מפושטת</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="346"/>
+        <location filename="../configdialog.cpp" line="347"/>
         <source>Chinese Traditional</source>
         <translation>סינית מסורתית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Czech</source>
         <translation>צ׳כית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="349"/>
         <source>Dutch</source>
         <translation>הולנדית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="349"/>
+        <location filename="../configdialog.cpp" line="350"/>
         <source>English</source>
         <translation>אנגלית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="350"/>
+        <location filename="../configdialog.cpp" line="351"/>
         <source>French</source>
         <translation>צרפתית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="351"/>
+        <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="352"/>
+        <location filename="../configdialog.cpp" line="353"/>
         <source>German</source>
         <translation>גרמנית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="353"/>
+        <location filename="../configdialog.cpp" line="354"/>
         <source>Hebrew</source>
         <translation>עברית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="354"/>
+        <location filename="../configdialog.cpp" line="355"/>
         <source>Hungarian</source>
         <translation>הונגרית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="355"/>
+        <location filename="../configdialog.cpp" line="356"/>
         <source>Italian</source>
         <translation>איטלקית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="356"/>
+        <location filename="../configdialog.cpp" line="357"/>
         <source>Japanese</source>
         <translation>יפנית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="357"/>
+        <location filename="../configdialog.cpp" line="358"/>
         <source>Kazakh</source>
         <translation>קזחית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="358"/>
+        <location filename="../configdialog.cpp" line="359"/>
         <source>Lithuanian</source>
         <translation>ליטאית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="359"/>
+        <location filename="../configdialog.cpp" line="360"/>
         <source>Polish</source>
         <translation>פולנית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="360"/>
+        <location filename="../configdialog.cpp" line="361"/>
         <source>Russian</source>
         <translation>רוסית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="361"/>
+        <location filename="../configdialog.cpp" line="362"/>
         <source>Slovak</source>
         <translation>סלובקית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="362"/>
+        <location filename="../configdialog.cpp" line="363"/>
         <source>Spanish</source>
         <translation>ספרדית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="363"/>
+        <location filename="../configdialog.cpp" line="364"/>
         <source>Turkish</source>
         <translation>טורקית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="365"/>
         <source>Ukrainian</source>
         <translation>אוקראינית</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="365"/>
+        <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="366"/>
+        <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -774,12 +779,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="159"/>
+        <location filename="../playlisttrack.cpp" line="161"/>
         <source>Streams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="165"/>
+        <location filename="../playlisttrack.cpp" line="167"/>
         <source>Empty group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -795,7 +800,7 @@
 <context>
     <name>QmmpUiSettings</name>
     <message>
-        <location filename="../qmmpuisettings.cpp" line="54"/>
+        <location filename="../qmmpuisettings.cpp" line="55"/>
         <source>Playlist</source>
         <translation>רשימת השמעה</translation>
     </message>
@@ -964,39 +969,39 @@
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="137"/>
-        <location filename="../uihelper.cpp" line="148"/>
+        <location filename="../uihelper.cpp" line="138"/>
+        <location filename="../uihelper.cpp" line="149"/>
         <source>All Supported Bitstreams</source>
         <translation>כל זרמי הסביות הנתמכים</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="142"/>
+        <location filename="../uihelper.cpp" line="143"/>
         <source>Select one or more files to open</source>
         <translation>בחר קובץ אחד או יותר לפתיחה</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="154"/>
+        <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="162"/>
+        <location filename="../uihelper.cpp" line="163"/>
         <source>Choose a directory</source>
         <translation>בחר מדור</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="178"/>
-        <location filename="../uihelper.cpp" line="199"/>
+        <location filename="../uihelper.cpp" line="179"/>
+        <location filename="../uihelper.cpp" line="203"/>
         <source>Playlist Files</source>
         <translation>קבצי רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="180"/>
+        <location filename="../uihelper.cpp" line="181"/>
         <source>Open Playlist</source>
         <translation>פתח רשימת השמעה</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="200"/>
+        <location filename="../uihelper.cpp" line="204"/>
         <source>Save Playlist</source>
         <translation>שמור רשימת השמעה</translation>
     </message>

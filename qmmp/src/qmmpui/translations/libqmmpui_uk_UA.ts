@@ -105,25 +105,25 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
+        <location filename="../forms/configdialog.ui" line="338"/>
         <source>Description</source>
         <translation>Пояснення</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="336"/>
+        <location filename="../forms/configdialog.ui" line="343"/>
         <source>Filename</source>
         <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
-        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <source>Artist</source>
         <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="69"/>
-        <location filename="../configdialog.cpp" line="295"/>
-        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="316"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
@@ -143,223 +143,223 @@
         <translation>Типи файлів</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="182"/>
+        <location filename="../configdialog.cpp" line="183"/>
         <source>Transports</source>
         <translation>Транспорти</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="192"/>
+        <location filename="../configdialog.cpp" line="193"/>
         <source>Decoders</source>
         <translation>Декодери</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="202"/>
+        <location filename="../configdialog.cpp" line="203"/>
         <source>Engines</source>
         <translation>Зовнішні програвачі</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="242"/>
+        <location filename="../configdialog.cpp" line="243"/>
         <source>Output</source>
         <translation>Вивід</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="252"/>
+        <location filename="../configdialog.cpp" line="253"/>
         <source>File Dialogs</source>
         <translation>Файлові діалоги</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="262"/>
+        <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
         <translation>Інтерфейси користувача</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Title</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Track number</source>
         <translation>Номер треку</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Two-digit track number</source>
         <translation>2- розрядний номер трека</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="302"/>
-        <location filename="../configdialog.cpp" line="319"/>
+        <location filename="../configdialog.cpp" line="303"/>
+        <location filename="../configdialog.cpp" line="320"/>
         <source>Disc number</source>
         <translation>Номер диску</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="306"/>
-        <location filename="../configdialog.cpp" line="321"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="322"/>
         <source>Condition</source>
         <translation>Умова</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="322"/>
+        <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Album</source>
         <translation>Виконавець/Альбом</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="323"/>
+        <location filename="../configdialog.cpp" line="324"/>
         <source>Artist/Year/Album</source>
         <translation>Виконавець/Рік/Альбом</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../configdialog.cpp" line="344"/>
         <source>&lt;Autodetect&gt;</source>
         <translation>&lt;Автоматично&gt;</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="344"/>
+        <location filename="../configdialog.cpp" line="345"/>
         <source>Brazilian Portuguese</source>
         <translation>Бразильська португальська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="345"/>
+        <location filename="../configdialog.cpp" line="346"/>
         <source>Chinese Simplified</source>
         <translation>Китайська спрощена</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="346"/>
+        <location filename="../configdialog.cpp" line="347"/>
         <source>Chinese Traditional</source>
         <translation>Китайська традиційна</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Czech</source>
         <translation>Чеська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="349"/>
         <source>Dutch</source>
         <translation>Голландська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="349"/>
+        <location filename="../configdialog.cpp" line="350"/>
         <source>English</source>
         <translation>Англійська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="350"/>
+        <location filename="../configdialog.cpp" line="351"/>
         <source>French</source>
         <translation>Французька</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="351"/>
+        <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
         <translation>Галісійська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="352"/>
+        <location filename="../configdialog.cpp" line="353"/>
         <source>German</source>
         <translation>Німецька</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="353"/>
+        <location filename="../configdialog.cpp" line="354"/>
         <source>Hebrew</source>
         <translation>Іврит</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="354"/>
+        <location filename="../configdialog.cpp" line="355"/>
         <source>Hungarian</source>
         <translation>Угорська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="355"/>
+        <location filename="../configdialog.cpp" line="356"/>
         <source>Italian</source>
         <translation>Італійська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="356"/>
+        <location filename="../configdialog.cpp" line="357"/>
         <source>Japanese</source>
         <translation>Японська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="357"/>
+        <location filename="../configdialog.cpp" line="358"/>
         <source>Kazakh</source>
         <translation>Казахська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="358"/>
+        <location filename="../configdialog.cpp" line="359"/>
         <source>Lithuanian</source>
         <translation>Литовська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="359"/>
+        <location filename="../configdialog.cpp" line="360"/>
         <source>Polish</source>
         <translation>Польська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="360"/>
+        <location filename="../configdialog.cpp" line="361"/>
         <source>Russian</source>
         <translation>Російська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="361"/>
+        <location filename="../configdialog.cpp" line="362"/>
         <source>Slovak</source>
         <translation>Словацька</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="362"/>
+        <location filename="../configdialog.cpp" line="363"/>
         <source>Spanish</source>
         <translation>Іспанська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="363"/>
+        <location filename="../configdialog.cpp" line="364"/>
         <source>Turkish</source>
         <translation>Турецька</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="365"/>
         <source>Ukrainian</source>
         <translation>Українська</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="365"/>
+        <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
         <translation>Сербська (ієкавська)</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="366"/>
+        <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
         <translation>Сербська (екавська)</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
-        <location filename="../configdialog.cpp" line="316"/>
+        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="317"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="301"/>
-        <location filename="../configdialog.cpp" line="318"/>
+        <location filename="../configdialog.cpp" line="302"/>
+        <location filename="../configdialog.cpp" line="319"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="303"/>
+        <location filename="../configdialog.cpp" line="304"/>
         <source>File name</source>
         <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="304"/>
+        <location filename="../configdialog.cpp" line="305"/>
         <source>File path</source>
         <translation>Шлях файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="320"/>
+        <location filename="../configdialog.cpp" line="306"/>
+        <location filename="../configdialog.cpp" line="321"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
-        <location filename="../configdialog.cpp" line="317"/>
+        <location filename="../configdialog.cpp" line="301"/>
+        <location filename="../configdialog.cpp" line="318"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
@@ -390,14 +390,14 @@
         <translation>Формат назви:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="276"/>
-        <location filename="../configdialog.cpp" line="330"/>
+        <location filename="../forms/configdialog.ui" line="283"/>
+        <location filename="../configdialog.cpp" line="331"/>
         <source>Preferences</source>
         <translation>Налаштування</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="289"/>
-        <location filename="../configdialog.cpp" line="333"/>
+        <location filename="../forms/configdialog.ui" line="296"/>
+        <location filename="../configdialog.cpp" line="334"/>
         <source>Information</source>
         <translation>Інформація</translation>
     </message>
@@ -417,7 +417,7 @@
         <translation>Додатково</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="835"/>
+        <location filename="../forms/configdialog.ui" line="842"/>
         <source>16-bit output</source>
         <translation>16-бітний вивід</translation>
     </message>
@@ -427,23 +427,23 @@
         <translation>Мережа</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="222"/>
+        <location filename="../configdialog.cpp" line="223"/>
         <source>Visualization</source>
         <translation>Візуалізація</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="212"/>
+        <location filename="../configdialog.cpp" line="213"/>
         <source>Effects</source>
         <translation>Ефекти</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="232"/>
+        <location filename="../configdialog.cpp" line="233"/>
         <source>General</source>
         <translation>Загальне</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="774"/>
+        <location filename="../forms/configdialog.ui" line="781"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
@@ -473,149 +473,154 @@
         <translation>Автозбереження переліку після зміни</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="348"/>
+        <location filename="../forms/configdialog.ui" line="235"/>
+        <source>Clear previous playlist when opening new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="355"/>
         <source>Look and Feel</source>
         <translation>Параметри інтерфейсу</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="354"/>
+        <location filename="../forms/configdialog.ui" line="361"/>
         <source>Language:</source>
         <translation>Мова:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="410"/>
+        <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
         <translation>Додавати файли з командного рядка в цей список:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="497"/>
+        <location filename="../forms/configdialog.ui" line="504"/>
         <source>URL Dialog</source>
         <translation>URL-діалог</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="503"/>
+        <location filename="../forms/configdialog.ui" line="510"/>
         <source>Auto-paste URL from clipboard</source>
         <translation>Автоматично додавати URL з буферу обміну</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="644"/>
+        <location filename="../forms/configdialog.ui" line="651"/>
         <source>Replay Gain</source>
         <translation>Нормалізація гучності</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="650"/>
+        <location filename="../forms/configdialog.ui" line="657"/>
         <source>Replay Gain mode:</source>
         <translation>Режим нормалізації гучності:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="667"/>
+        <location filename="../forms/configdialog.ui" line="674"/>
         <source>Preamp:</source>
         <translation>Преамплітуда:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="744"/>
+        <location filename="../forms/configdialog.ui" line="706"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
         <source>dB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="712"/>
+        <location filename="../forms/configdialog.ui" line="719"/>
         <source>Default gain:</source>
         <translation>Нормалізація за умовчанням:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="764"/>
+        <location filename="../forms/configdialog.ui" line="771"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>Використовувати інформацію піків для запобігання відсікання</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="780"/>
+        <location filename="../forms/configdialog.ui" line="787"/>
         <source>Buffer size:</source>
         <translation>Розмір буферу:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="799"/>
+        <location filename="../forms/configdialog.ui" line="806"/>
         <source>ms</source>
         <translation>мс</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="828"/>
+        <location filename="../forms/configdialog.ui" line="835"/>
         <source>Use software volume control</source>
         <translation>Використовувати програмний контроль гучності</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="427"/>
+        <location filename="../forms/configdialog.ui" line="434"/>
         <source>Cover Image Retrieve</source>
         <translation>Пошук обладинки альбома</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="433"/>
+        <location filename="../forms/configdialog.ui" line="440"/>
         <source>Use separate image files</source>
         <translation>Використовувати окремі файли зображень</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="443"/>
+        <location filename="../forms/configdialog.ui" line="450"/>
         <source>Include files:</source>
         <translation>Включити файли:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="209"/>
-        <location filename="../forms/configdialog.ui" line="453"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
         <source>Exclude files:</source>
         <translation>Виключити файли:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="465"/>
+        <location filename="../forms/configdialog.ui" line="472"/>
         <source>Recursive search depth:</source>
         <translation>Глибина рекурсивного пошуку:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="390"/>
+        <location filename="../forms/configdialog.ui" line="397"/>
         <source>Playback</source>
         <translation>Відтворення</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="396"/>
+        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Continue playback on startup</source>
         <translation>Продовжити відтворення при запуску</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
+        <location filename="../forms/configdialog.ui" line="410"/>
         <source>Determine file type by content</source>
         <translation>Визначати тип файлу за вмістом</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="542"/>
+        <location filename="../forms/configdialog.ui" line="549"/>
         <source>Proxy</source>
         <translation>Проксі</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="554"/>
+        <location filename="../forms/configdialog.ui" line="561"/>
         <source>Enable proxy usage</source>
         <translation>Використосувати проксі</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="561"/>
+        <location filename="../forms/configdialog.ui" line="568"/>
         <source>Proxy host name:</source>
         <translation>Сервер проксі:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="574"/>
+        <location filename="../forms/configdialog.ui" line="581"/>
         <source>Proxy port:</source>
         <translation>Порт проксі:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
+        <location filename="../forms/configdialog.ui" line="594"/>
         <source>Use authentication with proxy</source>
         <translation>Використовувати авторизацію на проксі</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="594"/>
+        <location filename="../forms/configdialog.ui" line="601"/>
         <source>Proxy user name:</source>
         <translation>Ім&apos;я користвача проксі:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="607"/>
+        <location filename="../forms/configdialog.ui" line="614"/>
         <source>Proxy password:</source>
         <translation>Пароль проксі:</translation>
     </message>
@@ -774,12 +779,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="159"/>
+        <location filename="../playlisttrack.cpp" line="161"/>
         <source>Streams</source>
         <translation>Онлайн-потоки</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="165"/>
+        <location filename="../playlisttrack.cpp" line="167"/>
         <source>Empty group</source>
         <translation>Пуста група</translation>
     </message>
@@ -795,7 +800,7 @@
 <context>
     <name>QmmpUiSettings</name>
     <message>
-        <location filename="../qmmpuisettings.cpp" line="54"/>
+        <location filename="../qmmpuisettings.cpp" line="55"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
@@ -964,39 +969,39 @@
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="137"/>
-        <location filename="../uihelper.cpp" line="148"/>
+        <location filename="../uihelper.cpp" line="138"/>
+        <location filename="../uihelper.cpp" line="149"/>
         <source>All Supported Bitstreams</source>
         <translation>Усі формати</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="142"/>
+        <location filename="../uihelper.cpp" line="143"/>
         <source>Select one or more files to open</source>
         <translation>Виберіть один чи декілька файлів для відкриття</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="154"/>
+        <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
         <translation>Виберіть один чи декілька файлів для відтвореня</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="162"/>
+        <location filename="../uihelper.cpp" line="163"/>
         <source>Choose a directory</source>
         <translation>Виберіть теку</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="178"/>
-        <location filename="../uihelper.cpp" line="199"/>
+        <location filename="../uihelper.cpp" line="179"/>
+        <location filename="../uihelper.cpp" line="203"/>
         <source>Playlist Files</source>
         <translation>Файли списків</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="180"/>
+        <location filename="../uihelper.cpp" line="181"/>
         <source>Open Playlist</source>
         <translation>Відкрити список</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="200"/>
+        <location filename="../uihelper.cpp" line="204"/>
         <source>Save Playlist</source>
         <translation>Зберегти список</translation>
     </message>
