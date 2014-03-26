@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,8 +34,8 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
-    m_title_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
-    m_group_format = s.value("PlayList/group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
+    m_title_format = s.value("title_format", "%p%if(%p&%t, - ,)%t").toString();
+    m_group_format = s.value("group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
     m_convertUnderscore = s.value ("convert_underscore", true).toBool();
     m_convertTwenty = s.value ("convert_twenty", true).toBool();
     m_useMetadata = s.value ("load_metadata", true).toBool();
