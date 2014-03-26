@@ -475,7 +475,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="235"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить предыдущий список при открытии нового</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="355"/>
