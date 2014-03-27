@@ -77,15 +77,24 @@ CONFIG += shared \
     thread
 TEMPLATE = lib
 VERSION = $$QMMP_VERSION
-unix:isEmpty(LIB_DIR):LIB_DIR = /lib
-unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 
 unix {
+  isEmpty(LIB_DIR):LIB_DIR = /lib
+  DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
   SVN_REVISION = $$system(./svn_revision.sh)
   !isEmpty(SVN_REVISION) {
     DEFINES += SVN_REVISION=\\\"$$SVN_REVISION\\\"
   }
 }
+
+win32 {
+  SVN_REVISION = $$system(svn_revision.cmd)
+  !isEmpty(SVN_REVISION) {
+    DEFINES += SVN_REVISION=\\\"$$SVN_REVISION\\\"
+    message($$SVN_REVISION)
+  }
+}
+
 
 unix {
     target.path = $$LIB_DIR
