@@ -91,7 +91,6 @@ win32 {
   SVN_REVISION = $$system(svn_revision.cmd)
   !isEmpty(SVN_REVISION) {
     DEFINES += SVN_REVISION=\\\"$$SVN_REVISION\\\"
-    message($$SVN_REVISION)
   }
 }
 
