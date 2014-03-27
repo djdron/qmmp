@@ -26,5 +26,7 @@ int main (void)
     QSettings settings(QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("MAD/ID3v1_encoding", "UTF-8");
     settings.setValue("MAD/ID3v2_encoding", "UTF-8");
+    settings.setValue("MPG123/ID3v1_encoding", "UTF-8");
+    settings.setValue("MPG123/ID3v2_encoding", "UTF-8");
     return 0;
 }
