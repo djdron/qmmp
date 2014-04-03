@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,20 +40,37 @@ static struct
 {
     unsigned int key; //virtual key
     unsigned long code; //scan code
+    QString name;
 } keyMap [] = {
-    { VK_LEFT,    0x14b },
-    { VK_UP,      0x148 },
-    { VK_RIGHT,   0x14d },
-    { VK_DOWN,    0x150 },
-    { VK_PRIOR,   0x149 },
-    { VK_NEXT,    0x151 },
-    { VK_END,     0x14F },
-    { VK_HOME,    0x147 },
-    { VK_INSERT,  0x152 },
-    { VK_DELETE,  0x153 },
-    { VK_DIVIDE,  0x135 },
-    { VK_NUMLOCK, 0x145 },
-{ 0, 0 }
+    { VK_LEFT,    0x14b, ""},
+    { VK_UP,      0x148, "" },
+    { VK_RIGHT,   0x14d, "" },
+    { VK_DOWN,    0x150, "" },
+    { VK_PRIOR,   0x149, "" },
+    { VK_NEXT,    0x151, "" },
+    { VK_END,     0x14F, "" },
+    { VK_HOME,    0x147, "" },
+    { VK_INSERT,  0x152, "" },
+    { VK_DELETE,  0x153, "" },
+    { VK_DIVIDE,  0x135, "" },
+    { VK_NUMLOCK, 0x145, "" },
+    { VK_NUMPAD0, 0x52,  "" },
+    { VK_NUMPAD1, 0x4F,  "" },
+    { VK_NUMPAD2, 0x50,  "" },
+    { VK_NUMPAD3, 0x51,  "" },
+    { VK_NUMPAD4, 0x4b,  "" },
+    { VK_NUMPAD6, 0x4d,  "" },
+    { VK_NUMPAD7, 0x47,  "" },
+    { VK_NUMPAD8, 0x48,  "" },
+    { VK_NUMPAD9, 0x49,  "" },
+    { VK_VOLUME_MUTE, 0x120,  "Volume Mute"},
+    { VK_VOLUME_DOWN, 0x12e,  "Volume Down"},
+    { VK_VOLUME_UP, 0x130,  "Volume Up"},
+    { VK_MEDIA_NEXT_TRACK, 0x119,  "Media Next Track"},
+    { VK_MEDIA_PREV_TRACK, 0x110,  "Media Previous Track"},
+    { VK_MEDIA_STOP, 0x124,  "Media Stop"},
+    { VK_MEDIA_PLAY_PAUSE, 0x122,  "Media Play/Pause"},
+{ 0, 0, 0 }
 };
 
 quint32 Hotkey::defaultKey()
@@ -66,18 +83,18 @@ quint32 Hotkey::defaultKey(int act)
     //default key bindings
     QMap<int, quint32> keyMap;
     keyMap[PLAY] = 0;
-    keyMap[STOP] = 0;
+    keyMap[STOP] = VK_MEDIA_STOP;
     keyMap[PAUSE] = 0;
-    keyMap[PLAY_PAUSE] = 0;
-    keyMap[NEXT] = 0;
-    keyMap[PREVIOUS] = 0;
+    keyMap[PLAY_PAUSE] = VK_MEDIA_PLAY_PAUSE;
+    keyMap[NEXT] = VK_MEDIA_NEXT_TRACK;
+    keyMap[PREVIOUS] = VK_MEDIA_PREV_TRACK;
     keyMap[SHOW_HIDE] = 0;
-    keyMap[VOLUME_UP] = 0;
-    keyMap[VOLUME_DOWN] = 0;
+    keyMap[VOLUME_UP] = VK_VOLUME_UP;
+    keyMap[VOLUME_DOWN] = VK_VOLUME_DOWN;
     keyMap[FORWARD] = 0;
     keyMap[REWIND] = 0;
     keyMap[JUMP_TO_TRACK] = 0;
-    keyMap[VOLUME_MUTE] = 0;
+    keyMap[VOLUME_MUTE] = VK_VOLUME_MUTE;
     return keyMap[act];
 }
 
@@ -232,12 +249,20 @@ const QString HotkeyManager::getKeyString(quint32 key, quint32 modifiers)
 
     LONG lScan = MapVirtualKey(key, 0) << 16;
 
-    for(int i = 0; i < 12; ++i)
+    for(unsigned int i = 0; i < sizeof(keyMap)/sizeof(keyMap[0]); ++i)
     {
         if(keyMap[i].key == key)
         {
-            lScan |= 0x1000000; // set extended bit
-            break;
+            if(!keyMap[i].name.isEmpty())
+            {
+                keyStr += keyMap[i].name;
+                return keyStr;
+            }
+            else if(keyMap[i].code & 0x100)
+            {
+                lScan |= 0x1000000; // set extended bit
+                break;
+            }
         }
     }
 
@@ -266,7 +291,7 @@ quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
 {
     //MapVirtualKey does not work with some scan codes
     //using hardcoded key map instead
-    for(int i = 0; i < 12; ++i)
+    for(unsigned int i = 0; i < sizeof(keyMap)/sizeof(keyMap[0]); ++i)
     {
         if(keyMap[i].code == keycode)
             return keyMap[i].key;
