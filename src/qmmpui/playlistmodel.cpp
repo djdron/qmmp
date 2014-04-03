@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2013 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2014 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -229,7 +229,7 @@ void PlayListModel::insert(int index, const QList<QUrl> &urls)
     foreach (QUrl url, urls)
     {
         if(url.scheme() == "file")
-            paths.append(QFileInfo(url.toLocalFile()).absoluteFilePath());
+            paths.append(QFileInfo(url.toLocalFile()).canonicalFilePath());
         else
             paths.append(url.toString());
     }
