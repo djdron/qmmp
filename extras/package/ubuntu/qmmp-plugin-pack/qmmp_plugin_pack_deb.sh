@@ -59,10 +59,10 @@ case $1 in
 		done
     ;;
     --build)
-		#rm -rf $BUILD_ROOT
-		#mkdir $BUILD_ROOT
+		rm -rf $BUILD_ROOT
+		mkdir $BUILD_ROOT
 		cd $BUILD_ROOT
-		#prepare
+		prepare
 		for CODENAME in $UBUNTU_CODENAMES
 		do
 			build $CODENAME
