@@ -1,3 +1,9 @@
+qmmp-plugin-pack (0.7.6-1ubuntu1~saucy0) saucy; urgency=low
+
+  * New upstream release.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Apr 2014 15:38:19 +0400
+
 qmmp-plugin-pack (0.7.5-1ubuntu3~saucy0) saucy; urgency=low
 
   * Fixed original sources.
