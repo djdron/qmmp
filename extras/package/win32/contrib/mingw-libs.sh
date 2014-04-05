@@ -5,9 +5,9 @@ LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-e
 LIB_NAMES+='glew projectm libsidplayfp enca '
 #LIB_NAMES+='libxml2 librcd librcc taglib-rusxmms' #rusxmms
 
-export PREFIX=C:/devel/mingw32-libs
+export PREFIX=D:/devel/mingw32-libs
 export STRIP=true
-export JOBS=4
+export JOBS=2
 
 
 mkdir -p ${PREFIX} ${PREFIX}/bin ${PREFIX}/lib/pkgconfig ${PREFIX}/share/doc
