@@ -110,12 +110,12 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="31"/>
-        <location filename="../settingsdialog.cpp" line="39"/>
-        <location filename="../settingsdialog.cpp" line="48"/>
-        <location filename="../settingsdialog.cpp" line="49"/>
-        <location filename="../settingsdialog.cpp" line="63"/>
-        <location filename="../settingsdialog.cpp" line="64"/>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
         <source>default</source>
         <translation>預設</translation>
     </message>
@@ -125,22 +125,32 @@
         <translation>Mplayer 設置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="34"/>
         <source>Video:</source>
         <translation>視頻：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="43"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation>音頻：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="72"/>
         <source>Synchronization factor:</source>
         <translation>同步數系數：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="89"/>
+        <source>Extra options:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="96"/>
+        <source>Extra command line options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio/video auto synchronization</source>
         <translation>音頻/視頻自動同步</translation>
     </message>
