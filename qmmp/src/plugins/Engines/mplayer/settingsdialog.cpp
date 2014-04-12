@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,40 +18,38 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QSettings>
-
 #include <qmmp/qmmp.h>
-
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    ui.videoComboBox->addItem(tr("default"));
-    ui.videoComboBox->addItem("xv");
-    ui.videoComboBox->addItem("x11");
-    ui.videoComboBox->addItem("gl");
-    ui.videoComboBox->addItem("gl2");
-    ui.videoComboBox->addItem("dga");
-    ui.videoComboBox->addItem("sdl");
-    ui.videoComboBox->addItem("null");
-    ui.audioComboBox->addItem(tr("default"));
-    ui.audioComboBox->addItem("oss");
-    ui.audioComboBox->addItem("alsa");
-    ui.audioComboBox->addItem("pulse");
-    ui.audioComboBox->addItem("jack");
-    ui.audioComboBox->addItem("nas");
-    ui.audioComboBox->addItem("null");
+    m_ui.videoComboBox->addItem(tr("default"));
+    m_ui.videoComboBox->addItem("xv");
+    m_ui.videoComboBox->addItem("x11");
+    m_ui.videoComboBox->addItem("gl");
+    m_ui.videoComboBox->addItem("gl2");
+    m_ui.videoComboBox->addItem("dga");
+    m_ui.videoComboBox->addItem("sdl");
+    m_ui.videoComboBox->addItem("null");
+    m_ui.audioComboBox->addItem(tr("default"));
+    m_ui.audioComboBox->addItem("oss");
+    m_ui.audioComboBox->addItem("alsa");
+    m_ui.audioComboBox->addItem("pulse");
+    m_ui.audioComboBox->addItem("jack");
+    m_ui.audioComboBox->addItem("nas");
+    m_ui.audioComboBox->addItem("null");
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("mplayer");
-    ui.audioComboBox->setEditText(settings.value("ao","default").toString().replace("default", tr("default")));
-    ui.videoComboBox->setEditText(settings.value("vo","default").toString().replace("default", tr("default")));
-    ui.autoSyncCheckBox->setChecked(settings.value("autosync", false).toBool());
-    ui.syncFactorSpinBox->setValue(settings.value("autosync_factor", 100).toInt());
+    m_ui.audioComboBox->setEditText(settings.value("ao","default").toString().replace("default", tr("default")));
+    m_ui.videoComboBox->setEditText(settings.value("vo","default").toString().replace("default", tr("default")));
+    m_ui.autoSyncCheckBox->setChecked(settings.value("autosync", false).toBool());
+    m_ui.syncFactorSpinBox->setValue(settings.value("autosync_factor", 100).toInt());
+    m_ui.cmdOptionsLineEdit->setText(settings.value("cmd_options").toString());
     settings.endGroup();
 }
-
 
 SettingsDialog::~SettingsDialog()
 {}
@@ -60,10 +58,11 @@ void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("mplayer");
-    settings.setValue("ao",ui.audioComboBox->currentText().replace(tr("default"), "default"));
-    settings.setValue("vo",ui.videoComboBox->currentText().replace(tr("default"), "default"));
-    settings.setValue("autosync",ui.autoSyncCheckBox->isChecked());
-    settings.setValue("autosync_factor",ui.syncFactorSpinBox->value());
+    settings.setValue("ao",m_ui.audioComboBox->currentText().replace(tr("default"), "default"));
+    settings.setValue("vo",m_ui.videoComboBox->currentText().replace(tr("default"), "default"));
+    settings.setValue("autosync",m_ui.autoSyncCheckBox->isChecked());
+    settings.setValue("autosync_factor",m_ui.syncFactorSpinBox->value());
+    settings.setValue("cmd_options",m_ui.cmdOptionsLineEdit->text());
     settings.endGroup();
     QDialog::accept();
 }

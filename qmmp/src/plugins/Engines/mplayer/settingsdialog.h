@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,11 +21,10 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
 #include "ui_settingsdialog.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
@@ -40,7 +39,7 @@ public slots:
     virtual void accept();
 
 private:
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
 };
 
 #endif
