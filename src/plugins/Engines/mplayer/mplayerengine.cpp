@@ -56,6 +56,7 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
     QProcess mplayer_process;
     mplayer_process.start("mplayer", args);
     mplayer_process.waitForFinished(1500);
+    mplayer_process.kill();
     QString str = QString::fromLocal8Bit(mplayer_process.readAll()).trimmed();
     FileInfo *info = new FileInfo(path);
     QStringList lines = str.split("\n");
@@ -174,6 +175,7 @@ void MplayerEngine::stop()
         m_user_stop = true;
         m_process->write("quit\n");
         m_process->waitForFinished(3500);
+        m_process->kill();
     }
     StateHandler::instance()->dispatch(Qmmp::Stopped);
 }
@@ -231,7 +233,10 @@ void MplayerEngine::readStdOut()
         else if (rx_quit.indexIn(line) > -1 && !m_user_stop)
         {
             if (m_process->state() == QProcess::Running)
+            {
                 m_process->waitForFinished(1500);
+                m_process->kill();
+            }
             StateHandler::instance()->dispatch(Qmmp::Stopped);
         }
         else if (rx_audio.indexIn(line) > -1)
