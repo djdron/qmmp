@@ -137,6 +137,3 @@ unix {
     QMAKE_PKGCONFIG_REQUIRES = QtCore QtGui
     QMAKE_PKGCONFIG_DESTDIR = pkgconfig
 }
-
-
-
