@@ -7,7 +7,6 @@ QT += network
 
 CONFIG += warn_on \
     shared \
-    create_pc create_prl no_install_prl \
     qt \
     thread
 
@@ -164,6 +163,7 @@ unix {
 }
 
 unix {
+    CONFIG += create_pc create_prl no_install_prl
     QMAKE_PKGCONFIG_NAME = qmmpui
     QMAKE_PKGCONFIG_DESCRIPTION = qmmp user interface library
     QMAKE_PKGCONFIG_REQUIRES = QtCore QtGui QtNetwork qmmp
