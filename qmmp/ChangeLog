@@ -782,6 +782,7 @@ Version 0.8.0
 * added atomic playlist saving operation
 * added created playlist auto-selection
 * added feature to not clear previous playlist when opening new one
+* added mplayer command line options setting
 * blocked one hotkey assignment for several commands in the hotkey plugin
 * limited cover cache size
 * improved 'jump to track' dialog
