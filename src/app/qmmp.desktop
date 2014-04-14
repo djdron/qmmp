@@ -46,7 +46,6 @@ Name[sr@ijekavian]=Пусти
 Name[sr@ijekavianlatin]=Pusti
 Name[sr@latin]=Pusti
 Exec=qmmp --no-start --play
-OnlyShowIn=Unity;
 
 [Desktop Action Pause]
 Name=Pause
@@ -56,7 +55,6 @@ Name[sr@ijekavian]=Паузирај
 Name[sr@ijekavianlatin]=Pauziraj
 Name[sr@latin]=Pauziraj
 Exec=qmmp --no-start --pause
-OnlyShowIn=Unity;
 
 [Desktop Action Stop]
 Name=Stop
@@ -66,7 +64,6 @@ Name[sr@ijekavian]=Заустави
 Name[sr@ijekavianlatin]=Zaustavi
 Name[sr@latin]=Zaustavi
 Exec=qmmp --no-start --stop
-OnlyShowIn=Unity;
 
 [Desktop Action Previous]
 Name=Previous
@@ -76,7 +73,6 @@ Name[sr@ijekavian]=Претходна
 Name[sr@ijekavianlatin]=Prethodna
 Name[sr@latin]=Prethodna
 Exec=qmmp --no-start --previous
-OnlyShowIn=Unity;
 
 [Desktop Action Next]
 Name=Next
@@ -86,4 +82,3 @@ Name[sr@ijekavian]=Сљедећа
 Name[sr@ijekavianlatin]=Sljedeća
 Name[sr@latin]=Sledeća
 Exec=qmmp --no-start --next
-OnlyShowIn=Unity;
