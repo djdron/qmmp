@@ -20,6 +20,7 @@
     Panagiotis Papadopoulos <pano_90@gmx.net> - улучшения в интерфейсе пользователя, сообщения об ошибках
     Pino Toscano <toscano.pino@tiscali.it> - улучшение кроссплатформенности
     Karel Volný <kvolny@redhat.com> - различные исправления
+    Ryota Shimamoto <liangtai.s16@gmail.com> - исправления для поддержки freebsd
     Sebastian Pipping <webmaster@hartwork.org> - патчи bs2b
     Stefan Koelling <stefankoelling.ext@googlemail.com> - исправления сборки
     Yaakov Selkowitz <yselkowitz@gmail.com> - поддержка cygwin
