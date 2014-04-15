@@ -9,7 +9,7 @@ Thanks to:
     Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg plugin fixes
     Dmitry Kostin <kostindima@gmail.com> - iso.wv support
     Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
-    Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements    
+    Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
@@ -20,6 +20,7 @@ Thanks to:
     Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports
     Pino Toscano <toscano.pino@tiscali.it> - portability patches
     Karel Volný <kvolny@redhat.com> - various fixes
+    Ryota Shimamoto <liangtai.s16@gmail.com> - freebsd patches
     Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
     Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches

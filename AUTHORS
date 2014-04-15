@@ -26,7 +26,7 @@ Translators:
     Hebrew - Genghis Khan <genghiskhan@gmx.ca>
     Hungarian - Németh Gábor <sutee84@freemail.hu>
     Italian - Gian Paolo Renello <emmerkar@gmail.com>
-    Japanese - Ryota Shimamoto <liangtai.s4@gmail.com>
+    Japanese - Ryota Shimamoto <liangtai.s16@gmail.com>
     Kazakh - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
     Lithuanian - Algirdas Butkus <butkus.algirdas@gmail.com>
     Polish - Grzegorz Gibas <amigib@gmail.com>
@@ -60,6 +60,7 @@ Thanks to:
     Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports
     Pino Toscano <toscano.pino@tiscali.it> - portability patches
     Karel Volný <kvolny@redhat.com> - various fixes
+    Ryota Shimamoto <liangtai.s16@gmail.com> - freebsd patches
     Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
     Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches
