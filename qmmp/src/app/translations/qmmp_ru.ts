@@ -109,7 +109,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="315"/>
         <source>Command Line Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Справка по командной строке</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="328"/>
@@ -129,7 +129,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Qmmp Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия Qmmp</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="310"/>
