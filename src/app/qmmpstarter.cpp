@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,6 +39,11 @@
 #include "qmmpstarter.h"
 #include "lxdesupport.h"
 #include "builtincommandlineoption.h"
+
+#ifdef Q_OS_WIN
+#include <sstream>
+#include <QMessageBox>
+#endif
 
 #ifdef Q_OS_WIN
 #define UDS_PATH QString("qmmp")
@@ -290,6 +295,12 @@ QString QMMPStarter::processCommandArgs(const QStringList &slist, const QString&
 
 void QMMPStarter::printUsage()
 {
+//show dialog with command line documentation under ms windows
+#ifdef Q_OS_WIN
+    stringstream tmp_stream;
+    tmp_stream.copyfmt(cout);
+    streambuf* old_stream = cout.rdbuf(tmp_stream.rdbuf());
+#endif
     cout << qPrintable(tr("Usage: qmmp [options] [files]")) << endl;
     cout << qPrintable(tr("Options:")) << endl;
     cout << "--------" << endl;
@@ -299,11 +310,27 @@ void QMMPStarter::printUsage()
     cout << "--help                   " << qPrintable(tr("Display this text and exit")) << endl;
     cout << "--version                " << qPrintable(tr("Print version number and exit")) << endl;
     cout << qPrintable(tr("Ideas, patches, bugreports send to forkotov02@hotmail.ru")) << endl;
+#ifdef Q_OS_WIN
+    string text = tmp_stream.str();
+    QMessageBox::information(0, tr("Command Line Help"), QString::fromLocal8Bit(text.c_str()));
+    cout.rdbuf(old_stream); //restore old stream buffer
+#endif
 }
 
 void QMMPStarter::printVersion()
 {
+    //show dialog with qmmp version under ms windows
+#ifdef Q_OS_WIN
+    stringstream tmp_stream;
+    tmp_stream.copyfmt(cout);
+    streambuf* old_stream = cout.rdbuf(tmp_stream.rdbuf());
+#endif
     cout << qPrintable(tr("QMMP version: %1").arg(Qmmp::strVersion())) << endl;
     cout << qPrintable(tr("Compiled with Qt version: %1").arg(QT_VERSION_STR)) << endl;
     cout << qPrintable(tr("Using Qt version: %1").arg(qVersion())) << endl;
+#ifdef Q_OS_WIN
+    string text = tmp_stream.str();
+    QMessageBox::information(0, tr("Qmmp Version"), QString::fromLocal8Bit(text.c_str()));
+    cout.rdbuf(old_stream); //restore old stream buffer
+#endif
 }
