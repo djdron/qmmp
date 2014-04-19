@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -110,7 +110,7 @@ void UDisks2Plugin::updateActions()
             dev_path = "cdda://" + device->deviceFile();
         }
         else if (m_detectRemovable && device->isMounted() &&
-                 device->property("Size").toLongLong() < 17000000000LL &&
+                 device->property("Size").toLongLong() < 40000000000LL &&
                  (device->property("IdType").toString() == "vfat" ||
                   device->property("IdType").toString() == "iso9660" ||
                   device->property("IdType").toString() == "udf" ||
