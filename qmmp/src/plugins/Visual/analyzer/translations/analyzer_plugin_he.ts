@@ -11,12 +11,12 @@
     <message>
         <location filename="../analyzer.cpp" line="364"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>שיאים</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="367"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>שיעור רענון</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="370"/>
@@ -41,42 +41,42 @@
     <message>
         <location filename="../analyzer.cpp" line="380"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת מאבחן</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="383"/>
         <location filename="../analyzer.cpp" line="397"/>
         <source>Slowest</source>
-        <translation type="unfinished">הכי איטית</translation>
+        <translation>הכי איטית</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="384"/>
         <location filename="../analyzer.cpp" line="398"/>
         <source>Slow</source>
-        <translation type="unfinished">איטית</translation>
+        <translation>איטית</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="385"/>
         <location filename="../analyzer.cpp" line="399"/>
         <source>Medium</source>
-        <translation type="unfinished">בינונית</translation>
+        <translation>בינונית</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="386"/>
         <location filename="../analyzer.cpp" line="400"/>
         <source>Fast</source>
-        <translation type="unfinished">מהירה</translation>
+        <translation>מהירה</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="387"/>
         <location filename="../analyzer.cpp" line="401"/>
         <source>Fastest</source>
-        <translation type="unfinished">הכי מהירה</translation>
+        <translation>הכי מהירה</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="394"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>נפילת שיאים</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../analyzer.cpp" line="408"/>
         <source>&amp;Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;מסך מלא</translation>
     </message>
 </context>
 <context>
@@ -150,22 +150,22 @@
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="30"/>
         <source>Analyzer Plugin</source>
-        <translation>תוספת אבחון</translation>
+        <translation>תוספת מאבחן</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="49"/>
         <source>About Analyzer Visual Plugin</source>
-        <translation>אודות תוספת אבחון חזותי</translation>
+        <translation>אודות תוספת מאבחן חזותי</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="50"/>
         <source>Qmmp Analyzer Visual Plugin</source>
-        <translation>תוספת אבחון חזותי Qmmp</translation>
+        <translation>תוספת מאבחן חזותי של Qmmp</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="51"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 </TS>

@@ -16,12 +16,12 @@
     <message>
         <location filename="../outputjackfactory.cpp" line="54"/>
         <source>Qmmp Jack Output Plugin</source>
-        <translation>תוספת פלט Jack ‫Qmmp</translation>
+        <translation>תוספת פלט Jack של Qmmp</translation>
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="55"/>
         <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
-        <translation>חוברה על ידי: Yuriy Zhuravlev ‫&lt;slalkerg@gmail.com&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 </TS>

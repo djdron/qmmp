@@ -21,12 +21,12 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="96"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation>תוספת CUE שמע ‫Qmmp</translation>
+        <translation>תוספת CUE שמע של Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="97"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>

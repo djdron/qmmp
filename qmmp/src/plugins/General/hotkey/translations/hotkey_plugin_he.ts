@@ -11,7 +11,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
-        <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
+        <translation>הזן את צירוף המקש אשר ברצונך להקצות</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="52"/>
@@ -34,17 +34,17 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation>תוספת מקש חם גלובלי Qmmp</translation>
+        <translation>תוספת מקש חם גלובלי של Qmmp</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation>תוספת זו מוסיפה תמיכה עבור מקשי מולטימדיה או צירופי מקש גלובלי</translation>
+        <translation>תוספת זו מוסיפה תמיכה למקשי מולטימדיה או צירופי מקש גלובלי</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -67,27 +67,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Reset</source>
-        <translation>איפוס</translation>
+        <translation>אפס</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
-        <translation>הנגנה</translation>
+        <translation>נגן</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
         <source>Stop</source>
-        <translation>הפסקה</translation>
+        <translation>הפסק</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="39"/>
         <source>Pause</source>
-        <translation>השהייה</translation>
+        <translation>השהה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="40"/>
         <source>Play/Pause</source>
-        <translation>נגינה/השהה</translation>
+        <translation>נגן/השהה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="41"/>
@@ -127,22 +127,23 @@
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Jump to track</source>
-        <translation>קפיצה אל רצועה</translation>
+        <translation>קפוץ אל רצועה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>השתק</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>רצף מקש &apos;%1&apos; כבר מצוי בשימוש</translatorcomment>
+        <translation>Key sequence &apos;%1&apos; is already used</translation>
     </message>
 </context>
 </TS>

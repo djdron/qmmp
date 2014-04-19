@@ -16,12 +16,12 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation>זוהי גירסת תוספת של אפקט אוזניית DSP של Boris Mikhaylov &quot;‫Bauer stereophonic-to-binaural&quot;, ובקיצור bs2b.</translation>
+        <translation>זוהי גירסת תוספת Qmmp של אפקט אוזניות DSP של Boris Mikhaylov ‏&quot;Bauer stereophonic-to-binaural&quot;, ובקיצור bs2b.</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
         <source>Visit %1 for more details</source>
-        <translation>ניתן לבקר אצל %1 למידע נוסף</translation>
+        <translation>בקרו אצל %1 לשם מידע נוסף</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>
@@ -54,7 +54,8 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>ערוץ משולב</translatorcomment>
+        <translation type="unfinished">רמת Crossfeed</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
@@ -65,7 +66,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>ברירת מחדל</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
@@ -80,7 +81,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>%1 Hz, %2 us</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 הרץ, %2 us</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>

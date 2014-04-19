@@ -21,17 +21,17 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="210"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
-        <translation>תוספת שמע FFmpeg ‫Qmmp</translation>
+        <translation>תוספת שמע FFmpeg של Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="211"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation>הודרה כנגד libavformat-%1.%2.%3 וכנגד libavcodec-%4.%5.%6</translation>
+        <translation>הודרה כנגד libavformat-%1.%2.%3 וגם libavcodec-%4.%5.%6</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="218"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -142,6 +142,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Matroska Audio (Dolby TrueHD Lossless)</source>
+        <translatorcomment>אל איבוד</translatorcomment>
         <translation>שמע Matroska ‫(Dolby TrueHD נטול אובדן)</translation>
     </message>
     <message>

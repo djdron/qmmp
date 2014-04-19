@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="230"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation>תוספת שמע MPG123 ‫Qmmp</translation>
+        <translation>תוספת שמע MPG123 של Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="231"/>
@@ -33,7 +33,7 @@ with use of libmpg123 library</source>
     <message>
         <location filename="../decodermpg123factory.cpp" line="233"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>

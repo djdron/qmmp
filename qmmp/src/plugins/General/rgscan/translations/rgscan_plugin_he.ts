@@ -6,69 +6,69 @@
     <message>
         <location filename="../rgscandialog.ui" line="14"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>סורק ReplayGain</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="29"/>
         <source>Write track gain/peak</source>
-        <translation type="unfinished"></translation>
+        <translation>רשום הישג/שיא רצועה</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="56"/>
         <source>Title</source>
-        <translation type="unfinished">כותרת</translation>
+        <translation>כותרת</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="61"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>התקדמות</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="66"/>
         <source>Track Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>הישג רצועה</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="71"/>
         <source>Album Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>הישג אלבום</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="76"/>
         <source>Track Peak</source>
-        <translation type="unfinished"></translation>
+        <translation>שיא רצועה</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="81"/>
         <source>Album Peak</source>
-        <translation type="unfinished"></translation>
+        <translation>שיא אלבום</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="89"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>חשב</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="96"/>
         <source>Write Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>רשום תגיות</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="103"/>
         <source>Write album gain/peak</source>
-        <translation type="unfinished"></translation>
+        <translation>רשום הישג/שיא אלבום</translation>
     </message>
     <message>
         <location filename="../rgscandialog.cpp" line="114"/>
         <location filename="../rgscandialog.cpp" line="212"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../rgscandialog.cpp" line="136"/>
         <location filename="../rgscandialog.cpp" line="207"/>
         <source>%1 dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 דציבלים</translation>
     </message>
 </context>
 <context>
@@ -76,47 +76,47 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="28"/>
         <source>ReplayGain Scanner Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת סורק ReplayGain</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="49"/>
         <source>About ReplayGain Scanner Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>אודות תוספת סורק ReplayGain</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="50"/>
         <source>ReplayGain Scanner Plugin for Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת סורק ReplayGain עבור Qmmp</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="51"/>
         <source>This plugin scans audio files and gives information for volume normalization</source>
-        <translation type="unfinished"></translation>
+        <translation>תוספת זו סורקת קבצי שמע ונותנת מידע עבור נורצליזציה של עוצמת שמע</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="53"/>
         <source>Based on source code by:</source>
-        <translation type="unfinished"></translation>
+        <translation>מבוססת על קוד מקור מאת:</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="54"/>
         <source>David Robinson &lt;David@Robinson.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="55"/>
         <source>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="56"/>
         <source>Frank Klemm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../rgscanhelper.cpp" line="32"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>סורק ReplayGain</translation>
     </message>
     <message>
         <location filename="../rgscanhelper.cpp" line="33"/>
         <source>Meta+R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

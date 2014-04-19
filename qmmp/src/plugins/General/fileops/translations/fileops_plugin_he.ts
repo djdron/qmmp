@@ -38,8 +38,8 @@
         <location filename="../fileops.cpp" line="189"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
-            <numerusform>האם אכן ברצונך להסיר קובץ %n מן הכונן?</numerusform>
-            <numerusform>האם אכן ברצונך להסיר %n קבצים מן הכונן?</numerusform>
+            <numerusform>האם אתה בטוח כי ברצונך להסיר קובץ %n מתוך הכונן?</numerusform>
+            <numerusform>האם אתה בטוח כי ברצונך להסיר %n קבצים מתוך הכונן?</numerusform>
         </translation>
     </message>
 </context>
@@ -58,12 +58,12 @@
     <message>
         <location filename="../fileopsfactory.cpp" line="51"/>
         <source>Qmmp File Operations Plugin</source>
-        <translation>תוספת מבצעי קובץ Qmmp</translation>
+        <translation>תוספת מבצעי קובץ של Qmmp</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -71,12 +71,12 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>התאם קיצור דרך</translation>
+        <translation>התאמת קיצור דרך</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>הזן את צירוף המקשים שברצונך להקצות</translation>
+        <translation>הזן את צירוף המקש אשר ברצונך להקצות</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="133"/>
         <source>File name pattern:</source>
-        <translation>דפוס שם קובץ:</translation>
+        <translation>תבנית שם קובץ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="53"/>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
-        <translation>ז&apos;אנר</translation>
+        <translation>ז׳אנר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
@@ -204,7 +204,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
+        <translation>מספר דיסק</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>

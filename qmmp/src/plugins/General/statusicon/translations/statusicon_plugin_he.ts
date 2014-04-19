@@ -27,7 +27,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation>נסה לפצל שם קובץ כאשר לא קימת תגית</translation>
+        <translation>נסה לפצל שם קובץ כאשר אין תגית</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
-        <translation>תבנית טולטיפ</translation>
+        <translation>תבנית תיבת עזר</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation>תוספת צלמית מצב Qmmp</translation>
+        <translation>תוספת צלמית מצב של Qmmp</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>

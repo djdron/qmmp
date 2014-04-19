@@ -44,12 +44,12 @@
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>&amp;Show Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>הצג &amp;תפריט</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="169"/>
@@ -117,17 +117,17 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="50"/>
         <source>Qmmp ProjectM Visual Plugin</source>
-        <translation>תוספת חיזוי  ProjectM ‫Qmmp</translation>
+        <translation>תוספת חיזוי ProjectM של Qmmp</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugin adds projectM visualization</source>
-        <translation>תוספת זו מוסיפה חיזוי  של ProjectM</translation>
+        <translation>תוספת זו מוסיפה חיזוי של ProjectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>

@@ -16,17 +16,17 @@
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>תוספת פלט OSS ‫Qmmp</translation>
+        <translation>תוספת פלט OSS של Qmmp</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
         <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
-        <translation>חוברה על ידי: Yuriy Zhuravlev ‫&lt;slalkerg@gmail.com&gt;</translation>
+        <translation>חוברה על ידי: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;‎</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation>מבוססת על קוד מאת: Brad Hughes ‫&lt;bhughes@trolltech.com&gt;</translation>
+        <translation>מבוססת על קוד מאת: Brad Hughes &lt;bhughes@trolltech.com&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="197"/>
         <source>PCM over Master</source>
-        <translation type="unfinished"></translation>
+        <translation>‏PCM על פני Master</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>

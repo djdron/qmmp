@@ -11,32 +11,32 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>CD Audio Detection</source>
-        <translation>איתור שמע אוטומטי של CD</translation>
+        <translation>איתור אוטומטי של תקליטור שמע</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
         <source>Add tracks to playlist automatically</source>
-        <translation>הוסף רצועות אוטומטית אל רשימת השמעה</translation>
+        <translation>הוסף רצועות אוטומטית לתוך רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Remove tracks from playlist automatically</source>
-        <translation>הסר רצועות אוטומטית מן רשימת השמעה</translation>
+        <translation>הסר רצועות אוטומטית מתוך רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Removable Device Detection</source>
-        <translation>איתור התקנים ברי הזזה</translation>
+        <translation>איתור התקנים נשלפים</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Add files to playlist automatically</source>
-        <translation>הוסף קבצים אוטומטית אל רשימת השמעה</translation>
+        <translation>הוסף קבצים אוטומטית לתוך רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Remove files from playlist automatically</source>
-        <translation>הסר קבצים אוטומטית מן רשימת השמעה</translation>
+        <translation>הסר קבצים אוטומטית מתוך רשימת נגינה</translation>
     </message>
 </context>
 <context>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../udisks2factory.cpp" line="51"/>
         <source>Qmmp UDisks2 Plugin</source>
-        <translation>תוספת UDisks2 ‏Qmmp</translation>
+        <translation>תוספת UDisks2 של Qmmp</translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="52"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../udisks2factory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../udisks2plugin.cpp" line="130"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation>הוסף CD ‫&quot;%1&quot;</translation>
+        <translation>הוסף תקליטור &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisks2plugin.cpp" line="138"/>

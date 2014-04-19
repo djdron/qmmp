@@ -16,12 +16,12 @@
     <message>
         <location filename="../scrobblerfactory.cpp" line="51"/>
         <source>Qmmp AudioScrobbler Plugin</source>
-        <translation>תוספת  AudioScrobbler ‫Qmmp</translation>
+        <translation>תוספת AudioScrobbler של Qmmp</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -46,7 +46,7 @@
         <location filename="../settingsdialog.ui" line="50"/>
         <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
-        <translation>בדיקה</translation>
+        <translation>בדוק</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">2. התר ל-Qmmp לקיים scrobble של רצועות לתוך חשבון %1</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
@@ -86,13 +86,13 @@
         <location filename="../settingsdialog.cpp" line="136"/>
         <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
-        <translation>שגיאת רשת עבודה</translation>
+        <translation>שגיאת רשת</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
-        <translation>לא ניתן לרשום סשן חדש</translation>
+        <translation>אין אפשרות לרשום סשן חדש</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="121"/>
