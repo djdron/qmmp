@@ -142,12 +142,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>Extra options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Додаткові опції:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Extra command line options</source>
-        <translation type="unfinished"></translation>
+        <translation>Додаткові команди командного рядка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
