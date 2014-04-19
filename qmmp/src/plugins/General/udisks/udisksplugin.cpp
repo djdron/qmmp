@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -111,7 +111,7 @@ void UDisksPlugin::addDevice(QDBusObjectPath o)
         delete device;
         return;
     }
-    if (device->property("PartitionSize").toLongLong() < 17000000000LL &&
+    if (device->property("PartitionSize").toLongLong() < 40000000000LL &&
             (device->property("IdType").toString() == "vfat" ||
              device->property("IdType").toString() == "iso9660" ||
              device->property("IdType").toString() == "udf" ||

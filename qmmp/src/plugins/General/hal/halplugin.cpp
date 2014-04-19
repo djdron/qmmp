@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -116,7 +116,7 @@ void HalPlugin::addDevice(const QString &udi)
         return;
     }
 
-    if (device->property("volume.size").toLongLong() < 17000000000LL &&
+    if (device->property("volume.size").toLongLong() < 40000000000LL &&
             (device->property("volume.fstype").toString() == "vfat" ||
              device->property("volume.fstype").toString() == "iso" ||
              device->property("volume.fstype").toString() == "udf" ||
