@@ -21,17 +21,17 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="105"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation>תוספת שמע WildMidi ‫Qmmp</translation>
+        <translation>תוספת שמע WildMidi של Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="106"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation>תוספת זו עושה שימוש בספריית WildMidi לניגון של קבצי midi</translation>
+        <translation>תוספת זו עושה שימוש בספריית WildMidi לשם ניגון של קבצי midi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="107"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>

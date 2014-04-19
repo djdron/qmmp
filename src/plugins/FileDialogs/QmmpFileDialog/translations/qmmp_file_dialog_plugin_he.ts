@@ -49,7 +49,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="200"/>
         <source>Files of type:</source>
-        <translation>קבצים של טיפוס:</translation>
+        <translation>קבצים מן טיפוס:</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="226"/>
@@ -76,13 +76,13 @@
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי:‭
-Vladimir Kuznetsov ‫&lt;vovanec@gmail.com&gt;
-Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;‬</translation>
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‬</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="128"/>
         <source>Some code is copied from the Qt library</source>
-        <translation>קוד מסוים מועתק מן הספרייה Qt</translation>
+        <translation>קוד מסוים מועתק מתוך הספרייה Qt</translation>
     </message>
 </context>
 <context>

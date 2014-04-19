@@ -16,12 +16,12 @@
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="61"/>
         <source>Qmmp WaveOut Output Plugin</source>
-        <translation>תוספת פלט WaveOut ‫Qmmp</translation>
+        <translation>תוספת פלט WaveOut של Qmmp</translation>
     </message>
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="62"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="63"/>

@@ -112,7 +112,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="58"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="67"/>
@@ -190,7 +190,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="228"/>
         <source>Auto-save playlist when modified</source>
-        <translation>שמור אוטומטית רשימת השמעה כאשר משתנה</translation>
+        <translation>שמור אוטומטית רשימת נגינה כאשר משתנה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="355"/>
@@ -231,12 +231,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="163"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">קבץ פורמט:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="235"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
+        <translation>טהר רשימות נגינה קודמות בעת פתיחת אחת חדשה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="296"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
-        <translation>הוסף קבצים מן שורת פקודה אל רשימת השמעה זו:</translation>
+        <translation>הוסף קבצים מתוך שורת פקודה אל רשימת נגינה זו:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="504"/>
@@ -390,7 +390,7 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>File Types</source>
-        <translation type="unfinished"></translation>
+        <translation>טיפוסי קובץ</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="183"/>
@@ -462,7 +462,7 @@
         <location filename="../configdialog.cpp" line="300"/>
         <location filename="../configdialog.cpp" line="317"/>
         <source>Genre</source>
-        <translation>ז&apos;אנר</translation>
+        <translation>ז׳אנר</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="301"/>
@@ -480,7 +480,7 @@
         <location filename="../configdialog.cpp" line="303"/>
         <location filename="../configdialog.cpp" line="320"/>
         <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
+        <translation>מספר דיסק</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="304"/>
@@ -507,12 +507,12 @@
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>אמן/אלבום</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="324"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>אמן/שנה/אלבום</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="344"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>גליצאית</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="353"/>
@@ -627,12 +627,12 @@
     <message>
         <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">סרבית (Ijekavian)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">סרבית (Ekavian)</translation>
     </message>
 </context>
 <context>
@@ -660,7 +660,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
@@ -685,7 +685,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="169"/>
         <source>Genre</source>
-        <translation>ז&apos;אנר</translation>
+        <translation>ז׳אנר</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="170"/>
@@ -705,7 +705,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="176"/>
         <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
+        <translation>מספר דיסק</translation>
     </message>
 </context>
 <context>
@@ -718,7 +718,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>סינון:</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
@@ -756,7 +756,7 @@
         <location filename="../jumptotrackdialog.cpp" line="91"/>
         <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>בטל הזנה לתור</translation>
     </message>
 </context>
 <context>
@@ -764,7 +764,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation>פורמט רשימת השמעה לא נתמך</translation>
+        <translation>פורמט רשימת נגינה לא נתמך</translation>
     </message>
 </context>
 <context>
@@ -773,7 +773,7 @@
         <location filename="../playlistmanager.cpp" line="151"/>
         <location filename="../playlistmanager.cpp" line="301"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
 </context>
 <context>
@@ -781,12 +781,12 @@
     <message>
         <location filename="../playlisttrack.cpp" line="161"/>
         <source>Streams</source>
-        <translation type="unfinished"></translation>
+        <translation>זרמים</translation>
     </message>
     <message>
         <location filename="../playlisttrack.cpp" line="167"/>
         <source>Empty group</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוצה ריקה</translation>
     </message>
 </context>
 <context>
@@ -794,7 +794,7 @@
     <message>
         <location filename="../winfileassoc.cpp" line="267"/>
         <source>Enqueue in Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>הוסף לתור בתוך Qmmp</translation>
     </message>
 </context>
 <context>
@@ -802,7 +802,7 @@
     <message>
         <location filename="../qmmpuisettings.cpp" line="55"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
 </context>
 <context>
@@ -843,7 +843,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation>ז&apos;אנר:</translation>
+        <translation>ז׳אנר:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="163"/>
@@ -865,7 +865,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="244"/>
         <source>Disc number:</source>
-        <translation>מספר תקליטור:</translation>
+        <translation>מספר דיסק:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="269"/>
@@ -875,7 +875,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
-        <translation>הכלל תגית נבחרת בקובץ</translation>
+        <translation>כלול תגית נבחרת בתוך קובץ</translation>
     </message>
 </context>
 <context>
@@ -888,12 +888,12 @@
     <message>
         <location filename="../forms/templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation>איפוס</translation>
+        <translation>אפס</translation>
     </message>
     <message>
         <location filename="../forms/templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation>שיבוץ</translation>
+        <translation>שבץ</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
@@ -923,7 +923,7 @@
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation>ז&apos;אנר</translation>
+        <translation>ז׳אנר</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -943,7 +943,7 @@
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
+        <translation>מספר דיסק</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
@@ -982,7 +982,7 @@
     <message>
         <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
-        <translation type="unfinished"></translation>
+        <translation>בחר קובץ אחד או יותר לניגון</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="163"/>
@@ -993,17 +993,17 @@
         <location filename="../uihelper.cpp" line="179"/>
         <location filename="../uihelper.cpp" line="203"/>
         <source>Playlist Files</source>
-        <translation>קבצי רשימת השמעה</translation>
+        <translation>קבצי רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="181"/>
         <source>Open Playlist</source>
-        <translation>פתח רשימת השמעה</translation>
+        <translation>פתח רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="204"/>
         <source>Save Playlist</source>
-        <translation>שמור רשימת השמעה</translation>
+        <translation>שמור רשימת נגינה</translation>
     </message>
 </context>
 <context>
@@ -1011,47 +1011,47 @@
     <message>
         <location filename="../forms/winfileassocpage.ui" line="17"/>
         <source>Media files handled by Qmmp:</source>
-        <translation type="unfinished"></translation>
+        <translation>קבצי מדיה אשר מטופלים על ידי Qmmp:</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="49"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>בחר הכל</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="56"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation>בחר כלום</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="136"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרה</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="137"/>
         <source>Not all files could be associated. Please check your security permissions and retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>לא  התה אפשרות לשייך את כל הקבצים. אנא בדוק את הרשאות האבטחה שלך ונסה שוב.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="144"/>
         <source>Check all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>סמן את כל טיפוסי הקובץ בתוך הרשימה</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="145"/>
         <source>Uncheck all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>בטל את סימון כל טיפוסי הקובץ ברשימה</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="146"/>
         <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
-        <translation type="unfinished"></translation>
+        <translation>סמן את סיומות הקובץ שברצונך מן Qmmp לנהל. כאשר אתה לוחץ החל, הקבצים המסומנים ישוייכו עם Qmmp. אם אתה מבטל סימון של טיפוס מדיה, השיוך של הקובץ ישוחזר.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;הערה:&lt;/b&gt; שחזור לא פועל תחת חלונות Vista/7.</translation>
     </message>
 </context>
 </TS>

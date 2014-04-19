@@ -76,7 +76,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Playlist</source>
-        <translation>&amp;חזור על רשימת השמעה</translation>
+        <translation>&amp;חזור על רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -106,8 +106,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>&amp;No Playlist Advance</source>
-        <translatorcomment>אין</translatorcomment>
-        <translation>&amp;בלי החשת רשימת השמעה</translation>
+        <translation>&amp;אל תחיש רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
@@ -138,7 +137,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Playlist</source>
-        <translation>הצג רשימת השמעה</translation>
+        <translation>הצג רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
@@ -178,32 +177,32 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>עוצמת קול &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>עוצמת קול &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>ה&amp;שתק</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
@@ -348,7 +347,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Select Next Playlist</source>
-        <translation>&amp;בחר רשימת השמעה באה</translation>
+        <translation>&amp;בחר רשימת נגינה באה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -358,7 +357,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation>&amp;בחר רשימת השמעה קודמת</translation>
+        <translation>&amp;בחר רשימת נגינה קודמת</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -368,7 +367,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;Show Playlists</source>
-        <translation>&amp;הצג רשימות השמעה</translation>
+        <translation>&amp;הצג רשימות נגינה</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -378,12 +377,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;קבץ רצועות</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
@@ -490,7 +489,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation>שנה קיצור דרך...</translation>
+        <translation>שינוי קיצור דרך...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
@@ -505,12 +504,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Volume</source>
-        <translation type="unfinished">עוצמת קול</translation>
+        <translation>עוצמת קול</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="79"/>
@@ -548,7 +547,7 @@
     <message>
         <location filename="../display.cpp" line="74"/>
         <source>Play files</source>
-        <translation type="unfinished"></translation>
+        <translation>נגן קבצים</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
@@ -558,12 +557,12 @@
     <message>
         <location filename="../display.cpp" line="84"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
-        <translation>חזור על רשימת השמעה</translation>
+        <translation>חזור על רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="92"/>
@@ -760,12 +759,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="402"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="420"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>שמע</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
@@ -778,7 +777,7 @@
     <message>
         <location filename="../playlist.cpp" line="55"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="181"/>
@@ -847,7 +846,7 @@
     <message>
         <location filename="../playlist.cpp" line="248"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>לפי קבוצה</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="256"/>
@@ -872,7 +871,7 @@
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>&amp;New PlayList</source>
-        <translation>רשימת השמעה &amp;חדשה</translation>
+        <translation>רשימת נגינה &amp;חדשה</translation>
     </message>
 </context>
 <context>
@@ -880,12 +879,12 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation>עיון ברשימת השמעה</translation>
+        <translation>מעלעל רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="31"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>סינון:</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="43"/>
@@ -920,7 +919,7 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;שמור בשם...</translation>
+        <translation>&amp;שמירה בשם...</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="53"/>
@@ -935,12 +934,12 @@
     <message>
         <location filename="../playlistselector.cpp" line="125"/>
         <source>Rename Playlist</source>
-        <translation>שנה שם רשימת השמעה</translation>
+        <translation>שנה שם רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="125"/>
         <source>Playlist name:</source>
-        <translation>שם רשימת השמעה:</translation>
+        <translation>שם רשימת נגינה:</translation>
     </message>
 </context>
 <context>
@@ -1123,7 +1122,7 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation>ממשק משתמש מחושל Qmmp</translation>
+        <translation>ממשק משתמש מחושל של Qmmp</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="46"/>
@@ -1135,9 +1134,9 @@
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי:‭
-Vladimir Kuznetsov ‫&lt;vovanec@gmail.com&gt;
-Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;‬</translation>
+        <translation>חוברה על ידי::
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
@@ -1157,7 +1156,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="55"/>
         <source>Add...</source>
-        <translation>הוסף...</translation>
+        <translation>הוספה...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="68"/>
@@ -1210,7 +1209,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="197"/>
         <source>Playlist:</source>
-        <translation>רשימת השמעה:</translation>
+        <translation>רשימת נגינה:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="233"/>
@@ -1243,7 +1242,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="303"/>
         <source>Playlist</source>
-        <translation>רשימת השמעה</translation>
+        <translation>רשימת נגינה</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
@@ -1278,7 +1277,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
-        <translation>הצג רשימות השמעה</translation>
+        <translation>הצג רשימות נגינה</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="394"/>
@@ -1293,12 +1292,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
-        <translation>מפריד רשימת השמעה:</translation>
+        <translation>מפריד רשימת נגינה:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation>הצג לחצן &apos;רשימת השמעה חדשה&apos;</translation>
+        <translation>הצג לחצן &apos;רשימת נגינה חדשה&apos;</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="101"/>

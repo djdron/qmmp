@@ -16,7 +16,7 @@
     <message>
         <location filename="../converter.cpp" line="266"/>
         <source>Encoding...</source>
-        <translation>מקודד כעת...</translation>
+        <translation>כעת מקודד...</translation>
     </message>
 </context>
 <context>
@@ -152,12 +152,12 @@
     <message>
         <location filename="../converterfactory.cpp" line="49"/>
         <source>About Converter Plugin</source>
-        <translation>אודות תוספת ממירה</translation>
+        <translation>אודות תוספת ממיר</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="50"/>
         <source>Qmmp Converter Plugin</source>
-        <translation>תוספת ממירה Qmmp</translation>
+        <translation>תוספת ממיר של Qmmp</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
@@ -167,7 +167,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -180,12 +180,12 @@
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>
         <source>Converting...</source>
-        <translation>ממיר כעת...</translation>
+        <translation>כעת ממיר...</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="43"/>

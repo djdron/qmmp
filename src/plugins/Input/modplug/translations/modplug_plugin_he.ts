@@ -21,12 +21,12 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="128"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>תוספת שמע ModPlug ‫Qmmp</translation>
+        <translation>תוספת שמע ModPlug של Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="130"/>
@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation>‭Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation>‭Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation>‭Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -92,6 +92,7 @@
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
+        <translatorcomment>כלי נגינה</translatorcomment>
         <translation>מכשירים</translation>
     </message>
     <message>
@@ -155,7 +156,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Resampling</source>
-        <translation>דגימה מחודשת</translation>
+        <translation>דגימה מחודשת (Resampling)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="109"/>
@@ -283,7 +284,7 @@
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
         <translation>לתשומת לבך: הגדרת מגבר קדמי
-בצורה גבוהה מדי עשויה לגרום לקיצוץ!</translation>
+בצורה גבוהה מדי עלולה לגרום לקיצוץ!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -298,12 +299,12 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="683"/>
         <source>Use filename as song title</source>
-        <translation>השתמש בשם קובץ ככותרת שיר</translation>
+        <translation>השתמש בשם קובץ בתור כותרת שיר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
         <source>Noise reduction</source>
-        <translation>הפחתת רעש</translation>
+        <translation>הפחת רעש</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
@@ -333,13 +334,12 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="750"/>
         <source>time(s)</source>
-        <translation>פעמים</translation>
+        <translation>פע(מי)ם</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
-        <translatorcomment>תמידית</translatorcomment>
-        <translation>לולאה נצחית</translation>
+        <translation>קיים לולאה נצחית</translation>
     </message>
 </context>
 </TS>

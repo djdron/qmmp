@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Command to run when Qmmp reaches the end of the playlist</source>
-        <translation>פקודה להרצה כאשר Qmmp מגיע אל סוף רשימת ההשמעה</translation>
+        <translation>פקודה להרצה כאשר Qmmp מגיע אל סוף רשימת הנגינה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="97"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
         <source>Genre</source>
-        <translation>ז&apos;אנר</translation>
+        <translation>ז׳אנר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="63"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>
         <source>Duration</source>
-        <translation>משך זמן</translation>
+        <translation>משך</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="66"/>
@@ -122,7 +122,7 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
-        <translation>תוספת שינוי רצועה Qmmp</translation>
+        <translation>תוספת שינוי רצועה של Qmmp</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 </TS>

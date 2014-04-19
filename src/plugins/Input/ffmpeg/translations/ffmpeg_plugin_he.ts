@@ -21,7 +21,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="258"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
-        <translation>תוספת שמע FFmpeg ‫Qmmp</translation>
+        <translation>תוספת שמע FFmpeg של Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="259"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="272"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <source>Monkey&apos;s Audio (APE)</source>
-        <translation></translation>
+        <translation>Monkey&apos;s Audio (APE)‎</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>MP3 (MPEG audio layer 3)</source>
-        <translation></translation>
+        <translation>MP3 (MPEG audio layer 3)‎</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
@@ -137,12 +137,13 @@
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
         <source>DTS/DTS-Core</source>
-        <translation></translation>
+        <translation>ליבת DTS/DTS</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Matroska Audio (Dolby TrueHD Lossless)</source>
-        <translation>שמע Matroska ‫(Dolby TrueHD נטול אובדן)</translation>
+        <translatorcomment>אל הפסד</translatorcomment>
+        <translation>שמע Matroska ‏(Dolby TrueHD נטול אובדן)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="138"/>

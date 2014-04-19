@@ -29,12 +29,12 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation>תוספת ניהול כיסוי Qmmp</translation>
+        <translation>תוספת ניהול כיסוי של Qmmp</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;שמור בשם...</translation>
+        <translation>&amp;שמירה בשם...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>שמור כיסוי בשם</translation>
+        <translation>שמירת כיסוי בתור</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>

@@ -49,17 +49,17 @@
     <message>
         <location filename="../copypastefactory.cpp" line="49"/>
         <source>Qmmp Copy/Paste Plugin</source>
-        <translation>תוספת העתק/הדבק Qmmp</translation>
+        <translation>תוספת העתק/הדבק של Qmmp</translation>
     </message>
     <message>
         <location filename="../copypastefactory.cpp" line="50"/>
         <source>This plugin allows to copy selected tracks from one playlist to another</source>
-        <translation>תוספת זו מתירה לך להעתיק רצועות נבחרות מרשימת השמעה אחת לאחרת</translation>
+        <translation>תוספת זו מתירה לך להעתיק רצועות נבחרות מתוך רשימת נגינה אחת לאחרת</translation>
     </message>
     <message>
         <location filename="../copypastefactory.cpp" line="51"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>חוברה על ידי: Ilya Kotov ‫&lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
 </context>
 </TS>
