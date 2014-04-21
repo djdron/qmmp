@@ -44,12 +44,12 @@
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>&amp;Show Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикажи &amp;мени</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>М</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="169"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="169"/>
         <source>N</source>
-        <translation>N</translation>
+        <translation>Н</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="170"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="170"/>
         <source>P</source>
-        <translation>P</translation>
+        <translation>П</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="171"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="171"/>
         <source>R</source>
-        <translation>R</translation>
+        <translation>Р</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="172"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="172"/>
         <source>L</source>
-        <translation>L</translation>
+        <translation>Л</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="174"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="174"/>
         <source>F</source>
-        <translation>F</translation>
+        <translation>Ф</translation>
     </message>
 </context>
 <context>

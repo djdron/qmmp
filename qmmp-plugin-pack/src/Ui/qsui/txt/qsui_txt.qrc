@@ -11,5 +11,7 @@
     <file>qsui_authors_lt_LT.txt</file>
     <file>qsui_authors_he.txt</file>
     <file>qsui_authors_cs.txt</file>
+    <file>qsui_authors_sr_BA.txt</file>
+    <file>qsui_authors_sr_RS.txt</file>
   </qresource>
 </RCC>
