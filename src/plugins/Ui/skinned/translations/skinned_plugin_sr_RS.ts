@@ -546,7 +546,7 @@
     <message>
         <location filename="../display.cpp" line="74"/>
         <source>Play files</source>
-        <translation type="unfinished"></translation>
+        <translation>Пусти фајлове</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>

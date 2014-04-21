@@ -137,12 +137,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>Extra options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Додатне опције:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Extra command line options</source>
-        <translation type="unfinished"></translation>
+        <translation>Додатне опције командне линије</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="29"/>
