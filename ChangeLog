@@ -783,6 +783,7 @@ Version 0.8.0
 * added created playlist auto-selection
 * added feature to not clear previous playlist when opening new one
 * added mplayer command line options setting
+* added Serbian translation (Mladen Pejaković)
 * blocked one hotkey assignment for several commands in the hotkey plugin
 * limited cover cache size
 * improved 'jump to track' dialog
@@ -803,3 +804,6 @@ Version 0.8.0
 * fixed possible segmentation in the mad plugin
 * fixed 'eject' button function
 * fixed raise of the main window when starting another instance
+* updated Russian translation
+* updated Hebrew translation (Genghis Khan)
+* updated Ukrainian translation (Gennadi Motsyo)
