@@ -72,7 +72,7 @@ Description: feature-rich audio player with support of many formats
   - streaming Ogg Vorbis or MP3 via IceCast/ShoutCast.
   - audio converter;
   - stream browser;
-  - audio formats conveter.
+  - audio formats converter.
 
 Package: libqmmp-misc
 Architecture: any
