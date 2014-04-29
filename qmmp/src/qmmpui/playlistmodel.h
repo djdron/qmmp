@@ -127,7 +127,13 @@ public:
      * Returns the item with the index \b index or 0 if item doesn't exist.
      */
     PlayListItem* item(int index) const;
+    /*!
+     * Returns the track with the index \b index or 0 if track doesn't exist.
+     */
     PlayListTrack* track(int index) const;
+    /*!
+     * Returns the group with the index \b index or 0 if group doesn't exist.
+     */
     PlayListGroup* group(int index) const;
     /*!
      * Returns index of the current item.
@@ -144,12 +150,16 @@ public:
      * Returns \b true if success, otherwise returns \b false
      */
     bool setCurrent(PlayListTrack *item);
-
-
+    /*!
+     * Returns \b true if a playlist contains track with the index \b index.
+     * Otherwise returns \b false.
+     */
     bool isTrack(int index) const;
-
+    /*!
+     * Returns \b true if a playlist contains group separator with the index \b index.
+     * Otherwise returns \b false.
+     */
     bool isGroup(int index) const;
-
     /*!
      * Returns \b true if item with \b index is selected, otherwise returns \b false
      */
@@ -160,10 +170,17 @@ public:
      * @param selected Selection state (\b true - select, \b false - unselect)
      */
     void setSelected(int index, bool selected = true);
-
-
+    /*!
+     * Sets the selected state of the list of tracks to \b select
+     * @param tracks List of tracks.
+     * @param selected Selection state (\b true - select, \b false - unselect)
+     */
     void setSelected(QList<PlayListTrack *> tracks, bool selected = true);
-
+    /*!
+     * Sets the selected state of the list of items to \b select
+     * @param items List of items.
+     * @param selected Selection state (\b true - select, \b false - unselect)
+     */
     void setSelected(QList<PlayListItem *> items, bool selected = true);
     /*!
      * Advances to the next item. Returns \b false if next iten doesn't exist,
@@ -271,7 +288,10 @@ public:
         FILE_MODIFICATION_DATE, /*!< by file modification date */
         GROUP                   /*!< by group name */
     };
-
+    /*!
+     * Returns number of track with index \b index.
+     * Returns \b -1 if track with index \b index does not exist.
+     */
     int numberOfTrack(int index) const;
 
 signals:
@@ -308,8 +328,8 @@ public slots:
      */
     void add(PlayListTrack *track);
     /*!
-     * Adds a list of items to the playlist.
-     * @param items List of items.
+     * Adds a list of tracks to the playlist.
+     * @param tracks List of tracks.
      */
     void add(QList <PlayListTrack *> tracks);
     /*!
@@ -326,7 +346,9 @@ public slots:
      * Inserts \b track at index position \b index in the playlist.
      */
     void insert(int index, PlayListTrack *track);
-
+    /*!
+     * Inserts \b track after playlist item \b before.
+     */
     void insert(PlayListItem *before, PlayListTrack *track);
     /*!
      * Inserts \b tracks at index position \b index in the playlist.
@@ -346,7 +368,7 @@ public slots:
     void insert(int index, const QStringList &paths);
     /*!
      * Adds a list of URLs at index position \b index in the playlist.
-     * @param paths urls a list of URLs.
+     * @param urls A list of URLs.
      * @param index Position in the playlist.
      */
     void insert(int index, const QList<QUrl> &urls);
