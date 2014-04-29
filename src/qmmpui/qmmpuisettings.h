@@ -95,7 +95,7 @@ public:
     void setConvertTwenty(bool enabled);
     /*!
      * Sets short title template.
-     * @param format title template. \sa MetaDataFormatter
+     * @param titleFormat title template. \sa MetaDataFormatter
      */
     void setTitleFormat(const QString &titleFormat);
     /*!

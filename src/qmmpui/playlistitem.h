@@ -31,7 +31,6 @@
 class PlayListItem
 {
 public:
-
     /*!
      * Constructs an empty plalist item.
      */
@@ -57,7 +56,9 @@ public:
      *  Returns formatted length of the item.
      */
     virtual const QString formattedLength() = 0;
-
+    /*!
+     * Returns \b true if the \b PlayListItem is group separator. Otherwise returns \b false.
+     */
     virtual bool isGroup() const = 0;
 
 private:

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,7 +27,7 @@
 
 class QmmpUiSettings;
 
-/** @brief The PlayListTrack class provides an item for use with the PlayListModel class.
+/** @brief The PlayListTrack class provides a track for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class PlayListTrack : public QMap <Qmmp::MetaData, QString>, public PlayListItem
@@ -62,7 +62,7 @@ public:
     /*!
      * Object destructor.
      */
-    ~PlayListTrack();
+    virtual ~PlayListTrack();
     /*!
      * Returns formatted title of the item.
      */
@@ -92,11 +92,14 @@ public:
      * Gets new metadata from file (works for local files only).
      */
     void updateMetaData();
-
+    /*!
+     * Returns name of the parent group.
+     */
     const QString groupName();
-
+    /*!
+     * Returns \b false.
+     */
     bool isGroup() const;
-
     /*!
      * Returns current state of the playlist item.
      */
