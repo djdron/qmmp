@@ -127,7 +127,7 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation>Овај прикључак извршава спољашњу наредбу при измени нумере</translation>
+        <translation>Извршава спољашњу наредбу при измени нумере</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>

@@ -21,7 +21,7 @@
     <message>
         <location filename="../gnomehotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support of the GNOME/Cinnamon hotkeys</source>
-        <translation>Овај прикључак даје функционалност пречица за Гном/Цинамон</translation>
+        <translation>Функционалност пречица за Гном/Цинамон</translation>
     </message>
     <message>
         <location filename="../gnomehotkeyfactory.cpp" line="53"/>

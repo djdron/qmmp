@@ -26,7 +26,7 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation>Овај прикључак користи Мплејер као мотор за Кумп</translation>
+        <translation>Мплејер мотор за Кумп</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
