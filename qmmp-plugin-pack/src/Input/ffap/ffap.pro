@@ -65,6 +65,8 @@ TRANSLATIONS = translations/ffap_plugin_ru.ts \
     translations/ffap_plugin_lt.ts \
     translations/ffap_plugin_nl.ts \
     translations/ffap_plugin_ja.ts \
+    translations/ffap_plugin_sr_BA.ts \
+    translations/ffap_plugin_sr_RS.ts \
     translations/ffap_plugin_es.ts
 
 RESOURCES = translations/translations.qrc

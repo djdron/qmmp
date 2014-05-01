@@ -1,57 +1,60 @@
-Developers:
+Програмери:
 
     Ilya Kotov <forkotov02@hotmail.ru>
 
-Translators:
+Преводиоци:
 
-Chinese Traditional:
+Традиционални кинески:
     lon <lon83129@126.com>
 
-Chinese Simplified:
+Поједностављени кинески:
     lon <lon83129@126.com>
 
-Czech:
+Чешки:
     Karel Volný <kvolny@redhat.com>
 
-French:
+Француски:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
-German:
+Њемачки:
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
-Hebrew:
+Хебрејски:
     Genghis Khan <genghiskhan@gmx.ca>
 
-Hungarian:
+Мађарски:
     Németh Gábor <sutee84@freemail.hu>
 
-Italian:
+Италијански:
     Gian Paolo Renello <emmerkar@gmail.com>
 
-Japanese:
+Јапански:
     Ryota Shimamoto <liangtai.s16@gmail.com>
 
-Kazakh:
+Казашки:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
-Lithuanian:
+Литвански:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
-Polish:
+Пољски:
     Grzegorz Gibas <amigib@gmail.com>
 
-Russian:
+Руски:
     Ilya Kotov <forkotov02@hotmail.ru>
+    
+Српски:
+    Mladen Pejaković <pejakm@autistici.org>
 
-Slovak:
+Словачки:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
-Spanish:
+Шпански:
     Félix Medrano <xukosky@yahoo.es>
 
-Turkish:
+Турски:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
-Ukrainian:
+Украјински:
     Gennadi Motsyo <drool@altlinux.ru>

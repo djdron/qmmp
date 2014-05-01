@@ -31,7 +31,7 @@
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation>Засновано на Солиду (КДЕ-овој библиотеци)</translation>
+        <translation>Заснован на Солиду (КДЕ-овој библиотеци)</translation>
     </message>
 </context>
 <context>

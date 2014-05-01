@@ -122,7 +122,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugin adds projectM visualization</source>
-        <translation>Овај прикључак даје ПројектМ визуелизације</translation>
+        <translation>Подршка за ПројектМ визуелизације</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="52"/>

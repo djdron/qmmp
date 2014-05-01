@@ -393,7 +393,7 @@
         <location filename="../forms/configdialog.ui" line="283"/>
         <location filename="../configdialog.cpp" line="331"/>
         <source>Preferences</source>
-        <translation>Подешавање</translation>
+        <translation>Подешавањa</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="296"/>

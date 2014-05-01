@@ -31,7 +31,7 @@
     <message>
         <location filename="../decoderopusfactory.cpp" line="125"/>
         <source>This plugin includes code from TagLib library</source>
-        <translation>Овај прикључак користи кôд из Таглиб библиотеке</translation>
+        <translation>Овај прикључак користи кôд из TagLib библиотеке</translation>
     </message>
 </context>
 <context>

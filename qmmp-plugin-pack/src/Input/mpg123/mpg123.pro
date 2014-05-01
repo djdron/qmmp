@@ -36,6 +36,8 @@ TRANSLATIONS = translations/mpg123_plugin_ru.ts \
     translations/mpg123_plugin_lt.ts \
     translations/mpg123_plugin_nl.ts \
     translations/mpg123_plugin_ja.ts \
+    translations/mpg123_plugin_sr_BA.ts \
+    translations/mpg123_plugin_sr_RS.ts \
     translations/mpg123_plugin_es.ts
 
 RESOURCES = translations/translations.qrc

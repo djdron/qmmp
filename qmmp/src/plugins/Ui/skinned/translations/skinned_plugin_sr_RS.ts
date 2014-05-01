@@ -401,7 +401,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
         <source>&amp;About Qt</source>
-        <translation>&amp;О Куту</translation>
+        <translation>О &amp;Куту</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="97"/>

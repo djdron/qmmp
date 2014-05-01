@@ -89,6 +89,8 @@ TRANSLATIONS = translations/qsui_plugin_ru.ts \
     translations/qsui_plugin_nl.ts \
     translations/qsui_plugin_ja.ts \
     translations/qsui_plugin_es.ts \
+    translations/qsui_plugin_sr_BA.ts \
+    translations/qsui_plugin_sr_RS.ts \
     translations/qsui_plugin_sk.ts
 
 
