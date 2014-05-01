@@ -80,6 +80,7 @@ Version 0.8.0
   - improved drag&drop support
   - improved look&feel customization (with use of QDockWidget)
   - fixed 'eject' button function
+* added Serbian translation (Mladen Pejaković)
 * updated Russian translation
 * updated Hebrew translation (Genghis Khan)
 * updated Ukrainian translation (Gennadi Motsyo)
