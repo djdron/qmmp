@@ -82,6 +82,11 @@
     <file>thanks_sr_RS.txt</file>
     <file>translators_sr_RS.txt</file>
     <file>description_sr_RS.txt</file>
+    
+    <file>authors_pl_PL.txt</file>
+    <file>thanks_pl_PL.txt</file>
+    <file>translators_pl_PL.txt</file>
+    <file>description_pl_PL.txt</file>
 
   </qresource>
 </RCC>
