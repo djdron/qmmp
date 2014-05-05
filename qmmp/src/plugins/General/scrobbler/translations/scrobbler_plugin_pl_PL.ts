@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Pozwól Qmmp scrobblować utwory do twojego konta %1</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>

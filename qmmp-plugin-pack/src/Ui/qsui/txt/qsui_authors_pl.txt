@@ -17,9 +17,11 @@ Francuski:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Niemiecki:
-    Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
-
+    
+Hebrajski:
+    Genghis Khan <genghiskhan@gmx.ca>
+    
 Węgierski:
     Németh Gábor <sutee84@freemail.hu>
 
@@ -41,6 +43,9 @@ Polski:
 Rosyjski:
     Ilya Kotov <forkotov02@hotmail.ru>
 
+Serbski:
+    Mladen Pejaković <pejakm@autistici.org>
+    
 Słowacki:
     Ján Ďanovský <dagsoftware@yahoo.com>
 

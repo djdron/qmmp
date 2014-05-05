@@ -104,7 +104,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Play Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzaj &amp;Pliki</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -189,47 +189,47 @@
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż Karty</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>Show Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż Pasek tytułowy</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>Block Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Zablokuj Pasek narzędziowy</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Wycisz</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -394,12 +394,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Grupuj utwory</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="101"/>
@@ -460,17 +460,17 @@
     <message>
         <location filename="../coverwidget.cpp" line="32"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz jako...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="65"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz okładkę jako</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="67"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrazy</translation>
     </message>
 </context>
 <context>
@@ -543,17 +543,17 @@
     <message>
         <location filename="../filesystembrowser.cpp" line="62"/>
         <source>Add to Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj do listy odtwarzania</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="130"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz Katalog</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="65"/>
         <source>Change Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień Katalog</translation>
     </message>
 </context>
 <context>
@@ -606,17 +606,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="388"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="394"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Edit Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj Pasek narzędziowy</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="447"/>
@@ -680,7 +680,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="486"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Wg Grupy</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="494"/>
@@ -706,12 +706,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="622"/>
         <source>Add new playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj nową listę odtwarzania</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>Show all tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż wszystkie karty</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="775"/>
@@ -766,22 +766,22 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="146"/>
         <source>Spectrum Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator Widma</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Cover</source>
-        <translation type="unfinished">Okładka</translation>
+        <translation>Okładka</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="185"/>
         <source>Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listy odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
@@ -1083,22 +1083,22 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="726"/>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Karty</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="732"/>
         <source>Show close buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż przyciski zamykania</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="739"/>
         <source>Show tab list menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż menu listy kart</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="746"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż przycisk &apos;Nowa lista odtwarzania&apos;</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="204"/>
@@ -1203,7 +1203,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
         <source>Volume</source>
-        <translation type="unfinished">Głośność</translation>
+        <translation>Głośność</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="176"/>
@@ -1317,18 +1317,18 @@
     <message>
         <location filename="../forms/toolbareditor.ui" line="14"/>
         <source>ToolBar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytor Paska narzędziowego</translation>
     </message>
     <message>
         <location filename="../forms/toolbareditor.ui" line="175"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <location filename="../toolbareditor.cpp" line="83"/>
         <location filename="../toolbareditor.cpp" line="102"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -56,7 +56,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="79"/>
         <source>Mute/Restore volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz/Włącz dźwięk</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż okno główne</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="315"/>
         <source>Command Line Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Linia Poleceń Pomoc</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="328"/>
@@ -129,7 +129,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Qmmp Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja Qmmp</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="310"/>

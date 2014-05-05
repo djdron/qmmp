@@ -112,17 +112,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Wycisz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostrzeżenie</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekwencja &apos;%1&apos; jest już używana</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
