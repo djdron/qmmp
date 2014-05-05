@@ -140,7 +140,7 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>File Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Typy plików</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="183"/>
@@ -202,12 +202,12 @@
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Artysta/Album</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="324"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Artysta/Rok/Album</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="344"/>
@@ -252,7 +252,7 @@
     <message>
         <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>Galicyjski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="353"/>
@@ -322,12 +322,12 @@
     <message>
         <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Serbski (i)jekawski</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Serbski (Ekawski)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="300"/>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="163"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Format grupowania:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
@@ -475,7 +475,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="235"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść poprzednią listę odtwarzania przy otwieraniu nowej</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="355"/>
@@ -640,7 +640,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
@@ -718,7 +718,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr:</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
@@ -756,7 +756,7 @@
         <location filename="../jumptotrackdialog.cpp" line="91"/>
         <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń z kolejki</translation>
     </message>
 </context>
 <context>
@@ -781,12 +781,12 @@
     <message>
         <location filename="../playlisttrack.cpp" line="161"/>
         <source>Streams</source>
-        <translation type="unfinished"></translation>
+        <translation>Strumienie</translation>
     </message>
     <message>
         <location filename="../playlisttrack.cpp" line="167"/>
         <source>Empty group</source>
-        <translation type="unfinished"></translation>
+        <translation>Pusta grupa</translation>
     </message>
 </context>
 <context>
@@ -794,7 +794,7 @@
     <message>
         <location filename="../winfileassoc.cpp" line="267"/>
         <source>Enqueue in Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolejkuj w Qmmp</translation>
     </message>
 </context>
 <context>
@@ -982,7 +982,7 @@
     <message>
         <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz jedne lub więcej plików do odtwarzania</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="163"/>
@@ -1011,47 +1011,47 @@
     <message>
         <location filename="../forms/winfileassocpage.ui" line="17"/>
         <source>Media files handled by Qmmp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki obsługiwane przez Qmmp:</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="49"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="56"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation>Odznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="136"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostrzeżenie</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="137"/>
         <source>Not all files could be associated. Please check your security permissions and retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie wszystkie pliki zostały skojarzone. Proszę sprawdzić uprawienia systemowe i ponowić.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="144"/>
         <source>Check all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacza wszystkie typy plików na liście</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="145"/>
         <source>Uncheck all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Odznacza wszystkie typy plików na liście</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="146"/>
         <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacz rozszerzenia plików, które Qmmp ma obsługiwać. Po kliknięciu Zastosuj, zaznaczone pliki zostaną skojarzone z Qmmp. Jeśli odznaczysz typ pliku, pierwotne skojarzenie zostanie przywrócone.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Uwaga:&lt;/b&gt; Przywracanie nie działa na Windows Vista/7.</translation>
     </message>
 </context>
 </TS>

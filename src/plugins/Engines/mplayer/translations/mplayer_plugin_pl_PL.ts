@@ -142,12 +142,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>Extra options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodatkowe opcje:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Extra command line options</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodatkowe opcje z linii poleceń</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>

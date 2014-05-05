@@ -5,7 +5,7 @@ Podziękowania:
     Anton Petrusevich <casus@casus.us> - ulepszenia losowego odtwarzania
     Avihay Baratz <avihayb@gmail.com> - funkcja auto stop, poprawki błędów
     Brice Videau <brice.videau@gmail.com> - poprawki błędów
-        Cristian Rodríguez <judas.iscariote@gmail.com> - poprawki scrobbler'a
+    Cristian Rodríguez <judas.iscariote@gmail.com> - poprawki scrobbler'a
     Csaba Hruska <csaba.hruska@gmail.com> - poprawki dla wtyczki ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - wsparcie dla iso.wv
     Evgeny Gleyzerman <evgley@gmail.com> - usprawnienia przetwarzania cue
@@ -20,6 +20,7 @@ Podziękowania:
     Panagiotis Papadopoulos <pano_90@gmx.net> - poprawki ui, raporty błędów
     Pino Toscano <toscano.pino@tiscali.it> - poprawki dotyczące przenośności programu
     Karel Volný <kvolny@redhat.com> - różne poprawki
+    Ryota Shimamoto <liangtai.s16@gmail.com> - poprawki freebsd
     Sebastian Pipping <webmaster@hartwork.org> - poprawki bs2b
     Stefan Koelling <stefankoelling.ext@googlemail.com> - poprawki błędów kompilacji
     Yaakov Selkowitz <yselkowitz@gmail.com> - poprawki cygwin

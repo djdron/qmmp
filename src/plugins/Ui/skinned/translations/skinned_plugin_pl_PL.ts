@@ -176,32 +176,32 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>9</source>
-        <translation type="unfinished">9</translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Wycisz</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
@@ -376,12 +376,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Grupuj utwory</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
@@ -503,7 +503,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Volume</source>
-        <translation type="unfinished">Głośność</translation>
+        <translation>Głośność</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
@@ -546,7 +546,7 @@
     <message>
         <location filename="../display.cpp" line="74"/>
         <source>Play files</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzaj pliki</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
@@ -762,7 +762,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="420"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Dźwięk</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
@@ -833,7 +833,7 @@
     <message>
         <location filename="../playlist.cpp" line="248"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Wg Grupy</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="256"/>
@@ -882,7 +882,7 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="31"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr:</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="43"/>
