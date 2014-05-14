@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Įrašyk adresą</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pridėti</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Atšaukti</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Klaida</translation>
     </message>
 </context>
 <context>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>File Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylų tipai</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="183"/>
@@ -160,17 +160,17 @@
     <message>
         <location filename="../configdialog.cpp" line="243"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvestis</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="253"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylų dialogai</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Vartotojo sąsajos</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="297"/>
@@ -202,132 +202,132 @@
     <message>
         <location filename="../configdialog.cpp" line="323"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlikėjas/Albumas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="324"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlikėjas/Metai/Albumas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="344"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Aptikti automatiškai&gt;</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="345"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Brazilų Portugalų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="346"/>
         <source>Chinese Simplified</source>
-        <translation type="unfinished"></translation>
+        <translation>Kinų supaprastintas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="347"/>
         <source>Chinese Traditional</source>
-        <translation type="unfinished"></translation>
+        <translation>Kinų tradicinis</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="348"/>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>Čekų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="349"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Olandų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="350"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>Anglų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="351"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>Prancūzų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
-        <translation type="unfinished"></translation>
+        <translation>Galisų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="353"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>Vokiečių</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="354"/>
         <source>Hebrew</source>
-        <translation type="unfinished"></translation>
+        <translation>Hebrajų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="355"/>
         <source>Hungarian</source>
-        <translation type="unfinished"></translation>
+        <translation>Vengrų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="356"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>Italų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="357"/>
         <source>Japanese</source>
-        <translation type="unfinished"></translation>
+        <translation>Japonų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="358"/>
         <source>Kazakh</source>
-        <translation type="unfinished"></translation>
+        <translation>Kazachų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="359"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Lietuvių</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="360"/>
         <source>Polish</source>
-        <translation type="unfinished"></translation>
+        <translation>Lenkų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="361"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>Rusų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="362"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>Slovakų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="363"/>
         <source>Spanish</source>
-        <translation type="unfinished"></translation>
+        <translation>Ispanų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="364"/>
         <source>Turkish</source>
-        <translation type="unfinished"></translation>
+        <translation>Turkų</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="365"/>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukrainiečių</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Serbų(Ijekavian) </translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
-        <translation type="unfinished"></translation>
+        <translation>Serbų(Ekavian)</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -450,7 +450,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="163"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupės formatas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
@@ -465,27 +465,27 @@
     <message>
         <location filename="../forms/configdialog.ui" line="222"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvairūs</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="228"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatiškai išsaugoti grojąraštį po pakeitimų</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="235"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti seną grojąraštį atveriant naują</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="355"/>
         <source>Look and Feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvaizda</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="361"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalba:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="417"/>
@@ -495,12 +495,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="504"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Adreso dialogas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="510"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatiškai įkelti adresą iš iškarpinės</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="651"/>
@@ -562,18 +562,18 @@
     <message>
         <location filename="../forms/configdialog.ui" line="450"/>
         <source>Include files:</source>
-        <translation>Įtraukti bylas</translation>
+        <translation>Įtraukti bylas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="209"/>
         <location filename="../forms/configdialog.ui" line="460"/>
         <source>Exclude files:</source>
-        <translation>Išskirti bylas</translation>
+        <translation>Išskirti bylas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="472"/>
         <source>Recursive search depth:</source>
-        <translation>Rekursinės paieškos gylis</translation>
+        <translation>Rekursinės paieškos gylis:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="397"/>
@@ -641,7 +641,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
@@ -719,7 +719,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtras:</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
@@ -741,23 +741,23 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="62"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="63"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="91"/>
         <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>Pašalinti iš eilės</translation>
     </message>
 </context>
 <context>
@@ -765,7 +765,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>Napalaikomas grojaraščio tipas</translation>
     </message>
 </context>
 <context>
@@ -782,12 +782,12 @@
     <message>
         <location filename="../playlisttrack.cpp" line="161"/>
         <source>Streams</source>
-        <translation type="unfinished"></translation>
+        <translation>Srautai</translation>
     </message>
     <message>
         <location filename="../playlisttrack.cpp" line="167"/>
         <source>Empty group</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuščia grupė</translation>
     </message>
 </context>
 <context>
@@ -795,7 +795,7 @@
     <message>
         <location filename="../winfileassoc.cpp" line="267"/>
         <source>Enqueue in Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>Į eilę</translation>
     </message>
 </context>
 <context>
@@ -834,7 +834,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation>Autorius</translation>
+        <translation>Autorius:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="133"/>
@@ -844,7 +844,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="244"/>
         <source>Disc number:</source>
-        <translation>Disko numeris</translation>
+        <translation>Disko numeris:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="184"/>
@@ -856,12 +856,12 @@
     <message>
         <location filename="../forms/tageditor.ui" line="163"/>
         <source>Track:</source>
-        <translation>Takelis</translation>
+        <translation>Takelis:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="197"/>
         <source>Year:</source>
-        <translation>Metai</translation>
+        <translation>Metai:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="14"/>
@@ -983,7 +983,7 @@
     <message>
         <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirink vieną ar daugiau bylų grojimui</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="163"/>
@@ -1012,47 +1012,47 @@
     <message>
         <location filename="../forms/winfileassocpage.ui" line="17"/>
         <source>Media files handled by Qmmp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Media bylos, kurias atvers qmmp:</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="49"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti visus</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="56"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepasirinkti nieko</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="136"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="137"/>
         <source>Not all files could be associated. Please check your security permissions and retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne visi bylų tipai galėjo būti priskirti. Pasitikrink leidimus ir bandyk dar kartą.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="144"/>
         <source>Check all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Pažymėti visus media bylų tipus sąraše</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="145"/>
         <source>Uncheck all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Atžymėti visus bylų tipus sąraše</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="146"/>
         <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pažymėk media bylų tipus, kuriuos turėtų atverti qmmp. Jei atžymėsi, media bylų asociacijos bus atkurtos. </translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Pastaba:&lt;/b&gt; Atkūrimas neveikia Windows Vista/7.</translation>
     </message>
 </context>
 </TS>

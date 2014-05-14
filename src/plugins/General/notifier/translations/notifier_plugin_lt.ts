@@ -82,7 +82,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pranešti pratęsus grojimą</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="368"/>
@@ -98,7 +98,7 @@
         <location filename="../settingsdialog.ui" line="68"/>
         <location filename="../settingsdialog.ui" line="279"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

@@ -1,9 +1,7 @@
-Brazilų, Portugalų:
+Brazilų Portalų:
     Klaos Lacerda
     Bruno Gonçalves
-
-Ispanų:
-    Gian Paolo Renello <emmerkar@gmail.com>
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
 Kinų tradicinis:
     lon <lon83129@126.com>
@@ -11,28 +9,36 @@ Kinų tradicinis:
 Kinų supaprastintas:
     lon <lon83129@126.com>
 
-Lenkų
-   Grzegorz Gibas <amigib@gmail.com>
+Čekų:
+    Karel Volný <kvolny@redhat.com>
 
 Olandų:
     Ronald Uitermark <ronald645@gmail.com>
 
-Čekų:
-    Karel Volný <kvolny@redhat.com>
+Prancūzų:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+    
+Galisų:
+    Óscar Pereira <oscarpereira1989@gmail.com>
 
 Vokiečių:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
-Prancūzų:
-    Stanislas Zeller <uncensored.assault@gmail.com>
+Hebrajų:
+    Genghis Khan <genghiskhan@gmx.ca>
 
-Rusų:
-    Ilya Kotov <forkotov02@hotmail.ru>
+Vengrų:
+    Németh Gábor <sutee84@freemail.hu>
 
-Turkų:
-    Mustafa GUNAY <mustafagunay@pgmail.com>
-    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+Italų:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+Japonų:
+    Ryota Shimamoto <liangtai.s16@gmail.com>
+
+Kazachų:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
 Lietuvių:
     Algirdas Butkus <butkus.algirdas@gmail.com>
@@ -42,6 +48,12 @@ Lenkų:
 
 Rusų:
     Ilya Kotov <forkotov02@hotmail.ru>
+    
+Serbų:
+    Mladen Pejaković <pejakm@autistici.org>
+
+Slovakų:
+    Ján Ďanovský <dagsoftware@yahoo.com>
 
 Ispanų:
     Félix Medrano <xukosky@yahoo.es>
@@ -50,5 +62,7 @@ Turkų:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
-Vengrų:
-    Németh Gábor <sutee84@freemail.hu>
+Ukrainiečių:
+    Gennadi Motsyo <drool@altlinux.ru>
+
+

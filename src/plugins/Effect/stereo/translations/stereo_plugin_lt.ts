@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>

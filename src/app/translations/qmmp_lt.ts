@@ -56,7 +56,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="79"/>
         <source>Mute/Restore volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Nutildyti/Atstatyti garsą</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti pagrindinį langą</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="315"/>
         <source>Command Line Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalo pagalba </translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="328"/>
@@ -139,7 +139,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Qmmp Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Versija</translation>
     </message>
 </context>
 </TS>

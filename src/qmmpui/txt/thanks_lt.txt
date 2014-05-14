@@ -20,6 +20,7 @@ Dėkojame:
     Panagiotis Papadopoulos <pano_90@gmx.net> - ui pataisymai, klaidų pranešimai
     Pino Toscano <toscano.pino@tiscali.it> - portabilumo pataisymai
     Karel Volný <kvolny@redhat.com> - įvairūs pataisymai
+    Ryota Shimamoto <liangtai.s16@gmail.com> - freebsd lopai
     Sebastian Pipping <webmaster@hartwork.org> - bs2b užlopymas
     Stefan Koelling <stefankoelling.ext@googlemail.com> - keletas kompiliavimo pataisymų
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin užlopymas

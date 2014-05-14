@@ -137,17 +137,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <source>Synchronization factor:</source>
-        <translation>Sinchronizacijos korekcija</translation>
+        <translation>Sinchronizacijos korekcija:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>Extra options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Papildomi pasirinkimai:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Extra command line options</source>
-        <translation type="unfinished"></translation>
+        <translation>Papildomi komandinės eilutės pasirinkimai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
