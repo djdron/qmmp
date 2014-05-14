@@ -39,7 +39,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation>C</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation>V</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation>Z</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -94,17 +94,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Šokti į takelį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Play Files</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Groti failus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="52"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
@@ -185,57 +185,57 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation>E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti korteles</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>Show Title Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti pavadinimo juostas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>Block Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Blokuoti įrankių juotas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Volume &amp;+</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume &amp;+</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>Volume &amp;-</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume &amp;-</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nutildyti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>F</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
@@ -245,7 +245,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation>D</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
@@ -255,7 +255,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation>Del</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="76"/>
@@ -295,7 +295,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -315,7 +315,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+A</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -325,7 +325,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+I</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
@@ -345,7 +345,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -355,7 +355,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -365,7 +365,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
@@ -380,7 +380,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgDown</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="97"/>
@@ -390,17 +390,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="98"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgUp</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Group tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Grupuoti takelius</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="101"/>
@@ -410,7 +410,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="101"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -420,7 +420,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="103"/>
@@ -445,7 +445,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="106"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
 </context>
 <context>
@@ -453,7 +453,7 @@
     <message>
         <location filename="../colorwidget.cpp" line="37"/>
         <source>Select Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti Spalvą</translation>
     </message>
 </context>
 <context>
@@ -461,17 +461,17 @@
     <message>
         <location filename="../coverwidget.cpp" line="32"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Išsaugoti kaip...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="65"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti viršelį kaip</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="67"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Paveikslėliai</translation>
     </message>
 </context>
 <context>
@@ -489,17 +489,17 @@
     <message>
         <location filename="../equalizer.cpp" line="54"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Išankstinis nustatymas:</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>išsaugoti</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="70"/>
@@ -515,28 +515,28 @@
         <location filename="../equalizer.cpp" line="100"/>
         <location filename="../equalizer.cpp" line="203"/>
         <source>%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1dB</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
         <location filename="../equalizer.cpp" line="201"/>
         <source>+%1dB</source>
-        <translation type="unfinished"></translation>
+        <translation>+%1dB</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="153"/>
         <source>preset</source>
-        <translation type="unfinished"></translation>
+        <translation>išankstinis nustatymas</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="226"/>
         <source>Overwrite Request</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prerrašyti užklausą</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="227"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>išankstinis nustatymas &apos;%1&apos; jau yra. Perrašyti? </translation>
     </message>
 </context>
 <context>
@@ -544,17 +544,17 @@
     <message>
         <location filename="../filesystembrowser.cpp" line="62"/>
         <source>Add to Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkelti į grojąraštį</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="130"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkti aplanką</translation>
     </message>
     <message>
         <location filename="../filesystembrowser.cpp" line="65"/>
         <source>Change Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakeisti aplanką</translation>
     </message>
 </context>
 <context>
@@ -577,7 +577,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="274"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojąraščio pavadinimas:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
@@ -607,17 +607,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="388"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="394"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>Edit Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Taisyti įrankių juostą</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="447"/>
@@ -676,12 +676,12 @@
         <location filename="../mainwindow.cpp" line="482"/>
         <location filename="../mainwindow.cpp" line="529"/>
         <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagal bylos sukūrimo laiką</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="486"/>
         <source>By Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagal grupę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="494"/>
@@ -707,12 +707,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="622"/>
         <source>Add new playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti naują grojąraštį</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>Show all tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti visas korteles</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="775"/>
@@ -767,22 +767,22 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="146"/>
         <source>Spectrum Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Spektro analizatorius</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="176"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Viršelis</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="185"/>
         <source>Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraščiai</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
@@ -1085,22 +1085,22 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="726"/>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Kortelės</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="732"/>
         <source>Show close buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti užvėrimo mygtukus</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="739"/>
         <source>Show tab list menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti kortelių sąrašo meniu</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="746"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti mygtuką &quot;Naujas grojaraštis&quot;</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="204"/>
@@ -1130,72 +1130,72 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizatoriaus spalvos</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="263"/>
         <source>Analyzer #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizatorius #1: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="298"/>
         <source>Peaks:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pikai:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="330"/>
         <source>Analyzer #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizatorius #2: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="362"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonas:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="394"/>
         <source>Analyzer #3:</source>
-        <translation type="unfinished"></translation>
+        <translation>ASnalizatorius #3: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="471"/>
         <source>Playlist Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraščio spalvos</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="713"/>
         <source>Use system colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti sistemos spalvas</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="477"/>
         <source>Background #1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonas #1: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="525"/>
         <source>Normal text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalus textas:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="573"/>
         <source>Background #2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonas #2: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="608"/>
         <source>Current text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dabartinis textas:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="643"/>
         <source>Highlighted background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Paryškintas fonas:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="678"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Paryškintas textas:</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="158"/>
@@ -1205,7 +1205,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="170"/>
         <source>Volume</source>
-        <translation type="unfinished">Garsumas</translation>
+        <translation>Garsumas</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="176"/>
@@ -1223,77 +1223,77 @@
     <message>
         <location filename="../qsuianalyzer.cpp" line="278"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Viršelis</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="281"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Pikai</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="284"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Atnaujinimo dažnis</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="287"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 kps</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="288"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 kps</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 kps</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="290"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 kps</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="297"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Analizatoriaus nukritimas</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="300"/>
         <location filename="../qsuianalyzer.cpp" line="314"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>Lėčiausias</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="301"/>
         <location filename="../qsuianalyzer.cpp" line="315"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>Lėtas</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="302"/>
         <location filename="../qsuianalyzer.cpp" line="316"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidutinis</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="303"/>
         <location filename="../qsuianalyzer.cpp" line="317"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>Freitas</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="304"/>
         <location filename="../qsuianalyzer.cpp" line="318"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>Greičiausias</translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="311"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pikų nukritimas</translation>
     </message>
 </context>
 <context>
@@ -1319,18 +1319,18 @@
     <message>
         <location filename="../forms/toolbareditor.ui" line="14"/>
         <source>ToolBar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>įrankių juostos redaktorius</translation>
     </message>
     <message>
         <location filename="../forms/toolbareditor.ui" line="175"/>
         <source>Reset</source>
-        <translation type="unfinished">Ištrinti</translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../toolbareditor.cpp" line="83"/>
         <location filename="../toolbareditor.cpp" line="102"/>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Skirtukas</translation>
     </message>
 </context>
 <context>

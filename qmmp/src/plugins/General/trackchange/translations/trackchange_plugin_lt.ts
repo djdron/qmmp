@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelio Pasikeitimo Įskiepio Nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
@@ -14,97 +14,97 @@
         <location filename="../settingsdialog.ui" line="52"/>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Command to run when Qmmp starts new track</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvykdoma komanda qmmp pradėjus groti naują takelį</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Command to run toward to end of a track</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvykdoma komanda qmmp baigiant groti takelį</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Command to run when Qmmp reaches the end of the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvykdoma komanda qmmp baigiant groti grojąraštį</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Command to run when title changes (i.e. network streams title)</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvykdoma komanda qmmp, kai pasikeičia pavadinimas. (pvz. interneto srauto pavadinimas)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlikėjas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="58"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Albumas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelio numeris</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="61"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dviejų skaičių takelio numeris</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žanras</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="63"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentaras</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozitorius</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="66"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disko numeris</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos pavadinimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="68"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos kelias</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="69"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Metai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Būklė</translation>
     </message>
 </context>
 <context>
@@ -112,27 +112,27 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="29"/>
         <source>Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelio Pasikeitimo Įskiepis</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="49"/>
         <source>About Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie Takelio Pasikeitimo Įskiepį</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="50"/>
         <source>Qmmp Track Change Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Takelio Pasikeitimo Įskiepis</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Šis įskiepis įvykdo išorinę komandą kai pasikeičia dabartinis takelis</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukūrė:Ilya Kotov &lt;forkotov02@hotmail.ru&gt; </translation>
     </message>
 </context>
 </TS>

@@ -47,7 +47,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
@@ -62,22 +62,22 @@
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation type="unfinished"></translation>
+        <translation>128x128</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation type="unfinished"></translation>
+        <translation>256x256</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation type="unfinished"></translation>
+        <translation>512x512</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation type="unfinished"></translation>
+        <translation>1024x1024</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+F4</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>

@@ -31,7 +31,7 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="54"/>
         <source>BMP-ladspa developers:</source>
-        <translation>BMP LADSPA kurėjai</translation>
+        <translation>BMP LADSPA kurėjai:</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="55"/>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation type="unfinished"></translation>
+        <translation>UID</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
@@ -69,12 +69,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&gt;</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>&lt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>

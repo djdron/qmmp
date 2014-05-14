@@ -180,7 +180,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta+C</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>

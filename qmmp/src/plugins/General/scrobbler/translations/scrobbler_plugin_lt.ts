@@ -46,7 +46,7 @@
         <location filename="../settingsdialog.ui" line="50"/>
         <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikrinti</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -64,50 +64,50 @@
         <location filename="../settingsdialog.cpp" line="121"/>
         <location filename="../settingsdialog.cpp" line="172"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Žinutė</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Palaukti kol pasileis naršyklė</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3. Paspausti &quot;OK&quot; </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
         <location filename="../settingsdialog.cpp" line="136"/>
         <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
-        <translation type="unfinished"></translation>
+        <translation>Tinklo klaida</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Negaliu registruoti naujos sesijos</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="121"/>
         <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nauja sesija sėkmingai gauta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="172"/>
         <source>Permission granted</source>
-        <translation type="unfinished"></translation>
+        <translation>Leidimas suteiktas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Leidimas atšauktas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -117,7 +117,7 @@
         <location filename="../settingsdialog.cpp" line="180"/>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Klaida</translation>
     </message>
 </context>
 </TS>

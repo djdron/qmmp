@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodersidfactory.cpp" line="67"/>
         <source>SID Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>SID įskiepis</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="69"/>
         <source>SID Files</source>
-        <translation type="unfinished"></translation>
+        <translation>SID bylos</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="123"/>
         <source>About SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie SID Audio įskiepį</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="124"/>
         <source>Qmmp SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp SID audio įskiepis</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="125"/>
         <source>This plugin plays Commodore 64 music files using libsidplayfp library</source>
-        <translation type="unfinished"></translation>
+        <translation>Šis įskiepis groja Commodore 64 muzikos bylas, naudojant libsidplayfp biblioteką. </translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="126"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,42 +39,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>SID Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>SID Įskiepio nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Fast resampling</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Greitas formatavimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dažnis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>HVSC database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>HVSC duomenų bazės byla:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Resampling method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formatavimo metodas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Defaults song length, sec:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dainos trukmė sekundėmis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Enable HVSC song length database</source>
-        <translation type="unfinished"></translation>
+        <translation>Įgalinti HVSC dainos ilgio duomenų bazę </translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Emulation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emuliacija:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="41"/>

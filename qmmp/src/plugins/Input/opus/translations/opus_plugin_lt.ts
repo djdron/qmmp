@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderopusfactory.cpp" line="48"/>
         <source>Opus Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Opus Įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="51"/>
         <source>Ogg Opus Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogg Opus Bylos</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="122"/>
         <source>About Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie Opus Audio Įskiepį</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="123"/>
         <source>Qmmp Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Opus Audio Įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="124"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="125"/>
         <source>This plugin includes code from TagLib library</source>
-        <translation type="unfinished"></translation>
+        <translation>Įskiepyje yra kodo iš TagLib bibliotekos </translation>
     </message>
 </context>
 <context>
@@ -39,42 +39,42 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished">Trukmė</translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Dažnis</translation>
+        <translation>Dažnis</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanalai</translation>
+        <translation>Kanalai</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Kokybė</translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation type="unfinished">Bylos dydis</translation>
+        <translation>Bylos dydis</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>
