@@ -8,7 +8,7 @@ case $1 in
     mkdir -p temp
     cd temp
     wget -nc http://taglib.github.io/releases/$NAME-$VERSION.tar.gz
-    wget -nc http://dside.dyndns.org/files/rusxmms/patches/taglib-csa10.tar.bz2
+    wget -nc http://darksoft.org/files/rusxmms/patches/taglib-csa10.tar.bz2
   ;;
   --install)
     cd temp

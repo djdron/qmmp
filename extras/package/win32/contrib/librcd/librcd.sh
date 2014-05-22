@@ -7,7 +7,7 @@ case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc http://dside.dyndns.org/files/rusxmms/$NAME-$VERSION.tar.bz2
+    wget -nc http://darksoft.org/files/rusxmms/$NAME-$VERSION.tar.bz2
   ;;
   --install)
     cd temp
