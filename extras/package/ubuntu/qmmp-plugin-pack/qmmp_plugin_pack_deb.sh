@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLUGIN_PACK_VERSION=0.7.6
+PLUGIN_PACK_VERSION=0.7.7
 UBUNTU_CODENAMES='precise quantal saucy trusty'
 BUILD_ROOT=build-root
 
