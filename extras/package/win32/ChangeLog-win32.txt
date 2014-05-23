@@ -9,3 +9,9 @@ LEGEND
 [*] opusfile-0.5
 [*] qmmp-0.7.6
 [*] qmmp-plugin-pack-0.7.6
+
+0.7.7
+[*] libsidplayfp-1.4.2
+[*] qt-4.8.6
+[*] qmmp-0.7.7
+[*] qmmp-plugin-pack-0.7.7

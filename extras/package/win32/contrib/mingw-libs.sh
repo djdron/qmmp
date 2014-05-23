@@ -5,7 +5,7 @@
 LIB_NAMES+='glew projectm libsidplayfp enca '
 #LIB_NAMES+='libxml2 librcd librcc taglib-rusxmms' #rusxmms
 
-export PREFIX=C:/devel/mingw32-libs
+export PREFIX=D:/devel/mingw32-libs
 export STRIP=true
 export JOBS=2
 
