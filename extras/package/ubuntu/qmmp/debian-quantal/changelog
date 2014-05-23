@@ -1,3 +1,9 @@
+qmmp (0.7.7-1ubuntu1~quantal0) quantal; urgency=medium
+
+  * New upstream release.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Fri, 23 May 2014 18:37:35 +0400
+
 qmmp (0.7.6-1ubuntu1~quantal0) quantal; urgency=low
 
   * New upstream release.
