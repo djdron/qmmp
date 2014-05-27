@@ -1,11 +1,20 @@
 #!/bin/sh
 
-#LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
-#LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack '
+LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
+LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack '
 LIB_NAMES+='glew projectm libsidplayfp enca '
-#LIB_NAMES+='libxml2 librcd librcc taglib-rusxmms' #rusxmms
+LIB_NAMES+='libxml2 librcd librcc taglib-rusxmms' #rusxmms
 
-export PREFIX=D:/devel/mingw32-libs
+export DEV_PATH=/c/devel
+export MINGW32_PATH=${DEV_PATH}/mingw32
+export QT4_PATH=${DEV_PATH}/qt4
+export ZLIB_ROOT=${MINGW32_PATH}/i686-w64-mingw32
+export PREFIX=${DEV_PATH}/mingw32-libs
+
+export PATH=${PATH}:${MINGW32_PATH}/bin:${QT4_PATH}/bin:${PREFIX}/bin
+
+export  | grep ZLIP_ROOT
+
 export STRIP=true
 export JOBS=2
 

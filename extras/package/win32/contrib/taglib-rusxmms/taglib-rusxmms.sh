@@ -17,7 +17,7 @@ case $1 in
     cd $NAME-$VERSION
     cat ../../taglib-1.9.1-bug-308.diff | patch -p1 --verbose
     cat ../taglib/taglib-1.9.1-ds-rusxmms.patch | patch -p1 --verbose
-    cmake ./ -DCMAKE_INSTALL_PREFIX=${PREFIX} -G "MSYS Makefiles" -DZLIB_ROOT=${ZLIB_ROOT} \
+    cmake ./ -DCMAKE_INSTALL_PREFIX=${PREFIX}/taglib-rusxmms -G "MSYS Makefiles" -DZLIB_ROOT=${ZLIB_ROOT} \
     -DCMAKE_COLOR_MAKEFILE:BOOL=OFF -DCMAKE_CXX_FLAGS="-I${PREFIX}/include" -DCMAKE_SHARED_LINKER_FLAGS="-L${PREFIX}/lib"
     mingw32-make -j${JOBS}
     mingw32-make install
