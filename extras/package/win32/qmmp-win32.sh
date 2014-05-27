@@ -37,7 +37,9 @@ create_distr ()
   mkdir -p translations
   cp -v ../../*.txt ./
   cp -v ../../*.nsi ./
+  cp -v ../../*.conf ./
   cp -rv ../../themes ./
+  cp -rv ../../skins ./
   cp -v ../qmmp-${QMMP_VERSION}/bin/*.exe ./
   cp -v ../qmmp-${QMMP_VERSION}/bin/*.dll ./
   cp -rv ../qmmp-${QMMP_VERSION}/bin/plugins ./
