@@ -51,6 +51,16 @@ create_distr ()
   cp -v ${QT4_PATH}/bin/QtGui4.dll ./
   cp -v ${QT4_PATH}/bin/QtNetwork4.dll ./
   cp -v ${QT4_PATH}/bin/QtOpenGL4.dll ./
+  #Qt plugins
+  mkdir -p plugins/imageformats plugins/codecs
+  cp -v ${QT4_PATH}/plugins/codecs/qcncodecs4.dll ./plugins/codecs
+  cp -v ${QT4_PATH}/plugins/codecs/qjpcodecs4.dll ./plugins/codecs
+  cp -v ${QT4_PATH}/plugins/codecs/qkrcodecs4.dll ./plugins/codecs
+  cp -v ${QT4_PATH}/plugins/codecs/qtwcodecs4.dll ./plugins/codecs
+  cp -v ${QT4_PATH}/plugins/imageformats/qgif4.dll ./plugins/imageformats
+  cp -v ${QT4_PATH}/plugins/imageformats/qico4.dll ./plugins/imageformats
+  cp -v ${QT4_PATH}/plugins/imageformats/qjpeg4.dll ./plugins/imageformats
+  cp -v ${QT4_PATH}/plugins/imageformats/qsvg4.dll ./plugins/imageformats
   #translations
   cp -v ${QT4_PATH}/translations/qt_??.qm ./translations 
 
