@@ -1,0 +1,9 @@
+[Text]
+Normal=#414243
+Current=#7b7c7d
+NormalBG=#000305
+SelectedBG=#292a2a
+Font=Trebuchet MS
+mbFG=#414243
+mbBG=#000305
+
