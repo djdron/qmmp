@@ -42,6 +42,13 @@ List of the third-party libraries.
   libmodplug          0.8.8.4 	 http://modplug-xmms.sourceforge.net/
   game-music-emu      0.6.0	 http://code.google.com/p/game-music-emu/
   musepack            r475	 http://www.musepack.net/
+  glew                1.10.0     http://glew.sourceforge.net/
+  projectm            2.1.0      http://projectm.sourceforge.net/
+  libsidplayfp        1.3.0      http://sourceforge.net/projects/sidplay-residfp/
+  enca                1.15       http://cihar.com/software/enca/
+  libxml2             2.9.1      http://xmlsoft.org/
+  librcd              0.1.14     http://rusxmms.sourceforge.net/
+  librcc              0.2.12     http://rusxmms.sourceforge.net/
   
  
 List of the third-party artwork.
