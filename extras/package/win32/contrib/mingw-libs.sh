@@ -13,8 +13,6 @@ export PREFIX=${DEV_PATH}/mingw32-libs
 
 export PATH=${PATH}:${MINGW32_PATH}/bin:${QT4_PATH}/bin:${PREFIX}/bin
 
-export  | grep ZLIP_ROOT
-
 export STRIP=true
 export JOBS=2
 
