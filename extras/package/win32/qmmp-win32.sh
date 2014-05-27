@@ -37,7 +37,7 @@ create_distr ()
   mkdir -p translations
   cp -v ../../*.txt ./
   cp -v ../../*.nsi ./
-  #cp -rv ../../themes ./
+  cp -rv ../../themes ./
   cp -v ../qmmp-${QMMP_VERSION}/bin/*.exe ./
   cp -v ../qmmp-${QMMP_VERSION}/bin/*.dll ./
   cp -rv ../qmmp-${QMMP_VERSION}/bin/plugins ./
@@ -67,7 +67,7 @@ case $1 in
   ;;
   --install)
     cd tmp
-    #build
+    build
     create_distr 
   ;;
   --clean)

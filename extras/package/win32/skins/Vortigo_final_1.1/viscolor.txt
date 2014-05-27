@@ -1,0 +1,24 @@
+84,88,82	// Background
+84,88,82	// Analyzer Raster
+47,162,255	// Analyzer 01 (Top)
+47,162,255	// Analyzer 02
+47,162,255	// Analyzer 03
+47,162,255	// Analyzer 04
+47,162,255	// Analyzer 05
+47,162,255	// Analyzer 06
+47,162,255	// Analyzer 07
+47,162,255	// Analyzer 08
+47,162,255	// Analyzer 09
+47,162,255	// Analyzer 10
+47,162,255	// Analyzer 11
+47,162,255	// Analyzer 12
+47,162,255	// Analyzer 13
+47,162,255	// Analyzer 14
+47,162,255	// Analyzer 15
+47,162,255	// Analyzer 16 (Bottom)
+47,162,255	// Shademode Oszy 01
+47,162,255	// Shademode Oszy 02
+47,162,255	// Shademode Oszy 03
+47,162,255	// Shademode Oszy 04
+47,162,255	// Shademode Oszy 05
+47,162,255	// Peaks
