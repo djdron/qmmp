@@ -14,8 +14,6 @@ export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 export JOBS=2
 
 
-
-
 build ()
 {
   tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
@@ -38,6 +36,7 @@ create_distr ()
   cp -v ../../*.txt ./
   cp -v ../../*.nsi ./
   cp -v ../../*.conf ./
+  cp -v ../../unzip.exe ./
   cp -rv ../../themes ./
   cp -rv ../../skins ./
   cp -v ../qmmp-${QMMP_VERSION}/bin/*.exe ./
@@ -47,23 +46,53 @@ create_distr ()
   find . -type f -name *.a -delete
   find . -type d -name ".svn" | xargs rm -rf
   #Qt libs
-  cp -v ${QT4_PATH}/bin/QtCore4.dll ./
-  cp -v ${QT4_PATH}/bin/QtGui4.dll ./
-  cp -v ${QT4_PATH}/bin/QtNetwork4.dll ./
-  cp -v ${QT4_PATH}/bin/QtOpenGL4.dll ./
+  for LIB_NAME in QtCore4.dll QtGui4.dll QtNetwork4.dll QtOpenGL4.dll
+  do
+    cp -v ${QT4_PATH}/bin/${LIB_NAME} ./
+  done
   #Qt plugins
   mkdir -p plugins/imageformats plugins/codecs
-  cp -v ${QT4_PATH}/plugins/codecs/qcncodecs4.dll ./plugins/codecs
-  cp -v ${QT4_PATH}/plugins/codecs/qjpcodecs4.dll ./plugins/codecs
-  cp -v ${QT4_PATH}/plugins/codecs/qkrcodecs4.dll ./plugins/codecs
-  cp -v ${QT4_PATH}/plugins/codecs/qtwcodecs4.dll ./plugins/codecs
-  cp -v ${QT4_PATH}/plugins/imageformats/qgif4.dll ./plugins/imageformats
-  cp -v ${QT4_PATH}/plugins/imageformats/qico4.dll ./plugins/imageformats
-  cp -v ${QT4_PATH}/plugins/imageformats/qjpeg4.dll ./plugins/imageformats
-  cp -v ${QT4_PATH}/plugins/imageformats/qsvg4.dll ./plugins/imageformats
+  for LIB_NAME in qcncodecs4.dll qjpcodecs4.dll qkrcodecs4.dll qtwcodecs4.dll
+  do
+    cp -v ${QT4_PATH}/plugins/codecs/${LIB_NAME} ./plugins/codecs
+  done
+  for LIB_NAME in qgif4.dll qico4.dll qjpeg4.dll qsvg4.dll
+  do
+    cp -v ${QT4_PATH}/plugins/imageformats/${LIB_NAME} ./plugins/imageformats
+  done
   #translations
-  cp -v ${QT4_PATH}/translations/qt_??.qm ./translations 
-
+  cp -v ${QT4_PATH}/translations/qt_??.qm ./translations
+  #mingw32 libs
+  for LIB_NAME in libgcc_s_dw2-1.dll libstdc++-6.dll libwinpthread-1.dll
+  do
+    cp -v ${MINGW32_PATH}/bin/${LIB_NAME} ./
+  done
+  #third party libs   
+  for LIB_NAME in avcodec-55.dll avformat-55.dll avutil-52.dll glew32.dll libFLAC-8.dll libcddb-2.dll libcdio-13.dll libcdio_cdda-1.dll
+  do
+    cp -v ${PREFIX}/bin/${LIB_NAME} ./
+  done
+  for LIB_NAME in libcurl.dll libenca-0.dll libgme.dll libgnurx-0.dll libmad-0.dll libmodplug-1.dll libmpcdec.dll libogg-0.dll
+  do
+    cp -v ${PREFIX}/bin/${LIB_NAME} ./
+  done
+  for LIB_NAME in libopus-0.dll libopusfile-0.dll libprojectM.dll libsidplayfp-3.dll libsndfile-1.dll libtag.dll libvorbis-0.dll
+  do
+    cp -v ${PREFIX}/bin/${LIB_NAME} ./
+  done
+  for LIB_NAME in libvorbisfile-3.dll libwavpack-1.dll
+  do
+    cp -v ${PREFIX}/bin/${LIB_NAME} ./
+  done
+  #projectM presets
+  cp -rv ${PREFIX}/share/projectM/ ./
+  #rusxmms
+  mkdir -p rusxmms
+  for LIB_NAME in libxml2-2.dll librcd-0.dll librcc.dll
+  do
+    cp -v ${PREFIX}/bin/${LIB_NAME} ./rusxmms
+  done
+  cp -v	${PREFIX}/taglib-rusxmms/bin/libtag.dll ./rusxmms	     
   cd ..
 }
 
