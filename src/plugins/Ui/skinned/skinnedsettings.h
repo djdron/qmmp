@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -51,7 +51,7 @@ private:
     void findSkins(const QString &path);
     void readSettings();
 
-    Ui::SkinnedSettings ui;
+    Ui::SkinnedSettings m_ui;
     QList <QFileInfo> m_skinList;
     QString m_currentSkinName;
     Skin *m_skin;
