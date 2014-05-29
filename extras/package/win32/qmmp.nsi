@@ -1,7 +1,13 @@
+;--------------------------------
+;Disable description area
+
+  !define MUI_COMPONENTSPAGE_NODESC
+
 
 ;--------------------------------
 ;Include Modern UI
 
+  
   !include "MUI2.nsh"
 
 ;--------------------------------
@@ -29,7 +35,7 @@
 ;Pages
 
   !insertmacro MUI_PAGE_LICENSE ".\COPYING.txt"
-  #!insertmacro MUI_PAGE_COMPONENTS
+  !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_INSTFILES
   
@@ -49,16 +55,29 @@
 Section "-General Section"
 
   SetOutPath "$INSTDIR"
+  File *.txt qmmp.exe unzip.exe *.dll *.conf
 
-  File /r *.exe
-  File /r *.dll
-  File /r *.txt
-  File /r *.png
-  File /r *.bmp
-  File /r *.theme
-  File /r *.qm
-  File /r *.conf
+  SetOutPath "$INSTDIR\plugins"
+  File  /r plugins\*.dll
   
+  SetOutPath "$INSTDIR\projectM"
+  File /r projectM\*.inp projectM\*.ttf projectM\*.milk
+
+  SetOutPath "$INSTDIR\themes"
+  File /r themes\*.png themes\*.theme
+
+  SetOutPath "$INSTDIR\translations"
+  File /r translations\*.qm
+
+  ;File /r *.exe
+  ;File /r /x rusxmms\*.* *.dll
+  
+  ;File /r *.png
+  ;File /r *.cg *.milk *.ttf
+  ;File /r *.theme
+  ;File /r *.qm
+  ;File /r *.conf
+
   ;ADD YOUR OWN FILES HERE...
   
   ;Store installation folder
@@ -73,6 +92,16 @@ Section "-General Section"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "NoModify" 1
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "NoRepair" 1
 
+SectionEnd
+
+Section "Extra skins"
+  SetOutPath "$INSTDIR\skins"
+  File /r skins\*.txt skins\*.png skins\*.cur
+SectionEnd
+
+Section /o "TagLib with RusXMMS patch"
+  SetOutPath "$INSTDIR"
+  File rusxmms\*.dll
 SectionEnd
 
 Section "Start Menu Shortcuts"

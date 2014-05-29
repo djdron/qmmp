@@ -108,8 +108,10 @@ case $1 in
   ;;
   --install)
     cd tmp
-    build
-    create_distr 
+    #build
+    #create_distr
+    find qmmp-distr -type f -name *.dll   | xargs strip -v
+    find qmmp-distr -type f -name *.exe   | xargs strip -v 
   ;;
   --clean)
     cd tmp
