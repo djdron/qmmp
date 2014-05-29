@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,18 +31,18 @@
 
 SkinnedSettings::SkinnedSettings(QWidget *parent) : QWidget(parent)
 {
-    ui.setupUi(this);
-    ui.listWidget->setIconSize (QSize (105,34));
+    m_ui.setupUi(this);
+    m_ui.listWidget->setIconSize (QSize (105,34));
     m_skin = Skin::instance();
     m_reader = new SkinReader(this);
-    connect(ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
+    connect(m_ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
     readSettings();
     loadSkins();
     loadFonts();
     //setup icons
-    ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
-    ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
-    ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
+    m_ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
+    m_ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
+    m_ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
 }
 
 SkinnedSettings::~SkinnedSettings()
@@ -50,7 +50,7 @@ SkinnedSettings::~SkinnedSettings()
 
 void SkinnedSettings::on_listWidget_itemClicked(QListWidgetItem *)
 {
-    int row = ui.listWidget->currentRow();
+    int row = m_ui.listWidget->currentRow();
     QString path;
     if (m_skinList.at (row).isDir())
     {
@@ -62,8 +62,8 @@ void SkinnedSettings::on_listWidget_itemClicked(QListWidgetItem *)
         m_reader->unpackSkin(m_skinList.at (row).canonicalFilePath());
         m_skin->setSkin(QDir::homePath() +"/.qmmp/cache/skin");
     }
-    if(ui.listWidget->currentItem())
-        m_currentSkinName = ui.listWidget->currentItem()->text();
+    if(m_ui.listWidget->currentItem())
+        m_currentSkinName = m_ui.listWidget->currentItem()->text();
     else
         m_currentSkinName.clear();
 }
@@ -71,12 +71,12 @@ void SkinnedSettings::on_listWidget_itemClicked(QListWidgetItem *)
 void SkinnedSettings::on_plFontButton_clicked()
 {
     bool ok;
-    QFont font = ui.plFontLabel->font();
+    QFont font = m_ui.plFontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
     if (ok)
     {
-        ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-        ui.plFontLabel->setFont(font);
+        m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.plFontLabel->setFont(font);
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         settings.setValue ("Skinned/pl_font", font.toString());
     }
@@ -85,12 +85,12 @@ void SkinnedSettings::on_plFontButton_clicked()
 void SkinnedSettings::on_mainFontButton_clicked()
 {
     bool ok;
-    QFont font = ui.mainFontLabel->font();
+    QFont font = m_ui.mainFontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
     if (ok)
     {
-        ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-        ui.mainFontLabel->setFont(font);
+        m_ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.mainFontLabel->setFont(font);
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         settings.setValue ("Skinned/mw_font", font.toString());
     }
@@ -110,8 +110,8 @@ void SkinnedSettings::on_skinInstallButton_clicked()
 
 void SkinnedSettings::showEvent(QShowEvent *)
 {
-    ui.hiddenCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
-    ui.hideOnCloseCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
+    m_ui.hiddenCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
+    m_ui.hideOnCloseCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
 }
 
 void SkinnedSettings::loadFonts()
@@ -121,16 +121,16 @@ void SkinnedSettings::loadFonts()
     QFont font = QApplication::font();
     if(!fontname.isEmpty())
         font.fromString(fontname);
-    ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-    ui.plFontLabel->setFont(font);
+    m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.plFontLabel->setFont(font);
 
     font = QApplication::font ();
     fontname = settings.value ("Skinned/mw_font").toString();
     if(!fontname.isEmpty())
         font.fromString(fontname);
-    ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-    ui.mainFontLabel->setFont(font);
-    ui.useBitmapCheckBox->setChecked(settings.value("Skinned/bitmap_font", false).toBool());
+    m_ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.mainFontLabel->setFont(font);
+    m_ui.useBitmapCheckBox->setChecked(settings.value("Skinned/bitmap_font", false).toBool());
 }
 
 void SkinnedSettings::findSkins(const QString &path)
@@ -148,7 +148,7 @@ void SkinnedSettings::findSkins(const QString &path)
             QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
             item->setIcon (preview);
             item->setToolTip(tr("Unarchived skin") + " " + fileInfo.filePath ());
-            ui.listWidget->addItem (item);
+            m_ui.listWidget->addItem (item);
             m_skinList << fileInfo;
         }
     }
@@ -158,15 +158,13 @@ void SkinnedSettings::loadSkins()
 {
     m_reader->generateThumbs();
     m_skinList.clear();
-    ui.listWidget->clear();
+    m_ui.listWidget->clear();
     QFileInfo fileInfo (":/default");
     QPixmap preview = Skin::getPixmap ("main", QDir (fileInfo.filePath()));
     QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
     item->setIcon (preview);
-    ui.listWidget->addItem (item);
+    m_ui.listWidget->addItem (item);
     m_skinList << fileInfo;
-    if(item->text() == m_currentSkinName)
-        ui.listWidget->setCurrentItem(item);
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
 #if defined(Q_OS_WIN) && !defined(Q_OS_CYGWIN)
@@ -179,10 +177,16 @@ void SkinnedSettings::loadSkins()
         QListWidgetItem *item = new QListWidgetItem (path.section('/', -1));
         item->setIcon (m_reader->getPreview(path));
         item->setToolTip(tr("Archived skin") + " " + path);
-        ui.listWidget->addItem (item);
+        m_ui.listWidget->addItem (item);
         m_skinList << QFileInfo(path);
-        if(item->text() == m_currentSkinName)
-            ui.listWidget->setCurrentItem(item);
+    }
+    for(int i = 0; i < m_ui.listWidget->count(); ++i)
+    {
+        if(m_ui.listWidget->item(i)->text() == m_currentSkinName)
+        {
+            m_ui.listWidget->setCurrentRow(i, QItemSelectionModel::Select);
+            break;
+        }
     }
 }
 
@@ -198,23 +202,23 @@ void SkinnedSettings::readSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
     //playlist
-    ui.protocolCheckBox->setChecked(settings.value ("pl_show_protocol", false).toBool());
-    ui.numbersCheckBox->setChecked(settings.value ("pl_show_numbers", true).toBool());
-    ui.alignCheckBox->setChecked(settings.value ("pl_align_numbers", false).toBool());
-    ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
-    ui.playlistsCheckBox->setChecked(settings.value("pl_show_plalists", false).toBool());
-    ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
-    ui.plSeplineEdit->setText(settings.value("pl_separator", "|").toString());
-    ui.showNewPLCheckBox->setChecked(settings.value("pl_show_create_button", false).toBool());
+    m_ui.protocolCheckBox->setChecked(settings.value ("pl_show_protocol", false).toBool());
+    m_ui.numbersCheckBox->setChecked(settings.value ("pl_show_numbers", true).toBool());
+    m_ui.alignCheckBox->setChecked(settings.value ("pl_align_numbers", false).toBool());
+    m_ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
+    m_ui.playlistsCheckBox->setChecked(settings.value("pl_show_plalists", false).toBool());
+    m_ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
+    m_ui.plSeplineEdit->setText(settings.value("pl_separator", "|").toString());
+    m_ui.showNewPLCheckBox->setChecked(settings.value("pl_show_create_button", false).toBool());
     //transparency
-    ui.mwTransparencySlider->setValue(100 - settings.value("mw_opacity", 1.0).toDouble()*100);
-    ui.eqTransparencySlider->setValue(100 - settings.value("eq_opacity", 1.0).toDouble()*100);
-    ui.plTransparencySlider->setValue(100 - settings.value("pl_opacity", 1.0).toDouble()*100);
+    m_ui.mwTransparencySlider->setValue(100 - settings.value("mw_opacity", 1.0).toDouble()*100);
+    m_ui.eqTransparencySlider->setValue(100 - settings.value("eq_opacity", 1.0).toDouble()*100);
+    m_ui.plTransparencySlider->setValue(100 - settings.value("pl_opacity", 1.0).toDouble()*100);
     //view
-    ui.skinCursorsCheckBox->setChecked(settings.value("skin_cursors", false).toBool());
+    m_ui.skinCursorsCheckBox->setChecked(settings.value("skin_cursors", false).toBool());
     m_currentSkinName = settings.value("skin_name", "default").toString();
-    ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
-    ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
+    m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
+    m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
     settings.endGroup();
 }
 
@@ -222,21 +226,21 @@ void SkinnedSettings::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    settings.setValue ("pl_show_protocol", ui.protocolCheckBox->isChecked());
-    settings.setValue ("pl_show_numbers", ui.numbersCheckBox->isChecked());
-    settings.setValue ("pl_align_numbers", ui.alignCheckBox->isChecked());
-    settings.setValue ("pl_show_anchor", ui.anchorCheckBox->isChecked());
-    settings.setValue ("pl_show_plalists", ui.playlistsCheckBox->isChecked());
-    settings.setValue ("pl_show_popup", ui.popupCheckBox->isChecked());
-    settings.setValue ("pl_separator", ui.plSeplineEdit->text());
-    settings.setValue ("pl_show_create_button", ui.showNewPLCheckBox->isChecked());
-    settings.setValue ("mw_opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
-    settings.setValue ("eq_opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
-    settings.setValue ("pl_opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
-    settings.setValue ("bitmap_font", ui.useBitmapCheckBox->isChecked());
-    settings.setValue ("skin_cursors", ui.skinCursorsCheckBox->isChecked());
+    settings.setValue ("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
+    settings.setValue ("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
+    settings.setValue ("pl_align_numbers", m_ui.alignCheckBox->isChecked());
+    settings.setValue ("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
+    settings.setValue ("pl_show_plalists", m_ui.playlistsCheckBox->isChecked());
+    settings.setValue ("pl_show_popup", m_ui.popupCheckBox->isChecked());
+    settings.setValue ("pl_separator", m_ui.plSeplineEdit->text());
+    settings.setValue ("pl_show_create_button", m_ui.showNewPLCheckBox->isChecked());
+    settings.setValue ("mw_opacity", 1.0 -  (double)m_ui.mwTransparencySlider->value()/100);
+    settings.setValue ("eq_opacity", 1.0 -  (double)m_ui.eqTransparencySlider->value()/100);
+    settings.setValue ("pl_opacity", 1.0 -  (double)m_ui.plTransparencySlider->value()/100);
+    settings.setValue ("bitmap_font", m_ui.useBitmapCheckBox->isChecked());
+    settings.setValue ("skin_cursors", m_ui.skinCursorsCheckBox->isChecked());
     settings.setValue ("skin_name", m_currentSkinName);
-    settings.setValue ("start_hidden", ui.hiddenCheckBox->isChecked());
-    settings.setValue ("hide_on_close", ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue ("start_hidden", m_ui.hiddenCheckBox->isChecked());
+    settings.setValue ("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
     settings.endGroup();
 }
