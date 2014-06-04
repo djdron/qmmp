@@ -26,16 +26,16 @@ List of the third-party libraries.
   unzip               5.51	 http://www.info-zip.org/pub/infozip/UnZip.html
   taglib              1.9.1	 http://taglib.github.io/
   libmad              0.15.1b	 http://www.underbit.com/products/mad/
-  libogg              1.3.1	 http://www.vorbis.com/  
+  libogg              1.3.1	 http://www.vorbis.com/
   libvorbis           1.3.4	 http://www.vorbis.com/
   flac                1.3.0	 http://flac.sourceforge.net/
-  wavpack             4.70.0	 http://www.wavpack.com/  
+  wavpack             4.70.0	 http://www.wavpack.com/
   libsndfile          1.0.25	 http://www.mega-nerd.com/libsndfile/
   opus                1.1	 http://www.opus-codec.org/
   opusfile            0.5	 http://www.opus-codec.org/
   libbs2b             3.1.0	 http://bs2b.sourceforge.net/
   curl                7.34.0	 http://curl.haxx.se/
-  libcdio             0.83 	 http://www.gnu.org/software/libcdio/  
+  libcdio             0.83 	 http://www.gnu.org/software/libcdio/
   mingw-libgnurx      2.5.1      http://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/
   libcddb             1.3.2	 http://libcddb.sourceforge.net/
   ffmpeg              2.1.4	 http://ffmpeg.org/
@@ -49,15 +49,15 @@ List of the third-party libraries.
   libxml2             2.9.1      http://xmlsoft.org/
   librcd              0.1.14     http://rusxmms.sourceforge.net/
   librcc              0.2.12     http://rusxmms.sourceforge.net/
-  
- 
+
+
 List of the third-party artwork.
 
   Name                Web page
 
   Oxygen icons        http://www.oxygen-icons.org/
-  SK051 skin
-  Vortigo skin
-  Azenis skin
+  Bunjee skin         http://gnome-look.org/content/show.php?content=71828
+  Vortigo skin        http://gnome-look.org/content/show.php?content=55440
+  Azenis skin         http://packages.altlinux.org/ru/Sisyphus/srpms/qmmp-skins-azenis
 
 Patches and build scripts: http://qmmp.googlecode.com/svn/trunk/extras/package/win32/
