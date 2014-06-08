@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=libogg
-VERSION=1.3.1
+VERSION=1.3.2
 
 case $1 in
   --download)
