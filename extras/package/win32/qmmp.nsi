@@ -1,9 +1,9 @@
+
 ;--------------------------------
 ;Disable description area
 
   !define MUI_COMPONENTSPAGE_NODESC
-
-
+     
 ;--------------------------------
 ;Include Modern UI
 
@@ -15,7 +15,7 @@
 
   ;Name and file
   Name "Qt-based Multimedia Player"
-  OutFile "qmmp-0.7.7-win32.exe"
+  OutFile "qmmp-0.8.0-win32.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Qt-based Multimedia Player"
@@ -25,7 +25,6 @@
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel admin
-
 ;--------------------------------
 ;Interface Settings
 
@@ -38,7 +37,6 @@
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_INSTFILES
-  
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
   
@@ -55,6 +53,9 @@
 Section "-General Section"
 
   SetOutPath "$INSTDIR"
+  
+  RMDir /r "$INSTDIR"
+  
   File *.txt qmmp.exe unzip.exe *.dll *.conf
 
   SetOutPath "$INSTDIR\plugins"
@@ -68,16 +69,7 @@ Section "-General Section"
 
   SetOutPath "$INSTDIR\translations"
   File /r translations\*.qm
-
-  ;File /r *.exe
-  ;File /r /x rusxmms\*.* *.dll
   
-  ;File /r *.png
-  ;File /r *.cg *.milk *.ttf
-  ;File /r *.theme
-  ;File /r *.qm
-  ;File /r *.conf
-
   ;ADD YOUR OWN FILES HERE...
   
   ;Store installation folder
@@ -104,6 +96,8 @@ Section /o "TagLib with RusXMMS patch"
   File rusxmms\*.dll
 SectionEnd
 
+
+
 Section "Start Menu Shortcuts"
 
   CreateDirectory "$SMPROGRAMS\Qt-based Multimedia Player"
@@ -128,7 +122,8 @@ SectionEnd
 
 Section "Uninstall"
 
-  ;ADD YOUR OWN FILES HERE...
+  ; Remove file associations
+  NsExec::Exec '"$INSTDIR\qmmp.exe" --uninstall'
 
   ; Remove directories used
   RMDir /r "$SMPROGRAMS\Qt-based Multimedia Player"
@@ -139,6 +134,6 @@ Section "Uninstall"
 
   ; Remove registry keys
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp"
-  DeleteRegKey HKLM SOFTWARE\Qmmp
+  DeleteRegKey HKLM "SOFTWARE\Qmmp"
 
 SectionEnd
