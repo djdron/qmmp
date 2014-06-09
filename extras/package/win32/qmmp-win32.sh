@@ -1,7 +1,7 @@
 #!/bin/sh
 
-QMMP_VERSION=0.7.7
-QMMP_PLUGIN_PACK_VERSION=0.7.7
+QMMP_VERSION=0.8.0
+QMMP_PLUGIN_PACK_VERSION=0.8.0
 
 export DEV_PATH=/c/devel
 export MINGW32_PATH=${DEV_PATH}/mingw32
@@ -14,16 +14,37 @@ export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 export JOBS=2
 
 
-build ()
+
+download_tarball()
 {
+  mkdir -p tmp
+  cd tmp
+  echo 'downloading qmmp...'
+  wget -nc http://qmmp.ylsoftware.com/files/qmmp-${QMMP_VERSION}.tar.bz2
+  echo 'downloading qmmp-plugin-pack...'
+  wget -nc http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
   tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
   tar xvjf qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
+}
+
+download_svn()
+{
+  mkdir -p tmp
+  cd tmp
+  echo 'downloading qmmp...'
+  svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp qmmp-${QMMP_VERSION}
+  echo 'downloading qmmp-plugin-pack...'
+  svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp-plugin-pack qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
+}
+
+build ()
+{ 
   cd qmmp-${QMMP_VERSION}
-  qmake CONFIG+=RELEASE
+  qmake CONFIG+=release
   mingw32-make -j${JOBS}
   cd ..
   cd qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
-  qmake CONFIG+=RELEASE INCLUDEPATH+=`dirs`/../qmmp-${QMMP_VERSION}/src QMAKE_LIBDIR+=`dirs`/../qmmp-${QMMP_VERSION}/bin
+  qmake CONFIG+=release INCLUDEPATH+=`dirs`/../qmmp-${QMMP_VERSION}/src QMAKE_LIBDIR+=`dirs`/../qmmp-${QMMP_VERSION}/bin
   mingw32-make -j${JOBS}
   cd ..
 }
@@ -99,12 +120,8 @@ create_distr ()
 
 case $1 in
   --download)
-    mkdir -p tmp
-    cd tmp
-    echo 'downloading qmmp...'
-    wget -nc http://qmmp.ylsoftware.com/files/qmmp-${QMMP_VERSION}.tar.bz2
-    echo 'downloading qmmp-plugin-pack...'
-    wget -nc http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
+    #download_tarball
+    download_svn
   ;;
   --install)
     cd tmp
