@@ -87,7 +87,7 @@ unix {
 }
 
 win32 {
-  SVN_REVISION = $$system(svn_revision.cmd)
+  SVN_REVISION = $$system(./svn_revision.sh)
   isEmpty(SVN_REVISION) {
     SVN_REVISION = $$system(sh svn_revision.sh)
   }

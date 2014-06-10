@@ -40,14 +40,13 @@ protected:
 
 protected:
 	bool CreateClassId(const QString& executablePath, const QString& friendlyName); 
-	bool RemoveClassId();
 	bool VistaGetDefaultApps(const QStringList &extensions, QStringList& registeredExt);
 	int  VistaSetAppsAsDefault(const QStringList& extensions);
 public:
     WinFileAssoc(const QString ClassId = "QmmpFileAudio", const QString AppName="Qmmp");
 	//Checks the registry to see which extensions are registered with SMPlayer
 	bool GetRegisteredExtensions(const QStringList& extensionsToCheck, QStringList& registeredExtensions);
-
+    bool RemoveClassId();
 	int CreateFileAssociations(const QStringList& fileExtensions); 
 	int RestoreFileAssociations(const QStringList& fileExtensions);
 };
