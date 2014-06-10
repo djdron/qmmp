@@ -235,6 +235,17 @@ int WinFileAssoc::RestoreFileAssociations(const QStringList &fileExtensions)
         RegCU.remove("Software/Classes/." + fileExtension + "/Qmmp_Backup");
         RegCU.remove(ExtKeyName + "/Qmmp_Backup_Application");
         RegCU.remove(ExtKeyName + "/Qmmp_Backup_ProgId");
+
+        //remove empty groups
+        RegCU.beginGroup(ExtKeyName);
+        if(RegCU.childGroups().isEmpty() && RegCU.childKeys().isEmpty())
+        {
+            RegCU.endGroup();
+            RegCU.remove(ExtKeyName);
+        }
+        else
+            RegCU.endGroup();
+
     }
     SHChangeNotify(SHCNE_ASSOCHANGED, SHCNF_IDLIST, NULL, NULL);
     return count;
@@ -285,6 +296,14 @@ bool WinFileAssoc::RemoveClassId()
         return false;
 
     RegCU.remove(classId);
+
+    QSettings RegCR("HKEY_CLASSES_ROOT", QSettings::NativeFormat);
+
+    if(!RegCR.isWritable() || RegCU.status() != QSettings::NoError)
+        return false;
+
+    RegCR.remove("Applications/qmmp.exe");
+
     return true;
 }
 

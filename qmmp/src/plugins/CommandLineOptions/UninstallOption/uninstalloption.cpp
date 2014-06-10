@@ -55,6 +55,7 @@ QString UninstallOption::executeCommand(const QString &opt_str, const QStringLis
         }
         assoc.GetRegisteredExtensions(extsToCheck, regExts);
         assoc.RestoreFileAssociations(regExts);
+        assoc.RemoveClassId();
         QMetaObject::invokeMethod(qApp, "quit", Qt::QueuedConnection);
     }
     return QString();
