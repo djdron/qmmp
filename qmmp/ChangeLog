@@ -753,17 +753,97 @@ Version 0.7.0
 * updated Hebrew translation (Genghis Khan)
 * updated Chezh translation (Karel Volny)
 
+Version 0.7.1
+* improved jack plugin (24/32-bit samples and freebsd support)
+* excluded mime types of disabled plugins in the mpris interface
+* fixed windows support in the gme plugin
+* fixed shortcut editor dialog
+* fixed api documentation
+* fixed parsing of the icy packet size
+* fixed possible freezes
+* fixed Spanish translation (thanks to Gustavo Alvarez)
+* fixed and improved qmake support (Ryota Shimamoto)
+* fixed pkg-config support
+* fixed several ui bugs
+* fixed scrobbler regressions
+
+Version 0.7.2
+* fixed queue update bug
+* fixed track length formatting
+* fixed api documentation
+* fixed gcc warnings
+* fixed memory leaks
+* fixed wildmidi config path
+* fixed playlist autosave feature
+* fixed possible segmentation fault
+* fixed title format update bug
+* removed unimplemented function
+
+Version 0.7.3
+* added window size and position saving to the projectm plugin
+* disabled unsupported settings in the statusicon plugin under Windows
+* fixed warnings about invalid parent thread
+* fixed race condition
+* fixed ReplayGain support in the flac plugin
+* fixed parsing of the track/disc number with separator
+* fixed tooltip in the status icon plugin under Windows
+* fixed 'show tooltip' option in the status icon plugin
+* removed unused variables
+
+Version 0.7.4
+* added Galician translation (Óscar Pereira)
+* added ffmpeg 2.1 support
+* added m3u8 playlist extension
+* improved ReplayGain support:
+  - fixed 24/32 bit mode
+  - added clipping to prevent overflow
+* improved cdaudio plugin:
+  - added Windows support
+  - added track cache
+  - fixed proxy support
+* fixed localization of the wildmidi plugin
+* fixed case sensitivity while checking file extensions
+* fixed gcc 4.8 warnings
+* fixed memory leak
+* fixed several Windows-only bugs:
+  - fixed parsing of the m3u files with backslashes
+  - fixed problem with absolute paths
+  - fixed adding files from command line under Windows
+  - fixed Meta/Win modifier in the global hotkey plugin
+* fixed Japanese translation (RyōTa SimaMoto)
+
+Version 0.7.5
+* fixed case sensitivity while checking file extensions (tnanks to Ryota Shimamoto)
+* fixed special global keys support under the win32 platform
+* fixed latest cmake support
+* fixed initial position of the equalizer volume slider
+* fixed clang warnings
+
+Version 0.7.6
+* added libav 10 and ffmpeg 2.2 support
+* fixed url parsing
+* fixed freezing on playback resume
+* fixed random freezing in the mplayer plugin
+* fixed reset selection of tracks when calling context menu
+* fixed multimedia keys support under win32
+
+Version 0.7.7
+* fixed typos
+* fixed Polish locale support
+* removed 'OnlyShowIn' key from qmmp.desktop
+* removed useless files
+
 Version 0.8.0
 * added sid plugin
 * added ReplayGain scanner
 * added gnome hotkey plugin
 * added DirectSound plugin
-* added track grouping
+* added track grouping view
 * added sorting by group
 * added quick search to the playlist browser
 * added multiple tracks support to the details dialog
-* added context menu in the plugin settings page
-* added plugin cache
+* added context menu to the plugin settings page
+* added lazy plugin loading
 * added feature to disable transport plugins
 * added timeout for transport plugins
 * added float output for lossy decoders
@@ -777,8 +857,8 @@ Version 0.8.0
 * added '--show-mw' command line option
 * added ogg opus preset to the converter plugin
 * added scrobbler 2.0 api for libre.fm
-* added context menu in the analyzer plugin
-* added window flags access to the visual plugin api
+* added context menu in the window of the analyzer plugin
+* added window flags access from visual plugin api
 * added atomic playlist saving operation
 * added created playlist auto-selection
 * added feature to not clear previous playlist when opening new one
@@ -801,7 +881,7 @@ Version 0.8.0
 * fixed title format in the shaded mode
 * fixed alt-f4 behavior
 * fixed possible race condition
-* fixed possible segmentation in the mad plugin
+* fixed possible segmentation fault in the mad plugin
 * fixed 'eject' button function
 * fixed raise of the main window when starting another instance
 * updated Russian translation
