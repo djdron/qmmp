@@ -1,14 +1,14 @@
 Desarrolladores principales:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (idea y c骴igo base)
+    Ilya Kotov <forkotov02@hotmail.ru> (idea y c贸digo base)
     Vladimir Kuznetsov <vovanec@gmail.com> (estilo y muchas mejoras)
 
-Desarrolladores de m骴ulos:
+Desarrolladores de m贸dulos:
 
-    Artur Guzik <aguzik88@gmail.com> (m骴ulo de notificaci髇 kde4, mejoras en el icono de estado)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (m骴ulos para jack y oss)
+    Artur Guzik <aguzik88@gmail.com> (m贸dulo de notificaci贸n kde4, mejoras en el icono de estado)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (m贸dulos para jack y oss)
 
-Material gr醘ico:
+Material gr谩fico:
 
     Andrey Adreev <andreev00@gmail.com>
 
