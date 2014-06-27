@@ -79,7 +79,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     m_pl_control = new PlaylistControl (this);
 
-    m_length_totalLength = new SymbolDisplay (this,14);
+    m_length_totalLength = new SymbolDisplay (this,17);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
 
     m_current_time = new SymbolDisplay (this,6);
@@ -162,10 +162,10 @@ void PlayList::updatePositions()
     m_sortButton->move (99*m_ratio, 86*m_ratio+29*sy);
 
     m_pl_control->move (128*m_ratio+sx*25, 100*m_ratio+29*sy);
-    m_playlistButton->move (228*m_ratio+sx*25,86*m_ratio+29*sy);
+    m_playlistButton->move (228*m_ratio+sx*25, 86*m_ratio+29*sy);
 
-    m_length_totalLength -> move (131*m_ratio+sx*25,88*m_ratio+29*sy);
-    m_current_time->move (190*m_ratio+sx*25,101*m_ratio+29*sy);
+    m_length_totalLength -> move (132*m_ratio+sx*25, 88*m_ratio+29*sy);
+    m_current_time->move (191*m_ratio+sx*25,101*m_ratio+29*sy);
 
     m_plslider->move (255*m_ratio+sx*25,20*m_ratio);
     m_resizeWidget->move(width() - 25, height() - 29);
