@@ -59,9 +59,45 @@ Version 0.7.0
 * updated Hebrew translation (Genghis Khan)
 * updated Chezh translation (Karel Volny)
 
+Version 0.7.1
+* fixed Ukrainian translation (Gennadi Motsyo)
+* fixed windows support in the ffap plugin
+* fixed shortcut editor dialog in the qsui plugin
+* fixed 'play/pause' action in the qsui plugin
+
+Version 0.7.2
+* fixed qsui plugin:
+  - fixed memory leak
+  - fixed text eliding
+  - fixed 'rename list' shortcut
+
+Version 0.7.3
+* fixed bug causes equalizer reset in the qsui plugin
+
+Version 0.7.4
+* fixed gcc 4.8 warnings
+* fixed memory leak
+
+Version 0.7.5
+* fixed tab closing bug in the qsui plugin
+* fixed cpu architecture detection while build using qmake
+* fixed feature to disable qsui before build (Ryota Shimamoto)
+* fixed latest cmake support
+
+Version 0.7.6
+* added seeking using mouse wheel
+* fixed crash in the ffap plugin under win32
+* fixed playlist name update bug
+* fixed reset selection of tracks when calling context menu
+
+Version 0.7.7
+* fixed typos
+* fixed Polish locale support
+* removed useless files
+
 Version 0.8.0
 * ported to qmmp 0.8 api
-* improved mpg123 support:
+* improved mpg123 plugin:
   - added floating point output format
   - added peak overflow support
   - added id3v2-based replaygain tags support
