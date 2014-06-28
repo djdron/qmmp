@@ -33,14 +33,16 @@ void LXDESupport::load()
         config_dir = QDir::homePath() + "/.config/";
 
     QString config_file = config_dir + "/lxsession/LXDE/desktop.conf";
+    QString themeName = "nuoveXT2";
     if(qgetenv("DESKTOP_SESSION") == "Lubuntu")
     {
         qDebug("LXDESupport: using Lubuntu configuration");
         config_file = config_dir + "/lxsession/Lubuntu/desktop.conf";
+        themeName = "lubuntu";
     }
 
     QSettings lxde_settings(config_file, QSettings::IniFormat);
-    QString themeName = lxde_settings.value("GTK/sNet/IconThemeName", "nuoveXT2").toString();
+    themeName = lxde_settings.value("GTK/sNet/IconThemeName", themeName).toString();
     if(!themeName.isEmpty())
         QIcon::setThemeName(themeName);
 }
