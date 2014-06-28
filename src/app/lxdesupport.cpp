@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 
 void LXDESupport::load()
 {
-    if(qgetenv("XDG_CURRENT_DESKTOP") != "LXDE")
+    if(qgetenv("XDG_CURRENT_DESKTOP") != "LXDE" && qgetenv("DESKTOP_SESSION") != "LXDE")
         return;
 
     QString config_dir = qgetenv("XDG_CONFIG_HOME");
@@ -40,7 +40,7 @@ void LXDESupport::load()
     }
 
     QSettings lxde_settings(config_file, QSettings::IniFormat);
-    QString themeName = lxde_settings.value("GTK/sNet/IconThemeName").toString();
+    QString themeName = lxde_settings.value("GTK/sNet/IconThemeName", "nuoveXT2").toString();
     if(!themeName.isEmpty())
         QIcon::setThemeName(themeName);
 }
