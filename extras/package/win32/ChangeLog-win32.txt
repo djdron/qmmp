@@ -15,3 +15,14 @@ LEGEND
 [*] qt-4.8.6
 [*] qmmp-0.7.7
 [*] qmmp-plugin-pack-0.7.7
+
+0.8.0
+[+] glew-1.10.0
+[+] projectM-2.1.0
+[+] libxml2-2.9.1
+[+] librcd-0.1.14
+[+] librcc-0.2.12
+[+] enca-1.15
+[*] ffmpeg-2.1.5
+[*] qmmp-0.8.0
+[*] qmmp-plugin-pack-0.8.0
