@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,7 +19,7 @@
  ***************************************************************************/
 #include <QTextCodec>
 #include <QSettings>
-
+#include <QFile>
 #include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
@@ -50,6 +50,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     settings.endGroup();
     connect(ui.buttonBox, SIGNAL(accepted()), SLOT(writeSettings()));
+
+#ifdef Q_OS_WIN //rusxmms autodetection
+        if(QFile::exists(qApp->applicationDirPath() + "/librcc.dll"))
+        {
+             ui.id3v1EncComboBox->setEnabled(false);
+             ui.id3v2EncComboBox->setEnabled(false);
+        }
+#endif
 }
 
 
