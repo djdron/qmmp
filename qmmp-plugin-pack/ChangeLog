@@ -110,7 +110,7 @@ Version 0.8.0
   - added cover widget
   - added feature to hide tabs
   - added feature to configure toolbar
-  - added feature to block toobars
+  - added feature to block toolbars
   - added 'new playlist' button
   - added menu with tab list
   - improved drag&drop support

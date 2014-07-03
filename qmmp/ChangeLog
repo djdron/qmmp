@@ -845,8 +845,8 @@ Version 0.8.0
 * added context menu to the plugin settings page
 * added lazy plugin loading
 * added feature to disable transport plugins
-* added timeout for transport plugins
-* added float output for lossy decoders
+* added data waiting condition for transport plugins
+* added floating point output for lossy decoders
 * added peak overflow support for lossy decoders
 * added support for id3v2-based ReplayGain tags
 * added clipping prevention using ReplayGain information
@@ -875,7 +875,7 @@ Version 0.8.0
 * improved win32 support
   - enabled support for the enca library
   - added feature to add files from multiple instances
-  - added file associations support
+  - added file associations support (based on SMPlayer implementation)
   - added uninstall support
 * fixed noise on buffer underrun
 * fixed title format in the shaded mode
@@ -884,6 +884,7 @@ Version 0.8.0
 * fixed possible segmentation fault in the mad plugin
 * fixed 'eject' button function
 * fixed raise of the main window when starting another instance
+* fixed default skin
 * updated Russian translation
 * updated Hebrew translation (Genghis Khan)
 * updated Ukrainian translation (Gennadi Motsyo)
