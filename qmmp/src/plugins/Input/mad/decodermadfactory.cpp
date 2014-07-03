@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -152,6 +152,11 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
                 break;
         }
         settings.endGroup();
+
+#ifdef Q_OS_WIN //rusxmms autodetection
+        if(QFile::exists(qApp->applicationDirPath() + "/librcc.dll"))
+             codec = QTextCodec::codecForName ("UTF-8");
+#endif
 
         if (!codec)
             codec = QTextCodec::codecForName ("UTF-8");
