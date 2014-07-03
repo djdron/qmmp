@@ -7,7 +7,7 @@ Maintainer: Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com>
 
 Known issues:
   - missing plugins: mms, wildmidi, aac, jack, pulseaudio, oss4, alsa, mplayer,
-    mpris, converter, kdenotify;
+    mpris, converter, kdenotify, gnome hotkey;
   - packed Xmms skins (i.e. *.tar.gz, *.tar.bz2) are not supported. You should unpack them before usage.
 
 Extra plugins (see http://qmmp.ylsoftware.com/plugins.php):
