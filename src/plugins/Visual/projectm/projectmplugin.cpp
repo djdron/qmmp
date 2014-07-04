@@ -39,6 +39,7 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
 {
     setlocale(LC_NUMERIC, "C"); //fixes problem with none-english locales
     setWindowTitle(tr("ProjectM"));
+    setWindowIcon(parent->windowIcon());
 
     m_buf = 0;
     m_buf_size = 0;
