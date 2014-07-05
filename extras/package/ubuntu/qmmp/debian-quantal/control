@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 7.0.50), libqt4-dev (>= 4:4.6.0), cmake (>= 2.6.0),
   libqt4-opengl-dev (>= 4.3.0), libcdio-paranoia-dev (>= 0.80),
   libx11-dev, libmms-dev (>= 0.4), libcddb2-dev (>= 1.3.1),
   libwildmidi-dev (>= 0.2.3.4), libgme-dev (>= 0.5.5), libbs2b-dev (>= 3.0.0),
-  oss4-dev, libopus-dev, libopusfile-dev, libenca-dev
+  oss4-dev, libopus-dev, libopusfile-dev, libenca-dev, libsidplayfp-dev (>= 1.0.3)
 Standards-Version: 3.9.3
 Homepage: http://qmmp.ylsoftware.com
 

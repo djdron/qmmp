@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Ilya Kotov <forkotov02@hotmail.ru>
 Build-Depends: debhelper (>= 8.0.0), cmake, yasm, pkg-config, libmpg123-dev, libqt4-dev (>= 4:4.7.0),
-               libqmmp-dev (>= 0.7), libqmmpui-dev ( >= 0.7), libtag1-dev (>= 1.7)
+               libqmmp-dev (>= 0.8), libqmmpui-dev ( >= 0.8), libtag1-dev (>= 1.7)
 Standards-Version: 3.9.3
 Homepage: http://qmmp.ylsoftware.com/plugins.php
 
