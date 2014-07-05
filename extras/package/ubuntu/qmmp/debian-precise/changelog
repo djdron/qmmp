@@ -1,3 +1,9 @@
+qmmp (0.8.0-1ubuntu2~precise0) precise; urgency=medium
+
+  * Fixed *.install files.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Jul 2014 16:14:59 +0400
+
 qmmp (0.8.0-1ubuntu1~precise0) precise; urgency=medium
 
   * New upstream release.

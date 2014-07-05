@@ -1,3 +1,9 @@
+qmmp (0.8.0-1ubuntu2~saucy0) saucy; urgency=medium
+
+  * Fixed *.install files.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Jul 2014 16:15:00 +0400
+
 qmmp (0.8.0-1ubuntu1~saucy0) saucy; urgency=medium
 
   * New upstream release.
