@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -88,7 +88,7 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
             PlayListTrack *track = model->track(i);
             if(!track)
                 continue;
-            out += QString("%1. %2").arg(i+1).arg(formatter.parse(track));
+            out += QString("%1. %2").arg(model->numberOfTrack(i) + 1).arg(formatter.parse(track));
             if(i == model->currentIndex())
                 out += " [*]";
             out += "\n";
@@ -104,7 +104,21 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
         PlayListModel *model = pl_manager->playListAt(pl_id);
         if(!model)
             return tr("Invalid playlist ID") + "\n";
-        PlayListTrack *track = model->track(track_id);
+
+        PlayListTrack *track = 0;
+        int track_counter = 0;
+        for(int i = 0; i < model->count(); i++)
+        {
+            if(model->isTrack(i))
+                track_counter++;
+            else
+                continue;
+            if(track_counter - 1 == track_id)
+            {
+                track = model->track(i);
+                break;
+            }
+        }
         if(!track)
             return tr("Invalid track ID") + "\n";
         player->stop();
