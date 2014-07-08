@@ -541,17 +541,17 @@
 <context>
     <name>FileSystemBrowser</name>
     <message>
-        <location filename="../filesystembrowser.cpp" line="62"/>
+        <location filename="../filesystembrowser.cpp" line="63"/>
         <source>Add to Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="130"/>
+        <location filename="../filesystembrowser.cpp" line="131"/>
         <source>Select Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="65"/>
+        <location filename="../filesystembrowser.cpp" line="66"/>
         <source>Change Directory</source>
         <translation type="unfinished"></translation>
     </message>

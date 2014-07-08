@@ -1311,7 +1311,7 @@ Andrej Andrejev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Rozbalené téma</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation>Sbalené téma</translation>
     </message>
