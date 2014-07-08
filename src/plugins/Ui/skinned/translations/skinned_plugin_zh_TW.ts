@@ -1308,7 +1308,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">未封包皮膚</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation type="unfinished">封包皮膚</translation>
     </message>

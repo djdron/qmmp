@@ -1315,7 +1315,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
         <translation>סקין שלא בתוך ארכיון</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation>סקין שבתוך ארכיון</translation>
     </message>

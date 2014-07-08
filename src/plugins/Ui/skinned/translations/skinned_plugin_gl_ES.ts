@@ -1311,7 +1311,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Pel non arquivada</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation>Pel arquivada</translation>
     </message>

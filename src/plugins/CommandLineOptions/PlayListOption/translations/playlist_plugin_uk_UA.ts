@@ -46,7 +46,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="85"/>
         <location filename="../playlistoption.cpp" line="106"/>
-        <location filename="../playlistoption.cpp" line="121"/>
+        <location filename="../playlistoption.cpp" line="135"/>
         <source>Invalid playlist ID</source>
         <translation>Невірний номер списка відтворення</translation>
     </message>
@@ -56,7 +56,7 @@
         <translation>Невірне число аргументів</translation>
     </message>
     <message>
-        <location filename="../playlistoption.cpp" line="109"/>
+        <location filename="../playlistoption.cpp" line="123"/>
         <source>Invalid track ID</source>
         <translation>Невірний номер трека</translation>
     </message>

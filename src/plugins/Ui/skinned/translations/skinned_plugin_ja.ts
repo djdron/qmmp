@@ -1312,7 +1312,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>非書庫化スキン</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation>書庫化スキン</translation>
     </message>

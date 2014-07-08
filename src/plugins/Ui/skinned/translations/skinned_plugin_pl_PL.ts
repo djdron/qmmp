@@ -1311,7 +1311,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Niekompresowana skórka</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="179"/>
         <source>Archived skin</source>
         <translation>Skompresowana skórka</translation>
     </message>

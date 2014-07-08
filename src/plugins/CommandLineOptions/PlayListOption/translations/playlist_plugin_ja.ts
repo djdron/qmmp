@@ -46,7 +46,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="85"/>
         <location filename="../playlistoption.cpp" line="106"/>
-        <location filename="../playlistoption.cpp" line="121"/>
+        <location filename="../playlistoption.cpp" line="135"/>
         <source>Invalid playlist ID</source>
         <translation>プレイリストの ID が不正</translation>
     </message>
@@ -56,7 +56,7 @@
         <translation>引数の項目数が不正</translation>
     </message>
     <message>
-        <location filename="../playlistoption.cpp" line="109"/>
+        <location filename="../playlistoption.cpp" line="123"/>
         <source>Invalid track ID</source>
         <translation>トラックの ID が不正</translation>
     </message>
