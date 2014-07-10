@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,7 +39,6 @@ TrackListObject::TrackListObject(QObject *parent) : QObject(parent)
     m_prev_count = 0;
 }
 
-
 TrackListObject::~TrackListObject()
 {
 }
@@ -57,9 +56,10 @@ int TrackListObject::AddTrack(const QString &in0, bool in1)
     {
         m_pl_manager->selectPlayList(m_model);
         m_player->stop();
-        m_prev_count = m_model->count();
+        connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), SLOT(playTrack(PlayListTrack*)));
+        /*m_prev_count = m_model->count();
         connect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
-        connect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+        connect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));*/
     }
     m_model->add(path);
     return 0;
@@ -77,19 +77,33 @@ int TrackListObject::GetCurrentTrack()
 
 int TrackListObject::GetLength()
 {
-    return m_model->count();
+    return m_model->numberOfTrack(m_model->count() - 1) + 1;
 }
 
 QVariantMap TrackListObject::GetMetadata(int in0)
 {
     QVariantMap map;
-    PlayListTrack *track = m_model->track(in0);
+    PlayListTrack *track = 0;
+    int track_counter = 0;
+    for(int i = 0; i <m_model->count(); i++)
+    {
+        if(m_model->isTrack(i))
+            track_counter++;
+        else
+            continue;
+        if(track_counter - 1 == in0)
+        {
+            track = m_model->track(i);
+            break;
+        }
+    }
+
     if (track)
     {
-        if (QFile::exists(track->url()))
-            map.insert("location", "file://" + track->url());
-        else
+        if (track->url().contains("://"))
             map.insert("location", track->url());
+        else
+            map.insert("location", "file://" + track->url());
         map.insert("title", track->value(Qmmp::TITLE));
         map.insert("artist", track->value(Qmmp::ARTIST));
         map.insert("album", track->value(Qmmp::ALBUM));
@@ -113,30 +127,20 @@ void TrackListObject::SetRandom(bool in0)
     m_ui_settings->setShuffle(in0);
 }
 
-void TrackListObject::disconnectPl()
+void TrackListObject::playTrack(PlayListTrack *track)
 {
-    disconnect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
-    disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
-}
-
-void TrackListObject::checkNewItem() //checks for new item in playlist
-{
-    if(m_model->count() > m_prev_count)
-    {
-        disconnectPl(); //disconnect playlist;
-        m_model->setCurrent(m_prev_count); // activate first added item
-        m_player->play(); // ... and play it
-    }
+    m_model->setCurrent(track);
+    m_player->play();
+    disconnect(m_model,SIGNAL(trackAdded(PlayListTrack*)), this, SLOT(playTrack(PlayListTrack*)));
 }
 
 void  TrackListObject::updateTrackList()
 {
-    emit TrackListChange(m_model->count());
+    emit TrackListChange(m_model->numberOfTrack(m_model->count() - 1) + 1);
 }
 
 void TrackListObject::switchPlayList(PlayListModel *cur, PlayListModel *prev)
 {
-    disconnectPl();
     m_model = cur;
     connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
     if(prev)

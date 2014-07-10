@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +28,7 @@ class PlayListModel;
 class PlayListManager;
 class MediaPlayer;
 class QmmpUiSettings;
+class PlayListTrack;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -55,8 +56,7 @@ signals:
     void TrackListChange(int in0);
 
 private slots:
-    void disconnectPl();
-    void checkNewItem();
+    void playTrack(PlayListTrack *track);
     void updateTrackList();
     void switchPlayList(PlayListModel *cur, PlayListModel *prev);
 
