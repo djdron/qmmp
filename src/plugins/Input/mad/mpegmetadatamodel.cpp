@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,12 +35,12 @@
 
 #include "mpegmetadatamodel.h"
 
-MPEGMetaDataModel::MPEGMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
+MPEGMetaDataModel::MPEGMetaDataModel(bool using_rusxmms, const QString &path, QObject *parent) : MetaDataModel(parent)
 {
     m_file = new TagLib::MPEG::File(path.toLocal8Bit().constData());
-    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::ID3v1);
-    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::ID3v2);
-    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::APE);
+    m_tags << new MpegFileTagModel(using_rusxmms, m_file, TagLib::MPEG::File::ID3v1);
+    m_tags << new MpegFileTagModel(using_rusxmms, m_file, TagLib::MPEG::File::ID3v2);
+    m_tags << new MpegFileTagModel(using_rusxmms, m_file, TagLib::MPEG::File::APE);
 }
 
 MPEGMetaDataModel::~MPEGMetaDataModel()
@@ -131,11 +131,12 @@ QPixmap MPEGMetaDataModel::cover()
     return QPixmap();
 }
 
-MpegFileTagModel::MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType)
+MpegFileTagModel::MpegFileTagModel(bool using_rusxmms, TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType)
         : TagModel()
 {
     m_tagType = tagType;
     m_file = file;
+    m_using_rusxmms = using_rusxmms;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     if (m_tagType == TagLib::MPEG::File::ID3v1)
@@ -155,6 +156,10 @@ MpegFileTagModel::MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File:
     else
     {
         m_tag = m_file->APETag();
+        m_codec = QTextCodec::codecForName ("UTF-8");
+    }
+    if(m_using_rusxmms)
+    {
         m_codec = QTextCodec::codecForName ("UTF-8");
     }
     settings.endGroup();
@@ -237,7 +242,7 @@ void MpegFileTagModel::setValue(Qmmp::MetaData key, const QString &value)
 
     if (m_tagType == TagLib::MPEG::File::ID3v1)
     {
-        if(m_codec->name().contains("UTF")) //utf is unsupported
+        if(m_codec->name().contains("UTF") && !m_using_rusxmms) //utf is unsupported
             return;
     }
     else if (m_tagType == TagLib::MPEG::File::ID3v2)

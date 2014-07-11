@@ -21,43 +21,41 @@
 #include <QSettings>
 #include <QFile>
 #include <qmmp/qmmp.h>
-
 #include "settingsdialog.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent)
+SettingsDialog::SettingsDialog(bool using_rusxmms, QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     findCodecs();
     foreach (QTextCodec *codec, codecs)
     {
-        ui.id3v1EncComboBox->addItem(codec->name());
-        ui.id3v2EncComboBox->addItem(codec->name());
+        m_ui.id3v1EncComboBox->addItem(codec->name());
+        m_ui.id3v2EncComboBox->addItem(codec->name());
     }
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
-    int pos = ui.id3v1EncComboBox->findText
+    int pos = m_ui.id3v1EncComboBox->findText
         (settings.value("ID3v1_encoding","ISO-8859-1").toString());
-    ui.id3v1EncComboBox->setCurrentIndex(pos);
-    pos = ui.id3v2EncComboBox->findText
+    m_ui.id3v1EncComboBox->setCurrentIndex(pos);
+    pos = m_ui.id3v2EncComboBox->findText
         (settings.value("ID3v2_encoding","UTF-8").toString());
-    ui.id3v2EncComboBox->setCurrentIndex(pos);
+    m_ui.id3v2EncComboBox->setCurrentIndex(pos);
 
-    ui.firstTagComboBox->setCurrentIndex(settings.value("tag_1", ID3v2).toInt());
-    ui.secondTagComboBox->setCurrentIndex(settings.value("tag_2", Disabled).toInt());
-    ui.thirdTagComboBox->setCurrentIndex(settings.value("tag_3", Disabled).toInt());
+    m_ui.firstTagComboBox->setCurrentIndex(settings.value("tag_1", ID3v2).toInt());
+    m_ui.secondTagComboBox->setCurrentIndex(settings.value("tag_2", Disabled).toInt());
+    m_ui.thirdTagComboBox->setCurrentIndex(settings.value("tag_3", Disabled).toInt());
 
     settings.endGroup();
-    connect(ui.buttonBox, SIGNAL(accepted()), SLOT(writeSettings()));
+    connect(m_ui.buttonBox, SIGNAL(accepted()), SLOT(writeSettings()));
 
-#ifdef Q_OS_WIN //rusxmms autodetection
-        if(QFile::exists(qApp->applicationDirPath() + "/librcc.dll"))
-        {
-             ui.id3v1EncComboBox->setEnabled(false);
-             ui.id3v2EncComboBox->setEnabled(false);
-        }
-#endif
+
+    if(using_rusxmms)
+    {
+        m_ui.id3v1EncComboBox->setEnabled(false);
+        m_ui.id3v2EncComboBox->setEnabled(false);
+    }
 }
 
 
@@ -68,11 +66,11 @@ void SettingsDialog::writeSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
-    settings.setValue("ID3v1_encoding", ui.id3v1EncComboBox->currentText());
-    settings.setValue("ID3v2_encoding", ui.id3v2EncComboBox->currentText());
-    settings.setValue("tag_1", ui.firstTagComboBox->currentIndex());
-    settings.setValue("tag_2", ui.secondTagComboBox->currentIndex());
-    settings.setValue("tag_3", ui.thirdTagComboBox->currentIndex());
+    settings.setValue("ID3v1_encoding", m_ui.id3v1EncComboBox->currentText());
+    settings.setValue("ID3v2_encoding", m_ui.id3v2EncComboBox->currentText());
+    settings.setValue("tag_1", m_ui.firstTagComboBox->currentIndex());
+    settings.setValue("tag_2", m_ui.secondTagComboBox->currentIndex());
+    settings.setValue("tag_3", m_ui.thirdTagComboBox->currentIndex());
     settings.endGroup();
     accept();
 }
