@@ -100,6 +100,7 @@ SectionEnd
 
 Section "Start Menu Shortcuts"
 
+  SetShellVarContext all
   CreateDirectory "$SMPROGRAMS\Qt-based Multimedia Player"
   CreateShortCut "$SMPROGRAMS\Qt-based Multimedia Player\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
   CreateShortCut "$SMPROGRAMS\Qt-based Multimedia Player\Qmmp.lnk" "$INSTDIR\qmmp.exe" "" "$INSTDIR\qmmp.exe" 0
@@ -121,6 +122,8 @@ SectionEnd
 ;Uninstaller Section
 
 Section "Uninstall"
+
+  SetShellVarContext all
 
   ; Remove file associations
   NsExec::Exec '"$INSTDIR\qmmp.exe" --uninstall'
