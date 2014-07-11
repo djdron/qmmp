@@ -38,6 +38,20 @@
 
 // DecoderMADFactory
 
+DecoderMADFactory::DecoderMADFactory()
+{
+    //detecting rusxmms patch
+    m_using_rusxmms = false;
+    char str[] = { char(0xF2), char(0xE5), char(0xF1), char(0xF2), '\0'};
+    QTextCodec *codec = QTextCodec::codecForName ("windows-1251");
+    TagLib::String tstr(str);
+    if(codec->toUnicode(str) == QString::fromUtf8(tstr.toCString(true)))
+    {
+        qDebug("DecoderMADFactory: found taglib with rusxmms patch");
+        m_using_rusxmms = true;
+    }
+}
+
 bool DecoderMADFactory::supports(const QString &source) const
 {
     QString ext = source.right(4).toLower();
@@ -153,10 +167,8 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
         }
         settings.endGroup();
 
-#ifdef Q_OS_WIN //rusxmms autodetection
-        if(QFile::exists(qApp->applicationDirPath() + "/librcc.dll"))
-             codec = QTextCodec::codecForName ("UTF-8");
-#endif
+        if(m_using_rusxmms)
+            codec = QTextCodec::codecForName ("UTF-8");
 
         if (!codec)
             codec = QTextCodec::codecForName ("UTF-8");
@@ -211,13 +223,13 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
 
 MetaDataModel* DecoderMADFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-   return new MPEGMetaDataModel(path, parent);
+   return new MPEGMetaDataModel(m_using_rusxmms, path, parent);
 }
 
 void DecoderMADFactory::showSettings(QWidget *parent)
 {
-    SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();
+    SettingsDialog *s = new SettingsDialog(m_using_rusxmms, parent);
+    s->show();
 }
 
 void DecoderMADFactory::showAbout(QWidget *parent)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,9 +34,10 @@ class DecoderMADFactory : public QObject,
                           DecoderFactory
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
+Q_INTERFACES(DecoderFactory)
 
 public:
+    DecoderMADFactory();
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
@@ -46,6 +47,9 @@ public:
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);
+
+private:
+    bool m_using_rusxmms;
 };
 
 #endif

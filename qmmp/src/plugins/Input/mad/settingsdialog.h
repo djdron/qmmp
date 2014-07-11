@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,8 +21,6 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
-
 #include "ui_settingsdialog.h"
 
 /**
@@ -32,7 +30,7 @@ class SettingsDialog : public QDialog
 {
 Q_OBJECT
 public:
-    SettingsDialog(QWidget *parent = 0);
+    SettingsDialog(bool using_rusxmms, QWidget *parent = 0);
 
     ~SettingsDialog();
 
@@ -43,8 +41,7 @@ private slots:
 
 private:
     void findCodecs();
-    
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
     QList<QTextCodec *> codecs;
 
 };
