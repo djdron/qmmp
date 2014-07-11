@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,7 +30,7 @@ class MPEGMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    MPEGMetaDataModel(const QString &path, QObject *parent);
+    MPEGMetaDataModel(bool using_rusxmms, const QString &path, QObject *parent);
     ~MPEGMetaDataModel();
     QHash<QString, QString> audioProperties();
     QList<TagModel* > tags();
@@ -44,7 +44,7 @@ private:
 class MpegFileTagModel : public TagModel
 {
 public:
-    MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType);
+    MpegFileTagModel(bool using_rusxmms, TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType);
     ~MpegFileTagModel();
     const QString name();
     QList<Qmmp::MetaData> keys();
@@ -56,6 +56,7 @@ public:
     void save();
 
 private:
+    bool m_using_rusxmms;
     QTextCodec *m_codec;
     TagLib::MPEG::File *m_file;
     TagLib::Tag *m_tag;
