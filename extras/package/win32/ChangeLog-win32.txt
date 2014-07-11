@@ -26,3 +26,6 @@ LEGEND
 [*] ffmpeg-2.1.5
 [*] qmmp-0.8.0
 [*] qmmp-plugin-pack-0.8.0
+
+0.8.1
+[*] opusfile-0.6

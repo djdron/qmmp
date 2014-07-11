@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=opusfile
-VERSION=0.5
+VERSION=0.6
 
 case $1 in
   --download)

@@ -32,7 +32,7 @@ List of the third-party libraries.
   wavpack             4.70.0	 http://www.wavpack.com/
   libsndfile          1.0.25	 http://www.mega-nerd.com/libsndfile/
   opus                1.1	 http://www.opus-codec.org/
-  opusfile            0.5	 http://www.opus-codec.org/
+  opusfile            0.6	 http://www.opus-codec.org/
   libbs2b             3.1.0	 http://bs2b.sourceforge.net/
   curl                7.34.0	 http://curl.haxx.se/
   libcdio             0.83 	 http://www.gnu.org/software/libcdio/
