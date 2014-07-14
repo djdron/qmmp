@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,9 +42,13 @@ KeyboardManager::KeyboardManager(QObject *parent) :
 
     addAction(Qt::Key_Return, SLOT(processEnter()));
     addAction(Qt::Key_PageUp, SLOT(processPgUp()));
+    addAction(Qt::Key_PageUp + Qt::ShiftModifier, SLOT(processPgUp()));
     addAction(Qt::Key_PageDown, SLOT(processPgDown()));
+    addAction(Qt::Key_PageDown + Qt::ShiftModifier, SLOT(processPgDown()));
     addAction(Qt::Key_Home, SLOT(processHome()));
+    addAction(Qt::Key_Home + Qt::ShiftModifier, SLOT(processHome()));
     addAction(Qt::Key_End, SLOT(processEnd()));
+    addAction(Qt::Key_End + Qt::ShiftModifier, SLOT(processEnd()));
 }
 
 QList<QAction *> KeyboardManager::actions()
@@ -214,8 +218,16 @@ void KeyboardManager::processPgUp()
     if(!m_listWidget)
         return;
 
+    int first = m_listWidget->firstVisibleIndex();
     int offset = qMax(m_listWidget->firstVisibleIndex() - m_listWidget->visibleRows(), 0);
     m_listWidget->scroll (offset);
+
+    m_listWidget->model()->clearSelection();
+    if(m_listWidget->firstVisibleIndex() == first)
+        m_listWidget->setAnchorIndex(0);
+    else
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex() + m_listWidget->visibleRows()/2);
+    m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
 }
 
 void KeyboardManager::processPgDown()
@@ -223,27 +235,59 @@ void KeyboardManager::processPgDown()
     if(!m_listWidget)
         return;
 
-    int offset = qMin(m_listWidget->firstVisibleIndex() + m_listWidget->visibleRows(),
+    int first = m_listWidget->firstVisibleIndex();
+    int offset = qMin(first + m_listWidget->visibleRows(),
                       m_listWidget->model()->count() - 1);
     m_listWidget->scroll (offset);
+
+    m_listWidget->model()->clearSelection();
+    if(m_listWidget->firstVisibleIndex() == first)
+        m_listWidget->setAnchorIndex(m_listWidget->model()->count() - 1);
+    else
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex() + m_listWidget->visibleRows()/2);
+    m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
 }
 
 void KeyboardManager::processHome()
 {
     if(!m_listWidget)
         return;
+    int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
     m_listWidget->scroll (0);
+    if(keys & Qt::ShiftModifier)
+    {
+        for(int i = 0; i <= m_listWidget->anchorIndex(); ++i)
+            m_listWidget->model()->setSelected (i, true);
+    }
+    else if(m_listWidget->model()->count() != 0)
+    {
+        m_listWidget->model()->clearSelection();
+        m_listWidget->setAnchorIndex(0);
+        m_listWidget->model()->setSelected(0, true);
+    }
 }
 
 void KeyboardManager::processEnd()
 {
     if(!m_listWidget)
         return;
-    m_listWidget->scroll (0);
 
+    int keys = qobject_cast<QAction *>(sender())->shortcut()[0];
     int scroll_to = m_listWidget->model()->count() - m_listWidget->visibleRows();
     if(scroll_to >= 0)
         m_listWidget->scroll(scroll_to);
+
+    if(keys & Qt::ShiftModifier)
+    {
+        for(int i = m_listWidget->anchorIndex(); i < m_listWidget->model()->count(); ++i)
+            m_listWidget->model()->setSelected (i, true);
+    }
+    else if(m_listWidget->model()->count() > 0)
+    {
+        m_listWidget->model()->clearSelection();
+        m_listWidget->setAnchorIndex(m_listWidget->model()->count() - 1);
+        m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
+    }
 }
 
 void KeyboardManager::addAction(int keys, const char *method)
