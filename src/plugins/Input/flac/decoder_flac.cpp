@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -290,8 +290,12 @@ bool DecoderFLAC::initialize()
                 data()->input->open(QIODevice::ReadOnly);
                 if(xiph_comment->contains("DISCNUMBER") && !xiph_comment->fieldListMap()["DISCNUMBER"].isEmpty())
                 {
-                    m_parser->info(m_track)->setMetaData(Qmmp::DISCNUMBER,
-                              QString::fromUtf8(xiph_comment->fieldListMap()["DISCNUMBER"].toString().toCString(true)).trimmed());
+                    TagLib::StringList fld = xiph_comment->fieldListMap()["DISCNUMBER"];
+                    for(int i = 1; i <= m_parser->count(); i++)
+                    {
+                        m_parser->info(i)->setMetaData(Qmmp::DISCNUMBER,
+                                  QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                    }
                 }
                 QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
                 addMetaData(metaData); //send metadata

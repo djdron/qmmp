@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -134,10 +134,8 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
             CUEParser parser(tag->fieldListMap()["CUESHEET"].toString().toCString(true), fileName);
             if(tag->contains("DISCNUMBER") && !tag->fieldListMap()["DISCNUMBER"].isEmpty())
             {
-                TagLib::StringList fld;
-                fld = tag->fieldListMap()["DISCNUMBER"];
-                int i;
-                for(i=1; i<=parser.count(); i++)
+                TagLib::StringList fld = tag->fieldListMap()["DISCNUMBER"];
+                for(int i = 1; i <= parser.count(); i++)
                 {
                     parser.info(i)->setMetaData(Qmmp::DISCNUMBER,
                               QString::fromUtf8(fld.toString().toCString(true)).trimmed());
