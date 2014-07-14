@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -201,16 +201,33 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
 void KeyboardManager::keyPgUp (QKeyEvent *)
 {
     int page_size = m_listWidget->visibleRows();
-    int offset= (m_listWidget->firstVisibleIndex()-page_size >= 0) ?m_listWidget->firstVisibleIndex()-page_size:0;
+    int first = m_listWidget->firstVisibleIndex();
+    int offset = (first - page_size >= 0) ? first - page_size:0;
     m_listWidget->scroll (offset);
+
+    m_listWidget->model()->clearSelection();
+    if(m_listWidget->firstVisibleIndex() == first)
+        m_listWidget->setAnchorIndex(0);
+    else
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex() + page_size/2);
+    m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
 }
 
 void KeyboardManager::keyPgDown (QKeyEvent *)
 {
     int page_size = m_listWidget->visibleRows();
-    int offset = (m_listWidget->firstVisibleIndex() +page_size < m_listWidget->model()->count()) ?
-                 m_listWidget->firstVisibleIndex() +page_size:m_listWidget->model()->count() - 1;
+    int first = m_listWidget->firstVisibleIndex();
+    int offset = (first + page_size < m_listWidget->model()->count()) ?
+                 first + page_size : m_listWidget->model()->count() - 1;
+
     m_listWidget->scroll (offset);
+
+    m_listWidget->model()->clearSelection();
+    if(m_listWidget->firstVisibleIndex() == first)
+        m_listWidget->setAnchorIndex(m_listWidget->model()->count() - 1);
+    else
+        m_listWidget->setAnchorIndex(m_listWidget->firstVisibleIndex() + page_size/2);
+    m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
 }
 
 void KeyboardManager::keyEnter (QKeyEvent *)
@@ -233,6 +250,12 @@ void KeyboardManager::keyHome(QKeyEvent *ke)
        for(int i = 0; i <= m_listWidget->anchorIndex(); ++i)
            m_listWidget->model()->setSelected (i, true);
     }
+    else if(m_listWidget->model()->count() != 0)
+    {
+        m_listWidget->model()->clearSelection();
+        m_listWidget->setAnchorIndex(0);
+        m_listWidget->model()->setSelected(0, true);
+    }
 }
 
 void KeyboardManager::keyEnd(QKeyEvent *ke)
@@ -245,5 +268,11 @@ void KeyboardManager::keyEnd(QKeyEvent *ke)
    {
        for(int i = m_listWidget->anchorIndex(); i < m_listWidget->model()->count(); ++i)
            m_listWidget->model()->setSelected (i, true);
+   }
+   else if(m_listWidget->model()->count() > 0)
+   {
+       m_listWidget->model()->clearSelection();
+       m_listWidget->setAnchorIndex(m_listWidget->model()->count() - 1);
+       m_listWidget->model()->setSelected(m_listWidget->anchorIndex(), true);
    }
 }
