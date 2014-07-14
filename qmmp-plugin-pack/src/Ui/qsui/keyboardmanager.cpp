@@ -35,10 +35,12 @@ KeyboardManager::KeyboardManager(QObject *parent) :
     addAction(Qt::Key_Up, SLOT(processUp()));
     addAction(Qt::Key_Up + Qt::ShiftModifier, SLOT(processUp()));
     addAction(Qt::Key_Up + Qt::AltModifier, SLOT(processUp()));
+    addAction(Qt::Key_Up + Qt::ControlModifier, SLOT(processUp()));
 
     addAction(Qt::Key_Down, SLOT(processDown()));
     addAction(Qt::Key_Down + Qt::ShiftModifier, SLOT(processDown()));
     addAction(Qt::Key_Down + Qt::AltModifier, SLOT(processDown()));
+    addAction(Qt::Key_Down + Qt::ControlModifier, SLOT(processDown()));
 
     addAction(Qt::Key_Return, SLOT(processEnter()));
     addAction(Qt::Key_PageUp, SLOT(processPgUp()));
@@ -72,7 +74,7 @@ void KeyboardManager::processUp()
         return;
     }
 
-    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
+    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier || keys & Qt::ControlModifier))
     {
         m_listWidget->model()->clearSelection();
         m_listWidget->setAnchorIndex(-1);
@@ -88,14 +90,17 @@ void KeyboardManager::processUp()
     else if(rows.first() > last_visible)
         s = SELECT_BOTTOM;
 
-    if (keys == Qt::AltModifier)
+    if (keys & Qt::AltModifier)
     {
         if(rows.first() == 0)
             return;
         m_listWidget->model()->moveItems (rows.first(), rows.first() - 1);
         m_listWidget->setAnchorIndex (rows.first() - 1);
     }
-
+    else if(keys & Qt::ControlModifier)
+    {
+        m_listWidget->setAnchorIndex (qMax(m_listWidget->anchorIndex() - 1, 0));
+    }
     else
     {
         if(s == SELECT_TOP)
@@ -113,10 +118,14 @@ void KeyboardManager::processUp()
             m_listWidget->model()->setSelected (rows.first(), true);
             m_listWidget->setAnchorIndex(rows.first());
         }
-        else
+        else if(rows.contains(m_listWidget->anchorIndex()) || m_listWidget->anchorIndex() < 0)
         {
             m_listWidget->model()->setSelected (rows.first() - 1, true);
             m_listWidget->setAnchorIndex(rows.first() - 1);
+        }
+        else if(m_listWidget->anchorIndex() >= 0)
+        {
+            m_listWidget->model()->setSelected (m_listWidget->anchorIndex(), true);
         }
     }
 
@@ -142,7 +151,7 @@ void KeyboardManager::processDown()
         return;
     }
 
-    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier))
+    if (!(keys & Qt::ShiftModifier || keys & Qt::AltModifier || keys & Qt::ControlModifier))
     {
         m_listWidget->model()->clearSelection();
         m_listWidget->setAnchorIndex(-1);
@@ -158,12 +167,17 @@ void KeyboardManager::processDown()
     else if(rows.first() > last_visible)
         s = SELECT_BOTTOM;
 
-    if (keys == Qt::AltModifier)
+    if (keys & Qt::AltModifier)
     {
         if(rows.last() == m_listWidget->model()->count() - 1)
             return;
         m_listWidget->model()->moveItems (rows.last(), rows.last() + 1);
         m_listWidget->setAnchorIndex (rows.last() + 1);
+    }
+    else if(keys & Qt::ControlModifier)
+    {
+        m_listWidget->setAnchorIndex (qMin(m_listWidget->anchorIndex() + 1,
+                                           m_listWidget->model()->count() - 1));
     }
     else
     {
@@ -182,10 +196,14 @@ void KeyboardManager::processDown()
             m_listWidget->model()->setSelected (rows.last(), true);
             m_listWidget->setAnchorIndex(rows.last());
         }
-        else
+        else if(rows.contains(m_listWidget->anchorIndex()) || m_listWidget->anchorIndex() < 0)
         {
             m_listWidget->model()->setSelected (rows.last() + 1, true);
             m_listWidget->setAnchorIndex(rows.last() + 1);
+        }
+        else if(m_listWidget->anchorIndex() >= 0)
+        {
+            m_listWidget->model()->setSelected (m_listWidget->anchorIndex(), true);
         }
     }
 
