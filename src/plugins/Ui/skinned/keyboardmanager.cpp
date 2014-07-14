@@ -80,7 +80,9 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
         return;
     }
 
-    if (! (ke->modifiers() & Qt::ShiftModifier || ke->modifiers() & Qt::AltModifier))
+    if (! (ke->modifiers() & Qt::ShiftModifier ||
+           ke->modifiers() & Qt::AltModifier ||
+           ke->modifiers() & Qt::ControlModifier))
     {
         m_listWidget->model()->clearSelection();
         m_listWidget->setAnchorIndex(-1);
@@ -103,7 +105,11 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
         m_listWidget->model()->moveItems (rows.first(), rows.first() - 1);
         m_listWidget->setAnchorIndex (rows.first() - 1);
     }
-
+    else if(ke->modifiers() == Qt::ControlModifier)
+    {
+        m_listWidget->setAnchorIndex (qMax(m_listWidget->anchorIndex() - 1,
+                                           0));
+    }
     else
     {
         if(s == SELECT_TOP)
@@ -121,10 +127,14 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
             m_listWidget->model()->setSelected (rows.first(), true);
             m_listWidget->setAnchorIndex(rows.first());
         }
-        else
+        else if(rows.contains(m_listWidget->anchorIndex()) || m_listWidget->anchorIndex() < 0)
         {
             m_listWidget->model()->setSelected (rows.first() - 1, true);
             m_listWidget->setAnchorIndex(rows.first() - 1);
+        }
+        else if(m_listWidget->anchorIndex() >= 0)
+        {
+            m_listWidget->model()->setSelected (m_listWidget->anchorIndex(), true);
         }
     }
 
@@ -145,7 +155,9 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
         return;
     }
 
-    if (! (ke->modifiers() & Qt::ShiftModifier || ke->modifiers() & Qt::AltModifier))
+    if (!(ke->modifiers() & Qt::ShiftModifier ||
+          ke->modifiers() & Qt::AltModifier ||
+          ke->modifiers() & Qt::ControlModifier))
     {
         m_listWidget->model()->clearSelection();
         m_listWidget->setAnchorIndex(-1);
@@ -168,6 +180,11 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
         m_listWidget->model()->moveItems (rows.last(), rows.last() + 1);
         m_listWidget->setAnchorIndex (rows.last() + 1);
     }
+    else if(ke->modifiers() == Qt::ControlModifier)
+    {
+        m_listWidget->setAnchorIndex (qMin(m_listWidget->anchorIndex() + 1,
+                                           m_listWidget->model()->count() - 1));
+    }
     else
     {
         if(s == SELECT_TOP)
@@ -185,10 +202,14 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
             m_listWidget->model()->setSelected (rows.last(), true);
             m_listWidget->setAnchorIndex(rows.last());
         }
-        else
+        else if(rows.contains(m_listWidget->anchorIndex()) || m_listWidget->anchorIndex() < 0)
         {
             m_listWidget->model()->setSelected (rows.last() + 1, true);
             m_listWidget->setAnchorIndex(rows.last() + 1);
+        }
+        else if(m_listWidget->anchorIndex() >= 0)
+        {
+            m_listWidget->model()->setSelected (m_listWidget->anchorIndex(), true);
         }
     }
 
@@ -202,7 +223,7 @@ void KeyboardManager::keyPgUp (QKeyEvent *)
 {
     int page_size = m_listWidget->visibleRows();
     int first = m_listWidget->firstVisibleIndex();
-    int offset = (first - page_size >= 0) ? first - page_size:0;
+    int offset = qMax(first - page_size, 0);
     m_listWidget->scroll (offset);
 
     m_listWidget->model()->clearSelection();
@@ -217,9 +238,7 @@ void KeyboardManager::keyPgDown (QKeyEvent *)
 {
     int page_size = m_listWidget->visibleRows();
     int first = m_listWidget->firstVisibleIndex();
-    int offset = (first + page_size < m_listWidget->model()->count()) ?
-                 first + page_size : m_listWidget->model()->count() - 1;
-
+    int offset = qMin(first + page_size, m_listWidget->model()->count() - 1);
     m_listWidget->scroll (offset);
 
     m_listWidget->model()->clearSelection();
@@ -232,10 +251,10 @@ void KeyboardManager::keyPgDown (QKeyEvent *)
 
 void KeyboardManager::keyEnter (QKeyEvent *)
 {
-    QList<int> rows = m_listWidget->model()->selectedIndexes();
-    if (rows.count() > 0)
+    QList<int> indexes = m_listWidget->model()->selectedIndexes();
+    if (indexes.count() > 0)
     {
-        m_listWidget->model()->setCurrent (rows.first());
+        m_listWidget->model()->setCurrent (indexes.first());
         MediaPlayer::instance()->stop();
         PlayListManager::instance()->activatePlayList(m_listWidget->model());
         MediaPlayer::instance()->play();
@@ -260,10 +279,8 @@ void KeyboardManager::keyHome(QKeyEvent *ke)
 
 void KeyboardManager::keyEnd(QKeyEvent *ke)
 {
-   int page_size = m_listWidget->visibleRows();
-   int scroll_to = m_listWidget->model()->count() - page_size;
-   if(scroll_to >= 0)
-       m_listWidget->scroll(scroll_to);
+   int scroll_to = qMax(m_listWidget->model()->count() - m_listWidget->visibleRows(), 0);
+   m_listWidget->scroll(scroll_to);
    if(ke->modifiers() & Qt::ShiftModifier)
    {
        for(int i = m_listWidget->anchorIndex(); i < m_listWidget->model()->count(); ++i)
