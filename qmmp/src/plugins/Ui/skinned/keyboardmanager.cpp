@@ -107,8 +107,7 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
     }
     else if(ke->modifiers() == Qt::ControlModifier)
     {
-        m_listWidget->setAnchorIndex (qMax(m_listWidget->anchorIndex() - 1,
-                                           0));
+        m_listWidget->setAnchorIndex (qMax(m_listWidget->anchorIndex() - 1, 0));
     }
     else
     {
