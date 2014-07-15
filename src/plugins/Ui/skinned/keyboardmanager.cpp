@@ -265,8 +265,7 @@ void KeyboardManager::keyHome(QKeyEvent *ke)
     m_listWidget->scroll (0);
     if(ke->modifiers() & Qt::ShiftModifier)
     {
-       for(int i = 0; i <= m_listWidget->anchorIndex(); ++i)
-           m_listWidget->model()->setSelected (i, true);
+        m_listWidget->model()->setSelected (0, m_listWidget->anchorIndex(), true);
     }
     else if(m_listWidget->model()->count() != 0)
     {
@@ -282,8 +281,7 @@ void KeyboardManager::keyEnd(QKeyEvent *ke)
    m_listWidget->scroll(scroll_to);
    if(ke->modifiers() & Qt::ShiftModifier)
    {
-       for(int i = m_listWidget->anchorIndex(); i < m_listWidget->model()->count(); ++i)
-           m_listWidget->model()->setSelected (i, true);
+       m_listWidget->model()->setSelected (m_listWidget->anchorIndex(), m_listWidget->model()->count() - 1, true);
    }
    else if(m_listWidget->model()->count() > 0)
    {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -182,6 +182,13 @@ public:
      * @param selected Selection state (\b true - select, \b false - unselect)
      */
     void setSelected(QList<PlayListItem *> items, bool selected = true);
+    /*!
+     * Sets the selected state of the list of items range
+     * @param firts Firts item in the range
+     * @param last Last item in the range
+     * @param selected Selection state (\b true - select, \b false - unselect)
+     */
+    void setSelected(int first, int last, bool selected = true);
     /*!
      * Advances to the next item. Returns \b false if next iten doesn't exist,
      * otherwise returns \b true
