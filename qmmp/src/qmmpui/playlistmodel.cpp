@@ -421,6 +421,23 @@ void PlayListModel::setSelected(QList<PlayListItem *> items, bool selected)
     emit listChanged();
 }
 
+void PlayListModel::setSelected(int first, int last, bool selected)
+{
+    if(first > last)
+    {
+        setSelected(last, first, selected);
+        return;
+    }
+    for(int index = first; index <= last; ++index)
+    {
+        PlayListItem *i = item(index);
+        if(!i)
+            continue;
+        i->setSelected(selected);
+    }
+    emit listChanged();
+}
+
 void PlayListModel::removeSelected()
 {
     removeSelection(false);
