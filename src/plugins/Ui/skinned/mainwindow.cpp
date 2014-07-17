@@ -328,7 +328,7 @@ void MainWindow::showSettings()
 
 void MainWindow::toggleVisibility()
 {
-    if (isHidden())
+    if (isHidden() || isMinimized())
     {
         show();
         raise();
@@ -346,10 +346,7 @@ void MainWindow::toggleVisibility()
         setFocus ();
         if (isMinimized())
         {
-            if (isMaximized())
-                showMaximized();
-            else
-                showNormal();
+            showNormal();
         }
 #ifdef Q_WS_X11
         WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
