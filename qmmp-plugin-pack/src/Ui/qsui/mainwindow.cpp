@@ -291,7 +291,7 @@ void MainWindow::about()
 
 void MainWindow::toggleVisibility()
 {
-    if(isHidden())
+    if(isHidden() || isMinimized())
         showAndRaise();
     else
         hide();
