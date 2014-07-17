@@ -232,8 +232,10 @@ void QMMPStarter::writeCommand()
     if(m_socket->waitForReadyRead(1500))
         cout << m_socket->readAll().data();
 
+#ifndef Q_OS_WIN
     if (argString.isEmpty())
         printUsage();
+#endif
 
     exit(0);
 }
