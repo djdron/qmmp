@@ -250,6 +250,12 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
     {
         if(i <= group->firstIndex || i > group->lastIndex)
             return false;
+        if(i + to - from - group->firstIndex - 1 >= group->count())
+            return false;
+        if(i + to - from - group->firstIndex - 1 < 0)
+            return false;
+        if(i + to - from < 0)
+            return false;
     }
 
     if (from > to)
