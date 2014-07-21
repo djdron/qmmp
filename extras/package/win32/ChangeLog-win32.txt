@@ -29,3 +29,5 @@ LEGEND
 
 0.8.1
 [*] opusfile-0.6
+[*] qt-4.8.6+git59eb56192
+[-] fixed win7/8 tray tooltip
