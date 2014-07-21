@@ -434,7 +434,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
     m_mainMenu->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(SET_ACTION(ActionManager::QUIT, this, SLOT(close())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::QUIT, m_uiHelper, SLOT(exit())));
 
     QAction* forward = new QAction(this);
     forward->setShortcut(QKeySequence(Qt::Key_Right));
