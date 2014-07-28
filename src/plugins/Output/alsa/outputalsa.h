@@ -58,7 +58,6 @@ private:
     snd_pcm_t *pcm_handle;
     char *pcm_name;
     snd_pcm_uframes_t m_chunk_size;
-    size_t m_bits_per_frame;
     //prebuffer
     uchar *m_prebuf;
     qint64 m_prebuf_size;

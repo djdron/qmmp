@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,9 +18,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QObject>
-//#include <QApplication>
-//#include <QtGlobal>
 #include <QDir>
 #include <QSettings>
 #include <QTimer>
@@ -189,13 +186,12 @@ bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         return false;
     }
     //setup needed values
-    m_bits_per_frame = snd_pcm_format_physical_width(alsa_format) * chan;
     m_chunk_size = period_size;
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
     configure(freq, chan, format); //apply configuration
     //create alsa prebuffer;
-    m_prebuf_size = /*QMMP_BUFFER_SIZE + */m_bits_per_frame * m_chunk_size / 8;
+    m_prebuf_size = 2 * snd_pcm_frames_to_bytes(pcm_handle, m_chunk_size); //buffer for two periods
     m_prebuf = (uchar *)malloc(m_prebuf_size);
 
     m_inited = true;
