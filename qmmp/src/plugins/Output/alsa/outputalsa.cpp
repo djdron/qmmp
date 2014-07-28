@@ -139,6 +139,7 @@ bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     if (rate != exact_rate)
     {
         qWarning("OutputALSA: The rate %d Hz is not supported by your hardware.\n==> Using %d Hz instead.", rate, exact_rate);
+        rate = exact_rate;
     }
     uint c = chan;
     if ((err = snd_pcm_hw_params_set_channels_near(pcm_handle, hwparams, &c)) < 0)
@@ -189,7 +190,7 @@ bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     m_chunk_size = period_size;
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
-    configure(freq, chan, format); //apply configuration
+    configure(rate, chan, format); //apply configuration
     //create alsa prebuffer;
     m_prebuf_size = 2 * snd_pcm_frames_to_bytes(pcm_handle, m_chunk_size); //buffer for two periods
     m_prebuf = (uchar *)malloc(m_prebuf_size);
