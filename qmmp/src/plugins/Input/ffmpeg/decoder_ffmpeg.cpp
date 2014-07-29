@@ -358,7 +358,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode()
         avcodec_get_frame_defaults(m_decoded_frame);
 #endif
 
-        int  l = avcodec_decode_audio4(c, m_decoded_frame, &got_frame, &m_temp_pkt);
+        int l = avcodec_decode_audio4(c, m_decoded_frame, &got_frame, &m_temp_pkt);
 
         if(got_frame)
             out_size = av_samples_get_buffer_size(0, c->channels, m_decoded_frame->nb_samples,
@@ -448,7 +448,7 @@ void DecoderFFmpeg::fillBuffer()
             {
                 qint64 size = m_output_at;
                 m_output_at = - m_skipBytes;
-                m_output_at = m_output_at/4*4;
+                m_output_at = m_output_at - (m_output_at % 4);
 
                 if(av_sample_fmt_is_planar(c->sample_fmt) && m_channels > 1)
                 {
@@ -482,24 +482,18 @@ void DecoderFFmpeg::fillBuffer()
                 if(m_pkt.data)
                     av_free_packet(&m_pkt);
                 m_pkt.data = 0;
+                m_temp_pkt.size = 0;
                 break;
             }
             continue;
         }
         else if(m_output_at == 0)
         {
-#if (LIBAVCODEC_VERSION_INT >= ((55<<16)+(34<<8)+0)) //libav 10
-            if(c->codec_id == AV_CODEC_ID_SHORTEN || c->codec_id == AV_CODEC_ID_TWINVQ)
-                continue;
-#else
-            if(c->codec_id == CODEC_ID_SHORTEN || c->codec_id == CODEC_ID_TWINVQ)
-                continue;
-#endif
-
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
             m_pkt.data = 0;
-            break;
+            m_temp_pkt.size = 0;
+            continue;
         }
     }
 }
