@@ -15,7 +15,7 @@
 
   ;Name and file
   Name "Qt-based Multimedia Player"
-  OutFile "qmmp-0.8.0-win32.exe"
+  OutFile "qmmp-0.8.1-win32.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Qt-based Multimedia Player"
