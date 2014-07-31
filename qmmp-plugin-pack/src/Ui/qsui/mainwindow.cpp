@@ -300,8 +300,8 @@ void MainWindow::toggleVisibility()
 void MainWindow::showAndRaise()
 {
     show();
-    activateWindow();
     raise();
+    activateWindow();
 }
 
 void MainWindow::showSettings()
