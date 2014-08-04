@@ -100,7 +100,7 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
             dialog->exec() == QDialog::Accepted)
     {
         QString keyString = HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ());
-        if(m_ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
+        if(keyString.isEmpty() || m_ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
         {
             item->setText(keyString);
             k->key = dialog->keySym ();
