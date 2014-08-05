@@ -33,7 +33,7 @@ win32:LIBS += -L../../bin \
     -lqmmp0 \
     -lqmmpui0
 
-win32:RC_FILE = images/ico/icon.rc
+win32:RC_FILE = qmmp.rc
 
 INCLUDEPATH += ../
 RESOURCES = images/images.qrc
