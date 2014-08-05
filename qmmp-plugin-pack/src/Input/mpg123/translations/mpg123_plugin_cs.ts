@@ -4,33 +4,33 @@
 <context>
     <name>DecoderMPG123Factory</name>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="94"/>
+        <location filename="../decodermpg123factory.cpp" line="108"/>
         <source>MPG123 Plugin</source>
         <translation>Modul MPG123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="97"/>
+        <location filename="../decodermpg123factory.cpp" line="111"/>
         <source>MPEG Files</source>
         <translation>Soubory MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="229"/>
+        <location filename="../decodermpg123factory.cpp" line="246"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>O modulu MPG123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="230"/>
+        <location filename="../decodermpg123factory.cpp" line="247"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>Zvukový modul Qmmp MPG123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="231"/>
+        <location filename="../decodermpg123factory.cpp" line="248"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>Tento modul poskytuje podporu pro MPEG 1/2 vrstvy 1/2/3 prostřednictvím knihovny libmpg123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="233"/>
+        <location filename="../decodermpg123factory.cpp" line="250"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
