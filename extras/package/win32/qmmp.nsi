@@ -95,6 +95,8 @@
   !insertmacro ${_action} ".mdbz"
   !insertmacro ${_action} ".mdgz"
   !insertmacro ${_action} ".mdl"
+  !insertmacro ${_action} ".mdr"
+  !insertmacro ${_action} ".mdz"
   !insertmacro ${_action} ".mod"
   !insertmacro ${_action} ".mp1"
   !insertmacro ${_action} ".mp2"
