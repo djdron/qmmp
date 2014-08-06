@@ -1,7 +1,7 @@
 #!/bin/sh
 
 QMMP_VERSION=0.8.1
-UBUNTU_CODENAMES='precise saucy trusty utopic'
+UBUNTU_CODENAMES='precise trusty utopic'
 BUILD_ROOT=build-root
 
 
