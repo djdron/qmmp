@@ -31,3 +31,4 @@ LEGEND
 [*] opusfile-0.6
 [*] qt-4.8.6+git59eb56192
 [-] fixed win7/8 tray tooltip
+[-] fixed win7/8 file associations
