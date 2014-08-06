@@ -143,6 +143,7 @@ QStringList MetaDataManager::nameFilters() const
     }
     if(m_settings->determineFileTypeByContent())
         filters << "*";
+    filters.removeDuplicates();
     return filters;
 }
 
