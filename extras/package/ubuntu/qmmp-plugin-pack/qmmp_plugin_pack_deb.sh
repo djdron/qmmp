@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLUGIN_PACK_VERSION=0.8.0
+PLUGIN_PACK_VERSION=0.8.1
 UBUNTU_CODENAMES='precise saucy trusty utopic'
 BUILD_ROOT=build-root
 
