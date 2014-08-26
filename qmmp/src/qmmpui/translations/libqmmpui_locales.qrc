@@ -23,5 +23,6 @@
     <file>libqmmpui_gl_ES.qm</file>
     <file>libqmmpui_sr_BA.qm</file>
     <file>libqmmpui_sr_RS.qm</file>
+    <file>libqmmpui_en.qm</file>
   </qresource>
 </RCC>

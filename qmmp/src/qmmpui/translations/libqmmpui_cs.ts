@@ -19,6 +19,11 @@
         <translation>Autoři</translation>
     </message>
     <message>
+        <location filename="../forms/aboutdialog.ui" line="77"/>
+        <source>Translators</source>
+        <translation>Překladatelé</translation>
+    </message>
+    <message>
         <location filename="../forms/aboutdialog.ui" line="91"/>
         <source>Thanks To</source>
         <translation>Poděkování</translation>
@@ -73,11 +78,6 @@
         <source>General plugins:</source>
         <translation>Obecné moduly:</translation>
     </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="77"/>
-        <source>Translators</source>
-        <translation>Překladatelé</translation>
-    </message>
 </context>
 <context>
     <name>AddUrlDialog</name>
@@ -105,6 +105,116 @@
 <context>
     <name>ConfigDialog</name>
     <message>
+        <location filename="../forms/configdialog.ui" line="14"/>
+        <source>Qmmp Settings</source>
+        <translation>Nastavení Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="58"/>
+        <source>Playlist</source>
+        <translation>Seznam skladeb</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="67"/>
+        <source>Plugins</source>
+        <translation>Moduly</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="76"/>
+        <source>Advanced</source>
+        <translation>Pokročilé</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="85"/>
+        <source>Connectivity</source>
+        <translation>Síť</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="94"/>
+        <location filename="../forms/configdialog.ui" line="781"/>
+        <source>Audio</source>
+        <translation>Zvuk</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="123"/>
+        <source>Metadata</source>
+        <translation>Metadata</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="135"/>
+        <source>Convert %20 to blanks</source>
+        <translation>Převést %20 na mezery</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="142"/>
+        <source>Title format:</source>
+        <translation>Formát titulku:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="149"/>
+        <source>Load metadata from files</source>
+        <translation>Číst ze souborů metadata</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="156"/>
+        <source>Convert underscores to blanks</source>
+        <translation>Převést podtržítka na mezery</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="163"/>
+        <source>Group format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="173"/>
+        <location filename="../forms/configdialog.ui" line="183"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="193"/>
+        <source>Directory Scanning Options</source>
+        <translation>Možnosti prohledávání adresářů</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="199"/>
+        <source>Restrict files to:</source>
+        <translation>Omezit soubory na:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="209"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
+        <source>Exclude files:</source>
+        <translation>Vynechat soubory:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="222"/>
+        <source>Miscellaneous</source>
+        <translation>Různé</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="228"/>
+        <source>Auto-save playlist when modified</source>
+        <translation>Automaticky uložit seznam skladeb, je-li změněn</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="235"/>
+        <source>Clear previous playlist when opening new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="283"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <source>Preferences</source>
+        <translation>Nastavení</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="296"/>
+        <location filename="../configdialog.cpp" line="334"/>
+        <source>Information</source>
+        <translation>Informace</translation>
+    </message>
+    <message>
         <location filename="../forms/configdialog.ui" line="338"/>
         <source>Description</source>
         <translation>Popis</translation>
@@ -115,10 +225,155 @@
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
-        <location filename="../configdialog.cpp" line="315"/>
-        <source>Artist</source>
-        <translation>Umělec</translation>
+        <location filename="../forms/configdialog.ui" line="355"/>
+        <source>Look and Feel</source>
+        <translation>Vzhled a chování</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="361"/>
+        <source>Language:</source>
+        <translation>Jazyk:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="397"/>
+        <source>Playback</source>
+        <translation>Přehrávání</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="403"/>
+        <source>Continue playback on startup</source>
+        <translation>Po startu pokračovat v přehrávání</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="410"/>
+        <source>Determine file type by content</source>
+        <translation>Zjistit formát souboru dle obsahu</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="417"/>
+        <source>Add files from command line to this playlist:</source>
+        <translation>Přidat soubory z příkazové řádky do tohoto seznamu:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="434"/>
+        <source>Cover Image Retrieve</source>
+        <translation>Získat obrázek obalu</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="440"/>
+        <source>Use separate image files</source>
+        <translation>Použít samostatné obrázky</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="450"/>
+        <source>Include files:</source>
+        <translation>Zahrnout soubory:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="472"/>
+        <source>Recursive search depth:</source>
+        <translation>Hloubka rekurzivního hledání:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="504"/>
+        <source>URL Dialog</source>
+        <translation>Dialog URL</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="510"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation>Automaticky vložit URL ze schránky</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="549"/>
+        <source>Proxy</source>
+        <translation>Proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="561"/>
+        <source>Enable proxy usage</source>
+        <translation>Povolit používání proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="568"/>
+        <source>Proxy host name:</source>
+        <translation>Adresa proxy:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="581"/>
+        <source>Proxy port:</source>
+        <translation>Port proxy:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="594"/>
+        <source>Use authentication with proxy</source>
+        <translation>Použít autorizaci pro proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="601"/>
+        <source>Proxy user name:</source>
+        <translation>Uživatelské jméno:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="614"/>
+        <source>Proxy password:</source>
+        <translation>Heslo:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="651"/>
+        <source>Replay Gain</source>
+        <translation>Zisk při přehrávání</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="657"/>
+        <source>Replay Gain mode:</source>
+        <translation>Režim úpravy zisku při přehrávání:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="674"/>
+        <source>Preamp:</source>
+        <translation>Předzesílení:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="706"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
+        <source>dB</source>
+        <translation>dB</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="719"/>
+        <source>Default gain:</source>
+        <translation>Výchozí zisk:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="771"/>
+        <source>Use  peak info to prevent clipping</source>
+        <translation>Použít informaci o vrcholu k zabránění ořezu</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="787"/>
+        <source>Buffer size:</source>
+        <translation>Velikost vyrovnávací paměti:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="806"/>
+        <source>ms</source>
+        <translation>ms</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="835"/>
+        <source>Use software volume control</source>
+        <translation>Používat softwarové ovládání hlasitosti</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="842"/>
+        <source>16-bit output</source>
+        <translation>16bitový výstup</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="68"/>
+        <source>Track</source>
+        <translation>Stopa</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="69"/>
@@ -126,11 +381,6 @@
         <location filename="../configdialog.cpp" line="316"/>
         <source>Album</source>
         <translation>Album</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="68"/>
-        <source>Track</source>
-        <translation>Stopa</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="70"/>
@@ -158,6 +408,21 @@
         <translation>Přehrávače</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="213"/>
+        <source>Effects</source>
+        <translation>Efekty</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="223"/>
+        <source>Visualization</source>
+        <translation>Vizualizace</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="233"/>
+        <source>General</source>
+        <translation>Obecné</translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="243"/>
         <source>Output</source>
         <translation>Výstup</translation>
@@ -171,6 +436,12 @@
         <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
         <translation>Uživatelská rozhraní</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="315"/>
+        <source>Artist</source>
+        <translation>Umělec</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="297"/>
@@ -188,10 +459,44 @@
         <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="317"/>
+        <source>Genre</source>
+        <translation>Žánr</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="301"/>
+        <location filename="../configdialog.cpp" line="318"/>
+        <source>Comment</source>
+        <translation>Poznámka</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="302"/>
+        <location filename="../configdialog.cpp" line="319"/>
+        <source>Composer</source>
+        <translation>Skladatel</translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="303"/>
         <location filename="../configdialog.cpp" line="320"/>
         <source>Disc number</source>
         <translation>Číslo disku</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="304"/>
+        <source>File name</source>
+        <translation>Název souboru</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="305"/>
+        <source>File path</source>
+        <translation>Cesta k souboru</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="306"/>
+        <location filename="../configdialog.cpp" line="321"/>
+        <source>Year</source>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="307"/>
@@ -329,315 +634,29 @@
         <source>Serbian (Ekavian)</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>DetailsDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="302"/>
-        <location filename="../configdialog.cpp" line="319"/>
-        <source>Composer</source>
-        <translation>Skladatel</translation>
+        <location filename="../forms/detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation>Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="304"/>
-        <source>File name</source>
-        <translation>Název souboru</translation>
+        <location filename="../forms/detailsdialog.ui" line="29"/>
+        <source>Open the directory containing this file</source>
+        <translation>Otevřít adresář obsahující tento soubor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="305"/>
-        <source>File path</source>
-        <translation>Cesta k souboru</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="300"/>
-        <location filename="../configdialog.cpp" line="317"/>
-        <source>Genre</source>
-        <translation>Žánr</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="306"/>
-        <location filename="../configdialog.cpp" line="321"/>
-        <source>Year</source>
-        <translation>Rok</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="301"/>
-        <location filename="../configdialog.cpp" line="318"/>
-        <source>Comment</source>
-        <translation>Poznámka</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
-        <source>Qmmp Settings</source>
-        <translation>Nastavení Qmmp</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="58"/>
-        <source>Playlist</source>
-        <translation>Seznam skladeb</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="67"/>
-        <source>Plugins</source>
-        <translation>Moduly</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="76"/>
-        <source>Advanced</source>
-        <translation>Pokročilé</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="651"/>
-        <source>Replay Gain</source>
-        <translation>Zisk při přehrávání</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="173"/>
-        <location filename="../forms/configdialog.ui" line="183"/>
+        <location filename="../forms/detailsdialog.ui" line="32"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="123"/>
-        <source>Metadata</source>
-        <translation>Metadata</translation>
+        <location filename="../forms/detailsdialog.ui" line="93"/>
+        <source>Summary</source>
+        <translation>Přehled</translation>
     </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="149"/>
-        <source>Load metadata from files</source>
-        <translation>Číst ze souborů metadata</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="142"/>
-        <source>Title format:</source>
-        <translation>Formát titulku:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="283"/>
-        <location filename="../configdialog.cpp" line="331"/>
-        <source>Preferences</source>
-        <translation>Nastavení</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="296"/>
-        <location filename="../configdialog.cpp" line="334"/>
-        <source>Information</source>
-        <translation>Informace</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="434"/>
-        <source>Cover Image Retrieve</source>
-        <translation>Získat obrázek obalu</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="440"/>
-        <source>Use separate image files</source>
-        <translation>Použít samostatné obrázky</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="450"/>
-        <source>Include files:</source>
-        <translation>Zahrnout soubory:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="209"/>
-        <location filename="../forms/configdialog.ui" line="460"/>
-        <source>Exclude files:</source>
-        <translation>Vynechat soubory:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="472"/>
-        <source>Recursive search depth:</source>
-        <translation>Hloubka rekurzivního hledání:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="397"/>
-        <source>Playback</source>
-        <translation>Přehrávání</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
-        <source>Continue playback on startup</source>
-        <translation>Po startu pokračovat v přehrávání</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="410"/>
-        <source>Determine file type by content</source>
-        <translation>Zjistit formát souboru dle obsahu</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="193"/>
-        <source>Directory Scanning Options</source>
-        <translation>Možnosti prohledávání adresářů</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="163"/>
-        <source>Group format:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="199"/>
-        <source>Restrict files to:</source>
-        <translation>Omezit soubory na:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="222"/>
-        <source>Miscellaneous</source>
-        <translation>Různé</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
-        <source>Auto-save playlist when modified</source>
-        <translation>Automaticky uložit seznam skladeb, je-li změněn</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="235"/>
-        <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
-        <source>Look and Feel</source>
-        <translatorcomment>... sakra jak se tohle překládá :-(</translatorcomment>
-        <translation>Vzhled a chování</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="361"/>
-        <source>Language:</source>
-        <translation>Jazyk:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="417"/>
-        <source>Add files from command line to this playlist:</source>
-        <translation>Přidat soubory z příkazové řádky do tohoto seznamu:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="504"/>
-        <source>URL Dialog</source>
-        <translation>Dialog URL</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="510"/>
-        <source>Auto-paste URL from clipboard</source>
-        <translation>Automaticky vložit URL ze schránky</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="657"/>
-        <source>Replay Gain mode:</source>
-        <translation>Režim úpravy zisku při přehrávání:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="674"/>
-        <source>Preamp:</source>
-        <translation>Předzesílení:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="706"/>
-        <location filename="../forms/configdialog.ui" line="751"/>
-        <source>dB</source>
-        <translation>dB</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="719"/>
-        <source>Default gain:</source>
-        <translation>Výchozí zisk:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="771"/>
-        <source>Use  peak info to prevent clipping</source>
-        <translation>Použít informaci o vrcholu k zabránění ořezu</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="787"/>
-        <source>Buffer size:</source>
-        <translation>Velikost vyrovnávací paměti:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="806"/>
-        <source>ms</source>
-        <translation>ms</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="842"/>
-        <source>16-bit output</source>
-        <translation>16bitový výstup</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="85"/>
-        <source>Connectivity</source>
-        <translation>Síť</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="549"/>
-        <source>Proxy</source>
-        <translation>Proxy</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="561"/>
-        <source>Enable proxy usage</source>
-        <translation>Povolit používání proxy</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="568"/>
-        <source>Proxy host name:</source>
-        <translation>Adresa proxy:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="581"/>
-        <source>Proxy port:</source>
-        <translation>Port proxy:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="594"/>
-        <source>Use authentication with proxy</source>
-        <translation>Použít autorizaci pro proxy</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="601"/>
-        <source>Proxy user name:</source>
-        <translation>Uživatelské jméno:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="614"/>
-        <source>Proxy password:</source>
-        <translation>Heslo:</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="223"/>
-        <source>Visualization</source>
-        <translation>Vizualizace</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <source>Effects</source>
-        <translation>Efekty</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="233"/>
-        <source>General</source>
-        <translation>Obecné</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="781"/>
-        <source>Audio</source>
-        <translation>Zvuk</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="835"/>
-        <source>Use software volume control</source>
-        <translation>Používat softwarové ovládání hlasitosti</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="156"/>
-        <source>Convert underscores to blanks</source>
-        <translation>Převést podtržítka na mezery</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="135"/>
-        <source>Convert %20 to blanks</source>
-        <translation>Převést %20 na mezery</translation>
-    </message>
-</context>
-<context>
-    <name>DetailsDialog</name>
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
@@ -688,26 +707,6 @@
         <source>Disc number</source>
         <translation>Číslo disku</translation>
     </message>
-    <message>
-        <location filename="../forms/detailsdialog.ui" line="14"/>
-        <source>Details</source>
-        <translation>Podrobnosti</translation>
-    </message>
-    <message>
-        <location filename="../forms/detailsdialog.ui" line="29"/>
-        <source>Open the directory containing this file</source>
-        <translation>Otevřít adresář obsahující tento soubor</translation>
-    </message>
-    <message>
-        <location filename="../forms/detailsdialog.ui" line="32"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../forms/detailsdialog.ui" line="93"/>
-        <source>Summary</source>
-        <translation>Přehled</translation>
-    </message>
 </context>
 <context>
     <name>JumpToTrackDialog</name>
@@ -736,7 +735,6 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translatorcomment>zkrácno, nevejde se na buttonek</translatorcomment>
         <translation>Přeskočit</translation>
     </message>
     <message>
@@ -818,6 +816,11 @@
 <context>
     <name>TagEditor</name>
     <message>
+        <location filename="../forms/tageditor.ui" line="14"/>
+        <source>Tag Editor</source>
+        <translation>Editor tagu</translation>
+    </message>
+    <message>
         <location filename="../forms/tageditor.ui" line="38"/>
         <source>Title:</source>
         <translation>Název:</translation>
@@ -843,9 +846,9 @@
         <translation>Žánr:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="244"/>
-        <source>Disc number:</source>
-        <translation>Číslo disku:</translation>
+        <location filename="../forms/tageditor.ui" line="163"/>
+        <source>Track:</source>
+        <translation>Stopa:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="184"/>
@@ -855,19 +858,14 @@
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="163"/>
-        <source>Track:</source>
-        <translation>Stopa:</translation>
-    </message>
-    <message>
         <location filename="../forms/tageditor.ui" line="197"/>
         <source>Year:</source>
         <translation>Rok:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="14"/>
-        <source>Tag Editor</source>
-        <translation>Editor tagu</translation>
+        <location filename="../forms/tageditor.ui" line="244"/>
+        <source>Disc number:</source>
+        <translation>Číslo disku:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="269"/>
@@ -883,6 +881,11 @@
 <context>
     <name>TemplateEditor</name>
     <message>
+        <location filename="../forms/templateeditor.ui" line="14"/>
+        <source>Template Editor</source>
+        <translation>Editor šablony</translation>
+    </message>
+    <message>
         <location filename="../forms/templateeditor.ui" line="39"/>
         <source>Reset</source>
         <translation>Vyčistit</translation>
@@ -891,11 +894,6 @@
         <location filename="../forms/templateeditor.ui" line="46"/>
         <source>Insert</source>
         <translation>Vložit</translation>
-    </message>
-    <message>
-        <location filename="../forms/templateeditor.ui" line="14"/>
-        <source>Template Editor</source>
-        <translation>Editor šablony</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
@@ -974,7 +972,6 @@
         <location filename="../uihelper.cpp" line="138"/>
         <location filename="../uihelper.cpp" line="149"/>
         <source>All Supported Bitstreams</source>
-        <translatorcomment>au, proč tam Ilja cpe nesmysl jako &quot;bitstream&quot; ...</translatorcomment>
         <translation>Všechny podporované formáty</translation>
     </message>
     <message>

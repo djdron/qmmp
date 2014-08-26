@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<TS version="2.0" language="ja">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -136,20 +136,14 @@
         <translation>音響</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="173"/>
-        <location filename="../forms/configdialog.ui" line="183"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="123"/>
         <source>Metadata</source>
         <translation>メタデータ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="149"/>
-        <source>Load metadata from files</source>
-        <translation>ファイルからメタデータを読み込む</translation>
+        <location filename="../forms/configdialog.ui" line="135"/>
+        <source>Convert %20 to blanks</source>
+        <translation>%20 を空白文字で表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="142"/>
@@ -157,14 +151,56 @@
         <translation>タイトルの表示形式:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="149"/>
+        <source>Load metadata from files</source>
+        <translation>ファイルからメタデータを読み込む</translation>
+    </message>
+    <message>
         <location filename="../forms/configdialog.ui" line="156"/>
         <source>Convert underscores to blanks</source>
         <translation>下線記号 _ を空白文字で表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="135"/>
-        <source>Convert %20 to blanks</source>
-        <translation>%20 を空白文字で表示</translation>
+        <location filename="../forms/configdialog.ui" line="163"/>
+        <source>Group format:</source>
+        <translation>グループの書式:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="173"/>
+        <location filename="../forms/configdialog.ui" line="183"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="193"/>
+        <source>Directory Scanning Options</source>
+        <translation>ディレクトリ探査のオプション</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="199"/>
+        <source>Restrict files to:</source>
+        <translation>ファイルを限定(拡張子による):</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="209"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
+        <source>Exclude files:</source>
+        <translation>除外ファイル形式:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="222"/>
+        <source>Miscellaneous</source>
+        <translation>その他いろいろ</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="228"/>
+        <source>Auto-save playlist when modified</source>
+        <translation>プレイリストの変更を自動保存</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="235"/>
+        <source>Clear previous playlist when opening new one</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="283"/>
@@ -189,30 +225,14 @@
         <translation>ファイル名</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="434"/>
-        <source>Cover Image Retrieve</source>
-        <translation>アルバム表紙画像の取得</translation>
+        <location filename="../forms/configdialog.ui" line="355"/>
+        <source>Look and Feel</source>
+        <translation>外観と感触</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="440"/>
-        <source>Use separate image files</source>
-        <translation>分割された画像ファイルを利用</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="450"/>
-        <source>Include files:</source>
-        <translation>対象ファイル形式:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="209"/>
-        <location filename="../forms/configdialog.ui" line="460"/>
-        <source>Exclude files:</source>
-        <translation>除外ファイル形式:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="472"/>
-        <source>Recursive search depth:</source>
-        <translation>再帰検索の深度:</translation>
+        <location filename="../forms/configdialog.ui" line="361"/>
+        <source>Language:</source>
+        <translation>言語:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="397"/>
@@ -230,49 +250,29 @@
         <translation>ファイル内容をみて形式を判断</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="193"/>
-        <source>Directory Scanning Options</source>
-        <translation>ディレクトリ探査のオプション</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="163"/>
-        <source>Group format:</source>
-        <translation>グループの書式:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="199"/>
-        <source>Restrict files to:</source>
-        <translation>ファイルを限定(拡張子による):</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="222"/>
-        <source>Miscellaneous</source>
-        <translation>その他いろいろ</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
-        <source>Auto-save playlist when modified</source>
-        <translation>プレイリストの変更を自動保存</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="235"/>
-        <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
-        <source>Look and Feel</source>
-        <translation>外観と感触</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="361"/>
-        <source>Language:</source>
-        <translation>言語:</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
         <translation>コマンド行からファイルを追加できるプレイリスト:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="434"/>
+        <source>Cover Image Retrieve</source>
+        <translation>アルバム表紙画像の取得</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="440"/>
+        <source>Use separate image files</source>
+        <translation>分割された画像ファイルを利用</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="450"/>
+        <source>Include files:</source>
+        <translation>対象ファイル形式:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="472"/>
+        <source>Recursive search depth:</source>
+        <translation>再帰検索の深度:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="504"/>
@@ -846,9 +846,9 @@
         <translation>ジャンル:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="244"/>
-        <source>Disc number:</source>
-        <translation>ディスク番号:</translation>
+        <location filename="../forms/tageditor.ui" line="163"/>
+        <source>Track:</source>
+        <translation>トラック:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="184"/>
@@ -858,19 +858,19 @@
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="269"/>
-        <source>Comment:</source>
-        <translation>コメント:</translation>
-    </message>
-    <message>
         <location filename="../forms/tageditor.ui" line="197"/>
         <source>Year:</source>
         <translation>年:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="163"/>
-        <source>Track:</source>
-        <translation>トラック:</translation>
+        <location filename="../forms/tageditor.ui" line="244"/>
+        <source>Disc number:</source>
+        <translation>ディスク番号:</translation>
+    </message>
+    <message>
+        <location filename="../forms/tageditor.ui" line="269"/>
+        <source>Comment:</source>
+        <translation>コメント:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>
