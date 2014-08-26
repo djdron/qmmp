@@ -23,5 +23,6 @@
     <file>srconverter_plugin_gl_ES.qm</file>
     <file>srconverter_plugin_sr_BA.qm</file>
     <file>srconverter_plugin_sr_RS.qm</file>
+    <file>srconverter_plugin_en.qm</file>
   </qresource>
 </RCC>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -141,16 +141,6 @@
         <translation>מידע-מוצמד</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="149"/>
-        <source>Load metadata from files</source>
-        <translation>טען מידע-מוצמד מן קבצים</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="156"/>
-        <source>Convert underscores to blanks</source>
-        <translation>המר הדגשות אל תווי רווח</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="135"/>
         <source>Convert %20 to blanks</source>
         <translation>המר ‎%20 אל תווי רווח</translation>
@@ -161,10 +151,25 @@
         <translation>פורמט כותרת:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="149"/>
+        <source>Load metadata from files</source>
+        <translation>טען מידע-מוצמד מן קבצים</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="156"/>
+        <source>Convert underscores to blanks</source>
+        <translation>המר הדגשות אל תווי רווח</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="163"/>
+        <source>Group format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/configdialog.ui" line="173"/>
         <location filename="../forms/configdialog.ui" line="183"/>
         <source>...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
@@ -193,50 +198,15 @@
         <translation>שמור אוטומטית רשימת נגינה כאשר משתנה</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
-        <source>Look and Feel</source>
-        <translation>מראה ותחושה</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="361"/>
-        <source>Language:</source>
-        <translation>שפה:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="434"/>
-        <source>Cover Image Retrieve</source>
-        <translation>אחזור תמונת כיסוי</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="440"/>
-        <source>Use separate image files</source>
-        <translation>השתמש בקבצי תמונה פרודים</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="450"/>
-        <source>Include files:</source>
-        <translation>הכלל קבצים:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="472"/>
-        <source>Recursive search depth:</source>
-        <translation>חיפוש עומק רקורסיבי:</translation>
+        <location filename="../forms/configdialog.ui" line="235"/>
+        <source>Clear previous playlist when opening new one</source>
+        <translation>טהר רשימות נגינה קודמות בעת פתיחת אחת חדשה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="283"/>
         <location filename="../configdialog.cpp" line="331"/>
         <source>Preferences</source>
         <translation>העדפות</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="163"/>
-        <source>Group format:</source>
-        <translation type="unfinished">קבץ פורמט:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="235"/>
-        <source>Clear previous playlist when opening new one</source>
-        <translation>טהר רשימות נגינה קודמות בעת פתיחת אחת חדשה</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="296"/>
@@ -253,6 +223,16 @@
         <location filename="../forms/configdialog.ui" line="343"/>
         <source>Filename</source>
         <translation>שם קובץ</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="355"/>
+        <source>Look and Feel</source>
+        <translation>מראה ותחושה</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="361"/>
+        <source>Language:</source>
+        <translation>שפה:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="397"/>
@@ -273,6 +253,26 @@
         <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
         <translation>הוסף קבצים מתוך שורת פקודה אל רשימת נגינה זו:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="434"/>
+        <source>Cover Image Retrieve</source>
+        <translation>אחזור תמונת כיסוי</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="440"/>
+        <source>Use separate image files</source>
+        <translation>השתמש בקבצי תמונה פרודים</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="450"/>
+        <source>Include files:</source>
+        <translation>הכלל קבצים:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="472"/>
+        <source>Recursive search depth:</source>
+        <translation>חיפוש עומק רקורסיבי:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="504"/>
@@ -627,12 +627,12 @@
     <message>
         <location filename="../configdialog.cpp" line="366"/>
         <source>Serbian (Ijekavian)</source>
-        <translation type="unfinished">סרבית (Ijekavian)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="367"/>
         <source>Serbian (Ekavian)</source>
-        <translation type="unfinished">סרבית (Ekavian)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -650,7 +650,7 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="32"/>
         <source>...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="93"/>
@@ -660,7 +660,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
@@ -740,17 +740,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>Q</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="62"/>
         <source>J</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="63"/>
         <source>F5</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="91"/>
@@ -855,7 +855,7 @@
         <location filename="../forms/tageditor.ui" line="222"/>
         <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="197"/>

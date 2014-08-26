@@ -23,5 +23,6 @@
     <file>stereo_plugin_gl_ES.qm</file>
     <file>stereo_plugin_sr_BA.qm</file>
     <file>stereo_plugin_sr_RS.qm</file>
+    <file>stereo_plugin_en.qm</file>
   </qresource>
 </RCC>

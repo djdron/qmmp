@@ -141,16 +141,6 @@
         <translation>Metadatos</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="149"/>
-        <source>Load metadata from files</source>
-        <translation>Cargar os metadatos dende os arquivos</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="156"/>
-        <source>Convert underscores to blanks</source>
-        <translation>Converter os guións baixos en espazos en branco</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="135"/>
         <source>Convert %20 to blanks</source>
         <translation>Converter %20 en espazos en branco</translation>
@@ -159,6 +149,16 @@
         <location filename="../forms/configdialog.ui" line="142"/>
         <source>Title format:</source>
         <translation>Formato de título:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="149"/>
+        <source>Load metadata from files</source>
+        <translation>Cargar os metadatos dende os arquivos</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="156"/>
+        <source>Convert underscores to blanks</source>
+        <translation>Converter os guións baixos en espazos en branco</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="163"/>
