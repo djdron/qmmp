@@ -1,0 +1,21 @@
+[main]
+host = https://www.transifex.com
+
+[qmmp-plugin-pack.translations]
+file_filter = src/Ui/qsui/translations/translations_plugin_<lang>.ts
+source_lang = en
+source_file = src/Ui/qsui/translations/translations_plugin_en.ts
+type = QT
+
+[qmmp-plugin-pack.translations]
+file_filter = src/Input/ffap/translations/translations_plugin_<lang>.ts
+source_lang = en
+source_file = src/Input/ffap/translations/translations_plugin_en.ts
+type = QT
+
+[qmmp-plugin-pack.translations]
+file_filter = src/Input/mpg123/translations/translations_plugin_<lang>.ts
+source_lang = en
+source_file = src/Input/mpg123/translations/translations_plugin_en.ts
+type = QT
+
