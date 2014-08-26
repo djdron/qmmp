@@ -12,7 +12,7 @@ echo "" >> ${TX_CONFIG}
 for tr_dir in `find ../src/ -type d -name "translations"`
 do
 
-     plug_name=`echo $tr_dir | cut -d '/' -f 5`
+     plug_name=`echo $tr_dir | cut -d '/' -f 4`
 
      if  [ -z "$plug_name" ]; then
          plug_name=`echo $tr_dir | cut -d '/' -f 3`
