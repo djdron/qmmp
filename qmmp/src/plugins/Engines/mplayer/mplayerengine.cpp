@@ -75,7 +75,7 @@ QStringList MplayerInfo::filters()
 {
     QStringList filters;
     filters << "*.avi" << "*.mpg" << "*.mpeg" << "*.divx" << "*.qt" << "*.mov" << "*.wmv" << "*.asf"
-            << "*.flv" << "*.3gp" << "*.mkv" << "*.mp4";
+            << "*.flv" << "*.3gp" << "*.mkv" << "*.mp4" << "*.webm";
     return filters;
 }
 
