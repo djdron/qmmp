@@ -10,8 +10,11 @@
  ;-------------------------------
  ;Defines
  
+   !define QMMP_VERSION "0.8.2"
    !define QMMP_DEF_PROGS_KEY "Software\Clients\Media\Qmmp"
+   !define QMMP_UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp"
    !define APP_DESCRIPTION "Qt-based multimedia player with support of many formats"
+   
      
 ;--------------------------------
 ;Include Modern UI
@@ -28,7 +31,7 @@
 
   ;Name and file
   Name "Qt-based Multimedia Player"
-  OutFile "qmmp-0.8.1-win32.exe"
+  OutFile "qmmp-${QMMP_VERSION}-win32.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Qt-based Multimedia Player"
@@ -197,10 +200,16 @@ Section "-General Section"
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   ; Write the uninstall keys for Windows
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "DisplayName" "Qt-based Multimedia Player"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "NoModify" 1
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp" "NoRepair" 1
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "DisplayName" "Qt-based Multimedia Player"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "UninstallString" "$INSTDIR\Uninstall.exe"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "DisplayIcon" "$INSTDIR\qmmp.exe,0"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "DisplayVersion" "${QMMP_VERSION}"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "Publisher" "Qmmp Development Team"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "InstallLocation" "$INSTDIR"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "URLInfoAbout" "http://qmmp.ylsoftware.com"
+  WriteRegStr HKLM ${QMMP_UNINSTALL_KEY} "URLUpdateInfo" "http://qmmp.ylsoftware.com"  
+  WriteRegDWORD HKLM ${QMMP_UNINSTALL_KEY} "NoModify" 1
+  WriteRegDWORD HKLM ${QMMP_UNINSTALL_KEY} "NoRepair" 1
   
   ;Default Programs Registration (Vista & later)
 
