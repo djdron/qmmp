@@ -28,7 +28,16 @@ LEGEND
 [*] qmmp-plugin-pack-0.8.0
 
 0.8.1
+[*] qmmp-0.8.1
+[*] qmmp-plugin-pack-0.8.1
 [*] opusfile-0.6
 [*] qt-4.8.6+git59eb56192
 [-] fixed win7/8 tray tooltip
 [-] fixed win7/8 file associations
+
+0.8.2
+[*] qmmp-0.8.2
+[*] qmmp-plugin-pack-0.8.2
+[*] qt-4.8.6+git3633f35a6
+[*] mingw-w64 toolchain: i686-4.9.1-release-posix-dwarf-rt_v3-rev0
+[!] uninstall information (thanks to Dmitry Kramarchuk)
