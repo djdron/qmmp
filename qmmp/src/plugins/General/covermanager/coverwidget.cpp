@@ -76,7 +76,7 @@ void CoverWidget::paintEvent(QPaintEvent *p)
 {
     QPainter paint(this);
     if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 }
 
 void CoverWidget::mousePressEvent(QMouseEvent *e)
