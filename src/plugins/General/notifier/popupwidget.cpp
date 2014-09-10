@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -103,7 +103,7 @@ void PopupWidget::showMetaData()
     if(!pix.isNull())
     {
         m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
-        m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
+        m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     }
     else
     {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -828,7 +828,7 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
 QPixmap Skin::scalePixmap(const QPixmap &pix, int ratio)
 {
     return pix.scaled(pix.width() * ratio, pix.height() * ratio,
-                      Qt::KeepAspectRatio);
+                      Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
 const QString Skin::findFile(const QString &name, QDir dir)

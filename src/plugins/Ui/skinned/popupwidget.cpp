@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -128,7 +128,7 @@ void PopupWidget::loadCover()
     if(pix.isNull())
         pix = QPixmap(":/skinned/ui_no_cover.png");
     m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
-    m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
+    m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize,Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     qApp->processEvents();
     updateGeometry ();
     resize(sizeHint());
