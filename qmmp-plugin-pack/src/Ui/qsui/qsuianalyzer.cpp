@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -330,7 +330,7 @@ void QSUiAnalyzer::updateCover()
     {
         m_offset = height();
         m_pixLabel->setGeometry(10,10, height() - 20, height() - 20);
-        m_pixLabel->setPixmap(m_cover.scaled(m_pixLabel->size()));
+        m_pixLabel->setPixmap(m_cover.scaled(m_pixLabel->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
         m_pixLabel->show();
     }
     else
