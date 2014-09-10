@@ -185,7 +185,7 @@ QPixmap MetaDataManager::getCover(const QString &url)
                 return m_cached_cover;
             QPixmap pix(p);
             if(pix.width() > 1024 || pix.height() > 1024)
-                pix = pix.scaled(1024, 1024, Qt::KeepAspectRatio);
+                pix = pix.scaled(1024, 1024, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             m_cached_path = p;
             m_cached_cover = pix;
             return pix;
