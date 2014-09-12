@@ -272,7 +272,7 @@ void MetaDataManager::clearCoverChache()
 
 void MetaDataManager::prepareForAnotherThread()
 {
-    protocols(); //this hack should load all requied plugins
+    protocols(); //this hack should load all required plugins
 }
 
 MetaDataManager *MetaDataManager::instance()
