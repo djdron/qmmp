@@ -17,7 +17,9 @@ do
      for code in $LOCALES
      do
         ts_files="${ts_files} ${tr_dir}/${plug_name}_plugin_${code}.ts"
-        qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
+        if [ "${code}" != "en" ]; then
+          qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
+        fi
      done
 
      qrc_file="${tr_dir}/translations.qrc"
