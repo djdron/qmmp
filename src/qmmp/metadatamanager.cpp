@@ -176,6 +176,15 @@ bool MetaDataManager::supports(const QString &fileName) const
 
 QPixmap MetaDataManager::getCover(const QString &url)
 {
+    MetaDataModel *model = createMetaDataModel(url);
+    if(model)
+    {
+        QPixmap pix = model->cover();
+        model->deleteLater();
+        if(!pix.isNull())
+            return pix;
+    }
+
     if(!url.contains("://") && m_settings->useCoverFiles())
     {
         QString p = getCoverPath(url);
@@ -191,13 +200,7 @@ QPixmap MetaDataManager::getCover(const QString &url)
             return pix;
         }
     }
-    MetaDataModel *model = createMetaDataModel(url);
-    if(model)
-    {
-        QPixmap pix = model->cover();
-        model->deleteLater();
-        return pix;
-    }
+
     return QPixmap();
 }
 
@@ -217,12 +220,16 @@ QString MetaDataManager::getCoverPath(const QString &url)
     }
     else //local file
     {
-        QString p = QFileInfo(url).absolutePath();
-        if(m_cover_path_cache.keys().contains(p))
-            return m_cover_path_cache.value(p);
-        QFileInfoList l = findCoverFiles(p, m_settings->coverSearchDepth());
-        QString cover_path = l.isEmpty() ? QString() : l.at(0).filePath();
-        m_cover_path_cache.insert (p, cover_path);
+        QString key = QFileInfo(url).absolutePath();
+        QString cover_path = m_cover_path_cache.value(key);
+
+        if(!cover_path.isEmpty() && QFile::exists(cover_path))
+            return cover_path;
+
+        m_cover_path_cache.remove(key); //remove invalid key
+        QFileInfoList l = findCoverFiles(key, m_settings->coverSearchDepth());
+        cover_path = l.isEmpty() ? QString() : l.at(0).filePath();
+        m_cover_path_cache.insert (key, cover_path);
         return cover_path;
     }
     return QString();
@@ -260,6 +267,7 @@ QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
 void MetaDataManager::clearCoverChache()
 {
     m_cover_path_cache.clear();
+    m_cached_cover = QPixmap();
 }
 
 void MetaDataManager::prepareForAnotherThread()
