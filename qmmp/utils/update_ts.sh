@@ -6,7 +6,7 @@ echo "Locales: ${LOCALES}"
 
 for tr_dir in `find ../src/ -type d -name "translations"`
 do
-     
+
      plug_name=`echo $tr_dir | cut -d '/' -f 5`
 
      if  [ -z "$plug_name" ]; then
@@ -48,21 +48,25 @@ do
         for code in $LOCALES
         do
       	    ts_files="${ts_files} ${tr_dir}/${plug_name}_${code}.ts"
-            qm_files="${qm_files} ${plug_name}_${code}.qm"
+            if [ "${code}" != "en" ]; then
+              qm_files="${qm_files} ${plug_name}_${code}.qm"
+            fi
       	done
         qrc_file="${tr_dir}/${plug_name}_locales.qrc"
      else
         for code in $LOCALES
         do
       	    ts_files="${ts_files} ${tr_dir}/${plug_name}_plugin_${code}.ts"
-            qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
+            if [ "${code}" != "en" ]; then
+              qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
+            fi
       	done
         qrc_file="${tr_dir}/translations.qrc"
      fi
 
      lupdate-qt4 -no-obsolete -silent -extensions "cpp,ui" ${tr_dir}/../ -ts ${ts_files}
 
-     
+
 
      echo "<!DOCTYPE RCC>" > $qrc_file
      echo "<RCC version=\"1.0\">" >> $qrc_file

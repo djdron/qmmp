@@ -23,6 +23,5 @@
     <file>wavpack_plugin_gl_ES.qm</file>
     <file>wavpack_plugin_sr_BA.qm</file>
     <file>wavpack_plugin_sr_RS.qm</file>
-    <file>wavpack_plugin_en.qm</file>
   </qresource>
 </RCC>

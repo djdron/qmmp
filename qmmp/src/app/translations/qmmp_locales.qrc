@@ -23,6 +23,5 @@
     <file>qmmp_gl_ES.qm</file>
     <file>qmmp_sr_BA.qm</file>
     <file>qmmp_sr_RS.qm</file>
-    <file>qmmp_en.qm</file>
   </qresource>
 </RCC>
