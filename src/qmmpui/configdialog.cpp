@@ -358,6 +358,7 @@ void ConfigDialog::loadLanguages()
     l["kk"] = tr("Kazakh");
     l["lt"] = tr("Lithuanian");
     l["pl_PL"] = tr("Polish");
+    l["pt"] = tr("Portuguese");
     l["ru_RU"] = tr("Russian");
     l["sk"] = tr("Slovak");
     l["es"] = tr("Spanish");
