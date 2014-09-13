@@ -1,9 +1,6 @@
 #!/bin/sh
 
-LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he gl_ES sr_BA sr_RS'
 TX_CONFIG="../.tx/config"
-
-echo "Locales: ${LOCALES}"
 
 echo "[main]" > ${TX_CONFIG}
 echo "host = https://www.transifex.com" >> ${TX_CONFIG}
@@ -62,36 +59,4 @@ do
      echo "type = QT" >> ${TX_CONFIG}
      echo "" >> ${TX_CONFIG}
 
-
-#     ts_files=''
-#     qm_files=''
-#     if [ "$plug_name" = "qmmp" ] || [ "$plug_name" = "libqmmpui" ]; then
-#        for code in $LOCALES
-#        do
-#      	    ts_files="${ts_files} ${tr_dir}/${plug_name}_${code}.ts"
-#            qm_files="${qm_files} ${plug_name}_${code}.qm"
-#      	done
-#        qrc_file="${tr_dir}/${plug_name}_locales.qrc"
-#     else
-#        for code in $LOCALES
-#        do
-#      	    ts_files="${ts_files} ${tr_dir}/${plug_name}_plugin_${code}.ts"
-#            qm_files="${qm_files} ${plug_name}_plugin_${code}.qm"
-#      	done
-#        qrc_file="${tr_dir}/translations.qrc"
-#     fi
-
-#     lupdate-qt4 -no-obsolete -silent -extensions "cpp,ui" ${tr_dir}/../ -ts ${ts_files}
-
-
-
-#     echo "<!DOCTYPE RCC>" > $qrc_file
-#     echo "<RCC version=\"1.0\">" >> $qrc_file
-#     echo "  <qresource>" >> $qrc_file
-#     for qm_file in $qm_files
-#     do
-#         echo "    <file>${qm_file}</file>" >> $qrc_file;
-#     done
-#     echo "  </qresource>" >> $qrc_file
-#     echo "</RCC>" >> $qrc_file
 done
