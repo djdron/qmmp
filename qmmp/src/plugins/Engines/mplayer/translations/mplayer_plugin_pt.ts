@@ -57,7 +57,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
         <source>Video format</source>
-        <translation>Formato do vídeo</translation>
+        <translation>Forma to do vídeo</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
