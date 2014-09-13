@@ -1,9 +1,6 @@
 #!/bin/sh
 
-LOCALES='ru uk_UA zh_CN zh_TW tr cs pt_BR de pl_PL fr it kk lt hu nl ja sk es he gl_ES sr_BA sr_RS'
 TX_CONFIG="../.tx/config"
-
-echo "Locales: ${LOCALES}"
 
 echo "[main]" > ${TX_CONFIG}
 echo "host = https://www.transifex.com" >> ${TX_CONFIG}
