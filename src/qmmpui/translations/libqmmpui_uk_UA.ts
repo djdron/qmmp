@@ -338,7 +338,7 @@
         <location filename="../forms/configdialog.ui" line="706"/>
         <location filename="../forms/configdialog.ui" line="751"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>дБ</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="719"/>
@@ -602,7 +602,7 @@
     <message>
         <location filename="../configdialog.cpp" line="361"/>
         <source>Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Португальська</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="362"/>
@@ -655,7 +655,7 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="32"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="93"/>
@@ -665,7 +665,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
@@ -745,17 +745,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="62"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="63"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="91"/>
@@ -860,7 +860,7 @@
         <location filename="../forms/tageditor.ui" line="222"/>
         <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="197"/>
