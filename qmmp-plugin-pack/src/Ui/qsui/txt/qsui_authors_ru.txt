@@ -35,6 +35,9 @@
 Польский:
    Grzegorz Gibas <amigib@gmail.com>
 
+Португальский:
+    Sérgio Marques <smarquespt@gmail.com>
+
 Чешский:
     Karel Volný <kvolny@redhat.com>
 
@@ -47,7 +50,7 @@
 
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
-    
+
 Сербский:
     Mladen Pejaković <pejakm@autistici.org>
 
