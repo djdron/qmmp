@@ -391,3 +391,21 @@ source_lang = en
 source_file = src/qmmpui/txt/thanks.txt
 type = TXT
 
+[qmmp.qmmp-desktop]
+file_filter = src/app/desktop-translations/qmmp_<lang>.desktop.in
+source_lang = en
+source_file = src/app/qmmp.desktop
+type = DESKTOP
+
+[qmmp.qmmp_dir-desktop]
+file_filter = src/app/desktop-translations/qmmp_dir_<lang>.desktop.in
+source_lang = en
+source_file = src/app/qmmp_dir.desktop
+type = DESKTOP
+
+[qmmp.qmmp_enqueue-desktop]
+file_filter = src/app/desktop-translations/qmmp_enqueue_<lang>.desktop.in
+source_lang = en
+source_file = src/app/qmmp_enqueue.desktop
+type = DESKTOP
+
