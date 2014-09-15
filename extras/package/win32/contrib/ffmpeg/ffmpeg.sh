@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=ffmpeg
-VERSION=2.1.5
+VERSION=2.2.3
 
 case $1 in
   --download)
@@ -23,12 +23,12 @@ case $1 in
     --disable-decoders \
     --enable-protocol=file --enable-protocol=data --enable-protocol=data --enable-protocol=pipe \
     --enable-parser=aac --enable-parser=aac_latm --enable-parser=ac3 --enable-parser=flac \
-    --enable-filter=aconvert --enable-filter=convert --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
+    --enable-filter=aconvert --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
     --enable-filter=aformat --enable-filter=format --enable-filter=aresample --enable-filter=resample \
     --enable-decoder=ape --enable-decoder=wmav1 --enable-decoder=wmav2 --enable-decoder=truehd \
     --enable-decoder=aac --enable-decoder=alac --enable-decoder=shorten --enable-decoder=twinvq \
     --enable-decoder=tta --enable-decoder=ra_288 --enable-decoder=ra_144 \
-    --enable-decoder=eac3 --enable-decoder=dts --enable-decoder=flac \
+    --enable-decoder=eac3 --enable-decoder=flac \
     --enable-demuxer=ape  --enable-demuxer=xwma --enable-demuxer=truehd \
     --enable-demuxer=aac  --enable-demuxer=shorten --enable-demuxer=rtsp \
     --enable-demuxer=tta --enable-demuxer=rtp \
