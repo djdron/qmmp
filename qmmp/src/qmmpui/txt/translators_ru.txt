@@ -29,6 +29,9 @@
 Польский:
    Grzegorz Gibas <amigib@gmail.com>
 
+Португальский:
+   Sérgio Marques <smarquespt@gmail.com>
+
 Чешский:
     Karel Volný <kvolny@redhat.com>
 
@@ -60,6 +63,6 @@
 
 Французский:
     Stanislas Zeller <uncensored.assault@gmail.com>
-    
+
 Галисийский:
     Óscar Pereira <oscarpereira1989@gmail.com>
