@@ -367,3 +367,27 @@ source_lang = en
 source_file = src/plugins/Transports/http/translations/http_plugin_en.ts
 type = QT
 
+[qmmp.description]
+file_filter = src/qmmpui/txt/description_<lang>.txt
+source_lang = en
+source_file = src/qmmpui/txt/description.txt
+type = TXT
+
+[qmmp.authors]
+file_filter = src/qmmpui/txt/authors_<lang>.txt
+source_lang = en
+source_file = src/qmmpui/txt/authors.txt
+type = TXT
+
+[qmmp.translators]
+file_filter = src/qmmpui/txt/translators_<lang>.txt
+source_lang = en
+source_file = src/qmmpui/txt/translators.txt
+type = TXT
+
+[qmmp.thanks]
+file_filter = src/qmmpui/txt/thanks_<lang>.txt
+source_lang = en
+source_file = src/qmmpui/txt/thanks.txt
+type = TXT
+
