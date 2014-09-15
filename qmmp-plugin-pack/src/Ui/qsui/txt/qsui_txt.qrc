@@ -13,5 +13,6 @@
     <file>qsui_authors_cs.txt</file>
     <file>qsui_authors_sr_BA.txt</file>
     <file>qsui_authors_sr_RS.txt</file>
+    <file>qsui_authors_pt.txt</file>
   </qresource>
 </RCC>

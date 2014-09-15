@@ -1,0 +1,26 @@
+Agradecimentos:
+
+    Adria Arrufat <swiftscythe@gmail.com> - relatórios de erros
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - correções jack e relatórios de erros
+    Anton Petrusevich <casus@casus.us> - melhorias na reprodução aleatória
+    Avihay Baratz <avihayb@gmail.com> - função de paragem automática e correções
+    Brice Videau <brice.videau@gmail.com> - correções de erros
+    Cristian Rodríguez <judas.iscariote@gmail.com> - correções ao scrobbler
+    Csaba Hruska <csaba.hruska@gmail.com> - correções ffmpeg
+    Dmitry Kostin <kostindima@gmail.com> - suporte iso.wv
+    Evgeny Gleyzerman <evgley@gmail.com> - melhorias no procesamento de faixas cue
+    Ferdinand Vesely <erdofves@gmail.com> - melhorias ao scrobbler
+    Gennadi Motsyo <drool@altlinux.ru> - relatórios de erros
+    Vadim Kalinnikov <moose@ylsoftware.com> - alojamento do projeto
+    Erik Ölsar <erlk.ozlr@gmail.com> - cursor e melhorias de interface
+    Funda Wang <fundawang@gmail.com> - correções aos ficheiros cmake
+    Makis Kalofolias <makskafl@gmail.com> - suporte EAC3, DTS e Dolby TrueHD
+    Michail Zheludkov <zheludkovm@mail.ru> - correções ffmpeg
+    Michał Grosicki <grosik88@o2.pl> - correções alsa
+    Panagiotis Papadopoulos <pano_90@gmx.net> - melhorias de interface e relatórios de erro
+    Pino Toscano <toscano.pino@tiscali.it> - melhorias na portabilidade
+    Karel Volný <kvolny@redhat.com> - diversas correções
+    Ryota Shimamoto <liangtai.s16@gmail.com> - código freebsd
+    Sebastian Pipping <webmaster@hartwork.org> - código bs2b
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - correções de compilação
+    Yaakov Selkowitz <yselkowitz@gmail.com> - correções cygwin

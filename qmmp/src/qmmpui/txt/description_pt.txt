@@ -1,1 +1,1 @@
-Esse programa é um tocador de áudio escrito com o auxílio da linguagem Qt.
+Esse programa é um reprodutor áudio, desenvolvido sobre a infraestrutura Qt.
