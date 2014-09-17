@@ -117,7 +117,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="50"/>
         <source>Qmmp ProjectM Visual Plugin</source>
-        <translation>Seuplemento Qmmp ProjectM</translation>
+        <translation>Suplemento Qmmp ProjectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>

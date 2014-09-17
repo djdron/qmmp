@@ -40,9 +40,12 @@ Lituano:
 Polaco:
     Grzegorz Gibas <amigib@gmail.com>
 
+Português:
+    Sérgio Marques <smarquespt@gmail.com>
+
 Russo:
     Ilya Kotov <forkotov02@hotmail.ru>
-    
+
 Sérvio:
     Mladen Pejaković <pejakm@autistici.org>
 

@@ -63,7 +63,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Transparency:</source>
-        <translation>TransparÊncia:</translation>
+        <translation>Transparência:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="219"/>

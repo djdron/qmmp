@@ -6,7 +6,7 @@
     <message>
         <location filename="../streambrowser.cpp" line="33"/>
         <source>Stream Browser</source>
-        <translation>Stream Browser</translation>
+        <translation>Explorador de emissões</translation>
     </message>
     <message>
         <location filename="../streambrowser.cpp" line="35"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../streamwindow.ui" line="14"/>
         <source>Stream Browser</source>
-        <translation>Stream Browser</translation>
+        <translation>Explorador de emissões</translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="31"/>

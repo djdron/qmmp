@@ -105,7 +105,7 @@
     <message>
         <location filename="../statusicon.cpp" line="130"/>
         <source>Now Playing</source>
-        <translation>Em reprodução:</translation>
+        <translation>Reprodução</translation>
     </message>
 </context>
 <context>

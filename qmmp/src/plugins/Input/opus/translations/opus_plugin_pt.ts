@@ -16,7 +16,7 @@
     <message>
         <location filename="../decoderopusfactory.cpp" line="122"/>
         <source>About Opus Audio Plugin</source>
-        <translation>Sobre o suplemento Opus Output</translation>
+        <translation>Sobre o suplemento Opus</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="123"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation>Tamanho de ficheiro</translation>
+        <translation>Tamanho do ficheiro</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>

@@ -148,7 +148,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="142"/>
         <source>Title format:</source>
-        <translation>Formato do título</translation>
+        <translation>Formato do título:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="149"/>
@@ -174,7 +174,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
         <source>Directory Scanning Options</source>
-        <translation>Opções de análise de ficheiros</translation>
+        <translation>Opções de análise de diretórios</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="199"/>
@@ -252,7 +252,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="417"/>
         <source>Add files from command line to this playlist:</source>
-        <translation>Adicionar ficheiros com a linha de comandos para a lista de reprodução:</translation>
+        <translation>Adicionar ficheiros da linha de comandos para a lista de reprodução:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="434"/>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="657"/>
         <source>Replay Gain mode:</source>
-        <translation>Modo Replay gain:</translation>
+        <translation>Modo Replay Gain:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="674"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../configdialog.cpp" line="352"/>
         <source>Galician</source>
-        <translation>Galego</translation>
+        <translation>Galiciano</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="353"/>
@@ -838,17 +838,17 @@
     <message>
         <location filename="../forms/tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation>Álbum</translation>
+        <translation>Álbum:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation>Compositor</translation>
+        <translation>Compositor:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation>Género</translation>
+        <translation>Género:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="163"/>
@@ -987,7 +987,7 @@
     <message>
         <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
-        <translation>Selecione um ou mais ficheiro a reproduzir</translation>
+        <translation>Selecione um ou mais ficheiros a reproduzir</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="163"/>

@@ -64,7 +64,7 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>File size</source>
-        <translation>Tamanho de ficheiro</translation>
+        <translation>Tamanho do ficheiro</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>

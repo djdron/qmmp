@@ -6,7 +6,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>Modificar atalho</translation>
+        <translation>Mudar atalho</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Jump to track</source>
-        <translation>Ira para a faixa</translation>
+        <translation>Ir para a faixa</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>

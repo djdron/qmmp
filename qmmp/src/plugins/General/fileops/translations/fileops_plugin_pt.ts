@@ -70,12 +70,12 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation>Modificar atalho</translation>
+        <translation>Mudar atalho</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>Prima a conbinação de teclas que pretende atribuir</translation>
+        <translation>Prima a combinação de teclas que pretende atribuir</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
