@@ -16,7 +16,7 @@
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="55"/>
         <source>Qmmp PulseAudio Output Plugin</source>
-        <translation>Suplemento Qmmp PulseAudio Output</translation>
+        <translation>Suplemento Qmmp PulseAudio</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="56"/>

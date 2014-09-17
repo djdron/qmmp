@@ -11,12 +11,12 @@
     <message>
         <location filename="../outputoss4factory.cpp" line="56"/>
         <source>About OSS4 Output Plugin</source>
-        <translation>Sobre o suplemento OSS4 Output</translation>
+        <translation>Sobre o suplemento OSS4</translation>
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="57"/>
         <source>Qmmp OSS4 Output Plugin</source>
-        <translation>Suplemento Qmmp OSS4 Output</translation>
+        <translation>Suplemento Qmmp OSS4</translation>
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="58"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="71"/>
         <source>Default</source>
-        <translation>Padrão</translation>
+        <translation>Pré-definido</translation>
     </message>
 </context>
 </TS>

@@ -127,7 +127,7 @@
     <message>
         <location filename="../trackchangefactory.cpp" line="51"/>
         <source>This plugin executes external command when current track is changed</source>
-        <translation>Este suplemento executa comandos externos se a faixa reproduzida for alterada</translation>
+        <translation>Este suplemento executa comandos externos se a faixa em reprodução for alterada</translation>
     </message>
     <message>
         <location filename="../trackchangefactory.cpp" line="52"/>

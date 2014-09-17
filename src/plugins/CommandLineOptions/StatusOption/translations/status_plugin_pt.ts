@@ -71,7 +71,7 @@
     <message>
         <location filename="../statusoption.cpp" line="98"/>
         <source>%f - file name</source>
-        <translation>%f - nome de ficheiro</translation>
+        <translation>%f - nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="99"/>

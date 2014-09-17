@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation>Tamanho de memória:</translation>
+        <translation>Memória:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>

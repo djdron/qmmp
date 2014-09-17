@@ -44,7 +44,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="49"/>
         <source>File size</source>
-        <translation>Tamanho de ficheiro</translation>
+        <translation>Tamanho do ficheiro</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="49"/>

@@ -6,7 +6,7 @@
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="30"/>
         <source>Crossfade Plugin</source>
-        <translation>Suplemento Crossfade:</translation>
+        <translation>Suplemento Crossfade</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="51"/>

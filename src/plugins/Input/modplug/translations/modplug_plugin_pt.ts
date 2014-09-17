@@ -96,7 +96,7 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation>padrões</translation>
+        <translation>Padrões</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
@@ -164,12 +164,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
         <source>Linear (fast)</source>
-        <translation>Linear (rápidafast)</translation>
+        <translation>Linear (rápida)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="123"/>
         <source>Spline (good quality)</source>
-        <translation>Spline (boa qualidadegood quality)</translation>
+        <translation>Spline (boa qualidade)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="130"/>
@@ -239,7 +239,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="324"/>
         <source>Bass Boost</source>
-        <translation>Amplificação de graves:</translation>
+        <translation>Amplificação de graves</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="336"/>
@@ -281,7 +281,7 @@
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
         <translation>Definir o amplificador muito
-alto pode implicar distorção!</translation>
+alto pode provocar distorção!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>

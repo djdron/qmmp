@@ -16,7 +16,7 @@
     <message>
         <location filename="../outputdirectsoundfactory.cpp" line="53"/>
         <source>Qmmp DirectSound Output Plugin</source>
-        <translation>Suplemento Qmmp DirectSound Output</translation>
+        <translation>Suplemento Qmmp DirectSound</translation>
     </message>
     <message>
         <location filename="../outputdirectsoundfactory.cpp" line="54"/>

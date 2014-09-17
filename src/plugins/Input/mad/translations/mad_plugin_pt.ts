@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="244"/>
         <source>Source code based on mq3 and madplay projects</source>
-        <translation>Baseado no código fonte dos projetos mq3 e mad</translation>
+        <translation>Baseado no código fonte dos projetos mq3 e madplay</translation>
     </message>
 </context>
 <context>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
         <source>File size</source>
-        <translation>Tamanho de ficheiro</translation>
+        <translation>Tamanho do ficheiro</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="93"/>

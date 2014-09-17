@@ -91,7 +91,7 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="51"/>
         <source>This plugin scans audio files and gives information for volume normalization</source>
-        <translation>Este suplemento analisa os ficheiros áudio e dá as informações para normalização de volume</translation>
+        <translation>Este suplemento analisa os ficheiros áudio e as informações para normalização de volume</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="52"/>

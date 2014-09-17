@@ -6,7 +6,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="46"/>
         <source>Show playlist manipulation commands</source>
-        <translation>Mostrar comandos de manipulação de listas de reprodução</translation>
+        <translation>Mostrar comandos para gerir listas de reprodução</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="60"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="123"/>
         <source>Invalid track ID</source>
-        <translation>ID inválida de faixa </translation>
+        <translation>ID de faixa inválida</translation>
     </message>
 </context>
 </TS>

@@ -34,7 +34,7 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation>Este suplemento obtém as letras do sítio web LyricWiki</translation>
+        <translation>Este suplemento obtém as letras através do sítio web LyricWiki</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>

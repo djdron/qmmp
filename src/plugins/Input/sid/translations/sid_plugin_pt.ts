@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Defaults song length, sec:</source>
-        <translation>Duração padrão da faixa (seg):</translation>
+        <translation>Duração pré-definida da faixa (seg):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>

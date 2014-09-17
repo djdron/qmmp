@@ -11,7 +11,7 @@
     <message>
         <location filename="../httpinputfactory.cpp" line="54"/>
         <source>About HTTP Transport Plugin</source>
-        <translation>Sobre o suplemento About HTTP Transport</translation>
+        <translation>Sobre o suplemento HTTP Transport</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="55"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation>Duração de memória:</translation>
+        <translation>Memória:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
