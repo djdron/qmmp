@@ -50,7 +50,7 @@ void VisualProjectMFactory::showAbout(QWidget *parent)
                         tr("Qmmp ProjectM Visual Plugin")+"\n"+
                         tr("This plugin adds projectM visualization")+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
-                        tr("Based on llibrojectM-qt library"));
+                        tr("Based on libprojectM-qt library"));
 }
 
 QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)

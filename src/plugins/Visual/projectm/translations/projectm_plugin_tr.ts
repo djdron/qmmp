@@ -131,7 +131,7 @@
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>
-        <source>Based on llibrojectM-qt library</source>
+        <source>Based on libprojectM-qt library</source>
         <translation>librojectM qt kitaplığı temellidir</translation>
     </message>
 </context>
