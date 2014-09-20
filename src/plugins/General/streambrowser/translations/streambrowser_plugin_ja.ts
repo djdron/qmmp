@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="51"/>
-        <source>This plugin allows to add stream from IceCast stream directory</source>
+        <source>This plugin allows one to add stream from IceCast stream directory</source>
         <translation>このプラグインで IceCast ストリームディレクトリーからストリームの取り込みが可能になります</translation>
     </message>
     <message>

@@ -34,7 +34,7 @@
     </message>
     <message>
         <location filename="../streambrowserfactory.cpp" line="51"/>
-        <source>This plugin allows to add stream from IceCast stream directory</source>
+        <source>This plugin allows one to add stream from IceCast stream directory</source>
         <translation>תוספת זו מתירה לך להוסיף זרם מתוך מדור זרם של IceCast</translation>
     </message>
     <message>

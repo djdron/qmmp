@@ -47,7 +47,7 @@ void CopyPasteFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Copy/Paste Plugin"),
                         tr("Qmmp Copy/Paste Plugin")+"\n"+
-                        tr("This plugin allows to copy selected tracks from one playlist to another")+"\n"+
+                        tr("This plugin allows one to copy selected tracks from one playlist to another")+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
