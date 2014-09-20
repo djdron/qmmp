@@ -53,7 +53,7 @@
     </message>
     <message>
         <location filename="../copypastefactory.cpp" line="50"/>
-        <source>This plugin allows to copy selected tracks from one playlist to another</source>
+        <source>This plugin allows one to copy selected tracks from one playlist to another</source>
         <translation>Данный модуль позволяет копировать выбранные треки из одного списка воспроизведения в другой</translation>
     </message>
     <message>

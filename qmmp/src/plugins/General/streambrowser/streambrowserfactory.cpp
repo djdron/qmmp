@@ -48,7 +48,7 @@ void StreamBrowserFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Stream Browser Plugin"),
                         tr("Qmmp Stream Browser Plugin")+"\n"+
-                        tr("This plugin allows to add stream from IceCast stream directory")+"\n"+
+                        tr("This plugin allows one to add stream from IceCast stream directory")+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 

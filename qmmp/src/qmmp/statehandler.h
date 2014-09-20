@@ -27,7 +27,7 @@
 #include "abstractengine.h"
 #include "qmmp.h"
 
-/*! @brief The StateHandler class allows to track information about playback progress.
+/*! @brief The StateHandler class allows one to track information about playback progress.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class StateHandler : public QObject
