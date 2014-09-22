@@ -287,6 +287,7 @@ public:
         ALBUM,                  /*!< by album */
         DISCNUMBER,             /*!< by discnumber */
         ARTIST,                 /*!< by artist */
+        ALBUMARTIST,            /*!< by album artist */
         FILENAME,               /*!< by file name */
         PATH_AND_FILENAME,      /*!< by path and file name */
         DATE,                   /*!< by date */

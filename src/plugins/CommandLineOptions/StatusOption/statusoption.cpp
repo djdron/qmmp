@@ -63,6 +63,7 @@ QString StatusOption::executeCommand(const QString &opt_str, const QStringList &
             out += " ";
             out += genProgressBar() + "\n";
             out += "ARTIST = %p\n";
+            out += "ALBUMARTIST = %p\n";
             out += "TITLE = %t\n";
             out += "ALBUM = %a\n";
             out += "COMMENT = %c\n";

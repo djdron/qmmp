@@ -106,6 +106,7 @@ QVariantMap TrackListObject::GetMetadata(int in0)
             map.insert("location", "file://" + track->url());
         map.insert("title", track->value(Qmmp::TITLE));
         map.insert("artist", track->value(Qmmp::ARTIST));
+        map.insert("albumartist", track->value(Qmmp::ALBUMARTIST));
         map.insert("album", track->value(Qmmp::ALBUM));
         map.insert("tracknumber", track->value(Qmmp::TRACK));
         map.insert("time", (quint32)track->length());

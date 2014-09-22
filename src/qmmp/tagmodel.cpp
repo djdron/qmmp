@@ -38,6 +38,7 @@ QList<Qmmp::MetaData> TagModel::keys()
     QList<Qmmp::MetaData> list;
     list << Qmmp::TITLE;
     list << Qmmp::ARTIST;
+    list << Qmmp::ALBUMARTIST;
     list << Qmmp::ALBUM;
     list << Qmmp::COMMENT;
     list << Qmmp::GENRE;

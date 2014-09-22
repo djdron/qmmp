@@ -135,6 +135,7 @@ QVariantMap PlayerObject::GetMetadata()
     map.insert("arturl", MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)));
     map.insert("title", m_core->metaData(Qmmp::TITLE));
     map.insert("artist", m_core->metaData(Qmmp::ARTIST));
+    map.insert("albumartist", m_core->metaData(Qmmp::ALBUMARTIST));
     map.insert("album", m_core->metaData(Qmmp::ALBUM));
     map.insert("tracknumber", m_core->metaData(Qmmp::TRACK));
     map.insert("time", (quint32)m_core->totalTime()/1000);

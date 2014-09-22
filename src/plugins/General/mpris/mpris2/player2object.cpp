@@ -136,6 +136,8 @@ QVariantMap Player2Object::metadata() const
         map["xesam:album"] = m_core->metaData(Qmmp::ALBUM);
     if(!m_core->metaData(Qmmp::ARTIST).isEmpty())
         map["xesam:artist"] = QStringList() << m_core->metaData(Qmmp::ARTIST);
+    if(!m_core->metaData(Qmmp::ALBUMARTIST).isEmpty())
+        map["xesam:albumArtist"] = QStringList() << m_core->metaData(Qmmp::ALBUMARTIST);
     if(!m_core->metaData(Qmmp::COMMENT).isEmpty())
         map["xesam:comment"] = QStringList() << m_core->metaData(Qmmp::COMMENT);
     if(!m_core->metaData(Qmmp::COMPOSER).isEmpty())

@@ -55,6 +55,7 @@ public:
     {
         TITLE = 0, /*!< Title */
         ARTIST,    /*!< Artist  */
+        ALBUMARTIST,/*!< Album artist  */
         ALBUM,     /*!< Album */
         COMMENT,   /*!< Comment */
         GENRE,     /*!< Genre */

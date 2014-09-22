@@ -61,6 +61,7 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> &metaData, 
     title.replace("&", "%&");
     title.replace(",", "%,");
     title.replace("%p", metaData[Qmmp::ARTIST]);
+    title.replace("%aa", metaData[Qmmp::ALBUMARTIST]);
     title.replace("%a", metaData[Qmmp::ALBUM]);
     title.replace("%t", metaData[Qmmp::TITLE]);
     title.replace("%n", metaData[Qmmp::TRACK]);

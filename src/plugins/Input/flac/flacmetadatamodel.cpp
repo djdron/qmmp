@@ -160,6 +160,11 @@ const QString VorbisCommentModel::value(Qmmp::MetaData key)
         return TStringToQString_qt4(m_tag->title());
     case Qmmp::ARTIST:
         return TStringToQString_qt4(m_tag->artist());
+    case Qmmp::ALBUMARTIST:
+        if(m_tag->fieldListMap()["ALBUMARTIST"].isEmpty())
+            return QString();
+        else
+            return TStringToQString_qt4(m_tag->fieldListMap()["ALBUMARTIST"].front());
     case Qmmp::ALBUM:
         return TStringToQString_qt4(m_tag->album());
     case Qmmp::COMMENT:
@@ -198,6 +203,11 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
         return;
     case Qmmp::ARTIST:
         m_tag->setArtist(str);
+        return;
+    case Qmmp::ALBUMARTIST:
+        value.isEmpty() ?
+        m_tag->removeField("ALBUMARTIST"):
+        m_tag->addField("ALBUMARTIST", str, true);
         return;
     case Qmmp::ALBUM:
         m_tag->setAlbum(str);

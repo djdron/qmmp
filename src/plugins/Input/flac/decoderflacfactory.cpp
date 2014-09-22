@@ -152,6 +152,9 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
 
         //additional metadata
         TagLib::StringList fld;
+        if(!(fld = tag->fieldListMap()["ALBUMARTIST"]).isEmpty())
+            info->setMetaData(Qmmp::ALBUMARTIST,
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
         if(!(fld = tag->fieldListMap()["COMPOSER"]).isEmpty())
             info->setMetaData(Qmmp::COMPOSER,
                               QString::fromUtf8(fld.toString().toCString(true)).trimmed());
