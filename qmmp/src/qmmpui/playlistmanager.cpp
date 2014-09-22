@@ -278,6 +278,8 @@ void PlayListManager::readPlayLists()
             tracks.last()->insert(Qmmp::TITLE, value);
         else if (param == "artist")
             tracks.last()->insert(Qmmp::ARTIST, value);
+        else if (param == "albumartist")
+            tracks.last()->insert(Qmmp::ALBUMARTIST, value);
         else if (param == "album")
             tracks.last()->insert(Qmmp::ALBUM, value);
         else if (param == "comment")
@@ -341,6 +343,7 @@ void PlayListManager::writePlayLists()
             tmpFile.write(QString("file=%1\n").arg(t->url()).toUtf8());
             tmpFile.write(QString("title=%1\n").arg(t->value(Qmmp::TITLE)).toUtf8());
             tmpFile.write(QString("artist=%1\n").arg(t->value(Qmmp::ARTIST)).toUtf8());
+            tmpFile.write(QString("albumartist=%1\n").arg(t->value(Qmmp::ALBUMARTIST)).toUtf8());
             tmpFile.write(QString("album=%1\n").arg(t->value(Qmmp::ALBUM)).toUtf8());
             tmpFile.write(QString("comment=%1\n").arg(t->value(Qmmp::COMMENT)).toUtf8());
             tmpFile.write(QString("genre=%1\n").arg(t->value(Qmmp::GENRE)).toUtf8());

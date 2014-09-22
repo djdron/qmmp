@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -188,6 +188,7 @@ void MediaPlayer::updateMetaData()
     qDebug("===== metadata ======");
     qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
     qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
+    qDebug("ALBUMARTIST = %s", qPrintable(m_core->metaData(Qmmp::ALBUMARTIST)));
     qDebug("ALBUM = %s", qPrintable(m_core->metaData(Qmmp::ALBUM)));
     qDebug("COMMENT = %s", qPrintable(m_core->metaData(Qmmp::COMMENT)));
     qDebug("GENRE = %s", qPrintable(m_core->metaData(Qmmp::GENRE)));

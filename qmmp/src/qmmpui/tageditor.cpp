@@ -29,6 +29,7 @@ TagEditor::TagEditor(TagModel *tagModel, QWidget *parent) : QWidget(parent), m_u
     //check available keys
     m_ui->titleLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::TITLE));
     m_ui->artistLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::ARTIST));
+    m_ui->albumArtistLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::ALBUMARTIST));
     m_ui->albumLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::ALBUM));
     m_ui->composerLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::COMPOSER));
     m_ui->genreLineEdit->setEnabled(m_tagModel->keys().contains(Qmmp::GENRE));
@@ -53,6 +54,7 @@ void TagEditor::save()
             m_tagModel->create();
          m_tagModel->setValue(Qmmp::TITLE,  m_ui->titleLineEdit->text());
          m_tagModel->setValue(Qmmp::ARTIST, m_ui->artistLineEdit->text());
+         m_tagModel->setValue(Qmmp::ALBUMARTIST, m_ui->albumArtistLineEdit->text());
          m_tagModel->setValue(Qmmp::ALBUM, m_ui->albumLineEdit->text());
          m_tagModel->setValue(Qmmp::COMPOSER, m_ui->composerLineEdit->text());
          m_tagModel->setValue(Qmmp::GENRE, m_ui->genreLineEdit->text());
@@ -74,6 +76,7 @@ void TagEditor::readTag()
     m_ui->useCheckBox->setVisible(m_tagModel->caps() & TagModel::CreateRemove);
     m_ui->titleLineEdit->setText(m_tagModel->value(Qmmp::TITLE));
     m_ui->artistLineEdit->setText(m_tagModel->value(Qmmp::ARTIST));
+    m_ui->albumArtistLineEdit->setText(m_tagModel->value(Qmmp::ALBUMARTIST));
     m_ui->albumLineEdit->setText(m_tagModel->value(Qmmp::ALBUM));
     m_ui->composerLineEdit->setText(m_tagModel->value(Qmmp::COMPOSER));
     m_ui->genreLineEdit->setText(m_tagModel->value(Qmmp::GENRE));

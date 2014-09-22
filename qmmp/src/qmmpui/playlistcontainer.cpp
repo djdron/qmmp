@@ -75,6 +75,16 @@ static bool _artistGreaterComparator(PlayListTrack* s1,PlayListTrack* s2)
 {
     return QString::localeAwareCompare (s1->value(Qmmp::ARTIST), s2->value(Qmmp::ARTIST)) > 0;
 }
+//by album artist
+static bool _albumArtistLessComparator(PlayListTrack* s1,PlayListTrack* s2)
+{
+    return QString::localeAwareCompare (s1->value(Qmmp::ALBUMARTIST), s2->value(Qmmp::ALBUMARTIST)) < 0;
+}
+
+static bool _albumArtistGreaterComparator(PlayListTrack* s1,PlayListTrack* s2)
+{
+    return QString::localeAwareCompare (s1->value(Qmmp::ALBUMARTIST), s2->value(Qmmp::ALBUMARTIST)) > 0;
+}
 //by path
 static bool _pathAndFilenameLessComparator(PlayListTrack* s1,PlayListTrack* s2)
 {
@@ -179,6 +189,10 @@ void PlayListContainer::doSort(int sort_mode, QList<PlayListTrack*>& list_to_sor
     case PlayListModel::ARTIST:
         compareLessFunc = _artistLessComparator;
         compareGreaterFunc = _artistGreaterComparator;
+        break;
+    case PlayListModel::ALBUMARTIST:
+        compareLessFunc = _albumArtistLessComparator;
+        compareGreaterFunc = _albumArtistGreaterComparator;
         break;
     case PlayListModel::FILENAME:
         compareLessFunc = _filenameLessComparator;
