@@ -21,12 +21,10 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
-
 #include "ui_settingsdialog.h"
 
 /**
-	@author Yuriy Zhuravlev <stalkerg@gmail.com>
+    @author Yuriy Zhuravlev <stalkerg@gmail.com>
 */
 class SettingsDialog : public QDialog
 {
@@ -36,11 +34,11 @@ public:
 
     ~SettingsDialog();
 
-private slots:
-    void writeSettings();
+public slots:
+    void accept();
 
 private:
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
 
 };
 

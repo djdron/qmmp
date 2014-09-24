@@ -6,21 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>223</height>
+    <width>430</width>
+    <height>230</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>OSS Plugin Settings</string>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
     <number>6</number>
    </property>
-   <item row="0" column="0" colspan="3">
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
+   <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -205,30 +208,10 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>191</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="cancelButton">
-     <property name="text">
-      <string>Cancel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="okButton">
-     <property name="text">
-      <string>OK</string>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -237,18 +220,34 @@
  <resources/>
  <connections>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>SettingsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>17</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>283</y>
+     <x>325</x>
+     <y>205</y>
     </hint>
     <hint type="destinationlabel">
-     <x>164</x>
-     <y>294</y>
+     <x>432</x>
+     <y>193</y>
     </hint>
    </hints>
   </connection>
