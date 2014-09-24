@@ -179,6 +179,8 @@ protected:
      */
     void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
 
+    //void configure(quint32 srate = 44100, QList<Qmmp::AudioChannel> channels, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
+
 private:
     static void loadPlugins();
     static DecoderFactory *m_lastFactory;
