@@ -25,15 +25,14 @@
 SettingsDialog::SettingsDialog ( QWidget *parent )
         : QDialog ( parent )
 {
-    ui.setupUi ( this );
+    m_ui.setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("OSS");
-    ui.lineEdit->insert(settings.value("device","/dev/dsp").toString());
-    ui.lineEdit_2->insert(settings.value("mixer_device","/dev/mixer").toString());
-    ui.bufferSpinBox->setValue(settings.value("buffer_time",500).toInt());
-    ui.periodSpinBox->setValue(settings.value("period_time",100).toInt());
+    m_ui.lineEdit->insert(settings.value("device","/dev/dsp").toString());
+    m_ui.lineEdit_2->insert(settings.value("mixer_device","/dev/mixer").toString());
+    m_ui.bufferSpinBox->setValue(settings.value("buffer_time",500).toInt());
+    m_ui.periodSpinBox->setValue(settings.value("period_time",100).toInt());
 
     settings.endGroup();
 }
@@ -44,17 +43,17 @@ SettingsDialog::~SettingsDialog()
 
 
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     qDebug("SettingsDialog (OSS):: writeSettings()");
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("OSS");
-    settings.setValue("device", ui.lineEdit->text());
-    settings.setValue("buffer_time",ui.bufferSpinBox->value());
-    settings.setValue("period_time",ui.periodSpinBox->value());
-    settings.setValue("mixer_device", ui.lineEdit_2->text());
+    settings.setValue("device", m_ui.lineEdit->text());
+    settings.setValue("buffer_time",m_ui.bufferSpinBox->value());
+    settings.setValue("period_time",m_ui.periodSpinBox->value());
+    settings.setValue("mixer_device", m_ui.lineEdit_2->text());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }
 
 
