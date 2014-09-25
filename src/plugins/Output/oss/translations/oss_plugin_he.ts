@@ -37,54 +37,44 @@
         <translation>הגדרות תוספת OSS</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="30"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>הגדרות התקן</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="42"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>התקן שמע</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer device</source>
         <translation>התקן מערבל</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Advanced Settings</source>
         <translation>הגדרות מתקדמות</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>Soundcard</source>
         <translation>כרטיס קול</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="157"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>זמן אגירה (מ״ש):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="167"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Period time (ms):</source>
         <translation>זמן משך (מ״ש):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="197"/>
+        <location filename="../settingsdialog.ui" line="200"/>
         <source>PCM over Master</source>
         <translation>‏PCM על פני Master</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <source>Cancel</source>
-        <translation>ביטול</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="231"/>
-        <source>OK</source>
-        <translation>אישור</translation>
     </message>
 </context>
 </TS>

@@ -785,80 +785,86 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="212"/>
-        <location filename="../playlist.cpp" line="259"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Title</source>
         <translation>Pagal dainos pavadinimą</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="216"/>
-        <location filename="../playlist.cpp" line="263"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Album</source>
         <translation>Pagal albumą</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="220"/>
-        <location filename="../playlist.cpp" line="267"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Disc Number</source>
         <translation>Pagal disko numerį</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="224"/>
-        <location filename="../playlist.cpp" line="271"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Artist</source>
         <translation>Pagal atlikėją</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="228"/>
-        <location filename="../playlist.cpp" line="275"/>
+        <location filename="../playlist.cpp" line="279"/>
+        <source>By Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>By Filename</source>
         <translation>Pagal bylos pavadinimą</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="232"/>
-        <location filename="../playlist.cpp" line="279"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>By Path + Filename</source>
         <translation>Pagal kelią iki bylos</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="236"/>
-        <location filename="../playlist.cpp" line="283"/>
+        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>By Date</source>
         <translation>Pagal datą</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="244"/>
-        <location filename="../playlist.cpp" line="291"/>
+        <location filename="../playlist.cpp" line="248"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>By File Creation Date</source>
         <translation>Pagal bylų sukūrimo laiką</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="248"/>
+        <location filename="../playlist.cpp" line="252"/>
         <source>By Group</source>
         <translation>Pagal grupę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="256"/>
+        <location filename="../playlist.cpp" line="260"/>
         <source>Sort Selection</source>
         <translation>Rūšiuoti pasirinktus</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="307"/>
         <source>Randomize List</source>
         <translation>Sumaišyti sąrašą</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="301"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>Reverse List</source>
         <translation>Apversti</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="577"/>
+        <location filename="../playlist.cpp" line="585"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Naujas grojaraštis</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="240"/>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="295"/>
         <source>By Track Number</source>
         <translation>Pagal takelio numerį</translation>
     </message>
@@ -868,7 +874,7 @@
         <translation>Grojaraštis</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="311"/>
+        <location filename="../playlist.cpp" line="319"/>
         <source>Actions</source>
         <translation>Veiksmai</translation>
     </message>

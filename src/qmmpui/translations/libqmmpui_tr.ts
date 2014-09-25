@@ -679,36 +679,41 @@
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
+        <source>ALbum artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="168"/>
         <source>Album</source>
         <translation type="unfinished">Albüm</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="168"/>
+        <location filename="../detailsdialog.cpp" line="169"/>
         <source>Comment</source>
         <translation type="unfinished">Yorum</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="169"/>
+        <location filename="../detailsdialog.cpp" line="170"/>
         <source>Genre</source>
         <translation type="unfinished">Tarz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="170"/>
+        <location filename="../detailsdialog.cpp" line="171"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="172"/>
+        <location filename="../detailsdialog.cpp" line="173"/>
         <source>Year</source>
         <translation type="unfinished">Yıl</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="174"/>
+        <location filename="../detailsdialog.cpp" line="175"/>
         <source>Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="176"/>
+        <location filename="../detailsdialog.cpp" line="177"/>
         <source>Disc number</source>
         <translation type="unfinished"></translation>
     </message>
@@ -776,7 +781,7 @@
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="151"/>
-        <location filename="../playlistmanager.cpp" line="301"/>
+        <location filename="../playlistmanager.cpp" line="303"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
@@ -826,59 +831,64 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="38"/>
+        <location filename="../forms/tageditor.ui" line="223"/>
         <source>Title:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="64"/>
+        <location filename="../forms/tageditor.ui" line="38"/>
         <source>Artist:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="90"/>
+        <location filename="../forms/tageditor.ui" line="77"/>
         <source>Album:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="113"/>
+        <location filename="../forms/tageditor.ui" line="262"/>
         <source>Composer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="133"/>
+        <location filename="../forms/tageditor.ui" line="61"/>
         <source>Genre:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="163"/>
+        <location filename="../forms/tageditor.ui" line="239"/>
         <source>Track:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="184"/>
-        <location filename="../forms/tageditor.ui" line="222"/>
-        <location filename="../forms/tageditor.ui" line="254"/>
+        <location filename="../forms/tageditor.ui" line="128"/>
+        <location filename="../forms/tageditor.ui" line="166"/>
+        <location filename="../forms/tageditor.ui" line="198"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="197"/>
+        <location filename="../forms/tageditor.ui" line="141"/>
         <source>Year:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="244"/>
+        <location filename="../forms/tageditor.ui" line="188"/>
         <source>Disc number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="269"/>
+        <location filename="../forms/tageditor.ui" line="93"/>
         <source>Comment:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/tageditor.ui" line="315"/>
         <source>Include selected tag in file</source>
         <translation type="unfinished"></translation>
     </message>

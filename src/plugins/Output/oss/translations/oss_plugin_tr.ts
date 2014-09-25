@@ -37,54 +37,44 @@
         <translation>OSS Eklenti Ayarları</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="30"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>Aygıt Ayarları</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="42"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>Ses aygıtı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer device</source>
         <translation>Karıştırıcı aygıtı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Advanced Settings</source>
         <translation>Gelişmiş Ayarlar</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>Soundcard</source>
         <translation>Ses kartı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="157"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Arabellek süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="167"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Period time (ms):</source>
         <translation>Periyot süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="197"/>
+        <location filename="../settingsdialog.ui" line="200"/>
         <source>PCM over Master</source>
         <translation>Master üzeri PCM</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <source>Cancel</source>
-        <translation>İptal</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="231"/>
-        <source>OK</source>
-        <translation>Tamam</translation>
     </message>
 </context>
 </TS>

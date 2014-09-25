@@ -790,85 +790,91 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="212"/>
-        <location filename="../playlist.cpp" line="259"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Title</source>
         <translation>タイトル順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="216"/>
-        <location filename="../playlist.cpp" line="263"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>By Album</source>
         <translation>アルバム名順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="220"/>
-        <location filename="../playlist.cpp" line="267"/>
+        <location filename="../playlist.cpp" line="271"/>
         <source>By Disc Number</source>
         <translation>ディスク番号順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="224"/>
-        <location filename="../playlist.cpp" line="271"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>By Artist</source>
         <translation>アーティスト名順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="228"/>
-        <location filename="../playlist.cpp" line="275"/>
+        <location filename="../playlist.cpp" line="279"/>
+        <source>By Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="232"/>
+        <location filename="../playlist.cpp" line="283"/>
         <source>By Filename</source>
         <translation>ファイル名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="232"/>
-        <location filename="../playlist.cpp" line="279"/>
+        <location filename="../playlist.cpp" line="236"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>By Path + Filename</source>
         <translation>パスとファイル名の順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="236"/>
-        <location filename="../playlist.cpp" line="283"/>
+        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>By Date</source>
         <translation>日付順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="240"/>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="295"/>
         <source>By Track Number</source>
         <translation>トラック番号順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="244"/>
-        <location filename="../playlist.cpp" line="291"/>
+        <location filename="../playlist.cpp" line="248"/>
+        <location filename="../playlist.cpp" line="299"/>
         <source>By File Creation Date</source>
         <translation>ファイルの作成日順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="248"/>
+        <location filename="../playlist.cpp" line="252"/>
         <source>By Group</source>
         <translation>グループ名順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="256"/>
+        <location filename="../playlist.cpp" line="260"/>
         <source>Sort Selection</source>
         <translation>選択範囲内で並べ換え</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="307"/>
         <source>Randomize List</source>
         <translation>リストを順不同に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="301"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>Reverse List</source>
         <translation>リストを逆順に</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="311"/>
+        <location filename="../playlist.cpp" line="319"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="577"/>
+        <location filename="../playlist.cpp" line="585"/>
         <source>&amp;New PlayList</source>
         <translation>新しいプレイリスト(&amp;N)</translation>
     </message>
