@@ -37,54 +37,44 @@
         <translation>OSS 插件設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="30"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>裝置設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="42"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>聲訊裝置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer device</source>
         <translation>混頻裝置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Advanced Settings</source>
         <translation>進階設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>Soundcard</source>
         <translation>音效卡</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="157"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>緩衝時間(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="167"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Period time (ms):</source>
         <translation>周期時間(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="197"/>
+        <location filename="../settingsdialog.ui" line="200"/>
         <source>PCM over Master</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="231"/>
-        <source>OK</source>
-        <translation>確定</translation>
     </message>
 </context>
 </TS>

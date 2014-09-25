@@ -19,77 +19,77 @@
         <translation>Испиши --nowplaying синтаксу</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="88"/>
+        <location filename="../statusoption.cpp" line="89"/>
         <source>Syntax:</source>
         <translation>Синтакса:</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="89"/>
+        <location filename="../statusoption.cpp" line="90"/>
         <source>%p - artist</source>
         <translation>%p - извођач</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="90"/>
+        <location filename="../statusoption.cpp" line="91"/>
         <source>%a - album</source>
         <translation>%a - албум</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="91"/>
+        <location filename="../statusoption.cpp" line="92"/>
         <source>%t - title</source>
         <translation>%t - наслов</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="92"/>
+        <location filename="../statusoption.cpp" line="93"/>
         <source>%n - track</source>
         <translation>%n - нумера</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="93"/>
+        <location filename="../statusoption.cpp" line="94"/>
         <source>%NN - 2-digit track</source>
         <translation>%NN - двоцифрени бр. нумере</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="94"/>
+        <location filename="../statusoption.cpp" line="95"/>
         <source>%g - genre</source>
         <translation>%g - жанр</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="95"/>
+        <location filename="../statusoption.cpp" line="96"/>
         <source>%c - comment</source>
         <translation>%c - коментар</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="96"/>
+        <location filename="../statusoption.cpp" line="97"/>
         <source>%C - composer</source>
         <translation>%C - композитор</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="97"/>
+        <location filename="../statusoption.cpp" line="98"/>
         <source>%D - disc number</source>
         <translation>%D - број диска</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="98"/>
+        <location filename="../statusoption.cpp" line="99"/>
         <source>%f - file name</source>
         <translation>%f - име фајла</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="99"/>
+        <location filename="../statusoption.cpp" line="100"/>
         <source>%F - full path</source>
         <translation>%F - пуна путања</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="100"/>
+        <location filename="../statusoption.cpp" line="101"/>
         <source>%y - year</source>
         <translation>%y - година</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="101"/>
+        <location filename="../statusoption.cpp" line="102"/>
         <source>%l - duration</source>
         <translation>%l - дужина</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="102"/>
+        <location filename="../statusoption.cpp" line="103"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation>%if(A&amp;B&amp;C,D,E) - услов</translation>
     </message>

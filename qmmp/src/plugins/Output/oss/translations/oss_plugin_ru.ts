@@ -37,54 +37,44 @@
         <translation>Настройки модуля OSS</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="30"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>Настройки устройства</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="42"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>Аудиоустройство</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer device</source>
         <translation>Устройство микшера</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Advanced Settings</source>
         <translation>Дополнительные настройки</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>Soundcard</source>
         <translation>Звуковая карта</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="157"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Время буфера (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="167"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Period time (ms):</source>
         <translation>Время периода (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="197"/>
+        <location filename="../settingsdialog.ui" line="200"/>
         <source>PCM over Master</source>
         <translation>PCM вместо Master</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="231"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

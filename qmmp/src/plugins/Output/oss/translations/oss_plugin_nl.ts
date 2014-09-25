@@ -37,54 +37,44 @@
         <translation>OSS Module Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="30"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>Apparaat Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="42"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>Audio apparaat</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer device</source>
         <translation>Mixer apparaat</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="84"/>
         <source>Advanced Settings</source>
         <translation>Geavanceerde Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>Soundcard</source>
         <translation>Geluidskaart</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="157"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Buffertijd (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="167"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Period time (ms):</source>
         <translation>Tijdsperiode (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="197"/>
+        <location filename="../settingsdialog.ui" line="200"/>
         <source>PCM over Master</source>
         <translation>PCM preferen over Master</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <source>Cancel</source>
-        <translation>Annuleren</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="231"/>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 </TS>

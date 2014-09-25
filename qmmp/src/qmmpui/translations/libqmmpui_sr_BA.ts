@@ -659,36 +659,41 @@
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
+        <source>ALbum artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="168"/>
         <source>Album</source>
         <translation>Албум</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="168"/>
+        <location filename="../detailsdialog.cpp" line="169"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="169"/>
+        <location filename="../detailsdialog.cpp" line="170"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="170"/>
+        <location filename="../detailsdialog.cpp" line="171"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="172"/>
+        <location filename="../detailsdialog.cpp" line="173"/>
         <source>Year</source>
         <translation>Година</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="174"/>
+        <location filename="../detailsdialog.cpp" line="175"/>
         <source>Track</source>
         <translation>Нумера</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="176"/>
+        <location filename="../detailsdialog.cpp" line="177"/>
         <source>Disc number</source>
         <translation>Број диска</translation>
     </message>
@@ -776,7 +781,7 @@
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="151"/>
-        <location filename="../playlistmanager.cpp" line="301"/>
+        <location filename="../playlistmanager.cpp" line="303"/>
         <source>Playlist</source>
         <translation>Листа нумера</translation>
     </message>
@@ -821,49 +826,49 @@
 <context>
     <name>TagEditor</name>
     <message>
-        <location filename="../forms/tageditor.ui" line="38"/>
+        <location filename="../forms/tageditor.ui" line="223"/>
         <source>Title:</source>
         <translation>Наслов:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="64"/>
+        <location filename="../forms/tageditor.ui" line="38"/>
         <source>Artist:</source>
         <translation>Извођач:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="90"/>
+        <location filename="../forms/tageditor.ui" line="77"/>
         <source>Album:</source>
         <translation>Албум:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="113"/>
+        <location filename="../forms/tageditor.ui" line="262"/>
         <source>Composer:</source>
         <translation>Композитор:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="133"/>
+        <location filename="../forms/tageditor.ui" line="61"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="244"/>
+        <location filename="../forms/tageditor.ui" line="188"/>
         <source>Disc number:</source>
         <translation>Диск:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="184"/>
-        <location filename="../forms/tageditor.ui" line="222"/>
-        <location filename="../forms/tageditor.ui" line="254"/>
+        <location filename="../forms/tageditor.ui" line="128"/>
+        <location filename="../forms/tageditor.ui" line="166"/>
+        <location filename="../forms/tageditor.ui" line="198"/>
         <source>?</source>
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="163"/>
+        <location filename="../forms/tageditor.ui" line="239"/>
         <source>Track:</source>
         <translation>Нумера:</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="197"/>
+        <location filename="../forms/tageditor.ui" line="141"/>
         <source>Year:</source>
         <translation>Година:</translation>
     </message>
@@ -873,12 +878,17 @@
         <translation>Уређивач ознака</translation>
     </message>
     <message>
-        <location filename="../forms/tageditor.ui" line="269"/>
+        <location filename="../forms/tageditor.ui" line="93"/>
         <source>Comment:</source>
         <translation>Коментар:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="305"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/tageditor.ui" line="315"/>
         <source>Include selected tag in file</source>
         <translation>Укључи ознаку у фајл</translation>
     </message>
