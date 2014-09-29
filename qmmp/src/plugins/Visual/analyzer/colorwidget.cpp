@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2005-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,20 +37,17 @@ void ColorWidget::mousePressEvent(QMouseEvent *)
                                           tr("Select Color"));
     if (color.isValid())
     {
-        QPalette palette;
-        palette.setColor(backgroundRole(), color);
-        setPalette(palette);
+        setColor(color.name());
     }
 }
 
 void ColorWidget::setColor(QString c)
 {
-    QPalette palette;
-    palette.setColor(backgroundRole(), c);
-    setPalette(palette);
+    m_colorName = c;
+    setStyleSheet(QString("QFrame { background: %1 }").arg(m_colorName));
 }
 
 const QString ColorWidget::colorName() const
 {
-    return palette().color(backgroundRole()).name();
+    return m_colorName;
 }

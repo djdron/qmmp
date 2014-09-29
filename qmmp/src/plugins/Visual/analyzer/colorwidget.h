@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2005-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,6 +41,7 @@ public slots:
 
 private:
     void mousePressEvent(QMouseEvent *);
+    QString m_colorName;
 
 
 };
