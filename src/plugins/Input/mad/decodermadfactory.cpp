@@ -30,6 +30,9 @@
 #include <taglib/apetag.h>
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+#include <taglib/tfilestream.h>
+#endif
 #include "mpegmetadatamodel.h"
 #include "replaygainreader.h"
 #include "settingsdialog.h"
@@ -123,7 +126,13 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
 {
     FileInfo *info = new FileInfo(fileName);
     TagLib::Tag *tag = 0;
+
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+    TagLib::FileStream stream(fileName.toLocal8Bit().constData(), true);
+    TagLib::MPEG::File fileRef(&stream, TagLib::ID3v2::FrameFactory::instance());
+#else
     TagLib::MPEG::File fileRef(fileName.toLocal8Bit ().constData());
+#endif
 
     if (useMetaData)
     {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,9 @@
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/vorbisfile.h>
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+#include <taglib/tfilestream.h>
+#endif
 #include "replaygainreader.h"
 #include "decoder_vorbis.h"
 #include "vorbismetadatamodel.h"
@@ -78,7 +81,12 @@ QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, 
 {
     FileInfo *info = new FileInfo(fileName);
 
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+    TagLib::FileStream stream(fileName.toLocal8Bit().constData(), true);
+    TagLib::Ogg::Vorbis::File fileRef(&stream);
+#else
     TagLib::Ogg::Vorbis::File fileRef(fileName.toLocal8Bit().constData());
+#endif
     TagLib::Ogg::XiphComment *tag = useMetaData ? fileRef.tag() : 0;
 
     if (tag && !tag->isEmpty())
