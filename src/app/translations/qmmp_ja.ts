@@ -66,7 +66,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation type="unfinished"></translation>
+        <translation>メインウィンドウを表示</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="317"/>
         <source>Command Line Help</source>
-        <translation type="unfinished"></translation>
+        <translation>コマンド行ヘルプ</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="330"/>
@@ -139,7 +139,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="335"/>
         <source>Qmmp Version</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP バージョン</translation>
     </message>
 </context>
 </TS>
