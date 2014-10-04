@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. 設定ページの案内に従い、 QMMP が演目を %1 アカウントに scrobble 送信できるようにします。</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
