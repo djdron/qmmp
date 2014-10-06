@@ -38,6 +38,12 @@ void Decoder::configure(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat 
     m_parameters = AudioParameters(srate, map, format);
 }
 
+void Decoder::configure(quint32 srate, int channels, Qmmp::AudioFormat f)
+{
+    qDebug("Decoder: using internal channel order");
+    m_parameters = AudioParameters(srate, ChannelMap(channels), f);
+}
+
 qint64 Decoder::read(float *data, qint64 samples)
 {
     Q_UNUSED(data);
