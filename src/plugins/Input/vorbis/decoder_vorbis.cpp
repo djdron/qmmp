@@ -133,7 +133,14 @@ bool DecoderVorbis::initialize()
         freq = ogginfo->rate;
         chan = ogginfo->channels;
     }
-    configure(freq, chan, Qmmp::PCM_S16LE);
+
+    ChannelMap chmap = findChannelMap(chan);
+    if(chmap.isEmpty())
+    {
+        qWarning("DecoderVorbis: unsupported number of channels: %d", chan);
+        return false;
+    }
+    configure(freq, chmap, Qmmp::PCM_S16LE);
     inited = true;
     return true;
 }
@@ -215,6 +222,70 @@ void DecoderVorbis::updateTags()
     }
     metaData.insert(Qmmp::URL, m_url);
     addMetaData(metaData);
+}
+
+//http://xiph.org/vorbis/doc/Vorbis_I_spec.html#x1-800004.3.9
+ChannelMap DecoderVorbis::findChannelMap(int channels)
+{
+    ChannelMap map;
+    switch (channels)
+    {
+    case 1:
+        map << Qmmp::CHAN_FRONT_LEFT;
+        break;
+    case 2:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 3:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 4:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 5:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 6:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_LFE;
+        break;
+    case 7:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT
+            << Qmmp::CHAN_REAR_CENTER
+            << Qmmp::CHAN_LFE;
+        break;
+    case 8:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_LFE;
+        break;
+    default:
+        ;
+    }
+    return map;
 }
 
 void DecoderVorbis::seek(qint64 time)
