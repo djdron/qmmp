@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
+ *   Copyright (C) 2009-2014 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *   Copyright (C) 2009 by Sebastian Pipping <sebastian@pipping.org>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -101,9 +101,9 @@ void CrossfadePlugin::applyEffect(Buffer *b)
     return;
 }
 
-void CrossfadePlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void CrossfadePlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    Effect::configure(freq, chan, format);
+    Effect::configure(freq, map, format);
 }
 
 void CrossfadePlugin::mix8(uchar *cur_buf, uchar *prev_buf, uint samples, double volume)
