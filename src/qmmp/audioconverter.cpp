@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,10 +47,10 @@ AudioConverter::AudioConverter()
     m_format = Qmmp::PCM_UNKNOWM;
 }
 
-void AudioConverter::configure(quint32 srate, int chan, Qmmp::AudioFormat f)
+void AudioConverter::configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f)
 {
     m_format = f;
-    Effect::configure(srate, chan, Qmmp::PCM_S16LE);
+    Effect::configure(srate, map, Qmmp::PCM_S16LE);
 }
 
 void AudioConverter::applyEffect(Buffer *b)
@@ -58,14 +58,14 @@ void AudioConverter::applyEffect(Buffer *b)
     switch(m_format)
     {
     case Qmmp::PCM_S8:
-        {
-            unsigned char *out = new unsigned char[b->nbytes*2];
-            s8_to_s16((qint8 *)b->data, (qint16 *) out, b->nbytes);
-            delete [] b->data;
-            b->data = out;
-            b->nbytes <<= 1;
-            break;
-        }
+    {
+        unsigned char *out = new unsigned char[b->nbytes*2];
+        s8_to_s16((qint8 *)b->data, (qint16 *) out, b->nbytes);
+        delete [] b->data;
+        b->data = out;
+        b->nbytes <<= 1;
+        break;
+    }
     case Qmmp::PCM_S24LE:
         s24_to_s16((qint32 *)b->data, (qint16 *)b->data, b->nbytes >> 2);
         b->nbytes >>= 1;

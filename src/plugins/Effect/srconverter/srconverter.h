@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ public:
     virtual ~SRConverter();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
 
 private:
     void freeSRC();

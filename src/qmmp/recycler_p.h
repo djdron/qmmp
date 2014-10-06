@@ -75,6 +75,11 @@ public:
      */
     unsigned long size() const; // size in bytes
     /*!
+     * Returns block size in bytes.
+     */
+    unsigned long blockSize() const; // size in bytes
+
+    /*!
     * Returns mutex pointer.
     */
     QMutex *mutex()

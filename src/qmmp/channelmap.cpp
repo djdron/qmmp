@@ -18,16 +18,20 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QStringList>
+#include <QHash>
 #include "channelmap.h"
 
-Qmmp::AudioChannel ChannelMap::m_internal_map[8] = { Qmmp::CHAN_FRONT_LEFT,
+Qmmp::ChannelPosition ChannelMap::m_internal_map[9] = { Qmmp::CHAN_FRONT_LEFT,
                                                      Qmmp::CHAN_FRONT_RIGHT,
                                                      Qmmp::CHAN_REAR_LEFT,
                                                      Qmmp::CHAN_REAR_RIGHT,
-                                                     Qmmp::CHAN_CENTER,
+                                                     Qmmp::CHAN_FRONT_CENTER,
+                                                     Qmmp::CHAN_REAR_CENTER,
                                                      Qmmp::CHAN_LFE,
                                                      Qmmp::CHAN_SIDE_LEFT,
-                                                     Qmmp::CHAN_SIDE_RIGHT };
+                                                     Qmmp::CHAN_SIDE_RIGHT,
+                                                     };
 
 ChannelMap::ChannelMap()
 {
@@ -36,7 +40,7 @@ ChannelMap::ChannelMap()
 int ChannelMap::mask() const
 {
     int mask = 0;
-    foreach (Qmmp::AudioChannel channel, *this)
+    foreach (Qmmp::ChannelPosition channel, *this)
     {
         mask |= channel;
     }
@@ -46,16 +50,37 @@ int ChannelMap::mask() const
 const ChannelMap ChannelMap::remaped() const
 {
     ChannelMap map;
-    for(int i = 0; i < 8; ++i)
+    for(int i = 0; i < 9; ++i)
     {
-        foreach (Qmmp::AudioChannel channel, *this)
-        {
-            if(channel == m_internal_map[i])
-            {
-                map.append(channel);
-                break;
-            }
-        }
+         if(contains(m_internal_map[i]))
+             map.append(m_internal_map[i]);
+    }
+    while (map.count() < count())
+    {
+        map.append(Qmmp::CHAN_NULL);
     }
     return map;
+}
+
+const QString ChannelMap::toString() const
+{
+    QStringList list;
+    QHash <Qmmp::ChannelPosition, QString> names;
+    names.insert(Qmmp::CHAN_NULL, "NA");
+    names.insert(Qmmp::CHAN_FRONT_LEFT, "FL");
+    names.insert(Qmmp::CHAN_FRONT_RIGHT, "FR");
+    names.insert(Qmmp::CHAN_REAR_LEFT, "RL");
+    names.insert(Qmmp::CHAN_REAR_RIGHT, "RR");
+    names.insert(Qmmp::CHAN_FRONT_CENTER, "FC");
+    names.insert(Qmmp::CHAN_REAR_CENTER, "RC");
+    names.insert(Qmmp::CHAN_LFE, "LFE");
+    names.insert(Qmmp::CHAN_SIDE_LEFT, "SL");
+    names.insert(Qmmp::CHAN_SIDE_RIGHT, "SR");
+
+
+    foreach (Qmmp::ChannelPosition channel, *this)
+    {
+       list << names.value(channel);
+    }
+    return list.join(",");
 }

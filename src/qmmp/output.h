@@ -12,6 +12,7 @@
 #include <QIODevice>
 #include "outputfactory.h"
 #include "audioparameters.h"
+#include "channelmap.h"
 
 class QTimer;
 class QmmpSettings;
@@ -36,11 +37,11 @@ public:
      * Prepares object for usage and setups required audio parameters.
      * Subclass should reimplement this function.
      * @param freq Sample rate.
-     * @param chan Number of channels.
+     * @param map Map of channels.
      * @param format Audio format
      * @return initialization result (\b true - success, \b false - failure)
      */
-    virtual bool initialize(quint32 freq, int chan, Qmmp::AudioFormat format) = 0;
+    virtual bool initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format) = 0;
     /*!
      * Returns output interface latency in milliseconds.
      */
@@ -80,11 +81,13 @@ public:
     /*!
      * Returns samplerate.
      */
-    quint32 sampleRate();
+    quint32 sampleRate() const;
     /*!
      * Returns channels number.
      */
-    int channels();
+    int channels() const;
+
+    const ChannelMap channelMap() const;
     /*!
      * Returns selected audio format.
      */
@@ -120,14 +123,14 @@ protected:
     /*!
      * Use this function inside initialize() reimplementation to tell about accepted audio parameters.
      * @param freq Sample rate.
-     * @param chan Number of channels.
+     * @param map Map of channels.
      * @param format Audio format.
      */
-    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
 
 private:
     quint32 m_frequency;
-    int m_channels;
+    ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
     static void loadPlugins();
     static QList<QmmpPluginCache*> *m_cache;

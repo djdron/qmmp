@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QList>
 #include <QStringList>
 #include "audioparameters.h"
+#include "channelmap.h"
 #include "buffer.h"
 
 class EffectFactory;
@@ -51,22 +52,26 @@ public:
      * Prepares object for usage.
      * Subclasses that reimplement this function must call the base implementation.
      * @param srate Sample rate.
-     * @param chan Number of channels.
+     * @param map Map of channels.
      * @param f Audio format.
      */
-    virtual void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
+    virtual void configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
     /*!
      * Returns samplerate.
      */
-    quint32 sampleRate();
+    quint32 sampleRate() const;
     /*!
      * Returns channels number.
      */
-    int channels();
+    int channels() const;
+    /*!
+     * Returns map of channels
+     */
+     const ChannelMap channelMap() const;
     /*!
      * Returns audio format.
      */
-    Qmmp::AudioFormat format();
+    Qmmp::AudioFormat format() const;
     /*!
      * Returns audio parameters for output data.
      */
@@ -108,7 +113,8 @@ public:
 private:
     EffectFactory *m_factory;
     quint32 m_freq;
-    int m_chan;
+    int m_channels;
+    ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
     static void loadPlugins();
     static QList<QmmpPluginCache*> *m_cache;

@@ -82,6 +82,7 @@ private:
     // helper functions
     void deinit();
     uint findID3v2(char *data, ulong size); //retuns ID3v2 tag size
+    ChannelMap findChannelMap(int channels);
 
     struct flac_data *m_data;
     qint64 length_in_bytes;

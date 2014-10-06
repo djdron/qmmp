@@ -38,7 +38,8 @@ HEADERS += \
     outputwriter_p.h \
     recycler_p.h \
     qmmpplugincache_p.h \
-    channelmap.h
+    channelmap.h \
+    channelconverter_p.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -68,7 +69,8 @@ SOURCES += recycler.cpp \
     qmmpevents.cpp \
     outputwriter.cpp \
     qmmpplugincache.cpp \
-    channelmap.cpp
+    channelmap.cpp \
+    channelconverter.cpp
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #define AUDIOPARAMETERS_H
 
 #include <QtGlobal>
+#include "channelmap.h"
 #include "qmmp.h"
 
 /*! @brief The AudioParameters class keeps information about audio settings.
@@ -37,10 +38,10 @@ public:
     /*!
      * Constructs audio settings with the given parameters.
      * @param srate Sampling rate.
-     * @param chan Number of channels.
+     * @param map Channel map.
      * @param format PCM data format.
      */
-    AudioParameters(quint32 srate, int chan, Qmmp::AudioFormat format);
+    AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat format);
     /*!
      * Constructs a copy of \b other.
      */
@@ -65,6 +66,7 @@ public:
      * Returns number of channels.
      */
     int channels() const;
+    const ChannelMap channelMap() const;
     /*!
      * Returns pcm format.
      */
@@ -80,7 +82,7 @@ public:
 
 private:
     quint32 m_srate;
-    int m_chan;
+    ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
 };
 

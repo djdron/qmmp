@@ -120,7 +120,12 @@ bool DecoderMAD::initialize()
     mad_frame_mute (&m_frame);
     m_stream.next_frame = 0;
     m_stream.sync = 0;
-    configure(m_freq, m_channels, Qmmp::PCM_S16LE);
+    ChannelMap map;
+    if(m_channels == 1)
+        map << Qmmp::CHAN_FRONT_LEFT;
+    else
+        map << Qmmp::CHAN_FRONT_LEFT << Qmmp::CHAN_FRONT_RIGHT;
+    configure(m_freq, map, Qmmp::PCM_S16LE);
     m_inited = true;
     return true;
 }

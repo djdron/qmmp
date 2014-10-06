@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef   OUTPUTALSA_H
-#define   OUTPUTALSA_H
+#ifndef OUTPUTALSA_H
+#define OUTPUTALSA_H
 
 class OutputALSA;
 
@@ -28,6 +28,7 @@ extern "C"
 #include <alsa/asoundlib.h>
 }
 
+#include <QHash>
 #include <qmmp/output.h>
 #include <qmmp/volume.h>
 
@@ -38,7 +39,7 @@ public:
     OutputALSA();
     ~OutputALSA();
 
-    bool initialize(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, ChannelMap map, Qmmp::AudioFormat format);
     //output api
     qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
@@ -63,6 +64,8 @@ private:
     qint64 m_prebuf_size;
     qint64 m_prebuf_fill;
     bool m_can_pause;
+    //channel conversions
+    QHash <quint16, Qmmp::ChannelPosition> m_alsa_channels;
 };
 
 class VolumeALSA : public Volume

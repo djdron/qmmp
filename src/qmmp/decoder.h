@@ -14,6 +14,7 @@
 #include "fileinfo.h"
 #include "qmmp.h"
 #include "audioparameters.h"
+#include "channelmap.h"
 #include "decoderfactory.h"
 
 class QmmpPluginCache;
@@ -82,7 +83,7 @@ public:
      * By default this function does nothing.
      * Reimplemet it if your decoder can play next track without stop/start cycle.
      */
-    virtual const QString nextURL();
+    virtual const QString nextURL() const;
     /*!
      * Returns detected audio parameters.
      */
@@ -174,12 +175,10 @@ protected:
     /*!
      * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
      * @param srate Sample rate.
-     * @param chan Number of channels.
+     * @param map Map of channels.
      * @param f Audio format.
      */
-    void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
-
-    //void configure(quint32 srate = 44100, QList<Qmmp::AudioChannel> channels, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
+    void configure(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
 
 private:
     static void loadPlugins();

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,34 +23,33 @@
 AudioParameters::AudioParameters()
 {
     m_srate = 0;
-    m_chan = 0;
     m_format = Qmmp::PCM_S16LE;
 }
 
 AudioParameters::AudioParameters(const AudioParameters &other)
 {
     m_srate = other.sampleRate();
-    m_chan = other.channels();
+    m_chan_map = other.channelMap();
     m_format = other.format();
 }
 
-AudioParameters::AudioParameters(quint32 srate, int chan, Qmmp::AudioFormat  format)
+AudioParameters::AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat  format)
 {
     m_srate = srate;
-    m_chan = chan;
+    m_chan_map = map;
     m_format = format;
 }
 
 void AudioParameters::operator=(const AudioParameters &p)
 {
     m_srate = p.sampleRate();
-    m_chan = p.channels();
+    m_chan_map = p.channelMap();
     m_format = p.format();
 }
 
 bool AudioParameters::operator==(const AudioParameters &p) const
 {
-    return m_srate == p.sampleRate() && m_chan == p.channels() && m_format == p.format();
+    return m_srate == p.sampleRate() && m_chan_map == p.channelMap() && m_format == p.format();
 }
 
 bool AudioParameters::operator!=(const AudioParameters &p) const
@@ -65,7 +64,12 @@ quint32 AudioParameters::sampleRate() const
 
 int AudioParameters::channels() const
 {
-    return m_chan;
+    return m_chan_map.count();
+}
+
+const ChannelMap AudioParameters::channelMap() const
+{
+    return m_chan_map;
 }
 
 Qmmp::AudioFormat AudioParameters::format() const

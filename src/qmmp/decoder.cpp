@@ -33,9 +33,9 @@ void Decoder::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &rg, boo
     m_hasHeadroom = headroom;
 }
 
-void Decoder::configure(quint32 srate, int chan, Qmmp::AudioFormat format)
+void Decoder::configure(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat format)
 {
-    m_parameters = AudioParameters(srate, chan, format);
+    m_parameters = AudioParameters(srate, map, format);
 }
 
 qint64 Decoder::read(float *data, qint64 samples)
@@ -49,7 +49,7 @@ qint64 Decoder::read(float *data, qint64 samples)
 void Decoder::next()
 {}
 
-const QString Decoder::nextURL()
+const QString Decoder::nextURL() const
 {
     return QString();
 }

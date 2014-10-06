@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,6 +32,7 @@
 #include "statehandler.h"
 #include "audioconverter_p.h"
 #include "qmmpaudioengine_p.h"
+#include "channelconverter_p.h"
 #include "metadatamanager.h"
 
 #define TRANSPORT_TIMEOUT 5000 //ms
@@ -170,7 +171,7 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
         Effect *effect = Effect::create(factory);
         if(!effect)
             return;
-        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+        effect->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
         if(effect->audioParameters() == m_ap)
         {
             mutex()->lock();
@@ -568,34 +569,16 @@ OutputWriter *QmmpAudioEngine::createOutput()
 {
     OutputWriter *output = new OutputWriter(0);
     output->setMuted(m_muted);
-    if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()))
+    if (!output->initialize(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format()))
     {
         delete output;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
     }
-    if(output->audioParameters() != m_ap)
-    {
-        if(output->audioParameters().format() == Qmmp::PCM_S16LE) //output supports 16 bit only
-        {
-            Effect *effect = new AudioConverter();
-            effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
-            m_ap = effect->audioParameters();
-            m_effects.append(effect);
-            qDebug("QmmpAudioEngine: output plugin requires 16 bit, using 16-bit converter");
-        }
-        else
-        {
-            qWarning("QmmpAudioEngine: unsupported audio format");
-            delete output;
-            StateHandler::instance()->dispatch(Qmmp::FatalError);
-            return 0;
-        }
-    }
 
     if(m_output_buf)
         delete [] m_output_buf;
-    m_bks = QMMP_BLOCK_FRAMES * m_ap.channels() * m_ap.sampleSize();
+    m_bks = output->recycler()->blockSize();
     m_output_size = m_bks * 4;
     m_output_buf = new unsigned char[m_output_size];
     return output;
@@ -621,10 +604,14 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
     QList <Effect *> tmp_effects = m_effects;
     m_effects.clear();
 
+    m_effects << new ChannelConverter(m_ap.channelMap().remaped());
+    m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
+    m_ap = m_effects.at(0)->audioParameters();
+
     if(m_settings->use16BitOutput())
     {
         m_effects << new AudioConverter();
-        m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+        m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
         m_ap = m_effects.at(0)->audioParameters();
     }
 
@@ -648,7 +635,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         if(!effect)
         {
             effect = Effect::create(factory);
-            effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+            effect->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
             if (m_ap != effect->audioParameters())
             {
                 m_blockedEffects << effect; //list of effects which require restart
