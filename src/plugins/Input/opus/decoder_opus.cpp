@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -123,10 +123,21 @@ bool DecoderOpus::initialize()
         m_totalTime = 0;
 
     const OpusHead *head = op_head(m_opusfile, -1);
-    if (head)
-        m_chan =  head->channel_count;
+    if (!head)
+    {
+        qWarning("DecoderOpus: unable to read header");
+        return false;
+    }
 
-    configure(48000, m_chan, Qmmp::PCM_S16LE); //opus codec supports 48 kHz only
+    m_chan =  head->channel_count;
+
+    ChannelMap chmap = findChannelMap(m_chan);
+    if(chmap.isEmpty())
+    {
+        qWarning("DecoderOpus: unsupported number of channels: %d", m_chan);
+        return false;
+    }
+    configure(48000, chmap, Qmmp::PCM_S16LE); //opus codec supports 48 kHz only
     return true;
 }
 
@@ -153,4 +164,68 @@ qint64 DecoderOpus::read(char *data, qint64 maxSize)
     samples = op_read(m_opusfile, (opus_int16 *)data, samples, 0);
     m_bitrate = op_bitrate_instant(m_opusfile) / 1000;
     return samples * m_chan * 2;
+}
+
+//https://tools.ietf.org/id/draft-ietf-codec-oggopus-04.txt
+ChannelMap DecoderOpus::findChannelMap(int channels)
+{
+    ChannelMap map;
+    switch (channels)
+    {
+    case 1:
+        map << Qmmp::CHAN_FRONT_LEFT;
+        break;
+    case 2:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 3:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 4:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 5:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 6:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_LFE;
+        break;
+    case 7:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT
+            << Qmmp::CHAN_REAR_CENTER
+            << Qmmp::CHAN_LFE;
+        break;
+    case 8:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_LFE;
+        break;
+    default:
+        ;
+    }
+    return map;
 }

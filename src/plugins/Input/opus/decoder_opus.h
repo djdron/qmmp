@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,6 +43,7 @@ private:
     virtual void seek(qint64 time);
 
     // helper functions
+    ChannelMap findChannelMap(int channels);
     OggOpusFile *m_opusfile;
     qint64 m_totalTime;
     int m_bitrate;
