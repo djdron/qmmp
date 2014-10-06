@@ -31,6 +31,7 @@ private:
     // helper functions
     void deinit();
     void updateTags();
+    ChannelMap findChannelMap(int channels);
 
     // OggVorbis Decoder
     OggVorbis_File oggfile;
