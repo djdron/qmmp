@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,22 +30,22 @@ OutputNull::OutputNull() : Output()
 OutputNull::~OutputNull()
 {}
 
-bool OutputNull::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputNull::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     switch (format)
     {
     case Qmmp::PCM_S8:
-        m_bytes_per_second = freq * chan;
+        m_bytes_per_second = freq * map.count();
         break;
     case Qmmp::PCM_S24LE:
     case Qmmp::PCM_S32LE:
-         m_bytes_per_second = freq * chan * 4;
+         m_bytes_per_second = freq * map.count() * 4;
         break;
     case Qmmp::PCM_S16LE:
     default:
-         m_bytes_per_second = freq * chan * 2;
+         m_bytes_per_second = freq * map.count() * 2;
     }
-    configure(freq, chan, format);
+    configure(freq, map, format);
     return true;
 }
 

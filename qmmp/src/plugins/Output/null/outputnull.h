@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,7 +32,7 @@ public:
     OutputNull();
     ~OutputNull();
 
-    bool initialize(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, ChannelMap map, Qmmp::AudioFormat format);
     //output api
     qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);

@@ -4,7 +4,7 @@ TEMPLATE = subdirs
 win32:SUBDIRS += waveout
 win32:SUBDIRS += directsound
 
-#SUBDIRS += null
+SUBDIRS += null
 
 unix{
 
