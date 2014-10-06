@@ -128,7 +128,8 @@ unix {
         tagmodel.h \
         visualfactory.h \
         visual.h \
-        volume.h
+        volume.h \
+        channelmap.h
 
     devel.path = /include/qmmp
     INSTALLS += target \
