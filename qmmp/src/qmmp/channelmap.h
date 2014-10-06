@@ -28,6 +28,7 @@ class ChannelMap : public QList<Qmmp::ChannelPosition>
 {
 public:
     ChannelMap();
+    ChannelMap(int channels);
 
     int mask() const;
     const ChannelMap remaped() const;
@@ -35,6 +36,7 @@ public:
 
 private:
     static Qmmp::ChannelPosition m_internal_map[9];
+    void generateMap(int channels);
 };
 
 #endif // CHANNELMAP_H

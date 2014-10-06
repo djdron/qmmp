@@ -180,6 +180,8 @@ protected:
      */
     void configure(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
 
+    void configure(quint32 srate, int channels, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
+
 private:
     static void loadPlugins();
     static DecoderFactory *m_lastFactory;
