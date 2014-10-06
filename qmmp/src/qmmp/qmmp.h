@@ -87,17 +87,18 @@ public:
         PCM_S32LE   /*!< Signed 32 bit Little Endian */
     };
 
-    enum AudioChannel
+    enum ChannelPosition
     {
-        CHAN_NULL        = 0x00,
-        CHAN_FRONT_LEFT  = 0x01,
-        CHAN_FRONT_RIGHT = 0x02,
-        CHAN_REAR_LEFT   = 0x04,
-        CHAN_REAR_RIGHT  = 0x08,
-        CHAN_CENTER      = 0x10,
-        CHAN_LFE         = 0x20,
-        CHAN_SIDE_LEFT   = 0x40,
-        CHAN_SIDE_RIGHT  = 0x80
+        CHAN_NULL         = 0x00,
+        CHAN_FRONT_LEFT   = 0x01,
+        CHAN_FRONT_RIGHT  = 0x02,
+        CHAN_REAR_LEFT    = 0x04,
+        CHAN_REAR_RIGHT   = 0x08,
+        CHAN_FRONT_CENTER = 0x10,
+        CHAN_REAR_CENTER  = 0x20,
+        CHAN_SIDE_LEFT    = 0x40,
+        CHAN_SIDE_RIGHT   = 0x80,
+        CHAN_LFE          = 0x100,
     };
 
     /*!

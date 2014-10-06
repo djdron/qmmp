@@ -17,30 +17,34 @@
 Output::Output()
 {
     m_frequency = 0;
-    m_channels = 0;
     m_format = Qmmp::PCM_UNKNOWM;
 }
 
-void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void Output::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     m_frequency = freq;
-    m_channels = chan;
+    m_chan_map = map;
     m_format = format;
 }
 
 AudioParameters Output::audioParameters() const
 {
-    return AudioParameters(m_frequency, m_channels, m_format);
+    return AudioParameters(m_frequency, m_chan_map, m_format);
 }
 
-quint32 Output::sampleRate()
+quint32 Output::sampleRate() const
 {
     return m_frequency;
 }
 
-int Output::channels()
+int Output::channels() const
 {
-    return m_channels;
+    return m_chan_map.count();
+}
+
+const ChannelMap Output::channelMap() const
+{
+    return m_chan_map;
 }
 
 Qmmp::AudioFormat Output::format() const

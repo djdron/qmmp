@@ -4,20 +4,20 @@ TEMPLATE = subdirs
 win32:SUBDIRS += waveout
 win32:SUBDIRS += directsound
 
-SUBDIRS += null
+#SUBDIRS += null
 
 unix{
 
 contains(CONFIG, JACK_PLUGIN){
-    SUBDIRS += jack
+#    SUBDIRS += jack
 }
 
 contains(CONFIG, OSS_PLUGIN){
-    SUBDIRS += oss
+#    SUBDIRS += oss
 }
 
 contains(CONFIG, PULSE_AUDIO_PLUGIN){
-    SUBDIRS += pulseaudio
+#    SUBDIRS += pulseaudio
 }
 
 contains(CONFIG, ALSA_PLUGIN){
@@ -25,7 +25,7 @@ contains(CONFIG, ALSA_PLUGIN){
 }
 
 contains(CONFIG, OSS4_PLUGIN){
-    SUBDIRS += oss4
+#    SUBDIRS += oss4
 }
 
 }

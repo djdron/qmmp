@@ -18,23 +18,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef CHANNELMAP_H
-#define CHANNELMAP_H
+#ifndef CHANNELCONVERTER_P_H
+#define CHANNELCONVERTER_P_H
 
-#include <QList>
-#include "qmmp.h"
+#include "effect.h"
 
-class ChannelMap : public QList<Qmmp::ChannelPosition>
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class ChannelConverter : public Effect
 {
 public:
-    ChannelMap();
-
-    int mask() const;
-    const ChannelMap remaped() const;
-    const QString toString() const;
+    ChannelConverter(ChannelMap out_map);
+    ~ChannelConverter();
+    void configure(quint32 srate, ChannelMap in_map, Qmmp::AudioFormat f);
+    void applyEffect(Buffer *b);
 
 private:
-    static Qmmp::ChannelPosition m_internal_map[9];
+    bool m_disabled;
+    int m_reorder_array[9];
+    unsigned char *m_tmp_buf;
+    int m_frame_size;
+    int m_channels;
+    Qmmp::AudioFormat m_format;
+    ChannelMap m_out_map;
 };
 
-#endif // CHANNELMAP_H
+#endif // CHANNELCONVERTER_P_H

@@ -44,6 +44,18 @@ OutputALSA::OutputALSA() : m_inited(false)
     m_prebuf_size = 0;
     m_prebuf_fill = 0;
     m_can_pause = false;
+
+    m_alsa_channels[SND_CHMAP_NA] =   Qmmp::CHAN_NULL;
+    m_alsa_channels[SND_CHMAP_MONO] = Qmmp::CHAN_FRONT_CENTER;
+    m_alsa_channels[SND_CHMAP_FL]   = Qmmp::CHAN_FRONT_LEFT;
+    m_alsa_channels[SND_CHMAP_FR]   = Qmmp::CHAN_FRONT_RIGHT;
+    m_alsa_channels[SND_CHMAP_RL]   = Qmmp::CHAN_REAR_LEFT;
+    m_alsa_channels[SND_CHMAP_RR]   = Qmmp::CHAN_REAR_RIGHT;
+    m_alsa_channels[SND_CHMAP_FC]   = Qmmp::CHAN_FRONT_CENTER;
+    m_alsa_channels[SND_CHMAP_LFE]  = Qmmp::CHAN_LFE;
+    m_alsa_channels[SND_CHMAP_SL]   = Qmmp::CHAN_SIDE_LEFT;
+    m_alsa_channels[SND_CHMAP_SR]   = Qmmp::CHAN_SIDE_RIGHT;
+    m_alsa_channels[SND_CHMAP_RC]   = Qmmp::CHAN_REAR_CENTER;
 }
 
 OutputALSA::~OutputALSA()
@@ -52,7 +64,7 @@ OutputALSA::~OutputALSA()
     free (pcm_name);
 }
 
-bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     m_inited = false;
 
@@ -141,11 +153,16 @@ bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
         qWarning("OutputALSA: The rate %d Hz is not supported by your hardware.\n==> Using %d Hz instead.", rate, exact_rate);
         rate = exact_rate;
     }
-    uint c = chan;
+    uint c = map.count();
     if ((err = snd_pcm_hw_params_set_channels_near(pcm_handle, hwparams, &c)) < 0)
     {
         qWarning("OutputALSA: Error setting channels: %s", snd_strerror(err));
         return false;
+    }
+    if (c != (uint)map.count())
+    {
+        qWarning("OutputALSA: The channel number %d is not supported by your hardware", map.count());
+        qWarning("==> Using %d instead.", c);
     }
     if ((err = snd_pcm_hw_params_set_period_time_near(pcm_handle, hwparams, &period_time ,0)) < 0)
     {
@@ -190,11 +207,30 @@ bool OutputALSA::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     m_chunk_size = period_size;
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
-    configure(rate, chan, format); //apply configuration
+
+    //channel map configuration
+    snd_pcm_chmap_t *chmap = snd_pcm_get_chmap(pcm_handle);
+    if(!chmap)
+    {
+        qWarning("OutputALSA: Unable to receive current channel map: %s", snd_strerror(err));
+        return false;
+    }
+    char tmp[256];
+    memset(tmp,0,256);
+    snd_pcm_chmap_print(chmap, 256, tmp);
+    qDebug("OutputALSA: received channel map: %s",tmp);
+    ChannelMap out_map;
+    for(uint i = 0; i < chmap->channels; ++i)
+    {
+        if(m_alsa_channels.keys().contains(chmap->pos[i]))
+            out_map.append(m_alsa_channels.value(chmap->pos[i]));
+        else
+            out_map.append(Qmmp::CHAN_NULL);
+    }
+    configure(exact_rate, out_map, format); //apply configuration
     //create alsa prebuffer;
     m_prebuf_size = 2 * snd_pcm_frames_to_bytes(pcm_handle, m_chunk_size); //buffer for two periods
     m_prebuf = (uchar *)malloc(m_prebuf_size);
-
     m_inited = true;
     return true;
 }

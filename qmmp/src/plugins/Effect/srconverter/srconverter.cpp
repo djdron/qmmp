@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -115,12 +115,12 @@ void SRConverter::applyEffect(Buffer *b)
     }
 }
 
-void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
+void SRConverter::configure(quint32 freq, ChannelMap map,  Qmmp::AudioFormat format)
 {
     freeSRC();
     if(freq != m_overSamplingFs && format != Qmmp::PCM_S8)
     {
-        m_src_state = src_new(m_converter_type, chan, &m_srcError);
+        m_src_state = src_new(m_converter_type, map.count(), &m_srcError);
         if (m_src_state)
         {
             m_src_data.src_ratio = (float)m_overSamplingFs/(float)freq;
@@ -129,7 +129,7 @@ void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
     }
-    Effect::configure(m_overSamplingFs, chan, format);
+    Effect::configure(m_overSamplingFs, map, format);
     m_sz = audioParameters().sampleSize();
 }
 

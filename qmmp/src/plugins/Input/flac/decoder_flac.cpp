@@ -393,17 +393,25 @@ bool DecoderFLAC::initialize()
         data()->ok = 0;
         return false;
     }
+    ChannelMap channel_map = findChannelMap(data()->channels);
+
+    if(channel_map.isEmpty())
+    {
+        qWarning("DecoderFLAC: unsupported number of channels: %d", data()->channels);
+        return false;
+    }
+
     switch(data()->bits_per_sample)
     {
     case 8:
-        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S8);
+        configure(data()->sample_rate, channel_map, Qmmp::PCM_S8);
         break;
     case 16:
-        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S16LE);
+        configure(data()->sample_rate, channel_map, Qmmp::PCM_S16LE);
         break;
     case 24:
     case 32:
-        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S32LE);
+        configure(data()->sample_rate, channel_map, Qmmp::PCM_S32LE);
         break;
     default:
         return false;
@@ -554,4 +562,67 @@ uint DecoderFLAC::findID3v2(char *data, ulong size) //retuns ID3v2 tag size
         return header.completeTagSize();
     }
     return 0;
+}
+
+ChannelMap DecoderFLAC::findChannelMap(int channels)
+{
+    ChannelMap map;
+    switch (channels)
+    {
+    case 1:
+        map << Qmmp::CHAN_FRONT_LEFT;
+        break;
+    case 2:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 3:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER;
+        break;
+    case 4:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 5:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 6:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 7:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_CENTER
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT;
+        break;
+    case 8:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT;
+        break;
+    default:
+        ;
+    }
+    return map;
 }

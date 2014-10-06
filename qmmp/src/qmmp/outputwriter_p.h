@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,11 +25,13 @@
 #include <QMutex>
 #include "recycler_p.h"
 #include "audioparameters.h"
+#include "channelmap.h"
 
 class QTimer;
 class QmmpSettings;
 class StateHandler;
 class Output;
+class Effect;
 
 /** @internal
     @brief Output thread.
@@ -45,11 +47,11 @@ public:
     /*!
      * Prepares object for usage and setups required audio parameters.
      * @param freq Sample rate.
-     * @param chan Number of channels.
+     * @param map Map of channels.
      * @param format Audio format
      * @return initialization result (\b true - success, \b false - failure)
      */
-    bool initialize(quint32 freq, int chan, Qmmp::AudioFormat format);
+    bool initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      */
@@ -97,6 +99,7 @@ public:
      * Returns selected audio format.
      */
     Qmmp::AudioFormat format() const;
+    const ChannelMap channelMap() const;
     /*!
      * Returns sample size in bytes.
      */
@@ -115,16 +118,20 @@ private:
                   int channels);
     void dispatch(const Qmmp::State &state);
     void dispatchVisual(Buffer *buffer);
+    void applyConverters(Buffer *buffer);
     void clearVisuals();
+    bool prepareConverters();
+
     bool m_skip;
     QMutex m_mutex;
     Recycler m_recycler;
     StateHandler *m_handler;
     quint32 m_frequency;
     int m_channels, m_kbps;
+    ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
     qint64 m_bytesPerMillisecond;
-    bool m_userStop, m_pause;
+    bool m_user_stop, m_pause;
     bool m_prev_pause;
     bool m_finish;
     bool m_useEq, m_eqEnabled;
@@ -134,6 +141,7 @@ private:
     QmmpSettings *m_settings;
     Output *m_output;
     bool m_muted;
+    QList<Effect *> m_converters;
 
 };
 

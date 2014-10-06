@@ -29,39 +29,45 @@
 Effect::Effect()
 {
     m_freq = 0;
-    m_chan = 0;
     m_format = Qmmp::PCM_UNKNOWM;
+    m_channels = 0;
     m_factory = 0;
 }
 
 Effect::~Effect()
 {}
 
-void Effect::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void Effect::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     m_freq = freq;
-    m_chan = chan;
+    m_chan_map = map;
+    m_channels = map.count();
     m_format = format;
 }
 
-quint32 Effect::sampleRate()
+quint32 Effect::sampleRate() const
 {
     return m_freq;
 }
 
-int Effect::channels()
+int Effect::channels() const
 {
-    return m_chan;
+    return m_channels;
 }
 
-Qmmp::AudioFormat Effect::format()
+const ChannelMap Effect::channelMap() const
+{
+    return m_chan_map;
+}
+
+Qmmp::AudioFormat Effect::format() const
 {
     return m_format;
 }
 
 const AudioParameters Effect::audioParameters() const
 {
-    return AudioParameters(m_freq, m_chan, m_format);
+    return AudioParameters(m_freq, m_chan_map, m_format);
 }
 
 EffectFactory* Effect::factory() const

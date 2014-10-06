@@ -140,3 +140,8 @@ unsigned long Recycler::size() const
 {
     return m_buffer_count * m_block_size;
 }
+
+unsigned long Recycler::blockSize() const
+{
+    return m_block_size;
+}
