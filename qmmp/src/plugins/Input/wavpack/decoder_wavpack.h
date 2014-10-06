@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,7 +47,8 @@ private:
     // helper functions
     void deinit();
     qint64 wavpack_decode(char *data, qint64 size);
-    WavpackContext *m_context;    
+    ChannelMap findChannelMap(int channels);
+    WavpackContext *m_context;
     int32_t *m_output_buf; // output buffer
     int m_chan;
     quint32 m_freq;
