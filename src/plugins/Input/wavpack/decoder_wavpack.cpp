@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -108,19 +108,27 @@ bool DecoderWavPack::initialize()
     m_chan = WavpackGetNumChannels(m_context);
     m_freq = WavpackGetSampleRate (m_context);
     m_bps = WavpackGetBitsPerSample (m_context);
+
+    ChannelMap chmap = findChannelMap(m_chan);
+    if(chmap.isEmpty())
+    {
+        qWarning("DecoderWavPack: unsupported number of channels: %d", m_chan);
+        return false;
+    }
+
     if (!m_output_buf)
         m_output_buf = new int32_t[QMMP_BLOCK_FRAMES * m_chan];
     switch(m_bps)
     {
     case 8:
-        configure(m_freq, m_chan, Qmmp::PCM_S8);
+        configure(m_freq, chmap, Qmmp::PCM_S8);
         break;
     case 16:
-        configure(m_freq, m_chan, Qmmp::PCM_S16LE);
+        configure(m_freq, chmap, Qmmp::PCM_S16LE);
         break;
     case 24:
     case 32:
-        configure(m_freq, m_chan, Qmmp::PCM_S32LE);
+        configure(m_freq, chmap, Qmmp::PCM_S32LE);
     }
     if(!m_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
@@ -280,4 +288,68 @@ qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
          return len * m_chan * 4;
     }
     return 0;
+}
+
+//http://www.wavpack.com/file_format.txt
+ChannelMap DecoderWavPack::findChannelMap(int channels)
+{
+    ChannelMap map;
+    switch (channels)
+    {
+    case 1:
+        map << Qmmp::CHAN_FRONT_LEFT;
+        break;
+    case 2:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT;
+        break;
+    case 3:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER;
+        break;
+    case 4:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 5:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 6:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT;
+        break;
+    case 7:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_CENTER
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT;
+        break;
+    case 8:
+        map << Qmmp::CHAN_FRONT_LEFT
+            << Qmmp::CHAN_FRONT_RIGHT
+            << Qmmp::CHAN_FRONT_CENTER
+            << Qmmp::CHAN_LFE
+            << Qmmp::CHAN_REAR_LEFT
+            << Qmmp::CHAN_REAR_RIGHT
+            << Qmmp::CHAN_SIDE_LEFT
+            << Qmmp::CHAN_SIDE_RIGHT;
+        break;
+    default:
+        ;
+    }
+    return map;
 }
