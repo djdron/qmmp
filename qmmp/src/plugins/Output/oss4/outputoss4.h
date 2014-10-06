@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,7 +38,7 @@ public:
     OutputOSS4();
     virtual ~OutputOSS4();
 
-    bool initialize(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, ChannelMap map, Qmmp::AudioFormat format);
     int fd();
 
     //output api

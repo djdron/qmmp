@@ -47,7 +47,7 @@ OutputJACK::~OutputJACK()
     uninitialize();
 }
 
-bool OutputJACK::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputJACK::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     qDebug("OutputJACK: initialize");
     int bits = 0;
@@ -64,13 +64,13 @@ bool OutputJACK::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     }
 
 
-    if(JACK_Open(&jack_device, bits, (unsigned long *)&freq, chan))
+    if(JACK_Open(&jack_device, bits, (unsigned long *)&freq, map.count()))
     {
         m_inited = false;
         return false;
     }
     m_inited = true;
-    configure(freq, chan, input_format);
+    configure(freq, map, input_format);
     return true;
 }
 

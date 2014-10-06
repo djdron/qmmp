@@ -70,7 +70,7 @@ void OutputOSS::sync()
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
 }
 
-bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputOSS::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY);
 
@@ -83,6 +83,7 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
     int p;
+    int chan = map.count();
     switch (format)
     {
     case Qmmp::PCM_S16LE:
@@ -121,7 +122,7 @@ bool OutputOSS::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
-    configure(freq, chan, format);
+    configure(freq, map, format);
     return true;
 }
 
