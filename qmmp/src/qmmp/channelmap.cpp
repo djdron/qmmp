@@ -31,6 +31,7 @@ Qmmp::ChannelPosition ChannelMap::m_internal_map[9] = { Qmmp::CHAN_FRONT_LEFT,
                                                         Qmmp::CHAN_LFE,
                                                         Qmmp::CHAN_SIDE_LEFT,
                                                         Qmmp::CHAN_SIDE_RIGHT };
+ChannelMap::ChannelMap() {}
 
 ChannelMap::ChannelMap(int channels)
 {
