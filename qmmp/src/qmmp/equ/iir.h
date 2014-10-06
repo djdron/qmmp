@@ -76,7 +76,7 @@ __inline__ int round_trick(float floatvalue_to_round);
 __inline__ int round_ppc(float x);
 #endif
 
-#define EQ_CHANNELS 6
+#define EQ_CHANNELS 9
 #define EQ_MAX_BANDS 32
 
 extern float preamp[EQ_CHANNELS];
