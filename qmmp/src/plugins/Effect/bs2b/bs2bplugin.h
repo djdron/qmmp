@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,7 +36,7 @@ public:
     virtual ~Bs2bPlugin();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
     void setCrossfeedLevel(uint32_t level);
     static Bs2bPlugin* instance();
 

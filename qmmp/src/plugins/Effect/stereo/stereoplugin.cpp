@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 1999 by Johan Levin                                     *
  *                                                                         *
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,7 +56,7 @@ void StereoPlugin::applyEffect(Buffer *b)
     if(m_format == Qmmp::PCM_S16LE)
     {
         short *data = (short *)b->data;
-        for (uint i = 0; i < b->nbytes >> 1; i += 2)
+        for (uint i = 0; i < (b->nbytes >> 1); i += 2)
         {
             m_avg = (data[i] + data[i + 1]) / 2;
             m_ldiff = data[i] - m_avg;
@@ -71,7 +71,7 @@ void StereoPlugin::applyEffect(Buffer *b)
     else if(m_format == Qmmp::PCM_S24LE || m_format == Qmmp::PCM_S32LE)
     {
         int *data = (int *)b->data;
-        for (uint i = 0; i < b->nbytes >> 2; i += 2)
+        for (uint i = 0; i < (b->nbytes >> 2); i += 2)
         {
             m_avg = (data[i] + data[i + 1]) / 2;
             m_ldiff = data[i] - m_avg;
@@ -86,11 +86,11 @@ void StereoPlugin::applyEffect(Buffer *b)
     m_mutex.unlock();
 }
 
-void StereoPlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void StereoPlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    m_chan = chan;
+    m_chan = map.count();
     m_format = format;
-    Effect::configure(freq, chan, format);
+    Effect::configure(freq, map, format);
 }
 
 void StereoPlugin::setIntensity(double level)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
+ *   Copyright (C) 2009-2014 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *   Copyright (C) 2009 by Sebastian Pipping <sebastian@pipping.org>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -67,10 +67,10 @@ void Bs2bPlugin::applyEffect(Buffer *b)
     m_mutex.unlock();
 }
 
-void Bs2bPlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void Bs2bPlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    m_chan = chan;
-    Effect::configure(freq, chan, format);
+    m_chan = map.count();
+    Effect::configure(freq, map, format);
     bs2b_set_srate(m_bs2b_handler,freq);
 }
 

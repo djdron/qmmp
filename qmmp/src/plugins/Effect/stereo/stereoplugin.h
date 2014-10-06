@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ public:
     virtual ~StereoPlugin();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
     void setIntensity(double level);
     static StereoPlugin* instance();
 

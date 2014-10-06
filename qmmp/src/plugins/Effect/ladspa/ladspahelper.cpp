@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,8 +36,8 @@ void LADSPAHelper::applyEffect(Buffer *b)
     LADSPAHost::instance()->applyEffect((qint16 *)b->data, b->nbytes);
 }
 
-void LADSPAHelper::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void LADSPAHelper::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    LADSPAHost::instance()->configure(freq,chan,format);
-    Effect::configure(freq, chan, format);
+    LADSPAHost::instance()->configure(freq,map.count(),format);
+    Effect::configure(freq, map, format);
 }
