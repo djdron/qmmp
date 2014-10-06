@@ -58,6 +58,8 @@ SET(libqmmp_SRCS
     eqsettings.cpp
     qmmpevents.cpp
     qmmpplugincache.cpp
+    channelmap.cpp
+    channelconverter.cpp
 )
 
 SET(libqmmp_HDRS
@@ -86,7 +88,8 @@ SET(libqmmp_HDRS
     metadatamanager.h
     volume.h
     output.h
-
+    channelmap.h
+    channelconverter_p.h
 )
 
 SET(libqmmp_MOC_HDRS
@@ -129,6 +132,7 @@ SET(libqmmp_DEVEL_HDRS
     visualfactory.h
     visual.h
     volume.h
+    channelmap.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
