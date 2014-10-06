@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,7 +86,7 @@ void OutputOSS4::sync()
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
 }
 
-bool OutputOSS4::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputOSS4::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY);
 
@@ -100,6 +100,7 @@ bool OutputOSS4::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
     int p;
+    int chan = map.count();
     switch (format)
     {
     case Qmmp::PCM_S32LE:
@@ -134,7 +135,7 @@ bool OutputOSS4::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
-    configure(freq, chan, format);
+    configure(freq, map, format);
 
     if(m_vc)
         m_vc->restore();

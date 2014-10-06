@@ -38,7 +38,7 @@ public:
     OutputJACK();
     ~OutputJACK();
 
-    bool initialize(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, ChannelMap map, Qmmp::AudioFormat format);
     //output api
     qint64 latency();
     qint64 writeAudio(unsigned char *data, qint64 maxSize);

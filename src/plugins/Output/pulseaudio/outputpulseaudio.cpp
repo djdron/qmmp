@@ -33,7 +33,7 @@ OutputPulseAudio::~OutputPulseAudio()
     uninitialize();
 }
 
-bool OutputPulseAudio::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputPulseAudio::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     pa_sample_spec ss;
 
@@ -55,7 +55,7 @@ bool OutputPulseAudio::initialize(quint32 freq, int chan, Qmmp::AudioFormat form
         ss.format = PA_SAMPLE_S16LE;
     }
 
-    ss.channels = chan;
+    ss.channels = map.count();
     ss.rate = freq;
     int error;
     m_connection = pa_simple_new(NULL, // Use the default server.
@@ -73,7 +73,7 @@ bool OutputPulseAudio::initialize(quint32 freq, int chan, Qmmp::AudioFormat form
         qWarning("OutputPulseAudio: pa_simple_new() failed: %s", pa_strerror(error));
         return false;
     }
-    Output::configure(freq, chan, format);
+    Output::configure(freq, map, format);
     return true;
 }
 
