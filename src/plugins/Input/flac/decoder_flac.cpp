@@ -393,9 +393,9 @@ bool DecoderFLAC::initialize()
         data()->ok = 0;
         return false;
     }
-    ChannelMap channel_map = findChannelMap(data()->channels);
 
-    if(channel_map.isEmpty())
+    ChannelMap chmap = findChannelMap(data()->channels);
+    if(chmap.isEmpty())
     {
         qWarning("DecoderFLAC: unsupported number of channels: %d", data()->channels);
         return false;
@@ -404,14 +404,14 @@ bool DecoderFLAC::initialize()
     switch(data()->bits_per_sample)
     {
     case 8:
-        configure(data()->sample_rate, channel_map, Qmmp::PCM_S8);
+        configure(data()->sample_rate, chmap, Qmmp::PCM_S8);
         break;
     case 16:
-        configure(data()->sample_rate, channel_map, Qmmp::PCM_S16LE);
+        configure(data()->sample_rate, chmap, Qmmp::PCM_S16LE);
         break;
     case 24:
     case 32:
-        configure(data()->sample_rate, channel_map, Qmmp::PCM_S32LE);
+        configure(data()->sample_rate, chmap, Qmmp::PCM_S32LE);
         break;
     default:
         return false;
@@ -564,6 +564,7 @@ uint DecoderFLAC::findID3v2(char *data, ulong size) //retuns ID3v2 tag size
     return 0;
 }
 
+//https://xiph.org/flac/format.html#frame_header
 ChannelMap DecoderFLAC::findChannelMap(int channels)
 {
     ChannelMap map;
