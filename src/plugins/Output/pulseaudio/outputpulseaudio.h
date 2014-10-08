@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #define OUTPUTPULSEAUDIO_H
 
 #include <QObject>
+#include <QHash>
 extern "C"{
 #include <pulse/simple.h>
 }
@@ -47,6 +48,7 @@ private:
     // helper functions
     void uninitialize();
     pa_simple *m_connection;
+    QHash <Qmmp::ChannelPosition, pa_channel_position_t> m_pa_channels;
 };
 
 #endif // OUTPUTPULSEAUDIO_H
