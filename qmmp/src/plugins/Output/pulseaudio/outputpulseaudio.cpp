@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,18 @@ extern "C"{
 OutputPulseAudio::OutputPulseAudio(): Output()
 {
     m_connection = 0;
+
+    m_pa_channels[Qmmp::CHAN_NULL] = PA_CHANNEL_POSITION_INVALID;
+    m_pa_channels[Qmmp::CHAN_FRONT_CENTER] = PA_CHANNEL_POSITION_MONO;
+    m_pa_channels[Qmmp::CHAN_FRONT_LEFT] = PA_CHANNEL_POSITION_FRONT_LEFT;
+    m_pa_channels[Qmmp::CHAN_FRONT_RIGHT] = PA_CHANNEL_POSITION_FRONT_RIGHT;
+    m_pa_channels[Qmmp::CHAN_REAR_LEFT] = PA_CHANNEL_POSITION_REAR_LEFT;
+    m_pa_channels[Qmmp::CHAN_REAR_RIGHT] = PA_CHANNEL_POSITION_REAR_RIGHT;
+    m_pa_channels[Qmmp::CHAN_FRONT_CENTER] = PA_CHANNEL_POSITION_FRONT_CENTER;
+    m_pa_channels[Qmmp::CHAN_LFE] = PA_CHANNEL_POSITION_LFE;
+    m_pa_channels[Qmmp::CHAN_SIDE_LEFT] = PA_CHANNEL_POSITION_SIDE_LEFT;
+    m_pa_channels[Qmmp::CHAN_SIDE_RIGHT] = PA_CHANNEL_POSITION_SIDE_RIGHT;
+    m_pa_channels[Qmmp::CHAN_REAR_CENTER] = PA_CHANNEL_POSITION_REAR_CENTER;
 }
 
 OutputPulseAudio::~OutputPulseAudio()
@@ -58,13 +70,21 @@ bool OutputPulseAudio::initialize(quint32 freq, ChannelMap map, Qmmp::AudioForma
     ss.channels = map.count();
     ss.rate = freq;
     int error;
+
+    pa_channel_map pa_map;
+    pa_map.channels = map.count();
+    for(int i = 0; i < map.count(); i++)
+    {
+        pa_map.map[0] = m_pa_channels[map.value(i)];
+    }
+
     m_connection = pa_simple_new(NULL, // Use the default server.
                                  "Qmmp",             // Our application's name.
                                  PA_STREAM_PLAYBACK,
                                  NULL,               // Use the default device.
                                  "Music",            // Description of our stream.
                                  &ss,                // Our sample format.
-                                 NULL,               // Use default channel map
+                                 &pa_map,            // Our channel map
                                  NULL,               // Use default buffering attributes.
                                  &error              // Error code.
                                 );
