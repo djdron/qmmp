@@ -65,7 +65,9 @@ private:
     qint64 m_prebuf_fill;
     bool m_can_pause;
     //channel conversions
+#if (SND_LIB_VERSION >= 0x01001B)
     QHash <quint16, Qmmp::ChannelPosition> m_alsa_channels;
+#endif
 };
 
 class VolumeALSA : public Volume
