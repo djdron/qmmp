@@ -56,6 +56,7 @@ private:
     QString m_audio_device;
     int m_audio_fd;
     static OutputOSS4 *m_instance;
+    static Qmmp::ChannelPosition m_oss_pos[16];
 
 };
 
