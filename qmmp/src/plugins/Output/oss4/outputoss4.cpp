@@ -46,6 +46,26 @@ extern "C"
 
 OutputOSS4 *OutputOSS4::m_instance = 0;
 VolumeOSS4 *OutputOSS4::m_vc = 0;
+Qmmp::ChannelPosition OutputOSS4::m_oss_pos[16] =
+{
+    Qmmp::CHAN_NULL,         //0 = null
+    Qmmp::CHAN_FRONT_LEFT,   //1 = left
+    Qmmp::CHAN_FRONT_RIGHT,  //2 = right
+    Qmmp::CHAN_FRONT_CENTER, //3 = center
+    Qmmp::CHAN_LFE,          //4 = lfe
+    Qmmp::CHAN_SIDE_LEFT,    //5 = left surround
+    Qmmp::CHAN_SIDE_RIGHT,   //6 = right surround
+    Qmmp::CHAN_REAR_LEFT,    //7 = left rear
+    Qmmp::CHAN_REAR_LEFT,    //8 = right rear
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL,
+    Qmmp::CHAN_NULL
+};
+
 
 OutputOSS4::OutputOSS4() : Output()
 {
@@ -133,9 +153,22 @@ bool OutputOSS4::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
     if(ioctl(m_audio_fd, SNDCTL_DSP_COOKEDMODE, &enabled) == -1)
         qWarning("OutputOSS4: ioctl SNDCTL_DSP_COOKEDMODE: %s", strerror(errno));
 
+    quint64 layout = 0;
+    if (ioctl (m_audio_fd, SNDCTL_DSP_GET_CHNORDER, &layout) == -1)
+    {
+        qWarning("OutputOSS4: couldn't query channel layout, assuming default");
+        layout = CHNORDER_NORMAL;
+    }
+    ChannelMap oss_map;
+    for(int i = 0; i < chan; i++)
+    {
+        quint32 pos = ((layout >> (i * 4)) & 0x0f);
+        oss_map << m_oss_pos[pos];
+    }
+
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 
-    configure(freq, map, format);
+    configure(freq, oss_map, format);
 
     if(m_vc)
         m_vc->restore();
