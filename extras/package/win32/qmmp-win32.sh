@@ -120,8 +120,8 @@ create_distr ()
 
 case $1 in
   --download)
-    download_tarball
-    #download_svn
+    #download_tarball
+    download_svn
   ;;
   --install)
     cd tmp

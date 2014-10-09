@@ -40,4 +40,6 @@ LEGEND
 [*] qmmp-plugin-pack-0.8.2
 [*] qt-4.8.6+git3633f35a6
 [*] mingw-w64 toolchain: i686-4.9.1-release-posix-dwarf-rt_v3-rev0
+[*] libsidplayfp-1.5.3
+[*] ffmpeg-2.2.9
 [!] uninstall information (thanks to Dmitry Kramarchuk)
