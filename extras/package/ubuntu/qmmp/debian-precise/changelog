@@ -1,3 +1,9 @@
+qmmp (0.8.2-1ubuntu1~precise0) precise; urgency=medium
+
+  * New upstream release.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Mon, 13 Oct 2014 17:49:06 +0400
+
 qmmp (0.8.1-1ubuntu1~precise0) precise; urgency=medium
 
   * New upstream release.
