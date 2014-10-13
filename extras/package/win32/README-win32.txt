@@ -38,13 +38,13 @@ List of the third-party libraries.
   libcdio             0.83 	 http://www.gnu.org/software/libcdio/
   mingw-libgnurx      2.5.1      http://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/
   libcddb             1.3.2	 http://libcddb.sourceforge.net/
-  ffmpeg              2.1.5	 http://ffmpeg.org/
+  ffmpeg              2.2.9	 http://ffmpeg.org/
   libmodplug          0.8.8.4 	 http://modplug-xmms.sourceforge.net/
   game-music-emu      0.6.0	 http://code.google.com/p/game-music-emu/
   musepack            r475	 http://www.musepack.net/
   glew                1.10.0     http://glew.sourceforge.net/
   projectm            2.1.0      http://projectm.sourceforge.net/
-  libsidplayfp        1.4.2      http://sourceforge.net/projects/sidplay-residfp/
+  libsidplayfp        1.5.3      http://sourceforge.net/projects/sidplay-residfp/
   enca                1.15       http://cihar.com/software/enca/
   libxml2             2.9.1      http://xmlsoft.org/
   librcd              0.1.14     http://rusxmms.sourceforge.net/
