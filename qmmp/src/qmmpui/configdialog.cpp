@@ -295,6 +295,7 @@ void ConfigDialog::createMenus()
 
     titleMenu->addAction(tr("Artist"))->setData("%p");
     titleMenu->addAction(tr("Album"))->setData("%a");
+    titleMenu->addAction(tr("Album artist"))->setData("%aa");
     titleMenu->addAction(tr("Title"))->setData("%t");
     titleMenu->addAction(tr("Track number"))->setData("%n");
     titleMenu->addAction(tr("Two-digit track number"))->setData("%NN");

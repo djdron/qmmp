@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,6 +49,7 @@ void TemplateEditor::createMenu()
     QMenu *menu = new QMenu(this);
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Album artist"))->setData("%aa");
     menu->addAction(tr("Title"))->setData("%t");
     menu->addAction(tr("Track number"))->setData("%n");
     menu->addAction(tr("Two-digit track number"))->setData("%NN");
