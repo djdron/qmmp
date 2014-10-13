@@ -1,7 +1,7 @@
 #!/bin/sh
 
-QMMP_VERSION=0.8.1
-QMMP_PLUGIN_PACK_VERSION=0.8.1
+QMMP_VERSION=0.8.2
+QMMP_PLUGIN_PACK_VERSION=0.8.2
 
 export DEV_PATH=/c/devel
 export MINGW32_PATH=${DEV_PATH}/mingw32
@@ -120,8 +120,8 @@ create_distr ()
 
 case $1 in
   --download)
-    #download_tarball
-    download_svn
+    download_tarball
+    #download_svn
   ;;
   --install)
     cd tmp
