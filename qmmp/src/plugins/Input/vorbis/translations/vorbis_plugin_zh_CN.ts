@@ -4,32 +4,32 @@
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="50"/>
+        <location filename="../decodervorbisfactory.cpp" line="53"/>
         <source>Ogg Vorbis Plugin</source>
         <translation>Ogg Vorbis 插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="53"/>
+        <location filename="../decodervorbisfactory.cpp" line="56"/>
         <source>Ogg Vorbis Files</source>
         <translation>Ogg Vorbis 文件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="124"/>
+        <location filename="../decodervorbisfactory.cpp" line="132"/>
         <source>About Ogg Vorbis Audio Plugin</source>
         <translation>关于 Ogg Vorbis 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="125"/>
+        <location filename="../decodervorbisfactory.cpp" line="133"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
         <translation>Qmmp Ogg Vorbis 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="126"/>
+        <location filename="../decodervorbisfactory.cpp" line="134"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="127"/>
+        <location filename="../decodervorbisfactory.cpp" line="135"/>
         <source>Source code based on mq3 project</source>
         <translation>源代码基于 mq3 项目</translation>
     </message>
