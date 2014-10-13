@@ -40,6 +40,7 @@ public:
 
 signals:
     void tabMoved(int from, int to);
+    void createPlayListRequested();
 
 public slots:
     void setTabsVisible(bool visible);
@@ -53,6 +54,8 @@ private slots:
 private:
     void tabInserted(int index);
     void tabRemoved(int index);
+    void mousePressEvent(QMouseEvent *e);
+    void mouseDoubleClickEvent(QMouseEvent *e);
     QMenu *m_menu;
     QActionGroup *m_group;
 

@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QMouseEvent>
 #include <QTabBar>
 #include "qsuitabbar.h"
 #include "qsuitabwidget.h"
@@ -106,4 +107,26 @@ void QSUiTabWidget::setTabText(int index, const QString &text)
 void QSUiTabWidget::setTabsVisible(bool visible)
 {
     tabBar()->setVisible(visible);
+}
+
+void QSUiTabWidget::mousePressEvent(QMouseEvent *e)
+{
+    if((e->button() == Qt::MidButton) &&
+            (childAt(e->pos()) == 0))
+    {
+        e->accept();
+        emit createPlayListRequested();
+    }
+    QTabWidget::mousePressEvent(e);
+}
+
+void QSUiTabWidget::mouseDoubleClickEvent(QMouseEvent *e)
+{
+    if((e->button() == Qt::LeftButton) &&
+            (childAt(e->pos()) == 0))
+    {
+        e->accept();
+        emit createPlayListRequested();
+    }
+    QTabWidget::mouseDoubleClickEvent(e);
 }
