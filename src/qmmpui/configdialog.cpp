@@ -113,8 +113,8 @@ void ConfigDialog::readSettings()
         //resume playback on startup
         m_ui->continuePlaybackCheckBox->setChecked(guis->resumeOnStartup());
         //directory filters
-        m_ui->dirRestrictLineEdit->setText(guis->restrictFilters().join(";").trimmed());
-        m_ui->dirExcludeLineEdit->setText(guis->excludeFilters().join(";").trimmed());
+        m_ui->dirRestrictLineEdit->setText(guis->restrictFilters().join(",").trimmed());
+        m_ui->dirExcludeLineEdit->setText(guis->excludeFilters().join(",").trimmed());
         //default playlist
         m_ui->defaultPlayListCheckBox->setChecked(guis->useDefaultPlayList());
         m_ui->defaultPlayListLineEdit->setText(guis->defaultPlayListName());

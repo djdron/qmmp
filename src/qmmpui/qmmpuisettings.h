@@ -131,7 +131,7 @@ public:
      */
     QStringList restrictFilters() const;
     /*!
-     * Disables all builtin directory scanning filters and sets them to \b filters (Example: *.mp3;*.ogg).
+     * Disables all builtin directory scanning filters and sets them to \b filters (Example: *.mp3,*.ogg).
      */
     void setRestrictFilters(const QString &filters);
     /*!
@@ -140,7 +140,7 @@ public:
     QStringList excludeFilters() const;
     /*!
      * Sets a list of filters which should be excluded from incoming files while directory scanning.
-     * @param filters A set of filters separated by semicolon (Example: *.cue;*.ogg).
+     * @param filters A set of filters separated by semicolon (Example: *.cue,*.ogg).
      */
     void setExcludeFilters(const QString &filters);
     /*!
