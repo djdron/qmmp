@@ -4,27 +4,27 @@
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="57"/>
+        <location filename="../decoderflacfactory.cpp" line="60"/>
         <source>FLAC Plugin</source>
         <translation>Modulo FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="59"/>
+        <location filename="../decoderflacfactory.cpp" line="62"/>
         <source>FLAC Files</source>
         <translation>Brani FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="188"/>
+        <location filename="../decoderflacfactory.cpp" line="203"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Info sul modulo audio FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="189"/>
+        <location filename="../decoderflacfactory.cpp" line="204"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Modulo Audio FLAC per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="190"/>
+        <location filename="../decoderflacfactory.cpp" line="205"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
