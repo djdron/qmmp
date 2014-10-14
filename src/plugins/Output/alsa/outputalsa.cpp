@@ -209,30 +209,29 @@ bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
 
-    ChannelMap out_map;
+    ChannelMap out_map = map;
 #if (SND_LIB_VERSION >= 0x01001B)
     //channel map configuration
     snd_pcm_chmap_t *chmap = snd_pcm_get_chmap(pcm_handle);
-    if(!chmap)
+    if(chmap)
     {
-        qWarning("OutputALSA: Unable to receive current channel map: %s", snd_strerror(err));
-        return false;
-    }
-    char tmp[256];
-    memset(tmp,0,256);
-    snd_pcm_chmap_print(chmap, 256, tmp);
-    qDebug("OutputALSA: received channel map: %s",tmp);
+        out_map.clear();
+        char tmp[256];
+        memset(tmp,0,256);
+        snd_pcm_chmap_print(chmap, 256, tmp);
+        qDebug("OutputALSA: received channel map: %s",tmp);
 
-    for(uint i = 0; i < chmap->channels; ++i)
-    {
-        if(m_alsa_channels.keys().contains(chmap->pos[i]))
-            out_map.append(m_alsa_channels.value(chmap->pos[i]));
-        else
-            out_map.append(Qmmp::CHAN_NULL);
+        for(uint i = 0; i < chmap->channels; ++i)
+        {
+            if(m_alsa_channels.keys().contains(chmap->pos[i]))
+                out_map.append(m_alsa_channels.value(chmap->pos[i]));
+            else
+                out_map.append(Qmmp::CHAN_NULL);
+        }
+        free(chmap);
     }
-    free(chmap);
-#else
-    out_map = map;
+    else
+        qWarning("OutputALSA: Unable to receive current channel map");
 #endif
     configure(exact_rate, out_map, format); //apply configuration
     //create alsa prebuffer;
