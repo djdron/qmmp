@@ -209,6 +209,8 @@ bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
 
+    ChannelMap out_map;
+#if (SND_LIB_VERSION >= 0x01001B)
     //channel map configuration
     snd_pcm_chmap_t *chmap = snd_pcm_get_chmap(pcm_handle);
     if(!chmap)
@@ -216,8 +218,6 @@ bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
         qWarning("OutputALSA: Unable to receive current channel map: %s", snd_strerror(err));
         return false;
     }
-    ChannelMap out_map;
-#if (SND_LIB_VERSION >= 0x01001B)
     char tmp[256];
     memset(tmp,0,256);
     snd_pcm_chmap_print(chmap, 256, tmp);
@@ -230,6 +230,7 @@ bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
         else
             out_map.append(Qmmp::CHAN_NULL);
     }
+    free(chmap);
 #else
     out_map = map;
 #endif
