@@ -241,7 +241,6 @@ bool OutputALSA::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat form
     return true;
 }
 
-
 qint64 OutputALSA::latency()
 {
     return m_prebuf_fill * 1000 / sampleRate() / channels() / sampleSize();
