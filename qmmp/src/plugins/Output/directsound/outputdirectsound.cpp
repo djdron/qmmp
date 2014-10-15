@@ -47,7 +47,7 @@ OutputDirectSound::~OutputDirectSound()
     uninitialize();
 }
 
-bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputDirectSound::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     Q_UNUSED(format);
     DSBUFFERDESC bufferDesc;
@@ -82,7 +82,7 @@ bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat for
     WAVEFORMATEX wfex;
     ZeroMemory(&wfex, sizeof(WAVEFORMATEX));
     wfex.wFormatTag      = WAVE_FORMAT_PCM;
-    wfex.nChannels       = chan;
+    wfex.nChannels       = map.count();
     wfex.nSamplesPerSec  = freq;
     wfex.wBitsPerSample  = 16;
     wfex.nBlockAlign     = (wfex.wBitsPerSample / 8) * wfex.nChannels;
@@ -102,7 +102,7 @@ bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat for
 
     ZeroMemory(&wfex, sizeof(WAVEFORMATEX));
     wfex.wFormatTag      = WAVE_FORMAT_PCM;
-    wfex.nChannels       = chan;
+    wfex.nChannels       = map.count();
     wfex.nSamplesPerSec  = freq;
     wfex.wBitsPerSample  = 16;
     wfex.nBlockAlign     = (wfex.wBitsPerSample / 8) * wfex.nChannels;
@@ -133,7 +133,7 @@ bool OutputDirectSound::initialize(quint32 freq, int chan, Qmmp::AudioFormat for
     m_dsBuffer->SetCurrentPosition(0);
     m_dsBuffer->Play(0,0,DSBPLAY_LOOPING);
     m_dsBufferAt = 0;
-    configure(freq, chan, Qmmp::PCM_S16LE);
+    configure(freq, map, Qmmp::PCM_S16LE);
     if(volumeControl)
         volumeControl->restore();
     return true;

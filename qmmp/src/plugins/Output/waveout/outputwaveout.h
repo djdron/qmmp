@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ public:
     OutputWaveOut();
     ~OutputWaveOut();
 
-    bool initialize(quint32, int,  Qmmp::AudioFormat format);
+    bool initialize(quint32, ChannelMap map,  Qmmp::AudioFormat format);
 
     //output api
     qint64 latency();
