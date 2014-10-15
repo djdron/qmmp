@@ -42,6 +42,7 @@ SoundCore::SoundCore(QObject *parent)
 {
     if(m_instance)
         qFatal("SoundCore: only one instance is allowed");
+    qRegisterMetaType<Qmmp::State>("Qmmp::State");
     m_instance = this;
     m_engine = 0;
     m_nextState = NO_ENGINE;

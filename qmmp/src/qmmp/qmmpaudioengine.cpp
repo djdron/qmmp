@@ -40,7 +40,6 @@
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0)
 {
-    qRegisterMetaType<Qmmp::State>("Qmmp::State");
     m_output_buf = 0;
     m_output_size = 0;
     m_bks = 0;
