@@ -84,7 +84,7 @@ OutputWaveOut::~OutputWaveOut()
     uninitialize();
 }
 
-bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputWaveOut::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
     Q_UNUSED(format);
     if (!waveOutGetNumDevs ())
@@ -97,7 +97,7 @@ bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     fmt.wFormatTag = WAVE_FORMAT_PCM;
     fmt.wBitsPerSample  = 16;
-    fmt.nChannels       = chan;
+    fmt.nChannels       = map.count();
     fmt.nSamplesPerSec  = (unsigned long)(freq);
     fmt.nBlockAlign     = fmt.nChannels * fmt.wBitsPerSample/8;
     fmt.nAvgBytesPerSec = fmt.nSamplesPerSec * fmt.nChannels * fmt.wBitsPerSample/8;
@@ -131,7 +131,7 @@ bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     waveOutReset (dev);
     InitializeCriticalSection (&cs);
-    configure(freq, chan, Qmmp::PCM_S16LE);
+    configure(freq, map, Qmmp::PCM_S16LE);
 
     return true;
 }
