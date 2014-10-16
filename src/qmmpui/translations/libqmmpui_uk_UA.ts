@@ -446,7 +446,7 @@
     <message>
         <location filename="../configdialog.cpp" line="298"/>
         <source>Album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом виконавця</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="299"/>
@@ -685,7 +685,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>ALbum artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом виконавця</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
@@ -853,7 +853,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Album artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом виконавця:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="123"/>
@@ -928,7 +928,7 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом виконавця</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
