@@ -810,7 +810,7 @@
         <location filename="../playlist.cpp" line="228"/>
         <location filename="../playlist.cpp" line="279"/>
         <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>За альбомом артиста</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="232"/>
