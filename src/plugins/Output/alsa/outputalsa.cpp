@@ -509,10 +509,7 @@ snd_mixer_elem_t* VolumeALSA::getMixerElem(snd_mixer_t *mixer, char *name, int i
 
 int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
 {
-    char *dev;
     int err;
-
-    dev = strdup(card.toAscii().data());
 
     if ((err = snd_mixer_open(mixer, 0)) < 0)
     {
@@ -521,6 +518,9 @@ int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
         mixer = NULL;
         return -1;
     }
+
+    char *dev = strdup(card.toAscii().data());
+
     if ((err = snd_mixer_attach(*mixer, dev)) < 0)
     {
         qWarning("OutputALSA: Attaching to mixer %s failed: %s",
