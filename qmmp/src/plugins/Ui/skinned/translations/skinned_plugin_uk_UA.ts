@@ -804,13 +804,13 @@
         <location filename="../playlist.cpp" line="224"/>
         <location filename="../playlist.cpp" line="275"/>
         <source>By Artist</source>
-        <translation>За артистом</translation>
+        <translation>За виконавцем</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="228"/>
         <location filename="../playlist.cpp" line="279"/>
         <source>By Album Artist</source>
-        <translation>За альбомом артиста</translation>
+        <translation>За альбомом виконавця</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="232"/>
