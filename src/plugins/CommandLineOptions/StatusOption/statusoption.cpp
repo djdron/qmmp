@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,7 +63,7 @@ QString StatusOption::executeCommand(const QString &opt_str, const QStringList &
             out += " ";
             out += genProgressBar() + "\n";
             out += "ARTIST = %p\n";
-            out += "ALBUMARTIST = %p\n";
+            out += "ALBUMARTIST = %aa\n";
             out += "TITLE = %t\n";
             out += "ALBUM = %a\n";
             out += "COMMENT = %c\n";
@@ -89,6 +89,7 @@ QString StatusOption::executeCommand(const QString &opt_str, const QStringList &
         out += tr("Syntax:") + "\n";
         out += tr("%p - artist") + "\n";
         out += tr("%a - album") + "\n";
+        out += tr("%aa - album artist") + "\n";
         out += tr("%t - title") + "\n";
         out += tr("%n - track") + "\n";
         out += tr("%NN - 2-digit track") + "\n";
