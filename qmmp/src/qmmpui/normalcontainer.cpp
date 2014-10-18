@@ -43,7 +43,7 @@ void NormalContainer::insertTrack(int index, PlayListTrack *track)
         m_items.append(track);
 }
 
-QList<PlayListGroup *> NormalContainer::groups()
+QList<PlayListGroup *> NormalContainer::groups() const
 {
     return QList<PlayListGroup *>();
 }
@@ -129,6 +129,15 @@ bool NormalContainer::contains(PlayListItem *item) const
 int NormalContainer::numberOfTrack(int index) const
 {
     return index;
+}
+
+PlayListTrack *NormalContainer::findTrack(int number) const
+{
+    if(number >= count() || number < 0)
+    {
+        return 0;
+    }
+    return dynamic_cast<PlayListTrack *> (m_items.at(number));
 }
 
 void NormalContainer::removeTrack(int index)

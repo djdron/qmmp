@@ -302,6 +302,8 @@ public:
      */
     int numberOfTrack(int index) const;
 
+    PlayListTrack *findTrack(int number) const;
+
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
