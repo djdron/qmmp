@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -69,7 +69,7 @@ public:
     int bitrate();
     qint64 read(char *data, qint64 maxSize);
     void seek(qint64 time);
-    const QString nextURL();
+    const QString nextURL() const;
     void next();
 
     struct flac_data *data()

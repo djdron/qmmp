@@ -527,7 +527,7 @@ void DecoderFLAC::deinit()
     m_parser = 0;
 }
 
-const QString DecoderFLAC::nextURL()
+const QString DecoderFLAC::nextURL() const
 {
     if(m_parser && m_track +1 <= m_parser->count())
         return m_parser->trackURL(m_track + 1);
