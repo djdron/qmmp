@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,10 +40,10 @@ public:
     void seek(qint64);
     qint64 read(char *data, qint64 size);
     int bitrate();
-    const QString nextURL();
+    const QString nextURL() const;
     void next();
 
-private: 
+private:
     Decoder *m_decoder;
     qint64 m_length;
     qint64 m_offset;
