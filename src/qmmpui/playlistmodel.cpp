@@ -401,6 +401,11 @@ int PlayListModel::numberOfTrack(int index) const
     return m_container->numberOfTrack(index);
 }
 
+PlayListTrack *PlayListModel::findTrack(int number) const
+{
+    return m_container->findTrack(number);
+}
+
 void PlayListModel::setSelected(int index, bool selected)
 {
     m_container->setSelected(index, selected);

@@ -57,9 +57,6 @@ int TrackListObject::AddTrack(const QString &in0, bool in1)
         m_pl_manager->selectPlayList(m_model);
         m_player->stop();
         connect(m_model, SIGNAL(trackAdded(PlayListTrack*)), SLOT(playTrack(PlayListTrack*)));
-        /*m_prev_count = m_model->count();
-        connect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
-        connect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));*/
     }
     m_model->add(path);
     return 0;
@@ -83,20 +80,7 @@ int TrackListObject::GetLength()
 QVariantMap TrackListObject::GetMetadata(int in0)
 {
     QVariantMap map;
-    PlayListTrack *track = 0;
-    int track_counter = 0;
-    for(int i = 0; i <m_model->count(); i++)
-    {
-        if(m_model->isTrack(i))
-            track_counter++;
-        else
-            continue;
-        if(track_counter - 1 == in0)
-        {
-            track = m_model->track(i);
-            break;
-        }
-    }
+    PlayListTrack *track = m_model->findTrack(in0);
 
     if (track)
     {

@@ -36,7 +36,7 @@ public:
 
     void addTrack(PlayListTrack *item);
     void insertTrack(int index, PlayListTrack *track);
-    QList<PlayListGroup *> groups();
+    QList<PlayListGroup *> groups() const;
     QList<PlayListItem *> items() const;
     int count() const;
     int trackCount() const;
@@ -51,6 +51,7 @@ public:
     PlayListGroup *group(int index) const;
     bool contains(PlayListItem *item) const;
     int numberOfTrack(int index) const;
+    PlayListTrack *findTrack(int number) const;
     void removeTrack(int index);
     void removeTrack(PlayListTrack *track);
     void removeTracks(QList<PlayListTrack *> tracks);

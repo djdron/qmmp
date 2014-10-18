@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,7 +86,7 @@ void GroupedContainer::insertTrack(int index, PlayListTrack *track)
     addTrack(track);
 }
 
-QList<PlayListGroup *> GroupedContainer::groups()
+QList<PlayListGroup *> GroupedContainer::groups() const
 {
     return m_groups;
 }
@@ -183,6 +183,20 @@ int GroupedContainer::numberOfTrack(int index) const
         }
     }
     return -1;
+}
+
+PlayListTrack *GroupedContainer::findTrack(int number) const
+{
+    int firstNumber = 0;
+    foreach (PlayListGroup *group, m_groups)
+    {
+        if(number >= firstNumber && number < firstNumber + group->count())
+        {
+            return group->tracks().at(number - firstNumber);
+        }
+        firstNumber += group->count();
+    }
+    return 0;
 }
 
 void GroupedContainer::removeTrack(int index)
