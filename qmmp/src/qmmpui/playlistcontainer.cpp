@@ -24,10 +24,9 @@
 #include "playlistmodel.h"
 #include "playlistcontainer_p.h"
 
-void PlayListContainer::addTracks(QList<PlayListTrack *> tracks)
+void PlayListContainer::addTrack(PlayListTrack *track)
 {
-    foreach(PlayListTrack *t, tracks)
-        addTrack(t);
+    addTracks(QList<PlayListTrack *> () << track);
 }
 
 ////===============THE BEGINNING OF SORT IMPLEMENTATION =======================////

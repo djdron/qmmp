@@ -34,7 +34,7 @@ public:
     NormalContainer();
     virtual ~NormalContainer();
 
-    void addTrack(PlayListTrack *item);
+    void addTracks(QList<PlayListTrack *> tracks);
     void insertTrack(int index, PlayListTrack *track);
     QList<PlayListGroup *> groups() const;
     QList<PlayListItem *> items() const;

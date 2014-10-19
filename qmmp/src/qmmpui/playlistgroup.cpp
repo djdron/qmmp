@@ -29,9 +29,9 @@ PlayListGroup::PlayListGroup(const QString &name)
 
 PlayListGroup::~PlayListGroup()
 {
-    while(!m_tracks.isEmpty())
+    while(!trackList.isEmpty())
     {
-        PlayListTrack* mf = m_tracks.takeFirst();
+        PlayListTrack* mf = trackList.takeFirst();
 
         if (mf->flag() == PlayListTrack::FREE)
         {
@@ -49,59 +49,27 @@ const QString PlayListGroup::formattedTitle()
     return m_name;
 }
 
-void PlayListGroup::addTrack(PlayListTrack *track)
-{
-    m_tracks.append(track);
-}
-
-void PlayListGroup::addTracks(QList<PlayListTrack *> tracks)
-{
-    m_tracks.append(tracks);
-}
-
-void PlayListGroup::insertTrack(int pos, PlayListTrack *track)
-{
-    m_tracks.insert(pos, track);
-}
-
 bool PlayListGroup::contains(PlayListTrack *track) const
 {
-    return m_tracks.contains(track);
+    return trackList.contains(track);
 }
 
 bool PlayListGroup::isEmpty() const
 {
-    return m_tracks.isEmpty();
+    return trackList.isEmpty();
 }
 
-void PlayListGroup::remove(PlayListTrack *track)
+QList<PlayListTrack *> PlayListGroup::tracks() const
 {
-    m_tracks.removeAll(track);
-}
-
-QList<PlayListTrack *> PlayListGroup::tracks()
-{
-    return m_tracks;
+    return trackList;
 }
 
 int PlayListGroup::count() const
 {
-    return m_tracks.count();
+    return trackList.count();
 }
 
 bool PlayListGroup::isGroup() const
 {
     return true;
-}
-
-void PlayListGroup::move(int from, int to)
-{
-    m_tracks.move(from, to);
-}
-
-QList<PlayListTrack *> PlayListGroup::takeAll()
-{
-    QList<PlayListTrack *> t = m_tracks;
-    m_tracks.clear();
-    return t;
 }
