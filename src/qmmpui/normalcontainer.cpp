@@ -30,9 +30,12 @@ NormalContainer::~NormalContainer()
     clear();
 }
 
-void NormalContainer::addTrack(PlayListTrack *track)
+void NormalContainer::addTracks(QList<PlayListTrack *> tracks)
 {
-    m_items.append(track);
+    foreach (PlayListTrack *track, tracks)
+    {
+        m_items.append(track);
+    }
 }
 
 void NormalContainer::insertTrack(int index, PlayListTrack *track)

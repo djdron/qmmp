@@ -24,6 +24,8 @@
 #include "playlisttrack.h"
 #include "playlistitem.h"
 
+class GroupedContainer;
+
 /** @brief The PlayListTrack class provides a group for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -40,29 +42,9 @@ public:
      */
     virtual ~PlayListGroup();
     /*!
-     * First index of the group.
-     */
-    int firstIndex;
-    /*!
-     * Last index of the  group.
-     */
-    int lastIndex;
-    /*!
      * Returns formatted title of the  group.
      */
     const QString formattedTitle();
-    /*!
-     * Adds track \b track to the the group.
-     */
-    void addTrack(PlayListTrack *track);
-    /*!
-     * Adds a list of tracks \b tracks to the the group.
-     */
-    void addTracks(QList<PlayListTrack *> tracks);
-    /*!
-     * Inserts a track \b tracks to the the group at the position \b pos.
-     */
-    void insertTrack(int pos, PlayListTrack *track);
     /*!
      * Returns \b true if the group contains track \b track.
      * Otherwise returns \b false.
@@ -74,13 +56,9 @@ public:
      */
     bool isEmpty() const;
     /*!
-     * Returns track \b track from the group.
-     */
-    void remove(PlayListTrack *track);
-    /*!
      * Returns a list of tracks if the group.
      */
-    QList<PlayListTrack *> tracks();
+    QList<PlayListTrack *> tracks() const;
     /*!
      * Returns number of tracks if the group.
      */
@@ -93,17 +71,13 @@ public:
      * Returns \b true.
      */
     bool isGroup() const;
-    /*!
-     * Moves the track from position \b from to position \b to.
-     */
-    void move(int from, int to);
-    /*!
-     * Removes all tracks from the group and returns a list of them.
-     */
-    QList<PlayListTrack *> takeAll();
 
 private:
-    QList<PlayListTrack *> m_tracks;
+    int firstIndex; //First index of the group.
+    int lastIndex; //Last index of the  group.
+    QList<PlayListTrack *> trackList; //A list of tracks
+    friend class GroupedContainer;
+
     QString m_name;
 };
 
