@@ -75,7 +75,7 @@ bool OutputPulseAudio::initialize(quint32 freq, ChannelMap map, Qmmp::AudioForma
     pa_map.channels = map.count();
     for(int i = 0; i < map.count(); i++)
     {
-        pa_map.map[0] = m_pa_channels[map.value(i)];
+        pa_map.map[i] = m_pa_channels[map.value(i)];
     }
 
     m_connection = pa_simple_new(NULL, // Use the default server.
