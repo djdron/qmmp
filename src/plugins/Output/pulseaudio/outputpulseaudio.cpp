@@ -69,7 +69,7 @@ bool OutputPulseAudio::initialize(quint32 freq, ChannelMap map, Qmmp::AudioForma
 
     ss.channels = map.count();
     ss.rate = freq;
-    int error;
+    int error = 0;
 
     pa_channel_map pa_map;
     pa_map.channels = map.count();
@@ -102,7 +102,7 @@ qint64 OutputPulseAudio::latency()
     if (!m_connection)
         return 0;
     int error = 0;
-    qint64 delay =  pa_simple_get_latency(m_connection, &error)/1000;
+    qint64 delay = pa_simple_get_latency(m_connection, &error)/1000;
     if (error)
     {
         qWarning("OutputPulseAudio: %s", pa_strerror (error));
