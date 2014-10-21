@@ -6,7 +6,7 @@ Qmmp - Qt-based multimedia player
 Підтримуються операційні системи:
 - GNU/Linux
 - FreeBSD
-- Microsoft Windows (експериментально)
+- Microsoft Windows
 
 Підтримувані формати:
 - MPEG1 layer 2/3
