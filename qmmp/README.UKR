@@ -15,7 +15,7 @@ Qmmp - Qt-based multimedia player
 - Native FLAC, Ogg FLAC
 - Musepack
 - WavePack
-- трекерные форматы (mod, s3m, it, xm и т.д.)
+- трекерні формати (mod, s3m, it, xm і т.д.)
 - ADTS AAC
 - CD Audio
 - WMA, Monkey's Audio (та інші формати бібліотеки FFmpeg)
@@ -25,45 +25,48 @@ Qmmp - Qt-based multimedia player
 - формати звуку ігрових консолей (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 Аудіо-ефекти:
-- Ефект BS2B
+- ефект BS2B
 - Передискретизація
-- Ефекти LADSPA
+- ефекти LADSPA
 - розширення стереобази
-- плавний перехід між треками (експериментально)
+- плавний перехід між треками
 
 Візуальні ефекти:
-- Візуалізація projectM
-- Аналізатор спектру
+- візуалізація projectM
+- аналізатор спектру
 
 Системи виведення звуку:
-- OSS
+- OSS4 (FreeBSD)
 - ALSA (Linux)
 - Pulse Audio
 - JACK
 - WaveOut (Win32)
+- DirectSound (Win32)
 
 Інші можливості:
-- Підтримка обкладинок Xmms і Winamp 2.x
-- 10-смуговий еквалайзер
-- Підтримка потоків MP3, Vorbis, AAC, AAC +
-- Підтримка протоколу MMS (експериментальна)
-- MPRIS
-- Автовизначення знімних пристроїв (за допомогою HAL або UDisks)
-- Відтворення відео за допомогою MPlayer-а
-- Отримання текстів пісень з lyricsplugin.com
-- Перегляд обкладинок
-- Підтримка CUE
-- Підтримка "вбудованого" CUE (для файлів FLAC і WavPack)
-- Можливість використовувати декілька списків відтворення
-- Автоматичне визначення кодування для cue-файлів і ShoutCast-метаданих
-- Підтримувані формати списків відтворення: m3u, pls, xspf
-- Підтримка ReplayGain
-- Скробблер Last.fm/Libre.fm
-- Підтримка CDDB
-
+- підтримка обкладинок XMMS та Winamp 2.x
+- 10-полосний еквалайзер
+- підтримка потоків MP3, Vorbis, AAC, AAC+
+- підтримка протоколу MMS
+- MPRIS (1.0 і 2.0)
+- автовизначення змінних пристроїв (за допомогою HAL чи UDisks)
+- відтворення відео за допомогою Mplayer-а
+- отримання текстів пісень з lyrics.wikia.com
+- перегляд обкладинок
+- підтримка CUE
+- підтримка "вбудованого" CUE (для файлів FLAC та WavPack)
+- можливість використовувати декілька списків відтворення
+- автоматичне визначення кодування для cue-файлів і ShoutCast-метаданих
+- підтримувані формати списків відтворення: m3u, pls, xspf
+- підтримка ReplayGain
+- скробблер Last.fm/Libre.fm
+- підтримка CDDB
+- огляд потоків
+- конвертер аудіо-форматів
+- запуск зовнішніх команд при зміні треку
+- сканер ReplayGain
 
 Вимоги:
-- OS GNU Linux
 - Qt >= 4.6
 - tar, unzip, bzip2, gzip
 - libmad
@@ -81,12 +84,16 @@ Qmmp - Qt-based multimedia player
 - libsndfile >= 1.0.17 (Опціонально)
 - wavpack >= 4.41 (Опціонально)
 - pulseaudio >= 0.9.15 (Опціонально)
-- ffmpeg >= 0.5.0 (Опціонально)
+- ffmpeg >= 0.9.1 чи libav >= 0.8.0 (Опціонально)
 - libcdio >= 0.80 (Опціонально)
+- libcdio-paranoia >= 10.2 (починаючи з libcdio 0.90)
 - libcddb >= 1.3.1 (Опціонально)
 - faad2 >= 2.6.1 (Опціонально)
 - game-music-emu >= 0.5.5 (Опціонально)
+- opus >= 1.0.2 (Опціонально)
+- opusfile >= 0.2 (Опціонально)
 - libWildMidi >= 0.2.3.4 (Опціонально)
+- libsidplayfp >= 1.0.3 (Опціонально)
 - libbs2b >= 3.0.0 (Опціонально)
 - libprojectM >= 1.2.0 (Опціонально)
 - libenca >= 1.9 (Опціонально)
@@ -101,7 +108,7 @@ cmake ./
 Компіляція:
 make
 
-Установка:
+Встановлення:
 make install
 
 Якщо який-небудь модуль (наприклад, Jack) не збирається або не потрібен, то ви можете вимкнути його командою:
@@ -110,29 +117,39 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Доступні опції:
 - USE_CURL, USE_MMS (транспортні модулі);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
-  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME (декодери);
-- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (модулі виведення);
-- USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекти);
+  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY, USE_OPUS (декодери);
+- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT, USE_DSOUND (модулі виведення);
+- USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (ефекти);
 - USE_ANALYZER, USE_PROJECTM (візуалізація);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY, USE_UDISKS (модулі загального призначення);
+  USE_KDENOTIFY, USE_UDISKS2, USE_UDISKS, USE_CONVERTER, USE_RGSCAN, USE_TRACKCHANGE, USE_COPYPASTE,
+  USE_GNOMEHOTKEY (модулі загального призначення);
 - USE_QMMP_DIALOG (файловий діалог);
 - USE_ENCA (автоматичне визначення кодування);
-- USE_SKINNED (стандартний інтерфейс користувача)
+- USE_SKINNED (стандартний інтерфейс користувача);
+- USE_DIR_ASSOC (прив'язка до mime-типу inode/directory);
+- USE_RPATH (вмикає опцію CMAKE_INSTALL_RPATH_USE_LINK_PATH, див. http://www.cmake.org/Wiki/CMake_RPATH_handling)
 
 Також ви можете використовувати ccmake для зміни конфігурації модулів.
 За замовчуванням програма буде встановлена в /usr/local. Ви можете змінити цей шлях командою:
 cmake ./ -DCMAKE_INSTALL_PREFIX=інший_шлях
 
-Підтримка OSS4.
-Модуль виведення OSS4 відключено за умовчанням. Для його увімкнення виконайте cmake ./ -DUSE_OSS4:BOOL=TRUE перед компіляцією.
+Підтримка OSS3 та Udisks.
+Модулі OSS3 та UDisks2 застаріли і вимкнені за замовчанням.
+Для їх увімкнення виконайте 'cmake ./ -DUSE_OSS:BOOL=TRUE' чи 'cmake ./ -DUSE_OSS:UDISKS2=TRUE' перед компіляцією.
+
+Підтримка HAL та UDisks2.
+Більшість дистрибутивів Linux більше не підтримують HAL. Для відключення модуля HAL виконайте перед компіляцією наступну команду:
+cmake ./ -DUSE_HAL:BOOL=FALSE
+Проект UDisks не підтримує FreeBSD, тому під FreeBSD рекомендується вимикати модуль Udisks2 з компіляції наступною командою:
+cmake ./ -DUSE_UDISKS2:BOOL=FALSE
 
 У деяких випадках ви можете використовувати qmake для компіляції та встановлення.
 
 Компіляція:
 qmake && make
 
-Інсталляція:
+Інсталяція:
 make install INSTALL_ROOT=/usr/local
 
 Виконуваний файл:
@@ -145,9 +162,9 @@ make install INSTALL_ROOT=/usr/local
 Зміна шляху встановлення поділюваних бібліотек і модулів (потрібно для деяких 64-бітних дистрибутивів).
 За умовчанням усі бібліотеки та модулі будуть встановлені в $(INSTALL PREFIX)/lib. Ви можете змінити "lib"
 на "lib64" за допомогою запуску qmake-qt4 або cmake зі спеціальним параметром:
-qmake-qt4 LIB_DIR=/lib64
+qmake LIB_DIR=/lib64
 або
-cmake ./-DLIB_DIR=lib64
+cmake ./ -DLIB_DIR=lib64
 
 
 Патчі, багрепорти, ідеї тощо: forkotov02@hotmail.ru або http://code.google.com/p/qmmp/issues/list
@@ -157,5 +174,5 @@ cmake ./-DLIB_DIR=lib64
 
 Також висловлюється подяка всім, хто надіслав патчі та/чи багрепорти.
 
-Прохання до тих, хто надсилає пачті: залишайте, будь ласка, свої дані.
-Найбільш активні учасники будуть занесені до списку :)
+Прохання до тих, хто надсилає пачті. Для запобігання проблем з визначення авторства, будь ласка,
+вказуйте також свою контактну інформацію.
