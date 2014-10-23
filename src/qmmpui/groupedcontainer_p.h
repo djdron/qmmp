@@ -66,10 +66,13 @@ public:
 
 private:
     void addGroup(PlayListGroup *group);
-    void updateIndex();
-    QList<PlayListGroup *> m_groups;
-    QList<PlayListItem *> m_items;
+    void updateIndex() const;
+    mutable QList<PlayListGroup *> m_groups;
     bool m_reverted;
+
+    mutable QList<PlayListItem *> m_items;
+    mutable bool m_update;
+
 };
 
 #endif // GROUPEDCONTAINER_P_H
