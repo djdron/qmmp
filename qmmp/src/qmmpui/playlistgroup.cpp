@@ -23,8 +23,6 @@
 PlayListGroup::PlayListGroup(const QString &name)
 {
     m_name = name;
-    firstIndex = 0;
-    lastIndex = 0;
 }
 
 PlayListGroup::~PlayListGroup()

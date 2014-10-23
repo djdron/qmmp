@@ -66,7 +66,7 @@ public:
 
 private:
     void addGroup(PlayListGroup *group);
-    void updateIndex() const;
+    void updateCache() const;
     mutable QList<PlayListGroup *> m_groups;
     bool m_reverted;
 

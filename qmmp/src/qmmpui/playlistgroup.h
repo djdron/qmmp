@@ -73,8 +73,6 @@ public:
     bool isGroup() const;
 
 private:
-    int firstIndex; //First index of the group.
-    int lastIndex; //Last index of the  group.
     QList<PlayListTrack *> trackList; //A list of tracks
     friend class GroupedContainer;
 
