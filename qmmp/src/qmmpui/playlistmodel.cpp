@@ -113,21 +113,23 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
     if(tracks.isEmpty())
         return;
 
+    m_container->addTracks(tracks);
+
+    if(m_container->trackCount() == tracks.count())
+    {
+        m_current_track = tracks.first();
+        m_current = m_container->indexOf(m_current_track);
+        emit currentChanged();
+    }
+    else if(m_ui_settings->isGroupsEnabled())
+    {
+        //update current index for grouped container only
+        m_current = m_container->indexOf(m_current_track);
+    }
+
     foreach(PlayListTrack *track, tracks)
     {
-        m_container->addTrack(track);
         m_total_length += track->length();
-        if(m_container->trackCount() == 1)
-        {
-            m_current_track = track;
-            m_current = m_container->indexOf(track);
-            emit currentChanged();
-        }
-        else if(m_ui_settings->isGroupsEnabled())
-        {
-            //update current index for grouped container only
-            m_current = m_container->indexOf(m_current_track);
-        }
         emit trackAdded(track);
     }
     preparePlayState();
