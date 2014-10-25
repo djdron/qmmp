@@ -143,23 +143,6 @@ PlayListTrack *NormalContainer::findTrack(int number) const
     return dynamic_cast<PlayListTrack *> (m_items.at(number));
 }
 
-void NormalContainer::removeTrack(int index)
-{
-    PlayListTrack *t = track(index);
-    if(t)
-    {
-        removeTrack(t);
-        if (t->flag() == PlayListTrack::FREE)
-        {
-            delete t;
-        }
-        else if (t->flag() == PlayListTrack::EDITING)
-        {
-            t->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
-        }
-    }
-}
-
 void NormalContainer::removeTrack(PlayListTrack *track)
 {
     m_items.removeAll(track);
