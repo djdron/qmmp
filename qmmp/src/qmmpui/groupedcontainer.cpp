@@ -258,7 +258,6 @@ void GroupedContainer::removeTrack(PlayListTrack *track)
         {
             group->trackList.removeAll(track);
             m_items.removeAll(track);
-            delete track;
             if(group->isEmpty())
             {
                 m_groups.removeAll(group);
