@@ -233,23 +233,6 @@ PlayListTrack *GroupedContainer::findTrack(int number) const
     return 0;
 }
 
-void GroupedContainer::removeTrack(int index)
-{
-    PlayListTrack *t = track(index);
-    if(t)
-    {
-        removeTrack(t);
-        if (t->flag() == PlayListTrack::FREE)
-        {
-            delete t;
-        }
-        else if (t->flag() == PlayListTrack::EDITING)
-        {
-            t->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
-        }
-    }
-}
-
 void GroupedContainer::removeTrack(PlayListTrack *track)
 {
     foreach(PlayListGroup *group, m_groups)

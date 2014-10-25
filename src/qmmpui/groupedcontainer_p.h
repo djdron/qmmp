@@ -52,7 +52,6 @@ public:
     bool contains(PlayListItem *item) const;
     int numberOfTrack(int index) const;
     PlayListTrack *findTrack(int number) const;
-    void removeTrack(int index);
     void removeTrack(PlayListTrack *track);
     void removeTracks(QList<PlayListTrack *> tracks);
     bool move(QList<int> indexes, int from, int to);
