@@ -32,10 +32,35 @@ GroupedContainer::~GroupedContainer()
     clear();
 }
 
-void GroupedContainer::addGroup(PlayListGroup *group)
+void GroupedContainer::addTrack(PlayListTrack *track)
 {
+    int firstIndex = 0, lastIndex = 0;
+    //insert if possible
+    for(int i = 0; i < m_groups.count(); ++i)
+    {
+        if(i == 0)
+        {
+           firstIndex = 0;
+           lastIndex = m_groups[i]->count();
+        }
+        else
+        {
+            firstIndex = lastIndex + 1;
+            lastIndex = firstIndex + m_groups[i]->count();
+        }
+
+        if(track->groupName() == m_groups[i]->formattedTitle())
+        {
+            m_groups[i]->trackList.append(track);
+            m_items.insert(lastIndex + 1, track);
+            return;
+        }
+    }
+    PlayListGroup *group = new PlayListGroup(track->groupName());
+    group->trackList.append(track);
     m_groups.append(group);
-    m_update = true;
+    m_items.append(group);
+    m_items.append(track);
 }
 
 void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
@@ -60,7 +85,8 @@ void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
         if(!group)
         {
             group = new PlayListGroup(track->groupName());
-            addGroup(group);
+            m_groups.append(group);
+            m_update = true;
         }
 
         group->trackList.append(track);
