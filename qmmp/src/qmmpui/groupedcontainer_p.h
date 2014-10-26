@@ -34,6 +34,7 @@ public:
 
     virtual ~GroupedContainer();
 
+    void addTrack(PlayListTrack *track);
     void addTracks(QList<PlayListTrack *> tracks);
     void insertTrack(int index, PlayListTrack *track);
     QList<PlayListGroup *> groups() const;
@@ -64,9 +65,8 @@ public:
     void sortSelection(int mode);
 
 private:
-    void addGroup(PlayListGroup *group);
     void updateCache() const;
-    mutable QList<PlayListGroup *> m_groups;
+    QList<PlayListGroup *> m_groups;
     bool m_reverted;
 
     mutable QList<PlayListItem *> m_items;
