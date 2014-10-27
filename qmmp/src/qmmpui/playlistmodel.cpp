@@ -876,20 +876,36 @@ void PlayListModel::removeInvalidTracks()
 
 void PlayListModel::removeDuplicates()
 {
+    QStringList urls;
+    bool modified = false;
+    PlayListTrack *prev_current = m_current_track;
+
     for(int i = 0; i < m_container->count(); ++i)
     {
         if(!isTrack(i))
             continue;
-        int j = m_container->count() - 1;
-        while(j > i)
-        {
-            if(j < m_container->count() && isTrack(j))
-            {
-                if(track(i)->url() == track(j)->url())
-                    removeTrack(j);
-            }
-            j--;
-        }
+
+       if(urls.contains(track(i)->url()))
+       {
+           blockSignals(true);
+           removeTrack(i);
+           blockSignals(false);
+           modified = true;
+           i--;
+       }
+       else
+       {
+           urls.append(track(i)->url());
+       }
+    }
+
+    if(modified)
+    {
+        if(m_current_track != prev_current)
+            emit currentChanged();
+
+        emit listChanged();
+        emit countChanged();
     }
 }
 
