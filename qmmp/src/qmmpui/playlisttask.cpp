@@ -20,8 +20,7 @@
 
 #include "playlisttask_p.h"
 
-PlayListTask::PlayListTask(QObject *parent) :
-    QRunnable(parent)
+PlayListTask::PlayListTask()
 {
 }
 
