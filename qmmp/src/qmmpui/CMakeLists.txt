@@ -59,6 +59,7 @@ SET(libqmmpui_SRCS
     addurldialog.cpp
     qmmpuiplugincache.cpp
     tagupdater.cpp
+    playlisttask.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -102,6 +103,7 @@ SET(libqmmpui_MOC_HDRS
     playlistdownloader.h
     addurldialog_p.h
     tagupdater_p.h
+    playlisttask_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
