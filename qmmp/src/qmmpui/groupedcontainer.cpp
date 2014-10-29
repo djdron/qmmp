@@ -128,6 +128,16 @@ QList<PlayListGroup *> GroupedContainer::groups() const
     return m_groups;
 }
 
+QList<PlayListTrack *> GroupedContainer::tracks() const
+{
+    QList<PlayListTrack *> trackList;
+    for(int i = 0; i < m_groups.count(); ++i)
+    {
+        trackList.append(m_groups[i]->trackList);
+    }
+    return trackList;
+}
+
 QList<PlayListItem *> GroupedContainer::items() const
 {
     updateCache();

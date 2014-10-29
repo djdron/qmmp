@@ -21,27 +21,35 @@
 #ifndef PLAYLISTTASK_P_H
 #define PLAYLISTTASK_P_H
 
-#include <QRunnable>
+#include <QThread>
 #include <QObject>
-
+#include <QList>
+#include "playlistmodel.h"
 
 class PlayListTrack;
+struct TrackField;
 
-struct TrackBase
-{
-    PlayListTrack *track;
-    QString value;
-};
 
-class PlayListTask : public QObject, public QRunnable
+class PlayListTask : public QThread
 {
     Q_OBJECT
 public:
-    explicit PlayListTask();
+    explicit PlayListTask(QObject *parent);
 
     ~PlayListTask();
 
+    void sort(QList<PlayListTrack *> tracks, PlayListModel::SortMode mode);
+    //void removeInvalidTracks(QList<PlayListTrack *> tracks);
+    //void removeDuplicates();
+
     void run();
+
+    QList<PlayListTrack *> takeResults();
+
+private:
+    QList <TrackField *> m_fields;
+    PlayListModel::SortMode m_sort_mode;
+    bool m_reverted;
 
 };
 

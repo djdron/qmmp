@@ -37,6 +37,7 @@ class PlayListFormat;
 class PlayListModel;
 class PlayListContainer;
 class QmmpUiSettings;
+class PlayListTask;
 
 /*! @brief Helper class that keeps track of a view's selected items.
  *
@@ -498,6 +499,8 @@ private slots:
      */
     void prepareGroups(bool enabled);
 
+    void onTaskFinished();
+
 private:
     PlayListTrack* m_current_track;
     PlayListTrack* m_stop_track;
@@ -510,6 +513,7 @@ private:
     QString m_name;
     PlayListContainer *m_container;
     QmmpUiSettings *m_ui_settings;
+    PlayListTask *m_task;
 };
 
 #endif
