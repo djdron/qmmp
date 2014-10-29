@@ -24,13 +24,13 @@
 #include <QRunnable>
 #include <QObject>
 
-class PlayListTask : public QRunnable, public QObject
+class PlayListTask : public QObject, public QRunnable
 {
     Q_OBJECT
 public:
-    explicit PlayListTask(QObject *parent = 0);
+    explicit PlayListTask();
 
-void run();
+    void run();
 
 };
 
