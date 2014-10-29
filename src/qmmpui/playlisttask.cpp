@@ -18,10 +18,16 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "playlisttrack.h"
 #include "playlisttask_p.h"
 
 PlayListTask::PlayListTask()
 {
+}
+
+PlayListTask::~PlayListTask()
+{
+    qDebug("%s", Q_FUNC_INFO);
 }
 
 void PlayListTask::run()

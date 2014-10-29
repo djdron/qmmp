@@ -24,11 +24,22 @@
 #include <QRunnable>
 #include <QObject>
 
+
+class PlayListTrack;
+
+struct TrackBase
+{
+    PlayListTrack *track;
+    QString value;
+};
+
 class PlayListTask : public QObject, public QRunnable
 {
     Q_OBJECT
 public:
     explicit PlayListTask();
+
+    ~PlayListTask();
 
     void run();
 
