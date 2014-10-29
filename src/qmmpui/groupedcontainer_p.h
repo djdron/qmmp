@@ -38,6 +38,7 @@ public:
     void addTracks(QList<PlayListTrack *> tracks);
     void insertTrack(int index, PlayListTrack *track);
     QList<PlayListGroup *> groups() const;
+    QList<PlayListTrack *> tracks() const;
     QList<PlayListItem *> items() const;
     int count() const;
     int trackCount() const;

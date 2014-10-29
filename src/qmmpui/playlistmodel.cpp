@@ -27,6 +27,7 @@
 #include "playlistcontainer_p.h"
 #include "groupedcontainer_p.h"
 #include "normalcontainer_p.h"
+#include "playlisttask_p.h"
 #include "fileloader_p.h"
 #include "playstate_p.h"
 #include "detailsdialog.h"
@@ -46,6 +47,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_stop_track = 0;
     m_name = name;
     m_loader = new FileLoader(this);
+    m_task = new PlayListTask(this);
     if(m_ui_settings->isGroupsEnabled())
         m_container = new GroupedContainer;
     else
@@ -62,6 +64,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
             SLOT(insert(PlayListItem*, PlayListTrack*)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
     connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
+    connect(m_task, SIGNAL(finished()), SLOT(onTaskFinished()));
 }
 
 PlayListModel::~PlayListModel()
@@ -789,9 +792,8 @@ void PlayListModel::sort(int mode)
 {
     if(m_container->isEmpty())
         return;
-    m_container->sort(mode);
-    m_current = m_container->indexOf(m_current_track);
-    emit listChanged();
+
+    m_task->sort(m_container->tracks(), (PlayListModel::SortMode) mode);
 }
 
 void PlayListModel::prepareForShufflePlaying(bool val)
@@ -817,6 +819,14 @@ void PlayListModel::prepareGroups(bool enabled)
     m_container = container;
     if(!m_container->isEmpty())
         m_current = m_container->indexOf(m_current_track);
+    emit listChanged();
+}
+
+void PlayListModel::onTaskFinished()
+{
+    m_container->takeAllTracks();
+    m_container->addTracks(m_task->takeResults());
+    m_current = m_container->indexOf(m_current_track);
     emit listChanged();
 }
 

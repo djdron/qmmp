@@ -51,6 +51,14 @@ QList<PlayListGroup *> NormalContainer::groups() const
     return QList<PlayListGroup *>();
 }
 
+QList<PlayListTrack *> NormalContainer::tracks() const
+{
+    QList<PlayListTrack *> trackList;
+    for(int i = 0; i < m_items.count(); ++i)
+        trackList.append(dynamic_cast<PlayListTrack *>(m_items[i]));
+    return trackList;
+}
+
 QList<PlayListItem *> NormalContainer::items() const
 {
     return m_items;
