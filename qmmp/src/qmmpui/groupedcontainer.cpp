@@ -407,26 +407,6 @@ void GroupedContainer::randomizeList()
     addTracks(tracks);
 }
 
-void GroupedContainer::sort(int mode)
-{
-    if(mode == PlayListModel::ARTIST || mode == PlayListModel::ALBUM
-            || mode == PlayListModel::DATE || mode == PlayListModel::GROUP)
-    {
-        QList<PlayListTrack *> tracks = takeAllTracks();
-        doSort(mode, tracks, m_reverted);
-        addTracks(tracks);
-    }
-    else
-    {
-        foreach (PlayListGroup *g, m_groups)
-        {
-            doSort(mode, g->trackList, m_reverted);
-        }
-        m_update = true;
-    }
-    m_reverted = !m_reverted;
-}
-
 void GroupedContainer::sortSelection(int mode)
 {
     QList<PlayListTrack *> tracks = takeAllTracks();

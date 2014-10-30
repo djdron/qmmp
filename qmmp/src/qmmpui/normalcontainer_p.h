@@ -61,7 +61,6 @@ public:
 
     void reverseList();
     void randomizeList();
-    void sort(int mode);
     void sortSelection(int mode);
 
 private:
