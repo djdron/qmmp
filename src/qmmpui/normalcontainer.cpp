@@ -214,14 +214,6 @@ void NormalContainer::randomizeList()
         m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
 }
 
-void NormalContainer::sort(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    doSort(mode, tracks, m_reverted);
-    addTracks(tracks);
-    m_reverted = !m_reverted;
-}
-
 void NormalContainer::sortSelection(int mode)
 {
     QList<PlayListTrack *> tracks = takeAllTracks();
