@@ -114,6 +114,7 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 
     foreach (PlayListTrack *t, tracks)
     {
+        t->beginUsage();
         TrackField *f = new TrackField;
         f->track = t;
         f->value = (mode == PlayListModel::GROUP) ? t->groupName() : t->value(key);
@@ -138,6 +139,7 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
 
     for(int i = 0; i < tracks.count(); ++i)
     {
+        tracks[i]->beginUsage();
         if(!tracks[i]->isSelected())
             continue;
 
@@ -208,6 +210,15 @@ QList<PlayListTrack *> PlayListTask::takeResults()
 
     qDeleteAll(m_fields);
     m_fields.clear();
+    foreach (PlayListTrack *t, m_tracks)
+    {
+        t->endUsage();
+        if(!t->isUsed() && t->isSheduledForDeletion())
+        {
+            m_tracks.removeAll(t);
+            delete t;
+        }
+    }
     return m_tracks;
 }
 

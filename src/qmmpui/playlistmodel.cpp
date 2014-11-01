@@ -491,14 +491,10 @@ void PlayListModel::removeTrack (int i)
             }
         }
 
-        if (track->flag() == PlayListTrack::FREE)
-        {
+        if (track->isUsed())
+            track->deleteLater();
+        else
             delete track;
-            track = NULL;
-        }
-        else if (track->flag() == PlayListTrack::EDITING)
-            track->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
-
 
         m_current = m_current_track ? m_container->indexOf(m_current_track) : -1;
         m_play_state->prepare();
@@ -579,9 +575,8 @@ void PlayListModel::showDetails(QWidget *parent)
         if(!m_container->isSelected(i))
             continue;
         PlayListTrack *track = m_container->track(i);
-        if(!track || track->flag() != PlayListTrack::FREE)
-            continue;
-        selected_tracks.append(track);
+        if(track)
+            selected_tracks.append(track);
     }
 
     if(!selected_tracks.isEmpty())

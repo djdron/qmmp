@@ -23,37 +23,46 @@
 #include "qmmpuisettings.h"
 #include "playlisttrack.h"
 
-PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem(), m_flag(FREE)
+PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
     m_length = 0;
+    m_refCount = 0;
+    m_sheduledForDeletion = false;
 }
 
 PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, QString>(other),
-    PlayListItem(),m_flag(FREE)
+    PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
+    m_refCount = 0;
+    m_sheduledForDeletion = false;
+
     m_formattedTitle = other.m_formattedTitle;
     m_group = other.m_group;
     m_formattedLength = other.m_formattedLength;
     m_titleFormat = other.m_titleFormat;
     m_groupFormat = other.m_groupFormat;
     setSelected(other.isSelected());
-    setFlag(other.flag());
     m_length = other.m_length;
     m_formattedLength = other.m_formattedLength;
 }
 
 PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()),
-    PlayListItem(), m_flag(FREE)
+    PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
     setLength(m_length = info->length());
     insert(Qmmp::URL, info->path());
+    m_refCount = 0;
+    m_sheduledForDeletion = false;
 }
 
 PlayListTrack::~PlayListTrack()
-{}
+{
+    if(m_refCount != 0)
+        qWarning("PlayListTrack: deleting busy track");
+}
 
 void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
@@ -92,6 +101,31 @@ bool PlayListTrack::isGroup() const
     return false;
 }
 
+void PlayListTrack::beginUsage()
+{
+    m_refCount++;
+}
+
+void PlayListTrack::endUsage()
+{
+    m_refCount--;
+}
+
+void PlayListTrack::deleteLater()
+{
+    m_sheduledForDeletion = true;
+}
+
+bool PlayListTrack::isSheduledForDeletion() const
+{
+    return m_sheduledForDeletion;
+}
+
+bool PlayListTrack::isUsed() const
+{
+    return (m_refCount != 0);
+}
+
 const QString PlayListTrack::formattedTitle()
 {
     if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->titleFormat())
@@ -128,16 +162,6 @@ void PlayListTrack::setLength(qint64 length)
 const QString PlayListTrack::url() const
 {
     return value(Qmmp::URL);
-}
-
-void PlayListTrack::setFlag(FLAGS f)
-{
-    m_flag = f;
-}
-
-PlayListTrack::FLAGS PlayListTrack::flag() const
-{
-    return m_flag;
 }
 
 void PlayListTrack::formatTitle()
