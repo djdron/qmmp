@@ -55,6 +55,7 @@ public:
     };
 
 private:
+    Qmmp::MetaData findSortKey(int mode);
     QList <TrackField *> m_fields;
     QList <PlayListTrack *> m_tracks;
     QList<int> m_indexes;
