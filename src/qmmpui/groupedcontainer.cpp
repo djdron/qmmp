@@ -23,7 +23,6 @@
 
 GroupedContainer::GroupedContainer()
 {
-    m_reverted = false;
     m_update = true;
 }
 
@@ -405,29 +404,6 @@ void GroupedContainer::randomizeList()
         tracks.swap(qrand()%tracks.size(),qrand()%tracks.size());
 
     addTracks(tracks);
-}
-
-void GroupedContainer::sortSelection(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    QList<PlayListTrack *> selected_tracks;
-    QList<int> selected_indexes;
-    for(int i = 0; i < tracks.count(); ++i)
-    {
-        if(tracks[i]->isSelected())
-        {
-            selected_tracks.append(tracks[i]);
-            selected_indexes.append(i);
-        }
-    }
-    doSort(mode, selected_tracks, m_reverted);
-
-    for (int i = 0; i < selected_indexes.count(); i++)
-        tracks.replace(selected_indexes[i], selected_tracks[i]);
-
-    addTracks(tracks);
-
-    m_reverted = !m_reverted;
 }
 
 void GroupedContainer::updateCache() const

@@ -38,7 +38,8 @@ public:
 
     ~PlayListTask();
 
-    void sort(QList<PlayListTrack *> tracks, PlayListModel::SortMode mode);
+    void sort(QList<PlayListTrack *> tracks, int mode);
+    void sortSelection(QList<PlayListTrack *> tracks, int mode);
     //void removeInvalidTracks(QList<PlayListTrack *> tracks);
     //void removeDuplicates();
 
@@ -46,9 +47,19 @@ public:
 
     QList<PlayListTrack *> takeResults();
 
+    enum TaskType
+    {
+        EMPTY = -1,
+        SORT = 0,
+        SORT_SELECTION
+    };
+
 private:
     QList <TrackField *> m_fields;
-    PlayListModel::SortMode m_sort_mode;
+    QList <PlayListTrack *> m_tracks;
+    QList<int> m_indexes;
+    int m_sort_mode;
+    TaskType m_task;
     bool m_reverted;
 
 };

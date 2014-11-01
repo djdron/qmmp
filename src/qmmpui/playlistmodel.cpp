@@ -783,9 +783,8 @@ void PlayListModel::sortSelection(int mode)
 {
     if(m_container->isEmpty())
         return;
-    m_container->sortSelection(mode);
-    m_current = m_container->indexOf(m_current_track);
-    emit listChanged();
+
+    m_task->sortSelection(m_container->tracks(), (PlayListModel::SortMode) mode);
 }
 
 void PlayListModel::sort(int mode)
@@ -824,6 +823,7 @@ void PlayListModel::prepareGroups(bool enabled)
 
 void PlayListModel::onTaskFinished()
 {
+    //TODO remove tracks sheduled for deletion
     m_container->takeAllTracks();
     m_container->addTracks(m_task->takeResults());
     m_current = m_container->indexOf(m_current_track);

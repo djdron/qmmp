@@ -21,9 +21,7 @@
 #include "normalcontainer_p.h"
 
 NormalContainer::NormalContainer()
-{
-    m_reverted = false;
-}
+{}
 
 NormalContainer::~NormalContainer()
 {
@@ -212,26 +210,4 @@ void NormalContainer::randomizeList()
 {
     for (int i = 0; i < m_items.size(); i++)
         m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
-}
-
-void NormalContainer::sortSelection(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    QList<PlayListTrack *> selected_tracks;
-    QList<int> selected_indexes;
-    for(int i = 0; i < tracks.count(); ++i)
-    {
-        if(tracks[i]->isSelected())
-        {
-            selected_tracks.append(tracks[i]);
-            selected_indexes.append(i);
-        }
-    }
-    doSort(mode, selected_tracks, m_reverted);
-
-    for (int i = 0; i < selected_indexes.count(); i++)
-        tracks.replace(selected_indexes[i], selected_tracks[i]);
-
-    addTracks(tracks);
-    m_reverted = !m_reverted;
 }
