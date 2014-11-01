@@ -818,9 +818,7 @@ void PlayListModel::prepareGroups(bool enabled)
 
 void PlayListModel::onTaskFinished()
 {
-    //TODO remove tracks sheduled for deletion
-    m_container->takeAllTracks();
-    m_container->addTracks(m_task->takeResults());
+    m_container->replaceTracks(m_task->takeResults());
     m_current = m_container->indexOf(m_current_track);
     emit listChanged();
 }

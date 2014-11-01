@@ -122,6 +122,16 @@ void GroupedContainer::insertTrack(int index, PlayListTrack *track)
     addTrack(track);
 }
 
+void GroupedContainer::replaceTracks(QList<PlayListTrack *> tracks)
+{
+    foreach (PlayListGroup *g, m_groups)
+    {
+        g->trackList.clear();
+    }
+    clear();
+    addTracks(tracks);
+}
+
 QList<PlayListGroup *> GroupedContainer::groups() const
 {
     return m_groups;
