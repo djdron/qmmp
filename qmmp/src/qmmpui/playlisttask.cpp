@@ -93,6 +93,7 @@ static bool _filenameGreaterComparator(TrackField* s1, TrackField* s2)
 PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
 {
     m_reverted = true;
+    m_task = EMPTY;
 }
 
 PlayListTask::~PlayListTask()
@@ -100,13 +101,15 @@ PlayListTask::~PlayListTask()
     qDebug("%s", Q_FUNC_INFO);
 }
 
-void PlayListTask::sort(QList<PlayListTrack *> tracks, PlayListModel::SortMode mode)
+void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 {
     if(isRunning())
         return;
     m_fields.clear();
+    m_tracks.clear();
     m_reverted = !m_reverted;
     m_sort_mode = mode;
+    m_task = SORT;
     Qmmp::MetaData key = Qmmp::TITLE;
 
     switch (mode)
@@ -144,26 +147,77 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, PlayListModel::SortMode m
         ;
     }
 
-    if(mode == PlayListModel::GROUP)
+    foreach (PlayListTrack *t, tracks)
     {
-        foreach (PlayListTrack *t, tracks)
-        {
-            TrackField *f = new TrackField;
-            f->track = t;
-            f->value = t->groupName();
-            m_fields.append(f);
-        }
+        TrackField *f = new TrackField;
+        f->track = t;
+        f->value = (mode == PlayListModel::GROUP) ? t->groupName() : t->value(key);
+        m_fields.append(f);
     }
-    else
+
+    start();
+}
+
+void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
+{
+    if(isRunning())
+        return;
+    m_fields.clear();
+    m_tracks.clear();
+    m_indexes.clear();
+    m_reverted = !m_reverted;
+    m_sort_mode = mode;
+    m_task = SORT_SELECTION;
+    m_tracks = tracks;
+    Qmmp::MetaData key = Qmmp::TITLE;
+
+    switch (mode)
     {
-        foreach (PlayListTrack *t, tracks)
-        {
-            TrackField *f = new TrackField;
-            f->track = t;
-            f->value = t->value(key);
-            m_fields.append(f);
-        }
+    case PlayListModel::TITLE:
+        key = Qmmp::TITLE;
+        break;
+    case PlayListModel::DISCNUMBER:
+        key = Qmmp::DISCNUMBER;
+        break;
+    case PlayListModel::ALBUM:
+        key = Qmmp::ALBUM;
+        break;
+    case PlayListModel::ARTIST:
+        key = Qmmp::ARTIST;
+        break;
+    case PlayListModel::ALBUMARTIST:
+        key = Qmmp::ALBUMARTIST;
+        break;
+    case PlayListModel::FILENAME:
+    case PlayListModel::PATH_AND_FILENAME:
+        key = Qmmp::URL;
+        break;
+    case PlayListModel::DATE:
+        key = Qmmp::YEAR;
+        break;
+    case PlayListModel::TRACK:
+        key = Qmmp::TRACK;
+        break;
+    case PlayListModel::FILE_CREATION_DATE:
+    case PlayListModel::FILE_MODIFICATION_DATE:
+        key = Qmmp::URL;
+        break;
+    default:
+        ;
     }
+
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        if(!tracks[i]->isSelected())
+            continue;
+
+        TrackField *f = new TrackField;
+        f->track = tracks[i];
+        f->value = (mode == PlayListModel::GROUP) ? f->track->groupName() : f->track->value(key);
+        m_fields.append(f);
+        m_indexes.append(i);
+    }
+
     start();
 }
 
@@ -211,15 +265,18 @@ void PlayListTask::run()
 
 QList<PlayListTrack *> PlayListTask::takeResults()
 {
-    QList<PlayListTrack *> tracks;
-    foreach (TrackField *f, m_fields)
+    if(m_task == SORT)
     {
-        if(f->track->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
-            delete f->track;
-        else
-            tracks.append(f->track);
+        foreach (TrackField *f, m_fields)
+            m_tracks.append(f->track);
     }
+    else if(m_task == SORT_SELECTION)
+    {
+        for (int i = 0; i < m_indexes.count(); i++)
+            m_tracks.replace(m_indexes[i], m_fields[i]->track);
+    }
+
     qDeleteAll(m_fields);
     m_fields.clear();
-    return tracks;
+    return m_tracks;
 }

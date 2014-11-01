@@ -62,12 +62,10 @@ public:
 
     void reverseList();
     void randomizeList();
-    void sortSelection(int mode);
 
 private:
     void updateCache() const;
     QList<PlayListGroup *> m_groups;
-    bool m_reverted;
 
     mutable QList<PlayListItem *> m_items;
     mutable bool m_update;
