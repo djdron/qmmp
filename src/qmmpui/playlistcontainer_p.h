@@ -41,6 +41,7 @@ public:
     virtual void addTrack(PlayListTrack *track);
     virtual void addTracks(QList<PlayListTrack *> tracks) = 0;
     virtual void insertTrack(int index, PlayListTrack *track) = 0;
+    virtual void replaceTracks(QList<PlayListTrack *> tracks) = 0;
     virtual QList<PlayListGroup *> groups() const = 0;
     virtual QList<PlayListItem *> items() const = 0;
     virtual QList<PlayListTrack *> tracks() const = 0;

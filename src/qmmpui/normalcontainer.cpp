@@ -44,6 +44,12 @@ void NormalContainer::insertTrack(int index, PlayListTrack *track)
         m_items.append(track);
 }
 
+void NormalContainer::replaceTracks(QList<PlayListTrack *> tracks)
+{
+    m_items.clear();
+    addTracks(tracks);
+}
+
 QList<PlayListGroup *> NormalContainer::groups() const
 {
     return QList<PlayListGroup *>();
