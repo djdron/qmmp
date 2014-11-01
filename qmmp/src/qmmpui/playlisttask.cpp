@@ -110,42 +110,7 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
     m_reverted = !m_reverted;
     m_sort_mode = mode;
     m_task = SORT;
-    Qmmp::MetaData key = Qmmp::TITLE;
-
-    switch (mode)
-    {
-    case PlayListModel::TITLE:
-        key = Qmmp::TITLE;
-        break;
-    case PlayListModel::DISCNUMBER:
-        key = Qmmp::DISCNUMBER;
-        break;
-    case PlayListModel::ALBUM:
-        key = Qmmp::ALBUM;
-        break;
-    case PlayListModel::ARTIST:
-        key = Qmmp::ARTIST;
-        break;
-    case PlayListModel::ALBUMARTIST:
-        key = Qmmp::ALBUMARTIST;
-        break;
-    case PlayListModel::FILENAME:
-    case PlayListModel::PATH_AND_FILENAME:
-        key = Qmmp::URL;
-        break;
-    case PlayListModel::DATE:
-        key = Qmmp::YEAR;
-        break;
-    case PlayListModel::TRACK:
-        key = Qmmp::TRACK;
-        break;
-    case PlayListModel::FILE_CREATION_DATE:
-    case PlayListModel::FILE_MODIFICATION_DATE:
-        key = Qmmp::URL;
-        break;
-    default:
-        ;
-    }
+    Qmmp::MetaData key = findSortKey(mode);
 
     foreach (PlayListTrack *t, tracks)
     {
@@ -169,42 +134,7 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
     m_sort_mode = mode;
     m_task = SORT_SELECTION;
     m_tracks = tracks;
-    Qmmp::MetaData key = Qmmp::TITLE;
-
-    switch (mode)
-    {
-    case PlayListModel::TITLE:
-        key = Qmmp::TITLE;
-        break;
-    case PlayListModel::DISCNUMBER:
-        key = Qmmp::DISCNUMBER;
-        break;
-    case PlayListModel::ALBUM:
-        key = Qmmp::ALBUM;
-        break;
-    case PlayListModel::ARTIST:
-        key = Qmmp::ARTIST;
-        break;
-    case PlayListModel::ALBUMARTIST:
-        key = Qmmp::ALBUMARTIST;
-        break;
-    case PlayListModel::FILENAME:
-    case PlayListModel::PATH_AND_FILENAME:
-        key = Qmmp::URL;
-        break;
-    case PlayListModel::DATE:
-        key = Qmmp::YEAR;
-        break;
-    case PlayListModel::TRACK:
-        key = Qmmp::TRACK;
-        break;
-    case PlayListModel::FILE_CREATION_DATE:
-    case PlayListModel::FILE_MODIFICATION_DATE:
-        key = Qmmp::URL;
-        break;
-    default:
-        ;
-    }
+    Qmmp::MetaData key = findSortKey(mode);
 
     for(int i = 0; i < tracks.count(); ++i)
     {
@@ -279,4 +209,33 @@ QList<PlayListTrack *> PlayListTask::takeResults()
     qDeleteAll(m_fields);
     m_fields.clear();
     return m_tracks;
+}
+
+Qmmp::MetaData PlayListTask::findSortKey(int mode)
+{
+    switch (mode)
+    {
+    case PlayListModel::TITLE:
+        return Qmmp::TITLE;
+    case PlayListModel::DISCNUMBER:
+        return Qmmp::DISCNUMBER;
+    case PlayListModel::ALBUM:
+        return Qmmp::ALBUM;
+    case PlayListModel::ARTIST:
+        return Qmmp::ARTIST;
+    case PlayListModel::ALBUMARTIST:
+        return Qmmp::ALBUMARTIST;
+    case PlayListModel::FILENAME:
+    case PlayListModel::PATH_AND_FILENAME:
+        return Qmmp::URL;
+    case PlayListModel::DATE:
+        return Qmmp::YEAR;
+    case PlayListModel::TRACK:
+        return Qmmp::TRACK;
+    case PlayListModel::FILE_CREATION_DATE:
+    case PlayListModel::FILE_MODIFICATION_DATE:
+        return Qmmp::URL;
+    default:
+        return Qmmp::TITLE;
+    }
 }
