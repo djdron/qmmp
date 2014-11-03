@@ -20,6 +20,7 @@
 
 #include <QFileInfo>
 #include <QDateTime>
+#include <qmmp/metadatamanager.h>
 #include "playlisttrack.h"
 #include "playlisttask_p.h"
 
@@ -105,11 +106,11 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 {
     if(isRunning())
         return;
-    m_fields.clear();
-    m_tracks.clear();
+    clear();
     m_reverted = !m_reverted;
     m_sort_mode = mode;
     m_task = SORT;
+    m_input_tracks = tracks;
     Qmmp::MetaData key = findSortKey(mode);
 
     foreach (PlayListTrack *t, tracks)
@@ -128,13 +129,12 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
 {
     if(isRunning())
         return;
-    m_fields.clear();
-    m_tracks.clear();
-    m_indexes.clear();
+    clear();
     m_reverted = !m_reverted;
     m_sort_mode = mode;
     m_task = SORT_SELECTION;
     m_tracks = tracks;
+    m_input_tracks = tracks;
     Qmmp::MetaData key = findSortKey(mode);
 
     for(int i = 0; i < tracks.count(); ++i)
@@ -153,46 +153,84 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
     start();
 }
 
+void PlayListTask::removeInvalidTracks(QList<PlayListTrack *> tracks)
+{
+    if(isRunning())
+        return;
+    clear();
+    m_task = REMOVE_INVALID;
+    m_input_tracks = tracks;
+
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        tracks[i]->beginUsage();
+        TrackField *f = new TrackField;
+        f->track = tracks[i];
+        f->value = f->track->value(Qmmp::URL);
+        m_fields.append(f);
+    }
+    MetaDataManager::instance()->prepareForAnotherThread();
+    start();
+}
+
 void PlayListTask::run()
 {
     qDebug("started");
-    bool(*compareLessFunc)(TrackField*, TrackField*) = 0;
-    bool(*compareGreaterFunc)(TrackField*, TrackField*) = 0;
 
-    QList<TrackField*>::iterator begin = m_fields.begin();
-    QList<TrackField*>::iterator end = m_fields.end();
+    if(m_task == SORT || m_task == SORT_SELECTION)
+    {
+        bool(*compareLessFunc)(TrackField*, TrackField*) = 0;
+        bool(*compareGreaterFunc)(TrackField*, TrackField*) = 0;
 
-    if(m_sort_mode == PlayListModel::FILE_CREATION_DATE)
-    {
-        compareLessFunc = _fileCreationDateLessComparator;
-        compareGreaterFunc = _fileCreationDateGreaterComparator;
-    }
-    else if(m_sort_mode == PlayListModel::FILE_MODIFICATION_DATE)
-    {
-        compareLessFunc = _fileModificationDateLessComparator;
-        compareGreaterFunc = _fileModificationDateGreaterComparator;
-    }
-    else if(m_sort_mode == PlayListModel::TRACK || m_sort_mode == PlayListModel::DATE)
-    {
-        compareLessFunc = _numberLessComparator;
-        compareGreaterFunc = _numberGreaterComparator;
-    }
-    else if(m_sort_mode == PlayListModel::FILENAME)
-    {
-        compareLessFunc = _filenameLessComparator;
-        compareGreaterFunc = _filenameGreaterComparator;
-    }
-    else
-    {
-        compareLessFunc = _stringLessComparator;
-        compareGreaterFunc = _stringGreaterComparator;
-    }
+        QList<TrackField*>::iterator begin = m_fields.begin();
+        QList<TrackField*>::iterator end = m_fields.end();
 
-    if(m_reverted)
-        qStableSort(begin,end,compareGreaterFunc);
-    else
-        qStableSort(begin,end,compareLessFunc);
+        if(m_sort_mode == PlayListModel::FILE_CREATION_DATE)
+        {
+            compareLessFunc = _fileCreationDateLessComparator;
+            compareGreaterFunc = _fileCreationDateGreaterComparator;
+        }
+        else if(m_sort_mode == PlayListModel::FILE_MODIFICATION_DATE)
+        {
+            compareLessFunc = _fileModificationDateLessComparator;
+            compareGreaterFunc = _fileModificationDateGreaterComparator;
+        }
+        else if(m_sort_mode == PlayListModel::TRACK || m_sort_mode == PlayListModel::DATE)
+        {
+            compareLessFunc = _numberLessComparator;
+            compareGreaterFunc = _numberGreaterComparator;
+        }
+        else if(m_sort_mode == PlayListModel::FILENAME)
+        {
+            compareLessFunc = _filenameLessComparator;
+            compareGreaterFunc = _filenameGreaterComparator;
+        }
+        else
+        {
+            compareLessFunc = _stringLessComparator;
+            compareGreaterFunc = _stringGreaterComparator;
+        }
+
+        if(m_reverted)
+            qStableSort(begin,end,compareGreaterFunc);
+        else
+            qStableSort(begin,end,compareLessFunc);
+    }
+    else if(m_task == REMOVE_INVALID)
+    {
+        /*foreach (var, container) {
+
+        }*/
+    }
     qDebug("finished");
+}
+
+bool PlayListTask::isChanged(PlayListContainer *container)
+{
+    if(m_input_tracks.count() != container->trackCount())
+        return true;
+
+    return m_input_tracks != container->tracks();
 }
 
 QList<PlayListTrack *> PlayListTask::takeResults()
@@ -220,6 +258,14 @@ QList<PlayListTrack *> PlayListTask::takeResults()
         }
     }
     return m_tracks;
+}
+
+void PlayListTask::clear()
+{
+    m_fields.clear();
+    m_indexes.clear();
+    m_input_tracks.clear();
+    m_tracks.clear();
 }
 
 Qmmp::MetaData PlayListTask::findSortKey(int mode)
