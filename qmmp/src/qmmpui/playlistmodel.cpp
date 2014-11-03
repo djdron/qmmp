@@ -480,12 +480,10 @@ void PlayListModel::removeTrack (int i)
             else
             {
                 current_changed = true;
-                int current = qMin(i - 1, m_container->count() - 1);
-                current = qMax(current, 0);
-                m_current_track = m_container->track(current);
-                if(!m_current_track)
+                m_current = i > 0 ? qMin(i - 1, m_container->count() - 1) : 0;
+                if(!(m_current_track = m_container->track(m_current)))
                 {
-                    m_current_track = current > 0 ? m_container->track(current-1) :
+                    m_current_track = current > 0 ? m_container->track(m_current - 1) :
                                                     m_container->track(1);
                 }
             }
@@ -818,9 +816,12 @@ void PlayListModel::prepareGroups(bool enabled)
 
 void PlayListModel::onTaskFinished()
 {
-    m_container->replaceTracks(m_task->takeResults());
-    m_current = m_container->indexOf(m_current_track);
-    emit listChanged();
+    if(!m_task->isChanged(m_container)) //update unchanged container only
+    {
+        m_container->replaceTracks(m_task->takeResults());
+        m_current = m_container->indexOf(m_current_track);
+        emit listChanged();
+    }
 }
 
 void PlayListModel::doCurrentVisibleRequest()
