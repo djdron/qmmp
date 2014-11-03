@@ -483,8 +483,8 @@ void PlayListModel::removeTrack (int i)
                 m_current = i > 0 ? qMin(i - 1, m_container->count() - 1) : 0;
                 if(!(m_current_track = m_container->track(m_current)))
                 {
-                    m_current_track = current > 0 ? m_container->track(m_current - 1) :
-                                                    m_container->track(1);
+                    m_current_track = m_current > 0 ? m_container->track(m_current - 1) :
+                                                      m_container->track(1);
                 }
             }
         }

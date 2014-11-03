@@ -115,7 +115,6 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 
     foreach (PlayListTrack *t, tracks)
     {
-        t->beginUsage();
         TrackField *f = new TrackField;
         f->track = t;
         f->value = (mode == PlayListModel::GROUP) ? t->groupName() : t->value(key);
@@ -139,7 +138,6 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
 
     for(int i = 0; i < tracks.count(); ++i)
     {
-        tracks[i]->beginUsage();
         if(!tracks[i]->isSelected())
             continue;
 
@@ -163,7 +161,6 @@ void PlayListTask::removeInvalidTracks(QList<PlayListTrack *> tracks)
 
     for(int i = 0; i < tracks.count(); ++i)
     {
-        tracks[i]->beginUsage();
         TrackField *f = new TrackField;
         f->track = tracks[i];
         f->value = f->track->value(Qmmp::URL);
@@ -245,23 +242,12 @@ QList<PlayListTrack *> PlayListTask::takeResults()
         for (int i = 0; i < m_indexes.count(); i++)
             m_tracks.replace(m_indexes[i], m_fields[i]->track);
     }
-
-    qDeleteAll(m_fields);
-    m_fields.clear();
-    foreach (PlayListTrack *t, m_tracks)
-    {
-        t->endUsage();
-        if(!t->isUsed() && t->isSheduledForDeletion())
-        {
-            m_tracks.removeAll(t);
-            delete t;
-        }
-    }
     return m_tracks;
 }
 
 void PlayListTask::clear()
 {
+    qDeleteAll(m_fields);
     m_fields.clear();
     m_indexes.clear();
     m_input_tracks.clear();
