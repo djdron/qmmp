@@ -94,7 +94,20 @@ static bool _filenameGreaterComparator(TrackField* s1, TrackField* s2)
 PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
 {
     m_reverted = true;
+    m_current_track = 0;
     m_task = EMPTY;
+
+    m_sort_keys.insert(PlayListModel::TITLE, Qmmp::TITLE);
+    m_sort_keys.insert(PlayListModel::DISCNUMBER, Qmmp::DISCNUMBER);
+    m_sort_keys.insert(PlayListModel::ALBUM, Qmmp::ALBUM);
+    m_sort_keys.insert(PlayListModel::ARTIST, Qmmp::ARTIST);
+    m_sort_keys.insert(PlayListModel::ALBUMARTIST, Qmmp::ALBUMARTIST);
+    m_sort_keys.insert(PlayListModel::FILENAME, Qmmp::URL);
+    m_sort_keys.insert(PlayListModel::PATH_AND_FILENAME, Qmmp::URL);
+    m_sort_keys.insert(PlayListModel::DATE, Qmmp::YEAR);
+    m_sort_keys.insert(PlayListModel::TRACK, Qmmp::TRACK);
+    m_sort_keys.insert(PlayListModel::FILE_CREATION_DATE, Qmmp::URL);
+    m_sort_keys.insert(PlayListModel::FILE_MODIFICATION_DATE, Qmmp::URL);
 }
 
 PlayListTask::~PlayListTask()
@@ -111,7 +124,7 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
     m_sort_mode = mode;
     m_task = SORT;
     m_input_tracks = tracks;
-    Qmmp::MetaData key = findSortKey(mode);
+    Qmmp::MetaData key = m_sort_keys.value(mode);
 
     foreach (PlayListTrack *t, tracks)
     {
@@ -134,7 +147,7 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
     m_task = SORT_SELECTION;
     m_tracks = tracks;
     m_input_tracks = tracks;
-    Qmmp::MetaData key = findSortKey(mode);
+    Qmmp::MetaData key = m_sort_keys.value(mode);
 
     for(int i = 0; i < tracks.count(); ++i)
     {
@@ -151,13 +164,36 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
     start();
 }
 
-void PlayListTask::removeInvalidTracks(QList<PlayListTrack *> tracks)
+void PlayListTask::removeInvalidTracks(QList<PlayListTrack *> tracks, PlayListTrack *current_track)
 {
     if(isRunning())
         return;
     clear();
     m_task = REMOVE_INVALID;
     m_input_tracks = tracks;
+    m_tracks = tracks;
+    m_current_track = current_track;
+
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        TrackField *f = new TrackField;
+        f->track = tracks[i];
+        f->value = f->track->value(Qmmp::URL);
+        m_fields.append(f);
+    }
+    MetaDataManager::instance()->prepareForAnotherThread();
+    start();
+}
+
+void PlayListTask::removeDuplicates(QList<PlayListTrack *> tracks, PlayListTrack *current_track)
+{
+    if(isRunning())
+        return;
+    clear();
+    m_task = REMOVE_DUPLICATES;
+    m_input_tracks = tracks;
+    m_tracks = tracks;
+    m_current_track = current_track;
 
     for(int i = 0; i < tracks.count(); ++i)
     {
@@ -215,11 +251,45 @@ void PlayListTask::run()
     }
     else if(m_task == REMOVE_INVALID)
     {
-        /*foreach (var, container) {
+        TrackField *f = 0;
+        bool ok = false;
+        for(int i = 0; i < m_fields.count(); ++i)
+        {
+            f = m_fields.at(i);
 
-        }*/
+            if(f->value.contains("://"))
+                ok = MetaDataManager::instance()->protocols().contains(f->value.section("://",0,0)); //url
+            else
+                ok = MetaDataManager::instance()->supports(f->value); //local file
+
+            if(!ok)
+                m_indexes << i;
+        }
+    }
+    else if(m_task == REMOVE_DUPLICATES)
+    {
+        QStringList urls;
+        TrackField *f = 0;
+        for(int i = 0; i < m_fields.count(); ++i)
+        {
+            f = m_fields.at(i);
+
+           if(urls.contains(f->value))
+           {
+               m_indexes.append(i);
+           }
+           else
+           {
+               urls.append(f->value);
+           }
+        }
     }
     qDebug("finished");
+}
+
+PlayListTask::TaskType PlayListTask::type() const
+{
+    return m_task;
 }
 
 bool PlayListTask::isChanged(PlayListContainer *container)
@@ -230,7 +300,7 @@ bool PlayListTask::isChanged(PlayListContainer *container)
     return m_input_tracks != container->tracks();
 }
 
-QList<PlayListTrack *> PlayListTask::takeResults()
+QList<PlayListTrack *> PlayListTask::takeResults(PlayListTrack **current_track)
 {
     if(m_task == SORT)
     {
@@ -242,6 +312,30 @@ QList<PlayListTrack *> PlayListTask::takeResults()
         for (int i = 0; i < m_indexes.count(); i++)
             m_tracks.replace(m_indexes[i], m_fields[i]->track);
     }
+    else if(m_task == REMOVE_INVALID || m_task == REMOVE_DUPLICATES)
+    {
+        int index = 0;
+        PlayListTrack *t = 0;
+        for (int i = m_indexes.count() - 1; i >= 0; i--)
+        {
+            index = m_indexes.at(i);
+            t = m_tracks.takeAt(index);
+            if(t == m_current_track)
+            {
+                if(m_tracks.isEmpty())
+                    m_current_track = 0;
+                else if(index > 0 && index <= m_tracks.count())
+                    m_current_track = m_tracks[index - 1];
+                else
+                    m_current_track = m_tracks[0];
+                *current_track = m_current_track;
+            }
+            if(t->isUsed())
+                t->deleteLater();
+            else
+                delete t;
+        }
+    }
     return m_tracks;
 }
 
@@ -252,33 +346,5 @@ void PlayListTask::clear()
     m_indexes.clear();
     m_input_tracks.clear();
     m_tracks.clear();
-}
-
-Qmmp::MetaData PlayListTask::findSortKey(int mode)
-{
-    switch (mode)
-    {
-    case PlayListModel::TITLE:
-        return Qmmp::TITLE;
-    case PlayListModel::DISCNUMBER:
-        return Qmmp::DISCNUMBER;
-    case PlayListModel::ALBUM:
-        return Qmmp::ALBUM;
-    case PlayListModel::ARTIST:
-        return Qmmp::ARTIST;
-    case PlayListModel::ALBUMARTIST:
-        return Qmmp::ALBUMARTIST;
-    case PlayListModel::FILENAME:
-    case PlayListModel::PATH_AND_FILENAME:
-        return Qmmp::URL;
-    case PlayListModel::DATE:
-        return Qmmp::YEAR;
-    case PlayListModel::TRACK:
-        return Qmmp::TRACK;
-    case PlayListModel::FILE_CREATION_DATE:
-    case PlayListModel::FILE_MODIFICATION_DATE:
-        return Qmmp::URL;
-    default:
-        return Qmmp::TITLE;
-    }
+    m_current_track = 0;
 }

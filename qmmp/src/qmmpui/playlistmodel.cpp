@@ -816,11 +816,31 @@ void PlayListModel::prepareGroups(bool enabled)
 
 void PlayListModel::onTaskFinished()
 {
-    if(!m_task->isChanged(m_container)) //update unchanged container only
+    if(m_task->isChanged(m_container)) //update unchanged container only
+        return;
+
+    if(m_task->type() == PlayListTask::SORT || m_task->type() == PlayListTask::SORT_SELECTION)
     {
-        m_container->replaceTracks(m_task->takeResults());
+        m_container->replaceTracks(m_task->takeResults(&m_current_track));
         m_current = m_container->indexOf(m_current_track);
         emit listChanged();
+    }
+    else if(m_task->type() == PlayListTask::REMOVE_INVALID
+            || m_task->type() == PlayListTask::REMOVE_DUPLICATES)
+    {
+        PlayListTrack *prev_current_track = m_current_track;
+        bool prev_count = m_container->count();
+
+        m_container->replaceTracks(m_task->takeResults(&m_current_track));
+
+        if(prev_count != m_container->count())
+        {
+            m_current = m_container->indexOf(m_current_track);
+            if(prev_current_track != m_current_track)
+                emit currentChanged();
+            emit countChanged();
+            emit listChanged();
+        }
     }
 }
 
@@ -859,58 +879,12 @@ void PlayListModel::preparePlayState()
 
 void PlayListModel::removeInvalidTracks()
 {
-    bool ok = false;
-
-    for(int i = m_container->count() - 1; i >= 0; i--)
-    {
-        if(i >= m_container->count() || !isTrack(i))
-            continue;
-
-        PlayListTrack *track = m_container->track(i);
-
-        if(track->url().contains("://"))
-            ok = MetaDataManager::instance()->protocols().contains(track->url().section("://",0,0));
-        else
-            ok = MetaDataManager::instance()->supports(track->url());
-        if(!ok)
-            removeTrack(i);
-
-    }
+    m_task->removeInvalidTracks(m_container->tracks(), m_current_track);
 }
 
 void PlayListModel::removeDuplicates()
 {
-    QStringList urls;
-    bool modified = false;
-    PlayListTrack *prev_current = m_current_track;
-
-    for(int i = 0; i < m_container->count(); ++i)
-    {
-        if(!isTrack(i))
-            continue;
-
-       if(urls.contains(track(i)->url()))
-       {
-           blockSignals(true);
-           removeTrack(i);
-           blockSignals(false);
-           modified = true;
-           i--;
-       }
-       else
-       {
-           urls.append(track(i)->url());
-       }
-    }
-
-    if(modified)
-    {
-        if(m_current_track != prev_current)
-            emit currentChanged();
-
-        emit listChanged();
-        emit countChanged();
-    }
+    m_task->removeDuplicates(m_container->tracks(), m_current_track);
 }
 
 void PlayListModel::clearQueue()
