@@ -43,3 +43,7 @@ LEGEND
 [*] libsidplayfp-1.5.3
 [*] ffmpeg-2.2.9
 [!] uninstall information (thanks to Dmitry Kramarchuk)
+
+0.8.3
+[*] qmmp-0.8.2
+[*] ffmpeg-2.2.10
