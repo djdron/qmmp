@@ -73,6 +73,7 @@ private:
     int m_sort_mode;
     TaskType m_task;
     bool m_reverted;
+    bool m_align_groups;
     QHash<int, Qmmp::MetaData> m_sort_keys;
 
 };
