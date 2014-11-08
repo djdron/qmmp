@@ -64,31 +64,26 @@ void GroupedContainer::addTrack(PlayListTrack *track)
 
 void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
 {
-    PlayListGroup *group = m_groups.isEmpty() ? 0 : m_groups.last();
+    bool found = false;
 
-    foreach (PlayListTrack *track, tracks)
+    for(int i = 0; i < tracks.count(); ++i)
     {
-        if(!group || track->groupName() != group->formattedTitle())
+        found = false;
+        for(int j = m_groups.count() - 1; j >= 0; --j)
         {
-            group = 0;
-            foreach(PlayListGroup *g, m_groups)
+            if(m_groups.at(j)->formattedTitle() == tracks.at(i)->groupName())
             {
-                if(track->groupName() == g->formattedTitle())
-                {
-                    group = g;
-                    break;
-                }
+                found = true;
+                m_groups.at(j)->trackList.append(tracks[i]);
+                break;
             }
         }
 
-        if(!group)
-        {
-            group = new PlayListGroup(track->groupName());
-            m_groups.append(group);
-            m_update = true;
-        }
+        if(found)
+            continue;
 
-        group->trackList.append(track);
+        m_groups << new PlayListGroup(tracks.at(i)->groupName());
+        m_groups.last()->trackList.append(tracks.at(i));
     }
     m_update = true;
 }

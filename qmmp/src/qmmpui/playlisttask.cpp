@@ -20,7 +20,9 @@
 
 #include <QFileInfo>
 #include <QDateTime>
+#include <QTime>
 #include <qmmp/metadatamanager.h>
+#include "qmmpuisettings.h"
 #include "playlisttrack.h"
 #include "playlisttask_p.h"
 
@@ -28,6 +30,13 @@ struct TrackField
 {
     PlayListTrack *track;
     QString value;
+    QString groupName;
+};
+
+struct GroupdField
+{
+    QList <TrackField *> fields;
+    QString groupName;
 };
 
 ////===============THE BEGINNING OF SORT IMPLEMENTATION =======================////
@@ -94,6 +103,7 @@ static bool _filenameGreaterComparator(TrackField* s1, TrackField* s2)
 PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
 {
     m_reverted = true;
+    m_align_groups = false;
     m_current_track = 0;
     m_task = EMPTY;
 
@@ -126,11 +136,15 @@ void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
     m_input_tracks = tracks;
     Qmmp::MetaData key = m_sort_keys.value(mode);
 
+    m_align_groups = QmmpUiSettings::instance()->isGroupsEnabled() && (mode != PlayListModel::GROUP);
+
     foreach (PlayListTrack *t, tracks)
     {
         TrackField *f = new TrackField;
         f->track = t;
         f->value = (mode == PlayListModel::GROUP) ? t->groupName() : t->value(key);
+        if(m_align_groups)
+            f->groupName = t->groupName();
         m_fields.append(f);
     }
 
@@ -248,6 +262,41 @@ void PlayListTask::run()
             qStableSort(begin,end,compareGreaterFunc);
         else
             qStableSort(begin,end,compareLessFunc);
+
+        //align track list by group name (optimization)
+        if(m_align_groups)
+        {
+            QList<GroupdField *> groups;
+            bool found = false;
+            for(int i = 0; i < m_fields.count(); ++i)
+            {
+                found = false;
+                for(int j = groups.count() - 1; j >= 0; j--)
+                {
+                    if(groups[j]->groupName == m_fields[i]->groupName)
+                    {
+                        groups[j]->fields.append(m_fields[i]);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if(!found)
+                {
+                    groups << new GroupdField;
+                    groups.last()->fields.append(m_fields[i]);
+                    groups.last()->groupName = m_fields[i]->groupName;
+                }
+            }
+
+            m_fields.clear();
+            for(int j = 0; j < groups.count(); ++j)
+            {
+                m_fields.append(groups[j]->fields);
+            }
+            qDeleteAll(groups);
+            groups.clear();
+        }
     }
     else if(m_task == REMOVE_INVALID)
     {
@@ -343,6 +392,7 @@ void PlayListTask::clear()
 {
     qDeleteAll(m_fields);
     m_fields.clear();
+    m_align_groups = false;
     m_indexes.clear();
     m_input_tracks.clear();
     m_tracks.clear();
