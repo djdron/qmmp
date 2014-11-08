@@ -121,9 +121,7 @@ PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
 }
 
 PlayListTask::~PlayListTask()
-{
-    qDebug("%s", Q_FUNC_INFO);
-}
+{}
 
 void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 {
@@ -222,7 +220,7 @@ void PlayListTask::removeDuplicates(QList<PlayListTrack *> tracks, PlayListTrack
 
 void PlayListTask::run()
 {
-    qDebug("started");
+    qDebug("PlayListTask: started");
 
     if(m_task == SORT || m_task == SORT_SELECTION)
     {
@@ -333,7 +331,7 @@ void PlayListTask::run()
            }
         }
     }
-    qDebug("finished");
+    qDebug("PlayListTask: finished");
 }
 
 PlayListTask::TaskType PlayListTask::type() const
