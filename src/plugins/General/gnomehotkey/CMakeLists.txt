@@ -32,23 +32,15 @@ SET(libgnomehotkey_SRCS
     mediakeys.cpp
 )
 
-SET(libgnomehotkey_MOC_HDRS
-    gnomehotkeyfactory.h
-    mediakeys.h
-)
-
 SET(libgnomehotkey_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libgnomehotkey_RCC_SRCS ${libgnomehotkey_RCCS})
-
-QT4_WRAP_CPP(libgnomehotkey_MOC_SRCS ${libgnomehotkey_MOC_HDRS})
-
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(gnomehotkey MODULE ${libgnomehotkey_SRCS} ${libgnomehotkey_MOC_SRCS} ${libgnomehotkey_RCC_SRCS})
+ADD_LIBRARY(gnomehotkey MODULE ${libgnomehotkey_SRCS} ${libgnomehotkey_RCC_SRCS})
 add_dependencies(gnomehotkey qmmpui)
 target_link_libraries(gnomehotkey ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS gnomehotkey DESTINATION ${LIB_DIR}/qmmp/General)

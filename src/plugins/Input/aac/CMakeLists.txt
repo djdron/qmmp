@@ -74,23 +74,16 @@ SET(libaac_HDRS
   aacfile.h
 )
 
-SET(libaac_MOC_HDRS
-  decoderaacfactory.h
-  aacmetadatamodel.h
-)
-
 SET(libaac_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libaac_RCC_SRCS ${libaac_RCCS})
-
-QT4_WRAP_CPP(libaac_MOC_SRCS ${libaac_MOC_HDRS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FAAD_FOUND)
-ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_RCC_SRCS} ${libaac_HDRS})
+ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_RCC_SRCS} ${libaac_HDRS})
 add_dependencies(aac qmmp)
 target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS})
 install(TARGETS aac DESTINATION ${LIB_DIR}/qmmp/Input)

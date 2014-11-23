@@ -43,20 +43,10 @@ SET(libconverter_SRCS
     preseteditor.cpp
 )
 
-SET(libconverter_MOC_HDRS
-    converterfactory.h
-    converter.h
-    converterhelper.h
-    converterdialog.h
-    preseteditor.h
-)
-
 SET(libconverter_RCCS 
     translations/translations.qrc presets.qrc)
 
 QT4_ADD_RESOURCES(libconverter_RCC_SRCS ${libconverter_RCCS})
-
-QT4_WRAP_CPP(libconverter_MOC_SRCS ${libconverter_MOC_HDRS})
 
 # user interface
 
@@ -70,7 +60,7 @@ QT4_WRAP_UI(libconverter_UIS_H ${libconverter_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(converter MODULE ${libconverter_SRCS} ${libconverter_MOC_SRCS} ${libconverter_UIS_H} ${libconverter_RCC_SRCS})
+ADD_LIBRARY(converter MODULE ${libconverter_SRCS} ${libconverter_UIS_H} ${libconverter_RCC_SRCS})
 add_dependencies(converter qmmpui)
 target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
 install(TARGETS converter DESTINATION ${LIB_DIR}/qmmp/General)

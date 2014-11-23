@@ -66,19 +66,13 @@ SET(libjack_HDRS
   outputjack.h
 )
 
-SET(libjack_MOC_HDRS
-  outputjackfactory.h
-)
-
 SET(libjack_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
 
-QT4_WRAP_CPP(libjack_MOC_SRCS ${libjack_MOC_HDRS})
-
 
 IF(JACK_FOUND)
-ADD_LIBRARY(jack MODULE ${libjack_SRCS} ${libjack_MOC_SRCS} ${libjack_RCC_SRCS} ${libjack_HDRS})
+ADD_LIBRARY(jack MODULE ${libjack_SRCS} ${libjack_RCC_SRCS} ${libjack_HDRS})
 add_dependencies(jack qmmp)
 set_target_properties(jack PROPERTIES
                            COMPILE_FLAGS -pthread

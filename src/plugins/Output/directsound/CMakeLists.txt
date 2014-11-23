@@ -35,10 +35,6 @@ SET(libdirectsound_SRCS
   outputdirectsoundfactory.cpp
 )
 
-SET(libdirectsound_MOC_HDRS
-  outputdirectsoundfactory.h
-)
-
 SET(libdirectsound_HDRS
   outputdirectsound.h
 )
@@ -47,11 +43,9 @@ SET(libdirectsound_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libdirectsound_RCC_SRCS ${libdirectsound_RCCS})
 
-QT4_WRAP_CPP(libdirectsound_MOC_SRCS ${libdirectsound_MOC_HDRS})
-
 
 IF(DSOUND_H_FOUND)
-ADD_LIBRARY(directsound MODULE ${libdirectsound_SRCS} ${libdirectsound_MOC_SRCS} ${libdirectsound_RCC_SRCS} ${libdirectsound_HDRS})
+ADD_LIBRARY(directsound MODULE ${libdirectsound_SRCS} ${libdirectsound_RCC_SRCS} ${libdirectsound_HDRS})
 add_dependencies(directsound qmmp)
 target_link_libraries(directsound ${QT_LIBRARIES} -lqmmp -ldxguid -lstrmiids -ldmoguids -lmsdmo -lole32 -loleaut32 -luuid -lgdi32 -ldsound)
 install(TARGETS directsound DESTINATION ${LIB_DIR}/qmmp/Output)

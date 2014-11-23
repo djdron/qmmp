@@ -38,19 +38,9 @@ SET(libladspa_HDRS
     ladspahelper.h
 )
 
-SET(libladspa_MOC_HDRS
-    ladspahost.h
-    ladspaslider.h
-    ladspabutton.h
-    settingsdialog.h
-    effectladspafactory.h
-)
-
 SET(libladspa_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libladspa_RCC_SRCS ${libladspa_RCCS})
-
-QT4_WRAP_CPP(libladspa_MOC_SRCS ${libladspa_MOC_HDRS})
 
 # user interface
 
@@ -63,7 +53,7 @@ QT4_WRAP_UI(libladspa_UIS_H ${libladspa_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(ladspa MODULE ${libladspa_SRCS} ${libladspa_MOC_SRCS} ${libladspa_UIS_H}
+ADD_LIBRARY(ladspa MODULE ${libladspa_SRCS} ${libladspa_UIS_H}
   ${libladspa_RCC_SRCS} ${libladspa_HDRS})
 add_dependencies(ladspa qmmp)
 target_link_libraries(ladspa ${QT_LIBRARIES} -lqmmp ${CMAKE_DL_LIBS})

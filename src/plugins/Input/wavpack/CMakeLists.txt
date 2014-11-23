@@ -46,21 +46,14 @@ SET(libwavpack_HDRS
   replaygainreader.h
 )
 
-SET(libwavpack_MOC_HDRS
-  decoderwavpackfactory.h
-  wavpackmetadatamodel.h
-)
-
 SET(libwavpack_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
 
-QT4_WRAP_CPP(libwavpack_MOC_SRCS ${libwavpack_MOC_HDRS})
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(WAVPACK_FOUND)
-ADD_LIBRARY(wavpack MODULE ${libwavpack_SRCS} ${libwavpack_MOC_SRCS} ${libwavpack_RCC_SRCS} ${libwavpack_HDRS})
+ADD_LIBRARY(wavpack MODULE ${libwavpack_SRCS} ${libwavpack_RCC_SRCS} ${libwavpack_HDRS})
 add_dependencies(wavpack qmmp)
 target_link_libraries(wavpack ${QT_LIBRARIES} -lqmmp ${WAVPACK_LDFLAGS})
 install(TARGETS wavpack DESTINATION ${LIB_DIR}/qmmp/Input)

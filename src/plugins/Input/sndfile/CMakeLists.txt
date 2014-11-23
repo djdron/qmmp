@@ -41,23 +41,16 @@ SET(libsndfile_HDRS
   decoder_sndfile.h
 )
 
-SET(libsndfile_MOC_HDRS
-  decodersndfilefactory.h
-)
-
 SET(libsndfile_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libsndfile_RCC_SRCS ${libsndfile_RCCS})
-
-QT4_WRAP_CPP(libsndfile_MOC_SRCS ${libsndfile_MOC_HDRS})
-
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(SNDFILE_FOUND)
-ADD_LIBRARY(sndfile MODULE ${libsndfile_SRCS} ${libsndfile_MOC_SRCS} ${libsndfile_UIS_H}
+ADD_LIBRARY(sndfile MODULE ${libsndfile_SRCS} ${libsndfile_UIS_H}
   ${libsndfile_RCC_SRCS} ${libsndfile_HDRS})
 add_dependencies(sndfile qmmp)
 target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS})

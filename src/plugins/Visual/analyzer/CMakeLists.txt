@@ -38,18 +38,9 @@ SET(libanalyzer_HDRS
    fft.h
 )
 
-SET(libanalyzer_MOC_HDRS
-    analyzer.h
-    colorwidget.h
-    settingsdialog.h
-    visualanalyzerfactory.h
-)
-
 SET(libanalyzer_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libanalyzer_RCC_SRCS ${libanalyzer_RCCS})
-
-QT4_WRAP_CPP(libanalyzer_MOC_SRCS ${libanalyzer_MOC_HDRS})
 
 # user interface
 
@@ -63,7 +54,7 @@ QT4_WRAP_UI(libanalyzer_UIS_H ${libanalyzer_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(analyzer MODULE ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
+ADD_LIBRARY(analyzer MODULE ${libanalyzer_SRCS} ${libanalyzer_UIS_H}
   ${libanalyzer_RCC_SRCS} ${libanalyzer_HDRS})
 add_dependencies(analyzer qmmp)
 target_link_libraries(analyzer ${QT_LIBRARIES} -lqmmp)

@@ -35,17 +35,9 @@ SET(libkdenotify_SRCS
     settingsdialog.cpp
 )
 
-SET(libkdenotify_MOC_HDRS
-    kdenotifyfactory.h
-    kdenotify.h
-    settingsdialog.h
-)
-
 SET(libkdenotify_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libkdenotify_RCC_SRCS ${libkdenotify_RCCS})
-
-QT4_WRAP_CPP(libkdenotify_MOC_SRCS ${libkdenotify_MOC_HDRS})
 
 # user interface
 SET(libkdenotify_UIS
@@ -59,7 +51,7 @@ QT4_WRAP_UI(libkdenotify_UIS_H ${libkdenotify_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(kdenotify MODULE ${libkdenotify_SRCS} ${libkdenotify_MOC_SRCS} ${libkdenotify_RCC_SRCS} ${libkdenotify_UIS_H})
+ADD_LIBRARY(kdenotify MODULE ${libkdenotify_SRCS} ${libkdenotify_RCC_SRCS} ${libkdenotify_UIS_H})
 add_dependencies(kdenotify qmmpui)
 target_link_libraries(kdenotify ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS kdenotify DESTINATION ${LIB_DIR}/qmmp/General)

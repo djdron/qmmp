@@ -31,22 +31,16 @@ SET(libplaylistoption_SRCS
     playlistoption.cpp
 )
 
-SET(libplaylistoption_MOC_HDRS
-    playlistoption.h
-)
-
 SET(libplaylistoption_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libplaylistoption_RCC_SRCS ${libplaylistoption_RCCS})
-
-QT4_WRAP_CPP(libplaylistoption_MOC_SRCS ${libplaylistoption_MOC_HDRS})
 
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(playlistoption MODULE ${libplaylistoption_SRCS} ${libplaylistoption_MOC_SRCS} 
+ADD_LIBRARY(playlistoption MODULE ${libplaylistoption_SRCS}
            ${libplaylistoption_RCC_SRCS})
 add_dependencies(playlistoption qmmpui)
 target_link_libraries(playlistoption ${QT_LIBRARIES} -lqmmpui -lqmmp)

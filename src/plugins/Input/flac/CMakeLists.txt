@@ -52,23 +52,16 @@ SET(libflac_HDRS
   replaygainreader.h
 )
 
-SET(libflac_MOC_HDRS
-  decoderflacfactory.h
-  flacmetadatamodel.h
-)
-
 SET(libflac_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libflac_RCC_SRCS ${libflac_RCCS})
-
-QT4_WRAP_CPP(libflac_MOC_SRCS ${libflac_MOC_HDRS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FLAC_FOUND)
-ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_RCC_SRCS} ${libflac_HDRS})
+ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_RCC_SRCS} ${libflac_HDRS})
 add_dependencies(flac qmmp)
 target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)

@@ -46,13 +46,6 @@ SET(libhttp_SRCS
     settingsdialog.cpp
 )
 
-SET(libhttp_MOC_HDRS
-    httpinputfactory.h
-    httpinputsource.h
-    httpstreamreader.h
-    settingsdialog.h
-)
-
 # resources
 SET(libhttp_RCCS translations/translations.qrc)
 QT4_ADD_RESOURCES(libhttp_RCC_SRCS ${libhttp_RCCS})
@@ -64,15 +57,12 @@ SET(libhttp_UIS
 QT4_WRAP_UI(libhttp_UIS_H ${libhttp_UIS})
 
 
-
-QT4_WRAP_CPP(libhttp_MOC_SRCS ${libhttp_MOC_HDRS})
-
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(CURL_FOUND)
-ADD_LIBRARY(http MODULE ${libhttp_SRCS} ${libhttp_MOC_SRCS} ${libhttp_UIS_H} ${libhttp_RCC_SRCS})
+ADD_LIBRARY(http MODULE ${libhttp_SRCS} ${libhttp_UIS_H} ${libhttp_RCC_SRCS})
 
 IF(USE_ENCA AND ENCA_FOUND)
 target_link_libraries(http ${QT_LIBRARIES} -lqmmp ${CURL_LDFLAGS} ${CURL_CFLAGS} ${ENCA_LDFLAGS} ${ENCA_CFLAGS})

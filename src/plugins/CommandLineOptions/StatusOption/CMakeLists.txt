@@ -31,22 +31,16 @@ SET(statusoption_SRCS
     statusoption.cpp
 )
 
-SET(statusoption_MOC_HDRS
-    statusoption.h
-)
-
 SET(statusoption_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(statusoption_RCC_SRCS ${statusoption_RCCS})
-
-QT4_WRAP_CPP(statusoption_MOC_SRCS ${statusoption_MOC_HDRS})
 
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(statusoption MODULE ${statusoption_SRCS} ${statusoption_MOC_SRCS} ${statusoption_RCC_SRCS})
+ADD_LIBRARY(statusoption MODULE ${statusoption_SRCS} ${statusoption_RCC_SRCS})
 add_dependencies(statusoption qmmpui)
 target_link_libraries(statusoption ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS statusoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)

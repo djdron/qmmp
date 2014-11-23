@@ -1,6 +1,6 @@
 project(libqmmpui)
 
-cmake_minimum_required(VERSION 2.4.7)
+cmake_minimum_required(VERSION 2.8.6)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 OLD)
@@ -84,28 +84,6 @@ SET(libqmmpui_HDRS
     qmmpuiplugincache_p.h
 )
 
-SET(libqmmpui_MOC_HDRS
-    uihelper.h
-    filedialog.h
-    qtfiledialog_p.h
-    fileloader_p.h
-    playlistmodel.h
-    mediaplayer.h
-    detailsdialog.h
-    tageditor_p.h
-    playlistmanager.h
-    templateeditor.h
-    jumptotrackdialog_p.h
-    configdialog.h
-    aboutdialog_p.h
-    qmmpuisettings.h
-    radioitemdelegate_p.h
-    playlistdownloader.h
-    addurldialog_p.h
-    tagupdater_p.h
-    playlisttask_p.h
-)
-
 SET(libqmmpui_DEVEL_HDRS
     commandlinemanager.h
     commandlineoption.h
@@ -147,11 +125,9 @@ QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
 
 QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc txt/txt.qrc images/qmmpui_images.qrc)
 
-QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS} ${libqmmpui_UIS_H} ${libqmmpui_HDRS})
+ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_RCC_SRCS} ${libqmmpui_UIS_H} ${libqmmpui_HDRS})
 target_link_libraries(qmmpui ${QT_LIBRARIES} -lqmmp)
 add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})

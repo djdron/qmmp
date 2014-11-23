@@ -36,19 +36,10 @@ SET(libfileops_SRCS
     hotkeydialog.cpp
 )
 
-SET(libfileops_MOC_HDRS
-    fileopsfactory.h
-    fileops.h
-    settingsdialog.h
-    hotkeydialog.h
-)
-
 SET(libfileops_RCCS 
     translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libfileops_RCC_SRCS ${libfileops_RCCS})
-
-QT4_WRAP_CPP(libfileops_MOC_SRCS ${libfileops_MOC_HDRS})
 
 # user interface
 
@@ -62,7 +53,7 @@ QT4_WRAP_UI(libfileops_UIS_H ${libfileops_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(fileops MODULE ${libfileops_SRCS} ${libfileops_MOC_SRCS} ${libfileops_UIS_H} ${libfileops_RCC_SRCS})
+ADD_LIBRARY(fileops MODULE ${libfileops_SRCS} ${libfileops_UIS_H} ${libfileops_RCC_SRCS})
 add_dependencies(fileops qmmpui)
 target_link_libraries(fileops ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS fileops DESTINATION ${LIB_DIR}/qmmp/General)

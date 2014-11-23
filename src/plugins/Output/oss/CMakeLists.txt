@@ -39,11 +39,6 @@ SET(liboss_SRCS
   settingsdialog.cpp
 )
 
-SET(liboss_MOC_HDRS
-  outputossfactory.h
-  settingsdialog.h
-)
-
 SET(liboss_HDRS
   outputoss.h
 )
@@ -52,15 +47,13 @@ SET(liboss_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(liboss_RCC_SRCS ${liboss_RCCS})
 
-QT4_WRAP_CPP(liboss_MOC_SRCS ${liboss_MOC_HDRS})
-
 SET(liboss_UIS
     settingsdialog.ui
 )
 
 QT4_WRAP_UI(liboss_UIS_H ${liboss_UIS})
 
-ADD_LIBRARY(oss MODULE ${liboss_SRCS} ${liboss_MOC_SRCS} ${liboss_UIS_H}
+ADD_LIBRARY(oss MODULE ${liboss_SRCS} ${liboss_UIS_H}
   ${liboss_RCC_SRCS} ${liboss_HDRS})
 add_dependencies(oss qmmp)
 target_link_libraries(oss ${QT_LIBRARIES} -lqmmp)

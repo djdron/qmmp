@@ -38,18 +38,10 @@ SET(libstreambrowser_SRCS
     streamwindow.cpp
 )
 
-SET(libstreambrowser_MOC_HDRS
-    streambrowserfactory.h
-    streambrowser.h
-    streamwindow.h
-)
-
 SET(libstreambrowser_RCCS 
     translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libstreambrowser_RCC_SRCS ${libstreambrowser_RCCS})
-
-QT4_WRAP_CPP(libstreambrowser_MOC_SRCS ${libstreambrowser_MOC_HDRS})
 
 # user interface
 
@@ -62,7 +54,7 @@ QT4_WRAP_UI(libstreambrowser_UIS_H ${libstreambrowser_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(streambrowser MODULE ${libstreambrowser_SRCS} ${libstreambrowser_MOC_SRCS} ${libstreambrowser_UIS_H} ${libstreambrowser_RCC_SRCS})
+ADD_LIBRARY(streambrowser MODULE ${libstreambrowser_SRCS} ${libstreambrowser_UIS_H} ${libstreambrowser_RCC_SRCS})
 add_dependencies(streambrowser qmmpui)
 target_link_libraries(streambrowser ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS streambrowser DESTINATION ${LIB_DIR}/qmmp/General)

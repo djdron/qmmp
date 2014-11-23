@@ -46,16 +46,9 @@ SET(libsid_HDRS
   sidhelper.h
 )
 
-SET(libsid_MOC_HDRS
-  decodersidfactory.h
-  settingsdialog.h
-)
-
 SET(libsid_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libsid_RCC_SRCS ${libsid_RCCS})
-
-QT4_WRAP_CPP(libsid_MOC_SRCS ${libsid_MOC_HDRS})
 
 # user interface
 
@@ -69,7 +62,7 @@ QT4_WRAP_UI(libsid_UIS_H ${libsid_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(SIDPLAYFP_FOUND)
-ADD_LIBRARY(sid MODULE ${libsid_SRCS} ${libsid_MOC_SRCS} ${libsid_UIS_H}
+ADD_LIBRARY(sid MODULE ${libsid_SRCS} ${libsid_UIS_H}
   ${libsid_RCC_SRCS} ${libsid_HDRS})
 add_dependencies(sid qmmp)
 target_link_libraries(sid ${QT_LIBRARIES} -lqmmp ${SIDPLAYFP_LDFLAGS})

@@ -1,6 +1,6 @@
 project(libqmmp)
 
-cmake_minimum_required(VERSION 2.4.7)
+cmake_minimum_required(VERSION 2.8.6)
 
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 OLD)
@@ -92,21 +92,6 @@ SET(libqmmp_HDRS
     channelconverter_p.h
 )
 
-SET(libqmmp_MOC_HDRS
-    visual.h
-    outputwriter_p.h
-    soundcore.h
-    statehandler.h
-    volumecontrol_p.h
-    metadatamodel.h
-    qmmpaudioengine_p.h
-    abstractengine.h
-    inputsource.h
-    fileinputsource_p.h
-    emptyinputsource_p.h
-    qmmpsettings.h
-)
-
 SET(libqmmp_DEVEL_HDRS
     abstractengine.h
     audioparameters.h
@@ -135,13 +120,11 @@ SET(libqmmp_DEVEL_HDRS
     channelmap.h
 )
 
-QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
-
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS} ${libqmmp_HDRS})
+ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_HDRS})
 target_link_libraries(libqmmp ${QT_LIBRARIES})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}
