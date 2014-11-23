@@ -49,22 +49,16 @@ SET(libgme_HDRS
   gmehelper.h
 )
 
-SET(libgme_MOC_HDRS
-  decodergmefactory.h 
-)
-
 SET(libgme_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libgme_RCC_SRCS ${libgme_RCCS})
-
-QT4_WRAP_CPP(libgme_MOC_SRCS ${libgme_MOC_HDRS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(GME_FOUND)
-ADD_LIBRARY(gme MODULE ${libgme_SRCS} ${libgme_MOC_SRCS} ${libgme_RCC_SRCS} ${libgme_HDRS})
+ADD_LIBRARY(gme MODULE ${libgme_SRCS} ${libgme_RCC_SRCS} ${libgme_HDRS})
 add_dependencies(gme qmmp)
 target_link_libraries(gme ${QT_LIBRARIES} -lqmmp ${GME_LIB})
 install(TARGETS gme DESTINATION ${LIB_DIR}/qmmp/Input)

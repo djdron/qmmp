@@ -39,21 +39,9 @@ SET(libmpris_SRCS
     mpris2/player2object.cpp
 )
 
-SET(libmpris_MOC_HDRS
-    mprisfactory.h
-    mpris.h
-    mpris1/rootobject.h
-    mpris1/playerobject.h
-    mpris1/tracklistobject.h
-    mpris2/root2object.h
-    mpris2/player2object.h
-)
-
 SET(libmpris_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libmpris_RCC_SRCS ${libmpris_RCCS})
-
-QT4_WRAP_CPP(libmpris_MOC_SRCS ${libmpris_MOC_HDRS})
 
 # user interface
 
@@ -63,7 +51,7 @@ QT4_WRAP_CPP(libmpris_MOC_SRCS ${libmpris_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(mpris MODULE ${libmpris_SRCS} ${libmpris_MOC_SRCS} ${libmpris_RCC_SRCS})
+ADD_LIBRARY(mpris MODULE ${libmpris_SRCS} ${libmpris_RCC_SRCS})
 add_dependencies(mpris qmmpui)
 target_link_libraries(mpris ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS mpris DESTINATION ${LIB_DIR}/qmmp/General)

@@ -50,16 +50,9 @@ SET(libopus_HDRS
   tdebug.h
 )
 
-SET(libopus_MOC_HDRS
-  decoderopusfactory.h
-  opusmetadatamodel.h
-)
-
 SET(libopus_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libopus_RCC_SRCS ${libopus_RCCS})
-
-QT4_WRAP_CPP(libopus_MOC_SRCS ${libopus_MOC_HDRS})
 
 # user interface
 
@@ -69,7 +62,7 @@ QT4_WRAP_UI(libopus_UIS_H ${libopus_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(OPUS_FOUND)
-ADD_LIBRARY(opus MODULE ${libopus_SRCS} ${libopus_MOC_SRCS} ${libopus_RCC_SRCS} ${libopus_HDRS})
+ADD_LIBRARY(opus MODULE ${libopus_SRCS} ${libopus_RCC_SRCS} ${libopus_HDRS})
 add_dependencies(opus qmmp)
 target_link_libraries(opus ${QT_LIBRARIES} -lqmmp ${OPUS_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS opus DESTINATION ${LIB_DIR}/qmmp/Input)

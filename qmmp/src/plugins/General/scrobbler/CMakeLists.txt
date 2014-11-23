@@ -36,13 +36,6 @@ SET(libscrobbler_SRCS
     scrobbler.cpp
 )
 
-SET(libscrobbler_MOC_HDRS
-    settingsdialog.h
-    scrobblerfactory.h
-    scrobblerhandler.h
-    scrobbler.h
-)
-
 SET(libscrobbler_HDRS
     scrobblercache.h
     defines.h
@@ -51,8 +44,6 @@ SET(libscrobbler_HDRS
 SET(libscrobbler_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libscrobbler_RCC_SRCS ${libscrobbler_RCCS})
-
-QT4_WRAP_CPP(libscrobbler_MOC_SRCS ${libscrobbler_MOC_HDRS})
 
 # user interface
 
@@ -66,7 +57,7 @@ QT4_WRAP_UI(libscrobbler_UIS_H ${libscrobbler_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(scrobbler MODULE ${libscrobbler_SRCS} ${libscrobbler_MOC_SRCS} ${libscrobbler_UIS_H}
+ADD_LIBRARY(scrobbler MODULE ${libscrobbler_SRCS} ${libscrobbler_UIS_H}
   ${libscrobbler_RCC_SRCS} ${libscrobbler_HDRS})
 add_dependencies(scrobbler qmmpui)
 target_link_libraries(scrobbler ${QT_LIBRARIES} -lqmmpui -lqmmp)

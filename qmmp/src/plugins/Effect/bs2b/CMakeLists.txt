@@ -35,16 +35,9 @@ SET(libbs2b_HDRS
     bs2bplugin.h
 )
 
-SET(libbs2b_MOC_HDRS
-    settingsdialog.h
-    effectbs2bfactory.h
-)
-
 SET(libbs2b_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
-
-QT4_WRAP_CPP(libbs2b_MOC_SRCS ${libbs2b_MOC_HDRS})
 
 pkg_search_module(BS2B libbs2b>=3.0.0)
 
@@ -64,7 +57,7 @@ QT4_WRAP_UI(libbs2b_UIS_H ${libbs2b_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(BS2B_FOUND)
-ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_MOC_SRCS} ${libbs2b_UIS_H}
+ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_UIS_H}
   ${libbs2b_RCC_SRCS} ${libbs2b_HDRS})
 add_dependencies(bs2b qmmp)
 target_link_libraries(bs2b ${QT_LIBRARIES} -lqmmp ${BS2B_LDFLAGS})

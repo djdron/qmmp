@@ -38,18 +38,10 @@ SET(liblyrics_SRCS
     lyricswindow.cpp
 )
 
-SET(liblyrics_MOC_HDRS
-    lyricsfactory.h
-    lyrics.h
-    lyricswindow.h
-)
-
 SET(liblyrics_RCCS 
     translations/translations.qrc)
 
 QT4_ADD_RESOURCES(liblyrics_RCC_SRCS ${liblyrics_RCCS})
-
-QT4_WRAP_CPP(liblyrics_MOC_SRCS ${liblyrics_MOC_HDRS})
 
 # user interface
 
@@ -62,7 +54,7 @@ QT4_WRAP_UI(liblyrics_UIS_H ${liblyrics_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(lyrics MODULE ${liblyrics_SRCS} ${liblyrics_MOC_SRCS} ${liblyrics_UIS_H} ${liblyrics_RCC_SRCS})
+ADD_LIBRARY(lyrics MODULE ${liblyrics_SRCS} ${liblyrics_UIS_H} ${liblyrics_RCC_SRCS})
 add_dependencies(lyrics qmmpui)
 target_link_libraries(lyrics ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS lyrics DESTINATION ${LIB_DIR}/qmmp/General)

@@ -47,17 +47,9 @@ SET(libffmpeg_HDRS
   decoder_ffmpeg.h
 )
 
-SET(libffmpeg_MOC_HDRS
-  decoderffmpegfactory.h
-  ffmpegmetadatamodel.h
-  settingsdialog.h
-)
-
 SET(libffmpeg_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libffmpeg_RCC_SRCS ${libffmpeg_RCCS})
-
-QT4_WRAP_CPP(libffmpeg_MOC_SRCS ${libffmpeg_MOC_HDRS})
 
 # user interface
 
@@ -72,7 +64,7 @@ QT4_WRAP_UI(libffmpeg_UIS_H ${libffmpeg_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FFMPEG_FOUND)
-ADD_LIBRARY(ffmpeg MODULE ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
+ADD_LIBRARY(ffmpeg MODULE ${libffmpeg_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg qmmp)
 target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS})

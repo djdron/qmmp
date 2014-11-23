@@ -35,20 +35,12 @@ SET(libcovermanager_SRCS
     covermanagerfactory.cpp
 )
 
-SET(libcovermanager_MOC_HDRS
-    coverwidget.h
-    covermanager.h
-    covermanagerfactory.h
-)
-
 SET(libcovermanager_RCCS
     translations/translations.qrc
     images/cm_images.qrc
 )
 
 QT4_ADD_RESOURCES(libcovermanager_RCC_SRCS ${libcovermanager_RCCS})
-
-QT4_WRAP_CPP(libcovermanager_MOC_SRCS ${libcovermanager_MOC_HDRS})
 
 # user interface
 
@@ -61,7 +53,7 @@ QT4_WRAP_UI(libcovermanager_UIS_H ${libcovermanager_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(covermanager MODULE ${libcovermanager_SRCS} ${libcovermanager_MOC_SRCS} ${libcovermanager_UIS_H}
+ADD_LIBRARY(covermanager MODULE ${libcovermanager_SRCS} ${libcovermanager_UIS_H}
   ${libcovermanager_RCC_SRCS})
 add_dependencies(covermanager qmmpui)
 target_link_libraries(covermanager ${QT_LIBRARIES} -lqmmpui -lqmmp)

@@ -40,13 +40,6 @@ SET(libmms_SRCS
     settingsdialog.cpp
 )
 
-SET(libmms_MOC_HDRS
-    mmsinputfactory.h
-    mmsinputsource.h
-    mmsstreamreader.h
-    settingsdialog.h
-)
-
 # resources
 SET(libmms_RCCS translations/translations.qrc)
 QT4_ADD_RESOURCES(libmms_RCC_SRCS ${libmms_RCCS})
@@ -58,14 +51,11 @@ SET(libmms_UIS
 QT4_WRAP_UI(libmms_UIS_H ${libmms_UIS})
 
 
-
-QT4_WRAP_CPP(libmms_MOC_SRCS ${libmms_MOC_HDRS})
-
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(MMS_FOUND)
-ADD_LIBRARY(mms MODULE ${libmms_SRCS} ${libmms_MOC_SRCS} ${libmms_UIS_H} ${libmms_RCC_SRCS})
+ADD_LIBRARY(mms MODULE ${libmms_SRCS} ${libmms_UIS_H} ${libmms_RCC_SRCS})
 target_link_libraries(mms ${QT_LIBRARIES} -lqmmp ${MMS_LDFLAGS})
 add_dependencies(mms qmmp)
 install(TARGETS mms DESTINATION ${LIB_DIR}/qmmp/Transports)

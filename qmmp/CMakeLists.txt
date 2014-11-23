@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6.0)
+cmake_minimum_required(VERSION 2.8.6)
 
 #freebsd support
 include_directories(SYSTEM /usr/local/include)
@@ -36,6 +36,7 @@ SET(QT_MIN_VERSION 4.6.0)
 INCLUDE(FindQt4)
 INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
+SET(CMAKE_AUTOMOC ON)
 
 IF(NOT QT_LRELEASE_EXECUTABLE)
 FIND_PROGRAM(QT_LRELEASE_EXECUTABLE
