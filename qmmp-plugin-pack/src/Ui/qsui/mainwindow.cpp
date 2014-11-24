@@ -237,6 +237,8 @@ void MainWindow::updateTabs()
             m_ui.tabWidget->setTabText(i, "[" + model->name() + "]");
         else
             m_ui.tabWidget->setTabText(i, model->name());
+        //hack for displaying '&'
+        m_ui.tabWidget->setTabText(i, m_ui.tabWidget->tabText(i).replace("&", "&&"));
         if(model == m_pl_manager->selectedPlayList())
         {
             m_ui.tabWidget->setCurrentIndex(i);
