@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=libsidplayfp
-VERSION=1.6.0
+VERSION=1.6.1
 
 case $1 in
   --download)
