@@ -72,11 +72,10 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_pause = false;
     m_prev_pause = false;
     m_useEq = false;
-    m_eqEnabled = false;
     m_muted = false;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
-    updateEqSettings();
+    //updateEqSettings();
 }
 
 OutputWriter::~OutputWriter()
@@ -145,12 +144,8 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
     m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * m_channels; //16-bit samples
     if(m_format != Qmmp::PCM_S16LE)
         m_visBuffer = new unsigned char [m_visBufferSize];
-    m_useEq = m_eqEnabled && m_frequency && m_format == Qmmp::PCM_S16LE;
-    if(m_frequency)
-    {
-        init_iir(m_frequency, m_settings->eqSettings().bands());
-        clean_history();
-    }
+    updateEqSettings();
+    clean_history();
     return true;
 }
 
@@ -400,6 +395,7 @@ void OutputWriter::run()
         mutex()->unlock();
         if (b)
         {
+            mutex()->lock();
             if (m_useEq)
             {
                 switch(m_format)
@@ -417,6 +413,7 @@ void OutputWriter::run()
                     ;
                 }
             }
+            mutex()->unlock();
             dispatchVisual(b);
             if (SoftwareVolume::instance())
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
@@ -489,20 +486,22 @@ void OutputWriter::status()
 void OutputWriter::updateEqSettings()
 {
     mutex()->lock();
-    m_eqEnabled = m_settings->eqSettings().isEnabled();
-    double preamp = m_settings->eqSettings().preamp();
-    int bands =  m_settings->eqSettings().bands();
-
-    init_iir(m_frequency, bands);
-
-    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    for(int i = 0; i < bands; ++i)
+    if(m_settings->eqSettings().isEnabled())
     {
-        double value =  m_settings->eqSettings().gain(i);
-        set_gain(i,0, 0.03*value+0.000999999*value*value);
-        set_gain(i,1, 0.03*value+0.000999999*value*value);
+        double preamp = m_settings->eqSettings().preamp();
+        int bands =  m_settings->eqSettings().bands();
+
+        init_iir(m_frequency, bands);
+
+        set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+        set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+        for(int i = 0; i < bands; ++i)
+        {
+            double value =  m_settings->eqSettings().gain(i);
+            set_gain(i,0, 0.03*value+0.000999999*value*value);
+            set_gain(i,1, 0.03*value+0.000999999*value*value);
+        }
     }
-    m_useEq = isRunning() && m_eqEnabled;
+    m_useEq = m_settings->eqSettings().isEnabled();
     mutex()->unlock();
 }
