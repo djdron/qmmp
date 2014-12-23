@@ -142,7 +142,7 @@ void FileSystemBrowser::setCurrentDirectory(const QString &path)
     if(index.isValid())
     {
         m_listView->setRootIndex(index);
-        m_label->setText(QDir(QDir::cleanPath(path)).dirName());
+        m_label->setText(QDir(QDir::cleanPath(m_model->rootPath())).dirName());
     }
     else
         m_label->clear();
