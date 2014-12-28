@@ -1,5 +1,5 @@
-/***************************************************************************
-*   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+/**************************************************************************
+*   Copyright (C) 2006-2015 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -68,7 +68,7 @@ QString AboutDialog::loadAbout()
     text.append(tr("Using Qt %1 (compiled with Qt %2)" ).arg(qVersion()).arg(QT_VERSION_STR) + "</p>");
 
     text.append("<p>");
-    text.append(tr("(c) %1-%2 Qmmp Development Team").arg(2006).arg(2014)+"<br>");
+    text.append(tr("(c) %1-%2 Qmmp Development Team").arg(2006).arg(2015)+"<br>");
     text.append("<a href=\"http://qmmp.ylsoftware.com/\">http://qmmp.ylsoftware.com/</a><br>");
     text.append("<a href=\"http://code.google.com/p/qmmp/\">http://code.google.com/p/qmmp/</a>");
     text.append("</p>");
