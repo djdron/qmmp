@@ -212,7 +212,7 @@ void PlayListTitleBar::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_font.fromString(settings.value("Skinned/pl_font", QApplication::font().toString()).toString());
-    m_font.setPointSize(8);
+    m_font.setPointSize(6);
 }
 
 void PlayListTitleBar::updateSkin()

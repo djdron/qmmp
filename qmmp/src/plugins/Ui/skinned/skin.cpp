@@ -718,7 +718,7 @@ void Skin::loadVolume()
 
     m_volume.clear();
     for (int i = 0; i < 28; ++i)
-        m_volume.append(pixmap->copy (0,i*15, pixmap->width(),13));
+        m_volume.append(pixmap->copy (0,i*15, qMin(pixmap->width(), 68), 13));
     if (pixmap->height() > 425)
     {
         buttons [BT_VOL_N] = pixmap->copy (15,422,14, pixmap->height() - 422);
