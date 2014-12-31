@@ -142,17 +142,26 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
 
 void PlayListModel::add(const QString &path)
 {
-    m_loader->add(path);
-    loadPlaylist(path);
+    QStringList paths = PlayListParser::loadPlaylist(path);
+    if(paths.isEmpty())
+        m_loader->add(path);
+    else
+        m_loader->add(paths);
 }
 
 void PlayListModel::add(const QStringList &paths)
 {
-    m_loader->add(paths);
-    foreach(QString str, paths)
+    QStringList urls, pl_urls;
+    foreach(QString path, paths)
     {
-        loadPlaylist(str);
+        pl_urls = PlayListParser::loadPlaylist(path); //is it playlist?
+        if(pl_urls.isEmpty())
+            urls.append(path);
+        else
+            urls.append(pl_urls);
+
     }
+    m_loader->add(urls);
 }
 
 void PlayListModel::insert(int index, PlayListTrack *track)
