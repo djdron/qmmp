@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -138,11 +138,11 @@ void FileSystemBrowser::setCurrentDirectory(const QString &path)
     if(path.isEmpty())
         return;
 
-    QModelIndex index = m_model->setRootPath(path);
+    QModelIndex index = m_model->setRootPath(QDir(path).exists() ? path : QDir::homePath());
     if(index.isValid())
     {
         m_listView->setRootIndex(index);
-        m_label->setText(QDir(QDir::cleanPath(m_model->rootPath())).dirName());
+        m_label->setText(QDir(m_model->rootPath()).dirName());
     }
     else
         m_label->clear();
