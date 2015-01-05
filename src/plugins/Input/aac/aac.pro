@@ -1,5 +1,5 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS +=
 HEADERS += decoderaacfactory.h \
     decoder_aac.h \
     aacfile.h \
@@ -21,21 +21,6 @@ LIBS += -lqmmp \
     -L/usr/lib \
     -I/usr/include
 PKGCONFIG += taglib
-TRANSLATIONS = translations/aac_plugin_ru.ts \
-    translations/aac_plugin_uk_UA.ts \
-    translations/aac_plugin_zh_CN.ts \
-    translations/aac_plugin_zh_TW.ts \
-    translations/aac_plugin_cs.ts \
-    translations/aac_plugin_pl.ts \
-    translations/aac_plugin_de.ts \
-    translations/aac_plugin_it.ts \
-    translations/aac_plugin_tr.ts \
-    translations/aac_plugin_lt.ts \
-    translations/aac_plugin_nl.ts \
-    translations/aac_plugin_ja.ts \
-    translations/aac_plugin_es.ts \
-    translations/aac_plugin_sr_BA.ts \
-    translations/aac_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib

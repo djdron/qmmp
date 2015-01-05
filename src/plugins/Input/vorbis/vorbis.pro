@@ -1,5 +1,5 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS +=
 HEADERS += decodervorbisfactory.h \
     decoder_vorbis.h \
     vorbismetadatamodel.h \
@@ -16,23 +16,6 @@ CONFIG += warn_on \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-
-
-TRANSLATIONS = translations/vorbis_plugin_ru.ts \
-    translations/vorbis_plugin_uk_UA.ts \
-    translations/vorbis_plugin_zh_CN.ts \
-    translations/vorbis_plugin_zh_TW.ts \
-    translations/vorbis_plugin_cs.ts \
-    translations/vorbis_plugin_pl.ts \
-    translations/vorbis_plugin_de.ts \
-    translations/vorbis_plugin_it.ts \
-    translations/vorbis_plugin_tr.ts \
-    translations/vorbis_plugin_lt.ts \
-    translations/vorbis_plugin_nl.ts \
-    translations/vorbis_plugin_ja.ts \
-    translations/vorbis_plugin_es.ts \
-    translations/vorbis_plugin_sr_BA.ts \
-    translations/vorbis_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

@@ -16,26 +16,11 @@ QMAKE_LIBDIR += ../../../../bin
 
 CONFIG += warn_on \
 thread \
-plugin 
+plugin
 
 TEMPLATE = lib
 LIBS += -lqmmp0 -lwinmm
 
-TRANSLATIONS = translations/waveout_plugin_cs.ts \
-               translations/waveout_plugin_de.ts \
-               translations/waveout_plugin_zh_CN.ts \
-               translations/waveout_plugin_zh_TW.ts \
-               translations/waveout_plugin_ru.ts \
-               translations/waveout_plugin_pl.ts \
-               translations/waveout_plugin_uk_UA.ts \
-               translations/waveout_plugin_it.ts \
-               translations/waveout_plugin_tr.ts \
-               translations/waveout_plugin_lt.ts \
-               translations/waveout_plugin_nl.ts \
-               translations/waveout_plugin_ja.ts \
-               translations/waveout_plugin_es.ts \
-               translations/waveout_plugin_sr_BA.ts \
-               translations/waveout_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

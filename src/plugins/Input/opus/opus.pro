@@ -23,23 +23,6 @@ CONFIG += warn_on \
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-
-TRANSLATIONS = translations/opus_plugin_ru.ts \
-    translations/opus_plugin_uk_UA.ts \
-    translations/opus_plugin_zh_CN.ts \
-    translations/opus_plugin_zh_TW.ts \
-    translations/opus_plugin_cs.ts \
-    translations/opus_plugin_pl.ts \
-    translations/opus_plugin_de.ts \
-    translations/opus_plugin_it.ts \
-    translations/opus_plugin_tr.ts \
-    translations/opus_plugin_lt.ts \
-    translations/opus_plugin_nl.ts \
-    translations/opus_plugin_ja.ts \
-    translations/opus_plugin_es.ts \
-    translations/opus_plugin_sr_BA.ts \
-    translations/opus_plugin_sr_RS.ts
-
 RESOURCES = translations/translations.qrc
 
 

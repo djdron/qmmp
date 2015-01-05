@@ -21,26 +21,8 @@ CONFIG += warn_on \
     link_pkgconfig
 TEMPLATE = lib
 
-
-TRANSLATIONS = translations/mad_plugin_ru.ts \
-    translations/mad_plugin_uk_UA.ts \
-    translations/mad_plugin_zh_CN.ts \
-    translations/mad_plugin_zh_TW.ts \
-    translations/mad_plugin_cs.ts \
-    translations/mad_plugin_pl.ts \
-    translations/mad_plugin_de.ts \
-    translations/mad_plugin_it.ts \
-    translations/mad_plugin_tr.ts \
-    translations/mad_plugin_tr.ts \
-    translations/mad_plugin_lt.ts \
-    translations/mad_plugin_nl.ts \
-    translations/mad_plugin_ja.ts \
-    translations/mad_plugin_es.ts \
-    translations/mad_plugin_sr_BA.ts \
-    translations/mad_plugin_sr_RS.ts
-
 RESOURCES = translations/translations.qrc
-unix { 
+unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Input
     INSTALLS += target

@@ -1,5 +1,5 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS +=
 HEADERS += decodermpcfactory.h \
     decoder_mpc.h \
     mpcmetadatamodel.h
@@ -14,22 +14,6 @@ CONFIG += warn_on \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-
-TRANSLATIONS = translations/mpc_plugin_ru.ts \
-    translations/mpc_plugin_uk_UA.ts \
-    translations/mpc_plugin_zh_CN.ts \
-    translations/mpc_plugin_zh_TW.ts \
-    translations/mpc_plugin_cs.ts \
-    translations/mpc_plugin_pl.ts \
-    translations/mpc_plugin_de.ts \
-    translations/mpc_plugin_it.ts \
-    translations/mpc_plugin_tr.ts \
-    translations/mpc_plugin_lt.ts \
-    translations/mpc_plugin_nl.ts \
-    translations/mpc_plugin_ja.ts \
-    translations/mpc_plugin_es.ts \
-    translations/mpc_plugin_sr_BA.ts \
-    translations/mpc_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 unix {

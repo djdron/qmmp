@@ -61,23 +61,3 @@ unix {
         icon_svg
 }
 RESOURCES += translations/qmmp_locales.qrc
-TRANSLATIONS = translations/qmmp_ru.ts \
-    translations/qmmp_tr.ts \
-    translations/qmmp_zh_CN.ts \
-    translations/qmmp_cs.ts \
-    translations/qmmp_pt_BR.ts \
-    translations/qmmp_uk_UA.ts \
-    translations/qmmp_zh_TW.ts \
-    translations/qmmp_de.ts \
-    translations/qmmp_pl_PL.ts \
-    translations/qmmp_it.ts \
-    translations/qmmp_lt.ts \
-    translations/qmmp_hu.ts \
-    translations/qmmp_nl.ts \
-    translations/qmmp_ja.ts \
-    translations/qmmp_es.ts \
-    translations/qmmp_sk.ts \
-    translations/qmmp_sr_BA.ts \
-    translations/qmmp_sr_RS.ts
-
-
