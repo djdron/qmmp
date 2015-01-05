@@ -15,24 +15,36 @@ export JOBS=2
 
 
 
-download_tarball()
+download_qmmp_tarball()
 {
   mkdir -p tmp
   cd tmp
   echo 'downloading qmmp...'
   wget -nc http://qmmp.ylsoftware.com/files/qmmp-${QMMP_VERSION}.tar.bz2
+  tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
+}
+
+download_plugins_tarball()
+{
+  mkdir -p tmp
+  cd tmp
   echo 'downloading qmmp-plugin-pack...'
   wget -nc http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
-  tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
   tar xvjf qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
 }
 
-download_svn()
+download_qmmp_svn()
 {
   mkdir -p tmp
   cd tmp
   echo 'downloading qmmp...'
   svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp qmmp-${QMMP_VERSION}
+}
+
+download_plugins_svn()
+{
+  mkdir -p tmp
+  cd tmp
   echo 'downloading qmmp-plugin-pack...'
   svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp-plugin-pack qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
 }
@@ -120,8 +132,10 @@ create_distr ()
 
 case $1 in
   --download)
-    download_tarball
-    #download_svn
+    download_qmmp_tarball
+    download_plugins_tarball
+    #download_qmmp_svn
+    #download_plugins_svn
   ;;
   --install)
     cd tmp
