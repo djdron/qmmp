@@ -10,21 +10,6 @@ QMAKE_CLEAN = $$PLUGINS_PREFIX/CommandLineOptions/libseekoption.so
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-TRANSLATIONS = translations/seek_plugin_cs.ts \
-               translations/seek_plugin_de.ts \
-               translations/seek_plugin_pl.ts \
-               translations/seek_plugin_ru.ts \
-               translations/seek_plugin_uk_UA.ts \
-               translations/seek_plugin_zh_TW.ts \
-               translations/seek_plugin_zh_CN.ts \
-               translations/seek_plugin_it.ts \
-               translations/seek_plugin_tr.ts \
-               translations/seek_plugin_lt.ts \
-               translations/seek_plugin_nl.ts \
-               translations/seek_plugin_ja.ts \
-               translations/seek_plugin_es.ts \
-               translations/seek_plugin_sr_BA.ts \
-               translations/seek_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

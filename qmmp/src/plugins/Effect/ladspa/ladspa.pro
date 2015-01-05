@@ -26,22 +26,6 @@ LIBS += -lqmmp \
 
 linux-g++|linux-g++-32|linux-g++-64:LIBS += -ldl
 
-TRANSLATIONS = translations/ladspa_plugin_cs.ts \
-    translations/ladspa_plugin_de.ts \
-    translations/ladspa_plugin_zh_CN.ts \
-    translations/ladspa_plugin_zh_TW.ts \
-    translations/ladspa_plugin_uk_UA.ts \
-    translations/ladspa_plugin_pl.ts \
-    translations/ladspa_plugin_ru.ts \
-    translations/ladspa_plugin_it.ts \
-    translations/ladspa_plugin_tr.ts \
-    translations/ladspa_plugin_lt.ts \
-    translations/ladspa_plugin_nl.ts \
-    translations/ladspa_plugin_ja.ts \
-    translations/ladspa_plugin_es.ts \
-    translations/ladspa_plugin_sr_BA.ts \
-    translations/ladspa_plugin_sr_RS.ts
-
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Effect

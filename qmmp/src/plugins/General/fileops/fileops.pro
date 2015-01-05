@@ -2,7 +2,7 @@ include(../../plugins.pri)
 
 INCLUDEPATH += ../../../../src
 CONFIG += warn_on \
-plugin 
+plugin
 
 TARGET =$$PLUGINS_PREFIX/General/fileops
 unix : QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libfileops.so
@@ -15,21 +15,6 @@ unix : LIBS += -lqmmpui -lqmmp
 win32 : QMAKE_LIBDIR += ../../../../bin
 win32 : LIBS += -lqmmpui0 -lqmmp0
 
-TRANSLATIONS = translations/fileops_plugin_cs.ts \
-               translations/fileops_plugin_de.ts \
-               translations/fileops_plugin_zh_CN.ts \
-               translations/fileops_plugin_zh_TW.ts \
-               translations/fileops_plugin_ru.ts \
-               translations/fileops_plugin_pl.ts \
-               translations/fileops_plugin_uk_UA.ts \
-               translations/fileops_plugin_it.ts \
-               translations/fileops_plugin_tr.ts \
-               translations/fileops_plugin_lt.ts \
-               translations/fileops_plugin_nl.ts \
-               translations/fileops_plugin_ja.ts \
-               translations/fileops_plugin_es.ts \
-               translations/fileops_plugin_sr_BA.ts \
-               translations/fileops_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR){

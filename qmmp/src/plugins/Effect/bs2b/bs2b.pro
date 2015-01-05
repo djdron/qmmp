@@ -15,26 +15,9 @@ CONFIG += warn_on \
 plugin \
 link_pkgconfig
 
-
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-
-TRANSLATIONS = translations/bs2b_plugin_cs.ts \
-               translations/bs2b_plugin_de.ts \
-               translations/bs2b_plugin_zh_CN.ts \
-               translations/bs2b_plugin_zh_TW.ts \
-               translations/bs2b_plugin_uk_UA.ts \
-               translations/bs2b_plugin_pl.ts \
-               translations/bs2b_plugin_ru.ts \
-               translations/bs2b_plugin_it.ts \
-               translations/bs2b_plugin_tr.ts \
-               translations/bs2b_plugin_lt.ts \
-               translations/bs2b_plugin_nl.ts \
-               translations/bs2b_plugin_ja.ts \
-               translations/bs2b_plugin_es.ts \
-               translations/bs2b_plugin_sr_BA.ts \
-               translations/bs2b_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

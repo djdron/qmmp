@@ -1,5 +1,5 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS +=
 HEADERS += decoderflacfactory.h \
     decoder_flac.h \
     cueparser.h \
@@ -18,23 +18,6 @@ CONFIG += warn_on \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-
-
-TRANSLATIONS = translations/flac_plugin_ru.ts \
-    translations/flac_plugin_uk_UA.ts \
-    translations/flac_plugin_zh_CN.ts \
-    translations/flac_plugin_zh_TW.ts \
-    translations/flac_plugin_cs.ts \
-    translations/flac_plugin_pl.ts \
-    translations/flac_plugin_de.ts \
-    translations/flac_plugin_it.ts \
-    translations/flac_plugin_tr.ts \
-    translations/flac_plugin_lt.ts \
-    translations/flac_plugin_nl.ts \
-    translations/flac_plugin_ja.ts \
-    translations/flac_plugin_es.ts \
-    translations/flac_plugin_sr_BA.ts \
-    translations/flac_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

@@ -16,23 +16,6 @@ TEMPLATE = lib
 
 TARGET =$$PLUGINS_PREFIX/Input/cdaudio
 
-
-TRANSLATIONS = translations/cdaudio_plugin_ru.ts \
-               translations/cdaudio_plugin_uk_UA.ts \
-               translations/cdaudio_plugin_zh_CN.ts \
-               translations/cdaudio_plugin_zh_TW.ts \
-               translations/cdaudio_plugin_cs.ts \
-               translations/cdaudio_plugin_pl.ts \
-               translations/cdaudio_plugin_de.ts \
-               translations/cdaudio_plugin_it.ts \
-               translations/cdaudio_plugin_tr.ts \
-               translations/cdaudio_plugin_lt.ts \
-               translations/cdaudio_plugin_nl.ts \
-               translations/cdaudio_plugin_ja.ts \
-               translations/cdaudio_plugin_es.ts \
-               translations/cdaudio_plugin_sr_BA.ts \
-               translations/cdaudio_plugin_sr_RS.ts
- 
 RESOURCES = translations/translations.qrc
 
 

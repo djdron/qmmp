@@ -40,21 +40,5 @@ win32 {
 
 DEFINES += __STDC_CONSTANT_MACROS
 
-TRANSLATIONS = translations/ffmpeg_plugin_legacy_ru.ts \
-    translations/ffmpeg_plugin_legacy_uk_UA.ts \
-    translations/ffmpeg_plugin_legacy_zh_CN.ts \
-    translations/ffmpeg_plugin_legacy_zh_TW.ts \
-    translations/ffmpeg_plugin_legacy_cs.ts \
-    translations/ffmpeg_plugin_legacy_pl.ts \
-    translations/ffmpeg_plugin_legacy_de.ts \
-    translations/ffmpeg_plugin_legacy_it.ts \
-    translations/ffmpeg_plugin_legacy_tr.ts \
-    translations/ffmpeg_plugin_legacy_lt.ts \
-    translations/ffmpeg_plugin_legacy_nl.ts \
-    translations/ffmpeg_plugin_legacy_ja.ts \
-    translations/ffmpeg_plugin_legacy_es.ts \
-    translations/ffmpeg_plugin_legacy_sr_BA.ts \
-    translations/ffmpeg_plugin_legacy_sr_RS.ts
-
 RESOURCES = translations/translations.qrc
 

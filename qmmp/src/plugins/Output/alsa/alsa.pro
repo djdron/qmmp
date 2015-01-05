@@ -23,21 +23,6 @@ LIBS += -lqmmp
 PKGCONFIG += alsa
 
 FORMS += settingsdialog.ui
-TRANSLATIONS = translations/alsa_plugin_ru.ts \
-               translations/alsa_plugin_uk_UA.ts \
-               translations/alsa_plugin_zh_CN.ts \
-               translations/alsa_plugin_zh_TW.ts \
-               translations/alsa_plugin_cs.ts \
-               translations/alsa_plugin_pl.ts \
-               translations/alsa_plugin_de.ts \
-               translations/alsa_plugin_it.ts \
-               translations/alsa_plugin_tr.ts \
-               translations/alsa_plugin_lt.ts \
-               translations/alsa_plugin_nl.ts \
-               translations/alsa_plugin_ja.ts \
-               translations/alsa_plugin_es.ts \
-               translations/alsa_plugin_sr_BA.ts \
-               translations/alsa_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

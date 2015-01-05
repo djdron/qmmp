@@ -1,5 +1,5 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS +=
 HEADERS += decoderwavpackfactory.h \
     decoder_wavpack.h \
     cueparser.h \
@@ -18,23 +18,6 @@ CONFIG += warn_on \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-
-
-TRANSLATIONS = translations/wavpack_plugin_cs.ts \
-    translations/wavpack_plugin_de.ts \
-    translations/wavpack_plugin_zh_CN.ts \
-    translations/wavpack_plugin_zh_TW.ts \
-    translations/wavpack_plugin_ru.ts \
-    translations/wavpack_plugin_pl.ts \
-    translations/wavpack_plugin_uk_UA.ts \
-    translations/wavpack_plugin_it.ts \
-    translations/wavpack_plugin_tr.ts \
-    translations/wavpack_plugin_lt.ts \
-    translations/wavpack_plugin_nl.ts \
-    translations/wavpack_plugin_ja.ts \
-    translations/wavpack_plugin_es.ts \
-    translations/wavpack_plugin_sr_BA.ts \
-    translations/wavpack_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 

@@ -17,22 +17,6 @@ plugin
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-
-TRANSLATIONS = translations/crossfade_plugin_cs.ts \
-               translations/crossfade_plugin_de.ts \
-               translations/crossfade_plugin_zh_CN.ts \
-               translations/crossfade_plugin_zh_TW.ts \
-               translations/crossfade_plugin_uk_UA.ts \
-               translations/crossfade_plugin_pl.ts \
-               translations/crossfade_plugin_ru.ts \
-               translations/crossfade_plugin_it.ts \
-               translations/crossfade_plugin_tr.ts \
-               translations/crossfade_plugin_lt.ts \
-               translations/crossfade_plugin_nl.ts \
-               translations/crossfade_plugin_ja.ts \
-               translations/crossfade_plugin_es.ts \
-               translations/crossfade_plugin_sr_BA.ts \
-               translations/crossfade_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

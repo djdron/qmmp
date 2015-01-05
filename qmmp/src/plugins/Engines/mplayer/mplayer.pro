@@ -16,21 +16,7 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp \
     -L/usr/lib
-TRANSLATIONS = translations/mplayer_plugin_ru.ts \
-    translations/mplayer_plugin_uk_UA.ts \
-    translations/mplayer_plugin_zh_CN.ts \
-    translations/mplayer_plugin_zh_TW.ts \
-    translations/mplayer_plugin_cs.ts \
-    translations/mplayer_plugin_pl.ts \
-    translations/mplayer_plugin_de.ts \
-    translations/mplayer_plugin_it.ts \
-    translations/mplayer_plugin_tr.ts \
-    translations/mplayer_plugin_lt.ts \
-    translations/mplayer_plugin_nl.ts \
-    translations/mplayer_plugin_ja.ts \
-    translations/mplayer_plugin_es.ts \
-    translations/mplayer_plugin_sr_BA.ts \
-    translations/mplayer_plugin_sr_RS.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Engines

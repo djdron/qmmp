@@ -36,24 +36,8 @@ contains(CONFIG, WITH_ENCA){
 
 }
 
-TRANSLATIONS = translations/cue_plugin_ru.ts \
-    translations/cue_plugin_uk_UA.ts \
-    translations/cue_plugin_zh_CN.ts \
-    translations/cue_plugin_zh_TW.ts \
-    translations/cue_plugin_cs.ts \
-    translations/cue_plugin_pl.ts \
-    translations/cue_plugin_de.ts \
-    translations/cue_plugin_it.ts \
-    translations/cue_plugin_tr.ts \
-    translations/cue_plugin_lt.ts \
-    translations/cue_plugin_nl.ts \
-    translations/cue_plugin_ja.ts \
-    translations/cue_plugin_es.ts \
-    translations/cue_plugin_sr_BA.ts \
-    translations/cue_plugin_sr_RS.ts
-  
 RESOURCES = translations/translations.qrc
-unix { 
+unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Input
     desktop.files = qmmp_cue.desktop
