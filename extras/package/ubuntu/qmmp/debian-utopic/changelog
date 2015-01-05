@@ -1,3 +1,9 @@
+qmmp (0.8.3-1ubuntu1~utopic0) utopic; urgency=medium
+
+  * New upstream release.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Mon, 05 Jan 2015 13:07:18 +0300
+
 qmmp (0.8.2-1ubuntu1~utopic0) utopic; urgency=medium
 
   * New upstream release.
