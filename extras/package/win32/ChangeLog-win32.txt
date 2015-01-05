@@ -45,7 +45,8 @@ LEGEND
 [!] uninstall information (thanks to Dmitry Kramarchuk)
 
 0.8.3
-[*] qmmp-0.8.2
-[*] ffmpeg-2.2.10
-[*] libsidplayfp-1.6.1
+[*] qmmp-0.8.3
+[*] qmmp-plugin-pack-0.8.3
+[*] ffmpeg-2.2.11
+[*] libsidplayfp-1.6.2
 [*] flac-1.3.1
