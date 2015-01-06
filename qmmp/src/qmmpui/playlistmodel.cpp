@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2014 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2015 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -719,8 +719,10 @@ QList<PlayListItem *> PlayListModel::items() const
 void PlayListModel::addToQueue()
 {
     QList<PlayListTrack*> selected_tracks = selectedTracks();
+    blockSignals(true);
     foreach(PlayListTrack* track, selected_tracks)
         setQueued(track);
+    blockSignals(false);
     emit listChanged();
 }
 
