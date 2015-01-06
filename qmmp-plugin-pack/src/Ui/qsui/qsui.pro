@@ -74,26 +74,6 @@ FORMS += forms/mainwindow.ui \
     forms/toolbareditor.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
-TRANSLATIONS = translations/qsui_plugin_ru.ts \
-    translations/qsui_plugin_tr.ts \
-    translations/qsui_plugin_zh_CN.ts \
-    translations/qsui_plugin_cs.ts \
-    translations/qsui_plugin_pt_BR.ts \
-    translations/qsui_plugin_uk_UA.ts \
-    translations/qsui_plugin_zh_TW.ts \
-    translations/qsui_plugin_de.ts \
-    translations/qsui_plugin_pl_PL.ts \
-    translations/qsui_plugin_it.ts \
-    translations/qsui_plugin_lt.ts \
-    translations/qsui_plugin_hu.ts \
-    translations/qsui_plugin_nl.ts \
-    translations/qsui_plugin_ja.ts \
-    translations/qsui_plugin_es.ts \
-    translations/qsui_plugin_sr_BA.ts \
-    translations/qsui_plugin_sr_RS.ts \
-    translations/qsui_plugin_sk.ts
-
-
 contains(CONFIG, SVN_VERSION){
     DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION-dev\\\"
 }
@@ -111,8 +91,6 @@ unix {
 }
 
 win32 {
-    #HEADERS += ../../../../src/qmmp/metadatamodel.h \
-    #           ../../../../src/qmmp/decoderfactory.h
     INCLUDEPATH += ../../ ./
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lqmmpui0

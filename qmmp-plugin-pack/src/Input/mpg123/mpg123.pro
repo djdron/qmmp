@@ -23,23 +23,6 @@ TEMPLATE = lib
 
 unix:PKGCONFIG += taglib libmpg123 qmmp
 
-TRANSLATIONS = translations/mpg123_plugin_ru.ts \
-    translations/mpg123_plugin_uk_UA.ts \
-    translations/mpg123_plugin_zh_CN.ts \
-    translations/mpg123_plugin_zh_TW.ts \
-    translations/mpg123_plugin_cs.ts \
-    translations/mpg123_plugin_pl.ts \
-    translations/mpg123_plugin_de.ts \
-    translations/mpg123_plugin_it.ts \
-    translations/mpg123_plugin_tr.ts \
-    translations/mpg123_plugin_tr.ts \
-    translations/mpg123_plugin_lt.ts \
-    translations/mpg123_plugin_nl.ts \
-    translations/mpg123_plugin_ja.ts \
-    translations/mpg123_plugin_sr_BA.ts \
-    translations/mpg123_plugin_sr_RS.ts \
-    translations/mpg123_plugin_es.ts
-
 RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib

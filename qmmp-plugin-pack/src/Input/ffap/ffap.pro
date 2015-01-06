@@ -52,23 +52,6 @@ TEMPLATE = lib
 
 unix:PKGCONFIG += qmmp taglib
 
-TRANSLATIONS = translations/ffap_plugin_ru.ts \
-    translations/ffap_plugin_uk_UA.ts \
-    translations/ffap_plugin_zh_CN.ts \
-    translations/ffap_plugin_zh_TW.ts \
-    translations/ffap_plugin_cs.ts \
-    translations/ffap_plugin_pl.ts \
-    translations/ffap_plugin_de.ts \
-    translations/ffap_plugin_it.ts \
-    translations/ffap_plugin_tr.ts \
-    translations/ffap_plugin_tr.ts \
-    translations/ffap_plugin_lt.ts \
-    translations/ffap_plugin_nl.ts \
-    translations/ffap_plugin_ja.ts \
-    translations/ffap_plugin_sr_BA.ts \
-    translations/ffap_plugin_sr_RS.ts \
-    translations/ffap_plugin_es.ts
-
 RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
