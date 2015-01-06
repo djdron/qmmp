@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -333,21 +333,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
         if ((Qt::ShiftModifier & e->modifiers()))
         {
-            bool select = true;
-            if (m_pressed_index > m_anchor_index)
-            {
-                for (int j = m_anchor_index;j <= m_pressed_index;j++)
-                {
-                    m_model->setSelected(j, select);
-                }
-            }
-            else
-            {
-                for (int j = m_anchor_index;j >= m_pressed_index;j--)
-                {
-                    m_model->setSelected(j, select);
-                }
-            }
+            m_model->setSelected(m_pressed_index, m_anchor_index, true);
             m_anchor_index = m_pressed_index;
         }
         else //ShiftModifier released
