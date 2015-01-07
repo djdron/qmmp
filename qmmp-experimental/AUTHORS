@@ -1,0 +1,147 @@
+Core Developers:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
+
+Plugin Developers:
+
+    Artur Guzik <aguzik88@gmail.com> (kde4 notification plugin, tray icon improvements)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack and oss plugins)
+
+Artwork:
+
+    Andrey Adreev <andreev00@gmail.com>
+
+Translators:
+
+    Brazilian Portuguese - Klaos Lacerda, Bruno Gonçalves
+    Chinese Traditional - lon <lon83129@126.com>
+    Chinese Simplified - lon <lon83129@126.com>
+    Czech - Karel Volný <kvolny@redhat.com>
+    Dutch - Ronald Uitermark <ronald645@gmail.com>
+    French - Stanislas Zeller <uncensored.assault@gmail.com>
+    Galician - Óscar Pereira <oscarpereira1989@gmail.com>
+    German - Stefan Koelling <stefankoelling.ext@googlemail.com>
+    German - Panagiotis Papadopoulos <pano_90@gmx.net>
+    Hebrew - Genghis Khan <genghiskhan@gmx.ca>
+    Hungarian - Németh Gábor <sutee84@freemail.hu>
+    Italian - Gian Paolo Renello <emmerkar@gmail.com>
+    Japanese - Ryota Shimamoto <liangtai.s16@gmail.com>
+    Kazakh - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+    Lithuanian - Algirdas Butkus <butkus.algirdas@gmail.com>
+    Polish - Grzegorz Gibas <amigib@gmail.com>
+    Portuguese - Sérgio Marques <smarquespt@gmail.com>
+    Russian - Ilya Kotov <for_kotov@hotmail.ru>
+    Serbian - Mladen Pejaković <pejakm@autistici.org>
+    Slovak - Ján Ďanovský <dagsoftware@yahoo.co>
+    Spanish - Félix Medrano Sanz <xukosky@yahoo.es>
+    Turkish - Mustafa GUNAY <mustafagunay@pgmail.com>
+    Turkish - Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Ukrainian - Gennadi Motsyo <drool@altlinux.ru>
+
+Thanks to:
+
+    Adria Arrufat <swiftscythe@gmail.com> - bug reports
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack plugin fixes, bug reports
+    Anton Petrusevich <casus@casus.us> - random playback improvements
+    Avihay Baratz <avihayb@gmail.com> - auto stop feature, bug fixes
+    Brice Videau <brice.videau@gmail.com> - bug fixes
+    Cristian Rodríguez <judas.iscariote@gmail.com> - scrobbler fixes
+    Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg plugin fixes
+    Dmitry Kostin <kostindima@gmail.com> - iso.wv support
+    Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
+    Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
+    Gennadi Motsyo <drool@altlinux.ru> - bug reports
+    Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
+    Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
+    Funda Wang <fundawang@gmail.com> - cmake files fixes
+    Makis Kalofolias <makskafl@gmail.com> - EAC3, DTS, and Dolby TrueHD support
+    Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg plugin fixes
+    Michał Grosicki <grosik88@o2.pl> - alsa plugin fixes
+    Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports
+    Pino Toscano <toscano.pino@tiscali.it> - portability patches
+    Karel Volný <kvolny@redhat.com> - various fixes
+    Ryota Shimamoto <liangtai.s16@gmail.com> - freebsd patches
+    Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
+    Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches
+
+
+Based on:
+
+madplay - MPEG audio decoder and player (c) 2000-2004
+
+    Robert Leslie <rob@mars.org>
+
+Mq3 - simple mp3 player using Qt (c) 2000
+
+    Brad Hughes <bhughes@trolltech.com>
+
+Promoe - XMMS2 Client (c) 2005-2006
+
+    Tobias Bengtsson <tobbe@tobbe.nu>
+    Chris Gilbert <neovanglist@neovanglist.net>
+    Jonne Lehtinen <jonne.lehtinen@tut.fi>
+    Tobias Rundström <tru@xmms.org>
+    Daniel Svensson <daniel@nittionio.nu>
+
+EQ - A graphical equalizer plugin for XMMS (C) 2002-2006
+
+    Felipe Rivera <liebremx at users.sourceforge.net>
+
+Iterative implementation of a FFT (C) 1999
+
+    Richard Boulton <richard@tartarus.org>
+
+MOC - console audio player for Linux/UNIX (C) 2005
+
+    Damian Pietras <daper@daper.net>
+
+libxmms-flac - XMMS FLAC input plugin (C) 2004-2007
+
+    Josh Coalson
+
+Solid - KDE hardware library (C) 2006
+
+    Kevin Ottens <ervin@kde.org>
+    Davide Bettio <davide.bettio@kdemail.net>
+    Will Stephenosn <wstephenson@kde.org>
+    Michaël Larouche <michael.larouche@kdemail.net>
+    Jeff Mitchell <kde-dev@emailgoeshere.com>
+
+Psi - instant messaging application (C) 2003-2007
+
+    Justin Karneges <justin@affinix.com>
+    Kevin Smith <kismith@psi-im.org>
+    Remko Tronçon URL:http://el-tramo.be
+    Michail Pishchagin <mblsha@psi-im.org>
+    Maciej Niedzielski <machekku@psi-im.org>
+    Martin Hostettler <martin@psi-im.org>
+
+aacDECdrop - windows decoder/player with drag'n'drop functionality (C) 2002
+
+    John Edwards
+
+BMP-ladspa - LADSPA Host for BMP (c) 2002-2003
+
+    Nick Lamb <njl195@zepler.org.uk>
+    Giacomo Lozito <city_hunter@users.sf.net>
+
+Licq - an instant messaging client for UNIX (C) 2006-2009
+
+    Licq developers
+
+TagLib - audio meta-data library (C) 2002-2012
+
+    Lukáš Lalinský <wheeler@kde.org>
+    Scott Wheeler <wheeler@kde.org>
+
+ReplayGainAnalysis (from MP3Gain) - analyzes input samples and give the recommended dB change (C) 2001-2009
+
+    David Robinson <David@Robinson.org>
+    Glen Sawyer <mp3gain@hotmail.com>
+    Frank Klemm
+
+SMPlayer - GUI front-end for mplayer
+
+    Ricardo Villalba <rvm@users.sourceforge.net>
