@@ -204,7 +204,7 @@ void PlayListTitleBar::setModel(PlayListModel *selected, PlayListModel *previous
     if(previous)
         disconnect(previous, 0, this, 0); //disconnect previous model
     m_model = selected;
-    connect (m_model, SIGNAL(listChanged()), SLOT(showCurrent()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(showCurrent()));
     showCurrent();
 }
 

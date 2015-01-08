@@ -502,7 +502,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     recenterCurrent();
     updateList();
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList()));
 }
 
 void ListWidget::scroll(int sc)
