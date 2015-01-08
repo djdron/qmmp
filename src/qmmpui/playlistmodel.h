@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -305,15 +305,25 @@ public:
 
     PlayListTrack *findTrack(int number) const;
 
+
+    enum UpdateFlags
+    {
+        STRUCTURE = 0x01, //added/removed/moved
+        SELECTION = 0x02,
+        QUEUE = 0x04,
+        CURRENT = 0x08,
+        STOP_AFTER = 0x10
+    };
+
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
      */
-    void listChanged();
+    void listChanged(int flags);
     /*!
      * Emitted when current item has changed.
      */
-    void currentChanged();
+    //void currentChanged();
     /*!
      * Emitted when new track has added.
      * @param track Pointer of the new playlist track.
@@ -331,7 +341,7 @@ signals:
     /*!
      * Emitted when playlist items are added or removed.
      */
-    void countChanged();
+    //void countChanged();
 
 public slots:
     /*!
