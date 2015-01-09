@@ -2,4 +2,4 @@ include(../../qmmp-plugin-pack.pri)
 
 TEMPLATE = subdirs
 
-contains(CONFIG, SIMPLE_UI_PLUGIN):SUBDIRS += qsui
+#contains(CONFIG, SIMPLE_UI_PLUGIN):SUBDIRS += qsui
