@@ -78,7 +78,7 @@ public:
     PlayListModel *model();
 
 public slots:
-    void updateList();
+    void updateList(int flags);
     void scroll(int); //0-99
     void recenterCurrent();
     void setModel(PlayListModel *selected, PlayListModel *previous = 0);
@@ -106,6 +106,7 @@ protected:
 private slots:
     void updateSkin();
     void autoscroll();
+    void updateRepeatIndicator();
 
 private:
     void loadColors();

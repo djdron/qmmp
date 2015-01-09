@@ -54,7 +54,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_anchor_index = INVALID_INDEX;
     m_pressed_index = INVALID_INDEX;
     m_ui_settings = QmmpUiSettings::instance();
-    connect (m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateList()));
+    connect (m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     m_first = 0;
     m_row_count = 0;
     m_scroll = false;
@@ -98,7 +98,7 @@ void ListWidget::readSettings()
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
         m_row_count = height() / (m_metrics->lineSpacing() + 2);
-        updateList();
+        updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
             m_popupWidget->deleteLater();
@@ -358,7 +358,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_row_count = e->size().height() / (m_metrics->lineSpacing() + 2);
     m_scroll = true;
-    updateList();
+    updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
 
@@ -377,7 +377,7 @@ void ListWidget::wheelEvent (QWheelEvent *e)
         m_first = m_model->count() - m_row_count;
 
     m_scroll = false;
-    updateList();
+    updateList(PlayListModel::STRUCTURE);
 }
 
 bool ListWidget::event (QEvent *e)
@@ -403,51 +403,58 @@ bool ListWidget::event (QEvent *e)
     return QWidget::event(e);
 }
 
-void ListWidget::updateList()
+void ListWidget::updateList(int flags)
 {
-    if (m_model->count() < (m_row_count+m_first+1) && m_row_count< m_model->count())
-    {
-        m_first = m_model->count() - m_row_count;
-    }
-    if (m_model->count() < m_row_count + 1)
-    {
-        m_first = 0;
-        emit positionChanged(0,0);
-    }
-    else
-        emit positionChanged(m_first, m_model->count() - m_row_count);
-    if (m_model->count() <= m_first)
-    {
-        m_first = 0;
-        emit positionChanged(0, qMax(0, m_model->count() - m_row_count));
-    }
-    //song numbers width
-    if(m_show_number && m_align_numbres && m_model->count())
-    {
-        m_number_width = m_metrics->width("9") * QString::number(m_model->trackCount()).size();
-    }
-    else
-        m_number_width = 0;
+    if(flags & PlayListModel::CURRENT)
+        recenterCurrent();
 
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
 
-    while(m_rows.count() < qMin(m_row_count, items.count()))
-        m_rows << new ListWidgetRow;
-    while(m_rows.count() > qMin(m_row_count, items.count()))
-        delete m_rows.takeFirst();
+    if(flags & PlayListModel::STRUCTURE || flags & PlayListModel::CURRENT)
+    {
+        if(m_row_count >= m_model->count())
+        {
+            m_first = 0;
+            emit positionChanged(0,0);
+        }
+        else if(m_first + m_row_count >= m_model->count())
+        {
+            m_first = qMax(0, m_model->count() - m_row_count);
+            emit positionChanged(m_first, m_first);
+        }
+        else
+            emit positionChanged(m_first, m_model->count() - m_row_count);
+
+        //song numbers width
+        if(m_show_number && m_align_numbres && m_model->count())
+        {
+            m_number_width = m_metrics->width("9") * QString::number(m_model->trackCount()).size();
+        }
+        else
+            m_number_width = 0;
+
+        while(m_rows.count() < qMin(m_row_count, items.count()))
+            m_rows << new ListWidgetRow;
+        while(m_rows.count() > qMin(m_row_count, items.count()))
+            delete m_rows.takeFirst();
+    }
 
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
-        row->title = items[i]->formattedTitle();
         row->selected = items[i]->isSelected();
+
+        if(flags == PlayListModel::SELECTION)
+            continue;
+
+        row->title = items[i]->formattedTitle();
         if(items[i]->isGroup())
         {
             row->separator = true;
             row->number = 0;
             row->length.clear();
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                            width() - m_number_width - 22 - 70);
+                                                width() - m_number_width - 22 - 70);
         }
         else
         {
@@ -461,8 +468,9 @@ void ListWidget::updateList()
             int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
             if(m_number_width)
                 extra_string_width += m_number_width + m_metrics->width("9");
+
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                            width() -  m_metrics->width(row->length) - 22 - extra_string_width);
+                                                width() -  m_metrics->width(row->length) - 22 - extra_string_width);
         }
     }
     m_scroll = false;
@@ -491,6 +499,11 @@ void ListWidget::autoscroll()
     }
 }
 
+void ListWidget::updateRepeatIndicator()
+{
+    updateList(PlayListModel::CURRENT | PlayListModel::STRUCTURE);
+}
+
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
@@ -499,10 +512,10 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     m_model = selected;
     m_first = 0;
     m_scroll = false;
-    recenterCurrent();
-    updateList();
-    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
-    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList()));
+    recenterCurrent(); //TODO restore position
+    updateList(PlayListModel::STRUCTURE);
+    //connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
 }
 
 void ListWidget::scroll(int sc)
@@ -511,7 +524,7 @@ void ListWidget::scroll(int sc)
         return;
     m_first = sc; //*(m_model->count() - m_rows)/99;
     m_scroll = true;
-    updateList();
+    updateList(PlayListModel::STRUCTURE);
 }
 
 void ListWidget::updateSkin()
