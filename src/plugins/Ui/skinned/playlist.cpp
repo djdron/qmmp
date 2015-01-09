@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -529,12 +529,6 @@ void PlayList::setTime(qint64 time)
         m_length_totalLength->display (str_length);
         m_length_totalLength->update();
     }
-}
-
-void PlayList::updateList()
-{
-    m_listWidget->updateList();
-    m_titleBar->showCurrent();
 }
 
 void PlayList::showPlaylistMenu()
