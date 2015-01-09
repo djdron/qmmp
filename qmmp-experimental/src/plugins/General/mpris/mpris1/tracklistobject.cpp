@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,7 @@ TrackListObject::TrackListObject(QObject *parent) : QObject(parent)
     m_ui_settings = QmmpUiSettings::instance();
     m_pl_manager = m_player->playListManager();
     m_model = m_pl_manager->currentPlayList();
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateTrackList(int)));
     connect (m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
              SLOT(switchPlayList(PlayListModel*,PlayListModel*)));
     m_prev_count = 0;
@@ -119,16 +119,17 @@ void TrackListObject::playTrack(PlayListTrack *track)
     disconnect(m_model,SIGNAL(trackAdded(PlayListTrack*)), this, SLOT(playTrack(PlayListTrack*)));
 }
 
-void  TrackListObject::updateTrackList()
+void  TrackListObject::updateTrackList(int flags)
 {
-    emit TrackListChange(m_model->numberOfTrack(m_model->count() - 1) + 1);
+    if(flags & PlayListModel::STRUCTURE)
+        emit TrackListChange(m_model->numberOfTrack(m_model->count() - 1) + 1);
 }
 
 void TrackListObject::switchPlayList(PlayListModel *cur, PlayListModel *prev)
 {
     m_model = cur;
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateTrackList(int)));
     if(prev)
         disconnect(prev,0,this,0);
-    updateTrackList();
+    updateTrackList(PlayListModel::STRUCTURE);
 }
