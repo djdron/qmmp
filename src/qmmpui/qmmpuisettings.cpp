@@ -134,7 +134,7 @@ void QmmpUiSettings::setTitleFormat(const QString &titleFormat)
         m_title_format = titleFormat;
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
-            model->doCurrentVisibleRequest();
+            model->updateMetaData();
         }
     }
 }
