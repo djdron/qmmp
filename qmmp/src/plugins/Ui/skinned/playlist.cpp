@@ -105,7 +105,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     connect (m_pl_control, SIGNAL (ejectClicked()), SIGNAL (eject()));
 
     connect (m_pl_manager, SIGNAL (selectedPlayListChanged(PlayListModel *, PlayListModel *)),
-             m_listWidget, SLOT(setModel(PlayListModel*)));
+             m_listWidget, SLOT(setModel(PlayListModel*, PlayListModel*)));
     m_listWidget->setModel(m_pl_manager->selectedPlayList());
 
     createMenus();
