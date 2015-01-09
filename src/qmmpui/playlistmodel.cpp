@@ -604,7 +604,7 @@ void PlayListModel::showDetails(QWidget *parent)
     {
         QDialog *d = new DetailsDialog(selected_tracks, parent);
         TagUpdater *updater = new TagUpdater(d, selected_tracks);
-        connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
+        connect(updater, SIGNAL(destroyed(QObject *)),SLOT(updateMetaData()));
         d->show();
     }
 }
@@ -831,6 +831,11 @@ void PlayListModel::prepareGroups(bool enabled)
     m_container = container;
     if(!m_container->isEmpty())
         m_current = m_container->indexOf(m_current_track);
+    emit listChanged(STRUCTURE);
+}
+
+void PlayListModel::updateMetaData()
+{
     emit listChanged(STRUCTURE);
 }
 

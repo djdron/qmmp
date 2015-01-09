@@ -499,6 +499,7 @@ private slots:
      */
     void prepareGroups(bool enabled);
 
+    void updateMetaData();
     void onTaskFinished();
 
 private:
