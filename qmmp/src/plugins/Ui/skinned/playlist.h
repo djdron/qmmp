@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,11 +53,6 @@ class PlayList : public QWidget
         virtual ~PlayList();
 
         void readSettings();
-
-        ListWidget* listWidget() const
-        {
-            return m_listWidget;
-        }
         void setMinimalMode(bool b = true);
 
     signals:
@@ -73,7 +68,6 @@ class PlayList : public QWidget
 
     public slots:
         void setTime(qint64 time);
-        void updateList();
 
     private slots:
         void showAddMenu();
