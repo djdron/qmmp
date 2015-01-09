@@ -107,6 +107,7 @@ private slots:
     void updateSkin();
     void autoscroll();
     void updateRepeatIndicator();
+    void scrollToCurrent();
 
 private:
     void loadColors();
