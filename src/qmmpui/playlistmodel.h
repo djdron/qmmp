@@ -217,7 +217,7 @@ public:
     /*!
      * Sets current song to the file that is nex in queue, if queue is empty - does nothing
      */
-    void setCurrentToQueued();
+    //void setCurrentToQueued();
     /*!
      * Returns \b true if play queue is empty,otherwise returns - \b false.
      */
@@ -493,6 +493,8 @@ private:
      * selected items will be removed, else - unselected.
      */
     void removeSelection(bool inverted = false);
+
+    int removeTrackInternal(int i);
 
 private slots:
     /*!

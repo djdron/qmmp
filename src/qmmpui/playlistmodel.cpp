@@ -108,9 +108,7 @@ void PlayListModel::add(PlayListTrack *track)
         m_current = m_container->indexOf(m_current_track);
     }
     flags |= STRUCTURE;
-    //emit trackAdded(track);
     emit listChanged(flags);
-    //emit countChanged();
 }
 
 void PlayListModel::add(QList<PlayListTrack *> tracks)
@@ -142,7 +140,6 @@ void PlayListModel::add(QList<PlayListTrack *> tracks)
     preparePlayState();
     flags |= STRUCTURE;
     emit listChanged(flags);
-    //emit countChanged();
 }
 
 void PlayListModel::add(const QString &path)
@@ -190,7 +187,6 @@ void PlayListModel::insert(int index, PlayListTrack *track)
     emit trackAdded(track);
     flags |= STRUCTURE;
     emit listChanged(flags);
-    //emit countChanged();
 }
 
 void PlayListModel::insert(PlayListItem *before, PlayListTrack *track)
@@ -217,7 +213,6 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
             m_current_track = track;
             m_current = m_container->indexOf(track);
             flags |= CURRENT;
-            //emit currentChanged();
         }
         emit trackAdded(track);
     }
@@ -226,7 +221,6 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
     preparePlayState();
     flags |= STRUCTURE;
     emit listChanged(flags);
-    //emit countChanged();
 }
 
 void PlayListModel::insert(int index, const QString &path)
@@ -328,7 +322,6 @@ bool PlayListModel::setCurrent(int index)
     }
     m_current = index;
     m_current_track = dynamic_cast<PlayListTrack*> (item);
-    //emit currentChanged();
     emit listChanged(CURRENT);
     return true;
 }
@@ -362,9 +355,11 @@ bool PlayListModel::next()
         emit listChanged(STOP_AFTER);
         return false;
     }
-    if (!isEmptyQueue())
+    if (!m_queued_songs.isEmpty())
     {
-        setCurrentToQueued();
+        m_current_track = m_queued_songs.dequeue();
+        m_current = m_container->indexOf(m_current_track);
+        emit listChanged(CURRENT | QUEUE);
         return true;
     }
 
@@ -390,7 +385,6 @@ void PlayListModel::clear()
     m_total_length = 0;
     m_play_state->resetState();
     emit listChanged(STRUCTURE | QUEUE | STOP_AFTER | CURRENT | SELECTION);
-    //emit countChanged();
 }
 
 void PlayListModel::clearSelection()
@@ -481,56 +475,9 @@ void PlayListModel::removeUnselected()
 
 void PlayListModel::removeTrack (int i)
 {
-    //bool current_changed = false;
-    if ((i < count()) && (i >= 0))
-    {
-        int flags = 0;
-        PlayListTrack* track = m_container->track(i);
-        if(!track)
-            return;
-        if(m_queued_songs.removeAll(track) > 0)
-            flags |= QUEUE;
-        m_container->removeTrack(track);
-        if(m_stop_track == track)
-        {
-            flags |= STOP_AFTER;
-            m_stop_track = 0;
-        }
-        m_total_length -= track->length();
-        m_total_length = qMax(0, m_total_length);
-
-        if(m_current_track == track)
-        {
-            flags |= CURRENT;
-            if(m_container->isEmpty())
-                m_current_track = 0;
-            else
-            {
-                //current_changed = true;
-                m_current = i > 0 ? qMin(i - 1, m_container->count() - 1) : 0;
-                if(!(m_current_track = m_container->track(m_current)))
-                {
-                    m_current_track = m_current > 0 ? m_container->track(m_current - 1) :
-                                                      m_container->track(1);
-                }
-            }
-        }
-
-        if (track->isUsed())
-            track->deleteLater();
-        else
-            delete track;
-
-        m_current = m_current_track ? m_container->indexOf(m_current_track) : -1;
-        m_play_state->prepare();
-
-        //if(current_changed)
-          //  flags |= CURRENT;
-
-        flags |= STRUCTURE;
+    int flags = removeTrackInternal(i);
+    if(flags)
         emit listChanged(flags);
-        //emit countChanged();
-    }
 }
 
 void PlayListModel::removeTrack (PlayListItem *track)
@@ -543,17 +490,14 @@ void PlayListModel::removeSelection(bool inverted)
 {
     int i = 0;
     int select_after_delete = -1;
-    int flags = SELECTION;
-    PlayListTrack *prev_current_track = m_current_track;
+    int flags = 0;
 
     while (!m_container->isEmpty() && i < m_container->count())
     {
         PlayListItem *item = m_container->item(i);
         if (!item->isGroup() && item->isSelected() ^ inverted)
         {
-            blockSignals(true);
-            removeTrack(i);
-            blockSignals(false);
+            flags |= removeTrackInternal(i);
 
             if(m_container->isEmpty())
                 continue;
@@ -564,22 +508,69 @@ void PlayListModel::removeSelection(bool inverted)
             i++;
     }
 
-    if (select_after_delete >= m_container->count())
-        select_after_delete = m_container->count() - 1;
+    select_after_delete = qMin(select_after_delete, m_container->count() - 1);
 
-    if(select_after_delete != -1)
+    if(select_after_delete >= 0)
+    {
         m_container->setSelected(select_after_delete, true);
+        flags |= SELECTION;
+    }
 
     m_play_state->prepare();
 
-    if(prev_current_track != m_current_track)
+    if(flags)
+        emit listChanged(flags);
+}
+
+int PlayListModel::removeTrackInternal(int i)
+{
+    if((i < 0) || (i >= count()))
+        return 0;
+
+    int flags = 0;
+    PlayListTrack* track = m_container->track(i);
+    if(!track)
+        return flags;
+    if(m_queued_songs.removeAll(track) > 0)
+        flags |= QUEUE;
+    m_container->removeTrack(track);
+    if(m_stop_track == track)
+    {
+        flags |= STOP_AFTER;
+        m_stop_track = 0;
+    }
+    if(track->isSelected())
+        flags |= SELECTION;
+
+    m_total_length -= track->length();
+    m_total_length = qMax(0, m_total_length);
+
+    if(m_current_track == track)
+    {
         flags |= CURRENT;
+        if(m_container->isEmpty())
+            m_current_track = 0;
+        else
+        {
+            m_current = i > 0 ? qMin(i - 1, m_container->count() - 1) : 0;
+            if(!(m_current_track = m_container->track(m_current)))
+            {
+                m_current_track = m_current > 0 ? m_container->track(m_current - 1) :
+                                                  m_container->track(1);
+            }
+        }
+    }
 
+    if (track->isUsed())
+        track->deleteLater();
+    else
+        delete track;
 
-    //TODO check other flags
+    m_current = m_current_track ? m_container->indexOf(m_current_track) : -1;
+    m_play_state->prepare();
+
     flags |= STRUCTURE;
-    emit listChanged(flags);
-    //emit countChanged();
+    return flags;
 }
 
 void PlayListModel::invertSelection()
@@ -763,14 +754,6 @@ bool PlayListModel::isQueued(PlayListTrack *f) const
     return m_queued_songs.contains(f);
 }
 
-void PlayListModel::setCurrentToQueued()
-{
-    blockSignals(true);
-    setCurrent(indexOf(m_queued_songs.dequeue()));
-    blockSignals(false);
-    emit listChanged(QUEUE | CURRENT);
-}
-
 bool PlayListModel::isEmptyQueue() const
 {
     return m_queued_songs.isEmpty();
@@ -877,8 +860,21 @@ void PlayListModel::onTaskFinished()
             if(prev_current_track != m_current_track)
                 flags |= CURRENT;
 
-            //FIXME check queue and selection
-            //emit countChanged(flags);
+            if(m_stop_track && !m_container->contains(m_stop_track))
+            {
+                m_stop_track = 0;
+                flags |= STOP_AFTER;
+            }
+
+            foreach (PlayListTrack *t, m_queued_songs)
+            {
+                if(!m_container->contains(t))
+                {
+                    flags |= QUEUE;
+                    m_queued_songs.removeAll(t);
+                }
+            }
+
             emit listChanged(flags);
         }
     }
