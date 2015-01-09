@@ -518,12 +518,23 @@ void ListWidget::scrollToCurrent()
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
+    {
+        previous->setProperty("first_visible", m_first);
         disconnect(previous, 0, this, 0); //disconnect previous model
+    }
     qApp->processEvents();
     m_model = selected;
-    m_first = 0;
-    recenterCurrent(); //TODO restore position
-    updateList(PlayListModel::STRUCTURE);
+
+    if(m_model->property("first_visible").isValid())
+    {
+        m_first = m_model->property("first_visible").toInt();
+        updateList(PlayListModel::STRUCTURE);
+    }
+    else
+    {
+        m_first = 0;
+        updateList(PlayListModel::STRUCTURE | PlayListModel::CURRENT);
+    }
     connect (m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
 }
