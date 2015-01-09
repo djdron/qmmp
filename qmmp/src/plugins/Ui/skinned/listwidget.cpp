@@ -57,7 +57,6 @@ ListWidget::ListWidget(QWidget *parent)
     connect (m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     m_first = 0;
     m_row_count = 0;
-    m_scroll = false;
     m_select_on_release = false;
     readSettings();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
@@ -300,7 +299,6 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 {
     if(m_popupWidget)
         m_popupWidget->hide();
-    m_scroll = true;
     int y = e->y();
     int index = indexAt(y);
 
@@ -357,7 +355,6 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_row_count = e->size().height() / (m_metrics->lineSpacing() + 2);
-    m_scroll = true;
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
@@ -376,7 +373,6 @@ void ListWidget::wheelEvent (QWheelEvent *e)
     if (m_first > m_model->count() - m_row_count)
         m_first = m_model->count() - m_row_count;
 
-    m_scroll = false;
     updateList(PlayListModel::STRUCTURE);
 }
 
@@ -473,7 +469,6 @@ void ListWidget::updateList(int flags)
                                                 width() -  m_metrics->width(row->length) - 22 - extra_string_width);
         }
     }
-    m_scroll = false;
     update();
 }
 
@@ -516,7 +511,6 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     qApp->processEvents();
     m_model = selected;
     m_first = 0;
-    m_scroll = false;
     recenterCurrent(); //TODO restore position
     updateList(PlayListModel::STRUCTURE);
     connect (m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
@@ -528,7 +522,6 @@ void ListWidget::scroll(int sc)
     if (m_model->count() <= m_row_count)
         return;
     m_first = sc; //*(m_model->count() - m_rows)/99;
-    m_scroll = true;
     updateList(PlayListModel::STRUCTURE);
 }
 
@@ -613,7 +606,6 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
 {
     if(e->buttons() == Qt::LeftButton)
     {
-        m_scroll = true;
         if (m_prev_y > e->y())
             m_scroll_direction = TOP;
         else if (m_prev_y < e->y())
@@ -647,7 +639,6 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             m_model->moveItems(m_pressed_index,index);
 
             m_prev_y = e->y();
-            m_scroll = false;
             m_pressed_index = index;
             m_anchor_index = index;
         }
@@ -672,7 +663,6 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
     m_pressed_index = INVALID_INDEX;
     m_scroll_direction = NONE;
     m_timer->stop();
-    m_scroll = false;
     QWidget::mouseReleaseEvent(e);
 }
 
@@ -694,7 +684,7 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
-    if (!m_scroll && m_row_count)
+    if (/*!m_scroll && */m_row_count)
     {
         if (m_first + m_row_count < m_model->currentIndex() + 1)
             m_first = qMin(m_model->count() - m_row_count,

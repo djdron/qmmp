@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -112,7 +112,6 @@ private slots:
 private:
     void loadColors();
     bool m_update;
-    bool m_scroll;
     int m_pressed_index;
     QMenu *m_menu;
     PlayListModel *m_model;
