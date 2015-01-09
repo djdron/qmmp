@@ -1,6 +1,6 @@
 SET(USE_QSUI TRUE CACHE BOOL "enable/disable simple ui")
 
 IF(USE_QSUI AND QMMP_FOUND AND QMMPUI_FOUND)
-#add_subdirectory(qsui)
+add_subdirectory(qsui)
 ENDIF(USE_QSUI AND QMMP_FOUND AND QMMPUI_FOUND)
 

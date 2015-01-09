@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,8 +64,8 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
     m_timer->setInterval(50);
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
     m_model = model;
-    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
+    //connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList()));
     m_scrollBar = new QScrollBar(Qt::Vertical, this);
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
 }
