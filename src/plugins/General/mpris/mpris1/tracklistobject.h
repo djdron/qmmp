@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,7 +57,7 @@ signals:
 
 private slots:
     void playTrack(PlayListTrack *track);
-    void updateTrackList();
+    void updateTrackList(int flags);
     void switchPlayList(PlayListModel *cur, PlayListModel *prev);
 
 private:
