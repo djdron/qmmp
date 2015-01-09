@@ -308,7 +308,8 @@ public:
         SELECTION = 0x02,
         QUEUE = 0x04,
         CURRENT = 0x08,
-        STOP_AFTER = 0x10
+        STOP_AFTER = 0x10,
+        METADATA = 0x20
     };
 
 signals:
@@ -467,6 +468,8 @@ public slots:
      */
     void rebuildGroups();
 
+    void updateMetaData();
+
 private:
     /*!
      * Returns topmost row in current selection
@@ -484,6 +487,8 @@ private:
 
     int removeTrackInternal(int i);
 
+
+
 private slots:
     /*!
      * Prepares play state object
@@ -499,7 +504,7 @@ private slots:
      */
     void prepareGroups(bool enabled);
 
-    void updateMetaData();
+
     void onTaskFinished();
 
 private:

@@ -836,7 +836,7 @@ void PlayListModel::prepareGroups(bool enabled)
 
 void PlayListModel::updateMetaData()
 {
-    emit listChanged(STRUCTURE);
+    emit listChanged(METADATA);
 }
 
 void PlayListModel::onTaskFinished()
