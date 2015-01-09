@@ -215,10 +215,6 @@ public:
      */
     bool isQueued(PlayListTrack* item) const;
     /*!
-     * Sets current song to the file that is nex in queue, if queue is empty - does nothing
-     */
-    //void setCurrentToQueued();
-    /*!
      * Returns \b true if play queue is empty,otherwise returns - \b false.
      */
     bool isEmptyQueue()const;
@@ -321,10 +317,6 @@ signals:
      */
     void listChanged(int flags);
     /*!
-     * Emitted when current item has changed.
-     */
-    //void currentChanged();
-    /*!
      * Emitted when new track has added.
      * @param track Pointer of the new playlist track.
      */
@@ -338,10 +330,6 @@ signals:
      * Emitted when playlist loader thread has finished.
      */
     void loaderFinished();
-    /*!
-     * Emitted when playlist items are added or removed.
-     */
-    //void countChanged();
 
 public slots:
     /*!
@@ -477,7 +465,7 @@ public slots:
     /*!
      * Rebuilds groups
      */
-    void updateGroups();
+    void rebuildGroups();
 
 private:
     /*!
