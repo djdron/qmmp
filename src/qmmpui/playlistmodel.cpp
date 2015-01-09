@@ -956,7 +956,7 @@ void PlayListModel::stopAfterSelected()
     emit listChanged(flags);
 }
 
-void PlayListModel::updateGroups()
+void PlayListModel::rebuildGroups()
 {
     if(m_ui_settings->isGroupsEnabled())
         prepareGroups(true);
