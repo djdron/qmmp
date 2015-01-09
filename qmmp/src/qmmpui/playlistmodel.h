@@ -332,6 +332,9 @@ signals:
      */
     void loaderFinished();
 
+
+    void currentVisibleRequest();
+
 public slots:
     /*!
      * Adds \b track to the playlist.
@@ -419,9 +422,7 @@ public slots:
      * @param parent parent Widget.
      */
     void showDetails(QWidget *parent = 0);
-    /*!
-     * Emits update signals manually.
-     */
+
     void doCurrentVisibleRequest();
     /*!
      * Randomly changes items order.

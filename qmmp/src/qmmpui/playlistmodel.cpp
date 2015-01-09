@@ -887,9 +887,8 @@ void PlayListModel::onTaskFinished()
 
 void PlayListModel::doCurrentVisibleRequest()
 {
-    //TODO check these signals
-    //emit currentChanged();
-    //emit listChanged();
+    if(!m_container->isEmpty())
+        emit currentVisibleRequest();
 }
 
 void PlayListModel::loadPlaylist(const QString &f_name)

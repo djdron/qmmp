@@ -504,6 +504,11 @@ void ListWidget::updateRepeatIndicator()
     updateList(PlayListModel::CURRENT | PlayListModel::STRUCTURE);
 }
 
+void ListWidget::scrollToCurrent()
+{
+    updateList(PlayListModel::CURRENT | PlayListModel::STRUCTURE);
+}
+
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
@@ -514,7 +519,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     m_scroll = false;
     recenterCurrent(); //TODO restore position
     updateList(PlayListModel::STRUCTURE);
-    //connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    connect (m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
 }
 
