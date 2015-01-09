@@ -31,14 +31,10 @@ PlayListGroup::~PlayListGroup()
     {
         PlayListTrack* mf = trackList.takeFirst();
 
-        if (mf->flag() == PlayListTrack::FREE)
-        {
+        if (mf->isUsed())
+            mf->deleteLater();
+        else
             delete mf;
-        }
-        else if (mf->flag() == PlayListTrack::EDITING)
-        {
-            mf->setFlag(PlayListTrack::SCHEDULED_FOR_DELETION);
-        }
     }
 }
 

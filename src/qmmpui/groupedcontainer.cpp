@@ -23,7 +23,6 @@
 
 GroupedContainer::GroupedContainer()
 {
-    m_reverted = false;
     m_update = true;
 }
 
@@ -65,31 +64,26 @@ void GroupedContainer::addTrack(PlayListTrack *track)
 
 void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
 {
-    PlayListGroup *group = m_groups.isEmpty() ? 0 : m_groups.last();
+    bool found = false;
 
-    foreach (PlayListTrack *track, tracks)
+    for(int i = 0; i < tracks.count(); ++i)
     {
-        if(!group || track->groupName() != group->formattedTitle())
+        found = false;
+        for(int j = m_groups.count() - 1; j >= 0; --j)
         {
-            group = 0;
-            foreach(PlayListGroup *g, m_groups)
+            if(m_groups.at(j)->formattedTitle() == tracks.at(i)->groupName())
             {
-                if(track->groupName() == g->formattedTitle())
-                {
-                    group = g;
-                    break;
-                }
+                found = true;
+                m_groups.at(j)->trackList.append(tracks[i]);
+                break;
             }
         }
 
-        if(!group)
-        {
-            group = new PlayListGroup(track->groupName());
-            m_groups.append(group);
-            m_update = true;
-        }
+        if(found)
+            continue;
 
-        group->trackList.append(track);
+        m_groups << new PlayListGroup(tracks.at(i)->groupName());
+        m_groups.last()->trackList.append(tracks.at(i));
     }
     m_update = true;
 }
@@ -123,9 +117,29 @@ void GroupedContainer::insertTrack(int index, PlayListTrack *track)
     addTrack(track);
 }
 
+void GroupedContainer::replaceTracks(QList<PlayListTrack *> tracks)
+{
+    foreach (PlayListGroup *g, m_groups)
+    {
+        g->trackList.clear();
+    }
+    clear();
+    addTracks(tracks);
+}
+
 QList<PlayListGroup *> GroupedContainer::groups() const
 {
     return m_groups;
+}
+
+QList<PlayListTrack *> GroupedContainer::tracks() const
+{
+    QList<PlayListTrack *> trackList;
+    for(int i = 0; i < m_groups.count(); ++i)
+    {
+        trackList.append(m_groups[i]->trackList);
+    }
+    return trackList;
 }
 
 QList<PlayListItem *> GroupedContainer::items() const
@@ -389,55 +403,21 @@ void GroupedContainer::reverseList()
 
 void GroupedContainer::randomizeList()
 {
-    QList<PlayListTrack *> tracks = takeAllTracks();
-
-    for (int i = 0; i < tracks.size(); i++)
-        tracks.swap(qrand()%tracks.size(),qrand()%tracks.size());
-
-    addTracks(tracks);
-}
-
-void GroupedContainer::sort(int mode)
-{
-    if(mode == PlayListModel::ARTIST || mode == PlayListModel::ALBUM
-            || mode == PlayListModel::DATE || mode == PlayListModel::GROUP)
+    for(int i = 0; i < m_groups.count(); ++i)
     {
-        QList<PlayListTrack *> tracks = takeAllTracks();
-        doSort(mode, tracks, m_reverted);
-        addTracks(tracks);
-    }
-    else
-    {
-        foreach (PlayListGroup *g, m_groups)
+        for (int j = 0; j < m_groups[i]->trackList.size(); j++)
         {
-            doSort(mode, g->trackList, m_reverted);
-        }
-        m_update = true;
-    }
-    m_reverted = !m_reverted;
-}
-
-void GroupedContainer::sortSelection(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    QList<PlayListTrack *> selected_tracks;
-    QList<int> selected_indexes;
-    for(int i = 0; i < tracks.count(); ++i)
-    {
-        if(tracks[i]->isSelected())
-        {
-            selected_tracks.append(tracks[i]);
-            selected_indexes.append(i);
+            m_groups[i]->trackList.swap(qrand() % m_groups[i]->trackList.size(),
+                                        qrand() % m_groups[i]->trackList.size());
         }
     }
-    doSort(mode, selected_tracks, m_reverted);
 
-    for (int i = 0; i < selected_indexes.count(); i++)
-        tracks.replace(selected_indexes[i], selected_tracks[i]);
+    for(int i = 0; i < m_groups.count(); ++i)
+    {
+        m_groups.swap(qrand() % m_groups.size(), qrand() % m_groups.size());
+    }
 
-    addTracks(tracks);
-
-    m_reverted = !m_reverted;
+    m_update = true;
 }
 
 void GroupedContainer::updateCache() const

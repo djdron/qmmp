@@ -35,18 +35,10 @@ SET(libtrackchange_SRCS
     settingsdialog.cpp
 )
 
-SET(libtrackchange_MOC_HDRS
-    trackchangefactory.h
-    trackchange.h
-    settingsdialog.h
-)
-
 SET(libtrackchange_RCCS 
     translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libtrackchange_RCC_SRCS ${libtrackchange_RCCS})
-
-QT4_WRAP_CPP(libtrackchange_MOC_SRCS ${libtrackchange_MOC_HDRS})
 
 # user interface
 SET(libtrackchange_UIS
@@ -58,7 +50,7 @@ QT4_WRAP_UI(libtrackchange_UIS_H ${libtrackchange_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(trackchange MODULE ${libtrackchange_SRCS} ${libtrackchange_MOC_SRCS} ${libtrackchange_UIS_H} ${libtrackchange_RCC_SRCS})
+ADD_LIBRARY(trackchange MODULE ${libtrackchange_SRCS} ${libtrackchange_UIS_H} ${libtrackchange_RCC_SRCS})
 add_dependencies(trackchange qmmpui)
 target_link_libraries(trackchange ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS trackchange DESTINATION ${LIB_DIR}/qmmp/General)

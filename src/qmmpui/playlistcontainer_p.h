@@ -41,8 +41,10 @@ public:
     virtual void addTrack(PlayListTrack *track);
     virtual void addTracks(QList<PlayListTrack *> tracks) = 0;
     virtual void insertTrack(int index, PlayListTrack *track) = 0;
+    virtual void replaceTracks(QList<PlayListTrack *> tracks) = 0;
     virtual QList<PlayListGroup *> groups() const = 0;
     virtual QList<PlayListItem *> items() const = 0;
+    virtual QList<PlayListTrack *> tracks() const = 0;
     virtual int count() const = 0;
     virtual int trackCount() const = 0;
     virtual QList<PlayListItem *> mid(int pos, int count) const = 0;
@@ -65,14 +67,6 @@ public:
 
     virtual void reverseList() = 0;
     virtual void randomizeList() = 0;
-    virtual void sort(int mode) = 0;
-    virtual void sortSelection(int mode) = 0;
-
-protected:
-    /*!
-     * This internal method performs sorting of \b list_to_sort list of items.
-     */
-    void doSort(int sort_mode, QList<PlayListTrack*>& list_to_sort, bool reverted);
 };
 
 #endif // PLAYLISTCONTAINER_P_H

@@ -6,21 +6,6 @@ unix:QMAKE_LIBDIR += ../../../../lib
 win32:QMAKE_LIBDIR += ../../../../bin
 TARGET = $$PLUGINS_PREFIX/General/scrobbler
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libscrobbler.so
-TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
-    translations/scrobbler_plugin_de.ts \
-    translations/scrobbler_plugin_zh_CN.ts \
-    translations/scrobbler_plugin_zh_TW.ts \
-    translations/scrobbler_plugin_ru.ts \
-    translations/scrobbler_plugin_pl.ts \
-    translations/scrobbler_plugin_uk_UA.ts \
-    translations/scrobbler_plugin_it.ts \
-    translations/scrobbler_plugin_tr.ts \
-    translations/scrobbler_plugin_lt.ts \
-    translations/scrobbler_plugin_nl.ts \
-    translations/scrobbler_plugin_ja.ts \
-    translations/scrobbler_plugin_es.ts \
-    translations/scrobbler_plugin_sr_BA.ts \
-    translations/scrobbler_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 unix {

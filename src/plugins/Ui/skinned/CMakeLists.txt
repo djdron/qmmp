@@ -94,57 +94,9 @@ SET(skinned_HDRS
     shortcutitem.h
 )
 
-SET(skinned_MOC_HDRS
-    balancebar.h
-    button.h
-    skinnedsettings.h
-    display.h
-    dock.h
-    eqgraph.h
-    eqslider.h
-    eqtitlebar.h
-    eqwidget.h
-    listwidget.h
-    mainvisual.h
-    mainwindow.h
-    monostereo.h
-    number.h
-    pixmapwidget.h
-    playlistcontrol.h
-    playlist.h
-    playlistslider.h
-    playlisttitlebar.h
-    playstatus.h
-    positionbar.h
-    preseteditor.h
-    shadedbar.h
-    shadedvisual.h
-    skin.h
-    skinreader.h
-    symboldisplay.h
-    textscroller.h
-    timeindicator.h
-    titlebarcontrol.h
-    titlebar.h
-    togglebutton.h
-    visualmenu.h
-    volumebar.h
-    playlistbrowser.h
-    playlistselector.h
-    popupwidget.h
-    popupsettings.h
-    actionmanager.h
-    shortcutdialog.h
-    skinnedfactory.h
-    hotkeyeditor.h
-)
-
 SET(skinned_RCCS default/default.qrc resources/resources.qrc translations/translations.qrc)
 
 QT4_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
-
-QT4_AUTOMOC(${skinned_MOC_SRC})
-QT4_WRAP_CPP(skinned_MOC_SRCS ${skinned_MOC_HDRS})
 
 # user interface
 
@@ -163,7 +115,7 @@ QT4_WRAP_UI(skinned_UIS_H ${skinned_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(X11_FOUND)
-ADD_LIBRARY(skinned MODULE ${skinned_SRCS} ${skinned_MOC_SRCS} ${skinned_UIS_H} ${skinned_RCC_SRCS} ${skinned_HDRS})
+ADD_LIBRARY(skinned MODULE ${skinned_SRCS} ${skinned_UIS_H} ${skinned_RCC_SRCS} ${skinned_HDRS})
 target_link_libraries(skinned ${QT_LIBRARIES} libqmmp qmmpui ${X11_LDFLAGS})
 add_dependencies(skinned qmmpui libqmmp)
 target_link_libraries(skinned ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})

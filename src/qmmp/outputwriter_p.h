@@ -134,7 +134,7 @@ private:
     bool m_user_stop, m_pause;
     bool m_prev_pause;
     bool m_finish;
-    bool m_useEq, m_eqEnabled;
+    bool m_useEq;
     qint64 m_totalWritten, m_currentMilliseconds;
     unsigned char *m_visBuffer;
     qint64 m_visBufferSize;

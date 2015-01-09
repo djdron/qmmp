@@ -35,16 +35,9 @@ SET(libcrossfade_HDRS
     crossfadeplugin.h
 )
 
-SET(libcrossfade_MOC_HDRS
-    settingsdialog.h
-    effectcrossfadefactory.h
-)
-
 SET(libcrossfade_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libcrossfade_RCC_SRCS ${libcrossfade_RCCS})
-
-QT4_WRAP_CPP(libcrossfade_MOC_SRCS ${libcrossfade_MOC_HDRS})
 
 # user interface
 
@@ -58,7 +51,7 @@ QT4_WRAP_UI(libcrossfade_UIS_H ${libcrossfade_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
-ADD_LIBRARY(crossfade MODULE ${libcrossfade_SRCS} ${libcrossfade_MOC_SRCS} ${libcrossfade_UIS_H} ${libcrossfade_RCC_SRCS}
+ADD_LIBRARY(crossfade MODULE ${libcrossfade_SRCS} ${libcrossfade_UIS_H} ${libcrossfade_RCC_SRCS}
 ${libcrossfade_HDRS})
 add_dependencies(crossfade qmmp)
 target_link_libraries(crossfade ${QT_LIBRARIES} -lqmmp)

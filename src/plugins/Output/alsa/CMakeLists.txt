@@ -37,11 +37,6 @@ SET(libalsa_SRCS
   settingsdialog.cpp
 )
 
-SET(libalsa_MOC_HDRS
-  outputalsafactory.h
-  settingsdialog.h
-)
-
 SET(libalsa_HDRS
   outputalsa.h
 )
@@ -49,8 +44,6 @@ SET(libalsa_HDRS
 SET(libalsa_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libalsa_RCC_SRCS ${libalsa_RCCS})
-
-QT4_WRAP_CPP(libalsa_MOC_SRCS ${libalsa_MOC_HDRS})
 
 # user interface
 
@@ -65,7 +58,7 @@ QT4_WRAP_UI(libalsa_UIS_H ${libalsa_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(ALSA_FOUND)
-ADD_LIBRARY(alsa MODULE ${libalsa_SRCS} ${libalsa_MOC_SRCS} ${libalsa_UIS_H}
+ADD_LIBRARY(alsa MODULE ${libalsa_SRCS} ${libalsa_UIS_H}
   ${libalsa_RCC_SRCS} ${libalsa_HDRS})
 add_dependencies(alsa qmmp)
 target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LDFLAGS})

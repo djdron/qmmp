@@ -31,22 +31,16 @@ SET(seekoption_SRCS
     seekoption.cpp
 )
 
-SET(seekoption_MOC_HDRS
-    seekoption.h
-)
-
 SET(seekoption_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(seekoption_RCC_SRCS ${seekoption_RCCS})
-
-QT4_WRAP_CPP(seekoption_MOC_SRCS ${seekoption_MOC_HDRS})
 
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(seekoption MODULE ${seekoption_SRCS} ${seekoption_MOC_SRCS} ${seekoption_RCC_SRCS})
+ADD_LIBRARY(seekoption MODULE ${seekoption_SRCS} ${seekoption_RCC_SRCS})
 add_dependencies(seekoption qmmpui)
 target_link_libraries(seekoption ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS seekoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)

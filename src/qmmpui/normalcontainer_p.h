@@ -36,7 +36,9 @@ public:
 
     void addTracks(QList<PlayListTrack *> tracks);
     void insertTrack(int index, PlayListTrack *track);
+    void replaceTracks(QList<PlayListTrack *> tracks);
     QList<PlayListGroup *> groups() const;
+    QList<PlayListTrack *> tracks() const;
     QList<PlayListItem *> items() const;
     int count() const;
     int trackCount() const;
@@ -60,12 +62,9 @@ public:
 
     void reverseList();
     void randomizeList();
-    void sort(int mode);
-    void sortSelection(int mode);
 
 private:
     QList<PlayListItem *> m_items;
-    bool m_reverted;
 };
 
 #endif // NORMALCONTAINER_P_H

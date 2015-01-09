@@ -34,23 +34,16 @@ SET(libcopypaste_SRCS
     copypastefactory.cpp
 )
 
-SET(libcopypaste_MOC_HDRS
-    copypastefactory.h
-    copypaste.h
-)
-
 SET(libcopypaste_RCCS 
     translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libcopypaste_RCC_SRCS ${libcopypaste_RCCS})
 
-QT4_WRAP_CPP(libcopypaste_MOC_SRCS ${libcopypaste_MOC_HDRS})
-
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(copypaste MODULE ${libcopypaste_SRCS} ${libcopypaste_MOC_SRCS} ${libcopypaste_UIS_H} ${libcopypaste_RCC_SRCS})
+ADD_LIBRARY(copypaste MODULE ${libcopypaste_SRCS} ${libcopypaste_UIS_H} ${libcopypaste_RCC_SRCS})
 add_dependencies(copypaste qmmpui)
 target_link_libraries(copypaste ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS copypaste DESTINATION ${LIB_DIR}/qmmp/General)

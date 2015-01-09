@@ -44,16 +44,9 @@ SET(libvorbis_HDRS
   replaygainreader.h
 )
 
-SET(libvorbis_MOC_HDRS
-  decodervorbisfactory.h
-  vorbismetadatamodel.h
-)
-
 SET(libvorbis_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libvorbis_RCC_SRCS ${libvorbis_RCCS})
-
-QT4_WRAP_CPP(libvorbis_MOC_SRCS ${libvorbis_MOC_HDRS})
 
 # user interface
 
@@ -63,7 +56,7 @@ QT4_WRAP_UI(libvorbis_UIS_H ${libvorbis_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(VORBIS_FOUND)
-ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_RCC_SRCS} ${libvorbis_HDRS})
+ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_RCC_SRCS} ${libvorbis_HDRS})
 add_dependencies(vorbis qmmp)
 target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS vorbis DESTINATION ${LIB_DIR}/qmmp/Input)

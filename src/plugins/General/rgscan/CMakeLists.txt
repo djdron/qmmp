@@ -43,13 +43,6 @@ SET(librgscan_SRCS
     gain_analysis.c
 )
 
-SET(librgscan_MOC_HDRS
-    rgscanfactory.h
-    rgscanhelper.h
-    rgscandialog.h
-    rgscanner.h
-)
-
 SET(librgscan_HDRS
    gain_analysis.h
 )
@@ -59,8 +52,6 @@ SET(librgscan_RCCS
 )
 
 QT4_ADD_RESOURCES(librgscan_RCC_SRCS ${librgscan_RCCS})
-
-QT4_WRAP_CPP(librgscan_MOC_SRCS ${librgscan_MOC_HDRS})
 
 # user interface
 
@@ -73,7 +64,7 @@ QT4_WRAP_UI(librgscan_UIS_H ${librgscan_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(rgscan MODULE ${librgscan_SRCS} ${librgscan_MOC_SRCS} ${librgscan_UIS_H} ${librgscan_HDRS} ${librgscan_RCC_SRCS})
+ADD_LIBRARY(rgscan MODULE ${librgscan_SRCS} ${librgscan_UIS_H} ${librgscan_HDRS} ${librgscan_RCC_SRCS})
 add_dependencies(rgscan qmmpui)
 target_link_libraries(rgscan ${QT_LIBRARIES} -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
 install(TARGETS rgscan DESTINATION ${LIB_DIR}/qmmp/General)

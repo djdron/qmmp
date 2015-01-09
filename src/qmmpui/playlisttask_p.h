@@ -21,16 +21,60 @@
 #ifndef PLAYLISTTASK_P_H
 #define PLAYLISTTASK_P_H
 
-#include <QRunnable>
+#include <QThread>
 #include <QObject>
+#include <QHash>
+#include <QList>
+#include "playlistmodel.h"
+#include "playlistcontainer_p.h"
 
-class PlayListTask : public QObject, public QRunnable
+class PlayListTrack;
+struct TrackField;
+
+
+class PlayListTask : public QThread
 {
     Q_OBJECT
 public:
-    explicit PlayListTask();
+
+    enum TaskType
+    {
+        EMPTY = -1,
+        SORT = 0,
+        SORT_SELECTION,
+        REMOVE_INVALID,
+        REMOVE_DUPLICATES
+    };
+    explicit PlayListTask(QObject *parent);
+
+    ~PlayListTask();
+
+    void sort(QList<PlayListTrack *> tracks, int mode);
+    void sortSelection(QList<PlayListTrack *> tracks, int mode);
+    void removeInvalidTracks(QList<PlayListTrack *> tracks, PlayListTrack *current_track);
+    void removeDuplicates(QList<PlayListTrack *> tracks, PlayListTrack *current_track);
 
     void run();
+
+    TaskType type() const;
+    bool isChanged(PlayListContainer *container);
+    QList<PlayListTrack *> takeResults(PlayListTrack **current_track);
+    PlayListTrack *currentTrack() const;
+
+
+
+private:
+    void clear();
+    QList <TrackField *> m_fields;
+    QList <PlayListTrack *> m_tracks;
+    QList <PlayListTrack *> m_input_tracks;
+    QList<int> m_indexes;
+    PlayListTrack *m_current_track;
+    int m_sort_mode;
+    TaskType m_task;
+    bool m_reverted;
+    bool m_align_groups;
+    QHash<int, Qmmp::MetaData> m_sort_keys;
 
 };
 

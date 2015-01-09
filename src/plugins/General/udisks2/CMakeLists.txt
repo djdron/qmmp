@@ -35,19 +35,9 @@ SET(libudisks2_SRCS
     settingsdialog.cpp
 )
 
-SET(libudisks2_MOC_HDRS
-    udisks2factory.h
-    udisks2manager.h
-    udisks2plugin.h
-    udisks2device.h
-    settingsdialog.h
-)
-
 SET(libudisks2_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libudisks2_RCC_SRCS ${libudisks2_RCCS})
-
-QT4_WRAP_CPP(libudisks2_MOC_SRCS ${libudisks2_MOC_HDRS})
 
 # user interface
 
@@ -60,7 +50,7 @@ QT4_WRAP_UI(libudisks2_UIS_H ${libudisks2_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(udisks2 MODULE ${libudisks2_SRCS} ${libudisks2_MOC_SRCS} ${libudisks2_UIS_H} ${libudisks2_RCC_SRCS})
+ADD_LIBRARY(udisks2 MODULE ${libudisks2_SRCS} ${libudisks2_UIS_H} ${libudisks2_RCC_SRCS})
 add_dependencies(udisks2 qmmpui)
 target_link_libraries(udisks2 ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS udisks2 DESTINATION ${LIB_DIR}/qmmp/General)

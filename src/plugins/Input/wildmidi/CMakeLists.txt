@@ -40,13 +40,6 @@ SET(libwildmidi_HDRS
   decoder_wildmidi.h
 )
 
-SET(libwildmidi_MOC_HDRS
-  
-  decoderwildmidifactory.h
-  settingsdialog.h
-  wildmidihelper.h
-)
-
 # libwildmidi
 CHECK_INCLUDE_FILE(wildmidi_lib.h WILDMIDI_HEADER_FOUND)
 FIND_LIBRARY(WILDMIDI_LIB NAME WildMidi PATHS /usr/lib /usr/lib32  /usr/local/lib /usr/local/lib32)
@@ -62,8 +55,6 @@ SET(libwildmidi_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libwildmidi_RCC_SRCS ${libwildmidi_RCCS})
 
-QT4_WRAP_CPP(libwildmidi_MOC_SRCS ${libwildmidi_MOC_HDRS})
-
 # user interface
 
 
@@ -77,7 +68,7 @@ QT4_WRAP_UI(libwildmidi_UIS_H ${libwildmidi_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(WILDMIDI_FOUND)
-ADD_LIBRARY(wildmidi MODULE ${libwildmidi_SRCS} ${libwildmidi_MOC_SRCS} ${libwildmidi_UIS_H} ${libwildmidi_RCC_SRCS}
+ADD_LIBRARY(wildmidi MODULE ${libwildmidi_SRCS} ${libwildmidi_UIS_H} ${libwildmidi_RCC_SRCS}
 ${libwildmidi_HDRS})
 add_dependencies(wildmidi qmmp)
 target_link_libraries(wildmidi ${QT_LIBRARIES} -lqmmp ${WILDMIDI_LIB})

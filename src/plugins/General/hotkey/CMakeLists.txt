@@ -47,20 +47,11 @@ SET(libhotkey_SRCS
     hotkeydialog.cpp
 )
 
-SET(libhotkey_MOC_HDRS
-    settingsdialog.h
-    hotkeyfactory.h
-    hotkeymanager.h
-    hotkeydialog.h
-)
-
 SET(libhotkey_RCCS
     translations/translations.qrc
 )
 
 QT4_ADD_RESOURCES(libhotkey_RCC_SRCS ${libhotkey_RCCS})
-
-QT4_WRAP_CPP(libhotkey_MOC_SRCS ${libhotkey_MOC_HDRS})
 
 # user interface
 
@@ -76,7 +67,7 @@ QT4_WRAP_UI(libhotkey_UIS_H ${libhotkey_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(X11_FOUND)
-ADD_LIBRARY(hotkey MODULE ${libhotkey_SRCS} ${libhotkey_MOC_SRCS} ${libhotkey_UIS_H} ${libhotkey_RCC_SRCS})
+ADD_LIBRARY(hotkey MODULE ${libhotkey_SRCS} ${libhotkey_UIS_H} ${libhotkey_RCC_SRCS})
 add_dependencies(hotkey qmmpui)
 target_link_libraries(hotkey ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})
 install(TARGETS hotkey DESTINATION ${LIB_DIR}/qmmp/General)

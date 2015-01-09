@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,6 +37,7 @@ class PlayListFormat;
 class PlayListModel;
 class PlayListContainer;
 class QmmpUiSettings;
+class PlayListTask;
 
 /*! @brief Helper class that keeps track of a view's selected items.
  *
@@ -214,10 +215,6 @@ public:
      */
     bool isQueued(PlayListTrack* item) const;
     /*!
-     * Sets current song to the file that is nex in queue, if queue is empty - does nothing
-     */
-    void setCurrentToQueued();
-    /*!
      * Returns \b true if play queue is empty,otherwise returns - \b false.
      */
     bool isEmptyQueue()const;
@@ -304,15 +301,21 @@ public:
 
     PlayListTrack *findTrack(int number) const;
 
+
+    enum UpdateFlags
+    {
+        STRUCTURE = 0x01, //added/removed/moved
+        SELECTION = 0x02,
+        QUEUE = 0x04,
+        CURRENT = 0x08,
+        STOP_AFTER = 0x10
+    };
+
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
      */
-    void listChanged();
-    /*!
-     * Emitted when current item has changed.
-     */
-    void currentChanged();
+    void listChanged(int flags);
     /*!
      * Emitted when new track has added.
      * @param track Pointer of the new playlist track.
@@ -327,10 +330,6 @@ signals:
      * Emitted when playlist loader thread has finished.
      */
     void loaderFinished();
-    /*!
-     * Emitted when playlist items are added or removed.
-     */
-    void countChanged();
 
 public slots:
     /*!
@@ -466,7 +465,7 @@ public slots:
     /*!
      * Rebuilds groups
      */
-    void updateGroups();
+    void rebuildGroups();
 
 private:
     /*!
@@ -483,6 +482,8 @@ private:
      */
     void removeSelection(bool inverted = false);
 
+    int removeTrackInternal(int i);
+
 private slots:
     /*!
      * Prepares play state object
@@ -498,6 +499,8 @@ private slots:
      */
     void prepareGroups(bool enabled);
 
+    void onTaskFinished();
+
 private:
     PlayListTrack* m_current_track;
     PlayListTrack* m_stop_track;
@@ -510,6 +513,7 @@ private:
     QString m_name;
     PlayListContainer *m_container;
     QmmpUiSettings *m_ui_settings;
+    PlayListTask *m_task;
 };
 
 #endif

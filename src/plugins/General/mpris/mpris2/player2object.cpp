@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -369,7 +369,7 @@ void Player2Object::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
         disconnect(previous, 0, this, 0); //disconnect previous model
-    connect(selected, SIGNAL(listChanged()), SLOT(emitPropertiesChanged()));
+    connect(selected, SIGNAL(listChanged(int)), SLOT(emitPropertiesChanged()));
 }
 
 void Player2Object::syncProperties()

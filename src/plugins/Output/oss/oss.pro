@@ -7,7 +7,7 @@ HEADERS += outputossfactory.h \
 
 
 SOURCES += outputossfactory.cpp \
-           outputoss.cpp \ 
+           outputoss.cpp \
            settingsdialog.cpp
 
 TARGET=$$PLUGINS_PREFIX/Output/oss
@@ -24,22 +24,6 @@ DEFINES += HAVE_SYS_SOUNDCARD_H
 
 TEMPLATE = lib
 LIBS += -lqmmp
-
-TRANSLATIONS = translations/oss_plugin_cs.ts \
-               translations/oss_plugin_de.ts \
-               translations/oss_plugin_zh_CN.ts \
-               translations/oss_plugin_zh_TW.ts \
-               translations/oss_plugin_ru.ts \
-               translations/oss_plugin_pl.ts \
-               translations/oss_plugin_uk_UA.ts \
-               translations/oss_plugin_it.ts \
-               translations/oss_plugin_tr.ts \
-               translations/oss_plugin_lt.ts \
-               translations/oss_plugin_nl.ts \
-               translations/oss_plugin_ja.ts \
-               translations/oss_plugin_es.ts \
-               translations/oss_plugin_sr_BA.ts \
-               translations/oss_plugin_sr_RS.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR){

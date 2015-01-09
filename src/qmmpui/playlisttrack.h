@@ -34,19 +34,6 @@ class PlayListTrack : public QMap <Qmmp::MetaData, QString>, public PlayListItem
 {
 public:
     /*!
-     * Current state of playlist item.
-     * FREE - instance is free and may be deleted
-     * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
-     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it
-     * instead of delete operator call.
-     */
-    enum FLAGS
-    {
-        FREE = 0,              /*!< instance is free and may be deleted */
-        EDITING,               /*!< instance is currently busy */
-        SCHEDULED_FOR_DELETION /*!< instance is sheduled for deletion */
-    };
-    /*!
      * Constructs an empty plalist item.
      */
     PlayListTrack();
@@ -100,14 +87,19 @@ public:
      * Returns \b false.
      */
     bool isGroup() const;
+
+
+    void beginUsage();
+    void endUsage();
+    void deleteLater();
+
+
+    bool isSheduledForDeletion() const;
     /*!
-     * Returns current state of the playlist item.
+     * Indicates that instance is currently busy in some kind of operation (tags editing etc.)
+     * and can't be deleted at the moment. Call \b deleteLater() instead of delete operator call.
      */
-    FLAGS flag() const;
-    /*!
-     * Sets state of the playlist item.
-     */
-    void setFlag(FLAGS);
+    bool isUsed() const;
 
 private:
     void formatTitle();
@@ -119,7 +111,8 @@ private:
     QString m_groupFormat;
     QmmpUiSettings *m_settings;
     qint64 m_length;
-    FLAGS m_flag;
+    int m_refCount;
+    bool m_sheduledForDeletion;
 };
 
 #endif

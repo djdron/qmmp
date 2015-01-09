@@ -17,21 +17,6 @@ plugin
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-TRANSLATIONS = translations/stereo_plugin_cs.ts \
-               translations/stereo_plugin_de.ts \
-               translations/stereo_plugin_zh_CN.ts \
-               translations/stereo_plugin_zh_TW.ts \
-               translations/stereo_plugin_uk_UA.ts \
-               translations/stereo_plugin_pl.ts \
-               translations/stereo_plugin_ru.ts \
-               translations/stereo_plugin_it.ts \
-               translations/stereo_plugin_tr.ts \
-               translations/stereo_plugin_lt.ts \
-               translations/stereo_plugin_nl.ts \
-               translations/stereo_plugin_ja.ts \
-               translations/stereo_plugin_es.ts \
-               translations/stereo_plugin_sr_BA.ts \
-               translations/stereo_plugin_sr_RS.ts
 RESOURCES = translations/translations.qrc
 
 FORMS += settingsdialog.ui

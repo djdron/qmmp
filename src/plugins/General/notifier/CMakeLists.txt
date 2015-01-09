@@ -34,20 +34,11 @@ SET(libnotifier_SRCS
     popupwidget.cpp
 )
 
-SET(libnotifier_MOC_HDRS
-    settingsdialog.h
-    notifierfactory.h
-    notifier.h
-    popupwidget.h
-)
-
 SET(libnotifier_RCCS 
     translations/translations.qrc
     notifier_images.qrc)
 
 QT4_ADD_RESOURCES(libnotifier_RCC_SRCS ${libnotifier_RCCS})
-
-QT4_WRAP_CPP(libnotifier_MOC_SRCS ${libnotifier_MOC_HDRS})
 
 # user interface
 
@@ -61,7 +52,7 @@ QT4_WRAP_UI(libnotifier_UIS_H ${libnotifier_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(notifier MODULE ${libnotifier_SRCS} ${libnotifier_MOC_SRCS} ${libnotifier_UIS_H} ${libnotifier_RCC_SRCS})
+ADD_LIBRARY(notifier MODULE ${libnotifier_SRCS} ${libnotifier_UIS_H} ${libnotifier_RCC_SRCS})
 add_dependencies(notifier qmmpui)
 target_link_libraries(notifier ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS notifier DESTINATION ${LIB_DIR}/qmmp/General)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -166,7 +166,7 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     }
     m_models.append(model);
     connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
-    connect(model, SIGNAL(countChanged()), SLOT(onCountChanged()));
+    connect(model, SIGNAL(listChanged(int)), SLOT(onListChanged(int)));
     emit playListAdded(m_models.indexOf(model));
     selectPlayList(model);
     return model;
@@ -314,7 +314,7 @@ void PlayListManager::readPlayLists()
     foreach(PlayListModel *model, m_models)
     {
         connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
-        connect(model, SIGNAL(countChanged()), SLOT(onCountChanged()));
+        connect(model, SIGNAL(listChanged(int)), SLOT(onListChanged(int)));
     }
 }
 
@@ -373,9 +373,9 @@ void PlayListManager::writePlayLists()
     }
 }
 
-void PlayListManager::onCountChanged()
+void PlayListManager::onListChanged(int flags)
 {
-    if(m_ui_settings->autoSavePlayList())
+    if((flags & PlayListModel::STRUCTURE) && m_ui_settings->autoSavePlayList())
         m_timer->start();
 }
 

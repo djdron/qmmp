@@ -58,19 +58,9 @@ SET(libmodplug_HDRS
   decoder_modplug.h
 )
 
-SET(libmodplug_MOC_HDRS
-  decodermodplugfactory.h
-  
-  modplugmetadatamodel.h
-  settingsdialog.h
-  archivereader.h
-)
-
 SET(libmodplug_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libmodplug_RCC_SRCS ${libmodplug_RCCS})
-
-QT4_WRAP_CPP(libmodplug_MOC_SRCS ${libmodplug_MOC_HDRS})
 
 # user interface
 
@@ -84,7 +74,7 @@ QT4_WRAP_UI(libmodplug_UIS_H ${libmodplug_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MODPLUG_FOUND)
-ADD_LIBRARY(modplug MODULE ${libmodplug_SRCS} ${libmodplug_MOC_SRCS} ${libmodplug_UIS_H}
+ADD_LIBRARY(modplug MODULE ${libmodplug_SRCS} ${libmodplug_UIS_H}
   ${libmodplug_RCC_SRCS} ${libmodplug_HDRS})
 add_dependencies(modplug qmmp)
 target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS})

@@ -21,9 +21,7 @@
 #include "normalcontainer_p.h"
 
 NormalContainer::NormalContainer()
-{
-    m_reverted = false;
-}
+{}
 
 NormalContainer::~NormalContainer()
 {
@@ -46,9 +44,23 @@ void NormalContainer::insertTrack(int index, PlayListTrack *track)
         m_items.append(track);
 }
 
+void NormalContainer::replaceTracks(QList<PlayListTrack *> tracks)
+{
+    m_items.clear();
+    addTracks(tracks);
+}
+
 QList<PlayListGroup *> NormalContainer::groups() const
 {
     return QList<PlayListGroup *>();
+}
+
+QList<PlayListTrack *> NormalContainer::tracks() const
+{
+    QList<PlayListTrack *> trackList;
+    for(int i = 0; i < m_items.count(); ++i)
+        trackList.append(dynamic_cast<PlayListTrack *>(m_items[i]));
+    return trackList;
 }
 
 QList<PlayListItem *> NormalContainer::items() const
@@ -204,34 +216,4 @@ void NormalContainer::randomizeList()
 {
     for (int i = 0; i < m_items.size(); i++)
         m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
-}
-
-void NormalContainer::sort(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    doSort(mode, tracks, m_reverted);
-    addTracks(tracks);
-    m_reverted = !m_reverted;
-}
-
-void NormalContainer::sortSelection(int mode)
-{
-    QList<PlayListTrack *> tracks = takeAllTracks();
-    QList<PlayListTrack *> selected_tracks;
-    QList<int> selected_indexes;
-    for(int i = 0; i < tracks.count(); ++i)
-    {
-        if(tracks[i]->isSelected())
-        {
-            selected_tracks.append(tracks[i]);
-            selected_indexes.append(i);
-        }
-    }
-    doSort(mode, selected_tracks, m_reverted);
-
-    for (int i = 0; i < selected_indexes.count(); i++)
-        tracks.replace(selected_indexes[i], selected_tracks[i]);
-
-    addTracks(tracks);
-    m_reverted = !m_reverted;
 }

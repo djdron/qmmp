@@ -18,7 +18,7 @@ CONFIG += warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib
- 
+
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib
 PKGCONFIG += libmms
@@ -26,24 +26,6 @@ isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Transports
 INSTALLS += target
 
-
 FORMS += settingsdialog.ui
-
-TRANSLATIONS = translations/mms_plugin_ru.ts \
-    translations/mms_plugin_uk_UA.ts \
-    translations/mms_plugin_zh_CN.ts \
-    translations/mms_plugin_zh_TW.ts \
-    translations/mms_plugin_cs.ts \
-    translations/mms_plugin_pl.ts \
-    translations/mms_plugin_de.ts \
-    translations/mms_plugin_it.ts \
-    translations/mms_plugin_tr.ts \
-    translations/mms_plugin_lt.ts \
-    translations/mms_plugin_nl.ts \
-    translations/mms_plugin_ja.ts \
-    translations/mms_plugin_es.ts \
-    translations/mms_plugin_sr_BA.ts \
-    translations/mms_plugin_sr_RS.ts
-
 
 RESOURCES = translations/translations.qrc
