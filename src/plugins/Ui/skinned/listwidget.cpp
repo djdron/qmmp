@@ -435,6 +435,8 @@ void ListWidget::updateList(int flags)
             delete m_rows.takeFirst();
     }
 
+    int prev_number = 0;
+
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
@@ -455,7 +457,16 @@ void ListWidget::updateList(int flags)
         else
         {
             row->separator = false;
-            row->number = m_model->numberOfTrack(m_first+i) + 1;
+            //optimization: reduce number of PlaListModel::numberOfTrack(int) calls
+            if(!prev_number)
+            {
+                row->number = m_model->numberOfTrack(m_first+i) + 1;
+                prev_number = row->number;
+            }
+            else
+            {
+                row->number = ++prev_number;
+            }
             row->length = items[i]->formattedLength();
             if(m_show_number && !m_align_numbres)
                 row->title.prepend(QString("%1").arg(row->number)+". ");
@@ -684,7 +695,7 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
-    if (/*!m_scroll && */m_row_count)
+    if (m_row_count)
     {
         if (m_first + m_row_count < m_model->currentIndex() + 1)
             m_first = qMin(m_model->count() - m_row_count,
