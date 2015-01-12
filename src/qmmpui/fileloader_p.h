@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -82,14 +82,12 @@ private:
     void addDirectory(const QString &s, PlayListItem *before = 0);
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
-    struct InsertItem
+    struct LoaderTask
     {
-        PlayListItem *before;
         QString path;
-
+        PlayListItem *before;
     };
-    QQueue <QString> m_paths;
-    QQueue <InsertItem> m_insertItems;
+    QQueue <LoaderTask> m_tasks;
     QStringList m_filters;
     QmmpUiSettings *m_settings;
     bool m_finished;
