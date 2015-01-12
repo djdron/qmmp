@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -79,18 +79,11 @@ void FileLoader::addDirectory(const QString& s, PlayListItem *before)
 void FileLoader::run()
 {
     m_finished = false;
-    while((!m_paths.isEmpty() || !m_insertItems.isEmpty()) && !m_finished)
+    while(!m_tasks.isEmpty() && !m_finished)
     {
-        PlayListItem *before = 0;
-        QString path;
-        if(!m_insertItems.isEmpty())
-        {
-            InsertItem i = m_insertItems.dequeue();
-            before = i.before;
-            path = i.path;
-        }
-        else if(!m_paths.isEmpty())
-            path = m_paths.dequeue();
+        LoaderTask i = m_tasks.dequeue();
+        PlayListItem *before = i.before;
+        QString path = i.path;
 
         QFileInfo info(path);
 
@@ -114,7 +107,13 @@ void FileLoader::add(const QString &path)
 
 void FileLoader::add(const QStringList &paths)
 {
-    m_paths << paths;
+    foreach (QString path, paths)
+    {
+        LoaderTask task;
+        task.before = 0;
+        task.path = path;
+        m_tasks.append(task);
+    }
     MetaDataManager::instance()->prepareForAnotherThread();
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
@@ -129,12 +128,11 @@ void FileLoader::insert(PlayListItem *before, const QStringList &paths)
 {
     foreach (QString path, paths)
     {
-        InsertItem item;
-        item.before = before;
-        item.path = path;
-        m_insertItems.append(item);
+        LoaderTask task;
+        task.before = before;
+        task.path = path;
+        m_tasks.append(task);
     }
-
     MetaDataManager::instance()->prepareForAnotherThread();
     m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
@@ -144,7 +142,7 @@ void FileLoader::finish()
 {
     m_finished = true;
     wait();
-    m_paths.clear();
+    m_tasks.clear();
 }
 
 bool FileLoader::checkRestrictFilters(const QFileInfo &info)
