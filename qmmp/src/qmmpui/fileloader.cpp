@@ -69,7 +69,7 @@ void FileLoader::addDirectory(const QString& s, PlayListItem *before)
             return;
         }
 
-        if(tracks.count() > 20) //do not send more then 20 tracks at once
+        if(tracks.count() > 20) //do not send more than 20 tracks at once
         {
             emit newTracksToInsert(before, tracks);
             tracks.clear();
