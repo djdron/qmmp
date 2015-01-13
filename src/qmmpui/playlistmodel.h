@@ -367,6 +367,8 @@ public slots:
      * Inserts \b tracks at index position \b index in the playlist.
      */
     void insert(int index, QList <PlayListTrack *> tracks);
+
+    void insert(PlayListItem *before, QList <PlayListTrack *> tracks);
     /*!
      * Inserts file or directory at index position \b index in the playlist.
      * @param path Full path of file or directory.

@@ -58,10 +58,8 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
         m_play_state = new NormalPlayState(this);
     connect(m_ui_settings, SIGNAL(groupsChanged(bool)), SLOT(prepareGroups(bool)));
     connect(m_ui_settings, SIGNAL(shuffleChanged(bool)), SLOT(prepareForShufflePlaying(bool)));
-    connect(m_loader, SIGNAL(newTrackToAdd(PlayListTrack*)),
-            SLOT(add(PlayListTrack*)), Qt::QueuedConnection);
-    connect(m_loader, SIGNAL(newTrackToInsert(PlayListItem*, PlayListTrack*)),
-            SLOT(insert(PlayListItem*, PlayListTrack*)), Qt::QueuedConnection);
+    connect(m_loader, SIGNAL(newTracksToInsert(PlayListItem*, QList<PlayListTrack*>)),
+            SLOT(insert(PlayListItem*, QList<PlayListTrack*>)), Qt::QueuedConnection);
     connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
     connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
     connect(m_task, SIGNAL(finished()), SLOT(onTaskFinished()));
@@ -191,7 +189,10 @@ void PlayListModel::insert(int index, PlayListTrack *track)
 
 void PlayListModel::insert(PlayListItem *before, PlayListTrack *track)
 {
-    insert(m_container->indexOf(before), track);
+     if(before)
+         insert(m_container->indexOf(before), track);
+     else
+         add(track);
 }
 
 void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
@@ -221,6 +222,14 @@ void PlayListModel::insert(int index, QList<PlayListTrack *> tracks)
     preparePlayState();
     flags |= STRUCTURE;
     emit listChanged(flags);
+}
+
+void PlayListModel::insert(PlayListItem *before, QList<PlayListTrack *> tracks)
+{
+    if(before)
+        insert(m_container->indexOf(before), tracks);
+    else
+        add(tracks);
 }
 
 void PlayListModel::insert(int index, const QString &path)

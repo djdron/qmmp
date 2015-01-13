@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QQueue>
 #include <QFileInfo>
+#include <QMutex>
 #include <QThread>
 
 class PlayListTrack;
@@ -70,15 +71,14 @@ public:
 
 signals:
     /*!
-     * Emitted when new playlist track is available.
-     * @param item Pointer of the new PlayListTrack object.
+     * Emitted when new playlist tracks are available.
+     * @param tracks List of the pointers to the \b PlayListTrack objects.
      */
-    void newTrackToAdd(PlayListTrack *track);
-    void newTrackToInsert(PlayListItem *before, PlayListTrack *track);
+    void newTracksToInsert(PlayListItem *before, QList<PlayListTrack *> tracks);
 
 private:
-    virtual void run();
-    void addFile(const QString &path, PlayListItem *before = 0);
+    void run();
+    QList<PlayListTrack*> processFile(const QString &path);
     void addDirectory(const QString &s, PlayListItem *before = 0);
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
@@ -91,6 +91,9 @@ private:
     QStringList m_filters;
     QmmpUiSettings *m_settings;
     bool m_finished;
+    bool m_use_meta;
+    QMutex m_mutex;
+
 };
 
 #endif
