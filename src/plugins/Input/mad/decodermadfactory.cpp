@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -122,7 +122,7 @@ Decoder *DecoderMADFactory::create(const QString &url, QIODevice *input)
     return d;
 }
 
-QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     FileInfo *info = new FileInfo(fileName);
     TagLib::Tag *tag = 0;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -90,14 +90,16 @@ public:
      * @param path File path
      * @param input Input data (if required)
      */
-    virtual Decoder *create(const QString &path , QIODevice *input = 0) = 0;
+    virtual Decoder *create(const QString &path, QIODevice *input = 0) = 0;
     /*!
      * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
      * One file may contain several playlist items (for example: cda disk or flac with embedded cue)
      * @param fileName File path.
      * @param useMetaData Metadata usage (\b true - use, \b - do not use)
+     * @param ignoredPaths Pointer to a list of the files which should be ignored by the recursive search
+     * (useful to exclude cue data files from playlist)
      */
-    virtual QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData) = 0;
+    virtual QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredPaths) = 0;
     /*!
      * Creats metadata object, which provides full access to file tags.
      * @param path File path.

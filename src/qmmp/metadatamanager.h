@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -54,8 +54,10 @@ public:
      * One file may contain several playlist items (for example: cda disk or flac with embedded cue)
      * @param path Source file path.
      * @param useMetaData Metadata usage (\b true - use, \b - do not use)
+     * @param ignoredPaths Pointer to a list of the files which should be ignored by the recursive search
+     * (useful to exclude cue data files from playlist)
      */
-    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = true) const;
+    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = true, QStringList *ignoredPaths = 0) const;
     /*!
      * Creats metadata object, which provides full access to file tags.
      * @param url File path or URL.

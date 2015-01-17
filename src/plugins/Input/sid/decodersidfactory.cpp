@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -82,7 +82,7 @@ Decoder *DecoderSIDFactory::create(const QString &path, QIODevice *input)
     return new DecoderSID(&m_db, path);
 }
 
-QList<FileInfo *> DecoderSIDFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderSIDFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     SIDHelper helper(&m_db);
     helper.load(fileName);
@@ -133,4 +133,4 @@ QTranslator *DecoderSIDFactory::createTranslator(QObject *parent)
     translator->load(QString(":/sid_plugin_") + locale);
     return translator;
 }
-Q_EXPORT_PLUGIN2(gme,DecoderSIDFactory)
+Q_EXPORT_PLUGIN2(sid,DecoderSIDFactory)

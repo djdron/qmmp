@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -211,6 +211,23 @@ QList<FileInfo*> CUEParser::createPlayList()
 const QString CUEParser::filePath(int track) const
 {
     return (track <= m_tracks.count()) ? m_tracks[track - 1]->file : QString();
+}
+
+const QStringList CUEParser::dataFiles() const
+{
+    QStringList files;
+    for(int i = 0; i < m_tracks.count(); ++i)
+    {
+        if(i == 0)
+        {
+            files << m_tracks[i]->file;
+            continue;
+        }
+
+        if(files.last() != m_tracks[i]->file)
+            files.append(m_tracks[i]->file);
+    }
+    return files;
 }
 
 qint64 CUEParser::offset(int track) const

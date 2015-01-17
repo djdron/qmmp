@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -74,7 +74,7 @@ Decoder *DecoderMPCFactory::create(const QString &, QIODevice *i)
     return new DecoderMPC(i);
 }
 
-QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     FileInfo *info = new FileInfo(fileName);
 

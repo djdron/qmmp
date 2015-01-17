@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -72,7 +72,7 @@ MetaDataModel* DecoderOpusFactory::createMetaDataModel(const QString &path, QObj
     return new OpusMetaDataModel(path, parent);
 }
 
-QList<FileInfo *> DecoderOpusFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderOpusFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     FileInfo *info = new FileInfo(fileName);
 

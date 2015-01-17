@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,13 +33,13 @@
 class MplayerEngineFactory : public QObject, EngineFactory
 {
 Q_OBJECT
-Q_INTERFACES(EngineFactory);
+Q_INTERFACES(EngineFactory)
 
 public:
     const EngineProperties properties() const;
     bool supports(const QString &source) const;
     AbstractEngine *create(QObject *parent = 0);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
+    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *);
     MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);

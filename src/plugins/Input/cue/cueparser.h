@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,6 +40,7 @@ public:
 
     QList<FileInfo*> createPlayList();
     const QString filePath(int track) const;
+    const QStringList dataFiles() const;
     qint64 offset(int track) const;
     qint64 length(int track) const;
     int count() const;
