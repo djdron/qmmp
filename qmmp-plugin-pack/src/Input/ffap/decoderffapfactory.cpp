@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -72,7 +72,7 @@ Decoder *DecoderFFapFactory::create(const QString &url, QIODevice *i)
     return d;
 }
 
-QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     QList <FileInfo*> list;
     TagLib::APE::Tag *tag = 0;
@@ -86,7 +86,7 @@ QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bo
         path.remove("ape://");
         path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
-        list = createPlayList(path, true);
+        list = createPlayList(path, true, 0);
         if (list.isEmpty() || track <= 0 || track > list.count())
         {
             qDeleteAll(list);
