@@ -40,8 +40,5 @@ RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Input
-    desktop.files = qmmp_cue.desktop
-    desktop.path = /share/applications
-    INSTALLS += target \
-                desktop
+    INSTALLS += target
 }
