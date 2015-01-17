@@ -50,7 +50,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     s.beginGroup("General");
     m_resume_on_startup = s.value("resume_on_startup", false).toBool();
     m_restrict_filters = s.value("restrict_filters").toStringList();
-    m_exclude_filters = s.value("exclude_filters", QStringList() << "*.cue").toStringList();
+    m_exclude_filters = s.value("exclude_filters").toStringList();
     m_use_default_pl = s.value("use_default_pl", false).toBool();
     m_default_pl_name = s.value("default_pl_name", tr("Playlist")).toString();
     s.endGroup();
