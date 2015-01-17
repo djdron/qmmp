@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -46,7 +46,7 @@ public:
     const DecoderProperties properties() const;
     Decoder *create(const QString &path, QIODevice *input);
     MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
+    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);

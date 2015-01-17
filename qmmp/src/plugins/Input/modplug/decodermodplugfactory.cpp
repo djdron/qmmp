@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -74,7 +74,7 @@ Decoder *DecoderModPlugFactory::create(const QString &path, QIODevice *input)
     return new DecoderModPlug(path);
 }
 
-QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     QList <FileInfo*> list;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);

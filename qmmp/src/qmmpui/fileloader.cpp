@@ -37,10 +37,10 @@ FileLoader::FileLoader(QObject *parent) : QThread(parent)
 FileLoader::~FileLoader()
 {}
 
-QList<PlayListTrack *> FileLoader::processFile(const QString &path)
+QList<PlayListTrack *> FileLoader::processFile(const QString &path, QStringList *ignoredPaths)
 {
     QList<PlayListTrack *> tracks;
-    QList <FileInfo *> infoList = MetaDataManager::instance()->createPlayList(path, m_use_meta);
+    QList <FileInfo *> infoList = MetaDataManager::instance()->createPlayList(path, m_use_meta, ignoredPaths);
 
     foreach (FileInfo *info, infoList)
     {
@@ -53,14 +53,20 @@ QList<PlayListTrack *> FileLoader::processFile(const QString &path)
 void FileLoader::addDirectory(const QString& s, PlayListItem *before)
 {
     QList<PlayListTrack *> tracks;
+    QStringList ignoredPaths;
     QDir dir(s);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
     QFileInfoList l = dir.entryInfoList(m_filters);
+
     foreach(QFileInfo info, l)
     {
         if(checkRestrictFilters(info) && checkExcludeFilters(info))
-            tracks.append(processFile(info.absoluteFilePath ()));
+        {
+            QStringList paths;
+            tracks.append(processFile(info.absoluteFilePath (), &ignoredPaths));
+            ignoredPaths.append(paths);
+        }
 
         if (m_finished)
         {
@@ -69,16 +75,20 @@ void FileLoader::addDirectory(const QString& s, PlayListItem *before)
             return;
         }
 
-        if(tracks.count() > 20) //do not send more than 20 tracks at once
+        if(tracks.count() > 30) //do not send more than 30 tracks at once
         {
+            removeIgnoredTracks(&tracks, ignoredPaths);
             emit newTracksToInsert(before, tracks);
             tracks.clear();
+            ignoredPaths.clear();
         }
     }
 
     if(!tracks.isEmpty())
     {
+        removeIgnoredTracks(&tracks, ignoredPaths);
         emit newTracksToInsert(before, tracks);
+        ignoredPaths.clear();
     }
 
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -209,4 +219,19 @@ bool FileLoader::checkExcludeFilters(const QFileInfo &info)
             return false;
     }
     return true;
+}
+
+void FileLoader::removeIgnoredTracks(QList<PlayListTrack *> *tracks, const QStringList &ignoredPaths)
+{
+    if(ignoredPaths.isEmpty())
+        return;
+
+    foreach(PlayListTrack *track, *tracks)
+    {
+        if(ignoredPaths.contains(track->url()))
+        {
+            tracks->removeAll(track);
+            delete track;
+        }
+    }
 }

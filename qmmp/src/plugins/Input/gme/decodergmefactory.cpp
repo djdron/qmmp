@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,7 +64,7 @@ Decoder *DecoderGmeFactory::create(const QString &path, QIODevice *input)
     return new DecoderGme(path);
 }
 
-QList<FileInfo *> DecoderGmeFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderGmeFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredFiles)
 {
     QList <FileInfo*> list;
     GmeHelper helper;
@@ -75,7 +75,7 @@ QList<FileInfo *> DecoderGmeFactory::createPlayList(const QString &fileName, boo
         path.remove("gme://");
         path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
-        list = createPlayList(path, true);
+        list = createPlayList(path, true, ignoredFiles);
         if (list.isEmpty() || track <= 0 || track > list.count())
         {
             qDeleteAll(list);

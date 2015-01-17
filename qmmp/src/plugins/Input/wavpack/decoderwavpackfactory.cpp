@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,8 +29,7 @@
 
 bool DecoderWavPackFactory::supports(const QString &source) const
 {
-
-    return (source.right(3).toLower() == ".wv");
+    return source.endsWith(".wv", Qt::CaseInsensitive);
 }
 
 bool DecoderWavPackFactory::canDecode(QIODevice *input) const
@@ -59,7 +58,7 @@ Decoder *DecoderWavPackFactory::create(const QString &p, QIODevice *)
     return new DecoderWavPack(p);
 }
 
-QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredFiles)
 {
     QList <FileInfo*> list;
     char err[80];
@@ -72,7 +71,7 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
         path.remove("wvpack://");
         path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
-        list = createPlayList(path, true);
+        list = createPlayList(path, true, ignoredFiles);
         if (list.isEmpty() || track <= 0 || track > list.count())
         {
             qDeleteAll(list);

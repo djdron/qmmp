@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -58,7 +58,7 @@ Decoder *DecoderAACFactory::create(const QString &, QIODevice *input)
     return new DecoderAAC(input);
 }
 
-QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     FileInfo *info = new FileInfo(fileName);
 

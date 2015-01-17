@@ -78,10 +78,11 @@ signals:
 
 private:
     void run();
-    QList<PlayListTrack*> processFile(const QString &path);
+    QList<PlayListTrack*> processFile(const QString &path, QStringList *ignoredPaths = 0);
     void addDirectory(const QString &s, PlayListItem *before = 0);
     bool checkRestrictFilters(const QFileInfo &info);
     bool checkExcludeFilters(const QFileInfo &info);
+    void removeIgnoredTracks(QList<PlayListTrack *> *tracks, const QStringList &ignoredPaths);
     struct LoaderTask
     {
         QString path;

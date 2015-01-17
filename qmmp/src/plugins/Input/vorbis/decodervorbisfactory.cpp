@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -77,7 +77,7 @@ MetaDataModel* DecoderVorbisFactory::createMetaDataModel(const QString &path, QO
     return new VorbisMetaDataModel(path, parent);
 }
 
-QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     FileInfo *info = new FileInfo(fileName);
 

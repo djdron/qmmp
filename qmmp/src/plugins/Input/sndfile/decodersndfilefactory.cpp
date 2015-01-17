@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -78,7 +78,7 @@ Decoder *DecoderSndFileFactory::create(const QString &path, QIODevice *)
     return new DecoderSndFile(path);
 }
 
-QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     QList <FileInfo *> list;
     SF_INFO snd_info;

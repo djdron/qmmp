@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,21 +44,24 @@ MetaDataManager::~MetaDataManager()
     m_instance = 0;
 }
 
-QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool useMetaData) const
+QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredPaths) const
 {
     QMutexLocker locker(&m_mutex);
     QList <FileInfo *> list;
     DecoderFactory *fact = 0;
     EngineFactory *efact = 0;
+    QStringList dummyList;
+    if(!ignoredPaths)
+        ignoredPaths = &dummyList;
 
     if (!fileName.contains("://")) //local file
     {
         if(!QFile::exists(fileName))
             return list;
         else if((fact = Decoder::findByPath(fileName, m_settings->determineFileTypeByContent())))
-            return fact->createPlayList(fileName, useMetaData);
+            return fact->createPlayList(fileName, useMetaData, ignoredPaths);
         else if((efact = AbstractEngine::findByPath(fileName)))
-            return efact->createPlayList(fileName, useMetaData);
+            return efact->createPlayList(fileName, useMetaData, ignoredPaths);
         return list;
     }
     else
@@ -72,7 +75,7 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
         foreach(fact, Decoder::factories())
         {
             if(fact->properties().protocols.contains(scheme) && Decoder::isEnabled(fact))
-                return fact->createPlayList(fileName, useMetaData);
+                return fact->createPlayList(fileName, useMetaData, ignoredPaths);
         }
     }
     return list;
