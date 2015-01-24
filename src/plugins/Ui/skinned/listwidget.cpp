@@ -404,7 +404,7 @@ void ListWidget::updateList(int flags)
     if(flags & PlayListModel::CURRENT)
         recenterCurrent();
 
-    QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
+    QList<PlayListItem *> items;
 
     if(flags & PlayListModel::STRUCTURE || flags & PlayListModel::CURRENT)
     {
@@ -429,10 +429,16 @@ void ListWidget::updateList(int flags)
         else
             m_number_width = 0;
 
+        items = m_model->mid(m_first, m_row_count);
+
         while(m_rows.count() < qMin(m_row_count, items.count()))
             m_rows << new ListWidgetRow;
         while(m_rows.count() > qMin(m_row_count, items.count()))
             delete m_rows.takeFirst();
+    }
+    else
+    {
+        items = m_model->mid(m_first, m_row_count);
     }
 
     int prev_number = 0;
