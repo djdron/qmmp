@@ -53,6 +53,7 @@ public:
      */
     enum MetaData
     {
+        UNKNOWN = -1,
         TITLE = 0, /*!< Title */
         ARTIST,    /*!< Artist  */
         ALBUMARTIST,/*!< Album artist  */
