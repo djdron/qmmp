@@ -69,7 +69,8 @@ HEADERS += general.h \
     playlistcontainer_p.h \
     groupedcontainer_p.h \
     normalcontainer_p.h \
-    playlisttask_p.h
+    playlisttask_p.h \
+    metadataformatter2.h
 
 SOURCES += general.cpp \
     playlistparser.cpp \
@@ -103,7 +104,8 @@ SOURCES += general.cpp \
     groupedcontainer.cpp \
     normalcontainer.cpp \
     playlistcontainer.cpp \
-    playlisttask.cpp
+    playlisttask.cpp \
+    metadataformatter2.cpp
 
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
