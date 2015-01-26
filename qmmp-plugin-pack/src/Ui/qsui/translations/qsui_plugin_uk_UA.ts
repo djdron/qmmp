@@ -767,7 +767,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="146"/>
         <source>Spectrum Analyzer</source>
-        <translation>Аналізато спектру</translation>
+        <translation>Аналізатор спектру</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="161"/>
