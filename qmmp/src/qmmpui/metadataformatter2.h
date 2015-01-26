@@ -94,9 +94,10 @@ private:
     };
 
     bool processKey(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
+    bool processIf(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
     void processText(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
 
-    void compile(const QString &format);
+    QList<MetaDataFormatter2::Node> compile(const QString &format);
     QString m_format;
     QList<Node> m_nodes;
     //QString processIfKeyWord(QString title);
