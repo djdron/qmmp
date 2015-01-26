@@ -93,9 +93,9 @@ private:
         QList<Param> params;
     };
 
-    bool processKey(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
-    bool processIf(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
-    void processText(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end);
+    bool processKey(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n);
+    bool processIf(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n);
+    void processText(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n);
 
     QList<MetaDataFormatter2::Node> compile(const QString &format);
     QString m_format;

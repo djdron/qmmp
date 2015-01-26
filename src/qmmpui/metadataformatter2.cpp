@@ -45,7 +45,10 @@ Syntax:
 MetaDataFormatter2::MetaDataFormatter2(const QString &format)
 {
     m_format = format;
-    //compile("%p - %a");
+    qDebug("start!!");
+    QList<Node> nodes = compile("%if(%if(%p,%a,%t),%a,%t) + ");
+    qDebug("=%d=",nodes.count());
+    qDebug("end!!");
 }
 
 QString MetaDataFormatter2::parse(const PlayListTrack *item)
@@ -97,7 +100,7 @@ QString MetaDataFormatter2::formatLength(qint64 length) const
     return str;
 }
 
-bool MetaDataFormatter2::processKey(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end)
+bool MetaDataFormatter2::processKey(QList<Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n)
 {
     QHash<QString, Qmmp::MetaData> key_map;
     key_map.insert("p", Qmmp::ARTIST);
@@ -134,12 +137,13 @@ bool MetaDataFormatter2::processKey(QList<Node> *nodes, QString::const_iterator 
         param.key = key;
         node.params.append(param);
         nodes->append(node);
+        *n = i;
         return true;
     }
     return false;
 }
 
-bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator i, QString::const_iterator end)
+bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n)
 {
     if((*i) != QChar('i'))
         return false;
@@ -154,23 +158,91 @@ bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QStri
     node.command = Node::IF_KEYWORD;
 
     int c = 0;
-    QString str;
+    QString var1, var2, var3;
+
+    enum {
+        STARTING = 0,
+        READING_VAR1,
+        READING_VAR2,
+        READING_VAR3,
+        FINISHED,
+
+    } state = STARTING;
+
     while(i != end)
     {
         if((*i) == QChar('('))
+        {
             c++;
+            if(state == STARTING)
+            {
+                state = READING_VAR1;
+                i++;
+                continue;
+            }
+        }
         else if((*i) == QChar(')'))
             c--;
 
-        str.append((*i));
-        i++;
-        if(c == 0)
+        switch (state)
+        {
+        case STARTING:
+        {
             break;
+        }
+        case READING_VAR1:
+        {
+            if((*i) == QChar(',') && c == 1)
+            {
+                state = READING_VAR2;
+                break;
+            }
+            var1.append((*i));
+            break;
+        }
+        case READING_VAR2:
+        {
+            if((*i) == QChar(',') && c == 1)
+            {
+                state = READING_VAR3;
+                break;
+            }
+            var2.append((*i));
+            break;
+        }
+        case READING_VAR3:
+        {
+            if((*i) == QChar(')') && c == 0)
+            {
+                state = FINISHED;
+                break;
+            }
+            var3.append((*i));
+            break;
+        }
+        default:
+            break;
+        }
+        if(state == FINISHED)
+            break;
+        i++;
     }
-    return false;
+
+    qDebug("%s|%s|%s", qPrintable(var1), qPrintable(var2), qPrintable(var3));
+
+    //i--;
+    *n = i;
+    Param param1, param2, param3;
+    param1.type = Param::NODES, param2.type = Param::NODES, param3.type = Param::NODES;
+    param1.children = compile(var1);
+    param2.children = compile(var2);
+    param3.children = compile(var3);
+    node.params << param1 << param2 << param3;
+    nodes->append(node);
+    return true;
 }
 
-void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator i, QString::const_iterator end)
+void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator i, QString::const_iterator end, QString::const_iterator *n)
 {
     Node node;
     node.command = Node::PRINT_TEXT;
@@ -186,34 +258,47 @@ void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QSt
         {
             i--;
             nodes->append(node);
+            *n = i;
             return;
         }
     }
-    nodes->append(node);
+    *n = i;
+    if(!node.params[0].text.isEmpty())
+        nodes->append(node);
 }
 
 QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &format)
 {
+    qDebug("=%s=", qPrintable(format));
     QList <Node> nodes;
     QString::const_iterator i = format.constBegin();
 
     while (i != format.constEnd())
     {
-        i++;
         if((*i) == QChar('%'))
         {
             i++;
-            if(processKey(&nodes, i, format.constEnd()))
+            if(processKey(&nodes, i, format.constEnd(), &i))
+            {
                 continue;
+            }
 
-            if(processIf(&nodes, i, format.constEnd()))
+            if(processIf(&nodes, i, format.constEnd(), &i))
+            {
                 continue;
+            }
+
+
+            processText(&nodes, i, format.constEnd(), &i);
+            continue;
         }
         else
         {
-            processText(&nodes, i, format.constEnd());
+            i++;
+            processText(&nodes, i, format.constEnd(), &i);
             continue;
         }
+        i++;
     }
     return nodes;
 }
