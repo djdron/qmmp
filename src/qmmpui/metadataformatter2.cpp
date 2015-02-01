@@ -364,7 +364,6 @@ QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &forma
     {
         if((*i) == QChar('%'))
         {
-            qDebug("again");
             i++;
             if(i == format.constEnd())
                 continue;
