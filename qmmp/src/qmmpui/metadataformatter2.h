@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2015 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,13 +56,13 @@ public:
     /*!
      * Converts metadata of item \b item to one string using template.
      */
-    QString parse(const PlayListTrack *item);
+    QString format(const PlayListTrack *item);
     /*!
      * Converts metadata to one string using template.
      * @param metaData Metadata array.
      * @param length Length in seconds.
      */
-    QString parse(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
+    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
@@ -96,6 +96,11 @@ private:
     bool processKey(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     bool processIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     void processText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+
+    QString execute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+
+
     QString nodeToString(Node node);
 
     QList<MetaDataFormatter2::Node> compile(const QString &format);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2015 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,25 +42,35 @@ Syntax:
 #include <QUrl>
 #include "metadataformatter2.h"
 
-MetaDataFormatter2::MetaDataFormatter2(const QString &format)
+MetaDataFormatter2::MetaDataFormatter2(const QString &format2)
 {
-    m_format = format;
+    m_format = format2;
+    //m_nodes = compile("%if(%if(%p,%a,%t),%a,%t) + %a");
+    m_nodes = compile("%if(%a,%p,%t) + %a");
 
-    QList<Node> nodes = compile("%if(%if(%p,%a,%t),%a,%t) + ");
-
-    foreach (Node n, nodes)
+    foreach (Node n, m_nodes)
     {
         qDebug("=>%s", qPrintable(nodeToString(n)));
     }
+
+    QMap<Qmmp::MetaData, QString> metaData;
+    metaData[Qmmp::ARTIST] = "ARTIST";
+    metaData[Qmmp::ALBUM] = "ALBUM";
+    metaData[Qmmp::TITLE] = "TITLE";
+    QString out = format(metaData);
+    qDebug("=%s=", qPrintable(out));
 }
 
-QString MetaDataFormatter2::parse(const PlayListTrack *item)
+QString MetaDataFormatter2::format(const PlayListTrack *item)
 {
-    return parse(*item, item->length());
+    return format(*item, item->length());
 }
 
-QString MetaDataFormatter2::parse(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length)
+QString MetaDataFormatter2::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length)
 {
+    QString title = execute(&m_nodes, &metaData, length);
+
+
     /*QString title = m_format;
     title.replace("\\(", "%28");
     title.replace("\\)", "%29");
@@ -87,7 +97,7 @@ QString MetaDataFormatter2::parse(const QMap<Qmmp::MetaData, QString> &metaData,
     title.replace("%28", "(");
     title.replace("%29", ")");
     return title.trimmed();*/
-    return QString();
+    return title;
 }
 
 QString MetaDataFormatter2::formatLength(qint64 length) const
@@ -143,7 +153,7 @@ bool MetaDataFormatter2::processKey(QList<Node> *nodes, QString::const_iterator 
         param.key = key;
         node.params.append(param);
         nodes->append(node);
-        (*i) += token_name.size();
+        (*i) += token_name.size() - 1;
         return true;
     }
     return false;
@@ -257,9 +267,9 @@ void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QSt
     param.type = Param::TEXT;
     node.params.append(param);
 
-    while ((*i) != end)
+    forever
     {
-        if((**i) == QChar('%'))
+        if((*i) == end || (**i) == QChar('%'))
         {
             (*i)--;
             break;
@@ -269,6 +279,49 @@ void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QSt
     }
     if(!node.params[0].text.isEmpty())
         nodes->append(node);
+}
+
+QString MetaDataFormatter2::execute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+{
+    QString out;
+    for(int i = 0; i < nodes->count(); ++i)
+    {
+        Node node = nodes->at(i);
+        if(node.command == Node::PRINT_TEXT)
+        {
+            Param p = node.params.first();
+            out.append(printParam(&p, metaData, length));
+
+        }
+        else if(node.command == Node::IF_KEYWORD)
+        {
+            QString var1 = printParam(&node.params[0], metaData, length);
+            if(var1.isEmpty())
+                out.append(printParam(&node.params[2], metaData, length));
+            else
+                out.append(printParam(&node.params[1], metaData, length));
+        }
+    }
+    return out;
+}
+
+QString MetaDataFormatter2::printParam(MetaDataFormatter2::Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+{
+    switch (p->type)
+    {
+    case Param::KEY:
+        return metaData->value(p->key);
+        break;
+    case Param::TEXT:
+        return p->text;
+        break;
+    case Param::NODES:
+        return execute(&p->children, metaData, length);
+        break;
+    default:
+        break;
+    }
+    return QString();
 }
 
 QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
@@ -303,7 +356,7 @@ QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
 
 QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &format)
 {
-    qDebug("=%s=", qPrintable(format));
+    //qDebug("=%s=", qPrintable(format));
     QList <Node> nodes;
     QString::const_iterator i = format.constBegin();
 
@@ -311,28 +364,30 @@ QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &forma
     {
         if((*i) == QChar('%'))
         {
+            qDebug("again");
             i++;
+            if(i == format.constEnd())
+                continue;
+
             if(processKey(&nodes, &i, format.constEnd()))
             {
+                i++;
                 continue;
             }
 
             if(processIf(&nodes, &i, format.constEnd()))
             {
+                i++;
                 continue;
             }
-
-
-            processText(&nodes, &i, format.constEnd());
+            //i++;
             continue;
         }
         else
         {
-            i++;
             processText(&nodes, &i, format.constEnd());
-            continue;
+            i++;
         }
-        i++;
     }
     return nodes;
 }
