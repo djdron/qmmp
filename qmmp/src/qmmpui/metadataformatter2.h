@@ -34,7 +34,7 @@ class MetaDataFormatter2
 public:
     /*!
      * Constructor.
-     * @param format Metadata template.
+     * @param pattern Metadata template.
      * Syntax:
      * %p - artist,
      * %a - album,
@@ -52,7 +52,12 @@ public:
      * %l - duration,
      * %if(A,B,C) or %if(A&B&C,D,E) - condition.
      */
-    MetaDataFormatter2(const QString &format = QString());
+    MetaDataFormatter2(const QString &pattern = QString());
+
+    void setPattern(const QString &pattern);
+
+    const QString pattern() const;
+
     /*!
      * Converts metadata of item \b item to one string using template.
      */
@@ -71,42 +76,22 @@ public:
 
 private:
     struct Node;
-    struct Param
-    {
-        enum {
-            KEY = 0,
-            TEXT,
-            NODES
-        } type;
+    struct Param;
 
-        Qmmp::MetaData key;
-        QString text;
-        QList<Node> children;
-    };
-    struct Node
-    {
-        enum {
-            PRINT_TEXT = 0,
-            IF_KEYWORD
-        } command;
+    bool parseField(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+    bool parseIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+    void parseText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
 
-        QList<Param> params;
-    };
-
-    bool processKey(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
-    bool processIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
-    void processText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
-
-    QString execute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
     QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
 
+    QString dumpNode(Node node);
 
-    QString nodeToString(Node node);
-
-    QList<MetaDataFormatter2::Node> compile(const QString &format);
-    QString m_format;
+    QList<MetaDataFormatter2::Node> compile(const QString &expr);
+    QString m_pattern;
     QList<Node> m_nodes;
-    //QString processIfKeyWord(QString title);
+    QMap<QString, int> m_fieldNames;
 };
 
 #endif // METADATAFORMATTER2_H
