@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #define TEXTSCROLLER_H
 
 #include <QWidget>
+#include <qmmpui/metadataformatter.h>
 #include <qmmp/qmmp.h>
 
 class QTimer;
@@ -76,6 +77,7 @@ private:
     QMenu *m_menu;
     QAction *m_scrollAction, *m_transparencyAction;
     SoundCore *m_core;
+    MetaDataFormatter m_formater;
 };
 
 #endif

@@ -53,6 +53,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowOpacity(settings.value("popup_opacity", 1.0).toDouble());
     m_coverSize = settings.value("popup_cover_size", 48).toInt();
     m_template = settings.value("popup_template",DEFAULT_TEMPLATE).toString();
+    m_formatter.setPattern(m_template);
     int delay = settings.value("popup_delay", 2500).toInt();
     bool show_cover = settings.value("popup_show_cover",true).toBool();
     settings.endGroup();
@@ -93,10 +94,7 @@ void PopupWidget::prepare(PlayListTrack *item, QPoint pos)
         return;
     }
 
-    QString title = m_template;
-    MetaDataFormatter f(title);
-    title = f.format(item);
-    m_label1->setText(title);
+    m_label1->setText(m_formatter.format(item));
     qApp->processEvents();
     updateGeometry ();
     resize(sizeHint());
