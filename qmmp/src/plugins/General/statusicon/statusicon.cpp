@@ -30,7 +30,6 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
-#include <qmmpui/metadataformatter.h>
 #include "qmmptrayicon.h"
 #include "statusicon.h"
 
@@ -48,6 +47,7 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_hideToTray = settings.value("hide_on_close", false).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",false).toBool();
     m_tooltip = settings.value("show_tooltip",true).toBool();
+    m_formatter.setPattern("%p%if(%p&%t, - ,)%t");
 #ifdef Q_WS_X11
     m_tray->showNiceToolTip(m_tooltip);
 #endif
@@ -121,8 +121,7 @@ void StatusIcon::setState(Qmmp::State state)
 
 void StatusIcon::showMetaData()
 {
-    MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
-    QString message = f.format(m_core->metaData());
+    QString message = m_formatter.format(m_core->metaData());
     if (message.isEmpty())
         message = m_core->metaData(Qmmp::URL).section('/',-1);
 
@@ -132,8 +131,7 @@ void StatusIcon::showMetaData()
 #ifndef Q_WS_X11
     if(m_tooltip)
     {
-        MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
-        QString message = f.parse(m_core->metaData());
+        QString message = m_formatter.format(m_core->metaData());
         if(message.isEmpty())
             message = m_core->metaData(Qmmp::URL).section('/',-1);
         m_tray->setToolTip(f.parse(m_core->metaData()));
