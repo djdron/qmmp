@@ -47,7 +47,6 @@ SET(libqmmpui_SRCS
     tageditor.cpp
     playlistmanager.cpp
     metadataformatter.cpp
-    metadataformatter2.cpp
     templateeditor.cpp
     uiloader.cpp
     jumptotrackdialog.cpp
@@ -96,7 +95,6 @@ SET(libqmmpui_DEVEL_HDRS
     general.h
     mediaplayer.h
     metadataformatter.h
-    metadataformatter2.h
     playlistdownloader.h
     playlistformat.h
     playlistitem.h
