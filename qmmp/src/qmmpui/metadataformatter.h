@@ -115,6 +115,7 @@ private:
     bool parseField(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     bool parseIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     void parseText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+    void parseEscape(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
 
     QString evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
     QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
