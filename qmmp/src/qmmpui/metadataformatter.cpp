@@ -83,12 +83,12 @@ const QString MetaDataFormatter::pattern() const
     return m_pattern;
 }
 
-QString MetaDataFormatter::format(const PlayListTrack *item)
+QString MetaDataFormatter::format(const PlayListTrack *item) const
 {
     return format(*item, item->length());
 }
 
-QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length)
+QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length) const
 {
     return evalute(&m_nodes, &metaData, length).trimmed();
 }
@@ -265,7 +265,7 @@ void MetaDataFormatter::parseText(QList<MetaDataFormatter::Node> *nodes, QString
         nodes->append(node);
 }
 
-QString MetaDataFormatter::evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
 {
     QString out;
     for(int i = 0; i < nodes->count(); ++i)
@@ -289,7 +289,7 @@ QString MetaDataFormatter::evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData
     return out;
 }
 
-QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
 {
     switch (p->type)
     {
@@ -308,7 +308,7 @@ QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qm
     return QString();
 }
 
-QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
 {
     if(field >= Qmmp::TITLE && field <= Qmmp::URL)
     {
@@ -339,7 +339,7 @@ QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QStr
     return QString();
 }
 
-QString MetaDataFormatter::dumpNode(MetaDataFormatter::Node node)
+QString MetaDataFormatter::dumpNode(MetaDataFormatter::Node node) const
 {
     QString str;
     QStringList params;

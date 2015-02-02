@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include "metadataformatter.h"
 
 class QTimer;
 
@@ -180,6 +181,10 @@ public:
      *         otherwise.
      */
     bool clearPreviousPlayList() const;
+
+    const MetaDataFormatter* titleFormatter() const;
+    const MetaDataFormatter* groupFormatter() const;
+
     /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
@@ -272,6 +277,8 @@ private:
     bool m_use_clipboard;
     //timer
     QTimer *m_timer;
+    //formatters
+    MetaDataFormatter m_group_formatter, m_title_formatter;
 };
 
 #endif // QMMPUISETTINGS_H
