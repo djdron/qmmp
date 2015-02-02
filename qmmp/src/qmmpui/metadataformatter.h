@@ -83,7 +83,9 @@ private:
     {
         enum {
             PRINT_TEXT = 0,
-            IF_KEYWORD
+            IF_KEYWORD,
+            OR_OPERATOR,
+            AND_OPERATOR
         } command;
 
         QList<Param> params;
