@@ -42,23 +42,75 @@ Syntax:
 #include <QUrl>
 #include "metadataformatter2.h"
 
-MetaDataFormatter2::MetaDataFormatter2(const QString &format2)
+struct MetaDataFormatter2::Param
 {
-    m_format = format2;
-    //m_nodes = compile("%if(%if(%p,%a,%t),%a,%t) + %a");
-    m_nodes = compile("%if(%a,%p,%t) + %a");
+    enum {
+        FIELD = 0,
+        TEXT,
+        NODES
+    } type;
 
+    //extra fields
+    enum
+    {
+        TWO_DIGIT_TRACK = Qmmp::URL + 1,
+        DURATION,
+        FILE_NAME
+    };
+
+    int field;
+    QString text;
+    QList<Node> children;
+};
+
+struct MetaDataFormatter2::Node
+{
+    enum {
+        PRINT_TEXT = 0,
+        IF_KEYWORD
+    } command;
+
+    QList<Param> params;
+};
+
+MetaDataFormatter2::MetaDataFormatter2(const QString &pattern)
+{
+    m_fieldNames.insert("t", Qmmp::TITLE);
+    m_fieldNames.insert("p", Qmmp::ARTIST);
+    m_fieldNames.insert("aa", Qmmp::ALBUMARTIST);
+    m_fieldNames.insert("a", Qmmp::ALBUM);
+    m_fieldNames.insert("c", Qmmp::COMMENT);
+    m_fieldNames.insert("g", Qmmp::GENRE);
+    m_fieldNames.insert("C", Qmmp::COMPOSER);
+    m_fieldNames.insert("y", Qmmp::YEAR);
+    m_fieldNames.insert("n", Qmmp::TRACK);
+    m_fieldNames.insert("D", Qmmp::DISCNUMBER);
+    m_fieldNames.insert("F", Qmmp::URL);
+    m_fieldNames.insert("NN", Param::TWO_DIGIT_TRACK);
+    m_fieldNames.insert("l", Param::DURATION);
+    m_fieldNames.insert("f", Param::FILE_NAME);
+
+    setPattern(pattern);
+}
+
+void MetaDataFormatter2::setPattern(const QString &pattern)
+{
+    m_pattern = pattern;
+    m_nodes.clear();
+
+    qDebug("MetaDataFormatter: pattern: %s", qPrintable(pattern));
+    m_nodes = compile(pattern);
+    qDebug("MetaDataFormatter: dump of nodes");
     foreach (Node n, m_nodes)
     {
-        qDebug("=>%s", qPrintable(nodeToString(n)));
+        qDebug("=>%s", qPrintable(dumpNode(n)));
     }
+    qDebug("MetaDataFormatter: end of dump");
+}
 
-    QMap<Qmmp::MetaData, QString> metaData;
-    metaData[Qmmp::ARTIST] = "ARTIST";
-    metaData[Qmmp::ALBUM] = "ALBUM";
-    metaData[Qmmp::TITLE] = "TITLE";
-    QString out = format(metaData);
-    qDebug("=%s=", qPrintable(out));
+const QString MetaDataFormatter2::pattern() const
+{
+    return m_pattern;
 }
 
 QString MetaDataFormatter2::format(const PlayListTrack *item)
@@ -68,36 +120,7 @@ QString MetaDataFormatter2::format(const PlayListTrack *item)
 
 QString MetaDataFormatter2::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length)
 {
-    QString title = execute(&m_nodes, &metaData, length);
-
-
-    /*QString title = m_format;
-    title.replace("\\(", "%28");
-    title.replace("\\)", "%29");
-    title.replace(")", "%)");
-    title.replace("&", "%&");
-    title.replace(",", "%,");
-    title.replace("%p", metaData[Qmmp::ARTIST]);
-    title.replace("%aa", metaData[Qmmp::ALBUMARTIST]);
-    title.replace("%a", metaData[Qmmp::ALBUM]);
-    title.replace("%t", metaData[Qmmp::TITLE]);
-    title.replace("%n", metaData[Qmmp::TRACK]);
-    title.replace("%NN", QString("%1").arg(metaData[Qmmp::TRACK],2,'0'));
-    title.replace("%g", metaData[Qmmp::GENRE]);
-    title.replace("%c", metaData[Qmmp::COMMENT]);
-    title.replace("%C", metaData[Qmmp::COMPOSER]);
-    title.replace("%D", metaData[Qmmp::DISCNUMBER]);
-    title.replace("%f", metaData[Qmmp::URL].section('/',-1));
-    title.replace("%F", metaData[Qmmp::URL]);
-    title.replace("%y", metaData[Qmmp::YEAR]);
-    if(title.contains("l"))
-        title.replace("%l",formatLength(length));
-    if(title.contains("%if"))
-        title = processIfKeyWord(title);
-    title.replace("%28", "(");
-    title.replace("%29", ")");
-    return title.trimmed();*/
-    return title;
+    return evalute(&m_nodes, &metaData, length).trimmed();
 }
 
 QString MetaDataFormatter2::formatLength(qint64 length) const
@@ -113,53 +136,42 @@ QString MetaDataFormatter2::formatLength(qint64 length) const
     return str;
 }
 
-bool MetaDataFormatter2::processKey(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
+bool MetaDataFormatter2::parseField(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
 {
-    QString token_name;
-    Qmmp::MetaData key = Qmmp::UNKNOWN;
-    QHash<QString, Qmmp::MetaData> key_map;
-    key_map.insert("p", Qmmp::ARTIST);
-    key_map.insert("aa", Qmmp::ALBUMARTIST);
-    key_map.insert("a", Qmmp::ALBUM);
-    key_map.insert("t", Qmmp::TITLE);
-    key_map.insert("n", Qmmp::TRACK);
-    key_map.insert("g", Qmmp::GENRE);
-    key_map.insert("c", Qmmp::COMMENT);
-    key_map.insert("C", Qmmp::COMPOSER);
-    key_map.insert("D", Qmmp::DISCNUMBER);
-    key_map.insert("F", Qmmp::URL);
-    key_map.insert("y", Qmmp::YEAR);
+    QString fieldName;
+    int field = Qmmp::UNKNOWN;
 
+    //try to find field with 2 symbols
     if((*i) + 1 != end)
     {
-        token_name.append((**i));
-        token_name.append(*((*i)+1));
-        key = key_map.value(token_name, Qmmp::UNKNOWN);
+        fieldName.append((**i));
+        fieldName.append(*((*i)+1));
+        field = m_fieldNames.value(fieldName, Qmmp::UNKNOWN);
     }
-
-    if(key == Qmmp::UNKNOWN)
+    //try to find field with 1 symbol
+    if(field == Qmmp::UNKNOWN)
     {
-        token_name.clear();
-        token_name.append((**i));
-        key = key_map.value(token_name, Qmmp::UNKNOWN);
+        fieldName.clear();
+        fieldName.append((**i));
+        field = m_fieldNames.value(fieldName, Qmmp::UNKNOWN);
     }
 
-    if(key != Qmmp::UNKNOWN)
+    if(field != Qmmp::UNKNOWN)
     {
         Node node;
         node.command = Node::PRINT_TEXT;
         Param param;
-        param.type = Param::KEY;
-        param.key = key;
+        param.type = Param::FIELD;
+        param.field = field;
         node.params.append(param);
         nodes->append(node);
-        (*i) += token_name.size() - 1;
+        (*i) += fieldName.size() - 1;
         return true;
     }
     return false;
 }
 
-bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
+bool MetaDataFormatter2::parseIf(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
 {
     if((*i) + 1 == end || (*i) + 2 == end)
         return false;
@@ -245,10 +257,12 @@ bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QStri
         (*i)++;
     }
 
-    //qDebug("%s|%s|%s", qPrintable(var1), qPrintable(var2), qPrintable(var3));
+    if(state != FINISHED)
+    {
+        qWarning("MetaDataFormatter: syntax error");
+        return false;
+    }
 
-    //i--;
-    //*n = i;
     Param param1, param2, param3;
     param1.type = Param::NODES, param2.type = Param::NODES, param3.type = Param::NODES;
     param1.children = compile(var1);
@@ -259,7 +273,7 @@ bool MetaDataFormatter2::processIf(QList<MetaDataFormatter2::Node> *nodes, QStri
     return true;
 }
 
-void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
+void MetaDataFormatter2::parseText(QList<MetaDataFormatter2::Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
 {
     Node node;
     node.command = Node::PRINT_TEXT;
@@ -281,7 +295,7 @@ void MetaDataFormatter2::processText(QList<MetaDataFormatter2::Node> *nodes, QSt
         nodes->append(node);
 }
 
-QString MetaDataFormatter2::execute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+QString MetaDataFormatter2::evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
 {
     QString out;
     for(int i = 0; i < nodes->count(); ++i)
@@ -309,14 +323,14 @@ QString MetaDataFormatter2::printParam(MetaDataFormatter2::Param *p, const QMap<
 {
     switch (p->type)
     {
-    case Param::KEY:
-        return metaData->value(p->key);
+    case Param::FIELD:
+        return printField(p->field, metaData, length);
         break;
     case Param::TEXT:
         return p->text;
         break;
     case Param::NODES:
-        return execute(&p->children, metaData, length);
+        return evalute(&p->children, metaData, length);
         break;
     default:
         break;
@@ -324,7 +338,38 @@ QString MetaDataFormatter2::printParam(MetaDataFormatter2::Param *p, const QMap<
     return QString();
 }
 
-QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
+QString MetaDataFormatter2::printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length)
+{
+    if(field >= Qmmp::TITLE && field <= Qmmp::URL)
+    {
+        if(field == Qmmp::TITLE)
+        {
+            QString title = metaData->value(Qmmp::TITLE);
+            if(title.isEmpty()) //using file name if title is empty
+            {
+                title = metaData->value(Qmmp::URL).section('/',-1);
+                title = title.left(title.lastIndexOf('.'));
+            }
+            return title;
+        }
+        return metaData->value((Qmmp::MetaData) field);
+    }
+    else if(field == Param::TWO_DIGIT_TRACK)
+    {
+        return QString("%1").arg(metaData->value(Qmmp::TRACK),2,'0');
+    }
+    else if(field == Param::DURATION)
+    {
+        return formatLength(length);
+    }
+    else if(field == Param::FILE_NAME)
+    {
+        return metaData->value(Qmmp::URL).section('/',-1);
+    }
+    return QString();
+}
+
+QString MetaDataFormatter2::dumpNode(MetaDataFormatter2::Node node)
 {
     QString str;
     QStringList params;
@@ -335,8 +380,8 @@ QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
     str += "(";
     foreach (Param p, node.params)
     {
-        if(p.type == Param::KEY)
-            params.append(QString("KEY:%1").arg(p.key));
+        if(p.type == Param::FIELD)
+            params.append(QString("FIELD:%1").arg(p.field));
         else if(p.type == Param::TEXT)
             params.append(QString("TEXT:%1").arg(p.text));
         else if(p.type == Param::NODES)
@@ -344,7 +389,7 @@ QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
             QStringList nodeStrList;
             foreach (Node n, p.children)
             {
-                nodeStrList.append(nodeToString(n));
+                nodeStrList.append(dumpNode(n));
             }
             params.append(QString("NODES:%1").arg(nodeStrList.join(",")));
         }
@@ -354,63 +399,37 @@ QString MetaDataFormatter2::nodeToString(MetaDataFormatter2::Node node)
     return str;
 }
 
-QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &format)
+QList<MetaDataFormatter2::Node> MetaDataFormatter2::compile(const QString &expr)
 {
-    //qDebug("=%s=", qPrintable(format));
     QList <Node> nodes;
-    QString::const_iterator i = format.constBegin();
+    QString::const_iterator i = expr.constBegin();
 
-    while (i != format.constEnd())
+    while (i != expr.constEnd())
     {
         if((*i) == QChar('%'))
         {
             i++;
-            if(i == format.constEnd())
+            if(i == expr.constEnd())
                 continue;
 
-            if(processKey(&nodes, &i, format.constEnd()))
+            if(parseField(&nodes, &i, expr.constEnd()))
             {
                 i++;
                 continue;
             }
 
-            if(processIf(&nodes, &i, format.constEnd()))
+            if(parseIf(&nodes, &i, expr.constEnd()))
             {
                 i++;
                 continue;
             }
-            //i++;
             continue;
         }
         else
         {
-            processText(&nodes, &i, format.constEnd());
+            parseText(&nodes, &i, expr.constEnd());
             i++;
         }
     }
     return nodes;
 }
-
-/*QString MetaDataFormatter::processIfKeyWord(QString title)
-{
-    int pos = title.lastIndexOf("%if(");
-    int size = title.indexOf("%)",pos) - pos;
-
-    QStringList args = title.mid (pos + 4, size - 4).split("%,");
-    if(args.count() < 3)
-    {
-        qWarning("TitleFormatter: invalid title format");
-        return title;
-    }
-    //process condition
-    bool cond = true;
-    foreach(QString arg, args.at(0).split("%&"))
-    {
-        cond &= !arg.isEmpty();
-    }
-    QString r_str = cond ? args.at(1) : args.at(2);
-    title.replace (pos, size + 2, r_str);
-    if(title.contains("%if"))
-        return processIfKeyWord(title);
-    return title;
-}*/
