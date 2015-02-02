@@ -166,20 +166,36 @@ bool MetaDataFormatter::parseIf(QList<MetaDataFormatter::Node> *nodes, QString::
 
     } state = STARTING;
 
+    bool escaped = false;
+
     while((*i) != end)
     {
-        if((**i) == QChar('('))
+        if((**i) == QChar('\\'))
         {
-            brackets_tracker++;
-            if(state == STARTING)
-            {
-                state = READING_VAR1;
-                (*i)++;
-                continue;
-            }
+            (*i)++;
+            escaped = true;
+            continue;
         }
-        else if((**i) == QChar(')'))
-            brackets_tracker--;
+
+        if(escaped) //ignore escaped brackets
+        {
+            escaped = false;
+        }
+        else
+        {
+            if((**i) == QChar('('))
+            {
+                brackets_tracker++;
+                if(state == STARTING)
+                {
+                    state = READING_VAR1;
+                    (*i)++;
+                    continue;
+                }
+            }
+            else if((**i) == QChar(')'))
+                brackets_tracker--;
+        }
 
         switch (state)
         {
@@ -265,6 +281,20 @@ void MetaDataFormatter::parseText(QList<MetaDataFormatter::Node> *nodes, QString
         nodes->append(node);
 }
 
+void MetaDataFormatter::parseEscape(QList<MetaDataFormatter::Node> *nodes, QString::const_iterator *i, QString::const_iterator end)
+{
+    if((*i) == end)
+        return;
+
+    Node node;
+    node.command = Node::PRINT_TEXT;
+    Param param;
+    param.type = Param::TEXT;
+    node.params.append(param);
+    node.params[0].text.append(**i);
+    nodes->append(node);
+}
+
 QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
 {
     QString out;
@@ -301,7 +331,7 @@ QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::Me
             {
                 QString var2 = printParam(&node.params[1], metaData, length);
                 if(!var2.isEmpty())
-                    out += "1";
+                    out.append("1");
             }
         }
     }
@@ -431,6 +461,12 @@ QList<MetaDataFormatter::Node> MetaDataFormatter::compile(const QString &expr)
             Node node;
             node.command = Node::OR_OPERATOR;
             nodes.append(node);
+        }
+        else if((*i) == QChar('\\'))
+        {
+            i++;
+            parseEscape(&nodes, &i, expr.constEnd());
+            i++;
         }
         else
         {
