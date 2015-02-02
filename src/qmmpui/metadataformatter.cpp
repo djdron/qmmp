@@ -280,10 +280,29 @@ QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::Me
         else if(node.command == Node::IF_KEYWORD)
         {
             QString var1 = printParam(&node.params[0], metaData, length);
-            if(var1.isEmpty())
+            if(var1.isEmpty() || var1 == "0")
                 out.append(printParam(&node.params[2], metaData, length));
             else
                 out.append(printParam(&node.params[1], metaData, length));
+        }
+        else if(node.command == Node::AND_OPERATOR)
+        {
+            QString var1 = printParam(&node.params[0], metaData, length);
+            QString var2 = printParam(&node.params[1], metaData, length);
+            if(!var1.isEmpty() && !var2.isEmpty())
+                out.append("1");
+        }
+        else if(node.command == Node::OR_OPERATOR)
+        {
+            QString var1 = printParam(&node.params[0], metaData, length);
+            if(!var1.isEmpty())
+                out.append("1");
+            else
+            {
+                QString var2 = printParam(&node.params[1], metaData, length);
+                if(!var2.isEmpty())
+                    out += "1";
+            }
         }
     }
     return out;
@@ -347,6 +366,10 @@ QString MetaDataFormatter::dumpNode(MetaDataFormatter::Node node) const
         str += "PRINT_TEXT";
     else if(node.command == Node::IF_KEYWORD)
         str += "IF_KEYWORD";
+    else if(node.command == Node::AND_OPERATOR)
+        str += "AND_OPERATOR";
+    else if(node.command == Node::OR_OPERATOR)
+        str += "OR_OPERATOR";
     str += "(";
     foreach (Param p, node.params)
     {
@@ -395,10 +418,48 @@ QList<MetaDataFormatter::Node> MetaDataFormatter::compile(const QString &expr)
             }
             continue;
         }
+        else if((*i) == QChar('&'))
+        {
+            i++;
+            Node node;
+            node.command = Node::AND_OPERATOR;
+            nodes.append(node);
+        }
+        else if((*i) == QChar('|'))
+        {
+            i++;
+            Node node;
+            node.command = Node::OR_OPERATOR;
+            nodes.append(node);
+        }
         else
         {
             parseText(&nodes, &i, expr.constEnd());
             i++;
+        }
+    }
+
+    //wrap operators
+    for(int j = 0; j < nodes.count(); ++j)
+    {
+        if(nodes[j].command == Node::AND_OPERATOR ||
+                nodes[j].command == Node::OR_OPERATOR)
+        {
+            if(j == 0 || j == nodes.count() - 1)
+            {
+                nodes.clear();
+                qDebug("MetaDataFormatter: syntax error");
+            }
+
+            Param p1;
+            p1.type = Param::NODES;
+            p1.children << nodes.takeAt(j+1);
+            Param p2;
+            p2.type = Param::NODES;
+            p2.children << nodes.takeAt(j-1);
+            nodes[j-1].params.append(p1);
+            nodes[j-1].params.append(p2);
+            j--;
         }
     }
     return nodes;
