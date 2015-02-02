@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QMap>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
+#include <qmmpui/metadataformatter.h>
 #include "qmmptrayicon.h"
 
 class SoundCore;
@@ -58,6 +59,7 @@ private:
     SoundCore *m_core;
     MediaPlayer *m_player;
     QMenu *m_menu;
+    MetaDataFormatter m_formatter;
 };
 
 #endif
