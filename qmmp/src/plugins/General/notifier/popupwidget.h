@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <QFrame>
+#include <qmmpui/metadataformatter.h>
 
 #define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> %if(%l,\\(%l\\),) \n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
 
@@ -63,7 +64,7 @@ private:
     QTimer *m_timer;
     QLabel *m_label1;
     QLabel *m_pixlabel;
-    QString m_template;
+    MetaDataFormatter m_formatter;
     uint m_pos;
     int m_coverSize;
 

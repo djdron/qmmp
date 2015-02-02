@@ -30,8 +30,6 @@
 #include <QFont>
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
-#include <qmmpui/metadataformatter.h>
-
 #include "popupwidget.h"
 
 PopupWidget::PopupWidget(QWidget *parent)
@@ -59,7 +57,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowOpacity(settings.value("opacity", 1.0).toDouble());
     QString fontname = settings.value("font").toString();
     m_coverSize = settings.value("cover_size", 64).toInt();
-    m_template = settings.value("template",DEFAULT_TEMPLATE).toString();
+    m_formatter.setPattern(settings.value("template",DEFAULT_TEMPLATE).toString());
     settings.endGroup();
     //font
     QFont font;
@@ -84,18 +82,9 @@ void PopupWidget::mousePressEvent (QMouseEvent *)
 void PopupWidget::showMetaData()
 {
     m_timer->stop();
-    QString title = m_template;
-
     SoundCore *core = SoundCore::instance();
-    if (core->totalTime() > 0)
-    {
-        int l = core->totalTime()/1000;
-        title.replace("%l",QString("%1:%2").arg(l/60).arg(l%60, 2, 10, QChar('0')));
-    }
-    else
-        title.replace("%l","");
-    MetaDataFormatter f(title);
-    title = f.format(core->metaData());
+
+    QString title = m_formatter.format(core->metaData(), core->totalTime() / 1000);
 
     m_label1->setText(title);
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,6 +41,7 @@ TextScroller::TextScroller (QWidget *parent) : QWidget (parent)
     m_press_pos = 0;
     m_metrics = 0;
     m_defautText = QString("Qmmp ") + Qmmp::strVersion();
+    m_formater.setPattern(TITLE_FORMAT);
     m_core = SoundCore::instance();
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
@@ -238,10 +239,9 @@ void TextScroller::processState(Qmmp::State state)
 
 void TextScroller::processMetaData()
 {
-    MetaDataFormatter formater(TITLE_FORMAT);
     if(m_core->state() == Qmmp::Playing)
     {
-        m_titleText = formater.format(m_core->metaData(), m_core->totalTime()/1000);
+        m_titleText = m_formater.format(m_core->metaData(), m_core->totalTime()/1000);
         updateText();
     }
 }
