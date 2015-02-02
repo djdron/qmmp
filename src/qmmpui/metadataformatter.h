@@ -62,13 +62,13 @@ public:
     /*!
      * Converts metadata of item \b item to one string using template.
      */
-    QString format(const PlayListTrack *item);
+    QString format(const PlayListTrack *item) const;
     /*!
      * Converts metadata to one string using template.
      * @param metaData Metadata array.
      * @param length Length in seconds.
      */
-    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
+    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0) const;
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
@@ -114,11 +114,11 @@ private:
     bool parseIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     void parseText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
 
-    QString evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
-    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
-    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
+    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
+    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
 
-    QString dumpNode(Node node);
+    QString dumpNode(Node node) const;
 
     QList<MetaDataFormatter::Node> compile(const QString &expr);
     QString m_pattern;

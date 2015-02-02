@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,9 +17,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#include <qmmp/metadatamanager.h>
+
 #include <QApplication>
-#include "metadataformatter.h"
+#include <qmmp/metadatamanager.h>
 #include "qmmpuisettings.h"
 #include "playlisttrack.h"
 
@@ -166,8 +166,7 @@ const QString PlayListTrack::url() const
 
 void PlayListTrack::formatTitle()
 {
-    MetaDataFormatter f(m_settings->titleFormat());
-    m_formattedTitle = f.format(this);
+    m_formattedTitle = m_settings->titleFormatter()->format(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
     if (m_formattedTitle.isEmpty())
@@ -185,8 +184,7 @@ void PlayListTrack::formatGroup()
         m_group = qApp->translate("PlayListTrack", "Streams");
         return;
     }
-    MetaDataFormatter f(m_settings->groupFormat());
-    m_group = f.format(this);
+    m_group = m_settings->groupFormatter()->format(this);
     if (m_group.isEmpty())
         m_group = qApp->translate("PlayListTrack", "Empty group");
     if (m_settings->convertUnderscore())

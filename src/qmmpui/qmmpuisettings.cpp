@@ -59,6 +59,9 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_timer->setInterval(5000);
     m_timer->setSingleShot(true);
     connect(m_timer, SIGNAL(timeout()), SLOT(sync()));
+
+    m_group_formatter.setPattern(m_group_format);
+    m_title_formatter.setPattern(m_title_format);
 }
 
 QmmpUiSettings::~QmmpUiSettings()
@@ -132,6 +135,7 @@ void QmmpUiSettings::setTitleFormat(const QString &titleFormat)
     if(titleFormat != m_title_format)
     {
         m_title_format = titleFormat;
+        m_title_formatter.setPattern(titleFormat);
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->updateMetaData();
@@ -144,6 +148,7 @@ void QmmpUiSettings::setGroupFormat(const QString &groupFormat)
     if(groupFormat != m_group_format)
     {
         m_group_format = groupFormat;
+        m_group_formatter.setPattern(groupFormat);
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->rebuildGroups();
@@ -311,4 +316,14 @@ void QmmpUiSettings::setClearPreviousPlayList(bool enabled)
 bool QmmpUiSettings::clearPreviousPlayList() const
 {
     return m_clear_prev_playlist;
+}
+
+const MetaDataFormatter *QmmpUiSettings::titleFormatter() const
+{
+    return &m_title_formatter;
+}
+
+const MetaDataFormatter *QmmpUiSettings::groupFormatter() const
+{
+    return &m_group_formatter;
 }
