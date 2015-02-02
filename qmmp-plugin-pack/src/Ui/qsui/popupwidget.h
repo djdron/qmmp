@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #define POPUPWIDGET_H
 
 #include <QWidget>
+#include <qmmpui/metadataformatter.h>
 
 #define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
 
@@ -59,6 +60,7 @@ private:
     uint m_pos;
     int m_coverSize;
     QString m_url;
+    MetaDataFormatter m_formatter;
 
 };
 }
