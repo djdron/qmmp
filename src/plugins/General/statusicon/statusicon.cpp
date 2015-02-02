@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -122,7 +122,7 @@ void StatusIcon::setState(Qmmp::State state)
 void StatusIcon::showMetaData()
 {
     MetaDataFormatter f("%p%if(%p&%t, - ,)%t");
-    QString message = f.parse(m_core->metaData());
+    QString message = f.format(m_core->metaData());
     if (message.isEmpty())
         message = m_core->metaData(Qmmp::URL).section('/',-1);
 

@@ -121,7 +121,7 @@ QList<QVariant> KdeNotify::prepareNotification()
     args.append(tr("Qmmp now playing:")); //summary (notification title)
 
     MetaDataFormatter f(m_template);
-    QString body = f.parse(core->metaData(), core->totalTime()/1000);
+    QString body = f.format(core->metaData(), core->totalTime()/1000);
 
     QString coverPath;
     if(m_showCovers)

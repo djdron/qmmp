@@ -49,7 +49,6 @@ HEADERS += general.h \
     detailsdialog.h \
     tageditor_p.h \
     playlistmanager.h \
-    metadataformatter.h \
     templateeditor.h \
     uifactory.h \
     uiloader.h \
@@ -70,7 +69,7 @@ HEADERS += general.h \
     groupedcontainer_p.h \
     normalcontainer_p.h \
     playlisttask_p.h \
-    metadataformatter2.h
+    metadataformatter.h
 
 SOURCES += general.cpp \
     playlistparser.cpp \
@@ -85,7 +84,6 @@ SOURCES += general.cpp \
     detailsdialog.cpp \
     tageditor.cpp \
     playlistmanager.cpp \
-    metadataformatter.cpp \
     templateeditor.cpp \
     uiloader.cpp \
     uihelper.cpp \
@@ -105,7 +103,7 @@ SOURCES += general.cpp \
     normalcontainer.cpp \
     playlistcontainer.cpp \
     playlisttask.cpp \
-    metadataformatter2.cpp
+    metadataformatter.cpp
 
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
@@ -150,7 +148,6 @@ unix {
     mediaplayer.h \
     detailsdialog.h \
     playlistmanager.h \
-    metadataformatter.h \
     templateeditor.h \
     uifactory.h \
     uiloader.h \

@@ -2,7 +2,7 @@
  *   Copyright (C) 2009 by Artur Guzik                                     *
  *   a.guzik88@gmail.com                                                   *
  *                                                                         *
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -116,7 +116,7 @@ void StatusIconPopupWidget::updateMetaData()
         }
 
         MetaDataFormatter f(title);
-        title = f.parse(core->metaData(), core->totalTime()/1000);
+        title = f.format(core->metaData(), core->totalTime()/1000);
         m_textLabel->setText(title);
         QPixmap cover = MetaDataManager::instance()->getCover(core->metaData(Qmmp::URL));
         m_cover->show();

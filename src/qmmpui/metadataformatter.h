@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2015 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QMap>
+#include <QList>
 #include <qmmpui/playlisttrack.h>
 #include <qmmp/qmmp.h>
 
@@ -34,7 +35,7 @@ class MetaDataFormatter
 public:
     /*!
      * Constructor.
-     * @param format Metadata template.
+     * @param pattern Metadata template.
      * Syntax:
      * %p - artist,
      * %a - album,
@@ -52,17 +53,22 @@ public:
      * %l - duration,
      * %if(A,B,C) or %if(A&B&C,D,E) - condition.
      */
-    MetaDataFormatter(const QString &format = QString());
+    MetaDataFormatter(const QString &pattern = QString());
+
+    void setPattern(const QString &pattern);
+
+    const QString pattern() const;
+
     /*!
      * Converts metadata of item \b item to one string using template.
      */
-    QString parse(const PlayListTrack *item);
+    QString format(const PlayListTrack *item);
     /*!
      * Converts metadata to one string using template.
      * @param metaData Metadata array.
      * @param length Length in seconds.
      */
-    QString parse(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
+    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0);
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
@@ -70,8 +76,54 @@ public:
     QString formatLength(qint64 length) const;
 
 private:
-    QString m_format;
-    QString processIfKeyWord(QString title);
+    struct Node;
+    struct Param;
+
+    struct Node
+    {
+        enum {
+            PRINT_TEXT = 0,
+            IF_KEYWORD
+        } command;
+
+        QList<Param> params;
+    };
+
+    struct Param
+    {
+        enum {
+            FIELD = 0,
+            TEXT,
+            NODES
+        } type;
+
+        //extra fields
+        enum
+        {
+            TWO_DIGIT_TRACK = Qmmp::URL + 1,
+            DURATION,
+            FILE_NAME
+        };
+
+        int field;
+        QString text;
+        QList<Node> children;
+    };
+
+    bool parseField(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+    bool parseIf(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+    void parseText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
+
+    QString evalute(QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length);
+
+    QString dumpNode(Node node);
+
+    QList<MetaDataFormatter::Node> compile(const QString &expr);
+    QString m_pattern;
+    QList<MetaDataFormatter::Node> m_nodes;
+    QMap<QString, int> m_fieldNames;
 };
 
-#endif // METADATAFORMATTER_H
+#endif // METADATAFORMATTER2_H

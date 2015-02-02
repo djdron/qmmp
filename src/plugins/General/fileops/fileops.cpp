@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -82,6 +82,7 @@ void FileOps::execAction(int n)
 {
     int type = m_types.at(n);
     QString pattern = m_patterns.at(n);
+    MetaDataFormatter formatter(pattern);
     QString destination = m_destinations.at(n);
 
     PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
@@ -110,8 +111,7 @@ void FileOps::execAction(int n)
             if (!QFile::exists(item->url()))
                 continue;
             //generate file name
-            MetaDataFormatter formatter(pattern);
-            QString fname = formatter.parse(item);
+            QString fname = formatter.format(item);
             //append extension
             QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
             if (!fname.endsWith(ext))
@@ -163,8 +163,7 @@ void FileOps::execAction(int n)
             if (!QFile::exists(item->url()))
                 continue;
             //generate file name
-            MetaDataFormatter formatter(pattern);
-            QString fname = formatter.parse(item);
+            QString fname = formatter.format(item);
             //append extension
             QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
             if (!fname.endsWith(ext))

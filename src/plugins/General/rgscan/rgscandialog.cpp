@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -73,7 +73,7 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
                 ext == "wv") //wavpack
         {
             paths.append(track->url());
-            QString name = formatter.parse(track);
+            QString name = formatter.format(track);
             QTableWidgetItem *item = new QTableWidgetItem(name);
             item->setData(Qt::UserRole, track->url());
             item->setData(Qt::ToolTipRole, track->url());

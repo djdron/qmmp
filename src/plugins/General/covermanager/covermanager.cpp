@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,7 +49,7 @@ void CoverManager::showWindow()
             pix = QPixmap(":/cm_no_cover.png");
         w->setPixmap(pix);
         MetaDataFormatter formatter("%p%if(%p&%t, - ,)%if(%t,%t,%f)");
-        w->setWindowTitle(formatter.parse(tracks.at(0)));
+        w->setWindowTitle(formatter.format(tracks.at(0)));
         w->show();
     }
 }
