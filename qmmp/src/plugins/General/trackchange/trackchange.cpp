@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -106,7 +106,7 @@ void TrackChange::onFinised()
 bool TrackChange::executeCommand(const QMap<Qmmp::MetaData, QString> &metaData, const QString &format)
 {
     MetaDataFormatter formatter(format);
-    QString command = formatter.parse(metaData);
+    QString command = formatter.format(metaData);
 #ifdef Q_OS_WIN
     bool ok = QProcess::startDetached(QString("cmd.exe \"%1\"").arg(command));
 #else

@@ -241,7 +241,7 @@ void TextScroller::processMetaData()
     MetaDataFormatter formater(TITLE_FORMAT);
     if(m_core->state() == Qmmp::Playing)
     {
-        m_titleText = formater.parse(m_core->metaData(), m_core->totalTime()/1000);
+        m_titleText = formater.format(m_core->metaData(), m_core->totalTime()/1000);
         updateText();
     }
 }

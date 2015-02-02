@@ -22,7 +22,6 @@
 #include <QString>
 #include <QTranslator>
 #include <QLocale>
-#include "metadataformatter2.h"
 #include "playlistitem.h"
 #include "qmmpuisettings.h"
 #include "mediaplayer.h"
@@ -49,8 +48,6 @@ MediaPlayer::MediaPlayer(QObject *parent)
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(updateMetaData()));
-
-    MetaDataFormatter2 formatter;
 }
 
 MediaPlayer::~MediaPlayer()

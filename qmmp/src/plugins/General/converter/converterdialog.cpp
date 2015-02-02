@@ -37,7 +37,7 @@ ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent
     {
         if(item->length() == 0)
             continue;
-        QString text = formatter.parse(item);
+        QString text = formatter.format(item);
         QListWidgetItem *listItem = new QListWidgetItem(text);
         listItem->setData(Qt::UserRole, item->url());
         listItem->setCheckState(Qt::Checked);

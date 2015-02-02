@@ -167,7 +167,7 @@ const QString PlayListTrack::url() const
 void PlayListTrack::formatTitle()
 {
     MetaDataFormatter f(m_settings->titleFormat());
-    m_formattedTitle = f.parse(this);
+    m_formattedTitle = f.format(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
     if (m_formattedTitle.isEmpty())
@@ -186,7 +186,7 @@ void PlayListTrack::formatGroup()
         return;
     }
     MetaDataFormatter f(m_settings->groupFormat());
-    m_group = f.parse(this);
+    m_group = f.format(this);
     if (m_group.isEmpty())
         m_group = qApp->translate("PlayListTrack", "Empty group");
     if (m_settings->convertUnderscore())

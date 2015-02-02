@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -166,12 +166,12 @@ void Converter::run()
         QMap<Qmmp::MetaData, QString> metadata = list[0]->metaData();
         MetaDataFormatter formatter(pattern);
 
-        QString desc = tr("Track: %1").arg(desc_formatter.parse(list[0]->metaData(), list[0]->length()));
+        QString desc = tr("Track: %1").arg(desc_formatter.format(list[0]->metaData(), list[0]->length()));
         desc += "\n";
         desc += tr("Preset: %1").arg(preset["name"].toString());
         emit desriptionChanged(desc);
 
-        QString name = formatter.parse(list[0]->metaData(), list[0]->length());
+        QString name = formatter.format(list[0]->metaData(), list[0]->length());
         QString full_path = out_path + "/" + name + "." + preset["ext"].toString();
 
         if(QFile::exists(full_path))

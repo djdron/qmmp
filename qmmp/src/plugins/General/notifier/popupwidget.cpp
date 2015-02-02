@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -95,7 +95,7 @@ void PopupWidget::showMetaData()
     else
         title.replace("%l","");
     MetaDataFormatter f(title);
-    title = f.parse(core->metaData());
+    title = f.format(core->metaData());
 
     m_label1->setText(title);
 
