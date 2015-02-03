@@ -190,7 +190,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         painter.setPen(m_normal);
         int sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                        10 + m_number_width + m_metrics->width("9")/2 - 1;
-        painter.drawLine(sx, 2, sx, height() - 2);
+        painter.drawLine(sx, 2, sx, m_rows.size() * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
     }
 }
 
