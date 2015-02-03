@@ -164,107 +164,18 @@ void ListWidget::paintEvent(QPaintEvent *)
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
 #endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
-    int sx = 0, sy = 0;
 
     for (int i = 0; i < m_rows.size(); ++i )
     {
-        sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
-
-        if (m_show_anchor && i == m_anchor_index - m_first)
-        {
-            painter.setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
-            painter.setPen(m_normal);
-            painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                              width() - 10, m_metrics->lineSpacing() + 1);
-        }
-        else
-        {
-            if (m_rows[i]->selected)
-            {
-                painter.setBrush(QBrush(m_selected_bg));
-                painter.setPen(m_selected_bg);
-                painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
-                                  width() - 10, m_metrics->lineSpacing() + 1);
-            }
-        }
+        drawBackground(&painter, i);
 
         if(m_rows[i]->separator)
         {
-            painter.setPen(m_normal);
-            sx = 45;
-
-            if(m_number_width)
-                sx += m_number_width + m_metrics->width("9");
-            if(rtl)
-                sx = width() - sx - m_metrics->width(m_rows[i]->title) - 5;
-
-            painter.drawText(sx, sy, m_rows[i]->title);
-
-            sy -= (m_metrics->lineSpacing()/2 - 2);
-
-            if(rtl)
-            {
-                painter.drawLine(10, sy, sx - 5, sy);
-                painter.drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
-                                 sx + m_metrics->width(m_rows[i]->title) + 35, sy);
-            }
-            else
-            {
-                painter.drawLine(sx - 35, sy, sx - 5, sy);
-                painter.drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
-                                 width() - 10, sy);
-            }
+            drawSeparator(&painter, i, rtl);
             continue;
         }
 
-        if (m_model->currentIndex() == m_first + i)
-            painter.setPen(m_current);
-        else
-            painter.setPen(m_normal);  //243,58
-
-
-        if(m_number_width)
-        {
-            QString number = QString("%1").arg(m_rows[i]->number);
-            sx = 10 + m_number_width - m_metrics->width(number);
-            if(rtl)
-                sx = width() - sx - m_metrics->width(number);
-
-            painter.drawText(sx, sy, number);
-
-            sx = 10 + m_number_width + m_metrics->width("9");
-            if(rtl)
-                sx = width() - sx - m_metrics->width(m_rows[i]->title);
-        }
-        else
-        {
-            sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
-        }
-
-        painter.drawText(sx, sy, m_rows[i]->title);
-
-        QString extra_string = m_rows[i]->extraString;
-
-        if(!extra_string.isEmpty())
-        {
-            painter.setFont(m_extra_font);
-
-            if(m_rows[i]->length.isEmpty())
-            {
-                sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
-                painter.drawText(sx, sy, extra_string);
-            }
-            else
-            {
-                sx = width() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(m_rows[i]->length);
-                if(rtl)
-                    sx = width() - sx - m_extra_metrics->width(extra_string);
-                painter.drawText(sx, sy, extra_string);
-            }
-            painter.setFont(m_font);
-        }
-        sx = rtl ? 9 : width() - 7 - m_metrics->width(m_rows[i]->length);
-        painter.drawText(sx, sy, m_rows[i]->length);
+        drawTrack(&painter, i, rtl);
     }
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
@@ -277,9 +188,9 @@ void ListWidget::paintEvent(QPaintEvent *)
     if(m_number_width)
     {
         painter.setPen(m_normal);
-        sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
-                   10 + m_number_width + m_metrics->width("9")/2 - 1;
-        painter.drawLine(sx, 2, sx, sy);
+        int sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+                       10 + m_number_width + m_metrics->width("9")/2 - 1;
+        painter.drawLine(sx, 2, sx, height() - 2);
     }
 }
 
@@ -463,7 +374,7 @@ void ListWidget::updateList(int flags)
         else
         {
             row->separator = false;
-            //optimization: reduce number of PlaListModel::numberOfTrack(int) calls
+            //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
             if(!prev_number)
             {
                 row->number = m_model->numberOfTrack(m_first+i) + 1;
@@ -519,6 +430,112 @@ void ListWidget::updateRepeatIndicator()
 void ListWidget::scrollToCurrent()
 {
     updateList(PlayListModel::CURRENT | PlayListModel::STRUCTURE);
+}
+
+//drawing functions
+void ListWidget::drawBackground(QPainter *painter, int i)
+{
+    if (m_show_anchor && i == m_anchor_index - m_first)
+    {
+        painter->setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
+        painter->setPen(m_normal);
+        painter->drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                          width() - 10, m_metrics->lineSpacing() + 1);
+    }
+    else
+    {
+        if (m_rows[i]->selected)
+        {
+            painter->setBrush(QBrush(m_selected_bg));
+            painter->setPen(m_selected_bg);
+            painter->drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                               width() - 10, m_metrics->lineSpacing() + 1);
+        }
+    }
+}
+
+void ListWidget::drawSeparator(QPainter *painter, int i, bool rtl)
+{
+    int sx = 55;
+    int sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
+
+    painter->setPen(m_normal);
+
+    if(m_number_width)
+        sx += m_number_width + m_metrics->width("9");
+    if(rtl)
+        sx = width() - sx - m_metrics->width(m_rows[i]->title) - 5;
+
+    painter->drawText(sx, sy, m_rows[i]->title);
+
+    sy -= (m_metrics->lineSpacing()/2 - 2);
+
+    if(rtl)
+    {
+        painter->drawLine(10, sy, sx - 5, sy);
+        painter->drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
+                         sx + m_metrics->width(m_rows[i]->title) + 35, sy);
+    }
+    else
+    {
+        painter->drawLine(sx - 45, sy, sx - 5, sy);
+        painter->drawLine(sx + m_metrics->width(m_rows[i]->title) + 5, sy,
+                         width() - 10, sy);
+    }
+}
+
+void ListWidget::drawTrack(QPainter *painter, int i, bool rtl)
+{
+    int sx = 0;
+    int sy = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
+
+    if (m_model->currentIndex() == m_first + i)
+        painter->setPen(m_current);
+    else
+        painter->setPen(m_normal);  //243,58
+
+    if(m_number_width)
+    {
+        QString number = QString("%1").arg(m_rows[i]->number);
+        sx = 10 + m_number_width - m_metrics->width(number);
+        if(rtl)
+            sx = width() - sx - m_metrics->width(number);
+
+        painter->drawText(sx, sy, number);
+
+        sx = 10 + m_number_width + m_metrics->width("9");
+        if(rtl)
+            sx = width() - sx - m_metrics->width(m_rows[i]->title);
+    }
+    else
+    {
+        sx = rtl ? width() - 10 - m_metrics->width(m_rows[i]->title) : 10;
+    }
+
+    painter->drawText(sx, sy, m_rows[i]->title);
+
+    QString extra_string = m_rows[i]->extraString;
+
+    if(!extra_string.isEmpty())
+    {
+        painter->setFont(m_extra_font);
+
+        if(m_rows[i]->length.isEmpty())
+        {
+            sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
+            painter->drawText(sx, sy, extra_string);
+        }
+        else
+        {
+            sx = width() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(m_rows[i]->length);
+            if(rtl)
+                sx = width() - sx - m_extra_metrics->width(extra_string);
+            painter->drawText(sx, sy, extra_string);
+        }
+        painter->setFont(m_font);
+    }
+    sx = rtl ? 9 : width() - 7 - m_metrics->width(m_rows[i]->length);
+    painter->drawText(sx, sy, m_rows[i]->length);
 }
 
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)

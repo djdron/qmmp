@@ -110,6 +110,10 @@ private slots:
     void scrollToCurrent();
 
 private:
+    void drawBackground(QPainter *painter, int i);
+    void drawSeparator(QPainter *painter, int i, bool rtl);
+    void drawTrack(QPainter *painter, int i, bool rtl);
+
     void loadColors();
     bool m_update;
     int m_pressed_index;
