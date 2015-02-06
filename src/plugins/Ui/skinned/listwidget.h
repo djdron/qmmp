@@ -49,6 +49,10 @@ struct ListWidgetRow
     int number;
     bool separator;
     bool selected;
+    bool current;
+    //geometry
+    int bgY; //top of the background
+    int textY; //base line of the text
 };
 
 /**
@@ -111,8 +115,8 @@ private slots:
 
 private:
     void drawBackground(QPainter *painter, int i);
-    void drawSeparator(QPainter *painter, int i, bool rtl);
-    void drawTrack(QPainter *painter, int i, bool rtl);
+    void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
+    void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
 
     void loadColors();
     bool m_update;
