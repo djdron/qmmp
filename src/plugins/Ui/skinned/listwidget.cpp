@@ -443,14 +443,14 @@ void ListWidget::drawBackground(QPainter *painter, int i)
         painter->setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
         painter->setPen(m_normal);
         painter->drawRect (6, m_rows[i]->bgY, width() - 10,
-                           m_metrics->lineSpacing()/* + 1*/);
+                           m_metrics->lineSpacing());
     }
     else if (m_rows[i]->selected)
     {
         painter->setBrush(QBrush(m_selected_bg));
         painter->setPen(m_selected_bg);
         painter->drawRect (6, m_rows[i]->bgY, width() - 10,
-                           m_metrics->lineSpacing()/* + 1*/);
+                           m_metrics->lineSpacing());
     }
 }
 
