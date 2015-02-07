@@ -96,7 +96,7 @@ void ListWidget::readSettings()
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
-        m_row_count = height() / (m_metrics->lineSpacing() + 2);
+        m_row_count = height() / (m_metrics->lineSpacing() + 1);
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
