@@ -119,7 +119,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
 {
     int sx = 0;
 
-    painter->setPen(row->current ? m_current : m_normal);
+    painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
     if(m_number_width)
     {

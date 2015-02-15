@@ -367,16 +367,12 @@ void ListWidget::updateList(int flags)
         i == (m_anchor_index - m_first) ? row->flags |= ListWidgetRow::ANCHOR :
                 row->flags &= ~ListWidgetRow::ANCHOR;
 
-        row->selected = items[i]->isSelected();
-
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->bgY = i * (m_metrics->lineSpacing() + 1);
         row->textY = i * (m_metrics->lineSpacing() + 1) + m_metrics->lineSpacing() - m_metrics->descent();
         row->rect = QRect(5, i * (m_metrics->lineSpacing() + 1), width() - 10, m_metrics->lineSpacing());
         row->title = items[i]->formattedTitle();
-        row->current = (m_first + i) == m_model->currentIndex();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
                 row->flags &= ~ListWidgetRow::CURRENT;
@@ -384,7 +380,6 @@ void ListWidget::updateList(int flags)
         if(items[i]->isGroup())
         {
             row->flags |= ListWidgetRow::GROUP;
-            row->separator = true;
             row->number = 0;
             row->length.clear();
             row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
@@ -393,7 +388,6 @@ void ListWidget::updateList(int flags)
         else
         {
             row->flags &= ~ListWidgetRow::GROUP;
-            row->separator = false;
             //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
             if(!prev_number)
             {
