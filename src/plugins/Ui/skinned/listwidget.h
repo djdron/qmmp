@@ -41,23 +41,6 @@ class PopupWidget;
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-struct ListWidgetRow
-{
-    QString title;
-    QString length;
-    QString extraString;
-    int number;
-    bool separator;
-    bool selected;
-    bool current;
-    //geometry
-    int bgY; //top of the background
-    int textY; //base line of the text
-};
-
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class ListWidget : public QWidget
 {
     Q_OBJECT
@@ -114,19 +97,37 @@ private slots:
     void scrollToCurrent();
 
 private:
+    struct ListWidgetRow
+    {
+        QString title;
+        QString length;
+        QString extraString;
+        int number;
+        bool separator;
+        bool selected;
+        bool current;
+        //geometry
+        int bgY; //top of the background
+        int textY; //base line of the text
+    };
+    enum ScrollDirection
+    {
+        NONE = 0,TOP,DOWN
+    };
+
     void drawBackground(QPainter *painter, int i);
     void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
     void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
-
     void loadColors();
-    bool m_update;
-    int m_pressed_index;
-    QMenu *m_menu;
-    PlayListModel *m_model;
     /*!
      * Returns string with queue number or(and) repeate flag for the item number \b i.
      */
     const QString getExtraString(int i);
+
+    bool m_update;
+    int m_pressed_index;
+    QMenu *m_menu;
+    PlayListModel *m_model;
     int m_row_count, m_first;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics;
@@ -134,12 +135,6 @@ private:
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
     int m_anchor_index;
-
-    enum ScrollDirection
-    {
-        NONE = 0,TOP,DOWN
-    };
-
     /*!
      * Scroll direction that is preforming in current moment.
      */
