@@ -47,7 +47,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_metrics = 0;
     m_extra_metrics = 0;
     m_drop_index = INVALID_INDEX;
-    loadColors();
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
     m_prev_y = 0;
@@ -147,20 +146,11 @@ PlayListModel *ListWidget::model()
     return m_model;
 }
 
-void ListWidget::loadColors()
-{
-    m_normal.setNamedColor(m_skin->getPLValue("normal"));
-    m_current.setNamedColor(m_skin->getPLValue("current"));
-    m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
-    m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
-}
-
 void ListWidget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setFont(m_font);
-    painter.setBrush(QBrush(m_normal_bg));
-    painter.drawRect(-1,-1,width()+1,height()+1);
+    m_drawer.fillBackground(&painter, width(), height());
 #if QT_VERSION >= 0x040700
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
 #endif
@@ -475,7 +465,6 @@ void ListWidget::scroll(int sc)
 
 void ListWidget::updateSkin()
 {
-    loadColors();
     m_drawer.loadColors();
     update();
 }
