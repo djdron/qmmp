@@ -183,7 +183,7 @@ void ListWidget::paintEvent(QPaintEvent *)
     {
         painter.setPen(m_current);
         painter.drawLine (6, (m_drop_index - m_first) * (m_metrics->lineSpacing() + 1),
-                          width() - 4 , (m_drop_index - m_first) * (m_metrics->lineSpacing() + 2));
+                          width() - 4 , (m_drop_index - m_first) * (m_metrics->lineSpacing() + 1));
     }
     //draw line
     if(m_number_width)
@@ -191,7 +191,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         painter.setPen(m_normal);
         int sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                        10 + m_number_width + m_metrics->width("9")/2 - 1;
-        painter.drawLine(sx, 2, sx, m_rows.size() * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
+        painter.drawLine(sx, 2, sx, m_rows.size() * (1 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
     }
 }
 
