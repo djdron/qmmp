@@ -164,3 +164,18 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
     sx = rtl ? 9 : row->rect.right() - 7 - m_metrics->width(row->length);
     painter->drawText(sx, row->textY, row->length);
 }
+
+void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width)
+{
+    painter->setPen(m_current);
+    painter->drawLine (5, row_number * (m_metrics->lineSpacing() + 1),
+                       width - 5 , row_number * (m_metrics->lineSpacing() + 1));
+}
+
+void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int m_number_width, int row_count, int width, bool rtl)
+{
+    painter->setPen(m_normal);
+    int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+                   10 + m_number_width + m_metrics->width("9")/2 - 1;
+    painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
+}

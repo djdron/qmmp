@@ -181,17 +181,12 @@ void ListWidget::paintEvent(QPaintEvent *)
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
     {
-        painter.setPen(m_current);
-        painter.drawLine (6, (m_drop_index - m_first) * (m_metrics->lineSpacing() + 1),
-                          width() - 4 , (m_drop_index - m_first) * (m_metrics->lineSpacing() + 1));
+        m_drawer.drawDropLine(&painter, m_drop_index - m_first, width());
     }
     //draw line
     if(m_number_width)
     {
-        painter.setPen(m_normal);
-        int sx = rtl ? width() - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
-                       10 + m_number_width + m_metrics->width("9")/2 - 1;
-        painter.drawLine(sx, 2, sx, m_rows.size() * (1 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
+        m_drawer.drawVerticalLine(&painter, m_number_width, m_rows.count(), width(), rtl);
     }
 }
 
