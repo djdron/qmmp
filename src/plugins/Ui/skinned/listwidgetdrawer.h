@@ -69,6 +69,8 @@ public:
     void drawBackground(QPainter *painter, ListWidgetRow *row);
     void drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
     void drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
+    void drawDropLine(QPainter *painter, int row_number, int width);
+    void drawVerticalLine(QPainter *painter, int m_number_width, int row_count, int width, bool rtl);
 
 private:
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
