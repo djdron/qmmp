@@ -102,7 +102,6 @@ private:
     {
         NONE = 0,TOP,DOWN
     };
-    void loadColors();
     /*!
      * Returns string with queue number or(and) repeate flag for the item number \b i.
      */
@@ -117,7 +116,6 @@ private:
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
     Skin *m_skin;
-    QColor m_normal, m_current, m_normal_bg, m_selected_bg;
     int m_anchor_index;
     /*!
      * Scroll direction that is preforming in current moment.

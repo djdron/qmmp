@@ -66,6 +66,7 @@ public:
 
     void readSettings();
     void loadColors();
+    void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
     void drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
     void drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
