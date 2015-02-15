@@ -47,6 +47,7 @@ SET(skinned_SRCS
     eqwidget.cpp
     keyboardmanager.cpp
     listwidget.cpp
+    listwidgetdrawer.cpp
     mainvisual.cpp
     mainwindow.cpp
     monostereo.cpp
@@ -89,6 +90,7 @@ SET(skinned_HDRS
     fft.h
     inlines.h
     keyboardmanager.h
+    listwidgetdrawer.h
     cursorimage.h
     windowsystem.h
     shortcutitem.h
