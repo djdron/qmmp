@@ -92,6 +92,7 @@ void ListWidget::readSettings()
 
     if (m_update)
     {
+        m_drawer.readSettings();
         delete m_metrics;
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
@@ -132,7 +133,7 @@ int ListWidget::anchorIndex() const
 void ListWidget::setAnchorIndex(int index)
 {
     m_anchor_index = index;
-    update();
+    updateList(PlayListModel::CURRENT);
 }
 
 QMenu *ListWidget::menu()
@@ -167,21 +168,21 @@ void ListWidget::paintEvent(QPaintEvent *)
 
     for (int i = 0; i < m_rows.size(); ++i )
     {
-        drawBackground(&painter, i);
+        m_drawer.drawBackground(&painter, m_rows[i]);
 
-        if(m_rows[i]->separator)
+        if(m_rows[i]->flags & ListWidgetRow::GROUP)
         {
-            drawSeparator(&painter, m_rows[i], rtl);
+            m_drawer.drawSeparator(&painter, m_number_width, m_rows[i], rtl);
             continue;
         }
 
-        drawTrack(&painter, m_rows[i], rtl);
+        m_drawer.drawTrack(&painter, m_number_width, m_rows[i], rtl);
     }
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
     {
         painter.setPen(m_current);
-        painter.drawLine (6, (m_drop_index - m_first) * (m_metrics->lineSpacing() + 2),
+        painter.drawLine (6, (m_drop_index - m_first) * (m_metrics->lineSpacing() + 1),
                           width() - 4 , (m_drop_index - m_first) * (m_metrics->lineSpacing() + 2));
     }
     //draw line
@@ -220,12 +221,13 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
         {
             if(!m_model->isSelected(index))
             {
+                m_anchor_index = m_pressed_index;
                 m_model->clearSelection();
                 m_model->setSelected(index, true);
             }
-            m_anchor_index = m_pressed_index;
             if(m_model->isGroup(index) && m_model->selectedTracks().isEmpty())
             {
+                m_anchor_index = m_pressed_index;
                 PlayListGroup *group = m_model->group(index);
                 m_model->setSelected(group->tracks());
             }
@@ -242,11 +244,13 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
         if ((Qt::ShiftModifier & e->modifiers()))
         {
-            m_model->setSelected(m_pressed_index, m_anchor_index, true);
+            int prev_anchor_index = m_anchor_index;
             m_anchor_index = m_pressed_index;
+            m_model->setSelected(m_pressed_index, prev_anchor_index, true);
         }
         else //ShiftModifier released
         {
+            m_anchor_index = m_pressed_index;
             if ((Qt::ControlModifier & e->modifiers()))
             {
                 m_model->setSelected(index, !m_model->isSelected(index));
@@ -256,7 +260,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
                 m_model->clearSelection();
                 m_model->setSelected(index, true);
             }
-            m_anchor_index = m_pressed_index;
+
         }
         update();
     }
@@ -357,6 +361,12 @@ void ListWidget::updateList(int flags)
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        items[i]->isSelected() ? row->flags |= ListWidgetRow::SELECTED :
+                row->flags &= ~ListWidgetRow::SELECTED;
+
+        i == (m_anchor_index - m_first) ? row->flags |= ListWidgetRow::ANCHOR :
+                row->flags &= ~ListWidgetRow::ANCHOR;
+
         row->selected = items[i]->isSelected();
 
         if(flags == PlayListModel::SELECTION)
@@ -364,10 +374,16 @@ void ListWidget::updateList(int flags)
 
         row->bgY = i * (m_metrics->lineSpacing() + 1);
         row->textY = i * (m_metrics->lineSpacing() + 1) + m_metrics->lineSpacing() - m_metrics->descent();
+        row->rect = QRect(5, i * (m_metrics->lineSpacing() + 1), width() - 10, m_metrics->lineSpacing());
         row->title = items[i]->formattedTitle();
         row->current = (m_first + i) == m_model->currentIndex();
+
+        (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
+                row->flags &= ~ListWidgetRow::CURRENT;
+
         if(items[i]->isGroup())
         {
+            row->flags |= ListWidgetRow::GROUP;
             row->separator = true;
             row->number = 0;
             row->length.clear();
@@ -376,6 +392,7 @@ void ListWidget::updateList(int flags)
         }
         else
         {
+            row->flags &= ~ListWidgetRow::GROUP;
             row->separator = false;
             //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
             if(!prev_number)
@@ -435,104 +452,6 @@ void ListWidget::scrollToCurrent()
     updateList(PlayListModel::CURRENT | PlayListModel::STRUCTURE);
 }
 
-//drawing functions
-void ListWidget::drawBackground(QPainter *painter, int i)
-{
-    if (m_show_anchor && i == m_anchor_index - m_first)
-    {
-        painter->setBrush(m_rows[i]->selected ? m_selected_bg : m_normal_bg);
-        painter->setPen(m_normal);
-        painter->drawRect (6, m_rows[i]->bgY, width() - 10,
-                           m_metrics->lineSpacing());
-    }
-    else if (m_rows[i]->selected)
-    {
-        painter->setBrush(QBrush(m_selected_bg));
-        painter->setPen(m_selected_bg);
-        painter->drawRect (6, m_rows[i]->bgY, width() - 10,
-                           m_metrics->lineSpacing());
-    }
-}
-
-void ListWidget::drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl)
-{
-    int sx = 55;
-
-    painter->setPen(m_normal);
-
-    if(m_number_width)
-        sx += m_number_width + m_metrics->width("9");
-    if(rtl)
-        sx = width() - sx - m_metrics->width(row->title) - 5;
-
-    painter->drawText(sx, row->textY, row->title);
-
-    int sy = row->textY - m_metrics->lineSpacing()/2 + 2;
-
-    if(rtl)
-    {
-        painter->drawLine(10, sy, sx - 5, sy);
-        painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
-                         sx + m_metrics->width(row->title) + 35, sy);
-    }
-    else
-    {
-        painter->drawLine(sx - 45, sy, sx - 5, sy);
-        painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
-                         width() - 10, sy);
-    }
-}
-
-void ListWidget::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl)
-{
-    int sx = 0;
-
-    painter->setPen(row->current ? m_current : m_normal);
-
-    if(m_number_width)
-    {
-        QString number = QString("%1").arg(row->number);
-        sx = 10 + m_number_width - m_metrics->width(number);
-        if(rtl)
-            sx = width() - sx - m_metrics->width(number);
-
-        painter->drawText(sx, row->textY, number);
-
-        sx = 10 + m_number_width + m_metrics->width("9");
-        if(rtl)
-            sx = width() - sx - m_metrics->width(row->title);
-    }
-    else
-    {
-        sx = rtl ? width() - 10 - m_metrics->width(row->title) : 10;
-    }
-
-    painter->drawText(sx, row->textY, row->title);
-
-    QString extra_string = row->extraString;
-
-    if(!extra_string.isEmpty())
-    {
-        painter->setFont(m_extra_font);
-
-        if(row->length.isEmpty())
-        {
-            sx = rtl ? 7 : width() - 7 - m_extra_metrics->width(extra_string);
-            painter->drawText(sx, row->textY, extra_string);
-        }
-        else
-        {
-            sx = width() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(row->length);
-            if(rtl)
-                sx = width() - sx - m_extra_metrics->width(extra_string);
-            painter->drawText(sx, row->textY, extra_string);
-        }
-        painter->setFont(m_font);
-    }
-    sx = rtl ? 9 : width() - 7 - m_metrics->width(row->length);
-    painter->drawText(sx, row->textY, row->length);
-}
-
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
@@ -568,6 +487,7 @@ void ListWidget::scroll(int sc)
 void ListWidget::updateSkin()
 {
     loadColors();
+    m_drawer.loadColors();
     update();
 }
 
@@ -665,6 +585,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
 
         if (INVALID_INDEX != index)
         {
+            m_anchor_index = index;
             SimpleSelection sel = m_model->getSelection(m_pressed_index);
             if(sel.count() > 1 && m_scroll_direction == TOP)
             {
@@ -680,7 +601,6 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
 
             m_prev_y = e->y();
             m_pressed_index = index;
-            m_anchor_index = index;
         }
     }
     else if(m_popupWidget)
