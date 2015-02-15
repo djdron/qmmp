@@ -54,7 +54,8 @@ HEADERS += mainwindow.h \
     shortcutdialog.h \
     skinnedfactory.h \
     skinnedsettings.h \
-    hotkeyeditor.h
+    hotkeyeditor.h \
+    listwidgetdrawer.h
 SOURCES += mainwindow.cpp \
     button.cpp \
     display.cpp \
@@ -102,7 +103,8 @@ SOURCES += mainwindow.cpp \
     shortcutdialog.cpp \
     skinnedfactory.cpp \
     skinnedsettings.cpp \
-    hotkeyeditor.cpp
+    hotkeyeditor.cpp \
+    listwidgetdrawer.cpp
 
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib

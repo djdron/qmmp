@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QContextMenuEvent>
 #include <QPen>
+#include "listwidgetdrawer.h"
 
 class QFont;
 class QFontMetrics;
@@ -97,27 +98,10 @@ private slots:
     void scrollToCurrent();
 
 private:
-    struct ListWidgetRow
-    {
-        QString title;
-        QString length;
-        QString extraString;
-        int number;
-        bool separator;
-        bool selected;
-        bool current;
-        //geometry
-        int bgY; //top of the background
-        int textY; //base line of the text
-    };
     enum ScrollDirection
     {
         NONE = 0,TOP,DOWN
     };
-
-    void drawBackground(QPainter *painter, int i);
-    void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
-    void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
     void loadColors();
     /*!
      * Returns string with queue number or(and) repeate flag for the item number \b i.
@@ -151,6 +135,7 @@ private:
     QmmpUiSettings *m_ui_settings;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
+    ListWidgetDrawer m_drawer;
 };
 
 #endif
