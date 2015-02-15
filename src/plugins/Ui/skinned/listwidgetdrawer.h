@@ -49,18 +49,9 @@ struct ListWidgetRow
     };
 
     int flags;
-
-
-    //geometry
-    QRect rect;
-
-
+    QRect rect; //geometry
 
     //TODO remove
-    bool separator;
-    bool selected;
-    bool current;
-    int bgY; //top of the background
     int textY; //base line of the text
 };
 
