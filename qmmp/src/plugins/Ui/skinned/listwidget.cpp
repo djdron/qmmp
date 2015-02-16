@@ -45,7 +45,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_skin = Skin::instance();
     m_popupWidget = 0;
     m_metrics = 0;
-    m_extra_metrics = 0;
     m_drop_index = INVALID_INDEX;
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
@@ -70,8 +69,6 @@ ListWidget::~ListWidget()
 {
     if(m_metrics)
         delete m_metrics;
-    if(m_extra_metrics)
-        delete m_extra_metrics;
     qDeleteAll(m_rows);
     m_rows.clear();
 }
@@ -93,9 +90,7 @@ void ListWidget::readSettings()
     {
         m_drawer.readSettings();
         delete m_metrics;
-        delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
-        m_extra_metrics = new QFontMetrics(m_extra_font);
         m_row_count = height() / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
@@ -108,7 +103,6 @@ void ListWidget::readSettings()
     {
         m_update = true;
         m_metrics = new QFontMetrics(m_font);
-        m_extra_metrics = new QFontMetrics(m_extra_font);
     }
     if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);
