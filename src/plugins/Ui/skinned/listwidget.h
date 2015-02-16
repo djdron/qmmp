@@ -114,7 +114,6 @@ private:
     int m_row_count, m_first;
     QFont m_font, m_extra_font;
     QFontMetrics *m_metrics;
-    QFontMetrics *m_extra_metrics;
     Skin *m_skin;
     int m_anchor_index;
     /*!
