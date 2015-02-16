@@ -112,7 +112,7 @@ private:
     QMenu *m_menu;
     PlayListModel *m_model;
     int m_row_count, m_first;
-    QFont m_font, m_extra_font;
+    QFont m_font;
     QFontMetrics *m_metrics;
     Skin *m_skin;
     int m_anchor_index;
