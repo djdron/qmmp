@@ -64,12 +64,14 @@ public:
     void readSettings();
     void loadColors();
     int rowHeight() const;
+    void calculateNumberWidth(int count);
+    void prepareRow(ListWidgetRow *row);
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
-    void drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
-    void drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
+    void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
+    void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
     void drawDropLine(QPainter *painter, int row_number, int width);
-    void drawVerticalLine(QPainter *painter, int m_number_width, int row_count, int width, bool rtl);
+    void drawVerticalLine(QPainter *painter, int row_count, int width, bool rtl);
 
 private:
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
@@ -77,8 +79,11 @@ private:
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
     QFont m_font, m_extra_font;
-    bool m_show_anchor;
     bool m_update;
+    bool m_show_number;
+    bool m_show_anchor;
+    bool m_align_numbres;
+    int m_number_width;
     int m_row_height;
 };
 

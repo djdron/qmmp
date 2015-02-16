@@ -44,7 +44,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_update = false;
     m_skin = Skin::instance();
     m_popupWidget = 0;
-    m_metrics = 0;
     m_drop_index = INVALID_INDEX;
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
@@ -67,8 +66,6 @@ ListWidget::ListWidget(QWidget *parent)
 
 ListWidget::~ListWidget()
 {
-    if(m_metrics)
-        delete m_metrics;
     qDeleteAll(m_rows);
     m_rows.clear();
 }
@@ -77,18 +74,12 @@ void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
-    m_show_number = settings.value ("pl_show_numbers", true).toBool();
-    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
-    m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     bool show_popup = settings.value("pl_show_popup", false).toBool();
 
     if (m_update)
     {
         m_drawer.readSettings();
-        delete m_metrics;
-        m_metrics = new QFontMetrics(m_font);
         m_row_count = height() / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
@@ -100,7 +91,6 @@ void ListWidget::readSettings()
     else
     {
         m_update = true;
-        m_metrics = new QFontMetrics(m_font);
     }
     if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);
@@ -141,7 +131,6 @@ PlayListModel *ListWidget::model()
 void ListWidget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    painter.setFont(m_font);
     m_drawer.fillBackground(&painter, width(), height());
 #if QT_VERSION >= 0x040700
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
@@ -154,11 +143,11 @@ void ListWidget::paintEvent(QPaintEvent *)
 
         if(m_rows[i]->flags & ListWidgetRow::GROUP)
         {
-            m_drawer.drawSeparator(&painter, m_number_width, m_rows[i], rtl);
+            m_drawer.drawSeparator(&painter, m_rows[i], rtl);
             continue;
         }
 
-        m_drawer.drawTrack(&painter, m_number_width, m_rows[i], rtl);
+        m_drawer.drawTrack(&painter, m_rows[i], rtl);
     }
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
@@ -166,10 +155,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         m_drawer.drawDropLine(&painter, m_drop_index - m_first, width());
     }
     //draw line
-    if(m_number_width)
-    {
-        m_drawer.drawVerticalLine(&painter, m_number_width, m_rows.count(), width(), rtl);
-    }
+    m_drawer.drawVerticalLine(&painter, m_rows.count(), width(), rtl);
 }
 
 void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
@@ -314,12 +300,7 @@ void ListWidget::updateList(int flags)
             emit positionChanged(m_first, m_model->count() - m_row_count);
 
         //song numbers width
-        if(m_show_number && m_align_numbres && m_model->count())
-        {
-            m_number_width = m_metrics->width("9") * QString::number(m_model->trackCount()).size();
-        }
-        else
-            m_number_width = 0;
+        m_drawer.calculateNumberWidth(m_model->count());
 
         items = m_model->mid(m_first, m_row_count);
 
@@ -347,7 +328,7 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5, i * m_drawer.rowHeight(), width() - 10, m_metrics->lineSpacing());
+        row->rect = QRect(5, i * m_drawer.rowHeight(), width() - 10, m_drawer.rowHeight() - 1);
         row->title = items[i]->formattedTitle();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
@@ -358,8 +339,6 @@ void ListWidget::updateList(int flags)
             row->flags |= ListWidgetRow::GROUP;
             row->number = 0;
             row->length.clear();
-            row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                                                width() - m_number_width - 22 - 70);
         }
         else
         {
@@ -375,17 +354,9 @@ void ListWidget::updateList(int flags)
                 row->number = ++prev_number;
             }
             row->length = items[i]->formattedLength();
-            if(m_show_number && !m_align_numbres)
-                row->title.prepend(QString("%1").arg(row->number)+". ");
             row->extraString = getExtraString(m_first + i);
-            //elide titles
-            int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
-            if(m_number_width)
-                extra_string_width += m_number_width + m_metrics->width("9");
-
-            row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
-                                                width() -  m_metrics->width(row->length) - 22 - extra_string_width);
         }
+        m_drawer.prepareRow(row);  //elide titles
     }
     update();
 }
@@ -406,7 +377,7 @@ void ListWidget::autoscroll()
     }
     else if(m_scroll_direction == TOP && m_first > 0)
     {
-        m_first --;
+        m_first--;
         m_model->moveItems(m_pressed_index, m_first);
         m_pressed_index = m_first;
     }

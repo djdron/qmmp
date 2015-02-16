@@ -112,8 +112,6 @@ private:
     QMenu *m_menu;
     PlayListModel *m_model;
     int m_row_count, m_first;
-    QFont m_font;
-    QFontMetrics *m_metrics;
     Skin *m_skin;
     int m_anchor_index;
     /*!
@@ -123,10 +121,6 @@ private:
     int m_prev_y;
     bool m_select_on_release;
     bool m_show_protocol;
-    bool m_show_number;
-    bool m_show_anchor;
-    bool m_align_numbres;
-    int m_number_width;
     int m_drop_index;
     QList<ListWidgetRow *> m_rows;
     QmmpUiSettings *m_ui_settings;
