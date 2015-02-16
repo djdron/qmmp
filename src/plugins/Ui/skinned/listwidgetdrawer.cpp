@@ -70,6 +70,7 @@ void ListWidgetDrawer::loadColors()
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
 {
     painter->setBrush(m_normal_bg);
+    painter->setPen(m_normal_bg);
     painter->drawRect(0,0,width,height);
 }
 
