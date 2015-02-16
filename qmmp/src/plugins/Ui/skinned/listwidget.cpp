@@ -78,8 +78,6 @@ void ListWidget::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
     m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
-    m_extra_font = m_font;
-    m_extra_font.setPointSize(m_font.pointSize() - 1);
     m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
