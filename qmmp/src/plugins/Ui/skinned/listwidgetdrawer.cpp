@@ -29,7 +29,11 @@ ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
     m_update = false;
+    m_show_anchor = false;
+    m_show_number = false;
+    m_align_numbres = false;
     m_row_height = 0;
+    m_number_width = 0;
     readSettings();
     loadColors();
 }
@@ -47,6 +51,8 @@ void ListWidgetDrawer::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
+    m_show_number = settings.value ("pl_show_numbers", true).toBool();
+    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
     m_extra_font = m_font;
     m_extra_font.setPointSize(m_font.pointSize() - 1);
@@ -72,6 +78,38 @@ void ListWidgetDrawer::loadColors()
 int ListWidgetDrawer::rowHeight() const
 {
     return m_row_height;
+}
+
+void ListWidgetDrawer::calculateNumberWidth(int count)
+{
+    //song numbers width
+    if(m_show_number && m_align_numbres && count)
+    {
+        m_number_width = m_metrics->width("9") * QString::number(count).size();
+    }
+    else
+        m_number_width = 0;
+}
+
+void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
+{
+    if(row->flags & ListWidgetRow::GROUP)
+    {
+        row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+                                            row->rect.width() - m_number_width - 12 - 70);
+        return;
+    }
+
+    if(m_show_number && !m_align_numbres)
+        row->title.prepend(QString("%1").arg(row->number)+". ");
+
+    //elide titles
+    int extra_string_width = row->extraString.isEmpty() ? 0 : m_metrics->width(row->extraString);
+    if(m_number_width)
+        extra_string_width += m_number_width + m_metrics->width("9");
+
+    row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+                                        row->rect.width() -  m_metrics->width(row->length) - 12 - extra_string_width);
 }
 
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
@@ -100,11 +138,12 @@ void  ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row)
     painter->drawRect(row->rect);
 }
 
-void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
+void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
     int sx = row->rect.x() + 50;
     int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
 
+    painter->setFont(m_font);
     painter->setPen(m_normal);
 
     if(m_number_width)
@@ -130,11 +169,12 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, List
     }
 }
 
-void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
+void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
     int sx = 0;
     int sy = row->rect.y() + m_metrics->overlinePos() - 1;
 
+    painter->setFont(m_font);
     painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
     if(m_number_width)
@@ -188,10 +228,13 @@ void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width
                        width - 5 , row_number * m_row_height);
 }
 
-void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int m_number_width, int row_count, int width, bool rtl)
+void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int row_count, int width, bool rtl)
 {
-    painter->setPen(m_normal);
-    int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
-                   10 + m_number_width + m_metrics->width("9")/2 - 1;
-    painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
+    if(m_number_width)
+    {
+        painter->setPen(m_normal);
+        int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
+                       10 + m_number_width + m_metrics->width("9")/2 - 1;
+        painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
+    }
 }
