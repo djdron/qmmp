@@ -103,7 +103,7 @@ void  ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row)
 void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
 {
     int sx = row->rect.x() + 50;
-    int sy = row->rect.y() + m_metrics->lineSpacing() - m_metrics->descent();
+    int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setPen(m_normal);
 
@@ -133,7 +133,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, List
 void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
 {
     int sx = 0;
-    int sy = row->rect.y() + m_metrics->lineSpacing() - m_metrics->descent();
+    int sy = row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
@@ -193,5 +193,5 @@ void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int m_number_width, i
     painter->setPen(m_normal);
     int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                    10 + m_number_width + m_metrics->width("9")/2 - 1;
-    painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - 2 - m_metrics->descent());
+    painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
 }
