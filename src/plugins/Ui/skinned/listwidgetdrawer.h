@@ -66,6 +66,7 @@ public:
 
     void readSettings();
     void loadColors();
+    int rowHeight() const;
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
     void drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl);
@@ -81,6 +82,7 @@ private:
     QFont m_font, m_extra_font;
     bool m_show_anchor;
     bool m_update;
+    int m_row_height;
 };
 
 #endif // LISTWIDGETDRAWER_H

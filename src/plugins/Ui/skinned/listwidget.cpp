@@ -96,7 +96,7 @@ void ListWidget::readSettings()
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
-        m_row_count = height() / (m_metrics->lineSpacing() + 1);
+        m_row_count = height() / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
@@ -254,7 +254,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_row_count = e->size().height() / (m_metrics->lineSpacing() + 1);
+    m_row_count = e->size().height() / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
@@ -355,8 +355,8 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->textY = i * (m_metrics->lineSpacing() + 1) + m_metrics->lineSpacing() - m_metrics->descent();
-        row->rect = QRect(5, i * (m_metrics->lineSpacing() + 1), width() - 10, m_metrics->lineSpacing());
+        row->textY = i * m_drawer.rowHeight() + m_metrics->lineSpacing() - m_metrics->descent();
+        row->rect = QRect(5, i * m_drawer.rowHeight(), width() - 10, m_metrics->lineSpacing());
         row->title = items[i]->formattedTitle();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
@@ -608,7 +608,7 @@ int ListWidget::indexAt(int y) const
 {
     for (int i = 0; i < qMin(m_row_count, m_model->count() - m_first); ++i)
     {
-        if ((y >= i * (m_metrics->lineSpacing() + 1)) && (y <= (i+1) * (m_metrics->lineSpacing() + 1)))
+        if ((y >= i * m_drawer.rowHeight()) && (y <= (i+1) * m_drawer.rowHeight()))
             return m_first + i;
     }
     return INVALID_INDEX;

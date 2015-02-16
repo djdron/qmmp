@@ -29,6 +29,7 @@ ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
     m_update = false;
+    m_row_height = 0;
     readSettings();
     loadColors();
 }
@@ -57,6 +58,7 @@ void ListWidgetDrawer::readSettings()
     m_update = true;
     m_metrics = new QFontMetrics(m_font);
     m_extra_metrics = new QFontMetrics(m_extra_font);
+    m_row_height = m_metrics->lineSpacing() + 1;
 }
 
 void ListWidgetDrawer::loadColors()
@@ -65,6 +67,11 @@ void ListWidgetDrawer::loadColors()
     m_current.setNamedColor(m_skin->getPLValue("current"));
     m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
+}
+
+int ListWidgetDrawer::rowHeight() const
+{
+    return m_row_height;
 }
 
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
@@ -175,8 +182,8 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
 void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width)
 {
     painter->setPen(m_current);
-    painter->drawLine (5, row_number * (m_metrics->lineSpacing() + 1),
-                       width - 5 , row_number * (m_metrics->lineSpacing() + 1));
+    painter->drawLine (5, row_number * m_row_height,
+                       width - 5 , row_number * m_row_height);
 }
 
 void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int m_number_width, int row_count, int width, bool rtl)
