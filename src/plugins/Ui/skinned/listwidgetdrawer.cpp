@@ -103,6 +103,7 @@ void  ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row)
 void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
 {
     int sx = row->rect.x() + 50;
+    int sy = row->rect.y() + m_metrics->lineSpacing() - m_metrics->descent();
 
     painter->setPen(m_normal);
 
@@ -111,9 +112,9 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, List
     if(rtl)
         sx = row->rect.right() - sx - m_metrics->width(row->title);
 
-    painter->drawText(sx, row->textY, row->title);
+    painter->drawText(sx, sy, row->title);
 
-    int sy = row->textY - m_metrics->lineSpacing()/2 + 2;
+    sy = sy - m_metrics->lineSpacing()/2 + 2;
 
     if(rtl)
     {
@@ -132,6 +133,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, int m_number_width, List
 void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidgetRow *row, bool rtl)
 {
     int sx = 0;
+    int sy = row->rect.y() + m_metrics->lineSpacing() - m_metrics->descent();
 
     painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
@@ -142,7 +144,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
         if(rtl)
             sx = row->rect.right() - sx - m_metrics->width(number);
 
-        painter->drawText(sx, row->textY, number);
+        painter->drawText(sx, sy, number);
 
         sx = 10 + m_number_width + m_metrics->width("9");
         if(rtl)
@@ -153,7 +155,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
         sx = rtl ? row->rect.right() - 10 - m_metrics->width(row->title) : 10;
     }
 
-    painter->drawText(sx, row->textY, row->title);
+    painter->drawText(sx, sy, row->title);
 
     QString extra_string = row->extraString;
 
@@ -164,19 +166,19 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, int m_number_width, ListWidg
         if(row->length.isEmpty())
         {
             sx = rtl ? 7 : row->rect.right() - 7 - m_extra_metrics->width(extra_string);
-            painter->drawText(sx, row->textY, extra_string);
+            painter->drawText(sx, sy, extra_string);
         }
         else
         {
             sx = row->rect.right() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(row->length);
             if(rtl)
                 sx = row->rect.right() - sx - m_extra_metrics->width(extra_string);
-            painter->drawText(sx, row->textY, extra_string);
+            painter->drawText(sx, sy, extra_string);
         }
         painter->setFont(m_font);
     }
     sx = rtl ? 9 : row->rect.right() - 7 - m_metrics->width(row->length);
-    painter->drawText(sx, row->textY, row->length);
+    painter->drawText(sx, sy, row->length);
 }
 
 void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width)

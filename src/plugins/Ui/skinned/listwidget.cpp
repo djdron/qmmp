@@ -347,7 +347,6 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->textY = i * m_drawer.rowHeight() + m_metrics->lineSpacing() - m_metrics->descent();
         row->rect = QRect(5, i * m_drawer.rowHeight(), width() - 10, m_metrics->lineSpacing());
         row->title = items[i]->formattedTitle();
 

@@ -50,9 +50,6 @@ struct ListWidgetRow
 
     int flags;
     QRect rect; //geometry
-
-    //TODO remove
-    int textY; //base line of the text
 };
 
 /**
