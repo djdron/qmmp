@@ -159,13 +159,13 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     {
         painter->drawLine(10, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
-                         sx + m_metrics->width(row->title) + 35, sy);
+                          sx + m_metrics->width(row->title) + 35, sy);
     }
     else
     {
         painter->drawLine(sx - 45, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
-                         row->rect.width(), sy);
+                          row->rect.width(), sy);
     }
 }
 
@@ -180,15 +180,14 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
     if(m_number_width)
     {
         QString number = QString("%1").arg(row->number);
-        sx = 10 + m_number_width - m_metrics->width(number);
-        if(rtl)
-            sx = row->rect.right() - sx - m_metrics->width(number);
+
+        sx = rtl ? row->rect.right() - sx - m_metrics->width(number) :
+                   10 + m_number_width - m_metrics->width(number);
 
         painter->drawText(sx, sy, number);
 
-        sx = 10 + m_number_width + m_metrics->width("9");
-        if(rtl)
-            sx = row->rect.right() - sx - m_metrics->width(row->title);
+        sx = rtl ? row->rect.right() - sx - m_metrics->width(row->title) :
+                   10 + m_number_width + m_metrics->width("9");
     }
     else
     {
@@ -210,9 +209,8 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         }
         else
         {
-            sx = row->rect.right() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(row->length);
-            if(rtl)
-                sx = row->rect.right() - sx - m_extra_metrics->width(extra_string);
+            sx = rtl ? row->rect.right() - sx - m_extra_metrics->width(extra_string) :
+                       row->rect.right() - 10 - m_extra_metrics->width(extra_string) - m_metrics->width(row->length);
             painter->drawText(sx, sy, extra_string);
         }
         painter->setFont(m_font);
