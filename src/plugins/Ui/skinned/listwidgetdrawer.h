@@ -49,6 +49,15 @@ struct ListWidgetRow
     };
 
     int flags;
+
+    enum
+    {
+        NUMBER = 0,
+        TITLE,
+        EXTRA_STRING,
+        LENGTH
+    };
+    int x[LENGTH + 1];
     QRect rect; //geometry
 };
 
@@ -69,7 +78,7 @@ public:
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
     void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
-    void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
+    void drawTrack(QPainter *painter, ListWidgetRow *row);
     void drawDropLine(QPainter *painter, int row_number, int width);
     void drawVerticalLine(QPainter *painter, int row_count, int width, bool rtl);
 
