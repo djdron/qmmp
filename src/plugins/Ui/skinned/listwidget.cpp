@@ -496,10 +496,7 @@ const QString ListWidget::getExtraString(int i)
     else if(m_model->isStopAfter(track))
         extra_string += "|S|";
 
-    extra_string = extra_string.trimmed(); //remove white space
-    if(!extra_string.isEmpty())
-        extra_string.prepend(" ");
-    return extra_string;
+    return extra_string.trimmed(); //remove white space
 }
 
 void ListWidget::mouseMoveEvent(QMouseEvent *e)
