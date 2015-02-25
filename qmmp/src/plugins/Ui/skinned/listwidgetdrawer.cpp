@@ -121,7 +121,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     int extra_string_width = row->extraString.isEmpty() ? 0 : m_extra_metrics->width(row->extraString);
     if(extra_string_width)
     {
-        extra_string_width += m_extra_metrics->width("9")/2;
+        extra_string_width += row->length.isEmpty() ? 0 : m_extra_metrics->width("9")/2;
         row->x[ListWidgetRow::EXTRA_STRING] = row->x[ListWidgetRow::LENGTH] - extra_string_width;
     }
 
