@@ -182,7 +182,7 @@ public:
      */
     bool clearPreviousPlayList() const;
 
-    const MetaDataFormatter* titleFormatter() const;
+    const MetaDataFormatter* titleFormatter(int column = 0) const;
     const MetaDataFormatter* groupFormatter() const;
 
     /*!
@@ -256,7 +256,7 @@ private slots:
 private:
     static QmmpUiSettings* m_instance;
     //playlist
-    QString m_title_format;
+    QStringList m_title_formats;
     QString m_group_format;
     bool m_convertUnderscore, m_convertTwenty;
     bool m_useMetadata;
@@ -278,7 +278,8 @@ private:
     //timer
     QTimer *m_timer;
     //formatters
-    MetaDataFormatter m_group_formatter, m_title_formatter;
+    MetaDataFormatter m_group_formatter;
+    QList<MetaDataFormatter *> m_title_formatters;
 };
 
 #endif // QMMPUISETTINGS_H

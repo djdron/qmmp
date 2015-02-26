@@ -52,8 +52,9 @@ public:
     virtual ~PlayListTrack();
     /*!
      * Returns formatted title of the item.
+     * @param column Number of column.
      */
-    const QString formattedTitle();
+    const QString formattedTitle(int column = 0);
     /*!
      *  Returns formatted length of the item.
      */
