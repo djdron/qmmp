@@ -300,7 +300,7 @@ void ListWidget::updateList(int flags)
             emit positionChanged(m_first, m_model->count() - m_row_count);
 
         //song numbers width
-        m_drawer.calculateNumberWidth(m_model->count());
+        m_drawer.calculateNumberWidth(m_model->trackCount());
 
         items = m_model->mid(m_first, m_row_count);
 
