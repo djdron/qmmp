@@ -21,6 +21,7 @@
 #define PLAYLISTMANAGER_H
 
 #include <QObject>
+#include "columnmanager.h"
 #include "playlistmodel.h"
 
 class QTimer;
@@ -46,6 +47,9 @@ public:
      * Returns a pointer to the object's instance.
      */
     static PlayListManager* instance();
+
+
+    ColumnManager *columnManager() const;
     /*!
      * Returns a list of all playlists.
      */
@@ -249,6 +253,7 @@ private:
     PlayListModel *m_selected;
     QTimer *m_timer;
     QmmpUiSettings *m_ui_settings;
+    ColumnManager *m_column_manager;
 };
 
 #endif // PLAYLISTMANAGER_H

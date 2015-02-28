@@ -34,8 +34,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
-    m_title_formats = s.value("title_formats", QStringList() << "%p%if(%p&%t, - ,)%t")
-            .toStringList();
+    m_title_format = s.value("title_format", "%p%if(%p&%t, - ,)%t").toString();
     m_group_format = s.value("group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
     m_convertUnderscore = s.value ("convert_underscore", true).toBool();
     m_convertTwenty = s.value ("convert_twenty", true).toBool();
@@ -62,23 +61,18 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     connect(m_timer, SIGNAL(timeout()), SLOT(sync()));
 
     m_group_formatter.setPattern(m_group_format);
-
-    foreach (QString pattern, m_title_formats)
-    {
-        m_title_formatters << new MetaDataFormatter(pattern);
-    }
+    m_title_formatter.setPattern(m_title_format);
 }
 
 QmmpUiSettings::~QmmpUiSettings()
 {
     m_instance = 0;
     sync();
-    qDeleteAll(m_title_formatters);
 }
 
 const QString QmmpUiSettings::titleFormat() const
 {
-    return m_title_formats.first();
+    return m_title_format;
 }
 
 const QString QmmpUiSettings::groupFormat() const
@@ -138,10 +132,10 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
 
 void QmmpUiSettings::setTitleFormat(const QString &titleFormat)
 {
-    if(titleFormat != m_title_formats.first())
+    if(titleFormat != m_title_format)
     {
-        m_title_formats[0] = titleFormat;
-        m_title_formatters[0]->setPattern(titleFormat);
+        m_title_format = titleFormat;
+        m_title_formatter.setPattern(titleFormat);
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->updateMetaData();
@@ -191,7 +185,7 @@ void QmmpUiSettings::sync()
 {
     qDebug("%s", Q_FUNC_INFO);
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
-    s.setValue("PlayList/title_formats", m_title_formats);
+    s.setValue("PlayList/title_format", m_title_format);
     s.setValue("PlayList/group_format", m_group_format);
     s.setValue("PlayList/convert_underscore", m_convertUnderscore);
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
@@ -324,9 +318,9 @@ bool QmmpUiSettings::clearPreviousPlayList() const
     return m_clear_prev_playlist;
 }
 
-const MetaDataFormatter *QmmpUiSettings::titleFormatter(int column) const
+const MetaDataFormatter *QmmpUiSettings::titleFormatter() const
 {
-    return m_title_formatters[column];
+    return &m_title_formatter;
 }
 
 const MetaDataFormatter *QmmpUiSettings::groupFormatter() const

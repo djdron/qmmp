@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2015 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,65 +18,52 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef PLAYLISTGROUP_H
-#define PLAYLISTGROUP_H
+#ifndef COLUMNMANAGER_H
+#define COLUMNMANAGER_H
 
-#include "playlisttrack.h"
-#include "playlistitem.h"
+#include <QObject>
+#include <QWidget>
+#include "metadataformatter.h"
 
-class GroupedContainer;
-
-/** @brief The PlayListTrack class provides a group for use with the PlayListModel class.
+/**
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListGroup : public PlayListItem
+class ColumnManager : public QObject
 {
+    Q_OBJECT
 public:
-    /*!
-     * Constructor.
-     * @param formattedTitle Title of the group.
-     */
-    PlayListGroup(const QString &formattedTitle);
-    /*!
-     * Object destructor.
-     */
-    virtual ~PlayListGroup();
-    /*!
-     * Returns formatted title of the  group.
-     */
-    const QString formattedTitle();
-    /*!
-     * Returns \b true if the group contains track \b track.
-     * Otherwise returns \b false.
-     */
-    bool contains(PlayListTrack *track) const;
-    /*!
-     * Returns \b true if the group is empty.
-     * Otherwise returns \b false.
-     */
-    bool isEmpty() const;
-    /*!
-     * Returns a list of tracks if the group.
-     */
-    QList<PlayListTrack *> tracks() const;
-    /*!
-     * Returns number of tracks if the group.
-     */
-    int count() const;
-    /*!
-     *  Returns formatted length of the item.
-     */
-    const QString formattedLength() { return QString(); }
-    /*!
-     * Returns \b true.
-     */
-    bool isGroup() const;
+    explicit ColumnManager(QObject *parent = 0);
+
+    ~ColumnManager();
+
+    void insert(int index, const QString &name, const QString &pattern);
+    void remove(int index);
+    void resize(int index, int size);
+    void execEditor(int index, QWidget *parent = 0);
+
+    int count();
+    const MetaDataFormatter* titleFormatter(int index) const;
+    int size(int index) const;
+    const QString name(int index) const;
+    const QString pattern(int index) const;
+
+signals:
+    void inserted(int index);
+    void removed(int index);
+    void changed(int index);
+    void resized(int index);
+    void moved(int from, int to);
 
 private:
-    QList<PlayListTrack *> trackList; //A list of tracks
-    friend class GroupedContainer;
-
-    QString m_name;
+    void sync();
+    struct Column
+    {
+        QString name;
+        QString pattern;
+        QString size;
+        MetaDataFormatter *titleFormatter;
+    };
+    QList<Column> m_columns;
 };
 
-#endif // PLAYLISTGROUP_H
+#endif // COLUMNMANAGER_H

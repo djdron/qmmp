@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,9 +38,8 @@ PlayListGroup::~PlayListGroup()
     }
 }
 
-const QString PlayListGroup::formattedTitle(int column)
+const QString PlayListGroup::formattedTitle()
 {
-    Q_UNUSED(column);
     return m_name;
 }
 
