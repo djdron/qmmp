@@ -126,9 +126,8 @@ bool PlayListTrack::isUsed() const
     return (m_refCount != 0);
 }
 
-const QString PlayListTrack::formattedTitle(int column)
+const QString PlayListTrack::formattedTitle()
 {
-    Q_UNUSED(column);
     if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->titleFormat())
     {
         m_titleFormat = m_settings->titleFormat();
