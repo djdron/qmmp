@@ -36,7 +36,6 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
         qFatal("PlayListManager: only one instance is allowed");
     m_instance = this;
     m_ui_settings = QmmpUiSettings::instance();
-    m_column_manager = new ColumnManager(this);
     m_current = 0;
     m_selected = 0;
     m_timer = new QTimer(this);
@@ -55,11 +54,6 @@ PlayListManager::~PlayListManager()
 PlayListManager* PlayListManager::instance()
 {
     return m_instance;
-}
-
-ColumnManager *PlayListManager::columnManager() const
-{
-    return m_column_manager;
 }
 
 PlayListModel *PlayListManager::selectedPlayList() const
