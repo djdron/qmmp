@@ -128,9 +128,9 @@ bool PlayListTrack::isUsed() const
 
 const QString PlayListTrack::formattedTitle()
 {
-    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->titleFormat())
+    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->columnManager()->pattern(0))
     {
-        m_titleFormat = m_settings->titleFormat();
+        m_titleFormat = m_settings->columnManager()->pattern(0);
         formatTitle();
     }
     return m_formattedTitle;
@@ -166,7 +166,7 @@ const QString PlayListTrack::url() const
 
 void PlayListTrack::formatTitle()
 {
-    m_formattedTitle = m_settings->titleFormatter()->format(this);
+    m_formattedTitle = m_settings->columnManager()->titleFormatter(0)->format(this);
     if (m_formattedTitle.isEmpty())
         m_formattedTitle = value(Qmmp::URL).section('/',-1);
     if (m_formattedTitle.isEmpty())

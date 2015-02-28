@@ -104,7 +104,7 @@ void ConfigDialog::readSettings()
     {
         //playlist options
         QmmpUiSettings *guis = QmmpUiSettings::instance();
-        m_ui->formatLineEdit->setText(guis->titleFormat());
+        //m_ui->formatLineEdit->setText(guis->titleFormat());
         m_ui->groupLineEdit->setText(guis->groupFormat());
         m_ui->metadataCheckBox->setChecked(guis->useMetadata());
         m_ui->underscoresCheckBox->setChecked(guis->convertUnderscore());
@@ -402,7 +402,7 @@ void ConfigDialog::saveSettings()
 {
     if (QmmpUiSettings *guis = QmmpUiSettings::instance())
     {
-        guis->setTitleFormat(m_ui->formatLineEdit->text().trimmed());
+        //guis->setTitleFormat(m_ui->formatLineEdit->text().trimmed());
         guis->setGroupFormat(m_ui->groupLineEdit->text().trimmed());
         guis->setUseMetadata(m_ui->metadataCheckBox->isChecked());
         guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());

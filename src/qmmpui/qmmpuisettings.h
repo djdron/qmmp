@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include "columnmanager.h"
 #include "metadataformatter.h"
 
 class QTimer;
@@ -56,10 +57,6 @@ public:
      * Returns the state of metadata usage (\b true - use, \b false - not use).
      */
     bool useMetadata() const;
-    /*!
-     * Returns playlist short title format.
-     */
-    const QString titleFormat() const;
     /*!
      * Returns playlist group format.
      */
@@ -98,7 +95,7 @@ public:
      * Sets short title template.
      * @param titleFormat title template. \sa MetaDataFormatter
      */
-    void setTitleFormat(const QString &titleFormat);
+    //void setTitleFormat(const QString &titleFormat);
     /*!
      * Sets group format.
      * \param groupFormat group format. \sa MetaDataFormatter
@@ -182,7 +179,8 @@ public:
      */
     bool clearPreviousPlayList() const;
 
-    const MetaDataFormatter* titleFormatter() const;
+    ColumnManager *columnManager();
+    const MetaDataFormatter* titleFormatter(int column) const;
     const MetaDataFormatter* groupFormatter() const;
 
     /*!
@@ -256,7 +254,6 @@ private slots:
 private:
     static QmmpUiSettings* m_instance;
     //playlist
-    QString m_title_format;
     QString m_group_format;
     bool m_convertUnderscore, m_convertTwenty;
     bool m_useMetadata;
@@ -278,7 +275,9 @@ private:
     //timer
     QTimer *m_timer;
     //formatters
-    MetaDataFormatter m_group_formatter, m_title_formatter;
+    MetaDataFormatter m_group_formatter;
+    //column settings
+    ColumnManager *m_colum_manager;
 };
 
 #endif // QMMPUISETTINGS_H
