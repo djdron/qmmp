@@ -57,6 +57,7 @@ public:
      * @param column Number of column.
      */
     const QString formattedTitle(int column);
+    const QStringList formattedTitles();
     /*!
      *  Returns formatted length of the item.
      */

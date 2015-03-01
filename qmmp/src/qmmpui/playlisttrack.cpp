@@ -160,6 +160,35 @@ const QString PlayListTrack::formattedTitle(int column)
     return m_formattedTitles[column];
 }
 
+const QStringList PlayListTrack::formattedTitles()
+{
+    if(m_formattedTitles.count() != m_settings->columnManager()->count())
+    {
+        while(m_formattedTitles.count() > m_columnManager->count())
+            m_formattedTitles.takeLast();
+
+        while(m_formattedTitles.count() < m_columnManager->count())
+            m_formattedTitles.append(QString());
+
+        while(m_titleFormats.count() > m_columnManager->count())
+            m_titleFormats.takeLast();
+
+        while(m_titleFormats.count() < m_columnManager->count())
+            m_titleFormats.append(QString());
+    }
+
+    for(int column = 0; column < m_columnManager->count(); column++)
+    {
+        if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
+        {
+            m_titleFormats[column] = m_settings->columnManager()->pattern(column);
+            formatTitle(column);
+        }
+    }
+
+    return m_formattedTitles;
+}
+
 const QString PlayListTrack::formattedLength()
 {
     if(m_length != 0 && m_formattedLength.isEmpty())

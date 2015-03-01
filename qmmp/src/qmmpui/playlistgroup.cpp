@@ -44,6 +44,11 @@ const QString PlayListGroup::formattedTitle(int column)
     return m_name;
 }
 
+const QStringList PlayListGroup::formattedTitles()
+{
+    return QStringList() << m_name;
+}
+
 bool PlayListGroup::contains(PlayListTrack *track) const
 {
     return trackList.contains(track);
