@@ -26,6 +26,7 @@
 PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
+    m_columnManager = m_settings->columnManager();
     m_length = 0;
     m_refCount = 0;
     m_sheduledForDeletion = false;
@@ -35,13 +36,14 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
+    m_columnManager = m_settings->columnManager();
     m_refCount = 0;
     m_sheduledForDeletion = false;
 
-    m_formattedTitle = other.m_formattedTitle;
+    m_formattedTitles = other.m_formattedTitles;
     m_group = other.m_group;
     m_formattedLength = other.m_formattedLength;
-    m_titleFormat = other.m_titleFormat;
+    m_titleFormats = other.m_titleFormats;
     m_groupFormat = other.m_groupFormat;
     setSelected(other.isSelected());
     m_length = other.m_length;
@@ -52,6 +54,7 @@ PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(in
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
+    m_columnManager = m_settings->columnManager();
     setLength(m_length = info->length());
     insert(Qmmp::URL, info->path());
     m_refCount = 0;
@@ -67,7 +70,7 @@ PlayListTrack::~PlayListTrack()
 void PlayListTrack::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
     QMap <Qmmp::MetaData, QString>::operator =(metaData);
-    formatTitle();
+    m_formattedTitles.clear();
     formatGroup();
 }
 
@@ -80,7 +83,7 @@ void PlayListTrack::updateMetaData()
         m_length = info->length();
         QMap <Qmmp::MetaData, QString>::operator =(info->metaData());
         insert(Qmmp::URL, info->path());
-        formatTitle();
+        m_formattedTitles.clear();
         formatGroup();
     }
     qDeleteAll(list);
@@ -126,14 +129,35 @@ bool PlayListTrack::isUsed() const
     return (m_refCount != 0);
 }
 
-const QString PlayListTrack::formattedTitle()
+const QString PlayListTrack::formattedTitle(int column)
 {
-    if(m_formattedTitle.isEmpty() || m_titleFormat != m_settings->columnManager()->pattern(0))
+    if(m_formattedTitles.count() != m_settings->columnManager()->count())
     {
-        m_titleFormat = m_settings->columnManager()->pattern(0);
-        formatTitle();
+        while(m_formattedTitles.count() > m_columnManager->count())
+            m_formattedTitles.takeLast();
+
+        while(m_formattedTitles.count() < m_columnManager->count())
+            m_formattedTitles.append(QString());
+
+        while(m_titleFormats.count() > m_columnManager->count())
+            m_titleFormats.takeLast();
+
+        while(m_titleFormats.count() < m_columnManager->count())
+            m_titleFormats.append(QString());
     }
-    return m_formattedTitle;
+
+    if(column < 0 || column >= m_formattedTitles.size())
+    {
+        qWarning("PlayListTrack: column number is out of range");
+        return QString();
+    }
+
+    if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
+    {
+        m_titleFormats[column] = m_settings->columnManager()->pattern(column);
+        formatTitle(column);
+    }
+    return m_formattedTitles[column];
 }
 
 const QString PlayListTrack::formattedLength()
@@ -164,17 +188,17 @@ const QString PlayListTrack::url() const
     return value(Qmmp::URL);
 }
 
-void PlayListTrack::formatTitle()
+void PlayListTrack::formatTitle(int column)
 {
-    m_formattedTitle = m_settings->columnManager()->titleFormatter(0)->format(this);
-    if (m_formattedTitle.isEmpty())
-        m_formattedTitle = value(Qmmp::URL).section('/',-1);
-    if (m_formattedTitle.isEmpty())
-        m_formattedTitle = value(Qmmp::URL);
+    m_formattedTitles[column] = m_columnManager->titleFormatter(column)->format(this);
+    if (m_formattedTitles[column].isEmpty() && column == 0)
+        m_formattedTitles[column] = value(Qmmp::URL).section('/',-1);
+    if (m_formattedTitles[column].isEmpty() && column == 0)
+        m_formattedTitles[column] = value(Qmmp::URL);
     if (m_settings->convertUnderscore())
-        m_formattedTitle.replace("_", " ");
+        m_formattedTitles[column].replace("_", " ");
     if (m_settings->convertTwenty())
-        m_formattedTitle.replace("%20", " ");
+        m_formattedTitles[column].replace("%20", " ");
 }
 
 void PlayListTrack::formatGroup()

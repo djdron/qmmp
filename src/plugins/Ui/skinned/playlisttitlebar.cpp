@@ -262,16 +262,16 @@ void PlayListTitleBar::showCurrent()
 {
     if (m_model)
     {
-        PlayListTrack* track = m_model->currentTrack();
+        /*PlayListTrack* track = m_model->currentTrack();
         if (track)
         {
             m_text = QString("%1. %2").arg(m_model->numberOfTrack(m_model->currentIndex())+1)
-                    .arg(track->formattedTitle());
+                    .arg(track->formattedTitle(0));
             if(track->length())
                 m_text.append(QString("  (%1)").arg(track->formattedLength()));
         }
         else
-            m_text.clear();
+            m_text.clear();*/
     }
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);

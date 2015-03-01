@@ -329,7 +329,7 @@ void ListWidget::updateList(int flags)
             continue;
 
         row->rect = QRect(5, i * m_drawer.rowHeight(), width() - 10, m_drawer.rowHeight() - 1);
-        row->title = items[i]->formattedTitle();
+        row->title = items[i]->formattedTitle(0);
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
                 row->flags &= ~ListWidgetRow::CURRENT;

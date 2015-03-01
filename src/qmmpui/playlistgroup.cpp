@@ -38,8 +38,9 @@ PlayListGroup::~PlayListGroup()
     }
 }
 
-const QString PlayListGroup::formattedTitle()
+const QString PlayListGroup::formattedTitle(int column)
 {
+    Q_UNUSED(column);
     return m_name;
 }
 

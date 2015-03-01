@@ -50,8 +50,9 @@ public:
     bool isSelected() const;
     /*!
      * Returns formatted title of the item.
+     * @param column Number of column.
      */
-    virtual const QString formattedTitle() = 0;
+    virtual const QString formattedTitle(int column) = 0;
     /*!
      *  Returns formatted length of the item.
      */

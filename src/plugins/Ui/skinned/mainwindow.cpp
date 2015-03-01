@@ -176,21 +176,21 @@ void MainWindow::showState(Qmmp::State state)
         break;
     case Qmmp::Stopped:
         m_playlist->setTime(-1);
-        if (m_pl_manager->currentPlayList()->currentTrack())
+        /*if (m_pl_manager->currentPlayList()->currentTrack())
             setWindowTitle(m_pl_manager->currentPlayList()->currentTrack()->formattedTitle());
         else
-            setWindowTitle("Qmmp");
+            setWindowTitle("Qmmp");*/
         break;
     }
 }
 
 void MainWindow::showMetaData()
 {
-    PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
+    /*PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
     if (track && track->url() == m_core->metaData().value(Qmmp::URL))
     {
         setWindowTitle(track->formattedTitle());
-    }
+    }*/
 }
 
 void MainWindow::closeEvent (QCloseEvent *)
