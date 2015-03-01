@@ -46,6 +46,7 @@ public:
      * @param column Number of column (unused).
      */
     const QString formattedTitle(int column = 0);
+    const QStringList formattedTitles();
     /*!
      * Returns \b true if the group contains track \b track.
      * Otherwise returns \b false.

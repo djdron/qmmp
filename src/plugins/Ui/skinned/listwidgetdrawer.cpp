@@ -97,13 +97,13 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 {
     if(row->flags & ListWidgetRow::GROUP)
     {
-        row->title = m_metrics->elidedText (row->title, Qt::ElideRight,
+        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight,
                                             row->rect.width() - m_number_width - 12 - 70);
         return;
     }
 
     if(m_show_number && !m_align_numbres)
-        row->title.prepend(QString("%1").arg(row->number)+". ");
+        row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
     row->x[ListWidgetRow::NUMBER] = row->x[ListWidgetRow::TITLE] = row->rect.left() + PADDING;
 
@@ -128,7 +128,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     //elide title
     int title_width = row->x[ListWidgetRow::EXTRA_STRING] - row->x[ListWidgetRow::TITLE] -
             m_metrics->width("9");
-    row->title = m_metrics->elidedText (row->title, Qt::ElideRight, title_width);
+    row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, title_width);
 }
 
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
@@ -168,22 +168,22 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     if(m_number_width)
         sx += m_number_width + m_metrics->width("9");
     if(rtl)
-        sx = row->rect.right() - sx - m_metrics->width(row->title);
+        sx = row->rect.right() - sx - m_metrics->width(row->titles[0]);
 
-    painter->drawText(sx, sy, row->title);
+    painter->drawText(sx, sy, row->titles[0]);
 
     sy = sy - m_metrics->lineSpacing()/2 + 2;
 
     if(rtl)
     {
         painter->drawLine(10, sy, sx - 5, sy);
-        painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
-                          sx + m_metrics->width(row->title) + 35, sy);
+        painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
+                          sx + m_metrics->width(row->titles[0]) + 35, sy);
     }
     else
     {
         painter->drawLine(sx - 45, sy, sx - 5, sy);
-        painter->drawLine(sx + m_metrics->width(row->title) + 5, sy,
+        painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
                           row->rect.width(), sy);
     }
 }
@@ -200,7 +200,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
         QString number = QString("%1").arg(row->number);
         painter->drawText(row->x[ListWidgetRow::NUMBER], sy, number);
     }
-    painter->drawText(row->x[ListWidgetRow::TITLE], sy, row->title);
+    painter->drawText(row->x[ListWidgetRow::TITLE], sy, row->titles[0]);
 
     QString extra_string = row->extraString;
 

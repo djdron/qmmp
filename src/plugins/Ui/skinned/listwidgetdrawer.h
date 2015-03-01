@@ -22,6 +22,7 @@
 #define LISTWIDGETDRAWER_H
 
 #include <QString>
+#include <QStringList>
 #include <QColor>
 #include <QRect>
 #include <QFontMetrics>
@@ -35,7 +36,7 @@ struct ListWidgetRow
     {
         flags = NO_FLAGS;
     }
-    QString title;
+    QStringList titles;
     QString length;
     QString extraString;
     int number;
