@@ -243,10 +243,15 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
     int offset = 0;
     for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count(); i++)
     {
+        if(row->x[ListWidgetRow::TITLE] + offset >= row->x[ListWidgetRow::EXTRA_STRING] - m_metrics->width("9"))
+            break;
+
         painter->drawText(row->x[ListWidgetRow::TITLE] + offset, sy, row->titles[i]);
         offset += QmmpUiSettings::instance()->columnManager()->size(i);
 
-        if(i != QmmpUiSettings::instance()->columnManager()->count() - 1)
+
+        if(i != QmmpUiSettings::instance()->columnManager()->count() - 1 &&
+                row->x[ListWidgetRow::TITLE] + offset < row->x[ListWidgetRow::EXTRA_STRING] - m_metrics->width("9"))
         {
             painter->drawLine(row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.top(),
                     row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.bottom() + 1);
