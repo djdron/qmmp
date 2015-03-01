@@ -519,7 +519,7 @@ void ListWidget::updateList()
     {
         QFontMetrics *metrics = (m_model->currentTrack() == items[i]) ? m_bold_metrics : m_metrics;
         ListWidgetRow *row = m_rows[i];
-        row->title = items[i]->formattedTitle();
+        row->title = items[i]->formattedTitle(0);
         row->selected = items[i]->isSelected();
         if(items[i]->isGroup())
         {
