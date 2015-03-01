@@ -92,6 +92,16 @@ void ColumnManager::execEditor(int index, QWidget *parent)
 
 }
 
+int ColumnManager::width()
+{
+    int width = 0;
+    for(int i = 0; i < m_columns.count(); ++i)
+    {
+        width += m_columns[i].size;
+    }
+    return width;
+}
+
 int ColumnManager::count()
 {
     return m_columns.count();
@@ -114,7 +124,7 @@ int ColumnManager::size(int index) const
         qWarning("ColumnManager: index is out of range");
         return 0;
     }
-    return m_columns.count();
+    return m_columns[index].size;
 }
 
 const QString ColumnManager::name(int index) const
@@ -148,7 +158,7 @@ void ColumnManager::sync()
         Column col = m_columns.at(i);
         s.setValue("name", col.name);
         s.setValue("pattern", col.pattern);
-        s.value("size", col.size).toInt();
+        s.setValue("size", col.size);
         s.endGroup();
     }
     s.setValue("column_count", m_columns.count());

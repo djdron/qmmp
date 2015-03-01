@@ -40,6 +40,7 @@ public:
     void remove(int index);
     void resize(int index, int size);
     void execEditor(int index, QWidget *parent = 0);
+    int width();
 
     int count();
     const MetaDataFormatter* titleFormatter(int index) const;
@@ -60,7 +61,7 @@ private:
     {
         QString name;
         QString pattern;
-        QString size;
+        int size;
         MetaDataFormatter *titleFormatter;
     };
     QList<Column> m_columns;
