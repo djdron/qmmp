@@ -174,8 +174,8 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 {
     if(m_popupWidget)
         m_popupWidget->hide();
-    int y = e->y();
-    int index = indexAt(y);
+
+    int index = indexAt(e->y());
 
     if (INVALID_INDEX != index && m_model->count() > index)
     {

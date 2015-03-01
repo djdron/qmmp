@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QApplication>
 #include <qmmp/qmmp.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "skin.h"
 #include "listwidgetdrawer.h"
 
@@ -82,6 +83,30 @@ int ListWidgetDrawer::rowHeight() const
     return m_row_height;
 }
 
+int ListWidgetDrawer::columnAt(int x, ListWidgetRow *row) const
+{
+    if(row->flags & ListWidgetRow::GROUP)
+        return -1;
+
+    int offset = 0;
+    for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count() - 1; i++)
+    {
+        offset += QmmpUiSettings::instance()->columnManager()->size(i);
+        if(x > row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2 &&
+                x < row->x[ListWidgetRow::TITLE] + offset + m_metrics->width("9")/2)
+        {
+            return i;
+        }
+
+        /*if(i = QmmpUiSettings::instance()->columnManager()->count() - 1)
+        {
+            painter->drawLine(row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.top(),
+                    row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.bottom() + 1);
+        }*/
+    }
+    return -1;
+}
+
 void ListWidgetDrawer::calculateNumberWidth(int count)
 {
     //song numbers width
@@ -126,9 +151,23 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     }
 
     //elide title
-    int title_width = row->x[ListWidgetRow::EXTRA_STRING] - row->x[ListWidgetRow::TITLE] -
+    int visible_width = row->x[ListWidgetRow::EXTRA_STRING] - row->x[ListWidgetRow::TITLE] -
             m_metrics->width("9");
-    row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, title_width);
+
+    int offset = 0;
+    for(int i = 0; i < row->titles.count(); ++i)
+    {
+        int width = qMin(QmmpUiSettings::instance()->columnManager()->size(i) - m_metrics->width(9),
+                         visible_width - offset);
+        if(i == row->titles.count() - 1)
+            width = visible_width - offset;
+
+        if(width <= 0)
+            break;
+        row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
+        offset += QmmpUiSettings::instance()->columnManager()->size(i);
+    }
+    //row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, title_width);
 }
 
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
@@ -200,7 +239,19 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
         QString number = QString("%1").arg(row->number);
         painter->drawText(row->x[ListWidgetRow::NUMBER], sy, number);
     }
-    painter->drawText(row->x[ListWidgetRow::TITLE], sy, row->titles[0]);
+
+    int offset = 0;
+    for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count(); i++)
+    {
+        painter->drawText(row->x[ListWidgetRow::TITLE] + offset, sy, row->titles[i]);
+        offset += QmmpUiSettings::instance()->columnManager()->size(i);
+
+        if(i != QmmpUiSettings::instance()->columnManager()->count() - 1)
+        {
+            painter->drawLine(row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.top(),
+                    row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.bottom() + 1);
+        }
+    }
 
     QString extra_string = row->extraString;
 
