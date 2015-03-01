@@ -92,16 +92,6 @@ void ColumnManager::execEditor(int index, QWidget *parent)
 
 }
 
-int ColumnManager::width()
-{
-    int width = 0;
-    for(int i = 0; i < m_columns.count(); ++i)
-    {
-        width += m_columns[i].size;
-    }
-    return width;
-}
-
 int ColumnManager::count()
 {
     return m_columns.count();
