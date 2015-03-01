@@ -21,11 +21,13 @@
 #define PLAYLISTTRACK_H
 
 #include <QMap>
+#include <QStringList>
 #include <qmmp/fileinfo.h>
 #include <qmmp/qmmp.h>
 #include "playlistitem.h"
 
 class QmmpUiSettings;
+class ColumnManager;
 
 /** @brief The PlayListTrack class provides a track for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -52,8 +54,9 @@ public:
     virtual ~PlayListTrack();
     /*!
      * Returns formatted title of the item.
+     * @param column Number of column.
      */
-    const QString formattedTitle();
+    const QString formattedTitle(int column);
     /*!
      *  Returns formatted length of the item.
      */
@@ -102,17 +105,18 @@ public:
     bool isUsed() const;
 
 private:
-    void formatTitle();
+    void formatTitle(int column);
     void formatGroup();
-    QString m_formattedTitle;
+    QStringList m_formattedTitles;
     QString m_formattedLength;
     QString m_group;
-    QString m_titleFormat;
+    QStringList m_titleFormats;
     QString m_groupFormat;
     QmmpUiSettings *m_settings;
     qint64 m_length;
     int m_refCount;
     bool m_sheduledForDeletion;
+    ColumnManager *m_columnManager;
 };
 
 #endif

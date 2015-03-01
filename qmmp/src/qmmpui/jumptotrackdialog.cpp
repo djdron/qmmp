@@ -105,7 +105,7 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 
 void JumpToTrackDialog::refresh()
 {
-    filterLineEdit->clear();
+    /*filterLineEdit->clear();
     m_indexes.clear();
     QStringList titles;
     QList<PlayListItem *> items = m_model->items();
@@ -117,7 +117,7 @@ void JumpToTrackDialog::refresh()
         m_indexes.append(i);
     }
     m_listModel->setStringList(titles);
-    filterLineEdit->setFocus();
+    filterLineEdit->setFocus();*/
 }
 
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
