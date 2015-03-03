@@ -27,7 +27,7 @@ ColumnManager::ColumnManager(QObject *parent) :
 {
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
-    int c = s.value("column_count", 2).toInt();
+    int c = s.value("column_count", 1).toInt();
     for(int i = 0; i < c; ++i)
     {
         s.beginGroup(QString("column%1").arg(i));
