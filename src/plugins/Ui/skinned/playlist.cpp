@@ -46,6 +46,7 @@
 #include "playlistselector.h"
 #include "windowsystem.h"
 #include "actionmanager.h"
+#include "playlistheader.h"
 #include "playlist.h"
 
 PlayList::PlayList (PlayListManager *manager, QWidget *parent)
@@ -62,6 +63,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_shaded = false;
     m_pl_browser = 0;
     m_pl_selector = 0;
+    m_pl_header = 0;
 
     resize (275*m_ratio, 116*m_ratio);
     setSizeIncrement (25*m_ratio, 29*m_ratio);
@@ -146,15 +148,28 @@ void PlayList::updatePositions()
     m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
     m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
 
+    int pl_x = 12*m_ratio;
+    int pl_y = 20*m_ratio;
+    int pl_w = 243*m_ratio+25*sx;
+    int pl_h = 58*m_ratio+29*sy;
+
     if(m_pl_selector)
     {
-        m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy - m_pl_selector->height());
         m_pl_selector->resize(243*m_ratio+25*sx, m_pl_selector->height());
         m_pl_selector->move(12*m_ratio, 20*m_ratio + 58*m_ratio+29*sy - m_pl_selector->height());
+        pl_h -= m_pl_selector->height();
     }
-    else
-        m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy);
-    m_listWidget->move (12*m_ratio,20*m_ratio);
+
+    /*if(m_pl_header)
+    {
+        m_pl_header->resize(243*m_ratio+25*sx, m_pl_header->height());
+        m_pl_header->move(pl_x, pl_y);
+        pl_y += m_pl_selector->height();
+        pl_h -= m_pl_selector->height();
+    }*/
+
+    m_listWidget->resize (pl_w, pl_h);
+    m_listWidget->move (pl_x, pl_y);
 
     m_buttonAdd->move (11*m_ratio, 86*m_ratio+29*sy);
     m_buttonSub->move (40*m_ratio, 86*m_ratio+29*sy);
@@ -453,6 +468,10 @@ void PlayList::readSettings()
         }
         m_pl_selector = 0;
     }
+
+    if(!m_pl_header)
+        m_pl_header = new PlayListHeader(this);
+
     if (m_update)
     {
         m_listWidget->readSettings();

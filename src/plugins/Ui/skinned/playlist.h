@@ -41,6 +41,7 @@ class PlayListManager;
 class PlayListBrowser;
 class PlayListSelector;
 class QmmpUiSettings;
+class PlayListHeader;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -129,6 +130,8 @@ class PlayList : public QWidget
         KeyboardManager* m_keyboardManager;
         QPointer <PlayListBrowser> m_pl_browser;
         PlayListSelector *m_pl_selector;
+        PlayListHeader *m_pl_header;
+
 };
 
 #endif
