@@ -83,7 +83,7 @@ int ListWidgetDrawer::rowHeight() const
     return m_row_height;
 }
 
-int ListWidgetDrawer::columnAt(int x, ListWidgetRow *row) const
+/*int ListWidgetDrawer::columnAt(int x, ListWidgetRow *row) const
 {
     if(row->flags & ListWidgetRow::GROUP)
         return -1;
@@ -102,10 +102,10 @@ int ListWidgetDrawer::columnAt(int x, ListWidgetRow *row) const
         {
             painter->drawLine(row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.top(),
                     row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.bottom() + 1);
-        }*/
+        }
     }
     return -1;
-}
+}*/
 
 void ListWidgetDrawer::calculateNumberWidth(int count)
 {
