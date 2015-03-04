@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.4.7)
 
 if(COMMAND cmake_policy)
    cmake_policy(SET CMP0003 NEW)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
 
 
 # qt plugin
@@ -83,6 +83,7 @@ SET(skinned_SRCS
     shortcutdialog.cpp
     skinnedfactory.cpp
     hotkeyeditor.cpp
+    playlistheader.cpp
 )
 
 SET(skinned_HDRS
