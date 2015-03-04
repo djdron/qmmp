@@ -28,7 +28,9 @@
 #include <QLineEdit>
 #include <QInputDialog>
 #include <qmmp/qmmp.h>
-#include <qmmpui/playlistmanager.h>
+#include <qmmpui/qmmpuisettings.h>
+#include <qmmpui/playlistmodel.h>
+#include <qmmpui/columnmanager.h>
 #include "skin.h"
 #include "playlistheader.h"
 
@@ -37,6 +39,11 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
 {
     m_scrollable = false;
     m_metrics = 0;
+    m_model = 0;
+    m_show_number = false;
+    m_align_numbres = false;
+    m_number_width = 0;
+    m_manager = QmmpUiSettings::instance()->columnManager();
     m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
@@ -53,7 +60,9 @@ PlayListHeader::~PlayListHeader()
 void PlayListHeader::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_font.fromString(settings.value("Skinned/pl_font", QApplication::font().toString()).toString());
+    settings.beginGroup("Skinned");
+    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
+
     if (m_metrics)
     {
         delete m_metrics;
@@ -61,7 +70,41 @@ void PlayListHeader::readSettings()
     }
     m_metrics = new QFontMetrics(m_font);
     resize(width(), m_metrics->height () +1);
-    //drawButtons();
+    m_show_number = settings.value ("pl_show_numbers", true).toBool();
+    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
+    settings.endGroup();
+    updateList(PlayListModel::STRUCTURE);
+}
+
+void PlayListHeader::setModel(PlayListModel *selected, PlayListModel *previous)
+{
+    if(previous)
+    {
+        disconnect(previous, 0, this, 0); //disconnect previous model
+    }
+    connect (selected, SIGNAL(listChanged(int)), SLOT(updateList(int)));
+    m_model = selected;
+    updateList(PlayListModel::STRUCTURE);
+}
+
+void PlayListHeader::updateList(int flags)
+{
+    qDebug("1");
+    if(flags & PlayListModel::STRUCTURE)
+    {
+        qDebug("2");
+        //song numbers width
+        if(m_show_number && m_align_numbres && m_model && m_model->count() > 0)
+        {
+            qDebug("3");
+            m_number_width = m_metrics->width("9") * QString::number(m_model->count()).size();
+        }
+        else
+            m_number_width = 0;
+        qDebug("4");
+    }
+    qDebug("++%d++", m_number_width);
+    update();
 }
 
 void PlayListHeader::updateSkin()
@@ -72,12 +115,26 @@ void PlayListHeader::updateSkin()
 
 void PlayListHeader::paintEvent(QPaintEvent *)
 {
-    /*QPainter painter(this);
+    QPainter painter(this);
     painter.setFont(m_font);
-    painter.setBrush(QBrush(m_normal_bg));
+    painter.setBrush(m_normal_bg);
     painter.drawRect(-1,-1,width()+1,height()+1);
 
-    if(m_moving)
+    painter.setPen(m_normal);
+
+    int sx = 5 + 3 + m_number_width + m_metrics->width("9");
+
+    painter.drawLine(0, height()-1, width(), height()-1);
+
+    for(int i = 0; i < m_manager->count(); ++i)
+    {
+        painter.drawText(sx + m_manager->size(i) / 2 - m_metrics->width(m_manager->name(i))/2, m_metrics->ascent(), m_manager->name(i));
+        sx += m_manager->size(i);
+        if(i < m_manager->count() - 1)
+            painter.drawLine(sx - m_metrics->width("9")/2, 0, sx - m_metrics->width("9")/2, height());
+    }
+
+    /*if(m_moving)
     {
         painter.setBrush(QBrush(m_normal_bg));
         painter.setPen(m_current);

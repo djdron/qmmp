@@ -160,13 +160,13 @@ void PlayList::updatePositions()
         pl_h -= m_pl_selector->height();
     }
 
-    /*if(m_pl_header)
+    if(m_pl_header)
     {
         m_pl_header->resize(243*m_ratio+25*sx, m_pl_header->height());
         m_pl_header->move(pl_x, pl_y);
         pl_y += m_pl_selector->height();
         pl_h -= m_pl_selector->height();
-    }*/
+    }
 
     m_listWidget->resize (pl_w, pl_h);
     m_listWidget->move (pl_x, pl_y);
@@ -470,7 +470,12 @@ void PlayList::readSettings()
     }
 
     if(!m_pl_header)
+    {
         m_pl_header = new PlayListHeader(this);
+        m_pl_header->setModel(m_pl_manager->currentPlayList());
+        connect(m_pl_manager, SIGNAL(selectedPlayListChanged(PlayListModel*,PlayListModel*)),
+                m_pl_header, SLOT(setModel(PlayListModel*,PlayListModel*)));
+    }
 
     if (m_update)
     {

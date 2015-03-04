@@ -27,9 +27,10 @@ class QFontMetrics;
 class QFont;
 class QMouseEvent;
 class QMenu;
-class PlayListManager;
+class PlayListModel;
 class PlayList;
 class Skin;
+class ColumnManager;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -43,18 +44,27 @@ public:
 
     void readSettings();
 
+public slots:
+    void setModel(PlayListModel *selected, PlayListModel *previous = 0);
+
 private slots:
+    void updateList(int flags);
     void updateSkin();
 
 private:
     void paintEvent(QPaintEvent *);
     void loadColors();
 
+    PlayListModel *m_model;
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QFont m_font;
     bool m_scrollable;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
+    bool m_show_number;
+    bool m_align_numbres;
+    int m_number_width;
+    ColumnManager *m_manager;
 
 
 };
