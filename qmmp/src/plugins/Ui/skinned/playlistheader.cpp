@@ -120,11 +120,19 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     painter.setBrush(m_normal_bg);
     painter.drawRect(-1,-1,width()+1,height()+1);
 
-    painter.setPen(m_normal);
+
+
 
     int sx = 5 + 3 + m_number_width + m_metrics->width("9");
 
-    painter.drawLine(0, height()-1, width(), height()-1);
+
+    painter.setBrush(m_normal);
+    painter.setPen(m_normal);
+    painter.drawRect(5,-1,width()-10,height()+1);
+
+    painter.setPen(m_normal_bg);
+
+    //painter.drawLine(0, height()-1, width(), height()-1);
 
     for(int i = 0; i < m_manager->count(); ++i)
     {
