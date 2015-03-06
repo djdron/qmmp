@@ -130,13 +130,17 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     int visible_width = row->x[ListWidgetRow::EXTRA_STRING] - row->x[ListWidgetRow::TITLE] -
             m_metrics->width("9");
 
+    if( row->titles.count() == 1)
+    {
+        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width);
+        return;
+    }
+
     int offset = 0;
     for(int i = 0; i < row->titles.count(); ++i)
     {
         int width = qMin(QmmpUiSettings::instance()->columnManager()->size(i) - m_metrics->width(9),
                          visible_width - offset);
-        if(i == row->titles.count() - 1)
-            width = visible_width - offset;
 
         if(width <= 0)
             break;

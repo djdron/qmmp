@@ -134,73 +134,16 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     //painter.drawLine(0, height()-1, width(), height()-1);
 
+    if(m_number_width)
+    painter.drawLine(5 + 3 + m_number_width + m_metrics->width("9")/2 - 1, 0, 5 + 3 + m_number_width + m_metrics->width("9")/2 - 1, height());
+
     for(int i = 0; i < m_manager->count(); ++i)
     {
         painter.drawText(sx + m_manager->size(i) / 2 - m_metrics->width(m_manager->name(i))/2, m_metrics->ascent(), m_manager->name(i));
         sx += m_manager->size(i);
-        if(i < m_manager->count() - 1)
-            painter.drawLine(sx - m_metrics->width("9")/2, 0, sx - m_metrics->width("9")/2, height());
+        //if(i < m_manager->count() - 1)
+        painter.drawLine(sx - m_metrics->width("9")/2, 0, sx - m_metrics->width("9")/2, height());
     }
-
-    /*if(m_moving)
-    {
-        painter.setBrush(QBrush(m_normal_bg));
-        painter.setPen(m_current);
-        painter.drawRect(m_rects.at(selected).x() - 2 - m_offset, 0,
-                         m_rects.at(selected).width() + 3, height()-1);
-    }
-    else
-    {
-        painter.setBrush(QBrush(m_selected_bg));
-        painter.setPen(m_selected_bg);
-        painter.drawRect(m_rects.at(selected).x() - 2 - m_offset, 0,
-                         m_rects.at(selected).width() + 3, height()-1);
-    }
-
-    for (int i = 0; i < m_rects.size(); ++i)
-    {
-        if(i == current)
-             painter.setPen(m_current);
-        else
-             painter.setPen(m_normal);
-
-        if(!m_moving || i != selected)
-            painter.drawText(m_rects[i].x() - m_offset, m_metrics->ascent(), names.at(i));
-        if(i < m_rects.size() - 1)
-        {
-            painter.setPen(m_normal);
-            painter.drawText(m_rects[i].x() + m_rects[i].width() - m_offset, m_metrics->ascent(),
-                             m_pl_separator);
-        }
-    }
-
-
-    for(int i = 0; i < m_extra_rects.size(); ++i)
-    {
-        painter.setPen(m_pressed_button == BUTTON_NEW_PL ? m_current : m_normal);
-        painter.drawText(m_extra_rects[i].x() - m_offset, m_metrics->ascent(), m_pl_button);
-    }
-
-
-    if(m_moving)
-    {
-        painter.setBrush(QBrush(m_selected_bg));
-        painter.setPen(m_selected_bg);
-        painter.drawRect(m_mouse_pos.x() - m_press_offset - 2, 0,
-                         m_rects.at(selected).width() + 3, height());
-
-        painter.setPen(selected == current ? m_current : m_normal);
-        painter.drawText(m_mouse_pos.x() - m_press_offset,
-                         m_metrics->ascent(), names.at(selected));
-    }
-
-    if(m_scrollable)
-    {
-        painter.drawPixmap(width()-40, 0, m_pixmap);
-        painter.setBrush(QBrush(m_normal_bg));
-        painter.setPen(m_normal_bg);
-        painter.drawRect(0,0,6,height());
-    }*/
 }
 
 void PlayListHeader::loadColors()
