@@ -27,7 +27,7 @@ ColumnManager::ColumnManager(QObject *parent) :
 {
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
-    int c = s.value("column_count", 1).toInt();
+    int c = qMax(1, s.value("column_count", 1).toInt());
     for(int i = 0; i < c; ++i)
     {
         s.beginGroup(QString("column%1").arg(i));
@@ -71,6 +71,9 @@ void ColumnManager::remove(int index)
 {
     if(index < 0 || index >= m_columns.size())
         qWarning("ColumnManager: index is out of range");
+
+    if(m_columns.count() == 1)
+        return;
 
     delete m_columns.takeAt(index).titleFormatter;
     sync();
