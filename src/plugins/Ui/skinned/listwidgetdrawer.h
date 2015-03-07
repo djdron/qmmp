@@ -74,6 +74,7 @@ public:
     void readSettings();
     void loadColors();
     int rowHeight() const;
+    int numberWidth() const;
     void calculateNumberWidth(int count);
     void prepareRow(ListWidgetRow *row);
     void fillBackground(QPainter *painter, int width, int height);
