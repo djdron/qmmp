@@ -71,12 +71,12 @@ void PlayListHeader::readSettings()
         delete m_metrics;
         m_metrics = 0;
     }
+
     m_metrics = new QFontMetrics(m_font);
-    //resize(width(), m_metrics->height () +1);
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     settings.endGroup();
-    updateList();
+    updateColumns();
 }
 
 void PlayListHeader::setNumberWidth(int width)
@@ -84,11 +84,11 @@ void PlayListHeader::setNumberWidth(int width)
     if(width != m_number_width)
     {
         m_number_width = width;
-        updateList();
+        updateColumns();
     }
 }
 
-void PlayListHeader::updateList()
+void PlayListHeader::updateColumns()
 {
     m_rects.clear();
     m_names.clear();
@@ -153,8 +153,14 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
     {
         //qDebug("delta = %d", e->pos().x() - m_pressed_pos.x());
         m_manager->resize(m_pressed_index, m_size + e->pos().x() - m_pressed_pos.x());
-        updateList();
+        updateColumns();
     }
+}
+
+void PlayListHeader::resizeEvent(QResizeEvent *)
+{
+    if(m_manager->count() == 1)
+        updateColumns();
 }
 
 void PlayListHeader::paintEvent(QPaintEvent *)
@@ -173,18 +179,26 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                          m_rects.at(0).x() - m_metrics->width("9")/2 - 1, height());
     }
 
+    if(m_names.count() == 1)
+    {
+        painter.drawText((m_rects[0].x() + m_rects[0].right())/2 - m_metrics->width(m_names[0])/2,
+                         m_metrics->ascent(), m_names[0]);
+        return;
+    }
+
     for(int i = 0; i < m_rects.count(); ++i)
     {
-        painter.drawLine(m_rects[i].right() - m_metrics->width("9")/2,
-                         0, m_rects[i].right() - m_metrics->width("9")/2, height()+1);
-        painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2, m_metrics->ascent(), m_names[i]);
+        painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2,
+                         m_metrics->ascent(), m_names[i]);
+
+        painter.drawLine(m_rects[i].right() - m_metrics->width("9")/2, 0,
+                         m_rects[i].right() - m_metrics->width("9")/2, height()+1);
+
     }
 }
 
 void PlayListHeader::loadColors()
 {
     m_normal.setNamedColor(m_skin->getPLValue("normal"));
-    m_current.setNamedColor(m_skin->getPLValue("current"));
-    m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
 }

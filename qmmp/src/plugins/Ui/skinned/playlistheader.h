@@ -43,17 +43,17 @@ public:
     ~PlayListHeader();
 
     void readSettings();
-
     void setNumberWidth(int width);
+    void updateColumns();
 
 private slots:
-    void updateList();
     void updateSkin();
 
 private:
     void mousePressEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e);
+    void resizeEvent(QResizeEvent *);
     void paintEvent(QPaintEvent *);
     void loadColors();
 
@@ -62,7 +62,7 @@ private:
     QFontMetrics *m_metrics;
     QFont m_font;
     bool m_scrollable;
-    QColor m_normal, m_current, m_normal_bg, m_selected_bg;
+    QColor m_normal, m_selected_bg;
     bool m_show_number;
     bool m_align_numbres;
     int m_number_width;

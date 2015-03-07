@@ -31,6 +31,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
+#include <qmmpui/columnmanager.h>
 #include "listwidget.h"
 #include "playlistheader.h"
 #include "skin.h"
@@ -44,6 +45,7 @@ ListWidget::ListWidget(QWidget *parent)
 {
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
+    ColumnManager *column_manager = m_ui_settings->columnManager();
     m_menu = new QMenu(this);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
@@ -67,6 +69,11 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
+    connect(column_manager, SIGNAL(changed(int)), SLOT(updateColumns()));
+    connect(column_manager, SIGNAL(resized(int)), SLOT(updateColumns()));
+    connect(column_manager, SIGNAL(inserted(int)), SLOT(updateColumns()));
+    connect(column_manager, SIGNAL(removed(int)), SLOT(updateColumns()));
+    connect(column_manager, SIGNAL(moved(int)), SLOT(updateColumns()));
 }
 
 ListWidget::~ListWidget()
@@ -386,6 +393,17 @@ void ListWidget::updateList(int flags)
             row->extraString = getExtraString(m_first + i);
         }
         m_drawer.prepareRow(row);  //elide titles
+    }
+    update();
+}
+
+void ListWidget::updateColumns()
+{
+    QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
+    for(int i = 0; i < items.count(); ++i)
+    {
+        m_rows[i]->titles = items[i]->formattedTitles();
+        m_drawer.prepareRow(m_rows[i]);  //elide titles
     }
     update();
 }
