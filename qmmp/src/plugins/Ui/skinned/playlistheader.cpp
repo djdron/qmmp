@@ -34,10 +34,13 @@
 #include "skin.h"
 #include "playlistheader.h"
 
+#define PADDING 3
+
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     m_scrollable = false;
+    m_resize = false;
     m_metrics = 0;
     m_model = 0;
     m_show_number = false;
@@ -69,80 +72,112 @@ void PlayListHeader::readSettings()
         m_metrics = 0;
     }
     m_metrics = new QFontMetrics(m_font);
-    resize(width(), m_metrics->height () +1);
+    //resize(width(), m_metrics->height () +1);
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     settings.endGroup();
-    updateList(PlayListModel::STRUCTURE);
+    updateList();
 }
 
-void PlayListHeader::setModel(PlayListModel *selected, PlayListModel *previous)
+void PlayListHeader::setNumberWidth(int width)
 {
-    if(previous)
+    if(width != m_number_width)
     {
-        disconnect(previous, 0, this, 0); //disconnect previous model
+        m_number_width = width;
+        updateList();
     }
-    connect (selected, SIGNAL(listChanged(int)), SLOT(updateList(int)));
-    m_model = selected;
-    updateList(PlayListModel::STRUCTURE);
 }
 
-void PlayListHeader::updateList(int flags)
+void PlayListHeader::updateList()
 {
-    qDebug("1");
-    if(flags & PlayListModel::STRUCTURE)
+    m_rects.clear();
+    m_names.clear();
+
+    int sx = 5 + PADDING;
+    if(m_number_width)
+        sx += m_number_width + m_metrics->width("9");
+
+    if(m_manager->count() == 1)
     {
-        qDebug("2");
-        //song numbers width
-        if(m_show_number && m_align_numbres && m_model && m_model->count() > 0)
-        {
-            qDebug("3");
-            m_number_width = m_metrics->width("9") * QString::number(m_model->count()).size();
-        }
-        else
-            m_number_width = 0;
-        qDebug("4");
+        m_rects << QRect(sx, 0, width() - sx - 5, height());
+        m_names << m_manager->name(0);
+        return;
     }
-    qDebug("++%d++", m_number_width);
+
+    for(int i = 0; i < m_manager->count(); ++i)
+    {
+        m_rects << QRect(sx, 0, m_manager->size(i)+1, height());
+        m_names << m_metrics->elidedText(m_manager->name(i), Qt::ElideRight,
+                                         m_manager->size(i) - m_metrics->width("9"));
+
+        sx += m_manager->size(i);
+    }
     update();
 }
 
 void PlayListHeader::updateSkin()
 {
     loadColors();
-    //drawButtons();
+    update();
+}
+
+void PlayListHeader::mousePressEvent(QMouseEvent *e)
+{
+    for(int i = 0; i < m_rects.count(); ++i)
+    {
+        if(m_rects.at(i).contains(e->pos()))
+        {
+            m_pressed_pos = e->pos();
+
+            if(e->pos().x() > m_rects[i].right() - m_metrics->width("9"))
+            {
+                m_pressed_index = i;
+                m_size = m_manager->size(i);
+                m_resize = true;
+                qDebug("resize = %d", i);
+            }
+            else
+                qDebug("move = %d", i);
+        }
+    }
+}
+
+void PlayListHeader::mouseReleaseEvent(QMouseEvent *e)
+{
+    m_resize = false;
+}
+
+void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
+{
+    if(m_resize && m_pressed_index >= 0)
+    {
+        //qDebug("delta = %d", e->pos().x() - m_pressed_pos.x());
+        m_manager->resize(m_pressed_index, m_size + e->pos().x() - m_pressed_pos.x());
+        updateList();
+    }
 }
 
 void PlayListHeader::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    painter.setFont(m_font);
-    painter.setBrush(m_normal_bg);
-    painter.drawRect(-1,-1,width()+1,height()+1);
-
-
-
-
-    int sx = 5 + 3 + m_number_width + m_metrics->width("9");
-
 
     painter.setBrush(m_normal);
     painter.setPen(m_normal);
     painter.drawRect(5,-1,width()-10,height()+1);
 
-    painter.setPen(m_normal_bg);
-
-    //painter.drawLine(0, height()-1, width(), height()-1);
+    painter.setPen(m_selected_bg);
 
     if(m_number_width)
-    painter.drawLine(5 + 3 + m_number_width + m_metrics->width("9")/2 - 1, 0, 5 + 3 + m_number_width + m_metrics->width("9")/2 - 1, height());
-
-    for(int i = 0; i < m_manager->count(); ++i)
     {
-        painter.drawText(sx + m_manager->size(i) / 2 - m_metrics->width(m_manager->name(i))/2, m_metrics->ascent(), m_manager->name(i));
-        sx += m_manager->size(i);
-        //if(i < m_manager->count() - 1)
-        painter.drawLine(sx - m_metrics->width("9")/2, 0, sx - m_metrics->width("9")/2, height());
+        painter.drawLine(m_rects.at(0).x() - m_metrics->width("9")/2 - 1, 0,
+                         m_rects.at(0).x() - m_metrics->width("9")/2 - 1, height());
+    }
+
+    for(int i = 0; i < m_rects.count(); ++i)
+    {
+        painter.drawLine(m_rects[i].right() - m_metrics->width("9")/2,
+                         0, m_rects[i].right() - m_metrics->width("9")/2, height()+1);
+        painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2, m_metrics->ascent(), m_names[i]);
     }
 }
 

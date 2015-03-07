@@ -83,6 +83,11 @@ int ListWidgetDrawer::rowHeight() const
     return m_row_height;
 }
 
+int ListWidgetDrawer::numberWidth() const
+{
+    return m_number_width;
+}
+
 void ListWidgetDrawer::calculateNumberWidth(int count)
 {
     //song numbers width

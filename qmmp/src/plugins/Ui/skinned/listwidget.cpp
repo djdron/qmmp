@@ -64,7 +64,7 @@ ListWidget::ListWidget(QWidget *parent)
     setMouseTracking(true);
 
     readSettings();
-    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
 }
@@ -97,6 +97,10 @@ void ListWidget::readSettings()
     {
         m_header->deleteLater();
         m_header = 0;
+    }
+    else if(m_header)
+    {
+        m_header->readSettings();
     }
 
     if (m_update)
@@ -323,6 +327,8 @@ void ListWidget::updateList(int flags)
 
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
+        if(m_header)
+            m_header->setNumberWidth(m_drawer.numberWidth());
 
         items = m_model->mid(m_first, m_row_count);
 

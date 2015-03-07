@@ -83,7 +83,7 @@ void ColumnManager::resize(int index, int size)
         qWarning("ColumnManager: index is out of range");
 
    m_columns[index].size = size;
-   sync();
+   //sync();
    emit resized(index);
 }
 

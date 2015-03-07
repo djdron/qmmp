@@ -44,14 +44,16 @@ public:
 
     void readSettings();
 
-public slots:
-    void setModel(PlayListModel *selected, PlayListModel *previous = 0);
+    void setNumberWidth(int width);
 
 private slots:
-    void updateList(int flags);
+    void updateList();
     void updateSkin();
 
 private:
+    void mousePressEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e);
+    void mouseMoveEvent(QMouseEvent *e);
     void paintEvent(QPaintEvent *);
     void loadColors();
 
@@ -65,6 +67,12 @@ private:
     bool m_align_numbres;
     int m_number_width;
     ColumnManager *m_manager;
+    QList <QRect> m_rects;
+    QStringList m_names;
+    QPoint m_pressed_pos;
+    int m_pressed_index;
+    int m_size;
+    bool m_resize;
 
 
 };
