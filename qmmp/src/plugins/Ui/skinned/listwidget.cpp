@@ -32,6 +32,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
 #include "listwidget.h"
+#include "playlistheader.h"
 #include "skin.h"
 #include "popupwidget.h"
 #include "playlist.h"
@@ -41,26 +42,30 @@
 ListWidget::ListWidget(QWidget *parent)
         : QWidget(parent)
 {
-    m_update = false;
     m_skin = Skin::instance();
-    m_popupWidget = 0;
-    m_drop_index = INVALID_INDEX;
+    m_ui_settings = QmmpUiSettings::instance();
     m_menu = new QMenu(this);
+    m_timer = new QTimer(this);
+    m_timer->setInterval(50);
+
+    m_popupWidget = 0;
+    m_header = 0;
+    m_update = false;
+    m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
     m_prev_y = 0;
     m_anchor_index = INVALID_INDEX;
     m_pressed_index = INVALID_INDEX;
-    m_ui_settings = QmmpUiSettings::instance();
-    connect (m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     m_first = 0;
     m_row_count = 0;
     m_select_on_release = false;
-    readSettings();
-    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+
     setAcceptDrops(true);
     setMouseTracking(true);
-    m_timer = new QTimer(this);
-    m_timer->setInterval(50);
+
+    readSettings();
+    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
 }
 
@@ -76,10 +81,26 @@ void ListWidget::readSettings()
     settings.beginGroup("Skinned");
     m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
     bool show_popup = settings.value("pl_show_popup", false).toBool();
+    bool show_header = settings.value("pl_show_header", true).toBool();
+
+    if(m_update)
+    {
+        m_drawer.readSettings();
+    }
+
+    if(show_header && !m_header)
+    {
+        m_header = new PlayListHeader(this);
+        m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
+    }
+    else if(!show_header && m_header)
+    {
+        m_header->deleteLater();
+        m_header = 0;
+    }
 
     if (m_update)
     {
-        m_drawer.readSettings();
         m_row_count = height() / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
@@ -232,6 +253,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
+    m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
     m_row_count = e->size().height() / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);

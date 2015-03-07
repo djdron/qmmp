@@ -63,7 +63,6 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_shaded = false;
     m_pl_browser = 0;
     m_pl_selector = 0;
-    m_pl_header = 0;
 
     resize (275*m_ratio, 116*m_ratio);
     setSizeIncrement (25*m_ratio, 29*m_ratio);
@@ -157,14 +156,6 @@ void PlayList::updatePositions()
     {
         m_pl_selector->resize(243*m_ratio+25*sx, m_pl_selector->height());
         m_pl_selector->move(12*m_ratio, 20*m_ratio + 58*m_ratio+29*sy - m_pl_selector->height());
-        pl_h -= m_pl_selector->height();
-    }
-
-    if(m_pl_header)
-    {
-        m_pl_header->resize(243*m_ratio+25*sx, m_pl_header->height());
-        m_pl_header->move(pl_x, pl_y);
-        pl_y += m_pl_selector->height();
         pl_h -= m_pl_selector->height();
     }
 
@@ -467,14 +458,6 @@ void PlayList::readSettings()
             m_listWidget->menu()->removeAction(m_copySelectedMenu->menuAction());
         }
         m_pl_selector = 0;
-    }
-
-    if(!m_pl_header)
-    {
-        m_pl_header = new PlayListHeader(this);
-        m_pl_header->setModel(m_pl_manager->currentPlayList());
-        connect(m_pl_manager, SIGNAL(selectedPlayListChanged(PlayListModel*,PlayListModel*)),
-                m_pl_header, SLOT(setModel(PlayListModel*,PlayListModel*)));
     }
 
     if (m_update)

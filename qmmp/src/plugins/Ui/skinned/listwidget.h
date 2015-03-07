@@ -35,6 +35,7 @@ class PlayListModel;
 class Skin;
 class PlayListItem;
 class QmmpUiSettings;
+class PlayListHeader;
 namespace PlayListPopup{
 class PopupWidget;
 }
@@ -127,6 +128,7 @@ private:
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
     ListWidgetDrawer m_drawer;
+    PlayListHeader *m_header;
 };
 
 #endif
