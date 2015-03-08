@@ -39,6 +39,7 @@ public:
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);
     void resize(int index, int size);
+    void move(int from, int to);
     void execEditor(int index, QWidget *parent = 0);
 
     int count();

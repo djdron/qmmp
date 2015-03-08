@@ -40,14 +40,15 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     m_scrollable = false;
-    m_resize = false;
     m_metrics = 0;
     m_model = 0;
     m_show_number = false;
     m_align_numbres = false;
     m_number_width = 0;
+    m_task = NO_TASK;
     m_manager = QmmpUiSettings::instance()->columnManager();
     m_skin = Skin::instance();
+
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
     readSettings();
@@ -123,37 +124,78 @@ void PlayListHeader::updateSkin()
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
 {
-    for(int i = 0; i < m_rects.count(); ++i)
+    if(e->button() == Qt::LeftButton)
     {
-        if(m_rects.at(i).contains(e->pos()))
+        for(int i = 0; i < m_rects.count(); ++i)
         {
-            m_pressed_pos = e->pos();
-
-            if(e->pos().x() > m_rects[i].right() - m_metrics->width("9"))
+            if(m_rects.at(i).contains(e->pos()))
             {
-                m_pressed_index = i;
-                m_size = m_manager->size(i);
-                m_resize = true;
-                qDebug("resize = %d", i);
+                m_pressed_pos = e->pos();
+                m_mouse_pos = e->pos();
+                m_pressed_column = i;
+
+                if(e->pos().x() > m_rects[i].right() - m_metrics->width("9"))
+                {
+                    m_old_size = m_manager->size(i);
+
+                    m_task = RESIZE;
+                }
+                else
+                {
+                    m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
+                    m_task = MOVE;
+                }
+                break;
             }
-            else
-                qDebug("move = %d", i);
         }
+    }
+    else
+    {
+        m_task = NO_TASK;
+        update();
     }
 }
 
-void PlayListHeader::mouseReleaseEvent(QMouseEvent *e)
+void PlayListHeader::mouseReleaseEvent(QMouseEvent *)
 {
-    m_resize = false;
+    m_task = NO_TASK;
+    update();
 }
 
 void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
 {
-    if(m_resize && m_pressed_index >= 0)
+    if(m_task == RESIZE && m_manager->count() > 1)
     {
-        //qDebug("delta = %d", e->pos().x() - m_pressed_pos.x());
-        m_manager->resize(m_pressed_index, m_size + e->pos().x() - m_pressed_pos.x());
-        updateColumns();
+        m_manager->resize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
+    }
+    else if(m_task == MOVE)
+    {
+        m_mouse_pos = e->pos();
+
+        int dest = -1;
+        for(int i = 0; i < m_rects.count(); ++i)
+        {
+            int x_delta = m_mouse_pos.x() - m_rects.at(i).x();
+            if(x_delta < 0 || x_delta > m_rects.at(i).width())
+                continue;
+
+            if((x_delta > m_rects.at(i).width()/2 && m_pressed_column < i) ||
+                    (x_delta < m_rects.at(i).width()/2 && m_pressed_column > i))
+            {
+                dest = i;
+                break;
+            }
+        }
+        if(dest == -1 || dest == m_pressed_column)
+        {
+            update();
+            QWidget::mouseMoveEvent(e);
+            return;
+        }
+        qDebug("moved: %d, %d", m_pressed_column, dest);
+        m_manager->move(m_pressed_column, dest);
+        m_pressed_column = dest;
+        update();
     }
 }
 
@@ -171,7 +213,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     painter.setPen(m_normal);
     painter.drawRect(5,-1,width()-10,height()+1);
 
-    painter.setPen(m_selected_bg);
+    painter.setPen(m_normal_bg);
 
     if(m_number_width)
     {
@@ -188,6 +230,17 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     for(int i = 0; i < m_rects.count(); ++i)
     {
+        if(m_task == MOVE && i == m_pressed_column)
+        {
+            painter.setBrush(m_normal_bg);
+            painter.setPen(m_current);
+            painter.drawRect(m_rects[i].x() - m_metrics->width("9")/2, 0,
+                             m_rects[i].width(), height()-1);
+            painter.setBrush(m_normal);
+            painter.setPen(m_normal_bg);
+            continue;
+        }
+
         painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2,
                          m_metrics->ascent(), m_names[i]);
 
@@ -195,10 +248,22 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                          m_rects[i].right() - m_metrics->width("9")/2, height()+1);
 
     }
+
+    if(m_task == MOVE)
+    {
+        painter.setPen(m_normal);
+        painter.drawRect(m_mouse_pos.x() - m_press_offset - m_metrics->width("9")/2, 0,
+                         m_rects.at(m_pressed_column).width(), height());
+
+        painter.setPen(m_normal_bg);
+        painter.drawText(m_mouse_pos.x() - m_press_offset + m_rects[m_pressed_column].width()/2 - m_metrics->width(m_names[m_pressed_column])/2,
+                         m_metrics->ascent(), m_names.at(m_pressed_column));
+    }
 }
 
 void PlayListHeader::loadColors()
 {
     m_normal.setNamedColor(m_skin->getPLValue("normal"));
-    m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
+    m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
+    m_current.setNamedColor(m_skin->getPLValue("current"));
 }

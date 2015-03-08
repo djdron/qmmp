@@ -73,7 +73,7 @@ ListWidget::ListWidget(QWidget *parent)
     connect(column_manager, SIGNAL(resized(int)), SLOT(updateColumns()));
     connect(column_manager, SIGNAL(inserted(int)), SLOT(updateColumns()));
     connect(column_manager, SIGNAL(removed(int)), SLOT(updateColumns()));
-    connect(column_manager, SIGNAL(moved(int)), SLOT(updateColumns()));
+    connect(column_manager, SIGNAL(moved(int, int)), SLOT(updateColumns()));
 }
 
 ListWidget::~ListWidget()
@@ -399,6 +399,7 @@ void ListWidget::updateList(int flags)
 
 void ListWidget::updateColumns()
 {
+    m_header->updateColumns();
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
     for(int i = 0; i < items.count(); ++i)
     {
