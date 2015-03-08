@@ -51,7 +51,7 @@ private slots:
 
 private:
     void mousePressEvent(QMouseEvent *e);
-    void mouseReleaseEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *e);
     void resizeEvent(QResizeEvent *);
     void paintEvent(QPaintEvent *);
@@ -62,7 +62,7 @@ private:
     QFontMetrics *m_metrics;
     QFont m_font;
     bool m_scrollable;
-    QColor m_normal, m_selected_bg;
+    QColor m_normal, m_normal_bg, m_selected_bg, m_current;
     bool m_show_number;
     bool m_align_numbres;
     int m_number_width;
@@ -70,9 +70,17 @@ private:
     QList <QRect> m_rects;
     QStringList m_names;
     QPoint m_pressed_pos;
-    int m_pressed_index;
-    int m_size;
-    bool m_resize;
+    int m_pressed_column;
+    int m_old_size;
+    QPoint m_mouse_pos;
+    int m_press_offset;
+
+    enum
+    {
+        NO_TASK = -1,
+        RESIZE,
+        MOVE
+    } m_task;
 
 
 };

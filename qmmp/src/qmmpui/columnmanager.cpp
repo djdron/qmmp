@@ -90,6 +90,17 @@ void ColumnManager::resize(int index, int size)
    emit resized(index);
 }
 
+void ColumnManager::move(int from, int to)
+{
+    if(from < 0 || from >= m_columns.size())
+        qWarning("ColumnManager: index is out of range");
+
+    if(to < 0 || to >= m_columns.size())
+        qWarning("ColumnManager: index is out of range");
+    m_columns.move(from, to);
+    emit moved(from, to);
+}
+
 void ColumnManager::execEditor(int index, QWidget *parent)
 {
 
