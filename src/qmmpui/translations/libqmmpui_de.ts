@@ -103,9 +103,165 @@
     </message>
 </context>
 <context>
+    <name>ColumnEditor</name>
+    <message>
+        <location filename="../forms/columneditor.ui" line="14"/>
+        <source>Edit Column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/columneditor.ui" line="29"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/columneditor.ui" line="39"/>
+        <source>Format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/columneditor.ui" line="51"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/columneditor.ui" line="73"/>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="78"/>
+        <location filename="../columneditor.cpp" line="99"/>
+        <source>Artist</source>
+        <translation type="unfinished">Interpret</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="79"/>
+        <location filename="../columneditor.cpp" line="100"/>
+        <source>Album</source>
+        <translation type="unfinished">Album</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="80"/>
+        <source>Album artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="81"/>
+        <location filename="../columneditor.cpp" line="104"/>
+        <source>Title</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="82"/>
+        <source>Track number</source>
+        <translation type="unfinished">Stücknummer</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="83"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished">Zweistellige Stücknummer</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="84"/>
+        <location filename="../columneditor.cpp" line="107"/>
+        <source>Genre</source>
+        <translation type="unfinished">Genre</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="85"/>
+        <location filename="../columneditor.cpp" line="108"/>
+        <source>Comment</source>
+        <translation type="unfinished">Kommentar</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="86"/>
+        <location filename="../columneditor.cpp" line="109"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="87"/>
+        <location filename="../columneditor.cpp" line="110"/>
+        <source>Duration</source>
+        <translation type="unfinished">Abspieldauer</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="88"/>
+        <source>Disc number</source>
+        <translation type="unfinished">CD-Nummer</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="89"/>
+        <source>File name</source>
+        <translation type="unfinished">Dateiname</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="90"/>
+        <source>File path</source>
+        <translation type="unfinished">Dateipfad</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="91"/>
+        <location filename="../columneditor.cpp" line="114"/>
+        <source>Year</source>
+        <translation type="unfinished">Jahr</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="92"/>
+        <source>Condition</source>
+        <translation type="unfinished">Zustand</translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="101"/>
+        <source>Artist - Album</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="102"/>
+        <source>Artist - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="103"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="105"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="106"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="111"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="112"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="113"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="115"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ColumnManager</name>
     <message>
-        <location filename="../columnmanager.cpp" line="36"/>
+        <location filename="../columnmanager.cpp" line="37"/>
         <source>Album - Title</source>
         <translation type="unfinished"></translation>
     </message>

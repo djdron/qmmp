@@ -930,6 +930,11 @@
         <source>Remove column</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="140"/>
+        <source>Title</source>
+        <translation type="unfinished">标题</translation>
+    </message>
 </context>
 <context>
     <name>PlayListSelector</name>
