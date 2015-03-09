@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QSettings>
+#include <QApplication>
 #include <qmmp/qmmp.h>
 #include "columnmanager.h"
 
@@ -62,6 +63,7 @@ void ColumnManager::insert(int index, const QString &name, const QString &patter
     col.name = name;
     col.pattern = pattern;
     col.titleFormatter = new MetaDataFormatter(pattern);
+    col.size = 50;
     m_columns.insert(index, col);
     sync();
     emit inserted(index);
@@ -103,7 +105,8 @@ void ColumnManager::move(int from, int to)
 
 void ColumnManager::execEditor(int index, QWidget *parent)
 {
-
+    if(!parent)
+        parent = qApp->activeWindow();
 }
 
 int ColumnManager::count()

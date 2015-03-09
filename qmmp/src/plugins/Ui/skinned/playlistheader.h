@@ -47,6 +47,9 @@ public:
 
 private slots:
     void updateSkin();
+    void addColumn();
+    void editColumn();
+    void removeColumn();
 
 private:
     void mousePressEvent(QMouseEvent *e);

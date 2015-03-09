@@ -48,10 +48,10 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_manager = QmmpUiSettings::instance()->columnManager();
     m_skin = Skin::instance();
     m_menu = new QMenu(this);
-    m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"));
-    m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"));
+    m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"), this, SLOT(addColumn()));
+    m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"), this, SLOT(editColumn()));
     m_menu->addSeparator();
-    m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"));
+    m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
 
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
@@ -124,6 +124,39 @@ void PlayListHeader::updateSkin()
 {
     loadColors();
     update();
+}
+
+void PlayListHeader::addColumn()
+{
+    int column = findColumn(m_pressed_pos);
+    if(column < 0 && m_pressed_pos.x() > m_rects.last().right())
+        column = m_manager->count();
+    else if(column < 0 && m_pressed_pos.x() < m_rects.first().x())
+        column = 0;
+
+    if(column < 0)
+        return;
+
+    m_manager->insert(column, "Year", "%y");
+
+}
+
+void PlayListHeader::editColumn()
+{
+    int column = findColumn(m_pressed_pos);
+    if(column >= 0)
+    {
+        m_manager->execEditor(0);
+    }
+}
+
+void PlayListHeader::removeColumn()
+{
+    int column = findColumn(m_pressed_pos);
+    if(column >= 0)
+    {
+        m_manager->remove(column);
+    }
 }
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
