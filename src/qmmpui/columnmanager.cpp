@@ -56,8 +56,11 @@ ColumnManager::~ColumnManager()
 
 void ColumnManager::insert(int index, const QString &name, const QString &pattern)
 {
-    if(index < 0 || index >= m_columns.size())
+    if(index < 0 || index > m_columns.size())
+    {
         qWarning("ColumnManager: index is out of range");
+        return;
+    }
 
     Column col;
     col.name = name;
@@ -72,7 +75,10 @@ void ColumnManager::insert(int index, const QString &name, const QString &patter
 void ColumnManager::remove(int index)
 {
     if(index < 0 || index >= m_columns.size())
+    {
         qWarning("ColumnManager: index is out of range");
+        return;
+    }
 
     if(m_columns.count() == 1)
         return;
@@ -85,7 +91,10 @@ void ColumnManager::remove(int index)
 void ColumnManager::resize(int index, int size)
 {
     if(index < 0 || index >= m_columns.size())
+    {
         qWarning("ColumnManager: index is out of range");
+        return;
+    }
 
    m_columns[index].size = qMax(size, 30);
    //sync();
@@ -95,10 +104,17 @@ void ColumnManager::resize(int index, int size)
 void ColumnManager::move(int from, int to)
 {
     if(from < 0 || from >= m_columns.size())
+    {
         qWarning("ColumnManager: index is out of range");
+        return;
+    }
 
     if(to < 0 || to >= m_columns.size())
+    {
         qWarning("ColumnManager: index is out of range");
+        return;
+    }
+
     m_columns.move(from, to);
     emit moved(from, to);
 }
