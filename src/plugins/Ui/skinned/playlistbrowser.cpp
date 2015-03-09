@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QKeyEvent>
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
+#include <QIcon>
 #include <qmmpui/playlistmanager.h>
 #include "playlistbrowser.h"
 
@@ -39,7 +40,7 @@ PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QD
     connect(m_ui.newButton, SIGNAL(clicked()), m_pl_manager, SLOT(createPlayList()));
     //actions
     QAction *renameAct = new QAction(tr("Rename"), this);
-    QAction *removeAct = new QAction(tr("Delete"), this);
+    QAction *removeAct = new QAction(QIcon::fromTheme("window-close"), tr("Delete"), this);
     connect(renameAct,SIGNAL(triggered()), SLOT(rename()));
     connect(removeAct,SIGNAL(triggered()), SLOT(on_deleteButton_clicked()));
     m_ui.listView->setContextMenuPolicy(Qt::ActionsContextMenu);
