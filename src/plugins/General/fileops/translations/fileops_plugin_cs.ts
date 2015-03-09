@@ -87,6 +87,59 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>File Operations Settings</source>
+        <translation>Nastavení operací se soubory</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Enabled</source>
+        <translation>Povoleno</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Operation</source>
+        <translation>Operace</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Menu text</source>
+        <translation>Text v nabídce</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="63"/>
+        <source>Shortcut</source>
+        <translation>Zkratka</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Přidat</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="56"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <source>Remove</source>
+        <translation>Odstranit</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="116"/>
+        <source>Destination:</source>
+        <translation>Cíl:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation>…</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
+        <source>File name pattern:</source>
+        <translation>Vzor jména:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Copy</source>
@@ -97,13 +150,6 @@
         <location filename="../settingsdialog.cpp" line="134"/>
         <source>Rename</source>
         <translation>Přejmenovat</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="56"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <source>Remove</source>
-        <translation>Odstranit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="139"/>
@@ -126,21 +172,6 @@
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
-        <source>Genre</source>
-        <translation>Žánr</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
-        <source>Year</source>
-        <translation>Rok</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
-        <source>Comment</source>
-        <translation>Poznámka</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Track number</source>
         <translation>Číslo stopy</translation>
@@ -149,6 +180,16 @@
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit track number</source>
         <translation>Dvoumístné číslo stopy</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="198"/>
+        <source>Genre</source>
+        <translation>Žánr</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="199"/>
+        <source>Comment</source>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
@@ -176,6 +217,11 @@
         <translation>Cesta k souboru</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="205"/>
+        <source>Year</source>
+        <translation>Rok</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
         <translation>Stav</translation>
@@ -184,52 +230,6 @@
         <location filename="../settingsdialog.cpp" line="222"/>
         <source>Choose a directory</source>
         <translation>Vyberte adresář</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
-        <translation>Nastavení operací se soubory</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Enabled</source>
-        <translation>Povoleno</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="53"/>
-        <source>Operation</source>
-        <translation>Operace</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>Menu text</source>
-        <translation>Text v nabídce</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="63"/>
-        <source>Shortcut</source>
-        <translation>Zkratka</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation>…</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="116"/>
-        <source>Destination:</source>
-        <translation>Cíl:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation>Přidat</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="133"/>
-        <source>File name pattern:</source>
-        <translation>Vzor jména:</translation>
     </message>
 </context>
 </TS>

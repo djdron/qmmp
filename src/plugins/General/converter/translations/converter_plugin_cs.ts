@@ -112,11 +112,6 @@
         <translation>Název souboru</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="130"/>
-        <source>Create a copy</source>
-        <translation>Vytvořit kopii</translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>Year</source>
         <translation>Rok</translation>
@@ -135,6 +130,11 @@
         <location filename="../converterdialog.cpp" line="129"/>
         <source>Edit</source>
         <translation>Upravit</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="130"/>
+        <source>Create a copy</source>
+        <translation>Vytvořit kopii</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
@@ -162,7 +162,6 @@
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translatorcomment>fakt je důležité, že jsou na příkazové řádce?</translatorcomment>
         <translation>Tento modul konvertuje podporované zvukové soubory do jiných formátů pomocí externích kodérů</translation>
     </message>
     <message>

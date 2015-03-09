@@ -83,6 +83,16 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
+        <translation>Chyba</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
         <location filename="../settingsdialog.cpp" line="136"/>
         <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
@@ -108,16 +118,6 @@
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>Přístup odmítnut</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
-        <translation>Chyba</translation>
     </message>
 </context>
 </TS>
