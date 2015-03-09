@@ -27,6 +27,7 @@
 #include <QMenu>
 #include <QLineEdit>
 #include <QInputDialog>
+#include <QIcon>
 #include <qmmp/qmmp.h>
 #include <qmmpui/playlistmanager.h>
 #include "skin.h"
@@ -47,11 +48,11 @@ PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : 
     loadColors();
     readSettings();
     m_menu = new QMenu(this);
-    m_menu->addAction(tr("&Load"), parent, SIGNAL (loadPlaylist()));
-    m_menu->addAction(tr("&Save As..."), parent, SIGNAL (savePlaylist()));
+    m_menu->addAction(QIcon::fromTheme("document-open"), tr("&Load"), parent, SIGNAL (loadPlaylist()));
+    m_menu->addAction(QIcon::fromTheme("document-save-as"), tr("&Save As..."), parent, SIGNAL (savePlaylist()));
     m_menu->addSeparator();
     m_menu->addAction(tr("Rename"),this, SLOT (renamePlaylist()));
-    m_menu->addAction(tr("&Delete"),parent, SLOT (deletePlaylist()));
+    m_menu->addAction(QIcon::fromTheme("window-close"), tr("&Delete"),parent, SLOT (deletePlaylist()));
 }
 
 PlayListSelector::~PlayListSelector()
