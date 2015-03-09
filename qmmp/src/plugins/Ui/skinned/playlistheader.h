@@ -26,9 +26,8 @@
 class QFontMetrics;
 class QFont;
 class QMouseEvent;
+class QContextMenuEvent;
 class QMenu;
-class PlayListModel;
-class PlayList;
 class Skin;
 class ColumnManager;
 
@@ -54,25 +53,26 @@ private:
     void mouseReleaseEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *e);
     void resizeEvent(QResizeEvent *);
+    void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
     void loadColors();
+    int findColumn(QPoint pos);
 
-    PlayListModel *m_model;
     Skin *m_skin;
     QFontMetrics *m_metrics;
+    QMenu *m_menu;
     QFont m_font;
-    bool m_scrollable;
-    QColor m_normal, m_normal_bg, m_selected_bg, m_current;
-    bool m_show_number;
-    bool m_align_numbres;
-    int m_number_width;
-    ColumnManager *m_manager;
+    QColor m_normal, m_normal_bg, m_current;
     QList <QRect> m_rects;
     QStringList m_names;
     QPoint m_pressed_pos;
+    QPoint m_mouse_pos;
+    ColumnManager *m_manager;
+    bool m_show_number;
+    bool m_align_numbres;
+    int m_number_width;
     int m_pressed_column;
     int m_old_size;
-    QPoint m_mouse_pos;
     int m_press_offset;
 
     enum

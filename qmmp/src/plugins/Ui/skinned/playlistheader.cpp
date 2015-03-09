@@ -24,12 +24,13 @@
 #include <QSettings>
 #include <QApplication>
 #include <QMouseEvent>
+#include <QContextMenuEvent>
 #include <QMenu>
 #include <QLineEdit>
 #include <QInputDialog>
+#include <QIcon>
 #include <qmmp/qmmp.h>
 #include <qmmpui/qmmpuisettings.h>
-#include <qmmpui/playlistmodel.h>
 #include <qmmpui/columnmanager.h>
 #include "skin.h"
 #include "playlistheader.h"
@@ -39,15 +40,18 @@
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
-    m_scrollable = false;
     m_metrics = 0;
-    m_model = 0;
     m_show_number = false;
     m_align_numbres = false;
     m_number_width = 0;
     m_task = NO_TASK;
     m_manager = QmmpUiSettings::instance()->columnManager();
     m_skin = Skin::instance();
+    m_menu = new QMenu(this);
+    m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"));
+    m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"));
+    m_menu->addSeparator();
+    m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"));
 
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
@@ -126,26 +130,21 @@ void PlayListHeader::mousePressEvent(QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton)
     {
-        for(int i = 0; i < m_rects.count(); ++i)
+        m_pressed_column = findColumn(e->pos());
+        if(m_pressed_column >= 0)
         {
-            if(m_rects.at(i).contains(e->pos()))
+            m_pressed_pos = e->pos();
+            m_mouse_pos = e->pos();
+
+            if(e->pos().x() > m_rects[m_pressed_column].right() - m_metrics->width("9"))
             {
-                m_pressed_pos = e->pos();
-                m_mouse_pos = e->pos();
-                m_pressed_column = i;
-
-                if(e->pos().x() > m_rects[i].right() - m_metrics->width("9"))
-                {
-                    m_old_size = m_manager->size(i);
-
-                    m_task = RESIZE;
-                }
-                else
-                {
-                    m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
-                    m_task = MOVE;
-                }
-                break;
+                m_old_size = m_manager->size(m_pressed_column);
+                m_task = RESIZE;
+            }
+            else
+            {
+                m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
+                m_task = MOVE;
             }
         }
     }
@@ -192,7 +191,6 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
             QWidget::mouseMoveEvent(e);
             return;
         }
-        qDebug("moved: %d, %d", m_pressed_column, dest);
         m_manager->move(m_pressed_column, dest);
         m_pressed_column = dest;
         update();
@@ -203,6 +201,12 @@ void PlayListHeader::resizeEvent(QResizeEvent *)
 {
     if(m_manager->count() == 1)
         updateColumns();
+}
+
+void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
+{
+    m_pressed_pos = e->pos();
+    m_menu->exec(e->globalPos());
 }
 
 void PlayListHeader::paintEvent(QPaintEvent *)
@@ -256,7 +260,8 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                          m_rects.at(m_pressed_column).width(), height());
 
         painter.setPen(m_normal_bg);
-        painter.drawText(m_mouse_pos.x() - m_press_offset + m_rects[m_pressed_column].width()/2 - m_metrics->width(m_names[m_pressed_column])/2,
+        painter.drawText(m_mouse_pos.x() - m_press_offset + m_rects[m_pressed_column].width()/2 -
+                         m_metrics->width(m_names[m_pressed_column])/2,
                          m_metrics->ascent(), m_names.at(m_pressed_column));
     }
 }
@@ -266,4 +271,14 @@ void PlayListHeader::loadColors()
     m_normal.setNamedColor(m_skin->getPLValue("normal"));
     m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     m_current.setNamedColor(m_skin->getPLValue("current"));
+}
+
+int PlayListHeader::findColumn(QPoint pos)
+{
+    for(int i = 0; i < m_rects.count(); ++i)
+    {
+        if(m_rects.at(i).contains(pos))
+            return i;
+    }
+    return -1;
 }
