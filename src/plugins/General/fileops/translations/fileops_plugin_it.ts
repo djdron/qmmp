@@ -4,22 +4,22 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>Cartella di destinazione</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translation>Copia</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation>Ferma</translation>
     </message>
@@ -29,12 +29,12 @@
         <translation>Copia del file</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="187"/>
         <source>Remove files</source>
         <translation>Rimuovi file</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Vuoi davvero rimuovere %n file(s) dal disco?</numerusform>

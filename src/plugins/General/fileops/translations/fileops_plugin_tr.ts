@@ -4,22 +4,22 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>Hedef dizin mevcut değil</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translation>Kopyalıyor</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation>Dur</translation>
     </message>
@@ -29,12 +29,12 @@
         <translation>%1/%2 dosyası kopyalanıyor</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="187"/>
         <source>Remove files</source>
         <translation>Dosyaları kaldır</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation type="unfinished">
             <numerusform></numerusform>

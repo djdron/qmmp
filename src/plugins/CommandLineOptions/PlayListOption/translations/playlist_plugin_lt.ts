@@ -46,7 +46,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="85"/>
         <location filename="../playlistoption.cpp" line="106"/>
-        <location filename="../playlistoption.cpp" line="135"/>
+        <location filename="../playlistoption.cpp" line="122"/>
         <source>Invalid playlist ID</source>
         <translation type="unfinished">Neteisingas grojaraščio ID</translation>
     </message>
@@ -56,7 +56,7 @@
         <translation type="unfinished">Neteisingas argumentų kiekis</translation>
     </message>
     <message>
-        <location filename="../playlistoption.cpp" line="123"/>
+        <location filename="../playlistoption.cpp" line="110"/>
         <source>Invalid track ID</source>
         <translation type="unfinished">Neteisingas takelio ID</translation>
     </message>

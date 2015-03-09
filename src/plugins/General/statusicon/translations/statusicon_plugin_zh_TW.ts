@@ -103,7 +103,7 @@
         <translation>結束</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="130"/>
+        <location filename="../statusicon.cpp" line="129"/>
         <source>Now Playing</source>
         <translation>正在播放</translation>
     </message>
