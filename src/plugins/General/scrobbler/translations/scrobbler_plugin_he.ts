@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Last.fm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="40"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="86"/>
@@ -74,12 +74,22 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished">2. התר ל-Qmmp לקיים scrobble של רצועות לתוך חשבון %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
         <translation>3. לחץ &quot;אישור&quot;</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -108,16 +118,6 @@
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>הרשאה נאסרה</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
-        <translation>שגיאה</translation>
     </message>
 </context>
 </TS>

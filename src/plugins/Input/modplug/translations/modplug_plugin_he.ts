@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -85,14 +85,12 @@
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translatorcomment>דוגמיות</translatorcomment>
         <translation>דגימות</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translatorcomment>כלי נגינה</translatorcomment>
         <translation>מכשירים</translation>
     </message>
     <message>
@@ -225,7 +223,7 @@
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="260"/>
@@ -236,7 +234,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
         <source>40</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="324"/>
@@ -256,18 +254,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
         <source>10</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
         <source>Surround</source>
-        <translatorcomment>מוקף</translatorcomment>
         <translation>סראונד</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="551"/>
         <source>5</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="577"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -45,16 +45,6 @@
         <translation>התראת שולחן עבודה</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="368"/>
-        <source>Song change notification</source>
-        <translation>התראת שינוי שיר</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>התראת שינוי עוצמה</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Font:</source>
         <translation>גופן:</translation>
@@ -62,23 +52,13 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>שיהוי (מ״ש):</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>ממדי כיסוי:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <location filename="../settingsdialog.ui" line="279"/>
         <source>0</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -96,9 +76,29 @@
         <translation>ערוך תבנית</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>ממדי כיסוי:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>התראת שינוי עוצמה</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>שיהוי (מ״ש):</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
         <translation>התראת חזרה של נגינה</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="368"/>
+        <source>Song change notification</source>
+        <translation>התראת שינוי שיר</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="378"/>

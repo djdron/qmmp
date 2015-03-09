@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>HotkeyDialog</name>
     <message>
@@ -142,7 +142,6 @@
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translatorcomment>רצף מקש &apos;%1&apos; כבר מצוי בשימוש</translatorcomment>
         <translation>Key sequence &apos;%1&apos; is already used</translation>
     </message>
 </context>

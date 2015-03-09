@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>EffectBs2bFactory</name>
     <message>
@@ -36,12 +36,12 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="58"/>
         <source>Ilya Kotov</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="59"/>
         <source>Sebastian Pipping</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -54,14 +54,13 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translatorcomment>ערוץ משולב</translatorcomment>
-        <translation type="unfinished">רמת Crossfeed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
