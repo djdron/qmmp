@@ -810,7 +810,7 @@
         <location filename="../playlist.cpp" line="234"/>
         <location filename="../playlist.cpp" line="285"/>
         <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>По исполнителю альбома</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
@@ -918,22 +918,22 @@
     <message>
         <location filename="../playlistheader.cpp" line="51"/>
         <source>Add column</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить колонку</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="52"/>
         <source>Edit column</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить колонку</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="54"/>
         <source>Remove column</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить колонку</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="140"/>
         <source>Title</source>
-        <translation type="unfinished">Название</translation>
+        <translation>Название</translation>
     </message>
 </context>
 <context>
