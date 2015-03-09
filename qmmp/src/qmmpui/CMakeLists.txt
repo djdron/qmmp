@@ -61,6 +61,7 @@ SET(libqmmpui_SRCS
     tagupdater.cpp
     playlisttask.cpp
     columnmanager.cpp
+    columneditor.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -121,6 +122,7 @@ SET(libqmmpui_UIS
     forms/configdialog.ui
     forms/aboutdialog.ui
     forms/addurldialog.ui
+    forms/columneditor.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
