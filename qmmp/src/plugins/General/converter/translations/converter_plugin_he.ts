@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>Converter</name>
     <message>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>

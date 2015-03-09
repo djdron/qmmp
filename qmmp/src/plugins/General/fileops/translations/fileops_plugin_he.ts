@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>FileOps</name>
     <message>
@@ -16,7 +16,6 @@
     <message>
         <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
-        <translatorcomment>מעתיק כעת</translatorcomment>
         <translation>העתקה</translation>
     </message>
     <message>
@@ -132,7 +131,7 @@
         <location filename="../settingsdialog.ui" line="126"/>
         <location filename="../settingsdialog.ui" line="143"/>
         <source>...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>

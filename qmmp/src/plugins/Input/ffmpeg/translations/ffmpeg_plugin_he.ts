@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Windows Media Audio</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
@@ -117,12 +117,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>MPEG-4 AAC/ALAC</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>RealAudio 1.0/2.0</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="110"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>AC3/EAC</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
@@ -142,13 +142,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Matroska Audio (Dolby TrueHD Lossless)</source>
-        <translatorcomment>אל הפסד</translatorcomment>
         <translation>שמע Matroska ‏(Dolby TrueHD נטול אובדן)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

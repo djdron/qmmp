@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
@@ -49,7 +49,6 @@
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Limit cd speed:</source>
-        <translatorcomment>מהירות cd מותחמת</translatorcomment>
         <translation>תחום מהירות תקליטור:</translation>
     </message>
     <message>
@@ -60,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>

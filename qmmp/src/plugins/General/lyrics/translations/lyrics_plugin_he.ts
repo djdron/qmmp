@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he_IL">
+<TS version="2.0" language="he">
 <context>
     <name>Lyrics</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../lyrics.cpp" line="34"/>
         <source>Ctrl+L</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -94,7 +94,6 @@
         <location filename="../lyricswindow.cpp" line="139"/>
         <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
-        <translatorcomment>מקבל כעת</translatorcomment>
         <translation>קבלה</translation>
     </message>
     <message>
