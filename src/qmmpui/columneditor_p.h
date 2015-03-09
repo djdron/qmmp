@@ -43,6 +43,7 @@ public:
 private slots:
     void insertExpression(QAction *a);
     void on_comboBox_activated(int index);
+    void on_formatLineEdit_textChanged(const QString &text);
 
 private:
     void createMenu();

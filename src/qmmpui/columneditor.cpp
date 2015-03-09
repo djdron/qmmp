@@ -33,10 +33,6 @@ ColumnEditor::ColumnEditor(const QString &name, const QString &patt, QWidget *pa
     //load inital values
     m_ui->nameLineEdit->setText(name);
     m_ui->formatLineEdit->setText(patt);
-    int index = m_ui->comboBox->findData(patt);
-    if(index < 0)
-        index = m_ui->comboBox->findData("custom");
-    m_ui->comboBox->setCurrentIndex(index);
 }
 
 ColumnEditor::~ColumnEditor()
@@ -68,6 +64,14 @@ void ColumnEditor::on_comboBox_activated(int index)
     m_ui->nameLineEdit->setText(m_ui->comboBox->itemText(index));
 }
 
+void ColumnEditor::on_formatLineEdit_textChanged(const QString &text)
+{
+    int index = m_ui->comboBox->findData(text);
+    if(index < 0)
+        index = m_ui->comboBox->findData("custom");
+    m_ui->comboBox->setCurrentIndex(index);
+}
+
 void ColumnEditor::createMenu()
 {
     QMenu *menu = new QMenu(this);
@@ -96,17 +100,17 @@ void ColumnEditor::fillTypes()
     m_ui->comboBox->addItem(tr("Album"),"%a");
     m_ui->comboBox->addItem(tr("Artist - Album"),"%if(%p&%a,%p - %a,)");
     m_ui->comboBox->addItem(tr("Artist - Title"),"%if(%p&%t,%p - %t,%f)");
-    m_ui->comboBox->addItem(tr("Album artist"),"%aa");
+    m_ui->comboBox->addItem(tr("Album Artist"),"%aa");
     m_ui->comboBox->addItem(tr("Title"),"%t");
-    m_ui->comboBox->addItem(tr("Track number"),"%n");
-    m_ui->comboBox->addItem(tr("Two-digit track number"),"%NN");
+    m_ui->comboBox->addItem(tr("Track Number"),"%n");
+    m_ui->comboBox->addItem(tr("Two-digit Track Number"),"%NN");
     m_ui->comboBox->addItem(tr("Genre"),"%g");
     m_ui->comboBox->addItem(tr("Comment"),"%c");
     m_ui->comboBox->addItem(tr("Composer"),"%C");
     m_ui->comboBox->addItem(tr("Duration"),"%l");
-    m_ui->comboBox->addItem(tr("Disc number"),"%D");
-    m_ui->comboBox->addItem(tr("File name"),"%f");
-    m_ui->comboBox->addItem(tr("File path"),"%F");
+    m_ui->comboBox->addItem(tr("Disc Number"),"%D");
+    m_ui->comboBox->addItem(tr("File Name"),"%f");
+    m_ui->comboBox->addItem(tr("File Path"),"%F");
     m_ui->comboBox->addItem(tr("Year"),"%y");
     m_ui->comboBox->addItem(tr("Custom"),"custom");
 }
