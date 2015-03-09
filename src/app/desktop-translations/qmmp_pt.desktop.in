@@ -3,6 +3,7 @@ X-Desktop-File-Install-Version=0.11
 Name=Qmmp
 Comment=Qt4-based Multimedia Player
 GenericName=Audio player
+Keywords=player;audio;video;multimedia;
 Exec=qmmp %F
 Icon=qmmp
 Terminal=false
