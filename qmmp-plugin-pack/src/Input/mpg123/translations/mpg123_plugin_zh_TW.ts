@@ -4,33 +4,33 @@
 <context>
     <name>DecoderMPG123Factory</name>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="108"/>
+        <location filename="../decodermpg123factory.cpp" line="111"/>
         <source>MPG123 Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="111"/>
+        <location filename="../decodermpg123factory.cpp" line="114"/>
         <source>MPEG Files</source>
         <translation type="unfinished">MPEG 檔案</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="246"/>
+        <location filename="../decodermpg123factory.cpp" line="254"/>
         <source>About MPG123 Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="247"/>
+        <location filename="../decodermpg123factory.cpp" line="255"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="248"/>
+        <location filename="../decodermpg123factory.cpp" line="256"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="250"/>
+        <location filename="../decodermpg123factory.cpp" line="258"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
