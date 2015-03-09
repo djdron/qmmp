@@ -35,61 +35,66 @@
     </message>
     <message>
         <location filename="../statusoption.cpp" line="92"/>
-        <source>%t - title</source>
+        <source>%aa - album artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="93"/>
-        <source>%n - track</source>
+        <source>%t - title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="94"/>
-        <source>%NN - 2-digit track</source>
+        <source>%n - track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="95"/>
-        <source>%g - genre</source>
+        <source>%NN - 2-digit track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="96"/>
-        <source>%c - comment</source>
+        <source>%g - genre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="97"/>
-        <source>%C - composer</source>
+        <source>%c - comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="98"/>
-        <source>%D - disc number</source>
+        <source>%C - composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="99"/>
-        <source>%f - file name</source>
+        <source>%D - disc number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="100"/>
-        <source>%F - full path</source>
+        <source>%f - file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="101"/>
-        <source>%y - year</source>
+        <source>%F - full path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="102"/>
-        <source>%l - duration</source>
+        <source>%y - year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="103"/>
+        <source>%l - duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusoption.cpp" line="104"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation type="unfinished"></translation>
     </message>

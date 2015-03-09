@@ -103,14 +103,22 @@
     </message>
 </context>
 <context>
+    <name>ColumnManager</name>
+    <message>
+        <location filename="../columnmanager.cpp" line="36"/>
+        <source>Album - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
+        <location filename="../forms/configdialog.ui" line="348"/>
         <source>Description</source>
         <translation>опис</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="343"/>
+        <location filename="../forms/configdialog.ui" line="353"/>
         <source>Filename</source>
         <translation>име фајла</translation>
     </message>
@@ -379,8 +387,8 @@
         <translation>Поставке Кумпа</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="173"/>
         <location filename="../forms/configdialog.ui" line="183"/>
+        <location filename="../forms/configdialog.ui" line="193"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -390,23 +398,23 @@
         <translation>Метаподаци</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="149"/>
+        <location filename="../forms/configdialog.ui" line="152"/>
         <source>Load metadata from files</source>
         <translation>Учитај метаподатке из фајла</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="142"/>
+        <location filename="../forms/configdialog.ui" line="145"/>
         <source>Title format:</source>
         <translation>Формат наслова:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="283"/>
+        <location filename="../forms/configdialog.ui" line="293"/>
         <location filename="../configdialog.cpp" line="333"/>
         <source>Preferences</source>
         <translation>Подешавањa</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="296"/>
+        <location filename="../forms/configdialog.ui" line="306"/>
         <location filename="../configdialog.cpp" line="336"/>
         <source>Information</source>
         <translation>Подаци</translation>
@@ -427,7 +435,7 @@
         <translation>Напредно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="842"/>
+        <location filename="../forms/configdialog.ui" line="852"/>
         <source>16-bit output</source>
         <translation>16-битни излаз</translation>
     </message>
@@ -453,189 +461,189 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="781"/>
+        <location filename="../forms/configdialog.ui" line="791"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="163"/>
+        <location filename="../forms/configdialog.ui" line="166"/>
         <source>Group format:</source>
         <translation>Формат групе:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="193"/>
+        <location filename="../forms/configdialog.ui" line="203"/>
         <source>Directory Scanning Options</source>
         <translation>Опције скенирања фасцикле</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="199"/>
+        <location filename="../forms/configdialog.ui" line="209"/>
         <source>Restrict files to:</source>
         <translation>Ограничи фајлове на:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="222"/>
+        <location filename="../forms/configdialog.ui" line="232"/>
         <source>Miscellaneous</source>
         <translation>Разно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
+        <location filename="../forms/configdialog.ui" line="238"/>
         <source>Auto-save playlist when modified</source>
         <translation>Аутоматски сачувај листу нумера по измјени</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="235"/>
+        <location filename="../forms/configdialog.ui" line="245"/>
         <source>Clear previous playlist when opening new one</source>
         <translation>Очисти претходну листу нумера по отварању нове</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
+        <location filename="../forms/configdialog.ui" line="365"/>
         <source>Look and Feel</source>
         <translation>Изглед</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="361"/>
+        <location filename="../forms/configdialog.ui" line="371"/>
         <source>Language:</source>
         <translation>Језик:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="417"/>
+        <location filename="../forms/configdialog.ui" line="427"/>
         <source>Add files from command line to this playlist:</source>
         <translation>Додај фајлове са командне линије у ову листу нумера:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="504"/>
+        <location filename="../forms/configdialog.ui" line="514"/>
         <source>URL Dialog</source>
         <translation>УРЛ дијалог</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="510"/>
+        <location filename="../forms/configdialog.ui" line="520"/>
         <source>Auto-paste URL from clipboard</source>
         <translation>Аутоматски налијепи УРЛ са клипборда</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="651"/>
+        <location filename="../forms/configdialog.ui" line="661"/>
         <source>Replay Gain</source>
         <translation>Нивелатор јачине</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="657"/>
+        <location filename="../forms/configdialog.ui" line="667"/>
         <source>Replay Gain mode:</source>
         <translation>Режим нивелатора јачине:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="674"/>
+        <location filename="../forms/configdialog.ui" line="684"/>
         <source>Preamp:</source>
         <translation>Претпојачање:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="706"/>
-        <location filename="../forms/configdialog.ui" line="751"/>
+        <location filename="../forms/configdialog.ui" line="716"/>
+        <location filename="../forms/configdialog.ui" line="761"/>
         <source>dB</source>
         <translation>dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="719"/>
+        <location filename="../forms/configdialog.ui" line="729"/>
         <source>Default gain:</source>
         <translation>Подразумијевано:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="771"/>
+        <location filename="../forms/configdialog.ui" line="781"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>Користи податке о врховима да спријечиш насијецање</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="787"/>
+        <location filename="../forms/configdialog.ui" line="797"/>
         <source>Buffer size:</source>
         <translation>Величина бафера:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="806"/>
+        <location filename="../forms/configdialog.ui" line="816"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="835"/>
+        <location filename="../forms/configdialog.ui" line="845"/>
         <source>Use software volume control</source>
         <translation>Софтверска контрола јачине звука</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="434"/>
+        <location filename="../forms/configdialog.ui" line="444"/>
         <source>Cover Image Retrieve</source>
         <translation>Добављање слике омота</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="440"/>
+        <location filename="../forms/configdialog.ui" line="450"/>
         <source>Use separate image files</source>
         <translation>Користи засебне фајлове слика</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="450"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
         <source>Include files:</source>
         <translation>Укључи фајлове:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="209"/>
-        <location filename="../forms/configdialog.ui" line="460"/>
+        <location filename="../forms/configdialog.ui" line="219"/>
+        <location filename="../forms/configdialog.ui" line="470"/>
         <source>Exclude files:</source>
         <translation>Искључи фајлове:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="472"/>
+        <location filename="../forms/configdialog.ui" line="482"/>
         <source>Recursive search depth:</source>
         <translation>Дубина рекурзивне претраге:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="397"/>
+        <location filename="../forms/configdialog.ui" line="407"/>
         <source>Playback</source>
         <translation>Пуштање</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
+        <location filename="../forms/configdialog.ui" line="413"/>
         <source>Continue playback on startup</source>
         <translation>Настави пуштање по покретању</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="410"/>
+        <location filename="../forms/configdialog.ui" line="420"/>
         <source>Determine file type by content</source>
         <translation>Одреди тип фајла по садржају</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="549"/>
+        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Proxy</source>
         <translation>Прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="561"/>
+        <location filename="../forms/configdialog.ui" line="571"/>
         <source>Enable proxy usage</source>
         <translation>Користи прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="568"/>
+        <location filename="../forms/configdialog.ui" line="578"/>
         <source>Proxy host name:</source>
         <translation>Сервер:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="581"/>
+        <location filename="../forms/configdialog.ui" line="591"/>
         <source>Proxy port:</source>
         <translation>Порт:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="594"/>
+        <location filename="../forms/configdialog.ui" line="604"/>
         <source>Use authentication with proxy</source>
         <translation>Користи аутентификацију</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="601"/>
+        <location filename="../forms/configdialog.ui" line="611"/>
         <source>Proxy user name:</source>
         <translation>Корисничко име:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="614"/>
+        <location filename="../forms/configdialog.ui" line="624"/>
         <source>Proxy password:</source>
         <translation>Лозинка:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="156"/>
+        <location filename="../forms/configdialog.ui" line="159"/>
         <source>Convert underscores to blanks</source>
         <translation>Претвори доње црте у размак</translation>
     </message>
@@ -794,12 +802,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="161"/>
+        <location filename="../playlisttrack.cpp" line="237"/>
         <source>Streams</source>
         <translation>Токови</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="167"/>
+        <location filename="../playlisttrack.cpp" line="242"/>
         <source>Empty group</source>
         <translation>Празна група</translation>
     </message>

@@ -103,7 +103,7 @@
         <translation>Ukončit</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="130"/>
+        <location filename="../statusicon.cpp" line="129"/>
         <source>Now Playing</source>
         <translation>Nyní hraje</translation>
     </message>

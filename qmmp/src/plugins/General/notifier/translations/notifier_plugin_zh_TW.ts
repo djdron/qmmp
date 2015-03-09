@@ -27,7 +27,7 @@
 <context>
     <name>PopupWidget</name>
     <message>
-        <location filename="../popupwidget.cpp" line="127"/>
+        <location filename="../popupwidget.cpp" line="116"/>
         <source>Volume:</source>
         <translation>音量：</translation>
     </message>

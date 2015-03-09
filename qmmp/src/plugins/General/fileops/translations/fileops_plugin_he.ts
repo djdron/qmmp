@@ -4,23 +4,23 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>מדור יעד לא קיים</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translatorcomment>מעתיק כעת</translatorcomment>
         <translation>העתקה</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation>הפסק</translation>
     </message>
@@ -30,12 +30,12 @@
         <translation>העתקת קובץ %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="187"/>
         <source>Remove files</source>
         <translation>הסר קבצים</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>האם אתה בטוח כי ברצונך להסיר קובץ %n מתוך הכונן?</numerusform>

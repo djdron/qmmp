@@ -4,22 +4,22 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>Klaida</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>Aplankas neegzistuoja</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translation>Kopijuoju</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
@@ -29,12 +29,12 @@
         <translation>Kopijuoju bylą %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="187"/>
         <source>Remove files</source>
         <translation>Ištrinti bylas</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Ar tu tikras, jog nori ištrinti  %n bylą(as) iš disko?</numerusform>

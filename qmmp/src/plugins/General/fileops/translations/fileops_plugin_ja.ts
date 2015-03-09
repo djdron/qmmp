@@ -4,22 +4,22 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>事故</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>移動先ディレクトリが存在しません</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translation>コピーしています</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation>中止</translation>
     </message>
@@ -29,12 +29,12 @@
         <translation>%1/%2 ファイルをコピーしています</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="187"/>
         <source>Remove files</source>
         <translation>ファイルを削除</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>%n 個のファイルをディスク上から削除しようとしています。 よろしいですか？</numerusform>

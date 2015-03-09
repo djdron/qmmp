@@ -35,61 +35,66 @@
     </message>
     <message>
         <location filename="../statusoption.cpp" line="92"/>
+        <source>%aa - album artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusoption.cpp" line="93"/>
         <source>%t - title</source>
         <translation>%t - название</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="93"/>
+        <location filename="../statusoption.cpp" line="94"/>
         <source>%n - track</source>
         <translation>%n - номер трека</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="94"/>
+        <location filename="../statusoption.cpp" line="95"/>
         <source>%NN - 2-digit track</source>
         <translation>%NN - 2-х разрядный номер трека</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="95"/>
+        <location filename="../statusoption.cpp" line="96"/>
         <source>%g - genre</source>
         <translation>%g - жанр</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="96"/>
+        <location filename="../statusoption.cpp" line="97"/>
         <source>%c - comment</source>
         <translation>%c - комментарий</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="97"/>
+        <location filename="../statusoption.cpp" line="98"/>
         <source>%C - composer</source>
         <translation>%С - композитор</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="98"/>
+        <location filename="../statusoption.cpp" line="99"/>
         <source>%D - disc number</source>
         <translation>%D - номер диска</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="99"/>
+        <location filename="../statusoption.cpp" line="100"/>
         <source>%f - file name</source>
         <translation>%f - имя файла</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="100"/>
+        <location filename="../statusoption.cpp" line="101"/>
         <source>%F - full path</source>
         <translation>%F - полный путь</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="101"/>
+        <location filename="../statusoption.cpp" line="102"/>
         <source>%y - year</source>
         <translation>%y - год</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="102"/>
+        <location filename="../statusoption.cpp" line="103"/>
         <source>%l - duration</source>
         <translation>%l - длительность</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="103"/>
+        <location filename="../statusoption.cpp" line="104"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation>%if(A&amp;B&amp;C,D,E) - условие</translation>
     </message>
