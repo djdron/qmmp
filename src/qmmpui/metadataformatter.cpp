@@ -65,6 +65,9 @@ MetaDataFormatter::MetaDataFormatter(const QString &pattern)
 
 void MetaDataFormatter::setPattern(const QString &pattern)
 {
+    if(pattern == m_pattern)
+        return;
+
     m_pattern = pattern;
     m_nodes.clear();
 

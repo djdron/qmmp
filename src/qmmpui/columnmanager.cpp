@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QApplication>
 #include <qmmp/qmmp.h>
+#include "columneditor_p.h"
 #include "columnmanager.h"
 
 ColumnManager::ColumnManager(QObject *parent) :
@@ -121,8 +122,23 @@ void ColumnManager::move(int from, int to)
 
 void ColumnManager::execEditor(int index, QWidget *parent)
 {
+    if(index < 0 || index >= m_columns.size())
+    {
+        qWarning("ColumnManager: index is out of range");
+        return;
+    }
+
     if(!parent)
         parent = qApp->activeWindow();
+
+    ColumnEditor editor(m_columns[index].name, m_columns[index].pattern, parent);
+    if(editor.exec() == QDialog::Accepted)
+    {
+        m_columns[index].name = editor.name();
+        m_columns[index].pattern = editor.pattern();
+        m_columns[index].titleFormatter->setPattern(editor.pattern());
+        emit changed(index);
+    }
 }
 
 int ColumnManager::count()

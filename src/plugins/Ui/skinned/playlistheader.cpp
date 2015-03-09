@@ -137,8 +137,8 @@ void PlayListHeader::addColumn()
     if(column < 0)
         return;
 
-    m_manager->insert(column, "Year", "%y");
-
+    m_manager->insert(column, tr("Title"), "%t");
+    m_manager->execEditor(column);
 }
 
 void PlayListHeader::editColumn()
@@ -146,7 +146,7 @@ void PlayListHeader::editColumn()
     int column = findColumn(m_pressed_pos);
     if(column >= 0)
     {
-        m_manager->execEditor(0);
+        m_manager->execEditor(column);
     }
 }
 

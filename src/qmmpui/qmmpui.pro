@@ -70,7 +70,8 @@ HEADERS += general.h \
     normalcontainer_p.h \
     playlisttask_p.h \
     metadataformatter.h \
-    columnmanager.h
+    columnmanager.h \
+    columneditor_p.h
 
 SOURCES += general.cpp \
     playlistparser.cpp \
@@ -105,7 +106,8 @@ SOURCES += general.cpp \
     playlistcontainer.cpp \
     playlisttask.cpp \
     metadataformatter.cpp \
-    columnmanager.cpp
+    columnmanager.cpp \
+    columneditor.cpp
 
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
@@ -113,7 +115,8 @@ FORMS += forms/detailsdialog.ui \
     forms/jumptotrackdialog.ui \
     forms/configdialog.ui \
     forms/aboutdialog.ui \
-    forms/addurldialog.ui
+    forms/addurldialog.ui \
+    forms/columneditor.ui
 
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc \
