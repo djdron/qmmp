@@ -16,7 +16,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="56"/>
         <source>Title</source>
-        <translation type="unfinished">Název</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="61"/>

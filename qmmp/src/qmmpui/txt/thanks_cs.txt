@@ -1,25 +1,26 @@
-Poděkování patří:
+Thanks to:
 
-    Adria Arrufat <swiftscythe@gmail.com> - hlášení chyb
-    Adrian Knoth <adi@drcomp.erfurt.thur.de> - opravy modulu jack, hlášení chyb
-    Anton Petrusevich <casus@casus.us> - různá vylepšení přehrávání
-    Avihay Baratz <avihayb@gmail.com> - automatické zastavení, opravy chyb
-    Brice Videau <brice.videau@gmail.com> - opravy chyb
-    Cristian Rodríguez <judas.iscariote@gmail.com> - opravy scrobbleru
-    Csaba Hruska <csaba.hruska@gmail.com> - opravy modulu fmpeg
-    Dmitry Kostin <kostindima@gmail.com> - podpora iso.wv
-    Evgeny Gleyzerman <evgley@gmail.com> - vylepšení analýzy cue
-    Ferdinand Vesely <erdofves@gmail.com> - vylepšení scrobbleru
-    Gennadi Motsyo <drool@altlinux.ru> - hlášení chyb
-    Вадим Калинников (Vadim Kalinnikov) <moose@ylsoftware.com> - hosting projektu
-    Erik Ölsar <erlk.ozlr@gmail.com> - motivy kurzorů, vylepšení uživatelského rozhraní
-    Funda Wang <fundawang@gmail.com> - opravy souborů pro cmake
-    Makis Kalofolias <makskafl@gmail.com> - podpora EAC3, DTS, a Dolby TrueHD
-    Michail Zheludkov <zheludkovm@mail.ru> - opravy modulu ffmpeg
-    Michał Grosicki <grosik88@o2.pl> - opravy modulu alsa
-    Panagiotis Papadopoulos <pano_90@gmx.net> - opravy uživatelského rozhraní, hlášení chyb
-    Pino Toscano <toscano.pino@tiscali.it> - záplaty pro lepší přenositelnost
-    Karel Volný <kvolny@redhat.com> - různé opravy
-    Sebastian Pipping <webmaster@hartwork.org> - záplaty bs2b
-    Stefan Koelling <stefankoelling.ext@googlemail.com> - opravy sestavení
-    Yaakov Selkowitz <yselkowitz@gmail.com> - záplaty pro cygwin
+    Adria Arrufat <swiftscythe@gmail.com> - bug reports
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack plugin fixes, bug reports
+    Anton Petrusevich <casus@casus.us> - random playback improvements
+    Avihay Baratz <avihayb@gmail.com> - auto stop feature, bug fixes
+    Brice Videau <brice.videau@gmail.com> - bug fixes
+    Cristian Rodríguez <judas.iscariote@gmail.com> - scrobbler fixes
+    Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg plugin fixes
+    Dmitry Kostin <kostindima@gmail.com> - iso.wv support
+    Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
+    Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
+    Gennadi Motsyo <drool@altlinux.ru> - bug reports
+    Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
+    Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
+    Funda Wang <fundawang@gmail.com> - cmake files fixes
+    Makis Kalofolias <makskafl@gmail.com> - EAC3, DTS, and Dolby TrueHD support
+    Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg plugin fixes
+    Michał Grosicki <grosik88@o2.pl> - alsa plugin fixes
+    Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports
+    Pino Toscano <toscano.pino@tiscali.it> - portability patches
+    Karel Volný <kvolny@redhat.com> - various fixes
+    Ryota Shimamoto <liangtai.s16@gmail.com> - freebsd patches
+    Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
+    Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches

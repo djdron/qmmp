@@ -4,21 +4,6 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="208"/>
-        <source>About FFmpeg Audio Plugin</source>
-        <translation>O modulu FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="210"/>
-        <source>Qmmp FFmpeg Audio Plugin</source>
-        <translation>Vstupní modul Qmmp FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="218"/>
-        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
         <location filename="../decoderffmpegfactory.cpp" line="99"/>
         <source>FFmpeg Plugin</source>
         <translation>Modul FFmpeg</translation>
@@ -29,9 +14,24 @@
         <translation>Formáty FFmpeg</translation>
     </message>
     <message>
+        <location filename="../decoderffmpegfactory.cpp" line="208"/>
+        <source>About FFmpeg Audio Plugin</source>
+        <translation>O modulu FFmpeg</translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="210"/>
+        <source>Qmmp FFmpeg Audio Plugin</source>
+        <translation>Vstupní modul Qmmp FFmpeg</translation>
+    </message>
+    <message>
         <location filename="../decoderffmpegfactory.cpp" line="211"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Přeloženo s libavformat-%1.%2.%3 a libavcodec-%4.%5.%6</translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="218"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -80,6 +80,11 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>FFmpeg Plugin Settings</source>
+        <translation>Nastavení modulu FFmpeg</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Formats</source>
         <translation>Formáty</translation>
@@ -90,6 +95,11 @@
         <translation>Windows Media Audio</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source>Monkey&apos;s Audio (APE)</source>
+        <translation>Monkey&apos;s Audio (APE)</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
         <translation>True Audio</translation>
@@ -98,6 +108,11 @@
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
         <translation>ADTS AAC</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="89"/>
+        <source>MP3 (MPEG audio layer 3)</source>
+        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
@@ -133,21 +148,6 @@
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
         <translation>VQF</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>FFmpeg Plugin Settings</source>
-        <translation>Nastavení modulu FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <source>Monkey&apos;s Audio (APE)</source>
-        <translation>Monkey&apos;s Audio (APE)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="89"/>
-        <source>MP3 (MPEG audio layer 3)</source>
-        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
 </context>
 </TS>

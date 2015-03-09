@@ -9,9 +9,9 @@
         <translation>Nastavení modulu stavové ikony</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Popisek</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Vyskakovací zpráva</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,9 +20,14 @@
         <translation>Prodleva, ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Vyskakovací zpráva</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Popisek</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Pokusit se rozdělit název souboru, není-li tag</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -40,16 +45,6 @@
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation>Upravit šablonu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Pokusit se rozdělit název souboru, není-li tag</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
         <translation>Velikost obalu:</translation>
@@ -58,6 +53,11 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation>32</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation>Upravit šablonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -116,6 +116,11 @@
         <translation>Modul stavové ikony</translation>
     </message>
     <message>
+        <location filename="../statusiconfactory.cpp" line="50"/>
+        <source>About Status Icon Plugin</source>
+        <translation>O modulu stavové ikony</translation>
+    </message>
+    <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Modul stavové ikony Qmmp</translation>
@@ -134,11 +139,6 @@
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
         <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
-    </message>
-    <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
-        <source>About Status Icon Plugin</source>
-        <translation>O modulu stavové ikony</translation>
     </message>
 </context>
 <context>

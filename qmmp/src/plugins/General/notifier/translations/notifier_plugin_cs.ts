@@ -40,26 +40,6 @@
         <translation>Nastavení notifikačního modulu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
-        <source>Transparency:</source>
-        <translation>Průhlednost:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Notification Template</source>
-        <translation>Šablona notifikace</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="378"/>
-        <source>Psi Notification</source>
-        <translation>Notifikace v Psi</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
-        <source>Enable Psi notification</source>
-        <translation>Povolit notifikaci v Psi</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Desktop Notification</source>
         <translation>Notifikace na pracovní ploše</translation>
@@ -70,14 +50,20 @@
         <translation>Písmo:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>Velikost obalu:</translation>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <source>...</source>
+        <translation>…</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>Prodleva (ms):</translation>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="279"/>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="75"/>
+        <source>Transparency:</source>
+        <translation>Průhlednost:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="219"/>
@@ -85,9 +71,24 @@
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <source>...</source>
-        <translation>…</translation>
+        <location filename="../settingsdialog.ui" line="241"/>
+        <source>Edit template</source>
+        <translation>Upravit šablonu</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>Velikost obalu:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>Upozornění na změnu hlasitosti</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>Prodleva (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
@@ -100,20 +101,19 @@
         <translation>Upozornění na změnu skladby</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>Upozornění na změnu hlasitosti</translation>
+        <location filename="../settingsdialog.ui" line="378"/>
+        <source>Psi Notification</source>
+        <translation>Notifikace v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <location filename="../settingsdialog.ui" line="279"/>
-        <source>0</source>
-        <translation>0</translation>
+        <location filename="../settingsdialog.ui" line="390"/>
+        <source>Enable Psi notification</source>
+        <translation>Povolit notifikaci v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="241"/>
-        <source>Edit template</source>
-        <translation>Upravit šablonu</translation>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <source>Notification Template</source>
+        <translation>Šablona notifikace</translation>
     </message>
 </context>
 </TS>

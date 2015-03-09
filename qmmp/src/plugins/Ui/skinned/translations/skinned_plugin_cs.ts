@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation>&amp;Skočit na stopu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation>&amp;Skočit na stopu</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -773,6 +773,16 @@
 <context>
     <name>PlayList</name>
     <message>
+        <location filename="../playlist.cpp" line="56"/>
+        <source>Playlist</source>
+        <translation>Seznam skladeb</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="187"/>
+        <source>&amp;Copy Selection To</source>
+        <translation>&amp;Kopírovat výběr do</translation>
+    </message>
+    <message>
         <location filename="../playlist.cpp" line="215"/>
         <source>Sort List</source>
         <translation>Seřadit seznam</translation>
@@ -826,6 +836,12 @@
         <translation>Podle data</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="250"/>
+        <location filename="../playlist.cpp" line="301"/>
+        <source>By Track Number</source>
+        <translation>Podle čísla skladby</translation>
+    </message>
+    <message>
         <location filename="../playlist.cpp" line="254"/>
         <location filename="../playlist.cpp" line="305"/>
         <source>By File Creation Date</source>
@@ -852,30 +868,14 @@
         <translation>Obrátit pořadí seznamu</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="586"/>
-        <source>&amp;New PlayList</source>
-        <translation>&amp;Nový seznam skladeb</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="187"/>
-        <source>&amp;Copy Selection To</source>
-        <translation>&amp;Kopírovat výběr do</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="56"/>
-        <source>Playlist</source>
-        <translation>Seznam skladeb</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="250"/>
-        <location filename="../playlist.cpp" line="301"/>
-        <source>By Track Number</source>
-        <translation>Podle čísla skladby</translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="325"/>
         <source>Actions</source>
         <translation>Činnosti</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="586"/>
+        <source>&amp;New PlayList</source>
+        <translation>&amp;Nový seznam skladeb</translation>
     </message>
 </context>
 <context>
@@ -977,9 +977,29 @@
         <translation>Nastavení informací ve vyskakovacím okně</translation>
     </message>
     <message>
+        <location filename="../forms/popupsettings.ui" line="29"/>
+        <source>Template</source>
+        <translation>Šablona</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="58"/>
+        <source>Reset</source>
+        <translation>Původní</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="65"/>
+        <source>Insert</source>
+        <translation>Vložit</translation>
+    </message>
+    <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
         <translation>Zobrazit obal</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
+        <source>Cover size:</source>
+        <translation>Velikost obalu:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -995,26 +1015,6 @@
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
         <translation>ms</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="89"/>
-        <source>Cover size:</source>
-        <translation>Velikost obalu:</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="29"/>
-        <source>Template</source>
-        <translation>Šablona</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="58"/>
-        <source>Reset</source>
-        <translation>Původní</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="65"/>
-        <source>Insert</source>
-        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
@@ -1095,16 +1095,6 @@
         <translation>Editor předvoleb</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="77"/>
-        <source>Load</source>
-        <translation>Načíst</translation>
-    </message>
-    <message>
-        <location filename="../forms/preseteditor.ui" line="84"/>
-        <source>Delete</source>
-        <translation>Odstranit</translation>
-    </message>
-    <message>
         <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
         <translation>Předvolba</translation>
@@ -1113,6 +1103,16 @@
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>Automatická předvolba</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="77"/>
+        <source>Load</source>
+        <translation>Načíst</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="84"/>
+        <source>Delete</source>
+        <translation>Odstranit</translation>
     </message>
 </context>
 <context>
@@ -1290,6 +1290,16 @@ Andrej Andrejev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Zobrazit čísla skladeb</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="373"/>
+        <source>Align song numbers</source>
+        <translation>Zarovnat čísla skladeb</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <source>Show anchor</source>
+        <translation>Zobrazit kotvu</translation>
+    </message>
+    <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation>Zobrazit seznamy skladeb</translation>
@@ -1313,16 +1323,6 @@ Andrej Andrejev &lt;andreev00@gmail.com&gt;</translation>
         <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Zobrazit tlačítko ‚Nový seznam skladeb‘</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
-        <source>Show anchor</source>
-        <translation>Zobrazit kotvu</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="373"/>
-        <source>Align song numbers</source>
-        <translation>Zarovnat čísla skladeb</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="101"/>
@@ -1360,7 +1360,6 @@ Andrej Andrejev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../textscroller.cpp" line="124"/>
         <source>Buffering: %1%</source>
-        <translatorcomment>překlad nemusí být doslovný, ale srozumitelný ... :-)</translatorcomment>
         <translation>Načítám: %1%</translation>
     </message>
 </context>

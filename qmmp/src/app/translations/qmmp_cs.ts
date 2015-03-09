@@ -4,24 +4,14 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Přejít vpřed v seznamu skladeb</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Přejít zpět v seznamu skladeb</translation>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Spustit přehrávání aktuální skladby</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -59,6 +49,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Přejít vpřed v seznamu skladeb</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Přejít zpět v seznamu skladeb</translation>
+    </message>
+    <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
         <translation>Zobrazit/skrýt aplikaci</translation>
@@ -82,6 +82,11 @@
 <context>
     <name>QMMPStarter</name>
     <message>
+        <location filename="../qmmpstarter.cpp" line="90"/>
+        <source>Unknown command</source>
+        <translation>Neznámý příkaz</translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="306"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použití: qmmp [volby] [soubory]</translation>
@@ -95,6 +100,11 @@
         <location filename="../qmmpstarter.cpp" line="311"/>
         <source>Don&apos;t start the application</source>
         <translation>Nespouštět aplikaci</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="312"/>
+        <source>Display this text and exit</source>
+        <translation>Zobrazit tento text a skončit</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="313"/>
@@ -130,16 +140,6 @@
         <location filename="../qmmpstarter.cpp" line="335"/>
         <source>Qmmp Version</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="312"/>
-        <source>Display this text and exit</source>
-        <translation>Zobrazit tento text a skončit</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="90"/>
-        <source>Unknown command</source>
-        <translation>Neznámý příkaz</translation>
     </message>
 </context>
 </TS>

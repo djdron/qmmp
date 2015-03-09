@@ -1,16 +1,13 @@
-Vývojáři programu:
+Core Developers:
 
-    Илья Котов (Ilja Kotov) <forkotov02@hotmail.ru> (nápad a základní kód)
-    Владимир Кузнецов (Vladimír Kuzněcov) <vovanec@gmail.com> (vzhled a mnoho vylepšení)
+    Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
 
-Vývojáři zásuvných modulů:
+Plugin Developers:
 
-    Юрий Журавлёв (Jurij Žuravljov) <stalkerg@gmail.com> (jack plugin)
+    Artur Guzik <aguzik88@gmail.com> (kde4 notification plugin, tray icon improvements)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss plugin)
 
-Grafika:
+Artwork:
 
-    Андрей Адреев (Andrej Adrejev) <andreev00@gmail.com>
-
-Český překlad:
-
-    Karel Volný <kavol@seznam.cz>
+    Andrey Adreev <andreev00@gmail.com>
