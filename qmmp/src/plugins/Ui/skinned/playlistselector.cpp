@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -218,22 +218,30 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
         m_pl_manager->selectPlayList(index);
     }
 
-    update();
 
     QPoint pp = e->pos();
     pp.rx() += m_offset;
 
     if(e->button() == Qt::RightButton)
+    {
+        m_moving = false;
+        update();
         m_menu->exec(e->globalPos());
+        return;
+    }
     else if(e->button() == Qt::MidButton && selected)
+    {
+        m_moving = false;
         m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
-    else
+    }
+    else if(e->button() == Qt::LeftButton)
     {
         m_moving = true;
         m_mouse_pos = e->pos();
         m_press_offset = pp.x() - m_rects.at(m_pl_manager->selectedPlayListIndex()).x();
         QWidget::mousePressEvent(e);
     }
+    update();
 }
 
 void PlayListSelector::mouseReleaseEvent (QMouseEvent *e)
