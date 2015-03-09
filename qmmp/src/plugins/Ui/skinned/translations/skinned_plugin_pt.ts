@@ -815,7 +815,7 @@
         <location filename="../playlist.cpp" line="234"/>
         <location filename="../playlist.cpp" line="285"/>
         <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Por artista do álbum</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
@@ -918,17 +918,17 @@
     <message>
         <location filename="../playlistheader.cpp" line="51"/>
         <source>Add column</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar coluna</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="52"/>
         <source>Edit column</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar coluna</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="54"/>
         <source>Remove column</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover coluna</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="140"/>

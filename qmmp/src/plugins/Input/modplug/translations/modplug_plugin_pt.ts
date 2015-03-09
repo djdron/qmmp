@@ -331,12 +331,12 @@ alto pode provocar distorção!</translation>
     <message>
         <location filename="../settingsdialog.ui" line="750"/>
         <source>time(s)</source>
-        <translation>duração</translation>
+        <translation>vez(es)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
-        <translation>Ciclo infinito</translation>
+        <translation>Loop infinito</translation>
     </message>
 </context>
 </TS>
