@@ -73,12 +73,6 @@ ENDIF(NOT LIB_SUFFIX)
 SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
 SET(USE_SKINNED TRUE CACHE BOOL "enable/disable standard skinned user interface")
 SET(USE_DIR_ASSOC TRUE CACHE BOOL "enable/disable inode/directory mime type association")
-SET(USE_RPATH FALSE CACHE BOOL "enable/disable RPATH for installing binaries")
-
-#set RPATH in installed binaries
-IF(USE_RPATH AND UNIX AND NOT APPLE)
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-ENDIF(USE_RPATH AND UNIX AND NOT APPLE)
 
 pkg_search_module(X11 x11)
 
@@ -206,6 +200,6 @@ MESSAGE("Advanced:")
 PRINT_SUMMARY ("Skinned user interface ............" USE_SKINNED X11_FOUND)
 PRINT_SUMMARY ("Automatic charset detection ......." USE_ENCA ENCA_FOUND)
 PRINT_SUMMARY ("Directory association ............." USE_DIR_ASSOC 1)
-PRINT_SUMMARY ("Set RPATH in installed binaries ..." USE_RPATH CMAKE_INSTALL_RPATH_USE_LINK_PATH)
+PRINT_SUMMARY ("Set RPATH in installed binaries ..." CMAKE_INSTALL_RPATH_USE_LINK_PATH 1)
 
 MESSAGE("")
