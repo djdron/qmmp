@@ -40,6 +40,7 @@
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
+    setMouseTracking(true);
     m_metrics = 0;
     m_show_number = false;
     m_align_numbres = false;
@@ -227,6 +228,14 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
         m_manager->move(m_pressed_column, dest);
         m_pressed_column = dest;
         update();
+    }
+    else if(e->button() == Qt::NoButton)
+    {
+        int column = findColumn(e->pos());
+        if(column >= 0 && e->pos().x() > m_rects[column].right() - m_metrics->width("9"))
+            setCursor(Qt::SplitHCursor);
+        else
+            setCursor(Qt::ArrowCursor);
     }
 }
 
