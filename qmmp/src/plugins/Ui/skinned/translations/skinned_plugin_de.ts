@@ -916,22 +916,22 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="51"/>
+        <location filename="../playlistheader.cpp" line="52"/>
         <source>Add column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="52"/>
+        <location filename="../playlistheader.cpp" line="53"/>
         <source>Edit column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="54"/>
+        <location filename="../playlistheader.cpp" line="55"/>
         <source>Remove column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="140"/>
+        <location filename="../playlistheader.cpp" line="141"/>
         <source>Title</source>
         <translation type="unfinished">Titel</translation>
     </message>

@@ -958,12 +958,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="237"/>
+        <location filename="../playlisttrack.cpp" line="240"/>
         <source>Streams</source>
         <translation>Онлайн-потоки</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="242"/>
+        <location filename="../playlisttrack.cpp" line="245"/>
         <source>Empty group</source>
         <translation>Пуста група</translation>
     </message>
