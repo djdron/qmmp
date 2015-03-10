@@ -220,10 +220,13 @@ const QString PlayListTrack::url() const
 void PlayListTrack::formatTitle(int column)
 {
     m_formattedTitles[column] = m_columnManager->titleFormatter(column)->format(this);
-    if (m_formattedTitles[column].isEmpty() && column == 0)
-        m_formattedTitles[column] = value(Qmmp::URL).section('/',-1);
-    if (m_formattedTitles[column].isEmpty() && column == 0)
-        m_formattedTitles[column] = value(Qmmp::URL);
+    if(m_formattedTitles.count() == 1)
+    {
+        if (m_formattedTitles[column].isEmpty())
+            m_formattedTitles[column] = value(Qmmp::URL).section('/',-1);
+        if (m_formattedTitles[column].isEmpty())
+            m_formattedTitles[column] = value(Qmmp::URL);
+    }
     if (m_settings->convertUnderscore())
         m_formattedTitles[column].replace("_", " ");
     if (m_settings->convertTwenty())
