@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,7 @@
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmpui/playlistitem.h>
+#include <qmmpui/metadataformatter.h>
 #include "display.h"
 #include "titlebar.h"
 
@@ -110,6 +111,7 @@ private:
     UiHelper *m_uiHelper;
     QmmpUiSettings *m_ui_settings;
     MediaPlayer *m_player;
+    MetaDataFormatter m_titleFormatter;
 };
 
 #endif
