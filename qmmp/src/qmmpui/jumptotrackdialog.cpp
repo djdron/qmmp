@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,6 +39,7 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListModel *model, QWidget* parent)
     m_model = model;
     m_pl_manager = PlayListManager::instance();
     m_listModel = new QStringListModel(this);
+    m_titleFormatter.setPattern("%if(%p,%p - %t,%t)");
 
     m_proxyModel = new QSortFilterProxyModel(this);
     m_proxyModel->setDynamicSortFilter(true);
@@ -105,7 +106,7 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 
 void JumpToTrackDialog::refresh()
 {
-    /*filterLineEdit->clear();
+    filterLineEdit->clear();
     m_indexes.clear();
     QStringList titles;
     QList<PlayListItem *> items = m_model->items();
@@ -113,11 +114,11 @@ void JumpToTrackDialog::refresh()
     {
         if(items[i]->isGroup())
             continue;
-        titles.append(items[i]->formattedTitle());
+        titles.append(m_titleFormatter.format(dynamic_cast<PlayListTrack *>(items[i])));
         m_indexes.append(i);
     }
     m_listModel->setStringList(titles);
-    filterLineEdit->setFocus();*/
+    filterLineEdit->setFocus();
 }
 
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
