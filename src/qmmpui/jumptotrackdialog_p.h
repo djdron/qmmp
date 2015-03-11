@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 
 #include <QDialog>
 #include <QList>
+#include "metadataformatter.h"
 #include "ui_jumptotrackdialog.h"
 
 class QStringListModel;
@@ -58,6 +59,7 @@ private:
     PlayListManager *m_pl_manager;
     PlayListModel *m_model;
     QList<int> m_indexes;
+    MetaDataFormatter m_titleFormatter;
 };
 
 #endif //JUMPTOTRACKDIALOG_P_H
