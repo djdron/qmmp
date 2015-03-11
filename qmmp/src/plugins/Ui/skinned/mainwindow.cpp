@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
                    Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
+
+    m_titleFormatter.setPattern("%if(%p,%p - %t,%t)");
 
     new ActionManager(this);
 
@@ -176,21 +178,21 @@ void MainWindow::showState(Qmmp::State state)
         break;
     case Qmmp::Stopped:
         m_playlist->setTime(-1);
-        /*if (m_pl_manager->currentPlayList()->currentTrack())
-            setWindowTitle(m_pl_manager->currentPlayList()->currentTrack()->formattedTitle());
+        if (m_pl_manager->currentPlayList()->currentTrack())
+            setWindowTitle(m_titleFormatter.format(m_pl_manager->currentPlayList()->currentTrack()));
         else
-            setWindowTitle("Qmmp");*/
+            setWindowTitle("Qmmp");
         break;
     }
 }
 
 void MainWindow::showMetaData()
 {
-    /*PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
+    PlayListTrack *track = m_pl_manager->currentPlayList()->currentTrack();
     if (track && track->url() == m_core->metaData().value(Qmmp::URL))
     {
-        setWindowTitle(track->formattedTitle());
-    }*/
+        setWindowTitle(m_titleFormatter.format(track));
+    }
 }
 
 void MainWindow::closeEvent (QCloseEvent *)
