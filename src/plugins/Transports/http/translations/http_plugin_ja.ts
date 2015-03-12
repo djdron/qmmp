@@ -66,5 +66,15 @@
         <source>Default encoding:</source>
         <translation>文字符号化形式(初期設定値):</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="137"/>
+        <source>User Agent:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="151"/>
+        <source>Change User Agent</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
