@@ -66,5 +66,15 @@
         <source>Default encoding:</source>
         <translation>默认编码：</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="137"/>
+        <source>User Agent:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="151"/>
+        <source>Change User Agent</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

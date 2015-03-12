@@ -901,8 +901,8 @@
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="93"/>
-        <location filename="../jumptotrackdialog.cpp" line="140"/>
+        <location filename="../jumptotrackdialog.cpp" line="94"/>
+        <location filename="../jumptotrackdialog.cpp" line="141"/>
         <source>Queue</source>
         <translation>Kolejkuj</translation>
     </message>
@@ -917,23 +917,23 @@
         <translation>Skocz do</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="61"/>
+        <location filename="../jumptotrackdialog.cpp" line="62"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="62"/>
+        <location filename="../jumptotrackdialog.cpp" line="63"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="63"/>
+        <location filename="../jumptotrackdialog.cpp" line="64"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="91"/>
-        <location filename="../jumptotrackdialog.cpp" line="138"/>
+        <location filename="../jumptotrackdialog.cpp" line="92"/>
+        <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Unqueue</source>
         <translation>Usuń z kolejki</translation>
     </message>
