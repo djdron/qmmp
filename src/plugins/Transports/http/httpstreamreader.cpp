@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -123,6 +123,10 @@ HttpStreamReader::HttpStreamReader(const QString &url, HTTPInputSource *parent) 
     settings.beginGroup("HTTP");
     m_codec = QTextCodec::codecForName(settings.value("icy_encoding","UTF-8").toByteArray ());
     m_buffer_size = settings.value("buffer_size",384).toInt() * 1000;
+    if(settings.value("override_user_agent",false).toBool())
+        m_userAgent = settings.value("user_agent").toString();
+    if(m_userAgent.isEmpty())
+        m_userAgent = QString("qmmp/%1").arg(Qmmp::strVersion());;
     if (!m_codec)
         m_codec = QTextCodec::codecForName ("UTF-8");
 #ifdef WITH_ENCA
@@ -322,8 +326,7 @@ void HttpStreamReader::run()
     curl_easy_setopt(m_handle, CURLOPT_FAILONERROR, 1);
     curl_easy_setopt(m_handle, CURLOPT_MAXREDIRS, 15);
     // user agent
-    QString user_agent = QString("qmmp/%1").arg(Qmmp::strVersion());
-    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, qPrintable(user_agent));
+    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, qPrintable(m_userAgent));
     curl_easy_setopt(m_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
     // error message
     curl_easy_setopt(m_handle, CURLOPT_ERRORBUFFER, errorBuffer);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -99,6 +99,7 @@ private:
     QMutex m_mutex;
     HttpStreamData m_stream;
     QString m_url;
+    QString m_userAgent;
     int m_metacount;
     QString m_title;
     bool m_ready;

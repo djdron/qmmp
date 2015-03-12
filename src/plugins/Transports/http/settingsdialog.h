@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,7 @@
 #include "ui_settingsdialog.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
@@ -39,7 +39,7 @@ private slots:
 
 private:
     void findCodecs();
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
     QList<QTextCodec *> codecs;
 
 };

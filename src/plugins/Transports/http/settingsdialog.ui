@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>218</width>
-    <height>179</height>
+    <width>310</width>
+    <height>266</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,14 +65,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
+   <item row="4" column="1" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
+   <item row="3" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Metadata encoding</string>
@@ -131,12 +131,28 @@
      </layout>
     </widget>
    </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>User Agent:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="userAgentLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QCheckBox" name="userAgentCheckBox">
+     <property name="text">
+      <string>Change User Agent</string>
+     </property>
+    </widget>
+   </item>
   </layout>
-  <zorder>label_17_2_2</zorder>
-  <zorder>bufferSizeSpinBox</zorder>
-  <zorder>label</zorder>
-  <zorder>buttonBox</zorder>
-  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>
@@ -147,8 +163,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>222</x>
-     <y>172</y>
+     <x>303</x>
+     <y>259</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -163,8 +179,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>222</x>
-     <y>172</y>
+     <x>303</x>
+     <y>259</y>
     </hint>
     <hint type="destinationlabel">
      <x>61</x>
@@ -179,12 +195,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>59</x>
-     <y>67</y>
+     <x>82</x>
+     <y>149</y>
     </hint>
     <hint type="destinationlabel">
-     <x>143</x>
-     <y>90</y>
+     <x>288</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>userAgentCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>userAgentLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>76</y>
     </hint>
    </hints>
   </connection>
