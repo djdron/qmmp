@@ -134,7 +134,7 @@ void StatusIcon::showMetaData()
         QString message = m_formatter.format(m_core->metaData());
         if(message.isEmpty())
             message = m_core->metaData(Qmmp::URL).section('/',-1);
-        m_tray->setToolTip(f.parse(m_core->metaData()));
+        m_tray->setToolTip(message);
     }
 #endif
 }
