@@ -1,7 +1,7 @@
 #!/bin/sh
 
-QMMP_VERSION=0.8.4
-QMMP_PLUGIN_PACK_VERSION=0.8.4
+QMMP_VERSION=0.9.0
+QMMP_PLUGIN_PACK_VERSION=0.9.0
 
 export DEV_PATH=/c/devel
 export MINGW32_PATH=${DEV_PATH}/mingw32
@@ -22,6 +22,7 @@ download_qmmp_tarball()
   echo 'downloading qmmp...'
   wget -nc http://qmmp.ylsoftware.com/files/qmmp-${QMMP_VERSION}.tar.bz2
   tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
+  cd ..
 }
 
 download_plugins_tarball()
@@ -31,6 +32,7 @@ download_plugins_tarball()
   echo 'downloading qmmp-plugin-pack...'
   wget -nc http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
   tar xvjf qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}.tar.bz2
+  cd ..
 }
 
 download_qmmp_svn()
@@ -39,6 +41,7 @@ download_qmmp_svn()
   cd tmp
   echo 'downloading qmmp...'
   svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp qmmp-${QMMP_VERSION}
+  cd ..
 }
 
 download_plugins_svn()
@@ -47,6 +50,7 @@ download_plugins_svn()
   cd tmp
   echo 'downloading qmmp-plugin-pack...'
   svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp-plugin-pack qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
+  cd ..
 }
 
 build ()
@@ -132,10 +136,10 @@ create_distr ()
 
 case $1 in
   --download)
-    download_qmmp_tarball
-    download_plugins_tarball
-    #download_qmmp_svn
-    #download_plugins_svn
+    #download_qmmp_tarball
+    #download_plugins_tarball
+    download_qmmp_svn
+    download_plugins_svn
   ;;
   --install)
     cd tmp
