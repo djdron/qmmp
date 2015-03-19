@@ -75,5 +75,5 @@ How to enabled FFap plugin.
 Go to FFmpeg plugin settings and disable Monkey's Audio support.
 
 
-All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker:
-http://code.google.com/p/qmmp/issues/list
+All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use bug tracker:
+https://sourceforge.net/p/qmmp-dev/tickets

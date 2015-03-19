@@ -70,4 +70,4 @@ cmake ./ -DLIB_DIR=lib64
 
 
 Патчи, сообщение об ошибках направляйте на forkotov02@hotmail.ru или используйте баг-трекер:
-http://code.google.com/p/qmmp/issues/list
+https://sourceforge.net/p/qmmp-dev/tickets
