@@ -167,7 +167,7 @@ qmake LIB_DIR=/lib64
 cmake ./ -DLIB_DIR=lib64
 
 
-Патчі, багрепорти, ідеї тощо: forkotov02@hotmail.ru або http://code.google.com/p/qmmp/issues/list
+Патчі, багрепорти, ідеї тощо: forkotov02@hotmail.ru або https://sourceforge.net/p/qmmp-dev/tickets/
 
 Автор висловлює подяку Вадиму Каліннікову (www.ylsoftware.com) за наданий
 хостинг і тестування програми.
