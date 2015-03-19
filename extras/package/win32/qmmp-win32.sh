@@ -40,7 +40,7 @@ download_qmmp_svn()
   mkdir -p tmp
   cd tmp
   echo 'downloading qmmp...'
-  svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp qmmp-${QMMP_VERSION}
+  svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp qmmp-${QMMP_VERSION}
   cd ..
 }
 
@@ -49,7 +49,7 @@ download_plugins_svn()
   mkdir -p tmp
   cd tmp
   echo 'downloading qmmp-plugin-pack...'
-  svn checkout http://qmmp.googlecode.com/svn/trunk/qmmp-plugin-pack qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
+  svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp-plugin-pack qmmp-plugin-pack-${QMMP_PLUGIN_PACK_VERSION}
   cd ..
 }
 
