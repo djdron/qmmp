@@ -175,4 +175,4 @@ cmake ./ -DLIB_DIR=lib64
 
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
-http://code.google.com/p/qmmp/issues/list
+https://sourceforge.net/p/qmmp-dev/tickets/
