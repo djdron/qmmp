@@ -279,6 +279,6 @@ void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int row_count, int wi
         painter->setPen(m_normal);
         int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
                        5 + PADDING + m_number_width + m_metrics->width("9")/2 - 1;
-        painter->drawLine(sx, 2, sx, row_count * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
+        painter->drawLine(sx, 2, sx, (row_count + 1) * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
     }
 }
