@@ -27,19 +27,25 @@
 #include <QRect>
 #include <QFontMetrics>
 
-class Skin;
+
 class QPainter;
+class Skin;
+class ColumnManager;
 
 struct ListWidgetRow
 {
     ListWidgetRow()
     {
         flags = NO_FLAGS;
+        numberColumnWidth = 0;
+        lengthColumnWidth = 0;
     }
     QStringList titles;
     QString length;
     QString extraString;
     int number;
+    int numberColumnWidth;
+    int lengthColumnWidth;
     enum
     {
         NO_FLAGS = 0x00,
@@ -50,15 +56,6 @@ struct ListWidgetRow
     };
 
     int flags;
-
-    enum
-    {
-        NUMBER = 0,
-        TITLE,
-        EXTRA_STRING,
-        LENGTH
-    };
-    int x[LENGTH + 1];
     QRect rect; //geometry
 };
 
@@ -82,18 +79,19 @@ public:
     void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
     void drawTrack(QPainter *painter, ListWidgetRow *row);
     void drawDropLine(QPainter *painter, int row_number, int width);
-    void drawVerticalLine(QPainter *painter, int row_count, int width, bool rtl);
 
 private:
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
+    ColumnManager *m_column_manager;
     QFont m_font, m_extra_font;
     bool m_update;
     bool m_show_number;
     bool m_show_anchor;
     bool m_align_numbres;
+    int m_padding;
     int m_number_width;
     int m_row_height;
 };

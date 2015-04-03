@@ -26,17 +26,19 @@
 #include "skin.h"
 #include "listwidgetdrawer.h"
 
-#define PADDING 3
+// |= number=|=row1=|=row2=|=extra= duration=|
 
 ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
+    m_column_manager = QmmpUiSettings::instance()->columnManager();
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
     m_align_numbres = false;
     m_row_height = 0;
     m_number_width = 0;
+    m_padding = 0;
     readSettings();
     loadColors();
 }
@@ -67,6 +69,7 @@ void ListWidgetDrawer::readSettings()
     m_update = true;
     m_metrics = new QFontMetrics(m_font);
     m_extra_metrics = new QFontMetrics(m_extra_font);
+    m_padding = m_metrics->width("9")/2;
     m_row_height = m_metrics->lineSpacing() + 1;
 }
 
@@ -92,15 +95,18 @@ void ListWidgetDrawer::calculateNumberWidth(int count)
 {
     //song numbers width
     if(m_show_number && m_align_numbres && count)
-    {
         m_number_width = m_metrics->width("9") * QString::number(count).size();
-    }
     else
         m_number_width = 0;
 }
 
 void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 {
+    if(m_number_width)
+        row->numberColumnWidth = m_number_width + 2 * m_padding;
+    else
+        row->numberColumnWidth = 0;
+
     if(row->flags & ListWidgetRow::GROUP)
     {
         row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight,
@@ -111,48 +117,39 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     if(m_show_number && !m_align_numbres)
         row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
-    row->x[ListWidgetRow::NUMBER] = row->x[ListWidgetRow::TITLE] = row->rect.left() + PADDING;
+    if(!row->length.isEmpty() || !row->extraString.isEmpty())
+        row->lengthColumnWidth = m_padding;
+    else
+        row->lengthColumnWidth = 0;
 
-    if(m_number_width)
-    {
-        QString number = QString("%1").arg(row->number);
+    if(!row->length.isEmpty())
+        row->lengthColumnWidth += m_metrics->width(row->length) + m_padding;
 
-        row->x[ListWidgetRow::NUMBER] += m_number_width - m_metrics->width(number);
-        row->x[ListWidgetRow::TITLE] += m_number_width + m_metrics->width("9");
-    }
-
-    row->x[ListWidgetRow::LENGTH] = row->rect.right() - m_metrics->width(row->length) - PADDING;
-    row->x[ListWidgetRow::EXTRA_STRING] = row->x[ListWidgetRow::LENGTH];
-
-    int extra_string_width = row->extraString.isEmpty() ? 0 : m_extra_metrics->width(row->extraString);
-    if(extra_string_width)
-    {
-        extra_string_width += row->length.isEmpty() ? 0 : m_extra_metrics->width("9")/2;
-        row->x[ListWidgetRow::EXTRA_STRING] = row->x[ListWidgetRow::LENGTH] - extra_string_width;
-    }
+    if(!row->extraString.isEmpty())
+        row->lengthColumnWidth += m_extra_metrics->width(row->extraString) + m_padding;
 
     //elide title
-    int visible_width = row->x[ListWidgetRow::EXTRA_STRING] - row->x[ListWidgetRow::TITLE] -
-            m_metrics->width("9");
+    int visible_width = row->rect.width() - row->lengthColumnWidth - row->numberColumnWidth;
 
-    if( row->titles.count() == 1)
+    if(row->titles.count() == 1 && !row->lengthColumnWidth)
     {
-        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width);
+        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - 2 * m_padding);
+        return;
+    }
+    else if(row->titles.count() == 1)
+    {
+        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - m_padding);
         return;
     }
 
-    int offset = 0;
-    for(int i = 0; i < row->titles.count(); ++i)
+    for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int width = qMin(QmmpUiSettings::instance()->columnManager()->size(i) - m_metrics->width(9),
-                         visible_width - offset);
+        int width = qMin(QmmpUiSettings::instance()->columnManager()->size(i) - 2 * m_padding,
+                         visible_width - 2 * m_padding);
 
-        if(width <= 0)
-            break;
         row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
-        offset += QmmpUiSettings::instance()->columnManager()->size(i);
+        visible_width -= QmmpUiSettings::instance()->columnManager()->size(i);
     }
-    //row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, title_width);
 }
 
 void ListWidgetDrawer::fillBackground(QPainter *painter, int width, int height)
@@ -209,60 +206,64 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
         painter->drawLine(sx - 45, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
                           row->rect.width(), sy);
+        if(row->numberColumnWidth)
+        {
+            painter->drawLine(row->rect.left() + row->numberColumnWidth, row->rect.top(),
+                              row->rect.left() + row->numberColumnWidth, row->rect.bottom() + 1);
+        }
     }
 }
 
 void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
 {
     int sy = row->rect.y() + m_metrics->overlinePos() - 1;
+    int sx = row->rect.x();
 
     painter->setFont(m_font);
-    painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
-    if(m_number_width)
+    //|= number=|=col1  =|=col2  =|=extra=duration=|
+    if(row->numberColumnWidth)
     {
+        sx += row->numberColumnWidth;
+        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
         QString number = QString("%1").arg(row->number);
-        painter->drawText(row->x[ListWidgetRow::NUMBER], sy, number);
+        painter->drawText(sx - m_padding - m_metrics->width(number), sy, number);
+        painter->setPen(m_normal);
+        painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
     }
 
-    int offset = 0;
     for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count(); i++)
     {
-        if(row->x[ListWidgetRow::TITLE] + offset >= row->x[ListWidgetRow::EXTRA_STRING] - m_metrics->width("9"))
+        if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
             break;
 
-        painter->drawText(row->x[ListWidgetRow::TITLE] + offset, sy, row->titles[i]);
-        offset += QmmpUiSettings::instance()->columnManager()->size(i);
-    }
+        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+        painter->drawText(sx + m_padding, sy, row->titles[i]);
+        sx += QmmpUiSettings::instance()->columnManager()->size(i);
 
-    QString extra_string = row->extraString;
-
-    if(!extra_string.isEmpty())
-    {
-        painter->setFont(m_extra_font);
-        painter->drawText(row->x[ListWidgetRow::EXTRA_STRING], sy, extra_string);
-        painter->setFont(m_font);
-    }
-    if(!row->length.isEmpty())
-        painter->drawText(row->x[ListWidgetRow::LENGTH], sy, row->length);
-
-    if(QmmpUiSettings::instance()->columnManager()->count() == 1)
-        return;
-
-    offset = 0;
-    painter->setPen(m_normal);
-    for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count(); i++)
-    {
-        offset += QmmpUiSettings::instance()->columnManager()->size(i);
-
-        if(QmmpUiSettings::instance()->columnManager()->count() > 1 &&
-                row->x[ListWidgetRow::TITLE] + offset < row->x[ListWidgetRow::EXTRA_STRING] - m_metrics->width("9"))
+        if(m_column_manager->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
         {
-            painter->drawLine(row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.top(),
-                    row->x[ListWidgetRow::TITLE] + offset - m_metrics->width("9")/2, row->rect.bottom() + 1);
+            painter->setPen(m_normal);
+            painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
         }
     }
 
+    sx = row->rect.right() - m_padding;
+    painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+
+    if(!row->length.isEmpty())
+    {
+        sx -= m_metrics->width(row->length);
+        painter->drawText(sx, sy, row->length);
+        sx -= m_padding;
+    }
+
+    if(!row->extraString.isEmpty())
+    {
+        sx -= m_extra_metrics->width(row->extraString);
+        painter->setFont(m_extra_font);
+        painter->drawText(sx, sy, row->extraString);
+    }
 }
 
 void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width)
@@ -270,15 +271,4 @@ void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width
     painter->setPen(m_current);
     painter->drawLine (5, row_number * m_row_height,
                        width - 5 , row_number * m_row_height);
-}
-
-void ListWidgetDrawer::drawVerticalLine(QPainter *painter, int row_count, int width, bool rtl)
-{
-    if(m_number_width)
-    {
-        painter->setPen(m_normal);
-        int sx = rtl ? width - 10 - m_number_width - m_metrics->width("9")/2 - 1 :
-                       5 + PADDING + m_number_width + m_metrics->width("9")/2 - 1;
-        painter->drawLine(sx, 2, sx, (row_count + 1) * (1 + m_metrics->lineSpacing()) - m_metrics->descent());
-    }
 }

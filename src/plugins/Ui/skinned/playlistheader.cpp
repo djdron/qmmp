@@ -35,13 +35,12 @@
 #include "skin.h"
 #include "playlistheader.h"
 
-#define PADDING 3
-
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     setMouseTracking(true);
     m_metrics = 0;
+    m_padding = 0;
     m_show_number = false;
     m_align_numbres = false;
     m_number_width = 0;
@@ -81,6 +80,7 @@ void PlayListHeader::readSettings()
     m_metrics = new QFontMetrics(m_font);
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
+    m_padding = m_metrics->width("9")/2;
     settings.endGroup();
     updateColumns();
 }
@@ -99,9 +99,9 @@ void PlayListHeader::updateColumns()
     m_rects.clear();
     m_names.clear();
 
-    int sx = 5 + PADDING;
+    int sx = 5;
     if(m_number_width)
-        sx += m_number_width + m_metrics->width("9");
+        sx += m_number_width + 2 * m_padding;
 
     if(m_manager->count() == 1)
     {
@@ -112,7 +112,7 @@ void PlayListHeader::updateColumns()
 
     for(int i = 0; i < m_manager->count(); ++i)
     {
-        m_rects << QRect(sx, 0, m_manager->size(i)+1, height());
+        m_rects << QRect(sx, 0, m_manager->size(i), height());
         m_names << m_metrics->elidedText(m_manager->name(i), Qt::ElideRight,
                                          m_manager->size(i) - m_metrics->width("9"));
 
@@ -263,8 +263,8 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     if(m_number_width)
     {
-        painter.drawLine(m_rects.at(0).x() - m_metrics->width("9")/2 - 1, 0,
-                         m_rects.at(0).x() - m_metrics->width("9")/2 - 1, height());
+        painter.drawLine(m_rects.at(0).x(), 0,
+                         m_rects.at(0).x(), height());
     }
 
     if(m_names.count() == 1)
@@ -280,7 +280,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         {
             painter.setBrush(m_normal_bg);
             painter.setPen(m_current);
-            painter.drawRect(m_rects[i].x() - m_metrics->width("9")/2, 0,
+            painter.drawRect(m_rects[i].x(), 0,
                              m_rects[i].width(), height()-1);
             painter.setBrush(m_normal);
             painter.setPen(m_normal_bg);
@@ -290,15 +290,15 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2,
                          m_metrics->ascent(), m_names[i]);
 
-        painter.drawLine(m_rects[i].right() - m_metrics->width("9")/2, 0,
-                         m_rects[i].right() - m_metrics->width("9")/2, height()+1);
+        painter.drawLine(m_rects[i].right()+1, 0,
+                         m_rects[i].right()+1, height()+1);
 
     }
 
     if(m_task == MOVE)
     {
         painter.setPen(m_normal);
-        painter.drawRect(m_mouse_pos.x() - m_press_offset - m_metrics->width("9")/2, 0,
+        painter.drawRect(m_mouse_pos.x() - m_press_offset, 0,
                          m_rects.at(m_pressed_column).width(), height());
 
         painter.setPen(m_normal_bg);
