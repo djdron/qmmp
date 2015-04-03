@@ -24,5 +24,6 @@
     <file>scrobbler_plugin_gl_ES.qm</file>
     <file>scrobbler_plugin_sr_BA.qm</file>
     <file>scrobbler_plugin_sr_RS.qm</file>
+    <file>scrobbler_plugin_bg.qm</file>
   </qresource>
 </RCC>
