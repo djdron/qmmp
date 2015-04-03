@@ -77,6 +77,7 @@ private:
     int m_pressed_column;
     int m_old_size;
     int m_press_offset;
+    int m_padding;
 
     enum
     {

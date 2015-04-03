@@ -186,8 +186,6 @@ void ListWidget::paintEvent(QPaintEvent *)
     {
         m_drawer.drawDropLine(&painter, m_drop_index - m_first, width());
     }
-    //draw line
-    m_drawer.drawVerticalLine(&painter, m_rows.count(), width(), rtl);
 }
 
 void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
