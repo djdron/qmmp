@@ -24,5 +24,6 @@
     <file>aac_plugin_gl_ES.qm</file>
     <file>aac_plugin_sr_BA.qm</file>
     <file>aac_plugin_sr_RS.qm</file>
+    <file>aac_plugin_bg.qm</file>
   </qresource>
 </RCC>

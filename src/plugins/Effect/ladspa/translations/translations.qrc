@@ -24,5 +24,6 @@
     <file>ladspa_plugin_gl_ES.qm</file>
     <file>ladspa_plugin_sr_BA.qm</file>
     <file>ladspa_plugin_sr_RS.qm</file>
+    <file>ladspa_plugin_bg.qm</file>
   </qresource>
 </RCC>

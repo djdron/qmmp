@@ -917,17 +917,17 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="52"/>
+        <location filename="../playlistheader.cpp" line="51"/>
         <source>Add column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="53"/>
+        <location filename="../playlistheader.cpp" line="52"/>
         <source>Edit column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="55"/>
+        <location filename="../playlistheader.cpp" line="54"/>
         <source>Remove column</source>
         <translation type="unfinished"></translation>
     </message>
