@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=yasm
-VERSION=1.2.0
+VERSION=1.3.0
 
 case $1 in
   --download)

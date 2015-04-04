@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=libmodplug
-VERSION=0.8.8.4
+VERSION=0.8.8.5
 
 case $1 in
   --download)

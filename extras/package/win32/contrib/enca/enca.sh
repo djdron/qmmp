@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=enca
-VERSION=1.15
+VERSION=1.16
 
 case $1 in
   --download)

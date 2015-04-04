@@ -7,7 +7,7 @@ case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc http://game-music-emu.googlecode.com/files/$NAME-$VERSION.tar.bz2
+    wget -nc --no-check-certificate https://bitbucket.org/mpyne/game-music-emu/downloads/$NAME-$VERSION.tar.bz2 -O $NAME-$VERSION.tar.bz2
   ;;
   --install)
     cd temp
