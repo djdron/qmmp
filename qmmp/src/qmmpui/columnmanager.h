@@ -39,6 +39,7 @@ public:
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);
     void resize(int index, int size);
+    void setAutoResize(int index, bool autoResize);
     void move(int from, int to);
     void execEditor(int index, QWidget *parent = 0);
 
@@ -47,6 +48,7 @@ public:
     int size(int index) const;
     const QString name(int index) const;
     const QString pattern(int index) const;
+    QList<int> autoResizeColumns() const;
 
 signals:
     void inserted(int index);
@@ -62,6 +64,7 @@ private:
         QString name;
         QString pattern;
         int size;
+        bool autoResize;
         MetaDataFormatter *titleFormatter;
     };
     QList<Column> m_columns;
