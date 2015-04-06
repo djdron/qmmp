@@ -55,7 +55,7 @@ private:
     void mousePressEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *e);
-    void resizeEvent(QResizeEvent *);
+    void resizeEvent(QResizeEvent *e);
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
     void loadColors();

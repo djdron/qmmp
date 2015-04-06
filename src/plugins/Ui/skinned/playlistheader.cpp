@@ -239,10 +239,29 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
     }
 }
 
-void PlayListHeader::resizeEvent(QResizeEvent *)
+void PlayListHeader::resizeEvent(QResizeEvent *e)
 {
     if(m_manager->count() == 1)
+    {
         updateColumns();
+        return;
+    }
+
+    if(e->oldSize().width() <= 10)
+        return;
+
+    int delta = e->size().width() - e->oldSize().width();
+    QList<int> c = m_manager->autoResizeColumns();
+    if(c.isEmpty())
+        return;
+
+    for(int i = 0; i < c.count(); ++i)
+    {
+        m_manager->resize(c[i], m_manager->size(c[i]) + delta/c.count());
+    }
+
+    //m_manager->resize(0, m_manager->size(0) + (e->size().width() - e->oldSize().width())/2);
+    //m_manager->resize(1, m_manager->size(1) + (e->size().width() - e->oldSize().width())/2);
 }
 
 void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)

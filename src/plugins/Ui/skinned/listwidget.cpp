@@ -397,6 +397,7 @@ void ListWidget::updateList(int flags)
 
 void ListWidget::updateColumns()
 {
+    qDebug("++");
     m_header->updateColumns();
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
     for(int i = 0; i < items.count(); ++i)
