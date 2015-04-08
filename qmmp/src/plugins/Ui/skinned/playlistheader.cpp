@@ -274,11 +274,17 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
     {
         m_autoResize->setChecked(m_model->autoResizeColumn() == m_pressed_column);
         m_autoResize->setEnabled(true);
+        foreach (QAction *action, m_menu->actions())
+            action->setVisible(true);
+
     }
     else
     {
-        m_autoResize->setChecked(false);
-        m_autoResize->setEnabled(false);
+        foreach (QAction *action, m_menu->actions())
+        {
+            if(action != m_menu->actions().first())
+                action->setVisible(false);
+        }
     }
     m_menu->exec(e->globalPos());
 }
