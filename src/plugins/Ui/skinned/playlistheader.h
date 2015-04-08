@@ -28,6 +28,7 @@ class QFont;
 class QMouseEvent;
 class QContextMenuEvent;
 class QMenu;
+class QAction;
 class Skin;
 class PlayListHeaderModel;
 
@@ -50,6 +51,7 @@ private slots:
     void addColumn();
     void editColumn();
     void removeColumn();
+    void setAutoResize(bool yes);
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -70,7 +72,8 @@ private:
     QStringList m_names;
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
-    PlayListHeaderModel *m_manager;
+    PlayListHeaderModel *m_model;
+    QAction *m_autoResize;
     bool m_show_number;
     bool m_align_numbres;
     int m_number_width;
