@@ -106,7 +106,7 @@ void PlayListHeaderModel::resize(int index, int size)
 
 void PlayListHeaderModel::setAutoResize(int index)
 {
-    if(index < 0 || index >= m_columns.size())
+    if(index >= m_columns.size())
     {
         qWarning("ColumnManager: index is out of range");
         return;
