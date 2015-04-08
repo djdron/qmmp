@@ -148,14 +148,12 @@ void ColumnManager::execEditor(int index, QWidget *parent)
     if(!parent)
         parent = qApp->activeWindow();
 
-    ColumnEditor editor(m_columns[index].name, m_columns[index].pattern,
-                        m_columns[index].autoResize, parent);
+    ColumnEditor editor(m_columns[index].name, m_columns[index].pattern, parent);
     if(editor.exec() == QDialog::Accepted)
     {
         m_columns[index].name = editor.name();
         m_columns[index].pattern = editor.pattern();
         m_columns[index].titleFormatter->setPattern(editor.pattern());
-        m_columns[index].autoResize  = editor.autoResize();
         emit changed(index);
     }
 }
