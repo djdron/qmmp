@@ -22,7 +22,7 @@ BEGIN
             VALUE "CompanyName", "Qmmp Development Team"
             VALUE "FileDescription", "Audio player with support of many formats"
             VALUE "FileVersion", QMMP_PRODUCTVERSION
-            VALUE "LegalCopyright", "Copyright (C) 2006-2014 Qmmp Development Team"
+            VALUE "LegalCopyright", "Copyright (C) 2006-2015 Qmmp Development Team"
             VALUE "InternalName", "qmmp"
             VALUE "OriginalFilename", "qmmp.exe"
             VALUE "ProductName", "Qmmp"
