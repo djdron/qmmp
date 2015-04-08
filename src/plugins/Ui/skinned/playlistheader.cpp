@@ -50,6 +50,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu = new QMenu(this);
     m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"), this, SLOT(addColumn()));
     m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"), this, SLOT(editColumn()));
+    m_menu->addAction(tr("Auto-resize"))->setCheckable(true);
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
 
@@ -69,7 +70,9 @@ void PlayListHeader::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
+    QFont pl_font;
+    pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
+    m_font.fromString(settings.value("header_font", qApp->font().toString()).toString());
 
     if (m_metrics)
     {
@@ -77,7 +80,7 @@ void PlayListHeader::readSettings()
         m_metrics = 0;
     }
 
-    m_metrics = new QFontMetrics(m_font);
+    m_metrics = new QFontMetrics(pl_font);
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_padding = m_metrics->width("9")/2;
@@ -114,7 +117,7 @@ void PlayListHeader::updateColumns()
     {
         m_rects << QRect(sx, 0, m_manager->size(i), height());
         m_names << m_metrics->elidedText(m_manager->name(i), Qt::ElideRight,
-                                         m_manager->size(i) - m_metrics->width("9"));
+                                         m_manager->size(i) - 2 * m_padding);
 
         sx += m_manager->size(i);
     }
@@ -276,6 +279,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     painter.setBrush(m_normal);
     painter.setPen(m_normal);
+    painter.setFont(m_font);
     painter.drawRect(5,-1,width()-10,height()+1);
 
     painter.setPen(m_normal_bg);
@@ -288,8 +292,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     if(m_names.count() == 1)
     {
-        painter.drawText((m_rects[0].x() + m_rects[0].right())/2 - m_metrics->width(m_names[0])/2,
-                         m_metrics->ascent(), m_names[0]);
+        painter.drawText(m_rects[0].x() + m_padding, m_metrics->ascent(), m_names[0]);
         return;
     }
 
@@ -306,8 +309,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             continue;
         }
 
-        painter.drawText((m_rects[i].x() + m_rects[i].right())/2 - m_metrics->width(m_names[i])/2,
-                         m_metrics->ascent(), m_names[i]);
+        painter.drawText(m_rects[i].x() + m_padding, m_metrics->ascent(), m_names[i]);
 
         painter.drawLine(m_rects[i].right()+1, 0,
                          m_rects[i].right()+1, height()+1);
@@ -321,8 +323,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                          m_rects.at(m_pressed_column).width(), height());
 
         painter.setPen(m_normal_bg);
-        painter.drawText(m_mouse_pos.x() - m_press_offset + m_rects[m_pressed_column].width()/2 -
-                         m_metrics->width(m_names[m_pressed_column])/2,
+        painter.drawText(m_mouse_pos.x() - m_press_offset + m_padding,
                          m_metrics->ascent(), m_names.at(m_pressed_column));
     }
 }
