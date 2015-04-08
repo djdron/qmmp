@@ -22,7 +22,7 @@
 #include "columneditor_p.h"
 #include "ui_columneditor.h"
 
-ColumnEditor::ColumnEditor(const QString &name, const QString &patt, bool autoResize, QWidget *parent) :
+ColumnEditor::ColumnEditor(const QString &name, const QString &patt, QWidget *parent) :
     QDialog(parent),
     m_ui(new Ui::ColumnEditor)
 {
@@ -33,7 +33,6 @@ ColumnEditor::ColumnEditor(const QString &name, const QString &patt, bool autoRe
     //load inital values
     m_ui->nameLineEdit->setText(name);
     m_ui->formatLineEdit->setText(patt);
-    m_ui->autoResizeCheckBox->setChecked(autoResize);
 }
 
 ColumnEditor::~ColumnEditor()
@@ -49,11 +48,6 @@ QString ColumnEditor::name() const
 QString ColumnEditor::pattern() const
 {
     return m_ui->formatLineEdit->text();
-}
-
-bool ColumnEditor::autoResize() const
-{
-    return m_ui->autoResizeCheckBox->isChecked();
 }
 
 void ColumnEditor::insertExpression(QAction *a)

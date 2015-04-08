@@ -34,12 +34,11 @@ class ColumnEditor : public QDialog
 {
     Q_OBJECT
 public:
-    explicit ColumnEditor(const QString &name, const QString &patt, bool autoResize, QWidget *parent = 0);
+    explicit ColumnEditor(const QString &name, const QString &patt, QWidget *parent = 0);
     ~ColumnEditor();
 
     QString name() const;
     QString pattern() const;
-    bool autoResize() const;
 
 private slots:
     void insertExpression(QAction *a);
