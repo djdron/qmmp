@@ -110,22 +110,22 @@
         <translation>Изменить колонку</translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="29"/>
+        <location filename="../forms/columneditor.ui" line="36"/>
         <source>Name:</source>
         <translation>Имя:</translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="39"/>
+        <location filename="../forms/columneditor.ui" line="76"/>
         <source>Format:</source>
         <translation>Формат:</translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="51"/>
+        <location filename="../forms/columneditor.ui" line="64"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="73"/>
+        <location filename="../forms/columneditor.ui" line="29"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>

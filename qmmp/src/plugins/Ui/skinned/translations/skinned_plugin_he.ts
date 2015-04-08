@@ -926,12 +926,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="54"/>
+        <location filename="../playlistheader.cpp" line="53"/>
+        <source>Auto-resize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="55"/>
         <source>Remove column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="141"/>
+        <location filename="../playlistheader.cpp" line="144"/>
         <source>Title</source>
         <translation type="unfinished">כותרת</translation>
     </message>
