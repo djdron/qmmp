@@ -167,7 +167,7 @@ void PlayListHeader::setAutoResize(bool yes)
    if(m_pressed_column < 0)
         return;
 
-   m_model->setAutoResize(yes ? m_pressed_column : 0);
+   m_model->setAutoResize(yes ? m_pressed_column : -1);
 }
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
