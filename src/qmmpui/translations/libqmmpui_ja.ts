@@ -110,22 +110,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="29"/>
+        <location filename="../forms/columneditor.ui" line="36"/>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="39"/>
+        <location filename="../forms/columneditor.ui" line="76"/>
         <source>Format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="51"/>
+        <location filename="../forms/columneditor.ui" line="64"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../forms/columneditor.ui" line="73"/>
+        <location filename="../forms/columneditor.ui" line="29"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
