@@ -104,7 +104,7 @@ void PlayListHeaderModel::resize(int index, int size)
    emit resized(index);
 }
 
-void PlayListHeaderModel::setAutoResize(int index, bool autoResize)
+void PlayListHeaderModel::setAutoResize(int index)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -112,10 +112,9 @@ void PlayListHeaderModel::setAutoResize(int index, bool autoResize)
         return;
     }
 
-    if(m_columns[index].autoResize != autoResize)
+    for(int i = 0; i < m_columns.size(); ++i)
     {
-        m_columns[index].autoResize = autoResize;
-        emit changed(index);
+        m_columns[i].autoResize = (i == index);
     }
 }
 
@@ -202,15 +201,14 @@ const QString PlayListHeaderModel::pattern(int index) const
     return m_columns[index].pattern;
 }
 
-QList<int> PlayListHeaderModel::autoResizeColumns() const
+int PlayListHeaderModel::autoResizeColumn() const
 {
-    QList<int> columns;
     for(int i = 0; i < m_columns.count(); ++i)
     {
         if(m_columns[i].autoResize)
-            columns.append(i);
+            return i;
     }
-    return columns;
+    return -1;
 }
 
 void PlayListHeaderModel::sync()
