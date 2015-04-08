@@ -32,7 +32,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     if(m_instance)
         qFatal("QmmpUiSettings: only one instance is allowed");
     m_instance = this;
-    m_colum_manager = new ColumnManager(this);
+    m_colum_manager = new PlayListHeaderModel(this);
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
     m_group_format = s.value("group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
@@ -312,7 +312,7 @@ bool QmmpUiSettings::clearPreviousPlayList() const
     return m_clear_prev_playlist;
 }
 
-ColumnManager *QmmpUiSettings::columnManager()
+PlayListHeaderModel *QmmpUiSettings::columnManager()
 {
     return m_colum_manager;
 }

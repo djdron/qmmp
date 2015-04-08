@@ -23,7 +23,7 @@
 
 #include <QObject>
 #include <QStringList>
-#include "columnmanager.h"
+#include "playlistheadermodel.h"
 #include "metadataformatter.h"
 
 class QTimer;
@@ -179,7 +179,7 @@ public:
      */
     bool clearPreviousPlayList() const;
 
-    ColumnManager *columnManager();
+    PlayListHeaderModel *columnManager();
     const MetaDataFormatter* titleFormatter(int column) const;
     const MetaDataFormatter* groupFormatter() const;
 
@@ -277,7 +277,7 @@ private:
     //formatters
     MetaDataFormatter m_group_formatter;
     //column settings
-    ColumnManager *m_colum_manager;
+    PlayListHeaderModel *m_colum_manager;
 };
 
 #endif // QMMPUISETTINGS_H

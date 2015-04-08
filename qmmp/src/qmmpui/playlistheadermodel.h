@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef COLUMNMANAGER_H
-#define COLUMNMANAGER_H
+#ifndef PLAYLISTHEADERMODEL_H
+#define PLAYLISTHEADERMODEL_H
 
 #include <QObject>
 #include <QWidget>
@@ -28,13 +28,13 @@
 /**
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class ColumnManager : public QObject
+class PlayListHeaderModel : public QObject
 {
     Q_OBJECT
 public:
-    explicit ColumnManager(QObject *parent = 0);
+    explicit PlayListHeaderModel(QObject *parent = 0);
 
-    ~ColumnManager();
+    ~PlayListHeaderModel();
 
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);

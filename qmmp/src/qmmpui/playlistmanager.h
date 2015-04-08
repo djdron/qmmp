@@ -21,7 +21,7 @@
 #define PLAYLISTMANAGER_H
 
 #include <QObject>
-#include "columnmanager.h"
+#include "playlistheadermodel.h"
 #include "playlistmodel.h"
 
 class QTimer;

@@ -29,7 +29,7 @@ class QMouseEvent;
 class QContextMenuEvent;
 class QMenu;
 class Skin;
-class ColumnManager;
+class PlayListHeaderModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -70,7 +70,7 @@ private:
     QStringList m_names;
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
-    ColumnManager *m_manager;
+    PlayListHeaderModel *m_manager;
     bool m_show_number;
     bool m_align_numbres;
     int m_number_width;

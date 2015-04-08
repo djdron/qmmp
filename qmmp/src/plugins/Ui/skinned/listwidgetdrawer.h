@@ -30,7 +30,7 @@
 
 class QPainter;
 class Skin;
-class ColumnManager;
+class PlayListHeaderModel;
 
 struct ListWidgetRow
 {
@@ -85,7 +85,7 @@ private:
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
-    ColumnManager *m_column_manager;
+    PlayListHeaderModel *m_column_manager;
     QFont m_font, m_extra_font;
     bool m_update;
     bool m_show_number;

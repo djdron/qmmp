@@ -22,9 +22,9 @@
 #include <QApplication>
 #include <qmmp/qmmp.h>
 #include "columneditor_p.h"
-#include "columnmanager.h"
+#include "playlistheadermodel.h"
 
-ColumnManager::ColumnManager(QObject *parent) :
+PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
     QObject(parent)
 {
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
@@ -45,7 +45,7 @@ ColumnManager::ColumnManager(QObject *parent) :
     s.endGroup();
 }
 
-ColumnManager::~ColumnManager()
+PlayListHeaderModel::~PlayListHeaderModel()
 {
     sync();
     foreach (Column col, m_columns)
@@ -56,7 +56,7 @@ ColumnManager::~ColumnManager()
     m_columns.clear();
 }
 
-void ColumnManager::insert(int index, const QString &name, const QString &pattern)
+void PlayListHeaderModel::insert(int index, const QString &name, const QString &pattern)
 {
     if(index < 0 || index > m_columns.size())
     {
@@ -75,7 +75,7 @@ void ColumnManager::insert(int index, const QString &name, const QString &patter
     emit inserted(index);
 }
 
-void ColumnManager::remove(int index)
+void PlayListHeaderModel::remove(int index)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -91,7 +91,7 @@ void ColumnManager::remove(int index)
     emit removed(index);
 }
 
-void ColumnManager::resize(int index, int size)
+void PlayListHeaderModel::resize(int index, int size)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -104,7 +104,7 @@ void ColumnManager::resize(int index, int size)
    emit resized(index);
 }
 
-void ColumnManager::setAutoResize(int index, bool autoResize)
+void PlayListHeaderModel::setAutoResize(int index, bool autoResize)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -119,7 +119,7 @@ void ColumnManager::setAutoResize(int index, bool autoResize)
     }
 }
 
-void ColumnManager::move(int from, int to)
+void PlayListHeaderModel::move(int from, int to)
 {
     if(from < 0 || from >= m_columns.size())
     {
@@ -137,7 +137,7 @@ void ColumnManager::move(int from, int to)
     emit moved(from, to);
 }
 
-void ColumnManager::execEditor(int index, QWidget *parent)
+void PlayListHeaderModel::execEditor(int index, QWidget *parent)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -158,12 +158,12 @@ void ColumnManager::execEditor(int index, QWidget *parent)
     }
 }
 
-int ColumnManager::count()
+int PlayListHeaderModel::count()
 {
     return m_columns.count();
 }
 
-const MetaDataFormatter *ColumnManager::titleFormatter(int index) const
+const MetaDataFormatter *PlayListHeaderModel::titleFormatter(int index) const
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -173,7 +173,7 @@ const MetaDataFormatter *ColumnManager::titleFormatter(int index) const
     return m_columns[index].titleFormatter;
 }
 
-int ColumnManager::size(int index) const
+int PlayListHeaderModel::size(int index) const
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -183,7 +183,7 @@ int ColumnManager::size(int index) const
     return m_columns[index].size;
 }
 
-const QString ColumnManager::name(int index) const
+const QString PlayListHeaderModel::name(int index) const
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -192,7 +192,7 @@ const QString ColumnManager::name(int index) const
     }
     return m_columns[index].name;
 }
-const QString ColumnManager::pattern(int index) const
+const QString PlayListHeaderModel::pattern(int index) const
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -202,7 +202,7 @@ const QString ColumnManager::pattern(int index) const
     return m_columns[index].pattern;
 }
 
-QList<int> ColumnManager::autoResizeColumns() const
+QList<int> PlayListHeaderModel::autoResizeColumns() const
 {
     QList<int> columns;
     for(int i = 0; i < m_columns.count(); ++i)
@@ -213,7 +213,7 @@ QList<int> ColumnManager::autoResizeColumns() const
     return columns;
 }
 
-void ColumnManager::sync()
+void PlayListHeaderModel::sync()
 {
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
