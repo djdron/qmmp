@@ -31,7 +31,7 @@
 #include <QIcon>
 #include <qmmp/qmmp.h>
 #include <qmmpui/qmmpuisettings.h>
-#include <qmmpui/columnmanager.h>
+#include <qmmpui/playlistheadermodel.h>
 #include "skin.h"
 #include "playlistheader.h"
 

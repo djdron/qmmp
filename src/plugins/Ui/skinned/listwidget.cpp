@@ -31,7 +31,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
-#include <qmmpui/columnmanager.h>
+#include <qmmpui/playlistheadermodel.h>
 #include "listwidget.h"
 #include "playlistheader.h"
 #include "skin.h"
@@ -45,7 +45,7 @@ ListWidget::ListWidget(QWidget *parent)
 {
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
-    ColumnManager *column_manager = m_ui_settings->columnManager();
+    PlayListHeaderModel *column_manager = m_ui_settings->columnManager();
     m_menu = new QMenu(this);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
