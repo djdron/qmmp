@@ -53,6 +53,7 @@ LEGEND
 
 0.8.4
 [*] qmmp-0.8.4
+[*] qt-4.8.7+gitfb7fa2918
 [*] libsidplayfp-1.7.1
 [*] libvorbis-1.3.5
 [*] glew-1.12.0

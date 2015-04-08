@@ -22,7 +22,7 @@ List of the third-party libraries.
   Name                Version    Web page
 
   MinGW-w64           4.8.2	 http://mingw-w64.sourceforge.net/
-  Qt                  4.8.6	 http://qt-project.org/
+  Qt                  4.8.7-git	 http://qt.io/
   unzip               5.51	 http://www.info-zip.org/pub/infozip/UnZip.html
   taglib              1.9.1	 http://taglib.github.io/
   libmad              0.15.1b	 http://www.underbit.com/products/mad/
