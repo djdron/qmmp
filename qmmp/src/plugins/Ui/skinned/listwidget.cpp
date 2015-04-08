@@ -45,7 +45,7 @@ ListWidget::ListWidget(QWidget *parent)
 {
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
-    PlayListHeaderModel *column_manager = m_ui_settings->columnManager();
+    PlayListHeaderModel *headerModel = m_ui_settings->columnManager();
     m_menu = new QMenu(this);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
@@ -69,11 +69,11 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(column_manager, SIGNAL(changed(int)), SLOT(updateColumns()));
-    connect(column_manager, SIGNAL(resized(int)), SLOT(updateColumns()));
-    connect(column_manager, SIGNAL(inserted(int)), SLOT(updateColumns()));
-    connect(column_manager, SIGNAL(removed(int)), SLOT(updateColumns()));
-    connect(column_manager, SIGNAL(moved(int, int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(changed(int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(resized(int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(inserted(int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(removed(int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(moved(int, int)), SLOT(updateColumns()));
 }
 
 ListWidget::~ListWidget()
@@ -397,7 +397,6 @@ void ListWidget::updateList(int flags)
 
 void ListWidget::updateColumns()
 {
-    qDebug("++");
     m_header->updateColumns();
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
     for(int i = 0; i < items.count(); ++i)
