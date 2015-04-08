@@ -1,7 +1,7 @@
 #!/bin/sh
 
-QMMP_VERSION=0.8.3
-UBUNTU_CODENAMES='precise trusty utopic'
+QMMP_VERSION=0.8.4
+UBUNTU_CODENAMES='precise trusty utopic vivid'
 BUILD_ROOT=build-root
 
 

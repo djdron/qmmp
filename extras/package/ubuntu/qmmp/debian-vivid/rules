@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+#export DH_OPTIONS=-v
+
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+	EXTRA_CMAKE_ARGS = -DUSE_HAL:BOOL=FALSE
+else
+	EXTRA_CMAKE_ARGS = -DUSE_ALSA:BOOL=FALSE -DUSE_UDISKS:BOOL=FALSE
+endif
+
+# For hardening (CPPFLAGS is not taken into account by upstream's build system)
+CFLAGS += $(CPPFLAGS)
+CXXFLAGS += $(CPPFLAGS)
+
+# Prevent useless dependencies
+LDFLAGS += -Wl,--as-needed
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX=/usr -DLIB_DIR=lib/qmmp \
+	  -DCMAKE_INSTALL_RPATH=/usr/lib/qmmp \
+	  -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=TRUE \
+	  $(EXTRA_CMAKE_ARGS)
+
+override_dh_auto_build:
+	dh_auto_build -- VERBOSE=1
+
+override_dh_install:
+	dh_install -pqmmp-plugin-projectm
+	dh_install -Xprojectm
+
+# Avoid a call to ldconfig in postinst & postrm (ldconfig is not needed since we
+# only install private libraries)
+override_dh_makeshlibs:
+	dh_makeshlibs --noscripts
+
+# dh_auto_clean doesn't call make distclean automatically from the CMake build
+# directory, so we have to remove leftover .qm files manually
+override_dh_auto_clean:
+	find -name '*.qm' | xargs rm -fv
+	dh_auto_clean
