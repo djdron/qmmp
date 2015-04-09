@@ -142,8 +142,7 @@ void PlayListHeader::addColumn()
     if(column < 0)
         return;
 
-    m_model->insert(column, tr("Title"), "%t");
-    m_model->execEditor(column);
+    m_model->execInsert(column);
 }
 
 void PlayListHeader::editColumn()
@@ -151,7 +150,7 @@ void PlayListHeader::editColumn()
     if(m_pressed_column < 0)
          return;
 
-    m_model->execEditor(m_pressed_column);
+    m_model->execEdit(m_pressed_column);
 }
 
 void PlayListHeader::removeColumn()

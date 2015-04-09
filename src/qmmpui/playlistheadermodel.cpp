@@ -136,7 +136,7 @@ void PlayListHeaderModel::move(int from, int to)
     emit moved(from, to);
 }
 
-void PlayListHeaderModel::execEditor(int index, QWidget *parent)
+void PlayListHeaderModel::execEdit(int index, QWidget *parent)
 {
     if(index < 0 || index >= m_columns.size())
     {
@@ -155,6 +155,23 @@ void PlayListHeaderModel::execEditor(int index, QWidget *parent)
         m_columns[index].titleFormatter->setPattern(editor.pattern());
         emit changed(index);
     }
+}
+
+void PlayListHeaderModel::execInsert(int index, QWidget *parent)
+{
+    if(index < 0 || index > m_columns.size())
+    {
+        qWarning("ColumnManager: index is out of range");
+        return;
+    }
+
+    if(!parent)
+        parent = qApp->activeWindow();
+
+    ColumnEditor editor(tr("Title"),"%t",parent);
+    editor.setWindowTitle(tr("Add Column"));
+    if(editor.exec() == QDialog::Accepted)
+        insert(index, editor.name(), editor.pattern());
 }
 
 int PlayListHeaderModel::count()
