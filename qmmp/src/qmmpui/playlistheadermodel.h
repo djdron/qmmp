@@ -41,7 +41,8 @@ public:
     void resize(int index, int size);
     void setAutoResize(int index);
     void move(int from, int to);
-    void execEditor(int index, QWidget *parent = 0);
+    void execEdit(int index, QWidget *parent = 0);
+    void execInsert(int index, QWidget *parent = 0);
 
     int count();
     const MetaDataFormatter* titleFormatter(int index) const;
