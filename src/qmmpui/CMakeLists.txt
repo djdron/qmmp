@@ -60,7 +60,7 @@ SET(libqmmpui_SRCS
     qmmpuiplugincache.cpp
     tagupdater.cpp
     playlisttask.cpp
-    columnmanager.cpp
+    playlistheadermodel.cpp
     columneditor.cpp
 )
 
@@ -110,7 +110,7 @@ SET(libqmmpui_DEVEL_HDRS
     uifactory.h
     uihelper.h
     uiloader.h
-    columnmanager.h
+    playlistheadermodel.h
 )
 
 
