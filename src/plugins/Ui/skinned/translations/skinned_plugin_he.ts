@@ -931,14 +931,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="55"/>
+        <location filename="../playlistheader.cpp" line="56"/>
         <source>Remove column</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlistheader.cpp" line="144"/>
-        <source>Title</source>
-        <translation type="unfinished">כותרת</translation>
     </message>
 </context>
 <context>

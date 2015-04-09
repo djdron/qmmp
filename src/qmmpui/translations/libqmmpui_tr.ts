@@ -259,14 +259,6 @@
     </message>
 </context>
 <context>
-    <name>ColumnManager</name>
-    <message>
-        <location filename="../columnmanager.cpp" line="37"/>
-        <source>Album - Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
@@ -943,6 +935,24 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PlayListHeaderModel</name>
+    <message>
+        <location filename="../playlistheadermodel.cpp" line="37"/>
+        <source>Album - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheadermodel.cpp" line="171"/>
+        <source>Title</source>
+        <translation type="unfinished">Başlık</translation>
+    </message>
+    <message>
+        <location filename="../playlistheadermodel.cpp" line="172"/>
+        <source>Add Column</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
