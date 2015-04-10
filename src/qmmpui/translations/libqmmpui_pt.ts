@@ -943,17 +943,17 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="37"/>
         <source>Album - Title</source>
-        <translation type="unfinished">Álbum - Título</translation>
+        <translation>Álbum - Título</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="171"/>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="172"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar coluna</translation>
     </message>
 </context>
 <context>

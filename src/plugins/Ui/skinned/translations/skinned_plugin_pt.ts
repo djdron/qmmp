@@ -928,7 +928,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="53"/>
         <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
+        <translation>Redimensionar automaticamente</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="56"/>
