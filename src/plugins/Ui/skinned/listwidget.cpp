@@ -53,6 +53,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_popupWidget = 0;
     m_header = 0;
     m_update = false;
+    m_resize = false;
     m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
     m_prev_y = 0;
@@ -69,11 +70,7 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(headerModel, SIGNAL(changed(int)), SLOT(updateColumns()));
-    connect(headerModel, SIGNAL(resized(int)), SLOT(updateColumns()));
-    connect(headerModel, SIGNAL(inserted(int)), SLOT(updateColumns()));
-    connect(headerModel, SIGNAL(removed(int)), SLOT(updateColumns()));
-    connect(headerModel, SIGNAL(moved(int, int)), SLOT(updateColumns()));
+    connect(headerModel, SIGNAL(headerChanged()), SLOT(updateColumns()));
 }
 
 ListWidget::~ListWidget()
@@ -262,7 +259,9 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
+    m_resize = true;
     m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
+    m_resize = false;
     m_row_count = (e->size().height() - (m_header ? m_header->height() : 0)) / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
@@ -397,6 +396,9 @@ void ListWidget::updateList(int flags)
 
 void ListWidget::updateColumns()
 {
+    if(m_resize) //do no update while resize event
+        return;
+
     m_header->updateColumns();
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
     for(int i = 0; i < items.count(); ++i)

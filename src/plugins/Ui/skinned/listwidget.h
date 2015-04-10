@@ -115,6 +115,7 @@ private:
     PlayListModel *m_model;
     int m_row_count, m_first;
     Skin *m_skin;
+    bool m_resize;
     int m_anchor_index;
     /*!
      * Scroll direction that is preforming in current moment.

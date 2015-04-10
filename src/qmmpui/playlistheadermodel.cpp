@@ -72,7 +72,8 @@ void PlayListHeaderModel::insert(int index, const QString &name, const QString &
     col.autoResize = false;
     m_columns.insert(index, col);
     sync();
-    emit inserted(index);
+    emit columnAdded(index);
+    emit headerChanged();
 }
 
 void PlayListHeaderModel::remove(int index)
@@ -88,7 +89,8 @@ void PlayListHeaderModel::remove(int index)
 
     delete m_columns.takeAt(index).titleFormatter;
     sync();
-    emit removed(index);
+    emit columnRemoved(index);
+    emit headerChanged();
 }
 
 void PlayListHeaderModel::resize(int index, int size)
@@ -100,8 +102,8 @@ void PlayListHeaderModel::resize(int index, int size)
     }
 
    m_columns[index].size = qMax(size, 30);
-   //sync();
-   emit resized(index);
+   emit columnResized(index);
+   emit headerChanged();
 }
 
 void PlayListHeaderModel::setAutoResize(int index)
@@ -133,7 +135,8 @@ void PlayListHeaderModel::move(int from, int to)
     }
 
     m_columns.move(from, to);
-    emit moved(from, to);
+    emit columnMoved(from, to);
+    emit headerChanged();
 }
 
 void PlayListHeaderModel::execEdit(int index, QWidget *parent)
@@ -153,7 +156,8 @@ void PlayListHeaderModel::execEdit(int index, QWidget *parent)
         m_columns[index].name = editor.name();
         m_columns[index].pattern = editor.pattern();
         m_columns[index].titleFormatter->setPattern(editor.pattern());
-        emit changed(index);
+        emit columnChanged(index);
+        emit headerChanged();
     }
 }
 
