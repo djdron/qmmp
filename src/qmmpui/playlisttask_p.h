@@ -43,7 +43,8 @@ public:
         SORT = 0,
         SORT_SELECTION,
         REMOVE_INVALID,
-        REMOVE_DUPLICATES
+        REMOVE_DUPLICATES,
+        SORT_BY_COLUMN
     };
     explicit PlayListTask(QObject *parent);
 
@@ -51,6 +52,7 @@ public:
 
     void sort(QList<PlayListTrack *> tracks, int mode);
     void sortSelection(QList<PlayListTrack *> tracks, int mode);
+    void sortByColumn(QList <PlayListTrack *> tracks, int column);
     void removeInvalidTracks(QList<PlayListTrack *> tracks, PlayListTrack *current_track);
     void removeDuplicates(QList<PlayListTrack *> tracks, PlayListTrack *current_track);
 

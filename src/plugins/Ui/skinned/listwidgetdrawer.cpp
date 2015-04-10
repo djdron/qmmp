@@ -31,7 +31,7 @@
 ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
-    m_column_manager = QmmpUiSettings::instance()->columnManager();
+    m_column_manager = QmmpUiSettings::instance()->headerModel();
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
@@ -144,11 +144,11 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int width = qMin(QmmpUiSettings::instance()->columnManager()->size(i) - 2 * m_padding,
+        int width = qMin(QmmpUiSettings::instance()->headerModel()->size(i) - 2 * m_padding,
                          visible_width - 2 * m_padding);
 
         row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
-        visible_width -= QmmpUiSettings::instance()->columnManager()->size(i);
+        visible_width -= QmmpUiSettings::instance()->headerModel()->size(i);
     }
 }
 
@@ -232,14 +232,14 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
         painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
     }
 
-    for(int i = 0; i < QmmpUiSettings::instance()->columnManager()->count(); i++)
+    for(int i = 0; i < QmmpUiSettings::instance()->headerModel()->count(); i++)
     {
         if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
             break;
 
         painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
         painter->drawText(sx + m_padding, sy, row->titles[i]);
-        sx += QmmpUiSettings::instance()->columnManager()->size(i);
+        sx += QmmpUiSettings::instance()->headerModel()->size(i);
 
         if(m_column_manager->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
         {

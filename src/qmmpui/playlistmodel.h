@@ -442,6 +442,8 @@ public slots:
      * Sorts items in \b mode sort mode.
      */
     void sort(int mode);
+
+    void sortByColumn(int column);
     /*!
      * Adds/removes selected items to/from playback queue.
      */

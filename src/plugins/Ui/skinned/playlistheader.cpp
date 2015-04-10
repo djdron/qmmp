@@ -45,7 +45,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_align_numbres = false;
     m_number_width = 0;
     m_task = NO_TASK;
-    m_model = QmmpUiSettings::instance()->columnManager();
+    m_model = QmmpUiSettings::instance()->headerModel();
     m_skin = Skin::instance();
     m_menu = new QMenu(this);
     m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"), this, SLOT(addColumn()));
