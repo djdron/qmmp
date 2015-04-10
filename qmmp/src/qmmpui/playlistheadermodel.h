@@ -52,11 +52,12 @@ public:
     int autoResizeColumn() const;
 
 signals:
-    void inserted(int index);
-    void removed(int index);
-    void changed(int index);
-    void resized(int index);
-    void moved(int from, int to);
+    void columnAdded(int index);
+    void columnRemoved(int index);
+    void columnChanged(int index);
+    void columnResized(int index);
+    void columnMoved(int from, int to);
+    void headerChanged();
 
 private:
     void sync();

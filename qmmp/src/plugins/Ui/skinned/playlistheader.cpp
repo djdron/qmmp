@@ -262,7 +262,10 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
     int delta = e->size().width() - e->oldSize().width();
     int index = m_model->autoResizeColumn();
     if(index >= 0)
+    {
         m_model->resize(index, m_model->size(index) + delta);
+        updateColumns();
+    }
 }
 
 void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
