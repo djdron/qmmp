@@ -146,7 +146,7 @@ OutputFactory *Output::currentFactory()
 #ifdef Q_OS_LINUX
     QString name = settings.value("Output/current_plugin", "alsa").toString();
 #elif defined Q_WS_WIN
-    QString name = settings.value("Output/current_plugin", "waveout").toString();
+    QString name = settings.value("Output/current_plugin", "directsound").toString();
 #else
     QString name = settings.value("Output/current_plugin", "oss4").toString();
 #endif
