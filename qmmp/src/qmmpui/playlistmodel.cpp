@@ -806,7 +806,7 @@ void PlayListModel::sortSelection(int mode)
     if(m_container->isEmpty())
         return;
 
-    m_task->sortSelection(m_container->tracks(), (PlayListModel::SortMode) mode);
+    m_task->sortSelection(m_container->tracks(), mode);
 }
 
 void PlayListModel::sort(int mode)
@@ -814,7 +814,18 @@ void PlayListModel::sort(int mode)
     if(m_container->isEmpty())
         return;
 
-    m_task->sort(m_container->tracks(), (PlayListModel::SortMode) mode);
+    m_task->sort(m_container->tracks(), mode);
+}
+
+void PlayListModel::sortByColumn(int column)
+{
+    if(m_container->isEmpty())
+        return;
+
+    if(column < 0 || column >= m_ui_settings->headerModel()->count())
+        return;
+
+    m_task->sortByColumn(m_container->tracks(), column);
 }
 
 void PlayListModel::prepareForShufflePlaying(bool val)

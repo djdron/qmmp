@@ -26,7 +26,7 @@
 PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->columnManager();
+    m_columnManager = m_settings->headerModel();
     m_length = 0;
     m_refCount = 0;
     m_sheduledForDeletion = false;
@@ -36,7 +36,7 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->columnManager();
+    m_columnManager = m_settings->headerModel();
     m_refCount = 0;
     m_sheduledForDeletion = false;
 
@@ -54,7 +54,7 @@ PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(in
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->columnManager();
+    m_columnManager = m_settings->headerModel();
     setLength(m_length = info->length());
     insert(Qmmp::URL, info->path());
     m_refCount = 0;
@@ -131,7 +131,7 @@ bool PlayListTrack::isUsed() const
 
 const QString PlayListTrack::formattedTitle(int column)
 {
-    if(m_formattedTitles.count() != m_settings->columnManager()->count())
+    if(m_formattedTitles.count() != m_settings->headerModel()->count())
     {
         while(m_formattedTitles.count() > m_columnManager->count())
             m_formattedTitles.takeLast();
@@ -154,7 +154,7 @@ const QString PlayListTrack::formattedTitle(int column)
 
     if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
     {
-        m_titleFormats[column] = m_settings->columnManager()->pattern(column);
+        m_titleFormats[column] = m_settings->headerModel()->pattern(column);
         formatTitle(column);
     }
     return m_formattedTitles[column];
@@ -162,7 +162,7 @@ const QString PlayListTrack::formattedTitle(int column)
 
 const QStringList PlayListTrack::formattedTitles()
 {
-    if(m_formattedTitles.count() != m_settings->columnManager()->count())
+    if(m_formattedTitles.count() != m_settings->headerModel()->count())
     {
         while(m_formattedTitles.count() > m_columnManager->count())
             m_formattedTitles.takeLast();
@@ -181,7 +181,7 @@ const QStringList PlayListTrack::formattedTitles()
     {
         if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
         {
-            m_titleFormats[column] = m_settings->columnManager()->pattern(column);
+            m_titleFormats[column] = m_settings->headerModel()->pattern(column);
             formatTitle(column);
         }
     }

@@ -45,7 +45,7 @@ ListWidget::ListWidget(QWidget *parent)
 {
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
-    PlayListHeaderModel *headerModel = m_ui_settings->columnManager();
+    PlayListHeaderModel *headerModel = m_ui_settings->headerModel();
     m_menu = new QMenu(this);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);

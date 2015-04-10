@@ -179,7 +179,7 @@ public:
      */
     bool clearPreviousPlayList() const;
 
-    PlayListHeaderModel *columnManager();
+    PlayListHeaderModel *headerModel();
     const MetaDataFormatter* titleFormatter(int column) const;
     const MetaDataFormatter* groupFormatter() const;
 
@@ -277,7 +277,7 @@ private:
     //formatters
     MetaDataFormatter m_group_formatter;
     //column settings
-    PlayListHeaderModel *m_colum_manager;
+    PlayListHeaderModel *m_header;
 };
 
 #endif // QMMPUISETTINGS_H

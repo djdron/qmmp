@@ -121,7 +121,9 @@ PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
 }
 
 PlayListTask::~PlayListTask()
-{}
+{
+    clear();
+}
 
 void PlayListTask::sort(QList<PlayListTrack *> tracks, int mode)
 {
@@ -173,6 +175,26 @@ void PlayListTask::sortSelection(QList<PlayListTrack *> tracks, int mode)
         m_indexes.append(i);
     }
 
+    start();
+}
+
+void PlayListTask::sortByColumn(QList<PlayListTrack *> tracks, int column)
+{
+    if(isRunning())
+        return;
+    clear();
+    m_task = SORT_BY_COLUMN;
+    m_input_tracks = tracks;
+    m_tracks = tracks;
+
+    for(int i = 0; i < tracks.count(); ++i)
+    {
+        TrackField *f = new TrackField;
+        f->track = tracks[i];
+        f->value = f->track->formattedTitle(column);
+        m_fields.append(f);
+    }
+    MetaDataManager::instance()->prepareForAnotherThread();
     start();
 }
 
