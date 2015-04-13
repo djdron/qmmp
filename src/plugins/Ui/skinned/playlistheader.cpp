@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QPainter>
+#include <QBitmap>
 #include <QFont>
 #include <QFontMetrics>
 #include <QSettings>
@@ -34,6 +35,28 @@
 #include <qmmpui/playlistheadermodel.h>
 #include "skin.h"
 #include "playlistheader.h"
+
+static const char * const skinned_arrow_down_xpm[] = {
+    "11 6 2 1",
+    " 	c None",
+    "x	c #000000",
+    "           ",
+    " xxxxxxxxx ",
+    "  xxxxxxx  ",
+    "   xxxxx   ",
+    "    xxx    ",
+    "     x     "};
+
+static const char * const skinned_arrow_up_xpm[] = {
+    "11 6 2 1",
+    " 	c None",
+    "x	c #000000",
+    "     x     ",
+    "    xxx    ",
+    "   xxxxx   ",
+    "  xxxxxxx  ",
+    " xxxxxxxxx ",
+    "           "};
 
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
@@ -85,6 +108,7 @@ void PlayListHeader::readSettings()
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_padding = m_metrics->width("9")/2;
+
     settings.endGroup();
     updateColumns();
 }
@@ -332,6 +356,8 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         painter.drawLine(m_rects[i].right()+1, 0,
                          m_rects[i].right()+1, height()+1);
 
+        painter.drawPixmap(m_rects[i].right() - m_arrow_up.width() - 4, (height() - m_arrow_up.height()) / 2, m_arrow_up);
+
     }
 
     if(m_task == MOVE)
@@ -351,6 +377,15 @@ void PlayListHeader::loadColors()
     m_normal.setNamedColor(m_skin->getPLValue("normal"));
     m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     m_current.setNamedColor(m_skin->getPLValue("current"));
+
+    QPixmap px1(skinned_arrow_up_xpm);
+    QPixmap px2(skinned_arrow_up_xpm);
+    m_arrow_up = px1;
+    m_arrow_down = px2;
+    m_arrow_up.fill(m_normal_bg);
+    m_arrow_down.fill(m_normal_bg);
+    m_arrow_up.setMask(px1.createMaskFromColor(Qt::transparent));
+    m_arrow_down.setMask(px2.createMaskFromColor(Qt::transparent));
 }
 
 int PlayListHeader::findColumn(QPoint pos)
