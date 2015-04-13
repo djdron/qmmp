@@ -62,11 +62,12 @@ public:
     bool isChanged(PlayListContainer *container);
     QList<PlayListTrack *> takeResults(PlayListTrack **current_track);
     PlayListTrack *currentTrack() const;
-
+    int column() const;
+    bool isReverted() const;
+    void clear();
 
 
 private:
-    void clear();
     QList <TrackField *> m_fields;
     QList <PlayListTrack *> m_tracks;
     QList <PlayListTrack *> m_input_tracks;
@@ -76,6 +77,7 @@ private:
     TaskType m_task;
     bool m_reverted;
     bool m_align_groups;
+    int m_column;
     QHash<int, Qmmp::MetaData> m_sort_keys;
 
 };

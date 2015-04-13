@@ -862,13 +862,23 @@ void PlayListModel::updateMetaData()
 void PlayListModel::onTaskFinished()
 {
     if(m_task->isChanged(m_container)) //update unchanged container only
+    {
+        m_task->clear();
         return;
+    }
 
     if(m_task->type() == PlayListTask::SORT || m_task->type() == PlayListTask::SORT_SELECTION)
     {
         m_container->replaceTracks(m_task->takeResults(&m_current_track));
         m_current = m_container->indexOf(m_current_track);
         emit listChanged(STRUCTURE);
+    }
+    else if(m_task->type() == PlayListTask::SORT_BY_COLUMN)
+    {
+        m_container->replaceTracks(m_task->takeResults(&m_current_track));
+        m_current = m_container->indexOf(m_current_track);
+        emit listChanged(STRUCTURE);
+        emit sortingByColumnFinished(m_task->column(), m_task->isReverted());
     }
     else if(m_task->type() == PlayListTask::REMOVE_INVALID
             || m_task->type() == PlayListTask::REMOVE_DUPLICATES)

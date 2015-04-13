@@ -105,6 +105,7 @@ PlayListTask::PlayListTask(QObject *parent) : QThread(parent)
     m_reverted = true;
     m_align_groups = false;
     m_current_track = 0;
+    m_column = 0;
     m_task = EMPTY;
 
     m_sort_keys.insert(PlayListModel::TITLE, Qmmp::TITLE);
@@ -186,6 +187,7 @@ void PlayListTask::sortByColumn(QList<PlayListTrack *> tracks, int column)
     m_task = SORT_BY_COLUMN;
     m_input_tracks = tracks;
     m_tracks = tracks;
+    m_column = column;
 
     for(int i = 0; i < tracks.count(); ++i)
     {
@@ -406,6 +408,16 @@ QList<PlayListTrack *> PlayListTask::takeResults(PlayListTrack **current_track)
         }
     }
     return m_tracks;
+}
+
+int PlayListTask::column() const
+{
+    return m_column;
+}
+
+bool PlayListTask::isReverted() const
+{
+    return m_reverted;
 }
 
 void PlayListTask::clear()
