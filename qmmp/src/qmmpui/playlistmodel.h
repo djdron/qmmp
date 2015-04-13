@@ -332,8 +332,8 @@ signals:
      */
     void loaderFinished();
 
-
     void currentVisibleRequest();
+    void sortingByColumnFinished(int column, bool reverted);
 
 public slots:
     /*!
