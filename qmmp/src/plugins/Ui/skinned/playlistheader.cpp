@@ -68,6 +68,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_show_number = false;
     m_align_numbres = false;
     m_number_width = 0;
+    m_sorting_column = -1;
     m_task = NO_TASK;
     m_model = QmmpUiSettings::instance()->headerModel();
     m_skin = Skin::instance();
@@ -142,12 +143,39 @@ void PlayListHeader::updateColumns()
     for(int i = 0; i < m_model->count(); ++i)
     {
         m_rects << QRect(sx, 0, m_model->size(i), height());
-        m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                         m_model->size(i) - 2 * m_padding);
+        if(i == m_sorting_column)
+        {
+            m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
+                                             m_model->size(i) - 2 * m_padding - m_arrow_up.width() - 4);
+        }
+        else
+        {
+            m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
+                                             m_model->size(i) - 2 * m_padding);
+        }
 
         sx += m_model->size(i);
     }
     update();
+}
+
+void PlayListHeader::showSortIndicator(int column, bool reverted)
+{
+    if(m_sorting_column == column && m_reverted == reverted)
+        return;
+
+    m_sorting_column = column;
+    m_reverted = reverted;
+    updateColumns();
+}
+
+void PlayListHeader::hideSortIndicator()
+{
+    if(m_sorting_column != -1)
+    {
+        m_sorting_column = -1;
+        updateColumns();
+    }
 }
 
 void PlayListHeader::updateSkin()
@@ -240,6 +268,7 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
     {
         m_task = MOVE;
     }
+
     if(m_task == RESIZE && m_model->count() > 1)
     {
         m_model->resize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
@@ -366,8 +395,11 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         painter.drawLine(m_rects[i].right()+1, 0,
                          m_rects[i].right()+1, height()+1);
 
-        painter.drawPixmap(m_rects[i].right() - m_arrow_up.width() - 4, (height() - m_arrow_up.height()) / 2, m_arrow_up);
-
+        if(i == m_sorting_column)
+        {
+            painter.drawPixmap(m_rects[i].right() - m_arrow_up.width() - 4,
+                               (height() - m_arrow_up.height()) / 2, m_reverted ? m_arrow_up : m_arrow_down);
+        }
     }
 
     if(m_task == MOVE)
@@ -389,7 +421,7 @@ void PlayListHeader::loadColors()
     m_current.setNamedColor(m_skin->getPLValue("current"));
 
     QPixmap px1(skinned_arrow_up_xpm);
-    QPixmap px2(skinned_arrow_up_xpm);
+    QPixmap px2(skinned_arrow_down_xpm);
     m_arrow_up = px1;
     m_arrow_down = px2;
     m_arrow_up.fill(m_normal_bg);

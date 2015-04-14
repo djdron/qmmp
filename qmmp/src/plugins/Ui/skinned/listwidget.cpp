@@ -332,7 +332,10 @@ void ListWidget::updateList(int flags)
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
         if(m_header)
+        {
             m_header->setNumberWidth(m_drawer.numberWidth());
+            m_header->hideSortIndicator();
+        }
 
         items = m_model->mid(m_first, m_row_count);
 
@@ -400,6 +403,7 @@ void ListWidget::updateColumns()
         return;
 
     m_header->updateColumns();
+    m_header->hideSortIndicator();
     QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
     for(int i = 0; i < items.count(); ++i)
     {
@@ -447,6 +451,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     {
         previous->setProperty("first_visible", m_first);
         disconnect(previous, 0, this, 0); //disconnect previous model
+        disconnect(previous,0,m_header,0);
     }
     qApp->processEvents();
     m_model = selected;
@@ -463,6 +468,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     }
     connect (m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect (m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
+    connect (m_model, SIGNAL(sortingByColumnFinished(int,bool)), m_header, SLOT(showSortIndicator(int,bool)));
 }
 
 void ListWidget::scroll(int sc)

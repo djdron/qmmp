@@ -47,6 +47,10 @@ public:
     void setNumberWidth(int width);
     void updateColumns();
 
+public slots:
+    void showSortIndicator(int column, bool reverted);
+    void hideSortIndicator();
+
 private slots:
     void updateSkin();
     void addColumn();
@@ -78,11 +82,13 @@ private:
     QPixmap m_arrow_up, m_arrow_down;
     bool m_show_number;
     bool m_align_numbres;
+    bool m_reverted;
     int m_number_width;
     int m_pressed_column;
     int m_old_size;
     int m_press_offset;
     int m_padding;
+    int m_sorting_column;
 
     enum
     {
