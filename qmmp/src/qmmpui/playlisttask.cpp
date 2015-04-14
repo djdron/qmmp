@@ -184,10 +184,11 @@ void PlayListTask::sortByColumn(QList<PlayListTrack *> tracks, int column)
     if(isRunning())
         return;
     clear();
+    m_reverted = !m_reverted;
     m_task = SORT_BY_COLUMN;
     m_input_tracks = tracks;
-    m_tracks = tracks;
     m_column = column;
+    m_sort_mode = PlayListModel::TITLE; //TODO add pattern check
 
     for(int i = 0; i < tracks.count(); ++i)
     {
@@ -246,7 +247,7 @@ void PlayListTask::run()
 {
     qDebug("PlayListTask: started");
 
-    if(m_task == SORT || m_task == SORT_SELECTION)
+    if(m_task == SORT || m_task == SORT_SELECTION || m_task == SORT_BY_COLUMN)
     {
         bool(*compareLessFunc)(TrackField*, TrackField*) = 0;
         bool(*compareGreaterFunc)(TrackField*, TrackField*) = 0;
@@ -373,7 +374,7 @@ bool PlayListTask::isChanged(PlayListContainer *container)
 
 QList<PlayListTrack *> PlayListTask::takeResults(PlayListTrack **current_track)
 {
-    if(m_task == SORT)
+    if(m_task == SORT || m_task == SORT_BY_COLUMN)
     {
         foreach (TrackField *f, m_fields)
             m_tracks.append(f->track);

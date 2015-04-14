@@ -88,7 +88,8 @@ private:
     {
         NO_TASK = -1,
         RESIZE,
-        MOVE
+        MOVE,
+        SORT
     } m_task;
 
 
