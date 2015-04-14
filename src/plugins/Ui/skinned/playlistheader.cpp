@@ -33,6 +33,7 @@
 #include <qmmp/qmmp.h>
 #include <qmmpui/qmmpuisettings.h>
 #include <qmmpui/playlistheadermodel.h>
+#include <qmmpui/playlistmanager.h>
 #include "skin.h"
 #include "playlistheader.h"
 
@@ -211,7 +212,7 @@ void PlayListHeader::mousePressEvent(QMouseEvent *e)
             else
             {
                 m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
-                m_task = MOVE;
+                m_task = SORT;
             }
         }
     }
@@ -224,12 +225,21 @@ void PlayListHeader::mousePressEvent(QMouseEvent *e)
 
 void PlayListHeader::mouseReleaseEvent(QMouseEvent *)
 {
+    if(m_task == SORT)
+    {
+        qDebug("sort column");
+        PlayListManager::instance()->selectedPlayList()->sortByColumn(m_pressed_column);
+    }
     m_task = NO_TASK;
     update();
 }
 
 void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
 {
+    if(m_task == SORT)
+    {
+        m_task = MOVE;
+    }
     if(m_task == RESIZE && m_model->count() > 1)
     {
         m_model->resize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
