@@ -136,7 +136,16 @@ void PlayListHeader::updateColumns()
     if(m_model->count() == 1)
     {
         m_rects << QRect(sx, 0, width() - sx - 5, height());
-        m_names << m_model->name(0);
+        if(m_sorting_column == 0)
+        {
+            m_names << m_metrics->elidedText(m_model->name(0), Qt::ElideRight,
+                                             m_rects.last().width() - 2 * m_padding - m_arrow_up.width() - 4);
+        }
+        else
+        {
+            m_names << m_metrics->elidedText(m_model->name(0), Qt::ElideRight,
+                                             m_rects.last().width() - 2 * m_padding);
+        }
         return;
     }
 
@@ -374,6 +383,12 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     if(m_names.count() == 1)
     {
         painter.drawText(m_rects[0].x() + m_padding, m_metrics->ascent(), m_names[0]);
+        if(m_sorting_column == 0)
+        {
+            painter.drawPixmap(m_rects[0].right() - m_arrow_up.width() - 4,
+                    (height() - m_arrow_up.height()) / 2,
+                    m_reverted ? m_arrow_up : m_arrow_down);
+        }
         return;
     }
 
@@ -398,7 +413,8 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         if(i == m_sorting_column)
         {
             painter.drawPixmap(m_rects[i].right() - m_arrow_up.width() - 4,
-                               (height() - m_arrow_up.height()) / 2, m_reverted ? m_arrow_up : m_arrow_down);
+                               (height() - m_arrow_up.height()) / 2,
+                               m_reverted ? m_arrow_up : m_arrow_down);
         }
     }
 
