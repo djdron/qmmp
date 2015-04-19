@@ -386,7 +386,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Show header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показывать заголовок</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
