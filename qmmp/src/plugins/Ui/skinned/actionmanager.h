@@ -90,6 +90,7 @@ public:
         PL_SELECT_PREVIOUS,
         PL_SHOW_MANAGER,
         PL_GROUP_TRACKS,
+        PL_SHOW_HEADER,
 
         SETTINGS,
         ABOUT,
@@ -106,6 +107,8 @@ public:
 private:
     QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
     QAction *createAction2(QString name, QString confKey, QString key);
+    void readStates();
+    void saveStates();
 
     QSettings *m_settings;
     QHash <int, QAction *> m_actions;

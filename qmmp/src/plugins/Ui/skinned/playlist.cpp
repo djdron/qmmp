@@ -316,6 +316,7 @@ void PlayList::createActions()
                            m_pl_manager, SLOT(reverseList()));
 
     m_sortMenu->addAction(SET_ACTION(ActionManager::PL_GROUP_TRACKS, m_ui_settings, SLOT(setGroupsEnabled(bool))));
+    m_sortMenu->addAction(ACTION(ActionManager::PL_SHOW_HEADER));
     ACTION(ActionManager::PL_GROUP_TRACKS)->setChecked(m_ui_settings->isGroupsEnabled());
     //playlist context menu
     m_listWidget->menu()->addAction(ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -71,7 +71,7 @@ void HotkeyEditor::loadShortcuts()
     m_ui->shortcutTreeWidget->addTopLevelItem(item);
     //playlist
     item = new QTreeWidgetItem (m_ui->shortcutTreeWidget, QStringList() << tr("Playlist"));
-    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_GROUP_TRACKS; ++i)
+    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_SHOW_HEADER; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     m_ui->shortcutTreeWidget->addTopLevelItem(item);
