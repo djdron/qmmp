@@ -946,12 +946,12 @@
         <translation>Álbum - Título</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="171"/>
+        <location filename="../playlistheadermodel.cpp" line="175"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="172"/>
+        <location filename="../playlistheadermodel.cpp" line="176"/>
         <source>Add Column</source>
         <translation>Adicionar coluna</translation>
     </message>
