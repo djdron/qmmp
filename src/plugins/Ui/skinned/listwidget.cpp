@@ -34,6 +34,7 @@
 #include <qmmpui/playlistheadermodel.h>
 #include "listwidget.h"
 #include "playlistheader.h"
+#include "actionmanager.h"
 #include "skin.h"
 #include "popupwidget.h"
 #include "playlist.h"
@@ -51,7 +52,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_timer->setInterval(50);
 
     m_popupWidget = 0;
-    m_header = 0;
+    m_header = new PlayListHeader(this);
     m_update = false;
     m_resize = false;
     m_drop_index = INVALID_INDEX;
@@ -71,6 +72,7 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
     connect(headerModel, SIGNAL(headerChanged()), SLOT(updateColumns()));
+    SET_ACTION(ActionManager::PL_SHOW_HEADER, this, SLOT(readSettings()));
 }
 
 ListWidget::~ListWidget()
@@ -85,31 +87,14 @@ void ListWidget::readSettings()
     settings.beginGroup("Skinned");
     m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
     bool show_popup = settings.value("pl_show_popup", false).toBool();
-    bool show_header = settings.value("pl_show_header", true).toBool();
 
-    if(m_update)
-    {
-        m_drawer.readSettings();
-    }
-
-    if(show_header && !m_header)
-    {
-        m_header = new PlayListHeader(this);
-        m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
-    }
-    else if(!show_header && m_header)
-    {
-        m_header->deleteLater();
-        m_header = 0;
-    }
-    else if(m_header)
-    {
-        m_header->readSettings();
-    }
+    m_header->readSettings();
+    m_header->setVisible(ACTION(ActionManager::PL_SHOW_HEADER)->isChecked());
 
     if (m_update)
     {
-        m_row_count = (height() - (m_header ? m_header->height() : 0)) / m_drawer.rowHeight();
+        m_drawer.readSettings();
+        m_row_count = (height() - (m_header->isVisible() ? m_header->height() : 0)) / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
@@ -121,6 +106,7 @@ void ListWidget::readSettings()
     {
         m_update = true;
     }
+
     if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);
 }
@@ -262,7 +248,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     m_resize = true;
     m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
     m_resize = false;
-    m_row_count = (e->size().height() - (m_header ? m_header->height() : 0)) / m_drawer.rowHeight();
+    m_row_count = (e->size().height() - (m_header->isVisible() ? m_header->height() : 0)) / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
@@ -331,11 +317,7 @@ void ListWidget::updateList(int flags)
 
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
-        if(m_header)
-        {
-            m_header->setNumberWidth(m_drawer.numberWidth());
-            m_header->hideSortIndicator();
-        }
+        m_header->setNumberWidth(m_drawer.numberWidth());
 
         items = m_model->mid(m_first, m_row_count);
 
@@ -348,6 +330,9 @@ void ListWidget::updateList(int flags)
     {
         items = m_model->mid(m_first, m_row_count);
     }
+
+    if(flags & PlayListModel::STRUCTURE)
+        m_header->hideSortIndicator();
 
     int prev_number = 0;
 
@@ -363,7 +348,7 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5, (m_header ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+        row->rect = QRect(5, (m_header->isVisible() ? m_header->height() : 0) + i * m_drawer.rowHeight(),
                           width() - 10, m_drawer.rowHeight() - 1);
         row->titles = items[i]->formattedTitles();
 
@@ -619,8 +604,7 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::indexAt(int y) const
 {
-    if(m_header)
-        y -= m_header->height();
+    y -= m_header->isVisible() ? m_header->height() : 0;
     for (int i = 0; i < qMin(m_row_count, m_model->count() - m_first); ++i)
     {
         if ((y >= i * m_drawer.rowHeight()) && (y <= (i+1) * m_drawer.rowHeight()))

@@ -51,7 +51,6 @@ public:
 
     ~ListWidget();
 
-    void readSettings();
     /*!
      * Returns count of currently visible rows.
      */
@@ -67,6 +66,7 @@ public:
     PlayListModel *model();
 
 public slots:
+    void readSettings();
     void updateList(int flags);
     void updateColumns();
     void scroll(int); //0-99

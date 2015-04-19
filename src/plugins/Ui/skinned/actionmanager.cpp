@@ -90,12 +90,14 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[PL_SHOW_MANAGER] = createAction(tr("&Show Playlists"), "show_playlists",
                                               tr("P"), "view-list-details");
     m_actions[PL_GROUP_TRACKS] = createAction2(tr("&Group tracks"), "group_tracks", tr("Ctrl+G"));
+    m_actions[PL_SHOW_HEADER] = createAction2(tr("&Show header"), "show_header", tr("Ctrl+H"));
     //other
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
     m_actions[ABOUT] = createAction(tr("&About"), "about", "");
     m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");
     m_actions[QUIT] = createAction(tr("&Exit"), "exit", tr("Ctrl+Q"), "application-exit");
     m_settings->endGroup();
+    readStates();
     delete m_settings;
     m_settings = 0;
     m_actions[ABOUT]->setIcon(qApp->windowIcon());
@@ -103,6 +105,7 @@ ActionManager::ActionManager(QObject *parent) :
 
 ActionManager::~ActionManager()
 {
+    saveStates();
     m_instance = 0;
 }
 
@@ -147,6 +150,21 @@ QAction *ActionManager::createAction2(QString name, QString confKey, QString key
     QAction *action = createAction(name, confKey, key);
     action->setCheckable(true);
     return action;
+}
+
+void ActionManager::readStates()
+{
+    m_settings->beginGroup("Skinned");
+    m_actions[PL_SHOW_HEADER]->setChecked(m_settings->value("pl_show_header", true).toBool());
+    m_settings->endGroup();
+}
+
+void ActionManager::saveStates()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
+    settings.setValue("pl_show_header", m_actions[PL_SHOW_HEADER]->isChecked());
+    settings.endGroup();
 }
 
 void ActionManager::saveActions()
