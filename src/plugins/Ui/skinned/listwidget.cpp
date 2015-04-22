@@ -94,7 +94,7 @@ void ListWidget::readSettings()
     if (m_update)
     {
         m_drawer.readSettings();
-        m_row_count = (height() - (m_header->isVisible() ? m_header->height() : 0)) / m_drawer.rowHeight();
+        m_row_count = (height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
@@ -248,7 +248,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     m_resize = true;
     m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
     m_resize = false;
-    m_row_count = (e->size().height() - (m_header->isVisible() ? m_header->height() : 0)) / m_drawer.rowHeight();
+    m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
@@ -348,7 +348,7 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5, (m_header->isVisible() ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+        row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
                           width() - 10, m_drawer.rowHeight() - 1);
         row->titles = items[i]->formattedTitles();
 
