@@ -1,4 +1,4 @@
-qmmp-plugin-pack (0.8.3-3ubuntu1~vivid0) vivid; urgency=medium
+qmmp-plugin-pack (0.8.3-3ubuntu1~vivid3) vivid; urgency=medium
 
   * Rebuild with new qmmp and taglib.
 
