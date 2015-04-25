@@ -1,3 +1,9 @@
+qmmp (0.8.4-1ubuntu3~precise0) precise; urgency=medium
+
+  * Rebuild with new taglib.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 25 Apr 2015 15:16:40 +0300
+
 qmmp (0.8.4-1ubuntu1~precise0) precise; urgency=medium
 
   * New upstream release.
