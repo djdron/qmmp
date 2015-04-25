@@ -1,3 +1,9 @@
+qmmp-plugin-pack (0.8.3-3ubuntu1~utopic0) utopic; urgency=medium
+
+  * Rebuild with new qmmp and taglib.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 25 Apr 2015 15:26:43 +0300
+
 qmmp-plugin-pack (0.8.3-1ubuntu1~utopic0) utopic; urgency=medium
 
   * New upstream release.
