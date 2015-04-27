@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -164,7 +164,7 @@ void DetailsDialog::printInfo()
     //tags
     formattedText += formatRow(tr("Title"), m_metaData[Qmmp::TITLE]);
     formattedText += formatRow(tr("Artist"), m_metaData[Qmmp::ARTIST]);
-    formattedText += formatRow(tr("ALbum artist"), m_metaData[Qmmp::ALBUMARTIST]);
+    formattedText += formatRow(tr("Alum artist"), m_metaData[Qmmp::ALBUMARTIST]);
     formattedText += formatRow(tr("Album"), m_metaData[Qmmp::ALBUM]);
     formattedText += formatRow(tr("Comment"), m_metaData[Qmmp::COMMENT]);
     formattedText += formatRow(tr("Genre"), m_metaData[Qmmp::GENRE]);
