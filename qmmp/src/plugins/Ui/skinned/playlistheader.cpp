@@ -77,6 +77,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"), this, SLOT(editColumn()));
     m_autoResize = m_menu->addAction(tr("Auto-resize"), this, SLOT(setAutoResize(bool)));
     m_autoResize->setCheckable(true);
+    m_menu->addAction(tr("Restore size"), this, SLOT(restoreSize()));
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
 
@@ -229,6 +230,14 @@ void PlayListHeader::setAutoResize(bool yes)
         return;
 
    m_model->setAutoResize(yes ? m_pressed_column : -1);
+}
+
+void PlayListHeader::restoreSize()
+{
+    if(m_pressed_column < 0)
+         return;
+
+    m_model->resize(m_pressed_column, 100);
 }
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
