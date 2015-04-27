@@ -943,7 +943,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="80"/>
         <source>Restore size</source>
-        <translation type="unfinished"></translation>
+        <translation>Восстановить размер</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="82"/>
