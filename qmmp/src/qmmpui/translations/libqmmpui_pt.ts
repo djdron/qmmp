@@ -840,8 +840,8 @@
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
-        <source>Alum artist</source>
-        <translation type="unfinished"></translation>
+        <source>Album artist</source>
+        <translation type="unfinished">Artista do álbum</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
