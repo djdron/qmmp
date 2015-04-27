@@ -941,7 +941,12 @@
         <translation>Авто-размер</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="81"/>
+        <location filename="../playlistheader.cpp" line="80"/>
+        <source>Restore size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="82"/>
         <source>Remove column</source>
         <translation>Удалить колонку</translation>
     </message>
