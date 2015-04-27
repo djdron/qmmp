@@ -57,6 +57,7 @@ private slots:
     void editColumn();
     void removeColumn();
     void setAutoResize(bool yes);
+    void restoreSize();
 
 private:
     void mousePressEvent(QMouseEvent *e);
