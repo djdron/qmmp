@@ -841,7 +841,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>Alum artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
