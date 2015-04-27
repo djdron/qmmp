@@ -188,7 +188,10 @@ void PlayListTask::sortByColumn(QList<PlayListTrack *> tracks, int column)
     m_task = SORT_BY_COLUMN;
     m_input_tracks = tracks;
     m_column = column;
-    m_sort_mode = PlayListModel::TITLE; //TODO add pattern check
+    if(QmmpUiSettings::instance()->headerModel()->pattern(column) == "%n")
+        m_sort_mode = PlayListModel::TRACK;
+    else
+        m_sort_mode = PlayListModel::TITLE;
 
     for(int i = 0; i < tracks.count(); ++i)
     {
