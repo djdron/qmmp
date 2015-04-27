@@ -77,7 +77,7 @@ public:
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
     void drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl);
-    void drawTrack(QPainter *painter, ListWidgetRow *row);
+    void drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl);
     void drawDropLine(QPainter *painter, int row_number, int width);
 
 private:
@@ -85,7 +85,7 @@ private:
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
-    PlayListHeaderModel *m_column_manager;
+    PlayListHeaderModel *m_header_model;
     QFont m_font, m_extra_font;
     bool m_update;
     bool m_show_number;

@@ -97,8 +97,6 @@ void PlayListHeader::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    QFont pl_font;
-    pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_font.fromString(settings.value("header_font", qApp->font().toString()).toString());
 
     if (m_metrics)
@@ -107,7 +105,7 @@ void PlayListHeader::readSettings()
         m_metrics = 0;
     }
 
-    m_metrics = new QFontMetrics(pl_font);
+    m_metrics = new QFontMetrics(m_font);
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_padding = m_metrics->width("9")/2;

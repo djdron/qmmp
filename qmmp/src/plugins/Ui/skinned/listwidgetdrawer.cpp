@@ -31,7 +31,7 @@
 ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
-    m_column_manager = QmmpUiSettings::instance()->headerModel();
+    m_header_model = QmmpUiSettings::instance()->headerModel();
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
@@ -144,11 +144,11 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int width = qMin(QmmpUiSettings::instance()->headerModel()->size(i) - 2 * m_padding,
+        int width = qMin(m_header_model->size(i) - 2 * m_padding,
                          visible_width - 2 * m_padding);
 
         row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
-        visible_width -= QmmpUiSettings::instance()->headerModel()->size(i);
+        visible_width -= m_header_model->size(i);
     }
 }
 
@@ -214,55 +214,102 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     }
 }
 
-void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row)
+void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
     int sy = row->rect.y() + m_metrics->overlinePos() - 1;
-    int sx = row->rect.x();
+    int sx = rtl ? row->rect.right() : row->rect.x();
 
     painter->setFont(m_font);
 
-    //|= number=|=col1  =|=col2  =|=extra=duration=|
-    if(row->numberColumnWidth)
+    if(rtl)
     {
-        sx += row->numberColumnWidth;
-        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-        QString number = QString("%1").arg(row->number);
-        painter->drawText(sx - m_padding - m_metrics->width(number), sy, number);
-        painter->setPen(m_normal);
-        painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
-    }
-
-    for(int i = 0; i < QmmpUiSettings::instance()->headerModel()->count(); i++)
-    {
-        if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
-            break;
-
-        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-        painter->drawText(sx + m_padding, sy, row->titles[i]);
-        sx += QmmpUiSettings::instance()->headerModel()->size(i);
-
-        if(m_column_manager->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
+        //|=duration=extra=|= col2=|=  col1=|=number =|
+        if(row->numberColumnWidth)
         {
+            sx -= row->numberColumnWidth;
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+            QString number = QString("%1").arg(row->number);
+            painter->drawText(sx + m_padding, sy, number);
             painter->setPen(m_normal);
             painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
         }
+
+        for(int i = 0; i < m_header_model->count(); i++)
+        {
+            if(sx - m_padding <= row->rect.x() + row->lengthColumnWidth)
+                break;
+
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+            painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
+            sx -= m_header_model->size(i);
+
+            if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
+            {
+                painter->setPen(m_normal);
+                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+            }
+        }
+
+        sx = row->rect.x() + m_padding;
+        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+
+        if(!row->length.isEmpty())
+        {
+            painter->drawText(sx, sy, row->length);
+            sx += m_metrics->width(row->length) + m_padding;
+        }
+
+        if(!row->extraString.isEmpty())
+        {
+            painter->setFont(m_extra_font);
+            painter->drawText(sx, sy, row->extraString);
+        }
     }
-
-    sx = row->rect.right() - m_padding;
-    painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-
-    if(!row->length.isEmpty())
+    else
     {
-        sx -= m_metrics->width(row->length);
-        painter->drawText(sx, sy, row->length);
-        sx -= m_padding;
-    }
+        //|= number=|=col1  =|=col2  =|=extra=duration=|
+        if(row->numberColumnWidth)
+        {
+            sx += row->numberColumnWidth;
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+            QString number = QString("%1").arg(row->number);
+            painter->drawText(sx - m_padding - m_metrics->width(number), sy, number);
+            painter->setPen(m_normal);
+            painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+        }
 
-    if(!row->extraString.isEmpty())
-    {
-        sx -= m_extra_metrics->width(row->extraString);
-        painter->setFont(m_extra_font);
-        painter->drawText(sx, sy, row->extraString);
+        for(int i = 0; i < m_header_model->count(); i++)
+        {
+            if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
+                break;
+
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+            painter->drawText(sx + m_padding, sy, row->titles[i]);
+            sx += m_header_model->size(i);
+
+            if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
+            {
+                painter->setPen(m_normal);
+                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+            }
+        }
+
+        sx = row->rect.right() - m_padding;
+        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+
+        if(!row->length.isEmpty())
+        {
+            sx -= m_metrics->width(row->length);
+            painter->drawText(sx, sy, row->length);
+            sx -= m_padding;
+        }
+
+        if(!row->extraString.isEmpty())
+        {
+            sx -= m_extra_metrics->width(row->extraString);
+            painter->setFont(m_extra_font);
+            painter->drawText(sx, sy, row->extraString);
+        }
     }
 }
 

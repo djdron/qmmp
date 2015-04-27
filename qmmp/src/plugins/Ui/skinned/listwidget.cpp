@@ -162,7 +162,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             continue;
         }
 
-        m_drawer.drawTrack(&painter, m_rows[i]);
+        m_drawer.drawTrack(&painter, m_rows[i], rtl);
     }
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
