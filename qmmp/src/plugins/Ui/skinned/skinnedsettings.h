@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,10 +36,10 @@ public:
     virtual ~SkinnedSettings();
     void writeSettings();
 
-
 private slots:
     void on_listWidget_itemClicked(QListWidgetItem *);
     void on_plFontButton_clicked();
+    void on_headerFontButton_clicked();
     void on_mainFontButton_clicked();
     void on_skinInstallButton_clicked();
     void loadSkins();
