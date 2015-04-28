@@ -44,6 +44,8 @@
 ListWidget::ListWidget(QWidget *parent)
         : QWidget(parent)
 {
+    m_popupWidget = 0;
+
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
     PlayListHeaderModel *headerModel = m_ui_settings->headerModel();
@@ -51,7 +53,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
 
-    m_popupWidget = 0;
     m_header = new PlayListHeader(this);
     m_update = false;
     m_resize = false;
