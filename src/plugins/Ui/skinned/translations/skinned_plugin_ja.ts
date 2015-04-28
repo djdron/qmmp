@@ -927,27 +927,27 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="76"/>
+        <location filename="../playlistheader.cpp" line="77"/>
         <source>Add column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="77"/>
+        <location filename="../playlistheader.cpp" line="78"/>
         <source>Edit column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="78"/>
+        <location filename="../playlistheader.cpp" line="79"/>
         <source>Auto-resize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="80"/>
+        <location filename="../playlistheader.cpp" line="81"/>
         <source>Restore size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="82"/>
+        <location filename="../playlistheader.cpp" line="83"/>
         <source>Remove column</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1232,131 +1232,138 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>書体</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <location filename="../forms/skinnedsettings.ui" line="250"/>
         <source>Player:</source>
         <translation>プレイヤー:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="171"/>
-        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <location filename="../forms/skinnedsettings.ui" line="175"/>
+        <location filename="../forms/skinnedsettings.ui" line="202"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="178"/>
-        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <location filename="../forms/skinnedsettings.ui" line="156"/>
+        <location filename="../forms/skinnedsettings.ui" line="182"/>
+        <location filename="../forms/skinnedsettings.ui" line="260"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <location filename="../forms/skinnedsettings.ui" line="228"/>
         <source>Playlist:</source>
         <translation>プレイリスト:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <location filename="../forms/skinnedsettings.ui" line="189"/>
         <source>Use bitmap font if available</source>
         <translation>あればビットマップフォントを使用</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <location filename="../forms/skinnedsettings.ui" line="209"/>
+        <source>Playlist header:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="270"/>
         <source>Transparency</source>
         <translation>透過効果</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <location filename="../forms/skinnedsettings.ui" line="276"/>
         <source>Main window</source>
         <translation>メインウィンドウ</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="272"/>
-        <location filename="../forms/skinnedsettings.ui" line="296"/>
-        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <location filename="../forms/skinnedsettings.ui" line="299"/>
+        <location filename="../forms/skinnedsettings.ui" line="323"/>
+        <location filename="../forms/skinnedsettings.ui" line="347"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <location filename="../forms/skinnedsettings.ui" line="306"/>
         <source>Equalizer</source>
         <translation>イコライザー</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <location filename="../forms/skinnedsettings.ui" line="330"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <location filename="../forms/skinnedsettings.ui" line="371"/>
         <source>Miscellaneous</source>
         <translation>その他いろいろ</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <location filename="../forms/skinnedsettings.ui" line="377"/>
         <source>Song Display</source>
         <translation>演目表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <location filename="../forms/skinnedsettings.ui" line="383"/>
         <source>Show protocol</source>
         <translation>プロトコルを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <location filename="../forms/skinnedsettings.ui" line="390"/>
         <source>Show song numbers</source>
         <translation>曲番号つきで表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="414"/>
         <source>Show playlists</source>
         <translation>プレイリストを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="394"/>
+        <location filename="../forms/skinnedsettings.ui" line="421"/>
         <source>Show popup information</source>
         <translation>情報吹き出しを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="406"/>
+        <location filename="../forms/skinnedsettings.ui" line="433"/>
         <source>Edit template</source>
         <translation>ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <location filename="../forms/skinnedsettings.ui" line="457"/>
         <source>Playlist separator:</source>
         <translation>プレイリストの区切り:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <location filename="../forms/skinnedsettings.ui" line="495"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>&apos;新しいプレイリスト&apos;ボタンを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="407"/>
         <source>Show anchor</source>
         <translation>アンカーを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="373"/>
+        <location filename="../forms/skinnedsettings.ui" line="400"/>
         <source>Align song numbers</source>
         <translation>曲番号のみを表示</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="115"/>
         <source>Select Skin Files</source>
         <translation>スキンファイルを選択</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="102"/>
+        <location filename="../skinnedsettings.cpp" line="116"/>
         <source>Skin files</source>
         <translation>スキンファイル</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="150"/>
+        <location filename="../skinnedsettings.cpp" line="168"/>
         <source>Unarchived skin</source>
         <translation>非書庫化スキン</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="179"/>
+        <location filename="../skinnedsettings.cpp" line="197"/>
         <source>Archived skin</source>
         <translation>書庫化スキン</translation>
     </message>
