@@ -46,6 +46,7 @@ public:
     void readSettings();
     void setNumberWidth(int width);
     void updateColumns();
+    int requiredHeight() const;
 
 public slots:
     void showSortIndicator(int column, bool reverted);
@@ -89,6 +90,7 @@ private:
     int m_old_size;
     int m_press_offset;
     int m_padding;
+    int m_pl_padding;
     int m_sorting_column;
 
     enum

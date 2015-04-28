@@ -91,6 +91,7 @@ void ListWidget::readSettings()
 
     m_header->readSettings();
     m_header->setVisible(ACTION(ActionManager::PL_SHOW_HEADER)->isChecked());
+    m_header->setGeometry(0,0,width(), m_header->requiredHeight());
 
     if (m_update)
     {
@@ -247,7 +248,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_resize = true;
-    m_header->setGeometry(0,0,width(), m_drawer.rowHeight());
+    m_header->setGeometry(0,0,width(), m_header->requiredHeight());
     m_resize = false;
     m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
     updateList(PlayListModel::STRUCTURE);

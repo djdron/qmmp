@@ -65,6 +65,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     setMouseTracking(true);
     m_metrics = 0;
     m_padding = 0;
+    m_pl_padding = 0;
     m_show_number = false;
     m_align_numbres = false;
     m_number_width = 0;
@@ -110,6 +111,10 @@ void PlayListHeader::readSettings()
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_padding = m_metrics->width("9")/2;
 
+    QFont pl_font;
+    pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
+    m_pl_padding = QFontMetrics(pl_font).width("9")/2;
+
     settings.endGroup();
     updateColumns();
 }
@@ -131,7 +136,7 @@ void PlayListHeader::updateColumns()
 
     int sx = 5;
     if(m_number_width)
-        sx += m_number_width + 2 * m_padding;
+        sx += m_number_width + 2 * m_pl_padding;
 
     if(m_model->count() == 1)
     {
@@ -169,6 +174,11 @@ void PlayListHeader::updateColumns()
         sx += m_model->size(i);
     }
     update();
+}
+
+int PlayListHeader::requiredHeight() const
+{
+    return m_metrics->lineSpacing() + 1;
 }
 
 void PlayListHeader::showSortIndicator(int column, bool reverted)

@@ -58,7 +58,7 @@ void ListWidgetDrawer::readSettings()
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
-    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
+    m_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_extra_font = m_font;
     m_extra_font.setPointSize(m_font.pointSize() - 1);
     if (m_update)

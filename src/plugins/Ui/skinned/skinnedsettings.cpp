@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -82,6 +82,20 @@ void SkinnedSettings::on_plFontButton_clicked()
     }
 }
 
+void SkinnedSettings::on_headerFontButton_clicked()
+{
+    bool ok;
+    QFont font = m_ui.plFontLabel->font();
+    font = QFontDialog::getFont (&ok, font, this);
+    if (ok)
+    {
+        m_ui.headerFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.headerFontLabel->setFont(font);
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        settings.setValue ("Skinned/header_font", font.toString());
+    }
+}
+
 void SkinnedSettings::on_mainFontButton_clicked()
 {
     bool ok;
@@ -116,20 +130,24 @@ void SkinnedSettings::showEvent(QShowEvent *)
 
 void SkinnedSettings::loadFonts()
 {
+    QFont font;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ("Skinned/pl_font").toString();
-    QFont font = QApplication::font();
-    if(!fontname.isEmpty())
-        font.fromString(fontname);
+
+    QString fontname = settings.value ("Skinned/pl_font", qApp->font().toString()).toString();
+    font.fromString(fontname);
     m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.plFontLabel->setFont(font);
 
-    font = QApplication::font ();
-    fontname = settings.value ("Skinned/mw_font").toString();
-    if(!fontname.isEmpty())
-        font.fromString(fontname);
+    fontname = settings.value ("Skinned/header_font", qApp->font().toString()).toString();
+    font.fromString(fontname);
+    m_ui.headerFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.headerFontLabel->setFont(font);
+
+    fontname = settings.value ("Skinned/mw_font", qApp->font().toString()).toString();
+    font.fromString(fontname);
     m_ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.mainFontLabel->setFont(font);
+
     m_ui.useBitmapCheckBox->setChecked(settings.value("Skinned/bitmap_font", false).toBool());
 }
 
