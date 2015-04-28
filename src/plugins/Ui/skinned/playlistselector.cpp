@@ -72,7 +72,7 @@ void PlayListSelector::readSettings()
         m_metrics = 0;
     }
     m_metrics = new QFontMetrics(m_font);
-    m_pl_separator = settings.value("Skinned/pl_separator", "|").toString();
+    m_pl_separator = settings.value("Skinned/pl_separator", "::").toString();
     m_show_new_pl_button = settings.value("Skinned/pl_show_create_button", false).toBool();
     m_pl_button = "[+]";
     m_pl_separator.append(" ");

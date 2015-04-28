@@ -226,7 +226,7 @@ void SkinnedSettings::readSettings()
     m_ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
     m_ui.playlistsCheckBox->setChecked(settings.value("pl_show_plalists", false).toBool());
     m_ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
-    m_ui.plSeplineEdit->setText(settings.value("pl_separator", "|").toString());
+    m_ui.plSeplineEdit->setText(settings.value("pl_separator", "::").toString());
     m_ui.showNewPLCheckBox->setChecked(settings.value("pl_show_create_button", false).toBool());
     //transparency
     m_ui.mwTransparencySlider->setValue(100 - settings.value("mw_opacity", 1.0).toDouble()*100);
