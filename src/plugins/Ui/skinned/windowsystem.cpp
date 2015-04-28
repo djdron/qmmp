@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Based on Licq                                                         *
  *   Copyright (C) 2006-2009 Licq developers                               *
- *   Copyright (C) 2011-2013 Ilya Kotov                                    *
+ *   Copyright (C) 2011-2015 Ilya Kotov                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -226,6 +226,11 @@ void WindowSystem::revertGravity(WId win)
         return;
     sh.win_gravity = NorthWestGravity;
     XSetWMNormalHints(dsp, win, &sh);
+
+    XSetWindowAttributes xs;
+    memset(&xs, 0, sizeof(xs));
+    xs.bit_gravity = NorthWestGravity;
+    XChangeWindowAttributes(dsp, win, CWBitGravity, &xs);
 }
 
 #endif
