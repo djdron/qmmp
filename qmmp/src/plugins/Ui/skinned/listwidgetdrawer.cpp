@@ -199,7 +199,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     {
         painter->drawLine(10, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
-                          sx + m_metrics->width(row->titles[0]) + 35, sy);
+                          row->rect.width(), sy);
     }
     else
     {
