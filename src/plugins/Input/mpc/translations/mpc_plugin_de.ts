@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderMPCFactory</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="130"/>
         <source>About Musepack Audio Plugin</source>
-        <translation>Über Musepack-Audio-Modul</translation>
+        <translation>Über Musepack-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="131"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation>Qmmp Musepack-Audio-Modul</translation>
+        <translation>Qmmp Musepack-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="132"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="132"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>Über Ogg-Vorbis-Audio-Modul</translation>
+        <translation>Über Ogg-Vorbis-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="133"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation>Qmmp Ogg-Vorbis-Audio-Modul</translation>
+        <translation>Qmmp Ogg-Vorbis-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="134"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="135"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>

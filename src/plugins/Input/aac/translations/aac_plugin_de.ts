@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>AACMetaDataModel</name>
     <message>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
@@ -54,17 +54,17 @@
     <message>
         <location filename="../decoderaacfactory.cpp" line="88"/>
         <source>About AAC Audio Plugin</source>
-        <translation>Über AAC-Audio-Modul</translation>
+        <translation>Über AAC-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="89"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation>Qmmp AAC-Audio-Modul</translation>
+        <translation>Qmmp AAC-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="90"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

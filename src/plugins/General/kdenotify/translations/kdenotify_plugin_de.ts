@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>KdeNotify</name>
     <message>
@@ -43,7 +43,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation>Anzeigedauer (Sekunden):</translation>
+        <translation>Benachrichtigungsdauer [s]:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>

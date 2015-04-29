@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderCUEFactory</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="98"/>
         <source>About CUE Audio Plugin</source>
-        <translation>Über CUE-Audio-Modul</translation>
+        <translation>Über CUE-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="99"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation>Qmmp CUE-Audio-Modul</translation>
+        <translation>Qmmp CUE-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="100"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Load incorrect cue sheets if possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Falsche Cuesheets laden, wenn möglich</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

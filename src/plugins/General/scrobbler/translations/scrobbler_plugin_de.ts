@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../scrobblerfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -46,7 +46,7 @@
         <location filename="../settingsdialog.ui" line="50"/>
         <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Überprüfen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -64,50 +64,22 @@
         <location filename="../settingsdialog.cpp" line="121"/>
         <location filename="../settingsdialog.cpp" line="172"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachricht</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Warten Sie auf den Start des Browsers</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Erlauben Sie Qmmp das Scrobbeln von Titeln zu Ihrem %1-Konto</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <source>Network error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="121"/>
-        <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="172"/>
-        <source>Permission granted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Drücken Sie &quot;OK&quot;</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -117,7 +89,35 @@
         <location filename="../settingsdialog.cpp" line="180"/>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <source>Network error</source>
+        <translation>Netzwerkfehler</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <source>Unable to register new session</source>
+        <translation>Neue Sitzung ist nicht registrierfähig</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="121"/>
+        <source>New session has been received successfully</source>
+        <translation>Neue Sitzung wurde erfolgreich empfangen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="172"/>
+        <source>Permission granted</source>
+        <translation>Berechtigung gewährt</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Permission denied</source>
+        <translation>Berechtigung gewährt</translation>
     </message>
 </context>
 </TS>

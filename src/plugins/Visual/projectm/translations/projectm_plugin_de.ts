@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>ProjectMPlugin</name>
     <message>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="165"/>
         <source>&amp;Show Song Title</source>
-        <translation>Na&amp;me des Titels anzeigen</translation>
+        <translation>Liedna&amp;me anzeigen</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="165"/>
@@ -44,12 +44,12 @@
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>&amp;Show Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menü an&amp;zeigen</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="167"/>
         <source>M</source>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="169"/>
@@ -122,12 +122,12 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugin adds projectM visualization</source>
-        <translation>Dieses Modul fügt Unterstützung für ProjectM-Visualisierungen hinzu</translation>
+        <translation>Dieses Modul fügt ProjectM-Visualisierungen hinzu</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>

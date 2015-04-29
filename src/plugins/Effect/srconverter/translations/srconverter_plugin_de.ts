@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
@@ -11,17 +11,17 @@
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation>Über „Sample Rate Converter“-Modul</translation>
+        <translation>Über Abtastratenkonverter-Modul</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation>Qmmp „Sample Rate Converter“-Modul</translation>
+        <translation>Qmmp Abtastratenkonverter-Modul</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation>Einstellungen „Sample Rate Converter“-Modul</translation>
+        <translation>Einstellungen Abtastratenkonverter-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation>Sinc (schnell)</translation>
+        <translation>Schnellste Sinc-Interpolation</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>

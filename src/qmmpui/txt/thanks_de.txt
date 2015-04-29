@@ -1,22 +1,26 @@
 Dank an:
 
-    Adria Arrufat <swiftscythe@gmail.com> – Fehlerberichte
-    Adrian Knoth <adi@drcomp.erfurt.thur.de> – Korrekturen am JACK-Modul, Fehlerberichte
-    Anton Petrusevich <casus@casus.us> – Verschiedene Verbesserungen der Wiedergabe
-    Avihay Baratz <avihayb@gmail.com> – Autostop-Funktion, Fehlerkorrekturen
-    Csaba Hruska <csaba.hruska@gmail.com> – Korrekturen am FFmpeg-Modul
-    Dmitry Kostin <kostindima@gmail.com> – Unterstützung für iso.wv
-    Evgeny Gleyzerman <evgley@gmail.com> – Verbesserungen an der CUE-Verarbeitung
-    Gennadi Motsyo <drool@altlinux.ru> – Fehlerberichte
-    Vadim Kalinnikov <moose@ylsoftware.com> – Projekt-Hosting
-    Erik Ölsar <erlk.ozlr@gmail.com> – Designte Mauszeiger, Verbesserungen an der Oberfläche
-    Funda Wang <fundawang@gmail.com> – Korrekturen an den CMake-Dateien
-    Makis Kalofolias <makskafl@gmail.com> – Unterstützung für EAC3, DTS und Dolby TrueHD
-    Michail Zheludkov <zheludkovm@mail.ru> – Korrekturen am FFmpeg-Modul
-    Michał Grosicki <grosik88@o2.pl> – Fehlerkorrekturem im ALSA-Modul
-    Panagiotis Papadopoulos <pano_90@gmx.net> – Korrekturen an der Oberfläche, Fehlerberichte
-    Pino Toscano <toscano.pino@tiscali.it> – Verbesserungen der Portabilität
-    Karel Volný <kvolny@redhat.com> – Verschiedene Korrekturen
-    Sebastian Pipping <webmaster@hartwork.org> – bs2b-Verbesserungen
-    Stefan Koelling <stefankoelling.ext@googlemail.com> – Kompilierungskorrekturen
-    Yaakov Selkowitz <yselkowitz@gmail.com> – Cygwin-Verbesserungen
+    Adria Arrufat <swiftscythe@gmail.com> - Fehlerberichte
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - JACK-Modulkorrekturen, Fehlerberichte
+    Anton Petrusevich <casus@casus.us> - beliebige Wiedergabeverbesserungen
+    Avihay Baratz <avihayb@gmail.com> - automatische Stoppfunktion, Fehlerkorrekturen
+    Brice Videau <brice.videau@gmail.com> - Fehlerkorrekturen
+    Cristian Rodríguez <judas.iscariote@gmail.com> - Scrobbler-Korrekturen
+    Csaba Hruska <csaba.hruska@gmail.com> - FFmpeg-Modulkorrekturen
+    Dmitry Kostin <kostindima@gmail.com> - iso.wv-Unterstützung
+    Evgeny Gleyzerman <evgley@gmail.com> - cue-Zerteilungsverbesserungen
+    Ferdinand Vesely <erdofves@gmail.com> - Scrobbler-Verbesserungen
+    Gennadi Motsyo <drool@altlinux.ru> - Fehlerberichte
+    Vadim Kalinnikov <moose@ylsoftware.com> - Projekt-Hosting
+    Erik Ölsar <erlk.ozlr@gmail.com> - Mauszeigerdesigns, Benutzeroberflächenverbesserungen
+    Funda Wang <fundawang@gmail.com> - cmake-Dateienkorrekturen
+    Makis Kalofolias <makskafl@gmail.com> - EAC3-, DTS- und Dolby-TrueHD-Unterstützung
+    Michail Zheludkov <zheludkovm@mail.ru> - FFmpeg-Modulkorrekturen
+    Michał Grosicki <grosik88@o2.pl> - ALSA-Modulkorrekturen
+    Panagiotis Papadopoulos <pano_90@gmx.net> - Oberflächenkorrekturen, Fehlerberichte
+    Pino Toscano <toscano.pino@tiscali.it> - Portabilitätspatches
+    Karel Volný <kvolny@redhat.com> - verschiedene Korrekturen
+    Ryota Shimamoto <liangtai.s16@gmail.com> - FreeBSD-Patches
+    Sebastian Pipping <webmaster@hartwork.org> - bs2b-Patches
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - einige Build-Korrekturen
+    Yaakov Selkowitz <yselkowitz@gmail.com> - Cygwin-Patches

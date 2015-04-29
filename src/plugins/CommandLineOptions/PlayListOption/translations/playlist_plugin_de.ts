@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>PlayListOption</name>
     <message>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="62"/>
         <source>Play track &lt;track&gt; in playlist &lt;id&gt;</source>
-        <translation>Stück &lt;track&gt; aus der Wiedergabeliste &lt;id&gt; abspielen</translation>
+        <translation>Titel &lt;track&gt; aus der Wiedergabeliste &lt;id&gt; abspielen</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="63"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="110"/>
         <source>Invalid track ID</source>
-        <translation>Ungültige Stück-ID</translation>
+        <translation>Ungültige Titelkennung</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>OutputPulseAudioFactory</name>
     <message>
@@ -11,17 +11,17 @@
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="54"/>
         <source>About PulseAudio Output Plugin</source>
-        <translation>Über PulseAudio-Ausgabe-Modul</translation>
+        <translation>Über PulseAudio-Ausgabemodul</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="55"/>
         <source>Qmmp PulseAudio Output Plugin</source>
-        <translation>Qmmp PulseAudio-Ausgabe-Modul</translation>
+        <translation>Qmmp PulseAudio-Ausgabemodul</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="56"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

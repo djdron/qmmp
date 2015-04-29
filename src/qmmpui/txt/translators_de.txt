@@ -1,19 +1,35 @@
-Brasilianisch Portugiesisch:
+Brasilianisches Portugiesisch:
     Klaos Lacerda
     Bruno Gonçalves
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
-Chinesisch (Langzeichen):
+Chinesisch traditionell
     lon <lon83129@126.com>
 
-Chinesisch (Kurzzeichen):
+Chinesisch vereinfacht:
     lon <lon83129@126.com>
+
+Tschechisch:
+    Karel Volný <kvolny@redhat.com>
+
+Niederländisch:
+    Ronald Uitermark <ronald645@gmail.com>
+
+Französisch:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+Galizisch:
+    Óscar Pereira <oscarpereira1989@gmail.com>
 
 Deutsch:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
-Französisch:
-    Stanislas Zeller <uncensored.assault@gmail.com>
+Hebräisch:
+    Genghis Khan <genghiskhan@gmx.ca>
+
+Ungarisch:
+    Németh Gábor <sutee84@freemail.hu>
 
 Italienisch:
     Gian Paolo Renello <emmerkar@gmail.com>
@@ -27,23 +43,23 @@ Kasachisch:
 Litauisch:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
-Niederländisch:
-    Ronald Uitermark <ronald645@gmail.com>
-
 Polnisch:
     Grzegorz Gibas <amigib@gmail.com>
 
+Portugiesisch:
+    Sérgio Marques <smarquespt@gmail.com>
+
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
+
+Serbisch:
+    Mladen Pejaković <pejakm@autistici.org>
 
 Slowakisch:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
 Spanisch:
     Félix Medrano <xukosky@yahoo.es>
-
-Tschechisch:
-    Karel Volný <kvolny@redhat.com>
 
 Türkisch:
     Mustafa GUNAY <mustafagunay@pgmail.com>
@@ -52,5 +68,3 @@ Türkisch:
 Ukrainisch:
     Gennadi Motsyo <drool@altlinux.ru>
 
-Ungarisch:
-    Németh Gábor <sutee84@freemail.hu>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>Converter</name>
     <message>
         <location filename="../converter.cpp" line="169"/>
         <source>Track: %1</source>
-        <translation>Stück: %1</translation>
+        <translation>Titel: %1</translation>
     </message>
     <message>
         <location filename="../converter.cpp" line="171"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../converterdialog.ui" line="29"/>
         <source>Select tracks to convert:</source>
-        <translation>Wählen Sie die zu konvertierenden Dateien aus:</translation>
+        <translation>Zu konvertierende Titel auswählen:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
@@ -74,12 +74,12 @@
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
         <source>Track number</source>
-        <translation>Stücknummer</translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
         <source>Two-digit track number</source>
-        <translation>Zweistellige Stücknummer</translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
@@ -112,11 +112,6 @@
         <translation>Dateiname</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="130"/>
-        <source>Create a copy</source>
-        <translation>Kopie erstellen</translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>Year</source>
         <translation>Jahr</translation>
@@ -135,6 +130,11 @@
         <location filename="../converterdialog.cpp" line="129"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="130"/>
+        <source>Create a copy</source>
+        <translation>Kopie erstellen</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
@@ -162,12 +162,12 @@
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translation>Dieses Modul konvertiert unterstützte Audiodateien in andere Formate, mit Hilfe von Befehlszeilen-Kodierern</translation>
+        <translation>Dieses Modul konvertiert unterstützte Audiodateien durch externe Befehlszeilen-Kodierer in andere Formate</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation>Bearbeiten der Voreinstellungen</translation>
+        <translation>Voreinstellungseditor</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="29"/>
@@ -228,7 +228,7 @@
     <message>
         <location filename="../preseteditor.ui" line="83"/>
         <source>Write tags</source>
-        <translation>Metadaten schreiben</translation>
+        <translation>Schlagwörter schreiben</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="90"/>

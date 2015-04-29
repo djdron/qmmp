@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderWildMidiFactory</name>
     <message>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="104"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation>Über WildMidi-Audio-Modul</translation>
+        <translation>Über WildMidi-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="105"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation>Qmmp WildMidi-Audio-Modul</translation>
+        <translation>Qmmp WildMidi-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="106"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="107"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="50"/>
         <source>Enhanced resampling</source>
-        <translation>Verbessertes Resampling</translation>
+        <translation>Verbesserte Abtastratenkonvertierung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
