@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderFLACFactory</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decoderflacfactory.cpp" line="203"/>
         <source>About FLAC Audio Plugin</source>
-        <translation>Über FLAC-Audio-Modul</translation>
+        <translation>Über FLAC-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="204"/>
         <source>Qmmp FLAC Audio Plugin</source>
-        <translation>Qmmp FLAC-Audio-Modul</translation>
+        <translation>Qmmp FLAC-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="205"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>

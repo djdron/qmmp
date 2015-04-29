@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
 <context>
     <name>DecoderFFapFactory</name>
     <message>
@@ -11,7 +9,7 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="50"/>
         <source>Monkey&apos;s Audio Files</source>
-        <translation>„Monkey’s Audio“-Dateien</translation>
+        <translation>Monkey’s-Audio-Dateien</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="153"/>
@@ -26,12 +24,12 @@
     <message>
         <location filename="../decoderffapfactory.cpp" line="155"/>
         <source>This plugin provides Monkey&apos;s Audio (APE) support</source>
-        <translation>Dieses Modul fügt Unterstützung für „Monkey’s Audio“ (APE) hinzu</translation>
+        <translation>Dieses Modul fügt Unterstützung für Monkey’s Audio (APE) hinzu</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
@@ -69,7 +67,7 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>kbit/s</translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>

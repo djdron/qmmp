@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>StatusOption</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../statusoption.cpp" line="41"/>
         <source>Print formatted track name (example: qmmp --nowplaying &quot;%t - %a&quot;)</source>
-        <translation>Namen des Stückes formattiert ausgeben (Beispiel: qmmp --nowplaying &quot;%t - %a&quot;)</translation>
+        <translation>Namen des Titels formatiert ausgeben (Beispiel: qmmp --nowplaying &quot;%t - %a&quot;)</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="42"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../statusoption.cpp" line="92"/>
         <source>%aa - album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>%aa - Albuminterpret</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="93"/>
@@ -46,12 +46,12 @@
     <message>
         <location filename="../statusoption.cpp" line="94"/>
         <source>%n - track</source>
-        <translation>%n – Stück</translation>
+        <translation>%n – Titel</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="95"/>
         <source>%NN - 2-digit track</source>
-        <translation>%NN – Zweistellige Stücknummer</translation>
+        <translation>%NN – 2-stellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="96"/>

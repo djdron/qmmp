@@ -1,14 +1,13 @@
-Hauptentwickler:
+Kernentwickler:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (Idee und Programmierung)
-    Vladimir Kuznetsov <vovanec@gmail.com> (Look & Feel und viele Verbesserungen)
+    Ilya Kotov <forkotov02@hotmail.ru> (Idee und Basiscode)
+    Vladimir Kuznetsov <vovanec@gmail.com> (Erscheinungsbild und viele Verbesserungen)
 
-Plugin-Entwickler:
+Modulentwickler:
 
-    Artur Guzik <aguzik88@gmail.com> (KDE-4-Benachrichtigungs-Modul, Verbesserungen am Statussymbol-Modul)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- und OSS-Plugin)
+    Artur Guzik <aguzik88@gmail.com> (kde4-Benachrichtigungsmodul, Benachrichtigungsfeldverbesserungen)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- & OSS-Modul)
 
-Design:
+Grafik:
 
     Andrey Adreev <andreev00@gmail.com>
-

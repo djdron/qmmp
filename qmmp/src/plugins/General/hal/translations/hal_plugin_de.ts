@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>HalFactory</name>
     <message>
@@ -21,12 +21,12 @@
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation>Dieses Modul bietet die Erkennung von Wechseldatenträgern mit Hilfe von HAL</translation>
+        <translation>Dieses Modul bietet Wechsellaufwerkerkennung unter Verwendung von HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="54"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../halplugin.cpp" line="166"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation>Gerät „%1“ hinzufügen</translation>
+        <translation>Datenträger „%1“ hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="28"/>
         <source>CD Audio Detection</source>
-        <translation>Erkennung von Audio-CDs</translation>
+        <translation>CD-Audio-Erkennung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="37"/>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>Removable Device Detection</source>
-        <translation>Erkennung von Wechseldatenträgern</translation>
+        <translation>Wechsellaufwerkerkennung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>

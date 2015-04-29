@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="53"/>
@@ -47,24 +47,9 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="43"/>
-        <source>UID</source>
-        <translation>UID</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="44"/>
-        <source>Name</source>
-        <translation>Name</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="126"/>
-        <source>This LADSPA plugin has no user controls</source>
-        <translation>Dieses LADSPA-Modul hat keine Einstellungsmöglichkeiten</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>LADSPA Plugin Catalog</source>
-        <translation>LADSPA-Modul-Katalog</translation>
+        <translation>LADSPA-Modulkatalog</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
@@ -80,6 +65,21 @@
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Configure</source>
         <translation>Einrichten</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="43"/>
+        <source>UID</source>
+        <translation>UID</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="44"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="126"/>
+        <source>This LADSPA plugin has no user controls</source>
+        <translation>Dieses LADSPA-Modul hat keine Einstellungsmöglichkeiten</translation>
     </message>
 </context>
 </TS>

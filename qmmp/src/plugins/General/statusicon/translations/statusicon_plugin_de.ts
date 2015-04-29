@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>SettingsDialog</name>
     <message>
@@ -9,9 +9,9 @@
         <translation>Einstellungen Statussymbol-Modul</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Kurzinfo</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Ballon-Nachricht</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,14 +20,19 @@
         <translation>Anzeigedauer (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Ballon-Nachricht</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Kurzinfo</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Bei keinem Schlagwort versuchen Dateinamen zu trennen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation>Fortschrittsanzeige zeigen</translation>
+        <translation>Fortschrittsbalken anzeigen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
@@ -40,16 +45,6 @@
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation>Vorlage bearbeiten</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Versuchen Dateinamen zu trennen, wenn kein Tag vorhanden</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
         <translation>Cover-Größe:</translation>
@@ -58,6 +53,11 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation>32</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -116,6 +116,11 @@
         <translation>Statussymbol-Modul</translation>
     </message>
     <message>
+        <location filename="../statusiconfactory.cpp" line="50"/>
+        <source>About Status Icon Plugin</source>
+        <translation>Über Statussymbol-Modul</translation>
+    </message>
+    <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Qmmp Statussymbol-Modul</translation>
@@ -134,11 +139,6 @@
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
         <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
-    </message>
-    <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
-        <source>About Status Icon Plugin</source>
-        <translation>Über Statussymbol-Modul</translation>
     </message>
 </context>
 <context>

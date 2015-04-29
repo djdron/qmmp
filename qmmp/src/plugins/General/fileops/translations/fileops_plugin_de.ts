@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>FileOps</name>
     <message>
@@ -47,22 +47,22 @@
     <message>
         <location filename="../fileopsfactory.cpp" line="30"/>
         <source>File Operations Plugin</source>
-        <translation>Datei-Aktionen-Modul</translation>
+        <translation>Dateioperationen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="50"/>
         <source>About File Operations Plugin</source>
-        <translation>Über Datei-Aktionen-Modul</translation>
+        <translation>Über Dateioperationen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="51"/>
         <source>Qmmp File Operations Plugin</source>
-        <translation>Qmmp Datei-Aktionen-Modul</translation>
+        <translation>Qmmp Dateioperationen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -86,6 +86,59 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>File Operations Settings</source>
+        <translation>EInstellungen Datei-Aktionen-Modul</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Enabled</source>
+        <translation>Aktiviert</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Operation</source>
+        <translation>Aktion</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Menu text</source>
+        <translation>Menütext</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="63"/>
+        <source>Shortcut</source>
+        <translation>Kurzbefehl</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="56"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <source>Remove</source>
+        <translation>Entfernen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="116"/>
+        <source>Destination:</source>
+        <translation>Zielort:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation>…</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
+        <source>File name pattern:</source>
+        <translation>Dateinamensmuster:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Copy</source>
@@ -96,13 +149,6 @@
         <location filename="../settingsdialog.cpp" line="134"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="56"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <source>Remove</source>
-        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="139"/>
@@ -125,29 +171,24 @@
         <translation>Titel</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="196"/>
+        <source>Track number</source>
+        <translation>Titelnummer</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="197"/>
+        <source>Two-digit track number</source>
+        <translation>Zweistellige Titelnummer</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
-        <source>Year</source>
-        <translation>Jahr</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
-        <source>Track number</source>
-        <translation>Stücknummer</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
-        <source>Two-digit track number</source>
-        <translation>Zweistellige Stücknummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
@@ -175,6 +216,11 @@
         <translation>Dateipfad</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="205"/>
+        <source>Year</source>
+        <translation>Jahr</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
         <translation>Zustand</translation>
@@ -183,52 +229,6 @@
         <location filename="../settingsdialog.cpp" line="222"/>
         <source>Choose a directory</source>
         <translation>Ein Verzeichnis wählen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
-        <translation>EInstellungen Datei-Aktionen-Modul</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Enabled</source>
-        <translation>Aktiviert</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="53"/>
-        <source>Operation</source>
-        <translation>Aktion</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>Menu text</source>
-        <translation>Menütext</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="63"/>
-        <source>Shortcut</source>
-        <translation>Kurzbefehl</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation>…</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="116"/>
-        <source>Destination:</source>
-        <translation>Zielort:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation>Hinzufügen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="133"/>
-        <source>File name pattern:</source>
-        <translation>Dateinamensmuster:</translation>
     </message>
 </context>
 </TS>

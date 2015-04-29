@@ -1,39 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
 <context>
     <name>DecoderMPG123Factory</name>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="111"/>
+        <location filename="../decodermpg123factory.cpp" line="108"/>
         <source>MPG123 Plugin</source>
         <translation>MPG123-Modul</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="114"/>
+        <location filename="../decodermpg123factory.cpp" line="111"/>
         <source>MPEG Files</source>
         <translation>MPEG-Dateien</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="254"/>
+        <location filename="../decodermpg123factory.cpp" line="246"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>Über MPG123-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="255"/>
+        <location filename="../decodermpg123factory.cpp" line="247"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>Qmmp MPG123-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="256"/>
+        <location filename="../decodermpg123factory.cpp" line="248"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>Dieses Modul fügt, mit Hilfe der „libmpg123“-Bibliothek,
 Unterstützung für Dateien im „MPEG v1/2 Layer1/2/3“-Format hinzu</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="258"/>
+        <location filename="../decodermpg123factory.cpp" line="250"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -122,6 +120,16 @@ Unterstützung für Dateien im „MPEG v1/2 Layer1/2/3“-Format hinzu</translat
         <translation>Einstellungen MPEG-Modul</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Tag Priority</source>
+        <translation>Schlagwortpriorität</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>First:</source>
+        <translation>Erster:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
@@ -134,26 +142,6 @@ Unterstützung für Dateien im „MPEG v1/2 Layer1/2/3“-Format hinzu</translat
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>ID3v1-Kodierung:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>ID3v2-Kodierung:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Tag Priority</source>
-        <translation>Tag-Priorität</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>First:</source>
-        <translation>Erster:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -183,6 +171,16 @@ Unterstützung für Dateien im „MPEG v1/2 Layer1/2/3“-Format hinzu</translat
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>Kodierungen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>ID3v1-Kodierung:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>ID3v2-Kodierung:</translation>
     </message>
 </context>
 </TS>

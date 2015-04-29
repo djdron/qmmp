@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -9,14 +9,19 @@
         <translation>WavPack-Modul</translation>
     </message>
     <message>
+        <location filename="../decoderwavpackfactory.cpp" line="46"/>
+        <source>WavPack Files</source>
+        <translation>WavPack-Dateien</translation>
+    </message>
+    <message>
         <location filename="../decoderwavpackfactory.cpp" line="152"/>
         <source>About WavPack Audio Plugin</source>
-        <translation>Über WavPack-Audio-Modul</translation>
+        <translation>Über WavPack-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="153"/>
         <source>Qmmp WavPack Audio Plugin</source>
-        <translation>Qmmp WavPack-Audio-Modul</translation>
+        <translation>Qmmp WavPack-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="154"/>
@@ -26,12 +31,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="156"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
-        <location filename="../decoderwavpackfactory.cpp" line="46"/>
-        <source>WavPack Files</source>
-        <translation>WavPack-Dateien</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>

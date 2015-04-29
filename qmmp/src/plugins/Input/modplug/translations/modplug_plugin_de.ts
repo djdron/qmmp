@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="127"/>
         <source>About ModPlug Audio Plugin</source>
-        <translation>Über ModPlug-Audio-Modul</translation>
+        <translation>Über ModPlug-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="128"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>Qmmp ModPlug-Audio-Modul</translation>
+        <translation>Qmmp ModPlug-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="130"/>
@@ -85,7 +85,7 @@
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation>Samples</translation>
+        <translation>Abtastwerte</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Resampling</source>
-        <translation>Resampling</translation>
+        <translation>Abtastratenkonvertierung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="109"/>
         <source>Nearest (fastest)</source>
-        <translation>Nearest (sehr schnell)</translation>
+        <translation>Nächste (Schnellste)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
@@ -212,12 +212,24 @@
         <translation>Hall</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="202"/>
+        <location filename="../settingsdialog.ui" line="467"/>
+        <source>Depth (%)</source>
+        <translation>Intensität (%)</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="234"/>
         <location filename="../settingsdialog.ui" line="368"/>
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
         <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="260"/>
+        <location filename="../settingsdialog.ui" line="519"/>
+        <source>Delay (ms)</source>
+        <translation>Verzögerung (ms)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
@@ -228,6 +240,16 @@
         <location filename="../settingsdialog.ui" line="324"/>
         <source>Bass Boost</source>
         <translation>Bass Boost</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="336"/>
+        <source>Amount (%)</source>
+        <translation>Pegel (%)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="394"/>
+        <source>Range (Hz)</source>
+        <translation>Bereich (Hz)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
@@ -252,7 +274,15 @@
     <message>
         <location filename="../settingsdialog.ui" line="586"/>
         <source>Volume</source>
-        <translation>Pegel</translation>
+        <translation>Lautstärke</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="656"/>
+        <source>Note: Setting the preamp
+too high may cause clipping!</source>
+        <translation>Hinweis: Ein zu hoch gewählter
+Vorverstärkungspegel kann
+Signalübersteuerungen verursachen.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -267,7 +297,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="683"/>
         <source>Use filename as song title</source>
-        <translation>Dateiname als Titel verwenden</translation>
+        <translation>Dateiname als Liedtitel verwenden</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
@@ -277,7 +307,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
         <source>Fast playlist info</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnelle Wiedergabelisteninfo</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
@@ -308,36 +338,6 @@
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
         <translation>Endlosschleife</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="202"/>
-        <location filename="../settingsdialog.ui" line="467"/>
-        <source>Depth (%)</source>
-        <translation>Intensität (%)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="260"/>
-        <location filename="../settingsdialog.ui" line="519"/>
-        <source>Delay (ms)</source>
-        <translation>Verzögerung (ms)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="336"/>
-        <source>Amount (%)</source>
-        <translation>Pegel (%)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="394"/>
-        <source>Range (Hz)</source>
-        <translation>Bereich (Hz)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="656"/>
-        <source>Note: Setting the preamp
-too high may cause clipping!</source>
-        <translation>Hinweis: Ein zu hoch gewählter
-Vorverstärkungspegel kann
-Signalübersteuerungen verursachen.</translation>
     </message>
 </context>
 </TS>

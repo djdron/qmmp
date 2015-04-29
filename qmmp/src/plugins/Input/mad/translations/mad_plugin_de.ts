@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderMADFactory</name>
     <message>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="246"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>Über MPEG-Audio-Modul</translation>
+        <translation>Über MPEG-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="247"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation>Qmmp MPEG-Audio-Modul</translation>
+        <translation>Qmmp MPEG-Audiomodul</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="248"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="252"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="253"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
-        <translation>kbps</translation>
+        <translation>KBit/s</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
@@ -125,6 +125,16 @@
         <translation>Einstellungen MPEG-Modul</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Tag Priority</source>
+        <translation>Schlagwortpriorität</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>First:</source>
+        <translation>Erster:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
@@ -137,26 +147,6 @@
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>ID3v1-Kodierung:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>ID3v2-Kodierung:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Tag Priority</source>
-        <translation>Tag-Priorität</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>First:</source>
-        <translation>Erster:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -186,6 +176,16 @@
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>Kodierungen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>ID3v1-Kodierung:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>ID3v2-Kodierung:</translation>
     </message>
 </context>
 </TS>

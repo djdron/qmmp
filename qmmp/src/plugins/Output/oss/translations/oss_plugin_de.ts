@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>OutputOSSFactory</name>
     <message>
@@ -11,22 +11,22 @@
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>Über OSS-Ausgabe-Modul</translation>
+        <translation>Über OSS-Ausgabemodul</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>Qmmp OSS-Ausgabe-Modul</translation>
+        <translation>Qmmp OSS-Ausgabemodul</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
         <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
-        <translation>Autor: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</translation>
+        <translation>Geschrieben von: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation>Basiert auf Quellcode von: Brad Hughes &lt;bhughes@trolltech.com&gt;</translation>
+        <translation>Basiert auf Code von: Brad Hughes &lt;bhughes@trolltech.com&gt;</translation>
     </message>
 </context>
 <context>
