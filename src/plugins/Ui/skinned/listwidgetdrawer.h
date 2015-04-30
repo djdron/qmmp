@@ -91,6 +91,7 @@ private:
     bool m_show_number;
     bool m_show_anchor;
     bool m_align_numbres;
+    bool m_show_lengths;
     int m_padding;
     int m_number_width;
     int m_row_height;
