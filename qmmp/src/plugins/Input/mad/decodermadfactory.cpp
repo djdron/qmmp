@@ -228,6 +228,16 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
                     info->setMetaData(Qmmp::DISCNUMBER, QString(disc.toCString()).trimmed());
                 }
             }
+            else if(tag == fileRef.APETag())
+            {
+                TagLib::APE::Item fld;
+                if(!(fld = fileRef.APETag()->itemListMap()["ALBUM ARTIST"]).isEmpty())
+                    info->setMetaData(Qmmp::ALBUMARTIST,
+                                      QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                if(!(fld = fileRef.APETag()->itemListMap()["COMPOSER"]).isEmpty())
+                    info->setMetaData(Qmmp::COMPOSER,
+                                      QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+            }
         }
     }
     if (fileRef.audioProperties())
