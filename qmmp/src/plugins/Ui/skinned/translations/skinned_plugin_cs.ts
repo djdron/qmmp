@@ -1302,47 +1302,52 @@ Andrej Andrejev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Zobrazení skladby</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="383"/>
+        <location filename="../forms/skinnedsettings.ui" line="461"/>
         <source>Show protocol</source>
         <translation>Zobrazit protokol</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="390"/>
+        <location filename="../forms/skinnedsettings.ui" line="502"/>
+        <source>Show song lengths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="454"/>
         <source>Show song numbers</source>
         <translation>Zobrazit čísla skladeb</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="400"/>
+        <location filename="../forms/skinnedsettings.ui" line="440"/>
         <source>Align song numbers</source>
         <translation>Zarovnat čísla skladeb</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="407"/>
+        <location filename="../forms/skinnedsettings.ui" line="447"/>
         <source>Show anchor</source>
         <translation>Zobrazit kotvu</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="414"/>
+        <location filename="../forms/skinnedsettings.ui" line="495"/>
         <source>Show playlists</source>
         <translation>Zobrazit seznamy skladeb</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <location filename="../forms/skinnedsettings.ui" line="393"/>
         <source>Show popup information</source>
         <translation>Zobrazit informace ve vyskakovacím okně</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="433"/>
+        <location filename="../forms/skinnedsettings.ui" line="473"/>
         <source>Edit template</source>
         <translation>Upravit šablonu</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="457"/>
+        <location filename="../forms/skinnedsettings.ui" line="402"/>
         <source>Playlist separator:</source>
         <translation>Oddělovač seznamu skladeb:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="495"/>
+        <location filename="../forms/skinnedsettings.ui" line="386"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Zobrazit tlačítko ‚Nový seznam skladeb‘</translation>
     </message>

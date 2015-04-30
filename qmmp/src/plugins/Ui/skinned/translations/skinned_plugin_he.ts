@@ -1302,47 +1302,52 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
         <translation>תצוגת שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="383"/>
+        <location filename="../forms/skinnedsettings.ui" line="461"/>
         <source>Show protocol</source>
         <translation>הצג פרוטוקול</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="390"/>
+        <location filename="../forms/skinnedsettings.ui" line="502"/>
+        <source>Show song lengths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="454"/>
         <source>Show song numbers</source>
         <translation>הצג מספר שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="400"/>
+        <location filename="../forms/skinnedsettings.ui" line="440"/>
         <source>Align song numbers</source>
         <translation>ישר מספר שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="407"/>
+        <location filename="../forms/skinnedsettings.ui" line="447"/>
         <source>Show anchor</source>
         <translation>הצג עוגן</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="414"/>
+        <location filename="../forms/skinnedsettings.ui" line="495"/>
         <source>Show playlists</source>
         <translation>הצג רשימות נגינה</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <location filename="../forms/skinnedsettings.ui" line="393"/>
         <source>Show popup information</source>
         <translation>הצג מידע מוקפץ</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="433"/>
+        <location filename="../forms/skinnedsettings.ui" line="473"/>
         <source>Edit template</source>
         <translation>ערוך תבנית</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="457"/>
+        <location filename="../forms/skinnedsettings.ui" line="402"/>
         <source>Playlist separator:</source>
         <translation>מפריד רשימת נגינה:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="495"/>
+        <location filename="../forms/skinnedsettings.ui" line="386"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>הצג לחצן &apos;רשימת נגינה חדשה&apos;</translation>
     </message>
