@@ -1309,12 +1309,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="502"/>
         <source>Show song lengths</source>
-        <translation>Показывать длительности песен</translation>
+        <translation>Показывать длительности фрагментов</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="454"/>
         <source>Show song numbers</source>
-        <translation>Показывать номера песен</translation>
+        <translation>Показывать номера фрагментов</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="495"/>
