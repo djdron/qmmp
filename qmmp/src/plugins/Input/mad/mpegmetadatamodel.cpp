@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -206,6 +206,11 @@ const QString MpegFileTagModel::value(Qmmp::MetaData key)
         case Qmmp::ARTIST:
             str = m_tag->artist();
             break;
+        case Qmmp::ALBUMARTIST:
+            if(m_tagType == TagLib::MPEG::File::ID3v2
+               && !m_file->ID3v2Tag()->frameListMap()["TPE2"].isEmpty())
+                str = m_file->ID3v2Tag()->frameListMap()["TPE2"].front()->toString();
+            break;
         case Qmmp::ALBUM:
             str = m_tag->album();
             break;
@@ -265,7 +270,9 @@ void MpegFileTagModel::setValue(Qmmp::MetaData key, const QString &value)
         }
         //save additional tags
         TagLib::ByteVector id3v2_key;
-        if (key == Qmmp::COMPOSER)
+        if(key == Qmmp::ALBUMARTIST)
+            id3v2_key = "TPE2"; //album artist
+        else if (key == Qmmp::COMPOSER)
             id3v2_key = "TCOM"; //composer
         else if (key == Qmmp::DISCNUMBER)
             id3v2_key = "TPOS";  //disc number

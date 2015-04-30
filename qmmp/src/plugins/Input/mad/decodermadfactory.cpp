@@ -208,6 +208,13 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
 
             if(tag == fileRef.ID3v2Tag())
             {
+                if(!fileRef.ID3v2Tag()->frameListMap()["TPE2"].isEmpty())
+                {
+                    TagLib::String albumArtist;
+                    albumArtist = fileRef.ID3v2Tag()->frameListMap()["TPE2"].front()->toString();
+                    info->setMetaData(Qmmp::ALBUMARTIST,
+                                      codec->toUnicode(albumArtist.toCString(utf)).trimmed());
+                }
                 if(!fileRef.ID3v2Tag()->frameListMap()["TCOM"].isEmpty())
                 {
                     TagLib::String composer;

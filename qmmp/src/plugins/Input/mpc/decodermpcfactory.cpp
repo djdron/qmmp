@@ -107,6 +107,9 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
     if(tag)
     {
         TagLib::APE::Item fld;
+        if(!(fld = tag->itemListMap()["ALBUM ARTIST"]).isEmpty())
+            info->setMetaData(Qmmp::ALBUMARTIST,
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
         if(!(fld = tag->itemListMap()["COMPOSER"]).isEmpty())
             info->setMetaData(Qmmp::COMPOSER,
                               QString::fromUtf8(fld.toString().toCString(true)).trimmed());
