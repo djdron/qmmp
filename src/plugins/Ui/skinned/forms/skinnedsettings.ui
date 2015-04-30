@@ -377,79 +377,24 @@
           <string>Song Display</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="protocolCheckBox">
-            <property name="text">
-             <string>Show protocol</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="numbersCheckBox">
-            <property name="text">
-             <string>Show song numbers</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="alignCheckBox">
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="showNewPLCheckBox">
             <property name="enabled">
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>Align song numbers</string>
+             <string>Show 'New Playlist' button</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="anchorCheckBox">
-            <property name="text">
-             <string>Show anchor</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="playlistsCheckBox">
-            <property name="text">
-             <string>Show playlists</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
+          <item row="9" column="0">
            <widget class="QCheckBox" name="popupCheckBox">
             <property name="text">
              <string>Show popup information</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QPushButton" name="popupTemplateButton">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Edit template</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="6" column="0">
+          <item row="7" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QLabel" name="label_4">
@@ -486,13 +431,75 @@
             </item>
            </layout>
           </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="showNewPLCheckBox">
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>Show 'New Playlist' button</string>
+             <string>Align song numbers</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="anchorCheckBox">
+            <property name="text">
+             <string>Show anchor</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="numbersCheckBox">
+            <property name="text">
+             <string>Show song numbers</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="protocolCheckBox">
+            <property name="text">
+             <string>Show protocol</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="popupTemplateButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Edit template</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="playlistsCheckBox">
+            <property name="text">
+             <string>Show playlists</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="lengthsCheckBox">
+            <property name="text">
+             <string>Show song lengths</string>
             </property>
            </widget>
           </item>

@@ -290,27 +290,6 @@ void ConfigDialog::on_informationButton_clicked()
 
 void ConfigDialog::createMenus()
 {
-    QMenu *titleMenu = new QMenu(this);
-
-    titleMenu->addAction(tr("Artist"))->setData("%p");
-    titleMenu->addAction(tr("Album"))->setData("%a");
-    titleMenu->addAction(tr("Album artist"))->setData("%aa");
-    titleMenu->addAction(tr("Title"))->setData("%t");
-    titleMenu->addAction(tr("Track number"))->setData("%n");
-    titleMenu->addAction(tr("Two-digit track number"))->setData("%NN");
-    titleMenu->addAction(tr("Genre"))->setData("%g");
-    titleMenu->addAction(tr("Comment"))->setData("%c");
-    titleMenu->addAction(tr("Composer"))->setData("%C");
-    titleMenu->addAction(tr("Disc number"))->setData("%D");
-    titleMenu->addAction(tr("File name"))->setData("%f");
-    titleMenu->addAction(tr("File path"))->setData("%F");
-    titleMenu->addAction(tr("Year"))->setData("%y");
-    titleMenu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-
-    m_ui->titleButton->setMenu(titleMenu);
-    m_ui->titleButton->setPopupMode(QToolButton::InstantPopup);
-    connect(titleMenu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
-
     QMenu *groupMenu = new QMenu(this);
 
     groupMenu->addAction(tr("Artist"))->setData("%p");
@@ -379,14 +358,6 @@ void ConfigDialog::loadLanguages()
     if(index < 0)
         index = m_ui->langComboBox->findData("auto");
     m_ui->langComboBox->setCurrentIndex(index);
-}
-
-void ConfigDialog::addTitleString(QAction * a)
-{
-    if (m_ui->formatLineEdit->cursorPosition () < 1)
-        m_ui->formatLineEdit->insert(a->data().toString());
-    else
-        m_ui->formatLineEdit->insert(" - "+a->data().toString());
 }
 
 void ConfigDialog::addGroupString(QAction *a)

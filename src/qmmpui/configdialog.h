@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,7 +62,6 @@ private slots:
     void on_contentsWidget_currentItemChanged (QListWidgetItem *current, QListWidgetItem *previous);
     void on_preferencesButton_clicked();
     void on_informationButton_clicked();
-    void addTitleString(QAction *a);
     void addGroupString(QAction *a);
     void saveSettings();
     void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
