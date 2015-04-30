@@ -221,8 +221,9 @@ void SkinnedSettings::readSettings()
     settings.beginGroup("Skinned");
     //playlist
     m_ui.protocolCheckBox->setChecked(settings.value ("pl_show_protocol", false).toBool());
-    m_ui.numbersCheckBox->setChecked(settings.value ("pl_show_numbers", true).toBool());
-    m_ui.alignCheckBox->setChecked(settings.value ("pl_align_numbers", false).toBool());
+    m_ui.numbersCheckBox->setChecked(settings.value("pl_show_numbers", true).toBool());
+    m_ui.lengthsCheckBox->setChecked(settings.value("pl_show_lengths", true).toBool());
+    m_ui.alignCheckBox->setChecked(settings.value("pl_align_numbers", false).toBool());
     m_ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
     m_ui.playlistsCheckBox->setChecked(settings.value("pl_show_plalists", false).toBool());
     m_ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
@@ -246,6 +247,7 @@ void SkinnedSettings::writeSettings()
     settings.beginGroup("Skinned");
     settings.setValue ("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
     settings.setValue ("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
+    settings.setValue ("pl_show_lengths", m_ui.lengthsCheckBox->isChecked());
     settings.setValue ("pl_align_numbers", m_ui.alignCheckBox->isChecked());
     settings.setValue ("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
     settings.setValue ("pl_show_plalists", m_ui.playlistsCheckBox->isChecked());

@@ -36,6 +36,7 @@ ListWidgetDrawer::ListWidgetDrawer()
     m_show_anchor = false;
     m_show_number = false;
     m_align_numbres = false;
+    m_show_lengths = false;
     m_row_height = 0;
     m_number_width = 0;
     m_padding = 0;
@@ -57,6 +58,7 @@ void ListWidgetDrawer::readSettings()
     settings.beginGroup("Skinned");
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
+    m_show_lengths = settings.value ("pl_show_lengths", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_extra_font = m_font;
@@ -117,12 +119,12 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     if(m_show_number && !m_align_numbres)
         row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
-    if(!row->length.isEmpty() || !row->extraString.isEmpty())
+    if((m_show_lengths && !row->length.isEmpty()) || !row->extraString.isEmpty())
         row->lengthColumnWidth = m_padding;
     else
         row->lengthColumnWidth = 0;
 
-    if(!row->length.isEmpty())
+    if(m_show_lengths && !row->length.isEmpty())
         row->lengthColumnWidth += m_metrics->width(row->length) + m_padding;
 
     if(!row->extraString.isEmpty())
@@ -253,7 +255,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         sx = row->rect.x() + m_padding;
         painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
-        if(!row->length.isEmpty())
+        if(m_show_lengths && !row->length.isEmpty())
         {
             painter->drawText(sx, sy, row->length);
             sx += m_metrics->width(row->length) + m_padding;
@@ -297,7 +299,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         sx = row->rect.right() - m_padding;
         painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
-        if(!row->length.isEmpty())
+        if(m_show_lengths && !row->length.isEmpty())
         {
             sx -= m_metrics->width(row->length);
             painter->drawText(sx, sy, row->length);
