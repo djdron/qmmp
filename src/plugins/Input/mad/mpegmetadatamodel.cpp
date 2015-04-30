@@ -182,7 +182,13 @@ QList<Qmmp::MetaData> MpegFileTagModel::keys()
     QList<Qmmp::MetaData> list = TagModel::keys();
     if (m_tagType == TagLib::MPEG::File::ID3v2)
         return list;
+    else if(m_tagType == TagLib::MPEG::File::APE)
+    {
+        list.removeAll(Qmmp::DISCNUMBER);
+        return list;
+    }
     list.removeAll(Qmmp::COMPOSER);
+    list.removeAll(Qmmp::ALBUMARTIST);
     list.removeAll(Qmmp::DISCNUMBER);
     return list;
 }
@@ -207,9 +213,16 @@ const QString MpegFileTagModel::value(Qmmp::MetaData key)
             str = m_tag->artist();
             break;
         case Qmmp::ALBUMARTIST:
-            if(m_tagType == TagLib::MPEG::File::ID3v2
-               && !m_file->ID3v2Tag()->frameListMap()["TPE2"].isEmpty())
+            if(m_tagType == TagLib::MPEG::File::ID3v2 &&
+                    !m_file->ID3v2Tag()->frameListMap()["TPE2"].isEmpty())
+            {
                 str = m_file->ID3v2Tag()->frameListMap()["TPE2"].front()->toString();
+            }
+            else if(m_tagType == TagLib::MPEG::File::APE &&
+                    !m_file->APETag()->itemListMap()["ALBUM ARTIST"].isEmpty())
+            {
+                str = m_file->APETag()->itemListMap()["ALBUM ARTIST"].toString();
+            }
             break;
         case Qmmp::ALBUM:
             str = m_tag->album();
@@ -221,9 +234,16 @@ const QString MpegFileTagModel::value(Qmmp::MetaData key)
             str = m_tag->genre();
             break;
         case Qmmp::COMPOSER:
-            if(m_tagType == TagLib::MPEG::File::ID3v2
-               && !m_file->ID3v2Tag()->frameListMap()["TCOM"].isEmpty())
+            if(m_tagType == TagLib::MPEG::File::ID3v2 &&
+                    !m_file->ID3v2Tag()->frameListMap()["TCOM"].isEmpty())
+            {
                 str = m_file->ID3v2Tag()->frameListMap()["TCOM"].front()->toString();
+            }
+            else if(m_tagType == TagLib::MPEG::File::APE &&
+                    !m_file->APETag()->itemListMap()["COMPOSER"].isEmpty())
+            {
+                str = m_file->APETag()->itemListMap()["COMPOSER"].toString();
+            }
             break;
         case Qmmp::YEAR:
             return QString::number(m_tag->year());
@@ -296,9 +316,25 @@ void MpegFileTagModel::setValue(Qmmp::MetaData key, const QString &value)
         }
     }
     else if(m_tagType == TagLib::MPEG::File::APE)
+    {
         type = TagLib::String::UTF8;
+    }
 
     TagLib::String str = TagLib::String(m_codec->fromUnicode(value).constData(), type);
+
+    if(m_tagType == TagLib::MPEG::File::APE)
+    {
+        if(key == Qmmp::COMPOSER)
+        {
+            m_file->APETag()->addValue("COMPOSER", str, true);
+            return;
+        }
+        else if(key == Qmmp::ALBUMARTIST)
+        {
+            m_file->APETag()->addValue("ALBUM ARTIST", str, true);
+            return;
+        }
+    }
 
     switch((int) key)
     {
