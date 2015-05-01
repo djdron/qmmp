@@ -160,7 +160,7 @@
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dwucyfrowy numer utworu</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ścieżka pliku</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>

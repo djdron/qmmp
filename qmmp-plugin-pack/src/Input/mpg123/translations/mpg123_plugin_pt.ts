@@ -14,24 +14,24 @@
         <translation>Ficheiros MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="254"/>
+        <location filename="../decodermpg123factory.cpp" line="271"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>Sobre o suplemento MPG123 Audio</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="255"/>
+        <location filename="../decodermpg123factory.cpp" line="272"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>Suplemento Qmmp MPG123 Audio</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="256"/>
+        <location filename="../decodermpg123factory.cpp" line="273"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>Este suplemento disponibiliza o suporte a ficheiros
 MPEG v1/2/3 através da biblioteca libmpg123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="258"/>
+        <location filename="../decodermpg123factory.cpp" line="275"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Desenvolvido por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

@@ -14,22 +14,22 @@
         <translation>Файли WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="152"/>
+        <location filename="../decoderwavpackfactory.cpp" line="155"/>
         <source>About WavPack Audio Plugin</source>
         <translation>Про аудіо-модуль WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="153"/>
+        <location filename="../decoderwavpackfactory.cpp" line="156"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Аудіо-модуль WavPack для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="154"/>
+        <location filename="../decoderwavpackfactory.cpp" line="157"/>
         <source>WavPack library version:</source>
         <translation>Версія бібліотеки WavPack:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="156"/>
+        <location filename="../decoderwavpackfactory.cpp" line="159"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

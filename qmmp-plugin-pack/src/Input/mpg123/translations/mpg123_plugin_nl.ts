@@ -14,17 +14,17 @@
         <translation>MPEG Bestanden</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="254"/>
+        <location filename="../decodermpg123factory.cpp" line="271"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>Over de MPG123 Audio Module</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="255"/>
+        <location filename="../decodermpg123factory.cpp" line="272"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>MPG123 Audio Module voor Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="256"/>
+        <location filename="../decodermpg123factory.cpp" line="273"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>Gebruik van deze module faciliteert
@@ -32,7 +32,7 @@ MPEG v1/2 layer1/2/3 support
 met gebruik van de libmpg123 bibliotheek</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="258"/>
+        <location filename="../decodermpg123factory.cpp" line="275"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

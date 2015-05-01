@@ -14,24 +14,24 @@
         <translation>קבצי MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="254"/>
+        <location filename="../decodermpg123factory.cpp" line="271"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>אודות תוספת שמע MPG123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="255"/>
+        <location filename="../decodermpg123factory.cpp" line="272"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>תוספת שמע MPG123 של Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="256"/>
+        <location filename="../decodermpg123factory.cpp" line="273"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>תוספת זו מספקת תמיכה עבור MPEG v1/2 layer1/2/3
 באמצעות ספריית libmpg123</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="258"/>
+        <location filename="../decodermpg123factory.cpp" line="275"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>

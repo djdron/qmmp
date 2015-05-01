@@ -14,27 +14,27 @@
         <translation>MPEG 文件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="246"/>
+        <location filename="../decodermadfactory.cpp" line="263"/>
         <source>About MPEG Audio Plugin</source>
         <translation>关于 MPEG 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="247"/>
+        <location filename="../decodermadfactory.cpp" line="264"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Qmmp MPEG 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="248"/>
+        <location filename="../decodermadfactory.cpp" line="265"/>
         <source>Compiled against libmad version:</source>
         <translation>编译基于 libmad 版本：</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="252"/>
+        <location filename="../decodermadfactory.cpp" line="269"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="253"/>
+        <location filename="../decodermadfactory.cpp" line="270"/>
         <source>Source code based on mq3 and madplay projects</source>
         <translation type="unfinished"></translation>
     </message>

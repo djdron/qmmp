@@ -560,162 +560,162 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="139"/>
+        <location filename="../mainwindow.cpp" line="140"/>
         <source>Volume</source>
         <translation>Гучність</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="218"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Paused</source>
         <translation>Призупинено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="222"/>
         <source>Stopped</source>
         <translation>Зупинено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Playlist name:</source>
         <translation>Назва списку:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Appearance</source>
         <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="363"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 біт/%3/%4 Гц/%5 кбіт/с]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="363"/>
+        <location filename="../mainwindow.cpp" line="364"/>
         <source>Playing</source>
         <translation>Відтворюється</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="365"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Stereo</source>
         <translation>Стерео</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="365"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Mono</source>
         <translation>Моно</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="407"/>
+        <location filename="../mainwindow.cpp" line="408"/>
         <source>Ctrl+0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>Edit Toolbar</source>
         <translation>Редагувати панель інструментів</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="466"/>
+        <location filename="../mainwindow.cpp" line="467"/>
         <source>Sort List</source>
         <translation>Сортувати</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="469"/>
-        <location filename="../mainwindow.cpp" line="516"/>
+        <location filename="../mainwindow.cpp" line="470"/>
+        <location filename="../mainwindow.cpp" line="517"/>
         <source>By Title</source>
         <translation>За назвою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="473"/>
-        <location filename="../mainwindow.cpp" line="520"/>
+        <location filename="../mainwindow.cpp" line="474"/>
+        <location filename="../mainwindow.cpp" line="521"/>
         <source>By Album</source>
         <translation>За альбомом</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="477"/>
-        <location filename="../mainwindow.cpp" line="524"/>
+        <location filename="../mainwindow.cpp" line="478"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>By Artist</source>
         <translation>За виконавцем</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="481"/>
-        <location filename="../mainwindow.cpp" line="528"/>
+        <location filename="../mainwindow.cpp" line="482"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>By Filename</source>
         <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="485"/>
-        <location filename="../mainwindow.cpp" line="532"/>
+        <location filename="../mainwindow.cpp" line="486"/>
+        <location filename="../mainwindow.cpp" line="533"/>
         <source>By Path + Filename</source>
         <translation>За шляхом та файлом</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="489"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>By Date</source>
         <translation>За датою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="493"/>
-        <location filename="../mainwindow.cpp" line="540"/>
+        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="541"/>
         <source>By Track Number</source>
         <translation>За номером треку</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="497"/>
-        <location filename="../mainwindow.cpp" line="544"/>
+        <location filename="../mainwindow.cpp" line="498"/>
+        <location filename="../mainwindow.cpp" line="545"/>
         <source>By Disc Number</source>
         <translation>За номером диску</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="501"/>
-        <location filename="../mainwindow.cpp" line="548"/>
+        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="549"/>
         <source>By File Creation Date</source>
         <translation>За датою створення файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="505"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>By Group</source>
         <translation>За групою</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Sort Selection</source>
         <translation>Сортувати вибране</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="555"/>
+        <location filename="../mainwindow.cpp" line="556"/>
         <source>Randomize List</source>
         <translation>Перемішати</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="557"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>Reverse List</source>
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="564"/>
-        <location filename="../mainwindow.cpp" line="609"/>
+        <location filename="../mainwindow.cpp" line="565"/>
+        <location filename="../mainwindow.cpp" line="610"/>
         <source>Actions</source>
         <translation>Дії</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="641"/>
+        <location filename="../mainwindow.cpp" line="642"/>
         <source>Add new playlist</source>
         <translation>Додати новий список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="647"/>
+        <location filename="../mainwindow.cpp" line="648"/>
         <source>Show all tabs</source>
         <translation>Показати всі вкладки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="794"/>
+        <location filename="../mainwindow.cpp" line="795"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>
@@ -876,9 +876,37 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Rename Playlist</source>
         <translation>Переіменувати список</translation>
+    </message>
+</context>
+<context>
+    <name>PlayListHeader</name>
+    <message>
+        <location filename="../playlistheader.cpp" line="75"/>
+        <source>Add column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="76"/>
+        <source>Edit column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="77"/>
+        <source>Auto-resize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="79"/>
+        <source>Restore size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="81"/>
+        <source>Remove column</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

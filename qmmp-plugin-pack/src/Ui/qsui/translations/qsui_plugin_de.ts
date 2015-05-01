@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>AboutQSUIDialog</name>
     <message>
@@ -713,169 +715,197 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="277"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Rename Playlist</source>
         <translation>Wiedergabeliste umbenennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="138"/>
+        <location filename="../mainwindow.cpp" line="140"/>
         <source>Volume</source>
         <translation>Lautstärke</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="217"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Paused</source>
         <translation>Pausiert</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="220"/>
+        <location filename="../mainwindow.cpp" line="222"/>
         <source>Stopped</source>
         <translation>Gestoppt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="277"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>Playlist name:</source>
         <translation>Wiedergabelistenname:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>Appearance</source>
         <translation>Erscheinungsbild</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="359"/>
+        <location filename="../mainwindow.cpp" line="363"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 Bit/%3/%4 Hz/%5 kbit/s]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="360"/>
+        <location filename="../mainwindow.cpp" line="364"/>
         <source>Playing</source>
         <translation>Wiedergabe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Stereo</source>
         <translation>Stereo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Mono</source>
         <translation>Mono</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
+        <location filename="../mainwindow.cpp" line="408"/>
         <source>Ctrl+0</source>
         <translation>Strg+0</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>Edit Toolbar</source>
         <translation>Werkzeugleiste bearbeiten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="467"/>
         <source>Sort List</source>
         <translation>Wiedergabeliste sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="466"/>
-        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="470"/>
+        <location filename="../mainwindow.cpp" line="517"/>
         <source>By Title</source>
         <translation>Nach Titel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="470"/>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="474"/>
+        <location filename="../mainwindow.cpp" line="521"/>
         <source>By Album</source>
         <translation>Nach Album</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="478"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>By Artist</source>
         <translation>Nach Interpret</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="478"/>
-        <location filename="../mainwindow.cpp" line="525"/>
+        <location filename="../mainwindow.cpp" line="482"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>By Filename</source>
         <translation>Nach Dateinamen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="482"/>
-        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="486"/>
+        <location filename="../mainwindow.cpp" line="533"/>
         <source>By Path + Filename</source>
         <translation>Nach Pfad &amp; Dateinamen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="486"/>
-        <location filename="../mainwindow.cpp" line="533"/>
+        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>By Date</source>
         <translation>Nach Datum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="490"/>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="541"/>
         <source>By Track Number</source>
         <translation>Nach Titelnummer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="494"/>
-        <location filename="../mainwindow.cpp" line="541"/>
+        <location filename="../mainwindow.cpp" line="498"/>
+        <location filename="../mainwindow.cpp" line="545"/>
         <source>By Disc Number</source>
         <translation>Nach CD-Nummer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="498"/>
-        <location filename="../mainwindow.cpp" line="545"/>
+        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="549"/>
         <source>By File Creation Date</source>
         <translation>Nach Dateierstellungsdatum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>By Group</source>
         <translation>Nach Gruppe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Sort Selection</source>
         <translation>Auswahl sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="552"/>
+        <location filename="../mainwindow.cpp" line="556"/>
         <source>Randomize List</source>
         <translation>Wiedergabeliste mischen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>Reverse List</source>
         <translation>Wiedergabeliste umkehren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="561"/>
-        <location filename="../mainwindow.cpp" line="606"/>
+        <location filename="../mainwindow.cpp" line="565"/>
+        <location filename="../mainwindow.cpp" line="610"/>
         <source>Actions</source>
         <translation>Aktionen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="638"/>
+        <location filename="../mainwindow.cpp" line="642"/>
         <source>Add new playlist</source>
         <translation>Neue Wiedergabeliste hinzufügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="644"/>
+        <location filename="../mainwindow.cpp" line="648"/>
         <source>Show all tabs</source>
         <translation>Alle Reiter anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="791"/>
+        <location filename="../mainwindow.cpp" line="795"/>
         <source>Buffering: %1%</source>
         <translation>Puffern: %1 %</translation>
+    </message>
+</context>
+<context>
+    <name>PlayListHeader</name>
+    <message>
+        <location filename="../playlistheader.cpp" line="75"/>
+        <source>Add column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="76"/>
+        <source>Edit column</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="77"/>
+        <source>Auto-resize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="79"/>
+        <source>Restore size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="81"/>
+        <source>Remove column</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

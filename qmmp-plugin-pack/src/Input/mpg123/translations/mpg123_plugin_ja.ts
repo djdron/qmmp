@@ -14,23 +14,23 @@
         <translation>MPEG ファイル</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="254"/>
+        <location filename="../decodermpg123factory.cpp" line="271"/>
         <source>About MPG123 Audio Plugin</source>
         <translation>MPG123 音響プラグインについて</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="255"/>
+        <location filename="../decodermpg123factory.cpp" line="272"/>
         <source>Qmmp MPG123 Audio Plugin</source>
         <translation>QMMP MPG123 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="256"/>
+        <location filename="../decodermpg123factory.cpp" line="273"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
         <translation>このプラグインにより libmpg123 ライブラリを利用して MPEG v1/2 レイヤー 1/2/3 がサポートできます</translation>
     </message>
     <message>
-        <location filename="../decodermpg123factory.cpp" line="258"/>
+        <location filename="../decodermpg123factory.cpp" line="275"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
