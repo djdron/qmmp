@@ -40,6 +40,8 @@ ListWidgetDrawer::ListWidgetDrawer()
     m_row_height = 0;
     m_number_width = 0;
     m_padding = 0;
+    m_metrics = 0;
+    m_extra_metrics = 0;
     readSettings();
     loadColors();
 }
