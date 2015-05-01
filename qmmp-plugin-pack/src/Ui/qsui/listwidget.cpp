@@ -261,7 +261,8 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_scrollBar->setGeometry(width() - m_scrollBar->sizeHint().width(), 0,
+    bool rtl = layoutDirection() == Qt::RightToLeft;
+    m_scrollBar->setGeometry(rtl ? 0 : width() - m_scrollBar->sizeHint().width(), 0,
                              m_scrollBar->sizeHint().width(), height());
     m_resize = true;
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
@@ -364,6 +365,8 @@ void ListWidget::updateList(int flags)
         m_header->hideSortIndicator();
 
     int prev_number = 0;
+    bool rtl = layoutDirection() == Qt::RightToLeft;
+    int scroll_bar_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
 
     for(int i = 0; i < items.count(); ++i)
     {
@@ -377,9 +380,10 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
-                          width() - (m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0) - 10,
-                          m_drawer.rowHeight() - 1);
+        row->rect = QRect(5 + (rtl ? scroll_bar_width : 0),
+                          (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+                          width() - scroll_bar_width - 10, m_drawer.rowHeight() - 1);
+
         row->titles = items[i]->formattedTitles();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
