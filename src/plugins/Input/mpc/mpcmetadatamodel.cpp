@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,8 +86,12 @@ const QString MPCFileTagModel::name()
 QList<Qmmp::MetaData> MPCFileTagModel::keys()
 {
     QList<Qmmp::MetaData> list = TagModel::keys();
-    list.removeAll(Qmmp::COMPOSER);
     list.removeAll(Qmmp::DISCNUMBER);
+    if (m_tagType == TagLib::MPC::File::ID3v1)
+    {
+        list.removeAll(Qmmp::COMPOSER);
+        list.removeAll(Qmmp::ALBUMARTIST);
+    }
     return list;
 }
 
@@ -105,6 +109,13 @@ const QString MPCFileTagModel::value(Qmmp::MetaData key)
         case Qmmp::ARTIST:
             str = m_tag->artist();
             break;
+        case Qmmp::ALBUMARTIST:
+            if(m_tagType == TagLib::MPC::File::APE &&
+                    !m_file->APETag()->itemListMap()["ALBUMARTIST"].isEmpty())
+            {
+                str = m_file->APETag()->itemListMap()["ALBUMARTIST"].toString();
+            }
+            break;
         case Qmmp::ALBUM:
             str = m_tag->album();
             break;
@@ -113,6 +124,13 @@ const QString MPCFileTagModel::value(Qmmp::MetaData key)
             break;
         case Qmmp::GENRE:
             str = m_tag->genre();
+            break;
+        case Qmmp::COMPOSER:
+            if(m_tagType == TagLib::MPC::File::APE &&
+                    !m_file->APETag()->itemListMap()["COMPOSER"].isEmpty())
+            {
+                str = m_file->APETag()->itemListMap()["COMPOSER"].toString();
+            }
             break;
         case Qmmp::YEAR:
             return QString::number(m_tag->year());
