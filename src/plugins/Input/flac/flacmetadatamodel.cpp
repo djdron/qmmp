@@ -205,8 +205,6 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
         m_tag->setArtist(str);
         return;
     case Qmmp::ALBUMARTIST:
-        value.isEmpty() ?
-        m_tag->removeField("ALBUMARTIST"):
         m_tag->addField("ALBUMARTIST", str, true);
         return;
     case Qmmp::ALBUM:
@@ -219,8 +217,6 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
         m_tag->setGenre(str);
         return;
     case Qmmp::COMPOSER:
-        value.isEmpty() ?
-        m_tag->removeField("COMPOSER"):
         m_tag->addField("COMPOSER", str, true);
         return;
     case Qmmp::TRACK:
