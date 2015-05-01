@@ -111,12 +111,15 @@ QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, 
     if(tag)
     {
         TagLib::StringList fld;
+        if(!(fld = tag->fieldListMap()["ALBUMARTIST"]).isEmpty())
+            info->setMetaData(Qmmp::ALBUMARTIST,
+                              QString::fromUtf8(fld.front().toCString(true)).trimmed());
         if(!(fld = tag->fieldListMap()["COMPOSER"]).isEmpty())
             info->setMetaData(Qmmp::COMPOSER,
-                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                              QString::fromUtf8(fld.front().toCString(true)).trimmed());
         if(!(fld = tag->fieldListMap()["DISCNUMBER"]).isEmpty())
             info->setMetaData(Qmmp::DISCNUMBER,
-                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                              QString::fromUtf8(fld.front().toCString(true)).trimmed());
     }
 
     QList <FileInfo*> list;
