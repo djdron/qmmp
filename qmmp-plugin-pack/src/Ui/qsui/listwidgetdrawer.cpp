@@ -263,6 +263,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
     int sx = rtl ? row->rect.right() : row->rect.x();
 
     painter->setFont(m_font);
+    painter->setPen(row->flags & ListWidgetRow::SELECTED ? m_highlighted : m_normal);
 
     if(rtl)
     {
@@ -270,7 +271,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         if(row->numberColumnWidth)
         {
             sx -= row->numberColumnWidth;
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             QString number = QString("%1").arg(row->number);
             painter->drawText(sx + m_padding, sy, number);
             painter->setPen(m_normal);
@@ -284,26 +284,21 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
             if(row->flags & ListWidgetRow::CURRENT)
             {
-                painter->setPen(m_current);
                 m_font.setBold(true);
                 painter->setFont(m_font);
                 m_font.setBold(false);
             }
-            else
-                painter->setPen(m_normal);
 
             painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
             sx -= m_header_model->size(i);
 
             if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
             {
-                painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
         }
 
         sx = row->rect.x() + m_padding;
-        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
         if(m_show_lengths && !row->length.isEmpty())
         {
@@ -324,10 +319,8 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         if(row->numberColumnWidth)
         {
             sx += row->numberColumnWidth;
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             QString number = QString("%1").arg(row->number);
             painter->drawText(sx - m_padding - m_metrics->width(number), sy, number);
-            painter->setPen(m_normal);
             painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
         }
 
@@ -338,26 +331,21 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
             if(row->flags & ListWidgetRow::CURRENT)
             {
-                painter->setPen(m_current);
                 m_font.setBold(true);
                 painter->setFont(m_font);
                 m_font.setBold(false);
             }
-            else
-                painter->setPen(m_normal);
 
             painter->drawText(sx + m_padding, sy, row->titles[i]);
             sx += m_header_model->size(i);
 
             if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {
-                painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
         }
 
         sx = row->rect.right() - m_padding;
-        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
         if(m_show_lengths && !row->length.isEmpty())
         {
