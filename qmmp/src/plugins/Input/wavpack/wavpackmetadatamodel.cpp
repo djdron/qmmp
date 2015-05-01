@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -105,6 +105,7 @@ const QString WavPackFileTagModel::name()
 const QString WavPackFileTagModel::value(Qmmp::MetaData key)
 {
     char value[200];
+    memset(value,0,sizeof(value));
     switch((int) key)
     {
     case Qmmp::TITLE:
@@ -115,6 +116,9 @@ const QString WavPackFileTagModel::value(Qmmp::MetaData key)
         break;
     case Qmmp::ALBUM:
         WavpackGetTagItem (m_ctx, "Album", value, sizeof(value));
+        break;
+    case Qmmp::ALBUMARTIST:
+        WavpackGetTagItem (m_ctx, "Album Artist", value, sizeof(value));
         break;
     case Qmmp::COMMENT:
         WavpackGetTagItem (m_ctx, "Comment", value, sizeof(value));
@@ -151,6 +155,9 @@ void WavPackFileTagModel::setValue(Qmmp::MetaData key, const QString &value)
         break;
     case Qmmp::ALBUM:
         WavpackAppendTagItem (m_ctx, "Album", v, size);
+        break;
+    case Qmmp::ALBUMARTIST:
+        WavpackAppendTagItem (m_ctx, "Album Artist", v, size);
         break;
     case Qmmp::COMMENT:
         WavpackAppendTagItem (m_ctx, "Comment", v, size);
