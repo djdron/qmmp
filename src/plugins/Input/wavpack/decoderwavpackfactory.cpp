@@ -106,10 +106,13 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
         {
 
             char value[200];
+            memset(value,0,sizeof(value));
             WavpackGetTagItem (ctx, "Album", value, sizeof(value));
             info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(value));
             WavpackGetTagItem (ctx, "Artist", value, sizeof(value));
             info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(value));
+            WavpackGetTagItem (ctx, "Album Artist", value, sizeof(value));
+            info->setMetaData(Qmmp::ALBUMARTIST, QString::fromUtf8(value));
             WavpackGetTagItem (ctx, "Comment", value, sizeof(value));
             info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(value));
             WavpackGetTagItem (ctx, "Genre", value, sizeof(value));
