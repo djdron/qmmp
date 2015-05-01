@@ -59,6 +59,8 @@ SET(libqsui_SRCS
     coverwidget.cpp
     playlistbrowser.cpp
     toolbareditor.cpp
+    listwidgetdrawer.cpp
+    playlistheader.cpp
 )
 
 SET(libqsui_HDRS
@@ -66,6 +68,7 @@ SET(libqsui_HDRS
     inlines.h
     fft.h
     eqpreset.h
+    listwidgetdrawer.h
 )
 
 SET(libqsui_MOC_HDRS
@@ -92,6 +95,7 @@ SET(libqsui_MOC_HDRS
     coverwidget.h
     playlistbrowser.h
     toolbareditor.h
+	playlistheader.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
