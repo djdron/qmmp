@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 #ifdef Q_OS_WIN
     m_wasMaximized = false;
 #endif
+    m_titleFormatter.setPattern("%if(%p,%p - %t,%t)");
     //qmmp objects
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
@@ -816,7 +817,7 @@ void MainWindow::showMetaData()
     PlayListTrack *track = model->currentTrack();
     if(track && track->url() == m_core->metaData().value(Qmmp::URL))
     {
-        setWindowTitle(track->formattedTitle(0));
+        setWindowTitle(m_titleFormatter.format(track));
     }
 }
 

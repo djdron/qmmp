@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 
 #include <QMainWindow>
 #include <qmmp/qmmp.h>
+#include <qmmpui/mediaplayer.h>
 #include "ui_mainwindow.h"
 
 class QSlider;
@@ -114,6 +115,7 @@ private:
     KeyboardManager *m_key_manager;
     QSUiAnalyzer *m_analyzer;
     QToolButton *m_addListButton, *m_tabListMenuButton;
+    MetaDataFormatter m_titleFormatter;
     int m_balance;
     bool m_update;
     bool m_hideOnClose;
