@@ -188,8 +188,8 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     painter->setFont(m_font);
     painter->setPen(m_normal);
 
-    if(m_number_width)
-        sx += m_number_width + m_metrics->width("9");
+    if(row->numberColumnWidth)
+        sx += row->numberColumnWidth;
     if(rtl)
         sx = row->rect.right() - sx - m_metrics->width(row->titles[0]);
 
@@ -201,7 +201,12 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     {
         painter->drawLine(10, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
-                          row->rect.width(), sy);
+                          row->rect.right() - row->numberColumnWidth - m_padding, sy);
+        if(row->numberColumnWidth)
+        {
+            painter->drawLine(row->rect.right() - row->numberColumnWidth, row->rect.top(),
+                              row->rect.right() - row->numberColumnWidth, row->rect.bottom() + 1);
+        }
     }
     else
     {
