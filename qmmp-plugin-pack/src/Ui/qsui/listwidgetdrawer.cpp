@@ -200,8 +200,8 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row, int
         }
         else
         {
-            painter->setPen(m_normal_bg);
             painter->setBrush(QBrush(m_normal_bg));
+            painter->setPen(m_normal_bg);
         }
     }
 
@@ -212,10 +212,6 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row, int
     else if(row->flags & ListWidgetRow::SELECTED)
     {
         painter->setPen(m_selected_bg);
-    }
-    else
-    {
-        painter->setPen(m_normal_bg);
     }
     painter->drawRect(row->rect);
 }
