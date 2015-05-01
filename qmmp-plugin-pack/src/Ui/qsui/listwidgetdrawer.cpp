@@ -222,7 +222,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setFont(m_font);
-    painter->setPen(m_normal);
+    painter->setPen(row->flags & ListWidgetRow::SELECTED ? m_highlighted : m_normal);
 
     if(row->numberColumnWidth)
         sx += row->numberColumnWidth;
