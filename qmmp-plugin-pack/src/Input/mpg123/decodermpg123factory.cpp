@@ -216,6 +216,13 @@ QList<FileInfo *> DecoderMPG123Factory::createPlayList(const QString &fileName, 
 
             if(tag == fileRef.ID3v2Tag())
             {
+                if(!fileRef.ID3v2Tag()->frameListMap()["TPE2"].isEmpty())
+                {
+                    TagLib::String albumArtist;
+                    albumArtist = fileRef.ID3v2Tag()->frameListMap()["TPE2"].front()->toString();
+                    info->setMetaData(Qmmp::ALBUMARTIST,
+                                      codec->toUnicode(albumArtist.toCString(utf)).trimmed());
+                }
                 if(!fileRef.ID3v2Tag()->frameListMap()["TCOM"].isEmpty())
                 {
                     TagLib::String composer;
@@ -228,6 +235,16 @@ QList<FileInfo *> DecoderMPG123Factory::createPlayList(const QString &fileName, 
                     TagLib::String disc = fileRef.ID3v2Tag()->frameListMap()["TPOS"].front()->toString();
                     info->setMetaData(Qmmp::DISCNUMBER, QString(disc.toCString()).trimmed());
                 }
+            }
+            else if(tag == fileRef.APETag())
+            {
+                TagLib::APE::Item fld;
+                if(!(fld = fileRef.APETag()->itemListMap()["ALBUM ARTIST"]).isEmpty())
+                    info->setMetaData(Qmmp::ALBUMARTIST,
+                                      QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                if(!(fld = fileRef.APETag()->itemListMap()["COMPOSER"]).isEmpty())
+                    info->setMetaData(Qmmp::COMPOSER,
+                                      QString::fromUtf8(fld.toString().toCString(true)).trimmed());
             }
         }
     }
