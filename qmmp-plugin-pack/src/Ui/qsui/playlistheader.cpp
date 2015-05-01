@@ -80,7 +80,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
 
-    loadColors();
+    loadSystemColors();
     readSettings();
 }
 
@@ -199,7 +199,7 @@ void PlayListHeader::hideSortIndicator()
 
 void PlayListHeader::updateSkin()
 {
-    loadColors();
+    loadSystemColors();
     update();
 }
 
@@ -564,13 +564,13 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     }
 }
 
-void PlayListHeader::loadColors()
+void PlayListHeader::loadSystemColors()
 {
-    m_normal = qApp->palette().color(QPalette::Text);
+    m_normal = qApp->palette().color(QPalette::Window);
     //m_alternate = qApp->palette().color(QPalette::AlternateBase);
     m_current = qApp->palette().color(QPalette::Text);
     //m_highlighted = qApp->palette().color(QPalette::HighlightedText);
-    m_normal_bg = qApp->palette().color(QPalette::Base);
+    m_normal_bg = qApp->palette().color(QPalette::WindowText);
     //m_selected_bg = qApp->palette().color(QPalette::Highlight);
 
     QPixmap px1(skinned_arrow_up_xpm);

@@ -66,7 +66,7 @@ private:
     void resizeEvent(QResizeEvent *e);
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
-    void loadColors();
+    void loadSystemColors();
     int findColumn(QPoint pos);
 
     QFontMetrics *m_metrics;
