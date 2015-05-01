@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -135,6 +135,11 @@ const QString VorbisCommentModel::value(Qmmp::MetaData key)
         return TStringToQString_qt4(m_tag->title());
     case Qmmp::ARTIST:
         return TStringToQString_qt4(m_tag->artist());
+    case Qmmp::ALBUMARTIST:
+        if(m_tag->fieldListMap()["ALBUMARTIST"].isEmpty())
+            return QString();
+        else
+            return TStringToQString_qt4(m_tag->fieldListMap()["ALBUMARTIST"].front());
     case Qmmp::ALBUM:
         return TStringToQString_qt4(m_tag->album());
     case Qmmp::COMMENT:
@@ -177,6 +182,9 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
     case Qmmp::ALBUM:
         m_tag->setAlbum(str);
         return;
+    case Qmmp::ALBUMARTIST:
+        m_tag->addField("ALBUMARTIST", str, true);
+        return;
     case Qmmp::COMMENT:
         m_tag->setComment(str);
         return;
@@ -184,8 +192,6 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
         m_tag->setGenre(str);
         return;
     case Qmmp::COMPOSER:
-        value.isEmpty() ?
-        m_tag->removeField("COMPOSER"):
         m_tag->addField("COMPOSER", str, true);
         return;
     case Qmmp::TRACK:
