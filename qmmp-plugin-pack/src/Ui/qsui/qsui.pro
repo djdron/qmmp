@@ -36,7 +36,9 @@ SOURCES += \
     elidinglabel.cpp \
     coverwidget.cpp \
     playlistbrowser.cpp \
-    toolbareditor.cpp
+    toolbareditor.cpp \
+    listwidgetdrawer.cpp \
+    playlistheader.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -63,7 +65,9 @@ HEADERS += mainwindow.h \
     elidinglabel.h \
     coverwidget.h \
     playlistbrowser.h \
-    toolbareditor.h
+    toolbareditor.h \
+    listwidgetdrawer.h \
+    playlistheader.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \

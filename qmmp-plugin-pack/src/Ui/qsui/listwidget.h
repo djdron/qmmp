@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,8 @@
 #include <QWidget>
 #include <QDir>
 #include <QContextMenuEvent>
+#include <QPen>
+#include "listwidgetdrawer.h"
 
 class QFont;
 class QFontMetrics;
@@ -33,23 +35,10 @@ class QScrollBar;
 class PlayListModel;
 class PlayListItem;
 class QmmpUiSettings;
+class PlayListHeader;
 namespace PlayListPopup{
 class PopupWidget;
 }
-
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-struct ListWidgetRow
-{
-    QString title;
-    QString length;
-    QString extraString;
-    int number;
-    bool separator;
-    bool selected;
-};
-
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -62,7 +51,6 @@ public:
 
     ~ListWidget();
 
-    void readSettings();
     /*!
      * Returns count of currently visible rows.
      */
@@ -75,11 +63,13 @@ public:
     int anchorIndex() const;
     void setAnchorIndex(int index);
     QMenu *menu();
-    PlayListModel *model();
     void setMenu(QMenu *menu);
+    PlayListModel *model();
 
 public slots:
-    void updateList();
+    void readSettings();
+    void updateList(int flags);
+    void updateColumns();
     void scroll(int); //0-99
     void recenterCurrent();
 
@@ -95,7 +85,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *);
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
-    int indexAt(int y) const;
+    int indexAt(int)const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *);
@@ -104,30 +94,28 @@ protected:
     bool event (QEvent *e);
 
 private slots:
+    void updateSkin();
     void autoscroll();
+    void updateRepeatIndicator();
+    void scrollToCurrent();
 
 private:
-    void loadSystemColors();
-    bool m_update;
-    bool m_scroll;
-    int m_pressed_index;
-    QMenu *m_menu;
-    PlayListModel *m_model;
-    /*!
-     * Returns string with queue number or(and) repeate flag for the item number \b i.
-     */
-    const QString getExtraString(int i);
-    int m_row_count, m_first;
-    QFont m_font, m_extra_font;
-    QFontMetrics *m_metrics, *m_bold_metrics, *m_extra_metrics;
-    QColor m_normal, m_alternate, m_current, m_highlighted, m_normal_bg, m_selected_bg;
-    int m_anchor_index;
-
     enum ScrollDirection
     {
         NONE = 0,TOP,DOWN
     };
+    /*!
+     * Returns string with queue number or(and) repeate flag for the item number \b i.
+     */
+    const QString getExtraString(int i);
 
+    bool m_update;
+    int m_pressed_index;
+    QMenu *m_menu;
+    PlayListModel *m_model;
+    int m_row_count, m_first;
+    bool m_resize;
+    int m_anchor_index;
     /*!
      * Scroll direction that is preforming in current moment.
      */
@@ -135,17 +123,14 @@ private:
     int m_prev_y;
     bool m_select_on_release;
     bool m_show_protocol;
-    bool m_show_number;
+    int m_drop_index;
+    QList<ListWidgetRow *> m_rows;
     QmmpUiSettings *m_ui_settings;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
     QScrollBar *m_scrollBar;
-    bool m_show_anchor;
-    int m_number_width;
-    int m_drop_index;
-    QList<ListWidgetRow *> m_rows;
-    bool m_align_numbres;
-    bool m_use_system_colors;
+    ListWidgetDrawer m_drawer;
+    PlayListHeader *m_header;
 };
 
 #endif
