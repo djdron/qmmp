@@ -155,12 +155,12 @@
     <message>
         <location filename="../columneditor.cpp" line="82"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">нумеру</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">двоцифрену нумеру</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">путању фајла</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>

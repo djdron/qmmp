@@ -194,12 +194,12 @@
     <message>
         <location filename="../columneditor.cpp" line="89"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ruta ó ficheiro</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>

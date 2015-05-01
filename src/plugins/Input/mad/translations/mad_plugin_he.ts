@@ -14,27 +14,27 @@
         <translation>קבצי MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="246"/>
+        <location filename="../decodermadfactory.cpp" line="263"/>
         <source>About MPEG Audio Plugin</source>
         <translation>אודות תוספת שמע MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="247"/>
+        <location filename="../decodermadfactory.cpp" line="264"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>תוספת שמע MPEG של Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="248"/>
+        <location filename="../decodermadfactory.cpp" line="265"/>
         <source>Compiled against libmad version:</source>
         <translation>הודרה כנגדlibmad גירסה:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="252"/>
+        <location filename="../decodermadfactory.cpp" line="269"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="253"/>
+        <location filename="../decodermadfactory.cpp" line="270"/>
         <source>Source code based on mq3 and madplay projects</source>
         <translation>קוד מקור מבוסס על המיזמים mq3 וגם madplay</translation>
     </message>

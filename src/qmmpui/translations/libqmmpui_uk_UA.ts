@@ -150,7 +150,7 @@
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="104"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Заголовок</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">2-розрядний номер треку</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
@@ -194,12 +194,12 @@
     <message>
         <location filename="../columneditor.cpp" line="89"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шлях до файла</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
@@ -904,7 +904,7 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="175"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Заголовок</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="176"/>
