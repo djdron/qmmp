@@ -37,28 +37,6 @@
 #include <qmmpui/playlistmanager.h>
 #include "playlistheader.h"
 
-static const char * const skinned_arrow_down_xpm[] = {
-    "11 6 2 1",
-    " 	c None",
-    "x	c #000000",
-    "           ",
-    " xxxxxxxxx ",
-    "  xxxxxxx  ",
-    "   xxxxx   ",
-    "    xxx    ",
-    "     x     "};
-
-static const char * const skinned_arrow_up_xpm[] = {
-    "11 6 2 1",
-    " 	c None",
-    "x	c #000000",
-    "     x     ",
-    "    xxx    ",
-    "   xxxxx   ",
-    "  xxxxxxx  ",
-    " xxxxxxxxx ",
-    "           "};
-
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
@@ -142,7 +120,7 @@ void PlayListHeader::updateColumns()
         if(m_sorting_column == 0)
         {
             m_names << m_metrics->elidedText(m_model->name(0), Qt::ElideRight,
-                                             m_rects.last().width() - 2 * m_padding - m_arrow_up.width() - 4);
+                                             m_rects.last().width() - 2 * m_padding/* - m_arrow_up.width() - 4*/);
         }
         else
         {
@@ -161,7 +139,7 @@ void PlayListHeader::updateColumns()
         if(i == m_sorting_column)
         {
             m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                             m_model->size(i) - 2 * m_padding - m_arrow_up.width() - 4);
+                                             m_model->size(i) - 2 * m_padding/* - m_arrow_up.width() - 4*/);
         }
         else
         {
@@ -456,7 +434,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                              m_rects.at(0).right(), height());
         }*/
 
-        if(m_names.count() == 1)
+        /*if(m_names.count() == 1)
         {
             painter.drawText(m_rects[0].right() - m_padding - m_metrics->width(m_names[0]),
                     m_metrics->ascent(), m_names[0]);
@@ -467,7 +445,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                         m_reverted ? m_arrow_up : m_arrow_down);
             }
             return;
-        }
+        }*/
 
         /*for(int i = 0; i < m_rects.count(); ++i)
         {
@@ -539,6 +517,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             opt.section = i;
             opt.textAlignment = Qt::AlignLeft | Qt::AlignVCenter;
             opt.orientation = Qt::Horizontal;
+            opt.state = QStyle::State_None | QStyle::State_Raised;
             opt.state |= QStyle::State_Horizontal;
             if(i == 0)
                 opt.position = QStyleOptionHeader::Beginning;
@@ -601,15 +580,6 @@ void PlayListHeader::loadSystemColors()
     //m_highlighted = qApp->palette().color(QPalette::HighlightedText);
     m_normal_bg = qApp->palette().color(QPalette::WindowText);
     //m_selected_bg = qApp->palette().color(QPalette::Highlight);
-
-    QPixmap px1(skinned_arrow_up_xpm);
-    QPixmap px2(skinned_arrow_down_xpm);
-    m_arrow_up = px1;
-    m_arrow_down = px2;
-    m_arrow_up.fill(m_normal_bg);
-    m_arrow_down.fill(m_normal_bg);
-    m_arrow_up.setMask(px1.createMaskFromColor(Qt::transparent));
-    m_arrow_down.setMask(px2.createMaskFromColor(Qt::transparent));
 }
 
 int PlayListHeader::findColumn(QPoint pos)
