@@ -298,7 +298,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
             if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
             {
-                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
             }
         }
 
@@ -337,7 +337,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
             if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {
-                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
             }
         }
 

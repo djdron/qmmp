@@ -30,6 +30,7 @@
 #include <QLineEdit>
 #include <QInputDialog>
 #include <QIcon>
+#include <QStyleOptionHeader>
 #include <qmmp/qmmp.h>
 #include <qmmpui/qmmpuisettings.h>
 #include <qmmpui/playlistheadermodel.h>
@@ -175,7 +176,10 @@ void PlayListHeader::updateColumns()
 
 int PlayListHeader::requiredHeight() const
 {
-    return m_metrics->lineSpacing() + 1;
+    QStyleOptionHeader opt;
+    opt.initFrom(this);
+    return style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), this).height();
+    //return m_metrics->lineSpacing() + 1;
 }
 
 void PlayListHeader::showSortIndicator(int column, bool reverted)
@@ -446,11 +450,11 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     if(rtl)
     {
-        if(m_number_width)
+        /*if(m_number_width)
         {
             painter.drawLine(m_rects.at(0).right(), 0,
                              m_rects.at(0).right(), height());
-        }
+        }*/
 
         if(m_names.count() == 1)
         {
@@ -465,7 +469,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             return;
         }
 
-        for(int i = 0; i < m_rects.count(); ++i)
+        /*for(int i = 0; i < m_rects.count(); ++i)
         {
             if(m_task == MOVE && i == m_pressed_column)
             {
@@ -490,7 +494,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                                    (height() - m_arrow_up.height()) / 2,
                                    m_reverted ? m_arrow_up : m_arrow_down);
             }
-        }
+        }*/
 
         if(m_task == MOVE)
         {
@@ -507,13 +511,13 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     }
     else
     {
-        if(m_number_width)
+        /*if(m_number_width)
         {
             painter.drawLine(m_rects.at(0).x(), 0,
                              m_rects.at(0).x(), height());
-        }
+        }*/
 
-        if(m_names.count() == 1)
+        /*if(m_names.count() == 1)
         {
             painter.drawText(m_rects[0].x() + m_padding, m_metrics->ascent(), m_names[0]);
             if(m_sorting_column == 0)
@@ -523,9 +527,34 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                         m_reverted ? m_arrow_up : m_arrow_down);
             }
             return;
-        }
+        }*/
 
         for(int i = 0; i < m_rects.count(); ++i)
+        {
+            QStyleOptionHeader opt;
+            opt.initFrom(this);
+            opt.rect = m_rects[i];
+            opt.text = m_names[i];
+            opt.iconAlignment = Qt::AlignVCenter;
+            opt.section = i;
+            opt.textAlignment = Qt::AlignLeft | Qt::AlignVCenter;
+            opt.orientation = Qt::Horizontal;
+            opt.state |= QStyle::State_Horizontal;
+            if(i == 0)
+                opt.position = QStyleOptionHeader::Beginning;
+            else if(i < m_rects.count() - 1)
+                opt.position = QStyleOptionHeader::Middle;
+            else if(i == m_rects.count() - 1)
+                opt.position = QStyleOptionHeader::End;
+
+            if(i == m_sorting_column)
+                opt.sortIndicator = m_reverted ? QStyleOptionHeader::SortUp : QStyleOptionHeader::SortDown;
+
+            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
+        }
+
+
+        /*for(int i = 0; i < m_rects.count(); ++i)
         {
             if(m_task == MOVE && i == m_pressed_column)
             {
@@ -549,7 +578,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                                    (height() - m_arrow_up.height()) / 2,
                                    m_reverted ? m_arrow_up : m_arrow_down);
             }
-        }
+        }*/
 
         if(m_task == MOVE)
         {
