@@ -30,6 +30,7 @@ class QMouseEvent;
 class QContextMenuEvent;
 class QMenu;
 class QAction;
+class QStyleOptionHeader;
 class PlayListHeaderModel;
 
 /**
@@ -52,7 +53,6 @@ public slots:
     void hideSortIndicator();
 
 private slots:
-    void updateSkin();
     void addColumn();
     void editColumn();
     void removeColumn();
@@ -66,19 +66,19 @@ private:
     void resizeEvent(QResizeEvent *e);
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
-    void loadSystemColors();
     int findColumn(QPoint pos);
+    void initStyleOption(QStyleOptionHeader *opt);
 
     QFontMetrics *m_metrics;
     QMenu *m_menu;
     QFont m_font;
-    QColor m_normal, m_normal_bg, m_current;
     QList <QRect> m_rects;
     QStringList m_names;
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
+
     bool m_show_number;
     bool m_align_numbres;
     bool m_reverted;

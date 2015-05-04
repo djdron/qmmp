@@ -59,7 +59,6 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
 
-    loadSystemColors();
     readSettings();
 }
 
@@ -179,12 +178,6 @@ void PlayListHeader::hideSortIndicator()
     }
 }
 
-void PlayListHeader::updateSkin()
-{
-    loadSystemColors();
-    update();
-}
-
 void PlayListHeader::addColumn()
 {
     int column = findColumn(m_pressed_pos);
@@ -282,7 +275,6 @@ void PlayListHeader::mouseReleaseEvent(QMouseEvent *)
 {
     if(m_task == SORT)
     {
-        qDebug("sort column");
         PlayListManager::instance()->selectedPlayList()->sortByColumn(m_pressed_column);
     }
     m_task = NO_TASK;
@@ -417,13 +409,6 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    painter.setBrush(m_normal);
-    painter.setPen(m_normal);
-    painter.setFont(m_font);
-    painter.drawRect(5,-1,width()-10,height()+1);
-
-    painter.setPen(m_normal_bg);
-
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
     if(rtl)
@@ -474,7 +459,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             }
         }*/
 
-        if(m_task == MOVE)
+        /*if(m_task == MOVE)
         {
             painter.setPen(m_normal);
             painter.drawRect(m_mouse_pos.x() - m_press_offset, 0,
@@ -485,40 +470,45 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                              m_rects.at(m_pressed_column).width() - m_padding -
                              m_metrics->width(m_names.at(m_pressed_column)),
                              m_metrics->ascent(), m_names.at(m_pressed_column));
-        }
+        }*/
     }
     else
     {
-        /*if(m_number_width)
         {
-            painter.drawLine(m_rects.at(0).x(), 0,
-                             m_rects.at(0).x(), height());
-        }*/
+            QStyleOption opt;
+            opt.initFrom(this);
+            opt.state |= QStyle::State_Horizontal;
+            opt.rect = QRect(0,0,m_rects.first().x(), height());
+            style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
+            opt.rect = QRect(m_rects.last().right(), 0,  width() - m_rects.last().right(), height());
+            style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
+        }
 
-        /*if(m_names.count() == 1)
+        if(m_names.count() == 1)
         {
-            painter.drawText(m_rects[0].x() + m_padding, m_metrics->ascent(), m_names[0]);
+            QStyleOptionHeader opt;
+            initStyleOption(&opt);
+            opt.rect = QRect(m_rects[0].x(), m_rects[0].y(), width() - m_rects[0].x() - 5, m_rects[0].height());
+            opt.text = m_names[0];
+            opt.section = 0;
+            //opt.state |= QStyle::State_MouseOver;
+            opt.section = QStyleOptionHeader::OnlyOneSection;
+
             if(m_sorting_column == 0)
-            {
-                painter.drawPixmap(m_rects[0].right() - m_arrow_up.width() - 4,
-                        (height() - m_arrow_up.height()) / 2,
-                        m_reverted ? m_arrow_up : m_arrow_down);
-            }
+                opt.sortIndicator = m_reverted ? QStyleOptionHeader::SortUp : QStyleOptionHeader::SortDown;
+
+            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
             return;
-        }*/
+        }
 
         for(int i = 0; i < m_rects.count(); ++i)
         {
             QStyleOptionHeader opt;
-            opt.initFrom(this);
+            initStyleOption(&opt);
             opt.rect = m_rects[i];
             opt.text = m_names[i];
-            opt.iconAlignment = Qt::AlignVCenter;
             opt.section = i;
-            opt.textAlignment = Qt::AlignLeft | Qt::AlignVCenter;
-            opt.orientation = Qt::Horizontal;
-            opt.state = QStyle::State_None | QStyle::State_Raised;
-            opt.state |= QStyle::State_Horizontal;
+            opt.state |= QStyle::State_Active;
             if(i == 0)
                 opt.position = QStyleOptionHeader::Beginning;
             else if(i < m_rects.count() - 1)
@@ -532,54 +522,18 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
         }
 
-
-        /*for(int i = 0; i < m_rects.count(); ++i)
-        {
-            if(m_task == MOVE && i == m_pressed_column)
-            {
-                painter.setBrush(m_normal_bg);
-                painter.setPen(m_current);
-                painter.drawRect(m_rects[i].x(), 0,
-                                 m_rects[i].width(), height()-1);
-                painter.setBrush(m_normal);
-                painter.setPen(m_normal_bg);
-                continue;
-            }
-
-            painter.drawText(m_rects[i].x() + m_padding, m_metrics->ascent(), m_names[i]);
-
-            painter.drawLine(m_rects[i].right()+1, 0,
-                             m_rects[i].right()+1, height()+1);
-
-            if(i == m_sorting_column)
-            {
-                painter.drawPixmap(m_rects[i].right() - m_arrow_up.width() - 4,
-                                   (height() - m_arrow_up.height()) / 2,
-                                   m_reverted ? m_arrow_up : m_arrow_down);
-            }
-        }*/
-
         if(m_task == MOVE)
         {
-            painter.setPen(m_normal);
-            painter.drawRect(m_mouse_pos.x() - m_press_offset, 0,
-                             m_rects.at(m_pressed_column).width(), height());
-
-            painter.setPen(m_normal_bg);
-            painter.drawText(m_mouse_pos.x() - m_press_offset + m_padding,
-                             m_metrics->ascent(), m_names.at(m_pressed_column));
+            QStyleOptionHeader opt;
+            initStyleOption(&opt);
+            opt.rect = m_rects[m_pressed_column];
+            opt.text = m_names[m_pressed_column];
+            opt.section = m_pressed_column;
+            painter.setOpacity(0.75);
+            opt.rect.moveTo(m_mouse_pos.x() - m_press_offset, opt.rect.y());
+            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
         }
     }
-}
-
-void PlayListHeader::loadSystemColors()
-{
-    m_normal = qApp->palette().color(QPalette::Window);
-    //m_alternate = qApp->palette().color(QPalette::AlternateBase);
-    m_current = qApp->palette().color(QPalette::Text);
-    //m_highlighted = qApp->palette().color(QPalette::HighlightedText);
-    m_normal_bg = qApp->palette().color(QPalette::WindowText);
-    //m_selected_bg = qApp->palette().color(QPalette::Highlight);
 }
 
 int PlayListHeader::findColumn(QPoint pos)
@@ -590,4 +544,13 @@ int PlayListHeader::findColumn(QPoint pos)
             return i;
     }
     return -1;
+}
+
+void PlayListHeader::initStyleOption(QStyleOptionHeader *opt)
+{
+    opt->initFrom(this);
+    opt->state = QStyle::State_None | QStyle::State_Raised | QStyle::State_Horizontal | QStyle::State_Enabled;
+    opt->orientation = Qt::Horizontal;
+    opt->iconAlignment = Qt::AlignVCenter;
+    opt->textAlignment = Qt::AlignLeft | Qt::AlignVCenter;
 }
