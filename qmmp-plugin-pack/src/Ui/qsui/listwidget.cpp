@@ -77,7 +77,7 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     connect(m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect(m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
     connect(m_model, SIGNAL(sortingByColumnFinished(int,bool)), m_header, SLOT(showSortIndicator(int,bool)));
-    //SET_ACTION(ActionManager::PL_SHOW_HEADER, this, SLOT(readSettings()));
+    SET_ACTION(ActionManager::PL_SHOW_HEADER, this, SLOT(readSettings()));
 }
 
 ListWidget::~ListWidget()
@@ -94,7 +94,7 @@ void ListWidget::readSettings()
     bool show_popup = settings.value("pl_show_popup", false).toBool();
 
     m_header->readSettings();
-    m_header->setVisible(true/*ACTION(ActionManager::PL_SHOW_HEADER)->isChecked()*/);
+    m_header->setVisible(ACTION(ActionManager::PL_SHOW_HEADER)->isChecked());
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
 
     if (m_update)

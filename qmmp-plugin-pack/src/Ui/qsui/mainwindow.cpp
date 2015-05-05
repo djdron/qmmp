@@ -460,6 +460,7 @@ void MainWindow::createActions()
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TABS, m_ui.tabWidget, SLOT(setTabsVisible(bool))));
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_SHOW_TITLEBARS, this, SLOT(setTitleBarsVisible(bool))));
+    m_ui.menuView->addAction(ACTION(ActionManager::PL_SHOW_HEADER));
     m_ui.menuView->addSeparator();
     m_ui.menuView->addAction(SET_ACTION(ActionManager::UI_BLOCK_TOOLBARS, this, SLOT(setToolBarsBlocked(bool))));
     m_ui.menuView->addAction(tr("Edit Toolbar"), this, SLOT(editToolBar()));

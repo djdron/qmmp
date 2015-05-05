@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -94,6 +94,7 @@ public:
         PL_SELECT_NEXT,
         PL_SELECT_PREVIOUS,
         PL_GROUP_TRACKS,
+        PL_SHOW_HEADER,
 
         EQUALIZER,
         SETTINGS,
@@ -114,6 +115,8 @@ public:
 private:
     QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
     QAction *createAction2(QString name, QString confKey, QString key, QString iconName = QString());
+    void readStates();
+    void saveStates();
 
     QSettings *m_settings;
     QHash <int, QAction *> m_actions;

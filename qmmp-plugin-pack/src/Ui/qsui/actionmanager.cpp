@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -96,7 +96,8 @@ ActionManager::ActionManager(QObject *parent) :
                                              tr("Ctrl+PgDown"), "go-next");
     m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",
                                                  tr("Ctrl+PgUp"), "go-previous");
-    m_actions[PL_GROUP_TRACKS] = createAction2(tr("&Group tracks"), "group_tracks", tr("Ctrl+G"));
+    m_actions[PL_GROUP_TRACKS] = createAction2(tr("&Group Tracks"), "group_tracks", tr("Ctrl+G"));
+    m_actions[PL_SHOW_HEADER] = createAction2(tr("&Show Playlist Header"), "show_header", tr("Ctrl+H"));
     //other
     m_actions[EQUALIZER] = createAction(tr("&Equalizer"), "equalizer", tr("Ctrl+E"));
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
@@ -105,6 +106,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");
     m_actions[QUIT] = createAction(tr("&Exit"), "exit", tr("Ctrl+Q"), "application-exit");
     m_settings->endGroup();
+    readStates();
     delete m_settings;
     m_settings = 0;
     m_actions[ABOUT]->setIcon(qApp->windowIcon());
@@ -112,6 +114,7 @@ ActionManager::ActionManager(QObject *parent) :
 
 ActionManager::~ActionManager()
 {
+    saveStates();
     m_instance = 0;
 }
 
@@ -169,6 +172,21 @@ QAction *ActionManager::createAction2(QString name, QString confKey, QString key
     return action;
 }
 
+void ActionManager::readStates()
+{
+    m_settings->beginGroup("Simple");
+    m_actions[PL_SHOW_HEADER]->setChecked(m_settings->value("pl_show_header", true).toBool());
+    m_settings->endGroup();
+}
+
+void ActionManager::saveStates()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    settings.setValue("pl_show_header", m_actions[PL_SHOW_HEADER]->isChecked());
+    settings.endGroup();
+}
+
 void ActionManager::saveActions()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -201,3 +219,5 @@ QStringList ActionManager::toolBarActionNames() const
     }
     return names;
 }
+
+
