@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -89,6 +89,7 @@ void QSUISettings::readSettings()
     //playlist
     m_ui.protocolCheckBox->setChecked(settings.value("pl_show_protocol", false).toBool());
     m_ui.numbersCheckBox->setChecked(settings.value("pl_show_numbers", true).toBool());
+    m_ui.lengthsCheckBox->setChecked(settings.value("pl_show_lengths", true).toBool());
     m_ui.alignCheckBox->setChecked(settings.value("pl_align_numbers", false).toBool());
     m_ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
     m_ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
@@ -129,6 +130,7 @@ void QSUISettings::writeSettings()
 
     settings.setValue("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
     settings.setValue("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
+    settings.setValue("pl_show_lengths", m_ui.lengthsCheckBox->isChecked());
     settings.setValue("pl_align_numbers", m_ui.alignCheckBox->isChecked());
     settings.setValue("pl_show_anchor", m_ui.anchorCheckBox->isChecked());
     settings.setValue("pl_show_popup", m_ui.popupCheckBox->isChecked());

@@ -131,6 +131,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="lengthsCheckBox">
+            <property name="text">
+             <string>Show song lengths</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
