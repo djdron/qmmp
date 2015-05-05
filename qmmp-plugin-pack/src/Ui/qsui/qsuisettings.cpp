@@ -127,7 +127,6 @@ void QSUISettings::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-
     settings.setValue("pl_show_protocol", m_ui.protocolCheckBox->isChecked());
     settings.setValue("pl_show_numbers", m_ui.numbersCheckBox->isChecked());
     settings.setValue("pl_show_lengths", m_ui.lengthsCheckBox->isChecked());
