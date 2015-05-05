@@ -655,7 +655,7 @@
         <location filename="../mainwindow.cpp" line="483"/>
         <location filename="../mainwindow.cpp" line="534"/>
         <source>By Album Artist</source>
-        <translation>По исполнителю албома</translation>
+        <translation>По исполнителю альбома</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="487"/>
