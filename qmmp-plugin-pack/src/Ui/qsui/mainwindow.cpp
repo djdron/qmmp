@@ -360,7 +360,7 @@ void MainWindow::playPause()
 
 void MainWindow::showBitrate(int)
 {
-    m_statusLabel->setText(tr("<b>%1</b> [%2 bit/%3/%4 Hz/%5 kbps]")
+    m_statusLabel->setText(tr("<b>%1</b> [%2 bit|%3|%4 Hz|%5 kbps]")
                            .arg(tr("Playing"))
                            .arg(m_core->sampleSize())
                            .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
