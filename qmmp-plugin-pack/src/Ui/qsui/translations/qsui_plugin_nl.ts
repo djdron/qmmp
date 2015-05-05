@@ -901,12 +901,12 @@ Instellingen</translation>
     <name>PlayListHeader</name>
     <message>
         <location filename="../playlistheader.cpp" line="52"/>
-        <source>Add column</source>
+        <source>Add Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="53"/>
-        <source>Edit column</source>
+        <source>Edit Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -916,12 +916,12 @@ Instellingen</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="56"/>
-        <source>Restore size</source>
+        <source>Restore Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="58"/>
-        <source>Remove column</source>
+        <source>Remove Column</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

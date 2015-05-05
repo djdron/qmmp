@@ -928,12 +928,12 @@
     <name>PlayListHeader</name>
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
-        <source>Add column</source>
+        <source>Add Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
-        <source>Edit column</source>
+        <source>Edit Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -943,12 +943,12 @@
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
-        <source>Restore size</source>
+        <source>Restore Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
-        <source>Remove column</source>
+        <source>Remove Column</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

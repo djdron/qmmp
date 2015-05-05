@@ -376,7 +376,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Группировать треки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Show Playlist Header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показывать заголовок списка</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -927,13 +927,13 @@
     <name>PlayListHeader</name>
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
-        <source>Add column</source>
-        <translation>Добавить колонку</translation>
+        <source>Add Column</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
-        <source>Edit column</source>
-        <translation>Изменить колонку</translation>
+        <source>Edit Column</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="77"/>
@@ -942,13 +942,13 @@
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
-        <source>Restore size</source>
-        <translation>Восстановить размер</translation>
+        <source>Restore Size</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
-        <source>Remove column</source>
-        <translation>Удалить колонку</translation>
+        <source>Remove Column</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
