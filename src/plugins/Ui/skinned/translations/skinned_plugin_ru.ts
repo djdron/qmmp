@@ -928,12 +928,12 @@
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить колонку</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить колонку</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="77"/>
@@ -943,12 +943,12 @@
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Восстановить размер</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить колонку</translation>
     </message>
 </context>
 <context>
