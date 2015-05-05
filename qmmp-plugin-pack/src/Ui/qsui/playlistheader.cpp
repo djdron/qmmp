@@ -41,13 +41,11 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     setMouseTracking(true);
-    m_metrics = 0;
-    m_padding = 0;
+    m_metrics = new QFontMetrics(qApp->font());
     m_pl_padding = 0;
-    m_show_number = false;
-    m_align_numbres = false;
     m_number_width = 0;
     m_sorting_column = -1;
+
     m_task = NO_TASK;
     m_model = QmmpUiSettings::instance()->headerModel();
     m_menu = new QMenu(this);
@@ -58,6 +56,10 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addAction(tr("Restore size"), this, SLOT(restoreSize()));
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
+
+    QStyleOptionHeader opt;
+    opt.initFrom(this);
+    m_size_hint = style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), this);
 
     readSettings();
 }
@@ -74,17 +76,6 @@ void PlayListHeader::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
     m_font.fromString(settings.value("header_font", qApp->font().toString()).toString());
-
-    if (m_metrics)
-    {
-        delete m_metrics;
-        m_metrics = 0;
-    }
-
-    m_metrics = new QFontMetrics(m_font);
-    m_show_number = settings.value ("pl_show_numbers", true).toBool();
-    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
-    m_padding = m_metrics->width("9")/2;
 
     QFont pl_font;
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
@@ -116,16 +107,7 @@ void PlayListHeader::updateColumns()
     if(m_model->count() == 1)
     {
         m_rects << (rtl ? QRect(5, 0, width() - sx - 5, height()) : QRect(sx, 0, width() - sx - 5, height()));
-        if(m_sorting_column == 0)
-        {
-            m_names << m_metrics->elidedText(m_model->name(0), Qt::ElideRight,
-                                             m_rects.last().width() - 2 * m_padding/* - m_arrow_up.width() - 4*/);
-        }
-        else
-        {
-            m_names << m_metrics->elidedText(m_model->name(0), Qt::ElideRight,
-                                             m_rects.last().width() - 2 * m_padding);
-        }
+        m_names << m_model->name(0);
         return;
     }
 
@@ -135,17 +117,7 @@ void PlayListHeader::updateColumns()
             m_rects << QRect(width() - sx - m_model->size(i), 0, m_model->size(i), height());
         else
             m_rects << QRect(sx, 0, m_model->size(i), height());
-        if(i == m_sorting_column)
-        {
-            m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                             m_model->size(i) - 2 * m_padding/* - m_arrow_up.width() - 4*/);
-        }
-        else
-        {
-            m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                             m_model->size(i) - 2 * m_padding);
-        }
-
+        m_names << m_model->name(i);
         sx += m_model->size(i);
     }
     update();
@@ -153,10 +125,7 @@ void PlayListHeader::updateColumns()
 
 int PlayListHeader::requiredHeight() const
 {
-    QStyleOptionHeader opt;
-    opt.initFrom(this);
-    return style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), this).height();
-    //return m_metrics->lineSpacing() + 1;
+    return m_size_hint.height();
 }
 
 void PlayListHeader::showSortIndicator(int column, bool reverted)
@@ -409,130 +378,50 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    bool rtl = (layoutDirection() == Qt::RightToLeft);
-
-    if(rtl)
     {
-        /*if(m_number_width)
-        {
-            painter.drawLine(m_rects.at(0).right(), 0,
-                             m_rects.at(0).right(), height());
-        }*/
-
-        /*if(m_names.count() == 1)
-        {
-            painter.drawText(m_rects[0].right() - m_padding - m_metrics->width(m_names[0]),
-                    m_metrics->ascent(), m_names[0]);
-            if(m_sorting_column == 0)
-            {
-                painter.drawPixmap(m_rects[0].x() + 4,
-                        (height() - m_arrow_up.height()) / 2,
-                        m_reverted ? m_arrow_up : m_arrow_down);
-            }
-            return;
-        }*/
-
-        /*for(int i = 0; i < m_rects.count(); ++i)
-        {
-            if(m_task == MOVE && i == m_pressed_column)
-            {
-                painter.setBrush(m_normal_bg);
-                painter.setPen(m_current);
-                painter.drawRect(m_rects[i].x(), 0,
-                                 m_rects[i].width(), height()-1);
-                painter.setBrush(m_normal);
-                painter.setPen(m_normal_bg);
-                continue;
-            }
-
-            painter.drawText(m_rects[i].right() - m_padding - m_metrics->width(m_names[i]),
-                             m_metrics->ascent(), m_names[i]);
-
-            painter.drawLine(m_rects[i].x()-1, 0,
-                             m_rects[i].x()-1, height()+1);
-
-            if(i == m_sorting_column)
-            {
-                painter.drawPixmap(m_rects[i].x() + 4,
-                                   (height() - m_arrow_up.height()) / 2,
-                                   m_reverted ? m_arrow_up : m_arrow_down);
-            }
-        }*/
-
-        /*if(m_task == MOVE)
-        {
-            painter.setPen(m_normal);
-            painter.drawRect(m_mouse_pos.x() - m_press_offset, 0,
-                             m_rects.at(m_pressed_column).width(), height());
-
-            painter.setPen(m_normal_bg);
-            painter.drawText(m_mouse_pos.x() - m_press_offset +
-                             m_rects.at(m_pressed_column).width() - m_padding -
-                             m_metrics->width(m_names.at(m_pressed_column)),
-                             m_metrics->ascent(), m_names.at(m_pressed_column));
-        }*/
+        QStyleOption opt;
+        opt.initFrom(this);
+        opt.state |= QStyle::State_Horizontal;
+        opt.rect = QRect(0,0,m_rects.first().x(), height());
+        style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
+        opt.rect = QRect(m_rects.last().right(), 0,  width() - m_rects.last().right(), height());
+        style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
     }
-    else
+
+    for(int i = 0; i < m_rects.count(); ++i)
     {
-        {
-            QStyleOption opt;
-            opt.initFrom(this);
-            opt.state |= QStyle::State_Horizontal;
-            opt.rect = QRect(0,0,m_rects.first().x(), height());
-            style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
-            opt.rect = QRect(m_rects.last().right(), 0,  width() - m_rects.last().right(), height());
-            style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
-        }
+        QStyleOptionHeader opt;
+        initStyleOption(&opt);
+        opt.rect = m_rects[i];
+        opt.text = m_names[i];
+        opt.section = i;
+        opt.state |= QStyle::State_Active;
+        if(i == 0)
+            opt.position = QStyleOptionHeader::Beginning;
+        else if(i < m_rects.count() - 1)
+            opt.position = QStyleOptionHeader::Middle;
+        else if(i == m_rects.count() - 1)
+            opt.position = QStyleOptionHeader::End;
 
-        if(m_names.count() == 1)
-        {
-            QStyleOptionHeader opt;
-            initStyleOption(&opt);
-            opt.rect = QRect(m_rects[0].x(), m_rects[0].y(), width() - m_rects[0].x() - 5, m_rects[0].height());
-            opt.text = m_names[0];
-            opt.section = 0;
-            //opt.state |= QStyle::State_MouseOver;
-            opt.section = QStyleOptionHeader::OnlyOneSection;
+        if(i == m_sorting_column)
+            opt.sortIndicator = m_reverted ? QStyleOptionHeader::SortUp : QStyleOptionHeader::SortDown;
 
-            if(m_sorting_column == 0)
-                opt.sortIndicator = m_reverted ? QStyleOptionHeader::SortUp : QStyleOptionHeader::SortDown;
+        style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
+    }
 
-            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
-            return;
-        }
+    if(m_names.count() == 1)
+        return;
 
-        for(int i = 0; i < m_rects.count(); ++i)
-        {
-            QStyleOptionHeader opt;
-            initStyleOption(&opt);
-            opt.rect = m_rects[i];
-            opt.text = m_names[i];
-            opt.section = i;
-            opt.state |= QStyle::State_Active;
-            if(i == 0)
-                opt.position = QStyleOptionHeader::Beginning;
-            else if(i < m_rects.count() - 1)
-                opt.position = QStyleOptionHeader::Middle;
-            else if(i == m_rects.count() - 1)
-                opt.position = QStyleOptionHeader::End;
-
-            if(i == m_sorting_column)
-                opt.sortIndicator = m_reverted ? QStyleOptionHeader::SortUp : QStyleOptionHeader::SortDown;
-
-            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
-        }
-
-        if(m_task == MOVE)
-        {
-            QStyleOptionHeader opt;
-            initStyleOption(&opt);
-            opt.rect = m_rects[m_pressed_column];
-            opt.text = m_names[m_pressed_column];
-            opt.section = m_pressed_column;
-            painter.setOpacity(0.75);
-            opt.rect.moveTo(m_mouse_pos.x() - m_press_offset, opt.rect.y());
-            style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
-        }
+    if(m_task == MOVE)
+    {
+        QStyleOptionHeader opt;
+        initStyleOption(&opt);
+        opt.rect = m_rects[m_pressed_column];
+        opt.text = m_names[m_pressed_column];
+        opt.section = m_pressed_column;
+        painter.setOpacity(0.75);
+        opt.rect.moveTo(m_mouse_pos.x() - m_press_offset, opt.rect.y());
+        style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
     }
 }
 

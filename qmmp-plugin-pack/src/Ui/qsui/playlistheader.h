@@ -79,16 +79,14 @@ private:
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
 
-    bool m_show_number;
-    bool m_align_numbres;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;
     int m_old_size;
     int m_press_offset;
-    int m_padding;
     int m_pl_padding;
     int m_sorting_column;
+    QSize m_size_hint;
 
     enum
     {
