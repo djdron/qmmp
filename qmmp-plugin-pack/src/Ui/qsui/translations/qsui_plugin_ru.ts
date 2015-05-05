@@ -399,7 +399,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Группировать треки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
