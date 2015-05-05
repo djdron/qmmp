@@ -927,13 +927,13 @@
     <name>PlayListHeader</name>
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
-        <source>Add column</source>
-        <translation>Spalte hinzufügen</translation>
+        <source>Add Column</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
-        <source>Edit column</source>
-        <translation>Spalte bearbeiten</translation>
+        <source>Edit Column</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="77"/>
@@ -942,13 +942,13 @@
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
-        <source>Restore size</source>
-        <translation>Größe wiederherstellen</translation>
+        <source>Restore Size</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
-        <source>Remove column</source>
-        <translation>Spalte entfernen</translation>
+        <source>Remove Column</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
