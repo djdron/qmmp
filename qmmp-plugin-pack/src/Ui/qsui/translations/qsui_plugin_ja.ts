@@ -595,8 +595,8 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="363"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</translation>
+        <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit|%3|%4 Hz|%5 kbps]</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="364"/>
