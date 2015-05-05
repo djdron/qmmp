@@ -72,13 +72,13 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_model = QmmpUiSettings::instance()->headerModel();
     m_skin = Skin::instance();
     m_menu = new QMenu(this);
-    m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add column"), this, SLOT(addColumn()));
-    m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit column"), this, SLOT(editColumn()));
+    m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add Column"), this, SLOT(addColumn()));
+    m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit Column"), this, SLOT(editColumn()));
     m_autoResize = m_menu->addAction(tr("Auto-resize"), this, SLOT(setAutoResize(bool)));
     m_autoResize->setCheckable(true);
-    m_menu->addAction(tr("Restore size"), this, SLOT(restoreSize()));
+    m_menu->addAction(tr("Restore Size"), this, SLOT(restoreSize()));
     m_menu->addSeparator();
-    m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove column"), this, SLOT(removeColumn()));
+    m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove Column"), this, SLOT(removeColumn()));
 
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
