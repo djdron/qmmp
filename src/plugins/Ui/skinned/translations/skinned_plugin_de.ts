@@ -375,8 +375,8 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
-        <source>&amp;Group tracks</source>
-        <translation>Titel &amp;gruppieren</translation>
+        <source>&amp;Group Tracks</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -385,13 +385,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
-        <source>&amp;Show header</source>
-        <translation>Kopfzeilen &amp;anzeigen</translation>
+        <source>Ctrl+H</source>
+        <translation>Strg+H</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
-        <source>Ctrl+H</source>
-        <translation>Strg+H</translation>
+        <source>&amp;Show Playlist Header</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -926,27 +926,27 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="77"/>
+        <location filename="../playlistheader.cpp" line="75"/>
         <source>Add column</source>
         <translation>Spalte hinzufügen</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="78"/>
+        <location filename="../playlistheader.cpp" line="76"/>
         <source>Edit column</source>
         <translation>Spalte bearbeiten</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="79"/>
+        <location filename="../playlistheader.cpp" line="77"/>
         <source>Auto-resize</source>
         <translation>Automatische Größenanpassung</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="81"/>
+        <location filename="../playlistheader.cpp" line="79"/>
         <source>Restore size</source>
         <translation>Größe wiederherstellen</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="83"/>
+        <location filename="../playlistheader.cpp" line="81"/>
         <source>Remove column</source>
         <translation>Spalte entfernen</translation>
     </message>
