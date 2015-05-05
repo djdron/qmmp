@@ -124,19 +124,6 @@ void  QmmpUiSettings::setConvertTwenty(bool yes)
     m_convertTwenty = yes;
 }
 
-/*void QmmpUiSettings::setTitleFormat(const QString &titleFormat)
-{
-    if(titleFormat != m_title_format)
-    {
-        m_title_format = titleFormat;
-        m_title_formatter.setPattern(titleFormat);
-        foreach(PlayListModel *model, PlayListManager::instance()->playLists())
-        {
-            model->updateMetaData();
-        }
-    }
-}*/
-
 void QmmpUiSettings::setGroupFormat(const QString &groupFormat)
 {
     if(groupFormat != m_group_format)
@@ -179,7 +166,6 @@ void QmmpUiSettings::sync()
 {
     qDebug("%s", Q_FUNC_INFO);
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
-    //s.setValue("PlayList/title_format", m_title_format);
     s.setValue("PlayList/group_format", m_group_format);
     s.setValue("PlayList/convert_underscore", m_convertUnderscore);
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
