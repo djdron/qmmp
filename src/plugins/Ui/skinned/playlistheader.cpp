@@ -66,8 +66,6 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_metrics = 0;
     m_padding = 0;
     m_pl_padding = 0;
-    m_show_number = false;
-    m_align_numbres = false;
     m_number_width = 0;
     m_sorting_column = -1;
     m_task = NO_TASK;
@@ -107,8 +105,6 @@ void PlayListHeader::readSettings()
     }
 
     m_metrics = new QFontMetrics(m_font);
-    m_show_number = settings.value ("pl_show_numbers", true).toBool();
-    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_padding = m_metrics->width("9")/2;
 
     QFont pl_font;
