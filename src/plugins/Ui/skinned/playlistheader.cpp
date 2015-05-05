@@ -298,10 +298,8 @@ void PlayListHeader::mousePressEvent(QMouseEvent *e)
 void PlayListHeader::mouseReleaseEvent(QMouseEvent *)
 {
     if(m_task == SORT)
-    {
-        qDebug("sort column");
         PlayListManager::instance()->selectedPlayList()->sortByColumn(m_pressed_column);
-    }
+
     m_task = NO_TASK;
     update();
 }
