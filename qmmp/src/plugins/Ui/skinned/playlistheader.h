@@ -82,8 +82,6 @@ private:
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     QPixmap m_arrow_up, m_arrow_down;
-    bool m_show_number;
-    bool m_align_numbres;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;
