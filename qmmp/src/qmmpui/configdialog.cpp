@@ -294,6 +294,7 @@ void ConfigDialog::createMenus()
 
     groupMenu->addAction(tr("Artist"))->setData("%p");
     groupMenu->addAction(tr("Album"))->setData("%a");
+    groupMenu->addAction(tr("Album artist"))->setData("%aa");
     groupMenu->addAction(tr("Genre"))->setData("%g");
     groupMenu->addAction(tr("Comment"))->setData("%c");
     groupMenu->addAction(tr("Composer"))->setData("%C");
