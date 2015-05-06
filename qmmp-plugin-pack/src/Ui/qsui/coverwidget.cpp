@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,7 +56,7 @@ void CoverWidget::paintEvent(QPaintEvent *p)
     if(!m_pixmap.isNull())
     {
         int w = qMin(p->rect().width(), p->rect().height());
-        paint.drawPixmap(0,0, m_pixmap.scaled(w,w,Qt::IgnoreAspectRatio, Qt::FastTransformation));
+        paint.drawPixmap(0,0, m_pixmap.scaled(w,w,Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     }
 }
 
