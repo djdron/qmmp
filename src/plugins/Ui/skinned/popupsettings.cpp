@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -61,16 +61,17 @@ void PopupSettings::createMenu()
     QMenu *menu = new QMenu(this);
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Album Artist"))->setData("%aa");
     menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Two-digit track number"))->setData("%NN");
+    menu->addAction(tr("Track Number"))->setData("%n");
+    menu->addAction(tr("Two-digit Track Number"))->setData("%NN");
     menu->addAction(tr("Genre"))->setData("%g");
     menu->addAction(tr("Comment"))->setData("%c");
     menu->addAction(tr("Composer"))->setData("%C");
     menu->addAction(tr("Duration"))->setData("%l");
-    menu->addAction(tr("Disc number"))->setData("%D");
-    menu->addAction(tr("File name"))->setData("%f");
-    menu->addAction(tr("File path"))->setData("%F");
+    menu->addAction(tr("Disc Number"))->setData("%D");
+    menu->addAction(tr("File Name"))->setData("%f");
+    menu->addAction(tr("File Path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
     ui.insertButton->setMenu(menu);
