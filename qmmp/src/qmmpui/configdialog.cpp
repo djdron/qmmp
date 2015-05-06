@@ -294,11 +294,11 @@ void ConfigDialog::createMenus()
 
     groupMenu->addAction(tr("Artist"))->setData("%p");
     groupMenu->addAction(tr("Album"))->setData("%a");
-    groupMenu->addAction(tr("Album artist"))->setData("%aa");
+    groupMenu->addAction(tr("Album Artist"))->setData("%aa");
     groupMenu->addAction(tr("Genre"))->setData("%g");
     groupMenu->addAction(tr("Comment"))->setData("%c");
     groupMenu->addAction(tr("Composer"))->setData("%C");
-    groupMenu->addAction(tr("Disc number"))->setData("%D");
+    groupMenu->addAction(tr("Disc Number"))->setData("%D");
     groupMenu->addAction(tr("Year"))->setData("%y");
     groupMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%p%a)");
     groupMenu->addAction(tr("Artist/Album"))->setData("%p%if(%p&%a, - ,)%a");
