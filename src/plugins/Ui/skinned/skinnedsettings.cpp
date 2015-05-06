@@ -176,22 +176,27 @@ void SkinnedSettings::findSkins(const QString &path)
 
 void SkinnedSettings::createActions()
 {
-    QMenu *windowTitleMenu = new QMenu(this);
-    windowTitleMenu->addAction(tr("Artist"))->setData("%p");
-    windowTitleMenu->addAction(tr("Album"))->setData("%a");
-    windowTitleMenu->addAction(tr("Album Artist"))->setData("%aa");
-    windowTitleMenu->addAction(tr("Title"))->setData("%t");
-    windowTitleMenu->addAction(tr("Genre"))->setData("%g");
-    windowTitleMenu->addAction(tr("Comment"))->setData("%c");
-    windowTitleMenu->addAction(tr("Composer"))->setData("%C");
-    windowTitleMenu->addAction(tr("Disc Number"))->setData("%D");
-    windowTitleMenu->addAction(tr("Year"))->setData("%y");
-    windowTitleMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%p%a)");
-    windowTitleMenu->addAction(tr("Artist - Title"))->setData("%if(%p,%p - %t,%t)");
+    QMenu *menu = new QMenu(this);
+    menu->addAction(tr("Artist"))->setData("%p");
+    menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Album Artist"))->setData("%aa");
+    menu->addAction(tr("Title"))->setData("%t");
+    menu->addAction(tr("Track Number"))->setData("%n");
+    menu->addAction(tr("Two-digit Track Number"))->setData("%NN");
+    menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Duration"))->setData("%l");
+    menu->addAction(tr("Disc Number"))->setData("%D");
+    menu->addAction(tr("File Name"))->setData("%f");
+    menu->addAction(tr("File Path"))->setData("%F");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    menu->addAction(tr("Artist - Title"))->setData("%if(%p,%p - %t,%t)");
 
-    m_ui.windowTitleButton->setMenu(windowTitleMenu);
+    m_ui.windowTitleButton->setMenu(menu);
     m_ui.windowTitleButton->setPopupMode(QToolButton::InstantPopup);
-    connect(windowTitleMenu, SIGNAL(triggered (QAction *)), SLOT(addWindowTitleString(QAction *)));
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addWindowTitleString(QAction *)));
 }
 
 void SkinnedSettings::loadSkins()
