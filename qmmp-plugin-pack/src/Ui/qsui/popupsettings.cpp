@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,14 +27,14 @@
 PopupSettings::PopupSettings(QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    ui.transparencySlider->setValue(100 - settings.value("popup_opacity", 1.0).toDouble()*100);
-    ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
-    ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
-    ui.delaySpinBox->setValue(settings.value("popup_delay", 2500).toInt());
-    ui.coverCheckBox->setChecked(settings.value("popup_show_cover",true).toBool());
+    m_ui.transparencySlider->setValue(100 - settings.value("popup_opacity", 1.0).toDouble()*100);
+    m_ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
+    m_ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
+    m_ui.delaySpinBox->setValue(settings.value("popup_delay", 2500).toInt());
+    m_ui.coverCheckBox->setChecked(settings.value("popup_show_cover",true).toBool());
     settings.endGroup();
     createMenu();
 }
@@ -47,11 +47,11 @@ void PopupSettings::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    settings.setValue("popup_opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
-    settings.setValue("popup_cover_size", ui.coverSizeSlider->value());
-    settings.setValue("popup_template", ui.textEdit->toPlainText());
-    settings.setValue("popup_delay",  ui.delaySpinBox->value());
-    settings.setValue("popup_show_cover", ui.coverCheckBox->isChecked());
+    settings.setValue("popup_opacity", 1.0 -  (double)m_ui.transparencySlider->value()/100);
+    settings.setValue("popup_cover_size", m_ui.coverSizeSlider->value());
+    settings.setValue("popup_template", m_ui.textEdit->toPlainText());
+    settings.setValue("popup_delay",  m_ui.delaySpinBox->value());
+    settings.setValue("popup_show_cover", m_ui.coverCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }
@@ -61,28 +61,29 @@ void PopupSettings::createMenu()
     QMenu *menu = new QMenu(this);
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Album Artist"))->setData("%aa");
     menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Two-digit track number"))->setData("%NN");
+    menu->addAction(tr("Track Number"))->setData("%n");
+    menu->addAction(tr("Two-digit Track Number"))->setData("%NN");
     menu->addAction(tr("Genre"))->setData("%g");
     menu->addAction(tr("Comment"))->setData("%c");
     menu->addAction(tr("Composer"))->setData("%C");
     menu->addAction(tr("Duration"))->setData("%l");
-    menu->addAction(tr("Disc number"))->setData("%D");
-    menu->addAction(tr("File name"))->setData("%f");
-    menu->addAction(tr("File path"))->setData("%F");
+    menu->addAction(tr("Disc Number"))->setData("%D");
+    menu->addAction(tr("File Name"))->setData("%f");
+    menu->addAction(tr("File Path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-    ui.insertButton->setMenu(menu);
+    m_ui.insertButton->setMenu(menu);
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(insertExpression(QAction *)));
 }
 
 void PopupSettings::insertExpression(QAction *a)
 {
-    ui.textEdit->insertPlainText(a->data().toString());
+    m_ui.textEdit->insertPlainText(a->data().toString());
 }
 
 void PopupSettings::on_resetButton_clicked()
 {
-    ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
+    m_ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
 }

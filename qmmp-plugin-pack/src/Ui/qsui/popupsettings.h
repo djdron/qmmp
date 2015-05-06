@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@
 class Action;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class PopupSettings : public QDialog
 {
@@ -45,7 +45,7 @@ private slots:
 
 private:
     void createMenu();
-    Ui::PopupSettings ui;
+    Ui::PopupSettings m_ui;
     QMap<uint, QPushButton*> m_buttons;
 };
 
