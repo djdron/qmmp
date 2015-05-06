@@ -892,7 +892,7 @@
         <translation>הצג את כל הכרטיסיות</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="804"/>
+        <location filename="../mainwindow.cpp" line="808"/>
         <source>Buffering: %1%</source>
         <translation>אוגר כעת: %1%</translation>
     </message>
@@ -984,61 +984,66 @@
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Title</source>
         <translation>כותרת</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
-        <source>Track number</source>
-        <translation>מספר רצועה</translation>
-    </message>
-    <message>
         <location filename="../popupsettings.cpp" line="66"/>
-        <source>Two-digit track number</source>
-        <translation>מספר רצועה דו ספרתי</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
         <translation>ז&apos;אנר</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Comment</source>
         <translation>הערה</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Composer</source>
         <translation>מלחין</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Duration</source>
         <translation>משך</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
-        <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="72"/>
-        <source>File name</source>
-        <translation>שם קובץ</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="73"/>
-        <source>File path</source>
-        <translation>נתיב קובץ</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="74"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Year</source>
         <translation>שנה</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="75"/>
+        <location filename="../popupsettings.cpp" line="76"/>
         <source>Condition</source>
         <translation>תנאי</translation>
     </message>
@@ -1056,7 +1061,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="165"/>
+        <location filename="../qsuisettings.cpp" line="194"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
@@ -1071,198 +1076,284 @@
         <translation>התחל מוסתר</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="59"/>
+        <location filename="../forms/qsuisettings.ui" line="80"/>
         <source>Fonts</source>
         <translation>גופנים</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="77"/>
+        <location filename="../forms/qsuisettings.ui" line="98"/>
         <source>Playlist:</source>
         <translation>רשימת נגינה:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="99"/>
+        <location filename="../forms/qsuisettings.ui" line="120"/>
         <source>???</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="106"/>
+        <location filename="../forms/qsuisettings.ui" line="62"/>
+        <location filename="../forms/qsuisettings.ui" line="127"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="116"/>
+        <location filename="../forms/qsuisettings.ui" line="52"/>
+        <source>Window title format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="137"/>
         <source>Song Display</source>
         <translation>תצוגת שיר</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="122"/>
+        <location filename="../forms/qsuisettings.ui" line="143"/>
         <source>Show protocol</source>
         <translation>הצג פרוטוקול</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="129"/>
+        <location filename="../forms/qsuisettings.ui" line="150"/>
         <source>Show song numbers</source>
         <translation>הצג מספרי שיר</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="136"/>
+        <location filename="../forms/qsuisettings.ui" line="157"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="146"/>
+        <location filename="../forms/qsuisettings.ui" line="167"/>
         <source>Align song numbers</source>
         <translation>ישר מספרי שורות</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="153"/>
+        <location filename="../forms/qsuisettings.ui" line="174"/>
         <source>Show anchor</source>
         <translation>הצג עוגן</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="160"/>
+        <location filename="../forms/qsuisettings.ui" line="181"/>
         <source>Show popup information</source>
         <translation>הצג מידע מוקפץ</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="172"/>
+        <location filename="../forms/qsuisettings.ui" line="193"/>
         <source>Edit template</source>
         <translation>ערוך תבנית</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="733"/>
+        <location filename="../forms/qsuisettings.ui" line="754"/>
         <source>Tabs</source>
         <translation>כרטיסיות</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="739"/>
+        <location filename="../forms/qsuisettings.ui" line="760"/>
         <source>Show close buttons</source>
         <translation>הצג לחצני סגירה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="746"/>
+        <location filename="../forms/qsuisettings.ui" line="767"/>
         <source>Show tab list menu</source>
         <translation>הצג תפריט רשימת כרטיסייה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="753"/>
+        <location filename="../forms/qsuisettings.ui" line="774"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>הצג לחתן &apos;רשימת נגינה חדשה&apos;</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="211"/>
+        <location filename="../forms/qsuisettings.ui" line="232"/>
         <source>Shortcuts</source>
         <translation>קיצורי דרך</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="224"/>
+        <location filename="../forms/qsuisettings.ui" line="245"/>
         <source>Action</source>
         <translation>פעולה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="229"/>
+        <location filename="../forms/qsuisettings.ui" line="250"/>
         <source>Shortcut</source>
         <translation>קיצור דרך</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="237"/>
+        <location filename="../forms/qsuisettings.ui" line="258"/>
         <source>Change shortcut...</source>
         <translation>שנוי קיצור דרך...</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="258"/>
+        <location filename="../forms/qsuisettings.ui" line="279"/>
         <source>Miscellaneous</source>
         <translation>שונות</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="264"/>
+        <location filename="../forms/qsuisettings.ui" line="285"/>
         <source>Analyzer Colors</source>
         <translation>צבעי מאבחן</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="270"/>
+        <location filename="../forms/qsuisettings.ui" line="291"/>
         <source>Analyzer #1:</source>
         <translation>מאבחן ראשון:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="305"/>
+        <location filename="../forms/qsuisettings.ui" line="326"/>
         <source>Peaks:</source>
         <translation>שיאים:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="337"/>
+        <location filename="../forms/qsuisettings.ui" line="358"/>
         <source>Analyzer #2:</source>
         <translation>מאבחן שני:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="369"/>
+        <location filename="../forms/qsuisettings.ui" line="390"/>
         <source>Background:</source>
         <translation>רקע אחורי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="401"/>
+        <location filename="../forms/qsuisettings.ui" line="422"/>
         <source>Analyzer #3:</source>
         <translation>מאבחן שלישי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="499"/>
         <source>Playlist Colors</source>
         <translation>צבעי רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="720"/>
+        <location filename="../forms/qsuisettings.ui" line="741"/>
         <source>Use system colors</source>
         <translation>השתמש בצבעי מערכת</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="484"/>
+        <location filename="../forms/qsuisettings.ui" line="505"/>
         <source>Background #1:</source>
         <translation>רקע ראשון:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="532"/>
+        <location filename="../forms/qsuisettings.ui" line="553"/>
         <source>Normal text:</source>
         <translation>טקסט רגיל:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="580"/>
+        <location filename="../forms/qsuisettings.ui" line="601"/>
         <source>Background #2:</source>
         <translation>רקע שני:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="615"/>
+        <location filename="../forms/qsuisettings.ui" line="636"/>
         <source>Current text:</source>
         <translation>טקסט נוכחי:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="650"/>
+        <location filename="../forms/qsuisettings.ui" line="671"/>
         <source>Highlighted background:</source>
         <translation>רקע אחורי מודגש:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="685"/>
+        <location filename="../forms/qsuisettings.ui" line="706"/>
         <source>Hightlighted text:</source>
         <translation>טקסט מודגש:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="159"/>
+        <location filename="../qsuisettings.cpp" line="83"/>
+        <source>Artist</source>
+        <translation type="unfinished">אמן</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="84"/>
+        <source>Album</source>
+        <translation type="unfinished">אלבום</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="85"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="86"/>
+        <source>Title</source>
+        <translation type="unfinished">כותרת</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="87"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="88"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="89"/>
+        <source>Genre</source>
+        <translation type="unfinished">ז&apos;אנר</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="90"/>
+        <source>Comment</source>
+        <translation type="unfinished">הערה</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="91"/>
+        <source>Composer</source>
+        <translation type="unfinished">מלחין</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="92"/>
+        <source>Duration</source>
+        <translation type="unfinished">משך</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="93"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="94"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="95"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="96"/>
+        <source>Year</source>
+        <translation type="unfinished">שנה</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="97"/>
+        <source>Condition</source>
+        <translation type="unfinished">תנאי</translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="98"/>
+        <source>Artist - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuisettings.cpp" line="188"/>
         <source>Playback</source>
         <translation>פס קול</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="171"/>
+        <location filename="../qsuisettings.cpp" line="200"/>
         <source>Volume</source>
         <translation>עוצמת קול
 </translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="177"/>
+        <location filename="../qsuisettings.cpp" line="206"/>
         <source>Playlist</source>
         <translation>רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="183"/>
+        <location filename="../qsuisettings.cpp" line="212"/>
         <source>Misc</source>
         <translation>שונות</translation>
     </message>
