@@ -354,13 +354,13 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="260"/>
-        <location filename="../configdialog.cpp" line="311"/>
+        <location filename="../configdialog.cpp" line="312"/>
         <source>Preferences</source>
         <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="273"/>
-        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <source>Information</source>
         <translation>Informace</translation>
     </message>
@@ -593,166 +593,171 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="297"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Genre</source>
         <translation>Žánr</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>Composer</source>
         <translation>Skladatel</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
-        <source>Disc number</source>
-        <translation>Číslo disku</translation>
+        <location filename="../configdialog.cpp" line="301"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="301"/>
+        <location filename="../configdialog.cpp" line="302"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="302"/>
+        <location filename="../configdialog.cpp" line="303"/>
         <source>Condition</source>
         <translation>Stav</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="303"/>
+        <location filename="../configdialog.cpp" line="304"/>
         <source>Artist/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="304"/>
+        <location filename="../configdialog.cpp" line="305"/>
         <source>Artist/Year/Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="324"/>
+        <location filename="../configdialog.cpp" line="325"/>
         <source>&lt;Autodetect&gt;</source>
         <translation>&lt;Autodetekce&gt;</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="325"/>
+        <location filename="../configdialog.cpp" line="326"/>
         <source>Brazilian Portuguese</source>
         <translation>Brazilská portugalština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="326"/>
+        <location filename="../configdialog.cpp" line="327"/>
         <source>Chinese Simplified</source>
         <translation>Zjednodušená čínština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="327"/>
+        <location filename="../configdialog.cpp" line="328"/>
         <source>Chinese Traditional</source>
         <translation>Tradiční čínština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="328"/>
+        <location filename="../configdialog.cpp" line="329"/>
         <source>Czech</source>
         <translation>Čeština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="329"/>
+        <location filename="../configdialog.cpp" line="330"/>
         <source>Dutch</source>
         <translation>Nizozemština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="330"/>
+        <location filename="../configdialog.cpp" line="331"/>
         <source>English</source>
         <translation>Angličtina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="332"/>
         <source>French</source>
         <translation>Francouzština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="332"/>
+        <location filename="../configdialog.cpp" line="333"/>
         <source>Galician</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="333"/>
+        <location filename="../configdialog.cpp" line="334"/>
         <source>German</source>
         <translation>Němčina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="334"/>
+        <location filename="../configdialog.cpp" line="335"/>
         <source>Hebrew</source>
         <translation>Hebrejština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="335"/>
+        <location filename="../configdialog.cpp" line="336"/>
         <source>Hungarian</source>
         <translation>Maďarština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="336"/>
+        <location filename="../configdialog.cpp" line="337"/>
         <source>Italian</source>
         <translation>Italština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="338"/>
         <source>Japanese</source>
         <translation>Japonština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="338"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Kazakh</source>
         <translation>Kazaština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="340"/>
         <source>Lithuanian</source>
         <translation>Litevština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="340"/>
+        <location filename="../configdialog.cpp" line="341"/>
         <source>Polish</source>
         <translation>Polština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="341"/>
+        <location filename="../configdialog.cpp" line="342"/>
         <source>Portuguese</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="342"/>
+        <location filename="../configdialog.cpp" line="343"/>
         <source>Russian</source>
         <translation>Ruština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../configdialog.cpp" line="344"/>
         <source>Slovak</source>
         <translation>Slovenština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="344"/>
+        <location filename="../configdialog.cpp" line="345"/>
         <source>Spanish</source>
         <translation>Španělština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="345"/>
+        <location filename="../configdialog.cpp" line="346"/>
         <source>Turkish</source>
         <translation>Turečtina</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="346"/>
+        <location filename="../configdialog.cpp" line="347"/>
         <source>Ukrainian</source>
         <translation>Ukrajinština</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Serbian (Ijekavian)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="349"/>
         <source>Serbian (Ekavian)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1056,24 +1061,24 @@
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../templateeditor.cpp" line="52"/>
-        <source>Album artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
     <message>
+        <location filename="../templateeditor.cpp" line="52"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../templateeditor.cpp" line="54"/>
-        <source>Track number</source>
-        <translation>Číslo stopy</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
-        <source>Two-digit track number</source>
-        <translation>Dvoumístné číslo stopy</translation>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1097,18 +1102,18 @@
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
-        <source>Disc number</source>
-        <translation>Číslo disku</translation>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
-        <source>File name</source>
-        <translation>Název souboru</translation>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
-        <source>File path</source>
-        <translation>Cesta k souboru</translation>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>

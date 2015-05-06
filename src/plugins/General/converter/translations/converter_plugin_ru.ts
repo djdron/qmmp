@@ -68,76 +68,86 @@
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="113"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="113"/>
-        <source>Track number</source>
-        <translation>Номер трека</translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="114"/>
-        <source>Two-digit track number</source>
-        <translation>2-х разрядный номер трека</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="120"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="121"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="122"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="116"/>
+        <location filename="../converterdialog.cpp" line="117"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="117"/>
+        <location filename="../converterdialog.cpp" line="118"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="118"/>
+        <location filename="../converterdialog.cpp" line="119"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="119"/>
-        <source>Disc number</source>
-        <translation>Номер диска</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="120"/>
-        <source>File name</source>
-        <translation>Имя файла</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="130"/>
-        <source>Create a copy</source>
-        <translation>Создать копию</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="121"/>
+        <location filename="../converterdialog.cpp" line="123"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="122"/>
+        <location filename="../converterdialog.cpp" line="124"/>
         <source>Condition</source>
         <translation>Условие</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="128"/>
+        <location filename="../converterdialog.cpp" line="130"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="129"/>
+        <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="131"/>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="133"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>

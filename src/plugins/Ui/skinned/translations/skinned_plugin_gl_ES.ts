@@ -750,32 +750,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Appearance</source>
         <translation>Apariencia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="327"/>
         <source>Shortcuts</source>
         <translation>Accesos rápidos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="397"/>
         <source>View</source>
         <translation>Vista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="405"/>
         <source>Playlist</source>
         <translation>Lista de reprodución</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Tools</source>
         <translation>Ferramentas</translation>
     </message>
@@ -1043,61 +1043,66 @@
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
-        <source>Track number</source>
-        <translation>Número de pista</translation>
-    </message>
-    <message>
         <location filename="../popupsettings.cpp" line="66"/>
-        <source>Two-digit track number</source>
-        <translation>Número de pista de dous díxitos</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
         <translation>Xénero</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Comment</source>
         <translation>Comentarios</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Duration</source>
         <translation>Duración</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
-        <source>Disc number</source>
-        <translation>Número de disco</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="72"/>
-        <source>File name</source>
-        <translation>Nome do ficheiro</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="73"/>
-        <source>File path</source>
-        <translation>Ruto do ficheiro</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="74"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="75"/>
+        <location filename="../popupsettings.cpp" line="76"/>
         <source>Condition</source>
         <translation>Codición</translation>
     </message>
@@ -1226,148 +1231,234 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Usar temas de cursor</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <location filename="../forms/skinnedsettings.ui" line="152"/>
         <source>Fonts</source>
         <translation>Fontes</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="250"/>
+        <location filename="../forms/skinnedsettings.ui" line="271"/>
         <source>Player:</source>
         <translation>Reprodutor:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="149"/>
-        <location filename="../forms/skinnedsettings.ui" line="175"/>
-        <location filename="../forms/skinnedsettings.ui" line="202"/>
+        <location filename="../forms/skinnedsettings.ui" line="170"/>
+        <location filename="../forms/skinnedsettings.ui" line="196"/>
+        <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="156"/>
-        <location filename="../forms/skinnedsettings.ui" line="182"/>
-        <location filename="../forms/skinnedsettings.ui" line="260"/>
+        <location filename="../forms/skinnedsettings.ui" line="134"/>
+        <location filename="../forms/skinnedsettings.ui" line="177"/>
+        <location filename="../forms/skinnedsettings.ui" line="203"/>
+        <location filename="../forms/skinnedsettings.ui" line="281"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="228"/>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Playlist:</source>
         <translation>Lista de reprodución:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="189"/>
+        <location filename="../forms/skinnedsettings.ui" line="210"/>
         <source>Use bitmap font if available</source>
         <translation>Usar fonte de mapa de bits se está dispoñible</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="209"/>
+        <location filename="../forms/skinnedsettings.ui" line="124"/>
+        <source>Window title format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="230"/>
         <source>Playlist header:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="270"/>
+        <location filename="../forms/skinnedsettings.ui" line="291"/>
         <source>Transparency</source>
         <translation>Transparencia</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="276"/>
+        <location filename="../forms/skinnedsettings.ui" line="297"/>
         <source>Main window</source>
         <translation>Xanela principal</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="299"/>
-        <location filename="../forms/skinnedsettings.ui" line="323"/>
-        <location filename="../forms/skinnedsettings.ui" line="347"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <location filename="../forms/skinnedsettings.ui" line="368"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="306"/>
+        <location filename="../forms/skinnedsettings.ui" line="327"/>
         <source>Equalizer</source>
         <translation>Ecualizador</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="330"/>
+        <location filename="../forms/skinnedsettings.ui" line="351"/>
         <source>Playlist</source>
         <translation>Lista de reprodución</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="371"/>
+        <location filename="../forms/skinnedsettings.ui" line="392"/>
         <source>Miscellaneous</source>
         <translation>Miscelánea</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="377"/>
+        <location filename="../forms/skinnedsettings.ui" line="398"/>
         <source>Song Display</source>
         <translation>Pantalla de canción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="461"/>
+        <location filename="../forms/skinnedsettings.ui" line="482"/>
         <source>Show protocol</source>
         <translation>Mostrar protocolo</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="502"/>
+        <location filename="../forms/skinnedsettings.ui" line="523"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="454"/>
+        <location filename="../forms/skinnedsettings.ui" line="475"/>
         <source>Show song numbers</source>
         <translation>Mostrar números de canción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="440"/>
+        <location filename="../forms/skinnedsettings.ui" line="461"/>
         <source>Align song numbers</source>
         <translation>Aliñar números de canción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="447"/>
+        <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show anchor</source>
         <translation>Mostrar áncora</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="495"/>
+        <location filename="../forms/skinnedsettings.ui" line="516"/>
         <source>Show playlists</source>
         <translation>Mostrar listas de reprodución</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="393"/>
+        <location filename="../forms/skinnedsettings.ui" line="414"/>
         <source>Show popup information</source>
         <translation>Mostrar información emerxente</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="473"/>
+        <location filename="../forms/skinnedsettings.ui" line="494"/>
         <source>Edit template</source>
         <translation>Editar plantilla</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="402"/>
+        <location filename="../forms/skinnedsettings.ui" line="423"/>
         <source>Playlist separator:</source>
         <translation>Separador de lista de reprodución:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="386"/>
+        <location filename="../forms/skinnedsettings.ui" line="407"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Amosar botón &apos;Nova lista de reprodución&apos;</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="115"/>
+        <location filename="../skinnedsettings.cpp" line="117"/>
         <source>Select Skin Files</source>
         <translation>Seleccionar ficheiros de pel</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="116"/>
+        <location filename="../skinnedsettings.cpp" line="118"/>
         <source>Skin files</source>
         <translation>Ficheiros de pel</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="168"/>
+        <location filename="../skinnedsettings.cpp" line="170"/>
         <source>Unarchived skin</source>
         <translation>Pel non arquivada</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="197"/>
+        <location filename="../skinnedsettings.cpp" line="180"/>
+        <source>Artist</source>
+        <translation type="unfinished">Artista</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="181"/>
+        <source>Album</source>
+        <translation type="unfinished">Álbume</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="182"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="183"/>
+        <source>Title</source>
+        <translation type="unfinished">Título</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="184"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="185"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="186"/>
+        <source>Genre</source>
+        <translation type="unfinished">Xénero</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="187"/>
+        <source>Comment</source>
+        <translation type="unfinished">Comentarios</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="188"/>
+        <source>Composer</source>
+        <translation type="unfinished">Compositor</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="189"/>
+        <source>Duration</source>
+        <translation type="unfinished">Duración</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="190"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="191"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="192"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="193"/>
+        <source>Year</source>
+        <translation type="unfinished">Ano</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="194"/>
+        <source>Condition</source>
+        <translation type="unfinished">Codición</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="195"/>
+        <source>Artist - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="224"/>
         <source>Archived skin</source>
         <translation>Pel arquivada</translation>
     </message>
