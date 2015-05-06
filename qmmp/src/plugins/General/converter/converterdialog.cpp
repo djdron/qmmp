@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,7 +31,7 @@
 
 ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent) : QDialog(parent)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
     MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
     foreach(PlayListTrack *item , items)
     {
@@ -41,14 +41,14 @@ ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent
         QListWidgetItem *listItem = new QListWidgetItem(text);
         listItem->setData(Qt::UserRole, item->url());
         listItem->setCheckState(Qt::Checked);
-        ui.itemsListWidget->addItem(listItem);
+        m_ui.itemsListWidget->addItem(listItem);
     }
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Converter");
     QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
-    ui.outDirEdit->setText(settings.value("out_dir", music_path).toString());
-    ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
-    ui.overwriteCheckBox->setChecked(settings.value("overwrite",false).toBool());
+    m_ui.outDirEdit->setText(settings.value("out_dir", music_path).toString());
+    m_ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
+    m_ui.overwriteCheckBox->setChecked(settings.value("overwrite",false).toBool());
     settings.endGroup();
     createMenus();
 
@@ -64,42 +64,42 @@ ConverterDialog::~ConverterDialog()
 QStringList ConverterDialog::selectedUrls() const
 {
     QStringList out;
-    for(int i = 0; i < ui.itemsListWidget->count(); i++)
+    for(int i = 0; i < m_ui.itemsListWidget->count(); i++)
     {
-        if(ui.itemsListWidget->item(i)->checkState() == Qt::Checked)
-            out << ui.itemsListWidget->item(i)->data(Qt::UserRole).toString();
+        if(m_ui.itemsListWidget->item(i)->checkState() == Qt::Checked)
+            out << m_ui.itemsListWidget->item(i)->data(Qt::UserRole).toString();
     }
     return out;
 }
 
 QVariantMap ConverterDialog::preset() const
 {
-    if(ui.presetComboBox->currentIndex() == -1)
+    if(m_ui.presetComboBox->currentIndex() == -1)
         return QVariantMap();
-    int index = ui.presetComboBox->currentIndex();
+    int index = m_ui.presetComboBox->currentIndex();
     //aditional parameters
-    QVariantMap preset = ui.presetComboBox->itemData(index).toMap();
-    preset["out_dir"] = ui.outDirEdit->text();
-    preset["file_name"] = ui.outFileEdit->text();
-    preset["overwrite"] = ui.overwriteCheckBox->isChecked();
+    QVariantMap preset = m_ui.presetComboBox->itemData(index).toMap();
+    preset["out_dir"] = m_ui.outDirEdit->text();
+    preset["file_name"] = m_ui.outFileEdit->text();
+    preset["overwrite"] = m_ui.overwriteCheckBox->isChecked();
     return preset;
 }
 
 void ConverterDialog::on_dirButton_clicked()
 {
     QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
-                                        ui.outDirEdit->text());
+                                        m_ui.outDirEdit->text());
     if(!dir.isEmpty())
-        ui.outDirEdit->setText(dir);
+        m_ui.outDirEdit->setText(dir);
 }
 
 void ConverterDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Converter");
-    settings.setValue("out_dir", ui.outDirEdit->text());
-    settings.value("file_name", ui.outFileEdit->text());
-    settings.setValue("overwrite", ui.overwriteCheckBox->isChecked());
+    settings.setValue("out_dir", m_ui.outDirEdit->text());
+    settings.value("file_name", m_ui.outFileEdit->text());
+    settings.setValue("overwrite", m_ui.overwriteCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }
@@ -109,19 +109,21 @@ void ConverterDialog::createMenus()
     QMenu *fileNameMenu = new QMenu(this);
     fileNameMenu->addAction(tr("Artist"))->setData("%p");
     fileNameMenu->addAction(tr("Album"))->setData("%a");
+    fileNameMenu->addAction(tr("Album Artist"))->setData("%aa");
     fileNameMenu->addAction(tr("Title"))->setData("%t");
-    fileNameMenu->addAction(tr("Track number"))->setData("%n");
-    fileNameMenu->addAction(tr("Two-digit track number"))->setData("%NN");
+    fileNameMenu->addAction(tr("Track Number"))->setData("%n");
+    fileNameMenu->addAction(tr("Two-digit Track Number"))->setData("%NN");
     fileNameMenu->addAction(tr("Genre"))->setData("%g");
     fileNameMenu->addAction(tr("Comment"))->setData("%c");
     fileNameMenu->addAction(tr("Composer"))->setData("%C");
     fileNameMenu->addAction(tr("Duration"))->setData("%l");
-    fileNameMenu->addAction(tr("Disc number"))->setData("%D");
-    fileNameMenu->addAction(tr("File name"))->setData("%f");
+    fileNameMenu->addAction(tr("Disc Number"))->setData("%D");
+    fileNameMenu->addAction(tr("File Name"))->setData("%f");
+    fileNameMenu->addAction(tr("File Path"))->setData("%F");
     fileNameMenu->addAction(tr("Year"))->setData("%y");
     fileNameMenu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-    ui.fileNameButton->setMenu(fileNameMenu);
-    ui.fileNameButton->setPopupMode(QToolButton::InstantPopup);
+    m_ui.fileNameButton->setMenu(fileNameMenu);
+    m_ui.fileNameButton->setPopupMode(QToolButton::InstantPopup);
     connect(fileNameMenu, SIGNAL(triggered(QAction *)), SLOT(addTitleString(QAction *)));
 
     QMenu *presetMenu = new QMenu(this);
@@ -129,16 +131,16 @@ void ConverterDialog::createMenus()
     presetMenu->addAction(tr("Edit"), this, SLOT(editPreset()));
     presetMenu->addAction(tr("Create a copy"), this, SLOT(copyPreset()));
     presetMenu->addAction(tr("Delete"), this, SLOT(deletePreset()));
-    ui.presetButton->setMenu(presetMenu);
-    ui.presetButton->setPopupMode(QToolButton::InstantPopup);
+    m_ui.presetButton->setMenu(presetMenu);
+    m_ui.presetButton->setPopupMode(QToolButton::InstantPopup);
 }
 
 void ConverterDialog::addTitleString(QAction *a)
 {
-    if (ui.outFileEdit->cursorPosition () < 1)
-        ui.outFileEdit->insert(a->data().toString());
+    if (m_ui.outFileEdit->cursorPosition () < 1)
+        m_ui.outFileEdit->insert(a->data().toString());
     else
-        ui.outFileEdit->insert(" - "+a->data().toString());
+        m_ui.outFileEdit->insert(" - "+a->data().toString());
 }
 
 void ConverterDialog::createPreset()
@@ -149,27 +151,27 @@ void ConverterDialog::createPreset()
         QVariantMap data = editor->data();
         data["name"] = uniqueName(data["name"].toString());
         if(data["name"].isValid() && data["ext"].isValid() && data["command"].isValid())
-            ui.presetComboBox->addItem (data["name"].toString(), data);
+            m_ui.presetComboBox->addItem (data["name"].toString(), data);
     }
     editor->deleteLater();
 }
 
 void ConverterDialog::editPreset()
 {
-    if(ui.presetComboBox->currentIndex() == -1)
+    if(m_ui.presetComboBox->currentIndex() == -1)
         return;
-    int index = ui.presetComboBox->currentIndex();
+    int index = m_ui.presetComboBox->currentIndex();
 
-    PresetEditor *editor = new PresetEditor(ui.presetComboBox->itemData(index).toMap(), this);
+    PresetEditor *editor = new PresetEditor(m_ui.presetComboBox->itemData(index).toMap(), this);
     if(editor->exec() == QDialog::Accepted)
     {
         QVariantMap data = editor->data();
-        if(ui.presetComboBox->currentText() != data["name"].toString())
+        if(m_ui.presetComboBox->currentText() != data["name"].toString())
             data["name"] = uniqueName(data["name"].toString());
         if(data["name"].isValid() && data["ext"].isValid() && data["command"].isValid())
         {
-            ui.presetComboBox->setItemText(index, data["name"].toString());
-            ui.presetComboBox->setItemData(index, data);
+            m_ui.presetComboBox->setItemText(index, data["name"].toString());
+            m_ui.presetComboBox->setItemData(index, data);
         }
     }
     editor->deleteLater();
@@ -177,22 +179,22 @@ void ConverterDialog::editPreset()
 
 void ConverterDialog::copyPreset()
 {
-    if(ui.presetComboBox->currentIndex() == -1)
+    if(m_ui.presetComboBox->currentIndex() == -1)
         return;
-    int index = ui.presetComboBox->currentIndex();
-    QVariantMap data = ui.presetComboBox->itemData(index).toMap();
+    int index = m_ui.presetComboBox->currentIndex();
+    QVariantMap data = m_ui.presetComboBox->itemData(index).toMap();
     data["name"] = uniqueName(data["name"].toString());
     data["read_only"] = false;
-    ui.presetComboBox->addItem (data["name"].toString(), data);
+    m_ui.presetComboBox->addItem (data["name"].toString(), data);
 }
 
 void ConverterDialog::deletePreset()
 {
-    if(ui.presetComboBox->currentIndex() == -1)
+    if(m_ui.presetComboBox->currentIndex() == -1)
         return;
-    if(ui.presetComboBox->itemData(ui.presetComboBox->currentIndex()).toMap()["read_only"].toBool())
+    if(m_ui.presetComboBox->itemData(m_ui.presetComboBox->currentIndex()).toMap()["read_only"].toBool())
         return;
-    ui.presetComboBox->removeItem(ui.presetComboBox->currentIndex());
+    m_ui.presetComboBox->removeItem(m_ui.presetComboBox->currentIndex());
 }
 
 void ConverterDialog::readPresets(const QString &path)
@@ -225,7 +227,7 @@ void ConverterDialog::readPresets(const QString &path)
         QString title = data["name"].toString();
         if(data["read_only"].toBool())
             title += " *" ;
-        ui.presetComboBox->addItem (title, data);
+        m_ui.presetComboBox->addItem (title, data);
     }
 }
 
@@ -241,9 +243,9 @@ void ConverterDialog::savePresets()
         return;
     }
 
-    for(int i = 0; i < ui.presetComboBox->count(); ++i)
+    for(int i = 0; i < m_ui.presetComboBox->count(); ++i)
     {
-        QVariantMap data = ui.presetComboBox->itemData(i).toMap();
+        QVariantMap data = m_ui.presetComboBox->itemData(i).toMap();
         if(data["read_only"].toBool())
             continue;
         file.write(QString("%1=%2\n").arg("name").arg(data["name"].toString()).toUtf8());
@@ -263,7 +265,7 @@ QString ConverterDialog::uniqueName(const QString &name)
     int i = 0;
     forever
     {
-        if(ui.presetComboBox->findText(unique_name) == -1)
+        if(m_ui.presetComboBox->findText(unique_name) == -1)
             break;
         unique_name = name + QString("_%1").arg(++i);
     }

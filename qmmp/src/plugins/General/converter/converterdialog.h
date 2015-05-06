@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -59,7 +59,7 @@ private:
     void savePresets();
     QString uniqueName(const QString &name);
 
-    Ui::ConverterDialog ui;
+    Ui::ConverterDialog m_ui;
     QList <ConverterPreset* > m_presets;
 
 };
