@@ -129,7 +129,7 @@ void ConverterDialog::createMenus()
     QMenu *presetMenu = new QMenu(this);
     presetMenu->addAction(tr("Create"), this, SLOT(createPreset()));
     presetMenu->addAction(tr("Edit"), this, SLOT(editPreset()));
-    presetMenu->addAction(tr("Create a copy"), this, SLOT(copyPreset()));
+    presetMenu->addAction(tr("Create a Copy"), this, SLOT(copyPreset()));
     presetMenu->addAction(tr("Delete"), this, SLOT(deletePreset()));
     m_ui.presetButton->setMenu(presetMenu);
     m_ui.presetButton->setPopupMode(QToolButton::InstantPopup);
