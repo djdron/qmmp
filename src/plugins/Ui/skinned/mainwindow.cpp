@@ -231,7 +231,7 @@ void MainWindow::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    m_titleFormatter.setPattern(settings.value("window_title_format","%if(%p,%p - %t,%t").toString());
+    m_titleFormatter.setPattern(settings.value("window_title_format","%if(%p,%p - %t,%t)").toString());
 
     if (m_update)
     {
