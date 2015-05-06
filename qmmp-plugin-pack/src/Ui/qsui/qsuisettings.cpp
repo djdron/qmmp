@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QFontDialog>
+#include <QMenu>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/uihelper.h>
@@ -39,6 +40,7 @@ QSUISettings::QSUISettings(QWidget *parent) : QWidget(parent)
     loadShortcuts();
     readSettings();
     loadFonts();
+    createActions();
 }
 
 QSUISettings::~QSUISettings()
@@ -75,6 +77,31 @@ void QSUISettings::loadFonts()
     m_ui.plFontLabel->setFont(font);
 }
 
+void QSUISettings::createActions()
+{
+    QMenu *menu = new QMenu(this);
+    menu->addAction(tr("Artist"))->setData("%p");
+    menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Album Artist"))->setData("%aa");
+    menu->addAction(tr("Title"))->setData("%t");
+    menu->addAction(tr("Track Number"))->setData("%n");
+    menu->addAction(tr("Two-digit Track Number"))->setData("%NN");
+    menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Duration"))->setData("%l");
+    menu->addAction(tr("Disc Number"))->setData("%D");
+    menu->addAction(tr("File Name"))->setData("%f");
+    menu->addAction(tr("File Path"))->setData("%F");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    menu->addAction(tr("Artist - Title"))->setData("%if(%p,%p - %t,%t)");
+
+    m_ui.windowTitleButton->setMenu(menu);
+    m_ui.windowTitleButton->setPopupMode(QToolButton::InstantPopup);
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addWindowTitleString(QAction *)));
+}
+
 void QSUISettings::on_popupTemplateButton_clicked()
 {
     PopupSettings *p = new PopupSettings(this);
@@ -100,6 +127,7 @@ void QSUISettings::readSettings()
     //view
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
+    m_ui.windowTitleLineEdit->setText(settings.value("window_title_format","%if(%p,%p - %t,%t)").toString());
     //analyzer colors
     m_ui.aColor1->setColor(settings.value("vis_color1", "#BECBFF").toString());
     m_ui.aColor2->setColor(settings.value("vis_color2", "#BECBFF").toString());
@@ -138,6 +166,7 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_show_tab_list_menu", m_ui.showTabListMenuCheckBox->isChecked());
     settings.setValue("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue ("window_title_format", m_ui.windowTitleLineEdit->text());
     settings.setValue("vis_color1", m_ui.aColor1->colorName());
     settings.setValue("vis_color2", m_ui.aColor2->colorName());
     settings.setValue("vis_color3", m_ui.aColor3->colorName());
@@ -201,4 +230,12 @@ void QSUISettings::on_changeShortcutButton_clicked()
         item->action()->setShortcut(editor.key());
         item->setText(1, item->action()->shortcut().toString());
     }
+}
+
+void QSUISettings::addWindowTitleString(QAction *a)
+{
+    if (m_ui.windowTitleLineEdit->cursorPosition () < 1)
+        m_ui.windowTitleLineEdit->insert(a->data().toString());
+    else
+        m_ui.windowTitleLineEdit->insert(" - "+a->data().toString());
 }

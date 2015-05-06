@@ -665,7 +665,26 @@ void MainWindow::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    if(!m_update)
+    m_titleFormatter.setPattern(settings.value("window_title_format","%if(%p,%p - %t,%t)").toString());
+    if(m_update)
+    {
+        for(int i = 0; i < m_ui.tabWidget->count(); ++i)
+        {
+            qobject_cast<ListWidget *>(m_ui.tabWidget->widget(i))->readSettings();
+        }
+        qobject_cast<FileSystemBrowser *> (m_ui.fileSystemDockWidget->widget())->readSettings();
+
+        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+        else
+            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
+
+        if(m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
+            showMetaData();
+
+        show();
+    }
+    else
     {
         restoreGeometry(settings.value("mw_geometry").toByteArray());
         QByteArray wstate = settings.value("mw_state").toByteArray();
@@ -700,21 +719,6 @@ void MainWindow::readSettings()
         setToolBarsBlocked(state);
 
         m_update = true;
-    }
-    else
-    {
-        for(int i = 0; i < m_ui.tabWidget->count(); ++i)
-        {
-            qobject_cast<ListWidget *>(m_ui.tabWidget->widget(i))->readSettings();
-        }
-        qobject_cast<FileSystemBrowser *> (m_ui.fileSystemDockWidget->widget())->readSettings();
-
-        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
-            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-        else
-            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
-
-        show();
     }
     //load toolbar actions
     m_ui.buttonsToolBar->clear();

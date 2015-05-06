@@ -25,6 +25,8 @@
 #include <QFileInfo>
 #include "ui_qsuisettings.h"
 
+class QAction;
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -41,10 +43,12 @@ private slots:
     void on_plFontButton_clicked();
     void on_popupTemplateButton_clicked();
     void on_changeShortcutButton_clicked();
+    void addWindowTitleString(QAction *a);
 
 private:
     void showEvent(QShowEvent *);
     void loadFonts();
+    void createActions();
     void readSettings();
     void loadShortcuts();
 
