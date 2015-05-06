@@ -273,7 +273,7 @@ void SkinnedSettings::readSettings()
     m_currentSkinName = settings.value("skin_name", "default").toString();
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
-    m_ui.windowTitleLineEdit->setText(settings.value("window_title_format","%if(%p,%p - %t,%t").toString());
+    m_ui.windowTitleLineEdit->setText(settings.value("window_title_format","%if(%p,%p - %t,%t)").toString());
     settings.endGroup();
 }
 
