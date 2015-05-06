@@ -189,7 +189,7 @@
     <message>
         <location filename="../columneditor.cpp" line="88"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Број диска</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
