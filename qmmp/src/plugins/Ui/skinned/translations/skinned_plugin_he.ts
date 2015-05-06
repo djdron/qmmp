@@ -750,32 +750,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>Appearance</source>
         <translation>הופעה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="327"/>
         <source>Shortcuts</source>
         <translation>קיצורי דרך</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="397"/>
         <source>View</source>
         <translation>תצוגה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="405"/>
         <source>Playlist</source>
         <translation>רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>Audio</source>
         <translation>שמע</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Tools</source>
         <translation>כלים</translation>
     </message>
@@ -1043,61 +1043,66 @@
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Title</source>
         <translation>כותרת</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
-        <source>Track number</source>
-        <translation>מספר רצועה</translation>
-    </message>
-    <message>
         <location filename="../popupsettings.cpp" line="66"/>
-        <source>Two-digit track number</source>
-        <translation>מספר רצועה דו ספרתי</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
         <translation>ז&apos;אנר</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Comment</source>
         <translation>הערה</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Composer</source>
         <translation>מלחין</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Duration</source>
         <translation>משך</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
-        <source>Disc number</source>
-        <translation>מספר תקליטור</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="72"/>
-        <source>File name</source>
-        <translation>שם קובץ</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="73"/>
-        <source>File path</source>
-        <translation>נתיב קובץ</translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="74"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Year</source>
         <translation>שנה</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="75"/>
+        <location filename="../popupsettings.cpp" line="76"/>
         <source>Condition</source>
         <translation>תנאי</translation>
     </message>
@@ -1226,148 +1231,234 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;‬</translation>
         <translation>השתמש בסמני סקין</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <location filename="../forms/skinnedsettings.ui" line="152"/>
         <source>Fonts</source>
         <translation>גופנים</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="250"/>
+        <location filename="../forms/skinnedsettings.ui" line="271"/>
         <source>Player:</source>
         <translation>נגן:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="149"/>
-        <location filename="../forms/skinnedsettings.ui" line="175"/>
-        <location filename="../forms/skinnedsettings.ui" line="202"/>
+        <location filename="../forms/skinnedsettings.ui" line="170"/>
+        <location filename="../forms/skinnedsettings.ui" line="196"/>
+        <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>???</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="156"/>
-        <location filename="../forms/skinnedsettings.ui" line="182"/>
-        <location filename="../forms/skinnedsettings.ui" line="260"/>
+        <location filename="../forms/skinnedsettings.ui" line="134"/>
+        <location filename="../forms/skinnedsettings.ui" line="177"/>
+        <location filename="../forms/skinnedsettings.ui" line="203"/>
+        <location filename="../forms/skinnedsettings.ui" line="281"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="228"/>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Playlist:</source>
         <translation>רשימת נגינה:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="189"/>
+        <location filename="../forms/skinnedsettings.ui" line="210"/>
         <source>Use bitmap font if available</source>
         <translation>השתמש בגופן של מפת סיביות אם זמין</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="209"/>
+        <location filename="../forms/skinnedsettings.ui" line="124"/>
+        <source>Window title format:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="230"/>
         <source>Playlist header:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="270"/>
+        <location filename="../forms/skinnedsettings.ui" line="291"/>
         <source>Transparency</source>
         <translation>שקיפות</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="276"/>
+        <location filename="../forms/skinnedsettings.ui" line="297"/>
         <source>Main window</source>
         <translation>חלון ראשי</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="299"/>
-        <location filename="../forms/skinnedsettings.ui" line="323"/>
-        <location filename="../forms/skinnedsettings.ui" line="347"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <location filename="../forms/skinnedsettings.ui" line="368"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="306"/>
+        <location filename="../forms/skinnedsettings.ui" line="327"/>
         <source>Equalizer</source>
         <translation>אקולייזר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="330"/>
+        <location filename="../forms/skinnedsettings.ui" line="351"/>
         <source>Playlist</source>
         <translation>רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="371"/>
+        <location filename="../forms/skinnedsettings.ui" line="392"/>
         <source>Miscellaneous</source>
         <translation>שונות</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="377"/>
+        <location filename="../forms/skinnedsettings.ui" line="398"/>
         <source>Song Display</source>
         <translation>תצוגת שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="461"/>
+        <location filename="../forms/skinnedsettings.ui" line="482"/>
         <source>Show protocol</source>
         <translation>הצג פרוטוקול</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="502"/>
+        <location filename="../forms/skinnedsettings.ui" line="523"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="454"/>
+        <location filename="../forms/skinnedsettings.ui" line="475"/>
         <source>Show song numbers</source>
         <translation>הצג מספר שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="440"/>
+        <location filename="../forms/skinnedsettings.ui" line="461"/>
         <source>Align song numbers</source>
         <translation>ישר מספר שיר</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="447"/>
+        <location filename="../forms/skinnedsettings.ui" line="468"/>
         <source>Show anchor</source>
         <translation>הצג עוגן</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="495"/>
+        <location filename="../forms/skinnedsettings.ui" line="516"/>
         <source>Show playlists</source>
         <translation>הצג רשימות נגינה</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="393"/>
+        <location filename="../forms/skinnedsettings.ui" line="414"/>
         <source>Show popup information</source>
         <translation>הצג מידע מוקפץ</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="473"/>
+        <location filename="../forms/skinnedsettings.ui" line="494"/>
         <source>Edit template</source>
         <translation>ערוך תבנית</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="402"/>
+        <location filename="../forms/skinnedsettings.ui" line="423"/>
         <source>Playlist separator:</source>
         <translation>מפריד רשימת נגינה:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="386"/>
+        <location filename="../forms/skinnedsettings.ui" line="407"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>הצג לחצן &apos;רשימת נגינה חדשה&apos;</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="115"/>
+        <location filename="../skinnedsettings.cpp" line="117"/>
         <source>Select Skin Files</source>
         <translation>בחר קבצי סקין</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="116"/>
+        <location filename="../skinnedsettings.cpp" line="118"/>
         <source>Skin files</source>
         <translation>קבצי סקין</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="168"/>
+        <location filename="../skinnedsettings.cpp" line="170"/>
         <source>Unarchived skin</source>
         <translation>סקין שלא בתוך ארכיון</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="197"/>
+        <location filename="../skinnedsettings.cpp" line="180"/>
+        <source>Artist</source>
+        <translation type="unfinished">אמן</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="181"/>
+        <source>Album</source>
+        <translation type="unfinished">אלבום</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="182"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="183"/>
+        <source>Title</source>
+        <translation type="unfinished">כותרת</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="184"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="185"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="186"/>
+        <source>Genre</source>
+        <translation type="unfinished">ז&apos;אנר</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="187"/>
+        <source>Comment</source>
+        <translation type="unfinished">הערה</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="188"/>
+        <source>Composer</source>
+        <translation type="unfinished">מלחין</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="189"/>
+        <source>Duration</source>
+        <translation type="unfinished">משך</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="190"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="191"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="192"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="193"/>
+        <source>Year</source>
+        <translation type="unfinished">שנה</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="194"/>
+        <source>Condition</source>
+        <translation type="unfinished">תנאי</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="195"/>
+        <source>Artist - Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="224"/>
         <source>Archived skin</source>
         <translation>סקין שבתוך ארכיון</translation>
     </message>

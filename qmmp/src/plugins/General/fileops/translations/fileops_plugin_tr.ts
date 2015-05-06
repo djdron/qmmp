@@ -120,66 +120,71 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="196"/>
         <source>Title</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="197"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="198"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Genre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
-        <source>Year</source>
-        <translation>Yıl</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
-        <source>Comment</source>
-        <translation>Yorum</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
-        <source>Track number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
-        <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
-        <source>Composer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="201"/>
-        <source>Duration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="202"/>
-        <source>Disc number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="203"/>
-        <source>File name</source>
+        <source>Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="204"/>
-        <source>File path</source>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="205"/>
+        <source>File Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="206"/>
+        <source>Year</source>
+        <translation>Yıl</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="200"/>
+        <source>Comment</source>
+        <translation>Yorum</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="201"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="202"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="207"/>
         <source>Condition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="222"/>
+        <location filename="../settingsdialog.cpp" line="223"/>
         <source>Choose a directory</source>
         <translation>Dizin seç</translation>
     </message>
