@@ -231,9 +231,32 @@ void MainWindow::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    if (!m_update)
-    {
+    m_titleFormatter.setPattern(settings.value("window_title_format","%if(%p,%p - %t,%t").toString());
 
+    if (m_update)
+    {
+        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
+        {
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+            m_playlist->setWindowFlags(m_playlist->windowFlags() | Qt::WindowStaysOnTopHint);
+            m_equalizer->setWindowFlags(m_equalizer->windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        else
+        {
+            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
+            m_playlist->setWindowFlags(m_playlist->windowFlags() & ~Qt::WindowStaysOnTopHint);
+            m_equalizer->setWindowFlags(m_equalizer->windowFlags() & ~Qt::WindowStaysOnTopHint);
+        }
+        show();
+        qApp->processEvents();
+        m_playlist->setVisible(m_display->isPlaylistVisible());
+        m_equalizer->setVisible(m_display->isEqualizerVisible());
+
+        if (m_pl_manager->currentPlayList()->currentTrack())
+            setWindowTitle(m_titleFormatter.format(m_pl_manager->currentPlayList()->currentTrack()));
+    }
+    else
+    {
         move(settings.value("mw_pos", QPoint(100, 100)).toPoint()); //geometry
         m_startHidden = settings.value("start_hidden", false).toBool();
         if(settings.value("always_on_top", false).toBool())
@@ -258,25 +281,6 @@ void MainWindow::readSettings()
         ACTION(ActionManager::REPEAT_TRACK)->setChecked(m_ui_settings->isRepeatableTrack());
         ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlayListAdvance());
         m_update = true;
-    }
-    else
-    {
-        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
-        {
-            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-            m_playlist->setWindowFlags(m_playlist->windowFlags() | Qt::WindowStaysOnTopHint);
-            m_equalizer->setWindowFlags(m_equalizer->windowFlags() | Qt::WindowStaysOnTopHint);
-        }
-        else
-        {
-            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
-            m_playlist->setWindowFlags(m_playlist->windowFlags() & ~Qt::WindowStaysOnTopHint);
-            m_equalizer->setWindowFlags(m_equalizer->windowFlags() & ~Qt::WindowStaysOnTopHint);
-        }
-        show();
-        qApp->processEvents();
-        m_playlist->setVisible(m_display->isPlaylistVisible());
-        m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
 #ifdef Q_WS_X11
     WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());

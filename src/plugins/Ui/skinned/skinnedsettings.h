@@ -44,11 +44,13 @@ private slots:
     void on_skinInstallButton_clicked();
     void loadSkins();
     void on_popupTemplateButton_clicked();
+    void addWindowTitleString(QAction *a);
 
 private:
     void showEvent(QShowEvent *);
     void loadFonts();
     void findSkins(const QString &path);
+    void createActions();
     void readSettings();
 
     Ui::SkinnedSettings m_ui;

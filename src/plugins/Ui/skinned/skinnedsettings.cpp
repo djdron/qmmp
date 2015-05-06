@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QFontDialog>
+#include <QMenu>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/uihelper.h>
@@ -39,6 +40,7 @@ SkinnedSettings::SkinnedSettings(QWidget *parent) : QWidget(parent)
     readSettings();
     loadSkins();
     loadFonts();
+    createActions();
     //setup icons
     m_ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
     m_ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
@@ -172,6 +174,26 @@ void SkinnedSettings::findSkins(const QString &path)
     }
 }
 
+void SkinnedSettings::createActions()
+{
+    QMenu *windowTitleMenu = new QMenu(this);
+    windowTitleMenu->addAction(tr("Artist"))->setData("%p");
+    windowTitleMenu->addAction(tr("Album"))->setData("%a");
+    windowTitleMenu->addAction(tr("Album Artist"))->setData("%aa");
+    windowTitleMenu->addAction(tr("Title"))->setData("%t");
+    windowTitleMenu->addAction(tr("Genre"))->setData("%g");
+    windowTitleMenu->addAction(tr("Comment"))->setData("%c");
+    windowTitleMenu->addAction(tr("Composer"))->setData("%C");
+    windowTitleMenu->addAction(tr("Disc Number"))->setData("%D");
+    windowTitleMenu->addAction(tr("Year"))->setData("%y");
+    windowTitleMenu->addAction(tr("Condition"))->setData("%if(%p&%a,%p - %a,%p%a)");
+    windowTitleMenu->addAction(tr("Artist - Title"))->setData("%if(%p,%p - %t,%t)");
+
+    m_ui.windowTitleButton->setMenu(windowTitleMenu);
+    m_ui.windowTitleButton->setPopupMode(QToolButton::InstantPopup);
+    connect(windowTitleMenu, SIGNAL(triggered (QAction *)), SLOT(addWindowTitleString(QAction *)));
+}
+
 void SkinnedSettings::loadSkins()
 {
     m_reader->generateThumbs();
@@ -215,6 +237,14 @@ void SkinnedSettings::on_popupTemplateButton_clicked()
     p->deleteLater();
 }
 
+void SkinnedSettings::addWindowTitleString(QAction *a)
+{
+    if (m_ui.windowTitleLineEdit->cursorPosition () < 1)
+        m_ui.windowTitleLineEdit->insert(a->data().toString());
+    else
+        m_ui.windowTitleLineEdit->insert(" - "+a->data().toString());
+}
+
 void SkinnedSettings::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
@@ -238,6 +268,7 @@ void SkinnedSettings::readSettings()
     m_currentSkinName = settings.value("skin_name", "default").toString();
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
+    m_ui.windowTitleLineEdit->setText(settings.value("window_title_format","%if(%p,%p - %t,%t").toString());
     settings.endGroup();
 }
 
@@ -262,5 +293,6 @@ void SkinnedSettings::writeSettings()
     settings.setValue ("skin_name", m_currentSkinName);
     settings.setValue ("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue ("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue ("window_title_format", m_ui.windowTitleLineEdit->text());
     settings.endGroup();
 }
