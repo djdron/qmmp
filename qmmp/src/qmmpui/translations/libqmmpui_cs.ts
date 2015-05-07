@@ -153,16 +153,6 @@
         <translation type="unfinished">Název</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="82"/>
-        <source>Track number</source>
-        <translation type="unfinished">Číslo stopy</translation>
-    </message>
-    <message>
-        <location filename="../columneditor.cpp" line="83"/>
-        <source>Two-digit track number</source>
-        <translation type="unfinished">Dvoumístné číslo stopy</translation>
-    </message>
-    <message>
         <location filename="../columneditor.cpp" line="84"/>
         <location filename="../columneditor.cpp" line="107"/>
         <source>Genre</source>
@@ -185,21 +175,6 @@
         <location filename="../columneditor.cpp" line="110"/>
         <source>Duration</source>
         <translation type="unfinished">Délka</translation>
-    </message>
-    <message>
-        <location filename="../columneditor.cpp" line="88"/>
-        <source>Disc number</source>
-        <translation type="unfinished">Číslo disku</translation>
-    </message>
-    <message>
-        <location filename="../columneditor.cpp" line="89"/>
-        <source>File name</source>
-        <translation type="unfinished">Název souboru</translation>
-    </message>
-    <message>
-        <location filename="../columneditor.cpp" line="90"/>
-        <source>File path</source>
-        <translation type="unfinished">Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
@@ -228,26 +203,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="82"/>
         <location filename="../columneditor.cpp" line="105"/>
         <source>Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="83"/>
         <location filename="../columneditor.cpp" line="106"/>
         <source>Two-digit Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="88"/>
         <location filename="../columneditor.cpp" line="111"/>
         <source>Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="89"/>
         <location filename="../columneditor.cpp" line="112"/>
         <source>File Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="90"/>
         <location filename="../columneditor.cpp" line="113"/>
         <source>File Path</source>
         <translation type="unfinished"></translation>
