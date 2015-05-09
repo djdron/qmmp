@@ -107,135 +107,135 @@
     <message>
         <location filename="../forms/columneditor.ui" line="14"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати стовпчик</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="36"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="76"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="64"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="29"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип:</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="78"/>
         <location filename="../columneditor.cpp" line="99"/>
         <source>Artist</source>
-        <translation type="unfinished">Виконавець</translation>
+        <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="79"/>
         <location filename="../columneditor.cpp" line="100"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="80"/>
         <source>Album artist</source>
-        <translation type="unfinished">Альбом виконавця</translation>
+        <translation>Альбом виконавця</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="104"/>
         <source>Title</source>
-        <translation type="unfinished">Заголовок</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
         <location filename="../columneditor.cpp" line="107"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="85"/>
         <location filename="../columneditor.cpp" line="108"/>
         <source>Comment</source>
-        <translation type="unfinished">Коментар</translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
         <location filename="../columneditor.cpp" line="109"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="87"/>
         <location filename="../columneditor.cpp" line="110"/>
         <source>Duration</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
         <location filename="../columneditor.cpp" line="114"/>
         <source>Year</source>
-        <translation type="unfinished">Рік</translation>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="92"/>
         <source>Condition</source>
-        <translation type="unfinished">Умова</translation>
+        <translation>Умова</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="101"/>
         <source>Artist - Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконавець - Альбом</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="102"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконавець - Назва</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="103"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
         <location filename="../columneditor.cpp" line="105"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <location filename="../columneditor.cpp" line="106"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер трека</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="88"/>
         <location filename="../columneditor.cpp" line="111"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
         <location filename="../columneditor.cpp" line="112"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <location filename="../columneditor.cpp" line="113"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="115"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Власний</translation>
     </message>
 </context>
 <context>
@@ -574,7 +574,7 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
@@ -594,7 +594,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -782,7 +782,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>Album artist</source>
-        <translation type="unfinished">Альбом виконавця</translation>
+        <translation>Альбом виконавця</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
@@ -884,17 +884,17 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="37"/>
         <source>Album - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом - Назва</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="175"/>
         <source>Title</source>
-        <translation type="unfinished">Заголовок</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="176"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати стовпчик</translation>
     </message>
 </context>
 <context>
@@ -1048,17 +1048,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер трека</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1083,17 +1083,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>

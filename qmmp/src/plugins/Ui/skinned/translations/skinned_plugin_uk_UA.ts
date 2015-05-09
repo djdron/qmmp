@@ -928,27 +928,27 @@
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати стовпчик</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати стовпчик</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="77"/>
         <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
+        <translation>Авто-розмір</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Відновити розмір</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити стовпчик</translation>
     </message>
 </context>
 <context>
@@ -1044,7 +1044,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -1054,27 +1054,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер треку</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер треку</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1268,12 +1268,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="124"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат вікна назви:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="230"/>
         <source>Playlist header:</source>
-        <translation type="unfinished"></translation>
+        <translation>Заголовок списка:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="291"/>
@@ -1320,12 +1320,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="523"/>
         <source>Show song lengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Відображати довжину пісні</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="475"/>
         <source>Show song numbers</source>
-        <translation>Відображати номери пісень</translation>
+        <translation>Відображати номери пісні</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="516"/>
@@ -1380,82 +1380,82 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../skinnedsettings.cpp" line="180"/>
         <source>Artist</source>
-        <translation type="unfinished">Виконавець</translation>
+        <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="182"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="183"/>
         <source>Title</source>
-        <translation type="unfinished">Назва</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="184"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер треку</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="185"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер треку</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="186"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="187"/>
         <source>Comment</source>
-        <translation type="unfinished">Коментар</translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="188"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="189"/>
         <source>Duration</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="190"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="191"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="192"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="193"/>
         <source>Year</source>
-        <translation type="unfinished">Рік</translation>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="194"/>
         <source>Condition</source>
-        <translation type="unfinished">Умова</translation>
+        <translation>Умова</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="195"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконавець - Назва</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="224"/>

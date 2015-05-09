@@ -399,17 +399,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Група треків</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Playlist Header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Відображати заголовок списку</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -597,7 +597,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="363"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit|%3|%4 Hz|%5 kbps]</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; [%2 біт|%3|%4 Гц|%5 кбіт/с]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="364"/>
@@ -656,7 +656,7 @@
         <location filename="../mainwindow.cpp" line="483"/>
         <location filename="../mainwindow.cpp" line="534"/>
         <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>За альбомом виконавця</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="487"/>
@@ -902,27 +902,27 @@
     <message>
         <location filename="../playlistheader.cpp" line="52"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати стовпчик</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="53"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати стовпчик</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="54"/>
         <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
+        <translation>Авто-розмір</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="56"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Відновити розмір</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="58"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити стовпчик</translation>
     </message>
 </context>
 <context>
@@ -985,7 +985,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -995,27 +995,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер трека</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1099,7 +1099,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат назви вікна:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="137"/>
@@ -1119,7 +1119,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="157"/>
         <source>Show song lengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Відображати довжину пісні</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="167"/>
@@ -1259,82 +1259,82 @@
     <message>
         <location filename="../qsuisettings.cpp" line="83"/>
         <source>Artist</source>
-        <translation type="unfinished">Виконавець</translation>
+        <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="84"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="85"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="86"/>
         <source>Title</source>
-        <translation type="unfinished">Назва</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="87"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="88"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер трека</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="89"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="90"/>
         <source>Comment</source>
-        <translation type="unfinished">Коментар</translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="91"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="92"/>
         <source>Duration</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="93"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="94"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="95"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="96"/>
         <source>Year</source>
-        <translation type="unfinished">Рік</translation>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="97"/>
         <source>Condition</source>
-        <translation type="unfinished">Умова</translation>
+        <translation>Умова</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="98"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Артист - Назва</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="188"/>
