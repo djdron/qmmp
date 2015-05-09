@@ -20,8 +20,8 @@ RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
-    PKGCONFIG += taglib
 }
+PKGCONFIG += taglib
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
 }
