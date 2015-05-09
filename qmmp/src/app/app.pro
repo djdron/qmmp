@@ -25,7 +25,7 @@ CONFIG += thread \
     warn_on
 QMAKE_LIBDIR += ../../lib \
     qmmpui
-LIBS += -Wl,-rpath,../lib
+
 unix:LIBS += -L../../lib \
     -lqmmp \
     -lqmmpui
