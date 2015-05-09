@@ -77,7 +77,7 @@ void ColumnEditor::createMenu()
     QMenu *menu = new QMenu(this);
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
-    menu->addAction(tr("Album artist"))->setData("%aa");
+    menu->addAction(tr("Album Artist"))->setData("%aa");
     menu->addAction(tr("Title"))->setData("%t");
     menu->addAction(tr("Track Number"))->setData("%n");
     menu->addAction(tr("Two-digit Track Number"))->setData("%NN");
