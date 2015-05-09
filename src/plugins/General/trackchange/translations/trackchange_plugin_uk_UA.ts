@@ -14,11 +14,6 @@
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="59"/>
-        <source>Album artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>Title</source>
         <translation>Назва</translation>
@@ -62,6 +57,11 @@
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>Comment</source>
         <translation>Коментар</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>

@@ -142,11 +142,6 @@
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="80"/>
-        <source>Album artist</source>
-        <translation>Альбом виконавця</translation>
-    </message>
-    <message>
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="104"/>
         <source>Title</source>
@@ -198,6 +193,7 @@
         <translation>Виконавець - Назва</translation>
     </message>
     <message>
+        <location filename="../columneditor.cpp" line="80"/>
         <location filename="../columneditor.cpp" line="103"/>
         <source>Album Artist</source>
         <translation>Альбом Виконавець</translation>

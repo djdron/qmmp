@@ -14,11 +14,6 @@
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="59"/>
-        <source>Album artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>Title</source>
         <translation>Название</translation>
@@ -26,12 +21,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="61"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-х разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="63"/>
@@ -41,17 +36,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="68"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="69"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
@@ -62,6 +57,11 @@
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>
