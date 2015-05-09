@@ -574,7 +574,7 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Исполнитель альбома</translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
@@ -594,7 +594,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Номер диска</translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -1048,17 +1048,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Исполнитель альбома</translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished">Номер трека</translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished">2-х разрядный номер трека</translation>
+        <translation>2-х разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1083,17 +1083,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Номер диска</translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished">Имя файла</translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished">Путь к файлу</translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
