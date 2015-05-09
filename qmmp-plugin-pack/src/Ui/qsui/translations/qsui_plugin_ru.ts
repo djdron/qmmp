@@ -984,7 +984,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -994,27 +994,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-х разрядный номер диска</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1098,7 +1098,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат имени окна:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="137"/>
@@ -1258,82 +1258,82 @@
     <message>
         <location filename="../qsuisettings.cpp" line="83"/>
         <source>Artist</source>
-        <translation type="unfinished">Исполнитель</translation>
+        <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="84"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="85"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="86"/>
         <source>Title</source>
-        <translation type="unfinished">Название</translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="87"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="88"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-х разрядный номер диска</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="89"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="90"/>
         <source>Comment</source>
-        <translation type="unfinished">Комментарий</translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="91"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="92"/>
         <source>Duration</source>
-        <translation type="unfinished">Длительность</translation>
+        <translation>Длительность</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="93"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="94"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="95"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="96"/>
         <source>Year</source>
-        <translation type="unfinished">Год</translation>
+        <translation>Год</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="97"/>
         <source>Condition</source>
-        <translation type="unfinished">Условие</translation>
+        <translation>Условие</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="98"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель - название</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="188"/>
