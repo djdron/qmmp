@@ -47,11 +47,6 @@
         <translation>Álbume</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="59"/>
-        <source>Album artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>Title</source>
         <translation>Título</translation>
@@ -85,6 +80,11 @@
         <location filename="../settingsdialog.cpp" line="63"/>
         <source>Genre</source>
         <translation>Xénero</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="64"/>
