@@ -48,61 +48,66 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="60"/>
-        <source>Track number</source>
-        <translation>Número de pista</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="61"/>
-        <source>Two-digit track number</source>
-        <translation>Número de pista de dous díxitos</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="68"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="69"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="63"/>
         <source>Genre</source>
         <translation>Xénero</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="63"/>
+        <location filename="../settingsdialog.cpp" line="64"/>
         <source>Comment</source>
         <translation>Comentarios</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="64"/>
+        <location filename="../settingsdialog.cpp" line="65"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="65"/>
+        <location filename="../settingsdialog.cpp" line="66"/>
         <source>Duration</source>
         <translation>Duración</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="66"/>
-        <source>Disc number</source>
-        <translation>Número de disco</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="67"/>
-        <source>File name</source>
-        <translation>Nome do ficheiro</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="68"/>
-        <source>File path</source>
-        <translation>Ruta do ficheiro</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="69"/>
+        <location filename="../settingsdialog.cpp" line="70"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="71"/>
         <source>Condition</source>
         <translation>Condición</translation>
     </message>

@@ -48,61 +48,66 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
         <source>Title</source>
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="60"/>
-        <source>Track number</source>
-        <translation>Takelio numeris</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="61"/>
-        <source>Two-digit track number</source>
-        <translation>Dviejų skaičių takelio numeris</translation>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="68"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="69"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="63"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="63"/>
+        <location filename="../settingsdialog.cpp" line="64"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="64"/>
+        <location filename="../settingsdialog.cpp" line="65"/>
         <source>Composer</source>
         <translation>Kompozitorius</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="65"/>
+        <location filename="../settingsdialog.cpp" line="66"/>
         <source>Duration</source>
         <translation>Trukmė</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="66"/>
-        <source>Disc number</source>
-        <translation>Disko numeris</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="67"/>
-        <source>File name</source>
-        <translation>Bylos pavadinimas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="68"/>
-        <source>File path</source>
-        <translation>Bylos kelias</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="69"/>
+        <location filename="../settingsdialog.cpp" line="70"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
+        <location filename="../settingsdialog.cpp" line="71"/>
         <source>Condition</source>
         <translation>Būklė</translation>
     </message>
