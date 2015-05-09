@@ -69,7 +69,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
@@ -79,27 +79,27 @@
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер доріжки</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер доріжки</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="120"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="122"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="116"/>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="132"/>
         <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Створити копію</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>

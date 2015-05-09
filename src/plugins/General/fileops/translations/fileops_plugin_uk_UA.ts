@@ -123,7 +123,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом Виконавець</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
@@ -133,12 +133,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер доріжки</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний номер доріжки</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
@@ -148,17 +148,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="204"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="206"/>
