@@ -76,19 +76,6 @@ int posix_memalign (void **memptr, size_t alignment, size_t size) {
 #define min(x,y) ((x)<(y)?(x):(y))
 #define max(x,y) ((x)>(y)?(x):(y))
 
-static inline unsigned int bytestream_get_buffer(const uint8_t **b, uint8_t *dst, unsigned int size)
-{
-    memcpy(dst, *b, size);
-    (*b) += size;
-    return size;
-}
-
-static inline void bytestream_put_buffer(uint8_t **b, const uint8_t *src, unsigned int size)
-{
-    memcpy(*b, src, size);
-    (*b) += size;
-}
-
 static inline uint8_t bytestream_get_byte (const uint8_t **ptr) {
     uint8_t v = *(*ptr);
     (*ptr)++;
@@ -803,12 +790,12 @@ static inline void range_dec_normalize(APEContext * ctx)
  * @param tot_f is the total frequency or (code_value)1<<shift
  * @return the culmulative frequency
  */
-static inline int range_decode_culfreq(APEContext * ctx, int tot_f)
+/*static inline int range_decode_culfreq(APEContext * ctx, int tot_f)
 {
     range_dec_normalize(ctx);
     ctx->rc.help = ctx->rc.range / tot_f;
     return ctx->rc.low / ctx->rc.help;
-}
+}*/
 
 /**
  * Decode value with given size in bits

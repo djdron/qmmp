@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -185,7 +185,7 @@ int DecoderFFapCUE::bitrate()
     return m_decoder->bitrate();
 }
 
-const QString DecoderFFapCUE::nextURL()
+const QString DecoderFFapCUE::nextURL() const
 {
     if(m_track +1 <= m_parser->count())
         return m_parser->trackURL(m_track + 1);
