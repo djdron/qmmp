@@ -570,7 +570,7 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Albuminterpret</translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
@@ -590,7 +590,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Disc-Nummer</translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -1044,17 +1044,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Albuminterpret</translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished">Titelnummer</translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished">Zweistellige Titelnummer</translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1079,17 +1079,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Disc-Nummer</translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished">Dateiname</translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished">Dateipfad</translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
