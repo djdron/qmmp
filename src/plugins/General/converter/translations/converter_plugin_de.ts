@@ -69,7 +69,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
@@ -79,32 +79,32 @@
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="120"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="122"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="132"/>
         <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopie erstellen</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="116"/>

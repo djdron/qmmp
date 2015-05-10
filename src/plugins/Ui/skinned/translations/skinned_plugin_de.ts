@@ -376,7 +376,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel &amp;gruppieren</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Show Playlist Header</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabeli&amp;stenkopfdaten anzeigen</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -928,12 +928,12 @@
     <message>
         <location filename="../playlistheader.cpp" line="75"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalte hinzufügen</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="76"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalte bearbeiten</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="77"/>
@@ -943,12 +943,12 @@
     <message>
         <location filename="../playlistheader.cpp" line="79"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe wiederherstellen</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalte entfernen</translation>
     </message>
 </context>
 <context>
@@ -1044,7 +1044,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -1054,27 +1054,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1268,12 +1268,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="124"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fenstertitelformat:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="230"/>
         <source>Playlist header:</source>
-        <translation>Wiedergabelistenkopfzeile:</translation>
+        <translation>Wiedergabelistenkopfdaten:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="291"/>
@@ -1320,7 +1320,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="523"/>
         <source>Show song lengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Liedlängen anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="475"/>
@@ -1380,82 +1380,82 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../skinnedsettings.cpp" line="180"/>
         <source>Artist</source>
-        <translation type="unfinished">Interpret</translation>
+        <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="182"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="183"/>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="184"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="185"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="186"/>
         <source>Genre</source>
-        <translation type="unfinished">Genre</translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="187"/>
         <source>Comment</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="188"/>
         <source>Composer</source>
-        <translation type="unfinished">Komponist</translation>
+        <translation>Komponist</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="189"/>
         <source>Duration</source>
-        <translation type="unfinished">Abspieldauer</translation>
+        <translation>Abspieldauer</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="190"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="191"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="192"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="193"/>
         <source>Year</source>
-        <translation type="unfinished">Jahr</translation>
+        <translation>Jahr</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="194"/>
         <source>Condition</source>
-        <translation type="unfinished">Zustand</translation>
+        <translation>Zustand</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="195"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpret - Titel</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="224"/>
