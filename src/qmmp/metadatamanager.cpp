@@ -271,6 +271,7 @@ void MetaDataManager::clearCoverChache()
 {
     m_cover_path_cache.clear();
     m_cached_cover = QPixmap();
+    m_cached_path.clear();
 }
 
 void MetaDataManager::prepareForAnotherThread()
