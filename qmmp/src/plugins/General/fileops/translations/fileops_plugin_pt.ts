@@ -168,7 +168,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Artista do álbum</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
@@ -178,27 +178,27 @@
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número da faixa</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número da faixa com 2 dígitos</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número do disco</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="204"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Caminho do ficheiro</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
