@@ -6,7 +6,7 @@ Principais programadores:
 Programadores de suplementos:
 
     Artur Guzik <aguzik88@gmail.com> (notificações kde4 e melhorias do ícone da bandeja)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (suplementos jack e oss)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (suplementos JACK e OSS)
 
 Imagem:
 

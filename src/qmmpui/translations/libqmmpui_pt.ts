@@ -570,7 +570,7 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Artista do álbum</translation>
+        <translation>Artista do álbum</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
@@ -590,7 +590,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Número do disco</translation>
+        <translation>Número do disco</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -778,7 +778,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>Album artist</source>
-        <translation type="unfinished">Artista do álbum</translation>
+        <translation>Artista do álbum</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
@@ -1044,17 +1044,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished">Artista do álbum</translation>
+        <translation>Artista do álbum</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished">Número da faixa</translation>
+        <translation>Número da faixa</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished">Número da faixa com 2 dígitos</translation>
+        <translation>Número da faixa com 2 dígitos</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1079,17 +1079,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished">Número do disco</translation>
+        <translation>Número do disco</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished">Nome do ficheiro</translation>
+        <translation>Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished">Caminho do ficheiro</translation>
+        <translation>Caminho do ficheiro</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
