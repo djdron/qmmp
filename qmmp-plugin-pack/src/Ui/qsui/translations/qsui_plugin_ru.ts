@@ -1143,12 +1143,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="751"/>
         <source>Group background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Фон группы:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="758"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст группы:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="788"/>
