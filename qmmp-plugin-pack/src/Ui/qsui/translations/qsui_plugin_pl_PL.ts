@@ -1060,7 +1060,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="194"/>
+        <location filename="../qsuisettings.cpp" line="200"/>
         <source>View</source>
         <translation>Wygląd</translation>
     </message>
@@ -1141,22 +1141,32 @@
         <translation>Edytuj szablon</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="754"/>
+        <location filename="../forms/qsuisettings.ui" line="751"/>
+        <source>Group background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="758"/>
+        <source>Group text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="788"/>
         <source>Tabs</source>
         <translation>Karty</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="760"/>
+        <location filename="../forms/qsuisettings.ui" line="794"/>
         <source>Show close buttons</source>
         <translation>Pokaż przyciski zamykania</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="767"/>
+        <location filename="../forms/qsuisettings.ui" line="801"/>
         <source>Show tab list menu</source>
         <translation>Pokaż menu listy kart</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="774"/>
+        <location filename="../forms/qsuisettings.ui" line="808"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Pokaż przycisk &apos;Nowa lista odtwarzania&apos;</translation>
     </message>
@@ -1231,7 +1241,7 @@
         <translation>Tło #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="553"/>
+        <location filename="../forms/qsuisettings.ui" line="566"/>
         <source>Normal text:</source>
         <translation>Normalny tekst:</translation>
     </message>
@@ -1336,22 +1346,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="188"/>
+        <location filename="../qsuisettings.cpp" line="194"/>
         <source>Playback</source>
         <translation>Odtwarzanie</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="200"/>
+        <location filename="../qsuisettings.cpp" line="206"/>
         <source>Volume</source>
         <translation>Głośność</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="206"/>
+        <location filename="../qsuisettings.cpp" line="212"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="212"/>
+        <location filename="../qsuisettings.cpp" line="218"/>
         <source>Misc</source>
         <translation>Różne</translation>
     </message>

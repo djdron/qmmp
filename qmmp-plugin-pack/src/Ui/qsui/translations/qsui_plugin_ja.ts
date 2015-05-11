@@ -1060,7 +1060,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <location filename="../forms/qsuisettings.ui" line="30"/>
-        <location filename="../qsuisettings.cpp" line="194"/>
+        <location filename="../qsuisettings.cpp" line="200"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
@@ -1141,22 +1141,32 @@
         <translation>ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="754"/>
+        <location filename="../forms/qsuisettings.ui" line="751"/>
+        <source>Group background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="758"/>
+        <source>Group text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="788"/>
         <source>Tabs</source>
         <translation>タブ</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="760"/>
+        <location filename="../forms/qsuisettings.ui" line="794"/>
         <source>Show close buttons</source>
         <translation>閉じるボタンを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="767"/>
+        <location filename="../forms/qsuisettings.ui" line="801"/>
         <source>Show tab list menu</source>
         <translation>タブリストメニューを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="774"/>
+        <location filename="../forms/qsuisettings.ui" line="808"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>&apos;新しいプレイリスト&apos; ボタンを表示</translation>
     </message>
@@ -1231,7 +1241,7 @@
         <translation>第一背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="553"/>
+        <location filename="../forms/qsuisettings.ui" line="566"/>
         <source>Normal text:</source>
         <translation>通常のテキスト:</translation>
     </message>
@@ -1336,22 +1346,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="188"/>
+        <location filename="../qsuisettings.cpp" line="194"/>
         <source>Playback</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="200"/>
+        <location filename="../qsuisettings.cpp" line="206"/>
         <source>Volume</source>
         <translation>音量</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="206"/>
+        <location filename="../qsuisettings.cpp" line="212"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="212"/>
+        <location filename="../qsuisettings.cpp" line="218"/>
         <source>Misc</source>
         <translation>その他いろいろ</translation>
     </message>
