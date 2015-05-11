@@ -733,6 +733,9 @@
             <property name="frameShape">
              <enum>QFrame::Box</enum>
             </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
            </widget>
           </item>
           <item row="0" column="0" colspan="6">
@@ -761,6 +764,21 @@
           </item>
           <item row="4" column="1">
            <widget class="ColorWidget" name="plGrBgColor">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::Box</enum>
             </property>
@@ -771,6 +789,21 @@
           </item>
           <item row="4" column="4">
            <widget class="ColorWidget" name="plGrTextColor">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::Box</enum>
             </property>
@@ -852,8 +885,8 @@
      <y>274</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>301</y>
+     <x>156</x>
+     <y>341</y>
     </hint>
    </hints>
   </connection>
@@ -864,12 +897,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
-     <y>355</y>
+     <x>124</x>
+     <y>397</y>
     </hint>
     <hint type="destinationlabel">
-     <x>99</x>
-     <y>389</y>
+     <x>128</x>
+     <y>431</y>
     </hint>
    </hints>
   </connection>
@@ -884,8 +917,8 @@
      <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>188</x>
-     <y>220</y>
+     <x>221</x>
+     <y>235</y>
     </hint>
    </hints>
   </connection>
@@ -900,8 +933,8 @@
      <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>186</x>
-     <y>251</y>
+     <x>221</x>
+     <y>261</y>
     </hint>
    </hints>
   </connection>
@@ -916,8 +949,8 @@
      <y>200</y>
     </hint>
     <hint type="destinationlabel">
-     <x>186</x>
-     <y>280</y>
+     <x>221</x>
+     <y>287</y>
     </hint>
    </hints>
   </connection>
@@ -932,8 +965,8 @@
      <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>348</x>
-     <y>219</y>
+     <x>389</x>
+     <y>235</y>
     </hint>
    </hints>
   </connection>
@@ -948,8 +981,8 @@
      <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>360</x>
-     <y>252</y>
+     <x>389</x>
+     <y>261</y>
     </hint>
    </hints>
   </connection>
@@ -964,8 +997,40 @@
      <y>197</y>
     </hint>
     <hint type="destinationlabel">
-     <x>347</x>
-     <y>285</y>
+     <x>389</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plSystemColorsCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plGrBgColor</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>308</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plSystemColorsCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plGrTextColor</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>307</y>
     </hint>
    </hints>
   </connection>
