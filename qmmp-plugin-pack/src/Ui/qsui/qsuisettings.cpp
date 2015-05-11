@@ -141,6 +141,8 @@ void QSUISettings::readSettings()
     QString normal = palette().color(QPalette::Text).name();
     QString current = palette().color(QPalette::Text).name();
     QString highlighted = palette().color(QPalette::HighlightedText).name();
+    QString group_bg = palette().color(QPalette::Base).name();
+    QString group_text = palette().color(QPalette::Text).name();
     m_ui.plSystemColorsCheckBox->setChecked(settings.value("pl_system_colors", true).toBool());
     m_ui.plBg1Color->setColor(settings.value("pl_bg1_color", normal_bg).toString());
     m_ui.plBg2Color->setColor(settings.value("pl_bg2_color", alternate).toString());
@@ -148,6 +150,8 @@ void QSUISettings::readSettings()
     m_ui.plTextNormalColor->setColor(settings.value("pl_normal_text_color", normal).toString());
     m_ui.plTextCurrentColor->setColor(settings.value("pl_current_text_color", current).toString());
     m_ui.plTextHlCurrentColor->setColor(settings.value("pl_hl_text_color", highlighted).toString());
+    m_ui.plGrBgColor->setColor(settings.value("pl_group_bg", group_bg).toString());
+    m_ui.plGrTextColor->setColor(settings.value("pl_group_text", group_text).toString());
     settings.endGroup();
 }
 
@@ -179,6 +183,8 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_normal_text_color", m_ui.plTextNormalColor->colorName());
     settings.setValue("pl_current_text_color", m_ui.plTextCurrentColor->colorName());
     settings.setValue("pl_hl_text_color", m_ui.plTextHlCurrentColor->colorName());
+    settings.setValue("pl_group_bg", m_ui.plGrBgColor->colorName());
+    settings.setValue("pl_group_text", m_ui.plGrTextColor->colorName());
     settings.endGroup();
 }
 

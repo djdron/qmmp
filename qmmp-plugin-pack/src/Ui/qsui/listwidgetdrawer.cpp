@@ -77,6 +77,9 @@ void ListWidgetDrawer::readSettings()
         m_normal.setNamedColor(settings.value("pl_normal_text_color", m_normal.name()).toString());
         m_current.setNamedColor(settings.value("pl_current_text_color",m_current.name()).toString());
         m_highlighted.setNamedColor(settings.value("pl_hl_text_color",m_highlighted.name()).toString());
+        m_group_bg.setNamedColor(settings.value("pl_group_bg", m_group_bg.name()).toString());
+        m_group_alt_bg = m_group_bg;
+        m_group_text.setNamedColor(settings.value("pl_group_text", m_group_text.name()).toString());
     }
 
     if (m_update)
@@ -103,6 +106,9 @@ void ListWidgetDrawer::loadSystemColors()
     m_highlighted = qApp->palette().color(QPalette::HighlightedText);
     m_normal_bg = qApp->palette().color(QPalette::Base);
     m_selected_bg = qApp->palette().color(QPalette::Highlight);
+    m_group_bg = m_normal_bg;
+    m_group_alt_bg = m_alternate,
+    m_group_text = m_normal;
 }
 
 int ListWidgetDrawer::rowHeight() const
@@ -191,6 +197,19 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row, int
     {
         painter->setBrush(m_selected_bg);
     }
+    else if(row->flags & ListWidgetRow::GROUP)
+    {
+        if(index % 2)
+        {
+            painter->setBrush(QBrush(m_group_alt_bg));
+            painter->setPen(m_group_alt_bg);
+        }
+        else
+        {
+            painter->setBrush(QBrush(m_group_bg));
+            painter->setPen(m_group_bg);
+        }
+    }
     else
     {
         if(index % 2)
@@ -222,7 +241,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setFont(m_font);
-    painter->setPen(row->flags & ListWidgetRow::SELECTED ? m_highlighted : m_normal);
+    painter->setPen(row->flags & ListWidgetRow::SELECTED ? m_highlighted : m_group_text);
 
     if(row->numberColumnWidth)
         sx += row->numberColumnWidth;
