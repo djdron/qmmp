@@ -21,6 +21,7 @@
 #include <qmmp/metadatamanager.h>
 #include <QRegExp>
 #include <QMetaType>
+#include <QDir>
 #include "fileloader_p.h"
 #include "qmmpuisettings.h"
 #include "playlistitem.h"
@@ -172,7 +173,7 @@ void FileLoader::insert(PlayListItem *before, const QStringList &paths)
     {
         LoaderTask task;
         task.before = before;
-        task.path = path;
+        task.path = QDir::fromNativeSeparators(path);
         m_tasks.append(task);
     }
     m_mutex.unlock();
