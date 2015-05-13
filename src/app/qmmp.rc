@@ -20,7 +20,7 @@ BEGIN
         BLOCK "000004b0"
         BEGIN
             VALUE "CompanyName", "Qmmp Development Team"
-            VALUE "FileDescription", "Audio player with support of many formats"
+            VALUE "FileDescription", "Qt-based Multimedia Player"
             VALUE "FileVersion", QMMP_PRODUCTVERSION
             VALUE "LegalCopyright", "Copyright (C) 2006-2015 Qmmp Development Team"
             VALUE "InternalName", "qmmp"
