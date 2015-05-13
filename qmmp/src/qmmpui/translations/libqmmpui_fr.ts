@@ -879,7 +879,7 @@
     <name>PlayListHeaderModel</name>
     <message>
         <location filename="../playlistheadermodel.cpp" line="37"/>
-        <source>Album - Title</source>
+        <source>Artist - Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
