@@ -89,7 +89,7 @@ void ColumnEditor::createMenu()
     menu->addAction(tr("File Name"))->setData("%f");
     menu->addAction(tr("File Path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
-    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    menu->addAction(tr("Condition"))->setData("%if(%p,%p - %t,%t)");
     m_ui->formatButton->setMenu(menu);
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(insertExpression(QAction *)));
 }
@@ -99,7 +99,7 @@ void ColumnEditor::fillTypes()
     m_ui->comboBox->addItem(tr("Artist"),"%p");
     m_ui->comboBox->addItem(tr("Album"),"%a");
     m_ui->comboBox->addItem(tr("Artist - Album"),"%if(%p&%a,%p - %a,)");
-    m_ui->comboBox->addItem(tr("Artist - Title"),"%if(%p&%t,%p - %t,%f)");
+    m_ui->comboBox->addItem(tr("Artist - Title"),"%if(%p,%p - %t,%t)");
     m_ui->comboBox->addItem(tr("Album Artist"),"%aa");
     m_ui->comboBox->addItem(tr("Title"),"%t");
     m_ui->comboBox->addItem(tr("Track Number"),"%n");

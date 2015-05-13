@@ -35,7 +35,7 @@ PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
         s.beginGroup(QString("column%1").arg(i));
         Column col;
         col.name = s.value("name", tr("Album - Title")).toString();
-        col.pattern = s.value("pattern", "%p%if(%p&%t, - ,)%t").toString();
+        col.pattern = s.value("pattern", "%if(%p,%p - %t,%t)").toString();
         col.size = s.value("size", 150).toInt();
         col.titleFormatter = new MetaDataFormatter(col.pattern);
         col.autoResize = s.value("autoresize", false).toBool();

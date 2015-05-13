@@ -372,6 +372,10 @@ QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QStr
                 title = metaData->value(Qmmp::URL).section('/',-1);
                 title = title.left(title.lastIndexOf('.'));
             }
+
+            if(title.isEmpty()) //using full path if file name is empty
+                title = metaData->value(Qmmp::URL);
+
             return title;
         }
         return metaData->value((Qmmp::MetaData) field);
