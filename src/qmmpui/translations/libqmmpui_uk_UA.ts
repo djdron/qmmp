@@ -879,8 +879,8 @@
     <name>PlayListHeaderModel</name>
     <message>
         <location filename="../playlistheadermodel.cpp" line="37"/>
-        <source>Album - Title</source>
-        <translation>Альбом - Назва</translation>
+        <source>Artist - Title</source>
+        <translation type="unfinished">Виконавець - Назва</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="175"/>
