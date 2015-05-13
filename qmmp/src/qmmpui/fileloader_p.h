@@ -21,8 +21,8 @@
 #define FILELOADER_H
 
 #include <QObject>
-#include <QDir>
 #include <QQueue>
+#include <QStringList>
 #include <QFileInfo>
 #include <QMutex>
 #include <QThread>
