@@ -30,6 +30,7 @@
 #include <QIcon>
 #include <qmmp/qmmp.h>
 #include <qmmpui/playlistmanager.h>
+#include "actionmanager.h"
 #include "skin.h"
 #include "playlistselector.h"
 
@@ -48,11 +49,11 @@ PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : 
     loadColors();
     readSettings();
     m_menu = new QMenu(this);
-    m_menu->addAction(QIcon::fromTheme("document-open"), tr("&Load"), parent, SIGNAL (loadPlaylist()));
-    m_menu->addAction(QIcon::fromTheme("document-save-as"), tr("&Save As..."), parent, SIGNAL (savePlaylist()));
+    m_menu->addAction(ACTION(ActionManager::PL_LOAD));
+    m_menu->addAction(ACTION(ActionManager::PL_SAVE));
     m_menu->addSeparator();
-    m_menu->addAction(tr("Rename"),this, SLOT (renamePlaylist()));
-    m_menu->addAction(QIcon::fromTheme("window-close"), tr("&Delete"),parent, SLOT (deletePlaylist()));
+    m_menu->addAction(ACTION(ActionManager::PL_RENAME));
+    m_menu->addAction(ACTION(ActionManager::PL_CLOSE));
 }
 
 PlayListSelector::~PlayListSelector()
@@ -117,17 +118,6 @@ void PlayListSelector::updateSkin()
     loadColors();
     drawButtons();
     updateTabs();
-}
-
-void PlayListSelector::renamePlaylist()
-{
-    bool ok = false;
-    QString name = QInputDialog::getText (this,
-                                          tr("Rename Playlist"), tr("Playlist name:"),
-                                          QLineEdit::Normal,
-                                          m_pl_manager->selectedPlayList()->name(), &ok);
-    if(ok)
-        m_pl_manager->selectedPlayList()->setName(name);
 }
 
 void PlayListSelector::paintEvent(QPaintEvent *)
@@ -277,7 +267,7 @@ void PlayListSelector::mouseReleaseEvent (QMouseEvent *e)
 void PlayListSelector::mouseDoubleClickEvent (QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton && !(m_scrollable && (e->x() > width() - 40)))
-        renamePlaylist();
+        ACTION(ActionManager::PL_RENAME)->trigger();
     else
         QWidget::mouseDoubleClickEvent(e);
 }

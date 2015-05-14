@@ -83,6 +83,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[PL_CLOSE] = createAction(tr("&Delete List"), "close_pl", tr("Ctrl+W"), "window-close");
     m_actions[PL_LOAD] = createAction(tr("&Load List"), "load_pl", tr("O"), "document-open");
     m_actions[PL_SAVE] = createAction(tr("&Save List"), "save_pl", tr("Shift+S"), "document-save-as");
+    m_actions[PL_RENAME] = createAction(tr("&Rename List"), "pl_rename", tr("F2"));
     m_actions[PL_SELECT_NEXT] = createAction(tr("&Select Next Playlist"), "next_pl",
                                              tr("Ctrl+PgDown"), "go-next");
     m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",
