@@ -624,6 +624,7 @@ void MainWindow::createActions()
 
     //tab menu
     m_tab_menu->addAction(ACTION(ActionManager::PL_LOAD));
+    m_tab_menu->addAction(ACTION(ActionManager::PL_SAVE));
     m_tab_menu->addSeparator();
     m_tab_menu->addAction(ACTION(ActionManager::PL_RENAME));
     m_tab_menu->addAction(ACTION(ActionManager::PL_CLOSE));
