@@ -346,7 +346,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Переименовать список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
@@ -879,12 +879,12 @@
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Переименовать список</translation>
+        <translation>Переименовать список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Playlist name:</source>
-        <translation type="unfinished">Имя списка:</translation>
+        <translation>Имя списка:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="598"/>
