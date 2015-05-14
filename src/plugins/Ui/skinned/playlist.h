@@ -77,6 +77,7 @@ class PlayList : public QWidget
         void showPlaylistMenu();
         void updateSkin();
         void deletePlaylist();
+        void renamePlaylist();
         void showPlayLists();
         void generateCopySelectedMenu();
         void copySelectedMenuActionTriggered(QAction *action);

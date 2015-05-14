@@ -23,9 +23,8 @@
 #include <QMenu>
 #include <QAction>
 #include <QSignalMapper>
-#include <QHBoxLayout>
 #include <QCloseEvent>
-#include <QActionGroup>
+#include <QInputDialog>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
@@ -336,6 +335,7 @@ void PlayList::createActions()
     //Playlist Menu
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_NEW, m_pl_manager, SLOT(createPlayList())));
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(deletePlaylist())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renamePlaylist())));
     m_playlistMenu->addSeparator();
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SIGNAL(loadPlaylist())));
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SIGNAL(savePlaylist())));
@@ -568,6 +568,17 @@ void PlayList::updateSkin()
 void PlayList::deletePlaylist()
 {
     m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
+}
+
+void PlayList::renamePlaylist()
+{
+    bool ok = false;
+    QString name = QInputDialog::getText (this,
+                                          tr("Rename Playlist"), tr("Playlist name:"),
+                                          QLineEdit::Normal,
+                                          m_pl_manager->selectedPlayList()->name(), &ok);
+    if(ok)
+        m_pl_manager->selectedPlayList()->setName(name);
 }
 
 void PlayList::showPlayLists()
