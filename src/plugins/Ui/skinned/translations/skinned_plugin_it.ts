@@ -345,81 +345,91 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
+        <source>&amp;Rename List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="86"/>
+        <source>F2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="87"/>
         <source>&amp;Select Next Playlist</source>
         <translation type="unfinished">&amp;Seleziona la successiva lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="87"/>
+        <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+PgDown</source>
         <translation type="unfinished">Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;Select Previous Playlist</source>
         <translation type="unfinished">&amp;Seleziona la rpecedente lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="89"/>
+        <location filename="../actionmanager.cpp" line="90"/>
         <source>Ctrl+PgUp</source>
         <translation type="unfinished">Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Show Playlists</source>
         <translation type="unfinished">Mostra lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>P</source>
         <translation type="unfinished">P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Group Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="93"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>Ctrl+H</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Show Playlist Header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="95"/>
+        <location filename="../actionmanager.cpp" line="96"/>
         <source>&amp;Settings</source>
         <translation type="unfinished">&amp;Configurazione</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="95"/>
+        <location filename="../actionmanager.cpp" line="96"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="96"/>
+        <location filename="../actionmanager.cpp" line="97"/>
         <source>&amp;About</source>
         <translation type="unfinished">&amp;Informazioni</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="97"/>
+        <location filename="../actionmanager.cpp" line="98"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished">&amp;Informazioni su Qt</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="98"/>
+        <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Exit</source>
         <translation type="unfinished">&amp;Esci</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="98"/>
+        <location filename="../actionmanager.cpp" line="99"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
@@ -783,107 +793,117 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="187"/>
+        <location filename="../playlist.cpp" line="186"/>
         <source>&amp;Copy Selection To</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="215"/>
+        <location filename="../playlist.cpp" line="214"/>
         <source>Sort List</source>
         <translation>Riordina la lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="218"/>
-        <location filename="../playlist.cpp" line="269"/>
+        <location filename="../playlist.cpp" line="217"/>
+        <location filename="../playlist.cpp" line="268"/>
         <source>By Title</source>
         <translation>Per titolo</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="222"/>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="221"/>
+        <location filename="../playlist.cpp" line="272"/>
         <source>By Album</source>
         <translation>Per album</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="225"/>
+        <location filename="../playlist.cpp" line="276"/>
         <source>By Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="230"/>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="229"/>
+        <location filename="../playlist.cpp" line="280"/>
         <source>By Artist</source>
         <translation>PEr interprete</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="233"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>By Album Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
-        <location filename="../playlist.cpp" line="289"/>
+        <location filename="../playlist.cpp" line="237"/>
+        <location filename="../playlist.cpp" line="288"/>
         <source>By Filename</source>
         <translation>Per titolo del brano</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="242"/>
-        <location filename="../playlist.cpp" line="293"/>
+        <location filename="../playlist.cpp" line="241"/>
+        <location filename="../playlist.cpp" line="292"/>
         <source>By Path + Filename</source>
         <translation>per percorso più titolo del brano</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="246"/>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="245"/>
+        <location filename="../playlist.cpp" line="296"/>
         <source>By Date</source>
         <translation>Per data</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="254"/>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="304"/>
         <source>By File Creation Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="257"/>
         <source>By Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="265"/>
         <source>Sort Selection</source>
         <translation>Riordina la selezione</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="313"/>
+        <location filename="../playlist.cpp" line="312"/>
         <source>Randomize List</source>
         <translation>Mescola i brnai della lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="315"/>
+        <location filename="../playlist.cpp" line="314"/>
         <source>Reverse List</source>
         <translation>Inverti la lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="587"/>
+        <location filename="../playlist.cpp" line="577"/>
+        <source>Rename Playlist</source>
+        <translation type="unfinished">Rinomina lista brani</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="577"/>
+        <source>Playlist name:</source>
+        <translation type="unfinished">Nome della lista brani:</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="598"/>
         <source>&amp;New PlayList</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="250"/>
-        <location filename="../playlist.cpp" line="301"/>
+        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="300"/>
         <source>By Track Number</source>
         <translation>Per numero di traccia</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="56"/>
+        <location filename="../playlist.cpp" line="55"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista brani</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="326"/>
+        <location filename="../playlist.cpp" line="325"/>
         <source>Actions</source>
         <translation>Azioni</translation>
     </message>
@@ -949,39 +969,6 @@
         <location filename="../playlistheader.cpp" line="81"/>
         <source>Remove Column</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PlayListSelector</name>
-    <message>
-        <location filename="../playlistselector.cpp" line="51"/>
-        <source>&amp;Load</source>
-        <translation>&amp;Carica</translation>
-    </message>
-    <message>
-        <location filename="../playlistselector.cpp" line="52"/>
-        <source>&amp;Save As...</source>
-        <translation>&amp;Salva come</translation>
-    </message>
-    <message>
-        <location filename="../playlistselector.cpp" line="54"/>
-        <source>Rename</source>
-        <translation>Rinomina</translation>
-    </message>
-    <message>
-        <location filename="../playlistselector.cpp" line="55"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Elimina</translation>
-    </message>
-    <message>
-        <location filename="../playlistselector.cpp" line="126"/>
-        <source>Rename Playlist</source>
-        <translation>Rinomina lista brani</translation>
-    </message>
-    <message>
-        <location filename="../playlistselector.cpp" line="126"/>
-        <source>Playlist name:</source>
-        <translation>Nome della lista brani:</translation>
     </message>
 </context>
 <context>
