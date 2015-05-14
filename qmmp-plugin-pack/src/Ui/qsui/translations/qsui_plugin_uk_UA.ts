@@ -372,6 +372,11 @@
         <translation>&amp;Переіменувати список</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="93"/>
+        <source>F2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../actionmanager.cpp" line="95"/>
         <source>&amp;Select Next Playlist</source>
         <translation>Вибрати &amp;наступний список</translation>
@@ -721,17 +726,17 @@
         <translation>Дії</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="651"/>
+        <location filename="../mainwindow.cpp" line="652"/>
         <source>Add new playlist</source>
         <translation>Додати новий список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="657"/>
+        <location filename="../mainwindow.cpp" line="658"/>
         <source>Show all tabs</source>
         <translation>Показати всі вкладки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="808"/>
+        <location filename="../mainwindow.cpp" line="809"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>
@@ -1142,32 +1147,32 @@
         <translation>Редагувати шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="751"/>
+        <location filename="../forms/qsuisettings.ui" line="754"/>
         <source>Group background:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="758"/>
+        <location filename="../forms/qsuisettings.ui" line="761"/>
         <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="788"/>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
         <source>Tabs</source>
         <translation>Вкладки</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="794"/>
+        <location filename="../forms/qsuisettings.ui" line="827"/>
         <source>Show close buttons</source>
         <translation>Показати кнопки закриття</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="801"/>
+        <location filename="../forms/qsuisettings.ui" line="834"/>
         <source>Show tab list menu</source>
         <translation>Відображати меню зі списоком вкладок</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="808"/>
+        <location filename="../forms/qsuisettings.ui" line="841"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Показувати кнопку &quot;Новий список&quot;</translation>
     </message>
@@ -1232,7 +1237,7 @@
         <translation>Кольори списку відтворення</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="741"/>
+        <location filename="../forms/qsuisettings.ui" line="744"/>
         <source>Use system colors</source>
         <translation>Використовувати системні кольори</translation>
     </message>

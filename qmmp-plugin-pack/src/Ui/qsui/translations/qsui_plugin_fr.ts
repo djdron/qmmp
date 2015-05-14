@@ -372,6 +372,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="93"/>
+        <source>F2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../actionmanager.cpp" line="95"/>
         <source>&amp;Select Next Playlist</source>
         <translation type="unfinished"></translation>
@@ -881,17 +886,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="651"/>
+        <location filename="../mainwindow.cpp" line="652"/>
         <source>Add new playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="657"/>
+        <location filename="../mainwindow.cpp" line="658"/>
         <source>Show all tabs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="808"/>
+        <location filename="../mainwindow.cpp" line="809"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1141,32 +1146,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="751"/>
+        <location filename="../forms/qsuisettings.ui" line="754"/>
         <source>Group background:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="758"/>
+        <location filename="../forms/qsuisettings.ui" line="761"/>
         <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="788"/>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
         <source>Tabs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="794"/>
+        <location filename="../forms/qsuisettings.ui" line="827"/>
         <source>Show close buttons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="801"/>
+        <location filename="../forms/qsuisettings.ui" line="834"/>
         <source>Show tab list menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="808"/>
+        <location filename="../forms/qsuisettings.ui" line="841"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1231,7 +1236,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="741"/>
+        <location filename="../forms/qsuisettings.ui" line="744"/>
         <source>Use system colors</source>
         <translation type="unfinished"></translation>
     </message>
