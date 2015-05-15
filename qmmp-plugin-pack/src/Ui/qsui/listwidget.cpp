@@ -269,7 +269,10 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     m_resize = false;
     m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
     m_row_count = qMax(m_row_count, 0);
-    updateList(PlayListModel::STRUCTURE);
+    if(e->oldSize().height() < 10)
+        updateList(PlayListModel::STRUCTURE | PlayListModel::CURRENT); //recenter to current on first resize
+    else
+        updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
 
