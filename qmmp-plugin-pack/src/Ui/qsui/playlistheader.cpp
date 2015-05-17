@@ -41,7 +41,9 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     setMouseTracking(true);
-    m_metrics = new QFontMetrics(qApp->font());
+    QFont font = qApp->font("QAbstractItemView");
+    m_metrics = new QFontMetrics(font);
+    setFont(font);
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
