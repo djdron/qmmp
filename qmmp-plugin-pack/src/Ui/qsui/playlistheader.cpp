@@ -75,7 +75,6 @@ void PlayListHeader::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
-    m_font.fromString(settings.value("header_font", qApp->font().toString()).toString());
 
     QFont pl_font;
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());

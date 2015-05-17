@@ -71,7 +71,6 @@ private:
 
     QFontMetrics *m_metrics;
     QMenu *m_menu;
-    QFont m_font;
     QList <QRect> m_rects;
     QStringList m_names;
     QPoint m_pressed_pos;
