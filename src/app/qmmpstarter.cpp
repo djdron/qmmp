@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -167,11 +167,21 @@ void QMMPStarter::startPlayer()
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
     QStringList args = argString.split("\n", QString::SkipEmptyParts);
 
-    //load lxde icons
-    LXDESupport::load();
 #ifdef Q_OS_WIN
     QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
     QIcon::setThemeName("oxygen");
+#else
+    //add extra theme path;
+    QStringList theme_paths = QIcon::themeSearchPaths();
+    QString share_path = qgetenv("XDG_DATA_HOME");
+    if(share_path.isEmpty())
+        share_path = QDir::homePath() + "/.local/share";
+    theme_paths << share_path + "/icons";
+    theme_paths.removeDuplicates();
+    QIcon::setThemeSearchPaths(theme_paths);
+
+    //load lxde icons
+    LXDESupport::load();
 #endif
 
     //prepare libqmmp and libqmmpui libraries for usage
