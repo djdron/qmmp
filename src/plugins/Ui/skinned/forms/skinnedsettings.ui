@@ -507,13 +507,6 @@
        <item row="3" column="0" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QPushButton" name="resetFontsButton">
-           <property name="text">
-            <string>Reset fonts</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -525,6 +518,13 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="resetFontsButton">
+           <property name="text">
+            <string>Reset fonts</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
