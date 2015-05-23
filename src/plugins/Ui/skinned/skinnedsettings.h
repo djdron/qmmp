@@ -41,10 +41,13 @@ private slots:
     void on_plFontButton_clicked();
     void on_headerFontButton_clicked();
     void on_mainFontButton_clicked();
+    void on_resetFontsButton_clicked();
     void on_skinInstallButton_clicked();
     void loadSkins();
     void on_popupTemplateButton_clicked();
     void addWindowTitleString(QAction *a);
+
+
 
 private:
     void showEvent(QShowEvent *);

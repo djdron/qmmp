@@ -45,6 +45,7 @@ SkinnedSettings::SkinnedSettings(QWidget *parent) : QWidget(parent)
     m_ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
     m_ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
     m_ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
+    m_ui.resetFontsButton->setIcon(QIcon::fromTheme("edit-clear"));
 }
 
 SkinnedSettings::~SkinnedSettings()
@@ -104,6 +105,15 @@ void SkinnedSettings::on_mainFontButton_clicked()
         m_ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         m_ui.mainFontLabel->setFont(font);
     }
+}
+
+void SkinnedSettings::on_resetFontsButton_clicked()
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.remove("Skinned/pl_font");
+    settings.remove("Skinned/pl_header_font");
+    settings.remove("Skinned/mw_font");
+    loadFonts();
 }
 
 void SkinnedSettings::on_skinInstallButton_clicked()
