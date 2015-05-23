@@ -92,7 +92,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>View</string>
+          <string>Main Window</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0" rowspan="2" colspan="2">
@@ -227,7 +227,7 @@
           <item row="2" column="0" colspan="2">
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Playlist header:</string>
+             <string>Column headers:</string>
             </property>
            </widget>
           </item>
@@ -239,14 +239,8 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>80</width>
-              <height>16777215</height>
-             </size>
-            </property>
             <property name="text">
-             <string>Playlist:</string>
+             <string>Playlist tracks:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -260,12 +254,6 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>80</width>
-              <height>16777215</height>
-             </size>
             </property>
             <property name="text">
              <string>Player:</string>
