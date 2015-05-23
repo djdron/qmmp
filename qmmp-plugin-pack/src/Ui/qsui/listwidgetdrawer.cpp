@@ -63,7 +63,11 @@ void ListWidgetDrawer::readSettings()
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_show_lengths = settings.value ("pl_show_lengths", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
-    m_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
+    m_font = qApp->font("QAbstractItemView");
+
+    if(!settings.value("use_system_fonts", true).toBool())
+        m_font.fromString(settings.value("pl_font", m_font.toString()).toString());
+
     m_extra_font = m_font;
     m_extra_font.setPointSize(m_font.pointSize() - 1);
     m_use_system_colors = settings.value("pl_system_colors", true).toBool();
