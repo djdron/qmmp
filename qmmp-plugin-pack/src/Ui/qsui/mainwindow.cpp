@@ -47,6 +47,7 @@
 #include "positionslider.h"
 #include "mainwindow.h"
 #include "qsuisettings.h"
+#include "hotkeyeditor.h"
 #include "filesystembrowser.h"
 #include "aboutqsuidialog.h"
 #include "keyboardmanager.h"
@@ -322,6 +323,7 @@ void MainWindow::showSettings()
     ConfigDialog *confDialog = new ConfigDialog(this);
     QSUISettings *simpleSettings = new QSUISettings(this);
     confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/qsui/qsui_settings.png"));
+    confDialog->addPage(tr("Shortcuts"), new HotkeyEditor(this), QIcon(":/qsui/qsui_shortcuts.png"));
     confDialog->exec();
     simpleSettings->writeSettings();
     confDialog->deleteLater();

@@ -38,7 +38,8 @@ SOURCES += \
     playlistbrowser.cpp \
     toolbareditor.cpp \
     listwidgetdrawer.cpp \
-    playlistheader.cpp
+    playlistheader.cpp \
+    hotkeyeditor.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -67,7 +68,8 @@ HEADERS += mainwindow.h \
     playlistbrowser.h \
     toolbareditor.h \
     listwidgetdrawer.h \
-    playlistheader.h
+    playlistheader.h \
+    hotkeyeditor.h
 TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
@@ -75,7 +77,8 @@ FORMS += forms/mainwindow.ui \
     forms/popupsettings.ui \
     forms/aboutqsuidialog.ui \
     forms/qsuisettings.ui \
-    forms/toolbareditor.ui
+    forms/toolbareditor.ui \
+    forms/hotkeyeditor.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 contains(CONFIG, SVN_VERSION){

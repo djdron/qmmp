@@ -37,7 +37,6 @@ QSUISettings::QSUISettings(QWidget *parent) : QWidget(parent)
     //setup icons
     m_ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
     //load settings
-    loadShortcuts();
     readSettings();
     loadFonts();
     createActions();
@@ -186,56 +185,6 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_group_bg", m_ui.plGrBgColor->colorName());
     settings.setValue("pl_group_text", m_ui.plGrTextColor->colorName());
     settings.endGroup();
-}
-
-void QSUISettings::loadShortcuts()
-{
-    //playback
-    QTreeWidgetItem *item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Playback"));
-    for(int i = ActionManager::PLAY; i <= ActionManager::CLEAR_QUEUE; ++i)
-        new ShortcutItem(item, i);
-    item->setExpanded(true);
-    m_ui.shortcutTreeWidget->addTopLevelItem(item);
-    //view
-    item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("View"));
-    for(int i = ActionManager::WM_ALLWAYS_ON_TOP; i <= ActionManager::UI_BLOCK_TOOLBARS; ++i)
-        new ShortcutItem(item, i);
-    item->setExpanded(true);
-    m_ui.shortcutTreeWidget->addTopLevelItem(item);
-    //volume
-    item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Volume"));
-    for(int i = ActionManager::VOL_ENC; i <= ActionManager::VOL_MUTE; ++i)
-        new ShortcutItem(item, i);
-    item->setExpanded(true);
-    m_ui.shortcutTreeWidget->addTopLevelItem(item);
-    //playlist
-    item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Playlist"));
-    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_GROUP_TRACKS; ++i)
-        new ShortcutItem(item, i);
-    item->setExpanded(true);
-    m_ui.shortcutTreeWidget->addTopLevelItem(item);
-    //misc
-    item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Misc"));
-    for(int i = ActionManager::EQUALIZER; i <= ActionManager::QUIT; ++i)
-        new ShortcutItem(item, i);
-    item->setExpanded(true);
-    m_ui.shortcutTreeWidget->addTopLevelItem(item);
-
-    m_ui.shortcutTreeWidget->resizeColumnToContents(0);
-    m_ui.shortcutTreeWidget->resizeColumnToContents(1);
-}
-
-void QSUISettings::on_changeShortcutButton_clicked()
-{
-    ShortcutItem *item = dynamic_cast<ShortcutItem *> (m_ui.shortcutTreeWidget->currentItem());
-    if(!item)
-        return;
-    ShortcutDialog editor(item->action()->shortcut().toString(), this);
-    if(editor.exec() == QDialog::Accepted)
-    {
-        item->action()->setShortcut(editor.key());
-        item->setText(1, item->action()->shortcut().toString());
-    }
 }
 
 void QSUISettings::addWindowTitleString(QAction *a)

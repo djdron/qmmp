@@ -18,39 +18,32 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef QSUISETTINGS_H
-#define QSUISETTINGS_H
+#ifndef HOTKEYEDITOR_H
+#define HOTKEYEDITOR_H
 
 #include <QWidget>
-#include <QFileInfo>
-#include "ui_qsuisettings.h"
 
-class QAction;
+namespace Ui {
+    class HotkeyEditor;
+}
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class QSUISettings : public QWidget
+class HotkeyEditor : public QWidget
 {
     Q_OBJECT
-public:
-    explicit QSUISettings(QWidget *parent = 0);
-    virtual ~QSUISettings();
-    void writeSettings();
 
+public:
+    explicit HotkeyEditor(QWidget *parent = 0);
+    virtual ~HotkeyEditor();
 
 private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void addWindowTitleString(QAction *a);
+    void on_changeShortcutButton_clicked();
 
 private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void createActions();
-    void readSettings();
-
-    Ui::QSUISettings m_ui;
+    void loadShortcuts();
+    Ui::HotkeyEditor *m_ui;
 };
 
-#endif // QSUISETTINGS_H
+#endif // HOTKEYEDITOR_H
