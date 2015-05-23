@@ -96,7 +96,7 @@ void PlayListHeader::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Skinned");
-    m_font.fromString(settings.value("header_font", qApp->font().toString()).toString());
+    m_font.fromString(settings.value("pl_header_font", qApp->font().toString()).toString());
 
     if (m_metrics)
     {

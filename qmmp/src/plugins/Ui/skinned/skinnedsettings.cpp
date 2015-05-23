@@ -94,7 +94,7 @@ void SkinnedSettings::on_headerFontButton_clicked()
         m_ui.headerFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         m_ui.headerFontLabel->setFont(font);
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("Skinned/header_font", font.toString());
+        settings.setValue ("Skinned/pl_header_font", font.toString());
     }
 }
 
@@ -140,7 +140,7 @@ void SkinnedSettings::loadFonts()
     m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.plFontLabel->setFont(font);
 
-    fontname = settings.value ("Skinned/header_font", qApp->font().toString()).toString();
+    fontname = settings.value ("Skinned/pl_header_font", qApp->font().toString()).toString();
     font.fromString(fontname);
     m_ui.headerFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.headerFontLabel->setFont(font);
