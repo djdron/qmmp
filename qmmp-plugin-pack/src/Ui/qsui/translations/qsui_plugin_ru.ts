@@ -1218,7 +1218,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="810"/>
         <source>Columns:</source>
-        <translation type="unfinished"></translation>
+        <translation>Колонки:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="467"/>
