@@ -41,6 +41,8 @@ public:
 
 private slots:
     void on_plFontButton_clicked();
+    void on_columnFontButton_clicked();
+    void on_tabsFontButton_clicked();
     void on_popupTemplateButton_clicked();
     void addWindowTitleString(QAction *a);
 

@@ -47,13 +47,37 @@ QSUISettings::~QSUISettings()
 
 void QSUISettings::on_plFontButton_clicked()
 {
-    bool ok;
+    bool ok = false;
     QFont font = m_ui.plFontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
     if (ok)
     {
         m_ui.plFontLabel->setText(font.family () + " " + QString::number(font.pointSize ()));
         m_ui.plFontLabel->setFont(font);
+    }
+}
+
+void QSUISettings::on_columnFontButton_clicked()
+{
+    bool ok = false;
+    QFont font = m_ui.columnFontLabel->font();
+    font = QFontDialog::getFont (&ok, font, this);
+    if (ok)
+    {
+        m_ui.columnFontLabel->setText(font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.columnFontLabel->setFont(font);
+    }
+}
+
+void QSUISettings::on_tabsFontButton_clicked()
+{
+    bool ok = false;
+    QFont font = m_ui.tabsFontLabel->font();
+    font = QFontDialog::getFont (&ok, font, this);
+    if (ok)
+    {
+        m_ui.tabsFontLabel->setText(font.family () + " " + QString::number(font.pointSize ()));
+        m_ui.tabsFontLabel->setFont(font);
     }
 }
 
@@ -70,17 +94,19 @@ void QSUISettings::loadFonts()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
 
+    m_ui.systemFontsCheckBox->setChecked(settings.value("use_system_fonts", true).toBool());
+
     fontName = settings.value ("pl_font", qApp->font("QAbstractItemView").toString()).toString();
     font.fromString(fontName);
     m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.plFontLabel->setFont(font);
 
-    fontName = settings.value ("tabs_font", qApp->font("QTabWidget").toString()).toString();
+    fontName = settings.value ("pl_tabs_font", qApp->font("QTabWidget").toString()).toString();
     font.fromString(fontName);
     m_ui.tabsFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.tabsFontLabel->setFont(font);
 
-    fontName = settings.value ("header_font", qApp->font("QAbstractItemView").toString()).toString();
+    fontName = settings.value ("pl_header_font", qApp->font("QAbstractItemView").toString()).toString();
     font.fromString(fontName);
     m_ui.columnFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.columnFontLabel->setFont(font);
@@ -179,7 +205,7 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_show_tab_list_menu", m_ui.showTabListMenuCheckBox->isChecked());
     settings.setValue("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
-    settings.setValue ("window_title_format", m_ui.windowTitleLineEdit->text());
+    settings.setValue("window_title_format", m_ui.windowTitleLineEdit->text());
     settings.setValue("vis_color1", m_ui.aColor1->colorName());
     settings.setValue("vis_color2", m_ui.aColor2->colorName());
     settings.setValue("vis_color3", m_ui.aColor3->colorName());
@@ -194,6 +220,10 @@ void QSUISettings::writeSettings()
     settings.setValue("pl_hl_text_color", m_ui.plTextHlCurrentColor->colorName());
     settings.setValue("pl_group_bg", m_ui.plGrBgColor->colorName());
     settings.setValue("pl_group_text", m_ui.plGrTextColor->colorName());
+    settings.setValue("pl_font", m_ui.plFontLabel->font().toString());
+    settings.setValue("pl_tabs_font", m_ui.tabsFontLabel->font().toString());
+    settings.setValue("pl_header_font", m_ui.columnFontLabel->font().toString());
+    settings.setValue("use_system_fonts", m_ui.systemFontsCheckBox->isChecked());
     settings.endGroup();
 }
 

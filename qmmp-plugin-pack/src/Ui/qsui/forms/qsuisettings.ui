@@ -726,7 +726,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="systemFontsCheckBox">
          <property name="text">
           <string>Use system fonts</string>
          </property>
@@ -985,7 +985,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>systemFontsCheckBox</sender>
    <signal>toggled(bool)</signal>
    <receiver>widget</receiver>
    <slot>setDisabled(bool)</slot>
