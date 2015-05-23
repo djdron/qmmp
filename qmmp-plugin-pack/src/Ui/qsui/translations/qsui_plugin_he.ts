@@ -602,7 +602,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">עוצמת קול</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
@@ -1217,13 +1217,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="467"/>
-        <source>Group text:</source>
+        <location filename="../forms/qsuisettings.ui" line="810"/>
+        <source>Columns:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="810"/>
-        <source>Columns</source>
+        <location filename="../forms/qsuisettings.ui" line="467"/>
+        <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

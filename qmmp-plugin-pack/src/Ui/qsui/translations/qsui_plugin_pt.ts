@@ -1206,6 +1206,11 @@
         <translation>Editar modelo</translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="810"/>
+        <source>Columns:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
         <translation>Diversos</translation>
@@ -1293,11 +1298,6 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="467"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="810"/>
-        <source>Columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

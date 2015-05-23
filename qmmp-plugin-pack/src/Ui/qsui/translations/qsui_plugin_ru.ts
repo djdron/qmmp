@@ -576,42 +576,42 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="27"/>
         <source>Action</source>
-        <translation type="unfinished">Действие</translation>
+        <translation>Действие</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="32"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Сочетание клавиш</translation>
+        <translation>Сочетание клавиш</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Изменить сочетание клавиш...</translation>
+        <translation>Изменить сочетание клавиш...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
-        <translation type="unfinished">Воспроизведение</translation>
+        <translation>Воспроизведение</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
-        <translation type="unfinished">Вид</translation>
+        <translation>Вид</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Volume</source>
-        <translation type="unfinished">Громкость</translation>
+        <translation>Громкость</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="79"/>
         <source>Misc</source>
-        <translation type="unfinished">Другие</translation>
+        <translation>Другие</translation>
     </message>
 </context>
 <context>
@@ -644,7 +644,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Сочетания клавиш</translation>
+        <translation>Сочетания клавиш</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="365"/>
@@ -1133,7 +1133,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="731"/>
         <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать системные шрифты</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="762"/>
@@ -1158,7 +1158,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Главное окно</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
@@ -1208,7 +1208,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="169"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвета</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="701"/>
@@ -1216,19 +1216,19 @@
         <translation>Фон группы:</translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="810"/>
+        <source>Columns:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="467"/>
         <source>Group text:</source>
         <translation>Текст группы:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="810"/>
-        <source>Columns</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="858"/>
         <source>Tabs:</source>
-        <translation type="unfinished"></translation>
+        <translation>Вкладки:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="917"/>

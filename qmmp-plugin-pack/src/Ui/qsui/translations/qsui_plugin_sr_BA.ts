@@ -591,7 +591,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Контроле</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="61"/>
@@ -1206,6 +1206,11 @@
         <translation>Уреди шаблон</translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="810"/>
+        <source>Columns:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
         <translation>Разно</translation>
@@ -1293,11 +1298,6 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="467"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="810"/>
-        <source>Columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
