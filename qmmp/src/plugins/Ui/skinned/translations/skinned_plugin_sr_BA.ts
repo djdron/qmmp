@@ -1198,9 +1198,13 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
-        <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
         <translation>Приказ</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>Main Window</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
@@ -1223,7 +1227,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Фонтови</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="271"/>
+        <location filename="../forms/skinnedsettings.ui" line="230"/>
+        <source>Column headers:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Playlist tracks:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="259"/>
         <source>Player:</source>
         <translation>Плејер:</translation>
     </message>
@@ -1238,14 +1252,9 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
         <location filename="../forms/skinnedsettings.ui" line="177"/>
         <location filename="../forms/skinnedsettings.ui" line="203"/>
-        <location filename="../forms/skinnedsettings.ui" line="281"/>
+        <location filename="../forms/skinnedsettings.ui" line="269"/>
         <source>...</source>
         <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="249"/>
-        <source>Playlist:</source>
-        <translation>Листа:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="210"/>
@@ -1258,94 +1267,89 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="230"/>
-        <source>Playlist header:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="291"/>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
         <source>Transparency</source>
         <translation>Прозирност</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="297"/>
+        <location filename="../forms/skinnedsettings.ui" line="285"/>
         <source>Main window</source>
         <translation>Главни прозор</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="320"/>
-        <location filename="../forms/skinnedsettings.ui" line="344"/>
-        <location filename="../forms/skinnedsettings.ui" line="368"/>
+        <location filename="../forms/skinnedsettings.ui" line="308"/>
+        <location filename="../forms/skinnedsettings.ui" line="332"/>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="327"/>
+        <location filename="../forms/skinnedsettings.ui" line="315"/>
         <source>Equalizer</source>
         <translation>Еквилајзер</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="351"/>
+        <location filename="../forms/skinnedsettings.ui" line="339"/>
         <source>Playlist</source>
         <translation>Листа нумера</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="392"/>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Miscellaneous</source>
         <translation>Разно</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="398"/>
+        <location filename="../forms/skinnedsettings.ui" line="386"/>
         <source>Song Display</source>
         <translation>Приказ нумере</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="482"/>
+        <location filename="../forms/skinnedsettings.ui" line="470"/>
         <source>Show protocol</source>
         <translation>Протокол</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="523"/>
+        <location filename="../forms/skinnedsettings.ui" line="511"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="475"/>
+        <location filename="../forms/skinnedsettings.ui" line="463"/>
         <source>Show song numbers</source>
         <translation>Број нумере</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="461"/>
+        <location filename="../forms/skinnedsettings.ui" line="449"/>
         <source>Align song numbers</source>
         <translation>Уравнај бројеве нумера</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="468"/>
+        <location filename="../forms/skinnedsettings.ui" line="456"/>
         <source>Show anchor</source>
         <translation>Сидро</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="516"/>
+        <location filename="../forms/skinnedsettings.ui" line="504"/>
         <source>Show playlists</source>
         <translation>Листе нумера</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="414"/>
+        <location filename="../forms/skinnedsettings.ui" line="402"/>
         <source>Show popup information</source>
         <translation>Облачић с подацима</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="494"/>
+        <location filename="../forms/skinnedsettings.ui" line="482"/>
         <source>Edit template</source>
         <translation>Уреди шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="423"/>
+        <location filename="../forms/skinnedsettings.ui" line="411"/>
         <source>Playlist separator:</source>
         <translation>Раздвајач листи нумера:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="407"/>
+        <location filename="../forms/skinnedsettings.ui" line="395"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Дугме „Нова листа нумера“</translation>
     </message>
