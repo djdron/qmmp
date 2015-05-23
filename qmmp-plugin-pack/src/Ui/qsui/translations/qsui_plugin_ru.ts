@@ -414,7 +414,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показывать названия колонок</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -1138,7 +1138,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="756"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="801"/>
@@ -1218,12 +1218,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="779"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Названия колонок:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="821"/>
         <source>Tab names:</source>
-        <translation type="unfinished"></translation>
+        <translation>Названия вкладок:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="467"/>
