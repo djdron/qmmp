@@ -79,8 +79,6 @@ void SkinnedSettings::on_plFontButton_clicked()
     {
         m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         m_ui.plFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("Skinned/pl_font", font.toString());
     }
 }
 
@@ -93,8 +91,6 @@ void SkinnedSettings::on_headerFontButton_clicked()
     {
         m_ui.headerFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         m_ui.headerFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("Skinned/pl_header_font", font.toString());
     }
 }
 
@@ -107,8 +103,6 @@ void SkinnedSettings::on_mainFontButton_clicked()
     {
         m_ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         m_ui.mainFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("Skinned/mw_font", font.toString());
     }
 }
 
@@ -299,5 +293,8 @@ void SkinnedSettings::writeSettings()
     settings.setValue ("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue ("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
     settings.setValue ("window_title_format", m_ui.windowTitleLineEdit->text());
+    settings.setValue ("mw_font", m_ui.mainFontLabel->font().toString());
+    settings.setValue ("pl_font", m_ui.plFontLabel->font().toString());
+    settings.setValue ("pl_header_font", m_ui.headerFontLabel->font().toString());
     settings.endGroup();
 }
