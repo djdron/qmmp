@@ -400,8 +400,8 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
-        <source>&amp;Show Playlist Header</source>
-        <translation>Wiedergabeli&amp;stenkopfdaten anzeigen</translation>
+        <source>&amp;Show Column Headers</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
