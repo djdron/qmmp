@@ -54,8 +54,6 @@ void QSUISettings::on_plFontButton_clicked()
     {
         m_ui.plFontLabel->setText(font.family () + " " + QString::number(font.pointSize ()));
         m_ui.plFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue("Simple/pl_font", font.toString());
     }
 }
 
@@ -67,13 +65,25 @@ void QSUISettings::showEvent(QShowEvent *)
 
 void QSUISettings::loadFonts()
 {
+    QString fontName;
+    QFont font;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ("Simple/pl_font").toString();
-    QFont font = QApplication::font();
-    if(!fontname.isEmpty())
-        font.fromString(fontname);
+    settings.beginGroup("Simple");
+
+    fontName = settings.value ("pl_font", qApp->font("QAbstractItemView").toString()).toString();
+    font.fromString(fontName);
     m_ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     m_ui.plFontLabel->setFont(font);
+
+    fontName = settings.value ("tabs_font", qApp->font("QTabWidget").toString()).toString();
+    font.fromString(fontName);
+    m_ui.tabsFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.tabsFontLabel->setFont(font);
+
+    fontName = settings.value ("header_font", qApp->font("QAbstractItemView").toString()).toString();
+    font.fromString(fontName);
+    m_ui.columnFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    m_ui.columnFontLabel->setFont(font);
 }
 
 void QSUISettings::createActions()
