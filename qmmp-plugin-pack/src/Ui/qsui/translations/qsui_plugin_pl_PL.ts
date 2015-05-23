@@ -408,12 +408,12 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
-        <source>&amp;Show Playlist Header</source>
+        <source>Ctrl+H</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
-        <source>Ctrl+H</source>
+        <source>&amp;Show Column Headers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1136,22 +1136,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="762"/>
-        <source>Playlist:</source>
-        <translation>Lista odtwarzania:</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="784"/>
-        <location filename="../forms/qsuisettings.ui" line="832"/>
-        <location filename="../forms/qsuisettings.ui" line="880"/>
+        <location filename="../forms/qsuisettings.ui" line="801"/>
+        <location filename="../forms/qsuisettings.ui" line="843"/>
+        <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
-        <location filename="../forms/qsuisettings.ui" line="791"/>
-        <location filename="../forms/qsuisettings.ui" line="839"/>
-        <location filename="../forms/qsuisettings.ui" line="887"/>
+        <location filename="../forms/qsuisettings.ui" line="766"/>
+        <location filename="../forms/qsuisettings.ui" line="808"/>
+        <location filename="../forms/qsuisettings.ui" line="850"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1216,8 +1211,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="810"/>
-        <source>Columns:</source>
+        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <source>Track names:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="779"/>
+        <source>Column headers:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
+        <source>Tab names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1226,32 +1231,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="858"/>
-        <source>Tabs:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="917"/>
+        <location filename="../forms/qsuisettings.ui" line="899"/>
         <source>Tabs</source>
         <translation>Karty</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="923"/>
+        <location filename="../forms/qsuisettings.ui" line="905"/>
         <source>Show close buttons</source>
         <translation>Pokaż przyciski zamykania</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="930"/>
+        <location filename="../forms/qsuisettings.ui" line="912"/>
         <source>Show tab list menu</source>
         <translation>Pokaż menu listy kart</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="937"/>
+        <location filename="../forms/qsuisettings.ui" line="919"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Pokaż przycisk &apos;Nowa lista odtwarzania&apos;</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="911"/>
+        <location filename="../forms/qsuisettings.ui" line="893"/>
         <source>Miscellaneous</source>
         <translation>Inne</translation>
     </message>
@@ -1326,82 +1326,82 @@
         <translation>Uwydatniony tekst:</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="82"/>
+        <location filename="../qsuisettings.cpp" line="92"/>
         <source>Artist</source>
         <translation type="unfinished">Artysta</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="83"/>
+        <location filename="../qsuisettings.cpp" line="93"/>
         <source>Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="84"/>
+        <location filename="../qsuisettings.cpp" line="94"/>
         <source>Album Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="85"/>
+        <location filename="../qsuisettings.cpp" line="95"/>
         <source>Title</source>
         <translation type="unfinished">Tytuł</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="86"/>
+        <location filename="../qsuisettings.cpp" line="96"/>
         <source>Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="87"/>
+        <location filename="../qsuisettings.cpp" line="97"/>
         <source>Two-digit Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="88"/>
+        <location filename="../qsuisettings.cpp" line="98"/>
         <source>Genre</source>
         <translation type="unfinished">Gatunek</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="89"/>
+        <location filename="../qsuisettings.cpp" line="99"/>
         <source>Comment</source>
         <translation type="unfinished">Komentarz</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="90"/>
+        <location filename="../qsuisettings.cpp" line="100"/>
         <source>Composer</source>
         <translation type="unfinished">Kompozytor</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="91"/>
+        <location filename="../qsuisettings.cpp" line="101"/>
         <source>Duration</source>
         <translation type="unfinished">Długość</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="92"/>
+        <location filename="../qsuisettings.cpp" line="102"/>
         <source>Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="93"/>
+        <location filename="../qsuisettings.cpp" line="103"/>
         <source>File Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="94"/>
+        <location filename="../qsuisettings.cpp" line="104"/>
         <source>File Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="95"/>
+        <location filename="../qsuisettings.cpp" line="105"/>
         <source>Year</source>
         <translation type="unfinished">Rok</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="96"/>
+        <location filename="../qsuisettings.cpp" line="106"/>
         <source>Condition</source>
         <translation type="unfinished">Warunek</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="97"/>
+        <location filename="../qsuisettings.cpp" line="107"/>
         <source>Artist - Title</source>
         <translation type="unfinished"></translation>
     </message>

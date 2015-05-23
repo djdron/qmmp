@@ -400,7 +400,7 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
-        <source>&amp;Show Playlist Header</source>
+        <source>&amp;Show Column Headers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
