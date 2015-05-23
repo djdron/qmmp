@@ -61,6 +61,7 @@ SET(libqsui_SRCS
     toolbareditor.cpp
     listwidgetdrawer.cpp
     playlistheader.cpp
+    hotkeyeditor.cpp
 )
 
 SET(libqsui_HDRS
@@ -95,7 +96,8 @@ SET(libqsui_MOC_HDRS
     coverwidget.h
     playlistbrowser.h
     toolbareditor.h
-	playlistheader.h
+    playlistheader.h
+    hotkeyeditor.h
 )
 
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
@@ -113,6 +115,7 @@ SET(libqsui_UIS
     forms/qsuisettings.ui
     forms/aboutqsuidialog.ui
     forms/toolbareditor.ui
+    forms/hotkeyeditor.ui
 )
 
 QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
