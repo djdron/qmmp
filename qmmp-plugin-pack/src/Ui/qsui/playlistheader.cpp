@@ -41,14 +41,13 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
 {
     setMouseTracking(true);
-    QFont font = qApp->font("QAbstractItemView");
-    m_metrics = new QFontMetrics(font);
-    setFont(font);
+
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
-
+    m_metrics = 0;
     m_task = NO_TASK;
+
     m_model = QmmpUiSettings::instance()->headerModel();
     m_menu = new QMenu(this);
     m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add Column"), this, SLOT(addColumn()));
@@ -58,10 +57,6 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addAction(tr("Restore Size"), this, SLOT(restoreSize()));
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove Column"), this, SLOT(removeColumn()));
-
-    QStyleOptionHeader opt;
-    opt.initFrom(this);
-    m_size_hint = style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), this);
 
     readSettings();
 }
@@ -75,8 +70,26 @@ PlayListHeader::~PlayListHeader()
 
 void PlayListHeader::readSettings()
 {
+    if (m_metrics)
+    {
+        delete m_metrics;
+        m_metrics = 0;
+    }
+
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Simple");
+
+    QFont header_font = qApp->font("QAbstractItemView");
+    if(!settings.value("use_system_fonts", true).toBool())
+    {
+        header_font.fromString(settings.value("pl_header_font", header_font.toString()).toString());
+    }
+    m_metrics = new QFontMetrics(header_font);
+    setFont(header_font);
+
+    QStyleOptionHeader opt;
+    opt.initFrom(this);
+    m_size_hint = style()->sizeFromContents(QStyle::CT_HeaderSection, &opt, QSize(), this);
 
     QFont pl_font;
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());

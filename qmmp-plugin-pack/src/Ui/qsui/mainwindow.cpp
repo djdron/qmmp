@@ -685,6 +685,8 @@ void MainWindow::readSettings()
         if(m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
             showMetaData();
 
+        m_ui.tabWidget->readSettings();
+
         show();
     }
     else

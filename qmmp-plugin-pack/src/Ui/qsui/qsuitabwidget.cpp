@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,9 @@
 
 #include <QMouseEvent>
 #include <QTabBar>
+#include <QSettings>
+#include <QApplication>
+#include <qmmp/qmmp.h>
 #include "qsuitabbar.h"
 #include "qsuitabwidget.h"
 
@@ -35,6 +38,7 @@ QSUiTabWidget::QSUiTabWidget(QWidget *parent) : QTabWidget(parent)
     connect(tabBar(), SIGNAL(tabCloseRequested(int)), SLOT(onTabCloseRequest(int)));
     connect(this, SIGNAL(currentChanged(int)), SLOT(onCurrentChanged(int)));
     connect(m_menu, SIGNAL(triggered(QAction*)), SLOT(onActionTriggered(QAction*)));
+    readSettings();
 }
 
 QMenu *QSUiTabWidget::menu()
@@ -102,6 +106,18 @@ void QSUiTabWidget::setTabText(int index, const QString &text)
 {
     QTabWidget::setTabText(index, text);
     m_menu->actions().at(index)->setText(text);
+}
+
+void QSUiTabWidget::readSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    QFont tab_font = qApp->font(tabBar());
+    if(!settings.value("use_system_fonts", true).toBool())
+    {
+        tab_font.fromString(settings.value("pl_tabs_font", tab_font.toString()).toString());
+    }
+    tabBar()->setFont(tab_font);
 }
 
 void QSUiTabWidget::setTabsVisible(bool visible)
