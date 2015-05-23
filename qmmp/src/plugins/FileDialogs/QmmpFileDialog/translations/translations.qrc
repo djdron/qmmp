@@ -25,5 +25,6 @@
     <file>qmmp_file_dialog_plugin_sr_BA.qm</file>
     <file>qmmp_file_dialog_plugin_sr_RS.qm</file>
     <file>qmmp_file_dialog_plugin_bg.qm</file>
+    <file>qmmp_file_dialog_plugin_el.qm</file>
   </qresource>
 </RCC>

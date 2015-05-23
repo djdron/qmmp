@@ -25,5 +25,6 @@
     <file>null_plugin_sr_BA.qm</file>
     <file>null_plugin_sr_RS.qm</file>
     <file>null_plugin_bg.qm</file>
+    <file>null_plugin_el.qm</file>
   </qresource>
 </RCC>

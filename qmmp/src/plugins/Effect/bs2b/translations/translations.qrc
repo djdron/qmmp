@@ -25,5 +25,6 @@
     <file>bs2b_plugin_sr_BA.qm</file>
     <file>bs2b_plugin_sr_RS.qm</file>
     <file>bs2b_plugin_bg.qm</file>
+    <file>bs2b_plugin_el.qm</file>
   </qresource>
 </RCC>

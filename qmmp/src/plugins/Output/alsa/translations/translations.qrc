@@ -25,5 +25,6 @@
     <file>alsa_plugin_sr_BA.qm</file>
     <file>alsa_plugin_sr_RS.qm</file>
     <file>alsa_plugin_bg.qm</file>
+    <file>alsa_plugin_el.qm</file>
   </qresource>
 </RCC>
