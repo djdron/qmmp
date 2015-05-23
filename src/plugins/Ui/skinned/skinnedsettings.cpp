@@ -45,7 +45,6 @@ SkinnedSettings::SkinnedSettings(QWidget *parent) : QWidget(parent)
     m_ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
     m_ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
     m_ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
-    m_ui.resetFontsButton->setIcon(QIcon::fromTheme("edit-clear"));
 }
 
 SkinnedSettings::~SkinnedSettings()
