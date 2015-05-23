@@ -91,7 +91,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[PL_SHOW_MANAGER] = createAction(tr("&Show Playlists"), "show_playlists",
                                               tr("P"), "view-list-details");
     m_actions[PL_GROUP_TRACKS] = createAction2(tr("&Group Tracks"), "group_tracks", tr("Ctrl+G"));
-    m_actions[PL_SHOW_HEADER] = createAction2(tr("&Show Playlist Header"), "show_header", tr("Ctrl+H"));
+    m_actions[PL_SHOW_HEADER] = createAction2(tr("&Show Column Headers"), "show_header", tr("Ctrl+H"));
     //other
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
     m_actions[ABOUT] = createAction(tr("&About"), "about", "");
