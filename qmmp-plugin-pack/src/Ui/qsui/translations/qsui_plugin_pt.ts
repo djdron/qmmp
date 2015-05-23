@@ -1136,6 +1136,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <source>Playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="801"/>
         <location filename="../forms/qsuisettings.ui" line="843"/>
         <location filename="../forms/qsuisettings.ui" line="869"/>
@@ -1199,11 +1204,6 @@
         <location filename="../forms/qsuisettings.ui" line="130"/>
         <source>Edit template</source>
         <translation>Editar modelo</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="756"/>
-        <source>Track names:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="779"/>
@@ -1326,82 +1326,82 @@
         <translation>Mostrar botão &apos;Nova lista de reprodução&apos;</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="92"/>
+        <location filename="../qsuisettings.cpp" line="118"/>
         <source>Artist</source>
         <translation>Artista</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="93"/>
+        <location filename="../qsuisettings.cpp" line="119"/>
         <source>Album</source>
         <translation>Álbum</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="94"/>
+        <location filename="../qsuisettings.cpp" line="120"/>
         <source>Album Artist</source>
         <translation>Artista do álbum</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="95"/>
+        <location filename="../qsuisettings.cpp" line="121"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="96"/>
+        <location filename="../qsuisettings.cpp" line="122"/>
         <source>Track Number</source>
         <translation>Número da faixa</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="97"/>
+        <location filename="../qsuisettings.cpp" line="123"/>
         <source>Two-digit Track Number</source>
         <translation>Número da faixa com dois dígitos</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="98"/>
+        <location filename="../qsuisettings.cpp" line="124"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="99"/>
+        <location filename="../qsuisettings.cpp" line="125"/>
         <source>Comment</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="100"/>
+        <location filename="../qsuisettings.cpp" line="126"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="101"/>
+        <location filename="../qsuisettings.cpp" line="127"/>
         <source>Duration</source>
         <translation>Duração</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="102"/>
+        <location filename="../qsuisettings.cpp" line="128"/>
         <source>Disc Number</source>
         <translation>Número do disco</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="103"/>
+        <location filename="../qsuisettings.cpp" line="129"/>
         <source>File Name</source>
         <translation>Nome do ficheiro</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="104"/>
+        <location filename="../qsuisettings.cpp" line="130"/>
         <source>File Path</source>
         <translation>Caminho do ficheiro</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="105"/>
+        <location filename="../qsuisettings.cpp" line="131"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="106"/>
+        <location filename="../qsuisettings.cpp" line="132"/>
         <source>Condition</source>
         <translation>Condição</translation>
     </message>
     <message>
-        <location filename="../qsuisettings.cpp" line="107"/>
+        <location filename="../qsuisettings.cpp" line="133"/>
         <source>Artist - Title</source>
         <translation>Artista - Título</translation>
     </message>

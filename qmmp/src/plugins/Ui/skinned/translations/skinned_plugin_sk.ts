@@ -1194,11 +1194,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Obnoviť</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="89"/>
-        <source>View</source>
-        <translation type="unfinished">Zobraziť</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
@@ -1219,42 +1214,42 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Použiť kurzory zo skinu</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="152"/>
+        <location filename="../forms/skinnedsettings.ui" line="393"/>
         <source>Fonts</source>
         <translation type="unfinished">Písma</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="230"/>
+        <location filename="../forms/skinnedsettings.ui" line="428"/>
+        <source>Playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="497"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="243"/>
-        <source>Playlist tracks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="259"/>
+        <location filename="../forms/skinnedsettings.ui" line="405"/>
         <source>Player:</source>
         <translation type="unfinished">Prehrávač:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="170"/>
-        <location filename="../forms/skinnedsettings.ui" line="196"/>
-        <location filename="../forms/skinnedsettings.ui" line="223"/>
+        <location filename="../forms/skinnedsettings.ui" line="471"/>
+        <location filename="../forms/skinnedsettings.ui" line="490"/>
+        <location filename="../forms/skinnedsettings.ui" line="510"/>
         <source>???</source>
         <translation type="unfinished">???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
-        <location filename="../forms/skinnedsettings.ui" line="177"/>
-        <location filename="../forms/skinnedsettings.ui" line="203"/>
-        <location filename="../forms/skinnedsettings.ui" line="269"/>
+        <location filename="../forms/skinnedsettings.ui" line="415"/>
+        <location filename="../forms/skinnedsettings.ui" line="438"/>
+        <location filename="../forms/skinnedsettings.ui" line="445"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="210"/>
+        <location filename="../forms/skinnedsettings.ui" line="452"/>
         <source>Use bitmap font if available</source>
         <translation type="unfinished">Použiť bitmapové písmo, ak je dostupné</translation>
     </message>
@@ -1264,89 +1259,89 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="146"/>
         <source>Transparency</source>
         <translation type="unfinished">Priehľadnosť</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="285"/>
+        <location filename="../forms/skinnedsettings.ui" line="152"/>
         <source>Main window</source>
         <translation type="unfinished">Hlavné okno</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="308"/>
-        <location filename="../forms/skinnedsettings.ui" line="332"/>
-        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <location filename="../forms/skinnedsettings.ui" line="175"/>
+        <location filename="../forms/skinnedsettings.ui" line="199"/>
+        <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>0</source>
         <translation type="unfinished">0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="315"/>
+        <location filename="../forms/skinnedsettings.ui" line="182"/>
         <source>Equalizer</source>
         <translation type="unfinished">Ekvalizér</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="339"/>
+        <location filename="../forms/skinnedsettings.ui" line="206"/>
         <source>Playlist</source>
         <translation type="unfinished">Playlist</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished">Rôzne</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="386"/>
+        <location filename="../forms/skinnedsettings.ui" line="247"/>
         <source>Song Display</source>
         <translation type="unfinished">Zobrazenie skladby</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="470"/>
+        <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Show protocol</source>
         <translation type="unfinished">Zobraziť protokol</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="511"/>
+        <location filename="../forms/skinnedsettings.ui" line="267"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="463"/>
+        <location filename="../forms/skinnedsettings.ui" line="260"/>
         <source>Show song numbers</source>
         <translation type="unfinished">Zobrazovať čísla piesní</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="504"/>
+        <location filename="../forms/skinnedsettings.ui" line="291"/>
         <source>Show playlists</source>
         <translation type="unfinished">Zobrazovať playlisty</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="402"/>
+        <location filename="../forms/skinnedsettings.ui" line="345"/>
         <source>Show popup information</source>
         <translation type="unfinished">Zobrazovať upozornenia s informáciami</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="482"/>
+        <location filename="../forms/skinnedsettings.ui" line="357"/>
         <source>Edit template</source>
         <translation type="unfinished">Upraviť šablónu</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Playlist separator:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="395"/>
+        <location filename="../forms/skinnedsettings.ui" line="301"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="456"/>
+        <location filename="../forms/skinnedsettings.ui" line="284"/>
         <source>Show anchor</source>
         <translation type="unfinished">Zobrazovať ukotvenie</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="449"/>
+        <location filename="../forms/skinnedsettings.ui" line="277"/>
         <source>Align song numbers</source>
         <translation type="unfinished">Zarovnať čísla piesní</translation>
     </message>

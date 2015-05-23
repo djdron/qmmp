@@ -1194,11 +1194,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Actualizar</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="89"/>
-        <source>View</source>
-        <translation type="unfinished">Ver</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
@@ -1219,42 +1214,42 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Usar pieles en cursor</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="152"/>
+        <location filename="../forms/skinnedsettings.ui" line="393"/>
         <source>Fonts</source>
         <translation type="unfinished">Fuentes</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="230"/>
+        <location filename="../forms/skinnedsettings.ui" line="428"/>
+        <source>Playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="497"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="243"/>
-        <source>Playlist tracks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="259"/>
+        <location filename="../forms/skinnedsettings.ui" line="405"/>
         <source>Player:</source>
         <translation type="unfinished">Reproductor: </translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="170"/>
-        <location filename="../forms/skinnedsettings.ui" line="196"/>
-        <location filename="../forms/skinnedsettings.ui" line="223"/>
+        <location filename="../forms/skinnedsettings.ui" line="471"/>
+        <location filename="../forms/skinnedsettings.ui" line="490"/>
+        <location filename="../forms/skinnedsettings.ui" line="510"/>
         <source>???</source>
         <translation type="unfinished">???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
-        <location filename="../forms/skinnedsettings.ui" line="177"/>
-        <location filename="../forms/skinnedsettings.ui" line="203"/>
-        <location filename="../forms/skinnedsettings.ui" line="269"/>
+        <location filename="../forms/skinnedsettings.ui" line="415"/>
+        <location filename="../forms/skinnedsettings.ui" line="438"/>
+        <location filename="../forms/skinnedsettings.ui" line="445"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="210"/>
+        <location filename="../forms/skinnedsettings.ui" line="452"/>
         <source>Use bitmap font if available</source>
         <translation type="unfinished">Usar fuente bitmap si está disponible</translation>
     </message>
@@ -1264,89 +1259,89 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="146"/>
         <source>Transparency</source>
         <translation type="unfinished">Transparencia</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="285"/>
+        <location filename="../forms/skinnedsettings.ui" line="152"/>
         <source>Main window</source>
         <translation type="unfinished">Ventana principal</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="308"/>
-        <location filename="../forms/skinnedsettings.ui" line="332"/>
-        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <location filename="../forms/skinnedsettings.ui" line="175"/>
+        <location filename="../forms/skinnedsettings.ui" line="199"/>
+        <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>0</source>
         <translation type="unfinished">0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="315"/>
+        <location filename="../forms/skinnedsettings.ui" line="182"/>
         <source>Equalizer</source>
         <translation type="unfinished">Ecualizador</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="339"/>
+        <location filename="../forms/skinnedsettings.ui" line="206"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished">Varios</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="386"/>
+        <location filename="../forms/skinnedsettings.ui" line="247"/>
         <source>Song Display</source>
         <translation type="unfinished">Mostrar la canción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="470"/>
+        <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Show protocol</source>
         <translation type="unfinished">Motrar protocolo</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="511"/>
+        <location filename="../forms/skinnedsettings.ui" line="267"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="463"/>
+        <location filename="../forms/skinnedsettings.ui" line="260"/>
         <source>Show song numbers</source>
         <translation type="unfinished">Mostrar los números de canción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="504"/>
+        <location filename="../forms/skinnedsettings.ui" line="291"/>
         <source>Show playlists</source>
         <translation type="unfinished">Mostrar la lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="402"/>
+        <location filename="../forms/skinnedsettings.ui" line="345"/>
         <source>Show popup information</source>
         <translation type="unfinished">Mostrar información emergente</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="482"/>
+        <location filename="../forms/skinnedsettings.ui" line="357"/>
         <source>Edit template</source>
         <translation type="unfinished">Editar la plantilla</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Playlist separator:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="395"/>
+        <location filename="../forms/skinnedsettings.ui" line="301"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="456"/>
+        <location filename="../forms/skinnedsettings.ui" line="284"/>
         <source>Show anchor</source>
         <translation type="unfinished">Mostrar ancla</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="449"/>
+        <location filename="../forms/skinnedsettings.ui" line="277"/>
         <source>Align song numbers</source>
         <translation type="unfinished">Alinear los números de canción</translation>
     </message>
