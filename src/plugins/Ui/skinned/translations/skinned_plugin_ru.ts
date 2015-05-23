@@ -1197,11 +1197,6 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="89"/>
-        <source>View</source>
-        <translation>Вид</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
@@ -1222,42 +1217,42 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Использовать встроенные курсоры</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="152"/>
+        <location filename="../forms/skinnedsettings.ui" line="393"/>
         <source>Fonts</source>
         <translation>Шрифты</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="230"/>
+        <location filename="../forms/skinnedsettings.ui" line="428"/>
+        <source>Playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="497"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="243"/>
-        <source>Playlist tracks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="259"/>
+        <location filename="../forms/skinnedsettings.ui" line="405"/>
         <source>Player:</source>
         <translation>Плеер:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="170"/>
-        <location filename="../forms/skinnedsettings.ui" line="196"/>
-        <location filename="../forms/skinnedsettings.ui" line="223"/>
+        <location filename="../forms/skinnedsettings.ui" line="471"/>
+        <location filename="../forms/skinnedsettings.ui" line="490"/>
+        <location filename="../forms/skinnedsettings.ui" line="510"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
-        <location filename="../forms/skinnedsettings.ui" line="177"/>
-        <location filename="../forms/skinnedsettings.ui" line="203"/>
-        <location filename="../forms/skinnedsettings.ui" line="269"/>
+        <location filename="../forms/skinnedsettings.ui" line="415"/>
+        <location filename="../forms/skinnedsettings.ui" line="438"/>
+        <location filename="../forms/skinnedsettings.ui" line="445"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="210"/>
+        <location filename="../forms/skinnedsettings.ui" line="452"/>
         <source>Use bitmap font if available</source>
         <translation>Использовать растровые шрифты, если возможно</translation>
     </message>
@@ -1267,89 +1262,89 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Формат имени окна:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="146"/>
         <source>Transparency</source>
         <translation>Прозрачность</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="285"/>
+        <location filename="../forms/skinnedsettings.ui" line="152"/>
         <source>Main window</source>
         <translation>Главное окно</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="308"/>
-        <location filename="../forms/skinnedsettings.ui" line="332"/>
-        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <location filename="../forms/skinnedsettings.ui" line="175"/>
+        <location filename="../forms/skinnedsettings.ui" line="199"/>
+        <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="315"/>
+        <location filename="../forms/skinnedsettings.ui" line="182"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="339"/>
+        <location filename="../forms/skinnedsettings.ui" line="206"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
-        <source>Miscellaneous</source>
-        <translation>Разное</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="386"/>
+        <location filename="../forms/skinnedsettings.ui" line="247"/>
         <source>Song Display</source>
         <translation>Список песен</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="470"/>
+        <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Show protocol</source>
         <translation>Показывать протокол</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="511"/>
+        <location filename="../forms/skinnedsettings.ui" line="267"/>
         <source>Show song lengths</source>
         <translation>Показывать длительности фрагментов</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="463"/>
+        <location filename="../forms/skinnedsettings.ui" line="260"/>
         <source>Show song numbers</source>
         <translation>Показывать номера фрагментов</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="504"/>
+        <location filename="../forms/skinnedsettings.ui" line="291"/>
         <source>Show playlists</source>
         <translation>Показывать списки воспроизведения</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="402"/>
+        <location filename="../forms/skinnedsettings.ui" line="345"/>
         <source>Show popup information</source>
         <translation>Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="482"/>
+        <location filename="../forms/skinnedsettings.ui" line="357"/>
         <source>Edit template</source>
         <translation>Редактировать шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Playlist separator:</source>
         <translation>Разделитель списков:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="395"/>
+        <location filename="../forms/skinnedsettings.ui" line="301"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Показывать кнопку &quot;Новый список&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="456"/>
+        <location filename="../forms/skinnedsettings.ui" line="284"/>
         <source>Show anchor</source>
         <translation>Показывать &quot;якорь&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="449"/>
+        <location filename="../forms/skinnedsettings.ui" line="277"/>
         <source>Align song numbers</source>
         <translation>Выравнивать номера фрагментов</translation>
     </message>
