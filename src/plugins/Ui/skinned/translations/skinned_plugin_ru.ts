@@ -401,7 +401,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показывать названия колонок</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
@@ -1199,7 +1199,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Главное окно</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
@@ -1224,12 +1224,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="428"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="497"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Названия колонок:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="405"/>
@@ -1264,7 +1264,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Общие</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="146"/>
