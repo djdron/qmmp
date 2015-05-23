@@ -25,5 +25,6 @@
     <file>pulseaudio_plugin_sr_BA.qm</file>
     <file>pulseaudio_plugin_sr_RS.qm</file>
     <file>pulseaudio_plugin_bg.qm</file>
+    <file>pulseaudio_plugin_el.qm</file>
   </qresource>
 </RCC>

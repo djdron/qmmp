@@ -25,5 +25,6 @@
     <file>mms_plugin_sr_BA.qm</file>
     <file>mms_plugin_sr_RS.qm</file>
     <file>mms_plugin_bg.qm</file>
+    <file>mms_plugin_el.qm</file>
   </qresource>
 </RCC>
