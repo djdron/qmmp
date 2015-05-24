@@ -784,7 +784,7 @@
         <translation>Показати всі вкладки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="811"/>
+        <location filename="../mainwindow.cpp" line="813"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>
@@ -953,27 +953,27 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="54"/>
+        <location filename="../playlistheader.cpp" line="53"/>
         <source>Add Column</source>
         <translation>Додати стовпчик</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="55"/>
+        <location filename="../playlistheader.cpp" line="54"/>
         <source>Edit Column</source>
         <translation>Редагувати стовпчик</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="56"/>
+        <location filename="../playlistheader.cpp" line="55"/>
         <source>Auto-resize</source>
         <translation>Авто-розмір</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="58"/>
+        <location filename="../playlistheader.cpp" line="57"/>
         <source>Restore Size</source>
         <translation>Відновити розмір</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
+        <location filename="../playlistheader.cpp" line="59"/>
         <source>Remove Column</source>
         <translation>Видалити стовпчик</translation>
     </message>

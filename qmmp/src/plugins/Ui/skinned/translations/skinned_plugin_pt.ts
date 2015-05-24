@@ -1222,12 +1222,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Tipo de letra</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="428"/>
+        <location filename="../forms/skinnedsettings.ui" line="447"/>
         <source>Playlist:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="497"/>
+        <location filename="../forms/skinnedsettings.ui" line="483"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1237,22 +1237,27 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Reprodutor:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="471"/>
-        <location filename="../forms/skinnedsettings.ui" line="490"/>
-        <location filename="../forms/skinnedsettings.ui" line="510"/>
+        <location filename="../forms/skinnedsettings.ui" line="427"/>
+        <location filename="../forms/skinnedsettings.ui" line="469"/>
+        <location filename="../forms/skinnedsettings.ui" line="496"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
-        <location filename="../forms/skinnedsettings.ui" line="415"/>
-        <location filename="../forms/skinnedsettings.ui" line="438"/>
-        <location filename="../forms/skinnedsettings.ui" line="445"/>
+        <location filename="../forms/skinnedsettings.ui" line="434"/>
+        <location filename="../forms/skinnedsettings.ui" line="476"/>
+        <location filename="../forms/skinnedsettings.ui" line="503"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="452"/>
+        <location filename="../forms/skinnedsettings.ui" line="525"/>
+        <source>Reset fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="534"/>
         <source>Use bitmap font if available</source>
         <translation>Utilizar letras bitmap se disponíveis</translation>
     </message>
@@ -1349,102 +1354,102 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Mostrar botão &apos;Nova lista de reprodução&apos;</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="117"/>
+        <location filename="../skinnedsettings.cpp" line="120"/>
         <source>Select Skin Files</source>
         <translation>Selecione os ficheiros de tema</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="118"/>
+        <location filename="../skinnedsettings.cpp" line="121"/>
         <source>Skin files</source>
         <translation>Ficheiros de tema</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="170"/>
+        <location filename="../skinnedsettings.cpp" line="173"/>
         <source>Unarchived skin</source>
         <translation>Tema não arquivado</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="180"/>
+        <location filename="../skinnedsettings.cpp" line="183"/>
         <source>Artist</source>
         <translation>Artista</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="181"/>
+        <location filename="../skinnedsettings.cpp" line="184"/>
         <source>Album</source>
         <translation>Álbum</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="182"/>
+        <location filename="../skinnedsettings.cpp" line="185"/>
         <source>Album Artist</source>
         <translation>Artista do álbum</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="183"/>
+        <location filename="../skinnedsettings.cpp" line="186"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="184"/>
+        <location filename="../skinnedsettings.cpp" line="187"/>
         <source>Track Number</source>
         <translation>Número da faixa</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="185"/>
+        <location filename="../skinnedsettings.cpp" line="188"/>
         <source>Two-digit Track Number</source>
         <translation>Número da faixa com 2 dígitos</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="186"/>
+        <location filename="../skinnedsettings.cpp" line="189"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="187"/>
+        <location filename="../skinnedsettings.cpp" line="190"/>
         <source>Comment</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="188"/>
+        <location filename="../skinnedsettings.cpp" line="191"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="189"/>
+        <location filename="../skinnedsettings.cpp" line="192"/>
         <source>Duration</source>
         <translation>Duração</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="190"/>
+        <location filename="../skinnedsettings.cpp" line="193"/>
         <source>Disc Number</source>
         <translation>Número do disco</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="191"/>
+        <location filename="../skinnedsettings.cpp" line="194"/>
         <source>File Name</source>
         <translation>Nome do ficheiro</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="192"/>
+        <location filename="../skinnedsettings.cpp" line="195"/>
         <source>File Path</source>
         <translation>Caminho do ficheiro</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="193"/>
+        <location filename="../skinnedsettings.cpp" line="196"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="194"/>
+        <location filename="../skinnedsettings.cpp" line="197"/>
         <source>Condition</source>
         <translation>Condição</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="195"/>
+        <location filename="../skinnedsettings.cpp" line="198"/>
         <source>Artist - Title</source>
         <translation>Artista - Título</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="224"/>
+        <location filename="../skinnedsettings.cpp" line="227"/>
         <source>Archived skin</source>
         <translation>Tema arquivado</translation>
     </message>
