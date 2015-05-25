@@ -497,44 +497,59 @@
 <context>
     <name>HotkeyEditor</name>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Reset</source>
+        <translation type="unfinished">Ištrinti</translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
         <translation>Veiksmas</translation>
     </message>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
         <translation>Trumpinys</translation>
     </message>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
         <translation>Keisti trumpinį...</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="55"/>
+        <location filename="../hotkeyeditor.cpp" line="57"/>
         <source>Playback</source>
         <translation>Grojimas</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="61"/>
+        <location filename="../hotkeyeditor.cpp" line="63"/>
         <source>View</source>
         <translation>Rodyti</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="67"/>
+        <location filename="../hotkeyeditor.cpp" line="69"/>
         <source>Volume</source>
         <translation>Garsumas</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <location filename="../hotkeyeditor.cpp" line="75"/>
         <source>Playlist</source>
         <translation>Grojaraštis</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="79"/>
+        <location filename="../hotkeyeditor.cpp" line="81"/>
         <source>Misc</source>
         <translation>Įvairūs</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="93"/>
+        <source>Reset Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="94"/>
+        <source>Do you want to restore default shortcuts?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
