@@ -97,7 +97,7 @@ SET(skinned_HDRS
     shortcutitem.h
 )
 
-SET(skinned_RCCS default/glare.qrc resources/resources.qrc translations/translations.qrc)
+SET(skinned_RCCS glare/glare.qrc resources/resources.qrc translations/translations.qrc)
 
 QT4_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
 
