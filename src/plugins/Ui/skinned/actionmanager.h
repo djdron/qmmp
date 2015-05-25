@@ -103,6 +103,7 @@ public:
     QAction *use(int type, const QObject *receiver, const char *member);
     QList<QAction *> actions();
     void saveActions();
+    void resetShortcuts();
     static ActionManager* instance();
 
 private:

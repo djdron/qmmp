@@ -40,6 +40,7 @@ public:
 
 private slots:
     void on_changeShortcutButton_clicked();
+    void on_resetShortcutsButton_clicked();
 
 private:
     void loadShortcuts();
