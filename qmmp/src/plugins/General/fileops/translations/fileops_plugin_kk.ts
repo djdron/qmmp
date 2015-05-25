@@ -30,7 +30,7 @@
     </message>
     <message>
         <location filename="../fileops.cpp" line="187"/>
-        <source>Remove files</source>
+        <source>Remove Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">

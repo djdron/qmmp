@@ -574,42 +574,57 @@
 <context>
     <name>HotkeyEditor</name>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
+        <source>Reset Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="56"/>
+        <source>Do you want to restore default shortcuts?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="68"/>
         <source>Playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="61"/>
+        <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="67"/>
+        <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
         <translation type="unfinished">Даусы</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="73"/>
+        <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
         <translation type="unfinished">Тізім</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="79"/>
+        <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
