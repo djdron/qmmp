@@ -145,6 +145,7 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
     QAction *action = new QAction(name, this);
     action->setShortcut(m_settings->value(confKey, key).toString());
     action->setObjectName(confKey);
+    action->setProperty("defaultShortcut", key);
     if(iconName.isEmpty())
         return action;
     if(QFile::exists(iconName))
@@ -196,11 +197,20 @@ void ActionManager::saveActions()
     }
 }
 
+void ActionManager::resetShortcuts()
+{
+    foreach (QAction *action, m_actions.values())
+    {
+        action->setShortcut(action->property("defaultShortcut").toString());
+    }
+}
+
 void ActionManager::registerAction(int id, QAction *action, QString confKey, QString key)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("SimpleUiShortcuts");
     action->setShortcut(settings.value(confKey, key).toString());
+    action->setProperty("defaultShortcut", key);
     action->setObjectName(confKey);
     if(m_actions.value(id))
         qFatal("ActionManager: invalid action id");

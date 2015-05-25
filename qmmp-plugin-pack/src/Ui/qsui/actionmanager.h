@@ -108,6 +108,7 @@ public:
     QAction *use(int type, const QObject *receiver, const char *member);
     QList<QAction *> actions();
     void saveActions();
+    void resetShortcuts();
     void registerAction(int id, QAction *action, QString confKey, QString key);
     QStringList toolBarActionNames() const;
     static ActionManager* instance();
