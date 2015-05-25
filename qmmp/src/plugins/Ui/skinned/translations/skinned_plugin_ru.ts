@@ -498,7 +498,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Сброс</translation>
+        <translation>Сбросить</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
@@ -543,12 +543,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="93"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить сочетания клавиш</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="94"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Восстановить сочетания клавиш по умолчанию?</translation>
     </message>
 </context>
 <context>
@@ -1026,7 +1026,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation>Сброс</translation>
+        <translation>Сбросить</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
