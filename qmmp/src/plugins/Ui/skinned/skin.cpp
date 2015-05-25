@@ -65,7 +65,7 @@ Skin::Skin (QObject *parent) : QObject (parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString path = settings.value("Skinned/skin_path").toString();
     if (path.isEmpty() || !QDir(path).exists ())
-        path = ":/default";
+        path = ":/glare";
     m_double_size = settings.value("Skinned/double_size", false).toBool();
     ACTION(ActionManager::WM_DOUBLE_SIZE)->setChecked(m_double_size);
     setSkin (QDir::cleanPath(path));
