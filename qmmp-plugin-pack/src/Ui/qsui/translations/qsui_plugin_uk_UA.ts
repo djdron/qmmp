@@ -1137,21 +1137,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <location filename="../forms/qsuisettings.ui" line="779"/>
         <source>Playlist:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="801"/>
+        <location filename="../forms/qsuisettings.ui" line="759"/>
+        <location filename="../forms/qsuisettings.ui" line="824"/>
         <location filename="../forms/qsuisettings.ui" line="843"/>
-        <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
         <location filename="../forms/qsuisettings.ui" line="766"/>
-        <location filename="../forms/qsuisettings.ui" line="808"/>
+        <location filename="../forms/qsuisettings.ui" line="789"/>
         <location filename="../forms/qsuisettings.ui" line="850"/>
         <source>...</source>
         <translation>...</translation>
@@ -1217,12 +1217,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="779"/>
+        <location filename="../forms/qsuisettings.ui" line="872"/>
+        <source>Reset fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="887"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="821"/>
+        <location filename="../forms/qsuisettings.ui" line="802"/>
         <source>Tab names:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1232,27 +1237,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="899"/>
+        <location filename="../forms/qsuisettings.ui" line="920"/>
         <source>Tabs</source>
         <translation>Вкладки</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="905"/>
+        <location filename="../forms/qsuisettings.ui" line="926"/>
         <source>Show close buttons</source>
         <translation>Показати кнопки закриття</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="912"/>
+        <location filename="../forms/qsuisettings.ui" line="933"/>
         <source>Show tab list menu</source>
         <translation>Відображати меню зі списоком вкладок</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="919"/>
+        <location filename="../forms/qsuisettings.ui" line="940"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Показувати кнопку &quot;Новий список&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="893"/>
+        <location filename="../forms/qsuisettings.ui" line="914"/>
         <source>Miscellaneous</source>
         <translation>Різне</translation>
     </message>
