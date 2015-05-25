@@ -1218,7 +1218,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="872"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить шрифты</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="887"/>
