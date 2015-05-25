@@ -227,6 +227,15 @@ void QSUISettings::writeSettings()
     settings.endGroup();
 }
 
+void QSUISettings::on_resetFontsButton_clicked()
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.remove("Simple/pl_font");
+    settings.remove("Simple/pl_tabs_font");
+    settings.remove("Simple/pl_header_font");
+    loadFonts();
+}
+
 void QSUISettings::addWindowTitleString(QAction *a)
 {
     if (m_ui.windowTitleLineEdit->cursorPosition () < 1)
@@ -234,3 +243,4 @@ void QSUISettings::addWindowTitleString(QAction *a)
     else
         m_ui.windowTitleLineEdit->insert(" - "+a->data().toString());
 }
+
