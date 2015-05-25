@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -157,7 +157,7 @@ QAction *ActionManager::createAction2(QString name, QString confKey, QString key
 void ActionManager::readStates()
 {
     m_settings->beginGroup("Skinned");
-    m_actions[PL_SHOW_HEADER]->setChecked(m_settings->value("pl_show_header", true).toBool());
+    m_actions[PL_SHOW_HEADER]->setChecked(m_settings->value("pl_show_header", false).toBool());
     m_settings->endGroup();
 }
 
