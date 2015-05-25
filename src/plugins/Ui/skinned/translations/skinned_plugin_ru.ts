@@ -1254,7 +1254,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="525"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить шрифты</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="534"/>
