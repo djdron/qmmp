@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QMessageBox>
 #include "actionmanager.h"
 #include "hotkeyeditor.h"
 #include "shortcutdialog.h"
@@ -51,6 +52,7 @@ void HotkeyEditor::on_changeShortcutButton_clicked()
 
 void HotkeyEditor::loadShortcuts()
 {
+    m_ui->shortcutTreeWidget->clear();
     //playback
     QTreeWidgetItem *item = new QTreeWidgetItem (m_ui->shortcutTreeWidget, QStringList() << tr("Playback"));
     for(int i = ActionManager::PLAY; i <= ActionManager::CLEAR_QUEUE; ++i)
@@ -84,4 +86,15 @@ void HotkeyEditor::loadShortcuts()
 
     m_ui->shortcutTreeWidget->resizeColumnToContents(0);
     m_ui->shortcutTreeWidget->resizeColumnToContents(1);
+}
+
+void HotkeyEditor::on_resetShortcutsButton_clicked()
+{
+    if(QMessageBox::question(this, tr("Reset Shortcuts"),
+                             tr("Do you want to restore default shortcuts?"),
+                             QMessageBox::Yes | QMessageBox::No) ==  QMessageBox::Yes)
+    {
+        ActionManager::instance()->resetShortcuts();
+        loadShortcuts();
+    }
 }

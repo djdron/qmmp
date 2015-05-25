@@ -136,6 +136,7 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
 {
     QAction *action = new QAction(name, this);
     action->setShortcut(m_settings->value(confKey, key).toString());
+    action->setProperty("defaultShortcut", key);
     action->setObjectName(confKey);
     if(iconName.isEmpty())
         return action;
@@ -174,5 +175,14 @@ void ActionManager::saveActions()
     foreach(QAction *action, m_actions.values())
     {
         settings.setValue(QString("SkinnedShortcuts/")+action->objectName(), action->shortcut());
+    }
+}
+
+void ActionManager::resetShortcuts()
+{
+    foreach (QAction *action, m_actions.values())
+    {
+        action->setShortcut(action->property("defaultShortcut").toString());
+        qDebug("=%s=",qPrintable(action->property("defaultShortcut").toString()));
     }
 }
