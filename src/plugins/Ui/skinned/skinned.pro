@@ -124,7 +124,7 @@ TARGET = $$PLUGINS_PREFIX/Ui/skinned
 unix:LIBS += -lqmmp -lqmmpui
 win32:LIBS += -lqmmp0 -lqmmpui0
 
-RESOURCES = resources/resources.qrc default/glare.qrc
+RESOURCES = resources/resources.qrc glare/glare.qrc
 
 unix{
 isEmpty(LIB_DIR){

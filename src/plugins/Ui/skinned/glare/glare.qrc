@@ -1,6 +1,6 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
-  <qresource prefix="/default">
+  <qresource prefix="/glare">
     <file>balance.png</file>
     <file>eqmain.png</file>
     <file>numbers.png</file>
