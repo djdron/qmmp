@@ -183,6 +183,5 @@ void ActionManager::resetShortcuts()
     foreach (QAction *action, m_actions.values())
     {
         action->setShortcut(action->property("defaultShortcut").toString());
-        qDebug("=%s=",qPrintable(action->property("defaultShortcut").toString()));
     }
 }
