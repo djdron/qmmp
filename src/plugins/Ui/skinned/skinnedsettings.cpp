@@ -207,7 +207,7 @@ void SkinnedSettings::loadSkins()
     m_reader->generateThumbs();
     m_skinList.clear();
     m_ui.listWidget->clear();
-    QFileInfo fileInfo (":/default");
+    QFileInfo fileInfo (":/glare");
     QPixmap preview = Skin::getPixmap ("main", QDir (fileInfo.filePath()));
     QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
     item->setIcon (preview);
@@ -273,7 +273,7 @@ void SkinnedSettings::readSettings()
     m_ui.plTransparencySlider->setValue(100 - settings.value("pl_opacity", 1.0).toDouble()*100);
     //view
     m_ui.skinCursorsCheckBox->setChecked(settings.value("skin_cursors", false).toBool());
-    m_currentSkinName = settings.value("skin_name", "default").toString();
+    m_currentSkinName = settings.value("skin_name", "glare").toString();
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
     m_ui.windowTitleLineEdit->setText(settings.value("window_title_format","%if(%p,%p - %t,%t)").toString());

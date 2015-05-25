@@ -3,7 +3,7 @@
   <qresource prefix="/glare">
     <file>balance.png</file>
     <file>eqmain.png</file>
-    <file>numbers.png</file>
+    <file>nums_ex.png</file>
     <file>pledit.txt</file>
     <file>text.png</file>
     <file>volume.png</file>
