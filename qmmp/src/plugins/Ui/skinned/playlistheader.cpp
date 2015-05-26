@@ -391,15 +391,15 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
     int delta = e->size().width() - e->oldSize().width();
     int index = m_model->autoResizeColumn();
 
-    if(layoutDirection() == Qt::RightToLeft)
-       updateColumns();
-
-    if(e->oldSize().width() <= 10)
-        return;
-
-    if(index >= 0)
+    if(index >= 0 && e->oldSize().width() > 10)
     {
         m_model->resize(index, m_model->size(index) + delta);
+        updateColumns();
+        return;
+    }
+
+    if(layoutDirection() == Qt::RightToLeft || e->oldSize().height() != e->size().height())
+    {
         updateColumns();
         return;
     }
