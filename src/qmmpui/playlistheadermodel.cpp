@@ -39,6 +39,7 @@ PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
         col.size = s.value("size", 150).toInt();
         col.titleFormatter = new MetaDataFormatter(col.pattern);
         col.autoResize = s.value("autoresize", false).toBool();
+        col.minSize = 30;
         m_columns.append(col);
         s.endGroup();
     }
@@ -70,6 +71,7 @@ void PlayListHeaderModel::insert(int index, const QString &name, const QString &
     col.titleFormatter = new MetaDataFormatter(pattern);
     col.size = 50;
     col.autoResize = false;
+    col.minSize = 30;
     m_columns.insert(index, col);
     sync();
     emit columnAdded(index);
@@ -101,7 +103,7 @@ void PlayListHeaderModel::resize(int index, int size)
         return;
     }
 
-   m_columns[index].size = qMax(size, 30);
+   m_columns[index].size = qMax(size, m_columns[index].minSize);
    emit columnResized(index);
    emit headerChanged();
 }
@@ -118,6 +120,25 @@ void PlayListHeaderModel::setAutoResize(int index)
     {
         m_columns[i].autoResize = (i == index);
     }
+}
+
+void PlayListHeaderModel::setMinimalSize(int index, int size)
+{
+    if(index >= m_columns.size())
+    {
+        qWarning("ColumnManager: index is out of range");
+        return;
+    }
+
+    if(size < 10)
+    {
+        qWarning("ColumnManager: invalid size");
+        return;
+    }
+
+    m_columns[index].minSize = size;
+    if(m_columns[index].size < size)
+        resize(index, size);
 }
 
 void PlayListHeaderModel::move(int from, int to)

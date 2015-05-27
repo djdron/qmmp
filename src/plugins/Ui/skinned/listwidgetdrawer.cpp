@@ -148,11 +148,16 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int width = qMin(m_header_model->size(i) - 2 * m_padding,
+        int size = m_header_model->size(i);
+
+        if(i == 0 && row->numberColumnWidth)
+            size -= row->numberColumnWidth;
+
+        int width = qMin(size - 2 * m_padding,
                          visible_width - 2 * m_padding);
 
         row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
-        visible_width -= m_header_model->size(i);
+        visible_width -= size;
     }
 }
 
@@ -185,7 +190,7 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row)
 void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
     int sx = row->rect.x() + 50;
-    int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
+    int sy = row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setFont(m_font);
     painter->setPen(m_normal);
@@ -248,9 +253,13 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             if(sx - m_padding <= row->rect.x() + row->lengthColumnWidth)
                 break;
 
+            int size = m_header_model->size(i);
+            if(i == 0 && row->numberColumnWidth)
+                size -= row->numberColumnWidth;
+
             painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
-            sx -= m_header_model->size(i);
+            sx -= size;
 
             if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
             {
@@ -292,9 +301,13 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
                 break;
 
+            int size = m_header_model->size(i);
+            if(i == 0 && row->numberColumnWidth)
+                size -= row->numberColumnWidth;
+
             painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             painter->drawText(sx + m_padding, sy, row->titles[i]);
-            sx += m_header_model->size(i);
+            sx += size;
 
             if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {

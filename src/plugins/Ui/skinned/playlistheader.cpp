@@ -120,6 +120,7 @@ void PlayListHeader::setNumberWidth(int width)
     if(width != m_number_width)
     {
         m_number_width = width;
+        m_model->setMinimalSize(0, 30 + (m_number_width ? (m_number_width + 2 * m_pl_padding) : 0));
         updateColumns();
     }
 }
@@ -152,22 +153,28 @@ void PlayListHeader::updateColumns()
 
     for(int i = 0; i < m_model->count(); ++i)
     {
+        int size = m_model->size(i);
+
+        //add number width to the first column
+        if(i == 0 && m_number_width)
+            size -= m_number_width + 2 * m_pl_padding;
+
         if(rtl)
-            m_rects << QRect(width() - sx - m_model->size(i), 0, m_model->size(i), height());
+            m_rects << QRect(width() - sx - size, 0, size, height());
         else
-            m_rects << QRect(sx, 0, m_model->size(i), height());
+            m_rects << QRect(sx, 0, size, height());
         if(i == m_sorting_column)
         {
             m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                             m_model->size(i) - 2 * m_padding - m_arrow_up.width() - 4);
+                                             size - 2 * m_padding - m_arrow_up.width() - 4);
         }
         else
         {
             m_names << m_metrics->elidedText(m_model->name(i), Qt::ElideRight,
-                                             m_model->size(i) - 2 * m_padding);
+                                            size - 2 * m_padding);
         }
 
-        sx += m_model->size(i);
+        sx += size;
     }
     update();
 }

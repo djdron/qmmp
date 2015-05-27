@@ -40,6 +40,7 @@ public:
     void remove(int index);
     void resize(int index, int size);
     void setAutoResize(int index);
+    void setMinimalSize(int index, int size);
     void move(int from, int to);
     void execEdit(int index, QWidget *parent = 0);
     void execInsert(int index, QWidget *parent = 0);
@@ -66,6 +67,7 @@ private:
         QString name;
         QString pattern;
         int size;
+        int minSize;
         bool autoResize;
         MetaDataFormatter *titleFormatter;
     };
