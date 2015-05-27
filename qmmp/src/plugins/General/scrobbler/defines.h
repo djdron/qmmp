@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,9 +22,9 @@
 #define DEFINES_H
 
 #define SCROBBLER_LASTFM_URL "http://ws.audioscrobbler.com/2.0/"
-#define SCROBBLER_LIBREFM_URL "http://libre.fm/2.0/"
+#define SCROBBLER_LIBREFM_URL "https://libre.fm/2.0/"
 
 #define LASTFM_AUTH_URL "http://www.last.fm/api/auth/"
-#define LIBREFM_AUTH_URL "http://libre.fm/api/auth/"
+#define LIBREFM_AUTH_URL "https://libre.fm/api/auth/"
 
 #endif // DEFINES_H
