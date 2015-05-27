@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -309,7 +309,7 @@ void Scrobbler::submit()
     }
 
     QUrl url(m_scrobblerUrl);
-    url.setPort(80);
+    url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
     QUrl body("");
     QByteArray data;
@@ -357,7 +357,7 @@ void Scrobbler::sendNotification(const SongInfo &info)
     }
 
     QUrl url(m_scrobblerUrl);
-    url.setPort(80);
+    url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
     QUrl body("");
     QByteArray data;
@@ -412,7 +412,7 @@ void ScrobblerAuth::getToken()
     qDebug("ScrobblerAuth[%s]: new token request", qPrintable(m_name));
     m_session.clear();
     QUrl url(m_scrobblerUrl + "?");
-    url.setPort(80);
+    url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
     url.addQueryItem("method", "auth.getToken");
     url.addQueryItem("api_key", API_KEY);
 
@@ -433,7 +433,7 @@ void ScrobblerAuth::getSession()
 {
     qDebug("ScrobblerAuth[%s]: new session request", qPrintable(m_name));
     QUrl url(m_scrobblerUrl + "?");
-    url.setPort(80);
+    url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
     url.addQueryItem("api_key", API_KEY);
     url.addQueryItem("method", "auth.getSession");
     url.addQueryItem("token", m_token);
@@ -463,7 +463,7 @@ void ScrobblerAuth::checkSession(const QString &session)
     params.insert("limit", "1");
 
     QUrl url(m_scrobblerUrl);
-    url.setPort(80);
+    url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
     QUrl body("");
     QByteArray data;
