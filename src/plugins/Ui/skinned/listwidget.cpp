@@ -320,7 +320,9 @@ void ListWidget::updateList(int flags)
 
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
+        m_resize = true;
         m_header->setNumberWidth(m_drawer.numberWidth());
+        m_resize = false;
 
         items = m_model->mid(m_first, m_row_count);
 
