@@ -417,9 +417,6 @@
              </item>
              <item row="0" column="1">
               <widget class="ColorWidget" name="plBg1Color">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -452,9 +449,6 @@
              </item>
              <item row="0" column="4">
               <widget class="ColorWidget" name="plTextNormalColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -487,9 +481,6 @@
              </item>
              <item row="1" column="1">
               <widget class="ColorWidget" name="plBg2Color">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -522,9 +513,6 @@
              </item>
              <item row="1" column="4">
               <widget class="ColorWidget" name="plTextCurrentColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -557,9 +545,6 @@
              </item>
              <item row="2" column="1">
               <widget class="ColorWidget" name="plHlColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -592,9 +577,6 @@
              </item>
              <item row="2" column="4">
               <widget class="ColorWidget" name="plTextHlCurrentColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -630,9 +612,6 @@
              </item>
              <item row="3" column="1">
               <widget class="ColorWidget" name="plGrBgColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -662,9 +641,6 @@
              </item>
              <item row="3" column="4">
               <widget class="ColorWidget" name="plGrTextColor">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
