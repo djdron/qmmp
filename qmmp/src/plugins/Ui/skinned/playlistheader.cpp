@@ -96,6 +96,7 @@ PlayListHeader::~PlayListHeader()
     if (m_metrics)
         delete m_metrics;
     m_metrics = 0;
+    writeSettings();
     qDeleteAll(m_columns);
     m_columns.clear();
 }
@@ -123,7 +124,7 @@ void PlayListHeader::readSettings()
     {
         m_model->restoreSettings(&settings);
         QList<QVariant> sizes = settings.value("pl_column_sizes").toList();
-        int autoResizeColumn = settings.value("pl_autoresize_colum", -1).toInt();
+        int autoResizeColumn = settings.value("pl_autoresize_column", -1).toInt();
         for(int i = 0; i < m_model->count(); ++i)
         {
             Column *col = new Column();
@@ -668,4 +669,22 @@ int PlayListHeader::findColumn(QPoint pos)
             return i;
     }
     return -1;
+}
+
+void PlayListHeader::writeSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
+    m_model->saveSettings(&settings);
+    QList<QVariant> sizes;
+    int autoResizeColumn = -1;
+    for(int i = 0; i < m_columns.count(); ++i)
+    {
+       sizes << m_columns[i]->size;
+       if(m_columns[i]->autoResize)
+           autoResizeColumn = i;
+    }
+    settings.setValue("pl_column_sizes", sizes);
+    settings.setValue("pl_autoresize_column", autoResizeColumn);
+    settings.endGroup();
 }

@@ -54,16 +54,17 @@ void PlayListHeaderModel::restoreSettings(const QString &groupName)
 void PlayListHeaderModel::restoreSettings(QSettings *settings)
 {
     QStringList names = settings->value("pl_column_names").toStringList();
-    QStringList patterns = settings->value("pl_column_names").toStringList();
+    QStringList patterns = settings->value("pl_column_patterns").toStringList();
 
     if(!names.isEmpty() && (names.count() == patterns.count()))
     {
         m_columns.clear();
-        for(int i = 0; i < m_columns.count(); ++i)
+        for(int i = 0; i < names.count(); ++i)
         {
             ColumnHeader h = {names.at(i), patterns.at(i)};
             m_columns.append(h);
         }
+        m_helper->setTitleFormats(patterns);
     }
 }
 
