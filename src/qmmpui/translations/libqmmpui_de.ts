@@ -878,17 +878,17 @@
 <context>
     <name>PlayListHeaderModel</name>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="37"/>
+        <location filename="../playlistheadermodel.cpp" line="35"/>
         <source>Artist - Title</source>
         <translation type="unfinished">Interpret - Titel</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="175"/>
+        <location filename="../playlistheadermodel.cpp" line="178"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="176"/>
+        <location filename="../playlistheadermodel.cpp" line="179"/>
         <source>Add Column</source>
         <translation>Spalte hinzufügen</translation>
     </message>
@@ -896,8 +896,8 @@
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="151"/>
-        <location filename="../playlistmanager.cpp" line="303"/>
+        <location filename="../playlistmanager.cpp" line="152"/>
+        <location filename="../playlistmanager.cpp" line="309"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
@@ -905,12 +905,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="240"/>
+        <location filename="../playlisttrack.cpp" line="241"/>
         <source>Streams</source>
         <translation>Streams</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="245"/>
+        <location filename="../playlisttrack.cpp" line="246"/>
         <source>Empty group</source>
         <translation>Leere Gruppe</translation>
     </message>
@@ -926,7 +926,7 @@
 <context>
     <name>QmmpUiSettings</name>
     <message>
-        <location filename="../qmmpuisettings.cpp" line="55"/>
+        <location filename="../qmmpuisettings.cpp" line="56"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
