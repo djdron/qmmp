@@ -303,11 +303,6 @@ PlayListHeaderModel *QmmpUiSettings::headerModel()
     return m_header;
 }
 
-const MetaDataFormatter *QmmpUiSettings::titleFormatter(int column) const
-{
-    return m_header->titleFormatter(column);
-}
-
 const MetaDataFormatter *QmmpUiSettings::groupFormatter() const
 {
     return &m_group_formatter;
