@@ -19,7 +19,9 @@
  ***************************************************************************/
 
 #include <QApplication>
+#include <QMetaObject>
 #include <qmmp/qmmp.h>
+#include <qmmpui/playlistmanager.h>
 #include "columneditor_p.h"
 #include "metadatahelper_p.h"
 #include "playlistheadermodel.h"
@@ -98,9 +100,9 @@ void PlayListHeaderModel::insert(int index, const QString &name, const QString &
     col.name = name;
     col.pattern = pattern;
     m_columns.insert(index, col);
-    rebuildFormatters();
     emit columnAdded(index);
     emit headerChanged();
+    updatePlayLists();
 }
 
 void PlayListHeaderModel::remove(int index)
@@ -114,9 +116,9 @@ void PlayListHeaderModel::remove(int index)
     if(m_columns.count() == 1)
         return;
 
-    rebuildFormatters();
     emit columnRemoved(index);
     emit headerChanged();
+    updatePlayLists();
 }
 
 void PlayListHeaderModel::move(int from, int to)
@@ -134,9 +136,9 @@ void PlayListHeaderModel::move(int from, int to)
     }
 
     m_columns.move(from, to);
-    rebuildFormatters();
     emit columnMoved(from, to);
     emit headerChanged();
+    updatePlayLists();
 }
 
 void PlayListHeaderModel::execEdit(int index, QWidget *parent)
@@ -155,9 +157,9 @@ void PlayListHeaderModel::execEdit(int index, QWidget *parent)
     {
         m_columns[index].name = editor.name();
         m_columns[index].pattern = editor.pattern();
-        rebuildFormatters();
         emit columnChanged(index);
         emit headerChanged();
+        updatePlayLists();
     }
 }
 
@@ -202,10 +204,15 @@ const QString PlayListHeaderModel::pattern(int index) const
     return m_columns[index].pattern;
 }
 
-void PlayListHeaderModel::rebuildFormatters()
+void PlayListHeaderModel::updatePlayLists()
 {
     QStringList patterns;
     for(int i = 0; i < m_columns.count(); ++i)
         patterns.append(m_columns[i].pattern);
     m_helper->setTitleFormats(patterns);
+
+    foreach(PlayListModel *model, PlayListManager::instance()->playLists())
+    {
+         QMetaObject::invokeMethod(model, "listChanged", Q_ARG(int, PlayListModel::METADATA));
+    }
 }

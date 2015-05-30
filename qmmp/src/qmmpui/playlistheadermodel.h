@@ -63,7 +63,7 @@ signals:
     void headerChanged();
 
 private:
-    void rebuildFormatters();
+    void updatePlayLists();
 
     struct ColumnHeader
     {

@@ -46,11 +46,14 @@ public:
 
     void readSettings();
     void setNumberWidth(int width);
-    void updateColumns();
     int requiredHeight() const;
     QList<int> sizes() const;
 
+signals:
+    void resizeColumnRequest();
+
 public slots:
+    void updateColumns();
     void showSortIndicator(int column, bool reverted);
     void hideSortIndicator();
 
@@ -61,6 +64,9 @@ private slots:
     void removeColumn();
     void setAutoResize(bool yes);
     void restoreSize();
+    void onColumnAdded(int index);
+    void onColumnRemoved(int index);
+    void onColumnMoved(int from, int to);
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -93,14 +99,11 @@ private:
     QMenu *m_menu;
     QFont m_font;
     QColor m_normal, m_normal_bg, m_current;
-    //QList <QRect> m_rects;
-    //QStringList m_names;
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     QPixmap m_arrow_up, m_arrow_down;
-    //QList<int> m_sizes, m_minimal_sizes;
     QList<Column*> m_columns;
     bool m_reverted;
     int m_number_width;
