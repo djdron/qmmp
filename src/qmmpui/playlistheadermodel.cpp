@@ -18,7 +18,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QSettings>
 #include <QApplication>
 #include <qmmp/qmmp.h>
 #include "columneditor_p.h"
@@ -39,8 +38,52 @@ PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
 
 PlayListHeaderModel::~PlayListHeaderModel()
 {
-    sync();
     m_columns.clear();
+}
+
+void PlayListHeaderModel::restoreSettings(const QString &groupName)
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup(groupName);
+    restoreSettings(&settings);
+    settings.endGroup();
+}
+
+void PlayListHeaderModel::restoreSettings(QSettings *settings)
+{
+    QStringList names = settings->value("pl_column_names").toStringList();
+    QStringList patterns = settings->value("pl_column_names").toStringList();
+
+    if(!names.isEmpty() && (names.count() == patterns.count()))
+    {
+        m_columns.clear();
+        for(int i = 0; i < m_columns.count(); ++i)
+        {
+            ColumnHeader h = {names.at(i), patterns.at(i)};
+            m_columns.append(h);
+        }
+    }
+}
+
+void PlayListHeaderModel::saveSettings(const QString &groupName)
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup(groupName);
+    saveSettings(&settings);
+    settings.endGroup();
+}
+
+void PlayListHeaderModel::saveSettings(QSettings *settings)
+{
+    QStringList names, patterns;
+    for(int i = 0; i < m_columns.count(); ++i)
+    {
+        names << m_columns[i].name;
+        patterns << m_columns[i].pattern;
+    }
+
+    settings->setValue("pl_column_names", names);
+    settings->setValue("pl_column_patterns", patterns);
 }
 
 void PlayListHeaderModel::insert(int index, const QString &name, const QString &pattern)
@@ -55,7 +98,7 @@ void PlayListHeaderModel::insert(int index, const QString &name, const QString &
     col.name = name;
     col.pattern = pattern;
     m_columns.insert(index, col);
-    sync();
+    rebuildFormatters();
     emit columnAdded(index);
     emit headerChanged();
 }
@@ -71,7 +114,7 @@ void PlayListHeaderModel::remove(int index)
     if(m_columns.count() == 1)
         return;
 
-    sync();
+    rebuildFormatters();
     emit columnRemoved(index);
     emit headerChanged();
 }
@@ -91,6 +134,7 @@ void PlayListHeaderModel::move(int from, int to)
     }
 
     m_columns.move(from, to);
+    rebuildFormatters();
     emit columnMoved(from, to);
     emit headerChanged();
 }
@@ -111,6 +155,7 @@ void PlayListHeaderModel::execEdit(int index, QWidget *parent)
     {
         m_columns[index].name = editor.name();
         m_columns[index].pattern = editor.pattern();
+        rebuildFormatters();
         emit columnChanged(index);
         emit headerChanged();
     }
@@ -157,24 +202,10 @@ const QString PlayListHeaderModel::pattern(int index) const
     return m_columns[index].pattern;
 }
 
-void PlayListHeaderModel::sync()
+void PlayListHeaderModel::rebuildFormatters()
 {
-    /*QSettings s (Qmmp::configFile(), QSettings::IniFormat);
-    s.beginGroup("PlayList");
-    int old_count = s.value("column_count", 1).toInt();
-    s.setValue("column_count", m_columns.count());
+    QStringList patterns;
     for(int i = 0; i < m_columns.count(); ++i)
-    {
-        s.beginGroup(QString("column%1").arg(i));
-        ColumnHeader col = m_columns.at(i);
-        s.setValue("name", col.name);
-        s.setValue("pattern", col.pattern);
-        s.endGroup();
-    }
-    s.setValue("column_count", m_columns.count());
-    for(int i = m_columns.count(); i < old_count; ++i)
-    {
-        s.remove(QString("column%1").arg(i));
-    }
-    s.endGroup();*/
+        patterns.append(m_columns[i].pattern);
+    m_helper->setTitleFormats(patterns);
 }

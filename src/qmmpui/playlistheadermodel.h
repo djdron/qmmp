@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QSettings>
 #include "metadataformatter.h"
 
 class MetaDataHelper;
@@ -37,6 +38,11 @@ public:
     explicit PlayListHeaderModel(QObject *parent = 0);
 
     ~PlayListHeaderModel();
+
+    void restoreSettings(const QString &groupName);
+    void restoreSettings(QSettings *settings);
+    void saveSettings(const QString &groupName);
+    void saveSettings(QSettings *settings);
 
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);
@@ -57,7 +63,8 @@ signals:
     void headerChanged();
 
 private:
-    void sync();
+    void rebuildFormatters();
+
     struct ColumnHeader
     {
         QString name;

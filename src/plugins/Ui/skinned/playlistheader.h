@@ -72,19 +72,36 @@ private:
     void loadColors();
     int findColumn(QPoint pos);
 
+    struct Column
+    {
+        Column()
+        {
+            size = 150;
+            minSize = 30;
+            autoResize = false;
+        }
+
+        QString name;
+        int size;
+        int minSize;
+        QRect rect; //geometry
+        bool autoResize;
+    };
+
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QMenu *m_menu;
     QFont m_font;
     QColor m_normal, m_normal_bg, m_current;
-    QList <QRect> m_rects;
-    QStringList m_names;
+    //QList <QRect> m_rects;
+    //QStringList m_names;
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     QPixmap m_arrow_up, m_arrow_down;
-    QList<int> m_sizes, m_minimal_sizes;
+    //QList<int> m_sizes, m_minimal_sizes;
+    QList<Column*> m_columns;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;
@@ -93,6 +110,7 @@ private:
     int m_padding;
     int m_pl_padding;
     int m_sorting_column;
+    bool m_update;
 
     enum
     {
