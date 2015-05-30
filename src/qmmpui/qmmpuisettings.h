@@ -180,7 +180,7 @@ public:
     bool clearPreviousPlayList() const;
 
     PlayListHeaderModel *headerModel();
-    const MetaDataFormatter* titleFormatter(int column) const;
+
     const MetaDataFormatter* groupFormatter() const;
 
     /*!
