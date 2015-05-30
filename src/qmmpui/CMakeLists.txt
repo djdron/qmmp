@@ -62,6 +62,7 @@ SET(libqmmpui_SRCS
     playlisttask.cpp
     playlistheadermodel.cpp
     columneditor.cpp
+    metadatahelper.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -84,6 +85,7 @@ SET(libqmmpui_HDRS
     general.h
     playlistparser.h
     qmmpuiplugincache_p.h
+    metadatahelper_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
