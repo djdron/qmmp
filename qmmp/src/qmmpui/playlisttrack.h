@@ -28,6 +28,7 @@
 
 class QmmpUiSettings;
 class PlayListHeaderModel;
+class MetaDataHelper;
 
 /** @brief The PlayListTrack class provides a track for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -117,7 +118,7 @@ private:
     qint64 m_length;
     int m_refCount;
     bool m_sheduledForDeletion;
-    PlayListHeaderModel *m_columnManager;
+    MetaDataHelper *m_helper;
 };
 
 #endif

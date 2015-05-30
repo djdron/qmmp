@@ -23,6 +23,7 @@
 
 #include <QWidget>
 #include <QPixmap>
+#include <QList>
 
 class QFontMetrics;
 class QFont;
@@ -47,6 +48,7 @@ public:
     void setNumberWidth(int width);
     void updateColumns();
     int requiredHeight() const;
+    QList<int> sizes() const;
 
 public slots:
     void showSortIndicator(int column, bool reverted);
@@ -82,6 +84,7 @@ private:
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     QPixmap m_arrow_up, m_arrow_down;
+    QList<int> m_sizes, m_minimal_sizes;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;

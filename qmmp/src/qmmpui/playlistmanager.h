@@ -85,6 +85,8 @@ public:
      */
     PlayListModel *playListAt(int i) const;
 
+    PlayListHeaderModel *headerModel();
+
 signals:
     /*!
      * Emitted when current playlist changes.
@@ -249,6 +251,7 @@ private:
     PlayListModel *m_current;
     PlayListModel *m_selected;
     QTimer *m_timer;
+    PlayListHeaderModel *m_header;
     QmmpUiSettings *m_ui_settings;
 };
 

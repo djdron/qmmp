@@ -18,53 +18,58 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef PLAYLISTHEADERMODEL_H
-#define PLAYLISTHEADERMODEL_H
+#include "metadatahelper_p.h"
 
-#include <QObject>
-#include <QWidget>
-#include "metadataformatter.h"
+MetaDataHelper *MetaDataHelper::m_instance = 0;
 
-class MetaDataHelper;
-
-/**
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class PlayListHeaderModel : public QObject
+MetaDataHelper::MetaDataHelper()
 {
-    Q_OBJECT
-public:
-    explicit PlayListHeaderModel(QObject *parent = 0);
+    m_instance = this;
+    m_group_formatter = new MetaDataFormatter();
+    m_title_formatters << new MetaDataFormatter();
+}
 
-    ~PlayListHeaderModel();
+MetaDataHelper::~MetaDataHelper()
+{
+    m_instance = 0;
+    delete m_group_formatter;
+    qDeleteAll(m_title_formatters);
+    m_title_formatters.clear();
+}
 
-    void insert(int index, const QString &name, const QString &pattern);
-    void remove(int index);
-    void move(int from, int to);
-    void execEdit(int index, QWidget *parent = 0);
-    void execInsert(int index, QWidget *parent = 0);
+void MetaDataHelper::setTitleFormats(const QStringList &titleFormats)
+{
+    while(m_title_formatters.count() > titleFormats.count())
+        delete m_title_formatters.takeLast();
 
-    int count();
+    while(m_title_formatters.count() < titleFormats.count())
+        m_title_formatters << new MetaDataFormatter();
 
-    const QString name(int index) const;
-    const QString pattern(int index) const;
+    for(int i = 0; i < m_title_formatters.count(); ++i)
+        m_title_formatters.at(i)->setPattern(titleFormats.at(i));
+}
 
-signals:
-    void columnAdded(int index);
-    void columnRemoved(int index);
-    void columnChanged(int index);
-    void columnMoved(int from, int to);
-    void headerChanged();
+void MetaDataHelper::setGroupFormat(const QString &groupFormat)
+{
+    m_group_formatter->setPattern(groupFormat);
+}
 
-private:
-    void sync();
-    struct ColumnHeader
-    {
-        QString name;
-        QString pattern;
-    };
-    QList<ColumnHeader> m_columns;
-    MetaDataHelper *m_helper;
-};
+int MetaDataHelper::columnCount() const
+{
+    return m_title_formatters.count();
+}
 
-#endif // COLUMNMANAGER_H
+const MetaDataFormatter *MetaDataHelper::titleFormatter(int index) const
+{
+    return m_title_formatters.at(index);
+}
+
+const MetaDataFormatter *MetaDataHelper::groupFormatter() const
+{
+    return m_group_formatter;
+}
+
+MetaDataHelper *MetaDataHelper::instance()
+{
+    return m_instance;
+}

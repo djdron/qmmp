@@ -71,7 +71,8 @@ HEADERS += general.h \
     playlisttask_p.h \
     metadataformatter.h \
     columneditor_p.h \
-    playlistheadermodel.h
+    playlistheadermodel.h \
+    metadatahelper_p.h
 
 SOURCES += general.cpp \
     playlistparser.cpp \
@@ -107,7 +108,8 @@ SOURCES += general.cpp \
     playlisttask.cpp \
     metadataformatter.cpp \
     columneditor.cpp \
-    playlistheadermodel.cpp
+    playlistheadermodel.cpp \
+    metadatahelper.cpp
 
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \

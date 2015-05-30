@@ -32,6 +32,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
 #include <qmmpui/playlistheadermodel.h>
+#include <qmmpui/playlistmanager.h>
 #include "listwidget.h"
 #include "playlistheader.h"
 #include "actionmanager.h"
@@ -48,7 +49,7 @@ ListWidget::ListWidget(QWidget *parent)
 
     m_skin = Skin::instance();
     m_ui_settings = QmmpUiSettings::instance();
-    PlayListHeaderModel *headerModel = m_ui_settings->headerModel();
+    PlayListHeaderModel *headerModel = PlayListManager::instance()->headerModel();
     m_menu = new QMenu(this);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
@@ -72,7 +73,7 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(headerModel, SIGNAL(headerChanged()), SLOT(updateColumns()));
+    //connect(headerModel, SIGNAL(headerChanged()), SLOT(updateColumns()));
     SET_ACTION(ActionManager::PL_SHOW_HEADER, this, SLOT(readSettings()));
 }
 
@@ -356,6 +357,7 @@ void ListWidget::updateList(int flags)
         row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
                           width() - 10, m_drawer.rowHeight() - 1);
         row->titles = items[i]->formattedTitles();
+        row->sizes = m_header->sizes();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
                 row->flags &= ~ListWidgetRow::CURRENT;

@@ -22,7 +22,6 @@
 #include <QPainter>
 #include <QApplication>
 #include <qmmp/qmmp.h>
-#include <qmmpui/qmmpuisettings.h>
 #include "skin.h"
 #include "listwidgetdrawer.h"
 
@@ -31,7 +30,6 @@
 ListWidgetDrawer::ListWidgetDrawer()
 {
     m_skin = Skin::instance();
-    m_header_model = QmmpUiSettings::instance()->headerModel();
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
@@ -148,7 +146,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int size = m_header_model->size(i);
+        int size = row->sizes[i];
 
         if(i == 0 && row->numberColumnWidth)
             size -= row->numberColumnWidth;
@@ -248,12 +246,12 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
         }
 
-        for(int i = 0; i < m_header_model->count(); i++)
+        for(int i = 0; i < row->titles.count(); i++)
         {
             if(sx - m_padding <= row->rect.x() + row->lengthColumnWidth)
                 break;
 
-            int size = m_header_model->size(i);
+            int size = row->sizes[i];
             if(i == 0 && row->numberColumnWidth)
                 size -= row->numberColumnWidth;
 
@@ -261,7 +259,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
             sx -= size;
 
-            if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
+            if(row->titles.count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
             {
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
@@ -296,12 +294,12 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
         }
 
-        for(int i = 0; i < m_header_model->count(); i++)
+        for(int i = 0; i < row->sizes.count(); i++)
         {
             if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
                 break;
 
-            int size = m_header_model->size(i);
+            int size = row->sizes[i];
             if(i == 0 && row->numberColumnWidth)
                 size -= row->numberColumnWidth;
 
@@ -309,7 +307,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawText(sx + m_padding, sy, row->titles[i]);
             sx += size;
 
-            if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
+            if(row->titles.count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);

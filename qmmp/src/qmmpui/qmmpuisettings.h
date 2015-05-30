@@ -27,6 +27,7 @@
 #include "metadataformatter.h"
 
 class QTimer;
+class MetaDataHelper;
 
 /*! @brief The QmmpUiSettings class provides access to global libqmmpui library settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -178,11 +179,6 @@ public:
      *         otherwise.
      */
     bool clearPreviousPlayList() const;
-
-    PlayListHeaderModel *headerModel();
-
-    const MetaDataFormatter* groupFormatter() const;
-
     /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
@@ -275,9 +271,7 @@ private:
     //timer
     QTimer *m_timer;
     //formatters
-    MetaDataFormatter m_group_formatter;
-    //column settings
-    PlayListHeaderModel *m_header;
+    MetaDataHelper *m_helper;
 };
 
 #endif // QMMPUISETTINGS_H

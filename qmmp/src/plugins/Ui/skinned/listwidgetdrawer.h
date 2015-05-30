@@ -41,6 +41,7 @@ struct ListWidgetRow
         lengthColumnWidth = 0;
     }
     QStringList titles;
+    QList<int> sizes;
     QString length;
     QString extraString;
     int number;
@@ -85,7 +86,6 @@ private:
     Skin *m_skin;
     QFontMetrics *m_metrics;
     QFontMetrics *m_extra_metrics;
-    PlayListHeaderModel *m_header_model;
     QFont m_font, m_extra_font;
     bool m_update;
     bool m_show_number;

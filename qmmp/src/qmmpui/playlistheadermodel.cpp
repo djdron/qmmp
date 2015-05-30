@@ -22,38 +22,24 @@
 #include <QApplication>
 #include <qmmp/qmmp.h>
 #include "columneditor_p.h"
+#include "metadatahelper_p.h"
 #include "playlistheadermodel.h"
 
 PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
     QObject(parent)
 {
-    QSettings s (Qmmp::configFile(), QSettings::IniFormat);
-    s.beginGroup("PlayList");
-    int c = qMax(1, s.value("column_count", 1).toInt());
-    for(int i = 0; i < c; ++i)
-    {
-        s.beginGroup(QString("column%1").arg(i));
-        Column col;
-        col.name = s.value("name", tr("Artist - Title")).toString();
-        col.pattern = s.value("pattern", "%if(%p,%p - %t,%t)").toString();
-        col.size = s.value("size", 150).toInt();
-        col.titleFormatter = new MetaDataFormatter(col.pattern);
-        col.autoResize = s.value("autoresize", false).toBool();
-        col.minSize = 30;
-        m_columns.append(col);
-        s.endGroup();
-    }
-    s.endGroup();
+    m_helper = MetaDataHelper::instance();
+
+    ColumnHeader col;
+    col.name = tr("Artist - Title");
+    col.pattern = "%if(%p,%p - %t,%t)";
+    m_columns.append(col);
+    m_helper->setTitleFormats(QStringList() << col.pattern);
 }
 
 PlayListHeaderModel::~PlayListHeaderModel()
 {
     sync();
-    foreach (Column col, m_columns)
-    {
-        delete col.titleFormatter;
-        col.titleFormatter = 0;
-    }
     m_columns.clear();
 }
 
@@ -65,13 +51,9 @@ void PlayListHeaderModel::insert(int index, const QString &name, const QString &
         return;
     }
 
-    Column col;
+    ColumnHeader col;
     col.name = name;
     col.pattern = pattern;
-    col.titleFormatter = new MetaDataFormatter(pattern);
-    col.size = 50;
-    col.autoResize = false;
-    col.minSize = 30;
     m_columns.insert(index, col);
     sync();
     emit columnAdded(index);
@@ -89,56 +71,9 @@ void PlayListHeaderModel::remove(int index)
     if(m_columns.count() == 1)
         return;
 
-    delete m_columns.takeAt(index).titleFormatter;
     sync();
     emit columnRemoved(index);
     emit headerChanged();
-}
-
-void PlayListHeaderModel::resize(int index, int size)
-{
-    if(index < 0 || index >= m_columns.size())
-    {
-        qWarning("ColumnManager: index is out of range");
-        return;
-    }
-
-   m_columns[index].size = qMax(size, m_columns[index].minSize);
-   emit columnResized(index);
-   emit headerChanged();
-}
-
-void PlayListHeaderModel::setAutoResize(int index)
-{
-    if(index >= m_columns.size())
-    {
-        qWarning("ColumnManager: index is out of range");
-        return;
-    }
-
-    for(int i = 0; i < m_columns.size(); ++i)
-    {
-        m_columns[i].autoResize = (i == index);
-    }
-}
-
-void PlayListHeaderModel::setMinimalSize(int index, int size)
-{
-    if(index >= m_columns.size())
-    {
-        qWarning("ColumnManager: index is out of range");
-        return;
-    }
-
-    if(size < 10)
-    {
-        qWarning("ColumnManager: invalid size");
-        return;
-    }
-
-    m_columns[index].minSize = size;
-    if(m_columns[index].size < size)
-        resize(index, size);
 }
 
 void PlayListHeaderModel::move(int from, int to)
@@ -176,7 +111,6 @@ void PlayListHeaderModel::execEdit(int index, QWidget *parent)
     {
         m_columns[index].name = editor.name();
         m_columns[index].pattern = editor.pattern();
-        m_columns[index].titleFormatter->setPattern(editor.pattern());
         emit columnChanged(index);
         emit headerChanged();
     }
@@ -204,26 +138,6 @@ int PlayListHeaderModel::count()
     return m_columns.count();
 }
 
-const MetaDataFormatter *PlayListHeaderModel::titleFormatter(int index) const
-{
-    if(index < 0 || index >= m_columns.size())
-    {
-        qWarning("ColumnManager: index is out of range");
-        return 0;
-    }
-    return m_columns[index].titleFormatter;
-}
-
-int PlayListHeaderModel::size(int index) const
-{
-    if(index < 0 || index >= m_columns.size())
-    {
-        qWarning("ColumnManager: index is out of range");
-        return 0;
-    }
-    return m_columns[index].size;
-}
-
 const QString PlayListHeaderModel::name(int index) const
 {
     if(index < 0 || index >= m_columns.size())
@@ -243,30 +157,18 @@ const QString PlayListHeaderModel::pattern(int index) const
     return m_columns[index].pattern;
 }
 
-int PlayListHeaderModel::autoResizeColumn() const
-{
-    for(int i = 0; i < m_columns.count(); ++i)
-    {
-        if(m_columns[i].autoResize)
-            return i;
-    }
-    return -1;
-}
-
 void PlayListHeaderModel::sync()
 {
-    QSettings s (Qmmp::configFile(), QSettings::IniFormat);
+    /*QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
     int old_count = s.value("column_count", 1).toInt();
     s.setValue("column_count", m_columns.count());
     for(int i = 0; i < m_columns.count(); ++i)
     {
         s.beginGroup(QString("column%1").arg(i));
-        Column col = m_columns.at(i);
+        ColumnHeader col = m_columns.at(i);
         s.setValue("name", col.name);
         s.setValue("pattern", col.pattern);
-        s.setValue("size", col.size);
-        s.setValue("autoresize", col.autoResize);
         s.endGroup();
     }
     s.setValue("column_count", m_columns.count());
@@ -274,5 +176,5 @@ void PlayListHeaderModel::sync()
     {
         s.remove(QString("column%1").arg(i));
     }
-    s.endGroup();
+    s.endGroup();*/
 }

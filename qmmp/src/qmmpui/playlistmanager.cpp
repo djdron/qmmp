@@ -36,6 +36,7 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
         qFatal("PlayListManager: only one instance is allowed");
     m_instance = this;
     m_ui_settings = QmmpUiSettings::instance();
+    m_header = new PlayListHeaderModel(this);
     m_current = 0;
     m_selected = 0;
     m_timer = new QTimer(this);
@@ -227,6 +228,11 @@ PlayListModel *PlayListManager::playListAt(int i) const
     if(i >= 0 && i < m_models.count())
         return m_models.at(i);
     return 0;
+}
+
+PlayListHeaderModel *PlayListManager::headerModel()
+{
+    return m_header;
 }
 
 void PlayListManager::readPlayLists()
