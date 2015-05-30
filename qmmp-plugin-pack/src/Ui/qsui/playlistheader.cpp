@@ -32,7 +32,7 @@
 #include <QIcon>
 #include <QStyleOptionHeader>
 #include <qmmp/qmmp.h>
-#include <qmmpui/qmmpuisettings.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistheadermodel.h>
 #include <qmmpui/playlistmanager.h>
 #include "playlistheader.h"
@@ -45,10 +45,11 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
+    m_update = false;
     m_metrics = 0;
     m_task = NO_TASK;
 
-    m_model = QmmpUiSettings::instance()->headerModel();
+    m_model = PlayListManager::instance()->headerModel();
     m_menu = new QMenu(this);
     m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add Column"), this, SLOT(addColumn()));
     m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit Column"), this, SLOT(editColumn()));
@@ -58,6 +59,11 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove Column"), this, SLOT(removeColumn()));
 
+    connect(m_model, SIGNAL(columnAdded(int)), SLOT(onColumnAdded(int)));
+    connect(m_model, SIGNAL(columnRemoved(int)), SLOT(onColumnRemoved(int)));
+    connect(m_model, SIGNAL(columnMoved(int,int)), SLOT(onColumnMoved(int,int)));
+    connect(m_model, SIGNAL(columnChanged(int)), SLOT(updateColumns()));
+
     readSettings();
 }
 
@@ -66,6 +72,9 @@ PlayListHeader::~PlayListHeader()
     if (m_metrics)
         delete m_metrics;
     m_metrics = 0;
+    writeSettings();
+    qDeleteAll(m_columns);
+    m_columns.clear();
 }
 
 void PlayListHeader::readSettings()
@@ -95,6 +104,23 @@ void PlayListHeader::readSettings()
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_pl_padding = QFontMetrics(pl_font).width("9")/2;
 
+    if(!m_update)
+    {
+        m_model->restoreSettings(&settings);
+        QList<QVariant> sizes = settings.value("pl_column_sizes").toList();
+        int autoResizeColumn = settings.value("pl_autoresize_column", -1).toInt();
+        for(int i = 0; i < m_model->count(); ++i)
+        {
+            Column *col = new Column();
+            if(i < sizes.count())
+                col->size = sizes.at(i).toInt();
+            if(i == autoResizeColumn)
+                col->autoResize = true;
+            m_columns.append(col);
+        }
+        m_update = true;
+    }
+
     settings.endGroup();
     updateColumns();
 }
@@ -104,15 +130,21 @@ void PlayListHeader::setNumberWidth(int width)
     if(width != m_number_width)
     {
         m_number_width = width;
+        m_columns[0]->minSize = 30 + (m_number_width ? (m_number_width + 2 * m_pl_padding) : 0);
+        m_columns[0]->size = qMax(m_columns[0]->size, m_columns[0]->minSize);
         updateColumns();
     }
 }
 
 void PlayListHeader::updateColumns()
 {
-    m_rects.clear();
-    m_names.clear();
     bool rtl = (layoutDirection() == Qt::RightToLeft);
+
+    while (m_columns.count() > m_model->count())
+        delete m_columns.takeFirst();
+
+    while(m_columns.count() < m_model->count())
+        m_columns << new Column();
 
     int sx = 5;
     if(m_number_width)
@@ -120,19 +152,25 @@ void PlayListHeader::updateColumns()
 
     if(m_model->count() == 1)
     {
-        m_rects << (rtl ? QRect(5, 0, width() - sx - 5, height()) : QRect(sx, 0, width() - sx - 5, height()));
-        m_names << m_model->name(0);
+        m_columns[0]->rect = (rtl ? QRect(5, 0, width() - sx - 5, height()) : QRect(sx, 0, width() - sx - 5, height()));
+        m_columns[0]->name = m_model->name(0);
         return;
     }
 
     for(int i = 0; i < m_model->count(); ++i)
     {
+        int size = m_columns[i]->size;
+
+                //add number width to the first column
+        if(i == 0 && m_number_width)
+            size -= m_number_width + 2 * m_pl_padding;
+
         if(rtl)
-            m_rects << QRect(width() - sx - m_model->size(i), 0, m_model->size(i), height());
+            m_columns[i]->rect = QRect(width() - sx - size, 0, size, height());
         else
-            m_rects << QRect(sx, 0, m_model->size(i), height());
-        m_names << m_model->name(i);
-        sx += m_model->size(i);
+            m_columns[i]->rect = QRect(sx, 0, size, height());
+        m_columns[i]->name = m_model->name(i);
+        sx += size;
     }
     update();
 }
@@ -140,6 +178,14 @@ void PlayListHeader::updateColumns()
 int PlayListHeader::requiredHeight() const
 {
     return m_size_hint.height();
+}
+
+QList<int> PlayListHeader::sizes() const
+{
+    QList<int> sizeList;
+    for(int i = 0; i < m_columns.size(); ++i)
+        sizeList.append(m_columns[i]->size);
+    return sizeList;
 }
 
 void PlayListHeader::showSortIndicator(int column, bool reverted)
@@ -164,9 +210,9 @@ void PlayListHeader::hideSortIndicator()
 void PlayListHeader::addColumn()
 {
     int column = findColumn(m_pressed_pos);
-    if(column < 0 && m_pressed_pos.x() > m_rects.last().right())
+    if(column < 0 && m_pressed_pos.x() > m_columns.last()->rect.right())
         column = m_model->count();
-    else if(column < 0 && m_pressed_pos.x() < m_rects.first().x())
+    else if(column < 0 && m_pressed_pos.x() < m_columns.first()->rect.x())
         column = 0;
 
     if(column < 0)
@@ -193,18 +239,44 @@ void PlayListHeader::removeColumn()
 
 void PlayListHeader::setAutoResize(bool yes)
 {
-   if(m_pressed_column < 0)
+    if(m_pressed_column < 0)
         return;
 
-   m_model->setAutoResize(yes ? m_pressed_column : -1);
+    if(yes)
+    {
+        for(int i = 0; i < m_columns.count(); ++i)
+            m_columns[i]->autoResize = false;
+    }
+
+    m_columns[m_pressed_column]->autoResize = yes;
 }
 
 void PlayListHeader::restoreSize()
 {
     if(m_pressed_column < 0)
-         return;
+        return;
 
-    m_model->resize(m_pressed_column, 100);
+    m_columns[m_pressed_column]->size = 150;
+    updateColumns();
+    resizeColumnRequest();
+}
+
+void PlayListHeader::onColumnAdded(int index)
+{
+    m_columns.insert(index, new Column());
+    updateColumns();
+}
+
+void PlayListHeader::onColumnRemoved(int index)
+{
+    delete m_columns.takeAt(index);
+    updateColumns();
+}
+
+void PlayListHeader::onColumnMoved(int from, int to)
+{
+    m_columns.move(from, to);
+    updateColumns();
 }
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
@@ -221,27 +293,27 @@ void PlayListHeader::mousePressEvent(QMouseEvent *e)
 
             if(rtl)
             {
-                if(e->pos().x() < m_rects[m_pressed_column].x() + m_metrics->width("9"))
+                if(e->pos().x() < m_columns[m_pressed_column]->rect.x() + m_metrics->width("9"))
                 {
-                    m_old_size = m_model->size(m_pressed_column);
+                    m_old_size = m_columns[m_pressed_column]->size;
                     m_task = RESIZE;
                 }
                 else
                 {
-                    m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
+                    m_press_offset = e->pos().x() - m_columns[m_pressed_column]->rect.x();
                     m_task = SORT;
                 }
             }
             else
             {
-                if(e->pos().x() > m_rects[m_pressed_column].right() - m_metrics->width("9"))
+                if(e->pos().x() > m_columns[m_pressed_column]->rect.right() - m_metrics->width("9"))
                 {
-                    m_old_size = m_model->size(m_pressed_column);
+                    m_old_size = m_columns[m_pressed_column]->size;
                     m_task = RESIZE;
                 }
                 else
                 {
-                    m_press_offset = e->pos().x() - m_rects.at(m_pressed_column).x();
+                    m_press_offset = e->pos().x() - m_columns[m_pressed_column]->rect.x();
                     m_task = SORT;
                 }
             }
@@ -275,25 +347,28 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
     if(m_task == RESIZE && m_model->count() > 1)
     {
         if(rtl)
-            m_model->resize(m_pressed_column, m_old_size - e->pos().x() + m_pressed_pos.x());
+            m_columns[m_pressed_column]->size = m_old_size - e->pos().x() + m_pressed_pos.x();
         else
-            m_model->resize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
+            m_columns[m_pressed_column]->size = m_old_size + e->pos().x() - m_pressed_pos.x();
+        m_columns[m_pressed_column]->size = qMax(m_columns[m_pressed_column]->size, m_columns[m_pressed_column]->minSize);
+        updateColumns();
+        emit resizeColumnRequest();
     }
     else if(m_task == MOVE)
     {
         m_mouse_pos = e->pos();
 
         int dest = -1;
-        for(int i = 0; i < m_rects.count(); ++i)
+        for(int i = 0; i < m_columns.count(); ++i)
         {
-            int x_delta = m_mouse_pos.x() - m_rects.at(i).x();
-            if(x_delta < 0 || x_delta > m_rects.at(i).width())
+            int x_delta = m_mouse_pos.x() - m_columns[i]->rect.x();
+            if(x_delta < 0 || x_delta > m_columns[i]->rect.width())
                 continue;
 
             if(rtl)
             {
-                if((x_delta > m_rects.at(i).width()/2 && m_pressed_column > i) ||
-                        (x_delta < m_rects.at(i).width()/2 && m_pressed_column < i))
+                if((x_delta > m_columns[i]->rect.width()/2 && m_pressed_column > i) ||
+                        (x_delta < m_columns[i]->rect.width()/2 && m_pressed_column < i))
                 {
                     dest = i;
                     break;
@@ -301,8 +376,8 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
             }
             else
             {
-                if((x_delta > m_rects.at(i).width()/2 && m_pressed_column < i) ||
-                        (x_delta < m_rects.at(i).width()/2 && m_pressed_column > i))
+                if((x_delta > m_columns[i]->rect.width()/2 && m_pressed_column < i) ||
+                        (x_delta < m_columns[i]->rect.width()/2 && m_pressed_column > i))
                 {
                     dest = i;
                     break;
@@ -324,14 +399,14 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
         int column = findColumn(e->pos());
         if(rtl)
         {
-            if(column >= 0 && e->pos().x() < m_rects[column].x() + m_metrics->width("9"))
+            if(column >= 0 && e->pos().x() < m_columns[column]->rect.x() + m_metrics->width("9"))
                 setCursor(Qt::SplitHCursor);
             else
                 setCursor(Qt::ArrowCursor);
         }
         else
         {
-            if(column >= 0 && e->pos().x() > m_rects[column].right() - m_metrics->width("9"))
+            if(column >= 0 && e->pos().x() > m_columns[column]->rect.right() - m_metrics->width("9"))
                 setCursor(Qt::SplitHCursor);
             else
                 setCursor(Qt::ArrowCursor);
@@ -348,19 +423,27 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
     }
 
     int delta = e->size().width() - e->oldSize().width();
-    int index = m_model->autoResizeColumn();
+    int index = -1;
+    for(int i = 0; i < m_columns.count(); ++i)
+    {
+        if(m_columns.at(i)->autoResize)
+        {
+            index = i;
+            break;
+        }
+    }
 
     if(index >= 0 && e->oldSize().width() > 10)
     {
-        m_model->resize(index, m_model->size(index) + delta);
+        m_columns[index]->size = qMax(m_columns[index]->minSize, m_columns[index]->size + delta);
         updateColumns();
         return;
     }
 
     if(layoutDirection() == Qt::RightToLeft || e->oldSize().height() != e->size().height())
     {
-       updateColumns();
-       return;
+        updateColumns();
+        return;
     }
 }
 
@@ -370,7 +453,7 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
     m_pressed_column = findColumn(e->pos());
     if(m_pressed_column >= 0)
     {
-        m_autoResize->setChecked(m_model->autoResizeColumn() == m_pressed_column);
+        m_autoResize->setChecked(m_columns[m_pressed_column]->autoResize);
         m_autoResize->setEnabled(true);
         foreach (QAction *action, m_menu->actions())
             action->setVisible(true);
@@ -395,25 +478,25 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         QStyleOption opt;
         opt.initFrom(this);
         opt.state |= QStyle::State_Horizontal;
-        opt.rect = QRect(0,0,m_rects.first().x(), height());
+        opt.rect = QRect(0,0,m_columns.first()->rect.x(), height());
         style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
-        opt.rect = QRect(m_rects.last().right(), 0,  width() - m_rects.last().right(), height());
+        opt.rect = QRect(m_columns.last()->rect.right(), 0,  width() - m_columns.last()->rect.right(), height());
         style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
     }
 
-    for(int i = 0; i < m_rects.count(); ++i)
+    for(int i = 0; i < m_columns.count(); ++i)
     {
         QStyleOptionHeader opt;
         initStyleOption(&opt);
-        opt.rect = m_rects[i];
-        opt.text = m_names[i];
+        opt.rect = m_columns[i]->rect;
+        opt.text = m_columns[i]->name;
         opt.section = i;
         opt.state |= QStyle::State_Active;
         if(i == 0)
             opt.position = QStyleOptionHeader::Beginning;
-        else if(i < m_rects.count() - 1)
+        else if(i < m_columns.count() - 1)
             opt.position = QStyleOptionHeader::Middle;
-        else if(i == m_rects.count() - 1)
+        else if(i == m_columns.count() - 1)
             opt.position = QStyleOptionHeader::End;
 
         if(i == m_sorting_column)
@@ -422,15 +505,15 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         style()->drawControl(QStyle::CE_Header, &opt, &painter, this);
     }
 
-    if(m_names.count() == 1)
+    if(m_columns.count() == 1)
         return;
 
     if(m_task == MOVE)
     {
         QStyleOptionHeader opt;
         initStyleOption(&opt);
-        opt.rect = m_rects[m_pressed_column];
-        opt.text = m_names[m_pressed_column];
+        opt.rect = m_columns[m_pressed_column]->rect;
+        opt.text = m_columns[m_pressed_column]->name;
         opt.section = m_pressed_column;
         painter.setOpacity(0.75);
         opt.rect.moveTo(m_mouse_pos.x() - m_press_offset, opt.rect.y());
@@ -440,12 +523,30 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
 int PlayListHeader::findColumn(QPoint pos)
 {
-    for(int i = 0; i < m_rects.count(); ++i)
+    for(int i = 0; i < m_columns.count(); ++i)
     {
-        if(m_rects.at(i).contains(pos))
+        if(m_columns[i]->rect.contains(pos))
             return i;
     }
     return -1;
+}
+
+void PlayListHeader::writeSettings()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    m_model->saveSettings(&settings);
+    QList<QVariant> sizes;
+    int autoResizeColumn = -1;
+    for(int i = 0; i < m_columns.count(); ++i)
+    {
+       sizes << m_columns[i]->size;
+       if(m_columns[i]->autoResize)
+           autoResizeColumn = i;
+    }
+    settings.setValue("pl_column_sizes", sizes);
+    settings.setValue("pl_autoresize_column", autoResizeColumn);
+    settings.endGroup();
 }
 
 void PlayListHeader::initStyleOption(QStyleOptionHeader *opt)

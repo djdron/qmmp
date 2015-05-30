@@ -22,14 +22,14 @@
 #include <QPainter>
 #include <QApplication>
 #include <qmmp/qmmp.h>
-#include <qmmpui/qmmpuisettings.h>
+#include <qmmpui/playlistmanager.h>
 #include "listwidgetdrawer.h"
 
 // |= number=|=row1=|=row2=|=extra= duration=|
 
 ListWidgetDrawer::ListWidgetDrawer()
 {
-    m_header_model = QmmpUiSettings::instance()->headerModel();
+    m_header_model = PlayListManager::instance()->headerModel();
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
@@ -180,11 +180,11 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     for(int i = 0; i < row->titles.count() && visible_width > 0; ++i)
     {
-        int width = qMin(m_header_model->size(i) - 2 * m_padding,
+        int width = qMin(row->sizes[i] - 2 * m_padding,
                          visible_width - 2 * m_padding);
 
         row->titles[i] = metrics->elidedText (row->titles[i], Qt::ElideRight, width);
-        visible_width -= m_header_model->size(i);
+        visible_width -= row->sizes[i];
     }
 }
 
@@ -317,7 +317,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
             painter->drawText(sx - m_padding - metrics->width(row->titles[i]),
                               sy, row->titles[i]);
-            sx -= m_header_model->size(i);
+            sx -= row->sizes[i];
 
             if(m_header_model->count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
             {
@@ -356,7 +356,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 break;
 
             painter->drawText(sx + m_padding, sy, row->titles[i]);
-            sx += m_header_model->size(i);
+            sx += row->sizes[i];
 
             if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {

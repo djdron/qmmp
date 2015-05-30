@@ -40,6 +40,7 @@ struct ListWidgetRow
         lengthColumnWidth = 0;
     }
     QStringList titles;
+    QList<int> sizes;
     QString length;
     QString extraString;
     int number;

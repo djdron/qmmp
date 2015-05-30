@@ -32,7 +32,6 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
-#include <qmmpui/playlistheadermodel.h>
 #include <qmmpui/mediaplayer.h>
 #include "listwidget.h"
 #include "playlistheader.h"
@@ -47,7 +46,6 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     setFocusPolicy(Qt::StrongFocus);
     m_popupWidget = 0;
     m_ui_settings = QmmpUiSettings::instance();
-    PlayListHeaderModel *headerModel = m_ui_settings->headerModel();
     m_menu = 0;
     m_model = model;
     m_timer = new QTimer(this);
@@ -56,7 +54,6 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     m_header = new PlayListHeader(this);
     m_scrollBar = new QScrollBar(Qt::Vertical, this);
     m_update = false;
-    m_resize = false;
     m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
     m_prev_y = 0;
@@ -72,7 +69,7 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     readSettings();
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(headerModel, SIGNAL(headerChanged()), SLOT(updateColumns()));
+    connect(m_header, SIGNAL(resizeColumnRequest()), SLOT(updateColumns()));
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
     connect(m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect(m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
@@ -264,9 +261,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     bool rtl = layoutDirection() == Qt::RightToLeft;
     m_scrollBar->setGeometry(rtl ? 0 : width() - m_scrollBar->sizeHint().width(), 0,
                              m_scrollBar->sizeHint().width(), height());
-    m_resize = true;
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
-    m_resize = false;
     m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
     m_row_count = qMax(m_row_count, 0);
     if(e->oldSize().height() < 10)
@@ -388,6 +383,7 @@ void ListWidget::updateList(int flags)
                           width() - scroll_bar_width - 10, m_drawer.rowHeight() - 1);
 
         row->titles = items[i]->formattedTitles();
+        row->sizes = m_header->sizes();
 
         (m_first + i) == m_model->currentIndex() ? row->flags |= ListWidgetRow::CURRENT :
                 row->flags &= ~ListWidgetRow::CURRENT;
@@ -421,18 +417,7 @@ void ListWidget::updateList(int flags)
 
 void ListWidget::updateColumns()
 {
-    if(m_resize) //do no update while resize event
-        return;
-
-    m_header->updateColumns();
-    m_header->hideSortIndicator();
-    QList<PlayListItem *> items = m_model->mid(m_first, m_row_count);
-    for(int i = 0; i < items.count(); ++i)
-    {
-        m_rows[i]->titles = items[i]->formattedTitles();
-        m_drawer.prepareRow(m_rows[i]);  //elide titles
-    }
-    update();
+    updateList(PlayListModel::METADATA);
 }
 
 void ListWidget::autoscroll()
