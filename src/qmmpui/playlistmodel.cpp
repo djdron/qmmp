@@ -22,6 +22,7 @@
 #include <QTextStream>
 #include <time.h>
 #include <qmmp/metadatamanager.h>
+#include "metadatahelper_p.h"
 #include "playlistparser.h"
 #include "playlistformat.h"
 #include "playlistcontainer_p.h"
@@ -273,6 +274,11 @@ int PlayListModel::count() const
 int PlayListModel::trackCount() const
 {
     return m_container->trackCount();
+}
+
+int PlayListModel::columnCount() const
+{
+    return MetaDataHelper::instance()->columnCount();
 }
 
 PlayListTrack* PlayListModel::currentTrack() const
@@ -822,7 +828,7 @@ void PlayListModel::sortByColumn(int column)
     if(m_container->isEmpty())
         return;
 
-    if(column < 0 || column >= m_ui_settings->headerModel()->count())
+    if(column < 0 || column >= columnCount())
         return;
 
     m_task->sortByColumn(m_container->tracks(), column);

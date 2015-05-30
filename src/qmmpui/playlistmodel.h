@@ -112,6 +112,8 @@ public:
      * Returns number of tracks.
      */
     int trackCount() const;
+
+    int columnCount() const;
     /*!
      * Returns the current track.
      */

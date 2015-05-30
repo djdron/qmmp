@@ -21,12 +21,13 @@
 #include <QApplication>
 #include <qmmp/metadatamanager.h>
 #include "qmmpuisettings.h"
+#include "metadatahelper_p.h"
 #include "playlisttrack.h"
 
 PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->headerModel();
+    m_helper = MetaDataHelper::instance();
     m_length = 0;
     m_refCount = 0;
     m_sheduledForDeletion = false;
@@ -36,7 +37,7 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->headerModel();
+    m_helper = MetaDataHelper::instance();
     m_refCount = 0;
     m_sheduledForDeletion = false;
 
@@ -54,7 +55,7 @@ PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(in
     PlayListItem()
 {
     m_settings = QmmpUiSettings::instance();
-    m_columnManager = m_settings->headerModel();
+    m_helper = MetaDataHelper::instance();
     setLength(m_length = info->length());
     insert(Qmmp::URL, info->path());
     m_refCount = 0;
@@ -131,18 +132,18 @@ bool PlayListTrack::isUsed() const
 
 const QString PlayListTrack::formattedTitle(int column)
 {
-    if(m_formattedTitles.count() != m_settings->headerModel()->count())
+    if(m_formattedTitles.count() != m_helper->columnCount())
     {
-        while(m_formattedTitles.count() > m_columnManager->count())
+        while(m_formattedTitles.count() > m_helper->columnCount())
             m_formattedTitles.takeLast();
 
-        while(m_formattedTitles.count() < m_columnManager->count())
+        while(m_formattedTitles.count() < m_helper->columnCount())
             m_formattedTitles.append(QString());
 
-        while(m_titleFormats.count() > m_columnManager->count())
+        while(m_titleFormats.count() > m_helper->columnCount())
             m_titleFormats.takeLast();
 
-        while(m_titleFormats.count() < m_columnManager->count())
+        while(m_titleFormats.count() < m_helper->columnCount())
             m_titleFormats.append(QString());
     }
 
@@ -152,9 +153,9 @@ const QString PlayListTrack::formattedTitle(int column)
         return QString();
     }
 
-    if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
+    if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_helper->titleFormatter(column)->pattern())
     {
-        m_titleFormats[column] = m_settings->headerModel()->pattern(column);
+        m_titleFormats[column] = m_helper->titleFormatter(column)->pattern();
         formatTitle(column);
     }
     return m_formattedTitles[column];
@@ -162,26 +163,26 @@ const QString PlayListTrack::formattedTitle(int column)
 
 const QStringList PlayListTrack::formattedTitles()
 {
-    if(m_formattedTitles.count() != m_settings->headerModel()->count())
+    if(m_formattedTitles.count() != m_helper->columnCount())
     {
-        while(m_formattedTitles.count() > m_columnManager->count())
+        while(m_formattedTitles.count() > m_helper->columnCount())
             m_formattedTitles.takeLast();
 
-        while(m_formattedTitles.count() < m_columnManager->count())
+        while(m_formattedTitles.count() < m_helper->columnCount())
             m_formattedTitles.append(QString());
 
-        while(m_titleFormats.count() > m_columnManager->count())
+        while(m_titleFormats.count() > m_helper->columnCount())
             m_titleFormats.takeLast();
 
-        while(m_titleFormats.count() < m_columnManager->count())
+        while(m_titleFormats.count() < m_helper->columnCount())
             m_titleFormats.append(QString());
     }
 
-    for(int column = 0; column < m_columnManager->count(); column++)
+    for(int column = 0; column < m_helper->columnCount(); column++)
     {
-        if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_columnManager->pattern(column))
+        if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_helper->titleFormatter(column)->pattern())
         {
-            m_titleFormats[column] = m_settings->headerModel()->pattern(column);
+            m_titleFormats[column] = m_helper->titleFormatter(column)->pattern();
             formatTitle(column);
         }
     }
@@ -219,7 +220,7 @@ const QString PlayListTrack::url() const
 
 void PlayListTrack::formatTitle(int column)
 {
-    m_formattedTitles[column] = m_columnManager->titleFormatter(column)->format(this);
+    m_formattedTitles[column] = m_helper->titleFormatter(column)->format(this);
     if(m_formattedTitles.count() == 1)
     {
         if (m_formattedTitles[column].isEmpty())
@@ -240,7 +241,7 @@ void PlayListTrack::formatGroup()
         m_group = qApp->translate("PlayListTrack", "Streams");
         return;
     }
-    m_group = m_settings->groupFormatter()->format(this);
+    m_group = m_helper->groupFormatter()->format(this);
     if (m_group.isEmpty())
         m_group = qApp->translate("PlayListTrack", "Empty group");
     if (m_settings->convertUnderscore())

@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <qmmp/qmmp.h>
+#include "metadatahelper_p.h"
 #include "playlistmanager.h"
 #include "qmmpuisettings.h"
 
@@ -32,7 +33,7 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     if(m_instance)
         qFatal("QmmpUiSettings: only one instance is allowed");
     m_instance = this;
-    m_header = new PlayListHeaderModel(this);
+    m_helper = new MetaDataHelper;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     s.beginGroup("PlayList");
     m_group_format = s.value("group_format", "%p%if(%p&%a, - %if(%y,[%y] ,),)%a").toString();
@@ -60,13 +61,14 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_timer->setSingleShot(true);
     connect(m_timer, SIGNAL(timeout()), SLOT(sync()));
 
-    m_group_formatter.setPattern(m_group_format);
+    m_helper->setGroupFormat(m_group_format);
 }
 
 QmmpUiSettings::~QmmpUiSettings()
 {
     m_instance = 0;
     sync();
+    delete m_helper;
 }
 
 const QString QmmpUiSettings::groupFormat() const
@@ -129,7 +131,7 @@ void QmmpUiSettings::setGroupFormat(const QString &groupFormat)
     if(groupFormat != m_group_format)
     {
         m_group_format = groupFormat;
-        m_group_formatter.setPattern(groupFormat);
+        m_helper->setGroupFormat(m_group_format);
         foreach(PlayListModel *model, PlayListManager::instance()->playLists())
         {
             model->rebuildGroups();
@@ -296,14 +298,4 @@ void QmmpUiSettings::setClearPreviousPlayList(bool enabled)
 bool QmmpUiSettings::clearPreviousPlayList() const
 {
     return m_clear_prev_playlist;
-}
-
-PlayListHeaderModel *QmmpUiSettings::headerModel()
-{
-    return m_header;
-}
-
-const MetaDataFormatter *QmmpUiSettings::groupFormatter() const
-{
-    return &m_group_formatter;
 }

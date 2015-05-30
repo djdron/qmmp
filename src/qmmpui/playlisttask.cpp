@@ -23,6 +23,7 @@
 #include <QTime>
 #include <qmmp/metadatamanager.h>
 #include "qmmpuisettings.h"
+#include "metadatahelper_p.h"
 #include "playlisttrack.h"
 #include "playlisttask_p.h"
 
@@ -188,7 +189,7 @@ void PlayListTask::sortByColumn(QList<PlayListTrack *> tracks, int column)
     m_task = SORT_BY_COLUMN;
     m_input_tracks = tracks;
     m_column = column;
-    if(QmmpUiSettings::instance()->headerModel()->pattern(column) == "%n")
+    if(MetaDataHelper::instance()->titleFormatter(column)->pattern() == "%n")
         m_sort_mode = PlayListModel::TRACK;
     else
         m_sort_mode = PlayListModel::TITLE;

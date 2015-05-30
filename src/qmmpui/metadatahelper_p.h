@@ -18,53 +18,38 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef PLAYLISTHEADERMODEL_H
-#define PLAYLISTHEADERMODEL_H
+#ifndef METADATAHELPER_P_H
+#define METADATAHELPER_P_H
 
-#include <QObject>
-#include <QWidget>
+#include <QList>
+#include <QStringList>
 #include "metadataformatter.h"
 
-class MetaDataHelper;
-
-/**
+/*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListHeaderModel : public QObject
+class MetaDataHelper
 {
-    Q_OBJECT
 public:
-    explicit PlayListHeaderModel(QObject *parent = 0);
+    MetaDataHelper();
+    ~MetaDataHelper();
 
-    ~PlayListHeaderModel();
+    void setTitleFormats(const QStringList &titleFormats);
+    void setGroupFormat(const QString &groupFormat);
 
-    void insert(int index, const QString &name, const QString &pattern);
-    void remove(int index);
-    void move(int from, int to);
-    void execEdit(int index, QWidget *parent = 0);
-    void execInsert(int index, QWidget *parent = 0);
+    int columnCount() const;
+    const MetaDataFormatter *titleFormatter(int index) const;
+    const MetaDataFormatter *groupFormatter() const;
 
-    int count();
-
-    const QString name(int index) const;
-    const QString pattern(int index) const;
-
-signals:
-    void columnAdded(int index);
-    void columnRemoved(int index);
-    void columnChanged(int index);
-    void columnMoved(int from, int to);
-    void headerChanged();
+    static MetaDataHelper *instance();
 
 private:
-    void sync();
-    struct ColumnHeader
-    {
-        QString name;
-        QString pattern;
-    };
-    QList<ColumnHeader> m_columns;
-    MetaDataHelper *m_helper;
+    static MetaDataHelper *m_instance;
+
+    MetaDataFormatter *m_group_formatter;
+    QList <MetaDataFormatter*> m_title_formatters;
+
+
 };
 
-#endif // COLUMNMANAGER_H
+#endif // METADATAHELPER_P_H
