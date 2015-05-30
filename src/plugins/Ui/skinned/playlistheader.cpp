@@ -300,7 +300,7 @@ void PlayListHeader::restoreSize()
 
     m_columns[m_pressed_column]->size = 150;
     updateColumns();
-    resizeColumnRequest();
+    emit resizeColumnRequest();
 }
 
 void PlayListHeader::onColumnAdded(int index)
