@@ -77,6 +77,7 @@ private:
     void paintEvent(QPaintEvent *);
     void loadColors();
     int findColumn(QPoint pos);
+    void writeSettings();
 
     struct Column
     {
