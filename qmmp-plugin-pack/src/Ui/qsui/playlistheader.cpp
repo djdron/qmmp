@@ -495,7 +495,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
         opt.rect = QRect(0,0,m_model->data(0, RECT).toRect().x(), height());
         style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
         opt.rect = QRect(m_model->data(m_model->count() - 1, RECT).toRect().right(), 0,
-                         m_model->data(m_model->count() - 1, RECT).toRect().right(), height());
+                         width() - m_model->data(m_model->count() - 1, RECT).toRect().right(), height());
         style()->drawControl(QStyle::CE_HeaderEmptyArea, &opt, &painter, this);
     }
 
