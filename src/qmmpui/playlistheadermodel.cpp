@@ -117,6 +117,7 @@ void PlayListHeaderModel::remove(int index)
     if(m_columns.count() == 1)
         return;
 
+    m_columns.takeAt(index);
     emit columnRemoved(index);
     emit headerChanged();
     updatePlayLists();
