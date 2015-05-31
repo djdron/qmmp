@@ -147,15 +147,15 @@ void PlayListHeader::readSettings()
 void PlayListHeader::setNumberWidth(int width)
 {
     m_model->setData(0, MIN_SIZE, INITAL_MIN_SIZE + (width ? (width + 2 * m_pl_padding) : 0));
-    int size = qMax(m_model->data(0, SIZE).toInt(), m_model->data(0, MIN_SIZE).toInt());
+    int s = qMax(size(0), minSize(0));
 
     for(int i = 1; i < m_model->count(); ++i) //restore mimimal size for other columns
-        m_model->setData(i,MIN_SIZE, 30);
+        m_model->setData(i, MIN_SIZE, 30);
 
-    if(width != m_number_width || size != m_model->data(0, SIZE).toInt())
+    if(width != m_number_width || s != size(0))
     {
         m_number_width = width;
-        m_model->setData(0, SIZE, size);
+        m_model->setData(0, SIZE, s);
         updateColumns();
     }
 }
@@ -406,7 +406,7 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
             setSize(m_pressed_column, m_old_size - e->pos().x() + m_pressed_pos.x());
         else
             setSize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
-        setSize(m_pressed_column, qMax(size(m_pressed_column), m_model->data(m_pressed_column, MIN_SIZE).toInt()));
+        setSize(m_pressed_column, qMax(size(m_pressed_column), minSize(m_pressed_column)));
         updateColumns();
         emit resizeColumnRequest();
     }
@@ -493,7 +493,7 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
 
     if(index >= 0 && e->oldSize().width() > 10)
     {
-        setSize(index, qMax(m_model->data(index, MIN_SIZE).toInt(), size(index) + delta));
+        setSize(index, qMax(minSize(index), size(index) + delta));
         updateColumns();
         return;
     }
@@ -535,7 +535,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     painter.setBrush(m_normal);
     painter.setPen(m_normal);
     painter.setFont(m_font);
-    painter.drawRect(5,-1,width()-10,height()+1);
+    painter.drawRect(5, -1, width() - 10, height() + 1);
 
     painter.setPen(m_normal_bg);
 
@@ -547,14 +547,13 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
         if(m_number_width)
         {
-            painter.drawLine(rect.right(), 0,
-                             rect.right(), height());
+            painter.drawLine(rect.right(), 0, rect.right(), height());
         }
 
         if(m_model->count() == 1)
         {
-            painter.drawText(rect.right() - m_padding - m_metrics->width(m_model->data(0, NAME).toString()),
-                    m_metrics->ascent(), m_model->data(0, NAME).toString());
+            painter.drawText(rect.right() - m_padding - m_metrics->width(name(0)),
+                    m_metrics->ascent(), name(0));
             if(m_sorting_column == 0)
             {
                 painter.drawPixmap(rect.x() + 4,
@@ -572,18 +571,16 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             {
                 painter.setBrush(m_normal_bg);
                 painter.setPen(m_current);
-                painter.drawRect(rect.x(), 0,
-                                 rect.width(), height()-1);
+                painter.drawRect(rect.x(), 0, rect.width(), height() - 1);
                 painter.setBrush(m_normal);
                 painter.setPen(m_normal_bg);
                 continue;
             }
 
-            painter.drawText(rect.right() - m_padding - m_metrics->width(m_model->data(i, NAME).toString()),
-                             m_metrics->ascent(), m_model->data(i, NAME).toString());
+            painter.drawText(rect.right() - m_padding - m_metrics->width(name(i)),
+                             m_metrics->ascent(), name(i));
 
-            painter.drawLine(rect.x()-1, 0,
-                             rect.x()-1, height()+1);
+            painter.drawLine(rect.x() - 1, 0, rect.x() - 1, height() + 1);
 
             if(i == m_sorting_column)
             {
@@ -612,13 +609,12 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
         if(m_number_width)
         {
-            painter.drawLine(rect.x(), 0,
-                             rect.x(), height());
+            painter.drawLine(rect.x(), 0, rect.x(), height());
         }
 
         if(m_model->count() == 1)
         {
-            painter.drawText(rect.x() + m_padding, m_metrics->ascent(), m_model->data(0, NAME).toString());
+            painter.drawText(rect.x() + m_padding, m_metrics->ascent(), name(0));
             if(m_sorting_column == 0)
             {
                 painter.drawPixmap(rect.right() - m_arrow_up.width() - 4,
@@ -636,17 +632,15 @@ void PlayListHeader::paintEvent(QPaintEvent *)
             {
                 painter.setBrush(m_normal_bg);
                 painter.setPen(m_current);
-                painter.drawRect(rect.x(), 0,
-                                 rect.width(), height()-1);
+                painter.drawRect(rect.x(), 0, rect.width(), height() - 1);
                 painter.setBrush(m_normal);
                 painter.setPen(m_normal_bg);
                 continue;
             }
 
-            painter.drawText(rect.x() + m_padding, m_metrics->ascent(), m_model->data(i, NAME).toString());
+            painter.drawText(rect.x() + m_padding, m_metrics->ascent(), name(i));
 
-            painter.drawLine(rect.right()+1, 0,
-                             rect.right()+1, height()+1);
+            painter.drawLine(rect.right()+1, 0, rect.right() + 1, height() + 1);
 
             if(i == m_sorting_column)
             {
@@ -703,6 +697,16 @@ int PlayListHeader::size(int index) const
 void PlayListHeader::setSize(int index, int size)
 {
     m_model->setData(index, SIZE, size);
+}
+
+int PlayListHeader::minSize(int index) const
+{
+    return m_model->data(index, MIN_SIZE).toInt();
+}
+
+const QString PlayListHeader::name(int index) const
+{
+    return m_model->data(index, NAME).toString();
 }
 
 void PlayListHeader::writeSettings()
