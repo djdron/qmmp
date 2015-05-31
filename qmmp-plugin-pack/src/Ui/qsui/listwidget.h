@@ -91,6 +91,7 @@ protected:
     void dragLeaveEvent(QDragLeaveEvent *);
     void dragMoveEvent(QDragMoveEvent *event);
     void contextMenuEvent (QContextMenuEvent * event);
+    void showEvent(QShowEvent *);
     bool event (QEvent *e);
 
 private slots:

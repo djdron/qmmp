@@ -75,6 +75,7 @@ PlayListHeader::~PlayListHeader()
     if (m_metrics)
         delete m_metrics;
     m_metrics = 0;
+    writeSettings();
 }
 
 void PlayListHeader::readSettings()
@@ -582,6 +583,11 @@ void PlayListHeader::writeSettings()
     settings.setValue("pl_column_sizes", sizes);
     settings.setValue("pl_autoresize_column", autoResizeColumn);
     settings.endGroup();
+}
+
+void PlayListHeader::showEvent(QShowEvent *)
+{
+    updateColumns();
 }
 
 void PlayListHeader::initStyleOption(QStyleOptionHeader *opt)

@@ -617,6 +617,12 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
         menu()->exec(event->globalPos());
 }
 
+void ListWidget::showEvent(QShowEvent *)
+{
+    qDebug("show event");
+    updateColumns();
+}
+
 void ListWidget::recenterCurrent()
 {
     if (m_row_count)

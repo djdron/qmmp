@@ -79,6 +79,7 @@ private:
     int minSize(int index) const;
     const QString name(int index) const;
     void writeSettings();
+    void showEvent(QShowEvent *);
 
     enum DataKey
     {
