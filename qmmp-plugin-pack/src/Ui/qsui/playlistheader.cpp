@@ -127,11 +127,16 @@ void PlayListHeader::readSettings()
 
 void PlayListHeader::setNumberWidth(int width)
 {
-    if(width != m_number_width)
+    m_columns[0]->minSize = 30 + (width ? (width + 2 * m_pl_padding) : 0);
+    int size = qMax(m_columns[0]->size, m_columns[0]->minSize);
+
+    for(int i = 1; i < m_columns.count(); ++i) //restore mimimal size for other columns
+        m_columns[i]->minSize = 30;
+
+    if(width != m_number_width || size != m_columns[0]->size)
     {
         m_number_width = width;
-        m_columns[0]->minSize = 30 + (m_number_width ? (m_number_width + 2 * m_pl_padding) : 0);
-        m_columns[0]->size = qMax(m_columns[0]->size, m_columns[0]->minSize);
+        m_columns[0]->size = size;
         updateColumns();
     }
 }

@@ -341,10 +341,6 @@ void ListWidget::updateList(int flags)
             emit positionChanged(m_first, m_model->count() - m_row_count);
         }
 
-        //song numbers width
-        m_drawer.calculateNumberWidth(m_model->trackCount());
-        m_header->setNumberWidth(m_drawer.numberWidth());
-
         items = m_model->mid(m_first, m_row_count);
 
         while(m_rows.count() < qMin(m_row_count, items.count()))
@@ -361,6 +357,13 @@ void ListWidget::updateList(int flags)
 
     if(flags & PlayListModel::STRUCTURE)
         m_header->hideSortIndicator();
+
+    if(flags & PlayListModel::STRUCTURE || flags & PlayListModel::METADATA)
+    {
+        //song numbers width
+        m_drawer.calculateNumberWidth(m_model->trackCount());
+        m_header->setNumberWidth(m_drawer.numberWidth());
+    }
 
     int prev_number = 0;
     bool rtl = layoutDirection() == Qt::RightToLeft;
