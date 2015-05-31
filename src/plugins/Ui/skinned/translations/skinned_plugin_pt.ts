@@ -961,27 +961,27 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="77"/>
+        <location filename="../playlistheader.cpp" line="80"/>
         <source>Add Column</source>
         <translation>Adicionar coluna</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="78"/>
+        <location filename="../playlistheader.cpp" line="81"/>
         <source>Edit Column</source>
         <translation>Editar coluna</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="79"/>
+        <location filename="../playlistheader.cpp" line="82"/>
         <source>Auto-resize</source>
         <translation>Redimensionar automaticamente</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="81"/>
+        <location filename="../playlistheader.cpp" line="84"/>
         <source>Restore Size</source>
         <translation>Restaurar tamanho</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="83"/>
+        <location filename="../playlistheader.cpp" line="86"/>
         <source>Remove Column</source>
         <translation>Remover coluna</translation>
     </message>

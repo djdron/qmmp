@@ -883,12 +883,12 @@
         <translation>Исполнитель - название</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="178"/>
+        <location filename="../playlistheadermodel.cpp" line="179"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="179"/>
+        <location filename="../playlistheadermodel.cpp" line="180"/>
         <source>Add Column</source>
         <translation>Добавить колонку</translation>
     </message>
