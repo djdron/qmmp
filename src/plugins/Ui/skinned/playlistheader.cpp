@@ -317,7 +317,24 @@ void PlayListHeader::onColumnRemoved(int index)
 
 void PlayListHeader::onColumnMoved(int from, int to)
 {
+    //correct geometry
+    if(from == 0 && m_number_width)
+    {
+        m_columns[from]->size -= m_number_width + 2 * m_pl_padding;
+        m_columns[to]->size += m_number_width + 2 * m_pl_padding;
+    }
+    else if(to == 0 && m_number_width)
+    {
+        m_columns[from]->size += m_number_width + 2 * m_pl_padding;
+        m_columns[to]->size -= m_number_width + 2 * m_pl_padding;
+    }
+
+    int minSize = m_columns[from]->minSize;
+    m_columns[from]->minSize = m_columns[to]->minSize;
+    m_columns[to]->minSize = minSize;
     m_columns.move(from, to);
+    m_columns[from]->size = qMax(m_columns[from]->size, m_columns[from]->minSize);
+    m_columns[to]->size = qMax(m_columns[to]->size, m_columns[to]->minSize);
     updateColumns();
 }
 
