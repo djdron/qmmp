@@ -336,6 +336,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 void ListWidgetDrawer::drawDropLine(QPainter *painter, int row_number, int width)
 {
     painter->setPen(m_current);
-    painter->drawLine (5, row_number * m_row_height,
-                       width - 5 , row_number * m_row_height);
+    painter->drawLine (5, row_number * m_row_height - 1,
+                       width - 5 , row_number * m_row_height - 1);
 }
