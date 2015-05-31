@@ -61,7 +61,7 @@ void PlayListHeaderModel::restoreSettings(QSettings *settings)
         m_columns.clear();
         for(int i = 0; i < names.count(); ++i)
         {
-            ColumnHeader h = {names.at(i), patterns.at(i)};
+            ColumnHeader h = {names.at(i), patterns.at(i), QHash<int, QVariant>()};
             m_columns.append(h);
         }
         m_helper->setTitleFormats(patterns);
@@ -204,6 +204,26 @@ const QString PlayListHeaderModel::pattern(int index) const
         return QString();
     }
     return m_columns[index].pattern;
+}
+
+void PlayListHeaderModel::setData(int index, int key, const QVariant &data)
+{
+    if(index < 0 || index >= m_columns.size())
+    {
+        qWarning("ColumnManager: index is out of range");
+        return;
+    }
+    m_columns[index].data.insert(key, data);
+}
+
+const QVariant PlayListHeaderModel::data(int index, int key) const
+{
+    if(index < 0 || index >= m_columns.size())
+    {
+        qWarning("ColumnManager: index is out of range");
+        return QString();
+    }
+    return m_columns[index].data.value(key);
 }
 
 void PlayListHeaderModel::updatePlayLists()

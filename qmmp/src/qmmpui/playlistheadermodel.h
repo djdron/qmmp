@@ -24,6 +24,8 @@
 #include <QObject>
 #include <QWidget>
 #include <QSettings>
+#include <QHash>
+#include <QVariant>
 #include "metadataformatter.h"
 
 class MetaDataHelper;
@@ -55,6 +57,9 @@ public:
     const QString name(int index) const;
     const QString pattern(int index) const;
 
+    void setData(int index, int key, const QVariant &data);
+    const QVariant data(int index, int key) const;
+
 signals:
     void columnAdded(int index);
     void columnRemoved(int index);
@@ -69,6 +74,7 @@ private:
     {
         QString name;
         QString pattern;
+        QHash<int, QVariant> data;
     };
     QList<ColumnHeader> m_columns;
     MetaDataHelper *m_helper;
