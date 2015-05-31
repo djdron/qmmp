@@ -175,7 +175,8 @@ void ListWidget::paintEvent(QPaintEvent *)
     //draw drop line
     if(m_drop_index != INVALID_INDEX)
     {
-        m_drawer.drawDropLine(&painter, m_drop_index - m_first, width());
+        m_drawer.drawDropLine(&painter, m_drop_index - m_first, width(),
+                              m_header->isVisible() ? m_header->height() : 0);
     }
 }
 
