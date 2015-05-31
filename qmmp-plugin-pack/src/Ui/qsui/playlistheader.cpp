@@ -120,10 +120,13 @@ void PlayListHeader::readSettings()
                 m_model->setData(i, AUTO_RESIZE, true);
         }
         m_update = true;
+        updateColumns();
     }
+    else if(isVisible())
+        updateColumns();
 
     settings.endGroup();
-    updateColumns();
+
 }
 
 void PlayListHeader::setNumberWidth(int width)
