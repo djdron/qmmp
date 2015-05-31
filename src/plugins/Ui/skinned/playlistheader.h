@@ -65,7 +65,6 @@ private slots:
     void setAutoResize(bool yes);
     void restoreSize();
     void onColumnAdded(int index);
-    void onColumnRemoved(int index);
     void onColumnMoved(int from, int to);
 
 private:
@@ -77,22 +76,17 @@ private:
     void paintEvent(QPaintEvent *);
     void loadColors();
     int findColumn(QPoint pos);
+    int size(int index) const;
+    void setSize(int index, int size);
     void writeSettings();
 
-    struct Column
+    enum DataKey
     {
-        Column()
-        {
-            size = 150;
-            minSize = 30;
-            autoResize = false;
-        }
-
-        QString name;
-        int size;
-        int minSize;
-        QRect rect; //geometry
-        bool autoResize;
+        NAME = 0,
+        SIZE,
+        MIN_SIZE,
+        RECT, //geometry
+        AUTO_RESIZE
     };
 
     Skin *m_skin;
@@ -105,7 +99,6 @@ private:
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     QPixmap m_arrow_up, m_arrow_down;
-    QList<Column*> m_columns;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;
