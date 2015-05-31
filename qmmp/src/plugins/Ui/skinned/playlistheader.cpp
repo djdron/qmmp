@@ -299,7 +299,7 @@ void PlayListHeader::setAutoResize(bool yes)
            m_model->setData(i, AUTO_RESIZE, false);
    }
 
-   m_model->setData(m_pressed_column, AUTO_RESIZE, true);
+   m_model->setData(m_pressed_column, AUTO_RESIZE, yes);
 }
 
 void PlayListHeader::restoreSize()
