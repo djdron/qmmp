@@ -75,7 +75,6 @@ PlayListHeader::~PlayListHeader()
     if (m_metrics)
         delete m_metrics;
     m_metrics = 0;
-    writeSettings();
 }
 
 void PlayListHeader::readSettings()
@@ -588,6 +587,11 @@ void PlayListHeader::writeSettings()
 void PlayListHeader::showEvent(QShowEvent *)
 {
     updateColumns();
+}
+
+void PlayListHeader::hideEvent(QHideEvent *)
+{
+    writeSettings();
 }
 
 void PlayListHeader::initStyleOption(QStyleOptionHeader *opt)

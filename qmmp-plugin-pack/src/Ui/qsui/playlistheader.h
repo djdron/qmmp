@@ -80,6 +80,7 @@ private:
     const QString name(int index) const;
     void writeSettings();
     void showEvent(QShowEvent *);
+    void hideEvent(QHideEvent *);
 
     enum DataKey
     {
