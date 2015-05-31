@@ -355,8 +355,12 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             if(sx + m_padding >= row->rect.right() - row->lengthColumnWidth)
                 break;
 
+            int size = row->sizes[i];
+            if(i == 0 && row->numberColumnWidth)
+                size -= row->numberColumnWidth;
+
             painter->drawText(sx + m_padding, sy, row->titles[i]);
-            sx += row->sizes[i];
+            sx += size;
 
             if(m_header_model->count() > 1 && sx < row->rect.right() - row->lengthColumnWidth)
             {

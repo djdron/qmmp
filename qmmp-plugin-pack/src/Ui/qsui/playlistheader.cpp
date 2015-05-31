@@ -161,7 +161,7 @@ void PlayListHeader::updateColumns()
     {
         int size = m_columns[i]->size;
 
-                //add number width to the first column
+        //add number width to the first column
         if(i == 0 && m_number_width)
             size -= m_number_width + 2 * m_pl_padding;
 
