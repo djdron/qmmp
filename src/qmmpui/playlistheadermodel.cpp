@@ -30,6 +30,7 @@ PlayListHeaderModel::PlayListHeaderModel(QObject *parent) :
     QObject(parent)
 {
     m_helper = MetaDataHelper::instance();
+    m_settings_loaded = false;
 
     ColumnHeader col;
     col.name = tr("Artist - Title");
@@ -66,6 +67,7 @@ void PlayListHeaderModel::restoreSettings(QSettings *settings)
         }
         m_helper->setTitleFormats(patterns);
     }
+    m_settings_loaded = true;
 }
 
 void PlayListHeaderModel::saveSettings(const QString &groupName)
@@ -87,6 +89,11 @@ void PlayListHeaderModel::saveSettings(QSettings *settings)
 
     settings->setValue("pl_column_names", names);
     settings->setValue("pl_column_patterns", patterns);
+}
+
+bool PlayListHeaderModel::isSettingsLoaded() const
+{
+    return m_settings_loaded;
 }
 
 void PlayListHeaderModel::insert(int index, const QString &name, const QString &pattern)
