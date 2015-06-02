@@ -109,7 +109,6 @@ private:
     int m_padding;
     int m_pl_padding;
     int m_sorting_column;
-    bool m_update;
 
     enum
     {
