@@ -413,6 +413,7 @@ QString Skin::getPath (const QString& name)
 
 void Skin::loadPLEdit()
 {
+    QByteArray key, value;
     QString path = findFile("pledit.txt", m_skin_dir);
     if (path.isEmpty())
         path = findFile("pledit.txt", ":/default");
@@ -429,7 +430,12 @@ void Skin::loadPLEdit()
         QList<QByteArray> l = line.split ('=');
         if (l.count () == 2)
         {
-            m_pledit_txt[l[0].toLower () ] = l[1].trimmed();
+            key = l[0].toLower ();
+            value = l[1].trimmed();
+            if(!value.startsWith("#") && key != "font")
+                value.prepend("#");  //add # for color if needed
+
+            m_pledit_txt[key] = value.trimmed();
         }
         else if (line.length() == 0)
         {
