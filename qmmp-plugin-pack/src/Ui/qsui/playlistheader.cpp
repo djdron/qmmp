@@ -48,7 +48,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
-    m_update = false;
+    m_reverted = false;
     m_metrics = 0;
     m_task = NO_TASK;
 
@@ -62,12 +62,12 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove Column"), this, SLOT(removeColumn()));
 
+    readSettings();
+
     connect(m_model, SIGNAL(columnAdded(int)), SLOT(onColumnAdded(int)));
     connect(m_model, SIGNAL(columnRemoved(int)), SLOT(updateColumns()));
     connect(m_model, SIGNAL(columnMoved(int,int)), SLOT(onColumnMoved(int,int)));
     connect(m_model, SIGNAL(columnChanged(int)), SLOT(updateColumns()));
-
-    readSettings();
 }
 
 PlayListHeader::~PlayListHeader()
@@ -104,7 +104,7 @@ void PlayListHeader::readSettings()
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_pl_padding = QFontMetrics(pl_font).width("9")/2;
 
-    if(!m_update)
+    if(!m_model->isSettingsLoaded()) //do not load settings several times
     {
         m_model->restoreSettings(&settings);
         QList<QVariant> sizes = settings.value("pl_column_sizes").toList();
@@ -119,10 +119,9 @@ void PlayListHeader::readSettings()
             if(i == autoResizeColumn)
                 m_model->setData(i, AUTO_RESIZE, true);
         }
-        m_update = true;
-        updateColumns();
     }
-    else if(isVisible())
+
+    if(isVisible())
         updateColumns();
 
     settings.endGroup();
@@ -131,22 +130,25 @@ void PlayListHeader::readSettings()
 
 void PlayListHeader::setNumberWidth(int width)
 {
-    m_model->setData(0, MIN_SIZE, INITAL_MIN_SIZE + (width ? (width + 2 * m_pl_padding) : 0));
-    int s = qMax(size(0), minSize(0));
-
-    for(int i = 1; i < m_model->count(); ++i) //restore mimimal size for other columns
-        m_model->setData(i, MIN_SIZE, 30);
-
-    if(width != m_number_width || s != size(0))
+    if(width != m_number_width)
     {
         m_number_width = width;
-        m_model->setData(0, SIZE, s);
         updateColumns();
     }
 }
 
 void PlayListHeader::updateColumns()
 {
+    if(!isVisible())
+        return;
+
+    m_model->setData(0, MIN_SIZE, INITAL_MIN_SIZE + (m_number_width ? (m_number_width + 2 * m_pl_padding) : 0));
+    for(int i = 1; i < m_model->count(); ++i) //restore mimimal size for other columns
+        m_model->setData(i, MIN_SIZE, 30);
+
+    int s = qMax(size(0), minSize(0));
+    m_model->setData(0, SIZE, s);
+
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
     int sx = 5;
@@ -281,6 +283,9 @@ void PlayListHeader::onColumnAdded(int index)
 void PlayListHeader::onColumnMoved(int from, int to)
 {
     //correct geometry
+    if(!isVisible())
+        return;
+
     if(from == 0 && m_number_width)
     {
         setSize(from, size(from) + (m_number_width + 2 * m_pl_padding));

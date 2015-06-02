@@ -98,7 +98,6 @@ private:
     PlayListHeaderModel *m_model;
     QAction *m_autoResize;
     bool m_reverted;
-    bool m_update;
     int m_number_width;
     int m_pressed_column;
     int m_old_size;
