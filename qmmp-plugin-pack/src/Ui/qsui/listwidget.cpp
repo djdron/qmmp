@@ -312,11 +312,6 @@ bool ListWidget::event (QEvent *e)
     return QWidget::event(e);
 }
 
-void ListWidget::showEvent(QShowEvent *)
-{
-    updateColumns();
-}
-
 void ListWidget::updateList(int flags)
 {
     if(flags & PlayListModel::CURRENT)

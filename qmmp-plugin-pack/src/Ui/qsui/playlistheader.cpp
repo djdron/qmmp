@@ -125,7 +125,6 @@ void PlayListHeader::readSettings()
         updateColumns();
 
     settings.endGroup();
-
 }
 
 void PlayListHeader::setNumberWidth(int width)
@@ -595,6 +594,11 @@ void PlayListHeader::writeSettings()
 void PlayListHeader::showEvent(QShowEvent *)
 {
     updateColumns();
+    if(m_old_sizes != sizes())
+    {
+        m_old_sizes = sizes();
+        emit resizeColumnRequest();
+    }
 }
 
 void PlayListHeader::hideEvent(QHideEvent *)

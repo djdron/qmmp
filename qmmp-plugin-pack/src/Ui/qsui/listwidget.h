@@ -92,7 +92,6 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event);
     void contextMenuEvent (QContextMenuEvent * event);
     bool event (QEvent *e);
-    void showEvent(QShowEvent *);
 
 private slots:
     void updateSkin();

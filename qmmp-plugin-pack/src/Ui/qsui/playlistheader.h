@@ -105,6 +105,7 @@ private:
     int m_pl_padding;
     int m_sorting_column;
     QSize m_size_hint;
+    QList<int> m_old_sizes;
 
     enum
     {
