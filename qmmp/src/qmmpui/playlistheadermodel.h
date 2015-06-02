@@ -45,6 +45,7 @@ public:
     void restoreSettings(QSettings *settings);
     void saveSettings(const QString &groupName);
     void saveSettings(QSettings *settings);
+    bool isSettingsLoaded() const;
 
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);
@@ -77,6 +78,7 @@ private:
         QHash<int, QVariant> data;
     };
     QList<ColumnHeader> m_columns;
+    bool m_settings_loaded;
     MetaDataHelper *m_helper;
 };
 
