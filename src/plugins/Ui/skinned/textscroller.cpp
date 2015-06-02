@@ -265,7 +265,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
          if(m_transparencyAction->isChecked())
              m_pixmap.fill(Qt::transparent);
          else
-             m_pixmap.fill(QString(Skin::instance()->getPLValue("normalbg")));
+             m_pixmap.fill(QString(Skin::instance()->getPLValue("mbbg")));
          QPainter painter(&m_pixmap);
          painter.setPen(m_color);
          painter.setFont(m_font);
@@ -282,7 +282,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
         if(m_transparencyAction->isChecked())
             m_pixmap.fill(Qt::transparent);
         else
-            m_pixmap.fill(QString(Skin::instance()->getPLValue("normalbg")));
+            m_pixmap.fill(QString(Skin::instance()->getPLValue("mbbg")));
         QPainter painter(&m_pixmap);
         painter.setPen(m_color);
         painter.setFont(m_font);
