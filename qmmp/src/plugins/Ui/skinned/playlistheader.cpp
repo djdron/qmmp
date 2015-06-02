@@ -72,7 +72,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
-    m_update = false;
+    m_reverted = false;
     m_task = NO_TASK;
     m_model = PlayListManager::instance()->headerModel();
     m_skin = Skin::instance();
@@ -121,7 +121,7 @@ void PlayListHeader::readSettings()
     pl_font.fromString(settings.value("pl_font", qApp->font().toString()).toString());
     m_pl_padding = QFontMetrics(pl_font).width("9")/2;
 
-    if(!m_update)
+    if(!m_model->isSettingsLoaded())
     {
         m_model->restoreSettings(&settings);
         QList<QVariant> sizes = settings.value("pl_column_sizes").toList();
@@ -136,7 +136,6 @@ void PlayListHeader::readSettings()
             if(i == autoResizeColumn)
                 m_model->setData(i, AUTO_RESIZE, true);
         }
-        m_update = true;
     }
 
     settings.endGroup();
