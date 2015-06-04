@@ -7,6 +7,12 @@ source_lang = en
 source_file = src/Ui/qsui/translations/qsui_plugin_en.ts
 type = QT
 
+[qmmp-plugin-pack.xmp]
+file_filter = src/Input/xmp/translations/xmp_plugin_<lang>.ts
+source_lang = en
+source_file = src/Input/xmp/translations/xmp_plugin_en.ts
+type = QT
+
 [qmmp-plugin-pack.ffap]
 file_filter = src/Input/ffap/translations/ffap_plugin_<lang>.ts
 source_lang = en
