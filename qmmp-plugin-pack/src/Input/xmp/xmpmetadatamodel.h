@@ -21,6 +21,7 @@
 #ifndef XMPMETADATAMODEL_H
 #define XMPMETADATAMODEL_H
 
+#include <QObject>
 #include <qmmp/metadatamodel.h>
 #include <xmp.h>
 

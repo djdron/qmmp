@@ -1,6 +1,5 @@
 project(libxmp)
 
-INCLUDE(CheckIncludeFile)
 cmake_minimum_required(VERSION 2.4.7)
 
 if(COMMAND cmake_policy)
@@ -18,10 +17,10 @@ ADD_DEFINITIONS(-DQT_THREAD)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-SET(QT_INCLUDES
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
-)
+#SET(QT_INCLUDES
+#  ${QT_INCLUDES}
+#  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
+#)
 
 # libqmmp
 include_directories(${QMMP_INCLUDE_DIRS})
@@ -38,7 +37,8 @@ SET(libxmp_SRCS
   decoder_xmp.cpp
   decoderxmpfactory.cpp
   xmpmetadatamodel.cpp
-  #settingsdialog.cpp
+  settingsdialog.cpp
+  xmpmetadatamodel.cpp
 )
 
 SET(libxmp_HDRS
@@ -51,11 +51,11 @@ QT4_ADD_RESOURCES(libxmp_RCC_SRCS ${libxmp_RCCS})
 
 # user interface
 
-#SET(libxmp_UIS
-#    settingsdialog.ui
-#)
+SET(libxmp_UIS
+    settingsdialog.ui
+)
 
-#QT4_WRAP_UI(libxmp_UIS_H ${libxmp_UIS})
+QT4_WRAP_UI(libxmp_UIS_H ${libxmp_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
