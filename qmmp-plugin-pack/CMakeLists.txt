@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.0)
+cmake_minimum_required(VERSION 2.8.6 FATAL_ERROR)
 
 #freebsd include
 include_directories(SYSTEM /usr/include /usr/local/include)
@@ -18,6 +18,7 @@ SET(SVN_VERSION TRUE)
 SET(QT_MIN_VERSION 4.6.0)
 INCLUDE(FindQt4)
 INCLUDE(${QT_USE_FILE})
+SET(CMAKE_AUTO_MOC ON)
 INCLUDE(FindPkgConfig)
 
 IF(NOT QT_LRELEASE_EXECUTABLE)
@@ -105,6 +106,7 @@ MESSAGE("Plugins:")
 PRINT_SUMMARY ("mpg123 plugin ..................." USE_MPG123  MPG123_FOUND)
 PRINT_SUMMARY ("FFap plugin (Monkey's audio) ...." USE_FFAP TAGLIB_FOUND)
 PRINT_SUMMARY ("Simple UI plugin ................" USE_QSUI QMMPUI_FOUND)
+PRINT_SUMMARY ("XMP plugin ......................" USE_XMP XMP_FOUND)
 
 MESSAGE("")
 MESSAGE("Advanced:")
