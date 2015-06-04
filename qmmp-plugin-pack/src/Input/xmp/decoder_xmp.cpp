@@ -19,24 +19,34 @@
  ***************************************************************************/
 
 #include <QObject>
-#include <QIODevice>
-#include <QFile>
+#include <QSettings>
 #include <QDir>
 #include <QSettings>
 #include "decoder_xmp.h"
 
 // Decoder class
 
+DecoderXmp *DecoderXmp::m_instance = 0;
+
 DecoderXmp::DecoderXmp(const QString &path) : Decoder(0)
 {
+    m_instance = this;
     m_path = path;
     m_ctx = 0;
+    m_srate = 44100;
     m_totalTime = 0;
 }
 
 DecoderXmp::~DecoderXmp()
 {
+    if(m_instance == this)
+        m_instance = 0;
     deinit();
+}
+
+DecoderXmp *DecoderXmp::instance()
+{
+    return m_instance;
 }
 
 bool DecoderXmp::initialize()
@@ -47,6 +57,8 @@ bool DecoderXmp::initialize()
     if(err != 0)
     {
         qWarning("DecoderXmp: unable to load module file, error = %d", err);
+        xmp_free_context(m_ctx);
+        m_ctx = 0;
         return false;
     }
 
@@ -55,9 +67,13 @@ bool DecoderXmp::initialize()
 
     m_totalTime = mi.seq_data[0].duration;
 
-    xmp_start_player(m_ctx, 44100, 0);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_srate = settings.value("Xmp/sample_rate", 44100).toInt();
 
-    configure(44100, 2, Qmmp::PCM_S16LE);
+    xmp_start_player(m_ctx, m_srate, 0);
+    readSettings();
+
+    configure(m_srate, 2, Qmmp::PCM_S16LE);
     return true;
 }
 
@@ -100,4 +116,26 @@ void DecoderXmp::deinit()
 }
 
 void DecoderXmp::readSettings()
-{}
+{
+    if(m_ctx)
+    {
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+        settings.beginGroup("Xmp");
+        xmp_set_player(m_ctx, XMP_PLAYER_AMP, settings.value("amp_factor", 1).toInt());
+        xmp_set_player(m_ctx, XMP_PLAYER_MIX, settings.value("stereo_mix", 70).toInt());
+        xmp_set_player(m_ctx, XMP_PLAYER_INTERP, settings.value("interpolation", XMP_INTERP_LINEAR).toInt());
+        int flags = 0;
+        if(settings.value("lowpass", false).toBool())
+            flags |= XMP_DSP_LOWPASS;
+        xmp_set_player(m_ctx, XMP_PLAYER_DSP, flags);
+        flags = 0;
+        if(settings.value("vblank", false).toBool())
+            flags |= XMP_FLAGS_VBLANK;
+        if(settings.value("fx9bug", false).toBool())
+            flags |= XMP_FLAGS_FX9BUG;
+        xmp_set_player(m_ctx, XMP_PLAYER_FLAGS, flags);
+
+
+        settings.endGroup();
+    }
+}

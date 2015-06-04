@@ -2,10 +2,12 @@ include(../../plugins.pri)
 
 HEADERS += decoderxmpfactory.h \
     decoder_xmp.h \
-    xmpmetadatamodel.h
+    xmpmetadatamodel.h \
+    settingsdialog.h
 SOURCES += decoder_xmp.cpp \
     decoderxmpfactory.cpp \
-    xmpmetadatamodel.cpp
+    xmpmetadatamodel.cpp \
+    settingsdialog.cpp
 TARGET = $$PLUGINS_PREFIX/Input/xmp
 
 
@@ -35,3 +37,6 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lxmp
 }
+
+FORMS += \
+    settingsdialog.ui

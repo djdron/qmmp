@@ -22,10 +22,10 @@
 #include <QStringList>
 #include <QRegExp>
 #include <xmp.h>
+#include <settingsdialog.h>
 #include "decoder_xmp.h"
 #include "xmpmetadatamodel.h"
 #include "decoderxmpfactory.h"
-
 
 // DecodeXmpFactory
 
@@ -58,7 +58,7 @@ const DecoderProperties DecoderXmpFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "xmp";
     properties.hasAbout = true;
-    properties.hasSettings = false;
+    properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols << "file";
     return properties;
@@ -102,8 +102,8 @@ MetaDataModel* DecoderXmpFactory::createMetaDataModel(const QString &path, QObje
 
 void DecoderXmpFactory::showSettings(QWidget *parent)
 {
-    //SettingsDialog *d = new SettingsDialog(parent);
-    //d->show();
+    SettingsDialog *d = new SettingsDialog(parent);
+    d->show();
 }
 
 void DecoderXmpFactory::showAbout(QWidget *parent)

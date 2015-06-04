@@ -17,39 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#ifndef DECODER_XMP_H
-#define DECODER_XMP_H
+#include <QDialog>
+#include "ui_settingsdialog.h"
 
-#include <qmmp/decoder.h>
-#include <xmp.h>
-
-class DecoderXmp : public Decoder
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
+Q_OBJECT
 public:
-    DecoderXmp(const QString &path);
-    virtual ~DecoderXmp();
+    SettingsDialog(QWidget *parent = 0);
 
-    static DecoderXmp *instance();
-    void readSettings();
-    // Standard Decoder API
-    bool initialize();
-    qint64 totalTime();
-    int bitrate();
-    qint64 read(char *audio, qint64 maxSize);
-    void seek(qint64 time);
+    ~SettingsDialog();
 
+private slots:
+    void writeSettings();
+    void exec(QAbstractButton *);
 
 private:
-    //helper function
-    void deinit();
+     Ui::SettingsDialog m_ui;
 
-    xmp_context m_ctx;
-    qint64 m_totalTime;
-    QString m_path;
-    quint32 m_srate;
-
-    static DecoderXmp *m_instance;
 };
 
-#endif // DECODER_XMP_H
+#endif
