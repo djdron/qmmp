@@ -21,7 +21,9 @@
 #include <QtGui>
 #include <QStringList>
 #include <QRegExp>
+#include <xmp.h>
 #include "decoder_xmp.h"
+#include "xmpmetadatamodel.h"
 #include "decoderxmpfactory.h"
 
 
@@ -55,7 +57,7 @@ const DecoderProperties DecoderXmpFactory::properties() const
     properties.description = tr("Module Files");
     //properties.contentType = ;
     properties.shortName = "xmp";
-    properties.hasAbout = false;
+    properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = true;
     properties.protocols << "file";
@@ -71,13 +73,31 @@ Decoder *DecoderXmpFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderXmpFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     QList <FileInfo*> list;
-    list << new FileInfo(fileName);
+    FileInfo *info = new FileInfo(fileName);
+    if(useMetaData)
+    {
+        xmp_context ctx = xmp_create_context();
+        if(xmp_load_module(ctx, fileName.toLocal8Bit().data()) != 0)
+        {
+            qWarning("DecoderXmpFactory: unable to load module");
+            xmp_free_context(ctx);
+            delete info;
+            return list;
+        }
+        xmp_module_info mi;
+        xmp_get_module_info(ctx, &mi);
+        info->setMetaData(Qmmp::TITLE, mi.mod->name);
+        info->setLength(mi.seq_data[0].duration / 1000);
+        xmp_release_module(ctx);
+        xmp_free_context(ctx);
+    }
+    list << info;
     return list;
 }
 
 MetaDataModel* DecoderXmpFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    return 0;//new ModPlugMetaDataModel(path, parent);
+    return new XmpMetaDataModel(path, parent);
 }
 
 void DecoderXmpFactory::showSettings(QWidget *parent)
@@ -87,7 +107,12 @@ void DecoderXmpFactory::showSettings(QWidget *parent)
 }
 
 void DecoderXmpFactory::showAbout(QWidget *parent)
-{}
+{
+    QMessageBox::about (parent, tr("About XMP Audio Plugin"),
+                        tr("Qmmp XMP Audio Plugin")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Compiled against libxmp-%1").arg(XMP_VERSION));
+}
 
 QTranslator *DecoderXmpFactory::createTranslator(QObject *parent)
 {

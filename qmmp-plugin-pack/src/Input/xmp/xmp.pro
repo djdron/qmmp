@@ -1,9 +1,11 @@
 include(../../plugins.pri)
 
 HEADERS += decoderxmpfactory.h \
-    decoder_xmp.h
+    decoder_xmp.h \
+    xmpmetadatamodel.h
 SOURCES += decoder_xmp.cpp \
-    decoderxmpfactory.cpp
+    decoderxmpfactory.cpp \
+    xmpmetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/xmp
 
 
