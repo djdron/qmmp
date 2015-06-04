@@ -45,9 +45,9 @@ SET(libxmp_HDRS
   decoder_xmp.h
 )
 
-#SET(libxmp_RCCS translations/translations.qrc)
+SET(libxmp_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libxmp_RCC_SRCS ${libxmp_RCCS})
+QT4_ADD_RESOURCES(libxmp_RCC_SRCS ${libxmp_RCCS})
 
 # user interface
 
