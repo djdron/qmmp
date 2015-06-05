@@ -815,7 +815,7 @@ QRegion Skin::createRegion(const QString &path, const QString &key)
 
 QPixmap * Skin::getDummyPixmap(const QString& name)
 {
-    QDir dir (":/default");
+    QDir dir (":/glare");
     dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList f = dir.entryInfoList();
     for (int j = 0; j < f.size(); ++j)
