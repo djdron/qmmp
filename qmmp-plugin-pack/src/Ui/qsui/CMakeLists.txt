@@ -72,39 +72,9 @@ SET(libqsui_HDRS
     listwidgetdrawer.h
 )
 
-SET(libqsui_MOC_HDRS
-    actionmanager.h
-    listwidget.h
-    mainwindow.h
-    popupsettings.h
-    popupwidget.h
-    positionslider.h
-    shortcutdialog.h
-    qsuifactory.h
-    qsuisettings.h
-    visualmenu.h
-    equalizer.h
-    logo.h
-    aboutqsuidialog.h
-    keyboardmanager.h
-    qsuianalyzer.h
-    colorwidget.h
-    qsuitabwidget.h
-    qsuitabbar.h
-    filesystembrowser.h
-    elidinglabel.h
-    coverwidget.h
-    playlistbrowser.h
-    toolbareditor.h
-    playlistheader.h
-    hotkeyeditor.h
-)
-
 SET(libqsui_RCCS translations/translations.qrc txt/qsui_txt.qrc resources/qsui_resources.qrc)
 
 QT4_ADD_RESOURCES(libqsui_RCC_SRCS ${libqsui_RCCS})
-
-QT4_WRAP_CPP(libqsui_MOC_SRCS ${libqsui_MOC_HDRS})
 
 # user interface
 
@@ -123,6 +93,6 @@ QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(qsui MODULE ${libqsui_SRCS} ${libqsui_MOC_SRCS} ${libqsui_UIS_H} ${libqsui_RCC_SRCS} ${libqsui_HDRS})
+ADD_LIBRARY(qsui MODULE ${libqsui_SRCS} ${libqsui_UIS_H} ${libqsui_RCC_SRCS} ${libqsui_HDRS})
 target_link_libraries(qsui ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${QMMPUI_LDFLAGS})
 install(TARGETS qsui DESTINATION ${LIB_DIR}/qmmp/Ui)

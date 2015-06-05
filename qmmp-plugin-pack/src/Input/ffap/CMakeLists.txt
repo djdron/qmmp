@@ -7,9 +7,6 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 NEW)
 endif(COMMAND cmake_policy)
 
-
-
-
 # qt plugin
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_PLUGIN)
@@ -38,8 +35,6 @@ SET(libffap_SRCS
   cueparser.cpp
   replaygainreader.cpp
   ffap.c
-
-
 )
 
 SET(libffap_HDRS
@@ -48,11 +43,6 @@ SET(libffap_HDRS
   cueparser.h
   replaygainreader.h
   ffap.h
-)
-
-SET(libffap_MOC_HDRS
-  decoderffapfactory.h
-  ffapmetadatamodel.h
 )
 
 IF(USE_ASM)
@@ -93,14 +83,12 @@ SET(libffap_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libffap_RCC_SRCS ${libffap_RCCS})
 
-QT4_WRAP_CPP(libffap_MOC_SRCS ${libffap_MOC_HDRS})
-
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
-ADD_LIBRARY(ffap MODULE ${libffap_SRCS} ${libffap_MOC_SRCS} ${libffap_RCC_SRCS} ${libffap_HDRS})
+ADD_LIBRARY(ffap MODULE ${libffap_SRCS} ${libffap_RCC_SRCS} ${libffap_HDRS})
 add_dependencies(ffap qmmp)
 target_link_libraries(ffap ${QT_LIBRARIES} -lqmmp ${ffap_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS ffap DESTINATION ${LIB_DIR}/qmmp/Input)

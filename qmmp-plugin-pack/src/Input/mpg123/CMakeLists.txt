@@ -1,11 +1,9 @@
 project(libmpg123)
 
-cmake_minimum_required(VERSION 2.4.7)
-
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
     cmake_policy(SET CMP0005 NEW)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -43,20 +41,11 @@ SET(libmpg123_HDRS
   replaygainreader.h
 )
 
-SET(libmpg123_MOC_HDRS
-  settingsdialog.h
-  decodermpg123factory.h
-  mpegmetadatamodel.h
-)
-
 SET(libmpg123_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libmpg123_RCC_SRCS ${libmpg123_RCCS})
 
-QT4_WRAP_CPP(libmpg123_MOC_SRCS ${libmpg123_MOC_HDRS})
-
 # user interface
-
 
 SET(libmpg123_UIS
     settingsdialog.ui
@@ -68,7 +57,7 @@ QT4_WRAP_UI(libmpg123_UIS_H ${libmpg123_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MPG123_FOUND)
-ADD_LIBRARY(mpg123 MODULE ${libmpg123_SRCS} ${libmpg123_MOC_SRCS} ${libmpg123_UIS_H} ${libmpg123_RCC_SRCS} ${libmpg123_HDRS})
+ADD_LIBRARY(mpg123 MODULE ${libmpg123_SRCS} ${libmpg123_UIS_H} ${libmpg123_RCC_SRCS} ${libmpg123_HDRS})
 target_link_libraries(mpg123 ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${MPG123_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS mpg123 DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MPG123_FOUND)
