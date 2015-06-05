@@ -416,7 +416,7 @@ void Skin::loadPLEdit()
     QByteArray key, value;
     QString path = findFile("pledit.txt", m_skin_dir);
     if (path.isEmpty())
-        path = findFile("pledit.txt", ":/default");
+        path = findFile("pledit.txt", ":/glare");
     if (path.isEmpty())
         qFatal("Skin: invalid default skin");
 
@@ -525,7 +525,7 @@ void Skin::loadVisColor()
 {
     QString path = findFile("viscolor.txt", m_skin_dir);
     if (path.isEmpty())
-        path = findFile("viscolor.txt", ":/default");
+        path = findFile("viscolor.txt", ":/glare");
     if (path.isEmpty())
         qFatal("Skin: invalid default skin");
 
