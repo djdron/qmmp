@@ -82,7 +82,7 @@ bool DecoderModPlug::initialize()
     }
     if (m_input_buf.isEmpty())
     {
-        qWarning("DecoderModPlug: error reading moplug file");
+        qWarning("DecoderModPlug: error while reading module file");
         return false;
     }
     m_soundFile = new CSoundFile();
