@@ -427,6 +427,11 @@ void Skin::loadPLEdit()
     while (!file.atEnd ())
     {
         QByteArray line = file.readLine ();
+
+        line = line.trimmed ();
+        if(line.contains("//"))
+            line.truncate (line.indexOf ("//"));
+
         QList<QByteArray> l = line.split ('=');
         if (l.count () == 2)
         {
