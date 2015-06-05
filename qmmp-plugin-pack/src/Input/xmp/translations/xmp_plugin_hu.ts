@@ -38,7 +38,7 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
-        <source>ModPlug Plugin Settings</source>
+        <source>XMP Plugin Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -78,7 +78,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="33"/>
-        <source>22500 Hz</source>
+        <source>22050 Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
