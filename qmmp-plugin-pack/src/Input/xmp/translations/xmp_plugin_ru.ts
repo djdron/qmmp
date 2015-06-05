@@ -35,6 +35,79 @@
     </message>
 </context>
 <context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>ModPlug Plugin Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="34"/>
+        <source> Amplification factor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="51"/>
+        <source>Stereo mixing:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source> Interpolation type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="78"/>
+        <source>Lowpass filter effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="85"/>
+        <source>Use vblank timing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <source>Emulate Protracker 2.x FX9 bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="99"/>
+        <source>Sample rate:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="33"/>
+        <source>22500 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="34"/>
+        <source>44100 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="35"/>
+        <source>48000 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="36"/>
+        <source>Nearest neighbor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <source>Linear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="38"/>
+        <source>Cubic spline</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>XmpMetaDataModel</name>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="49"/>
