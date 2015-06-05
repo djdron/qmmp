@@ -30,7 +30,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     m_ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     //prepare combobox
-    m_ui.srateComboBox->addItem(tr("22500 Hz"), 22500);
+    m_ui.srateComboBox->addItem(tr("22050 Hz"), 22050);
     m_ui.srateComboBox->addItem(tr("44100 Hz"), 44100);
     m_ui.srateComboBox->addItem(tr("48000 Hz"), 48000);
     m_ui.intTypeComboBox->addItem(tr("Nearest neighbor"), XMP_INTERP_NEAREST);
