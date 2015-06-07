@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,8 @@
 
 #include <QMouseEvent>
 #include <QWheelEvent>
+#include <QStyleOptionSlider>
+#include <QStyle>
 #include "positionslider.h"
 
 PositionSlider::PositionSlider(QWidget *parent) : QSlider(Qt::Horizontal, parent)
@@ -27,19 +29,26 @@ PositionSlider::PositionSlider(QWidget *parent) : QSlider(Qt::Horizontal, parent
 
 void PositionSlider::mousePressEvent (QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton)
+    QStyleOptionSlider opt;
+    initStyleOption(&opt);
+    QRect sr = style()->subControlRect(QStyle::CC_Slider, &opt, QStyle::SC_SliderHandle, this);
+
+    if (event->button() == Qt::LeftButton &&
+            sr.contains(event->pos()) == false)
     {
+        int val;
         if (orientation() == Qt::Vertical)
-            setValue(minimum() + ((maximum() - minimum()) * (height()-event->y())) / height() ) ;
+            val = minimum() + ((maximum() - minimum()) * (height() - event->y())) / height();
+        else if(layoutDirection() == Qt::RightToLeft)
+            val = maximum() - ((maximum() - minimum()) * event->x()) / width();
         else
-        {
-            if(layoutDirection() == Qt::RightToLeft)
-            {
-                setValue(maximum() - ((maximum() - minimum()) * event->x()) / width());
-            }
-            else
-                setValue(minimum() + ((maximum() - minimum()) * event->x()) / width());
-        }
+            val = minimum() + ((maximum() - minimum()) * event->x()) / width();
+
+        if (invertedAppearance() == true)
+            setValue(maximum() - val);
+        else
+            setValue(val);
+
         setSliderDown (true);
         event->accept();
     }
