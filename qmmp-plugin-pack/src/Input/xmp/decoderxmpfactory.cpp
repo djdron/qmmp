@@ -49,11 +49,19 @@ const DecoderProperties DecoderXmpFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("XMP Plugin");
-    properties.filters << "*.amf" << "*.ams" << "*.dbm" << "*.dbf" << "*.dsm" << "*.far" << "*.mdl";
-    properties.filters << "*.stm" << "*.ult" << "*.j2b" << "*.mt2" << "*.mdz" << "*.mdr" << "*.mdgz";
-    properties.filters << "*.mdbz" << "*.mod" << "*.s3z" << "*.s3r" << "*.s3gz" << "*.s3m" << "*.xmz";
-    properties.filters << "*.xmr" << "*.xmgz" << "*.itz" << "*.itr" << "*.itgz" << "*.dmf" "*.umx";
-    properties.filters << "*.it" << "*.669" << "*.xm" << "*.mtm" << "*.psm" << "*.ft2";
+    properties.filters << "*.mod" << "*.m15" << "*.nt" << "*.flx" << "*.wow";
+    properties.filters << "*.dbm" << "*.digi" << "*.emod" << "*.med" << "*.mtn" << "*.okt" << "*.sfx";
+    properties.filters << "*.dtm" << "*.gtk" << "*.mgt";
+    properties.filters << "*.669" << "*.far" << "*.fnk" << "*.imf" << "*.it" << "*.liq" << "*.mdl";
+    properties.filters << "*.mtm" << "*.rtm" << "*.s3m" << "*.stm" << "*.ult" << "*.xm";
+    properties.filters << "*.amf" << "*.gdm" << "*.stx";
+    properties.filters << "*.abk" << "*.amf" << "*.psm" << "*.j2b" << "*.mfp" << "*.smp" << "*.stim" << "*.umx";
+    properties.filters << "*.amd" << "*.rad" << "*.hsc" << "*.s3m";
+    properties.filters << "*.xm";
+    properties.filters << "*.s3z" << "*.s3r" << "*.s3gz";
+    properties.filters << "*.mdz" << "*.mdr" << "*.mdbz" << "*.mdgz";
+    properties.filters << "*.itz" << "*.itr" << "*.itgz";
+    properties.filters << "*.xmr" << "*.xmgz" << "*.xmz";
     properties.description = tr("Module Files");
     //properties.contentType = ;
     properties.shortName = "xmp";
