@@ -374,7 +374,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показувати назву стовпців</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -577,57 +577,57 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Скинути</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
-        <translation type="unfinished">Дія</translation>
+        <translation>Дія</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Комбінація</translation>
+        <translation>Комбінація</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Змінити комбінацію клавіш...</translation>
+        <translation>Змінити комбінацію клавіш...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="56"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути комбінації клавіш за замовчанням?</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="68"/>
         <source>Playback</source>
-        <translation type="unfinished">Відтворення</translation>
+        <translation>Відтворення</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
-        <translation type="unfinished">Вигляд</translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
-        <translation type="unfinished">Гучність</translation>
+        <translation>Гучність</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
-        <translation type="unfinished">Інші</translation>
+        <translation>Інші</translation>
     </message>
 </context>
 <context>
@@ -660,7 +660,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Комбінації клавіш</translation>
+        <translation>Комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="365"/>
@@ -1149,12 +1149,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="719"/>
         <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Використовувати системні шрифти</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="767"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="747"/>
@@ -1174,7 +1174,8 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Головне вікно</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
@@ -1224,32 +1225,32 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="169"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Кольори</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="609"/>
         <source>Group background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тло групи:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="860"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути шрифти</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="875"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назви стовпців:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="790"/>
         <source>Tab names:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва закладки:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="638"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст групи:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="908"/>

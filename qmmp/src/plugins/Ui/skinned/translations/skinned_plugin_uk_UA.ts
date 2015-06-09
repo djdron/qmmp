@@ -346,12 +346,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Переіменувати список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -386,7 +386,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Групувати треки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
@@ -396,12 +396,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показувати назви стовпців</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Скинути</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
@@ -543,12 +543,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="93"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="94"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Відновити комбінації клавіш за замовчанням?</translation>
     </message>
 </context>
 <context>
@@ -894,12 +894,12 @@
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Переіменувати список</translation>
+        <translation>Переіменувати список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Playlist name:</source>
-        <translation type="unfinished">Ім&apos;я списка:</translation>
+        <translation>Ім&apos;я списка:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="598"/>
@@ -1214,7 +1214,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Головне вікно</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
@@ -1239,12 +1239,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="447"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="483"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назви стовпчиків:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="405"/>
@@ -1269,7 +1269,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="525"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути шрифти</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="534"/>
@@ -1284,7 +1284,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Загальне</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="146"/>
