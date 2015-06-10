@@ -374,7 +374,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mo&amp;strar cabeçalhos de colunas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -576,57 +576,57 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Restaurar</translation>
+        <translation>Restaurar</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
-        <translation type="unfinished">Ação</translation>
+        <translation>Ação</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Atalho</translation>
+        <translation>Atalho</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Mudar atalho...</translation>
+        <translation>Mudar atalho...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar atalhos</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="56"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Gostaria de restaurar os atalhos originais?</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="68"/>
         <source>Playback</source>
-        <translation type="unfinished">Reprodução</translation>
+        <translation>Reprodução</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
-        <translation type="unfinished">Ver</translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
-        <translation type="unfinished">Volume</translation>
+        <translation>Volume</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista de reprodução</translation>
+        <translation>Lista de reprodução</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
-        <translation type="unfinished">Diversos</translation>
+        <translation>Diversos</translation>
     </message>
 </context>
 <context>
@@ -790,7 +790,7 @@
         <location filename="../forms/mainwindow.ui" line="309"/>
         <location filename="../mainwindow.cpp" line="282"/>
         <source>Rename Playlist</source>
-        <translation>Mudar nome da lista</translation>
+        <translation>Mudar nome da lista de reprodução</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="141"/>
@@ -820,7 +820,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Atalhos</translation>
+        <translation>Atalhos</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="365"/>
@@ -1148,12 +1148,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="719"/>
         <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar tipo de letra do sistema</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="767"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodução:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="747"/>
@@ -1173,7 +1173,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela principal</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
@@ -1223,17 +1223,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="860"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar tipo de letra</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="875"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabeçalhos de colunas: </translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="790"/>
         <source>Tab names:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome dos separadores:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="902"/>
@@ -1248,7 +1248,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="169"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Cores</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="181"/>
@@ -1318,12 +1318,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="609"/>
         <source>Group background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fundo do grupo:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="638"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto do grupo:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="908"/>
