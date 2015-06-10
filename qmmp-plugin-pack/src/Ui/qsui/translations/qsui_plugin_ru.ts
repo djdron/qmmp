@@ -379,7 +379,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
         <source>&amp;Select Next Playlist</source>
-        <translation>&amp;Выбрать следующий список</translation>
+        <translation>&amp;Следующий список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="97"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation>&amp;Выбрать предыдущий список</translation>
+        <translation>&amp;Предыдущий список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="98"/>
