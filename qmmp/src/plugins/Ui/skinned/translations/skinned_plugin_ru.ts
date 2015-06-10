@@ -356,7 +356,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
         <source>&amp;Select Next Playlist</source>
-        <translation>&amp;Выбрать следующий список</translation>
+        <translation>&amp;Cледующий список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
@@ -366,7 +366,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation>&amp;Выбрать предыдущий список</translation>
+        <translation>&amp;Предыдущий список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
