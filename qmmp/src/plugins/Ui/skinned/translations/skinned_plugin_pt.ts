@@ -346,12 +346,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>Muda&amp;r nome da lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -401,7 +401,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mo&amp;strar cabeçalho de colunas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Restaurar</translation>
+        <translation>Restaurar</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
@@ -543,12 +543,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="93"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar atalhos</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="94"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Gostaria de restaurar os atalhos originais?</translation>
     </message>
 </context>
 <context>
@@ -910,12 +910,12 @@
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Mudar nome da lista de reprodução</translation>
+        <translation>Mudar nome da lista de reprodução</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="577"/>
         <source>Playlist name:</source>
-        <translation type="unfinished">Nome da lista de reprodução:</translation>
+        <translation>Nome da lista de reprodução:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="598"/>
@@ -1214,7 +1214,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela principal</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
@@ -1239,12 +1239,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="447"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodução:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="483"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cabeçalho de colunas:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="405"/>
@@ -1269,7 +1269,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="525"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar tipo de letra</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="534"/>
@@ -1284,7 +1284,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Geral</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="146"/>
