@@ -54,27 +54,27 @@
     <message>
         <location filename="../settingsdialog.cpp" line="61"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="62"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Titelnummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disc-Nummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="68"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="69"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="63"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Albuminterpret</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="64"/>

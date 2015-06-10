@@ -878,17 +878,17 @@
 <context>
     <name>PlayListHeaderModel</name>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="35"/>
+        <location filename="../playlistheadermodel.cpp" line="36"/>
         <source>Artist - Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="179"/>
+        <location filename="../playlistheadermodel.cpp" line="186"/>
         <source>Title</source>
         <translation type="unfinished">Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../playlistheadermodel.cpp" line="180"/>
+        <location filename="../playlistheadermodel.cpp" line="187"/>
         <source>Add Column</source>
         <translation type="unfinished"></translation>
     </message>
