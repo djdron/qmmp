@@ -880,7 +880,7 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="36"/>
         <source>Artist - Title</source>
-        <translation type="unfinished">Artista - Título</translation>
+        <translation>Artista - Título</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="186"/>
