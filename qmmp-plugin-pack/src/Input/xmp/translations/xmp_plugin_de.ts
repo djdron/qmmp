@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de">
 <context>
     <name>DecoderXmpFactory</name>
     <message>
         <location filename="../decoderxmpfactory.cpp" line="51"/>
         <source>XMP Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>XMP-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="57"/>
+        <location filename="../decoderxmpfactory.cpp" line="65"/>
         <source>Module Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Moduldateien</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="111"/>
+        <location filename="../decoderxmpfactory.cpp" line="119"/>
         <source>About XMP Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über XMP-Audiomodul</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="112"/>
+        <location filename="../decoderxmpfactory.cpp" line="120"/>
         <source>Qmmp XMP Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp XMP-Audiomodul</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="113"/>
+        <location filename="../decoderxmpfactory.cpp" line="121"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="114"/>
+        <location filename="../decoderxmpfactory.cpp" line="122"/>
         <source>Compiled against libxmp-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert gegen libxmp-%1</translation>
     </message>
 </context>
 <context>
@@ -39,72 +39,72 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>XMP Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>XMP-Moduleinstellungen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source> Amplification factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstärkungsfaktor:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Stereo mixing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stereoabmischung:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <source> Interpolation type:</source>
-        <translation type="unfinished"></translation>
+        <translation> Interpolationstyp:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Lowpass filter effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiefpassfiltereffekt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Use vblank timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikale Austastlückenabstimmung verwenden</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>Emulate Protracker 2.x FX9 bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Protracker 2.x FX9-Fehler emulieren</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="99"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abtastrate:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="33"/>
         <source>22050 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>22050 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="34"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48000 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
         <source>Nearest neighbor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nächster Nachbar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Linear</source>
-        <translation type="unfinished"></translation>
+        <translation>Linear</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
         <source>Cubic spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Kubischer Spline</translation>
     </message>
 </context>
 <context>
@@ -112,72 +112,72 @@
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="49"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="54"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="55"/>
         <source>Volume scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärkenskalierung</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="56"/>
         <source>Number of patterns</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Muster</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="57"/>
         <source>Number of tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Titel</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="58"/>
         <source>Tracks per pattern</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel pro Muster</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="59"/>
         <source>Number of instruments</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Instrumente</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="60"/>
         <source>Number of samples</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Abtastwerte</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="61"/>
         <source>Initial speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Anfangsgeschwindigkeit</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="62"/>
         <source>Initial BPM</source>
-        <translation type="unfinished"></translation>
+        <translation>Anfangs-BPM</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="63"/>
         <source>Module length in patterns</source>
-        <translation type="unfinished"></translation>
+        <translation>Modullänge in Muster</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="82"/>
         <source>Samples</source>
-        <translation type="unfinished"></translation>
+        <translation>Abtastwerte</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="90"/>
         <source>Instruments</source>
-        <translation type="unfinished"></translation>
+        <translation>Instrumente</translation>
     </message>
     <message>
         <location filename="../xmpmetadatamodel.cpp" line="95"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar</translation>
     </message>
 </context>
 </TS>

@@ -9,27 +9,27 @@
         <translation>Модуль XMP</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="57"/>
+        <location filename="../decoderxmpfactory.cpp" line="65"/>
         <source>Module Files</source>
         <translation>Трекерная музыка</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="111"/>
+        <location filename="../decoderxmpfactory.cpp" line="119"/>
         <source>About XMP Audio Plugin</source>
         <translation>Об аудио-модуле XMP</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="112"/>
+        <location filename="../decoderxmpfactory.cpp" line="120"/>
         <source>Qmmp XMP Audio Plugin</source>
         <translation>Аудио-модуль XMP для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="113"/>
+        <location filename="../decoderxmpfactory.cpp" line="121"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="114"/>
+        <location filename="../decoderxmpfactory.cpp" line="122"/>
         <source>Compiled against libxmp-%1</source>
         <translation>Собрано с libxmp-%1</translation>
     </message>

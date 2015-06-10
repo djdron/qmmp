@@ -9,27 +9,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="57"/>
+        <location filename="../decoderxmpfactory.cpp" line="65"/>
         <source>Module Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="111"/>
+        <location filename="../decoderxmpfactory.cpp" line="119"/>
         <source>About XMP Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="112"/>
+        <location filename="../decoderxmpfactory.cpp" line="120"/>
         <source>Qmmp XMP Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="113"/>
+        <location filename="../decoderxmpfactory.cpp" line="121"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="114"/>
+        <location filename="../decoderxmpfactory.cpp" line="122"/>
         <source>Compiled against libxmp-%1</source>
         <translation type="unfinished"></translation>
     </message>

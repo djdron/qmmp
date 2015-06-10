@@ -374,7 +374,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Spaltenüberschriften anzeigen</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -576,57 +576,57 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">Zurücksetzen</translation>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
-        <translation type="unfinished">Aktion</translation>
+        <translation>Aktion</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Kurzbefehl</translation>
+        <translation>Kurzbefehl</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Kurzbefehl ändern …</translation>
+        <translation>Kurzbefehl ändern …</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehle zurücksetzen</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="56"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Möchten Sie die Standard-Kurzbefehle wiederherstellen?</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="68"/>
         <source>Playback</source>
-        <translation type="unfinished">Wiedergabe</translation>
+        <translation>Wiedergabe</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
-        <translation type="unfinished">Ansicht</translation>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
-        <translation type="unfinished">Lautstärke</translation>
+        <translation>Lautstärke</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">Wiedergabeliste</translation>
+        <translation>Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
-        <translation type="unfinished">Verschiedenes</translation>
+        <translation>Verschiedenes</translation>
     </message>
 </context>
 <context>
@@ -820,7 +820,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Kurzbefehle</translation>
+        <translation>Kurzbefehle</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="365"/>
@@ -1148,12 +1148,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="719"/>
         <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemschriftarten verwenden</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="767"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabeliste:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="747"/>
@@ -1173,7 +1173,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Hauptfenster</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
@@ -1223,17 +1223,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="860"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftarten zurücksetzen</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="875"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Spaltenüberschriften:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="790"/>
         <source>Tab names:</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiternamen:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="902"/>
@@ -1248,7 +1248,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="169"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Farben</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="181"/>
@@ -1318,12 +1318,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="609"/>
         <source>Group background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppenhintergrund:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="638"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppentext:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="908"/>
