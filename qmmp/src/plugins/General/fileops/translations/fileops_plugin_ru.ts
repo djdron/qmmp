@@ -5,36 +5,63 @@
     <name>FileOps</name>
     <message>
         <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="132"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="99"/>
+        <location filename="../fileops.cpp" line="133"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>Директория назначения не существует</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="136"/>
+        <source>Move Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../fileops.cpp" line="137"/>
+        <source>Are you sure you want to move %n file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="153"/>
         <source>Copying</source>
         <translation>Копирование</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="105"/>
+        <location filename="../fileops.cpp" line="154"/>
+        <location filename="../fileops.cpp" line="244"/>
         <source>Stop</source>
         <translation>Остановить</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="145"/>
+        <location filename="../fileops.cpp" line="199"/>
         <source>Copying file %1/%2</source>
         <translation>Копирование файла %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="187"/>
+        <location filename="../fileops.cpp" line="243"/>
+        <source>Renaming</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="276"/>
+        <source>Moving file %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="114"/>
         <source>Remove Files</source>
         <translation>Удаление файлов</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Вы уверены, что хотите удалить %n файл с диска?</numerusform>
@@ -87,106 +114,112 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="56"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="55"/>
+        <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="139"/>
+        <location filename="../settingsdialog.cpp" line="138"/>
         <source>New action</source>
         <translation>Новое действие</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="193"/>
+        <location filename="../settingsdialog.cpp" line="192"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="194"/>
+        <location filename="../settingsdialog.cpp" line="193"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="195"/>
+        <location filename="../settingsdialog.cpp" line="194"/>
         <source>Album Artist</source>
         <translation>Исполнитель альбома</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
+        <location filename="../settingsdialog.cpp" line="195"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
+        <location filename="../settingsdialog.cpp" line="196"/>
         <source>Track Number</source>
         <translation>Номер трека</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
+        <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit Track Number</source>
         <translation>2-х разрядный номер трека</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="203"/>
+        <location filename="../settingsdialog.cpp" line="202"/>
         <source>Disc Number</source>
         <translation>Номер диска</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="204"/>
+        <location filename="../settingsdialog.cpp" line="203"/>
         <source>File Name</source>
         <translation>Имя файла</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
+        <location filename="../settingsdialog.cpp" line="204"/>
         <source>File Path</source>
         <translation>Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="206"/>
+        <location filename="../settingsdialog.cpp" line="205"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="201"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="200"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="202"/>
+        <location filename="../settingsdialog.cpp" line="201"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="207"/>
+        <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
         <translation>Условие</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="223"/>
+        <location filename="../settingsdialog.cpp" line="219"/>
         <source>Choose a directory</source>
         <translation>Выберите директорию</translation>
     </message>
