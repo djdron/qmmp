@@ -34,18 +34,18 @@
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
-    ui.setupUi(this);
-    ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-    ui.tableWidget->verticalHeader()->hide();
-    ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-    connect (ui.newButton,SIGNAL(pressed()), SLOT(createAction()));
-    connect (ui.deleteButton,SIGNAL(pressed()), SLOT(deleteAction()));
+    m_ui.setupUi(this);
+    m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    m_ui.tableWidget->verticalHeader()->hide();
+    m_ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    connect (m_ui.newButton,SIGNAL(pressed()), SLOT(createAction()));
+    connect (m_ui.deleteButton,SIGNAL(pressed()), SLOT(deleteAction()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("FileOps");
     int count = settings.value("count", 0).toInt();
     for (int i = 0; i < count; ++i)
     {
-        ui.tableWidget->insertRow (i);
+        m_ui.tableWidget->insertRow (i);
         QCheckBox *checkBox = new QCheckBox;
         checkBox->setFocusPolicy (Qt::NoFocus);
 
@@ -65,21 +65,21 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         item->setPattern(settings.value(QString("pattern_%1").arg(i)).toString());
         item->setDestination(settings.value(QString("destination_%1").arg(i)).toString());
 
-        ui.tableWidget->setCellWidget (i, 0, checkBox);
-        ui.tableWidget->setCellWidget (i, 1, comboBox);
-        ui.tableWidget->setItem (i, 2, item);
+        m_ui.tableWidget->setCellWidget (i, 0, checkBox);
+        m_ui.tableWidget->setCellWidget (i, 1, comboBox);
+        m_ui.tableWidget->setItem (i, 2, item);
         QTableWidgetItem *item2 = new QTableWidgetItem();
         item2->setText(settings.value(QString("hotkey_%1").arg(i)).toString());
-        ui.tableWidget->setItem (i, 3, item2);
-        ui.tableWidget->item (i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        m_ui.tableWidget->setItem (i, 3, item2);
+        m_ui.tableWidget->item (i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
     settings.endGroup();
-    connect (ui.tableWidget, SIGNAL(currentItemChanged (QTableWidgetItem *, QTableWidgetItem *)),
+    connect (m_ui.tableWidget, SIGNAL(currentItemChanged (QTableWidgetItem *, QTableWidgetItem *)),
              SLOT(updateLineEdits()));
     updateLineEdits();
-    connect (ui.destinationEdit, SIGNAL(textChanged (const QString&)), SLOT(changeDestination(const QString&)));
-    connect (ui.patternEdit, SIGNAL(textChanged (const QString&)), SLOT(changePattern(const QString&)));
-    connect (ui.destButton, SIGNAL(clicked()), SLOT(selectDirectory()));
+    connect (m_ui.destinationEdit, SIGNAL(textChanged (const QString&)), SLOT(changeDestination(const QString&)));
+    connect (m_ui.patternEdit, SIGNAL(textChanged (const QString&)), SLOT(changePattern(const QString&)));
+    connect (m_ui.destButton, SIGNAL(clicked()), SLOT(selectDirectory()));
     createMenus();
 }
 
@@ -93,7 +93,7 @@ void SettingsDialog::accept()
     settings.beginGroup("FileOps");
     //remove unused keys
     int count = settings.value("count", 0).toInt();
-    for (int i = ui.tableWidget->rowCount() - 1; i < count; ++i)
+    for (int i = m_ui.tableWidget->rowCount() - 1; i < count; ++i)
     {
         settings.remove (QString("enabled_%1").arg(i));
         settings.remove (QString("action_%1").arg(i));
@@ -102,20 +102,20 @@ void SettingsDialog::accept()
         settings.remove (QString("destination_%1").arg(i));
     }
     //save actions
-    settings.setValue("count", ui.tableWidget->rowCount());
-    for (int i = 0; i < ui.tableWidget->rowCount(); ++i)
+    settings.setValue("count", m_ui.tableWidget->rowCount());
+    for (int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
-        QCheckBox *checkBox = qobject_cast<QCheckBox *>(ui.tableWidget->cellWidget (i, 0));
+        QCheckBox *checkBox = qobject_cast<QCheckBox *>(m_ui.tableWidget->cellWidget (i, 0));
         settings.setValue (QString("enabled_%1").arg(i), checkBox->isChecked());
 
-        QComboBox *comboBox = qobject_cast<QComboBox *>(ui.tableWidget->cellWidget (i, 1));
+        QComboBox *comboBox = qobject_cast<QComboBox *>(m_ui.tableWidget->cellWidget (i, 1));
         settings.setValue (QString("action_%1").arg(i), comboBox->itemData (comboBox->currentIndex()));
 
-        ActionItem *item = (ActionItem *) ui.tableWidget->item(i,2);
+        ActionItem *item = (ActionItem *) m_ui.tableWidget->item(i,2);
         settings.setValue (QString("name_%1").arg(i), item->text());
         settings.setValue (QString("pattern_%1").arg(i), item->pattern());
         settings.setValue (QString("destination_%1").arg(i), item->destination());
-        settings.setValue (QString("hotkey_%1").arg(i), ui.tableWidget->item(i,3)->text());
+        settings.setValue (QString("hotkey_%1").arg(i), m_ui.tableWidget->item(i,3)->text());
     }
     settings.endGroup();
     QDialog::accept();
@@ -123,8 +123,8 @@ void SettingsDialog::accept()
 
 void SettingsDialog::createAction()
 {
-    int row = ui.tableWidget->rowCount ();
-    ui.tableWidget->insertRow (row);
+    int row = m_ui.tableWidget->rowCount ();
+    m_ui.tableWidget->insertRow (row);
     QCheckBox *checkBox = new QCheckBox;
     checkBox->setFocusPolicy (Qt::NoFocus);
     checkBox->setChecked(true);
@@ -140,49 +140,49 @@ void SettingsDialog::createAction()
     item->setDestination(QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
     item->setPattern("%p - %t");
 
-    ui.tableWidget->setCellWidget (row, 0, checkBox);
-    ui.tableWidget->setCellWidget (row, 1, comboBox);
-    ui.tableWidget->setItem (row, 2, item);
+    m_ui.tableWidget->setCellWidget (row, 0, checkBox);
+    m_ui.tableWidget->setCellWidget (row, 1, comboBox);
+    m_ui.tableWidget->setItem (row, 2, item);
     QTableWidgetItem *item2 = new QTableWidgetItem();
-    ui.tableWidget->setItem (row, 3, item2);
-    ui.tableWidget->item (row, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+    m_ui.tableWidget->setItem (row, 3, item2);
+    m_ui.tableWidget->item (row, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 }
 
 void SettingsDialog::deleteAction()
 {
-    if (ui.tableWidget->currentRow () >= 0)
-        ui.tableWidget->removeRow (ui.tableWidget->currentRow ());
+    if (m_ui.tableWidget->currentRow () >= 0)
+        m_ui.tableWidget->removeRow (m_ui.tableWidget->currentRow ());
 }
 
 void SettingsDialog::updateLineEdits()
 {
-    if (ui.tableWidget->currentRow () >= 0)
+    if (m_ui.tableWidget->currentRow () >= 0)
     {
-        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
-        ui.destinationEdit->setText(item->destination());
-        ui.patternEdit->setText(item->pattern());
+        ActionItem *item = (ActionItem *) m_ui.tableWidget->item(m_ui.tableWidget->currentRow (), 2);
+        m_ui.destinationEdit->setText(item->destination());
+        m_ui.patternEdit->setText(item->pattern());
     }
     else
     {
-        ui.destinationEdit->clear();
-        ui.patternEdit->clear();
+        m_ui.destinationEdit->clear();
+        m_ui.patternEdit->clear();
     }
 }
 
 void SettingsDialog::changeDestination(const QString &dest)
 {
-    if (ui.tableWidget->currentRow () >= 0)
+    if (m_ui.tableWidget->currentRow () >= 0)
     {
-        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
+        ActionItem *item = (ActionItem *) m_ui.tableWidget->item(m_ui.tableWidget->currentRow (), 2);
         item->setDestination(dest);
     }
 }
 
 void SettingsDialog::changePattern(const QString &pattern)
 {
-    if (ui.tableWidget->currentRow () >= 0)
+    if (m_ui.tableWidget->currentRow () >= 0)
     {
-        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
+        ActionItem *item = (ActionItem *) m_ui.tableWidget->item(m_ui.tableWidget->currentRow (), 2);
         item->setPattern(pattern);
     }
 }
@@ -205,31 +205,28 @@ void SettingsDialog::createMenus()
     menu->addAction(tr("File Path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-    ui.patternButton->setMenu(menu);
-    ui.patternButton->setPopupMode(QToolButton::InstantPopup);
+    m_ui.patternButton->setMenu(menu);
+    m_ui.patternButton->setPopupMode(QToolButton::InstantPopup);
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString( QAction *)));
 }
 
 void SettingsDialog::addTitleString(QAction *a)
 {
-    if (ui.patternEdit->cursorPosition () < 1)
-        ui.patternEdit->insert(a->data().toString());
-    else
-        ui.patternEdit->insert(" - "+a->data().toString());
+    m_ui.patternEdit->insert(a->data().toString());
 }
 
 void SettingsDialog::selectDirectory()
 {
     QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
-                                        ui.destinationEdit->text());
+                                        m_ui.destinationEdit->text());
     if(!dir.isEmpty())
-        ui.destinationEdit->setText(dir);
+        m_ui.destinationEdit->setText(dir);
 }
 
 void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
 {
     HotkeyDialog *dialog = new HotkeyDialog(item->text(), this);
-    if (ui.tableWidget->column (item) == 3 && dialog->exec() == QDialog::Accepted)
+    if (m_ui.tableWidget->column (item) == 3 && dialog->exec() == QDialog::Accepted)
         item->setText(dialog->key());
     dialog->deleteLater();
 }

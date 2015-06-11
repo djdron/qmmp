@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,33 +53,33 @@ private slots:
 
 private:
     void createMenus();
-    Ui::SettingsDialog ui;
+    Ui::SettingsDialog m_ui;
 };
 
 class ActionItem: public QTableWidgetItem
 {
 public:
-    ActionItem (const QString &text): QTableWidgetItem(text){};
+    ActionItem (const QString &text): QTableWidgetItem(text){}
 
     QString pattern()
     {
         return m_pattern;
-    };
+    }
 
     QString destination()
     {
         return m_destination;
-    };
+    }
 
     void setPattern(const QString &pattern)
     {
         m_pattern = pattern;
-    };
+    }
 
     void setDestination(const QString &dest)
     {
         m_destination = dest;
-    };
+    }
 
 private:
     QString m_pattern, m_destination;
