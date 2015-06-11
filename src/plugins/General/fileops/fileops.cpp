@@ -99,91 +99,17 @@ void FileOps::execAction(int n)
                                    tr("Destination directory doesn't exist"));
             break;
         }
-        QProgressDialog progress(qApp->activeWindow ());
-        progress.setWindowModality(Qt::WindowModal);
-        progress.setWindowTitle(tr("Copying"));
-        progress.setCancelButtonText(tr("Stop"));
-        progress.show();
-        progress.setAutoClose (false);
-        int i  = 0;
-        foreach(PlayListTrack *item, tracks)
-        {
-            if (!QFile::exists(item->url()))
-                continue;
-            //generate file name
-            QString fname = formatter.format(item);
-            //append extension
-            QString ext = QString(".") + item->url().section(".", -1).toLower();
-            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
-                fname += ext;
-            //create destination path
-            QString path = destination + "/" + fname;
-            QDir dir = QFileInfo(path).dir();
-            if(!dir.exists())
-            {
-                if(!dir.mkpath(dir.absolutePath()))
-                {
-                    qWarning("FileOps: unable to create directory");
-                    continue;
-                }
-            }
-            //copy file
-            QFile in(item->url());
-            QFile out(path);
-            if (!in.open(QIODevice::ReadOnly))
-            {
-                qWarning("FileOps: %s", qPrintable(in.errorString ()));
-                continue;
-            }
-            if (!out.open(QIODevice::WriteOnly))
-            {
-                qWarning("FileOps: %s", qPrintable(out.errorString ()));
-                continue;
-            }
-
-            progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
-            progress.setValue(0);
-            progress.setLabelText (QString(tr("Copying file %1/%2")).arg(++i).arg(tracks.size()));
-            progress.update();
-
-            while (!in.atEnd ())
-            {
-                out.write(in.read(COPY_BLOCK_SIZE));
-                progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
-                qApp->processEvents();
-            }
-            if(progress.wasCanceled ())
-                break;
-        }
-        progress.close();
+        copy(tracks, destination, &formatter);
         break;
     }
     case RENAME:
+    {
         qDebug("FileOps: rename");
-        foreach(PlayListTrack *item, tracks)
-        {
-            if (!QFile::exists(item->url())) //is it file?
-                continue;
-            //generate file name
-            QString fname = formatter.format(item);
-            //append extension
-            QString ext = QString(".") + item->url().section(".", -1).toLower();
-            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
-                fname += ext;
-            //rename file
-            QFile file(item->url());
-            destination = QFileInfo(item->url()).absolutePath ();
-            if (file.rename(destination + "/" + fname))
-            {
-                item->insert(Qmmp::URL, destination + "/" + fname);
-                model->doCurrentVisibleRequest();
-            }
-            else
-                continue;
-        }
+        rename(tracks, &formatter, model);
         break;
-
+    }
     case REMOVE:
+    {
         qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove Files"),
                                    tr("Are you sure you want to remove %n file(s) from disk?",
@@ -197,7 +123,7 @@ void FileOps::execAction(int n)
                 model->removeTrack(track);
         }
         break;
-
+    }
     case MOVE:
     {
         qDebug("FileOps: move");
@@ -214,90 +140,185 @@ void FileOps::execAction(int n)
         {
             break;
         }
-        QProgressDialog progress(qApp->activeWindow ());
-        progress.setWindowModality(Qt::WindowModal);
-        progress.setWindowTitle(tr("Renaming"));
-        progress.setCancelButtonText(tr("Stop"));
-        progress.show();
-        progress.setAutoClose (false);
-        int i  = 0;
-        foreach(PlayListTrack *item, tracks)
-        {
-            if (!QFile::exists(item->url()))
-                continue;
-            //generate file name
-            QString fname = formatter.format(item);
-            //append extension
-            QString ext = QString(".") + item->url().section(".", -1).toLower();
-            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
-                fname += ext;
-            //create destination path
-            QString path = destination + "/" + fname;
-            //skip moved files
-            if(path == item->url())
-                continue;
-
-            QDir dir = QFileInfo(path).dir();
-            if(!dir.exists())
-            {
-                if(!dir.mkpath(dir.absolutePath()))
-                {
-                    qWarning("FileOps: unable to create directory");
-                    continue;
-                }
-            }
-
-            progress.setRange(0, 100);
-            progress.setValue(0);
-            progress.setLabelText (QString(tr("Moving file %1/%2")).arg(++i).arg(tracks.size()));
-            progress.update();
-            //try to rename file first
-            if(QFile::rename(item->url(), path))
-            {
-                progress.setValue(100);
-                item->insert(Qmmp::URL, path);
-                model->doCurrentVisibleRequest();
-                continue;
-            }
-            //copy file
-            QFile in(item->url());
-            QFile out(path);
-            if (!in.open(QIODevice::ReadOnly))
-            {
-                qWarning("FileOps: %s", qPrintable(in.errorString ()));
-                continue;
-            }
-            if (!out.open(QIODevice::WriteOnly))
-            {
-                qWarning("FileOps: %s", qPrintable(out.errorString ()));
-                continue;
-            }
-
-            progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
-            progress.setValue(0);
-            progress.update();
-
-            while (!in.atEnd ())
-            {
-                progress.wasCanceled ();
-                out.write(in.read(COPY_BLOCK_SIZE));
-                progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
-                qApp->processEvents();
-            }
-
-            in.close();
-
-            if(!QFile::remove(item->url()))
-                qWarning("FileOps: unable to remove file '%s'", qPrintable(item->url()));
-
-            item->insert(Qmmp::URL, path);
-            model->doCurrentVisibleRequest();
-
-            if(progress.wasCanceled())
-                break;
-        }
-        progress.close();
+        move(tracks, destination, &formatter, model);
         break;
     }
     }
+}
+
+void FileOps::copy(QList<PlayListTrack *> tracks, const QString &dest, MetaDataFormatter *formatter)
+{
+    QProgressDialog progress(qApp->activeWindow ());
+    progress.setWindowModality(Qt::WindowModal);
+    progress.setWindowTitle(tr("Copying"));
+    progress.setCancelButtonText(tr("Stop"));
+    progress.show();
+    progress.setAutoClose (false);
+    int i  = 0;
+    foreach(PlayListTrack *track, tracks)
+    {
+        if (!QFile::exists(track->url()))
+            continue;
+
+        QString fileName = formatter->format(track); //generate file name
+
+        QString ext = QString(".") + track->url().section(".", -1).toLower();
+        if (!ext.isEmpty() && !fileName.endsWith(ext, Qt::CaseInsensitive))
+            fileName += ext; //append extension
+
+        //create destination path
+        QString path = dest + "/" + fileName;
+        QDir dir = QFileInfo(path).dir();
+        if(!dir.exists())
+        {
+            if(!dir.mkpath(dir.absolutePath()))
+            {
+                qWarning("FileOps: unable to create directory");
+                continue;
+            }
+        }
+        if(track->url() == path)
+            continue;
+
+        //copy file
+        QFile in(track->url());
+        QFile out(path);
+        if (!in.open(QIODevice::ReadOnly))
+        {
+            qWarning("FileOps: %s", qPrintable(in.errorString ()));
+            continue;
+        }
+        if (!out.open(QIODevice::WriteOnly))
+        {
+            qWarning("FileOps: %s", qPrintable(out.errorString ()));
+            continue;
+        }
+
+        progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
+        progress.setValue(0);
+        progress.setLabelText (QString(tr("Copying file %1/%2")).arg(++i).arg(tracks.size()));
+        progress.update();
+
+        while (!in.atEnd ())
+        {
+            out.write(in.read(COPY_BLOCK_SIZE));
+            progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
+            qApp->processEvents();
+        }
+        if(progress.wasCanceled ())
+            break;
+    }
+    progress.close();
+}
+
+void FileOps::rename(QList<PlayListTrack *> tracks, MetaDataFormatter *formatter, PlayListModel *model)
+{
+    foreach(PlayListTrack *item, tracks)
+    {
+        if (!QFile::exists(item->url())) //is it file?
+            continue;
+
+        QString fileName = formatter->format(item); //generate file name
+
+        QString ext = QString(".") + item->url().section(".", -1).toLower();
+        if (!ext.isEmpty() && !fileName.endsWith(ext, Qt::CaseInsensitive))
+            fileName += ext; //append extension
+        //rename file
+        QFile file(item->url());
+        QString dest = QFileInfo(item->url()).absolutePath ();
+        if (file.rename(dest + "/" + fileName))
+        {
+            item->insert(Qmmp::URL, dest + "/" + fileName);
+            model->doCurrentVisibleRequest();
+        }
+        else
+            continue;
+    }
+}
+
+void FileOps::move(QList<PlayListTrack *> tracks, const QString &dest, MetaDataFormatter *formatter, PlayListModel *model)
+{
+    QProgressDialog progress(qApp->activeWindow ());
+    progress.setWindowModality(Qt::WindowModal);
+    progress.setWindowTitle(tr("Renaming"));
+    progress.setCancelButtonText(tr("Stop"));
+    progress.show();
+    progress.setAutoClose (false);
+    int i  = 0;
+    foreach(PlayListTrack *item, tracks)
+    {
+        if (!QFile::exists(item->url()))
+            continue;
+
+        QString fileName = formatter->format(item); //generate file name
+
+        QString ext = QString(".") + item->url().section(".", -1).toLower();
+        if (!ext.isEmpty() && !fileName.endsWith(ext, Qt::CaseInsensitive))
+            fileName += ext;  //append extension
+        //create destination path
+        QString path = dest + "/" + fileName;
+        //skip moved files
+        if(path == item->url())
+            continue;
+
+        QDir dir = QFileInfo(path).dir();
+        if(!dir.exists())
+        {
+            if(!dir.mkpath(dir.absolutePath()))
+            {
+                qWarning("FileOps: unable to create directory");
+                continue;
+            }
+        }
+
+        progress.setRange(0, 100);
+        progress.setValue(0);
+        progress.setLabelText (QString(tr("Moving file %1/%2")).arg(++i).arg(tracks.size()));
+        progress.update();
+        //try to rename file first
+        if(QFile::rename(item->url(), path))
+        {
+            progress.setValue(100);
+            item->insert(Qmmp::URL, path);
+            model->doCurrentVisibleRequest();
+            continue;
+        }
+        //copy file
+        QFile in(item->url());
+        QFile out(path);
+        if (!in.open(QIODevice::ReadOnly))
+        {
+            qWarning("FileOps: %s", qPrintable(in.errorString ()));
+            continue;
+        }
+        if (!out.open(QIODevice::WriteOnly))
+        {
+            qWarning("FileOps: %s", qPrintable(out.errorString ()));
+            continue;
+        }
+
+        progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
+        progress.setValue(0);
+        progress.update();
+
+        while (!in.atEnd ())
+        {
+            progress.wasCanceled ();
+            out.write(in.read(COPY_BLOCK_SIZE));
+            progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
+            qApp->processEvents();
+        }
+
+        in.close();
+
+        if(!QFile::remove(item->url()))
+            qWarning("FileOps: unable to remove file '%s'", qPrintable(item->url()));
+
+        item->insert(Qmmp::URL, path);
+        model->doCurrentVisibleRequest();
+
+        if(progress.wasCanceled())
+            break;
+    }
+    progress.close();
 }
