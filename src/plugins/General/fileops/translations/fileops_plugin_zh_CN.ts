@@ -5,36 +5,61 @@
     <name>FileOps</name>
     <message>
         <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="132"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="99"/>
+        <location filename="../fileops.cpp" line="133"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>目标目录不存在</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="136"/>
+        <source>Move Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../fileops.cpp" line="137"/>
+        <source>Are you sure you want to move %n file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="153"/>
         <source>Copying</source>
         <translation>正在复制</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="105"/>
+        <location filename="../fileops.cpp" line="154"/>
+        <location filename="../fileops.cpp" line="244"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="145"/>
+        <location filename="../fileops.cpp" line="199"/>
         <source>Copying file %1/%2</source>
         <translation>正在复制文件 %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="187"/>
+        <location filename="../fileops.cpp" line="243"/>
+        <source>Renaming</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="276"/>
+        <source>Moving file %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="114"/>
         <source>Remove Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>你确认要从磁盘中删除 %n 文件？</numerusform>
@@ -85,106 +110,112 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>重命名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="56"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="55"/>
+        <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="139"/>
+        <location filename="../settingsdialog.cpp" line="138"/>
         <source>New action</source>
         <translation>新建动作</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="193"/>
+        <location filename="../settingsdialog.cpp" line="192"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="194"/>
+        <location filename="../settingsdialog.cpp" line="193"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="195"/>
+        <location filename="../settingsdialog.cpp" line="194"/>
         <source>Album Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
+        <location filename="../settingsdialog.cpp" line="195"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
+        <location filename="../settingsdialog.cpp" line="196"/>
         <source>Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
+        <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit Track Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="203"/>
+        <location filename="../settingsdialog.cpp" line="202"/>
         <source>Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="204"/>
+        <location filename="../settingsdialog.cpp" line="203"/>
         <source>File Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
+        <location filename="../settingsdialog.cpp" line="204"/>
         <source>File Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="206"/>
+        <location filename="../settingsdialog.cpp" line="205"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="201"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="200"/>
         <source>Composer</source>
         <translation>作曲</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="202"/>
+        <location filename="../settingsdialog.cpp" line="201"/>
         <source>Duration</source>
         <translation>持续时间</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="207"/>
+        <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
         <translation>条件</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="223"/>
+        <location filename="../settingsdialog.cpp" line="219"/>
         <source>Choose a directory</source>
         <translation>选择一个目录</translation>
     </message>

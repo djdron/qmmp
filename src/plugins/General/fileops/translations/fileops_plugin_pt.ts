@@ -5,36 +5,62 @@
     <name>FileOps</name>
     <message>
         <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="132"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="99"/>
+        <location filename="../fileops.cpp" line="133"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>O diretório de destino não existe</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="136"/>
+        <source>Move Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../fileops.cpp" line="137"/>
+        <source>Are you sure you want to move %n file(s)?</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="153"/>
         <source>Copying</source>
         <translation>Cópia</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="105"/>
+        <location filename="../fileops.cpp" line="154"/>
+        <location filename="../fileops.cpp" line="244"/>
         <source>Stop</source>
         <translation>Parar</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="145"/>
+        <location filename="../fileops.cpp" line="199"/>
         <source>Copying file %1/%2</source>
         <translation>Copiando ficheiro %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="187"/>
+        <location filename="../fileops.cpp" line="243"/>
+        <source>Renaming</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="276"/>
+        <source>Moving file %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fileops.cpp" line="114"/>
         <source>Remove Files</source>
         <translation>Remover ficheiros</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="188"/>
+        <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Tem a certeza que quer remover %n ficheiro do disco?</numerusform>
@@ -117,8 +143,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="56"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="55"/>
+        <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>Remover</translation>
     </message>
@@ -139,99 +165,105 @@
         <translation>Padrão para nome de ficheiro:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>Mudar nome</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="139"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="138"/>
         <source>New action</source>
         <translation>Nova ação</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="193"/>
+        <location filename="../settingsdialog.cpp" line="192"/>
         <source>Artist</source>
         <translation>Artista</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="194"/>
+        <location filename="../settingsdialog.cpp" line="193"/>
         <source>Album</source>
         <translation>Álbum</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="195"/>
+        <location filename="../settingsdialog.cpp" line="194"/>
         <source>Album Artist</source>
         <translation>Artista do álbum</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
+        <location filename="../settingsdialog.cpp" line="195"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
+        <location filename="../settingsdialog.cpp" line="196"/>
         <source>Track Number</source>
         <translation>Número da faixa</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
+        <location filename="../settingsdialog.cpp" line="197"/>
         <source>Two-digit Track Number</source>
         <translation>Número da faixa com 2 dígitos</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="203"/>
+        <location filename="../settingsdialog.cpp" line="202"/>
         <source>Disc Number</source>
         <translation>Número do disco</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="204"/>
+        <location filename="../settingsdialog.cpp" line="203"/>
         <source>File Name</source>
         <translation>Nome do ficheiro</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="205"/>
+        <location filename="../settingsdialog.cpp" line="204"/>
         <source>File Path</source>
         <translation>Caminho do ficheiro</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="201"/>
+        <location filename="../settingsdialog.cpp" line="200"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="202"/>
+        <location filename="../settingsdialog.cpp" line="201"/>
         <source>Duration</source>
         <translation>Duração</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="206"/>
+        <location filename="../settingsdialog.cpp" line="205"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="207"/>
+        <location filename="../settingsdialog.cpp" line="206"/>
         <source>Condition</source>
         <translation>Condição</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="223"/>
+        <location filename="../settingsdialog.cpp" line="219"/>
         <source>Choose a directory</source>
         <translation>Escolha um diretório</translation>
     </message>
