@@ -26,6 +26,8 @@
 class QAction;
 class SoundCore;
 class PlayListTrack;
+class MetaDataFormatter;
+class PlayListModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -51,6 +53,12 @@ private slots:
     void execAction(int n);
 
 private:
+    void copy(QList<PlayListTrack*> tracks, const QString &dest, MetaDataFormatter *formatter);
+    void rename(QList<PlayListTrack*> tracks, MetaDataFormatter *formatter,
+                PlayListModel *model);
+    void move(QList<PlayListTrack*> tracks, const QString &dest, MetaDataFormatter *formatter,
+              PlayListModel *model);
+
     QList <int> m_types;
     QStringList m_patterns;
     QStringList m_destinations;
