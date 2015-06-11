@@ -113,9 +113,10 @@ void FileOps::execAction(int n)
             //generate file name
             QString fname = formatter.format(item);
             //append extension
-            QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
-            if (!fname.endsWith(ext))
+            QString ext = QString(".") + item->url().section(".", -1).toLower();
+            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
                 fname += ext;
+            //create destination path
             QString path = destination + "/" + fname;
             QDir dir = QFileInfo(path).dir();
             if(!dir.exists())
@@ -147,11 +148,12 @@ void FileOps::execAction(int n)
 
             while (!in.atEnd ())
             {
-                progress.wasCanceled ();
                 out.write(in.read(COPY_BLOCK_SIZE));
                 progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
                 qApp->processEvents();
             }
+            if(progress.wasCanceled ())
+                break;
         }
         progress.close();
         break;
@@ -160,13 +162,13 @@ void FileOps::execAction(int n)
         qDebug("FileOps: rename");
         foreach(PlayListTrack *item, tracks)
         {
-            if (!QFile::exists(item->url()))
+            if (!QFile::exists(item->url())) //is it file?
                 continue;
             //generate file name
             QString fname = formatter.format(item);
             //append extension
-            QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
-            if (!fname.endsWith(ext))
+            QString ext = QString(".") + item->url().section(".", -1).toLower();
+            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
                 fname += ext;
             //rename file
             QFile file(item->url());
@@ -180,8 +182,7 @@ void FileOps::execAction(int n)
                 continue;
         }
         break;
-        /*case MOVE:
-            break;*/
+
     case REMOVE:
         qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove Files"),
@@ -195,5 +196,108 @@ void FileOps::execAction(int n)
             if (QFile::exists(track->url()) && QFile::remove(track->url()))
                 model->removeTrack(track);
         }
+        break;
+
+    case MOVE:
+    {
+        qDebug("FileOps: move");
+        if (!QDir(destination).exists ())
+        {
+            QMessageBox::critical (qApp->activeWindow (), tr("Error"),
+                                   tr("Destination directory doesn't exist"));
+            break;
+        }
+        if (QMessageBox::question (qApp->activeWindow (), tr("Move Files"),
+                                   tr("Are you sure you want to move %n file(s)?",
+                                      "",tracks.size()),
+                                   QMessageBox::Yes | QMessageBox::No) !=  QMessageBox::Yes)
+        {
+            break;
+        }
+        QProgressDialog progress(qApp->activeWindow ());
+        progress.setWindowModality(Qt::WindowModal);
+        progress.setWindowTitle(tr("Renaming"));
+        progress.setCancelButtonText(tr("Stop"));
+        progress.show();
+        progress.setAutoClose (false);
+        int i  = 0;
+        foreach(PlayListTrack *item, tracks)
+        {
+            if (!QFile::exists(item->url()))
+                continue;
+            //generate file name
+            QString fname = formatter.format(item);
+            //append extension
+            QString ext = QString(".") + item->url().section(".", -1).toLower();
+            if (!ext.isEmpty() && !fname.endsWith(ext, Qt::CaseInsensitive))
+                fname += ext;
+            //create destination path
+            QString path = destination + "/" + fname;
+            //skip moved files
+            if(path == item->url())
+                continue;
+
+            QDir dir = QFileInfo(path).dir();
+            if(!dir.exists())
+            {
+                if(!dir.mkpath(dir.absolutePath()))
+                {
+                    qWarning("FileOps: unable to create directory");
+                    continue;
+                }
+            }
+
+            progress.setRange(0, 100);
+            progress.setValue(0);
+            progress.setLabelText (QString(tr("Moving file %1/%2")).arg(++i).arg(tracks.size()));
+            progress.update();
+            //try to rename file first
+            if(QFile::rename(item->url(), path))
+            {
+                progress.setValue(100);
+                item->insert(Qmmp::URL, path);
+                model->doCurrentVisibleRequest();
+                continue;
+            }
+            //copy file
+            QFile in(item->url());
+            QFile out(path);
+            if (!in.open(QIODevice::ReadOnly))
+            {
+                qWarning("FileOps: %s", qPrintable(in.errorString ()));
+                continue;
+            }
+            if (!out.open(QIODevice::WriteOnly))
+            {
+                qWarning("FileOps: %s", qPrintable(out.errorString ()));
+                continue;
+            }
+
+            progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
+            progress.setValue(0);
+            progress.update();
+
+            while (!in.atEnd ())
+            {
+                progress.wasCanceled ();
+                out.write(in.read(COPY_BLOCK_SIZE));
+                progress.setValue(int(out.size()/COPY_BLOCK_SIZE));
+                qApp->processEvents();
+            }
+
+            in.close();
+
+            if(!QFile::remove(item->url()))
+                qWarning("FileOps: unable to remove file '%s'", qPrintable(item->url()));
+
+            item->insert(Qmmp::URL, path);
+            model->doCurrentVisibleRequest();
+
+            if(progress.wasCanceled())
+                break;
+        }
+        progress.close();
+        break;
+    }
     }
 }

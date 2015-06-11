@@ -17,13 +17,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#include <QTextCodec>
 #include <QSettings>
-#include <QCheckBox>
-#include <QComboBox>
 #include <QMenu>
 #include <QHeaderView>
 #include <QApplication>
+#include <QCheckBox>
+#include <QComboBox>
 #include <QDesktopServices>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
@@ -52,7 +51,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         QComboBox *comboBox = new QComboBox;
         comboBox->addItem (tr("Copy"), FileOps::COPY);
         comboBox->addItem (tr("Rename"), FileOps::RENAME);
-        //comboBox->addItem (tr("Move"), FileOps::MOVE);
+        comboBox->addItem (tr("Move"), FileOps::MOVE);
         comboBox->addItem (tr("Remove"), FileOps::REMOVE);
         comboBox->setFocusPolicy (Qt::NoFocus);
 
@@ -132,7 +131,7 @@ void SettingsDialog::createAction()
     QComboBox *comboBox = new QComboBox;
     comboBox->addItem (tr("Copy"), FileOps::COPY);
     comboBox->addItem (tr("Rename"), FileOps::RENAME);
-    //comboBox->addItem (tr("Move"), FileOps::MOVE);
+    comboBox->addItem (tr("Move"), FileOps::MOVE);
     comboBox->addItem (tr("Remove"), FileOps::REMOVE);
     comboBox->setFocusPolicy (Qt::NoFocus);
 

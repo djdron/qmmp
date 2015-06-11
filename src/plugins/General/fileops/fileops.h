@@ -43,7 +43,8 @@ public:
     {
         COPY = 0,
         RENAME,
-        REMOVE
+        REMOVE,
+        MOVE,
     };
 
 private slots:
