@@ -42,13 +42,13 @@ public slots:
     virtual void accept();
 
 private slots:
-    void createAction();
-    void deleteAction();
+    void on_newButton_clicked();
+    void on_deleteButton_clicked();
     void updateLineEdits();
-    void changeDestination(const QString &dest);
-    void changePattern(const QString &pattern);
+    void on_destinationEdit_textChanged(QString dest);
+    void on_patternEdit_textChanged(QString pattern);
     void addTitleString(QAction *action);
-    void selectDirectory();
+    void on_destButton_clicked();
     void on_tableWidget_itemDoubleClicked (QTableWidgetItem *item);
 
 private:
