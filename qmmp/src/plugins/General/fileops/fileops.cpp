@@ -240,7 +240,7 @@ void FileOps::move(QList<PlayListTrack *> tracks, const QString &dest, MetaDataF
 {
     QProgressDialog progress(qApp->activeWindow ());
     progress.setWindowModality(Qt::WindowModal);
-    progress.setWindowTitle(tr("Renaming"));
+    progress.setWindowTitle(tr("Moving"));
     progress.setCancelButtonText(tr("Stop"));
     progress.show();
     progress.setAutoClose (false);
