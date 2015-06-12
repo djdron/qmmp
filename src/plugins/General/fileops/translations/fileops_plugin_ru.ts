@@ -18,15 +18,15 @@
     <message>
         <location filename="../fileops.cpp" line="136"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемещение файлов</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Вы уверены, что хотите переместить %n файл?</numerusform>
+            <numerusform>Вы уверены, что хотите переместить %n файла?</numerusform>
+            <numerusform>Вы уверены, что хотите переместить %n файлов?</numerusform>
         </translation>
     </message>
     <message>
@@ -48,12 +48,12 @@
     <message>
         <location filename="../fileops.cpp" line="243"/>
         <source>Moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемещение</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="276"/>
         <source>Moving file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемещение файла %1/%2</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="114"/>
@@ -201,7 +201,7 @@
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>Переместить</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="228"/>
