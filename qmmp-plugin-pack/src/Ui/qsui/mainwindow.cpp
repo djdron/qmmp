@@ -132,11 +132,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui.statusbar->addPermanentWidget(m_statusLabel, 0);
     m_ui.statusbar->addPermanentWidget(m_timeLabel, 1);
     //volume
+    m_ui.progressToolBar->addSeparator();
     m_volumeSlider = new QSlider(Qt::Horizontal, this);
     m_volumeSlider->setFixedWidth(100);
     m_volumeSlider->setRange(0,100);
-    m_ui.progressToolBar->addSeparator();
-    m_ui.progressToolBar->addWidget(m_volumeSlider);
     QIcon volumeIcon = QIcon::fromTheme("audio-volume-high", QIcon(":/qsui/audio-volume-high.png"));
     m_volumeAction = m_ui.progressToolBar->addAction(volumeIcon, tr("Volume"));
     m_volumeAction->setCheckable(true);
@@ -148,6 +147,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(mutedChanged(bool)), m_volumeAction, SLOT(setChecked(bool)));
     m_volumeSlider->setValue(m_core->volume());
     updateVolumeIcon();
+    m_ui.progressToolBar->addWidget(m_volumeSlider);
     //visualization
     m_analyzer = new QSUiAnalyzer(this);
     m_ui.analyzerDockWidget->setWidget(m_analyzer);
