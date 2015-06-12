@@ -61,7 +61,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="59"/>
         <source>Album Artist</source>
-        <translation>Исполнитель Альбома</translation>
+        <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="65"/>
