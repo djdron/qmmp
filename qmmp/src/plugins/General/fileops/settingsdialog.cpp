@@ -37,8 +37,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     m_ui.tableWidget->verticalHeader()->hide();
     m_ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-    connect (m_ui.newButton,SIGNAL(pressed()), SLOT(createAction()));
-    connect (m_ui.deleteButton,SIGNAL(pressed()), SLOT(deleteAction()));
+
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("FileOps");
     int count = settings.value("count", 0).toInt();
@@ -55,10 +54,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         comboBox->addItem (tr("Remove"), FileOps::REMOVE);
         comboBox->setFocusPolicy (Qt::NoFocus);
 
+
         checkBox->setChecked(settings.value(QString("enabled_%1").arg(i), true).toBool());
         int ci = comboBox->findData (settings.value(QString("action_%1").arg(i), FileOps::COPY).toInt());
         if (ci >= 0)
             comboBox->setCurrentIndex(ci);
+
+        connect(comboBox, SIGNAL(activated(int)), SLOT(updateLineEdits()));
 
         ActionItem *item = new ActionItem(settings.value(QString("name_%1").arg(i), "Action").toString());
         item->setPattern(settings.value(QString("pattern_%1").arg(i)).toString());
@@ -73,12 +75,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         m_ui.tableWidget->item (i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
     settings.endGroup();
-    connect (m_ui.tableWidget, SIGNAL(currentItemChanged (QTableWidgetItem *, QTableWidgetItem *)),
+    connect (m_ui.tableWidget, SIGNAL(currentCellChanged(int,int,int,int)),
              SLOT(updateLineEdits()));
     updateLineEdits();
-    connect (m_ui.destinationEdit, SIGNAL(textChanged (const QString&)), SLOT(changeDestination(const QString&)));
-    connect (m_ui.patternEdit, SIGNAL(textChanged (const QString&)), SLOT(changePattern(const QString&)));
-    connect (m_ui.destButton, SIGNAL(clicked()), SLOT(selectDirectory()));
     createMenus();
 }
 
@@ -120,7 +119,7 @@ void SettingsDialog::accept()
     QDialog::accept();
 }
 
-void SettingsDialog::createAction()
+void SettingsDialog::on_newButton_clicked()
 {
     int row = m_ui.tableWidget->rowCount ();
     m_ui.tableWidget->insertRow (row);
@@ -139,6 +138,8 @@ void SettingsDialog::createAction()
     item->setDestination(QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
     item->setPattern("%p - %t");
 
+    connect(comboBox, SIGNAL(activated(int)), SLOT(updateLineEdits()));
+
     m_ui.tableWidget->setCellWidget (row, 0, checkBox);
     m_ui.tableWidget->setCellWidget (row, 1, comboBox);
     m_ui.tableWidget->setItem (row, 2, item);
@@ -147,7 +148,7 @@ void SettingsDialog::createAction()
     m_ui.tableWidget->item (row, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 }
 
-void SettingsDialog::deleteAction()
+void SettingsDialog::on_deleteButton_clicked()
 {
     if (m_ui.tableWidget->currentRow () >= 0)
         m_ui.tableWidget->removeRow (m_ui.tableWidget->currentRow ());
@@ -160,15 +161,42 @@ void SettingsDialog::updateLineEdits()
         ActionItem *item = (ActionItem *) m_ui.tableWidget->item(m_ui.tableWidget->currentRow (), 2);
         m_ui.destinationEdit->setText(item->destination());
         m_ui.patternEdit->setText(item->pattern());
+
+        QComboBox *comboBox = qobject_cast<QComboBox *>
+                (m_ui.tableWidget->cellWidget (m_ui.tableWidget->currentRow (), 1));
+        int action = comboBox->itemData (comboBox->currentIndex()).toInt();
+        if(action == FileOps::COPY || action == FileOps::MOVE)
+        {
+            m_ui.destinationEdit->setEnabled(true);
+            m_ui.patternEdit->setEnabled(true);
+            m_ui.destButton->setEnabled(true);
+            m_ui.patternButton->setEnabled(true);
+        }
+        else if(action == FileOps::RENAME)
+        {
+            m_ui.destinationEdit->setEnabled(false);
+            m_ui.patternEdit->setEnabled(true);
+            m_ui.destButton->setEnabled(false);
+            m_ui.patternButton->setEnabled(true);
+        }
+        else if(action == FileOps::REMOVE)
+        {
+            m_ui.destinationEdit->setEnabled(false);
+            m_ui.patternEdit->setEnabled(false);
+            m_ui.destButton->setEnabled(false);
+            m_ui.patternButton->setEnabled(false);
+        }
     }
     else
     {
-        m_ui.destinationEdit->clear();
-        m_ui.patternEdit->clear();
+        m_ui.destinationEdit->setEnabled(false);
+        m_ui.patternEdit->setEnabled(false);
+        m_ui.destButton->setEnabled(false);
+        m_ui.patternButton->setEnabled(false);
     }
 }
 
-void SettingsDialog::changeDestination(const QString &dest)
+void SettingsDialog::on_destinationEdit_textChanged(QString dest)
 {
     if (m_ui.tableWidget->currentRow () >= 0)
     {
@@ -177,7 +205,7 @@ void SettingsDialog::changeDestination(const QString &dest)
     }
 }
 
-void SettingsDialog::changePattern(const QString &pattern)
+void SettingsDialog::on_patternEdit_textChanged(QString pattern)
 {
     if (m_ui.tableWidget->currentRow () >= 0)
     {
@@ -214,7 +242,7 @@ void SettingsDialog::addTitleString(QAction *a)
     m_ui.patternEdit->insert(a->data().toString());
 }
 
-void SettingsDialog::selectDirectory()
+void SettingsDialog::on_destButton_clicked()
 {
     QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
                                         m_ui.destinationEdit->text());
