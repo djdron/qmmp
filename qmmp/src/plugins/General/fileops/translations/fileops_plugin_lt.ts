@@ -47,7 +47,7 @@
     </message>
     <message>
         <location filename="../fileops.cpp" line="243"/>
-        <source>Renaming</source>
+        <source>Moving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
