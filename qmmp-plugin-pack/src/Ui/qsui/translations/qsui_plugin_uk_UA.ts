@@ -640,7 +640,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|%2 біт|%3 к.|%4 Гц|треків: %5|загальний час: %6|%7 кбіт/с|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
@@ -650,7 +650,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="384"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|треків: %2|загальний час: %3|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="385"/>
@@ -761,7 +761,7 @@
         <location filename="../mainwindow.cpp" line="531"/>
         <location filename="../mainwindow.cpp" line="586"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>За датою модифікації файлу</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="535"/>
