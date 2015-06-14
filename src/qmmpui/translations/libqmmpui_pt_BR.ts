@@ -905,12 +905,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="241"/>
+        <location filename="../playlisttrack.cpp" line="240"/>
         <source>Streams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="246"/>
+        <location filename="../playlisttrack.cpp" line="245"/>
         <source>Empty group</source>
         <translation>Grupo vazio</translation>
     </message>
