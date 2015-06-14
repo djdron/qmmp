@@ -90,10 +90,8 @@ private slots:
 
 private:
     void closeEvent(QCloseEvent *);
-#ifdef Q_OS_WIN
     void hideEvent(QHideEvent *);
     bool m_wasMaximized;
-#endif
     void createActions();
     void createButtons();
     void writeSettings();
