@@ -60,7 +60,7 @@ private slots:
     void updatePosition(qint64 pos);
     void seek();
     void showState(Qmmp::State);
-    void showBitrate(int);
+    void updateStatus();
     void updateTabs();
     void removePlaylist();
     void removePlaylistWithIndex(int);

@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //status
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
-    connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
+    connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(updateStatus()));
     connect(m_core, SIGNAL(bufferingProgress(int)), SLOT(showBuffering(int)));
     connect(m_core, SIGNAL(metaDataChanged()), SLOT(showMetaData()));
     //keyboard manager
@@ -160,6 +160,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     createActions();
     createButtons();
     readSettings();
+    updateStatus();
 }
 
 MainWindow::~MainWindow()
@@ -191,10 +192,14 @@ void MainWindow::updatePosition(qint64 pos)
     m_slider->setMaximum(m_core->totalTime()/1000);
     if(!m_slider->isSliderDown())
         m_slider->setValue(pos/1000);
-    m_timeLabel->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
-                         .arg(pos/1000%60, 2, 10, QChar('0'))
-                         .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
-                         .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
+
+    QString text = MetaDataFormatter::formatLength(pos/1000);
+    if(m_core->totalTime() > 0)
+    {
+        text.append("/");
+        text.append(MetaDataFormatter::formatLength(m_core->totalTime()/1000));
+    }
+    m_timeLabel->setText(text);
 }
 
 void MainWindow::seek()
@@ -208,23 +213,25 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        showBitrate(m_core->bitrate());
+        updateStatus();
         m_analyzer->setCover(MetaDataManager::instance()->getCover(m_core->url()));
         CoverWidget *cw = qobject_cast<CoverWidget *>(m_ui.coverDockWidget->widget());
         cw->setCover(MetaDataManager::instance()->getCover(m_core->url()));
-    }
         break;
+    }
     case Qmmp::Paused:
-        m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
+        updateStatus();
         break;
     case Qmmp::Stopped:
-        m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
+        updateStatus();
         m_timeLabel->clear();
         m_slider->setValue(0);
         m_analyzer->clearCover();
         qobject_cast<CoverWidget *>(m_ui.coverDockWidget->widget())->clearCover();
         setWindowTitle("Qmmp");
         break;
+    default:
+        ;
     }
 }
 
@@ -356,14 +363,31 @@ void MainWindow::playPause()
         m_player->play();
 }
 
-void MainWindow::showBitrate(int)
+void MainWindow::updateStatus()
 {
-    m_statusLabel->setText(tr("<b>%1</b> [%2 bit|%3|%4 Hz|%5 kbps]")
-                           .arg(tr("Playing"))
-                           .arg(m_core->sampleSize())
-                           .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
-                           .arg(m_core->frequency())
-                           .arg(m_core->bitrate()));
+    int tracks = m_pl_manager->currentPlayList()->trackCount();
+    int length = m_pl_manager->currentPlayList()->totalLength();
+
+    if(m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
+    {
+        m_statusLabel->setText(tr("<b>%1</b>|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|")
+                               .arg(m_core->state() == Qmmp::Playing ? tr("Playing") : tr("Paused"))
+                               .arg(m_core->sampleSize())
+                               .arg(m_core->channels())
+                               .arg(m_core->frequency())
+                               .arg(tracks)
+                               .arg(MetaDataFormatter::formatLength(length))
+                               .arg(m_core->bitrate()));
+    }
+    else if(m_core->state() == Qmmp::Stopped)
+    {
+        m_statusLabel->setText(tr("<b>%1</b>|tracks: %2|total time: %3|")
+                               .arg(tr("Stopped"))
+                               .arg(tracks)
+                               .arg(MetaDataFormatter::formatLength(length)));
+    }
+    else
+        m_statusLabel->clear();
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
