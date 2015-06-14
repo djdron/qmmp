@@ -161,7 +161,9 @@ unix {
     qmmpuisettings.h \
     playlistdownloader.h \
     playlistgroup.h \
-    playlisttrack.h
+    playlisttrack.h \
+    metadataformatter.h \
+    playlistheadermodel.h
 
     devel.path = /include/qmmpui
     INSTALLS += target \
