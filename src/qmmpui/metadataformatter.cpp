@@ -96,7 +96,7 @@ QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData,
     return evalute(&m_nodes, &metaData, length).trimmed();
 }
 
-QString MetaDataFormatter::formatLength(qint64 length) const
+QString MetaDataFormatter::formatLength(qint64 length)
 {
     if(length <= 0)
         return QString();

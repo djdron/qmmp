@@ -194,8 +194,7 @@ const QString PlayListTrack::formattedLength()
 {
     if(m_length != 0 && m_formattedLength.isEmpty())
     {
-        MetaDataFormatter f;
-        m_formattedLength = f.formatLength(m_length);
+        m_formattedLength = MetaDataFormatter::formatLength(m_length);
     }
     else if(m_length == 0)
         m_formattedLength.clear();
