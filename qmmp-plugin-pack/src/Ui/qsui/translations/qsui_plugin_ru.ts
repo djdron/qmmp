@@ -754,7 +754,7 @@
         <location filename="../mainwindow.cpp" line="527"/>
         <location filename="../mainwindow.cpp" line="582"/>
         <source>By File Creation Date</source>
-        <translation>По времени создания файла</translation>
+        <translation>По дате создания файла</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="531"/>
