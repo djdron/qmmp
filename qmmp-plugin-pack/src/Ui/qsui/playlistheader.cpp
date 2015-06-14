@@ -49,6 +49,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_number_width = 0;
     m_sorting_column = -1;
     m_reverted = false;
+    m_block_resize = true;
     m_metrics = 0;
     m_task = NO_TASK;
 
@@ -443,22 +444,25 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
         return;
     }
 
-    int delta = e->size().width() - e->oldSize().width();
-    int index = -1;
-    for(int i = 0; i < m_model->count(); ++i)
+    if(!m_block_resize) //skip inital resize events
     {
-        if(m_model->data(i, AUTO_RESIZE).toBool())
+        int delta = e->size().width() - e->oldSize().width();
+        int index = -1;
+        for(int i = 0; i < m_model->count(); ++i)
         {
-            index = i;
-            break;
+            if(m_model->data(i, AUTO_RESIZE).toBool())
+            {
+                index = i;
+                break;
+            }
         }
-    }
 
-    if(index >= 0 && e->oldSize().width() > 10)
-    {
-        setSize(index, qMax(minSize(index), size(index) + delta));
-        updateColumns();
-        return;
+        if(index >= 0 && e->oldSize().width() > 10)
+        {
+            setSize(index, qMax(minSize(index), size(index) + delta));
+            updateColumns();
+            return;
+        }
     }
 
     if(layoutDirection() == Qt::RightToLeft || e->oldSize().height() != e->size().height())
@@ -543,6 +547,12 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     }
 }
 
+void PlayListHeader::timerEvent(QTimerEvent *e)
+{
+    killTimer(e->timerId());
+    m_block_resize = false;
+}
+
 int PlayListHeader::findColumn(QPoint pos)
 {
     for(int i = 0; i < m_model->count(); ++i)
@@ -594,6 +604,8 @@ void PlayListHeader::writeSettings()
 void PlayListHeader::showEvent(QShowEvent *)
 {
     updateColumns();
+    startTimer(1000);
+    m_block_resize = true; //do not auto-resize column 1 s after show event
     if(m_old_sizes != sizes())
     {
         m_old_sizes = sizes();

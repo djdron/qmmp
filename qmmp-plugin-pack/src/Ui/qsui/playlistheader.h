@@ -72,6 +72,7 @@ private:
     void resizeEvent(QResizeEvent *e);
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
+    void timerEvent(QTimerEvent *e);
     int findColumn(QPoint pos);
     void initStyleOption(QStyleOptionHeader *opt);
     int size(int index) const;
@@ -104,6 +105,7 @@ private:
     int m_press_offset;
     int m_pl_padding;
     int m_sorting_column;
+    bool m_block_resize;
     QSize m_size_hint;
     QList<int> m_old_sizes;
 
