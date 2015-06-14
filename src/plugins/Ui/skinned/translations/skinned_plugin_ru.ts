@@ -875,7 +875,7 @@
         <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="312"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>По дате изменения файла</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
