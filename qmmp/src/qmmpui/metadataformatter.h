@@ -73,7 +73,7 @@ public:
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
      */
-    QString formatLength(qint64 length) const;
+    static QString formatLength(qint64 length);
 
 private:
     struct Node;
