@@ -639,22 +639,22 @@
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|%2 бит|%3 к.|%4 Гц|треков: %5|обшее время: %6|%7 кбит/с|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
         <source>Paused</source>
-        <translation>Приостановлено</translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="384"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|треков: %2|общее время: %3|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="385"/>
         <source>Stopped</source>
-        <translation>Остановлено</translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="287"/>
@@ -674,7 +674,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
         <source>Playing</source>
-        <translation>Воспроизводится</translation>
+        <translation>Воспр.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
