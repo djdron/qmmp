@@ -760,7 +760,7 @@
         <location filename="../mainwindow.cpp" line="531"/>
         <location filename="../mainwindow.cpp" line="586"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>По дате изменения файла</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="535"/>
