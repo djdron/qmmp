@@ -92,6 +92,7 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
     restoreGeometry(settings.value("RGScanner/geometry").toByteArray());
     m_ui.trackCheckBox->setChecked(settings.value("RGScanner/write_track",true).toBool());
     m_ui.albumCheckBox->setChecked(settings.value("RGScanner/write_album",true).toBool());
+    m_ui.skipScannedCheckBox->setChecked(settings.value("RGScanner/skip_scanned",true).toBool());
 }
 
 RGScanDialog::~RGScanDialog()
@@ -115,6 +116,19 @@ void RGScanDialog::on_calculateButton_clicked()
             delete scanner;
             continue;
         }
+
+        if(m_ui.skipScannedCheckBox->isChecked() && !scanner->oldReplayGainInfo().isEmpty())
+        {
+            qDebug("RGScanDialog: skipping scanned file..");
+            QMap<Qmmp::ReplayGainKey, double> rg = scanner->oldReplayGainInfo();
+            m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(rg.value(Qmmp::REPLAYGAIN_TRACK_GAIN))));
+            m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(rg.value(Qmmp::REPLAYGAIN_ALBUM_GAIN))));
+            m_ui.tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(rg.value(Qmmp::REPLAYGAIN_TRACK_PEAK))));
+            m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(rg.value(Qmmp::REPLAYGAIN_ALBUM_PEAK))));
+            delete scanner;
+            continue;
+        }
+
         scanner->setAutoDelete(false);
         m_scanners.append(scanner);
         connect(scanner, SIGNAL(progress(int)), m_ui.tableWidget->cellWidget(i, 1), SLOT(setValue(int)));
@@ -125,7 +139,6 @@ void RGScanDialog::on_calculateButton_clicked()
 
 void RGScanDialog::onScanFinished(QString url)
 {
-
     for(int i = 0; i < m_ui.tableWidget->rowCount(); ++i)
     {
         if(url != m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString())
@@ -148,7 +161,7 @@ void RGScanDialog::onScanFinished(QString url)
 
     if(stopped)
     {
-        qDebug("RGScanDialog: all threads finished");
+        qDebug("RGScanDialog: all threads are finished");
         QThreadPool::globalInstance()->waitForDone();
 
         QMultiMap<QString, ReplayGainInfoItem*> itemGroupMap; //items grouped  by album
@@ -208,8 +221,8 @@ void RGScanDialog::onScanFinished(QString url)
                     m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
                 }
             }
-            if(!found)
-                m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("Error")));
+            //if(!found)
+            //    m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("Error")));
         }
 
         //clear items
@@ -225,6 +238,7 @@ void RGScanDialog::reject()
     settings.setValue("RGScanner/geometry", saveGeometry());
     settings.setValue("RGScanner/write_track", m_ui.trackCheckBox->isChecked());
     settings.setValue("RGScanner/write_album", m_ui.albumCheckBox->isChecked());
+    settings.setValue("RGScanner/skip_scanned", m_ui.skipScannedCheckBox->isChecked());
     QDialog::reject();
 }
 

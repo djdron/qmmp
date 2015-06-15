@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -130,6 +130,14 @@ bool RGScanner::isPending() const
 bool RGScanner::hasValues() const
 {
     return m_has_values;
+}
+
+QMap<Qmmp::ReplayGainKey, double> RGScanner::oldReplayGainInfo() const
+{
+    if(!m_decoder)
+        return QMap<Qmmp::ReplayGainKey, double>();
+
+    return m_decoder->replayGainInfo();
 }
 
 double RGScanner::gain() const
