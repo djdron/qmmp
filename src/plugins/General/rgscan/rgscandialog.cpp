@@ -40,6 +40,7 @@
 #include "rgscandialog.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
+#define FILE_SKIPPED (Qt::UserRole + 1)
 
 struct ReplayGainInfoItem
 {
@@ -109,6 +110,7 @@ void RGScanDialog::on_calculateButton_clicked()
     {
         QString url = m_ui.tableWidget->item(i, 0)->data(Qt::UserRole).toString();
         RGScanner *scanner = new RGScanner();
+        m_ui.tableWidget->item(i, 0)->setData(FILE_SKIPPED, false);
 
         if(!scanner->prepare(url))
         {
@@ -120,6 +122,7 @@ void RGScanDialog::on_calculateButton_clicked()
         if(m_ui.skipScannedCheckBox->isChecked() && !scanner->oldReplayGainInfo().isEmpty())
         {
             qDebug("RGScanDialog: skipping scanned file..");
+            m_ui.tableWidget->item(i, 0)->setData(FILE_SKIPPED, true);
             QMap<Qmmp::ReplayGainKey, double> rg = scanner->oldReplayGainInfo();
             m_ui.tableWidget->setItem(i, 2, new QTableWidgetItem(tr("%1 dB").arg(rg.value(Qmmp::REPLAYGAIN_TRACK_GAIN))));
             m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("%1 dB").arg(rg.value(Qmmp::REPLAYGAIN_ALBUM_GAIN))));
@@ -221,8 +224,8 @@ void RGScanDialog::onScanFinished(QString url)
                     m_ui.tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(album_peak)));
                 }
             }
-            //if(!found)
-            //    m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("Error")));
+            if(!found && !m_ui.tableWidget->item(i, 0)->data(FILE_SKIPPED).toBool())
+                m_ui.tableWidget->setItem(i, 3, new QTableWidgetItem(tr("Error")));
         }
 
         //clear items
