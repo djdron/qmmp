@@ -9,64 +9,71 @@
         <translation>Скенер нивелације</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="29"/>
+        <location filename="../rgscandialog.ui" line="84"/>
         <source>Write track gain/peak</source>
         <translation>Упиши ниво/врх нумере</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="56"/>
+        <location filename="../rgscandialog.ui" line="42"/>
         <source>Title</source>
         <translation>наслов</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="61"/>
+        <location filename="../rgscandialog.ui" line="47"/>
         <source>Progress</source>
         <translation>напредак</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="66"/>
+        <location filename="../rgscandialog.ui" line="52"/>
         <source>Track Gain</source>
         <translation>ниво нумере</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="71"/>
+        <location filename="../rgscandialog.ui" line="57"/>
         <source>Album Gain</source>
         <translation>ниво албума</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="76"/>
+        <location filename="../rgscandialog.ui" line="62"/>
         <source>Track Peak</source>
         <translation>врх нумере</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="81"/>
+        <location filename="../rgscandialog.ui" line="67"/>
         <source>Album Peak</source>
         <translation>врх албума</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="89"/>
+        <location filename="../rgscandialog.ui" line="77"/>
+        <source>Skip already skanned files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rgscandialog.ui" line="113"/>
         <source>Calculate</source>
         <translation>Израчунај</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="96"/>
+        <location filename="../rgscandialog.ui" line="120"/>
         <source>Write Tags</source>
         <translation>Упиши ознаке</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.ui" line="103"/>
+        <location filename="../rgscandialog.ui" line="91"/>
         <source>Write album gain/peak</source>
         <translation>Упиши ниво/врх албума</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="114"/>
-        <location filename="../rgscandialog.cpp" line="212"/>
+        <location filename="../rgscandialog.cpp" line="117"/>
+        <location filename="../rgscandialog.cpp" line="228"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../rgscandialog.cpp" line="136"/>
-        <location filename="../rgscandialog.cpp" line="207"/>
+        <location filename="../rgscandialog.cpp" line="127"/>
+        <location filename="../rgscandialog.cpp" line="128"/>
+        <location filename="../rgscandialog.cpp" line="152"/>
+        <location filename="../rgscandialog.cpp" line="223"/>
         <source>%1 dB</source>
         <translation>%1 dB</translation>
     </message>
