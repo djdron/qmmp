@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -55,7 +55,7 @@ Music_Emu *GmeHelper::load(const QString &url, int sample_rate)
     }
     if(!file_type)
     {
-        qWarning("DecoderGme: unsupporetd music type");
+        qWarning("DecoderGme: unsupported music type");
         return 0;
     }
     if(!(m_emu = gme_new_emu(file_type, sample_rate)))
