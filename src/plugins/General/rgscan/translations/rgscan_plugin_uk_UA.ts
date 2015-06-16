@@ -45,7 +45,7 @@
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="77"/>
-        <source>Skip already skanned files</source>
+        <source>Skip already scanned files</source>
         <translation>Пропустити вже відскановані файли</translation>
     </message>
     <message>
