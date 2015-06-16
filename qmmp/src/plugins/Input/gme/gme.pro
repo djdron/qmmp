@@ -2,10 +2,12 @@ include(../../plugins.pri)
 
 HEADERS += decodergmefactory.h \
     decoder_gme.h \
-    gmehelper.h
+    gmehelper.h \
+    settingsdialog.h
 SOURCES += decoder_gme.cpp \
     decodergmefactory.cpp \
-    gmehelper.cpp
+    gmehelper.cpp \
+    settingsdialog.cpp
 TARGET = $$PLUGINS_PREFIX/Input/gme
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libgme.so
 INCLUDEPATH += ../../../
@@ -34,3 +36,6 @@ win32 {
     QMAKE_LIBDIR += ../../../../bin
     LIBS += -lqmmp0 -lgme.dll
 }
+
+FORMS += \
+    settingsdialog.ui
