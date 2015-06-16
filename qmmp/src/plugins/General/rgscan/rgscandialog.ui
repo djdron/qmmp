@@ -74,7 +74,7 @@
      <item>
       <widget class="QCheckBox" name="skipScannedCheckBox">
        <property name="text">
-        <string>Skip already skanned files</string>
+        <string>Skip already scanned files</string>
        </property>
       </widget>
      </item>
