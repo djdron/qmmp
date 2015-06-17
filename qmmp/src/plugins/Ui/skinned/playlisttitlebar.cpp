@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,12 +29,15 @@
 #include "playlisttitlebar.h"
 #include "skin.h"
 
+#define TITLE_FORMAT "%p%if(%p&%t, - ,)%t%if(%p,,%if(%t,,%f))%if(%l, %(%l%),)"
+
 // TODO {shademode, updateskin} -> do we have the shaded cursor
 PlayListTitleBar::PlayListTitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
     m_active = false;
     m_resize = false;
+    m_formatter.setPattern(TITLE_FORMAT);
     m_shade2 = 0;
     m_model = 0;
     m_shaded = false;
@@ -262,16 +265,14 @@ void PlayListTitleBar::showCurrent()
 {
     if (m_model)
     {
-        /*PlayListTrack* track = m_model->currentTrack();
+        PlayListTrack* track = m_model->currentTrack();
         if (track)
         {
             m_text = QString("%1. %2").arg(m_model->numberOfTrack(m_model->currentIndex())+1)
-                    .arg(track->formattedTitle(0));
-            if(track->length())
-                m_text.append(QString("  (%1)").arg(track->formattedLength()));
+                    .arg(m_formatter.format(track));
         }
         else
-            m_text.clear();*/
+            m_text.clear();
     }
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);

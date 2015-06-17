@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,12 +20,13 @@
 #ifndef PLAYLISTTITLEBAR_H
 #define PLAYLISTTITLEBAR_H
 
+#include <qmmpui/metadataformatter.h>
 #include "playlist.h"
 #include "pixmapwidget.h"
 #include "mainwindow.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class Skin;
 class MainWindow;
@@ -68,6 +69,7 @@ private:
     QString m_text;
     QString m_truncatedText;
     QFont m_font;
+    MetaDataFormatter m_formatter;
 
 protected:
     void resizeEvent(QResizeEvent*);
