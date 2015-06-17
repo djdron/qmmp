@@ -18,6 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QSettings>
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 
@@ -26,9 +28,21 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     m_ui(new Ui::SettingsDialog)
 {
     m_ui->setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_ui->fadeoutCheckBox->setChecked(settings.value("GME/fadeout", false).toBool());
+    m_ui->fadeoutSpinBox->setValue(settings.value("GME/fadeout_length", 7000).toInt());
 }
 
 SettingsDialog::~SettingsDialog()
 {
     delete m_ui;
+}
+
+void SettingsDialog::accept()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("GME/fadeout", m_ui->fadeoutCheckBox->isChecked());
+    settings.setValue("GME/fadeout_length", m_ui->fadeoutSpinBox->value());
+    QDialog::accept();
 }

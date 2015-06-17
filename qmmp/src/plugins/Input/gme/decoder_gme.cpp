@@ -56,9 +56,13 @@ bool DecoderGme::initialize()
     }
     if(track_info->length <= 0)
         track_info->length = (long) (2.5 * 60 * 1000);
-    if(track_info->length < m_helper.fadeLength())
-        track_info->length += m_helper.fadeLength();
-    gme_set_fade(m_emu, track_info->length - m_helper.fadeLength());
+
+    if(m_helper.fadeLength())
+    {
+        if(track_info->length < m_helper.fadeLength())
+            track_info->length += m_helper.fadeLength();
+        gme_set_fade(m_emu, track_info->length - m_helper.fadeLength());
+    }
     QMap<Qmmp::MetaData, QString> metadata;
     metadata.insert(Qmmp::TITLE, track_info->song);
     metadata.insert(Qmmp::ARTIST, track_info->author);

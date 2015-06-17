@@ -20,6 +20,7 @@
 
 #include <QtGui>
 #include <QRegExp>
+#include "settingsdialog.h"
 #include "gmehelper.h"
 #include "decoder_gme.h"
 #include "decodergmefactory.h"
@@ -52,7 +53,7 @@ const DecoderProperties DecoderGmeFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "gme";
     properties.hasAbout = true;
-    properties.hasSettings = false;
+    properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols << "gme";
     return properties;
@@ -106,7 +107,8 @@ MetaDataModel* DecoderGmeFactory::createMetaDataModel(const QString &path, QObje
 
 void DecoderGmeFactory::showSettings(QWidget *parent)
 {
-    Q_UNUSED(parent);
+   SettingsDialog *d = new SettingsDialog(parent);
+   d->show();
 }
 
 void DecoderGmeFactory::showAbout(QWidget *parent)

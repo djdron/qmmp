@@ -41,6 +41,7 @@ public:
 private:
     Music_Emu *m_emu;
     QString m_path;
+    int m_fade_length;
 };
 
 #endif // GMEHELPER_H
