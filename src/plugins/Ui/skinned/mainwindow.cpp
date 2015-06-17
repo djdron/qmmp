@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_vis = 0;
     m_update = false;
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
-                   Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
+                   Qt::WindowCloseButtonHint | Qt::WindowMinMaxButtonsHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
 
     m_titleFormatter.setPattern("%if(%p,%p - %t,%t)");
