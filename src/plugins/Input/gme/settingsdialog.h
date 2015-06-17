@@ -35,6 +35,9 @@ public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
+public slots:
+    void accept();
+
 private:
     Ui::SettingsDialog *m_ui;
 };

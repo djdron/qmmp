@@ -19,13 +19,18 @@
  ***************************************************************************/
 
 #include <QRegExp>
+#include <QSettings>
+#include <qmmp/qmmp.h>
 #include "gmehelper.h"
-
-#define FADE_LENGTH 8000
 
 GmeHelper::GmeHelper()
 {
      m_emu = 0;
+
+     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+     m_fade_length = settings.value("GME/fadeout_length", 7000).toInt();
+     if(settings.value("GME/fadeout", false).toBool())
+         m_fade_length = 0;
 }
 
 GmeHelper::~GmeHelper()
@@ -92,8 +97,8 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
         }
         if(track_info->length <= 0)
             track_info->length = (long) (2.5 * 60 * 1000);
-        if(track_info->length < FADE_LENGTH)
-            track_info->length += FADE_LENGTH;
+        if(track_info->length < m_fade_length)
+            track_info->length += m_fade_length;
         if(meta)
         {
             info->setMetaData(Qmmp::TITLE, track_info->song);
@@ -111,5 +116,5 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
 
 int GmeHelper::fadeLength()
 {
-    return FADE_LENGTH;
+    return m_fade_length;
 }
