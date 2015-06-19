@@ -169,12 +169,12 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     if(row->titles.count() == 1 && !row->lengthColumnWidth)
     {
-        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - 2 * m_padding);
+        row->titles[0] = metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - 2 * m_padding);
         return;
     }
     else if(row->titles.count() == 1)
     {
-        row->titles[0] = m_metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - m_padding);
+        row->titles[0] = metrics->elidedText (row->titles[0], Qt::ElideRight, visible_width - m_padding);
         return;
     }
 
@@ -188,7 +188,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
         int width = qMin(size - 2 * m_padding,
                          visible_width - 2 * m_padding);
 
-        row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, width);
+        row->titles[i] = metrics->elidedText (row->titles[i], Qt::ElideRight, width);
         visible_width -= size;
     }
 }
