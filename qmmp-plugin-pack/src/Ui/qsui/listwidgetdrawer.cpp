@@ -129,7 +129,7 @@ void ListWidgetDrawer::calculateNumberWidth(int count)
 {
     //song numbers width
     if(m_show_number && m_align_numbres && count)
-        m_number_width = m_metrics->width("9") * QString::number(count).size();
+        m_number_width = m_bold_metrics->width("9") * QString::number(count).size();
     else
         m_number_width = 0;
 }
