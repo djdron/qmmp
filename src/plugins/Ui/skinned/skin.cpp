@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -21,13 +21,11 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QCoreApplication>
 #include <QDir>
 #include <QSettings>
 #include <QPainter>
 #include <QPolygon>
 #include <QImage>
-#include <QBuffer>
 #include <QAction>
 #include <qmmp/qmmp.h>
 #include "actionmanager.h"
