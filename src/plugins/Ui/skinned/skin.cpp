@@ -429,6 +429,7 @@ void Skin::loadPLEdit()
         QByteArray line = file.readLine ();
 
         line = line.trimmed ();
+        line.replace("\"","");
         if(line.contains("//"))
             line.truncate (line.indexOf ("//"));
 
@@ -545,6 +546,7 @@ void Skin::loadVisColor()
         QByteArray line = file.readLine ();
         QString tmp = QString::fromAscii (line);
         tmp = tmp.trimmed ();
+        tmp.remove("\"");
         int i = tmp.indexOf ("//");
         if (i>0)
             tmp.truncate (tmp.indexOf ("//"));
