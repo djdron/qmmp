@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=ffmpeg
-VERSION=2.2.15
+VERSION=2.2.16
 
 case $1 in
   --download)
