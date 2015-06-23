@@ -24,6 +24,7 @@
 
 PlayListItem::PlayListItem()
 {
+    m_number = -1;
     m_selected = false;
 }
 
@@ -38,6 +39,16 @@ void PlayListItem::setSelected(bool yes)
 bool PlayListItem::isSelected() const
 {
     return m_selected;
+}
+
+void PlayListItem::setTrackNumber(int number)
+{
+    m_number = number;
+}
+
+int PlayListItem::trackNumber() const
+{
+    return m_number;
 }
 
 
