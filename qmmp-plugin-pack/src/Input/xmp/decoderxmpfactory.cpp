@@ -69,6 +69,7 @@ const DecoderProperties DecoderXmpFactory::properties() const
     properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols << "file";
+    properties.priority = 10;
     return properties;
 }
 
