@@ -27,6 +27,7 @@ Syntax:
 %t - title,
 %n - track number,
 %NN - 2-digit track number,
+%I - track index,
 %g - genre,
 %c - comment,
 %C - composer,
@@ -58,6 +59,7 @@ MetaDataFormatter::MetaDataFormatter(const QString &pattern)
     m_fieldNames.insert("NN", Param::TWO_DIGIT_TRACK);
     m_fieldNames.insert("l", Param::DURATION);
     m_fieldNames.insert("f", Param::FILE_NAME);
+    m_fieldNames.insert("I", Param::TRACK_INDEX);
 
     if(!pattern.isEmpty())
         setPattern(pattern);
@@ -88,12 +90,12 @@ const QString MetaDataFormatter::pattern() const
 
 QString MetaDataFormatter::format(const PlayListTrack *item) const
 {
-    return format(*item, item->length());
+    return format(*item, item->length(), item->trackNumber());
 }
 
-QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length) const
+QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length, int track) const
 {
-    return evalute(&m_nodes, &metaData, length).trimmed();
+    return evalute(&m_nodes, &metaData, length, track).trimmed();
 }
 
 QString MetaDataFormatter::formatLength(qint64 length)
@@ -298,7 +300,7 @@ void MetaDataFormatter::parseEscape(QList<MetaDataFormatter::Node> *nodes, QStri
     nodes->append(node);
 }
 
-QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
+QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const
 {
     QString out;
     for(int i = 0; i < nodes->count(); ++i)
@@ -307,32 +309,32 @@ QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::Me
         if(node.command == Node::PRINT_TEXT)
         {
             Param p = node.params.first();
-            out.append(printParam(&p, metaData, length));
+            out.append(printParam(&p, metaData, length, track));
 
         }
         else if(node.command == Node::IF_KEYWORD)
         {
-            QString var1 = printParam(&node.params[0], metaData, length);
+            QString var1 = printParam(&node.params[0], metaData, length, track);
             if(var1.isEmpty() || var1 == "0")
-                out.append(printParam(&node.params[2], metaData, length));
+                out.append(printParam(&node.params[2], metaData, length, track));
             else
-                out.append(printParam(&node.params[1], metaData, length));
+                out.append(printParam(&node.params[1], metaData, length, track));
         }
         else if(node.command == Node::AND_OPERATOR)
         {
-            QString var1 = printParam(&node.params[0], metaData, length);
-            QString var2 = printParam(&node.params[1], metaData, length);
+            QString var1 = printParam(&node.params[0], metaData, length, track);
+            QString var2 = printParam(&node.params[1], metaData, length, track);
             if(!var1.isEmpty() && !var2.isEmpty())
                 out.append("1");
         }
         else if(node.command == Node::OR_OPERATOR)
         {
-            QString var1 = printParam(&node.params[0], metaData, length);
+            QString var1 = printParam(&node.params[0], metaData, length, track);
             if(!var1.isEmpty())
                 out.append("1");
             else
             {
-                QString var2 = printParam(&node.params[1], metaData, length);
+                QString var2 = printParam(&node.params[1], metaData, length, track);
                 if(!var2.isEmpty())
                     out.append("1");
             }
@@ -341,18 +343,18 @@ QString MetaDataFormatter::evalute(const QList<Node> *nodes, const QMap<Qmmp::Me
     return out;
 }
 
-QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
+QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const
 {
     switch (p->type)
     {
     case Param::FIELD:
-        return printField(p->field, metaData, length);
+        return printField(p->field, metaData, length, track);
         break;
     case Param::TEXT:
         return p->text;
         break;
     case Param::NODES:
-        return evalute(&p->children, metaData, length);
+        return evalute(&p->children, metaData, length, track);
         break;
     default:
         break;
@@ -360,7 +362,7 @@ QString MetaDataFormatter::printParam(MetaDataFormatter::Param *p, const QMap<Qm
     return QString();
 }
 
-QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const
+QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const
 {
     if(field >= Qmmp::TITLE && field <= Qmmp::URL)
     {
@@ -391,6 +393,10 @@ QString MetaDataFormatter::printField(int field, const QMap<Qmmp::MetaData, QStr
     else if(field == Param::FILE_NAME)
     {
         return metaData->value(Qmmp::URL).section('/',-1);
+    }
+    else if(field == Param::TRACK_INDEX)
+    {
+        return QString::number(track + 1);
     }
     return QString();
 }

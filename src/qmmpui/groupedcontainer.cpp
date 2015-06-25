@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -60,7 +60,7 @@ void GroupedContainer::addTrack(PlayListTrack *track)
     m_groups.append(group);
     m_items.append(group);
     m_items.append(track);
-    //TODO calc track number
+    track->setTrackNumber(trackCount() - 1);
 }
 
 void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
@@ -358,6 +358,7 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
             else
             {
                 m_items.move(i,i + to - from);
+                swapTrackNumbers(i,i + to - from);
                 group->trackList.move(i - firstIndex - 1,
                                       i + to - from  - firstIndex - 1);
             }
@@ -372,6 +373,7 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
             else
             {
                 m_items.move(indexes[i], indexes[i] + to - from);
+                swapTrackNumbers(indexes[i], indexes[i] + to - from);
                 group->trackList.move(indexes[i] - firstIndex - 1,
                                       indexes[i] + to - from - firstIndex - 1);
             }
@@ -428,6 +430,13 @@ void GroupedContainer::randomizeList()
     }
 
     m_update = true;
+}
+
+void GroupedContainer::swapTrackNumbers(int index1, int index2)
+{
+    int number = m_items.at(index1)->trackNumber();
+    m_items.at(index1)->setTrackNumber(m_items.at(index2)->trackNumber());
+    m_items.at(index2)->setTrackNumber(number);
 }
 
 void GroupedContainer::updateCache() const
