@@ -180,7 +180,9 @@ const QStringList PlayListTrack::formattedTitles()
 
     for(int column = 0; column < m_helper->columnCount(); column++)
     {
-        if(m_formattedTitles[column].isEmpty() || m_titleFormats[column] != m_helper->titleFormatter(column)->pattern())
+        if(m_formattedTitles[column].isEmpty() ||
+                m_titleFormats[column] != m_helper->titleFormatter(column)->pattern() ||
+                m_titleFormats[column].contains("%I"))
         {
             m_titleFormats[column] = m_helper->titleFormatter(column)->pattern();
             formatTitle(column);

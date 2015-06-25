@@ -68,7 +68,7 @@ public:
      * @param metaData Metadata array.
      * @param length Length in seconds.
      */
-    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0) const;
+    QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0, int track = 0) const;
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
@@ -104,7 +104,8 @@ private:
         {
             TWO_DIGIT_TRACK = Qmmp::URL + 1,
             DURATION,
-            FILE_NAME
+            FILE_NAME,
+            TRACK_INDEX
         };
 
         int field;
@@ -117,9 +118,9 @@ private:
     void parseText(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
     void parseEscape(QList<Node> *nodes, QString::const_iterator *i, QString::const_iterator end);
 
-    QString evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
-    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
-    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length) const;
+    QString evalute(const QList<Node> *nodes, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const;
+    QString printParam(Param *p, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const;
+    QString printField(int field, const QMap<Qmmp::MetaData, QString> *metaData, qint64 length, int track) const;
 
     QString dumpNode(Node node) const;
 
