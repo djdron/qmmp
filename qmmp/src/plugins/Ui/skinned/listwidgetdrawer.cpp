@@ -33,7 +33,7 @@ ListWidgetDrawer::ListWidgetDrawer()
     m_update = false;
     m_show_anchor = false;
     m_show_number = false;
-    m_align_numbres = false;
+    m_align_numbers = false;
     m_show_lengths = false;
     m_row_height = 0;
     m_number_width = 0;
@@ -59,7 +59,7 @@ void ListWidgetDrawer::readSettings()
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_show_lengths = settings.value ("pl_show_lengths", true).toBool();
-    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
+    m_align_numbers = settings.value ("pl_align_numbers", false).toBool();
     m_font.fromString(settings.value ("pl_font", qApp->font().toString()).toString());
     m_extra_font = m_font;
     m_extra_font.setPointSize(m_font.pointSize() - 1);
@@ -96,7 +96,7 @@ int ListWidgetDrawer::numberWidth() const
 void ListWidgetDrawer::calculateNumberWidth(int count)
 {
     //song numbers width
-    if(m_show_number && m_align_numbres && count)
+    if(m_show_number && m_align_numbers && count)
         m_number_width = m_metrics->width("9") * QString::number(count).size();
     else
         m_number_width = 0;
@@ -116,7 +116,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
         return;
     }
 
-    if(m_show_number && !m_align_numbres)
+    if(m_show_number && !m_align_numbers)
         row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
     if((m_show_lengths && !row->length.isEmpty()) || !row->extraString.isEmpty())
