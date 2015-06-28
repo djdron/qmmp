@@ -65,7 +65,6 @@ private slots:
     void setAutoResize(bool yes);
     void restoreSize();
     void onColumnAdded(int index);
-    void onColumnMoved(int from, int to);
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -78,7 +77,6 @@ private:
     int findColumn(QPoint pos);
     int size(int index) const;
     void setSize(int index, int size);
-    int minSize(int index) const;
     const QString name(int index) const;
     void writeSettings();
 
@@ -86,7 +84,6 @@ private:
     {
         NAME = 0,
         SIZE,
-        MIN_SIZE,
         RECT, //geometry
         AUTO_RESIZE
     };

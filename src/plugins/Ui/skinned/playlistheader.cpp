@@ -39,7 +39,7 @@
 #include "playlistheader.h"
 
 #define INITAL_SIZE 150
-#define INITAL_MIN_SIZE 30
+#define MIN_SIZE 30
 
 static const char * const skinned_arrow_down_xpm[] = {
     "11 6 2 1",
@@ -88,7 +88,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     connect(m_model, SIGNAL(columnAdded(int)), SLOT(onColumnAdded(int)));
     connect(m_model, SIGNAL(columnRemoved(int)), SLOT(updateColumns()));
-    connect(m_model, SIGNAL(columnMoved(int,int)), SLOT(onColumnMoved(int,int)));
+    connect(m_model, SIGNAL(columnMoved(int,int)), SLOT(updateColumns()));
     connect(m_model, SIGNAL(columnChanged(int)), SLOT(updateColumns()));
     loadColors();
     readSettings();
@@ -129,7 +129,6 @@ void PlayListHeader::readSettings()
         for(int i = 0; i < m_model->count(); ++i)
         {
             m_model->setData(i, SIZE, INITAL_SIZE);
-            m_model->setData(i, MIN_SIZE, INITAL_MIN_SIZE);
 
             if(i < sizes.count())
                 m_model->setData(i, SIZE, sizes.at(i).toInt());
@@ -145,17 +144,11 @@ void PlayListHeader::readSettings()
 
 void PlayListHeader::setNumberWidth(int width)
 {
-    m_model->setData(0, MIN_SIZE, INITAL_MIN_SIZE + (width ? (width + 2 * m_pl_padding) : 0));
-    int s = qMax(size(0), minSize(0));
-
-    for(int i = 1; i < m_model->count(); ++i) //restore mimimal size for other columns
-        m_model->setData(i, MIN_SIZE, 30);
-
-    if(width != m_number_width || s != size(0))
+    if(width != m_number_width)
     {
         m_number_width = width;
-        m_model->setData(0, SIZE, s);
-        updateColumns();
+        if(m_model->count() == 1)
+            updateColumns();
     }
 }
 
@@ -164,11 +157,13 @@ void PlayListHeader::updateColumns()
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
     int sx = 5;
-    if(m_number_width)
-        sx += m_number_width + 2 * m_pl_padding;
+
 
     if(m_model->count() == 1)
     {
+        if(m_number_width)
+            sx += m_number_width + 2 * m_pl_padding;
+
         m_model->setData(0, RECT, rtl ? QRect(5, 0, width() - sx - 5, height()) : QRect(sx, 0, width() - sx - 5, height()));
         QRect rect = m_model->data(0, RECT).toRect();
         if(m_sorting_column == 0)
@@ -187,10 +182,6 @@ void PlayListHeader::updateColumns()
     for(int i = 0; i < m_model->count(); ++i)
     {
         int size = m_model->data(i, SIZE).toInt();
-
-        //add number width to the first column
-        if(i == 0 && m_number_width)
-            size -= m_number_width + 2 * m_pl_padding;
 
         if(rtl)
             m_model->setData(i, RECT, QRect(width() - sx - size, 0, size, height()));
@@ -314,23 +305,6 @@ void PlayListHeader::restoreSize()
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
-    m_model->setData(index, MIN_SIZE, INITAL_MIN_SIZE);
-    updateColumns();
-}
-
-void PlayListHeader::onColumnMoved(int from, int to)
-{
-    //correct geometry
-    if(from == 0 && m_number_width)
-    {
-        setSize(from, size(from) + (m_number_width + 2 * m_pl_padding));
-        setSize(to, size(to) - (m_number_width + 2 * m_pl_padding));
-    }
-    else if(to == 0 && m_number_width)
-    {
-        setSize(from, size(from) - (m_number_width + 2 * m_pl_padding));
-        setSize(to, size(to) + (m_number_width + 2 * m_pl_padding));
-    }
     updateColumns();
 }
 
@@ -405,7 +379,7 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
             setSize(m_pressed_column, m_old_size - e->pos().x() + m_pressed_pos.x());
         else
             setSize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
-        setSize(m_pressed_column, qMax(size(m_pressed_column), minSize(m_pressed_column)));
+        setSize(m_pressed_column, qMax(size(m_pressed_column), MIN_SIZE));
         updateColumns();
         emit resizeColumnRequest();
     }
@@ -492,7 +466,7 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
 
     if(index >= 0 && e->oldSize().width() > 10)
     {
-        setSize(index, qMax(minSize(index), size(index) + delta));
+        setSize(index, qMax(MIN_SIZE, size(index) + delta));
         updateColumns();
         return;
     }
@@ -542,7 +516,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     if(rtl)
     {
-        QRect rect = m_model->data(0, RECT).toRect();
+        /*QRect rect = m_model->data(0, RECT).toRect();
 
         if(m_number_width)
         {
@@ -600,19 +574,19 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                              m_model->data(m_pressed_column, RECT).toRect().width() - m_padding -
                              m_metrics->width(m_model->data(m_pressed_column, NAME).toString()),
                              m_metrics->ascent(), m_model->data(m_pressed_column, NAME).toString());
-        }
+        }*/
     }
     else
     {
         QRect rect = m_model->data(0, RECT).toRect();
 
-        if(m_number_width)
-        {
-            painter.drawLine(rect.x(), 0, rect.x(), height());
-        }
-
         if(m_model->count() == 1)
         {
+            if(m_number_width)
+            {
+                painter.drawLine(rect.x(), 0, rect.x(), height());
+            }
+
             painter.drawText(rect.x() + m_padding, m_metrics->ascent(), name(0));
             if(m_sorting_column == 0)
             {
@@ -696,11 +670,6 @@ int PlayListHeader::size(int index) const
 void PlayListHeader::setSize(int index, int size)
 {
     m_model->setData(index, SIZE, size);
-}
-
-int PlayListHeader::minSize(int index) const
-{
-    return m_model->data(index, MIN_SIZE).toInt();
 }
 
 const QString PlayListHeader::name(int index) const
