@@ -31,7 +31,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
-#include <qmmpui/playlistheadermodel.h>
+//#include <qmmpui/playlistheadermodel.h>
 #include <qmmpui/playlistmanager.h>
 #include "listwidget.h"
 #include "playlistheader.h"
@@ -335,6 +335,7 @@ void ListWidget::updateList(int flags)
     {
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
+        m_drawer.setSingleColumnMode(m_model->columnCount() == 1);
         m_header->setNumberWidth(m_drawer.numberWidth());
     }
 

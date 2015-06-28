@@ -74,6 +74,7 @@ public:
     int rowHeight() const;
     int numberWidth() const;
     void calculateNumberWidth(int count);
+    void setSingleColumnMode(int enabled);
     void prepareRow(ListWidgetRow *row);
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row);
@@ -92,6 +93,7 @@ private:
     bool m_show_anchor;
     bool m_align_numbers;
     bool m_show_lengths;
+    bool m_single_column;
     int m_padding;
     int m_number_width;
     int m_row_height;
