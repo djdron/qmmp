@@ -37,7 +37,6 @@
 #include "actionmanager.h"
 #include "skin.h"
 #include "popupwidget.h"
-#include "horizontalslider.h"
 #include "playlist.h"
 
 #define INVALID_INDEX -1
@@ -54,7 +53,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_timer->setInterval(50);
 
     m_header = new PlayListHeader(this);
-    m_slider = new HorizontalSlider(this);
     m_update = false;
     m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
@@ -249,7 +247,6 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
-    m_slider->setGeometry(0, height() - 7, width(), 7);
     m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
     m_row_count = qMax(m_row_count, 0);
     updateList(PlayListModel::STRUCTURE);
