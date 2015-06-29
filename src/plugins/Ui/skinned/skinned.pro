@@ -56,8 +56,7 @@ HEADERS += mainwindow.h \
     skinnedsettings.h \
     hotkeyeditor.h \
     listwidgetdrawer.h \
-    playlistheader.h \
-    horizontalslider.h
+    playlistheader.h
 SOURCES += mainwindow.cpp \
     button.cpp \
     display.cpp \
@@ -107,8 +106,7 @@ SOURCES += mainwindow.cpp \
     skinnedsettings.cpp \
     hotkeyeditor.cpp \
     listwidgetdrawer.cpp \
-    playlistheader.cpp \
-    horizontalslider.cpp
+    playlistheader.cpp
 
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
