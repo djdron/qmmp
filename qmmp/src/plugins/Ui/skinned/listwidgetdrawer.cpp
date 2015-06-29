@@ -156,7 +156,11 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     for(int i = 0; i < row->titles.count(); ++i)
     {
         int size = row->sizes[i];
-        row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, size - 2 * m_padding);
+        if(i == 0 && !row->extraString.isEmpty())
+            row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight,
+                                                    size - 3 * m_padding - m_extra_metrics->width(row->extraString));
+        else
+            row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, size - 2 * m_padding);
         visible_width -= size;
     }
 }
@@ -328,6 +332,13 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 sx += row->sizes[i];
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                if(i == 0 && !row->extraString.isEmpty())
+                {
+                    painter->setFont(m_extra_font);
+                    painter->drawText(sx - m_padding - m_extra_metrics->width(row->extraString),
+                                      sy, row->extraString);
+                    painter->setFont(m_font);
+                }
             }
         }
     }

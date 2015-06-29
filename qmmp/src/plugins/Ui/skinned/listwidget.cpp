@@ -31,7 +31,6 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>
-//#include <qmmpui/playlistheadermodel.h>
 #include <qmmpui/playlistmanager.h>
 #include "listwidget.h"
 #include "playlistheader.h"
