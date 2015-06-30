@@ -69,3 +69,10 @@ LEGEND
 [*] libsidplayfp-1.7.2
 [*] ffmpeg-2.2.15
 [*] qt-4.8.7+git164145636
+
+0.8.6
+[*] qmmp-0.8.6
+[*] qmmp-plugin-pack-0.8.5
+[*] ffmpeg-2.2.16
+[*] mingw-w64 toolchain: i686-5.1.0-release-posix-dwarf-rt_v4-rev0.7z
+[*] qt-4.8.7+gitb05d05fd9
