@@ -78,7 +78,9 @@ private:
     int size(int index) const;
     void setSize(int index, int size);
     const QString name(int index) const;
+    bool adjustColumns();
     void writeSettings();
+
 
     enum DataKey
     {

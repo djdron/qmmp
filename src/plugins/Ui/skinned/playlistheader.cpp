@@ -39,6 +39,7 @@
 #include "playlistheader.h"
 
 #define INITAL_SIZE 150
+#define MAX_COLUMNS 7
 #define MIN_SIZE 30
 
 static const char * const skinned_arrow_down_xpm[] = {
@@ -298,6 +299,7 @@ void PlayListHeader::restoreSize()
         return;
 
     m_model->setData(m_pressed_column, SIZE, INITAL_SIZE);
+    adjustColumns();
     updateColumns();
     emit resizeColumnRequest();
 }
@@ -305,6 +307,7 @@ void PlayListHeader::restoreSize()
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
+    adjustColumns();
     updateColumns();
 }
 
@@ -380,6 +383,9 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
         else
             setSize(m_pressed_column, m_old_size + e->pos().x() - m_pressed_pos.x());
         setSize(m_pressed_column, qMax(size(m_pressed_column), MIN_SIZE));
+
+        adjustColumns();
+
         updateColumns();
         emit resizeColumnRequest();
     }
@@ -467,6 +473,13 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
     if(index >= 0 && e->oldSize().width() > 10)
     {
         setSize(index, qMax(MIN_SIZE, size(index) + delta));
+        adjustColumns();
+        updateColumns();
+        return;
+    }
+
+    if(adjustColumns())
+    {
         updateColumns();
         return;
     }
@@ -675,6 +688,30 @@ void PlayListHeader::setSize(int index, int size)
 const QString PlayListHeader::name(int index) const
 {
     return m_model->data(index, NAME).toString();
+}
+
+bool PlayListHeader::adjustColumns()
+{
+    int total_size = 0;
+    foreach (int s, sizes())
+    {
+        total_size += s;
+    }
+
+    if(total_size > width() - 10)
+    {
+        int delta = total_size - width() + 10;
+        for(int i = m_model->count() - 1; i >= 0 && delta > 0; i--)
+        {
+            int dx = size(i) - qMax(MIN_SIZE, size(i) - delta);
+            setSize(i, qMax(MIN_SIZE, size(i) - delta));
+            delta -= dx;
+        }
+        updateColumns();
+        return true;
+    }
+
+    return false;
 }
 
 void PlayListHeader::writeSettings()
