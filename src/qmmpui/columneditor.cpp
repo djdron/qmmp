@@ -89,6 +89,7 @@ void ColumnEditor::createMenu()
     menu->addAction(tr("File Name"))->setData("%f");
     menu->addAction(tr("File Path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Track Index"))->setData("%I");
     menu->addAction(tr("Condition"))->setData("%if(%p,%p - %t,%t)");
     m_ui->formatButton->setMenu(menu);
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(insertExpression(QAction *)));
@@ -111,6 +112,7 @@ void ColumnEditor::fillTypes()
     m_ui->comboBox->addItem(tr("Disc Number"),"%D");
     m_ui->comboBox->addItem(tr("File Name"),"%f");
     m_ui->comboBox->addItem(tr("File Path"),"%F");
+    m_ui->comboBox->addItem(tr("Track Index"), "%I");
     m_ui->comboBox->addItem(tr("Year"),"%y");
     m_ui->comboBox->addItem(tr("Custom"),"custom");
 }

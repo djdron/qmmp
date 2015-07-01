@@ -51,6 +51,7 @@ public:
      * %F - full path,
      * %y - year,
      * %l - duration,
+     * %I - track index,
      * %if(A,B,C) or %if(A&B&C,D,E) - condition.
      */
     MetaDataFormatter(const QString &pattern = QString());
@@ -67,6 +68,7 @@ public:
      * Converts metadata to one string using template.
      * @param metaData Metadata array.
      * @param length Length in seconds.
+     * @param track Index of track.
      */
     QString format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length = 0, int track = 0) const;
     /*!

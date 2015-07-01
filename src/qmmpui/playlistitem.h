@@ -64,13 +64,13 @@ public:
      */
     virtual bool isGroup() const = 0;
 
-    void setTrackNumber(int number);
+    void setTrackIndex(int number);
 
-    int trackNumber() const;
+    int trackIndex() const;
 
 private:
     bool m_selected;
-    int m_number;
+    int m_track_index;
 };
 
 #endif

@@ -268,7 +268,7 @@ void PlayListTitleBar::showCurrent()
         PlayListTrack* track = m_model->currentTrack();
         if (track)
         {
-            m_text = QString("%1. %2").arg(m_model->numberOfTrack(m_model->currentIndex())+1)
+            m_text = QString("%1. %2").arg(m_model->indexOfTrack(m_model->currentIndex())+1)
                     .arg(m_formatter.format(track));
         }
         else

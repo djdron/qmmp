@@ -74,7 +74,7 @@ int TrackListObject::GetCurrentTrack()
 
 int TrackListObject::GetLength()
 {
-    return m_model->numberOfTrack(m_model->count() - 1) + 1;
+    return m_model->indexOfTrack(m_model->count() - 1) + 1;
 }
 
 QVariantMap TrackListObject::GetMetadata(int in0)
@@ -122,7 +122,7 @@ void TrackListObject::playTrack(PlayListTrack *track)
 void  TrackListObject::updateTrackList(int flags)
 {
     if(flags & PlayListModel::STRUCTURE)
-        emit TrackListChange(m_model->numberOfTrack(m_model->count() - 1) + 1);
+        emit TrackListChange(m_model->indexOfTrack(m_model->count() - 1) + 1);
 }
 
 void TrackListObject::switchPlayList(PlayListModel *cur, PlayListModel *prev)
