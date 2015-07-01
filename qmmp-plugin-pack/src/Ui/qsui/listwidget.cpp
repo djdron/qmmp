@@ -404,7 +404,7 @@ void ListWidget::updateList(int flags)
             //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
             if(!prev_number)
             {
-                row->number = m_model->numberOfTrack(m_first+i) + 1;
+                row->number = m_model->indexOfTrack(m_first+i) + 1;
                 prev_number = row->number;
             }
             else
