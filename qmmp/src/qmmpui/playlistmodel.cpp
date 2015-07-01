@@ -431,9 +431,9 @@ bool PlayListModel::contains(const QString &url)
     return false;
 }
 
-int PlayListModel::numberOfTrack(int index) const
+int PlayListModel::indexOfTrack(int index) const
 {
-    return m_container->numberOfTrack(index);
+    return m_container->indexOfTrack(index);
 }
 
 PlayListTrack *PlayListModel::findTrack(int number) const

@@ -60,7 +60,7 @@ void GroupedContainer::addTrack(PlayListTrack *track)
     m_groups.append(group);
     m_items.append(group);
     m_items.append(track);
-    track->setTrackNumber(trackCount() - 1);
+    track->setTrackIndex(trackCount() - 1);
 }
 
 void GroupedContainer::addTracks(QList<PlayListTrack *> tracks)
@@ -236,7 +236,7 @@ bool GroupedContainer::contains(PlayListItem *item) const
     return m_items.contains(item);
 }
 
-int GroupedContainer::numberOfTrack(int index) const
+int GroupedContainer::indexOfTrack(int index) const
 {
     updateCache();
     if(index >= count() || index < 0)
@@ -244,7 +244,7 @@ int GroupedContainer::numberOfTrack(int index) const
         qWarning("GroupedContainer: index is out of range");
         return -1;
     }
-    return m_items.at(index)->trackNumber();
+    return m_items.at(index)->trackIndex();
 }
 
 PlayListTrack *GroupedContainer::findTrack(int number) const
@@ -423,7 +423,7 @@ void GroupedContainer::updateCache() const
         m_items.append(m_groups.at(i));
         foreach (PlayListTrack *track, m_groups.at(i)->trackList)
         {
-            track->setTrackNumber(t++);
+            track->setTrackIndex(t++);
             m_items.append(track);
         }
     }

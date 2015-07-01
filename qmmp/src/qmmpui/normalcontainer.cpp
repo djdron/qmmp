@@ -33,7 +33,7 @@ void NormalContainer::addTracks(QList<PlayListTrack *> tracks)
     foreach (PlayListTrack *track, tracks)
     {
         m_items.append(track);
-        track->setTrackNumber(m_items.count() - 1);
+        track->setTrackIndex(m_items.count() - 1);
     }
 }
 
@@ -42,12 +42,12 @@ void NormalContainer::insertTrack(int index, PlayListTrack *track)
     if(index >= 0 && index < m_items.count())
     {
         m_items.insert(index, track);
-        track->setTrackNumber(index);
+        track->setTrackIndex(index);
     }
     else
     {
         m_items.append(track);
-        track->setTrackNumber(m_items.count() - 1);
+        track->setTrackIndex(m_items.count() - 1);
     }
 }
 
@@ -148,7 +148,7 @@ bool NormalContainer::contains(PlayListItem *item) const
     return m_items.contains(item);
 }
 
-int NormalContainer::numberOfTrack(int index) const
+int NormalContainer::indexOfTrack(int index) const
 {
     return index;
 }
@@ -173,7 +173,7 @@ void NormalContainer::removeTracks(QList<PlayListTrack *> tracks)
         m_items.removeAll(t);
 
     for(int i = 0; i < m_items.count(); ++i)
-        m_items[i]->setTrackNumber(i);
+        m_items[i]->setTrackIndex(i);
 }
 
 bool NormalContainer::move(QList<int> indexes, int from, int to)
@@ -237,5 +237,5 @@ void NormalContainer::randomizeList()
         m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
 
     for(int i = 0; i < m_items.count(); ++i)
-        m_items[i]->setTrackNumber(i);
+        m_items[i]->setTrackIndex(i);
 }

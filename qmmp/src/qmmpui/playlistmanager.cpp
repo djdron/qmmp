@@ -340,7 +340,7 @@ void PlayListManager::writePlayLists()
     {
         QList<PlayListItem *> items = model->items();
         tmpFile.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
-        tmpFile.write(QString("current=%1\n").arg(model->numberOfTrack(model->currentIndex())).toUtf8());
+        tmpFile.write(QString("current=%1\n").arg(model->indexOfTrack(model->currentIndex())).toUtf8());
         foreach(PlayListItem* m, items)
         {
             if(m->isGroup())

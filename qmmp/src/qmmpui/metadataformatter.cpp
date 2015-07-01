@@ -36,6 +36,7 @@ Syntax:
 %F - full path,
 %y - year,
 %l - duration,
+%I - track index,
 %if(A,B,C) or %if(A&B&C,D,E) - condition.
 */
 
@@ -90,7 +91,7 @@ const QString MetaDataFormatter::pattern() const
 
 QString MetaDataFormatter::format(const PlayListTrack *item) const
 {
-    return format(*item, item->length(), item->trackNumber());
+    return format(*item, item->length(), item->trackIndex());
 }
 
 QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData, qint64 length, int track) const

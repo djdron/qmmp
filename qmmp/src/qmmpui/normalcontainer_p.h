@@ -52,7 +52,7 @@ public:
     PlayListTrack *track(int index) const;
     PlayListGroup *group(int index) const;
     bool contains(PlayListItem *item) const;
-    int numberOfTrack(int index) const;
+    int indexOfTrack(int index) const;
     PlayListTrack *findTrack(int number) const;
     void removeTrack(PlayListTrack *track);
     void removeTracks(QList<PlayListTrack *> tracks);

@@ -296,10 +296,10 @@ public:
         GROUP                   /*!< by group name */
     };
     /*!
-     * Returns number of track with index \b index.
-     * Returns \b -1 if track with index \b index does not exist.
+     * Converts item index \b index to track index
+     * Returns \b -1 if item with index \b index is not a track or does not exist.
      */
-    int numberOfTrack(int index) const;
+    int indexOfTrack(int index) const;
 
     PlayListTrack *findTrack(int number) const;
 
