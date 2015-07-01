@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -67,6 +67,9 @@ public:
 
     virtual void reverseList() = 0;
     virtual void randomizeList() = 0;
+
+protected:
+    void swapTrackNumbers(QList<PlayListItem *> *container, int index1, int index2);
 };
 
 #endif // PLAYLISTCONTAINER_P_H
