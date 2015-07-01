@@ -93,6 +93,10 @@ public:
      */
     bool isGroup() const;
 
+    void setTrackIndex(int track_index);
+
+    int trackIndex() const;
+
 
     void beginUsage();
     void endUsage();
@@ -117,6 +121,7 @@ private:
     QmmpUiSettings *m_settings;
     qint64 m_length;
     int m_refCount;
+    int m_track_index;
     bool m_sheduledForDeletion;
     MetaDataHelper *m_helper;
 };

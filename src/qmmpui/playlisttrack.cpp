@@ -26,6 +26,7 @@
 
 PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 {
+    m_track_index = -1;
     m_settings = QmmpUiSettings::instance();
     m_helper = MetaDataHelper::instance();
     m_length = 0;
@@ -36,6 +37,7 @@ PlayListTrack::PlayListTrack() : QMap<Qmmp::MetaData, QString>(), PlayListItem()
 PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, QString>(other),
     PlayListItem()
 {
+    m_track_index = -1;
     m_settings = QmmpUiSettings::instance();
     m_helper = MetaDataHelper::instance();
     m_refCount = 0;
@@ -54,6 +56,7 @@ PlayListTrack::PlayListTrack(const PlayListTrack &other) : QMap<Qmmp::MetaData, 
 PlayListTrack::PlayListTrack(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()),
     PlayListItem()
 {
+    m_track_index = -1;
     m_settings = QmmpUiSettings::instance();
     m_helper = MetaDataHelper::instance();
     setLength(m_length = info->length());
@@ -103,6 +106,16 @@ const QString PlayListTrack::groupName()
 bool PlayListTrack::isGroup() const
 {
     return false;
+}
+
+void PlayListTrack::setTrackIndex(int track_index)
+{
+    m_track_index = track_index;
+}
+
+int PlayListTrack::trackIndex() const
+{
+    return m_track_index;
 }
 
 void PlayListTrack::beginUsage()
