@@ -301,7 +301,7 @@ public:
      */
     int indexOfTrack(int index) const;
 
-    PlayListTrack *findTrack(int number) const;
+    PlayListTrack *findTrack(int track_index) const;
 
 
     enum UpdateFlags
