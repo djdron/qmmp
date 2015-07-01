@@ -245,57 +245,64 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
 
     painter->setFont(m_font);
 
-    /*if(rtl)
+    if(rtl)
     {
-        //|=duration=extra=|= col2=|=  col1=|=number =|
-        if(row->numberColumnWidth)
+        //|=duration=extra=|=  col1=|=number =|
+        if(row->titles.count() == 1)
         {
-            sx -= row->numberColumnWidth;
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-            QString number = QString("%1").arg(row->number);
-            painter->drawText(sx + m_padding, sy, number);
-            painter->setPen(m_normal);
-            painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
-        }
-
-        for(int i = 0; i < row->titles.count(); i++)
-        {
-            if(sx - m_padding <= row->rect.x() + row->lengthColumnWidth)
-                break;
-
-            int size = row->sizes[i];
-            if(i == 0 && row->numberColumnWidth)
-                size -= row->numberColumnWidth;
-
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-            painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
-            sx -= size;
-
-            if(row->titles.count() > 1 && sx > row->rect.x() + row->lengthColumnWidth)
+            if(row->numberColumnWidth)
             {
+                sx -= row->numberColumnWidth;
+                painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+                QString number = QString("%1").arg(row->number);
+                painter->drawText(sx + m_padding, sy, number);
+                painter->setPen(m_normal);
+                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+            }
+
+            sx -= m_metrics->width(row->titles[0]);
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+            painter->drawText(sx - m_padding, sy, row->titles[0]);
+
+            sx = row->rect.x() + m_padding;
+            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+
+            if(m_show_lengths && !row->length.isEmpty())
+            {
+                painter->drawText(sx, sy, row->length);
+                sx += m_metrics->width(row->length);
+                sx += m_padding;
+            }
+
+            if(!row->extraString.isEmpty())
+            {
+                painter->setFont(m_extra_font);
+                painter->drawText(sx, sy, row->extraString);
+            }
+        }
+        else //|=extra col1=|=  col2=|
+        {
+            for(int i = 0; i < row->sizes.count(); i++)
+            {
+                painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
+                painter->drawText(sx - m_padding - m_metrics->width(row->titles[i]), sy, row->titles[i]);
+                sx -= row->sizes[i];
+
+                if(i == row->trackStateColumn && !row->extraString.isEmpty())
+                {
+                    painter->setFont(m_extra_font);
+                    painter->drawText(sx + m_padding, sy, row->extraString);
+                    painter->setFont(m_font);
+                }
+
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
         }
-
-        sx = row->rect.x() + m_padding;
-        painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-
-        if(m_show_lengths && !row->length.isEmpty())
-        {
-            painter->drawText(sx, sy, row->length);
-            sx += m_metrics->width(row->length) + m_padding;
-        }
-
-        if(!row->extraString.isEmpty())
-        {
-            painter->setFont(m_extra_font);
-            painter->drawText(sx, sy, row->extraString);
-        }
     }
-    else*/
+    else
     {
-        //|= number=|=col1 =|=extra=duration=|
+        //|= number=|=col  =|=extra=duration=|
         if(row->titles.count() == 1)
         {
             if(row->numberColumnWidth)
@@ -307,7 +314,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
-
 
             painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             painter->drawText(sx + m_padding, sy, row->titles[0]);
@@ -329,7 +335,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 painter->drawText(sx, sy, row->extraString);
             }
         }
-        else
+        else //|=col1  extra=|=col2  =|
         {
             for(int i = 0; i < row->sizes.count(); i++)
             {
