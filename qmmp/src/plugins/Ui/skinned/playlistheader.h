@@ -48,6 +48,7 @@ public:
     void setNumberWidth(int width);
     int requiredHeight() const;
     QList<int> sizes() const;
+    int trackStateColumn() const;
 
 signals:
     void resizeColumnRequest();
@@ -63,6 +64,7 @@ private slots:
     void editColumn();
     void removeColumn();
     void setAutoResize(bool yes);
+    void showTrackState(bool yes);
     void restoreSize();
     void onColumnAdded(int index);
 
@@ -87,7 +89,8 @@ private:
         NAME = 0,
         SIZE,
         RECT, //geometry
-        AUTO_RESIZE
+        AUTO_RESIZE,
+        TRACK_STATE
     };
 
     Skin *m_skin;
@@ -98,7 +101,8 @@ private:
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
     PlayListHeaderModel *m_model;
-    QAction *m_autoResize;
+    QAction *m_trackStateAction;
+    QAction *m_autoResizeAction;
     QPixmap m_arrow_up, m_arrow_down;
     bool m_reverted;
     int m_number_width;

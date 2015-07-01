@@ -339,10 +339,12 @@ void ListWidget::updateList(int flags)
     }
 
     int prev_number = 0;
+    int trackStateColumn = m_header->trackStateColumn();
 
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        row->trackStateColumn = trackStateColumn;
         items[i]->isSelected() ? row->flags |= ListWidgetRow::SELECTED :
                 row->flags &= ~ListWidgetRow::SELECTED;
 
