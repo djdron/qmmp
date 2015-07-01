@@ -557,10 +557,10 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
+    QRect rect = m_model->data(0, RECT).toRect();
+
     if(rtl)
     {
-        /*QRect rect = m_model->data(0, RECT).toRect();
-
         if(m_number_width)
         {
             painter.drawLine(rect.right(), 0, rect.right(), height());
@@ -617,12 +617,10 @@ void PlayListHeader::paintEvent(QPaintEvent *)
                              m_model->data(m_pressed_column, RECT).toRect().width() - m_padding -
                              m_metrics->width(m_model->data(m_pressed_column, NAME).toString()),
                              m_metrics->ascent(), m_model->data(m_pressed_column, NAME).toString());
-        }*/
+        }
     }
     else
     {
-        QRect rect = m_model->data(0, RECT).toRect();
-
         if(m_model->count() == 1)
         {
             if(m_number_width)
