@@ -34,7 +34,6 @@
 #include <qmmp/qmmp.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistheadermodel.h>
-#include <qmmpui/playlistmanager.h>
 #include "skin.h"
 #include "playlistheader.h"
 
@@ -322,6 +321,7 @@ void PlayListHeader::showTrackState(bool yes)
     }
 
     m_model->setData(m_pressed_column, TRACK_STATE, yes);
+    PlayListManager::instance()->selectedPlayList()->updateMetaData();
 }
 
 void PlayListHeader::restoreSize()
@@ -332,7 +332,7 @@ void PlayListHeader::restoreSize()
     m_model->setData(m_pressed_column, SIZE, INITAL_SIZE);
     adjustColumns();
     updateColumns();
-    emit resizeColumnRequest();
+    PlayListManager::instance()->selectedPlayList()->updateMetaData();
 }
 
 void PlayListHeader::onColumnAdded(int index)
@@ -417,7 +417,7 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
 
         adjustColumns();
         updateColumns();
-        emit resizeColumnRequest();
+        PlayListManager::instance()->selectedPlayList()->updateMetaData();
     }
     else if(m_task == MOVE)
     {
