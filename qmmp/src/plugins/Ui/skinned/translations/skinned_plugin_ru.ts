@@ -979,7 +979,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="82"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать очередь/протокол</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
