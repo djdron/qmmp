@@ -157,8 +157,12 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     {
         int size = row->sizes[i];
         if(i == 0 && !row->extraString.isEmpty())
-            row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight,
-                                                    size - 3 * m_padding - m_extra_metrics->width(row->extraString));
+        {
+            int text_size = qMax(0, size - 3 * m_padding - m_extra_metrics->width(row->extraString));
+            row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, text_size);
+            row->extraString = m_extra_metrics->elidedText(row->extraString, Qt::ElideRight,
+                                                           size - 3 * m_padding - m_metrics->width(row->titles[i]));
+        }
         else
             row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, size - 2 * m_padding);
         visible_width -= size;
