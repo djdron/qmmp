@@ -561,13 +561,13 @@ void PlayListHeader::paintEvent(QPaintEvent *)
 
     if(rtl)
     {
-        if(m_number_width)
-        {
-            painter.drawLine(rect.right(), 0, rect.right(), height());
-        }
-
         if(m_model->count() == 1)
         {
+            if(m_number_width)
+            {
+                painter.drawLine(rect.right(), 0, rect.right(), height());
+            }
+
             painter.drawText(rect.right() - m_padding - m_metrics->width(name(0)),
                     m_metrics->ascent(), name(0));
             if(m_sorting_column == 0)
