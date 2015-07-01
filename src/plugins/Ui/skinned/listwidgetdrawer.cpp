@@ -164,7 +164,9 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
                                                            size - 3 * m_padding - m_metrics->width(row->titles[i]));
         }
         else
+        {
             row->titles[i] = m_metrics->elidedText (row->titles[i], Qt::ElideRight, size - 2 * m_padding);
+        }
         visible_width -= size;
     }
 }
@@ -214,14 +216,14 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
 
     if(rtl)
     {
-        /*painter->drawLine(10, sy, sx - 5, sy);
+        painter->drawLine(10, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
                           row->rect.right() - row->numberColumnWidth - m_padding, sy);
         if(row->numberColumnWidth)
         {
             painter->drawLine(row->rect.right() - row->numberColumnWidth, row->rect.top(),
                               row->rect.right() - row->numberColumnWidth, row->rect.bottom() + 1);
-        }*/
+        }
     }
     else
     {
