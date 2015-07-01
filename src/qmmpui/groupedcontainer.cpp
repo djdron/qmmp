@@ -242,31 +242,9 @@ int GroupedContainer::numberOfTrack(int index) const
     if(index >= count() || index < 0)
     {
         qWarning("GroupedContainer: index is out of range");
-        return 0;
+        return -1;
     }
-
     return m_items.at(index)->trackNumber();
-
-    /*int firstIndex = 0, lastIndex = 0;
-    for(int i = 0; i < m_groups.count(); ++i)
-    {
-        if(i == 0)
-        {
-           firstIndex = 0;
-           lastIndex = m_groups[i]->count();
-        }
-        else
-        {
-            firstIndex = lastIndex + 1;
-            lastIndex = firstIndex + m_groups[i]->count();
-        }
-
-        if(index >= firstIndex && index <= lastIndex)
-        {
-            return index - (i+1);
-        }
-    }*/
-    return -1;
 }
 
 PlayListTrack *GroupedContainer::findTrack(int number) const
