@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,15 +33,22 @@ void NormalContainer::addTracks(QList<PlayListTrack *> tracks)
     foreach (PlayListTrack *track, tracks)
     {
         m_items.append(track);
+        track->setTrackNumber(m_items.count() - 1);
     }
 }
 
 void NormalContainer::insertTrack(int index, PlayListTrack *track)
 {
     if(index >= 0 && index < m_items.count())
+    {
         m_items.insert(index, track);
+        track->setTrackNumber(index);
+    }
     else
+    {
         m_items.append(track);
+        track->setTrackNumber(m_items.count() - 1);
+    }
 }
 
 void NormalContainer::replaceTracks(QList<PlayListTrack *> tracks)
@@ -157,13 +164,16 @@ PlayListTrack *NormalContainer::findTrack(int number) const
 
 void NormalContainer::removeTrack(PlayListTrack *track)
 {
-    m_items.removeAll(track);
+    removeTracks(QList<PlayListTrack *> () << track);
 }
 
 void NormalContainer::removeTracks(QList<PlayListTrack *> tracks)
 {
     foreach(PlayListTrack *t, tracks)
-        removeTrack(t);
+        m_items.removeAll(t);
+
+    for(int i = 0; i < m_items.count(); ++i)
+        m_items[i]->setTrackNumber(i);
 }
 
 bool NormalContainer::move(QList<int> indexes, int from, int to)
@@ -176,7 +186,10 @@ bool NormalContainer::move(QList<int> indexes, int from, int to)
                 break;
 
             else
+            {
                 m_items.move(i,i + to - from);
+                swapTrackNumbers(&m_items,i,i + to - from);
+            }
         }
     }
     else
@@ -186,7 +199,10 @@ bool NormalContainer::move(QList<int> indexes, int from, int to)
             if (indexes[i] + to - from >= m_items.count())
                 break;
             else
+            {
                 m_items.move(indexes[i], indexes[i] + to - from);
+                swapTrackNumbers(&m_items,indexes[i], indexes[i] + to - from);
+            }
         }
     }
     return true;
@@ -209,11 +225,17 @@ void NormalContainer::clear()
 void NormalContainer::reverseList()
 {
     for (int i = 0; i < m_items.size()/2; i++)
+    {
         m_items.swap(i, m_items.size() - i - 1);
+        swapTrackNumbers(&m_items, i, m_items.size() - i - 1);
+    }
 }
 
 void NormalContainer::randomizeList()
 {
     for (int i = 0; i < m_items.size(); i++)
         m_items.swap(qrand()%m_items.size(), qrand()%m_items.size());
+
+    for(int i = 0; i < m_items.count(); ++i)
+        m_items[i]->setTrackNumber(i);
 }

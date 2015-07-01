@@ -65,7 +65,6 @@ public:
     void randomizeList();
 
 private:
-    void swapTrackNumbers(int index1, int index2);
     void updateCache() const;
     QList<PlayListGroup *> m_groups;
 

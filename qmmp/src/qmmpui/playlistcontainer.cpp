@@ -28,3 +28,10 @@ void PlayListContainer::addTrack(PlayListTrack *track)
 {
     addTracks(QList<PlayListTrack *> () << track);
 }
+
+void PlayListContainer::swapTrackNumbers(QList<PlayListItem *> *container, int index1, int index2)
+{
+    int number = container->at(index1)->trackNumber();
+    container->at(index1)->setTrackNumber(container->at(index2)->trackNumber());
+    container->at(index2)->setTrackNumber(number);
+}

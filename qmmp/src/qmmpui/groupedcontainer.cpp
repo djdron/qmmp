@@ -336,7 +336,7 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
             else
             {
                 m_items.move(i,i + to - from);
-                swapTrackNumbers(i,i + to - from);
+                swapTrackNumbers(&m_items,i,i + to - from);
                 group->trackList.move(i - firstIndex - 1,
                                       i + to - from  - firstIndex - 1);
             }
@@ -351,7 +351,7 @@ bool GroupedContainer::move(QList<int> indexes, int from, int to)
             else
             {
                 m_items.move(indexes[i], indexes[i] + to - from);
-                swapTrackNumbers(indexes[i], indexes[i] + to - from);
+                swapTrackNumbers(&m_items,indexes[i], indexes[i] + to - from);
                 group->trackList.move(indexes[i] - firstIndex - 1,
                                       indexes[i] + to - from - firstIndex - 1);
             }
@@ -408,13 +408,6 @@ void GroupedContainer::randomizeList()
     }
 
     m_update = true;
-}
-
-void GroupedContainer::swapTrackNumbers(int index1, int index2)
-{
-    int number = m_items.at(index1)->trackNumber();
-    m_items.at(index1)->setTrackNumber(m_items.at(index2)->trackNumber());
-    m_items.at(index2)->setTrackNumber(number);
 }
 
 void GroupedContainer::updateCache() const
