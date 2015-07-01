@@ -131,105 +131,111 @@
     </message>
     <message>
         <location filename="../columneditor.cpp" line="78"/>
-        <location filename="../columneditor.cpp" line="99"/>
+        <location filename="../columneditor.cpp" line="100"/>
         <source>Artist</source>
         <translation>Artista</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="79"/>
-        <location filename="../columneditor.cpp" line="100"/>
+        <location filename="../columneditor.cpp" line="101"/>
         <source>Album</source>
         <translation>Álbum</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="81"/>
-        <location filename="../columneditor.cpp" line="104"/>
+        <location filename="../columneditor.cpp" line="105"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
-        <location filename="../columneditor.cpp" line="107"/>
+        <location filename="../columneditor.cpp" line="108"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="85"/>
-        <location filename="../columneditor.cpp" line="108"/>
+        <location filename="../columneditor.cpp" line="109"/>
         <source>Comment</source>
         <translation>Comentário</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
-        <location filename="../columneditor.cpp" line="109"/>
+        <location filename="../columneditor.cpp" line="110"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="87"/>
-        <location filename="../columneditor.cpp" line="110"/>
+        <location filename="../columneditor.cpp" line="111"/>
         <source>Duration</source>
         <translation>Duração</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
-        <location filename="../columneditor.cpp" line="114"/>
+        <location filename="../columneditor.cpp" line="116"/>
         <source>Year</source>
         <translation>Ano</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="92"/>
+        <location filename="../columneditor.cpp" line="115"/>
+        <source>Track Index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="93"/>
         <source>Condition</source>
         <translation>Condição</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="101"/>
+        <location filename="../columneditor.cpp" line="102"/>
         <source>Artist - Album</source>
         <translation>Artista - Álbum</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="102"/>
+        <location filename="../columneditor.cpp" line="103"/>
         <source>Artist - Title</source>
         <translation>Artista - Título</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="80"/>
-        <location filename="../columneditor.cpp" line="103"/>
+        <location filename="../columneditor.cpp" line="104"/>
         <source>Album Artist</source>
         <translation>Artista do álbum</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
-        <location filename="../columneditor.cpp" line="105"/>
+        <location filename="../columneditor.cpp" line="106"/>
         <source>Track Number</source>
         <translation>Número da faixa</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
-        <location filename="../columneditor.cpp" line="106"/>
+        <location filename="../columneditor.cpp" line="107"/>
         <source>Two-digit Track Number</source>
         <translation>Número da faixa com 2 dígitos</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="88"/>
-        <location filename="../columneditor.cpp" line="111"/>
+        <location filename="../columneditor.cpp" line="112"/>
         <source>Disc Number</source>
         <translation>Número do disco</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
-        <location filename="../columneditor.cpp" line="112"/>
+        <location filename="../columneditor.cpp" line="113"/>
         <source>File Name</source>
         <translation>Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
-        <location filename="../columneditor.cpp" line="113"/>
+        <location filename="../columneditor.cpp" line="114"/>
         <source>File Path</source>
         <translation>Caminho do ficheiro</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="115"/>
+        <location filename="../columneditor.cpp" line="117"/>
         <source>Custom</source>
         <translation>Personalizado</translation>
     </message>
@@ -905,12 +911,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="240"/>
+        <location filename="../playlisttrack.cpp" line="242"/>
         <source>Streams</source>
         <translation>Emissões</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="245"/>
+        <location filename="../playlisttrack.cpp" line="247"/>
         <source>Empty group</source>
         <translation>Grupo vazio</translation>
     </message>
