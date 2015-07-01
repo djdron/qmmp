@@ -39,6 +39,7 @@ struct ListWidgetRow
         flags = NO_FLAGS;
         numberColumnWidth = 0;
         lengthColumnWidth = 0;
+        trackStateColumn = -1;
     }
     QStringList titles;
     QList<int> sizes;
@@ -47,6 +48,7 @@ struct ListWidgetRow
     int number;
     int numberColumnWidth;
     int lengthColumnWidth;
+    int trackStateColumn;
     enum
     {
         NO_FLAGS = 0x00,

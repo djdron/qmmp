@@ -80,8 +80,10 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_menu = new QMenu(this);
     m_menu->addAction(QIcon::fromTheme("list-add"), tr("Add Column"), this, SLOT(addColumn()));
     m_menu->addAction(QIcon::fromTheme("configure"), tr("Edit Column"), this, SLOT(editColumn()));
-    m_autoResize = m_menu->addAction(tr("Auto-resize"), this, SLOT(setAutoResize(bool)));
-    m_autoResize->setCheckable(true);
+    m_trackStateAction = m_menu->addAction(tr("Show Queue/Protocol"), this, SLOT(showTrackState(bool)));
+    m_trackStateAction->setCheckable(true);
+    m_autoResizeAction = m_menu->addAction(tr("Auto-resize"), this, SLOT(setAutoResize(bool)));
+    m_autoResizeAction->setCheckable(true);
     m_menu->addAction(tr("Restore Size"), this, SLOT(restoreSize()));
     m_menu->addSeparator();
     m_menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove Column"), this, SLOT(removeColumn()));
@@ -127,6 +129,7 @@ void PlayListHeader::readSettings()
         m_model->restoreSettings(&settings);
         QList<QVariant> sizes = settings.value("pl_column_sizes").toList();
         int autoResizeColumn = settings.value("pl_autoresize_column", -1).toInt();
+        int trackStateColumn = settings.value("pl_track_state_column", -1).toInt();
         for(int i = 0; i < m_model->count(); ++i)
         {
             m_model->setData(i, SIZE, INITAL_SIZE);
@@ -135,6 +138,8 @@ void PlayListHeader::readSettings()
                 m_model->setData(i, SIZE, sizes.at(i).toInt());
             if(i == autoResizeColumn)
                 m_model->setData(i, AUTO_RESIZE, true);
+            if(i == trackStateColumn)
+                m_model->setData(i,TRACK_STATE, true);
         }
     }
 
@@ -217,6 +222,18 @@ QList<int> PlayListHeader::sizes() const
     return sizeList;
 }
 
+int PlayListHeader::trackStateColumn() const
+{
+    for(int i = 0; i < m_model->count(); ++i)
+    {
+        if(m_model->data(i, TRACK_STATE).toBool())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void PlayListHeader::showSortIndicator(int column, bool reverted)
 {
     if(m_sorting_column == column && m_reverted == reverted)
@@ -291,6 +308,20 @@ void PlayListHeader::setAutoResize(bool yes)
    }
 
    m_model->setData(m_pressed_column, AUTO_RESIZE, yes);
+}
+
+void PlayListHeader::showTrackState(bool yes)
+{
+    if(m_pressed_column < 0)
+         return;
+
+    if(yes)
+    {
+        for(int i = 0; i < m_model->count(); ++i)
+            m_model->setData(i, TRACK_STATE, false);
+    }
+
+    m_model->setData(m_pressed_column, TRACK_STATE, yes);
 }
 
 void PlayListHeader::restoreSize()
@@ -385,7 +416,6 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
         setSize(m_pressed_column, qMax(size(m_pressed_column), MIN_SIZE));
 
         adjustColumns();
-
         updateColumns();
         emit resizeColumnRequest();
     }
@@ -497,8 +527,8 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
     m_pressed_column = findColumn(e->pos());
     if(m_pressed_column >= 0)
     {
-        m_autoResize->setChecked(m_model->data(m_pressed_column, AUTO_RESIZE).toBool());
-        m_autoResize->setEnabled(true);
+        m_trackStateAction->setChecked(m_model->data(m_pressed_column, TRACK_STATE).toBool());
+        m_autoResizeAction->setChecked(m_model->data(m_pressed_column, AUTO_RESIZE).toBool());
         foreach (QAction *action, m_menu->actions())
             action->setVisible(true);
 
@@ -721,13 +751,17 @@ void PlayListHeader::writeSettings()
     m_model->saveSettings(&settings);
     QList<QVariant> sizes;
     int autoResizeColumn = -1;
+    int trackStateColumn = -1;
     for(int i = 0; i < m_model->count(); ++i)
     {
        sizes << m_model->data(i, SIZE).toInt();
        if(m_model->data(i, AUTO_RESIZE).toBool())
            autoResizeColumn = i;
+       if(m_model->data(i, TRACK_STATE).toBool())
+           trackStateColumn = i;
     }
     settings.setValue("pl_column_sizes", sizes);
     settings.setValue("pl_autoresize_column", autoResizeColumn);
+    settings.setValue("pl_track_state_column", trackStateColumn);
     settings.endGroup();
 }
