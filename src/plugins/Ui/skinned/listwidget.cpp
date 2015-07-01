@@ -70,7 +70,6 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(m_header, SIGNAL(resizeColumnRequest()), SLOT(updateColumns()));
     SET_ACTION(ActionManager::PL_SHOW_HEADER, this, SLOT(readSettings()));
 }
 
@@ -387,11 +386,6 @@ void ListWidget::updateList(int flags)
         m_drawer.prepareRow(row);  //elide titles
     }
     update();
-}
-
-void ListWidget::updateColumns()
-{
-    updateList(PlayListModel::METADATA);
 }
 
 void ListWidget::autoscroll()

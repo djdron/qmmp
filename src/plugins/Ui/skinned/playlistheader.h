@@ -50,9 +50,6 @@ public:
     QList<int> sizes() const;
     int trackStateColumn() const;
 
-signals:
-    void resizeColumnRequest();
-
 public slots:
     void updateColumns();
     void showSortIndicator(int column, bool reverted);
