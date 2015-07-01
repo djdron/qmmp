@@ -436,9 +436,9 @@ int PlayListModel::indexOfTrack(int index) const
     return m_container->indexOfTrack(index);
 }
 
-PlayListTrack *PlayListModel::findTrack(int number) const
+PlayListTrack *PlayListModel::findTrack(int track_index) const
 {
-    return m_container->findTrack(number);
+    return m_container->findTrack(track_index);
 }
 
 void PlayListModel::setSelected(int index, bool selected)
