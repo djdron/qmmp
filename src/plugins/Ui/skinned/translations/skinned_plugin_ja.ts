@@ -979,16 +979,21 @@
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="82"/>
-        <source>Auto-resize</source>
+        <source>Show Queue/Protocol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
-        <source>Restore Size</source>
+        <source>Auto-resize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="86"/>
+        <source>Restore Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="88"/>
         <source>Remove Column</source>
         <translation type="unfinished"></translation>
     </message>

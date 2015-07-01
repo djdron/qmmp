@@ -131,105 +131,111 @@
     </message>
     <message>
         <location filename="../columneditor.cpp" line="78"/>
-        <location filename="../columneditor.cpp" line="99"/>
+        <location filename="../columneditor.cpp" line="100"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="79"/>
-        <location filename="../columneditor.cpp" line="100"/>
+        <location filename="../columneditor.cpp" line="101"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="81"/>
-        <location filename="../columneditor.cpp" line="104"/>
+        <location filename="../columneditor.cpp" line="105"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
-        <location filename="../columneditor.cpp" line="107"/>
+        <location filename="../columneditor.cpp" line="108"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="85"/>
-        <location filename="../columneditor.cpp" line="108"/>
+        <location filename="../columneditor.cpp" line="109"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
-        <location filename="../columneditor.cpp" line="109"/>
+        <location filename="../columneditor.cpp" line="110"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="87"/>
-        <location filename="../columneditor.cpp" line="110"/>
+        <location filename="../columneditor.cpp" line="111"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
-        <location filename="../columneditor.cpp" line="114"/>
+        <location filename="../columneditor.cpp" line="116"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="92"/>
+        <location filename="../columneditor.cpp" line="115"/>
+        <source>Track Index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../columneditor.cpp" line="93"/>
         <source>Condition</source>
         <translation>Условие</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="101"/>
+        <location filename="../columneditor.cpp" line="102"/>
         <source>Artist - Album</source>
         <translation>Исполнитель - альбом</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="102"/>
+        <location filename="../columneditor.cpp" line="103"/>
         <source>Artist - Title</source>
         <translation>Исполнитель - название</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="80"/>
-        <location filename="../columneditor.cpp" line="103"/>
+        <location filename="../columneditor.cpp" line="104"/>
         <source>Album Artist</source>
         <translation>Исполнитель альбома</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
-        <location filename="../columneditor.cpp" line="105"/>
+        <location filename="../columneditor.cpp" line="106"/>
         <source>Track Number</source>
         <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
-        <location filename="../columneditor.cpp" line="106"/>
+        <location filename="../columneditor.cpp" line="107"/>
         <source>Two-digit Track Number</source>
         <translation>2-х разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="88"/>
-        <location filename="../columneditor.cpp" line="111"/>
+        <location filename="../columneditor.cpp" line="112"/>
         <source>Disc Number</source>
         <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
-        <location filename="../columneditor.cpp" line="112"/>
+        <location filename="../columneditor.cpp" line="113"/>
         <source>File Name</source>
         <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
-        <location filename="../columneditor.cpp" line="113"/>
+        <location filename="../columneditor.cpp" line="114"/>
         <source>File Path</source>
         <translation>Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../columneditor.cpp" line="115"/>
+        <location filename="../columneditor.cpp" line="117"/>
         <source>Custom</source>
         <translation>Пользовательский</translation>
     </message>
@@ -905,12 +911,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="240"/>
+        <location filename="../playlisttrack.cpp" line="242"/>
         <source>Streams</source>
         <translation>Потоковое радио</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="245"/>
+        <location filename="../playlisttrack.cpp" line="247"/>
         <source>Empty group</source>
         <translation>Пустая группа</translation>
     </message>
