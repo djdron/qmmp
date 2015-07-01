@@ -337,7 +337,6 @@ void ListWidget::updateList(int flags)
         m_header->setNumberWidth(m_drawer.numberWidth());
     }
 
-    int prev_number = 0;
     int trackStateColumn = m_header->trackStateColumn();
 
     for(int i = 0; i < items.count(); ++i)
@@ -364,22 +363,13 @@ void ListWidget::updateList(int flags)
         if(items[i]->isGroup())
         {
             row->flags |= ListWidgetRow::GROUP;
-            row->number = 0;
+            row->trackIndex = -1;
             row->length.clear();
         }
         else
         {
             row->flags &= ~ListWidgetRow::GROUP;
-            //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
-            if(!prev_number)
-            {
-                row->number = m_model->indexOfTrack(m_first+i) + 1;
-                prev_number = row->number;
-            }
-            else
-            {
-                row->number = ++prev_number;
-            }
+            row->trackIndex = items.at(i)->trackIndex();
             row->length = items[i]->formattedLength();
             row->extraString = getExtraString(m_first + i);
         }
