@@ -38,14 +38,16 @@ struct ListWidgetRow
         flags = NO_FLAGS;
         numberColumnWidth = 0;
         lengthColumnWidth = 0;
+        trackStateColumn = -1;
     }
     QStringList titles;
     QList<int> sizes;
     QString length;
     QString extraString;
-    int number;
+    int trackIndex;
     int numberColumnWidth;
     int lengthColumnWidth;
+    int trackStateColumn;
     enum
     {
         NO_FLAGS = 0x00,
@@ -73,6 +75,7 @@ public:
     int rowHeight() const;
     int numberWidth() const;
     void calculateNumberWidth(int count);
+    void setSingleColumnMode(int enabled);
     void prepareRow(ListWidgetRow *row);
     void fillBackground(QPainter *painter, int width, int height);
     void drawBackground(QPainter *painter, ListWidgetRow *row, int index);
@@ -94,6 +97,7 @@ private:
     bool m_align_numbres;
     bool m_show_lengths;
     bool m_use_system_colors;
+    bool m_single_column;
     int m_padding;
     int m_number_width;
     int m_row_height;

@@ -69,7 +69,6 @@ public:
 public slots:
     void readSettings();
     void updateList(int flags);
-    void updateColumns();
     void scroll(int); //0-99
     void recenterCurrent();
 

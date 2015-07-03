@@ -47,6 +47,7 @@ public:
     void setNumberWidth(int width);
     int requiredHeight() const;
     QList<int> sizes() const;
+    int trackStateColumn() const;
 
 signals:
     void resizeColumnRequest();
@@ -61,9 +62,9 @@ private slots:
     void editColumn();
     void removeColumn();
     void setAutoResize(bool yes);
+    void showTrackState(bool yes);
     void restoreSize();
     void onColumnAdded(int index);
-    void onColumnMoved(int from, int to);
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -77,8 +78,8 @@ private:
     void initStyleOption(QStyleOptionHeader *opt);
     int size(int index) const;
     void setSize(int index, int size);
-    int minSize(int index) const;
     const QString name(int index) const;
+    bool adjustColumns();
     void writeSettings();
     void showEvent(QShowEvent *);
     void hideEvent(QHideEvent *);
@@ -87,9 +88,9 @@ private:
     {
         NAME = 0,
         SIZE,
-        MIN_SIZE,
         RECT, //geometry
-        AUTO_RESIZE
+        AUTO_RESIZE,
+        TRACK_STATE
     };
 
     QFontMetrics *m_metrics;
@@ -97,7 +98,8 @@ private:
     QPoint m_pressed_pos;
     QPoint m_mouse_pos;
     PlayListHeaderModel *m_model;
-    QAction *m_autoResize;
+    QAction *m_trackStateAction;
+    QAction *m_autoResizeAction;
     bool m_reverted;
     int m_number_width;
     int m_pressed_column;

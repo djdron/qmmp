@@ -69,7 +69,6 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     readSettings();
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    connect(m_header, SIGNAL(resizeColumnRequest()), SLOT(updateColumns()));
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
     connect(m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect(m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
@@ -363,16 +362,18 @@ void ListWidget::updateList(int flags)
     {
         //song numbers width
         m_drawer.calculateNumberWidth(m_model->trackCount());
+        m_drawer.setSingleColumnMode(m_model->columnCount() == 1);
         m_header->setNumberWidth(m_drawer.numberWidth());
     }
 
-    int prev_number = 0;
+    int trackStateColumn = m_header->trackStateColumn();
     bool rtl = layoutDirection() == Qt::RightToLeft;
     int scroll_bar_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
 
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        row->trackStateColumn = trackStateColumn;
         items[i]->isSelected() ? row->flags |= ListWidgetRow::SELECTED :
                 row->flags &= ~ListWidgetRow::SELECTED;
 
@@ -395,33 +396,19 @@ void ListWidget::updateList(int flags)
         if(items[i]->isGroup())
         {
             row->flags |= ListWidgetRow::GROUP;
-            row->number = 0;
+            row->trackIndex = -1;
             row->length.clear();
         }
         else
         {
             row->flags &= ~ListWidgetRow::GROUP;
-            //optimization: reduces number of PlaListModel::numberOfTrack(int) calls
-            if(!prev_number)
-            {
-                row->number = m_model->indexOfTrack(m_first+i) + 1;
-                prev_number = row->number;
-            }
-            else
-            {
-                row->number = ++prev_number;
-            }
+            row->trackIndex = items.at(i)->trackIndex();
             row->length = items[i]->formattedLength();
             row->extraString = getExtraString(m_first + i);
         }
         m_drawer.prepareRow(row);  //elide titles
     }
     update();
-}
-
-void ListWidget::updateColumns()
-{
-    updateList(PlayListModel::METADATA);
 }
 
 void ListWidget::autoscroll()
