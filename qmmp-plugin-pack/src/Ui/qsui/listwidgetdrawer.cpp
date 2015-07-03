@@ -322,7 +322,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 sx -= row->numberColumnWidth;
                 QString number = QString("%1").arg(row->trackIndex);
                 painter->drawText(sx + m_padding, sy, number);
-                painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
 
@@ -347,7 +346,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         {
             for(int i = 0; i < row->sizes.count(); i++)
             {
-                painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
                 painter->drawText(sx - m_padding - metrics->width(row->titles[i]), sy, row->titles[i]);
                 sx -= row->sizes[i];
 
@@ -376,9 +374,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
             }
 
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
             painter->drawText(sx + m_padding, sy, row->titles[0]);
-
             sx = row->rect.right() - m_padding;
 
             if(m_show_lengths && !row->length.isEmpty())
@@ -399,7 +395,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
         {
             for(int i = 0; i < row->sizes.count(); i++)
             {
-                painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
                 painter->drawText(sx + m_padding, sy, row->titles[i]);
                 sx += row->sizes[i];
 
