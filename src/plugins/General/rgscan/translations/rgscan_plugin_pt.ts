@@ -46,7 +46,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="77"/>
         <source>Skip already scanned files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorar ficheiros já analisados</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="113"/>
