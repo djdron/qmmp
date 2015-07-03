@@ -1244,47 +1244,52 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Naudoti temos kursorių</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="393"/>
+        <location filename="../forms/skinnedsettings.ui" line="253"/>
+        <source>Single Column Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="402"/>
         <source>Fonts</source>
         <translation>Šriftai</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="447"/>
+        <location filename="../forms/skinnedsettings.ui" line="456"/>
         <source>Playlist:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="483"/>
+        <location filename="../forms/skinnedsettings.ui" line="492"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="405"/>
+        <location filename="../forms/skinnedsettings.ui" line="414"/>
         <source>Player:</source>
         <translation>Grotuvas:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="427"/>
-        <location filename="../forms/skinnedsettings.ui" line="469"/>
-        <location filename="../forms/skinnedsettings.ui" line="496"/>
+        <location filename="../forms/skinnedsettings.ui" line="436"/>
+        <location filename="../forms/skinnedsettings.ui" line="478"/>
+        <location filename="../forms/skinnedsettings.ui" line="505"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
-        <location filename="../forms/skinnedsettings.ui" line="434"/>
-        <location filename="../forms/skinnedsettings.ui" line="476"/>
-        <location filename="../forms/skinnedsettings.ui" line="503"/>
+        <location filename="../forms/skinnedsettings.ui" line="443"/>
+        <location filename="../forms/skinnedsettings.ui" line="485"/>
+        <location filename="../forms/skinnedsettings.ui" line="512"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="525"/>
+        <location filename="../forms/skinnedsettings.ui" line="534"/>
         <source>Reset fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="534"/>
+        <location filename="../forms/skinnedsettings.ui" line="543"/>
         <source>Use bitmap font if available</source>
         <translation>Naudoti bitmap šriftą, jei įmanoma</translation>
     </message>
@@ -1331,53 +1336,53 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
         <translation>Dainų sąrašas</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="253"/>
+        <location filename="../forms/skinnedsettings.ui" line="286"/>
         <source>Show protocol</source>
         <translation>Rodyti bylos galūnę</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="267"/>
+        <location filename="../forms/skinnedsettings.ui" line="266"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="260"/>
+        <location filename="../forms/skinnedsettings.ui" line="259"/>
         <source>Show song numbers</source>
         <translation>Rodyti takelių numerius</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="291"/>
+        <location filename="../forms/skinnedsettings.ui" line="300"/>
         <source>Show playlists</source>
         <translation>Rodyti grojaraščius</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="345"/>
+        <location filename="../forms/skinnedsettings.ui" line="354"/>
         <source>Show popup information</source>
         <translation>Rodyti iššokančią informaciją</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="357"/>
+        <location filename="../forms/skinnedsettings.ui" line="366"/>
         <source>Edit template</source>
         <translation>Taisyti šabloną</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="310"/>
+        <location filename="../forms/skinnedsettings.ui" line="319"/>
         <source>Playlist separator:</source>
         <translation>Grojaraščio atskyrėjas:</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="301"/>
+        <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Rodyti naujo grojaraščio mygtuką</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="284"/>
+        <location filename="../forms/skinnedsettings.ui" line="293"/>
         <source>Show anchor</source>
         <translatorcomment>??????????????</translatorcomment>
         <translation>Rodyti inkarą</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="277"/>
+        <location filename="../forms/skinnedsettings.ui" line="276"/>
         <source>Align song numbers</source>
         <translation>Lygiuoti dainų numerius</translation>
     </message>
