@@ -460,7 +460,7 @@ void PlayListHeader::mouseMoveEvent(QMouseEvent *e)
         m_pressed_column = dest;
         update();
     }
-    else if(e->button() == Qt::NoButton)
+    else if(e->button() == Qt::NoButton && m_model->count() > 1)
     {
         int column = findColumn(e->pos());
 
@@ -529,8 +529,17 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
     {
         m_trackStateAction->setChecked(m_model->data(m_pressed_column, TRACK_STATE).toBool());
         m_autoResizeAction->setChecked(m_model->data(m_pressed_column, AUTO_RESIZE).toBool());
+
+        //hide unused actions
         foreach (QAction *action, m_menu->actions())
-            action->setVisible(true);
+        {
+            if(m_menu->actions().at(0) == action)
+                action->setVisible(true);
+            else if(m_menu->actions().at(1) == action)
+                action->setVisible(true);
+            else
+                action->setVisible(m_model->count() != 1); //multicolumn mode
+        }
 
     }
     else
