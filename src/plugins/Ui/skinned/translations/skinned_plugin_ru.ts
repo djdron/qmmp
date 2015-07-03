@@ -1245,7 +1245,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим одной колонки</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="402"/>
