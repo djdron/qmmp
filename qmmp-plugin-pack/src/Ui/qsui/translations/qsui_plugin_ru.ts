@@ -980,7 +980,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="62"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать очередь/протокол</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="64"/>
@@ -1284,7 +1284,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="131"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим одной колонки</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="184"/>
