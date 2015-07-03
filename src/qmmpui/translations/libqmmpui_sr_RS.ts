@@ -911,12 +911,12 @@
 <context>
     <name>PlayListTrack</name>
     <message>
-        <location filename="../playlisttrack.cpp" line="242"/>
+        <location filename="../playlisttrack.cpp" line="255"/>
         <source>Streams</source>
         <translation>Токови</translation>
     </message>
     <message>
-        <location filename="../playlisttrack.cpp" line="247"/>
+        <location filename="../playlisttrack.cpp" line="260"/>
         <source>Empty group</source>
         <translation>Празна група</translation>
     </message>
