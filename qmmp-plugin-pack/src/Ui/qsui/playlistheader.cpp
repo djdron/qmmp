@@ -318,8 +318,11 @@ void PlayListHeader::restoreSize()
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
-    adjustColumns();
-    updateColumns();
+    if(isVisible())
+    {
+        adjustColumns();
+        updateColumns();
+    }
 }
 
 void PlayListHeader::mousePressEvent(QMouseEvent *e)
