@@ -265,7 +265,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawText(sx - m_padding, sy, row->titles[0]);
 
             sx = row->rect.x() + m_padding;
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
             if(m_show_lengths && !row->length.isEmpty())
             {
@@ -319,7 +318,6 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             painter->drawText(sx + m_padding, sy, row->titles[0]);
 
             sx = row->rect.right() - m_padding;
-            painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
 
             if(m_show_lengths && !row->length.isEmpty())
             {
