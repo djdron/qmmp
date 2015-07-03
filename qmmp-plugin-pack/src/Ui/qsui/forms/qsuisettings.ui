@@ -23,7 +23,7 @@
       <attribute name="title">
        <string>View</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
@@ -82,30 +82,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="numbersCheckBox">
-            <property name="text">
-             <string>Show song numbers</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="lengthsCheckBox">
-            <property name="text">
-             <string>Show song lengths</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="alignCheckBox">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Align song numbers</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QCheckBox" name="anchorCheckBox">
             <property name="text">
              <string>Show anchor</string>
@@ -145,6 +121,39 @@
              </spacer>
             </item>
            </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>Single Column Mode</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="numbersCheckBox">
+            <property name="text">
+             <string>Show song numbers</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="lengthsCheckBox">
+            <property name="text">
+             <string>Show song lengths</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="alignCheckBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Align song numbers</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
