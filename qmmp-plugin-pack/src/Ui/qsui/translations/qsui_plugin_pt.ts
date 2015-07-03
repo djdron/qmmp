@@ -968,27 +968,32 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="58"/>
+        <location filename="../playlistheader.cpp" line="60"/>
         <source>Add Column</source>
         <translation>Adicionar coluna</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="59"/>
+        <location filename="../playlistheader.cpp" line="61"/>
         <source>Edit Column</source>
         <translation>Editar coluna</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
+        <location filename="../playlistheader.cpp" line="62"/>
+        <source>Show Queue/Protocol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="64"/>
         <source>Auto-resize</source>
         <translation>Ajuste automático</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="62"/>
+        <location filename="../playlistheader.cpp" line="66"/>
         <source>Restore Size</source>
         <translation>Restaurar tamanho</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="64"/>
+        <location filename="../playlistheader.cpp" line="68"/>
         <source>Remove Column</source>
         <translation>Remover coluna</translation>
     </message>
@@ -1142,32 +1147,32 @@
         <translation>Iniciar oculto</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="713"/>
+        <location filename="../forms/qsuisettings.ui" line="722"/>
         <source>Fonts</source>
         <translation>Tipo de letra</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="719"/>
+        <location filename="../forms/qsuisettings.ui" line="728"/>
         <source>Use system fonts</source>
         <translation>Utilizar tipo de letra do sistema</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="767"/>
+        <location filename="../forms/qsuisettings.ui" line="776"/>
         <source>Playlist:</source>
         <translation>Lista de reprodução:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="747"/>
-        <location filename="../forms/qsuisettings.ui" line="812"/>
-        <location filename="../forms/qsuisettings.ui" line="831"/>
+        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
+        <location filename="../forms/qsuisettings.ui" line="840"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
-        <location filename="../forms/qsuisettings.ui" line="754"/>
-        <location filename="../forms/qsuisettings.ui" line="777"/>
-        <location filename="../forms/qsuisettings.ui" line="838"/>
+        <location filename="../forms/qsuisettings.ui" line="763"/>
+        <location filename="../forms/qsuisettings.ui" line="786"/>
+        <location filename="../forms/qsuisettings.ui" line="847"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1192,157 +1197,162 @@
         <translation>Mostrar protocolo</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="87"/>
+        <location filename="../forms/qsuisettings.ui" line="137"/>
         <source>Show song numbers</source>
         <translation>Mostrar número da faixa</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="94"/>
+        <location filename="../forms/qsuisettings.ui" line="144"/>
         <source>Show song lengths</source>
         <translation>Mostrar duração da faixa</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="104"/>
+        <location filename="../forms/qsuisettings.ui" line="154"/>
         <source>Align song numbers</source>
         <translation>Alinhar número das faixas</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="111"/>
+        <location filename="../forms/qsuisettings.ui" line="87"/>
         <source>Show anchor</source>
         <translation>Mostrar âncora</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="118"/>
+        <location filename="../forms/qsuisettings.ui" line="94"/>
         <source>Show popup information</source>
         <translation>Mostrar alerta de informações</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="130"/>
+        <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>Edit template</source>
         <translation>Editar modelo</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="860"/>
+        <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>Reset fonts</source>
         <translation>Restaurar tipo de letra</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="875"/>
+        <location filename="../forms/qsuisettings.ui" line="884"/>
         <source>Column headers:</source>
         <translation>Cabeçalhos de colunas: </translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="790"/>
+        <location filename="../forms/qsuisettings.ui" line="799"/>
         <source>Tab names:</source>
         <translation>Nome dos separadores:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="902"/>
+        <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
         <translation>Diversos</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="175"/>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
         <source>Analyzer Colors</source>
         <translation>Cores do analisador</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="169"/>
+        <location filename="../forms/qsuisettings.ui" line="131"/>
+        <source>Single Column Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="178"/>
         <source>Colors</source>
         <translation>Cores</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="181"/>
+        <location filename="../forms/qsuisettings.ui" line="190"/>
         <source>Analyzer #1:</source>
         <translation>Analisador #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="216"/>
+        <location filename="../forms/qsuisettings.ui" line="225"/>
         <source>Peaks:</source>
         <translation>Picos:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="248"/>
+        <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer #2:</source>
         <translation>Analisador #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="280"/>
+        <location filename="../forms/qsuisettings.ui" line="289"/>
         <source>Background:</source>
         <translation>Fundo:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="312"/>
+        <location filename="../forms/qsuisettings.ui" line="321"/>
         <source>Analyzer #3:</source>
         <translation>Analisador #3:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="389"/>
+        <location filename="../forms/qsuisettings.ui" line="398"/>
         <source>Playlist Colors</source>
         <translation>Cores da lista de reprodução</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="414"/>
+        <location filename="../forms/qsuisettings.ui" line="423"/>
         <source>Background #1:</source>
         <translation>Fundo #1:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="446"/>
+        <location filename="../forms/qsuisettings.ui" line="455"/>
         <source>Normal text:</source>
         <translation>Texto normal:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="487"/>
         <source>Background #2:</source>
         <translation>Fundo #2:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="510"/>
+        <location filename="../forms/qsuisettings.ui" line="519"/>
         <source>Current text:</source>
         <translation>Texto atual:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="542"/>
+        <location filename="../forms/qsuisettings.ui" line="551"/>
         <source>Highlighted background:</source>
         <translation>Destaque de fundo:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="574"/>
+        <location filename="../forms/qsuisettings.ui" line="583"/>
         <source>Hightlighted text:</source>
         <translation>Destaque de texto:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="395"/>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
         <source>Use system colors</source>
         <translation>Usar cores do sistema</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="609"/>
+        <location filename="../forms/qsuisettings.ui" line="618"/>
         <source>Group background:</source>
         <translation>Fundo do grupo:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="638"/>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
         <source>Group text:</source>
         <translation>Texto do grupo:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="908"/>
+        <location filename="../forms/qsuisettings.ui" line="917"/>
         <source>Tabs</source>
         <translation>Separadores</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="914"/>
+        <location filename="../forms/qsuisettings.ui" line="923"/>
         <source>Show close buttons</source>
         <translation>Mostrar botão de fecho</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="921"/>
+        <location filename="../forms/qsuisettings.ui" line="930"/>
         <source>Show tab list menu</source>
         <translation>Mostrar menu de lista de separadores</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="928"/>
+        <location filename="../forms/qsuisettings.ui" line="937"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Mostrar botão &apos;Nova lista de reprodução&apos;</translation>
     </message>

@@ -14,22 +14,22 @@
         <translation>Трекерная музыка</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="119"/>
+        <location filename="../decoderxmpfactory.cpp" line="120"/>
         <source>About XMP Audio Plugin</source>
         <translation>Об аудио-модуле XMP</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="120"/>
+        <location filename="../decoderxmpfactory.cpp" line="121"/>
         <source>Qmmp XMP Audio Plugin</source>
         <translation>Аудио-модуль XMP для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="121"/>
+        <location filename="../decoderxmpfactory.cpp" line="122"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderxmpfactory.cpp" line="122"/>
+        <location filename="../decoderxmpfactory.cpp" line="123"/>
         <source>Compiled against libxmp-%1</source>
         <translation>Собрано с libxmp-%1</translation>
     </message>

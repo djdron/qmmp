@@ -968,27 +968,32 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="58"/>
+        <location filename="../playlistheader.cpp" line="60"/>
         <source>Add Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="59"/>
+        <location filename="../playlistheader.cpp" line="61"/>
         <source>Edit Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
-        <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../playlistheader.cpp" line="62"/>
-        <source>Restore Size</source>
+        <source>Show Queue/Protocol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="64"/>
+        <source>Auto-resize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="66"/>
+        <source>Restore Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistheader.cpp" line="68"/>
         <source>Remove Column</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1142,32 +1147,32 @@
         <translation>開始時に隠す</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="713"/>
+        <location filename="../forms/qsuisettings.ui" line="722"/>
         <source>Fonts</source>
         <translation>書体</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="719"/>
+        <location filename="../forms/qsuisettings.ui" line="728"/>
         <source>Use system fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="767"/>
+        <location filename="../forms/qsuisettings.ui" line="776"/>
         <source>Playlist:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="747"/>
-        <location filename="../forms/qsuisettings.ui" line="812"/>
-        <location filename="../forms/qsuisettings.ui" line="831"/>
+        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
+        <location filename="../forms/qsuisettings.ui" line="840"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
-        <location filename="../forms/qsuisettings.ui" line="754"/>
-        <location filename="../forms/qsuisettings.ui" line="777"/>
-        <location filename="../forms/qsuisettings.ui" line="838"/>
+        <location filename="../forms/qsuisettings.ui" line="763"/>
+        <location filename="../forms/qsuisettings.ui" line="786"/>
+        <location filename="../forms/qsuisettings.ui" line="847"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1192,157 +1197,162 @@
         <translation>プロトコルを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="87"/>
+        <location filename="../forms/qsuisettings.ui" line="137"/>
         <source>Show song numbers</source>
         <translation>曲番号つきで表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="94"/>
+        <location filename="../forms/qsuisettings.ui" line="144"/>
         <source>Show song lengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="104"/>
+        <location filename="../forms/qsuisettings.ui" line="154"/>
         <source>Align song numbers</source>
         <translation>曲番号のみを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="111"/>
+        <location filename="../forms/qsuisettings.ui" line="87"/>
         <source>Show anchor</source>
         <translation>アンカーを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="118"/>
+        <location filename="../forms/qsuisettings.ui" line="94"/>
         <source>Show popup information</source>
         <translation>情報吹き出しを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="130"/>
+        <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>Edit template</source>
         <translation>ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="169"/>
+        <location filename="../forms/qsuisettings.ui" line="178"/>
         <source>Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="609"/>
+        <location filename="../forms/qsuisettings.ui" line="618"/>
         <source>Group background:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="860"/>
+        <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>Reset fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="875"/>
+        <location filename="../forms/qsuisettings.ui" line="884"/>
         <source>Column headers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="790"/>
+        <location filename="../forms/qsuisettings.ui" line="799"/>
         <source>Tab names:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="638"/>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
         <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="908"/>
+        <location filename="../forms/qsuisettings.ui" line="917"/>
         <source>Tabs</source>
         <translation>タブ</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="914"/>
+        <location filename="../forms/qsuisettings.ui" line="923"/>
         <source>Show close buttons</source>
         <translation>閉じるボタンを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="921"/>
+        <location filename="../forms/qsuisettings.ui" line="930"/>
         <source>Show tab list menu</source>
         <translation>タブリストメニューを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="928"/>
+        <location filename="../forms/qsuisettings.ui" line="937"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>&apos;新しいプレイリスト&apos; ボタンを表示</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="902"/>
+        <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
         <translation>その他いろいろ</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="175"/>
+        <location filename="../forms/qsuisettings.ui" line="131"/>
+        <source>Single Column Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
         <source>Analyzer Colors</source>
         <translation>アナライザーの配色</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="181"/>
+        <location filename="../forms/qsuisettings.ui" line="190"/>
         <source>Analyzer #1:</source>
         <translation>第一アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="216"/>
+        <location filename="../forms/qsuisettings.ui" line="225"/>
         <source>Peaks:</source>
         <translation>峰:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="248"/>
+        <location filename="../forms/qsuisettings.ui" line="257"/>
         <source>Analyzer #2:</source>
         <translation>第二アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="280"/>
+        <location filename="../forms/qsuisettings.ui" line="289"/>
         <source>Background:</source>
         <translation>背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="312"/>
+        <location filename="../forms/qsuisettings.ui" line="321"/>
         <source>Analyzer #3:</source>
         <translation>第三アナライザー:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="389"/>
+        <location filename="../forms/qsuisettings.ui" line="398"/>
         <source>Playlist Colors</source>
         <translation>プレイリストの配色</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="395"/>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
         <source>Use system colors</source>
         <translation>システム標準の配色を使用</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="414"/>
+        <location filename="../forms/qsuisettings.ui" line="423"/>
         <source>Background #1:</source>
         <translation>第一背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="446"/>
+        <location filename="../forms/qsuisettings.ui" line="455"/>
         <source>Normal text:</source>
         <translation>通常のテキスト:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="478"/>
+        <location filename="../forms/qsuisettings.ui" line="487"/>
         <source>Background #2:</source>
         <translation>第二背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="510"/>
+        <location filename="../forms/qsuisettings.ui" line="519"/>
         <source>Current text:</source>
         <translation>現在位置のテキスト:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="542"/>
+        <location filename="../forms/qsuisettings.ui" line="551"/>
         <source>Highlighted background:</source>
         <translation>ハイライトした背景:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="574"/>
+        <location filename="../forms/qsuisettings.ui" line="583"/>
         <source>Hightlighted text:</source>
         <translation>ハイライトしたテキスト:</translation>
     </message>
