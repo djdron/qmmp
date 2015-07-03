@@ -18,20 +18,20 @@
     <message>
         <location filename="../fileops.cpp" line="136"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover ficheiros</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Tem a certeza que deseja mover %n ficheiro?</numerusform>
+            <numerusform>Tem a certeza que deseja mover %n ficheiros?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="153"/>
         <source>Copying</source>
-        <translation>Cópia</translation>
+        <translation>Copiando</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="154"/>
@@ -47,12 +47,12 @@
     <message>
         <location filename="../fileops.cpp" line="243"/>
         <source>Moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Movendo</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="276"/>
         <source>Moving file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>A mover ficheiro %1/%2</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="114"/>
@@ -180,7 +180,7 @@
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
