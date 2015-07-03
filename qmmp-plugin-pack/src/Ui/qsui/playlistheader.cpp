@@ -49,6 +49,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_pl_padding = 0;
     m_number_width = 0;
     m_sorting_column = -1;
+    m_scrollbar_width = 0;
     m_reverted = false;
     m_block_resize = true;
     m_metrics = 0;
@@ -144,6 +145,21 @@ void PlayListHeader::setNumberWidth(int width)
     }
 }
 
+void PlayListHeader::setScrollBarWidth(int width)
+{
+    if(m_scrollbar_width != width)
+    {
+        m_scrollbar_width = width;
+        if(!m_block_resize)
+        {
+            if(m_model->count() == 1)
+                updateColumns();
+            else
+                adjustColumns();
+        }
+    }
+}
+
 void PlayListHeader::updateColumns()
 {
     if(!isVisible())
@@ -153,13 +169,14 @@ void PlayListHeader::updateColumns()
 
     int sx = 5;
 
-
     if(m_model->count() == 1)
     {
         if(m_number_width)
             sx += m_number_width + 2 * m_pl_padding;
-        m_model->setData(0, RECT, rtl ? QRect(5, 0, width() - sx - 5, height()) : QRect(sx, 0, width() - sx - 5, height()));
+        m_model->setData(0, RECT, rtl ? QRect(5, 0, width() - sx - 5 - m_scrollbar_width, height()) :
+                                        QRect(sx, 0, width() - sx - 5 - m_scrollbar_width, height()));
         m_model->setData(0, NAME, m_model->name(0));
+        update();
         return;
     }
 
@@ -566,6 +583,8 @@ void PlayListHeader::timerEvent(QTimerEvent *e)
 {
     killTimer(e->timerId());
     m_block_resize = false;
+    if(adjustColumns())
+        PlayListManager::instance()->selectedPlayList()->updateMetaData();
 }
 
 int PlayListHeader::findColumn(QPoint pos)
@@ -601,9 +620,9 @@ bool PlayListHeader::adjustColumns()
         total_size += s;
     }
 
-    if(total_size > width() - 10)
+    if(total_size > width() - 10 - m_scrollbar_width)
     {
-        int delta = total_size - width() + 10;
+        int delta = total_size - width() + 10 + m_scrollbar_width;
         for(int i = m_model->count() - 1; i >= 0 && delta > 0; i--)
         {
             int dx = size(i) - qMax(MIN_SIZE, size(i) - delta);
@@ -642,13 +661,8 @@ void PlayListHeader::writeSettings()
 void PlayListHeader::showEvent(QShowEvent *)
 {
     updateColumns();
-    startTimer(1000);
+    startTimer(500);
     m_block_resize = true; //do not auto-resize column 1 s after show event
-    if(m_old_sizes != sizes())
-    {
-        m_old_sizes = sizes();
-        emit resizeColumnRequest();
-    }
 }
 
 void PlayListHeader::hideEvent(QHideEvent *)

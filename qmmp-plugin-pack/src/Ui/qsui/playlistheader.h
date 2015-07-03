@@ -45,12 +45,10 @@ public:
 
     void readSettings();
     void setNumberWidth(int width);
+    void setScrollBarWidth(int width);
     int requiredHeight() const;
     QList<int> sizes() const;
     int trackStateColumn() const;
-
-signals:
-    void resizeColumnRequest();
 
 public slots:
     void updateColumns();
@@ -102,6 +100,7 @@ private:
     QAction *m_autoResizeAction;
     bool m_reverted;
     int m_number_width;
+    int m_scrollbar_width;
     int m_pressed_column;
     int m_old_size;
     int m_press_offset;

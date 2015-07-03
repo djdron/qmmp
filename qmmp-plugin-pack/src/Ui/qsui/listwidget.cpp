@@ -288,6 +288,12 @@ void ListWidget::wheelEvent (QWheelEvent *e)
     updateList(PlayListModel::STRUCTURE);
 }
 
+void ListWidget::showEvent(QShowEvent *)
+{
+    if(!m_rows.isEmpty())
+        updateList(PlayListModel::METADATA);
+}
+
 bool ListWidget::event (QEvent *e)
 {
     if(m_popupWidget)
@@ -369,6 +375,7 @@ void ListWidget::updateList(int flags)
     int trackStateColumn = m_header->trackStateColumn();
     bool rtl = layoutDirection() == Qt::RightToLeft;
     int scroll_bar_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
+    m_header->setScrollBarWidth(scroll_bar_width);
 
     for(int i = 0; i < items.count(); ++i)
     {

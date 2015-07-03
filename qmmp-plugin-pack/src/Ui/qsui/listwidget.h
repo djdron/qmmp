@@ -84,6 +84,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *);
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
+    void showEvent(QShowEvent *);
     int indexAt(int)const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
