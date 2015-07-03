@@ -173,7 +173,7 @@ void PlayListHeader::updateColumns()
     {
         if(m_number_width)
             sx += m_number_width + 2 * m_pl_padding;
-        m_model->setData(0, RECT, rtl ? QRect(5, 0, width() - sx - 5 - m_scrollbar_width, height()) :
+        m_model->setData(0, RECT, rtl ? QRect(5 + m_scrollbar_width, 0, width() - sx - 5 - m_scrollbar_width, height()) :
                                         QRect(sx, 0, width() - sx - 5 - m_scrollbar_width, height()));
         m_model->setData(0, NAME, m_model->name(0));
         update();
