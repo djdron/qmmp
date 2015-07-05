@@ -534,7 +534,7 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
         foreach (QAction *action, m_menu->actions())
         {
             if(m_menu->actions().at(0) == action)
-                action->setVisible(true);
+                action->setVisible(m_model->count() < MAX_COLUMNS);
             else if(m_menu->actions().at(1) == action)
                 action->setVisible(true);
             else
@@ -546,7 +546,9 @@ void PlayListHeader::contextMenuEvent(QContextMenuEvent *e)
     {
         foreach (QAction *action, m_menu->actions())
         {
-            if(action != m_menu->actions().first())
+            if(action == m_menu->actions().first())
+                action->setVisible(m_model->count() < MAX_COLUMNS);
+            else
                 action->setVisible(false);
         }
     }
