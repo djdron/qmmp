@@ -40,6 +40,7 @@
 #define INITAL_SIZE 150
 #define INITAL_MIN_SIZE 30
 #define MIN_SIZE 30
+#define MAX_COLUMNS 7
 
 PlayListHeader::PlayListHeader(QWidget *parent) :
     QWidget(parent)
