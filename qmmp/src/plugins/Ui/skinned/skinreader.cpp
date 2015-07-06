@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 #include <QByteArray>
 #include <QApplication>
 #include <QFile>
-
+#include <qmmp/qmmp.h>
 #include "skinreader.h"
 
 SkinReader::SkinReader(QObject *parent)
@@ -33,7 +33,7 @@ SkinReader::SkinReader(QObject *parent)
 {
     m_process = new QProcess(this);
     //create cache dir
-    QDir dir(QDir::homePath() +"/.qmmp/");
+    QDir dir(Qmmp::configDir());
     dir.mkdir("cache");
     dir.cd("cache");
     dir.mkdir("thumbs");
@@ -46,7 +46,7 @@ SkinReader::~SkinReader()
 void SkinReader::generateThumbs()
 {
     m_previewMap.clear();
-    QDir dir(QDir::homePath() +"/.qmmp/skins");
+    QDir dir(Qmmp::configDir() + "skins");
     dir.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList f = dir.entryInfoList();
 #if defined(Q_OS_WIN) && !defined(Q_OS_CYGWIN)
@@ -56,7 +56,7 @@ void SkinReader::generateThumbs()
 #endif
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     f << dir.entryInfoList();
-    QDir cache_dir(QDir::homePath() +"/.qmmp/cache/thumbs");
+    QDir cache_dir(Qmmp::configDir() + "cache/thumbs");
     cache_dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList d = cache_dir.entryInfoList();
     //clear removed skins from cache
@@ -123,16 +123,16 @@ void SkinReader::generateThumbs()
 void SkinReader::unpackSkin(const QString &path)
 {
     //remove old skin
-    QDir dir(QDir::homePath() +"/.qmmp/cache/skin");
+    QDir dir(Qmmp::configDir() + "cache/skin");
     dir.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList f = dir.entryInfoList();
     foreach(QFileInfo file, f)
         dir.remove(file.fileName());
     //unpack
     if (path.endsWith(".tgz") || path.endsWith(".tar.gz") || path.endsWith(".tar.bz2"))
-        untar(path, QDir::homePath() +"/.qmmp/cache/skin", false);
+        untar(path, Qmmp::configDir() + "cache/skin", false);
     if (path.endsWith(".zip") || path.endsWith(".wsz"))
-        unzip(path, QDir::homePath() +"/.qmmp/cache/skin", false);
+        unzip(path, Qmmp::configDir() + "cache/skin", false);
 }
 
 const QStringList SkinReader::skins()
