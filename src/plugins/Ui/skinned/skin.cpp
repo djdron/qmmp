@@ -41,7 +41,7 @@ Skin *Skin::instance()
     return m_instance;
 }
 
-QPixmap Skin::getPixmap (const QString& name, QDir dir)
+QPixmap Skin::getPixmap (const QString &name, QDir dir)
 {
     dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setNameFilters(QStringList() << name + ".*");

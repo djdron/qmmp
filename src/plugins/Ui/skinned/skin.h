@@ -40,7 +40,7 @@ public:
     ~Skin();
 
     static Skin *instance();
-    static QPixmap getPixmap(const QString&, QDir);
+    static QPixmap getPixmap(const QString &name, QDir dir);
     int ratio()
     {
         return m_double_size ? 2 : 1;
