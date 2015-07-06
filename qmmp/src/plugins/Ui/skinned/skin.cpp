@@ -44,16 +44,10 @@ Skin *Skin::instance()
 QPixmap Skin::getPixmap (const QString& name, QDir dir)
 {
     dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setNameFilters(QStringList() << name + ".*");
     QFileInfoList f = dir.entryInfoList();
-    for (int j = 0; j < f.size(); ++j)
-    {
-        QFileInfo fileInfo = f.at (j);
-        QString fn = fileInfo.fileName().toLower();
-        if (fn.section (".",0,0) == name)
-        {
-            return QPixmap (fileInfo.filePath());
-        }
-    }
+    if(!f.isEmpty())
+        return QPixmap(f.first().filePath());
     return QPixmap();
 }
 
