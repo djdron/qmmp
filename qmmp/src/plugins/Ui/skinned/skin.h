@@ -51,15 +51,15 @@ public:
     }
     const QPixmap getButton(uint bt) const
     {
-        return buttons[bt];
+        return m_buttons[bt];
     }
     const QCursor getCursor(uint cu) const
     {
-        return cursors[cu];
+        return m_cursors[cu];
     }
     const QPixmap getTitleBar(uint tb) const
     {
-        return titlebar[tb];
+        return m_titlebar[tb];
     }
     const QPixmap getPosBar() const
     {
@@ -117,6 +117,10 @@ public:
     const QByteArray getPLValue (QByteArray c) const
     {
         return m_pledit_txt[c];
+    }
+    const QColor getMainColor(int n) const
+    {
+        return m_main_colors[n];
     }
     const QColor getVisColor(int n) const
     {
@@ -322,6 +326,11 @@ public:
         CUR_WSMIN,
         CUR_WSWINBUT
     };
+    enum Colors
+    {
+        MW_BACKGROUND,
+        MW_FOREGROUND
+    };
 
 public slots:
     void setSkin(const QString& path);
@@ -346,9 +355,9 @@ private:
     QPixmap scalePixmap(const QPixmap &pix, int ratio = 2);
     static Skin *m_instance;
     QDir m_skin_dir;
-    QMap<uint, QPixmap> buttons;
-    QMap<uint, QCursor> cursors;
-    QMap<uint, QPixmap> titlebar;
+    QMap<uint, QPixmap> m_buttons;
+    QMap<uint, QCursor> m_cursors;
+    QMap<uint, QPixmap> m_titlebar;
     QMap<uint, QPixmap> m_pl_parts;
     QMap<uint, QPixmap> m_eq_parts;
     QMap<uint, QPixmap> m_ms_parts;
@@ -364,12 +373,14 @@ private:
     QList<QPixmap> m_volume;
     QList<QPixmap> m_balance;
     QList<QColor> m_vis_colors;
+    QMap<uint, QColor> m_main_colors;
     bool m_use_cursors;
     bool m_double_size;
 
     void loadMain();
     void loadButtons();
     void loadCursors();
+    void loadColors();
     void loadTitleBar();
     void loadPosBar();
     void loadNumbers();

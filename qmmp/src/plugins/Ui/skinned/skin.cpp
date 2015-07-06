@@ -79,15 +79,15 @@ void Skin::setSkin (const QString& path)
     m_skin_dir = QDir (path);
     //clear old values
     m_pledit_txt.clear();
-    buttons.clear();
-    titlebar.clear();
+    m_buttons.clear();
+    m_titlebar.clear();
     m_numbers.clear();
     m_pl_parts.clear();
     m_eq_parts.clear();
     m_eq_bar.clear();
     m_eq_spline.clear();
     m_vis_colors.clear();
-    cursors.clear();
+    m_cursors.clear();
     //load skin parts
     loadPLEdit();
     loadMain();
@@ -106,13 +106,14 @@ void Skin::setSkin (const QString& path)
     loadBalance();
     loadRegion();
     loadCursors();
+    loadColors();
     if(m_double_size)
     {
         uint key;
-        foreach(key, buttons.keys())
-            buttons[key] = scalePixmap(buttons[key]);
-        foreach(key, titlebar.keys())
-            titlebar[key] = scalePixmap(titlebar[key]);
+        foreach(key, m_buttons.keys())
+            m_buttons[key] = scalePixmap(m_buttons[key]);
+        foreach(key, m_titlebar.keys())
+            m_titlebar[key] = scalePixmap(m_titlebar[key]);
         foreach(key, m_pl_parts.keys())
             m_pl_parts[key] = scalePixmap(m_pl_parts[key]);
         foreach(key, m_eq_parts.keys())
@@ -160,87 +161,114 @@ void Skin::loadCursors()
     if(!m_use_cursors)
     {
         for(int i = CUR_NORMAL; i <= CUR_WSWINBUT; ++i)
-            cursors[i] = QCursor(Qt::ArrowCursor);
-        cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
+            m_cursors[i] = QCursor(Qt::ArrowCursor);
+        m_cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
         return;
     }
-    cursors[CUR_NORMAL] = createCursor(getPath("normal"));
-    cursors[CUR_CLOSE] = createCursor(getPath("close"));
-    cursors[CUR_MAINMENU] = createCursor(getPath("mainmenu"));
-    cursors[CUR_MIN] = createCursor(getPath("min"));
-    cursors[CUR_POSBAR] = createCursor(getPath("posbar.cur"));
-    cursors[CUR_SONGNAME] = createCursor(getPath("songname"));
-    cursors[CUR_TITLEBAR] = createCursor(getPath("titlebar.cur"));
-    cursors[CUR_VOLBAL] = createCursor(getPath("volbal"));
-    cursors[CUR_WINBUT] = createCursor(getPath("winbut"));
+    m_cursors[CUR_NORMAL] = createCursor(getPath("normal"));
+    m_cursors[CUR_CLOSE] = createCursor(getPath("close"));
+    m_cursors[CUR_MAINMENU] = createCursor(getPath("mainmenu"));
+    m_cursors[CUR_MIN] = createCursor(getPath("min"));
+    m_cursors[CUR_POSBAR] = createCursor(getPath("posbar.cur"));
+    m_cursors[CUR_SONGNAME] = createCursor(getPath("songname"));
+    m_cursors[CUR_TITLEBAR] = createCursor(getPath("titlebar.cur"));
+    m_cursors[CUR_VOLBAL] = createCursor(getPath("volbal"));
+    m_cursors[CUR_WINBUT] = createCursor(getPath("winbut"));
 
-    cursors[CUR_WSNORMAL] = createCursor(getPath("wsnormal"));
-    cursors[CUR_WSPOSBAR] = createCursor(getPath("wsposbar"));
+    m_cursors[CUR_WSNORMAL] = createCursor(getPath("wsnormal"));
+    m_cursors[CUR_WSPOSBAR] = createCursor(getPath("wsposbar"));
 
-    cursors[CUR_EQCLOSE] = createCursor(getPath("eqclose"));
-    cursors[CUR_EQNORMAL] = createCursor(getPath("eqnormal"));
-    cursors[CUR_EQSLID] = createCursor(getPath("eqslid"));
-    cursors[CUR_EQTITLE] = createCursor(getPath("eqtitle"));
+    m_cursors[CUR_EQCLOSE] = createCursor(getPath("eqclose"));
+    m_cursors[CUR_EQNORMAL] = createCursor(getPath("eqnormal"));
+    m_cursors[CUR_EQSLID] = createCursor(getPath("eqslid"));
+    m_cursors[CUR_EQTITLE] = createCursor(getPath("eqtitle"));
 
-    cursors[CUR_PCLOSE] = createCursor(getPath("pclose"));
-    cursors[CUR_PNORMAL] = createCursor(getPath("pnormal"));
-    cursors[CUR_PSIZE] = createCursor(getPath("psize"));
-    if(cursors[CUR_PSIZE].shape() == Qt::ArrowCursor)
-        cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
-    cursors[CUR_PTBAR] = createCursor(getPath("ptbar"));
-    cursors[CUR_PVSCROLL] = createCursor(getPath("pvscroll"));
-    cursors[CUR_PWINBUT] = createCursor(getPath("pwinbut"));
+    m_cursors[CUR_PCLOSE] = createCursor(getPath("pclose"));
+    m_cursors[CUR_PNORMAL] = createCursor(getPath("pnormal"));
+    m_cursors[CUR_PSIZE] = createCursor(getPath("psize"));
+    if(m_cursors[CUR_PSIZE].shape() == Qt::ArrowCursor)
+        m_cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
+    m_cursors[CUR_PTBAR] = createCursor(getPath("ptbar"));
+    m_cursors[CUR_PVSCROLL] = createCursor(getPath("pvscroll"));
+    m_cursors[CUR_PWINBUT] = createCursor(getPath("pwinbut"));
 
-    cursors[CUR_PWSNORM] = createCursor(getPath("pwsnorm"));
-    cursors[CUR_PWSSIZE] = createCursor(getPath("pwssize"));
+    m_cursors[CUR_PWSNORM] = createCursor(getPath("pwsnorm"));
+    m_cursors[CUR_PWSSIZE] = createCursor(getPath("pwssize"));
 
-    cursors[CUR_VOLBAR] = createCursor(getPath("volbar"));
-    cursors[CUR_WSCLOSE] = createCursor(getPath("wsclose"));
-    cursors[CUR_WSMIN] = createCursor(getPath("wsmin"));
-    cursors[CUR_WSWINBUT] = createCursor(getPath("wswinbut"));
+    m_cursors[CUR_VOLBAR] = createCursor(getPath("volbar"));
+    m_cursors[CUR_WSCLOSE] = createCursor(getPath("wsclose"));
+    m_cursors[CUR_WSMIN] = createCursor(getPath("wsmin"));
+    m_cursors[CUR_WSWINBUT] = createCursor(getPath("wswinbut"));
+}
+
+void Skin::loadColors()
+{
+    QPixmap *pixmap = getPixmap ("text");
+    QImage img = pixmap->toImage();
+    m_main_colors[MW_BACKGROUND] = QColor::fromRgb(img.pixel(144, 3));
+    QRgb mwfg = 0, mwbg = img.pixel(144, 3);
+    uint diff = 0;
+
+    for(int x = 0; x < pixmap->width(); ++x)
+    {
+        for(int y = 0; y < pixmap->height(); ++y)
+        {
+            QRgb c = img.pixel(x, y);
+            uint d = abs(qRed(mwbg) - qRed(c)) +
+                    abs(qBlue(mwbg) - qBlue(c)) +
+                    abs(qGreen(mwbg) - qGreen(c));
+            if(d > diff)
+            {
+                diff = d;
+                mwfg = c;
+            }
+        }
+    }
+    m_main_colors[MW_FOREGROUND] = QColor::fromRgb(mwfg);
+    delete pixmap;
 }
 
 void Skin::loadButtons()
 {
     QPixmap *pixmap = getPixmap ("cbuttons");
 
-    buttons[BT_PREVIOUS_N] = pixmap->copy (0, 0,23,18);
-    buttons[BT_PREVIOUS_P] = pixmap->copy (0,18,23,18);
+    m_buttons[BT_PREVIOUS_N] = pixmap->copy (0, 0,23,18);
+    m_buttons[BT_PREVIOUS_P] = pixmap->copy (0,18,23,18);
 
-    buttons[BT_PLAY_N] = pixmap->copy (23, 0,23,18);
-    buttons[BT_PLAY_P] = pixmap->copy (23,18,23,18);
+    m_buttons[BT_PLAY_N] = pixmap->copy (23, 0,23,18);
+    m_buttons[BT_PLAY_P] = pixmap->copy (23,18,23,18);
 
-    buttons[BT_PAUSE_N] = pixmap->copy (46, 0,23,18);
-    buttons[BT_PAUSE_P] = pixmap->copy (46,18,23,18);
+    m_buttons[BT_PAUSE_N] = pixmap->copy (46, 0,23,18);
+    m_buttons[BT_PAUSE_P] = pixmap->copy (46,18,23,18);
 
-    buttons[BT_STOP_N] = pixmap->copy (69, 0,23,18);
-    buttons[BT_STOP_P] = pixmap->copy (69,18,23,18);
+    m_buttons[BT_STOP_N] = pixmap->copy (69, 0,23,18);
+    m_buttons[BT_STOP_P] = pixmap->copy (69,18,23,18);
 
-    buttons[BT_NEXT_N] = pixmap->copy (92, 0,22,18);
-    buttons[BT_NEXT_P] = pixmap->copy (92,18,22,18);
+    m_buttons[BT_NEXT_N] = pixmap->copy (92, 0,22,18);
+    m_buttons[BT_NEXT_P] = pixmap->copy (92,18,22,18);
 
-    buttons[BT_EJECT_N] = pixmap->copy (114, 0,22,16);
-    buttons[BT_EJECT_P] = pixmap->copy (114,16,22,16);
+    m_buttons[BT_EJECT_N] = pixmap->copy (114, 0,22,16);
+    m_buttons[BT_EJECT_P] = pixmap->copy (114,16,22,16);
     delete pixmap;
 }
 
 void Skin::loadTitleBar()
 {
     QPixmap *pixmap = getPixmap ("titlebar");
-    buttons[BT_MENU_N] = pixmap->copy (0,0,9,9);
-    buttons[BT_MENU_P] = pixmap->copy (0,9,9,9);
-    buttons[BT_MINIMIZE_N] = pixmap->copy (9,0,9,9);
-    buttons[BT_MINIMIZE_P] = pixmap->copy (9,9,9,9);
-    buttons[BT_CLOSE_N] = pixmap->copy (18,0,9,9);
-    buttons[BT_CLOSE_P] = pixmap->copy (18,9,9,9);
-    buttons[BT_SHADE1_N] = pixmap->copy (0,18,9,9);
-    buttons[BT_SHADE1_P] = pixmap->copy (9,18,9,9);
-    buttons[BT_SHADE2_N] = pixmap->copy (0,27,9,9);
-    buttons[BT_SHADE2_P] = pixmap->copy (9,27,9,9);
-    titlebar[TITLEBAR_A] = pixmap->copy (27, 0,275,14);
-    titlebar[TITLEBAR_I] = pixmap->copy (27,15,275,14);
-    titlebar[TITLEBAR_SHADED_A] = pixmap->copy (27,29,275,14);
-    titlebar[TITLEBAR_SHADED_I] = pixmap->copy (27,42,275,14);
+    m_buttons[BT_MENU_N] = pixmap->copy (0,0,9,9);
+    m_buttons[BT_MENU_P] = pixmap->copy (0,9,9,9);
+    m_buttons[BT_MINIMIZE_N] = pixmap->copy (9,0,9,9);
+    m_buttons[BT_MINIMIZE_P] = pixmap->copy (9,9,9,9);
+    m_buttons[BT_CLOSE_N] = pixmap->copy (18,0,9,9);
+    m_buttons[BT_CLOSE_P] = pixmap->copy (18,9,9,9);
+    m_buttons[BT_SHADE1_N] = pixmap->copy (0,18,9,9);
+    m_buttons[BT_SHADE1_P] = pixmap->copy (9,18,9,9);
+    m_buttons[BT_SHADE2_N] = pixmap->copy (0,27,9,9);
+    m_buttons[BT_SHADE2_P] = pixmap->copy (9,27,9,9);
+    m_titlebar[TITLEBAR_A] = pixmap->copy (27, 0,275,14);
+    m_titlebar[TITLEBAR_I] = pixmap->copy (27,15,275,14);
+    m_titlebar[TITLEBAR_SHADED_A] = pixmap->copy (27,29,275,14);
+    m_titlebar[TITLEBAR_SHADED_I] = pixmap->copy (27,42,275,14);
     delete pixmap;
 }
 
@@ -250,15 +278,15 @@ void Skin::loadPosBar()
 
     if (pixmap->width() > 249)
     {
-        buttons[BT_POSBAR_N] = pixmap->copy (248,0,29, pixmap->height());
-        buttons[BT_POSBAR_P] = pixmap->copy (278,0,29, pixmap->height());
+        m_buttons[BT_POSBAR_N] = pixmap->copy (248,0,29, pixmap->height());
+        m_buttons[BT_POSBAR_P] = pixmap->copy (278,0,29, pixmap->height());
     }
     else
     {
         QPixmap dummy(29, pixmap->height());
         dummy.fill(Qt::transparent);
-        buttons[BT_POSBAR_N] = dummy;
-        buttons[BT_POSBAR_P] = dummy;
+        m_buttons[BT_POSBAR_N] = dummy;
+        m_buttons[BT_POSBAR_P] = dummy;
     }
     posbar = pixmap->copy (0,0,248,pixmap->height());
     delete pixmap;
@@ -326,20 +354,20 @@ void Skin::loadPlayList()
 
     m_pl_parts[PL_CONTROL] = pixmap->copy(129,94,60,8);
 
-    buttons[PL_BT_ADD] = pixmap->copy (11,80,25,18);
-    buttons[PL_BT_SUB] = pixmap->copy (40,80,25,18);
-    buttons[PL_BT_SEL] = pixmap->copy (70,80,25,18);
-    buttons[PL_BT_SORT] = pixmap->copy (99,80,25,18);
-    buttons[PL_BT_LST] = pixmap->copy(229, 80, 25, 18);
-    buttons[PL_BT_SCROLL_N] = pixmap->copy (52,53,8,18);
-    buttons[PL_BT_SCROLL_P] = pixmap->copy (61,53,8,18);
+    m_buttons[PL_BT_ADD] = pixmap->copy (11,80,25,18);
+    m_buttons[PL_BT_SUB] = pixmap->copy (40,80,25,18);
+    m_buttons[PL_BT_SEL] = pixmap->copy (70,80,25,18);
+    m_buttons[PL_BT_SORT] = pixmap->copy (99,80,25,18);
+    m_buttons[PL_BT_LST] = pixmap->copy(229, 80, 25, 18);
+    m_buttons[PL_BT_SCROLL_N] = pixmap->copy (52,53,8,18);
+    m_buttons[PL_BT_SCROLL_P] = pixmap->copy (61,53,8,18);
 
-    buttons[PL_BT_CLOSE_N] = pixmap->copy (167,3,9,9);
-    buttons[PL_BT_CLOSE_P] = pixmap->copy (52,42,9,9);
-    buttons[PL_BT_SHADE1_N] = pixmap->copy (158,3,9,9);
-    buttons[PL_BT_SHADE1_P] = pixmap->copy (62,42,9,9);
-    buttons[PL_BT_SHADE2_N] = pixmap->copy (129,45,9,9);
-    buttons[PL_BT_SHADE2_P] = pixmap->copy (150,42,9,9);
+    m_buttons[PL_BT_CLOSE_N] = pixmap->copy (167,3,9,9);
+    m_buttons[PL_BT_CLOSE_P] = pixmap->copy (52,42,9,9);
+    m_buttons[PL_BT_SHADE1_N] = pixmap->copy (158,3,9,9);
+    m_buttons[PL_BT_SHADE1_P] = pixmap->copy (62,42,9,9);
+    m_buttons[PL_BT_SHADE2_N] = pixmap->copy (129,45,9,9);
+    m_buttons[PL_BT_SHADE2_P] = pixmap->copy (150,42,9,9);
 
     delete pixmap;
 
@@ -425,10 +453,6 @@ void Skin::loadPLEdit()
             break;
         }
     }
-    if (!m_pledit_txt.keys().contains("mbbg"))
-        m_pledit_txt["mbbg"] = m_pledit_txt["normalbg"];
-    if (!m_pledit_txt.keys().contains("mbfg"))
-        m_pledit_txt["mbfg"] = m_pledit_txt["normal"];
 }
 
 void Skin::loadEqMain()
@@ -452,25 +476,25 @@ void Skin::loadEqMain()
     {
         m_eq_bar << pixmap->copy (13 + i*15,229,14,63);
     }
-    buttons[ EQ_BT_BAR_N ] = pixmap->copy (0,164,11,11);
-    buttons[ EQ_BT_BAR_P ] = pixmap->copy (0,164+12,11,11);
+    m_buttons[ EQ_BT_BAR_N ] = pixmap->copy (0,164,11,11);
+    m_buttons[ EQ_BT_BAR_P ] = pixmap->copy (0,164+12,11,11);
 
-    buttons[ EQ_BT_ON_N ] = pixmap->copy (69,119,28,12);
-    buttons[ EQ_BT_ON_P ] = pixmap->copy (128,119,28,12);
-    buttons[ EQ_BT_OFF_N ] = pixmap->copy (10, 119,28,12);
-    buttons[ EQ_BT_OFF_P ] = pixmap->copy (187,119,28,12);
+    m_buttons[ EQ_BT_ON_N ] = pixmap->copy (69,119,28,12);
+    m_buttons[ EQ_BT_ON_P ] = pixmap->copy (128,119,28,12);
+    m_buttons[ EQ_BT_OFF_N ] = pixmap->copy (10, 119,28,12);
+    m_buttons[ EQ_BT_OFF_P ] = pixmap->copy (187,119,28,12);
 
-    buttons[ EQ_BT_PRESETS_N ] = pixmap->copy (224,164,44,12);
-    buttons[ EQ_BT_PRESETS_P ] = pixmap->copy (224,176,44,12);
+    m_buttons[ EQ_BT_PRESETS_N ] = pixmap->copy (224,164,44,12);
+    m_buttons[ EQ_BT_PRESETS_P ] = pixmap->copy (224,176,44,12);
 
-    buttons[ EQ_BT_AUTO_1_N ] = pixmap->copy (94,119,33,12);
-    buttons[ EQ_BT_AUTO_1_P ] = pixmap->copy (153,119,33,12);
-    buttons[ EQ_BT_AUTO_0_N ] = pixmap->copy (35, 119,33,12);
-    buttons[ EQ_BT_AUTO_0_P ] = pixmap->copy (212,119,33,12);
+    m_buttons[ EQ_BT_AUTO_1_N ] = pixmap->copy (94,119,33,12);
+    m_buttons[ EQ_BT_AUTO_1_P ] = pixmap->copy (153,119,33,12);
+    m_buttons[ EQ_BT_AUTO_0_N ] = pixmap->copy (35, 119,33,12);
+    m_buttons[ EQ_BT_AUTO_0_P ] = pixmap->copy (212,119,33,12);
 
-    buttons[ EQ_BT_CLOSE_N ] = pixmap->copy (0,116,9,9);
-    buttons[ EQ_BT_CLOSE_P ] = pixmap->copy (0,125,9,9);
-    buttons[ EQ_BT_SHADE1_N ] = pixmap->copy (254,137,9,9);
+    m_buttons[ EQ_BT_CLOSE_N ] = pixmap->copy (0,116,9,9);
+    m_buttons[ EQ_BT_CLOSE_P ] = pixmap->copy (0,125,9,9);
+    m_buttons[ EQ_BT_SHADE1_N ] = pixmap->copy (254,137,9,9);
 
     for (int i = 0; i < 19; ++i)
     {
@@ -483,9 +507,9 @@ void Skin::loadEq_ex()
 {
     QPixmap *pixmap = getPixmap ("eq_ex");
 
-    buttons[ EQ_BT_SHADE1_P ] = pixmap->copy (1,38,9,9);
-    buttons[ EQ_BT_SHADE2_N ] = pixmap->copy (254,3,9,9);
-    buttons[ EQ_BT_SHADE2_P ] = pixmap->copy (1,47,9,9);
+    m_buttons[ EQ_BT_SHADE1_P ] = pixmap->copy (1,38,9,9);
+    m_buttons[ EQ_BT_SHADE2_N ] = pixmap->copy (254,3,9,9);
+    m_buttons[ EQ_BT_SHADE2_P ] = pixmap->copy (1,47,9,9);
     m_eq_parts[ EQ_TITLEBAR_SHADED_A ] = pixmap->copy(0,0,275,14);
     m_eq_parts[ EQ_TITLEBAR_SHADED_I ] = pixmap->copy(0,15,275,14);
     m_eq_parts[ EQ_VOLUME1 ] = pixmap->copy(1,30,3,8);
@@ -547,30 +571,30 @@ void Skin::loadShufRep()
 {
     QPixmap *pixmap = getPixmap ("shufrep");
 
-    buttons[ BT_EQ_ON_N ] = pixmap->copy (0,73,23,12);
-    buttons[ BT_EQ_ON_P ] = pixmap->copy (46,73,23,12);
-    buttons[ BT_EQ_OFF_N ] = pixmap->copy (0,61,23,12);
-    buttons[ BT_EQ_OFF_P ] = pixmap->copy (46,61,23,12);
+    m_buttons[ BT_EQ_ON_N ] = pixmap->copy (0,73,23,12);
+    m_buttons[ BT_EQ_ON_P ] = pixmap->copy (46,73,23,12);
+    m_buttons[ BT_EQ_OFF_N ] = pixmap->copy (0,61,23,12);
+    m_buttons[ BT_EQ_OFF_P ] = pixmap->copy (46,61,23,12);
 
-    buttons[ BT_PL_ON_N ] = pixmap->copy (23,73,23,12);
-    buttons[ BT_PL_ON_P ] = pixmap->copy (69,73,23,12);
-    buttons[ BT_PL_OFF_N ] = pixmap->copy (23,61,23,12);
-    buttons[ BT_PL_OFF_P ] = pixmap->copy (69,61,23,12);
+    m_buttons[ BT_PL_ON_N ] = pixmap->copy (23,73,23,12);
+    m_buttons[ BT_PL_ON_P ] = pixmap->copy (69,73,23,12);
+    m_buttons[ BT_PL_OFF_N ] = pixmap->copy (23,61,23,12);
+    m_buttons[ BT_PL_OFF_P ] = pixmap->copy (69,61,23,12);
 
     //buttons[ BT_PL_CLOSE_N ] = pixmap->copy ();
     //buttons[ BT_PL_CLOSE_P ] = pixmap->copy ();
 
-    buttons[REPEAT_ON_N] = pixmap->copy (0,30, 28, 15);
-    buttons[REPEAT_ON_P] = pixmap->copy (0,45, 28, 15);
+    m_buttons[REPEAT_ON_N] = pixmap->copy (0,30, 28, 15);
+    m_buttons[REPEAT_ON_P] = pixmap->copy (0,45, 28, 15);
 
-    buttons[REPEAT_OFF_N] = pixmap->copy (0, 0,28,15);
-    buttons[REPEAT_OFF_P] = pixmap->copy (0,15,28,15);
+    m_buttons[REPEAT_OFF_N] = pixmap->copy (0, 0,28,15);
+    m_buttons[REPEAT_OFF_P] = pixmap->copy (0,15,28,15);
 
-    buttons[SHUFFLE_ON_N] = pixmap->copy (28,30,46,15);
-    buttons[SHUFFLE_ON_P] = pixmap->copy (28,45,46,15);
+    m_buttons[SHUFFLE_ON_N] = pixmap->copy (28,30,46,15);
+    m_buttons[SHUFFLE_ON_P] = pixmap->copy (28,45,46,15);
 
-    buttons[SHUFFLE_OFF_N] = pixmap->copy (28, 0,46,15);
-    buttons[SHUFFLE_OFF_P] = pixmap->copy (28,15,46,15);
+    m_buttons[SHUFFLE_OFF_N] = pixmap->copy (28, 0,46,15);
+    m_buttons[SHUFFLE_OFF_P] = pixmap->copy (28,15,46,15);
 
     delete pixmap;
 }
@@ -690,13 +714,13 @@ void Skin::loadVolume()
         m_volume.append(pixmap->copy (0,i*15, qMin(pixmap->width(), 68), 13));
     if (pixmap->height() > 425)
     {
-        buttons [BT_VOL_N] = pixmap->copy (15,422,14, pixmap->height() - 422);
-        buttons [BT_VOL_P] = pixmap->copy (0, 422,14, pixmap->height() - 422);
+        m_buttons [BT_VOL_N] = pixmap->copy (15,422,14, pixmap->height() - 422);
+        m_buttons [BT_VOL_P] = pixmap->copy (0, 422,14, pixmap->height() - 422);
     }
     else
     {
-        buttons [BT_VOL_N] = QPixmap();
-        buttons [BT_VOL_P] = QPixmap();
+        m_buttons [BT_VOL_N] = QPixmap();
+        m_buttons [BT_VOL_P] = QPixmap();
     }
     delete pixmap;
 }
@@ -710,13 +734,13 @@ void Skin::loadBalance()
         m_balance.append(pixmap->copy (9,i*15,38,13));
     if (pixmap->height() > 427)
     {
-        buttons [BT_BAL_N] = pixmap->copy (15, 422,14,pixmap->height()-422);
-        buttons [BT_BAL_P] = pixmap->copy (0,422,14,pixmap->height()-422);
+        m_buttons [BT_BAL_N] = pixmap->copy (15, 422,14,pixmap->height()-422);
+        m_buttons [BT_BAL_P] = pixmap->copy (0,422,14,pixmap->height()-422);
     }
     else
     {
-        buttons [BT_BAL_N] = QPixmap();
-        buttons [BT_BAL_P] = QPixmap();
+        m_buttons [BT_BAL_N] = QPixmap();
+        m_buttons [BT_BAL_P] = QPixmap();
     }
     delete pixmap;
 }

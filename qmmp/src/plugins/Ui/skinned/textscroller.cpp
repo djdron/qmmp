@@ -101,8 +101,8 @@ void TextScroller::addOffset()
 
 void TextScroller::updateSkin()
 {
-    m_color.setNamedColor(m_skin->getPLValue("mbfg"));
     setCursor(m_skin->getCursor(Skin::CUR_SONGNAME));
+    m_color = m_skin->getMainColor(Skin::MW_FOREGROUND);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_bitmap = settings.value("Skinned/bitmap_font", false).toBool();
     m_ratio = m_skin->ratio();
@@ -265,7 +265,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
          if(m_transparencyAction->isChecked())
              m_pixmap.fill(Qt::transparent);
          else
-             m_pixmap.fill(QString(Skin::instance()->getPLValue("mbbg")));
+             m_pixmap.fill(m_skin->getMainColor(Skin::MW_BACKGROUND));
          QPainter painter(&m_pixmap);
          painter.setPen(m_color);
          painter.setFont(m_font);
@@ -282,7 +282,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
         if(m_transparencyAction->isChecked())
             m_pixmap.fill(Qt::transparent);
         else
-            m_pixmap.fill(QString(Skin::instance()->getPLValue("mbbg")));
+            m_pixmap.fill(m_skin->getMainColor(Skin::MW_BACKGROUND));
         QPainter painter(&m_pixmap);
         painter.setPen(m_color);
         painter.setFont(m_font);
