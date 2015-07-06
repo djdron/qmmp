@@ -146,7 +146,7 @@ void EqWidget::readSettings()
     move (settings.value ("Skinned/eq_pos", QPoint (100, 216)).toPoint()); //geometry
     readEq();
     //equalizer presets
-    QString preset_path = QDir::homePath() +"/.qmmp/eq.preset";
+    QString preset_path = Qmmp::configDir() + "eq.preset";
     if(!QFile::exists(preset_path))
         preset_path = ":/skinned/eq.preset";
     QSettings eq_preset (preset_path, QSettings::IniFormat);
@@ -170,7 +170,7 @@ void EqWidget::readSettings()
             break;
     }
     //equalizer auto-load presets
-    QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset", QSettings::IniFormat);
+    QSettings eq_auto (Qmmp::configDir() + "eq.auto_preset", QSettings::IniFormat);
     for (int i = 1; true; ++i)
     {
         if (eq_auto.contains(QString("Presets/Preset%1").arg(i)))
@@ -197,7 +197,7 @@ void EqWidget::writeSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Skinned/eq_pos", this->pos()); //geometry
     //equalizer presets
-    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
+    QSettings eq_preset (Qmmp::configDir() + "eq.preset", QSettings::IniFormat);
     eq_preset.clear ();
     for (int i = 0; i < m_presets.size(); ++i)
     {
@@ -211,7 +211,7 @@ void EqWidget::writeSettings()
         eq_preset.endGroup();
     }
     //equalizer auto-load presets
-    QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset", QSettings::IniFormat);
+    QSettings eq_auto (Qmmp::configDir() + "eq.auto_preset", QSettings::IniFormat);
     eq_auto.clear();
     for (int i = 0; i < m_autoPresets.size(); ++i)
     {

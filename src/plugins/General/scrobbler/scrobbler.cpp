@@ -88,7 +88,7 @@ Scrobbler::Scrobbler(const QString &scrobblerUrl, const QString &name, QObject *
     m_name = name;
     m_state = Qmmp::Stopped;
     m_time = new QTime();
-    m_cache = new ScrobblerCache(QDir::homePath() +"/.qmmp/scrobbler_"+name+".cache");
+    m_cache = new ScrobblerCache(Qmmp::configDir() +"scrobbler_"+name+".cache");
     m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
     m_http = new QNetworkAccessManager(this);
     m_core = SoundCore::instance();

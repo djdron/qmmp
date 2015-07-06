@@ -62,7 +62,7 @@ void SkinnedSettings::on_listWidget_itemClicked(QListWidgetItem *)
     else if (m_skinList.at (row).isFile())
     {
         m_reader->unpackSkin(m_skinList.at (row).canonicalFilePath());
-        m_skin->setSkin(QDir::homePath() +"/.qmmp/cache/skin");
+        m_skin->setSkin(Qmmp::configDir() + "cache/skin");
     }
     if(m_ui.listWidget->currentItem())
         m_currentSkinName = m_ui.listWidget->currentItem()->text();
@@ -122,7 +122,7 @@ void SkinnedSettings::on_skinInstallButton_clicked()
     foreach(QString path, files)
     {
         QFile file(path);
-        file.copy(QDir::homePath() +"/.qmmp/skins/" + QFileInfo(path).fileName());
+        file.copy(Qmmp::configDir() + "skins/" + QFileInfo(path).fileName());
     }
     loadSkins();
 }
@@ -214,7 +214,7 @@ void SkinnedSettings::loadSkins()
     m_ui.listWidget->addItem (item);
     m_skinList << fileInfo;
 
-    findSkins(QDir::homePath() +"/.qmmp/skins");
+    findSkins(Qmmp::configDir() + "skins");
 #if defined(Q_OS_WIN) && !defined(Q_OS_CYGWIN)
     findSkins(qApp->applicationDirPath()+"/skins");
 #else

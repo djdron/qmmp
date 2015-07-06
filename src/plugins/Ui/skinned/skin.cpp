@@ -68,7 +68,7 @@ Skin::Skin (QObject *parent) : QObject (parent)
     ACTION(ActionManager::WM_DOUBLE_SIZE)->setChecked(m_double_size);
     setSkin (QDir::cleanPath(path));
     /* skin directory */
-    QDir skinDir(QDir::homePath()+"/.qmmp");
+    QDir skinDir(Qmmp::configDir());
     skinDir.mkdir ("skins");
 }
 

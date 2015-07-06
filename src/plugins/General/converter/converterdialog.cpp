@@ -53,7 +53,7 @@ ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent
     createMenus();
 
     readPresets(":/converter/presets.conf");
-    readPresets(QDir::homePath() + "/.qmmp/converter/presets.conf");
+    readPresets(Qmmp::configDir() + "converter/presets.conf");
 }
 
 ConverterDialog::~ConverterDialog()
@@ -233,10 +233,10 @@ void ConverterDialog::readPresets(const QString &path)
 
 void ConverterDialog::savePresets()
 {
-    QDir dir(QDir::homePath() + "/.qmmp/");
+    QDir dir(Qmmp::configDir());
     dir.mkdir("converter");
 
-    QFile file(QDir::homePath() + "/.qmmp/converter/presets.conf");
+    QFile file(Qmmp::configDir() + "converter/presets.conf");
     if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
         qWarning("ConverterDialog: unable to save presets; error %s", qPrintable(file.errorString()));
