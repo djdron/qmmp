@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -331,7 +331,7 @@ signals:
     void skinChanged();
 
 private:
-    QPixmap *getPixmap(const QString&);
+    QPixmap *getPixmap(const QString &name, const QString &fallback = QString());
     QString getPath(const QString&);
     const QString findFile(const QString&, QDir);
     const QString findFile(const QString&, const QString&);
@@ -342,7 +342,7 @@ private:
      * segfaults and asserts. So to prevent this we need such method
      * to load pixmap from default skin.
      */
-    QPixmap *getDummyPixmap(const QString&);
+    QPixmap *getDummyPixmap(const QString &name, const QString &fallback);
     QPixmap scalePixmap(const QPixmap &pix, int ratio = 2);
     static Skin *m_instance;
     QDir m_skin_dir;
