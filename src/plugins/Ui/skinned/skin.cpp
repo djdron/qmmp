@@ -157,9 +157,6 @@ void Skin::reloadSkin()
 void Skin::loadMain()
 {
     QPixmap *pixmap = getPixmap ("main");
-    if (!pixmap)
-        pixmap = getDummyPixmap("main");
-
     m_main = pixmap->copy (0,0,275,116);
     delete pixmap;
 }
@@ -211,11 +208,7 @@ void Skin::loadCursors()
 
 void Skin::loadButtons()
 {
-
     QPixmap *pixmap = getPixmap ("cbuttons");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("cbuttons");
 
     buttons[BT_PREVIOUS_N] = pixmap->copy (0, 0,23,18);
     buttons[BT_PREVIOUS_P] = pixmap->copy (0,18,23,18);
@@ -240,10 +233,6 @@ void Skin::loadButtons()
 void Skin::loadTitleBar()
 {
     QPixmap *pixmap = getPixmap ("titlebar");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("titlebar");
-
     buttons[BT_MENU_N] = pixmap->copy (0,0,9,9);
     buttons[BT_MENU_P] = pixmap->copy (0,9,9,9);
     buttons[BT_MINIMIZE_N] = pixmap->copy (9,0,9,9);
@@ -265,9 +254,6 @@ void Skin::loadPosBar()
 {
     QPixmap *pixmap = getPixmap ("posbar");
 
-    if (!pixmap)
-        pixmap = getDummyPixmap("posbar");
-
     if (pixmap->width() > 249)
     {
         buttons[BT_POSBAR_N] = pixmap->copy (248,0,29, pixmap->height());
@@ -286,11 +272,7 @@ void Skin::loadPosBar()
 
 void Skin::loadNumbers()
 {
-    QPixmap *pixmap = getPixmap ("nums_ex");
-    if (!pixmap)
-        pixmap = getPixmap ("numbers");
-    if (!pixmap)
-        pixmap = getDummyPixmap("numbers");
+    QPixmap *pixmap = getPixmap ("nums_ex","numbers");
 
     for (uint i = 0; i < 10; i++)
         m_numbers << pixmap->copy (i*9, 0, 9, pixmap->height());
@@ -320,9 +302,6 @@ void Skin::loadNumbers()
 void Skin::loadPlayList()
 {
     QPixmap *pixmap = getPixmap ("pledit");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("pledit");
 
     m_pl_parts[PL_CORNER_UL_A] = pixmap->copy (0,0,25,20);
     m_pl_parts[PL_CORNER_UL_I] = pixmap->copy (0,21,25,20);
@@ -372,20 +351,26 @@ void Skin::loadPlayList()
 
 }
 
-QPixmap *Skin::getPixmap (const QString& name)
+QPixmap *Skin::getPixmap (const QString& name, const QString &fallback)
 {
     m_skin_dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    m_skin_dir.setNameFilters(QStringList() << name + ".*");
     QFileInfoList f = m_skin_dir.entryInfoList();
-    for (int j = 0; j < f.size(); ++j)
+    if(!f.isEmpty())
     {
-        QFileInfo fileInfo = f.at (j);
-        QString fn = fileInfo.fileName().toLower();
-        if (fn.section (".",0,0) == name)
+        return new QPixmap (f.first().filePath());
+    }
+
+    if(!fallback.isEmpty())
+    {
+        m_skin_dir.setNameFilters(QStringList() << fallback + ".*");
+        f = m_skin_dir.entryInfoList();
+        if(!f.isEmpty())
         {
-            return new QPixmap (fileInfo.filePath());
+            return new QPixmap (f.first().filePath());
         }
     }
-    return 0;
+    return getDummyPixmap(name, fallback);
 }
 
 QString Skin::getPath (const QString& name)
@@ -456,9 +441,6 @@ void Skin::loadEqMain()
 {
     QPixmap *pixmap = getPixmap ("eqmain");
 
-    if (!pixmap)
-        pixmap = getDummyPixmap("eqmain");
-
     m_eq_parts[ EQ_MAIN ] = pixmap->copy (0,0,275,116);
     m_eq_parts[ EQ_TITLEBAR_A ] = pixmap->copy (0,134,275,14);
     m_eq_parts[ EQ_TITLEBAR_I ] = pixmap->copy (0,149,275,14);
@@ -506,9 +488,6 @@ void Skin::loadEqMain()
 void Skin::loadEq_ex()
 {
     QPixmap *pixmap = getPixmap ("eq_ex");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("eq_ex");
 
     buttons[ EQ_BT_SHADE1_P ] = pixmap->copy (1,38,9,9);
     buttons[ EQ_BT_SHADE2_N ] = pixmap->copy (254,3,9,9);
@@ -574,9 +553,6 @@ void Skin::loadShufRep()
 {
     QPixmap *pixmap = getPixmap ("shufrep");
 
-    if (!pixmap)
-        pixmap = getDummyPixmap("shufrep");
-
     buttons[ BT_EQ_ON_N ] = pixmap->copy (0,73,23,12);
     buttons[ BT_EQ_ON_P ] = pixmap->copy (46,73,23,12);
     buttons[ BT_EQ_OFF_N ] = pixmap->copy (0,61,23,12);
@@ -608,9 +584,6 @@ void Skin::loadShufRep()
 void Skin::loadLetters(void)
 {
     QPixmap *img = getPixmap("text");
-
-    if (!img)
-        img = getDummyPixmap("text");
 
     QList<QList<QPixmap> > (letters);
     for (int i = 0; i < 3; i++)
@@ -678,9 +651,6 @@ void Skin::loadMonoSter()
 {
     QPixmap *pixmap = getPixmap("monoster");
 
-    if (!pixmap)
-        pixmap = getDummyPixmap("monoster");
-
     m_ms_parts.clear();
     m_ms_parts[ MONO_A ] = pixmap->copy (29,0,27,12);
     m_ms_parts[ MONO_I ] = pixmap->copy (29,12,27,12);
@@ -692,9 +662,6 @@ void Skin::loadMonoSter()
     m_parts.clear();
     QPainter paint;
     pixmap = getPixmap("playpaus");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("playpaus");
 
     QPixmap part(11, 9);
     paint.begin(&part);
@@ -724,9 +691,6 @@ void Skin::loadVolume()
 {
     QPixmap *pixmap = getPixmap("volume");
 
-    if (!pixmap)
-        pixmap = getDummyPixmap("volume");
-
     m_volume.clear();
     for (int i = 0; i < 28; ++i)
         m_volume.append(pixmap->copy (0,i*15, qMin(pixmap->width(), 68), 13));
@@ -745,12 +709,7 @@ void Skin::loadVolume()
 
 void Skin::loadBalance()
 {
-    QPixmap *pixmap = getPixmap ("balance");
-    if (!pixmap)
-        pixmap = getPixmap ("volume");
-
-    if (!pixmap)
-        pixmap = getDummyPixmap("balance");
+    QPixmap *pixmap = getPixmap ("balance", "volume");
 
     m_balance.clear();
     for (int i = 0; i < 28; ++i)
@@ -818,20 +777,27 @@ QRegion Skin::createRegion(const QString &path, const QString &key)
     return region;
 }
 
-QPixmap * Skin::getDummyPixmap(const QString& name)
+QPixmap * Skin::getDummyPixmap(const QString &name, const QString &fallback)
 {
     QDir dir (":/glare");
     dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setNameFilters(QStringList() << name + ".*");
     QFileInfoList f = dir.entryInfoList();
-    for (int j = 0; j < f.size(); ++j)
+    if(!f.isEmpty())
     {
-        QFileInfo fileInfo = f.at (j);
-        QString fn = fileInfo.fileName().toLower();
-        if (fn.section (".",0,0) == name)
+        return new QPixmap (f.first().filePath());
+    }
+
+    if(!fallback.isEmpty())
+    {
+        dir.setNameFilters(QStringList() << fallback + ".*");
+        f = dir.entryInfoList();
+        if(!f.isEmpty())
         {
-            return new QPixmap (fileInfo.filePath());
+            return new QPixmap (f.first().filePath());
         }
     }
+
     qFatal("Skin: default skin is corrupted");
     return 0;
 }
