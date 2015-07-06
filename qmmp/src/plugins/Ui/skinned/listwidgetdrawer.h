@@ -40,13 +40,13 @@ struct ListWidgetRow
         numberColumnWidth = 0;
         lengthColumnWidth = 0;
         trackStateColumn = -1;
-        trackIndex = -1;
+        number = -1;
     }
     QStringList titles;
     QList<int> sizes;
     QString length;
     QString extraString;
-    int trackIndex;
+    int number;
     int numberColumnWidth;
     int lengthColumnWidth;
     int trackStateColumn;

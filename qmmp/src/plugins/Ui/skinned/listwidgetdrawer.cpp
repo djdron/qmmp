@@ -125,7 +125,7 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
     if(row->titles.count() == 1)
     {
         if(m_show_number && !m_align_numbers)
-            row->titles[0].prepend(QString("%1").arg(row->trackIndex)+". ");
+            row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
         if((m_show_lengths && !row->length.isEmpty()) || !row->extraString.isEmpty())
             row->lengthColumnWidth = m_padding;
@@ -254,7 +254,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             {
                 sx -= row->numberColumnWidth;
                 painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-                QString number = QString("%1").arg(row->trackIndex);
+                QString number = QString("%1").arg(row->number);
                 painter->drawText(sx + m_padding, sy, number);
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
@@ -308,7 +308,7 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
             {
                 sx += row->numberColumnWidth;
                 painter->setPen(row->flags & ListWidgetRow::CURRENT ? m_current : m_normal);
-                QString number = QString("%1").arg(row->trackIndex);
+                QString number = QString("%1").arg(row->number);
                 painter->drawText(sx - m_padding - m_metrics->width(number), sy, number);
                 painter->setPen(m_normal);
                 painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
