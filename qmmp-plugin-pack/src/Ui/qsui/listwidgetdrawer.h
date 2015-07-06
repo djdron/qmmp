@@ -44,7 +44,7 @@ struct ListWidgetRow
     QList<int> sizes;
     QString length;
     QString extraString;
-    int trackIndex;
+    int number;
     int numberColumnWidth;
     int lengthColumnWidth;
     int trackStateColumn;

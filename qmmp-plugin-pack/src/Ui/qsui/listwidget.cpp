@@ -403,13 +403,13 @@ void ListWidget::updateList(int flags)
         if(items[i]->isGroup())
         {
             row->flags |= ListWidgetRow::GROUP;
-            row->trackIndex = -1;
+            row->number = -1;
             row->length.clear();
         }
         else
         {
             row->flags &= ~ListWidgetRow::GROUP;
-            row->trackIndex = items.at(i)->trackIndex();
+            row->number = items.at(i)->trackIndex() + 1;
             row->length = items[i]->formattedLength();
             row->extraString = getExtraString(m_first + i);
         }
