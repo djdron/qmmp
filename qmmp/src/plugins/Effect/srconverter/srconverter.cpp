@@ -81,7 +81,7 @@ void SRConverter::applyEffect(Buffer *b)
         {
             b->nbytes = m_src_data.output_frames_gen * channels() * m_sz; //bytes
 
-            //encrease buffer size
+            //increase buffer size
             if(b->nbytes > b->size)
             {
                 delete [] b->data;
