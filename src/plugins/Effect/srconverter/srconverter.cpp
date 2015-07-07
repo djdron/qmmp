@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,6 +31,8 @@ SRConverter::SRConverter() : Effect()
     m_src_state = 0;
     m_srcError = 0;
     m_sz = 0;
+    m_src_data.data_in = 0;
+    m_src_data.data_out = 0;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_overSamplingFs = settings.value("SRC/sample_rate",48000).toInt();
     m_converter_type = converter_type_array[settings.value("SRC/engine", 0).toInt()];
@@ -39,11 +41,6 @@ SRConverter::SRConverter() : Effect()
 SRConverter::~SRConverter()
 {
     freeSRC();
-    m_src_data.data_in = 0;
-    m_src_data.data_out = 0;
-    m_src_data.end_of_input = 0;
-    m_src_data.input_frames = 0;
-    m_src_data.output_frames = 0;
     m_sz = 0;
 }
 
@@ -53,10 +50,7 @@ void SRConverter::applyEffect(Buffer *b)
     {
         m_src_data.end_of_input = 0;
         m_src_data.input_frames = b->nbytes / m_sz / channels();
-        m_src_data.data_in = new float [m_src_data.input_frames * channels()];
         m_src_data.output_frames = m_src_data.src_ratio * m_src_data.input_frames + 1;
-        m_src_data.data_out = new float [m_src_data.output_frames * channels()];
-
 
         if(format() == Qmmp::PCM_S16LE)
         {
@@ -85,33 +79,29 @@ void SRConverter::applyEffect(Buffer *b)
         }
         else
         {
-            uchar *out_data = new uchar[m_src_data.output_frames_gen * channels() * m_sz];;
+            b->nbytes = m_src_data.output_frames_gen * channels() * m_sz; //bytes
+
+            //encrease buffer size
+            if(b->nbytes > b->size)
+            {
+                delete [] b->data;
+                b->data = new unsigned char[b->nbytes];
+                b->size = b->nbytes;
+            }
+
+
             if(format() == Qmmp::PCM_S16LE)
             {
-                src_float_to_short_array(m_src_data.data_out, (short*)out_data,
+                src_float_to_short_array(m_src_data.data_out, (short*)b->data,
                                          m_src_data.output_frames_gen * channels());
 
             }
             else
             {
-                src_float_to_int_array(m_src_data.data_out, (int*)out_data,
+                src_float_to_int_array(m_src_data.data_out, (int*)b->data,
                                        m_src_data.output_frames_gen * channels());
             }
-            b->nbytes = m_src_data.output_frames_gen * channels() * m_sz;
-            if(b->nbytes > b->size)
-            {
-                delete [] b->data;
-                b->data = out_data;
-            }
-            else
-            {
-                memcpy(b->data, out_data, b->nbytes);
-                delete [] out_data;
-            }
-
         }
-        delete [] m_src_data.data_in;
-        delete [] m_src_data.data_out;
     }
 }
 
@@ -128,9 +118,12 @@ void SRConverter::configure(quint32 freq, ChannelMap map,  Qmmp::AudioFormat for
         }
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
+
+        Effect::configure(m_overSamplingFs, map, format);
+        m_sz = audioParameters().sampleSize();
+        m_src_data.data_in = new float[QMMP_BLOCK_FRAMES * channels() * 2];
+        m_src_data.data_out = new float[int(m_src_data.src_ratio * QMMP_BLOCK_FRAMES * channels() * 2 + 2)];
     }
-    Effect::configure(m_overSamplingFs, map, format);
-    m_sz = audioParameters().sampleSize();
 }
 
 void SRConverter::freeSRC()
@@ -141,4 +134,19 @@ void SRConverter::freeSRC()
         src_delete(m_src_state);
     }
     m_src_state = 0;
+
+    if(m_src_data.data_in)
+    {
+        delete [] m_src_data.data_in;
+        m_src_data.data_in = 0;
+    }
+    if(m_src_data.data_out)
+    {
+        delete [] m_src_data.data_out;
+        m_src_data.data_out = 0;
+    }
+
+    m_src_data.end_of_input = 0;
+    m_src_data.input_frames = 0;
+    m_src_data.output_frames = 0;
 }
