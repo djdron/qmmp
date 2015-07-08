@@ -979,7 +979,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="82"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати чергу/протокол</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
@@ -1245,7 +1245,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Одностовпчиковий режим</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="402"/>
