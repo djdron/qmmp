@@ -120,8 +120,8 @@ void SRConverter::configure(quint32 freq, ChannelMap map,  Qmmp::AudioFormat for
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
 
         m_sz = audioParameters().sampleSize();
-        m_src_data.data_in = new float[QMMP_BLOCK_FRAMES * channels() * 2];
-        m_src_data.data_out = new float[int(m_src_data.src_ratio * QMMP_BLOCK_FRAMES * channels() * 2 + 2)];
+        m_src_data.data_in = new float[QMMP_BLOCK_FRAMES * map.count() * 2];
+        m_src_data.data_out = new float[int(m_src_data.src_ratio * QMMP_BLOCK_FRAMES * map.count() * 2 + 2)];
     }
     Effect::configure(m_overSamplingFs, map, format);
 }
