@@ -342,9 +342,7 @@ signals:
 private:
     QPixmap *getPixmap(const QString &name, const QString &fallback = QString());
     QString getPath(const QString&);
-    const QString findFile(const QString&, QDir);
-    const QString findFile(const QString&, const QString&);
-
+    const QString findFile(const QString &name);
     /*!
      * As far as there is no standard in skin making we cannot be sure
      * that all needful images we can find in skin :( This will cause

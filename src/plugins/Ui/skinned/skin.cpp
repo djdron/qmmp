@@ -419,9 +419,8 @@ QString Skin::getPath (const QString& name)
 void Skin::loadPLEdit()
 {
     QByteArray key, value;
-    QString path = findFile("pledit.txt", m_skin_dir);
-    if (path.isEmpty())
-        path = findFile("pledit.txt", ":/glare");
+    QString path = findFile("pledit.txt");
+
     if (path.isEmpty())
         qFatal("Skin: invalid default skin");
 
@@ -524,9 +523,8 @@ void Skin::loadEq_ex()
 
 void Skin::loadVisColor()
 {
-    QString path = findFile("viscolor.txt", m_skin_dir);
-    if (path.isEmpty())
-        path = findFile("viscolor.txt", ":/glare");
+    QString path = findFile("viscolor.txt");
+
     if (path.isEmpty())
         qFatal("Skin: invalid default skin");
 
@@ -748,9 +746,9 @@ void Skin::loadBalance()
 void Skin::loadRegion()
 {
     m_regions.clear();
-    QString path = findFile("region.txt", m_skin_dir);
+    QString path = findFile("region.txt");
 
-    if (path.isNull ())
+    if (path.isEmpty())
     {
         qDebug ("Skin: cannot find region.txt. Transparency disabled");
         return;
@@ -826,24 +824,24 @@ QPixmap Skin::scalePixmap(const QPixmap &pix, int ratio)
                       Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
-const QString Skin::findFile(const QString &name, QDir dir)
+const QString Skin::findFile(const QString &name)
 {
-    dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    QString path;
-    QFileInfoList list = dir.entryInfoList();
-    for (int i = 0; i < list.size(); ++i)
+    m_skin_dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    m_skin_dir.setNameFilters(QStringList() << name);
+    QFileInfoList f = m_skin_dir.entryInfoList();
+    if(!f.isEmpty())
     {
-        QFileInfo fileInfo = list.at (i);
-        if (fileInfo.fileName().toLower() == name)
-        {
-            path = fileInfo.filePath ();
-            break;
-        }
+        return f.first().filePath();
     }
-    return path;
-}
 
-const QString Skin::findFile(const QString &name, const QString &dir)
-{
-    return findFile(name, QDir(dir));
+    QDir dir(":/glare");
+    dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setNameFilters(QStringList() << name);
+    f = dir.entryInfoList();
+    if(!f.isEmpty())
+    {
+        return f.first().filePath();
+    }
+
+    return QString();
 }
