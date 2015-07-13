@@ -39,7 +39,7 @@
     <message>
         <location filename="../copypastefactory.cpp" line="28"/>
         <source>Copy/Paste Plugin</source>
-        <translation>切り貼りプラグイン</translation>
+        <translation>プレイリスト切り貼りプラグイン</translation>
     </message>
     <message>
         <location filename="../copypastefactory.cpp" line="48"/>

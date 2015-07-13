@@ -24,7 +24,7 @@
     <message>
         <location filename="../converterdialog.ui" line="14"/>
         <source>Converter Settings</source>
-        <translation>転換器設定</translation>
+        <translation>転換設定</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="29"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
@@ -79,27 +79,27 @@
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="115"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="120"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="121"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="122"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="116"/>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="132"/>
         <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>複製を作成</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>
@@ -157,22 +157,22 @@
     <message>
         <location filename="../converterfactory.cpp" line="28"/>
         <source>Converter Plugin</source>
-        <translation>転換器プラグイン</translation>
+        <translation>ファイル形式転換プラグイン</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="49"/>
         <source>About Converter Plugin</source>
-        <translation>転換器プラグインについて</translation>
+        <translation>転換プラグインについて</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="50"/>
         <source>Qmmp Converter Plugin</source>
-        <translation>QMMP 転換器プラグイン</translation>
+        <translation>QMMP 転換プラグイン</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translation>このプラグインは外部のコマンドライン方式のエンコーダーを利用してサポート対象内の音響ファイルの形式を他形式に転換します。</translation>
+        <translation>このプラグインは外部のコマンドライン方式のエンコーダーを利用してサポート対象形式間で音声ファイルを転換し別の音声ファイルを生成します。</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>

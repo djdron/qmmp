@@ -6,7 +6,7 @@
 プラグイン開発者:
 
     Artur Guzik <aguzik88@gmail.com> (KDE4通知プラグイン、 トレイアイコン拡張)
-    Юрий Журавлёв (Yuriy Zhuravlev) <stalkerg@gmail.com> (jack & OSS プラグイン)
+    Юрий Журавлёв (Yuriy Zhuravlev) <stalkerg@gmail.com> (JACK & OSS プラグイン)
 
 美術:
 
