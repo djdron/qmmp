@@ -13,19 +13,19 @@
         <location filename="../fileops.cpp" line="99"/>
         <location filename="../fileops.cpp" line="133"/>
         <source>Destination directory doesn&apos;t exist</source>
-        <translation>移動先ディレクトリが存在しません</translation>
+        <translation>収容先ディレクトリが存在しません</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="136"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル移動</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-        </translation>
+        <translation>
+        <numerusform>%n 個のファイルを移動しようとしています。 よろしいですか?</numerusform>
+</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="153"/>
@@ -46,17 +46,17 @@
     <message>
         <location filename="../fileops.cpp" line="243"/>
         <source>Moving</source>
-        <translation type="unfinished"></translation>
+        <translation>移動中</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="276"/>
         <source>Moving file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2 ファイルを移動しています</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="114"/>
         <source>Remove Files</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル削除</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="115"/>
@@ -117,7 +117,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Enabled</source>
-        <translation>有効</translation>
+        <translation>発効</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Menu text</source>
-        <translation>メニューの文言</translation>
+        <translation>メニューの項目名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
         <source>Destination:</source>
-        <translation>目的地:</translation>
+        <translation>ファイル収容先:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="126"/>
@@ -178,7 +178,7 @@
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>移動</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="222"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="223"/>
@@ -208,27 +208,27 @@
     <message>
         <location filename="../settingsdialog.cpp" line="224"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="225"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="230"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="231"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="232"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="226"/>

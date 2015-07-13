@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>Change User Agent</source>
-        <translation type="unfinished"></translation>
+        <translation>User Agent を変更</translation>
     </message>
 </context>
 </TS>

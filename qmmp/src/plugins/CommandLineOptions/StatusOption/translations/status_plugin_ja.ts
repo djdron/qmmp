@@ -36,7 +36,7 @@
     <message>
         <location filename="../statusoption.cpp" line="92"/>
         <source>%aa - album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>%aa - アルバムアーティスト名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="93"/>

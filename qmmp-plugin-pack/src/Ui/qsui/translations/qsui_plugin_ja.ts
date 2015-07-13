@@ -289,7 +289,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
         <source>&amp;Queue Toggle</source>
-        <translation>選んだプレイリストをキューに追加/キューから撤去</translation>
+        <translation>選んだ曲をキューに追加/キューから撤去</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
@@ -374,7 +374,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="95"/>
@@ -404,17 +404,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックをグループ化(&amp;G)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="100"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストにカラム表題を表示(&amp;S)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="102"/>
@@ -576,57 +576,57 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">リセット</translation>
+        <translation>リセット</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
-        <translation type="unfinished">動作</translation>
+        <translation>動作</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">ショートカットを変更...</translation>
+        <translation>ショートカットを変更...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカットをリセット</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="56"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカットの設定をデフォルトに戻しますが、間違いありませんか。</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="68"/>
         <source>Playback</source>
-        <translation type="unfinished">再生</translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
-        <translation type="unfinished">観容</translation>
+        <translation>観容</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
-        <translation type="unfinished">音量</translation>
+        <translation>音量</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
-        <translation type="unfinished">その他いろいろ</translation>
+        <translation>その他いろいろ</translation>
     </message>
 </context>
 <context>
@@ -639,22 +639,22 @@
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|全 %5 曲|総演奏時間: %6|%7 kbps|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
         <source>Paused</source>
-        <translation>一時停止しています</translation>
+        <translation>一時停止中断</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="384"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|全 %2 曲|総演奏時間: %3|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="385"/>
         <source>Stopped</source>
-        <translation>終止しました</translation>
+        <translation>終演</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="287"/>
@@ -669,7 +669,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
@@ -718,7 +718,7 @@
         <location filename="../mainwindow.cpp" line="503"/>
         <location filename="../mainwindow.cpp" line="558"/>
         <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムのアーティスト名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="507"/>
@@ -760,7 +760,7 @@
         <location filename="../mainwindow.cpp" line="531"/>
         <location filename="../mainwindow.cpp" line="586"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの加工日時順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="535"/>
@@ -970,32 +970,32 @@
     <message>
         <location filename="../playlistheader.cpp" line="60"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを追加</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="61"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを編集</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="62"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>キューやプロトコルを表示</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="64"/>
         <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
+        <translation>自動適正幅調整</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="66"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>幅を復元</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="68"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを撤去</translation>
     </message>
 </context>
 <context>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -1068,27 +1068,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1154,12 +1154,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="728"/>
         <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>システム共通フォントに拠る</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="776"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="756"/>
@@ -1179,17 +1179,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>メインウィンドウ</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="52"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィンドウタイトルの書式:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="74"/>
         <source>Song Display</source>
-        <translation>演目表示</translation>
+        <translation>演題表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="80"/>
@@ -1204,7 +1204,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="144"/>
         <source>Show song lengths</source>
-        <translation type="unfinished"></translation>
+        <translation>曲の長さを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="154"/>
@@ -1229,32 +1229,32 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="178"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="618"/>
         <source>Group background:</source>
-        <translation type="unfinished"></translation>
+        <translation>グループの背景色:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>フォントをリセット</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="884"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>カラム表題:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="799"/>
         <source>Tab names:</source>
-        <translation type="unfinished"></translation>
+        <translation>タブ名:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="647"/>
         <source>Group text:</source>
-        <translation type="unfinished"></translation>
+        <translation>グループの文字色:</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="917"/>
@@ -1264,17 +1264,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="923"/>
         <source>Show close buttons</source>
-        <translation>閉じるボタンを表示</translation>
+        <translation>閉じる[×]ボタンを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="930"/>
         <source>Show tab list menu</source>
-        <translation>タブリストメニューを表示</translation>
+        <translation>タブリストメニュー[▼]を表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="937"/>
         <source>Show &apos;New Playlist&apos; button</source>
-        <translation>&apos;新しいプレイリスト&apos; ボタンを表示</translation>
+        <translation>新しいプレイリスト[+]ボタンを表示</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="911"/>
@@ -1284,7 +1284,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="131"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>単一カラムのとき</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="184"/>
@@ -1359,82 +1359,82 @@
     <message>
         <location filename="../qsuisettings.cpp" line="118"/>
         <source>Artist</source>
-        <translation type="unfinished">アーティスト</translation>
+        <translation>アーティスト</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="119"/>
         <source>Album</source>
-        <translation type="unfinished">アルバム</translation>
+        <translation>アルバム</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="120"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="121"/>
         <source>Title</source>
-        <translation type="unfinished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="122"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="123"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="124"/>
         <source>Genre</source>
-        <translation type="unfinished">ジャンル</translation>
+        <translation>ジャンル</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="125"/>
         <source>Comment</source>
-        <translation type="unfinished">コメント</translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="126"/>
         <source>Composer</source>
-        <translation type="unfinished">作曲者</translation>
+        <translation>作曲者</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="127"/>
         <source>Duration</source>
-        <translation type="unfinished">演奏時間</translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="128"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="129"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="130"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="131"/>
         <source>Year</source>
-        <translation type="unfinished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="132"/>
         <source>Condition</source>
-        <translation type="unfinished">定番</translation>
+        <translation>定番</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="133"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト - タイトル</translation>
     </message>
 </context>
 <context>

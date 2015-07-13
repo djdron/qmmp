@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja">
+<TS version="2.0" language="ja_JP">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -107,137 +107,137 @@
     <message>
         <location filename="../forms/columneditor.ui" line="14"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを編集</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="36"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>名称:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="76"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>書式:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="64"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="29"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>分類:</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="78"/>
         <location filename="../columneditor.cpp" line="100"/>
         <source>Artist</source>
-        <translation type="unfinished">アーティスト</translation>
+        <translation>アーティスト</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="79"/>
         <location filename="../columneditor.cpp" line="101"/>
         <source>Album</source>
-        <translation type="unfinished">アルバム</translation>
+        <translation>アルバム</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="105"/>
         <source>Title</source>
-        <translation type="unfinished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
         <location filename="../columneditor.cpp" line="108"/>
         <source>Genre</source>
-        <translation type="unfinished">ジャンル</translation>
+        <translation>ジャンル</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="85"/>
         <location filename="../columneditor.cpp" line="109"/>
         <source>Comment</source>
-        <translation type="unfinished">コメント</translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
         <location filename="../columneditor.cpp" line="110"/>
         <source>Composer</source>
-        <translation type="unfinished">作曲者</translation>
+        <translation>作曲者</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="87"/>
         <location filename="../columneditor.cpp" line="111"/>
         <source>Duration</source>
-        <translation type="unfinished">演奏時間</translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
         <location filename="../columneditor.cpp" line="116"/>
         <source>Year</source>
-        <translation type="unfinished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="92"/>
         <location filename="../columneditor.cpp" line="115"/>
         <source>Track Index</source>
-        <translation type="unfinished"></translation>
+        <translation>曲番号</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="93"/>
         <source>Condition</source>
-        <translation type="unfinished">定番</translation>
+        <translation>定番</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="102"/>
         <source>Artist - Album</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト - アルバム名</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="103"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト - タイトル</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="80"/>
         <location filename="../columneditor.cpp" line="104"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
         <location filename="../columneditor.cpp" line="106"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <location filename="../columneditor.cpp" line="107"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="88"/>
         <location filename="../columneditor.cpp" line="112"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
         <location filename="../columneditor.cpp" line="113"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <location filename="../columneditor.cpp" line="114"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="117"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>独自</translation>
     </message>
 </context>
 <context>
@@ -526,7 +526,7 @@
     <message>
         <location filename="../configdialog.cpp" line="183"/>
         <source>Transports</source>
-        <translation>転送</translation>
+        <translation>搬送</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="193"/>
@@ -576,7 +576,7 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
@@ -596,7 +596,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -784,7 +784,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>Album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
@@ -886,17 +886,17 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="36"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト名 - タイトル</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="186"/>
         <source>Title</source>
-        <translation type="unfinished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="187"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを追加</translation>
     </message>
 </context>
 <context>
@@ -970,7 +970,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Album artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="123"/>
@@ -1050,17 +1050,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
@@ -1085,17 +1085,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>

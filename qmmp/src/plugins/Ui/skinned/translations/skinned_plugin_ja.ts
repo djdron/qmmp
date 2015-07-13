@@ -266,7 +266,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;Queue Toggle</source>
-        <translation>選んだプレイリストを キューに追加/キューから撤去(&amp;Q)</translation>
+        <translation>選んだ曲をキューに追加/キューから撤去(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
@@ -346,12 +346,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>リスト名を変更(&amp;R)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -386,7 +386,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Group Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>トラックをグループ化(&amp;G)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
@@ -396,12 +396,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="94"/>
         <source>&amp;Show Column Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストにカラム表題を表示(&amp;S)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Reset</source>
-        <translation type="unfinished">リセット</translation>
+        <translation>リセット</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
@@ -543,12 +543,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="93"/>
         <source>Reset Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカットをリセット</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="94"/>
         <source>Do you want to restore default shortcuts?</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカット設定をデフォルトに戻しますが、間違いありませんか。</translation>
     </message>
 </context>
 <context>
@@ -887,7 +887,7 @@
         <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="312"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの加工日時順に</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
@@ -917,12 +917,12 @@
     <message>
         <location filename="../playlist.cpp" line="585"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">プレイリスト名を変更</translation>
+        <translation>プレイリスト名を変更</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="585"/>
         <source>Playlist name:</source>
-        <translation type="unfinished">プレイリスト名:</translation>
+        <translation>プレイリスト名:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="606"/>
@@ -970,32 +970,32 @@
     <message>
         <location filename="../playlistheader.cpp" line="80"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを追加</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="81"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを編集</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="82"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>キューやプロトコルを表示</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
         <source>Auto-resize</source>
-        <translation type="unfinished"></translation>
+        <translation>自動適正幅調整</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="86"/>
         <source>Restore Size</source>
-        <translation type="unfinished"></translation>
+        <translation>幅を復元</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="88"/>
         <source>Remove Column</source>
-        <translation type="unfinished"></translation>
+        <translation>カラムを撤去</translation>
     </message>
 </context>
 <context>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
@@ -1068,27 +1068,27 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
@@ -1226,7 +1226,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>メインウィンドウ</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
@@ -1246,7 +1246,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>単一カラムのとき</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="402"/>
@@ -1256,12 +1256,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="456"/>
         <source>Playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="492"/>
         <source>Column headers:</source>
-        <translation type="unfinished"></translation>
+        <translation>カラム表題:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="414"/>
@@ -1286,22 +1286,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="534"/>
         <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>変更前の書体にリセット</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="543"/>
         <source>Use bitmap font if available</source>
-        <translation>あればビットマップフォントを使用</translation>
+        <translation>あればビットマップフォントを使用する</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="124"/>
         <source>Window title format:</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィンドウタイトルの書式:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>総合</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="146"/>
@@ -1333,7 +1333,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="247"/>
         <source>Song Display</source>
-        <translation>演目表示</translation>
+        <translation>演題表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="286"/>
@@ -1343,7 +1343,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="266"/>
         <source>Show song lengths</source>
-        <translation type="unfinished"></translation>
+        <translation>曲の長さを表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="259"/>
@@ -1403,82 +1403,82 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../skinnedsettings.cpp" line="183"/>
         <source>Artist</source>
-        <translation type="unfinished">アーティスト</translation>
+        <translation>アーティスト</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="184"/>
         <source>Album</source>
-        <translation type="unfinished">アルバム</translation>
+        <translation>アルバム</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="185"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバムアーティスト</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="186"/>
         <source>Title</source>
-        <translation type="unfinished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="187"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="188"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="189"/>
         <source>Genre</source>
-        <translation type="unfinished">ジャンル</translation>
+        <translation>ジャンル</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="190"/>
         <source>Comment</source>
-        <translation type="unfinished">コメント</translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="191"/>
         <source>Composer</source>
-        <translation type="unfinished">作曲者</translation>
+        <translation>作曲者</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="192"/>
         <source>Duration</source>
-        <translation type="unfinished">再生時間</translation>
+        <translation>再生時間</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="193"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="194"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="195"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="196"/>
         <source>Year</source>
-        <translation type="unfinished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="197"/>
         <source>Condition</source>
-        <translation type="unfinished">定番</translation>
+        <translation>定番</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="198"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト - タイトル</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="227"/>

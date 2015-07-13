@@ -11,17 +11,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="61"/>
         <source>ModPlug Files</source>
-        <translation>ModoPlug ファイル</translation>
+        <translation>ModPlug ファイル</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="127"/>
         <source>About ModPlug Audio Plugin</source>
-        <translation>ModoPlug 音響プラグインについて</translation>
+        <translation>ModPlug 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="128"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>QMMP ModoPlug 音響プラグイン</translation>
+        <translation>QMMP ModPlug 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Resolution</source>
-        <translation>解像度</translation>
+        <translation>精度</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>

@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>GME Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>GMP プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source>Fadeout length:</source>
-        <translation type="unfinished"></translation>
+        <translation>フェイドアウト時間幅:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ミリ秒</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Enable fadeout</source>
-        <translation type="unfinished"></translation>
+        <translation>フェイドアウトさせる</translation>
     </message>
 </context>
 </TS>
