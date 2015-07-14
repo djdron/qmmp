@@ -84,6 +84,7 @@ SET(skinned_SRCS
     skinnedfactory.cpp
     hotkeyeditor.cpp
     playlistheader.cpp
+    horizontalslider.cpp
 )
 
 SET(skinned_HDRS
