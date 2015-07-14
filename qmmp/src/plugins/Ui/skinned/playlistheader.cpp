@@ -71,6 +71,7 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_padding = 0;
     m_pl_padding = 0;
     m_number_width = 0;
+    m_offset = 0;
     m_sorting_column = -1;
     m_reverted = false;
     m_task = NO_TASK;
@@ -231,6 +232,32 @@ int PlayListHeader::trackStateColumn() const
         }
     }
     return -1;
+}
+
+int PlayListHeader::verticalScrollSize() const
+{
+    if(m_model->count() == 1)
+        return 0;
+
+    int column_width = 0;
+    foreach (int size, sizes())
+    {
+        column_width += size;
+    }
+    return qMax(0, column_width - width() + 10);
+}
+
+int PlayListHeader::offset() const
+{
+    return m_offset;
+}
+
+void PlayListHeader::scroll(int offset)
+{
+    m_offset = offset;
+    qDebug("scroll = %d", offset);
+    //updateColumns();
+    update();
 }
 
 void PlayListHeader::showSortIndicator(int column, bool reverted)
@@ -563,6 +590,7 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     painter.setPen(m_normal);
     painter.setFont(m_font);
     painter.drawRect(5, -1, width() - 10, height() + 1);
+    painter.translate(-m_offset, 0);
 
     painter.setPen(m_normal_bg);
 
@@ -731,7 +759,7 @@ const QString PlayListHeader::name(int index) const
 
 bool PlayListHeader::adjustColumns()
 {
-    int total_size = 0;
+    /*int total_size = 0;
     foreach (int s, sizes())
     {
         total_size += s;
@@ -748,7 +776,7 @@ bool PlayListHeader::adjustColumns()
         }
         updateColumns();
         return true;
-    }
+    }*/
 
     return false;
 }
