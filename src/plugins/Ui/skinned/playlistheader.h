@@ -49,8 +49,11 @@ public:
     int requiredHeight() const;
     QList<int> sizes() const;
     int trackStateColumn() const;
+    int verticalScrollSize() const;
+    int offset() const;
 
 public slots:
+    void scroll(int offset);
     void updateColumns();
     void showSortIndicator(int column, bool reverted);
     void hideSortIndicator();
@@ -109,6 +112,7 @@ private:
     int m_padding;
     int m_pl_padding;
     int m_sorting_column;
+    int m_offset;
 
     enum
     {

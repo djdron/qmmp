@@ -36,6 +36,7 @@ class Skin;
 class PlayListItem;
 class QmmpUiSettings;
 class PlayListHeader;
+class HorizontalSlider;
 namespace PlayListPopup{
 class PopupWidget;
 }
@@ -108,6 +109,8 @@ private:
      */
     const QString getExtraString(int i);
 
+    bool updateRowCount();
+
     bool m_update;
     int m_pressed_index;
     QMenu *m_menu;
@@ -129,6 +132,7 @@ private:
     QTimer *m_timer;
     ListWidgetDrawer m_drawer;
     PlayListHeader *m_header;
+    HorizontalSlider *m_hslider;
 };
 
 #endif
