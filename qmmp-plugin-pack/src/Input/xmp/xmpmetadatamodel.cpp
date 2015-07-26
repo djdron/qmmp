@@ -95,4 +95,3 @@ QHash<QString, QString> XmpMetaDataModel::descriptions()
         desc.insert(tr("Comment"), text);
     return desc;
 }
-

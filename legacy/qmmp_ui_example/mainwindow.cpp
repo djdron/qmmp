@@ -276,4 +276,3 @@ void MainWindow::showBitrate(int)
                                     .arg(m_core->precision())
                                     .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
 }
-

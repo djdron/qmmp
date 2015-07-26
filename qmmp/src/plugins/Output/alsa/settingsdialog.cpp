@@ -276,4 +276,3 @@ void SettingsDialog::showMixerDevices(int d)
     if (0<=d && d<m_cards.size())
         getMixerDevices(m_cards.at(d));
 }
-

@@ -97,4 +97,3 @@ int AudioParameters::sampleSize(Qmmp::AudioFormat format)
     }
     return 2;
 }
-

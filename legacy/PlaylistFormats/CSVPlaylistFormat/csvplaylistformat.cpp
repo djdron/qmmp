@@ -69,4 +69,3 @@ QString CSVPlaylistFormat::encode(const QList< MediaFile * > & contents)
 }
 
 Q_EXPORT_PLUGIN(CSVPlaylistFormat)
-

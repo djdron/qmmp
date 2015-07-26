@@ -41,4 +41,3 @@ QString QmmpFileDialogFactory::QmmpFileDialogFactoryName = "Qmmp File Dialog";
 
 
 Q_EXPORT_PLUGIN(QmmpFileDialogFactory)
-

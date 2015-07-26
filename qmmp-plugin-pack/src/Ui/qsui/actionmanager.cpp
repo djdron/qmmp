@@ -229,5 +229,3 @@ QStringList ActionManager::toolBarActionNames() const
     }
     return names;
 }
-
-

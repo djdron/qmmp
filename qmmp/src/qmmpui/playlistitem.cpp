@@ -49,5 +49,3 @@ int PlayListItem::trackIndex() const
 {
     return -1;
 }
-
-

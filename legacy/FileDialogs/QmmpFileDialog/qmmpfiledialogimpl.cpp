@@ -105,4 +105,3 @@ void QmmpFileDialogImpl::on_iconToolButton_toggled(bool yes)
         fileListView->setViewMode(QListView::IconMode);
     }
 }
-

@@ -17,4 +17,3 @@ QString Qt3SupportFileDialogFactory::name()
 QString Qt3SupportFileDialogFactory::Qt3SupportFileDialogFactoryName = "Qt3 File Dialog";
 
 Q_EXPORT_PLUGIN(Qt3SupportFileDialogFactory)
-

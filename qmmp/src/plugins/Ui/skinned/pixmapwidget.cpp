@@ -44,4 +44,3 @@ void PixmapWidget::paintEvent (QPaintEvent *e)
     QPainter paint(this);
     style()->drawItemPixmap(&paint, rect(), Qt::AlignCenter, m_pixmap);
 }
-

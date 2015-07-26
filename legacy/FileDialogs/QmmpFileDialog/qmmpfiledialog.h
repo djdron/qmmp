@@ -36,5 +36,3 @@ class QmmpFileDialogFactory : public QObject, public FileDialogFactory
 
 
 #endif
-
-

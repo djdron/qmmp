@@ -84,6 +84,3 @@ QString QtFileDialog::saveFileName (QWidget *parent,
 {
     return QFileDialog::getSaveFileName(parent,caption,dir,filter,selectedFilter);
 }
-
-
-

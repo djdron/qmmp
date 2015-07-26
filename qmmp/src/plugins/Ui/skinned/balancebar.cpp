@@ -134,4 +134,3 @@ int BalanceBar::convert(int p)
 {
     return int(ceil(double(m_max-m_min)*(p)/(width()-13*m_skin->ratio())+m_min));
 }
-

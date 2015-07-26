@@ -193,4 +193,3 @@ QStringList AbstractEngine::protocols()
     protocolsList.removeDuplicates();
     return protocolsList;
 }
-

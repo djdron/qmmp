@@ -243,4 +243,3 @@ void QSUISettings::addWindowTitleString(QAction *a)
     else
         m_ui.windowTitleLineEdit->insert(" - "+a->data().toString());
 }
-

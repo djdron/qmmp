@@ -270,4 +270,3 @@ void ID3v2Tag::read ()
     TagLib::ByteVector v(array.data(), array.size());
     parse(v);
 }
-

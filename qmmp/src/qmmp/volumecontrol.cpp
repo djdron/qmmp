@@ -281,4 +281,3 @@ SoftwareVolume *SoftwareVolume::instance()
 {
     return m_instance;
 }
-

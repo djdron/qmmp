@@ -140,4 +140,3 @@ void ShadedBar::paintEvent(QPaintEvent*)
     QPainter paint(this);
     paint.drawPixmap(m_pos,0,m_pixmap);
 }
-

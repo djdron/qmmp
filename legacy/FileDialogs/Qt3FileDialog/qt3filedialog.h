@@ -19,5 +19,3 @@ class Qt3SupportFileDialog : public FileDialog
 };
 
 #endif
-
-

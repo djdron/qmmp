@@ -55,5 +55,3 @@ void SettingsDialog::accept()
     settings.endGroup();
     QDialog::accept();
 }
-
-

@@ -16,4 +16,3 @@ class Qt3SupportFileDialogFactory : public QObject, public FileDialogFactory
 };
 
 #endif
-

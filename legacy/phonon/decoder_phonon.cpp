@@ -216,4 +216,3 @@ void DecoderPhonon::updateTime(qint64 time)
 {
     StateHandler::instance()->dispatch(time, m_mediaObject->totalTime (), 0, 0, 0, 0);
 }
-
