@@ -44,6 +44,7 @@ unix {
     PKGCONFIG += x11
     DEFINES += HAVE_XKBLIB_H
     LIBS += -lqmmpui -lqmmp
+    QT += x11extras
 }
 
 win32 {

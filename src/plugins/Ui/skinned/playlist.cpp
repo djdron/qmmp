@@ -409,7 +409,7 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
 {
     if (m_resize)
     {
-#ifdef Q_OS_WIN
+//#ifdef Q_OS_WIN
         int sx = (width()-275) /25;
         int sy = (height()-116) /29;
     if(width() < e->x() - 14)
@@ -421,14 +421,14 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
         else if(height() > e->y() + 14)
            sy--;
         resize (275+25*sx,116+29*sy);
-#else
+//#else
 #ifdef Q_WS_X11
         //avoid right corner moving during resize
         if(layoutDirection() == Qt::RightToLeft)
             WindowSystem::revertGravity(winId());
 #endif
-        resize (e->x() +25, e->y() +25);
-#endif
+//        resize (e->x() +25, e->y() +25);
+//#endif
     }
 }
 
@@ -487,7 +487,7 @@ void PlayList::readSettings()
 #ifdef Q_WS_X11
 bool PlayList::event (QEvent *event)
 {
-    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::ShowToParent)
     {
         WindowSystem::ghostWindow(winId());
         WindowSystem::setWinHint(winId(), "playlist", "Qmmp");

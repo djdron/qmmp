@@ -8,7 +8,7 @@ SUBDIRS += statusicon \
            covermanager \
            streambrowser \
            trackchange \
-#           hotkey \
+           hotkey \
            copypaste \
            rgscan
 unix:SUBDIRS += mpris \

@@ -138,6 +138,7 @@ INSTALLS += target
 CONFIG += link_pkgconfig
 PKGCONFIG += x11
 DEFINES += Q_WS_X11
+QT += x11extras
 }
 
 INCLUDEPATH += ../../../

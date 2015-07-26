@@ -430,7 +430,7 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
 #ifdef Q_WS_X11
 bool EqWidget::event (QEvent *event)
 {
-    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::ShowToParent)
     {
         WindowSystem::ghostWindow(winId());
         WindowSystem::setWinHint(winId(), "equalizer", "Qmmp");
