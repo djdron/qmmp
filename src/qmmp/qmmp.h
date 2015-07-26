@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,8 +22,8 @@
 
 #include <QString>
 
-#define QMMP_VERSION_MAJOR 0
-#define QMMP_VERSION_MINOR 9
+#define QMMP_VERSION_MAJOR 1
+#define QMMP_VERSION_MINOR 0
 #define QMMP_VERSION_PATCH 0
 #define QMMP_VERSION_STABLE 0
 
