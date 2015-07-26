@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,4 +62,4 @@ QTranslator *StatusIconFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(StatusIconFactory)
+Q_EXPORT_PLUGIN2(statusicon, StatusIconFactory)

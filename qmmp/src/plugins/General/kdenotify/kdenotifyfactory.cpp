@@ -60,4 +60,4 @@ QTranslator *KdeNotifyFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(KdeNotifyFactory)
+Q_EXPORT_PLUGIN2(kdenotify, KdeNotifyFactory)
