@@ -752,17 +752,17 @@
         <translation>פרטים</translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="29"/>
+        <location filename="../forms/detailsdialog.ui" line="44"/>
         <source>Open the directory containing this file</source>
         <translation>פתח את המדור שמכיל את קובץ זה</translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="32"/>
+        <location filename="../forms/detailsdialog.ui" line="47"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="93"/>
+        <location filename="../forms/detailsdialog.ui" line="63"/>
         <source>Summary</source>
         <translation>סיכום</translation>
     </message>
