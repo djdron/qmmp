@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,7 +30,8 @@
 class EffectStereoFactory : public QObject, public EffectFactory
 {
 Q_OBJECT
-Q_INTERFACES(EffectFactory);
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.EffectFactoryInterface.1.0")
+Q_INTERFACES(EffectFactory)
 
 public:
     const EffectProperties properties() const;
