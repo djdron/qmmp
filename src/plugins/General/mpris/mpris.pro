@@ -2,8 +2,9 @@ include(../../plugins.pri)
 
 CONFIG += warn_on \
 plugin  \
- lib \
- qdbus
+ lib
+
+QT += dbus
 
 TARGET =$$PLUGINS_PREFIX/General/mpris
 QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libmpris.so
@@ -18,9 +19,6 @@ isEmpty(LIB_DIR){
 }
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
-#FORMS += settingsdialog.ui
-
-#RESOURCES += images/images.qrc
 
 
 HEADERS += mprisfactory.h \

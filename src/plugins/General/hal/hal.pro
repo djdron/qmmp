@@ -2,8 +2,9 @@ include(../../plugins.pri)
 
 CONFIG += warn_on \
 plugin  \
- lib \
- qdbus
+ lib
+
+QT += dbus
 
 TARGET = $$PLUGINS_PREFIX/General/hal
 QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libhal.so
