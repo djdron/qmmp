@@ -61,5 +61,3 @@ QTranslator *EffectStereoFactory::createTranslator(QObject *parent)
     translator->load(QString(":/stereo_plugin_") + locale);
     return translator;
 }
-
-

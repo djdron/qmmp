@@ -142,5 +142,3 @@ QTranslator *DecoderModPlugFactory::createTranslator(QObject *parent)
     translator->load(QString(":/modplug_plugin_") + locale);
     return translator;
 }
-
-

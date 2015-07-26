@@ -59,5 +59,3 @@ void PlayStatus::updateSkin()
 {
    setStatus ( m_status );
 }
-
-

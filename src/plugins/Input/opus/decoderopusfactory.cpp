@@ -136,5 +136,3 @@ QTranslator *DecoderOpusFactory::createTranslator(QObject *parent)
     translator->load(QString(":/opus_plugin_") + locale);
     return translator;
 }
-
-

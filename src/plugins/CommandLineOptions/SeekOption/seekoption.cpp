@@ -88,5 +88,3 @@ QTranslator *SeekOption::createTranslator(QObject *parent)
     translator->load(QString(":/seek_plugin_") + locale);
     return translator;
 }
-
-

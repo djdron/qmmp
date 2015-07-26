@@ -187,4 +187,3 @@ bool Effect::isEnabled(EffectFactory* factory)
     loadPlugins();
     return m_enabledNames.contains(factory->properties().shortName);
 }
-

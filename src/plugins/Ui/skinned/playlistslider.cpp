@@ -131,4 +131,3 @@ int PlayListSlider::convert(int p)
 {
     return int(floor(double(m_max-m_min)*(p)/(height()-18*m_skin->ratio())+m_min));
 }
-

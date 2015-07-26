@@ -61,5 +61,3 @@ QTranslator *EffectCrossfadeFactory::createTranslator(QObject *parent)
     translator->load(QString(":/crossfade_plugin_") + locale);
     return translator;
 }
-
-

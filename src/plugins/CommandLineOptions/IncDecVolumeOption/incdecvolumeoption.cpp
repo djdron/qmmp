@@ -70,5 +70,3 @@ QTranslator *IncDecVolumeCommandLineOption::createTranslator(QObject *parent)
     translator->load(QString(":/incdecvolume_plugin_") + locale);
     return translator;
 }
-
-

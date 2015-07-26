@@ -64,4 +64,3 @@ QTranslator *HTTPInputFactory::createTranslator(QObject *parent)
     translator->load(QString(":/http_plugin_") + locale);
     return translator;
 }
-

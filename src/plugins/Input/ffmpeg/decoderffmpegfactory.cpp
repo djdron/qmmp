@@ -279,5 +279,3 @@ QTranslator *DecoderFFmpegFactory::createTranslator(QObject *parent)
     translator->load(QString(":/ffmpeg_plugin_") + locale);
     return translator;
 }
-
-

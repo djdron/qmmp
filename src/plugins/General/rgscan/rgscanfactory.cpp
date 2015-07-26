@@ -65,5 +65,3 @@ QTranslator *RGScanFactory::createTranslator(QObject *parent)
     translator->load(QString(":/rgscan_plugin_") + locale);
     return translator;
 }
-
-

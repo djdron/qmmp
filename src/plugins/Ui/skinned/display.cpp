@@ -352,4 +352,3 @@ void MainDisplay::mousePressEvent(QMouseEvent *e)
         m_mw->about();
     PixmapWidget::mousePressEvent(e);
 }
-

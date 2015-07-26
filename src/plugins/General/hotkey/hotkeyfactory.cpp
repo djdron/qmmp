@@ -61,5 +61,3 @@ QTranslator *HotkeyFactory::createTranslator(QObject *parent)
     translator->load(QString(":/hotkey_plugin_") + locale);
     return translator;
 }
-
-

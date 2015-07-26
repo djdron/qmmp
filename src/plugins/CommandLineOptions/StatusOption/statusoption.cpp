@@ -140,5 +140,3 @@ QString StatusOption::genProgressBar()
     }
     return out;
 }
-
-

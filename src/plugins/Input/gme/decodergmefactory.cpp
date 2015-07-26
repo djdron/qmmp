@@ -127,4 +127,3 @@ QTranslator *DecoderGmeFactory::createTranslator(QObject *parent)
     translator->load(QString(":/gme_plugin_") + locale);
     return translator;
 }
-

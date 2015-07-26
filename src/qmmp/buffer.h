@@ -46,4 +46,3 @@ public:
 
 
 #endif // __buffer_h
-

@@ -59,5 +59,3 @@ QTranslator *MPRISFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mpris_plugin_") + locale);
     return translator;
 }
-
-

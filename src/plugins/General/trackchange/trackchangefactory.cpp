@@ -60,5 +60,3 @@ QTranslator *TrackChangeFactory::createTranslator(QObject *parent)
     translator->load(QString(":/trackchange_plugin_") + locale);
     return translator;
 }
-
-

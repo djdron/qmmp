@@ -103,5 +103,3 @@ QTranslator *DecoderCDAudioFactory::createTranslator(QObject *parent)
     translator->load(QString(":/cdaudio_plugin_") + locale);
     return translator;
 }
-
-

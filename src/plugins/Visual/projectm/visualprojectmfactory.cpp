@@ -61,5 +61,3 @@ QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
     translator->load(QString(":/projectm_plugin_") + locale);
     return translator;
 }
-
-

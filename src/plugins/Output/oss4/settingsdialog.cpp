@@ -107,4 +107,3 @@ void SettingsDialog::accept()
     settings.setValue("OSS4/device", ui.deviceComboBox->currentText ());
     QDialog::accept();
 }
-

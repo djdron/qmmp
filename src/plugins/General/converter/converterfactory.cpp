@@ -61,5 +61,3 @@ QTranslator *ConverterFactory::createTranslator(QObject *parent)
     translator->load(QString(":/converter_plugin_") + locale);
     return translator;
 }
-
-

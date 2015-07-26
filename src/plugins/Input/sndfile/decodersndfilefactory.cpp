@@ -141,5 +141,3 @@ QTranslator *DecoderSndFileFactory::createTranslator(QObject *parent)
     translator->load(QString(":/sndfile_plugin_") + locale);
     return translator;
 }
-
-

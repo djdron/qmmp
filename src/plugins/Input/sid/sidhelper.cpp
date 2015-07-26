@@ -88,4 +88,3 @@ QList <FileInfo*> SIDHelper::createPlayList(bool meta)
     }
     return list;
 }
-

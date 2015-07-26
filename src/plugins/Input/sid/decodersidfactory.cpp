@@ -134,4 +134,3 @@ QTranslator *DecoderSIDFactory::createTranslator(QObject *parent)
     translator->load(QString(":/sid_plugin_") + locale);
     return translator;
 }
-

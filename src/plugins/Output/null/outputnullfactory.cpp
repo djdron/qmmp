@@ -64,5 +64,3 @@ QTranslator *OutputNullFactory::createTranslator(QObject *parent)
     translator->load(QString(":/null_plugin_") + locale);
     return translator;
 }
-
-

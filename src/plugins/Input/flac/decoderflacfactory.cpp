@@ -213,5 +213,3 @@ QTranslator *DecoderFLACFactory::createTranslator(QObject *parent)
     translator->load(QString(":/flac_plugin_") + locale);
     return translator;
 }
-
-

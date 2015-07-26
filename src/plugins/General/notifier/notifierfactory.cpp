@@ -59,5 +59,3 @@ QTranslator *NotifierFactory::createTranslator(QObject *parent)
     translator->load(QString(":/notifier_plugin_") + locale);
     return translator;
 }
-
-

@@ -147,4 +147,3 @@ void EQGraph::updateSkin()
     draw();
     setVisible(!m_skin->getEqPart (Skin::EQ_GRAPH).isNull());
 }
-

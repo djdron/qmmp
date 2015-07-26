@@ -92,5 +92,3 @@ QTranslator *MplayerEngineFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mplayer_plugin_") + locale);
     return translator;
 }
-
-

@@ -59,5 +59,3 @@ QTranslator *CoverManagerFactory::createTranslator(QObject *parent)
     translator->load(QString(":/covermanager_plugin_") + locale);
     return translator;
 }
-
-

@@ -115,4 +115,3 @@ QTranslator *DecoderWildMidiFactory::createTranslator(QObject *parent)
     translator->load(QString(":/wildmidi_plugin_") + locale);
     return translator;
 }
-

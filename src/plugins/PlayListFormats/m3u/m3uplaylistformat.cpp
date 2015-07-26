@@ -63,5 +63,3 @@ QString M3UPlaylistFormat::encode(const QList<PlayListTrack*> & contents)
     }
     return out.join("\n");
 }
-
-

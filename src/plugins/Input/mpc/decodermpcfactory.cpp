@@ -143,5 +143,3 @@ QTranslator *DecoderMPCFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mpc_plugin_") + locale);
     return translator;
 }
-
-

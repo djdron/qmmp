@@ -134,5 +134,3 @@ QString XSPFPlaylistFormat::encode(const QList<PlayListTrack*> & files)
     return out;
 
 }
-
-

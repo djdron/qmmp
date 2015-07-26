@@ -166,5 +166,3 @@ QTranslator *DecoderWavPackFactory::createTranslator(QObject *parent)
     translator->load(QString(":/wavpack_plugin_") + locale);
     return translator;
 }
-
-

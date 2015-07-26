@@ -64,5 +64,3 @@ QTranslator *EffectLADSPAFactory::createTranslator(QObject *parent)
     translator->load(QString(":/ladspa_plugin_") + locale);
     return translator;
 }
-
-

@@ -64,5 +64,3 @@ QTranslator *OutputPulseAudioFactory::createTranslator(QObject *parent)
     translator->load(QString(":/pulseaudio_plugin_") + locale);
     return translator;
 }
-
-

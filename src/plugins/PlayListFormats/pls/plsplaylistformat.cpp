@@ -82,5 +82,3 @@ QString PLSPlaylistFormat::encode(const QList<PlayListTrack *> & contents)
     out << "NumberOfEntries=" + QString::number(contents.count());
     return out.join("\n");
 }
-
-

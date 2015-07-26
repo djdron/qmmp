@@ -67,5 +67,3 @@ QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
     translator->load(QString(":/bs2b_plugin_") + locale);
     return translator;
 }
-
-

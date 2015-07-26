@@ -66,5 +66,3 @@ QTranslator *OutputALSAFactory::createTranslator(QObject *parent)
     translator->load(QString(":/alsa_plugin_") + locale);
     return translator;
 }
-
-

@@ -59,5 +59,3 @@ QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)
     translator->load(QString(":/analyzer_plugin_") + locale);
     return translator;
 }
-
-

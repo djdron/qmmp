@@ -97,5 +97,3 @@ QTranslator *DecoderAACFactory::createTranslator(QObject *parent)
     translator->load(QString(":/aac_plugin_") + locale);
     return translator;
 }
-
-

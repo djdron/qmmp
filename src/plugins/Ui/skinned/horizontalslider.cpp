@@ -120,4 +120,3 @@ int HorizontalSlider::sliderSize() const
     else
         return MIN_SLIDER_SIZE;
 }
-

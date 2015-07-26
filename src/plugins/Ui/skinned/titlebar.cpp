@@ -221,4 +221,3 @@ void TitleBar::setTime(qint64 time)
     else
         m_currentTime->display(formatTime(time/1000));
 }
-

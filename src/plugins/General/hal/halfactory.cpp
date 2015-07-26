@@ -62,5 +62,3 @@ QTranslator *HalFactory::createTranslator(QObject *parent)
     translator->load(QString(":/hal_plugin_") + locale);
     return translator;
 }
-
-

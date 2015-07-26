@@ -86,4 +86,3 @@ public:
 Q_DECLARE_INTERFACE(InputSourceFactory, "InputSourceFactory/1.0")
 
 #endif // INPUTSOURCEFACTORY_H
-

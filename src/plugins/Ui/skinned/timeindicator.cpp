@@ -136,4 +136,3 @@ void TimeIndicator::mouseMoveEvent(QMouseEvent *)
 
 void TimeIndicator::mouseReleaseEvent(QMouseEvent *)
 {}
-

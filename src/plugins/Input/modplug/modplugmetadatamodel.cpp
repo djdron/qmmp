@@ -185,4 +185,3 @@ QHash<QString, QString> ModPlugMetaDataModel::descriptions()
         desc.insert(tr("Comment"), QString::fromUtf8(message).trimmed ());
     return desc;
 }
-

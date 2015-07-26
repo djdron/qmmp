@@ -136,5 +136,3 @@ QTranslator *QmmpFileDialogFactory::createTranslator(QObject *parent)
     translator->load(QString(":/qmmp_file_dialog_plugin_") + locale);
     return translator;
 }
-
-

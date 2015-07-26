@@ -59,5 +59,3 @@ QTranslator *CopyPasteFactory::createTranslator(QObject *parent)
     translator->load(QString(":/copypaste_plugin_") + locale);
     return translator;
 }
-
-

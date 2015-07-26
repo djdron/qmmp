@@ -60,5 +60,3 @@ QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
     translator->load(QString(":/scrobbler_plugin_") + locale);
     return translator;
 }
-
-

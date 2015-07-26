@@ -61,5 +61,3 @@ QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent)
     translator->load(QString(":/srconverter_plugin_") + locale);
     return translator;
 }
-
-

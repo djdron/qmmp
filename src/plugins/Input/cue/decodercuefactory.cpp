@@ -107,5 +107,3 @@ QTranslator *DecoderCUEFactory::createTranslator(QObject *parent)
     translator->load(QString(":/cue_plugin_") + locale);
     return translator;
 }
-
-

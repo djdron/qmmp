@@ -63,5 +63,3 @@ QTranslator *OutputJACKFactory::createTranslator(QObject *parent)
     translator->load(QString(":/jack_plugin_") + locale);
     return translator;
 }
-
-

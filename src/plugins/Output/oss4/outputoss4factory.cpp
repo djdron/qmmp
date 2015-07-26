@@ -66,5 +66,3 @@ QTranslator *OutputOSS4Factory::createTranslator(QObject *parent)
     translator->load(QString(":/oss4_plugin_") + locale);
     return translator;
 }
-
-

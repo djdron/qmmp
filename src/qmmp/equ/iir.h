@@ -90,4 +90,3 @@ extern unsigned int blength;
 #endif
 
 #endif /* #define IIR_H */
-

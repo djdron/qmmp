@@ -59,5 +59,3 @@ QTranslator *FileOpsFactory::createTranslator(QObject *parent)
     translator->load(QString(":/fileops_plugin_") + locale);
     return translator;
 }
-
-

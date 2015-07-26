@@ -150,4 +150,3 @@ void EqSlider::wheelEvent(QWheelEvent *e)
     draw(false);
     emit sliderMoved(m_value);
 }
-

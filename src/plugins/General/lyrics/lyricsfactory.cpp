@@ -60,5 +60,3 @@ QTranslator *LyricsFactory::createTranslator(QObject *parent)
     translator->load(QString(":/lyrics_plugin_") + locale);
     return translator;
 }
-
-

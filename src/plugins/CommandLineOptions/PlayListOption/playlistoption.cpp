@@ -157,5 +157,3 @@ QString PlayListOption::boolToText(bool enabled)
 {
     return QString(enabled ? "[+]" : "[-]");
 }
-
-

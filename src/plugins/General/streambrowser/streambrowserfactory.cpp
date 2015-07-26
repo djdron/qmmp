@@ -60,5 +60,3 @@ QTranslator *StreamBrowserFactory::createTranslator(QObject *parent)
     translator->load(QString(":/streambrowser_plugin_") + locale);
     return translator;
 }
-
-

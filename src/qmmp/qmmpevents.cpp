@@ -69,4 +69,3 @@ QHash<QString, QString>StreamInfoChangedEvent::streamInfo() const
 {
     return m_streamInfo;
 }
-

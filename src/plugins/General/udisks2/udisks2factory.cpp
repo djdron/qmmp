@@ -61,5 +61,3 @@ QTranslator *UDisks2Factory::createTranslator(QObject *parent)
     translator->load(QString(":/udisks2_plugin_") + locale);
     return translator;
 }
-
-
