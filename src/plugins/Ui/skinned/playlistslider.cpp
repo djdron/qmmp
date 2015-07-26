@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,6 @@ PlayListSlider::PlayListSlider(QWidget *parent)
     m_min = 0;
     m_max = 0;
     m_value = 0;
-    pos = 0;
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setCursor(m_skin->getCursor(Skin::CUR_PVSCROLL));
 }
@@ -66,15 +65,15 @@ void PlayListSlider::mousePressEvent(QMouseEvent *e)
 {
     m_moving = true;
     m_pressed = true;
-    press_pos = e->y();
+    m_press_pos = e->y();
     if (m_pos<e->y() && e->y()<m_pos+18*m_skin->ratio())
     {
-        press_pos = e->y()-m_pos;
+        m_press_pos = e->y()-m_pos;
     }
     else
     {
         m_value = convert(qMax(qMin(height()-18*m_skin->ratio(),e->y()-9*m_skin->ratio()),0));
-        press_pos = 9*m_skin->ratio();
+        m_press_pos = 9*m_skin->ratio();
         if (m_value!=m_old)
         {
             emit sliderMoved(m_value);
@@ -97,13 +96,13 @@ void PlayListSlider::mouseMoveEvent(QMouseEvent* e)
     if (m_moving)
     {
         int po = e->y();
-        po = po - press_pos;
+        po = po - m_press_pos;
 
-        if (0<=po && po<=height()-18*m_skin->ratio())
+        if (0 <= po && po <= height() - 18*m_skin->ratio())
         {
             m_value = convert(po);
             update();
-            if (m_value!=m_old)
+            if (m_value != m_old)
             {
 
                 m_old = m_value;

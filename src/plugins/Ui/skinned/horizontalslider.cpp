@@ -24,18 +24,16 @@
 #include "horizontalslider.h"
 #include "pixmapwidget.h"
 
+#define MIN_SLIDER_SIZE 18
+
 HorizontalSlider::HorizontalSlider(QWidget *parent)
         : QWidget(parent)
 {
     m_skin = Skin::instance();
-    m_moving = false;
-    m_pressed = false;
     m_min = 0;
     m_max = 100;
     m_value = 0;
-    pos = 0;
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-    //setCursor(m_skin->getCursor(Skin::CUR_));
     updateSkin();
 }
 
@@ -44,89 +42,59 @@ HorizontalSlider::~HorizontalSlider()
 
 void HorizontalSlider::paintEvent(QPaintEvent *)
 {
-    //int sy = (height()-58)/29;
-    int p = int(ceil(double(m_value - m_min)*(width() - 18*m_skin->ratio())/(m_max - m_min)));
+    if(m_max <= m_min)
+        return;
+
+    bool rtl = (layoutDirection() == Qt::RightToLeft);
+    int p = ceil((m_value - m_min)*(width() - sliderSize())/(m_max - m_min));
+    if(rtl)
+        p = width() - p - sliderSize();
+
     QPainter paint(this);
 
     paint.fillRect(0, 0, width(), height(), m_normal_bg);
     paint.setPen(m_normal);
 
     paint.drawRect(0, 0, width() - 1, height() - 1);
-    paint.fillRect(p, 0, 18, height() - 1, m_normal);
+    paint.fillRect(p, 0, sliderSize(), height() - 1, m_normal);
 
-
-
-
-    /*paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_RFILL));
-    paint.drawPixmap(0,29,m_skin->getPlPart(Skin::PL_RFILL));
-
-    for (int i = 0; i<sy; i++)
-    {
-        paint.drawPixmap(0,58+i*29,m_skin->getPlPart(Skin::PL_RFILL));
-    }
-    if (m_pressed)
-        paint.drawPixmap(5*m_skin->ratio(),p,m_skin->getButton(Skin::PL_BT_SCROLL_P));
-    else
-        paint.drawPixmap(5*m_skin->ratio(),p,m_skin->getButton(Skin::PL_BT_SCROLL_N));*/
-    m_pos = p;
+    m_slider_pos = p;
 }
 
 void HorizontalSlider::mousePressEvent(QMouseEvent *e)
 {
-    m_moving = true;
-    m_pressed = true;
-    press_pos = e->x();
-    if (m_pos < e->x() && e->x() < m_pos + 18 * m_skin->ratio())
+    m_press_pos = e->x();
+    if (m_slider_pos < e->x() && e->x() < m_slider_pos + sliderSize())
     {
-        press_pos = e->x() - m_pos;
+        m_press_pos = e->x() - m_slider_pos;
     }
-    else
-    {
-        m_value = convert(qMax(qMin(width()-18*m_skin->ratio(),e->x()-9*m_skin->ratio()),0));
-        press_pos = 9*m_skin->ratio();
-        if (m_value!=m_old)
-        {
-            emit sliderMoved(m_value);
-            m_old = m_value;
-            qDebug ("%d",m_value);
-        }
-    }
-    update();
-}
-
-void HorizontalSlider::mouseReleaseEvent(QMouseEvent*)
-{
-    m_moving = false;
-    m_pressed = false;
     update();
 }
 
 void HorizontalSlider::mouseMoveEvent(QMouseEvent* e)
 {
-    if (m_moving)
-    {
-        int po = e->x() - press_pos;
+    int po = e->x() - m_press_pos;
+    bool rtl = (layoutDirection() == Qt::RightToLeft);
 
-        if (0 <= po && po <= width() - 18*m_skin->ratio())
+    if (0 <= po && po <= width() - sliderSize())
+    {
+        if(rtl)
+            po = width() - po - sliderSize();
+
+        m_value = convert(po);
+        update();
+        if (m_value != m_old_value)
         {
-            m_value = convert(po);
-            update();
-            if (m_value != m_old)
-            {
-                m_old = m_value;
-                qDebug("moved = %d", m_value);
-                emit sliderMoved(m_value);
-            }
+            m_old_value = m_value;
+            emit sliderMoved(m_value);
         }
     }
 }
 
-void HorizontalSlider::setPos(int p, int max)
+void HorizontalSlider::setPos(int v, int max)
 {
     m_max = max;
-    m_value = p;
-    if(m_moving)
-        return;
+    m_value = v;
     update();
 }
 
@@ -135,11 +103,21 @@ void HorizontalSlider::updateSkin()
     m_normal.setNamedColor(m_skin->getPLValue("normal"));
     m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     update();
-    //setCursor(m_skin->getCursor(Skin::CUR_PVSCROLL));
 }
 
-int HorizontalSlider::convert(int p)
+int HorizontalSlider::convert(int p) const
 {
-    return int(floor(double(m_max-m_min)*(p)/(width()-18*m_skin->ratio())+m_min));
+    if(m_max > m_min)
+        return ceil((m_max - m_min) * p / (width() - sliderSize())) + m_min;
+    else
+        return 0;
+}
+
+int HorizontalSlider::sliderSize() const
+{
+    if(m_max > m_min)
+        return qMax(width() - abs(m_max - m_min), MIN_SLIDER_SIZE * m_skin->ratio());
+    else
+        return MIN_SLIDER_SIZE;
 }
 

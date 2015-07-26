@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,9 +23,8 @@
 #include <QWidget>
 
 class Skin;
-class PixmapWidget;
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class PlayListSlider : public QWidget
 {
@@ -46,11 +45,10 @@ private slots:
 
 private:
     Skin *m_skin;
-    PixmapWidget *m_scroll;
     int m_old;
     bool m_moving, m_pressed;
-    int press_pos;
-    int m_min, m_max, m_value, pos, m_pos;
+    int m_press_pos;
+    int m_min, m_max, m_value, m_pos;
     int convert(int);   // value = convert(position);
 
 protected:

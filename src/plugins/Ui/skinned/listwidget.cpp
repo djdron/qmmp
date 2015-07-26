@@ -97,7 +97,6 @@ void ListWidget::readSettings()
     if (m_update)
     {
         m_drawer.readSettings();
-        //m_row_count = (height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
@@ -132,7 +131,7 @@ int ListWidget::anchorIndex() const
 void ListWidget::setAnchorIndex(int index)
 {
     m_anchor_index = index;
-    updateList(PlayListModel::CURRENT);
+    updateList(PlayListModel::SELECTION);
 }
 
 QMenu *ListWidget::menu()
@@ -155,8 +154,8 @@ void ListWidget::paintEvent(QPaintEvent *)
 #endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
-    painter.setClipRect(5,0,width() - 10, height());
-    painter.translate(-m_header->offset(), 0);
+    painter.setClipRect(5,0,width() - 9, height());
+    painter.translate(rtl ? m_header->offset() : -m_header->offset(), 0);
 
     for (int i = 0; i < m_rows.size(); ++i )
     {
@@ -254,8 +253,6 @@ void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
     m_hslider->setGeometry(5,height() - 7, width() - 10, 7);
-    //m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
-    //m_row_count = qMax(m_row_count, 0);
     updateList(PlayListModel::STRUCTURE);
     QWidget::resizeEvent(e);
 }
@@ -302,8 +299,8 @@ bool ListWidget::event (QEvent *e)
 
 void ListWidget::updateList(int flags)
 {
-    m_hslider->setVisible(m_header->verticalScrollSize() > 0);
-    m_hslider->setPos(0, m_header->verticalScrollSize());
+    m_hslider->setVisible(m_header->maxScrollValue() > 0);
+    m_hslider->setPos(m_header->offset(), m_header->maxScrollValue());
 
     if(updateRowCount())
         flags |= PlayListModel::STRUCTURE;
@@ -352,10 +349,13 @@ void ListWidget::updateList(int flags)
     }
 
     int trackStateColumn = m_header->trackStateColumn();
+    int rowWidth = width() + m_header->maxScrollValue() - 10;
+    bool rtl = (layoutDirection() == Qt::RightToLeft);
 
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        row->autoResize = m_header->hasAutoResizeColumn();
         row->trackStateColumn = trackStateColumn;
         items[i]->isSelected() ? row->flags |= ListWidgetRow::SELECTED :
                 row->flags &= ~ListWidgetRow::SELECTED;
@@ -366,8 +366,16 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
-                          width() - 10, m_drawer.rowHeight() - 1);
+        if(rtl)
+        {
+            row->rect = QRect(width() - 5 - rowWidth, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+                              rowWidth, m_drawer.rowHeight() - 1);
+        }
+        else
+        {
+            row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+                              rowWidth, m_drawer.rowHeight() - 1);
+        }
         row->titles = items[i]->formattedTitles();
         row->sizes = m_header->sizes();
 
@@ -454,8 +462,11 @@ void ListWidget::scroll(int sc)
 {
     if (m_model->count() <= m_row_count)
         return;
-    m_first = sc; //*(m_model->count() - m_rows)/99;
-    updateList(PlayListModel::STRUCTURE);
+    if(m_first != sc)
+    {
+        m_first = sc;
+        updateList(PlayListModel::STRUCTURE);
+    }
 }
 
 void ListWidget::updateSkin()

@@ -199,24 +199,26 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row)
 
 void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
-    int sx = row->rect.x() + 50;
+    int sx = 50 + row->numberColumnWidth;  // row->rect.x() + 50;
     int sy = row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setFont(m_font);
     painter->setPen(m_normal);
 
-    if(row->numberColumnWidth)
-        sx += row->numberColumnWidth;
+    /*if(row->numberColumnWidth)
+        sx += row->numberColumnWidth;*/
     if(rtl)
         sx = row->rect.right() - sx - m_metrics->width(row->titles[0]);
+    else
+        sx += row->rect.x();
 
     painter->drawText(sx, sy, row->titles[0]);
 
-    sy = sy - m_metrics->lineSpacing()/2 + 2;
+    sy -= (m_metrics->lineSpacing()/2 - 2);
 
     if(rtl)
     {
-        painter->drawLine(10, sy, sx - 5, sy);
+        painter->drawLine(row->rect.x() + 5, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
                           row->rect.right() - row->numberColumnWidth - m_padding, sy);
         if(row->numberColumnWidth)
@@ -295,7 +297,10 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 }
 
                 painter->setPen(m_normal);
-                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                if(!row->autoResize || i < row->sizes.count() - 1) //do not draw last vertical line
+                {
+                    painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                }
             }
         }
     }
@@ -350,7 +355,10 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                 }
 
                 painter->setPen(m_normal);
-                painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                if(!row->autoResize || i < row->sizes.count() - 1) //do not draw last vertical line
+                {
+                    painter->drawLine(sx, row->rect.top(), sx, row->rect.bottom() + 1);
+                }
             }
         }
     }
