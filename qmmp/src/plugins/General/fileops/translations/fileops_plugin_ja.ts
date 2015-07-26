@@ -24,8 +24,8 @@
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
         <translation>
-        <numerusform>%n 個のファイルを移動しようとしています。 よろしいですか?</numerusform>
-</translation>
+            <numerusform>%n 個のファイルを移動しようとしています。 よろしいですか?</numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="153"/>

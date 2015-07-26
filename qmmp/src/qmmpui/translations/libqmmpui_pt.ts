@@ -752,17 +752,17 @@
         <translation>Detalhes</translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="29"/>
+        <location filename="../forms/detailsdialog.ui" line="44"/>
         <source>Open the directory containing this file</source>
         <translation>Abrir o diretório que contém este ficheiro</translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="32"/>
+        <location filename="../forms/detailsdialog.ui" line="47"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/detailsdialog.ui" line="93"/>
+        <location filename="../forms/detailsdialog.ui" line="63"/>
         <source>Summary</source>
         <translation>Resumo</translation>
     </message>
