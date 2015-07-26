@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <QStringList>
 #include <QRegExp>
 #include <libmodplug/stdafx.h>
@@ -142,4 +143,4 @@ QTranslator *DecoderModPlugFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(modplug,DecoderModPlugFactory)
+

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "mpris.h"
 #include "mprisfactory.h"
@@ -59,4 +60,4 @@ QTranslator *MPRISFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(mpris, MPRISFactory)
+

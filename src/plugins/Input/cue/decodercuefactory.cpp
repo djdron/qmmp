@@ -18,7 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QtGui>
-
+#include <QMessageBox>
 #include "decoder_cue.h"
 #include "cuemetadatamodel.h"
 #include "cueparser.h"
@@ -108,4 +108,4 @@ QTranslator *DecoderCUEFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(cue,DecoderCUEFactory)
+

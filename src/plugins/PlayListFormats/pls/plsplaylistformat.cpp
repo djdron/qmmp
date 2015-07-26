@@ -83,4 +83,4 @@ QString PLSPlaylistFormat::encode(const QList<PlayListTrack *> & contents)
     return out.join("\n");
 }
 
-Q_EXPORT_PLUGIN2(plsplaylistformat, PLSPlaylistFormat)
+

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "outputalsa.h"
@@ -66,4 +67,4 @@ QTranslator *OutputALSAFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(alsa,OutputALSAFactory)
+

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "mediakeys.h"
 #include "gnomehotkeyfactory.h"
@@ -61,4 +62,4 @@ QTranslator *GnomeHotkeyFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(gnomehotkey, GnomeHotkeyFactory)
+

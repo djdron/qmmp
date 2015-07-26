@@ -278,5 +278,3 @@ QTranslator *DecoderMADFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mad_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(mad, DecoderMADFactory)

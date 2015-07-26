@@ -33,6 +33,7 @@
 class MplayerEngineFactory : public QObject, EngineFactory
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.EngineFactoryInterface.1.0")
 Q_INTERFACES(EngineFactory)
 
 public:

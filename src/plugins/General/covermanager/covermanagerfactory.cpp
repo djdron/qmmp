@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "covermanager.h"
 #include "covermanagerfactory.h"
@@ -59,4 +60,4 @@ QTranslator *CoverManagerFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(covermanager, CoverManagerFactory)
+

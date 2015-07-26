@@ -6,9 +6,12 @@ MOC_DIR=./.build/moc/
 OBJECTS_DIR=./.build/obj
 RCC_DIR=./.build/rcc
 
+QT += widgets
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
+
 #Version
 
-QMMP_VERSION = 0.9.0
+QMMP_VERSION = 1.0.0
 
 #Comment/uncomment this if you want to change plugins list
 

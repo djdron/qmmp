@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include "rgscanhelper.h"
 #include "rgscanfactory.h"
 
@@ -65,4 +66,4 @@ QTranslator *RGScanFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(rgscan, RGScanFactory)
+

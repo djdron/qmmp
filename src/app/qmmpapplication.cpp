@@ -27,10 +27,10 @@ QmmpApplication::QmmpApplication(int &argc, char **argv) : QApplication(argc, ar
 
 void QmmpApplication::commitData(QSessionManager &manager)
 {
-    if(UiHelper::instance())
+    /*if(UiHelper::instance())
         UiHelper::instance()->exit();
 #ifndef QT_NO_SESSIONMANAGER
     else
         QApplication::commitData(manager);
-#endif
+#endif*/
 }

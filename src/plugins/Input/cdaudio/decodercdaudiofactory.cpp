@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <QRegExp>
 #include <cdio/version.h>
 #include <cddb/version.h>
@@ -103,4 +104,4 @@ QTranslator *DecoderCDAudioFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(cdaudio, DecoderCDAudioFactory)
+

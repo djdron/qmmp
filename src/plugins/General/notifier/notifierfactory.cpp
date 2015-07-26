@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <QMessageBox>
 #include "notifier.h"
 #include "settingsdialog.h"
 #include "notifierfactory.h"
@@ -60,4 +60,4 @@ QTranslator *NotifierFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(notifier,NotifierFactory)
+

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "udisks2plugin.h"
@@ -61,4 +62,4 @@ QTranslator *UDisks2Factory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(udisks2, UDisks2Factory)
+

@@ -30,7 +30,8 @@
 class EffectLADSPAFactory : public QObject, public EffectFactory
 {
 Q_OBJECT
-Q_INTERFACES(EffectFactory);
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.EffectFactoryInterface.1.0")
+Q_INTERFACES(EffectFactory)
 
 public:
     const EffectProperties properties() const;

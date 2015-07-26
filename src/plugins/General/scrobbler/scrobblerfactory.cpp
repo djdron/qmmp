@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "scrobblerhandler.h"
 #include "settingsdialog.h"
@@ -60,4 +61,4 @@ QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(scrobbler, ScrobblerFactory)
+

@@ -64,4 +64,4 @@ QString M3UPlaylistFormat::encode(const QList<PlayListTrack*> & contents)
     return out.join("\n");
 }
 
-Q_EXPORT_PLUGIN2(m3uplaylistformat,M3UPlaylistFormat)
+

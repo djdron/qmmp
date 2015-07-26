@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <bs2b/bs2bversion.h>
 #include <qmmp/qmmp.h>
 #include "effectbs2bfactory.h"
@@ -67,4 +68,4 @@ QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(bs2b,EffectBs2bFactory)
+

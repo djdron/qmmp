@@ -32,6 +32,7 @@
 class ScrobblerFactory : public QObject, public GeneralFactory
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmpui.GeneralFactoryInterface.1.0")
 Q_INTERFACES(GeneralFactory)
 public:
     const GeneralProperties properties() const;

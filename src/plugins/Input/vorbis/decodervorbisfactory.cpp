@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QtGui>
+#include <QMessageBox>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/vorbisfile.h>
@@ -146,5 +147,3 @@ QTranslator *DecoderVorbisFactory::createTranslator(QObject *parent)
     translator->load(QString(":/vorbis_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(vorbis,DecoderVorbisFactory)

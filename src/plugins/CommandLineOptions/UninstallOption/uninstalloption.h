@@ -33,6 +33,7 @@
 class UninstallOption : public QObject, public CommandLineOption
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmpui.CommandLineOptionInterface.1.0")
 Q_INTERFACES(CommandLineOption)
 public:
     virtual bool identify(const QString& opt_str)const;

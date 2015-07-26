@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include "trackchange.h"
 #include "settingsdialog.h"
 #include "trackchangefactory.h"
@@ -60,4 +61,4 @@ QTranslator *TrackChangeFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(trackchange, TrackChangeFactory)
+

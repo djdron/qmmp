@@ -141,4 +141,4 @@ QString StatusOption::genProgressBar()
     return out;
 }
 
-Q_EXPORT_PLUGIN2(statusoption, StatusOption)
+

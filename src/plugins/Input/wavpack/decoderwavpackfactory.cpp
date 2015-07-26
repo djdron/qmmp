@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <QMessageBox>
 #include "wavpackmetadatamodel.h"
 #include "decoder_wavpack.h"
 #include "decoderwavpackfactory.h"
@@ -167,4 +167,4 @@ QTranslator *DecoderWavPackFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(wavpack,DecoderWavPackFactory)
+

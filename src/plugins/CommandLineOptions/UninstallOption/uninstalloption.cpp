@@ -74,4 +74,4 @@ QTranslator *UninstallOption::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(uninstalloption, UninstallOption)
+

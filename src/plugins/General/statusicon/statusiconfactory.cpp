@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <QMessageBox>
 #include "statusicon.h"
 #include "settingsdialog.h"
 #include "statusiconfactory.h"
@@ -61,5 +61,3 @@ QTranslator *StatusIconFactory::createTranslator(QObject *parent)
     translator->load(QString(":/statusicon_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(statusicon, StatusIconFactory)

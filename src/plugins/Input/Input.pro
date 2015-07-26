@@ -16,40 +16,34 @@ contains(CONFIG, MODPLUG_PLUGIN){
 }
 
 contains(CONFIG, FFMPEG_PLUGIN){
-   contains(CONFIG, FFMPEG_LEGACY){
-       SUBDIRS += ffmpeg_legacy
-    }else{
-       SUBDIRS += ffmpeg
-    }
+    SUBDIRS += ffmpeg
 }
 
 contains(CONFIG, GME_PLUGIN){
-  SUBDIRS += gme
+    SUBDIRS += gme
 }
 
 contains(CONFIG, OPUS_PLUGIN){
-  SUBDIRS += opus
+    SUBDIRS += opus
 }
 
 contains(CONFIG, CDAUDIO_PLUGIN){
-  SUBDIRS += cdaudio
+    SUBDIRS += cdaudio
 }
 
 contains(CONFIG, SID_PLUGIN){
-  SUBDIRS += sid
+    SUBDIRS += sid
 }
 
 unix{
 
 contains(CONFIG, AAC_PLUGIN){
-  SUBDIRS += aac
+    SUBDIRS += aac
 }
 
 
 contains(CONFIG, WILDMIDI_PLUGIN){
-  SUBDIRS += wildmidi
+    SUBDIRS += wildmidi
 }
-
-
 
 }

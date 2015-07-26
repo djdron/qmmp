@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <QMessageBox>
 #include "fileops.h"
 #include "settingsdialog.h"
 #include "fileopsfactory.h"
@@ -60,4 +60,4 @@ QTranslator *FileOpsFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(fileops, FileOpsFactory)
+

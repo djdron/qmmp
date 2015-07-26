@@ -25,11 +25,12 @@
 #include <qmmp/visual.h>
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class VisualProjectMFactory : public QObject, public VisualFactory
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.VisualFactoryInterface.1.0")
 Q_INTERFACES(VisualFactory)
 
 public:

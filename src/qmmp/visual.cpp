@@ -23,6 +23,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QApplication>
+#include <QDialog>
 #include "visualfactory.h"
 #include "output.h"
 #include "visual.h"

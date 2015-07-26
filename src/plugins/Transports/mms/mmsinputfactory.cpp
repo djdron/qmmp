@@ -62,4 +62,4 @@ QTranslator *MMSInputFactory::createTranslator(QObject *parent)
     translator->load(QString(":/mms_plugin_") + locale);
     return translator;
 }
-Q_EXPORT_PLUGIN2(mms, MMSInputFactory)
+

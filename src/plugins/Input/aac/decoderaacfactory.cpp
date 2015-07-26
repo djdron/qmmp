@@ -20,7 +20,7 @@
 
 #include <QtGui>
 #include <QFile>
-
+#include <QMessageBox>
 #include "aacfile.h"
 #include "aacmetadatamodel.h"
 #include "decoder_aac.h"
@@ -98,4 +98,4 @@ QTranslator *DecoderAACFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(aac,DecoderAACFactory)
+

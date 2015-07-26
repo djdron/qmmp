@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "ladspahelper.h"
@@ -64,4 +65,4 @@ QTranslator *EffectLADSPAFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(ladspa,EffectLADSPAFactory)
+

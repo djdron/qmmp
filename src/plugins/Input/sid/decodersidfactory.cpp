@@ -20,6 +20,7 @@
 
 #include <QtGui>
 #include <QRegExp>
+#include <QMessageBox>
 #include <sidplayfp/SidTune.h>
 #include <sidplayfp/SidTuneInfo.h>
 #include "decoder_sid.h"
@@ -133,4 +134,4 @@ QTranslator *DecoderSIDFactory::createTranslator(QObject *parent)
     translator->load(QString(":/sid_plugin_") + locale);
     return translator;
 }
-Q_EXPORT_PLUGIN2(sid,DecoderSIDFactory)
+

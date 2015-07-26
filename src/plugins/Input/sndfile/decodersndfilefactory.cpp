@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QtGui>
+#include <QMessageBox>
 #include <QRegExp>
 extern "C"
 {
@@ -141,4 +142,4 @@ QTranslator *DecoderSndFileFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(sndfile, DecoderSndFileFactory)
+

@@ -135,4 +135,4 @@ QString XSPFPlaylistFormat::encode(const QList<PlayListTrack*> & files)
 
 }
 
-Q_EXPORT_PLUGIN2(xspfplaylistformat,XSPFPlaylistFormat)
+

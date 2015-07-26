@@ -71,4 +71,4 @@ QTranslator *IncDecVolumeCommandLineOption::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(incdecvolumeoption, IncDecVolumeCommandLineOption)
+

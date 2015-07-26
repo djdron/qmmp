@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include "copypaste.h"
 #include "copypastefactory.h"
 
@@ -59,4 +60,4 @@ QTranslator *CopyPasteFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(copypaste, CopyPasteFactory)
+

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "visualprojectmfactory.h"
 #include "projectmplugin.h"
@@ -61,4 +62,4 @@ QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(projectm,VisualProjectMFactory)
+

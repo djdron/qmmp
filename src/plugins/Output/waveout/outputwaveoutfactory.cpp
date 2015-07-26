@@ -71,4 +71,4 @@ QTranslator *OutputWaveOutFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(waveout,OutputWaveOutFactory)
+

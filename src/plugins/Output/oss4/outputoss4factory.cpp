@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "outputoss4.h"
@@ -66,4 +67,4 @@ QTranslator *OutputOSS4Factory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(oss4,OutputOSS4Factory)
+

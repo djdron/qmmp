@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "effectcrossfadefactory.h"
 #include "settingsdialog.h"
@@ -61,4 +62,4 @@ QTranslator *EffectCrossfadeFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(crossfade,EffectCrossfadeFactory)
+

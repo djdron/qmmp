@@ -33,6 +33,7 @@
 class PLSPlaylistFormat : public QObject, public PlayListFormat
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qmmp.qmmpui.PlayListFormatInterface.1.0")
     Q_INTERFACES(PlayListFormat)
 public:
     const PlayListFormatProperties properties() const;

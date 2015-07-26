@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <qmmp/qmmp.h>
 #include "outputnull.h"
 #include "outputnullfactory.h"
@@ -64,4 +65,4 @@ QTranslator *OutputNullFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(null, OutputNullFactory)
+

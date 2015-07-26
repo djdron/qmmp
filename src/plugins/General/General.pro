@@ -8,7 +8,7 @@ SUBDIRS += statusicon \
            covermanager \
            streambrowser \
            trackchange \
-           hotkey \
+#           hotkey \
            copypaste \
            rgscan
 unix:SUBDIRS += mpris \
@@ -16,9 +16,9 @@ unix:SUBDIRS += mpris \
                 converter \
                 gnomehotkey
 
-contains(CONFIG, UDISKS_PLUGIN){
-    unix:SUBDIRS += udisks
-}
+#contains(CONFIG, UDISKS_PLUGIN){
+#    unix:SUBDIRS += udisks
+#}
 
 contains(CONFIG, UDISKS2_PLUGIN){
     unix:SUBDIRS += udisks2

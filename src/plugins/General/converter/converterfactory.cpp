@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include "converterhelper.h"
 #include "converterfactory.h"
 
@@ -61,4 +62,4 @@ QTranslator *ConverterFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(converter, ConverterFactory)
+

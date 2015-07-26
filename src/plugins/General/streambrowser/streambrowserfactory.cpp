@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include "streambrowser.h"
 #include "streambrowserfactory.h"
 
@@ -60,4 +61,4 @@ QTranslator *StreamBrowserFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(streambrowser, StreamBrowserFactory)
+

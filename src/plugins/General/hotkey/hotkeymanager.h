@@ -20,6 +20,7 @@
 #ifndef HOTKEYMANAGER_H
 #define HOTKEYMANAGER_H
 
+#include <QObject>
 #include <QString>
 #include <QTableWidgetItem>
 #include <QList>

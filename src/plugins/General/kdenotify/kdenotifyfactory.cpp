@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QMessageBox>
 #include "kdenotifyfactory.h"
 #include "kdenotify.h"
 #include "settingsdialog.h"
@@ -59,5 +60,3 @@ QTranslator *KdeNotifyFactory::createTranslator(QObject *parent)
     translator->load(QString(":/kdenotify_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(kdenotify, KdeNotifyFactory)

@@ -33,6 +33,7 @@ class QTranslator;
 class MMSInputFactory : public QObject, InputSourceFactory
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.InputSourceFactoryInterface.1.0")
 Q_INTERFACES(InputSourceFactory)
 public:
     const InputSourceProperties properties() const;

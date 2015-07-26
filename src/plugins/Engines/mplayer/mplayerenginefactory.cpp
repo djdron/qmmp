@@ -18,7 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 #include <QtGui>
-
+#include <QMessageBox>
 #include "mplayermetadatamodel.h"
 #include "settingsdialog.h"
 #include "mplayerengine.h"
@@ -93,4 +93,4 @@ QTranslator *MplayerEngineFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(mplayer,MplayerEngineFactory)
+

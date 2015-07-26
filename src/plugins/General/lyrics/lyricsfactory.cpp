@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <QMessageBox>
 #include "lyrics.h"
 #include "lyricsfactory.h"
 
@@ -61,4 +61,4 @@ QTranslator *LyricsFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(lyrcis, LyricsFactory)
+

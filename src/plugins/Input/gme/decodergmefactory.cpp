@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QMessageBox>
 #include <QRegExp>
 #include "settingsdialog.h"
 #include "gmehelper.h"
@@ -126,4 +127,4 @@ QTranslator *DecoderGmeFactory::createTranslator(QObject *parent)
     translator->load(QString(":/gme_plugin_") + locale);
     return translator;
 }
-Q_EXPORT_PLUGIN2(gme,DecoderGmeFactory)
+
