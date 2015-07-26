@@ -37,7 +37,7 @@ public:
     ~HorizontalSlider();
 
 public slots:
-    void setPos(int pos, int max);
+    void setPos(int v, int max);
 
 signals:
     void sliderMoved (int);
@@ -46,20 +46,18 @@ private slots:
     void updateSkin();
 
 private:
-    Skin *m_skin;
-    PixmapWidget *m_scroll;
-    int m_old;
-    bool m_moving, m_pressed;
-    int press_pos;
-    int m_min, m_max, m_value, pos, m_pos;
-    int convert(int);   // value = convert(position);
-    QColor m_normal, m_normal_bg;
-
-protected:
     void paintEvent(QPaintEvent*);
     void mousePressEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
     void mouseMoveEvent(QMouseEvent*);
+    int convert(int) const;   // value = convert(position);
+    int sliderSize() const;
+
+    Skin *m_skin;
+    int m_old_value, m_value;
+    int m_press_pos;
+    int m_min, m_max, m_slider_pos;
+    QColor m_normal, m_normal_bg;
+
 };
 
 #endif

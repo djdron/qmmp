@@ -49,8 +49,10 @@ public:
     int requiredHeight() const;
     QList<int> sizes() const;
     int trackStateColumn() const;
-    int verticalScrollSize() const;
+    int maxScrollValue() const;
+    int totalColumnWidth() const;
     int offset() const;
+    bool hasAutoResizeColumn() const;
 
 public slots:
     void scroll(int offset);
@@ -63,10 +65,10 @@ private slots:
     void addColumn();
     void editColumn();
     void removeColumn();
-    void setAutoResize(bool yes);
-    void showTrackState(bool yes);
-    void restoreSize();
+    void setAutoResize(bool on);
+    void showTrackState(bool on);
     void onColumnAdded(int index);
+    void onColumnRemoved();
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -76,11 +78,12 @@ private:
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
     void loadColors();
+    void adjustColumn(int index);
+    int autoResizeColumn() const;
     int findColumn(QPoint pos);
     int size(int index) const;
     void setSize(int index, int size);
     const QString name(int index) const;
-    bool adjustColumns();
     void writeSettings();
 
 
@@ -105,6 +108,7 @@ private:
     QAction *m_autoResizeAction;
     QPixmap m_arrow_up, m_arrow_down;
     bool m_reverted;
+    bool m_auto_resize;
     int m_number_width;
     int m_pressed_column;
     int m_old_size;
@@ -113,6 +117,7 @@ private:
     int m_pl_padding;
     int m_sorting_column;
     int m_offset;
+
 
     enum
     {
