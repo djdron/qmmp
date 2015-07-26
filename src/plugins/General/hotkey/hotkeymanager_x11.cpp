@@ -138,8 +138,7 @@ const QString HotkeyManager::getKeyString(quint32 key, quint32 modifiers)
 
 bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
 {
-    //receive events from active and root windows only
-    if (e->type() == QEvent::KeyPress && (o == qApp->desktop () || o == qApp->activeWindow ()))
+    if (e->type() == QEvent::KeyPress)
     {
         QKeyEvent* k = static_cast<QKeyEvent*>(e);
         quint32 key = keycodeToKeysym(k->nativeScanCode());
@@ -198,7 +197,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 break;
 
             }
-            qApp->processEvents();
+            return true;
         }
     }
     return QObject::eventFilter(o, e);

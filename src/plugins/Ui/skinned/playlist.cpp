@@ -487,7 +487,10 @@ void PlayList::readSettings()
 #ifdef Q_WS_X11
 bool PlayList::event (QEvent *event)
 {
-    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::ShowToParent)
+    if(event->type() == QEvent::WinIdChange ||
+            event->type() == QEvent::WindowActivate ||
+            event->type() == QEvent::Show ||
+            event->type() == QEvent::ShowToParent)
     {
         WindowSystem::ghostWindow(winId());
         WindowSystem::setWinHint(winId(), "playlist", "Qmmp");
