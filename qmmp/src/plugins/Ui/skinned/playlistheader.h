@@ -50,7 +50,6 @@ public:
     QList<int> sizes() const;
     int trackStateColumn() const;
     int maxScrollValue() const;
-    int totalColumnWidth() const;
     int offset() const;
     bool hasAutoResizeColumn() const;
 
