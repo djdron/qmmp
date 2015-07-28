@@ -49,8 +49,12 @@ public:
     int requiredHeight() const;
     QList<int> sizes() const;
     int trackStateColumn() const;
+    int maxScrollValue() const;
+    int offset() const;
+    bool hasAutoResizeColumn() const;
 
 public slots:
+    void scroll(int offset);
     void updateColumns();
     void showSortIndicator(int column, bool reverted);
     void hideSortIndicator();
@@ -61,8 +65,8 @@ private slots:
     void removeColumn();
     void setAutoResize(bool yes);
     void showTrackState(bool yes);
-    void restoreSize();
     void onColumnAdded(int index);
+    void onColumnRemoved();
 
 private:
     void mousePressEvent(QMouseEvent *e);
@@ -77,7 +81,8 @@ private:
     int size(int index) const;
     void setSize(int index, int size);
     const QString name(int index) const;
-    bool adjustColumns();
+    void adjustColumn(int index);
+    int autoResizeColumn() const;
     void writeSettings();
     void showEvent(QShowEvent *);
     void hideEvent(QHideEvent *);
@@ -91,6 +96,7 @@ private:
         TRACK_STATE
     };
 
+    QSize m_size_hint;
     QFontMetrics *m_metrics;
     QMenu *m_menu;
     QPoint m_pressed_pos;
@@ -99,6 +105,8 @@ private:
     QAction *m_trackStateAction;
     QAction *m_autoResizeAction;
     bool m_reverted;
+    bool m_auto_resize;
+    bool m_block_resize;
     int m_number_width;
     int m_scrollbar_width;
     int m_pressed_column;
@@ -106,9 +114,8 @@ private:
     int m_press_offset;
     int m_pl_padding;
     int m_sorting_column;
-    bool m_block_resize;
-    QSize m_size_hint;
-    QList<int> m_old_sizes;
+
+    int m_offset;
 
     enum
     {

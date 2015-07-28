@@ -39,6 +39,7 @@ struct ListWidgetRow
         numberColumnWidth = 0;
         lengthColumnWidth = 0;
         trackStateColumn = -1;
+        autoResize = false;
     }
     QStringList titles;
     QList<int> sizes;
@@ -59,6 +60,7 @@ struct ListWidgetRow
 
     int flags;
     QRect rect; //geometry
+    bool autoResize;
 };
 
 /**

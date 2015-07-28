@@ -109,6 +109,8 @@ private:
      */
     const QString getExtraString(int i);
 
+    bool updateRowCount();
+
     bool m_update;
     int m_pressed_index;
     QMenu *m_menu;
@@ -130,6 +132,7 @@ private:
     QScrollBar *m_scrollBar;
     ListWidgetDrawer m_drawer;
     PlayListHeader *m_header;
+    QScrollBar *m_hslider;
 };
 
 #endif

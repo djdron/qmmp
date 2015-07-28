@@ -156,19 +156,22 @@ void ListWidgetDrawer::prepareRow(ListWidgetRow *row)
 
     QFontMetrics *metrics = (row->flags & ListWidgetRow::CURRENT) ? m_bold_metrics : m_metrics;
 
-    if(m_show_number && !m_align_numbres)
-        row->titles[0].prepend(QString("%1").arg(row->number)+". ");
+    if(row->titles.count() == 1)
+    {
+        if(m_show_number && !m_align_numbres)
+            row->titles[0].prepend(QString("%1").arg(row->number)+". ");
 
-    if((m_show_lengths && !row->length.isEmpty()) || !row->extraString.isEmpty())
-        row->lengthColumnWidth = m_padding;
-    else
-        row->lengthColumnWidth = 0;
+        if((m_show_lengths && !row->length.isEmpty()) || !row->extraString.isEmpty())
+            row->lengthColumnWidth = m_padding;
+        else
+            row->lengthColumnWidth = 0;
 
-    if(m_show_lengths && !row->length.isEmpty())
-        row->lengthColumnWidth += metrics->width(row->length) + m_padding;
+        if(m_show_lengths && !row->length.isEmpty())
+            row->lengthColumnWidth += metrics->width(row->length) + m_padding;
 
-    if(!row->extraString.isEmpty())
-        row->lengthColumnWidth += m_extra_metrics->width(row->extraString) + m_padding;
+        if(!row->extraString.isEmpty())
+            row->lengthColumnWidth += m_extra_metrics->width(row->extraString) + m_padding;
+    }
 
     //elide title
     int visible_width = row->rect.width() - row->lengthColumnWidth - row->numberColumnWidth;
@@ -255,26 +258,26 @@ void ListWidgetDrawer::drawBackground(QPainter *painter, ListWidgetRow *row, int
 
 void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool rtl)
 {
-    int sx = row->rect.x() + 50;
+    int sx = 50 + row->numberColumnWidth;
     int sy =  row->rect.y() + m_metrics->overlinePos() - 1;
 
     painter->setFont(m_font);
     painter->setPen(row->flags & ListWidgetRow::SELECTED ? m_highlighted : m_group_text);
 
-    if(row->numberColumnWidth)
-        sx += row->numberColumnWidth;
     if(rtl)
         sx = row->rect.right() - sx - m_metrics->width(row->titles[0]);
+    else
+        sx += row->rect.x();
 
     painter->drawText(sx, sy, row->titles[0]);
 
-    sy = sy - m_metrics->lineSpacing()/2 + 2;
+    sy -= m_metrics->lineSpacing()/2 - 2;
 
     if(rtl)
     {
-        painter->drawLine(10, sy, sx - 5, sy);
+        painter->drawLine(row->rect.x() + 5, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
-                          row->rect.right() - row->numberColumnWidth - m_padding, sy);
+                row->rect.right() - row->numberColumnWidth - m_padding, sy);
         if(row->numberColumnWidth)
         {
             painter->drawLine(row->rect.right() - row->numberColumnWidth, row->rect.top(),
@@ -285,7 +288,7 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     {
         painter->drawLine(sx - 45, sy, sx - 5, sy);
         painter->drawLine(sx + m_metrics->width(row->titles[0]) + 5, sy,
-                          row->rect.width(), sy);
+                row->rect.width(), sy);
         if(row->numberColumnWidth)
         {
             painter->drawLine(row->rect.left() + row->numberColumnWidth, row->rect.top(),
@@ -356,8 +359,10 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                     painter->drawText(sx + m_padding, sy, row->extraString);
                     painter->setFont(prev_font);
                 }
-
-                painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
+                if(!row->autoResize || i < row->sizes.count() - 1) //do not draw last vertical line
+                {
+                    painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
+                }
             }
         }
     }
@@ -407,7 +412,10 @@ void ListWidgetDrawer::drawTrack(QPainter *painter, ListWidgetRow *row, bool rtl
                     painter->setFont(prev_font);
                 }
 
-                painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
+                if(!row->autoResize || i < row->sizes.count() - 1) //do not draw last vertical line
+                {
+                    painter->drawLine(sx - 1, row->rect.top(), sx - 1, row->rect.bottom() + 1);
+                }
             }
         }
     }

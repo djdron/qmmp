@@ -53,6 +53,7 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
 
     m_header = new PlayListHeader(this);
     m_scrollBar = new QScrollBar(Qt::Vertical, this);
+    m_hslider = new QScrollBar(Qt::Horizontal, this);
     m_update = false;
     m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
@@ -70,6 +71,8 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
+    connect(m_hslider, SIGNAL(sliderMoved(int)), m_header, SLOT(scroll(int)));
+    connect(m_hslider, SIGNAL(sliderMoved(int)), this, SLOT(update()));
     connect(m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect(m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
     connect(m_model, SIGNAL(sortingByColumnFinished(int,bool)), m_header, SLOT(showSortIndicator(int,bool)));
@@ -96,7 +99,6 @@ void ListWidget::readSettings()
     if (m_update)
     {
         m_drawer.readSettings();
-        m_row_count = (height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
         updateList(PlayListModel::STRUCTURE);
         if(m_popupWidget)
         {
@@ -131,7 +133,7 @@ int ListWidget::anchorIndex() const
 void ListWidget::setAnchorIndex(int index)
 {
     m_anchor_index = index;
-    updateList(PlayListModel::CURRENT);
+    updateList(PlayListModel::SELECTION);
 }
 
 QMenu *ListWidget::menu()
@@ -158,6 +160,10 @@ void ListWidget::paintEvent(QPaintEvent *)
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
 #endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
+    int scroll_bar_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
+
+    painter.setClipRect(5,0,width() - scroll_bar_width - 9, height());
+    painter.translate(rtl ? m_header->offset() : -m_header->offset(), 0);
 
     for (int i = 0; i < m_rows.size(); ++i )
     {
@@ -262,8 +268,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
     m_scrollBar->setGeometry(rtl ? 0 : width() - m_scrollBar->sizeHint().width(), 0,
                              m_scrollBar->sizeHint().width(), height());
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
-    m_row_count = (e->size().height() - (m_header->isVisibleTo(this) ? m_header->height() : 0)) / m_drawer.rowHeight();
-    m_row_count = qMax(m_row_count, 0);
+    m_hslider->setGeometry(5,height() - 7, width() - 10, 7);
     if(e->oldSize().height() < 10)
         updateList(PlayListModel::STRUCTURE | PlayListModel::CURRENT); //recenter to current on first resize
     else
@@ -319,6 +324,13 @@ bool ListWidget::event (QEvent *e)
 
 void ListWidget::updateList(int flags)
 {
+    m_hslider->setVisible(m_header->maxScrollValue() > 0);
+    m_hslider->setRange(0, m_header->maxScrollValue());
+    m_hslider->setValue(m_header->offset());
+
+    if(updateRowCount())
+        flags |= PlayListModel::STRUCTURE;
+
     if(flags & PlayListModel::CURRENT)
         recenterCurrent();
 
@@ -380,6 +392,7 @@ void ListWidget::updateList(int flags)
     for(int i = 0; i < items.count(); ++i)
     {
         ListWidgetRow *row = m_rows[i];
+        row->autoResize = m_header->hasAutoResizeColumn();
         row->trackStateColumn = trackStateColumn;
         items[i]->isSelected() ? row->flags |= ListWidgetRow::SELECTED :
                 row->flags &= ~ListWidgetRow::SELECTED;
@@ -529,6 +542,22 @@ const QString ListWidget::getExtraString(int i)
         extra_string += "|S|";
 
     return extra_string.trimmed(); //remove white space
+}
+
+bool ListWidget::updateRowCount()
+{
+    int h = height();
+    if(m_header->isVisibleTo(this))
+        h -= m_header->requiredHeight();
+    if(m_hslider->isVisibleTo(this))
+        h -= m_hslider->height();
+    int row_count = qMax(0, h / m_drawer.rowHeight());
+    if(m_row_count != row_count)
+    {
+        m_row_count = row_count;
+        return true;
+    }
+    return false;
 }
 
 void ListWidget::mouseMoveEvent(QMouseEvent *e)
