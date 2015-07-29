@@ -63,7 +63,7 @@ private slots:
     void addColumn();
     void editColumn();
     void removeColumn();
-    void setAutoResize(bool yes);
+    void setAutoResize(bool on);
     void showTrackState(bool yes);
     void onColumnAdded(int index);
     void onColumnRemoved();

@@ -382,9 +382,10 @@ void ListWidget::updateList(int flags)
 
     updateScrollBars();
 
-    int trackStateColumn = m_header->trackStateColumn();
-    bool rtl = layoutDirection() == Qt::RightToLeft;
     int scroll_bar_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
+    int trackStateColumn = m_header->trackStateColumn();
+    int rowWidth = width() + m_header->maxScrollValue() - 10 - scroll_bar_width;
+    bool rtl = layoutDirection() == Qt::RightToLeft;
     m_header->setScrollBarWidth(scroll_bar_width);
 
     for(int i = 0; i < items.count(); ++i)
@@ -401,9 +402,16 @@ void ListWidget::updateList(int flags)
         if(flags == PlayListModel::SELECTION)
             continue;
 
-        row->rect = QRect(5 + (rtl ? scroll_bar_width : 0),
-                          (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
-                          width() - scroll_bar_width - 10, m_drawer.rowHeight() - 1);
+        if(rtl)
+        {
+            row->rect = QRect(width() - 5 - rowWidth, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+                              rowWidth, m_drawer.rowHeight() - 1);
+        }
+        else
+        {
+            row->rect = QRect(5, (m_header->isVisibleTo(this) ? m_header->height() : 0) + i * m_drawer.rowHeight(),
+                              rowWidth, m_drawer.rowHeight() - 1);
+        }
 
         row->titles = items[i]->formattedTitles();
         row->sizes = m_header->sizes();
