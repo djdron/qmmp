@@ -264,11 +264,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    bool rtl = layoutDirection() == Qt::RightToLeft;
-    m_scrollBar->setGeometry(rtl ? 0 : width() - m_scrollBar->sizeHint().width(), 0,
-                             m_scrollBar->sizeHint().width(), height());
     m_header->setGeometry(0,0,width(), m_header->requiredHeight());
-    m_hslider->setGeometry(5,height() - 7, width() - 10, 7);
     if(e->oldSize().height() < 10)
         updateList(PlayListModel::STRUCTURE | PlayListModel::CURRENT); //recenter to current on first resize
     else
@@ -383,6 +379,8 @@ void ListWidget::updateList(int flags)
         m_drawer.setSingleColumnMode(m_model->columnCount() == 1);
         m_header->setNumberWidth(m_drawer.numberWidth());
     }
+
+    updateScrollBars();
 
     int trackStateColumn = m_header->trackStateColumn();
     bool rtl = layoutDirection() == Qt::RightToLeft;
@@ -558,6 +556,28 @@ bool ListWidget::updateRowCount()
         return true;
     }
     return false;
+}
+
+void ListWidget::updateScrollBars()
+{
+    bool rtl = layoutDirection() == Qt::RightToLeft;
+
+    int vslider_width = m_scrollBar->isVisibleTo(this) ? m_scrollBar->sizeHint().width() : 0;
+    int hslider_height = m_hslider->isVisibleTo(this) ? m_hslider->sizeHint().height() : 0;
+
+    if(rtl)
+    {
+        m_scrollBar->setGeometry(0, 0, m_scrollBar->sizeHint().width(), height() - hslider_height);
+        m_hslider->setGeometry(vslider_width, height() - m_hslider->sizeHint().height(),
+                               width() - vslider_width, m_hslider->sizeHint().height());
+    }
+    else
+    {
+        m_scrollBar->setGeometry(width() - m_scrollBar->sizeHint().width(), 0,
+                                 m_scrollBar->sizeHint().width(), height() - hslider_height);
+        m_hslider->setGeometry(0, height() - m_hslider->sizeHint().height(), width() - vslider_width,
+                               m_hslider->sizeHint().height());
+    }
 }
 
 void ListWidget::mouseMoveEvent(QMouseEvent *e)

@@ -110,6 +110,7 @@ private:
     const QString getExtraString(int i);
 
     bool updateRowCount();
+    void updateScrollBars();
 
     bool m_update;
     int m_pressed_index;
