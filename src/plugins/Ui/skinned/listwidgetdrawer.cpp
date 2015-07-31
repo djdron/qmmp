@@ -205,8 +205,6 @@ void ListWidgetDrawer::drawSeparator(QPainter *painter, ListWidgetRow *row, bool
     painter->setFont(m_font);
     painter->setPen(m_normal);
 
-    /*if(row->numberColumnWidth)
-        sx += row->numberColumnWidth;*/
     if(rtl)
         sx = row->rect.right() - sx - m_metrics->width(row->titles[0]);
     else
