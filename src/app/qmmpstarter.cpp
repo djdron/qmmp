@@ -58,6 +58,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_player = 0;
     m_core = 0;
     m_ui = 0;
+    connect(qApp, SIGNAL(commitDataRequest(QSessionManager)), SLOT(commitData(QSessionManager)));
 #ifdef Q_OS_WIN
     m_named_mutex = 0;
 #endif
@@ -224,6 +225,15 @@ void QMMPStarter::savePosition()
     settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
     settings.endGroup();
     m_core->stop();
+}
+
+void QMMPStarter::commitData(QSessionManager &manager)
+{
+    if(UiHelper::instance())
+        UiHelper::instance()->exit();
+#ifndef QT_NO_SESSIONMANAGER
+    manager.release();
+#endif
 }
 
 void QMMPStarter::writeCommand()

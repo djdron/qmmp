@@ -30,7 +30,6 @@
 #include <winuser.h>
 #endif
 #include <qmmp/qmmp.h>
-#include "qmmpapplication.h"
 #include "qmmpstarter.h"
 
 int main(int argc, char *argv[])
@@ -39,7 +38,7 @@ int main(int argc, char *argv[])
     //allows to activate main window from other instances
     AllowSetForegroundWindow(ASFW_ANY);
 #endif
-    QmmpApplication a (argc, argv );
+    QApplication a (argc, argv );
     a.setApplicationName("qmmp");
     a.setWindowIcon(QIcon(":/32x32/qmmp.png"));
 

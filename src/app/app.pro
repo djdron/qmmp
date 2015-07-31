@@ -2,15 +2,12 @@ include(../../qmmp.pri)
 
 HEADERS += qmmpstarter.h \
            builtincommandlineoption.h \
-    lxdesupport.h \
-    qmmpapplication.h
+    lxdesupport.h
 
-SOURCES += \
-           qmmpstarter.cpp \
+SOURCES += qmmpstarter.cpp \
            builtincommandlineoption.cpp \
     lxdesupport.cpp \
-    main.cpp \
-    qmmpapplication.cpp
+    main.cpp
 
 
 

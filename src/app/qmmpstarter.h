@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QAbstractSocket>
 #include <QStringList>
+#include <QSessionManager>
 #ifdef Q_OS_WIN
 #include <windows.h>
 #endif
@@ -55,6 +56,7 @@ private slots:
     void writeCommand();
     void readCommand();
     void savePosition();
+    void commitData(QSessionManager& manager);
 
 private:
     QString processCommandArgs(const QStringList &list,const QString& cwd);
