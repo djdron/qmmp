@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Copyright (C) 2007 by  projectM team                                  *
@@ -28,6 +28,7 @@
 #include <QMenu>
 #include <QApplication>
 #include <QListWidget>
+#include <QOpenGLContext>
 #include <qmmp/soundcore.h>
 #include <qmmp/qmmp.h>
 #include "projectmwrapper.h"
@@ -38,21 +39,16 @@
 #endif
 
 ProjectMWidget::ProjectMWidget(QListWidget *listWidget, QWidget *parent)
-        : QGLWidget(parent)
+        : QOpenGLWidget(parent)
 {
     setMouseTracking(true);
     m_listWidget = listWidget;
     m_projectM = 0;
     m_timer = new QTimer(this);
-    connect(m_timer, SIGNAL(timeout()),SLOT(updateGL()));
+    connect(m_timer, SIGNAL(timeout()),SLOT(update()));
     m_menu = new QMenu(this);
     connect(SoundCore::instance(), SIGNAL(metaDataChanged()), SLOT(updateTitle()));
-#if QT_VERSION >= 0x040700
-    qDebug("ProjectMWidget: opengl version: %d.%d",
-           context()->format().majorVersion(),
-           context()->format().minorVersion());
     createActions();
-#endif
 }
 
 

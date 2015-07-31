@@ -22,7 +22,6 @@ link_pkgconfig
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-QT += opengl
 
 TRANSLATIONS = translations/projectm_plugin_cs.ts \
                translations/projectm_plugin_de.ts \

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,7 @@
 #ifndef PROJECTMWIDGET_H
 #define PROJECTMWIDGET_H
 
-#include <QGLWidget>
+#include <QOpenGLWidget>
 
 class QMenu;
 class QTimer;
@@ -31,7 +31,7 @@ class projectM;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class ProjectMWidget : public QGLWidget
+class ProjectMWidget : public QOpenGLWidget
 {
     Q_OBJECT
 public:
