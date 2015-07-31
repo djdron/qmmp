@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -75,7 +75,7 @@ PlayListFormat *PlayListParser::findByPath(const QString &filePath)
 
 PlayListFormat *PlayListParser::findByUrl(const QUrl &url)
 {
-    QString path = url.encodedPath();
+    QString path = url.path(QUrl::FullyEncoded);
     return findByPath(path);
 }
 

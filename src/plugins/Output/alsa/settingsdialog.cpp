@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -239,7 +239,7 @@ int SettingsDialog::getMixer(snd_mixer_t **mixer, QString card)
     char *dev;
     int err;
 
-    dev = strdup(QString(card).toAscii().data());
+    dev = strdup(QString(card).toLatin1().data());
     if ((err = snd_mixer_open(mixer, 0)) < 0)
     {
         qWarning("SettingsDialog (ALSA): alsa_get_mixer(): "

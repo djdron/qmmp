@@ -399,12 +399,12 @@ void EqWidget::importWinampEQF()
     QFile file(path);
     file.open(QIODevice::ReadOnly);
     file.read (header, 31);
-    if (QString::fromAscii(header).contains("Winamp EQ library file v1.1"))
+    if (QString::fromLatin1(header).contains("Winamp EQ library file v1.1"))
     {
         while (file.read (name, 257))
         {
             EQPreset* preset = new EQPreset;
-            preset->setText(QString::fromAscii(name));
+            preset->setText(QString::fromLatin1(name));
 
             file.read(bands,11);
 

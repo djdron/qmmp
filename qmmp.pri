@@ -7,7 +7,6 @@ OBJECTS_DIR=./.build/obj
 RCC_DIR=./.build/rcc
 
 QT += widgets
-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
 DEFINES += Q_WS_X11
 
 #Version

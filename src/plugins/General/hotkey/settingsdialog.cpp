@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,9 +30,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
     m_ui.setupUi(this);
     m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
-    m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    m_ui.tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     m_ui.tableWidget->verticalHeader()->hide();
-    m_ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    m_ui.tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     m_ui.tableWidget->setRowCount (13);
     m_ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
     m_ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));

@@ -61,7 +61,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     }
 
     //qDebug("header received: %s", (char*) data);
-    QString str = QString::fromAscii((char *) data, data_size);
+    QString str = QString::fromLatin1((char *) data, data_size);
     str = str.trimmed ();
     if (str.left(4).contains("HTTP"))
     {
@@ -302,7 +302,7 @@ void HttpStreamReader::run()
                                 toLatin1 ().constData ()));
 
     // Set url to download
-    curl_easy_setopt(m_handle, CURLOPT_URL, strdup(m_url.toAscii().constData()));
+    curl_easy_setopt(m_handle, CURLOPT_URL, strdup(m_url.toLatin1().constData()));
     // callback for wrting
     curl_easy_setopt(m_handle, CURLOPT_WRITEFUNCTION, curl_write_data);
     // Set destination file

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -59,7 +59,7 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     //icecast table
     ui.icecastTableView->setModel(m_iceCastFilterModel);
     ui.icecastTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
-    ui.icecastTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui.icecastTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui.icecastTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui.icecastTableView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui.icecastTableView, SIGNAL(customContextMenuRequested(QPoint)),
@@ -77,7 +77,7 @@ StreamWindow::StreamWindow(QWidget *parent) : QWidget(parent)
     //favorites table
     ui.favoritesTableView->setModel(m_favoritesFilterModel);
     ui.favoritesTableView->verticalHeader()->setDefaultSectionSize(fontMetrics().height());
-    ui.favoritesTableView->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    ui.favoritesTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui.favoritesTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui.favoritesTableView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui.favoritesTableView, SIGNAL(customContextMenuRequested(QPoint)),
@@ -159,7 +159,7 @@ void StreamWindow::on_updatePushButton_clicked()
 {
     QNetworkRequest request;
     request.setUrl(QUrl("http://dir.xiph.org/yp.xml"));
-    request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
+    request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toLatin1());
     m_requestReply = m_http->get(request);
     ui.statusLabel->setText(tr("Receiving"));
     ui.statusLabel->show();

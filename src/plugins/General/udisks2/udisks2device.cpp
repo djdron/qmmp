@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -48,7 +48,7 @@ UDisks2Device::~UDisks2Device()
 
 QVariant UDisks2Device::property(const QString &key) const
 {
-    return m_block_interface->property(key.toAscii().data());
+    return m_block_interface->property(key.toLatin1().data());
 }
 
 bool UDisks2Device::isRemovable() const
@@ -103,7 +103,7 @@ QStringList UDisks2Device::mountPoints() const
 
 QString UDisks2Device::deviceFile() const
 {
-    return QString::fromAscii(m_block_interface->property("Device").toByteArray());
+    return QString::fromLatin1(m_block_interface->property("Device").toByteArray());
 }
 
 QDBusObjectPath UDisks2Device::objectPath() const

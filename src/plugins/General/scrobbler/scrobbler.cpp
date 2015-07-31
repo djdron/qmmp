@@ -26,6 +26,7 @@
 #include <QCryptographicHash>
 #include <QXmlStreamReader>
 #include <QUrl>
+#include <QUrlQuery>
 #include <QTime>
 #include <QTimer>
 #include <QDateTime>
@@ -89,7 +90,7 @@ Scrobbler::Scrobbler(const QString &scrobblerUrl, const QString &name, QObject *
     m_state = Qmmp::Stopped;
     m_time = new QTime();
     m_cache = new ScrobblerCache(Qmmp::configDir() +"scrobbler_"+name+".cache");
-    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
+    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toLatin1();
     m_http = new QNetworkAccessManager(this);
     m_core = SoundCore::instance();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -311,7 +312,7 @@ void Scrobbler::submit()
     QUrl url(m_scrobblerUrl);
     url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
-    QUrl body("");
+    QUrlQuery body("");
     QByteArray data;
     foreach (QString key, params.keys())
     {
@@ -320,12 +321,12 @@ void Scrobbler::submit()
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
-    QByteArray bodyData = body.toEncoded().remove(0,1);
+    QByteArray bodyData = body.query(QUrl::FullyDecoded).toLatin1().remove(0,1);
     bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", m_ua);
-    request.setRawHeader("Host", url.host().toAscii());
+    request.setRawHeader("Host", url.host().toLatin1());
     request.setRawHeader("Accept", "*/*");
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader, bodyData.size());
@@ -359,7 +360,7 @@ void Scrobbler::sendNotification(const SongInfo &info)
     QUrl url(m_scrobblerUrl);
     url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
-    QUrl body("");
+    QUrlQuery body("");
     QByteArray data;
     foreach (QString key, params.keys())
     {
@@ -368,12 +369,12 @@ void Scrobbler::sendNotification(const SongInfo &info)
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
-    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    QByteArray bodyData = body.query(QUrl::FullyDecoded).toLatin1().remove(0,1);
     bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", m_ua);
-    request.setRawHeader("Host", url.host().toAscii());
+    request.setRawHeader("Host", url.host().toLatin1());
     request.setRawHeader("Accept", "*/*");
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());
@@ -388,7 +389,7 @@ ScrobblerAuth::ScrobblerAuth(const QString &scrobblerUrl, const QString &authUrl
     m_scrobblerUrl = scrobblerUrl;
     m_authUrl = authUrl;
     m_name = name;
-    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toAscii();
+    m_ua = QString("qmmp-plugins/%1").arg(Qmmp::strVersion().toLower()).toLatin1();
     m_http = new QNetworkAccessManager(this);
     connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
 
@@ -413,18 +414,20 @@ void ScrobblerAuth::getToken()
     m_session.clear();
     QUrl url(m_scrobblerUrl + "?");
     url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
-    url.addQueryItem("method", "auth.getToken");
-    url.addQueryItem("api_key", API_KEY);
+    QUrlQuery q;
+    q.addQueryItem("method", "auth.getToken");
+    q.addQueryItem("api_key", API_KEY);
 
     QByteArray data;
     data.append("api_key"API_KEY);
     data.append("methodauth.getToken");
     data.append(SECRET);
-    url.addQueryItem("api_sig", QCryptographicHash::hash(data,QCryptographicHash::Md5).toHex());
+    q.addQueryItem("api_sig", QCryptographicHash::hash(data,QCryptographicHash::Md5).toHex());
+    url.setQuery(q);
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent",  m_ua);
-    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Host",url.host().toLatin1());
     request.setRawHeader("Accept", "*/*");
     m_getTokenReply = m_http->get(request);
 }
@@ -434,20 +437,22 @@ void ScrobblerAuth::getSession()
     qDebug("ScrobblerAuth[%s]: new session request", qPrintable(m_name));
     QUrl url(m_scrobblerUrl + "?");
     url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
-    url.addQueryItem("api_key", API_KEY);
-    url.addQueryItem("method", "auth.getSession");
-    url.addQueryItem("token", m_token);
+    QUrlQuery q;
+    q.addQueryItem("api_key", API_KEY);
+    q.addQueryItem("method", "auth.getSession");
+    q.addQueryItem("token", m_token);
 
     QByteArray data;
     data.append("api_key"API_KEY);
     data.append("methodauth.getSession");
     data.append("token" + m_token.toUtf8());
     data.append(SECRET);
-    url.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+    q.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+    url.setQuery(q);
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent",  m_ua);
-    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Host",url.host().toLatin1());
     request.setRawHeader("Accept", "*/*");
     m_getSessionReply = m_http->get(request);
 }
@@ -465,7 +470,7 @@ void ScrobblerAuth::checkSession(const QString &session)
     QUrl url(m_scrobblerUrl);
     url.setPort(m_scrobblerUrl.startsWith("https") ? 443 : 80);
 
-    QUrl body("");
+    QUrlQuery body("");
     QByteArray data;
     foreach (QString key, params.keys())
     {
@@ -474,12 +479,12 @@ void ScrobblerAuth::checkSession(const QString &session)
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
-    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    QByteArray bodyData = body.query(QUrl::FullyDecoded).toLatin1().remove(0,1);
     bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", m_ua);
-    request.setRawHeader("Host", url.host().toAscii());
+    request.setRawHeader("Host", url.host().toLatin1());
     request.setRawHeader("Accept", "*/*");
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
     request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDesktopServices>
+#include <QStandardPaths>
 #include <QMenu>
 #include <QFile>
 #include <QDir>
@@ -45,7 +45,7 @@ ConverterDialog::ConverterDialog(QList <PlayListTrack *> items,  QWidget *parent
     }
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Converter");
-    QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
+    QString music_path = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
     m_ui.outDirEdit->setText(settings.value("out_dir", music_path).toString());
     m_ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
     m_ui.overwriteCheckBox->setChecked(settings.value("overwrite",false).toBool());

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,7 +64,7 @@ ConfigDialog::ConfigDialog (QWidget *parent) : QDialog (parent)
     m_ui->preferencesButton->setEnabled(false);
     m_ui->informationButton->setEnabled(false);
     m_ui->treeWidget->setItemDelegate(new RadioItemDelegate(this));
-    m_ui->treeWidget->header()->setMovable(false);
+    m_ui->treeWidget->header()->setSectionsMovable(false);
     connect (this, SIGNAL(rejected()),SLOT(saveSettings()));
     m_ui->replayGainModeComboBox->addItem (tr("Track"), QmmpSettings::REPLAYGAIN_TRACK);
     m_ui->replayGainModeComboBox->addItem (tr("Album"), QmmpSettings::REPLAYGAIN_ALBUM);

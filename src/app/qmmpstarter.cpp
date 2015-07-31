@@ -48,7 +48,7 @@
 #ifdef Q_OS_WIN
 #define UDS_PATH QString("qmmp")
 #else
-#define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
+#define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toLatin1().constData()
 #endif
 
 using namespace std;

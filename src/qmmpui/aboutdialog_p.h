@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+*   Copyright (C) 2006-2015 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,7 @@ class AboutDialog : public QDialog, private Ui::AboutDialog
 {
     Q_OBJECT
 public:
-    AboutDialog(QWidget* parent = 0, Qt::WFlags fl = 0 );
+    AboutDialog(QWidget* parent = 0);
     ~AboutDialog();
 
 private:

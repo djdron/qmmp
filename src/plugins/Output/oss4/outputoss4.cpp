@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -108,7 +108,7 @@ void OutputOSS4::sync()
 
 bool OutputOSS4::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY);
+    m_audio_fd = open(m_audio_device.toLatin1(), O_WRONLY);
 
     if (m_audio_fd < 0)
     {

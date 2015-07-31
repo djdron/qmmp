@@ -72,7 +72,7 @@ void OutputOSS::sync()
 
 bool OutputOSS::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY);
+    m_audio_fd = open(m_audio_device.toLatin1(), O_WRONLY);
 
     if (m_audio_fd < 0)
     {
@@ -215,7 +215,7 @@ void VolumeOSS::openMixer()
 {
     if (m_mixer_fd >= 0)
         return;
-    m_mixer_fd = open(m_mixer_device.toAscii(), O_RDWR);
+    m_mixer_fd = open(m_mixer_device.toLatin1(), O_RDWR);
     if (m_mixer_fd < 0)
     {
         qWarning("VolumeControlOSS: unable to open mixer device '%s'", qPrintable(m_mixer_device));

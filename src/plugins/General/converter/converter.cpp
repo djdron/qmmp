@@ -191,7 +191,7 @@ void Converter::run()
 
         QString command = preset["command"].toString();
         command.replace("%o", "\"" + full_path + "\"");
-        QString tmp_path = QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/tmp.wav";
+        QString tmp_path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/tmp.wav";
         bool use_file = command.contains("%i");
         command.replace("%i", "\"" + tmp_path + "\"");
 

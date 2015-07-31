@@ -34,8 +34,8 @@
 #include "aboutdialog_p.h"
 
 
-AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
-        : QDialog( parent, fl )
+AboutDialog::AboutDialog(QWidget* parent)
+        : QDialog(parent)
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);

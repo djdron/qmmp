@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,7 @@
 PlayListDownloader::PlayListDownloader(QObject *parent) : QObject(parent)
 {
     m_getReply = 0;
-    m_ua = QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii();
+    m_ua = QString("qmmp/%1").arg(Qmmp::strVersion()).toLatin1();
     m_manager = new QNetworkAccessManager(this);
     connect(m_manager, SIGNAL(finished (QNetworkReply *)), SLOT(readResponse(QNetworkReply *)));
     //load global proxy settings

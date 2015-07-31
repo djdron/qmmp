@@ -53,7 +53,7 @@ RGScanDialog::RGScanDialog(QList <PlayListTrack *> tracks,  QWidget *parent) : Q
 {
     m_ui.setupUi(this);
     m_ui.tableWidget->verticalHeader()->setDefaultSectionSize(fontMetrics().height() + 3);
-    m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
+    m_ui.tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
     QStringList paths;
     MetaDataFormatter formatter("%if(%p&%t,%p - %t,%f) - %l");

@@ -23,7 +23,7 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QDesktopServices>
+#include <QStandardPaths>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include "fileops.h"
@@ -34,9 +34,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     m_ui.setupUi(this);
-    m_ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    m_ui.tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     m_ui.tableWidget->verticalHeader()->hide();
-    m_ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    m_ui.tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("FileOps");
@@ -135,7 +135,7 @@ void SettingsDialog::on_newButton_clicked()
     comboBox->setFocusPolicy (Qt::NoFocus);
 
     ActionItem *item = new ActionItem(tr("New action"));
-    item->setDestination(QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
+    item->setDestination(QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
     item->setPattern("%p - %t");
 
     connect(comboBox, SIGNAL(activated(int)), SLOT(updateLineEdits()));

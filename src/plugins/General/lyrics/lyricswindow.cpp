@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -125,17 +125,17 @@ void LyricsWindow::showText(QNetworkReply *reply)
             return;
         }
 
-        QString temp = url_regexp.cap(1).toAscii();
+        QString temp = url_regexp.cap(1).toLatin1();
         qDebug("LyricsWindow: received url = %s", qPrintable(temp));
         temp.replace("http://lyrics.wikia.com/","http://lyrics.wikia.com/index.php?title=");
         temp.append("&action=edit");
 
-        QUrl url = QUrl::fromEncoded(temp.toAscii());
+        QUrl url = QUrl::fromEncoded(temp.toLatin1());
         QString referer = url_regexp.cap(1);
         qDebug("LyricsWindow: request url = %s", url.toEncoded().constData());
         QNetworkRequest request;
         request.setUrl(url);
-        request.setRawHeader("Referer", referer.toAscii());
+        request.setRawHeader("Referer", referer.toLatin1());
         ui.stateLabel->setText(tr("Receiving"));
         m_http->get(request);
         reply->deleteLater();
@@ -167,6 +167,6 @@ void LyricsWindow::on_searchPushButton_clicked()
     QNetworkRequest request;
     request.setUrl(QUrl("http://lyrics.wikia.com/api.php?action=lyrics&artist=" +
                         ui.artistLineEdit->text()+"&song=" + ui.titleLineEdit->text() + "&fmt=xml"));
-    request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
+    request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toLatin1());
     m_requestReply = m_http->get(request);
 }

@@ -74,7 +74,7 @@ QPixmap VorbisMetaDataModel::cover()
     for(uint i = 0; i < list.size(); ++i)
     {
         TagLib::String value = list[i];
-        QByteArray block = QByteArray::fromBase64(TStringToQString_qt4(value).toAscii());
+        QByteArray block = QByteArray::fromBase64(TStringToQString_qt4(value).toLatin1());
         if(block.size() < 32)
             continue;
         qint64 pos = 0;

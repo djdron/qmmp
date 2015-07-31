@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -142,7 +142,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
     }
     else
     {
-        cdio = cdio_open_cd(device_path.toAscii().constData());
+        cdio = cdio_open_cd(device_path.toLatin1().constData());
         if (!cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
@@ -247,12 +247,12 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
                 {
                     QUrl proxy = QmmpSettings::instance()->proxy();
                     cddb_http_proxy_enable (cddb_conn);
-                    cddb_set_http_proxy_server_name (cddb_conn, proxy.host().toAscii ());
+                    cddb_set_http_proxy_server_name (cddb_conn, proxy.host().toLatin1 ());
                     cddb_set_http_proxy_server_port (cddb_conn, proxy.port());
                     if(QmmpSettings::instance()->useProxyAuth())
                     {
-                        cddb_set_http_proxy_username (cddb_conn, proxy.userName().toAscii());
-                        cddb_set_http_proxy_password (cddb_conn, proxy.password().toAscii());
+                        cddb_set_http_proxy_username (cddb_conn, proxy.userName().toLatin1());
+                        cddb_set_http_proxy_password (cddb_conn, proxy.password().toLatin1());
                     }
                 }
             }
@@ -439,7 +439,7 @@ bool DecoderCDAudio::initialize()
     }
     else
     {
-        m_cdio = cdio_open_cd(device_path.toAscii().constData());
+        m_cdio = cdio_open_cd(device_path.toLatin1().constData());
         if (!m_cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
