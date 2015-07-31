@@ -33,7 +33,6 @@ SET(app_SRCS
     main.cpp
     qmmpstarter.cpp
     lxdesupport.cpp
-    qmmpapplication.cpp
 )
 
 SET(app_HDRS lxdesupport.h)
