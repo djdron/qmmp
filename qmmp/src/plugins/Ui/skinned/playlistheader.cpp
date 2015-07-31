@@ -368,14 +368,20 @@ void PlayListHeader::showTrackState(bool on)
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
-    adjustColumn(autoResizeColumn());
+    if(m_auto_resize)
+    {
+        adjustColumn(autoResizeColumn());
+    }
     updateColumns();
 }
 
 void PlayListHeader::onColumnRemoved()
 {
-    adjustColumn(autoResizeColumn());
     m_auto_resize = autoResizeColumn() >= 0;
+    if(m_auto_resize)
+    {
+        adjustColumn(autoResizeColumn());
+    }
     updateColumns();
 }
 
