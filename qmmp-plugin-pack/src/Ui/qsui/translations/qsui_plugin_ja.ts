@@ -968,29 +968,24 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
+        <location filename="../playlistheader.cpp" line="61"/>
         <source>Add Column</source>
         <translation>カラムを追加</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="61"/>
+        <location filename="../playlistheader.cpp" line="62"/>
         <source>Edit Column</source>
         <translation>カラムを編集</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="62"/>
+        <location filename="../playlistheader.cpp" line="63"/>
         <source>Show Queue/Protocol</source>
         <translation>キューやプロトコルを表示</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="64"/>
+        <location filename="../playlistheader.cpp" line="65"/>
         <source>Auto-resize</source>
         <translation>自動適正幅調整</translation>
-    </message>
-    <message>
-        <location filename="../playlistheader.cpp" line="66"/>
-        <source>Restore Size</source>
-        <translation>幅を復元</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="68"/>

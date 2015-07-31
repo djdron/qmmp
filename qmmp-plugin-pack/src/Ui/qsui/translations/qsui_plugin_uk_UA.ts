@@ -969,29 +969,24 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
+        <location filename="../playlistheader.cpp" line="61"/>
         <source>Add Column</source>
         <translation>Додати стовпчик</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="61"/>
+        <location filename="../playlistheader.cpp" line="62"/>
         <source>Edit Column</source>
         <translation>Редагувати стовпчик</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="62"/>
+        <location filename="../playlistheader.cpp" line="63"/>
         <source>Show Queue/Protocol</source>
         <translation>Показати чергу/протокол</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="64"/>
+        <location filename="../playlistheader.cpp" line="65"/>
         <source>Auto-resize</source>
         <translation>Авто-розмір</translation>
-    </message>
-    <message>
-        <location filename="../playlistheader.cpp" line="66"/>
-        <source>Restore Size</source>
-        <translation>Відновити розмір</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="68"/>

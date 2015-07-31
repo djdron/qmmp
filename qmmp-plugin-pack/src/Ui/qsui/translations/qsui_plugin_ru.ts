@@ -968,29 +968,24 @@
 <context>
     <name>PlayListHeader</name>
     <message>
-        <location filename="../playlistheader.cpp" line="60"/>
+        <location filename="../playlistheader.cpp" line="61"/>
         <source>Add Column</source>
         <translation>Добавить колонку</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="61"/>
+        <location filename="../playlistheader.cpp" line="62"/>
         <source>Edit Column</source>
         <translation>Изменить колонку</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="62"/>
+        <location filename="../playlistheader.cpp" line="63"/>
         <source>Show Queue/Protocol</source>
         <translation>Показывать очередь/протокол</translation>
     </message>
     <message>
-        <location filename="../playlistheader.cpp" line="64"/>
+        <location filename="../playlistheader.cpp" line="65"/>
         <source>Auto-resize</source>
         <translation>Авто-размер</translation>
-    </message>
-    <message>
-        <location filename="../playlistheader.cpp" line="66"/>
-        <source>Restore Size</source>
-        <translation>Восстановить размер</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="68"/>
