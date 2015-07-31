@@ -1,8 +1,11 @@
-cmake_minimum_required(VERSION 2.8.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8.11 FATAL_ERROR)
 
 #freebsd support
 include_directories(SYSTEM /usr/local/include)
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
+
+#Qt5 modules
+SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} /opt/qt55/lib/cmake)
 
 #extract version from qmmp.h
 FILE(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/qmmp/qmmp.h"
@@ -32,24 +35,34 @@ CONFIGURE_FILE(
 ADD_CUSTOM_TARGET(uninstall
   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
-SET(QT_MIN_VERSION 4.6.0)
-INCLUDE(FindQt4)
-INCLUDE(${QT_USE_FILE})
+#SET(QT_MIN_VERSION 5.5.0)
+#INCLUDE(FindQt4)
+#INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
-SET(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5LinguistTools REQUIRED)
+find_package(Qt5X11Extras REQUIRED)
+find_package(Qt5Network REQUIRED)
+find_package(Qt5DBus REQUIRED)
+ADD_DEFINITIONS(-DQ_WS_X11)
 
-IF(NOT QT_LRELEASE_EXECUTABLE)
-FIND_PROGRAM(QT_LRELEASE_EXECUTABLE
-    NAMES lrelease
-    PATHS ${QT_BINARY_DIR}
-    NO_DEFAULT_PATH
-)
-ENDIF(NOT QT_LRELEASE_EXECUTABLE)
+
+#IF(NOT QT_LRELEASE_EXECUTABLE)
+#FIND_PROGRAM(QT_LRELEASE_EXECUTABLE
+#    NAMES lrelease
+#    PATHS ${QT_BINARY_DIR}
+#    NO_DEFAULT_PATH
+#)
+#ENDIF(NOT QT_LRELEASE_EXECUTABLE)
 
 #debian hack
-IF(EXISTS ${QT_BINARY_DIR}/lrelease-qt4)
-SET(QT_LRELEASE_EXECUTABLE ${QT_BINARY_DIR}/lrelease-qt4)
-ENDIF(EXISTS ${QT_BINARY_DIR}/lrelease-qt4)
+#IF(EXISTS ${QT_BINARY_DIR}/lrelease-qt5)
+#SET(QT_LRELEASE_EXECUTABLE ${QT_BINARY_DIR}/lrelease-qt5)
+#ENDIF(EXISTS ${QT_BINARY_DIR}/lrelease-qt5)
+
+get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
 
 IF(QT_LRELEASE_EXECUTABLE)
 MESSAGE(STATUS "Found lrelease executable: " ${QT_LRELEASE_EXECUTABLE})
@@ -114,6 +127,8 @@ ADD_CUSTOM_COMMAND(
     ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.cxx_parameters" | xargs rm -rf
     COMMAND find
     ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "moc_*.cpp" | xargs rm -rf
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "qrc_*.cxx" | xargs rm -rf
     COMMAND rm
     ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt
     TARGET  distclean

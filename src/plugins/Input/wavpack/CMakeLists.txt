@@ -48,14 +48,14 @@ SET(libwavpack_HDRS
 
 SET(libwavpack_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
+QT5_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(WAVPACK_FOUND)
 ADD_LIBRARY(wavpack MODULE ${libwavpack_SRCS} ${libwavpack_RCC_SRCS} ${libwavpack_HDRS})
 add_dependencies(wavpack qmmp)
-target_link_libraries(wavpack ${QT_LIBRARIES} -lqmmp ${WAVPACK_LDFLAGS})
+target_link_libraries(wavpack Qt5::Widgets -lqmmp ${WAVPACK_LDFLAGS})
 install(TARGETS wavpack DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(WAVPACK_FOUND)
 

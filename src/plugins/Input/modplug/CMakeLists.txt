@@ -60,7 +60,7 @@ SET(libmodplug_HDRS
 
 SET(libmodplug_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libmodplug_RCC_SRCS ${libmodplug_RCCS})
+QT5_ADD_RESOURCES(libmodplug_RCC_SRCS ${libmodplug_RCCS})
 
 # user interface
 
@@ -68,7 +68,7 @@ SET(libmodplug_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libmodplug_UIS_H ${libmodplug_UIS})
+QT5_WRAP_UI(libmodplug_UIS_H ${libmodplug_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -77,7 +77,7 @@ IF(MODPLUG_FOUND)
 ADD_LIBRARY(modplug MODULE ${libmodplug_SRCS} ${libmodplug_UIS_H}
   ${libmodplug_RCC_SRCS} ${libmodplug_HDRS})
 add_dependencies(modplug qmmp)
-target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS})
+target_link_libraries(modplug Qt5::Widgets -lqmmp ${MODPLUG_LDFLAGS})
 install(TARGETS modplug DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MODPLUG_FOUND)
 

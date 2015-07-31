@@ -40,7 +40,7 @@ SET(libladspa_HDRS
 
 SET(libladspa_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libladspa_RCC_SRCS ${libladspa_RCCS})
+QT5_ADD_RESOURCES(libladspa_RCC_SRCS ${libladspa_RCCS})
 
 # user interface
 
@@ -48,7 +48,7 @@ SET(libladspa_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libladspa_UIS_H ${libladspa_UIS})
+QT5_WRAP_UI(libladspa_UIS_H ${libladspa_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -56,6 +56,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(ladspa MODULE ${libladspa_SRCS} ${libladspa_UIS_H}
   ${libladspa_RCC_SRCS} ${libladspa_HDRS})
 add_dependencies(ladspa qmmp)
-target_link_libraries(ladspa ${QT_LIBRARIES} -lqmmp ${CMAKE_DL_LIBS})
+target_link_libraries(ladspa Qt5::Widgets -lqmmp ${CMAKE_DL_LIBS})
 install(TARGETS ladspa DESTINATION ${LIB_DIR}/qmmp/Effect)
 

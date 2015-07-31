@@ -43,7 +43,7 @@ SET(libsndfile_HDRS
 
 SET(libsndfile_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libsndfile_RCC_SRCS ${libsndfile_RCCS})
+QT5_ADD_RESOURCES(libsndfile_RCC_SRCS ${libsndfile_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -53,7 +53,7 @@ IF(SNDFILE_FOUND)
 ADD_LIBRARY(sndfile MODULE ${libsndfile_SRCS} ${libsndfile_UIS_H}
   ${libsndfile_RCC_SRCS} ${libsndfile_HDRS})
 add_dependencies(sndfile qmmp)
-target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS})
+target_link_libraries(sndfile Qt5::Widgets -lqmmp ${SNDFILE_LDFLAGS})
 install(TARGETS sndfile DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(SNDFILE_FOUND)
 

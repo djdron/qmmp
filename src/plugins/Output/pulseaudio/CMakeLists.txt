@@ -43,7 +43,7 @@ SET(libpulseaudio_HDRS
 
 SET(libpulseaudio_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libpulseaudio_RCC_SRCS ${libpulseaudio_RCCS})
+QT5_ADD_RESOURCES(libpulseaudio_RCC_SRCS ${libpulseaudio_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -53,7 +53,7 @@ IF(PULSE_FOUND)
 ADD_LIBRARY(pulseaudio MODULE ${libpulseaudio_SRCS} ${libpulseaudio_UIS_H}
   ${libpulseaudio_RCC_SRCS} ${libpulseaudio_HDRS})
 add_dependencies(pulseaudio qmmp)
-target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS})
+target_link_libraries(pulseaudio Qt5::Widgets -lqmmp ${PULSE_LDFLAGS})
 install(TARGETS pulseaudio DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(PULSE_FOUND)
 

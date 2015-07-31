@@ -4,9 +4,9 @@ cmake_minimum_required(VERSION 2.4.7)
 
 
 SET(QT_USE_QTNETWORK TRUE)
-INCLUDE(FindQt4)
+#INCLUDE(FindQt4)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -40,7 +40,7 @@ SET(libcovermanager_RCCS
     images/cm_images.qrc
 )
 
-QT4_ADD_RESOURCES(libcovermanager_RCC_SRCS ${libcovermanager_RCCS})
+QT5_ADD_RESOURCES(libcovermanager_RCC_SRCS ${libcovermanager_RCCS})
 
 # user interface
 
@@ -48,7 +48,7 @@ QT4_ADD_RESOURCES(libcovermanager_RCC_SRCS ${libcovermanager_RCCS})
 SET(libcovermanager_UIS
 )
 
-QT4_WRAP_UI(libcovermanager_UIS_H ${libcovermanager_UIS})
+QT5_WRAP_UI(libcovermanager_UIS_H ${libcovermanager_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -56,5 +56,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(covermanager MODULE ${libcovermanager_SRCS} ${libcovermanager_UIS_H}
   ${libcovermanager_RCC_SRCS})
 add_dependencies(covermanager qmmpui)
-target_link_libraries(covermanager ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(covermanager Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS covermanager DESTINATION ${LIB_DIR}/qmmp/General)

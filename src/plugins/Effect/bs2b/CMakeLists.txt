@@ -37,7 +37,7 @@ SET(libbs2b_HDRS
 
 SET(libbs2b_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
+QT5_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
 
 pkg_search_module(BS2B libbs2b>=3.0.0)
 
@@ -51,7 +51,7 @@ SET(libbs2b_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libbs2b_UIS_H ${libbs2b_UIS})
+QT5_WRAP_UI(libbs2b_UIS_H ${libbs2b_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -60,6 +60,6 @@ IF(BS2B_FOUND)
 ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_UIS_H}
   ${libbs2b_RCC_SRCS} ${libbs2b_HDRS})
 add_dependencies(bs2b qmmp)
-target_link_libraries(bs2b ${QT_LIBRARIES} -lqmmp ${BS2B_LDFLAGS})
+target_link_libraries(bs2b Qt5::Widgets -lqmmp ${BS2B_LDFLAGS})
 install(TARGETS bs2b DESTINATION ${LIB_DIR}/qmmp/Effect)
 ENDIF(BS2B_FOUND)

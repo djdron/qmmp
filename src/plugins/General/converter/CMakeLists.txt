@@ -2,7 +2,7 @@ project(libconverter)
 
 cmake_minimum_required(VERSION 2.4.7)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -46,7 +46,7 @@ SET(libconverter_SRCS
 SET(libconverter_RCCS 
     translations/translations.qrc presets.qrc)
 
-QT4_ADD_RESOURCES(libconverter_RCC_SRCS ${libconverter_RCCS})
+QT5_ADD_RESOURCES(libconverter_RCC_SRCS ${libconverter_RCCS})
 
 # user interface
 
@@ -55,12 +55,12 @@ SET(libconverter_UIS
     preseteditor.ui
 )
 
-QT4_WRAP_UI(libconverter_UIS_H ${libconverter_UIS})
+QT5_WRAP_UI(libconverter_UIS_H ${libconverter_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(converter MODULE ${libconverter_SRCS} ${libconverter_UIS_H} ${libconverter_RCC_SRCS})
 add_dependencies(converter qmmpui)
-target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
+target_link_libraries(converter Qt5::Widgets -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
 install(TARGETS converter DESTINATION ${LIB_DIR}/qmmp/General)

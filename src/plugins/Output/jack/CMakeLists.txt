@@ -68,7 +68,7 @@ SET(libjack_HDRS
 
 SET(libjack_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
+QT5_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
 
 
 IF(JACK_FOUND)
@@ -78,7 +78,7 @@ set_target_properties(jack PROPERTIES
                            COMPILE_FLAGS -pthread
                            LINK_FLAGS -pthread
 )
-target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS})
+target_link_libraries(jack Qt5::Widgets -lqmmp ${JACK_LDFLAGS})
 install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(JACK_FOUND)
 

@@ -43,7 +43,7 @@ SET(libalsa_HDRS
 
 SET(libalsa_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libalsa_RCC_SRCS ${libalsa_RCCS})
+QT5_ADD_RESOURCES(libalsa_RCC_SRCS ${libalsa_RCCS})
 
 # user interface
 
@@ -52,7 +52,7 @@ SET(libalsa_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libalsa_UIS_H ${libalsa_UIS})
+QT5_WRAP_UI(libalsa_UIS_H ${libalsa_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -61,7 +61,7 @@ IF(ALSA_FOUND)
 ADD_LIBRARY(alsa MODULE ${libalsa_SRCS} ${libalsa_UIS_H}
   ${libalsa_RCC_SRCS} ${libalsa_HDRS})
 add_dependencies(alsa qmmp)
-target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LDFLAGS})
+target_link_libraries(alsa Qt5::Widgets -lqmmp ${ALSA_LDFLAGS})
 install(TARGETS alsa DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(ALSA_FOUND)
 

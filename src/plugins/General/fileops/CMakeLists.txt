@@ -2,7 +2,7 @@ project(libfileops)
 
 cmake_minimum_required(VERSION 2.4.7)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -39,7 +39,7 @@ SET(libfileops_SRCS
 SET(libfileops_RCCS 
     translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libfileops_RCC_SRCS ${libfileops_RCCS})
+QT5_ADD_RESOURCES(libfileops_RCC_SRCS ${libfileops_RCCS})
 
 # user interface
 
@@ -48,12 +48,12 @@ SET(libfileops_UIS
     hotkeydialog.ui
 )
 
-QT4_WRAP_UI(libfileops_UIS_H ${libfileops_UIS})
+QT5_WRAP_UI(libfileops_UIS_H ${libfileops_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(fileops MODULE ${libfileops_SRCS} ${libfileops_UIS_H} ${libfileops_RCC_SRCS})
 add_dependencies(fileops qmmpui)
-target_link_libraries(fileops ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(fileops Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS fileops DESTINATION ${LIB_DIR}/qmmp/General)

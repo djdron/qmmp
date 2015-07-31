@@ -42,13 +42,13 @@ SET(libmms_SRCS
 
 # resources
 SET(libmms_RCCS translations/translations.qrc)
-QT4_ADD_RESOURCES(libmms_RCC_SRCS ${libmms_RCCS})
+QT5_ADD_RESOURCES(libmms_RCC_SRCS ${libmms_RCCS})
 
 # user interface
 SET(libmms_UIS
     settingsdialog.ui
 )
-QT4_WRAP_UI(libmms_UIS_H ${libmms_UIS})
+QT5_WRAP_UI(libmms_UIS_H ${libmms_UIS})
 
 
 # Don't forget to include output directory, otherwise
@@ -56,7 +56,7 @@ QT4_WRAP_UI(libmms_UIS_H ${libmms_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(MMS_FOUND)
 ADD_LIBRARY(mms MODULE ${libmms_SRCS} ${libmms_UIS_H} ${libmms_RCC_SRCS})
-target_link_libraries(mms ${QT_LIBRARIES} -lqmmp ${MMS_LDFLAGS})
+target_link_libraries(mms Qt5::Widgets -lqmmp ${MMS_LDFLAGS})
 add_dependencies(mms qmmp)
 install(TARGETS mms DESTINATION ${LIB_DIR}/qmmp/Transports)
 ENDIF(MMS_FOUND)

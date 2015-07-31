@@ -33,7 +33,7 @@ SET(libincdecvolumeoption_SRCS
 
 SET(libincdecvolumeoption_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libincdecvolumeoption_RCC_SRCS ${libincdecvolumeoption_RCCS})
+QT5_ADD_RESOURCES(libincdecvolumeoption_RCC_SRCS ${libincdecvolumeoption_RCCS})
 
 
 # Don't forget to include output directory, otherwise
@@ -43,5 +43,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(incdecvolumeoption MODULE ${libincdecvolumeoption_SRCS}
            ${libincdecvolumeoption_RCC_SRCS})
 add_dependencies(incdecvolumeoption qmmpui)
-target_link_libraries(incdecvolumeoption ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(incdecvolumeoption Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS incdecvolumeoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)

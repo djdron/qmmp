@@ -30,7 +30,7 @@ SET(libxspfplaylistformat_SRCS
     xspfplaylistformat.cpp
 )
 
-QT4_ADD_RESOURCES(libxspfplaylistformat_RCC_SRCS ${libxspfplaylistformat_RCCS})
+QT5_ADD_RESOURCES(libxspfplaylistformat_RCC_SRCS ${libxspfplaylistformat_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -38,5 +38,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(xspfplaylistformat MODULE ${libxspfplaylistformat_SRCS})
 add_dependencies(xspfplaylistformat qmmpui)
-target_link_libraries(xspfplaylistformat ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(xspfplaylistformat Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS xspfplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlayListFormats)

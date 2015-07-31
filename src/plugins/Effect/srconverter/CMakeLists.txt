@@ -43,7 +43,7 @@ SET(libsrconverter_HDRS
 
 SET(libsrconverter_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libsrconverter_RCC_SRCS ${libsrconverter_RCCS})
+QT5_ADD_RESOURCES(libsrconverter_RCC_SRCS ${libsrconverter_RCCS})
 
 # user interface
 
@@ -52,7 +52,7 @@ SET(libsrconverter_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libsrconverter_UIS_H ${libsrconverter_UIS})
+QT5_WRAP_UI(libsrconverter_UIS_H ${libsrconverter_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -61,6 +61,6 @@ IF(SAMPLERATE_FOUND)
 ADD_LIBRARY(srconverter MODULE ${libsrconverter_SRCS} ${libsrconverter_UIS_H}
   ${libsrconverter_RCC_SRCS} ${libsrconverter_HDRS})
 add_dependencies(srconverter qmmp)
-target_link_libraries(srconverter ${QT_LIBRARIES} -lqmmp ${SAMPLERATE_LDFLAGS})
+target_link_libraries(srconverter Qt5::Widgets -lqmmp ${SAMPLERATE_LDFLAGS})
 install(TARGETS srconverter DESTINATION ${LIB_DIR}/qmmp/Effect)
 ENDIF(SAMPLERATE_FOUND)

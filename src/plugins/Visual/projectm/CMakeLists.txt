@@ -3,8 +3,8 @@ project(libprojectm)
 cmake_minimum_required(VERSION 2.4.7)
 
 SET (QT_USE_QTOPENGL TRUE)
-INCLUDE(FindQt4)
-include(${QT_USE_FILE})
+#INCLUDE(FindQt4)
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
@@ -56,7 +56,7 @@ SET(libprojectm_SRCS
 
 SET(libprojectm_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libprojectm_RCC_SRCS ${libprojectm_RCCS})
+QT5_ADD_RESOURCES(libprojectm_RCC_SRCS ${libprojectm_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -64,6 +64,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(PROJECTM_FOUND)
 ADD_LIBRARY(projectm MODULE ${libprojectm_SRCS} ${libprojectm_RCC_SRCS})
 add_dependencies(projectm qmmp)
-target_link_libraries(projectm ${QT_LIBRARIES} -lqmmp ${PROJECTM_LDFLAGS} -lGL)
+target_link_libraries(projectm Qt5::Widgets -lqmmp ${PROJECTM_LDFLAGS} -lGL)
 install(TARGETS projectm DESTINATION ${LIB_DIR}/qmmp/Visual)
 ENDIF(PROJECTM_FOUND)

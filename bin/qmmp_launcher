@@ -1,6 +1,7 @@
 #!/bin/sh
 MYDIR=$(dirname $0)
-QT_LIB_DIR=$(dirname $(which qmake))/../lib
+#QT_LIB_DIR=$(dirname $(which qmake))/../lib
+QT_LIB_DIR=/opt/qt55/lib
 QMMP_LIB_DIRS=$MYDIR/../lib:$MYDIR/../src/qmmpui
 
 if [ -z ${LD_LIBRARY_PATH} ]; then

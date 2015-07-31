@@ -36,7 +36,7 @@ SET(libmplayer_SRCS
 
 SET(libmplayer_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libmplayer_RCC_SRCS ${libmplayer_RCCS})
+QT5_ADD_RESOURCES(libmplayer_RCC_SRCS ${libmplayer_RCCS})
 
 # user interface
 
@@ -45,13 +45,13 @@ SET(libmplayer_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libmplayer_UIS_H ${libmplayer_UIS})
+QT5_WRAP_UI(libmplayer_UIS_H ${libmplayer_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(mplayer MODULE ${libmplayer_SRCS} ${libmplayer_RCC_SRCS} ${libmplayer_UIS_H})
 add_dependencies(mplayer qmmp)
-target_link_libraries(mplayer ${QT_LIBRARIES} -lqmmp)
+target_link_libraries(mplayer Qt5::Widgets -lqmmp)
 install(TARGETS mplayer DESTINATION ${LIB_DIR}/qmmp/Engines)
 

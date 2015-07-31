@@ -51,7 +51,7 @@ SET(libgme_HDRS
 
 SET(libgme_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libgme_RCC_SRCS ${libgme_RCCS})
+QT5_ADD_RESOURCES(libgme_RCC_SRCS ${libgme_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -60,6 +60,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(GME_FOUND)
 ADD_LIBRARY(gme MODULE ${libgme_SRCS} ${libgme_RCC_SRCS} ${libgme_HDRS})
 add_dependencies(gme qmmp)
-target_link_libraries(gme ${QT_LIBRARIES} -lqmmp ${GME_LIB})
+target_link_libraries(gme Qt5::Widgets -lqmmp ${GME_LIB})
 install(TARGETS gme DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(GME_FOUND)

@@ -52,11 +52,11 @@ SET(libopus_HDRS
 
 SET(libopus_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libopus_RCC_SRCS ${libopus_RCCS})
+QT5_ADD_RESOURCES(libopus_RCC_SRCS ${libopus_RCCS})
 
 # user interface
 
-QT4_WRAP_UI(libopus_UIS_H ${libopus_UIS})
+QT5_WRAP_UI(libopus_UIS_H ${libopus_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -64,6 +64,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(OPUS_FOUND)
 ADD_LIBRARY(opus MODULE ${libopus_SRCS} ${libopus_RCC_SRCS} ${libopus_HDRS})
 add_dependencies(opus qmmp)
-target_link_libraries(opus ${QT_LIBRARIES} -lqmmp ${OPUS_LDFLAGS} ${TAGLIB_LDFLAGS})
+target_link_libraries(opus Qt5::Widgets -lqmmp ${OPUS_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS opus DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(OPUS_FOUND)

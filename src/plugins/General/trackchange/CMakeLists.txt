@@ -2,7 +2,7 @@ project(libtrackchange)
 
 cmake_minimum_required(VERSION 2.4.7)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -38,19 +38,19 @@ SET(libtrackchange_SRCS
 SET(libtrackchange_RCCS 
     translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libtrackchange_RCC_SRCS ${libtrackchange_RCCS})
+QT5_ADD_RESOURCES(libtrackchange_RCC_SRCS ${libtrackchange_RCCS})
 
 # user interface
 SET(libtrackchange_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libtrackchange_UIS_H ${libtrackchange_UIS})
+QT5_WRAP_UI(libtrackchange_UIS_H ${libtrackchange_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(trackchange MODULE ${libtrackchange_SRCS} ${libtrackchange_UIS_H} ${libtrackchange_RCC_SRCS})
 add_dependencies(trackchange qmmpui)
-target_link_libraries(trackchange ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(trackchange Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS trackchange DESTINATION ${LIB_DIR}/qmmp/General)

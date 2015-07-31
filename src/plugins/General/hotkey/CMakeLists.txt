@@ -51,7 +51,7 @@ SET(libhotkey_RCCS
     translations/translations.qrc
 )
 
-QT4_ADD_RESOURCES(libhotkey_RCC_SRCS ${libhotkey_RCCS})
+QT5_ADD_RESOURCES(libhotkey_RCC_SRCS ${libhotkey_RCCS})
 
 # user interface
 
@@ -61,7 +61,7 @@ SET(libhotkey_UIS
     hotkeydialog.ui
 )
 
-QT4_WRAP_UI(libhotkey_UIS_H ${libhotkey_UIS})
+QT5_WRAP_UI(libhotkey_UIS_H ${libhotkey_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -69,6 +69,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(X11_FOUND)
 ADD_LIBRARY(hotkey MODULE ${libhotkey_SRCS} ${libhotkey_UIS_H} ${libhotkey_RCC_SRCS})
 add_dependencies(hotkey qmmpui)
-target_link_libraries(hotkey ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})
+target_link_libraries(hotkey Qt5::Widgets Qt5::X11Extras -lqmmpui -lqmmp ${X11_LDFLAGS})
 install(TARGETS hotkey DESTINATION ${LIB_DIR}/qmmp/General)
 ENDIF(X11_FOUND)

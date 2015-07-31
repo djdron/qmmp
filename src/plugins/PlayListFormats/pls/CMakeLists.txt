@@ -30,7 +30,7 @@ SET(libplsplaylistformat_SRCS
     plsplaylistformat.cpp
 )
 
-QT4_ADD_RESOURCES(libplsplaylistformat_RCC_SRCS ${libplsplaylistformat_RCCS})
+QT5_ADD_RESOURCES(libplsplaylistformat_RCC_SRCS ${libplsplaylistformat_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -38,5 +38,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(plsplaylistformat MODULE ${libplsplaylistformat_SRCS})
 add_dependencies(plsplaylistformat qmmpui)
-target_link_libraries(plsplaylistformat ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(plsplaylistformat Qt5::Widgets -lqmmpui)
 install(TARGETS plsplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlayListFormats)

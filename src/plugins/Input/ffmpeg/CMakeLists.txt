@@ -49,7 +49,7 @@ SET(libffmpeg_HDRS
 
 SET(libffmpeg_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libffmpeg_RCC_SRCS ${libffmpeg_RCCS})
+QT5_ADD_RESOURCES(libffmpeg_RCC_SRCS ${libffmpeg_RCCS})
 
 # user interface
 
@@ -58,7 +58,7 @@ SET(libffmpeg_UIS
   settingsdialog.ui
 )
 
-QT4_WRAP_UI(libffmpeg_UIS_H ${libffmpeg_UIS})
+QT5_WRAP_UI(libffmpeg_UIS_H ${libffmpeg_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -67,6 +67,6 @@ IF(FFMPEG_FOUND)
 ADD_LIBRARY(ffmpeg MODULE ${libffmpeg_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg qmmp)
-target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS})
+target_link_libraries(ffmpeg Qt5::Widgets -lqmmp ${FFMPEG_LDFLAGS})
 install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_FOUND)

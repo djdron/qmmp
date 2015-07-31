@@ -35,7 +35,7 @@ SET(libqmmpfiledialog_SRCS
 SET(libqmmpfiledialog_RCCS
     translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libqmmpfiledialog_RCC_SRCS ${libqmmpfiledialog_RCCS})
+QT5_ADD_RESOURCES(libqmmpfiledialog_RCC_SRCS ${libqmmpfiledialog_RCCS})
 
 # user interface
 
@@ -44,12 +44,12 @@ SET(libqmmpfiledialog_UIS
     qmmpfiledialog.ui
 )
 
-QT4_WRAP_UI(libqmmpfiledialog_UIS_H ${libqmmpfiledialog_UIS})
+QT5_WRAP_UI(libqmmpfiledialog_UIS_H ${libqmmpfiledialog_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qmmpfiledialog MODULE ${libqmmpfiledialog_SRCS} ${libqmmpfiledialog_UIS_H} ${libqmmpfiledialog_RCC_SRCS})
 add_dependencies(qmmpfiledialog qmmpui)
-target_link_libraries(qmmpfiledialog ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(qmmpfiledialog Qt5::Widgets -lqmmpui -lqmmp)
 install(TARGETS qmmpfiledialog DESTINATION ${LIB_DIR}/qmmp/FileDialogs)

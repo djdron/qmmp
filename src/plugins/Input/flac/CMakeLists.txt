@@ -54,7 +54,7 @@ SET(libflac_HDRS
 
 SET(libflac_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libflac_RCC_SRCS ${libflac_RCCS})
+QT5_ADD_RESOURCES(libflac_RCC_SRCS ${libflac_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -63,6 +63,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(FLAC_FOUND)
 ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_RCC_SRCS} ${libflac_HDRS})
 add_dependencies(flac qmmp)
-target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${TAGLIB_LDFLAGS})
+target_link_libraries(flac Qt5::Widgets -lqmmp ${FLAC_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FLAC_FOUND)

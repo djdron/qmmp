@@ -125,7 +125,7 @@ SET(libqmmp_DEVEL_HDRS
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_HDRS})
-target_link_libraries(libqmmp ${QT_LIBRARIES})
+target_link_libraries(libqmmp Qt5::Widgets)
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}
                         RUNTIME DESTINATION bin

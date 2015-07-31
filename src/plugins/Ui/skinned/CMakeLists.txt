@@ -100,7 +100,7 @@ SET(skinned_HDRS
 
 SET(skinned_RCCS glare/glare.qrc resources/resources.qrc translations/translations.qrc)
 
-QT4_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
+QT5_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
 
 # user interface
 
@@ -113,15 +113,14 @@ SET(skinned_UIS
     forms/hotkeyeditor.ui
 )
 
-QT4_WRAP_UI(skinned_UIS_H ${skinned_UIS})
+QT5_WRAP_UI(skinned_UIS_H ${skinned_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(X11_FOUND)
 ADD_LIBRARY(skinned MODULE ${skinned_SRCS} ${skinned_UIS_H} ${skinned_RCC_SRCS} ${skinned_HDRS})
-target_link_libraries(skinned ${QT_LIBRARIES} libqmmp qmmpui ${X11_LDFLAGS})
 add_dependencies(skinned qmmpui libqmmp)
-target_link_libraries(skinned ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})
+target_link_libraries(skinned Qt5::Widgets Qt5::X11Extras -lqmmpui -lqmmp ${X11_LDFLAGS})
 install(TARGETS skinned DESTINATION ${LIB_DIR}/qmmp/Ui)
 ENDIF(X11_FOUND)

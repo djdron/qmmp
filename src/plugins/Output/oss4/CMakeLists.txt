@@ -79,17 +79,17 @@ SET(liboss4_HDRS
 
 SET(liboss4_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(liboss4_RCC_SRCS ${liboss4_RCCS})
+QT5_ADD_RESOURCES(liboss4_RCC_SRCS ${liboss4_RCCS})
 
 SET(liboss4_UIS
     settingsdialog.ui
 )
 
 IF(OSS4_FOUND)
-QT4_WRAP_UI(liboss4_UIS_H ${liboss4_UIS})
+QT5_WRAP_UI(liboss4_UIS_H ${liboss4_UIS})
 
 ADD_LIBRARY(oss4 MODULE ${liboss4_SRCS} ${liboss4_UIS_H} ${liboss4_RCC_SRCS} ${liboss4_HDRS})
 add_dependencies(oss4 qmmp)
-target_link_libraries(oss4 ${QT_LIBRARIES} -lqmmp)
+target_link_libraries(oss4 Qt5::Widgets -lqmmp)
 install(TARGETS oss4 DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(OSS4_FOUND)

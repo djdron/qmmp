@@ -76,7 +76,7 @@ SET(libaac_HDRS
 
 SET(libaac_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libaac_RCC_SRCS ${libaac_RCCS})
+QT5_ADD_RESOURCES(libaac_RCC_SRCS ${libaac_RCCS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
@@ -85,6 +85,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(FAAD_FOUND)
 ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_RCC_SRCS} ${libaac_HDRS})
 add_dependencies(aac qmmp)
-target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS})
+target_link_libraries(aac Qt5::Widgets -lqmmp -lfaad ${TAGLIB_LDFLAGS})
 install(TARGETS aac DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FAAD_FOUND)

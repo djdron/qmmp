@@ -48,7 +48,7 @@ SET(libsid_HDRS
 
 SET(libsid_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libsid_RCC_SRCS ${libsid_RCCS})
+QT5_ADD_RESOURCES(libsid_RCC_SRCS ${libsid_RCCS})
 
 # user interface
 
@@ -56,7 +56,7 @@ SET(libsid_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libsid_UIS_H ${libsid_UIS})
+QT5_WRAP_UI(libsid_UIS_H ${libsid_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -65,6 +65,6 @@ IF(SIDPLAYFP_FOUND)
 ADD_LIBRARY(sid MODULE ${libsid_SRCS} ${libsid_UIS_H}
   ${libsid_RCC_SRCS} ${libsid_HDRS})
 add_dependencies(sid qmmp)
-target_link_libraries(sid ${QT_LIBRARIES} -lqmmp ${SIDPLAYFP_LDFLAGS})
+target_link_libraries(sid Qt5::Widgets -lqmmp ${SIDPLAYFP_LDFLAGS})
 install(TARGETS sid DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(SIDPLAYFP_FOUND)

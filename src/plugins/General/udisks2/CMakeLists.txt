@@ -4,9 +4,9 @@ cmake_minimum_required(VERSION 2.4.8 FATAL_ERROR)
 
 SET (QT_USE_QTDBUS TRUE)
 
-INCLUDE(FindQt4)
+#INCLUDE(FindQt4)
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -37,7 +37,7 @@ SET(libudisks2_SRCS
 
 SET(libudisks2_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libudisks2_RCC_SRCS ${libudisks2_RCCS})
+QT5_ADD_RESOURCES(libudisks2_RCC_SRCS ${libudisks2_RCCS})
 
 # user interface
 
@@ -45,12 +45,12 @@ SET(libudisks2_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libudisks2_UIS_H ${libudisks2_UIS})
+QT5_WRAP_UI(libudisks2_UIS_H ${libudisks2_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(udisks2 MODULE ${libudisks2_SRCS} ${libudisks2_UIS_H} ${libudisks2_RCC_SRCS})
 add_dependencies(udisks2 qmmpui)
-target_link_libraries(udisks2 ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(udisks2 Qt5::Widgets Qt5::DBus -lqmmpui -lqmmp)
 install(TARGETS udisks2 DESTINATION ${LIB_DIR}/qmmp/General)

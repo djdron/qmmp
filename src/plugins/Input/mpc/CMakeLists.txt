@@ -59,13 +59,13 @@ SET(libmpc_HDRS
 
 SET(libmpc_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libmpc_RCC_SRCS ${libmpc_RCCS})
+QT5_ADD_RESOURCES(libmpc_RCC_SRCS ${libmpc_RCCS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MPC_FOUND)
 ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_RCC_SRCS} ${libmpc_HDRS})
 add_dependencies(mpc qmmp)
-target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp ${MPC_LIB} ${TAGLIB_LDFLAGS})
+target_link_libraries(mpc Qt5::Widgets -lqmmp ${MPC_LIB} ${TAGLIB_LDFLAGS})
 install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MPC_FOUND)
