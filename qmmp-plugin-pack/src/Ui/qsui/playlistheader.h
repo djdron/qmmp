@@ -75,7 +75,6 @@ private:
     void resizeEvent(QResizeEvent *e);
     void contextMenuEvent(QContextMenuEvent *e);
     void paintEvent(QPaintEvent *);
-    void timerEvent(QTimerEvent *e);
     int findColumn(QPoint pos);
     void initStyleOption(QStyleOptionHeader *opt);
     int size(int index) const;
@@ -106,7 +105,6 @@ private:
     QAction *m_autoResizeAction;
     bool m_reverted;
     bool m_auto_resize;
-    bool m_block_resize;
     int m_number_width;
     int m_scrollbar_width;
     int m_pressed_column;

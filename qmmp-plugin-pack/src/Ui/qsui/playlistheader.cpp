@@ -53,7 +53,6 @@ PlayListHeader::PlayListHeader(QWidget *parent) :
     m_scrollbar_width = 0;
     m_reverted = false;
     m_auto_resize = false;
-    m_block_resize = true;
     m_metrics = 0;
     m_task = NO_TASK;
 
@@ -157,9 +156,6 @@ void PlayListHeader::setScrollBarWidth(int width)
     if(m_scrollbar_width != width)
     {
         m_scrollbar_width = width;
-
-        if(m_block_resize)
-            return;
 
         if(m_model->count() == 1)
         {
@@ -362,14 +358,18 @@ void PlayListHeader::showTrackState(bool yes)
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
-    adjustColumn(autoResizeColumn());
+    if(m_auto_resize)
+    {
+        adjustColumn(autoResizeColumn());
+    }
     updateColumns();
 }
 
 void PlayListHeader::onColumnRemoved()
 {
-    adjustColumn(autoResizeColumn());
     m_auto_resize = autoResizeColumn() >= 0;
+    if(m_auto_resize)
+        adjustColumn(autoResizeColumn());
     updateColumns();
 }
 
@@ -545,25 +545,24 @@ void PlayListHeader::resizeEvent(QResizeEvent *e)
         return;
     }
 
-    if(!m_block_resize) //skip inital resize events
+    if(!isVisible())
+        return;
+
+    if(m_auto_resize)
     {
-        int index = autoResizeColumn();
-
-        if(index >= 0 && e->oldSize().width() > 10)
-        {
-            adjustColumn(index);
-            m_offset = qMin(m_offset, maxScrollValue());
-            updateColumns();
-            return;
-        }
-
-        if(m_offset > maxScrollValue())
-        {
-            m_offset = maxScrollValue();
-            updateColumns();
-            return;
-        }
+        adjustColumn(autoResizeColumn());
+        m_offset = qMin(m_offset, maxScrollValue());
+        updateColumns();
+        return;
     }
+
+    if(m_offset > maxScrollValue())
+    {
+        m_offset = maxScrollValue();
+        updateColumns();
+        return;
+    }
+
 
     if(layoutDirection() == Qt::RightToLeft || e->oldSize().height() != e->size().height())
     {
@@ -661,19 +660,6 @@ void PlayListHeader::paintEvent(QPaintEvent *)
     }
 }
 
-void PlayListHeader::timerEvent(QTimerEvent *e)
-{
-    killTimer(e->timerId());
-    m_block_resize = false;
-    if(m_auto_resize)
-    {
-        adjustColumn(autoResizeColumn());
-        m_offset = qMin(m_offset, maxScrollValue());
-        updateColumns();
-        PlayListManager::instance()->selectedPlayList()->updateMetaData();
-    }
-}
-
 int PlayListHeader::findColumn(QPoint pos)
 {
     for(int i = 0; i < m_model->count(); ++i)
@@ -750,9 +736,13 @@ void PlayListHeader::writeSettings()
 
 void PlayListHeader::showEvent(QShowEvent *)
 {
-    updateColumns();
-    startTimer(500);
-    m_block_resize = true; //do not auto-resize column 1 s after show event
+    if(m_auto_resize)
+    {
+        adjustColumn(autoResizeColumn());
+        m_offset = qMin(m_offset, maxScrollValue());
+        updateColumns();
+        PlayListManager::instance()->selectedPlayList()->updateMetaData();
+    }
 }
 
 void PlayListHeader::hideEvent(QHideEvent *)
