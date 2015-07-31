@@ -394,6 +394,7 @@ private:
     void loadBalance();
     void loadRegion();
     QRegion createRegion(const QString &path, const QString &key);
+    QPixmap *correctSize(QPixmap *pixmap, int w, int h);
 };
 
 #endif

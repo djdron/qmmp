@@ -231,6 +231,7 @@ void Skin::loadColors()
 void Skin::loadButtons()
 {
     QPixmap *pixmap = getPixmap ("cbuttons");
+    pixmap = correctSize(pixmap, 136, pixmap->height());
 
     m_buttons[BT_PREVIOUS_N] = pixmap->copy (0, 0,23,18);
     m_buttons[BT_PREVIOUS_P] = pixmap->copy (0,18,23,18);
@@ -288,7 +289,7 @@ void Skin::loadPosBar()
         m_buttons[BT_POSBAR_N] = dummy;
         m_buttons[BT_POSBAR_P] = dummy;
     }
-    posbar = pixmap->copy (0,0,248,pixmap->height());
+    posbar = pixmap->copy (0,0,248, qMin(pixmap->height(), 10));
     delete pixmap;
 }
 
@@ -457,6 +458,7 @@ void Skin::loadPLEdit()
 void Skin::loadEqMain()
 {
     QPixmap *pixmap = getPixmap ("eqmain");
+    pixmap = correctSize(pixmap, pixmap->width(), 292);
 
     m_eq_parts[ EQ_MAIN ] = pixmap->copy (0,0,275,116);
     m_eq_parts[ EQ_TITLEBAR_A ] = pixmap->copy (0,134,275,14);
@@ -791,6 +793,20 @@ QRegion Skin::createRegion(const QString &path, const QString &key)
         region = region.united(QRegion(QPolygon(points)));
     }
     return region;
+}
+
+QPixmap *Skin::correctSize(QPixmap *pixmap, int w, int h)
+{
+    if(pixmap->width() < w || pixmap->height() < h)
+    {
+        QPixmap *fullSizePixmap = new QPixmap(w, h);
+        fullSizePixmap->fill(Qt::transparent);
+        QPainter p(fullSizePixmap);
+        p.drawPixmap(0,0,*pixmap);
+        delete pixmap;
+        return fullSizePixmap;
+    }
+    return pixmap;
 }
 
 QPixmap * Skin::getDummyPixmap(const QString &name, const QString &fallback)
