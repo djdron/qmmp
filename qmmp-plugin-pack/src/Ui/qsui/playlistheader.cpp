@@ -153,6 +153,9 @@ void PlayListHeader::setNumberWidth(int width)
 
 void PlayListHeader::setScrollBarWidth(int width)
 {
+    if(!isVisible())
+        return;
+
     if(m_scrollbar_width != width)
     {
         m_scrollbar_width = width;
@@ -358,7 +361,7 @@ void PlayListHeader::showTrackState(bool yes)
 void PlayListHeader::onColumnAdded(int index)
 {
     m_model->setData(index, SIZE, INITAL_SIZE);
-    if(m_auto_resize)
+    if(m_auto_resize && isVisible())
     {
         adjustColumn(autoResizeColumn());
     }
@@ -368,8 +371,10 @@ void PlayListHeader::onColumnAdded(int index)
 void PlayListHeader::onColumnRemoved()
 {
     m_auto_resize = autoResizeColumn() >= 0;
-    if(m_auto_resize)
+    if(m_auto_resize && isVisible())
+    {
         adjustColumn(autoResizeColumn());
+    }
     updateColumns();
 }
 
