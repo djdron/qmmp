@@ -10,8 +10,8 @@ unix:exists($$[QT_INSTALL_BINS]/lrelease){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
 }
 
-unix:exists($$[QT_INSTALL_BINS]/lrelease-qt4){
-LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease-qt4
+unix:exists($$[QT_INSTALL_BINS]/lrelease-qt5){
+LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease-qt5
 }
 
 
