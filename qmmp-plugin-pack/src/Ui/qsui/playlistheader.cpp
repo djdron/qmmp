@@ -665,8 +665,13 @@ void PlayListHeader::timerEvent(QTimerEvent *e)
 {
     killTimer(e->timerId());
     m_block_resize = false;
-    //if(adjustColumns())
-    //    PlayListManager::instance()->selectedPlayList()->updateMetaData();
+    if(m_auto_resize)
+    {
+        adjustColumn(autoResizeColumn());
+        m_offset = qMin(m_offset, maxScrollValue());
+        updateColumns();
+        PlayListManager::instance()->selectedPlayList()->updateMetaData();
+    }
 }
 
 int PlayListHeader::findColumn(QPoint pos)
