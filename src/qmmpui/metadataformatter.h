@@ -55,9 +55,14 @@ public:
      * %if(A,B,C) or %if(A&B&C,D,E) - condition.
      */
     MetaDataFormatter(const QString &pattern = QString());
-
+    /*!
+     * Setups metadata template.
+     * @param pattern Metadata template string.
+     */
     void setPattern(const QString &pattern);
-
+    /*!
+     * Returns metadata template.
+     */
     const QString pattern() const;
 
     /*!

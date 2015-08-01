@@ -83,10 +83,12 @@ public:
      */
     quint32 sampleRate() const;
     /*!
-     * Returns channels number.
+     * Returns number of channels.
      */
     int channels() const;
-
+    /*!
+     * Returns required channel map.
+     */
     const ChannelMap channelMap() const;
     /*!
      * Returns selected audio format.

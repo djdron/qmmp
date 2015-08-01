@@ -58,6 +58,9 @@ public:
      * @param column Number of column.
      */
     const QString formattedTitle(int column);
+    /*!
+     * Returns the list of the formatted titles for all columns.
+     */
     const QStringList formattedTitles();
     /*!
      *  Returns formatted length of the item.
@@ -92,17 +95,32 @@ public:
      * Returns \b false.
      */
     bool isGroup() const;
-
+    /*!
+     * Sets the index of the track.
+     */
     void setTrackIndex(int track_index);
-
+    /*!
+     * Returns the index of the track.
+     * Default implementation returns -1.
+     */
     int trackIndex() const;
-
-
+    /*!
+     * Prepares for usage.
+     * Increases reference counter.
+     */
     void beginUsage();
+    /*!
+     * End of usage.
+     * Decreases reference counter.
+     */
     void endUsage();
+    /*!
+     * Shedules track object for deletion.
+     */
     void deleteLater();
-
-
+    /*!
+     * Returns \b true if the track object is sheduled for deletion.
+     */
     bool isSheduledForDeletion() const;
     /*!
      * Indicates that instance is currently busy in some kind of operation (tags editing etc.)

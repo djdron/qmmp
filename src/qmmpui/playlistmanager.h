@@ -84,7 +84,9 @@ public:
      * \b i must be a valid index position in the list (i.e., 0 <= i < count()).
      */
     PlayListModel *playListAt(int i) const;
-
+    /*!
+     * Returns playlist header model.
+     */
     PlayListHeaderModel *headerModel();
 
 signals:
@@ -116,7 +118,6 @@ signals:
      * Emitted when the list of playlists is changed.
      */
     void playListsChanged();
-
 
 public slots:
     /*!

@@ -30,42 +30,124 @@
 
 class MetaDataHelper;
 
-/**
+/*!
+ * @brief Helper class that provides access to playlist column configuration.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class PlayListHeaderModel : public QObject
 {
     Q_OBJECT
 public:
+    /*!
+     * Constructs a playlist model.
+     * @param parent QObject parent.
+     */
     explicit PlayListHeaderModel(QObject *parent = 0);
-
+    /*!
+     * Object destructor.
+     */
     ~PlayListHeaderModel();
-
+    /*!
+     * Restores column settings using internal configuration file.
+     * @param groupName Name of the settings group (should be different for each UI plugin)
+     */
     void restoreSettings(const QString &groupName);
+    /*!
+     * Restores column settings using provided QSettings object.
+     * @param settings Pointer to QSettings object.
+     */
     void restoreSettings(QSettings *settings);
+    /*!
+     * Saves column settings using internal configuration file.
+     * @param groupName Name of the settings group (should be different for each UI plugin)
+     */
     void saveSettings(const QString &groupName);
+    /*!
+     * Saves column settings using provided QSettings object.
+     * @param settings Pointer to QSettings object.
+     */
     void saveSettings(QSettings *settings);
+    /*!
+     * Indicates that the settings is loaded.
+     */
     bool isSettingsLoaded() const;
-
+    /*!
+     * Inserts the new column.
+     * @param index Index of the column.
+     * @param name Name of the column.
+     * @param pattern Column template. See \b MetaDataFormatter for details.
+     */
     void insert(int index, const QString &name, const QString &pattern);
+    /*!
+     * Removes column.
+     * @param index Index of the column.
+     */
     void remove(int index);
+    /*!
+     * Moves the column at index position \b from to index position \b to.
+     */
     void move(int from, int to);
+    /*!
+     * Opens internal column editor.
+     * @param index Index of the column.
+     * @param parent Parent widget,
+     */
     void execEdit(int index, QWidget *parent = 0);
+    /*!
+     * Opens internal column editor and inserts new column if user press "ok".
+     * @param index Required index of the column.
+     * @param parent Parent widget.
+     */
     void execInsert(int index, QWidget *parent = 0);
-
+    /*!
+     * Returns number of the columns.
+     */
     int count();
-
+    /*!
+     * Returns name of the column with index \b index.
+     */
     const QString name(int index) const;
+    /*!
+     * Returns template of the column with index \b index.
+     */
     const QString pattern(int index) const;
-
+    /*!
+     * Adds extra data to column (size, geometry, etc).
+     * @param index Index of the column.
+     * @param key Key of the extra field.
+     * @param data Extra data value.
+     */
     void setData(int index, int key, const QVariant &data);
+    /*!
+     * Returns extra data of the column.
+     * @param index Index of the column.
+     * @param key Key of the extra field.
+     */
     const QVariant data(int index, int key) const;
 
 signals:
+    /*!
+     * Emitted when a new column is added.
+     * @param index Index of the column.
+     */
     void columnAdded(int index);
+    /*!
+     * Emitted when a column is removed.
+     * @param index Index of the column.
+     */
     void columnRemoved(int index);
+    /*!
+     * Emitted when a column is changed.
+     * @param index Index of the column.
+     */
     void columnChanged(int index);
+    /*!
+     * Emitted when the column at index position \b from is moved to index position \b to.
+     */
     void columnMoved(int from, int to);
+    /*!
+     * Emitted when columns have changed.
+     */
     void headerChanged();
 
 private:

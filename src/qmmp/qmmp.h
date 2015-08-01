@@ -88,18 +88,21 @@ public:
         PCM_S32LE   /*!< Signed 32 bit Little Endian */
     };
 
+    /*!
+     * Audio channels enum.
+     */
     enum ChannelPosition
     {
-        CHAN_NULL         = 0x00,
-        CHAN_FRONT_LEFT   = 0x01,
-        CHAN_FRONT_RIGHT  = 0x02,
-        CHAN_REAR_LEFT    = 0x04,
-        CHAN_REAR_RIGHT   = 0x08,
-        CHAN_FRONT_CENTER = 0x10,
-        CHAN_REAR_CENTER  = 0x20,
-        CHAN_SIDE_LEFT    = 0x40,
-        CHAN_SIDE_RIGHT   = 0x80,
-        CHAN_LFE          = 0x100,
+        CHAN_NULL         = 0x00,   /*!< No channel */
+        CHAN_FRONT_LEFT   = 0x01,   /*!< Front left channel */
+        CHAN_FRONT_RIGHT  = 0x02,   /*!< Front right channel */
+        CHAN_REAR_LEFT    = 0x04,   /*!< Rear left channel */
+        CHAN_REAR_RIGHT   = 0x08,   /*!< Rear right channel */
+        CHAN_FRONT_CENTER = 0x10,   /*!< Front center channel */
+        CHAN_REAR_CENTER  = 0x20,   /*!< Rear center channel */
+        CHAN_SIDE_LEFT    = 0x40,   /*!< Side left channel */
+        CHAN_SIDE_RIGHT   = 0x80,   /*!< Side right channel */
+        CHAN_LFE          = 0x100,  /*!< Low-frequency effects channel */
     };
 
     /*!

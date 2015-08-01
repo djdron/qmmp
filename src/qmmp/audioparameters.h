@@ -66,6 +66,9 @@ public:
      * Returns number of channels.
      */
     int channels() const;
+    /*!
+     * Returns channel map.
+     */
     const ChannelMap channelMap() const;
     /*!
      * Returns pcm format.
