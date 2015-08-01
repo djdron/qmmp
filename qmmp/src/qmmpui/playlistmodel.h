@@ -323,7 +323,7 @@ public:
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
-     * @param Playlist updated flags. See \b UpdateFlags enum for details.
+     * @param flags Playlist updated flags. See \b UpdateFlags enum for details.
      */
     void listChanged(int flags);
     /*!

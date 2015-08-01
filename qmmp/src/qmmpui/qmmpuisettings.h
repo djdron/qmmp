@@ -93,11 +93,6 @@ public:
      */
     void setConvertTwenty(bool enabled);
     /*!
-     * Sets short title template.
-     * @param titleFormat title template. \sa MetaDataFormatter
-     */
-    //void setTitleFormat(const QString &titleFormat);
-    /*!
      * Sets group format.
      * \param groupFormat group format. \sa MetaDataFormatter
      */
