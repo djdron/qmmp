@@ -891,3 +891,40 @@ Version 0.8.0
 * updated Serbian translation (Mladen Pejaković)
 * updated Polish translation (Grzegorz Gibas)
 * updated Lithuanian translation (Algirdas Butkus)
+
+Version 0.9.0
+added Portuguese translation (Sérgio Marques)
+update Ukrainian translation
+added ChannelMap class
+equalizer: 9 channels support
+improved album artist tag support
+playlist container optimization
+added asynchronous sorting
+added CMAKE_AUTOMOC feature (patch by RyoTa SimaMoto)
+qmake: added feature to disable plugins without qmmp.pri modification
+added flags for playlist changes notification
+added feature to remember playlists scroll positions 
+added feature to exclude cue data files
+added parser implementation
+moved drawing functions to separate class
+multicolumn support implementation
+updated Czech translation (Jaroslav Lichtblau)
+updated Hebrew translation (Genghis Khan)
+increased details dialog size
+added feature to change user agent
+using dsound plugin as default (under win32 only)
+changed default pl separator
+added feature to hide song lengths
+improved album artist tag support
+mpeg plugin: improved ape support
+added feature to change window title
+updated German translation (Ettore Atalan)
+skinned ui: added shortcut for "Rename List" action
+added feature to reset fonts
+added feature to restore default shortcuts
+changed default skin to Glare by sixsixfive
+fileops: added feature to move files (#132)
+fileops: improved settings dialog
+added sorting by file modification date (#741)
+gme: added feature to disable fadeout
+sample rate converter: some optimization
