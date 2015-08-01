@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,7 +53,10 @@ public:
      * @param column Number of column.
      */
     virtual const QString formattedTitle(int column) = 0;
-
+    /*!
+     * Returns the list of the formatted titles for all columns.
+     * Group separators contain only one title.
+     */
     virtual const QStringList formattedTitles() = 0;
     /*!
      *  Returns formatted length of the item.
@@ -63,9 +66,15 @@ public:
      * Returns \b true if the \b PlayListItem is group separator. Otherwise returns \b false.
      */
     virtual bool isGroup() const = 0;
-
+    /*!
+     * Sets the index of the track.
+     * Default implementation does nothing.
+     */
     virtual void setTrackIndex(int number);
-
+    /*!
+     * Returns the index of the track.
+     * Default implementation returns -1.
+     */
     virtual int trackIndex() const;
 
 private:
