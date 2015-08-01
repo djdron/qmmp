@@ -112,7 +112,9 @@ public:
      * Returns number of tracks.
      */
     int trackCount() const;
-
+    /*!
+     * Returns number of columns.
+     */
     int columnCount() const;
     /*!
      * Returns the current track.
@@ -186,10 +188,10 @@ public:
      */
     void setSelected(QList<PlayListItem *> items, bool selected = true);
     /*!
-     * Sets the selected state of the list of items range
-     * @param firts Firts item in the range
-     * @param last Last item in the range
-     * @param selected Selection state (\b true - select, \b false - unselect)
+     * Sets the selected state of the list of items range.
+     * @param first Firts item in the range.
+     * @param last Last item in the range.
+     * @param selected Selection state (\b true - select, \b false - unselect).
      */
     void setSelected(int first, int last, bool selected = true);
     /*!
@@ -278,7 +280,7 @@ public:
      */
     bool contains(const QString &url);
     /*!
-     * Enum of the available sort modes
+     * Enum of the available sort modes.
      */
     enum SortMode
     {
@@ -300,23 +302,28 @@ public:
      * Returns \b -1 if item with index \b index is not a track or does not exist.
      */
     int indexOfTrack(int index) const;
-
+    /*!
+     * Finds track with index \b track_index.
+     * Return null pointer if playlist does not contain track with index \b track_index.
+     */
     PlayListTrack *findTrack(int track_index) const;
-
-
+    /*!
+     * Enum of the playlist update flags.
+     */
     enum UpdateFlags
     {
-        STRUCTURE = 0x01, //added/removed/moved
-        SELECTION = 0x02,
-        QUEUE = 0x04,
-        CURRENT = 0x08,
-        STOP_AFTER = 0x10,
-        METADATA = 0x20
+        STRUCTURE = 0x01,  /*!< Structure of the playlist has been changed */
+        SELECTION = 0x02,  /*!< Current selection has been changed */
+        QUEUE = 0x04,      /*!< Track queue has been changed */
+        CURRENT = 0x08,    /*!< Current track has been changed */
+        STOP_AFTER = 0x10, /*!< Stop track has been changed */
+        METADATA = 0x20    /*!< Metadata has been changed */
     };
 
 signals:
     /*!
      * Emitted when the state of PlayListModel has changed.
+     * @param Playlist updated flags. See \b UpdateFlags enum for details.
      */
     void listChanged(int flags);
     /*!
@@ -333,8 +340,15 @@ signals:
      * Emitted when playlist loader thread has finished.
      */
     void loaderFinished();
-
+    /*!
+     * Emitted to ensure that the current track is visible.
+     */
     void currentVisibleRequest();
+    /*!
+     * Emitted when sorting by column is finished.
+     * @param column Column index.
+     * @param reverted Sort direction.
+     */
     void sortingByColumnFinished(int column, bool reverted);
 
 public slots:
@@ -369,7 +383,9 @@ public slots:
      * Inserts \b tracks at index position \b index in the playlist.
      */
     void insert(int index, QList <PlayListTrack *> tracks);
-
+    /*!
+     * Inserts \b tracks after item \b before in the playlist.
+     */
     void insert(PlayListItem *before, QList <PlayListTrack *> tracks);
     /*!
      * Inserts file or directory at index position \b index in the playlist.
@@ -426,7 +442,9 @@ public slots:
      * @param parent parent Widget.
      */
     void showDetails(QWidget *parent = 0);
-
+    /*!
+     * Ensures that the current track is visible.
+     */
     void doCurrentVisibleRequest();
     /*!
      * Randomly changes items order.
@@ -444,7 +462,9 @@ public slots:
      * Sorts items in \b mode sort mode.
      */
     void sort(int mode);
-
+    /*!
+     * Sorts tracks by the column with index \b column.
+     */
     void sortByColumn(int column);
     /*!
      * Adds/removes selected items to/from playback queue.
@@ -474,7 +494,9 @@ public slots:
      * Rebuilds groups
      */
     void rebuildGroups();
-
+    /*!
+     * Requires to update metadata.
+     */
     void updateMetaData();
 
 private:
@@ -494,8 +516,6 @@ private:
 
     int removeTrackInternal(int i);
 
-
-
 private slots:
     /*!
      * Prepares play state object
@@ -510,7 +530,6 @@ private slots:
      * @param enabled State of the groups (\b true - enabled, \b false - disabled)
      */
     void prepareGroups(bool enabled);
-
 
     void onTaskFinished();
 
