@@ -35,32 +35,15 @@ CONFIGURE_FILE(
 ADD_CUSTOM_TARGET(uninstall
   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
-#SET(QT_MIN_VERSION 5.5.0)
-#INCLUDE(FindQt4)
-#INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5LinguistTools REQUIRED)
-find_package(Qt5X11Extras REQUIRED)
-find_package(Qt5Network REQUIRED)
-find_package(Qt5DBus REQUIRED)
+find_package(Qt5Widgets 5.4.0 REQUIRED)
+find_package(Qt5LinguistTools 5.4.0 REQUIRED)
+find_package(Qt5X11Extras 5.4.0 REQUIRED)
+find_package(Qt5Network 5.4.0 REQUIRED)
+find_package(Qt5DBus 5.4.0 REQUIRED)
 ADD_DEFINITIONS(-DQ_WS_X11)
-
-
-#IF(NOT QT_LRELEASE_EXECUTABLE)
-#FIND_PROGRAM(QT_LRELEASE_EXECUTABLE
-#    NAMES lrelease
-#    PATHS ${QT_BINARY_DIR}
-#    NO_DEFAULT_PATH
-#)
-#ENDIF(NOT QT_LRELEASE_EXECUTABLE)
-
-#debian hack
-#IF(EXISTS ${QT_BINARY_DIR}/lrelease-qt5)
-#SET(QT_LRELEASE_EXECUTABLE ${QT_BINARY_DIR}/lrelease-qt5)
-#ENDIF(EXISTS ${QT_BINARY_DIR}/lrelease-qt5)
 
 get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
 

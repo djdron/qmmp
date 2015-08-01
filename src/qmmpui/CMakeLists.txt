@@ -1,22 +1,9 @@
 project(libqmmpui)
 
-cmake_minimum_required(VERSION 2.8.6)
-
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 OLD)
 cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
-
-#SET(QT_USE_QTNETWORK TRUE)
-#INCLUDE(FindQt4)
-#include(${QT_USE_FILE})
-
-# qt lib
-ADD_DEFINITIONS( -Wall )
-ADD_DEFINITIONS(${QT_DEFINITIONS})
-ADD_DEFINITIONS(-DQT_NO_DEBUG)
-ADD_DEFINITIONS(-DQT_SHARED)
-ADD_DEFINITIONS(-DQT_THREAD)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
