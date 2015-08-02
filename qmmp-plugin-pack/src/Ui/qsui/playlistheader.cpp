@@ -337,6 +337,7 @@ void PlayListHeader::setAutoResize(bool on)
 
     if(on)
     {
+        m_offset = 0;
         adjustColumn(m_pressed_column);
         updateColumns();
     }
