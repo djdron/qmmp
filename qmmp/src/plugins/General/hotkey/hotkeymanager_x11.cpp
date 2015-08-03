@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Copyright (C) 2003-2007 by Justin Karneges and Michail Pishchagin     *
@@ -62,10 +62,10 @@ quint32 Hotkey::defaultKey(int act)
 {
     //default key bindings
     QMap<int, quint32> keyMap;
-    keyMap[PLAY] = XF86XK_AudioPlay;
+    keyMap[PLAY] = 0;
     keyMap[STOP] = XF86XK_AudioStop;
     keyMap[PAUSE] = XF86XK_AudioPause;
-    keyMap[PLAY_PAUSE] = 0;
+    keyMap[PLAY_PAUSE] = XF86XK_AudioPlay;
     keyMap[NEXT] = XF86XK_AudioNext;
     keyMap[PREVIOUS] = XF86XK_AudioPrev;
     keyMap[SHOW_HIDE] = 0;
