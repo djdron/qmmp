@@ -103,12 +103,6 @@ source_lang = en
 source_file = src/plugins/Input/sndfile/translations/sndfile_plugin_en.ts
 type = QT
 
-[qmmp.ffmpeg_legacy]
-file_filter = src/plugins/Input/ffmpeg_legacy/translations/ffmpeg_legacy_plugin_<lang>.ts
-source_lang = en
-source_file = src/plugins/Input/ffmpeg_legacy/translations/ffmpeg_legacy_plugin_en.ts
-type = QT
-
 [qmmp.modplug]
 file_filter = src/plugins/Input/modplug/translations/modplug_plugin_<lang>.ts
 source_lang = en
@@ -311,12 +305,6 @@ type = QT
 file_filter = src/plugins/General/rgscan/translations/rgscan_plugin_<lang>.ts
 source_lang = en
 source_file = src/plugins/General/rgscan/translations/rgscan_plugin_en.ts
-type = QT
-
-[qmmp.udisks]
-file_filter = src/plugins/General/udisks/translations/udisks_plugin_<lang>.ts
-source_lang = en
-source_file = src/plugins/General/udisks/translations/udisks_plugin_en.ts
 type = QT
 
 [qmmp.copypaste]
