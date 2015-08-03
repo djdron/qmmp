@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2014 by Ilya Kotov                                      *
+ *   Copyright (C) 2014-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -105,7 +105,12 @@ void MediaKeys::onKeyPressed(const QString &in0, const QString &in1)
     SoundCore *core = SoundCore::instance();
     qDebug("MediaKeys: [%s] pressed", qPrintable(in1));
     if(in1 == "Play")
-        player->play();
+    {
+        if (core->state() == Qmmp::Stopped)
+            player->play();
+        else if (core->state() != Qmmp::FatalError)
+            core->pause();
+    }
     else if(in1 == "Pause")
         core->pause();
     else if(in1 == "Stop")
