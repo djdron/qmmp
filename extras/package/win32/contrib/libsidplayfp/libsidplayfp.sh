@@ -1,13 +1,13 @@
 #!/bin/sh
 
 NAME=libsidplayfp
-VERSION=1.7.2
+VERSION=1.8.0
 
 case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc http://sourceforge.net/projects/sidplay-residfp/files/$NAME/1.7/$NAME-$VERSION.tar.gz
+    wget -nc http://sourceforge.net/projects/sidplay-residfp/files/$NAME/1.8/$NAME-$VERSION.tar.gz
   ;;
   --install)
     cd temp

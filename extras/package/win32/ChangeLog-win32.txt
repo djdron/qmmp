@@ -76,3 +76,5 @@ LEGEND
 [*] ffmpeg-2.2.16
 [*] mingw-w64 toolchain: i686-5.1.0-release-posix-dwarf-rt_v4-rev0.7z
 [*] qt-4.8.7+gitb05d05fd9
+[*] libsidplayfp-1.8.0
+[*] wavpack-4.75.0

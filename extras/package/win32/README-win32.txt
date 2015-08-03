@@ -29,7 +29,7 @@ List of the third-party libraries.
   libogg              1.3.2	 http://www.vorbis.com/
   libvorbis           1.3.5	 http://www.vorbis.com/
   flac                1.3.1	 http://flac.sourceforge.net/
-  wavpack             4.70.0	 http://www.wavpack.com/
+  wavpack             4.75.0	 http://www.wavpack.com/
   libsndfile          1.0.25	 http://www.mega-nerd.com/libsndfile/
   opus                1.1	 http://www.opus-codec.org/
   opusfile            0.6	 http://www.opus-codec.org/
@@ -44,7 +44,7 @@ List of the third-party libraries.
   musepack            r475	 http://www.musepack.net/
   glew                1.12.0     http://glew.sourceforge.net/
   projectm            2.1.0      http://projectm.sourceforge.net/
-  libsidplayfp        1.7.2      http://sourceforge.net/projects/sidplay-residfp/
+  libsidplayfp        1.8.0      http://sourceforge.net/projects/sidplay-residfp/
   enca                1.16       http://cihar.com/software/enca/
   libxml2             2.9.1      http://xmlsoft.org/
   librcd              0.1.14     http://rusxmms.sourceforge.net/
