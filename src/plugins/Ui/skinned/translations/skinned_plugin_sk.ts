@@ -893,17 +893,17 @@
         <translation>Otočiť zoznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">Premenovať playlist</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
         <translation type="unfinished">Název playlistu:</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="606"/>
+        <location filename="../playlist.cpp" line="609"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nový playlist</translation>
     </message>

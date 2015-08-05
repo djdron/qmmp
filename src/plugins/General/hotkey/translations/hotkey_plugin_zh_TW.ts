@@ -22,27 +22,27 @@
 <context>
     <name>HotkeyFactory</name>
     <message>
-        <location filename="../hotkeyfactory.cpp" line="30"/>
+        <location filename="../hotkeyfactory.cpp" line="31"/>
         <source>Global Hotkey Plugin</source>
         <translation>全局熱鍵插件</translation>
     </message>
     <message>
-        <location filename="../hotkeyfactory.cpp" line="50"/>
+        <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>About Global Hotkey Plugin</source>
         <translation>關於全局熱鍵插件</translation>
     </message>
     <message>
-        <location filename="../hotkeyfactory.cpp" line="51"/>
+        <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>Qmmp Global Hotkey Plugin</source>
         <translation>Qmmp 全局熱鍵插件</translation>
     </message>
     <message>
-        <location filename="../hotkeyfactory.cpp" line="52"/>
+        <location filename="../hotkeyfactory.cpp" line="53"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
         <translation>此插件支援添加多媒體熱鍵與全局熱鍵</translation>
     </message>
     <message>
-        <location filename="../hotkeyfactory.cpp" line="53"/>
+        <location filename="../hotkeyfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

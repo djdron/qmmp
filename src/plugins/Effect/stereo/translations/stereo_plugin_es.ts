@@ -4,27 +4,27 @@
 <context>
     <name>EffectStereoFactory</name>
     <message>
-        <location filename="../effectstereofactory.cpp" line="30"/>
+        <location filename="../effectstereofactory.cpp" line="31"/>
         <source>Extra Stereo Plugin</source>
         <translation>Módulo de estéreo extra</translation>
     </message>
     <message>
-        <location filename="../effectstereofactory.cpp" line="50"/>
+        <location filename="../effectstereofactory.cpp" line="51"/>
         <source>About Extra Stereo Plugin</source>
         <translation>Acerca del módulo de estéreo extra</translation>
     </message>
     <message>
-        <location filename="../effectstereofactory.cpp" line="51"/>
+        <location filename="../effectstereofactory.cpp" line="52"/>
         <source>Qmmp Extra Stereo Plugin</source>
         <translation>Módulo de estéreo extra para Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectstereofactory.cpp" line="52"/>
+        <location filename="../effectstereofactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../effectstereofactory.cpp" line="53"/>
+        <location filename="../effectstereofactory.cpp" line="54"/>
         <source>Based on the Extra Stereo Plugin for Xmms by Johan Levin</source>
         <translation>Basado en el módulo de estéreo extra para Xmms de Johan Levin</translation>
     </message>

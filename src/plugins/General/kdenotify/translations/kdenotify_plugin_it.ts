@@ -12,17 +12,17 @@
 <context>
     <name>KdeNotifyFactory</name>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="30"/>
+        <location filename="../kdenotifyfactory.cpp" line="31"/>
         <source>KDE 4 notification plugin</source>
         <translation>Plugin notificazione per KDE 4</translation>
     </message>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="50"/>
+        <location filename="../kdenotifyfactory.cpp" line="51"/>
         <source>About KDE Notification Plugin</source>
         <translation>Info sul Plugin di notificazione per KDE</translation>
     </message>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="51"/>
+        <location filename="../kdenotifyfactory.cpp" line="52"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
         <translation>Plugin di notificazione epr KDE 4</translation>

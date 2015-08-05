@@ -115,27 +115,27 @@
 <context>
     <name>TrackChangeFactory</name>
     <message>
-        <location filename="../trackchangefactory.cpp" line="29"/>
+        <location filename="../trackchangefactory.cpp" line="30"/>
         <source>Track Change Plugin</source>
         <translation>תוספת שינוי רצועה</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="49"/>
+        <location filename="../trackchangefactory.cpp" line="50"/>
         <source>About Track Change Plugin</source>
         <translation>אודות תוספת שינוי רצועה</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="50"/>
+        <location filename="../trackchangefactory.cpp" line="51"/>
         <source>Qmmp Track Change Plugin</source>
         <translation>תוספת שינוי רצועה של Qmmp</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="51"/>
+        <location filename="../trackchangefactory.cpp" line="52"/>
         <source>This plugin executes external command when current track is changed</source>
         <translation>תוספת זו מוציאה לפועל פקודה חיצונית כאשר רצועה נוכחית משתנה</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="52"/>
+        <location filename="../trackchangefactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>

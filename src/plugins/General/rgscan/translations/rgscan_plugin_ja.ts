@@ -81,47 +81,47 @@
 <context>
     <name>RGScanFactory</name>
     <message>
-        <location filename="../rgscanfactory.cpp" line="28"/>
+        <location filename="../rgscanfactory.cpp" line="29"/>
         <source>ReplayGain Scanner Plugin</source>
         <translation>リプレイゲイン スキャナー プラグイン</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="49"/>
+        <location filename="../rgscanfactory.cpp" line="50"/>
         <source>About ReplayGain Scanner Plugin</source>
         <translation>リプレイゲイン スキャナー プラグインについて</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="50"/>
+        <location filename="../rgscanfactory.cpp" line="51"/>
         <source>ReplayGain Scanner Plugin for Qmmp</source>
         <translation>QMMP リプレイゲイン スキャナー プラグイン</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="51"/>
+        <location filename="../rgscanfactory.cpp" line="52"/>
         <source>This plugin scans audio files and gives information for volume normalization</source>
         <translation>このプラグインは音声ファイルの音量を計測し適正音量レベルに直すための情報を提供します</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="52"/>
+        <location filename="../rgscanfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="53"/>
+        <location filename="../rgscanfactory.cpp" line="54"/>
         <source>Based on source code by:</source>
         <translation>元になったコードの作者:</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="54"/>
+        <location filename="../rgscanfactory.cpp" line="55"/>
         <source>David Robinson &lt;David@Robinson.org&gt;</source>
         <translation>David Robinson &lt;David@Robinson.org&gt;</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="55"/>
+        <location filename="../rgscanfactory.cpp" line="56"/>
         <source>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</source>
         <translation>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</translation>
     </message>
     <message>
-        <location filename="../rgscanfactory.cpp" line="56"/>
+        <location filename="../rgscanfactory.cpp" line="57"/>
         <source>Frank Klemm</source>
         <translation>Frank Klemm</translation>
     </message>

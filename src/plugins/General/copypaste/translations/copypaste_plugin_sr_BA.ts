@@ -37,27 +37,27 @@
 <context>
     <name>CopyPasteFactory</name>
     <message>
-        <location filename="../copypastefactory.cpp" line="28"/>
+        <location filename="../copypastefactory.cpp" line="29"/>
         <source>Copy/Paste Plugin</source>
         <translation>Копирај/налијепи</translation>
     </message>
     <message>
-        <location filename="../copypastefactory.cpp" line="48"/>
+        <location filename="../copypastefactory.cpp" line="49"/>
         <source>About Copy/Paste Plugin</source>
         <translation>О прикључку за копирање/лијепљење</translation>
     </message>
     <message>
-        <location filename="../copypastefactory.cpp" line="49"/>
+        <location filename="../copypastefactory.cpp" line="50"/>
         <source>Qmmp Copy/Paste Plugin</source>
         <translation>Кумп прикључак за копирање/лијепљење</translation>
     </message>
     <message>
-        <location filename="../copypastefactory.cpp" line="50"/>
+        <location filename="../copypastefactory.cpp" line="51"/>
         <source>This plugin allows one to copy selected tracks from one playlist to another</source>
         <translation>Омогућује копирање изабране нумере са једне листе нумера на другу</translation>
     </message>
     <message>
-        <location filename="../copypastefactory.cpp" line="51"/>
+        <location filename="../copypastefactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Аутор: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

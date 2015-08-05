@@ -4,32 +4,32 @@
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="45"/>
+        <location filename="../decodercdaudiofactory.cpp" line="46"/>
         <source>CD Audio Plugin</source>
         <translation>תוספת תקליטור שמע</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="90"/>
+        <location filename="../decodercdaudiofactory.cpp" line="91"/>
         <source>About CD Audio Plugin</source>
         <translation>אודות תוספת תקליטור שמע</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="91"/>
+        <location filename="../decodercdaudiofactory.cpp" line="92"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation>תוספת תקליטור שמע של Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="92"/>
+        <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
         <translation>הודרה כנגד libcdio-%1 וגם libcddb-%2</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="94"/>
+        <location filename="../decodercdaudiofactory.cpp" line="95"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>חוברה על ידי: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;‎</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="95"/>
+        <location filename="../decodercdaudiofactory.cpp" line="96"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
         <translation>שימוש: פתח cdda‪:///‬ באמצעות דו שיח הוסף URL או שורת פקודה</translation>
     </message>

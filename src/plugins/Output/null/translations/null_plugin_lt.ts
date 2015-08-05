@@ -4,22 +4,22 @@
 <context>
     <name>OutputNullFactory</name>
     <message>
-        <location filename="../outputnullfactory.cpp" line="30"/>
+        <location filename="../outputnullfactory.cpp" line="31"/>
         <source>Null Plugin</source>
         <translation>Null Įskiepis</translation>
     </message>
     <message>
-        <location filename="../outputnullfactory.cpp" line="54"/>
+        <location filename="../outputnullfactory.cpp" line="55"/>
         <source>About Null Output Plugin</source>
         <translation>Apie Null išvesties įskiepį</translation>
     </message>
     <message>
-        <location filename="../outputnullfactory.cpp" line="55"/>
+        <location filename="../outputnullfactory.cpp" line="56"/>
         <source>Qmmp Null Output Plugin</source>
         <translation>Qmmp Null išvesties įskiepis</translation>
     </message>
     <message>
-        <location filename="../outputnullfactory.cpp" line="56"/>
+        <location filename="../outputnullfactory.cpp" line="57"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

@@ -4,27 +4,27 @@
 <context>
     <name>OutputOSSFactory</name>
     <message>
-        <location filename="../outputossfactory.cpp" line="36"/>
+        <location filename="../outputossfactory.cpp" line="37"/>
         <source>OSS Plugin</source>
         <translation>Модуль OSS</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="56"/>
+        <location filename="../outputossfactory.cpp" line="57"/>
         <source>About OSS Output Plugin</source>
         <translation>Про модуль виведення OSS</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="57"/>
+        <location filename="../outputossfactory.cpp" line="58"/>
         <source>Qmmp OSS Output Plugin</source>
         <translation>Модуль виведення OSS для Qmmp</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="58"/>
+        <location filename="../outputossfactory.cpp" line="59"/>
         <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
         <translation>Розробник: Юрій Журавльов &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="59"/>
+        <location filename="../outputossfactory.cpp" line="60"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
         <translation>На базі коду: Brad Hughes &lt;bhughes@trolltech.com&gt;</translation>
     </message>

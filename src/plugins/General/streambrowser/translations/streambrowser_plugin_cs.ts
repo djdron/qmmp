@@ -17,27 +17,27 @@
 <context>
     <name>StreamBrowserFactory</name>
     <message>
-        <location filename="../streambrowserfactory.cpp" line="28"/>
+        <location filename="../streambrowserfactory.cpp" line="29"/>
         <source>Stream Browser Plugin</source>
         <translation>Modul prohlížeče proudů</translation>
     </message>
     <message>
-        <location filename="../streambrowserfactory.cpp" line="49"/>
+        <location filename="../streambrowserfactory.cpp" line="50"/>
         <source>About Stream Browser Plugin</source>
         <translation>O modulu prohlížeče proudů</translation>
     </message>
     <message>
-        <location filename="../streambrowserfactory.cpp" line="50"/>
+        <location filename="../streambrowserfactory.cpp" line="51"/>
         <source>Qmmp Stream Browser Plugin</source>
         <translation>Modul Qmmp na prohlížení proudů</translation>
     </message>
     <message>
-        <location filename="../streambrowserfactory.cpp" line="51"/>
+        <location filename="../streambrowserfactory.cpp" line="52"/>
         <source>This plugin allows one to add stream from IceCast stream directory</source>
         <translation>Tento modul umožňuje přidat proud z adresáře proudů IceCast</translation>
     </message>
     <message>
-        <location filename="../streambrowserfactory.cpp" line="52"/>
+        <location filename="../streambrowserfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

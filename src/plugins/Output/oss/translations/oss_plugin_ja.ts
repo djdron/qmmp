@@ -4,27 +4,27 @@
 <context>
     <name>OutputOSSFactory</name>
     <message>
-        <location filename="../outputossfactory.cpp" line="36"/>
+        <location filename="../outputossfactory.cpp" line="37"/>
         <source>OSS Plugin</source>
         <translation>OSS プラグイン</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="56"/>
+        <location filename="../outputossfactory.cpp" line="57"/>
         <source>About OSS Output Plugin</source>
         <translation>OSS 出力プラグインについて</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="57"/>
+        <location filename="../outputossfactory.cpp" line="58"/>
         <source>Qmmp OSS Output Plugin</source>
         <translation>QMMP OSS 出力プラグイン</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="58"/>
+        <location filename="../outputossfactory.cpp" line="59"/>
         <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
         <translation>制作: Юрий Журавлёв (Yuriy Zhuravlev) &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="59"/>
+        <location filename="../outputossfactory.cpp" line="60"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
         <translation>Brad Hughes &lt;bhughes@trolltech.com&gt; 氏のコードを基に作成</translation>
     </message>

@@ -115,27 +115,27 @@
 <context>
     <name>TrackChangeFactory</name>
     <message>
-        <location filename="../trackchangefactory.cpp" line="29"/>
+        <location filename="../trackchangefactory.cpp" line="30"/>
         <source>Track Change Plugin</source>
         <translation>Измена нумере</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="49"/>
+        <location filename="../trackchangefactory.cpp" line="50"/>
         <source>About Track Change Plugin</source>
         <translation>О прикључку измене нумере</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="50"/>
+        <location filename="../trackchangefactory.cpp" line="51"/>
         <source>Qmmp Track Change Plugin</source>
         <translation>Кумп прикључак измене нумере</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="51"/>
+        <location filename="../trackchangefactory.cpp" line="52"/>
         <source>This plugin executes external command when current track is changed</source>
         <translation>Извршава спољашњу наредбу при измени нумере</translation>
     </message>
     <message>
-        <location filename="../trackchangefactory.cpp" line="52"/>
+        <location filename="../trackchangefactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Аутор: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

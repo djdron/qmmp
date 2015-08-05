@@ -4,42 +4,42 @@
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
-        <location filename="../effectladspafactory.cpp" line="30"/>
+        <location filename="../effectladspafactory.cpp" line="31"/>
         <source>LADSPA Plugin</source>
         <translation>LADSPA-Modul</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="50"/>
+        <location filename="../effectladspafactory.cpp" line="51"/>
         <source>About LADSPA Host for Qmmp</source>
         <translation>Über LADSPA-Host für Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="51"/>
+        <location filename="../effectladspafactory.cpp" line="52"/>
         <source>LADSPA Host for Qmmp</source>
         <translation>LADSPA-Host für Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="52"/>
+        <location filename="../effectladspafactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Geschrieben von: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="53"/>
+        <location filename="../effectladspafactory.cpp" line="54"/>
         <source>Based on the LADSPA Host for BMP</source>
         <translation>Basierend auf dem LADSPA-Host für BMP</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="54"/>
+        <location filename="../effectladspafactory.cpp" line="55"/>
         <source>BMP-ladspa developers:</source>
         <translation>BMP-LADSPA-Entwickler:</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="55"/>
+        <location filename="../effectladspafactory.cpp" line="56"/>
         <source>Nick Lamb &lt;njl195@zepler.org.uk&gt;</source>
         <translation>Nick Lamb &lt;njl195@zepler.org.uk&gt;</translation>
     </message>
     <message>
-        <location filename="../effectladspafactory.cpp" line="56"/>
+        <location filename="../effectladspafactory.cpp" line="57"/>
         <source>Giacomo Lozito &lt;city_hunter@users.sf.net&gt;</source>
         <translation>Giacomo Lozito &lt;city_hunter@users.sf.net&gt;</translation>
     </message>

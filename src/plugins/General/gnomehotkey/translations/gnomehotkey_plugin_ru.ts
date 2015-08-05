@@ -4,27 +4,27 @@
 <context>
     <name>GnomeHotkeyFactory</name>
     <message>
-        <location filename="../gnomehotkeyfactory.cpp" line="29"/>
+        <location filename="../gnomehotkeyfactory.cpp" line="30"/>
         <source>Gnome Hotkey Plugin</source>
         <translation>Модуль клавиш GNOME</translation>
     </message>
     <message>
-        <location filename="../gnomehotkeyfactory.cpp" line="50"/>
+        <location filename="../gnomehotkeyfactory.cpp" line="51"/>
         <source>About Gnome Hotkey Plugin</source>
         <translation>О модуле горячих клавиш GNOME</translation>
     </message>
     <message>
-        <location filename="../gnomehotkeyfactory.cpp" line="51"/>
+        <location filename="../gnomehotkeyfactory.cpp" line="52"/>
         <source>Qmmp Gnome Hotkey Plugin</source>
         <translation>Модуль горчих клавиш GNOME для Qmmp</translation>
     </message>
     <message>
-        <location filename="../gnomehotkeyfactory.cpp" line="52"/>
+        <location filename="../gnomehotkeyfactory.cpp" line="53"/>
         <source>This plugin adds support of the GNOME/Cinnamon hotkeys</source>
         <translation>Этот модуль добавляет поддершку горячих клавиш GNOME/Cinnamon</translation>
     </message>
     <message>
-        <location filename="../gnomehotkeyfactory.cpp" line="53"/>
+        <location filename="../gnomehotkeyfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

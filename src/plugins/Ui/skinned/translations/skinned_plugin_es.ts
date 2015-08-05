@@ -898,17 +898,17 @@
         <translation>Invertir la lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">Renombrar lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
         <translation type="unfinished">Nombre de la lista:</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="606"/>
+        <location filename="../playlist.cpp" line="609"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Lista nueva</translation>
     </message>

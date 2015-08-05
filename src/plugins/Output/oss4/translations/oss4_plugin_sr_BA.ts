@@ -4,22 +4,22 @@
 <context>
     <name>OutputOSS4Factory</name>
     <message>
-        <location filename="../outputoss4factory.cpp" line="36"/>
+        <location filename="../outputoss4factory.cpp" line="37"/>
         <source>OSS4 Plugin</source>
         <translation>ОСС4 прикључак</translation>
     </message>
     <message>
-        <location filename="../outputoss4factory.cpp" line="56"/>
+        <location filename="../outputoss4factory.cpp" line="57"/>
         <source>About OSS4 Output Plugin</source>
         <translation>О ОСС4 прикључку излаза</translation>
     </message>
     <message>
-        <location filename="../outputoss4factory.cpp" line="57"/>
+        <location filename="../outputoss4factory.cpp" line="58"/>
         <source>Qmmp OSS4 Output Plugin</source>
         <translation>Кумп ОСС4 прикључак излаза</translation>
     </message>
     <message>
-        <location filename="../outputoss4factory.cpp" line="58"/>
+        <location filename="../outputoss4factory.cpp" line="59"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Аутор: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

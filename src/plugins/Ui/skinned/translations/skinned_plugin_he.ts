@@ -914,17 +914,17 @@
         <translation>פעולות</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">שנה שם רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="585"/>
+        <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
         <translation type="unfinished">שם רשימת נגינה:</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="606"/>
+        <location filename="../playlist.cpp" line="609"/>
         <source>&amp;New PlayList</source>
         <translation>רשימת נגינה &amp;חדשה</translation>
     </message>

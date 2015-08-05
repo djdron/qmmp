@@ -4,22 +4,22 @@
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="30"/>
+        <location filename="../effectsrconverterfactory.cpp" line="31"/>
         <source>SRC Plugin</source>
         <translation>Претварач узорковања</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>О прикључку за претварање узорковања</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="52"/>
+        <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Кумп прикључак за претварање узорковања</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="53"/>
+        <location filename="../effectsrconverterfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Аутор: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
