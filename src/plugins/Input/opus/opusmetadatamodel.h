@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Ilya Kotov                                      *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,7 +21,7 @@
 #ifndef OPUSMETADATAMODEL_H
 #define OPUSMETADATAMODEL_H
 
-#include "opusfile.h"
+#include <taglib/opusfile.h>
 #include <taglib/xiphcomment.h>
 #include <qmmp/metadatamodel.h>
 
