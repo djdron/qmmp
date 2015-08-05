@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,6 +41,7 @@ ConverterHelper::ConverterHelper(QObject *parent) : QObject(parent)
     m_progress->setRange(0,100);
     m_progress->setWindowTitle(tr("Converting..."));
     m_progress->setCancelButtonText(tr("Cancel"));
+    m_progress->cancel();
     connect(m_converter,SIGNAL(progress(int)),m_progress,SLOT(setValue(int)));
     connect(m_converter, SIGNAL(finished()), m_progress, SLOT(reset()));
     connect(m_converter, SIGNAL(desriptionChanged(QString)), m_progress, SLOT(setLabelText(QString)));
