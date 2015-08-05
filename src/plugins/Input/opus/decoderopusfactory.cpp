@@ -125,8 +125,7 @@ void DecoderOpusFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Opus Audio Plugin"),
                         tr("Qmmp Opus Audio Plugin")+"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
-                        tr("This plugin includes code from TagLib library"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderOpusFactory::createTranslator(QObject *parent)

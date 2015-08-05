@@ -22,17 +22,11 @@ SET(libopus_SRCS
   decoderopusfactory.cpp
   opusmetadatamodel.cpp
   replaygainreader.cpp
-  opusfile.cpp
-  opusproperties.cpp
-  tdebug.cpp
 )
 
 SET(libopus_HDRS
   decoder_opus.h
   replaygainreader.h
-  opusfile.h
-  opusproperties.h
-  tdebug.h
 )
 
 SET(libopus_RCCS translations/translations.qrc)
