@@ -21,7 +21,7 @@
 #include <QMessageBox>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
-#include "opusfile.h"
+#include <taglib/opusfile.h>
 #include "replaygainreader.h"
 #include "decoder_opus.h"
 #include "opusmetadatamodel.h"
