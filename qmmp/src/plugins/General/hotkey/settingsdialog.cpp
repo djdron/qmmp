@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -100,7 +100,8 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
             dialog->exec() == QDialog::Accepted)
     {
         QString keyString = HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ());
-        if(keyString.isEmpty() || m_ui.tableWidget->findItems(keyString, Qt::MatchFixedString).isEmpty())
+        QList<QTableWidgetItem*> items =  m_ui.tableWidget->findItems(keyString, Qt::MatchFixedString);
+        if(keyString.isEmpty() || items.isEmpty() || items.first() == item)
         {
             item->setText(keyString);
             k->key = dialog->keySym ();
