@@ -447,6 +447,11 @@ void Skin::loadPLEdit()
                 value.prepend("#");  //add # for color if needed
 
             m_pledit_txt[key] = value.trimmed();
+
+            //remove alpha channel from argb
+            if(key != "font" && m_pledit_txt[key].size() > 7)
+                m_pledit_txt[key].remove(1, m_pledit_txt[key].size() - 7);
+
         }
         else if (line.length() == 0)
         {
