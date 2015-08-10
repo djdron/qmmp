@@ -4,7 +4,7 @@
     Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле jack plugin, сообщения об ошибках
     Anton Petrusevich <casus@casus.us> - улучшение случайного воспроизведения
     Avihay Baratz <avihayb@gmail.com> - опции авто-остановки, исправления ошибок
-    Brice Videau <brice.videau@gmail.com> - исправления ощибок
+    Brice Videau <brice.videau@gmail.com> - исправления ошибок
     Cristian Rodríguez <judas.iscariote@gmail.com> - исправление ошибок в модуле scrobbler
     Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - поддержка iso.wv
