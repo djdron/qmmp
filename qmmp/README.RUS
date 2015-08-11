@@ -45,6 +45,7 @@ Qmmp - Qt-based multimedia player
 
 Другие возможности:
 - поддержка обложек XMMS и Winamp 2.x
+- альтернативный пользовательский интерфейс с использованием стандартных элементов
 - 10-полосный эквалайзер
 - поддержка потоков MP3, Vorbis, AAC, AAC+
 - поддержка протокола MMS
@@ -127,6 +128,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_QMMP_DIALOG (файловый диалог);
 - USE_ENCA (автоматическое определение кодировки);
 - USE_SKINNED (стандартный пользовательский интерфейс);
+- USE_QSUI (простой интерфейс);
 - USE_DIR_ASSOC (привязка к mime-типу inode/directory);
 - USE_RPATH (включает опцию CMAKE_INSTALL_RPATH_USE_LINK_PATH, см. http://www.cmake.org/Wiki/CMake_RPATH_handling)
 

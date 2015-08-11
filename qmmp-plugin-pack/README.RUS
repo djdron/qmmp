@@ -7,7 +7,6 @@ Qmmp Plugin Pack
 - MPG123 - декодер MPEG v1/2 layer1/2/3 с использованием библиотеки libmpg123
 - FFap - улучшенный декодер Monkey's Audio (APE) (поддержка 24-х бит и встроенного cue)
 - XMP - проигрыватель трекерной музыки с использованием библиотеки libxmp
-- Simple Ui - простой пользовательский интерфейс с использованием стандартных элементов
 
 Требования:
 - Qt >= 4.6
@@ -33,7 +32,7 @@ make install
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Доступные опции:
-- USE_MPG123; USE_FFAP; USE_XMP; USE_QSUI (модули)
+- USE_MPG123; USE_FFAP; USE_XMP (модули)
 - USE_ASM (оптимизации на ассемблере в декодере FFap)
 
 

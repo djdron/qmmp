@@ -7,7 +7,6 @@ Description:
 - MPG123 - MPEG v1/2 layer1/2/3 decoder with use of the libmpg123 library
 - FFap - enhanced Monkey's Audio (APE) decoder (24-bit samples and embedded cue support)
 - XMP - module player with use of the libxmp library
-- Simple Ui - simple user interface based on standard widgets set
 
 Requirements:
 - Qt >= 4.6
@@ -34,7 +33,7 @@ by running:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123; USE_FFAP; USE_XMP; USE_QSUI (plugins)
+- USE_MPG123; USE_FFAP; USE_XMP (plugins)
 - USE_ASM (assembler-level optimizations inside FFap decoder)
 
 

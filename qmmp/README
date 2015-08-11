@@ -45,6 +45,7 @@ Output system support:
 
 Other features:
 - XMMS and Winamp 2.x skins support
+- Alternative user interface based on standard widgets set
 - 10-band equalizer
 - MP3, Vorbis, AAC, AAC+ streams support
 - mms support
@@ -129,6 +130,7 @@ Available options:
 - USE_QMMP_DIALOG (file dialog);
 - USE_ENCA (automatic charset detection);
 - USE_SKINNED (standard skinned UI);
+- USE_QSUI (simple UI);
 - USE_DIR_ASSOC (inode/directory mime type association);
 - USE_RPATH (enables CMAKE_INSTALL_RPATH_USE_LINK_PATH, see http://www.cmake.org/Wiki/CMake_RPATH_handling for details)
 
