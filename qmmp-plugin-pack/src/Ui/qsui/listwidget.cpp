@@ -71,8 +71,8 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     connect(m_ui_settings, SIGNAL(repeatableTrackChanged(bool)), SLOT(updateRepeatIndicator()));
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
-    connect(m_hslider, SIGNAL(sliderMoved(int)), m_header, SLOT(scroll(int)));
-    connect(m_hslider, SIGNAL(sliderMoved(int)), this, SLOT(update()));
+    connect(m_hslider, SIGNAL(valueChanged(int)), m_header, SLOT(scroll(int)));
+    connect(m_hslider, SIGNAL(valueChanged(int)), this, SLOT(update()));
     connect(m_model, SIGNAL(currentVisibleRequest()), SLOT(scrollToCurrent()));
     connect(m_model, SIGNAL(listChanged(int)), SLOT(updateList(int)));
     connect(m_model, SIGNAL(sortingByColumnFinished(int,bool)), m_header, SLOT(showSortIndicator(int,bool)));
@@ -274,6 +274,9 @@ void ListWidget::resizeEvent(QResizeEvent *e)
 
 void ListWidget::wheelEvent (QWheelEvent *e)
 {
+    if(m_hslider->underMouse())
+        return;
+
     if (m_model->count() <= m_row_count)
         return;
     if ((m_first == 0 && e->delta() > 0) ||
