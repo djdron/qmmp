@@ -70,7 +70,6 @@ HEADERS += mainwindow.h \
     listwidgetdrawer.h \
     playlistheader.h \
     hotkeyeditor.h
-TEMPLATE = lib
 
 FORMS += forms/mainwindow.ui \
     forms/shortcutdialog.ui \
@@ -81,37 +80,32 @@ FORMS += forms/mainwindow.ui \
     forms/hotkeyeditor.ui
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
-contains(CONFIG, SVN_VERSION){
-    DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION-dev\\\"
+
+
+TEMPLATE = lib
+unix:QMAKE_LIBDIR += ../../../../lib
+unix:LIBS += -lqmmpui -lqmmp
+
+win32:QMAKE_LIBDIR += ../../../../bin
+win32:LIBS += -lqmmpui0 -lqmmp0
+
+CONFIG += warn_on \
+          plugin
+
+
+TARGET = $$PLUGINS_PREFIX/Ui/qsui
+
+unix:LIBS += -lqmmp -lqmmpui
+win32:LIBS += -lqmmp0 -lqmmpui0
+
+unix{
+isEmpty(LIB_DIR){
+LIB_DIR = /lib
 }
-else{
-    DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
+
+target.path = $$LIB_DIR/qmmp/Ui
+INSTALLS += target
+
 }
 
-unix {
-    isEmpty(LIB_DIR):LIB_DIR = /lib
-    target.path = $$LIB_DIR/qmmp/Ui
-    INSTALLS += target
-
-    PKGCONFIG += qmmp qmmpui
-    QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libqsui.so
-}
-
-win32 {
-    INCLUDEPATH += ../../ ./
-    QMAKE_LIBDIR += ../../../../bin
-    LIBS += -lqmmp0 -lqmmpui0
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+INCLUDEPATH += ../../../
