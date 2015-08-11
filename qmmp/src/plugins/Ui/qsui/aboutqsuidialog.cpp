@@ -46,7 +46,7 @@ QString AboutQSUIDialog::loadAbout()
     text.append("<b>" + tr("Developers:") + "</b>");
     text.append("<p>" + tr("Ilya Kotov <forkotov02@hotmail.ru>") + "</p>");
 
-    text.append("<b>Translators:</b>");
+    text.append("<b>" + tr("Translators:") + "</b>");
     text.append("<p>");
     text.append(getStringFromResource(":translators").replace("<", "&lt;")
                 .replace(">", "&gt;").replace("\n", "<br>"));
