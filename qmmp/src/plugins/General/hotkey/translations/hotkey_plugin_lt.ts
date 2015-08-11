@@ -115,12 +115,12 @@
         <translation>Nutildyti</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
+        <location filename="../settingsdialog.cpp" line="111"/>
         <source>Warning</source>
         <translation>Įspėjimas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
+        <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation>Klavišo kombinacija &apos;%1&apos; jau naudojama</translation>
     </message>

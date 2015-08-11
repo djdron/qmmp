@@ -115,12 +115,12 @@
         <translation>Wycisz</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
+        <location filename="../settingsdialog.cpp" line="111"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
+        <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation>Sekwencja &apos;%1&apos; jest już używana</translation>
     </message>
