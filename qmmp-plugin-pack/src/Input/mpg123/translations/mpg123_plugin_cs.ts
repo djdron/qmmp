@@ -121,6 +121,16 @@ with use of libmpg123 library</source>
         <translation>Nastavení pluginu MPEG</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Tag Priority</source>
+        <translation>Priorita tagu</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>First:</source>
+        <translation>První:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
@@ -133,26 +143,6 @@ with use of libmpg123 library</source>
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>Kódování ID3v1:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>Kódování ID3v2:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Tag Priority</source>
-        <translation>Priorita tagu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>First:</source>
-        <translation>První:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -182,6 +172,16 @@ with use of libmpg123 library</source>
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>Kódování</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>Kódování ID3v1:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>Kódování ID3v2:</translation>
     </message>
 </context>
 </TS>
