@@ -4,9 +4,6 @@ include (qmmp-plugin-pack.pri)
 
 TEMPLATE = subdirs
 
-SUBDIRS += src/Ui  
-
-
 SUBDIRS += src/Input
 
 
