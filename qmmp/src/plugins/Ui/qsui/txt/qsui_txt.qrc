@@ -2,18 +2,5 @@
 <RCC version="1.0">
   <qresource>
     <file>ascii_logo.txt</file>
-    <file>qsui_authors.txt</file>
-    <file>qsui_authors_ja.txt</file>
-    <file>qsui_authors_nl.txt</file>
-    <file>qsui_authors_pl_PL.txt</file>
-    <file>qsui_authors_ru.txt</file>
-    <file>qsui_authors_uk_UA.txt</file>
-    <file>qsui_authors_lt_LT.txt</file>
-    <file>qsui_authors_he.txt</file>
-    <file>qsui_authors_cs.txt</file>
-    <file>qsui_authors_sr_BA.txt</file>
-    <file>qsui_authors_sr_RS.txt</file>
-    <file>qsui_authors_pt.txt</file>
-    <file>qsui_authors_de.txt</file>
   </qresource>
 </RCC>
