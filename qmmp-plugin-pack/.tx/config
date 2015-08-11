@@ -19,9 +19,3 @@ source_lang = en
 source_file = src/Input/mpg123/translations/mpg123_plugin_en.ts
 type = QT
 
-[qmmp-plugin-pack.qsui_authors]
-file_filter = src/Ui/qsui/txt/qsui_authors_<lang>.txt
-source_lang = en
-source_file = src/Ui/qsui/txt/qsui_authors.txt
-type = TXT
-

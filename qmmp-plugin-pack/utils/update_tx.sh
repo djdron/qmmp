@@ -26,13 +26,3 @@ do
      echo "type = QT" >> ${TX_CONFIG}
      echo "" >> ${TX_CONFIG}
 done
-
-for RESOURCE_NAME in qsui_authors
-do
-    echo "[${PROJECT_NAME}.${RESOURCE_NAME}]" >> ${TX_CONFIG}
-    echo "file_filter = src/Ui/qsui/txt/${RESOURCE_NAME}_<lang>.txt" >> ${TX_CONFIG}
-    echo "source_lang = en" >> ${TX_CONFIG}
-    echo "source_file = src/Ui/qsui/txt/${RESOURCE_NAME}.txt" >> ${TX_CONFIG}
-    echo "type = TXT" >> ${TX_CONFIG}
-    echo "" >> ${TX_CONFIG}
-done
