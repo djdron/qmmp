@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ AboutQSUIDialog::~AboutQSUIDialog(){}
 QString AboutQSUIDialog::loadAbout()
 {
     QString text;
-    text.append("<head>");
+    /*text.append("<head>");
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
     text.append("<h3>"+tr("Qmmp Simple User Interface (QSUI)")+"</h3>");
@@ -48,7 +48,7 @@ QString AboutQSUIDialog::loadAbout()
     text.append("<p>");
     text.append(getStringFromResource(":qsui_authors").replace("<", "&lt;")
                 .replace(">", "&gt;").replace("\n", "<br>"));
-    text.append("</p>");
+    text.append("</p>");*/
     return text;
 }
 
