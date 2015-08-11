@@ -3,8 +3,7 @@ include(../../plugins.pri)
 TARGET = $$PLUGINS_PREFIX/Ui/qsui
 
 CONFIG += warn_on \
-    plugin \
-    link_pkgconfig
+    plugin
 
 TEMPLATE = lib
 
@@ -78,6 +77,7 @@ FORMS += forms/mainwindow.ui \
     forms/qsuisettings.ui \
     forms/toolbareditor.ui \
     forms/hotkeyeditor.ui
+
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
 
@@ -94,9 +94,6 @@ CONFIG += warn_on \
 
 
 TARGET = $$PLUGINS_PREFIX/Ui/qsui
-
-unix:LIBS += -lqmmp -lqmmpui
-win32:LIBS += -lqmmp0 -lqmmpui0
 
 unix{
 isEmpty(LIB_DIR){
