@@ -11,4 +11,4 @@
 Графика:
 
    Андрей Андреев <andreev00@gmail.com> - иконки и обложка (для версий с 0.2 по 0.8)
-   sixsixfive - обложка по умолчанию
+   sixsixfive <http://sixsixfive.deviantart.com/> - обложка по умолчанию
