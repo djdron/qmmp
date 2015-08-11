@@ -35,20 +35,22 @@ AboutQSUIDialog::~AboutQSUIDialog(){}
 QString AboutQSUIDialog::loadAbout()
 {
     QString text;
-    /*text.append("<head>");
+    text.append("<head>");
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
     text.append("<h3>"+tr("Qmmp Simple User Interface (QSUI)")+"</h3>");
     text.append(tr("Qmmp version: <b>%1</b>").arg(Qmmp::strVersion()));
-    text.append("<br>");
-    text.append(tr("QSUI version: <b>%1</b>").arg(QMMP_PLUGIN_PACK_VERSION));
     text.append("<p>");
     text.append(tr("Simple user interface based on standard widgets set."));
     text.append("</p>");
+    text.append("<b>" + tr("Developers:") + "</b>");
+    text.append("<p>" + tr("Ilya Kotov <forkotov02@hotmail.ru>") + "</p>");
+
+    text.append("<b>Translators:</b>");
     text.append("<p>");
-    text.append(getStringFromResource(":qsui_authors").replace("<", "&lt;")
+    text.append(getStringFromResource(":translators").replace("<", "&lt;")
                 .replace(">", "&gt;").replace("\n", "<br>"));
-    text.append("</p>");*/
+    text.append("</p>");
     return text;
 }
 
