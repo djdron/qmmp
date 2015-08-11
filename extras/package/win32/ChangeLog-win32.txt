@@ -78,3 +78,6 @@ LEGEND
 [*] qt-4.8.7+gitb05d05fd9
 [*] libsidplayfp-1.8.0
 [*] wavpack-4.75.0
+
+0.8.7
+[*] qmmp-0.8.7
