@@ -1186,19 +1186,33 @@
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
-        <source>Written by:
-Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
-Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>制作者:
-Владимир Кузнецов (Vladimir Kuznetsov) &lt;vovanec@gmail.com&gt;
-Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
+        <source>Written by:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="48"/>
+        <source>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="49"/>
+        <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
-        <source>Artwork:
-Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation>美術:
-Андрей Андреев (Andrey Adreev) &lt;andreev00@gmail.com&gt;</translation>
+        <source>Artwork:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="51"/>
+        <source>Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="52"/>
+        <source>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

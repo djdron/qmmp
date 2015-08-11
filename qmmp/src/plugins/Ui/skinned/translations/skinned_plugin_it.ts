@@ -1185,15 +1185,32 @@
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
-        <source>Written by:
-Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
-Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="48"/>
+        <source>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="49"/>
+        <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
-        <source>Artwork:
-Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
+        <source>Artwork:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="51"/>
+        <source>Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="52"/>
+        <source>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
