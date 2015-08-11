@@ -15,21 +15,12 @@ ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 ADD_DEFINITIONS(-DQT_THREAD)
 
-IF(SVN_VERSION)
-ADD_DEFINITIONS(-DQMMP_PLUGIN_PACK_VERSION=\\\"${QMMP_PLUGIN_PACK_VERSION}-dev\\\")
-ELSE(SVN_VERSION)
-ADD_DEFINITIONS(-DQMMP_PLUGIN_PACK_VERSION=\\\"${QMMP_PLUGIN_PACK_VERSION}\\\")
-ENDIF(SVN_VERSION)
-
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-# libqmmp
-include_directories(${QMMP_INCLUDE_DIRS})
-link_directories( ${QMMP_LIBRARY_DIRS})
-
-# libqmmpui
-include_directories(${QMMPUI_INCLUDE_DIRS})
-link_directories( ${QMMPUI_LIBRARY_DIRS})
+# libqmmpui & libqmmp
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 
 SET(libqsui_SRCS
@@ -94,5 +85,6 @@ QT4_WRAP_UI(libqsui_UIS_H ${libqsui_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qsui MODULE ${libqsui_SRCS} ${libqsui_UIS_H} ${libqsui_RCC_SRCS} ${libqsui_HDRS})
+add_dependencies(qsui qmmpui libqmmp)
 target_link_libraries(qsui ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${QMMPUI_LDFLAGS})
 install(TARGETS qsui DESTINATION ${LIB_DIR}/qmmp/Ui)
