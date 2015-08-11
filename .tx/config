@@ -13,6 +13,12 @@ source_lang = en
 source_file = src/qmmpui/translations/libqmmpui_en.ts
 type = QT
 
+[qmmp.qsui]
+file_filter = src/plugins/Ui/qsui/translations/qsui_plugin_<lang>.ts
+source_lang = en
+source_file = src/plugins/Ui/qsui/translations/qsui_plugin_en.ts
+type = QT
+
 [qmmp.skinned]
 file_filter = src/plugins/Ui/skinned/translations/skinned_plugin_<lang>.ts
 source_lang = en
