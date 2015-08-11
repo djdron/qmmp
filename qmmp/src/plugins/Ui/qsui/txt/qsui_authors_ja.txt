@@ -1,0 +1,58 @@
+開発者:
+    Илья Котов (Ilya Kotov) <forkotov02@hotmail.ru>
+
+翻訳者:
+イタリア語
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+ウクライナ語
+    Геннадий Моцьо (Gennadi Motsyo) <drool@altlinux.ru>
+
+オランダ語
+    Ronald Uitermark <ronald645@gmail.com>
+
+カザフ語
+    Бауржан Муфтахидинов (Baurzhan Muftakhidinov) <baurthefirst@gmail.com>
+
+スペイン語
+    Félix Medrano <xukosky@yahoo.es>
+
+スロバキア語
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+チェコ語
+    Karel Volný <kvolny@redhat.com>
+
+ドイツ語
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+トルコ語
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+ブラジル ポルトガル語
+    Klaos Lacerda
+    Bruno Gonçalves
+
+フランス語
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+ポーランド語
+    Grzegorz Gibas <amigib@gmail.com>
+
+マジャール語
+    Németh Gábor <sutee84@freemail.hu>
+
+リトアニア語
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+ロシア語
+    Илья Котов (Ilya Kotov) <forkotov02@hotmail.ru>
+
+簡体字中国語
+繁体字中国語
+    李红昆 (lon) <lon83129@126.com>
+
+日本語
+    島本良太 <liangtai.s16@gmail.com>

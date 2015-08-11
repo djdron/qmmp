@@ -1,0 +1,60 @@
+Główni programiści:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (pomysł i właściwy kod)
+
+Tłumaczenie:
+
+Chiński Tradycyjny:
+    lon <lon83129@126.com>
+
+Chiński Uproszczony:
+    lon <lon83129@126.com>
+
+Czeski:
+    Karel Volný <kvolny@redhat.com>
+
+Francuski:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+Niemiecki:
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+    
+Hebrajski:
+    Genghis Khan <genghiskhan@gmx.ca>
+    
+Węgierski:
+    Németh Gábor <sutee84@freemail.hu>
+
+Włoski:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+Japoński:
+    Rjota Šimamoto <liangtai.s16@gmail.com>
+
+Kazachski:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Litewski:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Polski:
+    Grzegorz Gibas <amigib@gmail.com>
+
+Rosyjski:
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Serbski:
+    Mladen Pejaković <pejakm@autistici.org>
+    
+Słowacki:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+Hiszpański:
+    Félix Medrano <xukosky@yahoo.es>
+
+Turecki:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+Ukraiński:
+    Gennadi Motsyo <drool@altlinux.ru>

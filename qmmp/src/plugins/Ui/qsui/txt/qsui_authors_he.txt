@@ -1,0 +1,54 @@
+מפתחים:
+
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+מתרגמים:
+
+סינית מסורתית:
+    lon <lon83129@126.com>
+
+סינית מפושטת:
+    lon <lon83129@126.com>
+
+צ׳כית:
+    Karel Volný <kvolny@redhat.com>
+
+צרפתית:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+גרמנית:
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+הונגרית:
+    Németh Gábor <sutee84@freemail.hu>
+
+איטלקית:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+יפנית:
+    Ryota Shimamoto <liangtai.s16@gmail.com>
+
+קזכית:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+ליטאית:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+פולנית:
+    Grzegorz Gibas <amigib@gmail.com>
+
+רוסית:
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+סלובקית:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+ספרדית:
+    Félix Medrano <xukosky@yahoo.es>
+
+טורקית:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+אוקראינית:
+    Gennadi Motsyo <drool@altlinux.ru>
