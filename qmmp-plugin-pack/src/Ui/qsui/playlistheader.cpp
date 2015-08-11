@@ -749,6 +749,8 @@ void PlayListHeader::showEvent(QShowEvent *)
         updateColumns();
         PlayListManager::instance()->selectedPlayList()->updateMetaData();
     }
+    else
+        updateColumns();
 }
 
 void PlayListHeader::hideEvent(QHideEvent *)
