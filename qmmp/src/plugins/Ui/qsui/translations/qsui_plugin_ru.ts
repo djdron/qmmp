@@ -21,17 +21,17 @@
     <message>
         <location filename="../aboutqsuidialog.cpp" line="46"/>
         <source>Developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчики:</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="47"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="49"/>
         <source>Translators:</source>
-        <translation type="unfinished"></translation>
+        <translation>Переводчики:</translation>
     </message>
     <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
