@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,7 @@
 
 ShortcutItem::ShortcutItem(QTreeWidgetItem *parent, int type) : QTreeWidgetItem(parent, QStringList()
         << ActionManager::instance()->action(type)->text().remove("&")
-        << ActionManager::instance()->action(type)->shortcut())
+        << ActionManager::instance()->action(type)->shortcut().toString())
 {
     m_action = ActionManager::instance()->action(type);
     setIcon(0, m_action->icon());

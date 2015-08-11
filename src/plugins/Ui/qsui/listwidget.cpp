@@ -29,6 +29,7 @@
 #include <QHelpEvent>
 #include <QTimer>
 #include <QScrollBar>
+#include <QMimeData>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/qmmpuisettings.h>

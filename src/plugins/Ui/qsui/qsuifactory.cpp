@@ -53,5 +53,3 @@ QTranslator *QSUIFactory::createTranslator(QObject *parent)
     translator->load(QString(":/qsui_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(qsui, QSUIFactory)
