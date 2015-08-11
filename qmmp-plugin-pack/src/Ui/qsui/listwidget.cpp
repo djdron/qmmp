@@ -54,6 +54,7 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent)
     m_header = new PlayListHeader(this);
     m_scrollBar = new QScrollBar(Qt::Vertical, this);
     m_hslider = new QScrollBar(Qt::Horizontal, this);
+    m_hslider->setPageStep(50);
     m_update = false;
     m_drop_index = INVALID_INDEX;
     m_scroll_direction = NONE;
