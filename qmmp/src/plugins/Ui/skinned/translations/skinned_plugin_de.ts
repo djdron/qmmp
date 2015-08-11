@@ -886,7 +886,7 @@
         <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="312"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Dateiänderungsdatum</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
@@ -979,7 +979,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Warteschlange/Protokoll anzeigen</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="86"/>
@@ -1240,7 +1240,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzelspaltenmodus</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="402"/>

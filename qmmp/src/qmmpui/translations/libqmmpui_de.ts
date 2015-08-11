@@ -181,7 +181,7 @@
         <location filename="../columneditor.cpp" line="92"/>
         <location filename="../columneditor.cpp" line="115"/>
         <source>Track Index</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelindex</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="93"/>

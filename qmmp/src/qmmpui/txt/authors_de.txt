@@ -1,13 +1,14 @@
 Kernentwickler:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (Idee und Basiscode)
-    Vladimir Kuznetsov <vovanec@gmail.com> (Erscheinungsbild und viele Verbesserungen)
+    Ilya Kotov <forkotov02@hotmail.ru> - Idee und Basiscode
 
-Modulentwickler:
+Frühere Entwickler:
 
-    Artur Guzik <aguzik88@gmail.com> (kde4-Benachrichtigungsmodul, Benachrichtigungsfeldverbesserungen)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- & OSS-Modul)
+    Artur Guzik <aguzik88@gmail.com> - kde4-Benachrichtigungsmodul, Benachrichtigungsfeldverbesserungen
+    Vladimir Kuznetsov <vovanec@gmail.com> - Erscheinungsbild und viele Verbesserungen
+    Yuriy Zhuravlev <stalkerg@gmail.com>  - JACK- & OSS-Module
 
 Grafik:
 
-    Andrey Adreev <andreev00@gmail.com>
+    Andrey Adreev <andreev00@gmail.com> - Symbole und Standarddesign (für Versionen 0.2-0.8)
+    sixsixfive - Standarddesign
