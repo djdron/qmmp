@@ -1,0 +1,70 @@
+Πορτογαλικά Βραζιλίας
+    Klaos Lacerda
+    Bruno Gonçalves
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
+
+Κινέζικα παραδοσιακά
+    lon <lon83129@126.com>
+
+Κινέζικα απλά
+    lon <lon83129@126.com>
+
+Τσέχικα
+    Karel Volný <kvolny@redhat.com>
+
+Ολλανδικά
+    Ronald Uitermark <ronald645@gmail.com>
+
+Γαλλικά
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+Γαλικιανά
+    Óscar Pereira <oscarpereira1989@gmail.com>
+
+Γερμανικά
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Εβραϊκά
+    Genghis Khan <genghiskhan@gmx.ca>
+
+Ουγγρικά
+    Németh Gábor <sutee84@freemail.hu>
+
+Ιταλικά
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+Ιαπωνικά
+    Ryota Shimamoto <liangtai.s16@gmail.com>
+
+Καζακικά
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Λιθουανικά
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Πολωνικά
+    Grzegorz Gibas <amigib@gmail.com>
+
+Πορτογαλικά
+    Sérgio Marques <smarquespt@gmail.com>
+
+Ρωσικά
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Σέρβικα
+    Mladen Pejaković <pejakm@autistici.org>
+
+Σλοβακικά
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
+Ισπανικά
+    Félix Medrano <xukosky@yahoo.es>
+
+Τουρκικά
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+Ουκρανικά
+    Gennadi Motsyo <drool@altlinux.ru>
+

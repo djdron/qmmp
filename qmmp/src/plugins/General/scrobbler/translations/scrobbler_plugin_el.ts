@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>ScrobblerFactory</name>
     <message>
         <location filename="../scrobblerfactory.cpp" line="30"/>
         <source>Scrobbler Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο Scrobbler</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="50"/>
         <source>About Scrobbler Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο Scrobbler</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="51"/>
         <source>Qmmp AudioScrobbler Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο AudioScrobbler</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,57 +29,57 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Scrobbler Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις πρόσθετου Scrobbler</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Last.fm</source>
-        <translation type="unfinished"></translation>
+        <translation>Last.fm</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="40"/>
         <location filename="../settingsdialog.ui" line="113"/>
         <source>Session:</source>
-        <translation type="unfinished"></translation>
+        <translation>Συνεδρία:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="50"/>
         <location filename="../settingsdialog.ui" line="126"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Έλεγχος</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <location filename="../settingsdialog.ui" line="104"/>
         <source>Register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγγραφή νέας συνεδρίας</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
-        <translation type="unfinished"></translation>
+        <translation>Libre.fm</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="86"/>
         <location filename="../settingsdialog.cpp" line="121"/>
         <location filename="../settingsdialog.cpp" line="172"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήνυμα</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Αναμονή εκκίνησης φυλλομετρητή</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Επιτρέψτε στο Qmmp να κάνει αποθήκευση scrobble των κομματιών στο λογαριασμό σας στο %1</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Πιέστε «Εντάξει»</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -89,35 +89,35 @@
         <location filename="../settingsdialog.cpp" line="180"/>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
         <location filename="../settingsdialog.cpp" line="136"/>
         <location filename="../settingsdialog.cpp" line="180"/>
         <source>Network error</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα δικτύου</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η εγγραφή νέας συνεδρίας</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="121"/>
         <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Η νέα συνεδρία ελήφθη επιτυχώς</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="172"/>
         <source>Permission granted</source>
-        <translation type="unfinished"></translation>
+        <translation>Η άδεια εκχωρήθηκε</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
-        <translation type="unfinished"></translation>
+        <translation>Άρνηση χορήγησης άδειας</translation>
     </message>
 </context>
 </TS>

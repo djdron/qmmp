@@ -92,6 +92,11 @@
     <file>thanks_pt.txt</file>
     <file>translators_pt.txt</file>
     <file>description_pt.txt</file>
+    
+    <file>authors_el.txt</file>
+    <file>thanks_el.txt</file>
+    <file>translators_el.txt</file>
+    <file>description_el.txt</file>
 
   </qresource>
 </RCC>

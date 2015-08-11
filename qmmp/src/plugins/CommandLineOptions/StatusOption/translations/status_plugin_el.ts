@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>StatusOption</name>
     <message>
         <location filename="../statusoption.cpp" line="39"/>
         <source>Print playback status</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτύπωση της κατάστασης αναπαραγωγής</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="41"/>
         <source>Print formatted track name (example: qmmp --nowplaying &quot;%t - %a&quot;)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτύπωση μορφοποιημένου ονόματος του κομματιού (παράδειγμα: qmmp --nowplaying «%t - %a»)</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="42"/>
         <source>Print --nowplaying syntax</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκτύπωση σύνταξης --nowplaying</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="89"/>
         <source>Syntax:</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνταξη:</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="90"/>
         <source>%p - artist</source>
-        <translation type="unfinished"></translation>
+        <translation>%p - καλλιτέχνης</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="91"/>
         <source>%a - album</source>
-        <translation type="unfinished"></translation>
+        <translation>%a - άλμπουμ</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="92"/>
         <source>%aa - album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>%aa - καλλιτέχνης άλμπουμ</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="93"/>
         <source>%t - title</source>
-        <translation type="unfinished"></translation>
+        <translation>%t - τίτλος</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="94"/>
         <source>%n - track</source>
-        <translation type="unfinished"></translation>
+        <translation>%n - κομμάτι</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="95"/>
         <source>%NN - 2-digit track</source>
-        <translation type="unfinished"></translation>
+        <translation>%NN - διψήφιος αριθμός κομματιού</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="96"/>
         <source>%g - genre</source>
-        <translation type="unfinished"></translation>
+        <translation>%g - είδος</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="97"/>
         <source>%c - comment</source>
-        <translation type="unfinished"></translation>
+        <translation>%c - σχόλιο</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="98"/>
         <source>%C - composer</source>
-        <translation type="unfinished"></translation>
+        <translation>%C - συνθέτης</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="99"/>
         <source>%D - disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>%D - αριθμός δίσκου</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="100"/>
         <source>%f - file name</source>
-        <translation type="unfinished"></translation>
+        <translation>%f - όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="101"/>
         <source>%F - full path</source>
-        <translation type="unfinished"></translation>
+        <translation>%F - πλήρης διαδρομή</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="102"/>
         <source>%y - year</source>
-        <translation type="unfinished"></translation>
+        <translation>%y - έτος</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="103"/>
         <source>%l - duration</source>
-        <translation type="unfinished"></translation>
+        <translation>%l - διάρκεια</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="104"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
-        <translation type="unfinished"></translation>
+        <translation>%if(A&amp;B&amp;C,D,E) - συνθήκη</translation>
     </message>
 </context>
 </TS>

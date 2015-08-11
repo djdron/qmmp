@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>EffectBs2bFactory</name>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="31"/>
         <source>BS2B Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο BS2B</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="51"/>
         <source>About BS2B Effect Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο τεχνασμάτων εντυπωσιασμού BS2B</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό είναι η έκδοση του Qmmp του πρόσθετου του Boris Mikhaylov τεχνασμάτων ακουστικών DSP «Bauer stereophonic-to-binaural», στη συντομογραφία bs2b.</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
         <source>Visit %1 for more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανατρέξτε στο %1 για περισσότερες πληροφορίες</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>
         <source>Compiled against libbs2b-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεταγλωττίστηκε χρησιμοποιώντας τη βιβλιοθήκη libbs2b-%1</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="57"/>
         <source>Developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Προγραμματιστές:</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="58"/>
         <source>Ilya Kotov</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="59"/>
         <source>Sebastian Pipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Sebastian Pipping</translation>
     </message>
 </context>
 <context>
@@ -49,43 +49,43 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις του πρόσθετου BS2B</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished"></translation>
+        <translation>Επίπεδο διαγώνιας τροφοδοσίας</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξ ορισμού</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>C.Moy</source>
-        <translation type="unfinished"></translation>
+        <translation>C.Moy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>J. Meier</source>
-        <translation type="unfinished"></translation>
+        <translation>J. Meier</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>%1 Hz, %2 us</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Hz, %2 us</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>%1 dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 dB</translation>
     </message>
 </context>
 </TS>
