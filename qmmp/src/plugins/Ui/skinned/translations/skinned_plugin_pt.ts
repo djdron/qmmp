@@ -336,7 +336,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Save List</source>
-        <translation>&amp;Gravar lista</translation>
+        <translation>Guardar li&amp;sta</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
@@ -455,12 +455,12 @@
     <message>
         <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Save Preset</source>
-        <translation>&amp;Gravar pré-ajuste</translation>
+        <translation>Guardar pré-aju&amp;ste</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>C&amp;arregar pré-ajuste automaticamente</translation>
+        <translation>Guardar pré-aju&amp;ste automaticamente</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="270"/>

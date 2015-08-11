@@ -42,7 +42,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;Gravar como...</translation>
+        <translation>&amp;Guardar como...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>Gravar capa como</translation>
+        <translation>Guardar capa como</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>

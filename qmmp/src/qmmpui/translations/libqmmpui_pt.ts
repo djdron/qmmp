@@ -327,7 +327,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Auto-save playlist when modified</source>
-        <translation>Gravar lista de reprodução ao modificar</translation>
+        <translation>Guardar lista de reprodução ao modificar</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="212"/>
@@ -1145,7 +1145,7 @@
     <message>
         <location filename="../uihelper.cpp" line="204"/>
         <source>Save Playlist</source>
-        <translation>Gravar lista de reprodução</translation>
+        <translation>Guardar lista de reprodução</translation>
     </message>
 </context>
 <context>
