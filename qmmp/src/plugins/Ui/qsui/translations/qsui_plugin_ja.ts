@@ -19,12 +19,17 @@
         <translation>QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutqsuidialog.cpp" line="44"/>
-        <source>QSUI version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>QSUI のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <location filename="../aboutqsuidialog.cpp" line="46"/>
+        <source>Developers:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutqsuidialog.cpp" line="46"/>
+        <location filename="../aboutqsuidialog.cpp" line="47"/>
+        <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>Simple user interface based on standard widgets set.</source>
         <translation>簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
     </message>
