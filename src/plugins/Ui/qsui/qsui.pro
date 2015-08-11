@@ -7,8 +7,6 @@ CONFIG += warn_on \
 
 TEMPLATE = lib
 
-QT += network
-
 SOURCES += \
     mainwindow.cpp \
     listwidget.cpp \
