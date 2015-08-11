@@ -359,7 +359,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Save List</source>
-        <translation>Gravar li&amp;sta</translation>
+        <translation>Guardar li&amp;sta</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -475,12 +475,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="32"/>
         <source>&amp;Save As...</source>
-        <translation>Gravar &amp;como...</translation>
+        <translation>Guardar &amp;como...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="65"/>
         <source>Save Cover As</source>
-        <translation>Gravar capa como</translation>
+        <translation>Guardar capa como</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="67"/>
@@ -508,7 +508,7 @@
     <message>
         <location filename="../equalizer.cpp" line="62"/>
         <source>Save</source>
-        <translation>Gravar</translation>
+        <translation>Guardar</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="66"/>
@@ -800,7 +800,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ca|%4 Hz|faixas: %5|duração total: %6|%7 kbps|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>
@@ -810,7 +810,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="384"/>
         <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;|faixas: %2|duração total: %3|</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="385"/>
@@ -921,7 +921,7 @@
         <location filename="../mainwindow.cpp" line="531"/>
         <location filename="../mainwindow.cpp" line="586"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Por data de modificação do ficheiro</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="535"/>
@@ -980,7 +980,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="63"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar fila/protocolo</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="65"/>
@@ -1249,7 +1249,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="131"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo de uma coluna</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="178"/>
