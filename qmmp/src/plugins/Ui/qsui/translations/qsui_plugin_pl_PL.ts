@@ -29,6 +29,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../aboutqsuidialog.cpp" line="49"/>
+        <source>Translators:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../aboutqsuidialog.cpp" line="44"/>
         <source>Simple user interface based on standard widgets set.</source>
         <translation>Prosty interfejs użytkownika oparty na standardowych widżetach.</translation>
