@@ -78,3 +78,32 @@ do
      echo "  </qresource>" >> $qrc_file
      echo "</RCC>" >> $qrc_file
 done
+
+echo "Updating text resources..."
+
+qrc_file="../src/qmmpui/txt/txt.qrc"
+echo "<!DOCTYPE RCC>" > $qrc_file
+echo "<RCC version=\"1.0\">" >> $qrc_file
+echo "  <qresource>" >> $qrc_file
+echo "    <file>../../../COPYING</file>" >> $qrc_file
+echo "" >> $qrc_file
+
+echo "    <file>description.txt</file>" >> $qrc_file
+echo "    <file>authors.txt</file>" >> $qrc_file
+echo "    <file>thanks.txt</file>" >> $qrc_file
+echo "    <file>translators.txt</file>" >> $qrc_file
+echo "" >> $qrc_file
+
+for txt_file in `find ../src/qmmpui/txt -type f -name "authors_*"`
+do
+	locale=`echo $txt_file | cut -d '_' -f 2,3 | cut -d '.' -f 1`
+	echo "Adding ${locale}"
+	echo "    <file>description_${locale}.txt</file>" >> $qrc_file
+    echo "    <file>authors_${locale}.txt</file>" >> $qrc_file
+    echo "    <file>thanks_${locale}.txt</file>" >> $qrc_file
+    echo "    <file>translators_${locale}.txt</file>" >> $qrc_file
+    echo "" >> $qrc_file
+done
+
+echo "  </qresource>" >> $qrc_file
+echo "</RCC>" >> $qrc_file
