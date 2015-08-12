@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,11 +44,12 @@ void SkinnedFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About Qmmp Skinned User Interface"),
                         tr("Qmmp Skinned User Interface")+"\n"+
                         tr("Simple user interface with Winamp-2.x/XMMS skins support") + "\n" +
-                        tr("Written by:\n"
-                           "Vladimir Kuznetsov <vovanec@gmail.com>\n"
-                           "Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
-                           tr("Artwork:\n"
-                              "Andrey Adreev <andreev00@gmail.com>"));
+                        tr("Written by:")+"\n"+
+                        tr("Vladimir Kuznetsov <vovanec@gmail.com>")+"\n"+
+                        tr("Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Artwork:")+"\n"+
+                        tr("Andrey Adreev <andreev00@gmail.com>")+"\n"+
+                        tr("sixixfive <http://sixsixfive.deviantart.com/>"));
 
 }
 
