@@ -17,11 +17,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#include <QtGui>
+
 #include <QFileDialog>
 #include <QDir>
 #include <QAction>
 #include <QMenu>
+#include <QSignalMapper>
 #include <math.h>
 #include <qmmp/soundcore.h>
 #include <qmmp/visual.h>

@@ -23,7 +23,7 @@
 #include "kdenotify.h"
 #include "settingsdialog.h"
 
-#include <QtGui>
+
 
 const GeneralProperties KdeNotifyFactory::properties() const
 {
