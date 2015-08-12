@@ -19,7 +19,7 @@
         <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="50"/>

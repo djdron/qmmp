@@ -64,12 +64,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="39"/>
         <source>44100 Hz</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="40"/>
         <source>48000 Hz</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

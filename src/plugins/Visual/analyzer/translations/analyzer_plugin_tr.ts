@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<TS version="2.0" language="tr">
 <context>
     <name>Analyzer</name>
     <message>
@@ -47,31 +47,31 @@
         <location filename="../analyzer.cpp" line="383"/>
         <location filename="../analyzer.cpp" line="397"/>
         <source>Slowest</source>
-        <translation type="unfinished">En yavaş</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="384"/>
         <location filename="../analyzer.cpp" line="398"/>
         <source>Slow</source>
-        <translation type="unfinished">Yavaş</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="385"/>
         <location filename="../analyzer.cpp" line="399"/>
         <source>Medium</source>
-        <translation type="unfinished">Orta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="386"/>
         <location filename="../analyzer.cpp" line="400"/>
         <source>Fast</source>
-        <translation type="unfinished">Hızlı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="387"/>
         <location filename="../analyzer.cpp" line="401"/>
         <source>Fastest</source>
-        <translation type="unfinished">En hızlı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="394"/>
@@ -80,12 +80,12 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
+        <source>&amp;Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -122,7 +122,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Peaks:</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="139"/>

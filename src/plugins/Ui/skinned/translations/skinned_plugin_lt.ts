@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation>&amp;Šokti prie takelio</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation>&amp;Šokti prie takelio</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -106,7 +106,6 @@
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>&amp;No Playlist Advance</source>
-        <translatorcomment>?????</translatorcomment>
         <translation>&amp;Nesislinkti grojaraščiu</translation>
     </message>
     <message>
@@ -438,6 +437,11 @@
 <context>
     <name>EqWidget</name>
     <message>
+        <location filename="../eqwidget.cpp" line="45"/>
+        <source>Equalizer</source>
+        <translation>Glotintuvas</translation>
+    </message>
+    <message>
         <location filename="../eqwidget.cpp" line="157"/>
         <location filename="../eqwidget.cpp" line="178"/>
         <source>preset</source>
@@ -459,6 +463,11 @@
         <translation>&amp;Išsaugoti auto-nustatymą</translation>
     </message>
     <message>
+        <location filename="../eqwidget.cpp" line="270"/>
+        <source>&amp;Import</source>
+        <translation>&amp;Importuoti</translation>
+    </message>
+    <message>
         <location filename="../eqwidget.cpp" line="273"/>
         <source>&amp;Clear</source>
         <translation>&amp;išvalyti</translation>
@@ -477,16 +486,6 @@
         <location filename="../eqwidget.cpp" line="304"/>
         <source>preset #</source>
         <translation>Nustatymas #</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="270"/>
-        <source>&amp;Import</source>
-        <translation>&amp;Importuoti</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="45"/>
-        <source>Equalizer</source>
-        <translation>Glotintuvas</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="395"/>
@@ -809,6 +808,11 @@
 <context>
     <name>PlayList</name>
     <message>
+        <location filename="../playlist.cpp" line="55"/>
+        <source>Playlist</source>
+        <translation>Grojaraštis</translation>
+    </message>
+    <message>
         <location filename="../playlist.cpp" line="186"/>
         <source>&amp;Copy Selection To</source>
         <translation>&amp;Kopijuoti pasirinkimą į</translation>
@@ -867,6 +871,12 @@
         <translation>Pagal datą</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="304"/>
+        <source>By Track Number</source>
+        <translation>Pagal takelio numerį</translation>
+    </message>
+    <message>
         <location filename="../playlist.cpp" line="253"/>
         <location filename="../playlist.cpp" line="308"/>
         <source>By File Creation Date</source>
@@ -899,35 +909,24 @@
         <translation>Apversti</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="333"/>
+        <source>Actions</source>
+        <translation>Veiksmai</translation>
+    </message>
+    <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">Pervadinti grojaraštį</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
-        <translation type="unfinished">Grojaraščio pavadinimas:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="609"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Naujas grojaraštis</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="249"/>
-        <location filename="../playlist.cpp" line="304"/>
-        <source>By Track Number</source>
-        <translation>Pagal takelio numerį</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="55"/>
-        <source>Playlist</source>
-        <translation>Grojaraštis</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="333"/>
-        <source>Actions</source>
-        <translation>Veiksmai</translation>
     </message>
 </context>
 <context>
@@ -1001,9 +1000,29 @@
         <translation>Iššokančios informacijos nustatymai</translation>
     </message>
     <message>
+        <location filename="../forms/popupsettings.ui" line="29"/>
+        <source>Template</source>
+        <translation>Šablonas</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="58"/>
+        <source>Reset</source>
+        <translation>Ištrinti</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="65"/>
+        <source>Insert</source>
+        <translation>Įtraukti</translation>
+    </message>
+    <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
         <translation>Rodyti viršelį</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
+        <source>Cover size:</source>
+        <translation>Viršelio dydis:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1019,26 +1038,6 @@
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
         <translation>ms</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="89"/>
-        <source>Cover size:</source>
-        <translation>Viršelio dydis:</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="29"/>
-        <source>Template</source>
-        <translation>Šablonas</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="58"/>
-        <source>Reset</source>
-        <translation>Ištrinti</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="65"/>
-        <source>Insert</source>
-        <translation>Įtraukti</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
@@ -1124,16 +1123,6 @@
         <translation>Nustatymų redaktorius</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="77"/>
-        <source>Load</source>
-        <translation>Įkelti</translation>
-    </message>
-    <message>
-        <location filename="../forms/preseteditor.ui" line="84"/>
-        <source>Delete</source>
-        <translation>Ištrinti</translation>
-    </message>
-    <message>
         <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
         <translation>Nustatymas</translation>
@@ -1142,6 +1131,16 @@
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>Auto-nustatymas</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="77"/>
+        <source>Load</source>
+        <translation>Įkelti</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="84"/>
+        <source>Delete</source>
+        <translation>Ištrinti</translation>
     </message>
 </context>
 <context>
@@ -1360,6 +1359,16 @@
         <translation>Rodyti takelių numerius</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="276"/>
+        <source>Align song numbers</source>
+        <translation>Lygiuoti dainų numerius</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="293"/>
+        <source>Show anchor</source>
+        <translation>Rodyti inkarą</translation>
+    </message>
+    <message>
         <location filename="../forms/skinnedsettings.ui" line="300"/>
         <source>Show playlists</source>
         <translation>Rodyti grojaraščius</translation>
@@ -1383,17 +1392,6 @@
         <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Rodyti naujo grojaraščio mygtuką</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="293"/>
-        <source>Show anchor</source>
-        <translatorcomment>??????????????</translatorcomment>
-        <translation>Rodyti inkarą</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="276"/>
-        <source>Align song numbers</source>
-        <translation>Lygiuoti dainų numerius</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="120"/>

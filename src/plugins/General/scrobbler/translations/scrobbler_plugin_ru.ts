@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="86"/>
@@ -80,6 +80,16 @@
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
         <translation>3. Нажмите &quot;OK&quot;</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -108,16 +118,6 @@
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>Доступ запрещён</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
-        <translation>Ошибка</translation>
     </message>
 </context>
 </TS>

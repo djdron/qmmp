@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="66"/>
         <source>Hz</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>kbps</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>KB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="71"/>

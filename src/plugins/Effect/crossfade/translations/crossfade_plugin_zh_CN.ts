@@ -39,8 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>ms</source>
-        <translation type="unfinished">
-</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

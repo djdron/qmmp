@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="31"/>
         <source>SRC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο SRC</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο μετατροπής ρυθμού δειγματοληψίας</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο μετατροπής ρυθμού δειγματοληψίας</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,42 +29,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις πρόσθετου μετατροπής ρυθμού δειγματοληψίας</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Sample Rate (Hz):</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμός δειγματοληψίας (Hz):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Interpolation Engine:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μηχανή παρεμβολής:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Best Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Καλύτερη παρεμβολή sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Medium Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέση παρεμβολή sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Τάχιστη παρεμβολή sinc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>ZOH Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρεμβολή ZOH</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Linear Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμική παρεμβολή</translation>
     </message>
 </context>
 </TS>

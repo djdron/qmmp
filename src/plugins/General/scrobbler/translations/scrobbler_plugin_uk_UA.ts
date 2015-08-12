@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<TS version="2.0" language="uk_UA">
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -69,8 +69,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="87"/>
         <source>1. Wait for browser startup</source>
-        <translatorcomment>1. Дочекайтесь завантаження браузера</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
@@ -81,6 +80,16 @@
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
         <translation>3. Натисніть &quot;OK&quot;</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -109,16 +118,6 @@
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>Доступ заборонено</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
-        <translation>Помилка</translation>
     </message>
 </context>
 </TS>

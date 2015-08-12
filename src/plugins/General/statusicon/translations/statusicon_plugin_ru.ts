@@ -9,9 +9,9 @@
         <translation>Настройки модуля Status Icon</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Всплывающая подсказка</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Всплывающее сообщение</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,9 +20,14 @@
         <translation>Задержка, мс:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Всплывающее сообщение</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Всплывающая подсказка</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Разделить имя файла, если нет тегов</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -40,16 +45,6 @@
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Разделить имя файла, если нет тегов</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
         <translation>Размер обложки:</translation>
@@ -58,6 +53,11 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation type="unfinished">32</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>

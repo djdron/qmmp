@@ -27,6 +27,11 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>ALSA Plugin Settings</source>
+        <translation>ALSA įskiepio nustatymai</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>Įrangos nustatymai</translation>
@@ -72,19 +77,14 @@
         <translation>Periodo laikas (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="213"/>
-        <source>Use snd_pcm_pause function</source>
-        <translation>Naudoti snd_pcm_pause funciją</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>ALSA Plugin Settings</source>
-        <translation>ALSA įskiepio nustatymai</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>Naudoti mmap prieigą</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="213"/>
+        <source>Use snd_pcm_pause function</source>
+        <translation>Naudoti snd_pcm_pause funciją</translation>
     </message>
 </context>
 </TS>

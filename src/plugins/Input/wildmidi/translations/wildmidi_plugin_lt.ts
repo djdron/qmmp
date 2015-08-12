@@ -54,12 +54,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="50"/>
         <source>Enhanced resampling</source>
-        <translation type="unfinished">Patobulintas formatavimas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Reverberation</source>
-        <translation type="unfinished">Atgarsis</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="39"/>

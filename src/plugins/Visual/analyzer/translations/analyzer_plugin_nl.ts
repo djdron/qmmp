@@ -47,31 +47,31 @@
         <location filename="../analyzer.cpp" line="383"/>
         <location filename="../analyzer.cpp" line="397"/>
         <source>Slowest</source>
-        <translation type="unfinished">Traagst</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="384"/>
         <location filename="../analyzer.cpp" line="398"/>
         <source>Slow</source>
-        <translation type="unfinished">Traag</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="385"/>
         <location filename="../analyzer.cpp" line="399"/>
         <source>Medium</source>
-        <translation type="unfinished">Normaal</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="386"/>
         <location filename="../analyzer.cpp" line="400"/>
         <source>Fast</source>
-        <translation type="unfinished">Snel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="387"/>
         <location filename="../analyzer.cpp" line="401"/>
         <source>Fastest</source>
-        <translation type="unfinished">Snelst</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="394"/>
@@ -80,12 +80,12 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
+        <source>&amp;Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

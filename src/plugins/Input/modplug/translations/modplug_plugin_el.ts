@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="56"/>
         <source>ModPlug Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο ModPlug</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="62"/>
         <source>ModPlug Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία ModPlug</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="128"/>
         <source>About ModPlug Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο ήχου ModPlug</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο ήχου ModPlug</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Based on the Modplug Plugin for Xmms</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασισμένο στο πρόσθετο Modplug για το Xmms</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Modplug Plugin developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι προγραμματιστές του Modplug:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
@@ -59,54 +59,54 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="71"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="142"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="147"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάρκεια</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="148"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Ταχύτητα</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="149"/>
         <source>Tempo</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμός</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείγματα</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation type="unfinished"></translation>
+        <translation>Όργανα</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχηματομορφές</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανάλια</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχόλιο</translation>
     </message>
 </context>
 <context>
@@ -114,108 +114,108 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>ModPlug Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις του πρόσθετου ModPlug</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποιότητα</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάλυση</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>16 bit</source>
-        <translation type="unfinished"></translation>
+        <translation>16 bit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>8 bit</source>
-        <translation type="unfinished"></translation>
+        <translation>8 bit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="74"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανάλια</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Stereo</source>
-        <translation type="unfinished"></translation>
+        <translation>Στερεοφωνικό</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Mono (downmix)</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονοφωνικό (downmix)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαναδειγματοληψία</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="109"/>
         <source>Nearest (fastest)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγγύτατο (τάχιστο)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
         <source>Linear (fast)</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμικό (ταχύ)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="123"/>
         <source>Spline (good quality)</source>
-        <translation type="unfinished"></translation>
+        <translation>Καμπύλη spline (καλή ποιότητα)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="130"/>
         <source>8-tap Fir (extremely high quality)</source>
-        <translation type="unfinished"></translation>
+        <translation>8-tap Fir (άκρως εξαιρετική υψηλή ποιότητα)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="146"/>
         <source>Sampling Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμός δειγματοληψίας</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="152"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48000 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="159"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="166"/>
         <source>22050 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>22050 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="173"/>
         <source>11025 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>11025 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="184"/>
         <source>Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Τεχνάσματα εντυπωσιασμού</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="190"/>
         <source>Reverb</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντήχηση</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="202"/>
         <location filename="../settingsdialog.ui" line="467"/>
         <source>Depth (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Βάθος (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="234"/>
@@ -223,119 +223,120 @@
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="260"/>
         <location filename="../settingsdialog.ui" line="519"/>
         <source>Delay (ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθυστέρηση(ms)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
         <source>40</source>
-        <translation type="unfinished"></translation>
+        <translation>40</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="324"/>
         <source>Bass Boost</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενίσχυση μπάσων</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="336"/>
         <source>Amount (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποσοστό (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="394"/>
         <source>Range (Hz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εύρος (Hz)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
         <source>Surround</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολυκάναλο</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="551"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="577"/>
         <source>Preamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Προενίσχυση</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="586"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένταση</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="656"/>
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημείωση: θέτοντας την προενίσχυση 
+πολύ υψηλά μπορεί να προκαλέσει διακοπές!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάφορα</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="677"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="683"/>
         <source>Use filename as song title</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση του ονόματος του αρχείου ως τίτλος του τραγουδιού</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
         <source>Noise reduction</source>
-        <translation type="unfinished"></translation>
+        <translation>Μείωση θορύβου</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
         <source>Fast playlist info</source>
-        <translation type="unfinished"></translation>
+        <translation>Γρήγορες πληροφορίες της λίστας αναπαραγωγής</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
         <source>Play Amiga MOD</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή Amiga MOD</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="720"/>
         <source>Looping</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="726"/>
         <source>Don&apos;t loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίχως επανάληψη</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="733"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="750"/>
         <source>time(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>φορά(ές)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Επανάληψη εσαεί</translation>
     </message>
 </context>
 </TS>

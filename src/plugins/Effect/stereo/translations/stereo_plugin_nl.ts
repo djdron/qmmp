@@ -44,12 +44,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>-</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>
         <source>%1</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

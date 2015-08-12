@@ -80,12 +80,12 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
+        <source>&amp;Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

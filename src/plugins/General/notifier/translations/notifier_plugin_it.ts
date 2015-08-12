@@ -35,14 +35,9 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="378"/>
-        <source>Psi Notification</source>
-        <translation>Notifica Psi</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
-        <source>Enable Psi notification</source>
-        <translation>Abilita notifica Psi</translation>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Notifier Plugin Settings</source>
+        <translation>Impostazioni modulo notifica</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
@@ -50,9 +45,20 @@
         <translation>Notifica sul desktop</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>Ritardo (ms):</translation>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>Font:</source>
+        <translation>Carattere;</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="279"/>
+        <source>0</source>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -70,9 +76,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Notifier Plugin Settings</source>
-        <translation>Impostazioni modulo notifica</translation>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>Dimensione copertina:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>Notifica modifica volume</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>Ritardo (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
@@ -85,35 +101,19 @@
         <translation>Notifica cambio brano</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>Notifica modifica volume</translation>
+        <location filename="../settingsdialog.ui" line="378"/>
+        <source>Psi Notification</source>
+        <translation>Notifica Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <location filename="../settingsdialog.ui" line="279"/>
-        <source>0</source>
-        <translation>0</translation>
+        <location filename="../settingsdialog.ui" line="390"/>
+        <source>Enable Psi notification</source>
+        <translation>Abilita notifica Psi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <source>Notification Template</source>
         <translation>Modello di notificazione</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>Font:</source>
-        <translation>Carattere;</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>Dimensione copertina:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <source>...</source>
-        <translation>...</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>AboutQSUIDialog</name>
     <message>
@@ -408,12 +408,12 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
-        <source>&amp;Group Tracks</source>
+        <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
-        <source>Ctrl+G</source>
+        <source>&amp;Group Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1081,6 +1081,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
         <translation type="unfinished"></translation>
@@ -1098,21 +1113,6 @@
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="72"/>
-        <source>Disc Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="73"/>
-        <source>File Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../popupsettings.cpp" line="74"/>
-        <source>File Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1142,11 +1142,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="30"/>
-        <source>Main Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
         <translation type="unfinished"></translation>
@@ -1157,8 +1152,25 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="52"/>
-        <source>Window title format:</source>
+        <location filename="../forms/qsuisettings.ui" line="722"/>
+        <source>Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="728"/>
+        <source>Use system fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="776"/>
+        <source>Playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="756"/>
+        <location filename="../forms/qsuisettings.ui" line="821"/>
+        <location filename="../forms/qsuisettings.ui" line="840"/>
+        <source>???</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1167,6 +1179,16 @@
         <location filename="../forms/qsuisettings.ui" line="786"/>
         <location filename="../forms/qsuisettings.ui" line="847"/>
         <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="30"/>
+        <source>Main Window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="52"/>
+        <source>Window title format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1210,6 +1232,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="869"/>
+        <source>Reset fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="884"/>
+        <source>Column headers:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="799"/>
+        <source>Tab names:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="911"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
+        <source>Analyzer Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="131"/>
         <source>Single Column Mode</source>
         <translation type="unfinished"></translation>
@@ -1217,11 +1264,6 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="178"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="184"/>
-        <source>Analyzer Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1260,28 +1302,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="583"/>
-        <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="519"/>
-        <source>Current text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="647"/>
-        <source>Group text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="404"/>
-        <source>Use system colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="551"/>
-        <source>Highlighted background:</source>
+        <location filename="../forms/qsuisettings.ui" line="455"/>
+        <source>Normal text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1290,8 +1312,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="455"/>
-        <source>Normal text:</source>
+        <location filename="../forms/qsuisettings.ui" line="519"/>
+        <source>Current text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="551"/>
+        <source>Highlighted background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="583"/>
+        <source>Hightlighted text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
+        <source>Use system colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1300,45 +1337,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="722"/>
-        <source>Fonts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="728"/>
-        <source>Use system fonts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="869"/>
-        <source>Reset fonts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="884"/>
-        <source>Column headers:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="799"/>
-        <source>Tab names:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="756"/>
-        <location filename="../forms/qsuisettings.ui" line="821"/>
-        <location filename="../forms/qsuisettings.ui" line="840"/>
-        <source>???</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="776"/>
-        <source>Playlist:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="911"/>
-        <source>Miscellaneous</source>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
+        <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -9,9 +9,9 @@
         <translation>Status Icon įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Patarimas</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Iššokantis pranešimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,9 +20,14 @@
         <translation>Užlaikymas ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Iššokantis pranešimas</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Patarimas</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Bandyti išskirti bylos pavadinimą, kai nėra meta duomenų</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -40,16 +45,6 @@
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation>Taisyti šabloną</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Bandyti išskirti bylos pavadinimą, kai nėra meta duomenų</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
         <translation>Viršelio dydis:</translation>
@@ -58,6 +53,11 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation>32</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation>Taisyti šabloną</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>

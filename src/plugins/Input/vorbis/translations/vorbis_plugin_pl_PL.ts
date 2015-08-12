@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Hz</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>KB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

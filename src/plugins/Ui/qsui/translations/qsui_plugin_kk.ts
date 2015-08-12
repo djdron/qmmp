@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="kk_KZ">
+<TS version="2.0" language="kk">
 <context>
     <name>AboutQSUIDialog</name>
     <message>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Ойнату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">&amp;Аялдату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished">&amp;Тоқтату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">Ал&amp;дыңғысы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Келесісі</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished">О&amp;йнат/аялдат</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -117,11 +117,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
-        <source>&amp;Add File</source>
-        <translation type="unfinished">Фа&amp;йлды қосу</translation>
-    </message>
-    <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>E</source>
         <translation type="unfinished"></translation>
@@ -129,7 +124,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished">Тізі&amp;мді қайталау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -139,7 +134,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished">Т&amp;ректі қайталау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
@@ -149,7 +144,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished">Ке&amp;з-келген ретпен</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
@@ -243,13 +238,18 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
+        <source>&amp;Add File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="71"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">Бу&amp;маны қосу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
@@ -259,7 +259,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished">URL-д&amp;ы қосу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
@@ -269,7 +269,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">Таңда&amp;лғанды өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
@@ -279,12 +279,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="76"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Барлығын өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">Таң&amp;далмағанды өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
@@ -309,17 +309,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Таңдауды кері айналдыру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished">Т&amp;аңдауды алу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Барлығын таңдау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
@@ -329,7 +329,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
         <source>&amp;View Track Details</source>
-        <translation type="unfinished">&amp;Ақпараты</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
@@ -339,7 +339,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;New List</source>
-        <translation type="unfinished">&amp;Жаңа тізім</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -359,7 +359,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Load List</source>
-        <translation type="unfinished">Ті&amp;зімді жүктеу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Save List</source>
-        <translation type="unfinished">Тізімді &amp;сақтау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -439,7 +439,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="103"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished">&amp;Баптаулары</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="103"/>
@@ -454,12 +454,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="105"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;Осы туралы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="106"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished">Qt т&amp;уралы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="107"/>
@@ -503,7 +503,7 @@
     <message>
         <location filename="../equalizer.cpp" line="39"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Эквалайзер</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="48"/>
@@ -571,13 +571,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="131"/>
-        <source>Select Directory</source>
+        <location filename="../filesystembrowser.cpp" line="66"/>
+        <source>Change Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="66"/>
-        <source>Change Directory</source>
+        <location filename="../filesystembrowser.cpp" line="131"/>
+        <source>Select Directory</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -626,12 +626,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
         <source>Volume</source>
-        <translation type="unfinished">Даусы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">Тізім</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
@@ -709,37 +709,37 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
         <source>Previous</source>
-        <translation type="unfinished">Алдыңғысы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="209"/>
         <source>Play</source>
-        <translation type="unfinished">Ойнату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="219"/>
         <source>Pause</source>
-        <translation type="unfinished">Аялдату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="229"/>
         <source>Next</source>
-        <translation type="unfinished">Келесіге өту</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="239"/>
         <source>Stop</source>
-        <translation type="unfinished">Тоқтату</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="244"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">Фа&amp;йлды қосу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="249"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Барлығын өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="254"/>
@@ -754,7 +754,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="264"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">Бу&amp;маны қосу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="269"/>
@@ -764,7 +764,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="274"/>
         <source>About</source>
-        <translation type="unfinished">О программе</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="279"/>
@@ -774,17 +774,17 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="284"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Барлығын таңдау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="289"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">Таңда&amp;лғанды өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="294"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">Таң&amp;далмағанды өшіру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="299"/>
@@ -805,7 +805,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="138"/>
         <source>Volume</source>
-        <translation type="unfinished">Даусы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
@@ -835,7 +835,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="328"/>
         <source>Appearance</source>
-        <translation type="unfinished">Сыртқы түрі</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
@@ -865,13 +865,13 @@
     <message>
         <location filename="../mainwindow.cpp" line="488"/>
         <source>Sort List</source>
-        <translation type="unfinished">Сұрыптау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="491"/>
         <location filename="../mainwindow.cpp" line="546"/>
         <source>By Title</source>
-        <translation type="unfinished">Аты бойынша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="495"/>
@@ -895,25 +895,25 @@
         <location filename="../mainwindow.cpp" line="507"/>
         <location filename="../mainwindow.cpp" line="562"/>
         <source>By Filename</source>
-        <translation type="unfinished">Файл аты бойынша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="511"/>
         <location filename="../mainwindow.cpp" line="566"/>
         <source>By Path + Filename</source>
-        <translation type="unfinished">Жолы мен файл аты бойынша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="515"/>
         <location filename="../mainwindow.cpp" line="570"/>
         <source>By Date</source>
-        <translation type="unfinished">Уақыты бойынша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="519"/>
         <location filename="../mainwindow.cpp" line="574"/>
         <source>By Track Number</source>
-        <translation type="unfinished">Трек нөмірі бойынша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="523"/>
@@ -941,23 +941,23 @@
     <message>
         <location filename="../mainwindow.cpp" line="543"/>
         <source>Sort Selection</source>
-        <translation type="unfinished">Таңдалғанды сұрыптау</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="593"/>
         <source>Randomize List</source>
-        <translation type="unfinished">Тізімді араластыру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="595"/>
         <source>Reverse List</source>
-        <translation type="unfinished">Тізімді кері айналдыру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="602"/>
         <location filename="../mainwindow.cpp" line="647"/>
         <source>Actions</source>
-        <translation type="unfinished">Әрекеттер</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="680"/>
@@ -1053,12 +1053,12 @@
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation type="unfinished">Орындаушы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
@@ -1068,7 +1068,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Title</source>
-        <translation type="unfinished">Аты</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
@@ -1098,12 +1098,12 @@
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанры</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Comment</source>
-        <translation type="unfinished">Қосымша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
@@ -1118,7 +1118,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Year</source>
-        <translation type="unfinished">Жылы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="76"/>
@@ -1144,17 +1144,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Жабылғанда жасыру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Жасырын түрінде қосылу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="722"/>
         <source>Fonts</source>
-        <translation type="unfinished">Қаріптер</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="728"/>
@@ -1171,7 +1171,7 @@
         <location filename="../forms/qsuisettings.ui" line="821"/>
         <location filename="../forms/qsuisettings.ui" line="840"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
@@ -1179,7 +1179,7 @@
         <location filename="../forms/qsuisettings.ui" line="786"/>
         <location filename="../forms/qsuisettings.ui" line="847"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
@@ -1194,12 +1194,12 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="74"/>
         <source>Song Display</source>
-        <translation type="unfinished">Өлендер тізімі</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="80"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Хаттаманы көрсету</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="137"/>
@@ -1232,16 +1232,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="178"/>
-        <source>Colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="618"/>
-        <source>Group background:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>Reset fonts</source>
         <translation type="unfinished"></translation>
@@ -1257,33 +1247,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="647"/>
-        <source>Group text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="917"/>
-        <source>Tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="923"/>
-        <source>Show close buttons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="930"/>
-        <source>Show tab list menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="937"/>
-        <source>Show &apos;New Playlist&apos; button</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
+        <source>Analyzer Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1292,8 +1262,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="184"/>
-        <source>Analyzer Colors</source>
+        <location filename="../forms/qsuisettings.ui" line="178"/>
+        <source>Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1327,11 +1297,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="404"/>
-        <source>Use system colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="423"/>
         <source>Background #1:</source>
         <translation type="unfinished"></translation>
@@ -1362,14 +1327,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
+        <source>Use system colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="618"/>
+        <source>Group background:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
+        <source>Group text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="917"/>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="923"/>
+        <source>Show close buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="930"/>
+        <source>Show tab list menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="937"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qsuisettings.cpp" line="118"/>
         <source>Artist</source>
-        <translation type="unfinished">Орындаушы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="119"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="120"/>
@@ -1379,7 +1379,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="121"/>
         <source>Title</source>
-        <translation type="unfinished">Аты</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="122"/>
@@ -1394,12 +1394,12 @@
     <message>
         <location filename="../qsuisettings.cpp" line="124"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанры</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="125"/>
         <source>Comment</source>
-        <translation type="unfinished">Қосымша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="126"/>
@@ -1429,7 +1429,7 @@
     <message>
         <location filename="../qsuisettings.cpp" line="131"/>
         <source>Year</source>
-        <translation type="unfinished">Жылы</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="132"/>

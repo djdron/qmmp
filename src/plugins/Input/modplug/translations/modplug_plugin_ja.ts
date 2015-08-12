@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<TS version="2.0" language="ja">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -326,7 +326,6 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="733"/>
         <source>Loop</source>
-        <translatorcomment>繰り返しを [n] 回行なう</translatorcomment>
         <translation>繰り返しを</translation>
     </message>
     <message>

@@ -212,12 +212,24 @@
         <translation>余响</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="202"/>
+        <location filename="../settingsdialog.ui" line="467"/>
+        <source>Depth (%)</source>
+        <translation>深度 (%)</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="234"/>
         <location filename="../settingsdialog.ui" line="368"/>
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
         <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="260"/>
+        <location filename="../settingsdialog.ui" line="519"/>
+        <source>Delay (ms)</source>
+        <translation>延迟 (ms)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
@@ -228,6 +240,16 @@
         <location filename="../settingsdialog.ui" line="324"/>
         <source>Bass Boost</source>
         <translation>低音提升</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="336"/>
+        <source>Amount (%)</source>
+        <translation>总计 (%)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="394"/>
+        <source>Range (Hz)</source>
+        <translation>范围 (Hz)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
@@ -253,6 +275,13 @@
         <location filename="../settingsdialog.ui" line="586"/>
         <source>Volume</source>
         <translation>音量</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="656"/>
+        <source>Note: Setting the preamp
+too high may cause clipping!</source>
+        <translation>注释：设置前置放大器
+太高可能会产生削波现象！</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -308,35 +337,6 @@
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
         <translation>永远循环</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="202"/>
-        <location filename="../settingsdialog.ui" line="467"/>
-        <source>Depth (%)</source>
-        <translation>深度 (%)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="260"/>
-        <location filename="../settingsdialog.ui" line="519"/>
-        <source>Delay (ms)</source>
-        <translation>延迟 (ms)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="336"/>
-        <source>Amount (%)</source>
-        <translation>总计 (%)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="394"/>
-        <source>Range (Hz)</source>
-        <translation>范围 (Hz)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="656"/>
-        <source>Note: Setting the preamp
-too high may cause clipping!</source>
-        <translation>注释：设置前置放大器
-太高可能会产生削波现象！</translation>
     </message>
 </context>
 </TS>

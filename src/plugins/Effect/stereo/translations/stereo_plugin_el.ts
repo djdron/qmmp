@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>EffectStereoFactory</name>
     <message>
         <location filename="../effectstereofactory.cpp" line="31"/>
         <source>Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο επιπλέον στερεοφωνικού</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="51"/>
         <source>About Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο επιπλέον στερεοφωνικού</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="52"/>
         <source>Qmmp Extra Stereo Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο επιπλέον στερεοφωνικού</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="54"/>
         <source>Based on the Extra Stereo Plugin for Xmms by Johan Levin</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασισμένο στο πρόσθετο επιπλέον στερεοφωνικού για το Xmms από τον Johan Levin</translation>
     </message>
 </context>
 <context>
@@ -34,22 +34,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Extra Stereo Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις πρόσθετο επιπλέον στερεοφωνικού</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
         <source>Effect intensity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ένταση επίδρασης:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="57"/>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
 </context>
 </TS>

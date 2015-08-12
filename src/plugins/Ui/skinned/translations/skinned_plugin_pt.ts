@@ -336,7 +336,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Save List</source>
-        <translation>&amp;Gravar lista</translation>
+        <translation>Guardar li&amp;sta</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
@@ -455,12 +455,12 @@
     <message>
         <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Save Preset</source>
-        <translation>&amp;Gravar pré-ajuste</translation>
+        <translation>Guardar pré-aju&amp;ste</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>C&amp;arregar pré-ajuste automaticamente</translation>
+        <translation>Guardar pré-aju&amp;ste automaticamente</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="270"/>
@@ -1186,32 +1186,32 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenvolvido por:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="49"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:</source>
-        <translation type="unfinished"></translation>
+        <translation>Trabalho artístico:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="51"/>
         <source>Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="52"/>
         <source>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</translation>
     </message>
 </context>
 <context>

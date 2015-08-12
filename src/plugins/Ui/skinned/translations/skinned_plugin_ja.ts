@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<TS version="2.0" language="ja">
 <context>
     <name>ActionManager</name>
     <message>
@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation>指定のトラックへ移動(&amp;J)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation>指定のトラックへ移動(&amp;J)</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -679,7 +679,6 @@
     <message>
         <location filename="../mainvisual.cpp" line="260"/>
         <source>Vertical Lines</source>
-        <translatorcomment>Winamp の表示どおりに</translatorcomment>
         <translation>線</translation>
     </message>
     <message>
@@ -776,11 +775,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="405"/>
-        <source>Playlist</source>
-        <translation>プレイリスト</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>Appearance</source>
         <translation>外観</translation>
@@ -794,6 +788,11 @@
         <location filename="../mainwindow.cpp" line="397"/>
         <source>View</source>
         <translation>観容</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="405"/>
+        <source>Playlist</source>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="423"/>
@@ -1360,6 +1359,16 @@
         <translation>曲番号つきで表示</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="276"/>
+        <source>Align song numbers</source>
+        <translation>曲番号のみを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="293"/>
+        <source>Show anchor</source>
+        <translation>アンカーを表示</translation>
+    </message>
+    <message>
         <location filename="../forms/skinnedsettings.ui" line="300"/>
         <source>Show playlists</source>
         <translation>プレイリストを表示</translation>
@@ -1383,16 +1392,6 @@
         <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>&apos;新しいプレイリスト&apos;ボタンを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="293"/>
-        <source>Show anchor</source>
-        <translation>アンカーを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="276"/>
-        <source>Align song numbers</source>
-        <translation>曲番号のみを表示</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="120"/>

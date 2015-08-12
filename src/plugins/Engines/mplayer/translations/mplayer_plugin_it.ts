@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de">
+<TS version="2.0" language="it">
 <context>
     <name>MplayerEngineFactory</name>
     <message>
@@ -110,16 +110,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="29"/>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <location filename="../settingsdialog.cpp" line="46"/>
-        <location filename="../settingsdialog.cpp" line="47"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>default</source>
-        <translation>Default</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
         <translation>Impostazioni MPlayer</translation>
@@ -133,6 +123,11 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation>Audio:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <source>Audio/video auto synchronization</source>
+        <translation>Sincronizzazione audio/video</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -150,9 +145,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <source>Audio/video auto synchronization</source>
-        <translation>Sincronizzazione audio/video</translation>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation>Default</translation>
     </message>
 </context>
 </TS>

@@ -21,7 +21,7 @@
     <message>
         <location filename="../statusoption.cpp" line="89"/>
         <source>Syntax:</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="90"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../statusoption.cpp" line="91"/>
         <source>%a - album</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="92"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../statusoption.cpp" line="96"/>
         <source>%g - genre</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="97"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<TS version="2.0" language="ja">
 <context>
     <name>AboutQSUIDialog</name>
     <message>
@@ -103,18 +103,23 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation>指定のトラックまで移動(&amp;J)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation>指定のトラックまで移動(&amp;J)</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Play Files</source>
         <translation>ファイルより再生(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>E</source>
+        <translation>E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -187,16 +192,6 @@
         <translation>常に表示中のワークスペースに置く</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
-        <source>&amp;Add File</source>
-        <translation>ファイルを追加(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../actionmanager.cpp" line="45"/>
-        <source>E</source>
-        <translation>E</translation>
-    </message>
-    <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Tabs</source>
         <translation>タブを表示</translation>
@@ -240,6 +235,11 @@
         <location filename="../actionmanager.cpp" line="69"/>
         <source>M</source>
         <translation>M</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="71"/>
+        <source>&amp;Add File</source>
+        <translation>ファイルを追加(&amp;F)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -571,14 +571,14 @@
         <translation>プレイリストに追加</translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="131"/>
-        <source>Select Directory</source>
-        <translation>ディレクトリーを選択</translation>
-    </message>
-    <message>
         <location filename="../filesystembrowser.cpp" line="66"/>
         <source>Change Directory</source>
         <translation>ディレクトリーを変更</translation>
+    </message>
+    <message>
+        <location filename="../filesystembrowser.cpp" line="131"/>
+        <source>Select Directory</source>
+        <translation>ディレクトリーを選択</translation>
     </message>
 </context>
 <context>
@@ -641,6 +641,167 @@
 </context>
 <context>
     <name>MainWindow</name>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="14"/>
+        <source>Qmmp</source>
+        <translation>QMMP</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="54"/>
+        <source>&amp;File</source>
+        <translation>ファイル(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="59"/>
+        <source>&amp;Tools</source>
+        <translation>ツール(&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="67"/>
+        <source>&amp;Help</source>
+        <translation>ヘルプ(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="72"/>
+        <source>&amp;Edit</source>
+        <translation>編集(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="77"/>
+        <source>&amp;Playback</source>
+        <translation>再生(&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="82"/>
+        <source>&amp;View</source>
+        <translation>表示(&amp;V)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="94"/>
+        <source>Playback</source>
+        <translation>再生</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="117"/>
+        <source>Progress</source>
+        <translation>進捗</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="146"/>
+        <source>Spectrum Analyzer</source>
+        <translation>スペクトルアナライザー</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="161"/>
+        <source>Files</source>
+        <translation>ファイル</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="176"/>
+        <source>Cover</source>
+        <translation>表紙画像</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="185"/>
+        <source>Playlists</source>
+        <translation>プレイリスト</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="199"/>
+        <source>Previous</source>
+        <translation>前の曲</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="209"/>
+        <source>Play</source>
+        <translation>再生</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="219"/>
+        <source>Pause</source>
+        <translation>一時停止</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="229"/>
+        <source>Next</source>
+        <translation>次の曲</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="239"/>
+        <source>Stop</source>
+        <translation>終止</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="244"/>
+        <source>&amp;Add File</source>
+        <translation>ファイルを追加(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="249"/>
+        <source>&amp;Remove All</source>
+        <translation>すべて除去(&amp;M)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="254"/>
+        <source>New Playlist</source>
+        <translation>新しいプレイリスト</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="259"/>
+        <source>Remove Playlist</source>
+        <translation>プレイリストを削除</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="264"/>
+        <source>&amp;Add Directory</source>
+        <translation>ディレクトリを追加(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="269"/>
+        <source>&amp;Exit</source>
+        <translation>終了(&amp;X)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="274"/>
+        <source>About</source>
+        <translation>QMMP について</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="279"/>
+        <source>About Qt</source>
+        <translation>Qt について</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="284"/>
+        <source>&amp;Select All</source>
+        <translation>すべて選択(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="289"/>
+        <source>&amp;Remove Selected</source>
+        <translation>選択したものを除去(&amp;V)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="294"/>
+        <source>&amp;Remove Unselected</source>
+        <translation>選択外のものを除去(&amp;N)</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="299"/>
+        <source>Visualization</source>
+        <translation>視覚効果</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="304"/>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="309"/>
+        <location filename="../mainwindow.cpp" line="287"/>
+        <source>Rename Playlist</source>
+        <translation>プレイリスト名を変更</translation>
+    </message>
     <message>
         <location filename="../mainwindow.cpp" line="138"/>
         <source>Volume</source>
@@ -812,167 +973,6 @@
         <location filename="../mainwindow.cpp" line="839"/>
         <source>Buffering: %1%</source>
         <translation>バッファーへ先読み: %1%</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="14"/>
-        <source>Qmmp</source>
-        <translation>QMMP</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="54"/>
-        <source>&amp;File</source>
-        <translation>ファイル(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="59"/>
-        <source>&amp;Tools</source>
-        <translation>ツール(&amp;T)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="67"/>
-        <source>&amp;Help</source>
-        <translation>ヘルプ(&amp;H)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="72"/>
-        <source>&amp;Edit</source>
-        <translation>編集(&amp;E)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="77"/>
-        <source>&amp;Playback</source>
-        <translation>再生(&amp;P)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="82"/>
-        <source>&amp;View</source>
-        <translation>表示(&amp;V)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="94"/>
-        <source>Playback</source>
-        <translation>再生</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="117"/>
-        <source>Progress</source>
-        <translation>進捗</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="146"/>
-        <source>Spectrum Analyzer</source>
-        <translation>スペクトルアナライザー</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="161"/>
-        <source>Files</source>
-        <translation>ファイル</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="176"/>
-        <source>Cover</source>
-        <translation>表紙画像</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="185"/>
-        <source>Playlists</source>
-        <translation>プレイリスト</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="199"/>
-        <source>Previous</source>
-        <translation>前の曲</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="209"/>
-        <source>Play</source>
-        <translation>再生</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="219"/>
-        <source>Pause</source>
-        <translation>一時停止</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="229"/>
-        <source>Next</source>
-        <translation>次の曲</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="239"/>
-        <source>Stop</source>
-        <translation>終止</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="244"/>
-        <source>&amp;Add File</source>
-        <translation>ファイルを追加(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="249"/>
-        <source>&amp;Remove All</source>
-        <translation>すべて除去(&amp;M)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="254"/>
-        <source>New Playlist</source>
-        <translation>新しいプレイリスト</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="259"/>
-        <source>Remove Playlist</source>
-        <translation>プレイリストを削除</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="264"/>
-        <source>&amp;Add Directory</source>
-        <translation>ディレクトリを追加(&amp;D)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="269"/>
-        <source>&amp;Exit</source>
-        <translation>終了(&amp;X)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="274"/>
-        <source>About</source>
-        <translation>QMMP について</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="279"/>
-        <source>About Qt</source>
-        <translation>Qt について</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="284"/>
-        <source>&amp;Select All</source>
-        <translation>すべて選択(&amp;E)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="289"/>
-        <source>&amp;Remove Selected</source>
-        <translation>選択したものを除去(&amp;V)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="294"/>
-        <source>&amp;Remove Unselected</source>
-        <translation>選択外のものを除去(&amp;N)</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="299"/>
-        <source>Visualization</source>
-        <translation>視覚効果</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="304"/>
-        <source>Settings</source>
-        <translation>設定</translation>
-    </message>
-    <message>
-        <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="287"/>
-        <source>Rename Playlist</source>
-        <translation>プレイリスト名を変更</translation>
     </message>
 </context>
 <context>
@@ -1232,16 +1232,6 @@
         <translation>ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="178"/>
-        <source>Colors</source>
-        <translation>色</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="618"/>
-        <source>Group background:</source>
-        <translation>グループの背景色:</translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="869"/>
         <source>Reset fonts</source>
         <translation>フォントをリセット</translation>
@@ -1257,34 +1247,14 @@
         <translation>タブ名:</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="647"/>
-        <source>Group text:</source>
-        <translation>グループの文字色:</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="917"/>
-        <source>Tabs</source>
-        <translation>タブ</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="923"/>
-        <source>Show close buttons</source>
-        <translation>閉じる[×]ボタンを表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="930"/>
-        <source>Show tab list menu</source>
-        <translation>タブリストメニュー[▼]を表示</translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="937"/>
-        <source>Show &apos;New Playlist&apos; button</source>
-        <translation>新しいプレイリスト[+]ボタンを表示</translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="911"/>
         <source>Miscellaneous</source>
         <translation>その他いろいろ</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
+        <source>Analyzer Colors</source>
+        <translation>アナライザーの配色</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="131"/>
@@ -1292,9 +1262,9 @@
         <translation>単一カラムのとき</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="184"/>
-        <source>Analyzer Colors</source>
-        <translation>アナライザーの配色</translation>
+        <location filename="../forms/qsuisettings.ui" line="178"/>
+        <source>Colors</source>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="190"/>
@@ -1327,11 +1297,6 @@
         <translation>プレイリストの配色</translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="404"/>
-        <source>Use system colors</source>
-        <translation>システム標準の配色を使用</translation>
-    </message>
-    <message>
         <location filename="../forms/qsuisettings.ui" line="423"/>
         <source>Background #1:</source>
         <translation>第一背景:</translation>
@@ -1360,6 +1325,41 @@
         <location filename="../forms/qsuisettings.ui" line="583"/>
         <source>Hightlighted text:</source>
         <translation>ハイライトしたテキスト:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
+        <source>Use system colors</source>
+        <translation>システム標準の配色を使用</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="618"/>
+        <source>Group background:</source>
+        <translation>グループの背景色:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
+        <source>Group text:</source>
+        <translation>グループの文字色:</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="917"/>
+        <source>Tabs</source>
+        <translation>タブ</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="923"/>
+        <source>Show close buttons</source>
+        <translation>閉じる[×]ボタンを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="930"/>
+        <source>Show tab list menu</source>
+        <translation>タブリストメニュー[▼]を表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="937"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation>新しいプレイリスト[+]ボタンを表示</translation>
     </message>
     <message>
         <location filename="../qsuisettings.cpp" line="118"/>

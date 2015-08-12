@@ -9,9 +9,9 @@
         <translation>Status Icoon Module Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Notificatieballon</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Ballon bericht</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,9 +20,14 @@
         <translation>Vertraging, ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Ballon bericht</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Notificatieballon</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Bij geen tag, probeer de bestandsnaam te splitsen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -37,17 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation>Bewerk layout</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Bij geen tag, probeer de bestandsnaam te splitsen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
@@ -57,7 +52,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation>Bewerk layout</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -85,7 +85,7 @@
     <message>
         <location filename="../statusicon.cpp" line="69"/>
         <source>Stop</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="71"/>
@@ -116,6 +116,11 @@
         <translation>Status Icoon Module</translation>
     </message>
     <message>
+        <location filename="../statusiconfactory.cpp" line="50"/>
+        <source>About Status Icon Plugin</source>
+        <translation>Over de Status Icoon Module</translation>
+    </message>
+    <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Status Icoon Module voor Qmmp</translation>
@@ -134,11 +139,6 @@
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
         <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
-    </message>
-    <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
-        <source>About Status Icon Plugin</source>
-        <translation>Over de Status Icoon Module</translation>
     </message>
 </context>
 <context>

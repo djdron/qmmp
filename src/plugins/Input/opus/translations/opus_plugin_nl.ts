@@ -26,7 +26,7 @@
     <message>
         <location filename="../decoderopusfactory.cpp" line="128"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -34,12 +34,12 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished">Duur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Sample frequentie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanalen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Bitsnelheid</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation type="unfinished">Bestandsnaam</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>

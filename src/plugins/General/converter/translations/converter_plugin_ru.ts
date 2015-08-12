@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.0" language="ru">
 <context>
     <name>Converter</name>
     <message>
@@ -102,6 +102,11 @@
         <translation>Путь к файлу</translation>
     </message>
     <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation>Сделать копию</translation>
+    </message>
+    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>Жанр</translation>
@@ -140,11 +145,6 @@
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>Изменить</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation>Сделать копию</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>

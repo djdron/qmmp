@@ -591,17 +591,17 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="54"/>
         <source>Action</source>
-        <translation type="unfinished">радња</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="59"/>
         <source>Shortcut</source>
-        <translation type="unfinished">пречица</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="33"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Измени пречицу...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
@@ -631,12 +631,12 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished">Листа нумера</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
         <source>Misc</source>
-        <translation type="unfinished">Разно</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -840,7 +840,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Пречице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="374"/>

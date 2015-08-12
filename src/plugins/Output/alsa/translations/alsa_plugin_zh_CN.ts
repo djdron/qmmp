@@ -27,6 +27,11 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>ALSA Plugin Settings</source>
+        <translation>ALSA 插件设置</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>设备设置</translation>
@@ -72,19 +77,14 @@
         <translation>周期时间(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="213"/>
-        <source>Use snd_pcm_pause function</source>
-        <translation>使用 snd_pcm_pause 功能</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>ALSA Plugin Settings</source>
-        <translation>ALSA 插件设置</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>使用内存映射</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="213"/>
+        <source>Use snd_pcm_pause function</source>
+        <translation>使用 snd_pcm_pause 功能</translation>
     </message>
 </context>
 </TS>

@@ -41,7 +41,7 @@
     <message>
         <location filename="../analyzer.cpp" line="380"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished">Analizatoriaus nukritimas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="383"/>
@@ -76,17 +76,17 @@
     <message>
         <location filename="../analyzer.cpp" line="394"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished">Pikų nukritimas</translation>
-    </message>
-    <message>
-        <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
-        <translation>F</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
         <source>&amp;Full Screen</source>
         <translation>&amp;Visas  Ekranas</translation>
+    </message>
+    <message>
+        <location filename="../analyzer.cpp" line="408"/>
+        <source>F</source>
+        <translation>F</translation>
     </message>
 </context>
 <context>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Cells size:</source>
-        <translation type="unfinished">Elemento dydis:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="101"/>

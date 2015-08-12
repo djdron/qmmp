@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<TS version="2.0" language="tr">
 <context>
     <name>MplayerEngineFactory</name>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="33"/>
         <source>Mplayer Plugin</source>
-        <translation type="unfinished">Mplayer Eklentisi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="36"/>
         <source>Video Files</source>
-        <translation type="unfinished">Video Dosyaları</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="82"/>
         <source>About MPlayer Plugin</source>
-        <translation type="unfinished">MPlayer Eklentisi Hakkında</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation type="unfinished">Qmmp MPlayer Eklentisi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation type="unfinished">Bu eklenti arka uç olarak MPlayer kullanır</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
@@ -39,22 +39,22 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished">Boyut</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="75"/>
         <source>Length</source>
-        <translation type="unfinished">Uzunluk</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished">Çözümleyici</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation type="unfinished">FPS</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="86"/>
         <source>Aspect ratio</source>
-        <translation type="unfinished">En-boy oranı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="88"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="97"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Örnekleme oranı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="99"/>
@@ -99,26 +99,16 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="101"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanallar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="103"/>
         <source>Resolution</source>
-        <translation type="unfinished">Çözünürlük</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
-    <message>
-        <location filename="../settingsdialog.cpp" line="29"/>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <location filename="../settingsdialog.cpp" line="46"/>
-        <location filename="../settingsdialog.cpp" line="47"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>default</source>
-        <translation>öntanımlı</translation>
-    </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
@@ -133,6 +123,11 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <source>Audio/video auto synchronization</source>
+        <translation>Ses/video otomatik senkronizasyon</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -150,9 +145,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <source>Audio/video auto synchronization</source>
-        <translation>Ses/video otomatik senkronizasyon</translation>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation>öntanımlı</translation>
     </message>
 </context>
 </TS>

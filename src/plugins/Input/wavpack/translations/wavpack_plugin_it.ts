@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de">
+<TS version="2.0" language="it">
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="44"/>
         <source>WavPack Plugin</source>
         <translation>Modulo WavPack</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="46"/>
+        <source>WavPack Files</source>
+        <translation>Brani WavPack</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="155"/>
@@ -27,11 +32,6 @@
         <location filename="../decoderwavpackfactory.cpp" line="159"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
-        <location filename="../decoderwavpackfactory.cpp" line="46"/>
-        <source>WavPack Files</source>
-        <translation>Brani WavPack</translation>
     </message>
 </context>
 <context>

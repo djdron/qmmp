@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk" sourcelanguage="en">
+<TS version="2.0" language="uk_UA">
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
@@ -36,31 +36,16 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="56"/>
         <source>Nick Lamb &lt;njl195@zepler.org.uk&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="57"/>
         <source>Giacomo Lozito &lt;city_hunter@users.sf.net&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
-    <message>
-        <location filename="../settingsdialog.cpp" line="43"/>
-        <source>UID</source>
-        <translation>UID</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="44"/>
-        <source>Name</source>
-        <translation>Ім&apos;я</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="126"/>
-        <source>This LADSPA plugin has no user controls</source>
-        <translation>Цей модуль не містить налаштувань</translation>
-    </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>LADSPA Plugin Catalog</source>
@@ -80,6 +65,21 @@
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Configure</source>
         <translation>Налаштувати</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="43"/>
+        <source>UID</source>
+        <translation>UID</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="44"/>
+        <source>Name</source>
+        <translation>Ім&apos;я</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="126"/>
+        <source>This LADSPA plugin has no user controls</source>
+        <translation>Цей модуль не містить налаштувань</translation>
     </message>
 </context>
 </TS>

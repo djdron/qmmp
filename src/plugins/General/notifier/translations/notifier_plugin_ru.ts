@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.0" language="ru">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -40,34 +40,30 @@
         <translation>Настройки модуля уведомлений</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
-        <source>Transparency:</source>
-        <translation>Прозрачность:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Notification Template</source>
-        <translation>Шаблон уведомления</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="378"/>
-        <source>Psi Notification</source>
-        <translation>Уведомление Psi</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
-        <source>Enable Psi notification</source>
-        <translation>Включить уведомление Psi</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Desktop Notification</source>
         <translation>Сообщение на рабочем столе</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>Задежка (мс):</translation>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>Font:</source>
+        <translation>Шрифт:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="279"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="75"/>
+        <source>Transparency:</source>
+        <translation>Прозрачность:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="219"/>
@@ -80,6 +76,21 @@
         <translation>Редактировать шаблон</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>Размер обложки:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>Уведомление о смене громкости</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>Задежка (мс):</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
         <translation>Уведомлять о продолжении воспроизведения</translation>
@@ -90,30 +101,19 @@
         <translation>Уведомление о смене песни</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>Уведомление о смене громкости</translation>
+        <location filename="../settingsdialog.ui" line="378"/>
+        <source>Psi Notification</source>
+        <translation>Уведомление Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <location filename="../settingsdialog.ui" line="279"/>
-        <source>0</source>
-        <translation></translation>
+        <location filename="../settingsdialog.ui" line="390"/>
+        <source>Enable Psi notification</source>
+        <translation>Включить уведомление Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>Font:</source>
-        <translation>Шрифт:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>Размер обложки:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <source>...</source>
-        <translation></translation>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <source>Notification Template</source>
+        <translation>Шаблон уведомления</translation>
     </message>
 </context>
 </TS>

@@ -9,9 +9,9 @@
         <translation>Impostazione del modulo icona di stato</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Tooltip</source>
-        <translation>Strumento suggerimenti</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation>Comparsa messaggio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -20,9 +20,14 @@
         <translation>Ritardo, ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloon message</source>
-        <translation>Comparsa messaggio</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Tooltip</source>
+        <translation>Strumento suggerimenti</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Dividi nome file se senza tag</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -40,16 +45,6 @@
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Edit template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Try to split file name when no tag</source>
-        <translation>Dividi nome file se senza tag</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
         <translation>Dimensione copertina:</translation>
@@ -58,6 +53,11 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation>32</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -116,6 +116,11 @@
         <translation>Modulo icona di stato</translation>
     </message>
     <message>
+        <location filename="../statusiconfactory.cpp" line="50"/>
+        <source>About Status Icon Plugin</source>
+        <translation>Info sul modulo icona di stato</translation>
+    </message>
+    <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Modulo icona di stato per Qmmp</translation>
@@ -134,11 +139,6 @@
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
         <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
-    </message>
-    <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
-        <source>About Status Icon Plugin</source>
-        <translation>Info sul modulo icona di stato</translation>
     </message>
 </context>
 <context>

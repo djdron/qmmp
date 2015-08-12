@@ -38,6 +38,11 @@
     <file>thanks_cs.txt</file>
     <file>translators_cs.txt</file>
 
+    <file>description_el.txt</file>
+    <file>authors_el.txt</file>
+    <file>thanks_el.txt</file>
+    <file>translators_el.txt</file>
+
     <file>description_es.txt</file>
     <file>authors_es.txt</file>
     <file>thanks_es.txt</file>

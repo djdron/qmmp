@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>Analyzer</name>
     <message>
@@ -80,13 +80,13 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
-        <translation>F</translation>
+        <source>&amp;Full Screen</source>
+        <translation>Pełny Ekran</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
-        <translation>Pełny Ekran</translation>
+        <source>F</source>
+        <translation>F</translation>
     </message>
 </context>
 <context>

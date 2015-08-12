@@ -64,7 +64,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="78"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
@@ -120,30 +120,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <location filename="../settingsdialog.ui" line="110"/>
-        <location filename="../settingsdialog.ui" line="159"/>
-        <source>ID3v1</source>
-        <translation>ID3v1</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="66"/>
-        <location filename="../settingsdialog.ui" line="115"/>
-        <location filename="../settingsdialog.ui" line="164"/>
-        <source>ID3v2</source>
-        <translation>ID3v2</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>ID3v1 編碼：</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>ID3v2 編碼：</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPEG Plugin Settings</source>
         <translation>MPEG 插件設定</translation>
@@ -157,6 +133,20 @@
         <location filename="../settingsdialog.ui" line="41"/>
         <source>First:</source>
         <translation>第一：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="110"/>
+        <location filename="../settingsdialog.ui" line="159"/>
+        <source>ID3v1</source>
+        <translation>ID3v1</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <location filename="../settingsdialog.ui" line="115"/>
+        <location filename="../settingsdialog.ui" line="164"/>
+        <source>ID3v2</source>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -186,6 +176,16 @@
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>編碼</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>ID3v1 編碼：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>ID3v2 編碼：</translation>
     </message>
 </context>
 </TS>

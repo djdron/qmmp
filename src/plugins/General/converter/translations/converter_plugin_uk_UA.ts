@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<TS version="2.0" language="uk_UA">
 <context>
     <name>Converter</name>
     <message>
@@ -102,6 +102,11 @@
         <translation>Шлях файла</translation>
     </message>
     <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation>Створити копію</translation>
+    </message>
+    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>Жанр</translation>
@@ -140,11 +145,6 @@
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>Редагувати</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation>Створити копію</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>
@@ -190,7 +190,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>
@@ -248,8 +248,7 @@
     <message>
         <location filename="../preseteditor.cpp" line="37"/>
         <source>%1 (Read Only)</source>
-        <translatorcomment>%1 (тільки читання)</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="70"/>

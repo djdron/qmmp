@@ -4,6 +4,16 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
+        <location filename="../decoderffmpegfactory.cpp" line="152"/>
+        <source>FFmpeg Plugin</source>
+        <translation>Модуль FFmpeg</translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="154"/>
+        <source>FFmpeg Formats</source>
+        <translation>Форматы FFmpeg</translation>
+    </message>
+    <message>
         <location filename="../decoderffmpegfactory.cpp" line="257"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Об аудио-модуле FFmpeg</translation>
@@ -22,16 +32,6 @@
         <location filename="../decoderffmpegfactory.cpp" line="272"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="152"/>
-        <source>FFmpeg Plugin</source>
-        <translation>Модуль FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="154"/>
-        <source>FFmpeg Formats</source>
-        <translation>Форматы FFmpeg</translation>
     </message>
 </context>
 <context>
@@ -80,6 +80,11 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>FFmpeg Plugin Settings</source>
+        <translation>Настройки модуля FFmpeg</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Formats</source>
         <translation>Форматы</translation>
@@ -90,6 +95,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source>Monkey&apos;s Audio (APE)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
         <translation type="unfinished"></translation>
@@ -97,6 +107,11 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="89"/>
+        <source>MP3 (MPEG audio layer 3)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -132,21 +147,6 @@
     <message>
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>FFmpeg Plugin Settings</source>
-        <translation>Настройки модуля FFmpeg</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <source>Monkey&apos;s Audio (APE)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="89"/>
-        <source>MP3 (MPEG audio layer 3)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

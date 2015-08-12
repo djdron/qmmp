@@ -4,24 +4,14 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Avancer dans la liste de lecture</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Reculer dans la liste de lecture</translation>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Ne pas effacer la liste de lecture</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Démarrer la lecture du morceau courant</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -31,7 +21,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Pause if playing, play otherwise</source>
-        <translation>Mettre en pause si le morceau est joué ; autrement, le jouer</translation>
+        <translation>Mettre en pause si le morceau est joué, autrement, le jouer</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
@@ -46,27 +36,37 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="77"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitter l&apos;application</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="78"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation type="unfinished"></translation>
+        <translation>Positionner le volume (par exemple : qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="79"/>
         <source>Mute/Restore volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Couper/remettre le son</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Avancer dans la liste de lecture</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Reculer dans la liste de lecture</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
-        <translation>Afficher ou cacher Qmmp</translation>
+        <translation>Afficher ou cacher l&apos;application</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer la fenêtre principale</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="91"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Commande inconnue</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="326"/>
@@ -99,7 +99,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="331"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne pas démarrer l&apos;application</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="332"/>
+        <source>Display this text and exit</source>
+        <translation>Afficher ce texte et quitter</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
@@ -114,32 +119,27 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="337"/>
         <source>Command Line Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide de la ligne de commande</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="350"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP version: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="351"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Compilé avec Qt version: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="352"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation de Qt version: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Qmmp Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
-        <source>Display this text and exit</source>
-        <translation>Afficher ce texte et quitter</translation>
+        <translation>Version de Qmmp</translation>
     </message>
 </context>
 </TS>

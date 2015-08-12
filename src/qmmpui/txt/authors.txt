@@ -11,4 +11,4 @@ Former Developers:
 Artwork:
 
     Andrey Adreev <andreev00@gmail.com> - icons and default skin (for versions 0.2-0.8)
-    sixsixfive - default skin
+    sixsixfive <http://sixsixfive.deviantart.com/> - default skin

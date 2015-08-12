@@ -886,7 +886,7 @@
         <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="312"/>
         <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Dateiänderungsdatum</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
@@ -979,7 +979,7 @@
     <message>
         <location filename="../playlistheader.cpp" line="84"/>
         <source>Show Queue/Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Warteschlange/Protokoll anzeigen</translation>
     </message>
     <message>
         <location filename="../playlistheader.cpp" line="86"/>
@@ -1186,32 +1186,32 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Geschrieben von:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="49"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafik:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="51"/>
         <source>Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="52"/>
         <source>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</translation>
     </message>
 </context>
 <context>
@@ -1254,7 +1254,7 @@
     <message>
         <location filename="../forms/skinnedsettings.ui" line="253"/>
         <source>Single Column Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzelspaltenmodus</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="402"/>

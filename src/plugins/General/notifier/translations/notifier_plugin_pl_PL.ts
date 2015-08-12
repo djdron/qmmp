@@ -45,16 +45,6 @@
         <translation>Powiadomienie na pulpicie</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="368"/>
-        <source>Song change notification</source>
-        <translation>Powiadamianie o zmianie utworu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>Powiadamianie o zmianie głośności</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Font:</source>
         <translation>Czcionka:</translation>
@@ -63,16 +53,6 @@
         <location filename="../settingsdialog.ui" line="61"/>
         <source>...</source>
         <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>Opóźnienie (ms):</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>Rozmiar okładki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
@@ -96,9 +76,29 @@
         <translation>Edytuj szablon</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>Rozmiar okładki:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>Powiadamianie o zmianie głośności</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>Opóźnienie (ms):</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
         <translation>Powiadomienie o wznowieniu odtwarzania</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="368"/>
+        <source>Song change notification</source>
+        <translation>Powiadamianie o zmianie utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="378"/>

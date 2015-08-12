@@ -35,5 +35,3 @@ Exec=qmmp --no-start --next
 
 
 # Translations
-Comment[ja]=Qt4 を用いたマルティミディアプレイヤー
-GenericName[ja]=音楽プレイヤー

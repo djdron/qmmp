@@ -95,7 +95,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="267"/>
         <source>Save</source>
-        <translation>Gravar</translation>
+        <translation>Guardar</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="281"/>

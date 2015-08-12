@@ -14,14 +14,14 @@
         <translation>Acerca del módulo MPRIS</translation>
     </message>
     <message>
-        <location filename="../mprisfactory.cpp" line="52"/>
-        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
         <location filename="../mprisfactory.cpp" line="51"/>
         <source>Qmmp MPRIS Plugin</source>
         <translation>Módulo MPRIS para Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../mprisfactory.cpp" line="52"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

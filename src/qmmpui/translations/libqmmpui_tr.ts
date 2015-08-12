@@ -145,7 +145,7 @@
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="105"/>
         <source>Title</source>
-        <translation type="unfinished">Başlık</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
@@ -774,7 +774,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
         <source>Title</source>
-        <translation type="unfinished">Başlık</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="166"/>
@@ -891,7 +891,7 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="186"/>
         <source>Title</source>
-        <translation type="unfinished">Başlık</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="187"/>
@@ -1045,7 +1045,7 @@
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Title</source>
-        <translation type="unfinished">Başlık</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>

@@ -32,55 +32,18 @@
         <translation>Módulo de letras para Qmmp</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="53"/>
-        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
         <translation>Este módulo descarga letras de LyricWiki</translation>
     </message>
+    <message>
+        <location filename="../lyricsfactory.cpp" line="53"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+    </message>
 </context>
 <context>
     <name>LyricsWindow</name>
-    <message>
-        <location filename="../lyricswindow.cpp" line="64"/>
-        <source>Done</source>
-        <translation>Hecho</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="67"/>
-        <location filename="../lyricswindow.cpp" line="91"/>
-        <location filename="../lyricswindow.cpp" line="97"/>
-        <location filename="../lyricswindow.cpp" line="105"/>
-        <location filename="../lyricswindow.cpp" line="113"/>
-        <location filename="../lyricswindow.cpp" line="124"/>
-        <source>Error</source>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="165"/>
-        <source>Lyrics: %1 - %2</source>
-        <translation>Letras: %1 - %2</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="60"/>
-        <source>No connection</source>
-        <translation>Sin conexión</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="118"/>
-        <location filename="../lyricswindow.cpp" line="153"/>
-        <source>Not found</source>
-        <translation>No encontrado</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="139"/>
-        <location filename="../lyricswindow.cpp" line="164"/>
-        <source>Receiving</source>
-        <translation>Recibiendo</translation>
-    </message>
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
@@ -100,6 +63,43 @@
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
         <translation>Buscar</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="60"/>
+        <source>No connection</source>
+        <translation>Sin conexión</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="64"/>
+        <source>Done</source>
+        <translation>Hecho</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="67"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="105"/>
+        <location filename="../lyricswindow.cpp" line="113"/>
+        <location filename="../lyricswindow.cpp" line="124"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="118"/>
+        <location filename="../lyricswindow.cpp" line="153"/>
+        <source>Not found</source>
+        <translation>No encontrado</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="139"/>
+        <location filename="../lyricswindow.cpp" line="164"/>
+        <source>Receiving</source>
+        <translation>Recibiendo</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="165"/>
+        <source>Lyrics: %1 - %2</source>
+        <translation>Letras: %1 - %2</translation>
     </message>
 </context>
 </TS>

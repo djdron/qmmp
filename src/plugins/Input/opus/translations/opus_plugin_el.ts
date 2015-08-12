@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>DecoderOpusFactory</name>
     <message>
         <location filename="../decoderopusfactory.cpp" line="49"/>
         <source>Opus Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο Opus</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="52"/>
         <source>Ogg Opus Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία Ogg Opus</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="126"/>
         <source>About Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο ήχου Opus</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="127"/>
         <source>Qmmp Opus Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο ήχου Opus</translation>
     </message>
     <message>
         <location filename="../decoderopusfactory.cpp" line="128"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,42 +34,42 @@
     <message>
         <location filename="../opusmetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάρκεια</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμός δειγματοληψίας</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="52"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανάλια</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμός bit</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος αρχείου</translation>
     </message>
     <message>
         <location filename="../opusmetadatamodel.cpp" line="55"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>

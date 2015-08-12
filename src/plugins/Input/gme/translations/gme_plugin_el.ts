@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>DecoderGmeFactory</name>
     <message>
         <location filename="../decodergmefactory.cpp" line="50"/>
         <source>GME Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="53"/>
         <source>Game Music Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία μουσικής παιγνιδιών</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="117"/>
         <source>About GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το πρόσθετο ήχου GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="118"/>
         <source>Qmmp GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp πρόσθετο ήχου GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="119"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το πρόσθετο χρησιμοποιεί τη βιβλιοθήκη Game_Music_Emu για την αναπαραγωγή αρχείων μουσικής παιγνιδιών</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="120"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Γράφτηκε από τον: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>GME Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις πρόσθετου GME</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source>Fadeout length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάρκεια ομαλής εξασθένισης ήχου</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Enable fadeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποίηση της ομαλής εξασθένησης ήχου</translation>
     </message>
 </context>
 </TS>

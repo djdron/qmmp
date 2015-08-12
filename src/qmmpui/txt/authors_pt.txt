@@ -1,13 +1,14 @@
 Principais programadores:
 
-    Ilya Kotov <forkotov02@hotmail.ru> (ideia e código base)
-    Vladimir Kuznetsov <vovanec@gmail.com> (aspeto e diversas melhorias)
+    Ilya Kotov <forkotov02@hotmail.ru> ideia e código base
 
-Programadores de suplementos:
+Anteriores programadores:
 
-    Artur Guzik <aguzik88@gmail.com> (notificações kde4 e melhorias do ícone da bandeja)
-    Yuriy Zhuravlev <stalkerg@gmail.com> (suplementos JACK e OSS)
+    Artur Guzik <aguzik88@gmail.com> notificações kde4 e melhorias ao ícone da bandeja
+    Vladimir Kuznetsov <vovanec@gmail.com> aparência  e diversas melhorias
+    Yuriy Zhuravlev <stalkerg@gmail.com> suplementos JACK e OSS
 
 Imagem:
 
-    Andrey Adreev <andreev00@gmail.com>
+    Andrey Adreev <andreev00@gmail.com> - ícones e tema predefinido (das versões 0.2-0.8)
+    sixsixfive - tema predefinido

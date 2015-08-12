@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<TS version="2.0" language="uk_UA">
 <context>
     <name>OutputALSAFactory</name>
     <message>
@@ -26,6 +26,11 @@
 </context>
 <context>
     <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>ALSA Plugin Settings</source>
+        <translation>Налаштування модуля ALSA</translation>
+    </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
@@ -72,19 +77,14 @@
         <translation>Час періоду (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="213"/>
-        <source>Use snd_pcm_pause function</source>
-        <translation>Використовувати функцію snd_pcm_pause</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>ALSA Plugin Settings</source>
-        <translation>Налаштування модуля ALSA</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>Використовувати доступ mmap</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="213"/>
+        <source>Use snd_pcm_pause function</source>
+        <translation>Використовувати функцію snd_pcm_pause</translation>
     </message>
 </context>
 </TS>

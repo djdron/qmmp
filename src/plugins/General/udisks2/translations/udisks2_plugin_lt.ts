@@ -59,7 +59,7 @@
     <message>
         <location filename="../udisks2factory.cpp" line="53"/>
         <source>This plugin provides removable devices detection using UDisks2</source>
-        <translation type="unfinished">Šis įskiepis aptinka prijungiamus įrenginius naudodamas UDisks2 </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../udisks2factory.cpp" line="54"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.0" language="nl">
 <context>
     <name>CoverManager</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
@@ -62,22 +62,22 @@
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>

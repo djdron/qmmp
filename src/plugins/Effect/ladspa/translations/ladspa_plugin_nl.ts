@@ -47,9 +47,29 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>LADSPA Plugin Catalog</source>
+        <translation>LADSPA Module Catalogus</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="52"/>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="59"/>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="94"/>
+        <source>Configure</source>
+        <translation>Instellingen</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
@@ -60,26 +80,6 @@
         <location filename="../settingsdialog.cpp" line="126"/>
         <source>This LADSPA plugin has no user controls</source>
         <translation>Deze LADSPA module heeft geen instellingen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>LADSPA Plugin Catalog</source>
-        <translation>LADSPA Module Catalogus</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="52"/>
-        <source>&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="59"/>
-        <source>&lt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="94"/>
-        <source>Configure</source>
-        <translation>Instellingen</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<TS version="2.0" language="tr">
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="46"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="47"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>

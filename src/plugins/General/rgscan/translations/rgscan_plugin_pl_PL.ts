@@ -11,7 +11,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="84"/>
         <source>Write track gain/peak</source>
-        <translation type="unfinished"> </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="42"/>
@@ -75,7 +75,7 @@
         <location filename="../rgscandialog.cpp" line="152"/>
         <location filename="../rgscandialog.cpp" line="223"/>
         <source>%1 dB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -113,17 +113,17 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="55"/>
         <source>David Robinson &lt;David@Robinson.org&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="56"/>
         <source>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="57"/>
         <source>Frank Klemm</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../rgscanhelper.cpp" line="33"/>
         <source>Meta+R</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

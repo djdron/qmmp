@@ -54,17 +54,17 @@
     <message>
         <location filename="../converterdialog.cpp" line="90"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Elija un directorio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="110"/>
         <source>Artist</source>
-        <translation type="unfinished">Intérprete</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="111"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="113"/>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="114"/>
@@ -102,34 +102,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
-        <translation type="unfinished">Género</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="117"/>
         <source>Comment</source>
-        <translation type="unfinished">Comentario</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="118"/>
         <source>Composer</source>
-        <translation type="unfinished">Compositor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="119"/>
         <source>Duration</source>
-        <translation type="unfinished">Duración</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="123"/>
         <source>Year</source>
-        <translation type="unfinished">Año</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="124"/>
         <source>Condition</source>
-        <translation type="unfinished">Condición</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="130"/>
@@ -139,11 +144,6 @@
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

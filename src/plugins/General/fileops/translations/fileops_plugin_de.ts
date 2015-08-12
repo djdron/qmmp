@@ -18,14 +18,14 @@
     <message>
         <location filename="../fileops.cpp" line="136"/>
         <source>Move Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien verschieben</translation>
     </message>
     <message numerus="yes">
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Sind Sie sicher, dass Sie %n Datei verschieben möchten?</numerusform>
+            <numerusform>Sind Sie sicher, dass Sie %n Dateien verschieben möchten?</numerusform>
         </translation>
     </message>
     <message>
@@ -47,12 +47,12 @@
     <message>
         <location filename="../fileops.cpp" line="243"/>
         <source>Moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschiebevorgang</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="276"/>
         <source>Moving file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei %1/%2 wird verschoben</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="114"/>
@@ -63,8 +63,8 @@
         <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
-            <numerusform>Möchten Sie wirklich %n Datei von der Festplatte entfernen?</numerusform>
-            <numerusform>Möchten Sie wirklich %n Dateien von der Festplatte entfernen?</numerusform>
+            <numerusform>Sind Sie sicher, dass Sie %n Datei von der Festplatte entfernen möchten?</numerusform>
+            <numerusform>Sind Sie sicher, dass Sie %n Dateien von der Festplatte entfernen möchten?</numerusform>
         </translation>
     </message>
 </context>
@@ -180,7 +180,7 @@
         <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschieben</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
