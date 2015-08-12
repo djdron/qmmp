@@ -4,37 +4,37 @@
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="104"/>
+        <location filename="../decodermadfactory.cpp" line="106"/>
         <source>MPEG Plugin</source>
         <translation>MPEG プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="107"/>
+        <location filename="../decodermadfactory.cpp" line="109"/>
         <source>MPEG Files</source>
         <translation>MPEG ファイル</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="263"/>
+        <location filename="../decodermadfactory.cpp" line="265"/>
         <source>About MPEG Audio Plugin</source>
         <translation>MPEG 音響プラグインについて</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="264"/>
+        <location filename="../decodermadfactory.cpp" line="266"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>QMMP MPEG 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="265"/>
+        <location filename="../decodermadfactory.cpp" line="267"/>
         <source>Compiled against libmad version:</source>
         <translation>コンパイル時に使われた libmad の版はつぎのとおり:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="269"/>
+        <location filename="../decodermadfactory.cpp" line="271"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="270"/>
+        <location filename="../decodermadfactory.cpp" line="272"/>
         <source>Source code based on mq3 and madplay projects</source>
         <translation>ソースコードは mq3 と madplay の両プロジェクトから流用</translation>
     </message>

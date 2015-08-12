@@ -4,32 +4,32 @@
 <context>
     <name>MplayerEngineFactory</name>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="33"/>
+        <location filename="../mplayerenginefactory.cpp" line="34"/>
         <source>Mplayer Plugin</source>
         <translation>Wtyczka Mplayer</translation>
     </message>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="36"/>
+        <location filename="../mplayerenginefactory.cpp" line="37"/>
         <source>Video Files</source>
         <translation>Pliki wideo</translation>
     </message>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="82"/>
+        <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>About MPlayer Plugin</source>
         <translation>O wtyczce Mplayer</translation>
     </message>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="83"/>
+        <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>Qmmp MPlayer Plugin</source>
         <translation>Wtyczka Mplayer dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="84"/>
+        <location filename="../mplayerenginefactory.cpp" line="85"/>
         <source>This plugin uses MPlayer as backend</source>
         <translation>Ta wtyczka używa Mplayer do odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mplayerenginefactory.cpp" line="85"/>
+        <location filename="../mplayerenginefactory.cpp" line="86"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Napisana przez: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
