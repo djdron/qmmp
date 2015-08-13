@@ -6,6 +6,6 @@ includedir=@CMAKE_INSTALL_PREFIX@/include
 Name: qmmp
 Description: qmmp core library
 Version: @QMMP_VERSION@
-Requires: QtCore QtGui
+Requires: Qt5Core Qt5Gui Qt5Widgets
 Libs: -L${libdir} -lqmmp
 Cflags: -I${includedir}

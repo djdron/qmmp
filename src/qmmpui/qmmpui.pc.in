@@ -6,6 +6,6 @@ includedir=@CMAKE_INSTALL_PREFIX@/include
 Name: qmmpui
 Description: qmmp user interface library
 Version: @QMMP_VERSION@
-Requires: QtCore QtGui QtNetwork qmmp
+Requires: Qt5Core Qt5Gui Qt5Widgets Qt5Network qmmp
 Libs: -L${libdir} -lqmmpui
 Cflags: -I${includedir}
