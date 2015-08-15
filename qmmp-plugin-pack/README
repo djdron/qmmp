@@ -10,7 +10,7 @@ Description:
 
 Requirements:
 - Qt >= 4.6
-- qmmp 0.8.x
+- qmmp 0.9.x
 - taglib >= 1.7.0
 - libmpg123 >= 1.13.0 (Optional)
 - libxmp >= 4.2.0 (Optional)
@@ -69,8 +69,12 @@ cmake ./ -DLIB_DIR=lib64
 To avoid some problems please read below carefully.
 
 How to enable MPG123 plugin.
-By default libmad-based mpeg plugin has higher priority than mpg123.
-To fix this go to the 'settings'->'plugins' and disable 'MPEG plugin'.
+By default libmad-based MPEG plugin has higher priority than MPG123.
+To fix this go to the "settings"->"plugins" and disable MPEG plugin.
+
+How to enable XMP plugin.
+By default ModPlug plugin has higher priority than XMP.
+To fix this go to the "settings"->"plugins" and disable ModPlug plugin.
 
 How to enabled FFap plugin.
 Go to FFmpeg plugin settings and disable Monkey's Audio support.
