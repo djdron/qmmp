@@ -22,6 +22,7 @@
 #include <QRegExp>
 #include <QMetaType>
 #include <QDir>
+#include <QApplication>
 #include "fileloader_p.h"
 #include "qmmpuisettings.h"
 #include "playlistitem.h"
@@ -33,6 +34,7 @@ FileLoader::FileLoader(QObject *parent) : QThread(parent)
     m_settings = QmmpUiSettings::instance();
     m_finished = false;
     m_use_meta = false;
+    connect(qApp, SIGNAL(aboutToQuit()), SLOT(finish()));
 }
 
 FileLoader::~FileLoader()
