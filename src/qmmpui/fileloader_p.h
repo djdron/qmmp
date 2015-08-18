@@ -54,10 +54,6 @@ public:
      */
     ~FileLoader();
     /*!
-     * Removes files and directories from queue and waits until thread is finished
-     */
-    void finish();
-    /*!
      * Sets file/directory to load
      */
     void add(const QString &path);
@@ -68,6 +64,12 @@ public:
 
     void insert(PlayListItem *before, const QString &path);
     void insert(PlayListItem *before, const QStringList &paths);
+
+public slots:
+    /*!
+     * Removes files and directories from queue and waits until thread is finished
+     */
+    void finish();
 
 signals:
     /*!
