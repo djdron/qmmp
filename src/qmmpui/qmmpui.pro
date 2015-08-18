@@ -174,6 +174,6 @@ unix {
     CONFIG += create_pc create_prl no_install_prl
     QMAKE_PKGCONFIG_NAME = qmmpui
     QMAKE_PKGCONFIG_DESCRIPTION = qmmp user interface library
-    QMAKE_PKGCONFIG_REQUIRES = QtCore QtGui QtNetwork qmmp
+    QMAKE_PKGCONFIG_REQUIRES = Qt5Core Qt5Gui Qt5Widgets Qt5Network qmmp
     QMAKE_PKGCONFIG_DESTDIR = pkgconfig
 }
