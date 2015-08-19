@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Przeskocz do przodu na liście odtwarzania</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Przeskocz do tyłu na liście odtwarzania</translation>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Nie czyść listy</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Zacznij odtwarzać bieżący utwór</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Nie czyść listy</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -59,6 +49,16 @@
         <translation>Wyłącz/Włącz dźwięk</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Przeskocz do przodu na liście odtwarzania</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Przeskocz do tyłu na liście odtwarzania</translation>
+    </message>
+    <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
         <translation>Pokaż/ukryj aplikację</translation>
@@ -82,6 +82,11 @@
 <context>
     <name>QMMPStarter</name>
     <message>
+        <location filename="../qmmpstarter.cpp" line="90"/>
+        <source>Unknown command</source>
+        <translation>Nieznane polecenie</translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="316"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Użycie: qmmp [opcje] [pliki]</translation>
@@ -95,6 +100,11 @@
         <location filename="../qmmpstarter.cpp" line="321"/>
         <source>Don&apos;t start the application</source>
         <translation>Nie uruchamiaj aplikacji</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="322"/>
+        <source>Display this text and exit</source>
+        <translation>Wyświetla ten tekst i wychodzi</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="323"/>
@@ -130,16 +140,6 @@
         <location filename="../qmmpstarter.cpp" line="345"/>
         <source>Qmmp Version</source>
         <translation>Wersja Qmmp</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="322"/>
-        <source>Display this text and exit</source>
-        <translation>Wyświetla ten tekst i wychodzi</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="90"/>
-        <source>Unknown command</source>
-        <translation>Nieznane polecenie</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl_PL" sourcelanguage="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
@@ -36,20 +36,40 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="55"/>
         <source>Nick Lamb &lt;njl195@zepler.org.uk&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="56"/>
         <source>Giacomo Lozito &lt;city_hunter@users.sf.net&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>LADSPA Plugin Catalog</source>
+        <translation>Menedżer wtyczek LADSPA</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="52"/>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="59"/>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="94"/>
+        <source>Configure</source>
+        <translation>Konfiguracja</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
@@ -60,26 +80,6 @@
         <location filename="../settingsdialog.cpp" line="126"/>
         <source>This LADSPA plugin has no user controls</source>
         <translation>Ta wtyczka LADSPA nie posiada panelu sterowania</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>LADSPA Plugin Catalog</source>
-        <translation>Menedżer wtyczek LADSPA</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="52"/>
-        <source>&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="59"/>
-        <source>&lt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="94"/>
-        <source>Configure</source>
-        <translation>Konfiguracja</translation>
     </message>
 </context>
 </TS>

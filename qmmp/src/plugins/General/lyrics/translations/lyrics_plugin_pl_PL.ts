@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>Lyrics</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../lyrics.cpp" line="34"/>
         <source>Ctrl+L</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -45,6 +45,31 @@
 <context>
     <name>LyricsWindow</name>
     <message>
+        <location filename="../lyricswindow.ui" line="14"/>
+        <source>Lyrics Plugin</source>
+        <translation>Wtyczka wyszukiwania tekstów piosenek</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="31"/>
+        <source>Artist:</source>
+        <translation>Artysta:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="41"/>
+        <source>Title:</source>
+        <translation>Tytuł:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="51"/>
+        <source>Search</source>
+        <translation>Szukaj</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="60"/>
+        <source>No connection</source>
+        <translation>Nie połączony</translation>
+    </message>
+    <message>
         <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
         <translation>Gotowe</translation>
@@ -66,11 +91,6 @@
         <translation>Nie znaleziono</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="60"/>
-        <source>No connection</source>
-        <translation>Nie połączony</translation>
-    </message>
-    <message>
         <location filename="../lyricswindow.cpp" line="139"/>
         <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
@@ -80,26 +100,6 @@
         <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Teksty: %1 - %2</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="14"/>
-        <source>Lyrics Plugin</source>
-        <translation>Wtyczka wyszukiwania tekstów piosenek</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="31"/>
-        <source>Artist:</source>
-        <translation>Artysta:</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="41"/>
-        <source>Title:</source>
-        <translation>Tytuł:</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="51"/>
-        <source>Search</source>
-        <translation>Szukaj</translation>
     </message>
 </context>
 </TS>
