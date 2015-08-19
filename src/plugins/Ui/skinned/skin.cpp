@@ -453,10 +453,6 @@ void Skin::loadPLEdit()
                 m_pledit_txt[key].remove(1, m_pledit_txt[key].size() - 7);
 
         }
-        else if (line.length() == 0)
-        {
-            break;
-        }
     }
 }
 

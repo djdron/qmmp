@@ -99,7 +99,7 @@ void SkinReader::generateThumbs()
 
             if (name.endsWith(".tgz") || name.endsWith(".tar.gz") || name.endsWith(".tar.bz2"))
                 untar(fileInfo.filePath (), cache_dir.absolutePath (), true);
-            if (name.endsWith(".zip") || name.endsWith(".wsz"))
+            else if (name.endsWith(".zip") || name.endsWith(".wsz"))
                 unzip(fileInfo.filePath (), cache_dir.absolutePath (), true);
         }
     }
@@ -129,9 +129,10 @@ void SkinReader::unpackSkin(const QString &path)
     foreach(QFileInfo file, f)
         dir.remove(file.fileName());
     //unpack
-    if (path.endsWith(".tgz") || path.endsWith(".tar.gz") || path.endsWith(".tar.bz2"))
+    QString name = QFileInfo(path).fileName().toLower();
+    if (name.endsWith(".tgz") || name.endsWith(".tar.gz") || name.endsWith(".tar.bz2"))
         untar(path, Qmmp::configDir() + "cache/skin", false);
-    if (path.endsWith(".zip") || path.endsWith(".wsz"))
+    else if (name.endsWith(".zip") || name.endsWith(".wsz"))
         unzip(path, Qmmp::configDir() + "cache/skin", false);
 }
 
