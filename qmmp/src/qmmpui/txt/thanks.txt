@@ -24,5 +24,5 @@ Thanks to:
     Ryota Shimamoto <liangtai.s16@gmail.com> - FreeBSD patches
     Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
     Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
-    Ville Skyttä - modplug plugin improvements
+    Ville Skyttä - ModPlug plugin improvements
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches

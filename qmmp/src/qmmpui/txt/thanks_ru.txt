@@ -1,12 +1,12 @@
 Благодарности:
 
     Adria Arrufat <swiftscythe@gmail.com> - сообщения об ошибках
-    Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле jack, сообщения об ошибках
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле JACK, сообщения об ошибках
     Anton Petrusevich <casus@casus.us> - улучшение случайного воспроизведения
     Avihay Baratz <avihayb@gmail.com> - опции авто-остановки, исправления ошибок
     Brice Videau <brice.videau@gmail.com> - исправления ошибок
     Cristian Rodríguez <judas.iscariote@gmail.com> - исправление ошибок в модуле scrobbler
-    Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле ffmpeg
+    Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле FFmpeg
     Dmitry Kostin <kostindima@gmail.com> - поддержка iso.wv
     Evgeny Gleyzerman <evgley@gmail.com> - улучшение поддержки cue
     Ferdinand Vesely <erdofves@gmail.com> - улучшения модуля scrobbler
@@ -16,12 +16,12 @@
     Erik Ölsar <erlk.ozlr@gmail.com> - растровые курсоры, улучшения в интерфейсе пользователя
     Funda Wang <fundawang@gmail.com> - исправления файлов cmake
     Makis Kalofolias <makskafl@gmail.com> - поддержка EAC3, DTS и Dolby TrueHD
-    Михаил Желудков <zheludkovm@mail.ru> - исправления в модуле ffmpeg
-    Michał Grosicki <grosik88@o2.pl> - исправления в модуле alsa
+    Михаил Желудков <zheludkovm@mail.ru> - исправления в модуле FFmpeg
+    Michał Grosicki <grosik88@o2.pl> - исправления в модуле ALSA
     Panagiotis Papadopoulos <pano_90@gmx.net> - улучшения в интерфейсе пользователя, сообщения об ошибках
     Pino Toscano <toscano.pino@tiscali.it> - улучшение кроссплатформенности
     Karel Volný <kvolny@redhat.com> - различные исправления
-    Ryota Shimamoto <liangtai.s16@gmail.com> - исправления для поддержки freebsd
+    Ryota Shimamoto <liangtai.s16@gmail.com> - исправления для поддержки FreeBSD
     Sebastian Pipping <webmaster@hartwork.org> - патчи bs2b
     Stefan Koelling <stefankoelling.ext@googlemail.com> - исправления сборки
     Ville Skyttä - улучшение модуля modplug
