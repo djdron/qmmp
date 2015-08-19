@@ -11,4 +11,4 @@
 Γραφική επιμέλεια:
 
     Andrey Adreev <andreev00@gmail.com> - εικονίδια και θέμα εξ ορισμού (για τις εκδόσεις 0.2-0.8)
-    sixsixfive - θέμα εξ ορισμού
+    sixsixfive <http://sixsixfive.deviantart.com/> - default skin
