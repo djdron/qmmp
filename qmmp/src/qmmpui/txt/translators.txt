@@ -2,7 +2,7 @@ Brazilian Portuguese:
     Klaos Lacerda
     Bruno Gonçalves
     Heitor Thury Barreiros Barbosa <hthury@gmail.com>
-
+    
 Chinese Traditional:
     lon <lon83129@126.com>
 
@@ -11,19 +11,25 @@ Chinese Simplified:
 
 Czech:
     Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 Dutch:
     Ronald Uitermark <ronald645@gmail.com>
 
 French:
+    Sébastien Aperghis-Tramoni (maddingue)
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Galician:
     Óscar Pereira <oscarpereira1989@gmail.com>
 
 German:
+    Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
+    
+Greek:
+    Dimitrios Glentadakis
 
 Hebrew:
     Genghis Khan <genghiskhan@gmx.ca>
@@ -44,8 +50,9 @@ Lithuanian:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Polish:
+    Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
-
+        
 Portuguese:
     Sérgio Marques <smarquespt@gmail.com>
 
@@ -67,5 +74,3 @@ Turkish:
 
 Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>
-
-
