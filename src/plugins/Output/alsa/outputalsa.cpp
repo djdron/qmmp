@@ -18,9 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QDir>
 #include <QSettings>
-#include <QTimer>
+#include <QSocketNotifier>
 
 #include <stdio.h>
 #include <stdint.h>
@@ -32,6 +31,7 @@
 #include <qmmp/visual.h>
 #include <qmmp/statehandler.h>
 #include "outputalsa.h"
+
 
 OutputALSA::OutputALSA() : m_inited(false)
 {
@@ -425,15 +425,16 @@ void VolumeALSA::setVolume(const VolumeSettings &vol)
 VolumeSettings VolumeALSA::volume() const
 {
     VolumeSettings vol;
-    if (!pcm_element)
-        return vol;
 
-    long value = 0;
-    snd_mixer_handle_events(m_mixer);
-    snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &value);
-    vol.left = value;
-    snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &value);
-    vol.right = value;
+    if(pcm_element)
+    {
+        long value = 0;
+        snd_mixer_handle_events(m_mixer);
+        snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &value);
+        vol.left = value;
+        snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &value);
+        vol.right = value;
+    }
     return vol;
 }
 
@@ -467,9 +468,25 @@ int VolumeALSA::setupMixer(QString card, QString device)
         return -1;
     }
 
+    // setup socket notifiers to monitor the state changes of the mixer
+    int n = snd_mixer_poll_descriptors_count(m_mixer);
+    if(n > 0)
+    {
+        struct pollfd* fds = new struct pollfd[n];
+        n = snd_mixer_poll_descriptors(m_mixer, fds, n);
+        for(int i = 0; i < n; ++i)
+        {
+            int sock = fds[i].fd;
+            QSocketNotifier* sn = new QSocketNotifier(sock, QSocketNotifier::Read, this);
+            connect(sn, SIGNAL(activated(int)), SIGNAL(changed()));
+        }
+        delete []fds;
+    }
+
     qDebug("OutputALSA: setupMixer() success");
     return 0;
 }
+
 
 void VolumeALSA::parseMixerName(char *str, char **name, int *index)
 {
@@ -542,4 +559,9 @@ int VolumeALSA::getMixer(snd_mixer_t **mixer, QString card)
         return -1;
     }
     return (*mixer != NULL);
+}
+
+bool VolumeALSA::hasNotifySignal() const
+{
+    return true;
 }

@@ -52,6 +52,7 @@ SET(libqmmp_SRCS
     qmmpplugincache.cpp
     channelmap.cpp
     channelconverter.cpp
+    volume.cpp
 )
 
 SET(libqmmp_HDRS
@@ -78,7 +79,6 @@ SET(libqmmp_HDRS
     inputsourcefactory.h
     enginefactory.h
     metadatamanager.h
-    volume.h
     output.h
     channelmap.h
     channelconverter_p.h

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
+ *   Copyright (C) 2015 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,58 +18,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef VOLUME_H
-#define VOLUME_H
+#include "volume.h"
 
-#include <QObject>
-
-/*! @brief The VolumeSettings structure stores volume levels
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-struct VolumeSettings
+bool Volume::hasNotifySignal() const
 {
-    /*!
-     * Constructor
-     */
-    VolumeSettings()
-    {
-        left = 0;
-        right = 0;
-    }
-    int left /*!< Volume of the left channel. It should be \b 0..100. */;
-    int right /*!< Volume of the left channel It should be \b 0..100. */;
-};
-
-
-/*! @brief The Volume class provides asbtract volume interface
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class Volume : public QObject
-{
-    Q_OBJECT
-public:
-    /*!
-     * Destructor.
-     */
-    virtual ~Volume(){}
-    /*!
-     * Setups volume levels.
-     * Subclass should reimplement this fucntion.
-     * @param volume Structure with required volume levels.
-     */
-    virtual void setVolume(const VolumeSettings &volume) = 0;
-    /*!
-     * Returns volume level of the \b channel.
-     */
-    virtual VolumeSettings volume() const = 0;
-    /*!
-     * Returns true if the object supports change notification via
-     * emitting changed() signal so polling the volume is not needed.
-     */
-    virtual bool hasNotifySignal() const;
-
-signals:
-    void changed();
-};
-
-#endif // VOLUME_H
+     return false;
+}

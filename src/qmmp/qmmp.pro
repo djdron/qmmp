@@ -70,7 +70,8 @@ SOURCES += recycler.cpp \
     outputwriter.cpp \
     qmmpplugincache.cpp \
     channelmap.cpp \
-    channelconverter.cpp
+    channelconverter.cpp \
+    volume.cpp
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
