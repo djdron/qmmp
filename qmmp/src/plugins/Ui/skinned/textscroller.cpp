@@ -162,7 +162,7 @@ void TextScroller::paintEvent (QPaintEvent *)
         paint.drawPixmap(m_x2,0, m_pixmap);
     }
     else
-        paint.drawPixmap(4,0, m_pixmap);
+        paint.drawPixmap(0,0, m_pixmap);
 }
 
 void TextScroller::mousePressEvent (QMouseEvent *e)
