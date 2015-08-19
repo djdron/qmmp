@@ -2,7 +2,7 @@ Brazilian Portuguese:
     Klaos Lacerda
     Bruno Gonçalves
     Heitor Thury Barreiros Barbosa <hthury@gmail.com>
-    
+
 Chinese Traditional:
     lon <lon83129@126.com>
 
@@ -27,7 +27,7 @@ German:
     Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
-    
+
 Greek:
     Dimitrios Glentadakis
 
@@ -52,7 +52,7 @@ Lithuanian:
 Polish:
     Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
-        
+
 Portuguese:
     Sérgio Marques <smarquespt@gmail.com>
 

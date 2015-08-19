@@ -1,12 +1,41 @@
 Бразильский португальский:
     Klaos Lacerda
     Bruno Gonçalves
+    Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
-Венгерский:
-    Németh Gábor <sutee84@freemail.hu>
+Китайский традиционный:
+    lon <lon83129@126.com>
+
+Китайский упрощённый:
+    lon <lon83129@126.com>
+
+Чешский:
+    Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 Голландский:
     Ronald Uitermark <ronald645@gmail.com>
+
+Французский:
+    Sébastien Aperghis-Tramoni (maddingue)
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+Галисийский:
+    Óscar Pereira <oscarpereira1989@gmail.com>
+
+Немецкий:
+    Ettore Atalan
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Греческий:
+    Dimitrios Glentadakis
+
+Иврит:
+    Genghis Khan <genghiskhan@gmx.ca>
+
+Венгерский:
+    Németh Gábor <sutee84@freemail.hu>
 
 Итальянский:
     Gian Paolo Renello <emmerkar@gmail.com>
@@ -17,30 +46,15 @@
 Казахский:
     Бауржан Муфтахидинов <baurthefirst@gmail.com>
 
-Китайский традиционный:
-    lon <lon83129@126.com>
-
-Китайский упрощённый:
-    lon <lon83129@126.com>
-
 Литовский:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Польский:
+   Daniel Krawczyk
    Grzegorz Gibas <amigib@gmail.com>
 
 Португальский:
    Sérgio Marques <smarquespt@gmail.com>
-
-Чешский:
-    Karel Volný <kvolny@redhat.com>
-
-Немецкий:
-    Stefan Koelling <stefankoelling.ext@googlemail.com>
-    Panagiotis Papadopoulos <pano_90@gmx.net>
-
-Иврит:
-    Genghis Khan <genghiskhan@gmx.ca>
 
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
@@ -57,12 +71,7 @@
 Турецкий:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 Украинский:
     Геннадий Моцьо <drool@altlinux.ru>
-
-Французский:
-    Stanislas Zeller <uncensored.assault@gmail.com>
-
-Галисийский:
-    Óscar Pereira <oscarpereira1989@gmail.com>

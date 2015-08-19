@@ -1,7 +1,7 @@
 Благодарности:
 
     Adria Arrufat <swiftscythe@gmail.com> - сообщения об ошибках
-    Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле jack plugin, сообщения об ошибках
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле jack, сообщения об ошибках
     Anton Petrusevich <casus@casus.us> - улучшение случайного воспроизведения
     Avihay Baratz <avihayb@gmail.com> - опции авто-остановки, исправления ошибок
     Brice Videau <brice.videau@gmail.com> - исправления ошибок
@@ -11,6 +11,7 @@
     Evgeny Gleyzerman <evgley@gmail.com> - улучшение поддержки cue
     Ferdinand Vesely <erdofves@gmail.com> - улучшения модуля scrobbler
     Геннадий Моцьо <drool@altlinux.ru> - сообщения об ошибках
+    Hon Jen Yee (PCMan) <pcman.tw@gmail.com> - оптимизация
     Вадим Калинников <moose@ylsoftware.com> - хоcтинг проекта
     Erik Ölsar <erlk.ozlr@gmail.com> - растровые курсоры, улучшения в интерфейсе пользователя
     Funda Wang <fundawang@gmail.com> - исправления файлов cmake
@@ -23,4 +24,5 @@
     Ryota Shimamoto <liangtai.s16@gmail.com> - исправления для поддержки freebsd
     Sebastian Pipping <webmaster@hartwork.org> - патчи bs2b
     Stefan Koelling <stefankoelling.ext@googlemail.com> - исправления сборки
+    Ville Skyttä - улучшение модуля modplug
     Yaakov Selkowitz <yselkowitz@gmail.com> - поддержка cygwin
