@@ -71,6 +71,7 @@ Spanish:
 Turkish:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>
