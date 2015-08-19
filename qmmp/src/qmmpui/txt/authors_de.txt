@@ -11,4 +11,4 @@ Frühere Entwickler:
 Grafik:
 
     Andrey Adreev <andreev00@gmail.com> - Symbole und Standarddesign (für Versionen 0.2-0.8)
-    sixsixfive - Standarddesign
+    sixsixfive <http://sixsixfive.deviantart.com/> - Standarddesign
