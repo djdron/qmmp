@@ -50,11 +50,11 @@
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Польский:
-   Daniel Krawczyk
-   Grzegorz Gibas <amigib@gmail.com>
+    Daniel Krawczyk
+    Grzegorz Gibas <amigib@gmail.com>
 
 Португальский:
-   Sérgio Marques <smarquespt@gmail.com>
+    Sérgio Marques <smarquespt@gmail.com>
 
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
@@ -63,7 +63,7 @@
     Mladen Pejaković <pejakm@autistici.org>
 
 Словацкий:
-    Ján Ďanovský <dagsoftware@yahoo.co>
+    Ján Ďanovský <dagsoftware@yahoo.com>
 
 Испанский:
     Félix Medrano <xukosky@yahoo.es>
