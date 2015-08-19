@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.0" language="fr">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -279,6 +279,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="143"/>
+        <source>Convert %20 to blanks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/configdialog.ui" line="129"/>
         <source>Load metadata from files</source>
         <translation type="unfinished"></translation>
@@ -289,8 +294,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
-        <source>Convert %20 to blanks</source>
+        <location filename="../forms/configdialog.ui" line="150"/>
+        <source>Group format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -315,37 +320,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="411"/>
-        <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="417"/>
-        <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="427"/>
-        <source>Include files:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="449"/>
-        <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="260"/>
-        <location filename="../configdialog.cpp" line="312"/>
-        <source>Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="150"/>
-        <source>Group format:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="199"/>
         <source>Miscellaneous</source>
         <translation type="unfinished"></translation>
@@ -358,6 +332,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="212"/>
         <source>Clear previous playlist when opening new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="260"/>
+        <location filename="../configdialog.cpp" line="312"/>
+        <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -404,6 +384,26 @@
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Add files from command line to this playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="411"/>
+        <source>Cover Image Retrieve</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="417"/>
+        <source>Use separate image files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="427"/>
+        <source>Include files:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="449"/>
+        <source>Recursive search depth:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

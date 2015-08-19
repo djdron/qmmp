@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.0" language="fr">
 <context>
     <name>OutputOSS4Factory</name>
     <message>
         <location filename="../outputoss4factory.cpp" line="36"/>
         <source>OSS4 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon OSS4</translation>
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="56"/>
         <source>About OSS4 Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de sortie OSS4</translation>
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="57"/>
         <source>Qmmp OSS4 Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de sortie OSS4 pour Qmmp</translation>
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="58"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>OSS4 Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon OSS4</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Périphérique : </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="71"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Par défaut</translation>
     </message>
 </context>
 </TS>

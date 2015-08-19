@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.0" language="fr">
 <context>
     <name>MMSInputFactory</name>
     <message>
         <location filename="../mmsinputfactory.cpp" line="33"/>
         <source>MMS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon MMS</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="53"/>
         <source>About MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de transport MMS</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="54"/>
         <source>Qmmp MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de transport MMS pour Qmmp</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="55"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MMS Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon MMS</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille du tampon : </translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko</translation>
     </message>
 </context>
 </TS>

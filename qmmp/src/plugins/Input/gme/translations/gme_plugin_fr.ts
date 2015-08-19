@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.0" language="fr">
 <context>
     <name>DecoderGmeFactory</name>
     <message>
         <location filename="../decodergmefactory.cpp" line="49"/>
         <source>GME Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="52"/>
         <source>Game Music Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers de musiques de jeux</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="116"/>
         <source>About GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon audio GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="117"/>
         <source>Qmmp GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon audio GME pour Qmmp</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="118"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce greffon utilise la bibliothèque Game_Music_Emu pour jouer les fichiers de musiques de jeux</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="119"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>GME Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon GME</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source>Fadeout length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai du fondu :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Enable fadeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer le fondu</translation>
     </message>
 </context>
 </TS>
