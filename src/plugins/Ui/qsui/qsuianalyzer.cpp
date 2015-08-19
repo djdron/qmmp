@@ -45,6 +45,7 @@ QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent)
     m_offset = 0;
     m_update = false;
     m_show_cover = false;
+    m_running = false;
     m_pixLabel = new QLabel(this);
     createMenu();
 
@@ -156,7 +157,8 @@ void QSUiAnalyzer::hideEvent (QHideEvent *)
 
 void QSUiAnalyzer::showEvent (QShowEvent *)
 {
-    m_timer->start();
+	if(m_running)
+		m_timer->start();
 }
 
 void QSUiAnalyzer::resizeEvent(QResizeEvent *)
@@ -401,4 +403,17 @@ void QSUiAnalyzer::writeSettings()
     settings.setValue("vis_show_peaks", m_peaksAction->isChecked());
     settings.setValue("vis_show_cover", m_coverAction->isChecked());
     settings.endGroup();
+}
+
+void QSUiAnalyzer::start()
+{
+	m_running = true;
+    if(isVisible())
+        m_timer->start();
+}
+
+void QSUiAnalyzer::stop()
+{
+	m_running = false;
+	m_timer->stop();
 }

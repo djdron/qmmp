@@ -42,6 +42,8 @@ public:
     void clear();
     void clearCover();
     QSize sizeHint() const;
+    void start();
+    void stop();
 
 public slots:
     void readSettings();
@@ -91,6 +93,7 @@ private:
     QActionGroup *m_fpsGroup;
     QActionGroup *m_analyzerFalloffGroup;
     QActionGroup *m_peaksFalloffGroup;
+    bool m_running;
 };
 
 
