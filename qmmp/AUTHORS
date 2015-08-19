@@ -53,6 +53,7 @@ Thanks to:
     Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
     Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports
+    Hon Jen Yee (PCMan) <pcman.tw@gmail.com> - optimization
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
     Funda Wang <fundawang@gmail.com> - cmake files fixes
