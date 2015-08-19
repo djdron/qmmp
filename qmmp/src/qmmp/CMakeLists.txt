@@ -86,7 +86,6 @@ SET(libqmmp_HDRS
     inputsourcefactory.h
     enginefactory.h
     metadatamanager.h
-    volume.h
     output.h
     channelmap.h
     channelconverter_p.h

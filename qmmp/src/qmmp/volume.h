@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Ilya Kotov                                      *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,8 @@
 
 #ifndef VOLUME_H
 #define VOLUME_H
+
+#include <QObject>
 
 /*! @brief The VolumeSettings structure stores volume levels
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -42,8 +44,9 @@ struct VolumeSettings
 /*! @brief The Volume class provides asbtract volume interface
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class Volume
+class Volume : public QObject
 {
+    Q_OBJECT
 public:
     /*!
      * Destructor.
@@ -59,6 +62,17 @@ public:
      * Returns volume level of the \b channel.
      */
     virtual VolumeSettings volume() const = 0;
+    /*!
+     * Returns true if the object supports change notification via
+     * emitting changed() signal so polling the volume is not needed.
+     */
+    virtual bool hasNotifySignal() const
+    {
+         return false;
+    }
+
+signals:
+    void changed();
 };
 
 #endif // VOLUME_H

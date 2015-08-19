@@ -133,7 +133,15 @@ void VolumeControl::reload()
     if(!QmmpSettings::instance()->useSoftVolume() && Output::currentFactory())
     {
         if((m_volume = Output::currentFactory()->createVolume()))
-            m_timer->start(150);
+        {
+			if(m_volume->hasNotifySignal())
+			{
+				checkVolume();
+				connect(m_volume, SIGNAL(changed()), SLOT(checkVolume()));
+			}
+			else
+				m_timer->start(150); // fallback to polling if change notification is not available.
+		}
     }
     if(!m_volume)
     {

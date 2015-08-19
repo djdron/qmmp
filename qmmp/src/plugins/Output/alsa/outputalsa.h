@@ -32,7 +32,6 @@ extern "C"
 #include <qmmp/output.h>
 #include <qmmp/volume.h>
 
-
 class OutputALSA : public Output
 {
 public:
@@ -72,12 +71,15 @@ private:
 
 class VolumeALSA : public Volume
 {
+    Q_OBJECT
 public:
     VolumeALSA();
     virtual ~VolumeALSA();
 
     void setVolume(const VolumeSettings &vol);
     VolumeSettings volume() const;
+
+    bool hasNotifySignal() const;
 
 private:
     //alsa mixer
