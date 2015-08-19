@@ -60,6 +60,7 @@ SET(libqmmp_SRCS
     qmmpplugincache.cpp
     channelmap.cpp
     channelconverter.cpp
+    volume.cpp
 )
 
 SET(libqmmp_HDRS
