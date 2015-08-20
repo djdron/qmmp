@@ -11,7 +11,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
@@ -21,17 +21,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation>&amp;Ga naar Nummer</translation>
+        <source>J</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Jump to Track</source>
+        <translation>&amp;Ga naar Nummer</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -81,7 +81,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="52"/>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="52"/>
         <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Alt+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
@@ -151,7 +151,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Alt+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="56"/>
@@ -171,7 +171,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>Meta+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
@@ -221,7 +221,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="66"/>
@@ -231,7 +231,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="66"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
@@ -241,7 +241,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
@@ -271,7 +271,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="76"/>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
@@ -301,7 +301,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
@@ -311,7 +311,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -321,7 +321,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
@@ -331,7 +331,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
@@ -341,7 +341,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
@@ -411,7 +411,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="96"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="97"/>
@@ -431,7 +431,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="99"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -439,7 +439,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="45"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="157"/>
@@ -571,7 +571,7 @@
     <message>
         <location filename="../display.cpp" line="68"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../display.cpp" line="71"/>
@@ -586,7 +586,7 @@
     <message>
         <location filename="../display.cpp" line="81"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../display.cpp" line="84"/>
@@ -606,7 +606,7 @@
     <message>
         <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../display.cpp" line="108"/>
@@ -616,7 +616,7 @@
     <message>
         <location filename="../display.cpp" line="295"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../display.cpp" line="299"/>
@@ -704,22 +704,22 @@
     <message>
         <location filename="../mainvisual.cpp" line="282"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="283"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="284"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="285"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="292"/>
@@ -808,16 +808,6 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="55"/>
-        <source>Playlist</source>
-        <translation>Afspeellijst</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="186"/>
-        <source>&amp;Copy Selection To</source>
-        <translation>&amp;Kopiëer Selectie Naar</translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="214"/>
         <source>Sort List</source>
         <translation>Sorteer Lijst</translation>
@@ -871,12 +861,6 @@
         <translation>Op Datum</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="249"/>
-        <location filename="../playlist.cpp" line="304"/>
-        <source>By Track Number</source>
-        <translation>Op Lied Nummer</translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="253"/>
         <location filename="../playlist.cpp" line="308"/>
         <source>By File Creation Date</source>
@@ -909,24 +893,40 @@
         <translation>Draai Lijst Om</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="333"/>
-        <source>Actions</source>
-        <translation>Acties</translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hernoem Afspeellijst</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Naam van de Afspeellijst:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="609"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nieuwe Afspeellijst</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="186"/>
+        <source>&amp;Copy Selection To</source>
+        <translation>&amp;Kopiëer Selectie Naar</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="55"/>
+        <source>Playlist</source>
+        <translation>Afspeellijst</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="304"/>
+        <source>By Track Number</source>
+        <translation>Op Lied Nummer</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="333"/>
+        <source>Actions</source>
+        <translation>Acties</translation>
     </message>
 </context>
 <context>
@@ -956,7 +956,7 @@
         <location filename="../forms/playlistbrowser.ui" line="57"/>
         <location filename="../forms/playlistbrowser.ui" line="67"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="42"/>
@@ -1000,29 +1000,9 @@
         <translation>Toon Informatie Instellingen</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="29"/>
-        <source>Template</source>
-        <translation>Layout</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="58"/>
-        <source>Reset</source>
-        <translation>Terugzetten</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="65"/>
-        <source>Insert</source>
-        <translation>Invoegen</translation>
-    </message>
-    <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
         <translation>Toon Hoes</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="89"/>
-        <source>Cover size:</source>
-        <translation>Albumhoesgrootte:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1037,7 +1017,27 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
+        <source>Cover size:</source>
+        <translation>Albumhoesgrootte:</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="29"/>
+        <source>Template</source>
+        <translation>Layout</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="58"/>
+        <source>Reset</source>
+        <translation>Terugzetten</translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="65"/>
+        <source>Insert</source>
+        <translation>Invoegen</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
@@ -1087,7 +1087,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
@@ -1123,16 +1123,6 @@
         <translation>Profiel Bewerker</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="36"/>
-        <source>Preset</source>
-        <translation>Instelling</translation>
-    </message>
-    <message>
-        <location filename="../forms/preseteditor.ui" line="52"/>
-        <source>Auto-preset</source>
-        <translation>Auto-profiel</translation>
-    </message>
-    <message>
         <location filename="../forms/preseteditor.ui" line="77"/>
         <source>Load</source>
         <translation>Laad</translation>
@@ -1141,6 +1131,16 @@
         <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
         <translation>Verwijder</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="36"/>
+        <source>Preset</source>
+        <translation>Instelling</translation>
+    </message>
+    <message>
+        <location filename="../forms/preseteditor.ui" line="52"/>
+        <source>Auto-preset</source>
+        <translation>Auto-profiel</translation>
     </message>
 </context>
 <context>
@@ -1281,7 +1281,7 @@
         <location filename="../forms/skinnedsettings.ui" line="478"/>
         <location filename="../forms/skinnedsettings.ui" line="505"/>
         <source>???</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="134"/>
@@ -1289,7 +1289,7 @@
         <location filename="../forms/skinnedsettings.ui" line="485"/>
         <location filename="../forms/skinnedsettings.ui" line="512"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="534"/>
@@ -1326,12 +1326,12 @@
         <location filename="../forms/skinnedsettings.ui" line="199"/>
         <location filename="../forms/skinnedsettings.ui" line="223"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="182"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="206"/>
@@ -1359,16 +1359,6 @@
         <translation>Toon liednummers</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="276"/>
-        <source>Align song numbers</source>
-        <translation>Liednummers uitlijnen</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="293"/>
-        <source>Show anchor</source>
-        <translation>Toon verankering</translation>
-    </message>
-    <message>
         <location filename="../forms/skinnedsettings.ui" line="300"/>
         <source>Show playlists</source>
         <translation>Toon afspeellijst</translation>
@@ -1392,6 +1382,16 @@
         <location filename="../forms/skinnedsettings.ui" line="310"/>
         <source>Show &apos;New Playlist&apos; button</source>
         <translation>Toon &apos;Nieuwe Afspeellijst&apos; knop</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="293"/>
+        <source>Show anchor</source>
+        <translation>Toon verankering</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="276"/>
+        <source>Align song numbers</source>
+        <translation>Liednummers uitlijnen</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="120"/>

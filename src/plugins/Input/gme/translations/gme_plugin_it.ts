@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodergmefactory.cpp" line="120"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>

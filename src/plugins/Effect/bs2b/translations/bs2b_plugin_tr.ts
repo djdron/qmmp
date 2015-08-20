@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>EffectBs2bFactory</name>
     <message>
@@ -47,6 +47,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
+        <source>%1 Hz, %2 us</source>
+        <translation>%1 Hz, %2 us</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>%1 dB</source>
+        <translation>%1 dB</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
         <translation>BS2B Eklenti Ayarları</translation>
@@ -76,16 +86,6 @@
         <location filename="../settingsdialog.ui" line="85"/>
         <source>J. Meier</source>
         <translation>J. Meier</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="60"/>
-        <source>%1 Hz, %2 us</source>
-        <translation>%1 Hz, %2 us</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="67"/>
-        <source>%1 dB</source>
-        <translation>%1 dB</translation>
     </message>
 </context>
 </TS>

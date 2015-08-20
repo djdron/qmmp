@@ -6,7 +6,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="14"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ReplayGain skaneris</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="84"/>
@@ -26,22 +26,22 @@
     <message>
         <location filename="../rgscandialog.ui" line="52"/>
         <source>Track Gain</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Takelio didėjimas</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="57"/>
         <source>Album Gain</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Albumo didėjimas</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="62"/>
         <source>Track Peak</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Takelio pikas </translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="67"/>
         <source>Album Peak</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Albumo pikas</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="77"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="113"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Paskaičiuoti</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="120"/>
@@ -61,7 +61,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="91"/>
         <source>Write album gain/peak</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Įrašyti albumo didėjimą/piką </translation>
     </message>
     <message>
         <location filename="../rgscandialog.cpp" line="117"/>
@@ -108,7 +108,7 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="54"/>
         <source>Based on source code by:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sukurta iš šaltinio pagal:</translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="55"/>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../rgscanhelper.cpp" line="32"/>
         <source>ReplayGain Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ReplayGain Skaneris</translation>
     </message>
     <message>
         <location filename="../rgscanhelper.cpp" line="33"/>

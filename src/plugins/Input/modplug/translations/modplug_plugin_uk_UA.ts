@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -223,7 +223,7 @@
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="260"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
         <source>40</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="324"/>
@@ -254,7 +254,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="551"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="577"/>

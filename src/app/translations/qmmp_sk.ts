@@ -4,14 +4,24 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Nevyčisťovať playlist</translation>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Posunúť sa v plaliste</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Vrátiť sa v playliste</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Začať prehrávanie súčasnej piesne</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Nevyčisťovať playlist</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -46,17 +56,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="79"/>
         <source>Mute/Restore volume</source>
-        <translation>Vypnúť/obnoviť zvuk</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Posunúť sa v plaliste</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Vrátiť sa v playliste</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="83"/>
         <source>Show main window</source>
-        <translation>Zobraziť hlavné okno</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="84"/>
@@ -81,11 +81,6 @@
 </context>
 <context>
     <name>QMMPStarter</name>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="91"/>
-        <source>Unknown command</source>
-        <translation>Neznámý príkaz</translation>
-    </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="326"/>
         <source>Usage: qmmp [options] [files]</source>
@@ -102,11 +97,6 @@
         <translation>Nezapnúť program</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
-        <source>Display this text and exit</source>
-        <translation>Zobraziť tento text a skončiť</translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Print version number and exit</source>
         <translation>Vypísať číslo verzie a skončiť</translation>
@@ -119,27 +109,37 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="337"/>
         <source>Command Line Help</source>
-        <translation>Nápoveda príkazového riadka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="350"/>
         <source>QMMP version: %1</source>
-        <translation>Verzia QMMP: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="351"/>
         <source>Compiled with Qt version: %1</source>
-        <translation>Skompilované s verziou Qt: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="352"/>
         <source>Using Qt version: %1</source>
-        <translation>Používaná verzia Qt: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Qmmp Version</source>
-        <translation>Verzia Qmmp</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="332"/>
+        <source>Display this text and exit</source>
+        <translation>Zobraziť tento text a skončiť</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="91"/>
+        <source>Unknown command</source>
+        <translation>Neznámý príkaz</translation>
     </message>
 </context>
 </TS>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>AACMetaDataModel</name>
     <message>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hz</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
@@ -26,12 +26,12 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">kbps</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">KB</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>

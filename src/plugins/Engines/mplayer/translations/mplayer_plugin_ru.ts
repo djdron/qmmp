@@ -110,6 +110,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation>по умолчанию</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
         <translation>Настройки MPlayer</translation>
@@ -123,11 +133,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation>Аудио:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <source>Audio/video auto synchronization</source>
-        <translation>Автоматическая синхронизация аудио/видео</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -145,14 +150,9 @@
         <translation>Дополнительные опции командной строки</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="29"/>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <location filename="../settingsdialog.cpp" line="46"/>
-        <location filename="../settingsdialog.cpp" line="47"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>default</source>
-        <translation>по умолчанию</translation>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <source>Audio/video auto synchronization</source>
+        <translation>Автоматическая синхронизация аудио/видео</translation>
     </message>
 </context>
 </TS>

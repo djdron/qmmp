@@ -64,7 +64,7 @@
     <message>
         <location filename="../udisks2factory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisks2plugin.cpp" line="130"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Añadir CD &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisks2plugin.cpp" line="138"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Añadir volumen &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>

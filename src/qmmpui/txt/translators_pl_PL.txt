@@ -1,66 +1,70 @@
-Brazylijski Portugalski:
+Brazilian Portuguese:
     Klaos Lacerda
     Bruno Gonçalves
     Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
-Chiński Tradycyjny:
+Chinese Traditional:
     lon <lon83129@126.com>
 
-Chiński Uproszczony:
+Chinese Simplified:
     lon <lon83129@126.com>
 
-Czeski:
+Czech:
     Karel Volný <kvolny@redhat.com>
 
-Holenderski:
+Dutch:
     Ronald Uitermark <ronald645@gmail.com>
 
-Francuski:
+French:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Galician:
     Óscar Pereira <oscarpereira1989@gmail.com>
-    
-Niemiecki:
+
+German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
-    
-Hebrajski:
+
+Hebrew:
     Genghis Khan <genghiskhan@gmx.ca>
-    
-Węgierski:
+
+Hungarian:
     Németh Gábor <sutee84@freemail.hu>
 
-Włoski:
+Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
-Japoński:
-    Rjota Šimamoto <liangtai.s16@gmail.com>
+Japanese:
+    Ryota Shimamoto <liangtai.s16@gmail.com>
 
-Kazachski:
+Kazakh:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
-Litewski:
+Lithuanian:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
-Polski:
+Polish:
     Grzegorz Gibas <amigib@gmail.com>
 
-Rosyjski:
+Portuguese:
+    Sérgio Marques <smarquespt@gmail.com>
+
+Russian:
     Ilya Kotov <forkotov02@hotmail.ru>
-    
+
 Serbian:
     Mladen Pejaković <pejakm@autistici.org>
 
-Słowacki:
+Slovak:
     Ján Ďanovský <dagsoftware@yahoo.com>
 
-Hiszpański:
+Spanish:
     Félix Medrano <xukosky@yahoo.es>
 
-Turecki:
+Turkish:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
-Ukraiński:
+Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>
+

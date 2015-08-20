@@ -59,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>MplayerEngineFactory</name>
     <message>
@@ -110,6 +110,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation>за умовчанням</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
         <translation>Налаштування MPlayer</translation>
@@ -123,11 +133,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation>Аудіо:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <source>Audio/video auto synchronization</source>
-        <translation>Автоматична синхронізація аудіо/відео</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -145,14 +150,9 @@
         <translation>Додаткові команди командного рядка</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="29"/>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <location filename="../settingsdialog.cpp" line="46"/>
-        <location filename="../settingsdialog.cpp" line="47"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>default</source>
-        <translation>за умовчанням</translation>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <source>Audio/video auto synchronization</source>
+        <translation>Автоматична синхронізація аудіо/відео</translation>
     </message>
 </context>
 </TS>

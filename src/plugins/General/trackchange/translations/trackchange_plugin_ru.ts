@@ -1,8 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.cpp" line="57"/>
+        <source>Artist</source>
+        <translation>Исполнитель</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="58"/>
+        <source>Album</source>
+        <translation>Альбом</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
+        <source>Title</source>
+        <translation>Название</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <source>Track Number</source>
+        <translation>Номер трека</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>Two-digit Track Number</source>
+        <translation>2-х разрядный номер трека</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="63"/>
+        <source>Genre</source>
+        <translation>Жанр</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>Disc Number</source>
+        <translation>Номер диска</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="68"/>
+        <source>File Name</source>
+        <translation>Имя файла</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="69"/>
+        <source>File Path</source>
+        <translation>Путь к файлу</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="70"/>
+        <source>Year</source>
+        <translation>Год</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="64"/>
+        <source>Comment</source>
+        <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="59"/>
+        <source>Album Artist</source>
+        <translation>Исполнитель альбома</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="65"/>
+        <source>Composer</source>
+        <translation>Композитор</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="66"/>
+        <source>Duration</source>
+        <translation>Длительность</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="71"/>
+        <source>Condition</source>
+        <translation>Условие</translation>
+    </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Track Change Plugin Settings</source>
@@ -35,81 +110,6 @@
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Command to run when title changes (i.e. network streams title)</source>
         <translation>Команда, запускаемая при смене названия (например, в интернет-потоках)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="57"/>
-        <source>Artist</source>
-        <translation>Исполнитель</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="58"/>
-        <source>Album</source>
-        <translation>Альбом</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="60"/>
-        <source>Title</source>
-        <translation>Название</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <source>Track Number</source>
-        <translation>Номер трека</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>Two-digit Track Number</source>
-        <translation>2-х разрядный номер трека</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="67"/>
-        <source>Disc Number</source>
-        <translation>Номер диска</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="68"/>
-        <source>File Name</source>
-        <translation>Имя файла</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="69"/>
-        <source>File Path</source>
-        <translation>Путь к файлу</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="63"/>
-        <source>Genre</source>
-        <translation>Жанр</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="59"/>
-        <source>Album Artist</source>
-        <translation>Исполнитель альбома</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="64"/>
-        <source>Comment</source>
-        <translation>Комментарий</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="65"/>
-        <source>Composer</source>
-        <translation>Композитор</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="66"/>
-        <source>Duration</source>
-        <translation>Длительность</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="70"/>
-        <source>Year</source>
-        <translation>Год</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="71"/>
-        <source>Condition</source>
-        <translation>Условие</translation>
     </message>
 </context>
 <context>

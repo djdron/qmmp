@@ -79,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>

@@ -47,31 +47,31 @@
         <location filename="../analyzer.cpp" line="383"/>
         <location filename="../analyzer.cpp" line="397"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Muy lenta</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="384"/>
         <location filename="../analyzer.cpp" line="398"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lenta</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="385"/>
         <location filename="../analyzer.cpp" line="399"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Media</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="386"/>
         <location filename="../analyzer.cpp" line="400"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rápida</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="387"/>
         <location filename="../analyzer.cpp" line="401"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Muy rápida</translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="394"/>
@@ -80,12 +80,12 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
+        <source>&amp;Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

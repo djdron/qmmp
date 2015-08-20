@@ -11,6 +11,7 @@ Thanks to:
     Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
     Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports
+    Hon Jen Yee (PCMan) <pcman.tw@gmail.com> - optimization
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
     Funda Wang <fundawang@gmail.com> - cmake files fixes
@@ -23,4 +24,5 @@ Thanks to:
     Ryota Shimamoto <liangtai.s16@gmail.com> - FreeBSD patches
     Sebastian Pipping <webmaster@hartwork.org> - bs2b patches
     Stefan Koelling <stefankoelling.ext@googlemail.com> - some build fixes
+    Ville Skyttä - ModPlug plugin improvements
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin patches

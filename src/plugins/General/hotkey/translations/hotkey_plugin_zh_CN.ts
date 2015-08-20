@@ -50,26 +50,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Global Hotkey Plugin Settings</source>
-        <translation>全局快捷键设置</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Action</source>
-        <translation>动作</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <source>Shortcut</source>
-        <translation>快捷键</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <source>Reset</source>
-        <translation>重置</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
         <translation>播放</translation>
@@ -143,6 +123,26 @@
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Global Hotkey Plugin Settings</source>
+        <translation>全局快捷键设置</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="42"/>
+        <source>Action</source>
+        <translation>动作</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Shortcut</source>
+        <translation>快捷键</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Reset</source>
+        <translation>重置</translation>
     </message>
 </context>
 </TS>

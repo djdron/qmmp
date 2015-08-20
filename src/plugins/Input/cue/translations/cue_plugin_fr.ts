@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="100"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Réglages communs</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
@@ -54,17 +54,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Détection automatique de l&apos;encodage des caractères.</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Encodage par défaut :</translation>
     </message>
 </context>
 </TS>

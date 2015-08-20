@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.0" language="zh_CN" sourcelanguage="zh_CN">
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
@@ -47,6 +47,21 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="43"/>
+        <source>UID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="44"/>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="126"/>
+        <source>This LADSPA plugin has no user controls</source>
+        <translation>LADSPA 插件用户设置</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>LADSPA Plugin Catalog</source>
         <translation>LADSPA 插件目录</translation>
@@ -65,21 +80,6 @@
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Configure</source>
         <translation>配置</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="43"/>
-        <source>UID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="44"/>
-        <source>Name</source>
-        <translation>名称</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="126"/>
-        <source>This LADSPA plugin has no user controls</source>
-        <translation>LADSPA 插件用户设置</translation>
     </message>
 </context>
 </TS>

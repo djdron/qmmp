@@ -9,11 +9,6 @@
         <translation>WavPack Module</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="46"/>
-        <source>WavPack Files</source>
-        <translation>WavPack Bestanden</translation>
-    </message>
-    <message>
         <location filename="../decoderwavpackfactory.cpp" line="155"/>
         <source>About WavPack Audio Plugin</source>
         <translation>Over de WavPack Audio Module</translation>
@@ -33,6 +28,11 @@
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="46"/>
+        <source>WavPack Files</source>
+        <translation>WavPack Bestanden</translation>
+    </message>
 </context>
 <context>
     <name>WavPackMetaDataModel</name>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="66"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="71"/>

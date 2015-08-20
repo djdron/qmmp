@@ -4,14 +4,24 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>不要清除这个播放列表</translation>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>跳到播放列表中的下一曲</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>跳到播放列表中的上一曲</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>开始播放当前曲目</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>不要清除这个播放列表</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -49,16 +59,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>跳到播放列表中的下一曲</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>跳到播放列表中的上一曲</translation>
-    </message>
-    <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
         <translation>显示/隐藏程序</translation>
@@ -82,11 +82,6 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="91"/>
-        <source>Unknown command</source>
-        <translation>未知指令</translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="326"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用：qmmp [设置] [文件]</translation>
@@ -100,11 +95,6 @@
         <location filename="../qmmpstarter.cpp" line="331"/>
         <source>Don&apos;t start the application</source>
         <translation>无法启动此程序</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
-        <source>Display this text and exit</source>
-        <translation>显示这些文本并退出</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
@@ -140,6 +130,16 @@
         <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Qmmp Version</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="332"/>
+        <source>Display this text and exit</source>
+        <translation>显示这些文本并退出</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="91"/>
+        <source>Unknown command</source>
+        <translation>未知指令</translation>
     </message>
 </context>
 </TS>

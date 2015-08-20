@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="pl">
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>

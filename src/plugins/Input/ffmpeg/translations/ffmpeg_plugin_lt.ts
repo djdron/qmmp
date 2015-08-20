@@ -4,16 +4,6 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="152"/>
-        <source>FFmpeg Plugin</source>
-        <translation>FFmpeg įskiepis</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="154"/>
-        <source>FFmpeg Formats</source>
-        <translation>FFmpeg bylų tipai</translation>
-    </message>
-    <message>
         <location filename="../decoderffmpegfactory.cpp" line="257"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Apie FFmpeg įskiepį</translation>
@@ -32,6 +22,16 @@
         <location filename="../decoderffmpegfactory.cpp" line="272"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="152"/>
+        <source>FFmpeg Plugin</source>
+        <translation>FFmpeg įskiepis</translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="154"/>
+        <source>FFmpeg Formats</source>
+        <translation>FFmpeg bylų tipai</translation>
     </message>
 </context>
 <context>
@@ -80,11 +80,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>FFmpeg Plugin Settings</source>
-        <translation>FFmpeg įskiepio nustatymai</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Formats</source>
         <translation>Tipai</translation>
@@ -95,11 +90,6 @@
         <translation>Windows Media Audio</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <source>Monkey&apos;s Audio (APE)</source>
-        <translation>Monkey&apos;s Audio (APE)</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
         <translation>True Audio</translation>
@@ -108,11 +98,6 @@
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
         <translation>ADTS AAC</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="89"/>
-        <source>MP3 (MPEG audio layer 3)</source>
-        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
@@ -148,6 +133,21 @@
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
         <translation>VQF</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>FFmpeg Plugin Settings</source>
+        <translation>FFmpeg įskiepio nustatymai</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source>Monkey&apos;s Audio (APE)</source>
+        <translation>Monkey&apos;s Audio (APE)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="89"/>
+        <source>MP3 (MPEG audio layer 3)</source>
+        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
 </context>
 </TS>

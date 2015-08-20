@@ -6,12 +6,12 @@
     <message>
         <location filename="../copypaste.cpp" line="43"/>
         <source>Cu&amp;t</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="44"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="45"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../copypaste.cpp" line="46"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="47"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../copypaste.cpp" line="48"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

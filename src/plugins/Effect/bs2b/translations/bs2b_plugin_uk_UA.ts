@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>EffectBs2bFactory</name>
     <message>
@@ -60,7 +60,7 @@
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -70,12 +70,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>C.Moy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>J. Meier</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>

@@ -64,7 +64,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="111"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="112"/>
@@ -102,14 +102,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="117"/>
@@ -145,6 +140,11 @@
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>Bewerk</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>
@@ -190,7 +190,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sk">
+<TS version="2.0" language="sk_SK">
 <context>
     <name>CoverManager</name>
     <message>
         <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
-        <translation>Zobraz obal</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
-        <translation>Ctrl+M</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -19,22 +19,22 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="30"/>
         <source>Cover Manager Plugin</source>
-        <translation>Plugin Manažér obalov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>About Cover Manager Plugin</source>
-        <translation>O plugine Manažér obalov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation>Qmmp plugin Manažér obalov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Napísal: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -42,62 +42,62 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;Uložiť ako...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
         <source>Size</source>
-        <translation>Veľkosť</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation>Aktuálna veľkosť</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation>128x128</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation>256x256</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation>512x512</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation>1024x1024</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation>&amp;Zatvoriť</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation>Alt+F4</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>Uložiť obal ako</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
         <source>Images</source>
-        <translation>Obrázky</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -11,7 +11,7 @@
     <message>
         <location filename="../streambrowser.cpp" line="35"/>
         <source>Ctrl+U</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../streamwindow.ui" line="31"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../streamwindow.ui" line="47"/>
@@ -84,7 +84,7 @@
         <location filename="../streamwindow.cpp" line="52"/>
         <location filename="../streamwindow.cpp" line="70"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../streamwindow.cpp" line="53"/>

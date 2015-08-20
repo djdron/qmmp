@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>RGScanDialog</name>
     <message>
@@ -113,17 +113,17 @@
     <message>
         <location filename="../rgscanfactory.cpp" line="55"/>
         <source>David Robinson &lt;David@Robinson.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="56"/>
         <source>Glen Sawyer &lt;mp3gain@hotmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../rgscanfactory.cpp" line="57"/>
         <source>Frank Klemm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../rgscanhelper.cpp" line="33"/>
         <source>Meta+R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

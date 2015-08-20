@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>Lyrics</name>
     <message>
@@ -45,31 +45,6 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.ui" line="14"/>
-        <source>Lyrics Plugin</source>
-        <translation>Şarkı Sözü Eklentisi</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="31"/>
-        <source>Artist:</source>
-        <translation>Artist:</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="41"/>
-        <source>Title:</source>
-        <translation>Başlık:</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="51"/>
-        <source>Search</source>
-        <translation>Ara</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="60"/>
-        <source>No connection</source>
-        <translation>Bağlantı yok</translation>
-    </message>
-    <message>
         <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
         <translation type="unfinished"></translation>
@@ -91,6 +66,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../lyricswindow.ui" line="60"/>
+        <source>No connection</source>
+        <translation>Bağlantı yok</translation>
+    </message>
+    <message>
         <location filename="../lyricswindow.cpp" line="139"/>
         <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
@@ -100,6 +80,26 @@
         <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Şarkı Sözü: %1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="14"/>
+        <source>Lyrics Plugin</source>
+        <translation>Şarkı Sözü Eklentisi</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="31"/>
+        <source>Artist:</source>
+        <translation>Artist:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="41"/>
+        <source>Title:</source>
+        <translation>Başlık:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="51"/>
+        <source>Search</source>
+        <translation>Ara</translation>
     </message>
 </context>
 </TS>

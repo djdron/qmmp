@@ -21,7 +21,7 @@
     <message>
         <location filename="../outputdirectsoundfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

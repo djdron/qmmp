@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0">
 <context>
     <name>RGScanDialog</name>
     <message>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../rgscandialog.ui" line="42"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titolo</translation>
     </message>
     <message>
         <location filename="../rgscandialog.ui" line="47"/>

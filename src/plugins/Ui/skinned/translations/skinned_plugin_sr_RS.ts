@@ -916,12 +916,12 @@
     <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Преименовање листе</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="588"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Име листе:</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="609"/>

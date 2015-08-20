@@ -80,13 +80,13 @@
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>&amp;Full Screen</source>
-        <translation>&amp;Полноэкранный режим экран</translation>
+        <source>F</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../analyzer.cpp" line="408"/>
-        <source>F</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Full Screen</source>
+        <translation>&amp;Полноэкранный режим экран</translation>
     </message>
 </context>
 <context>

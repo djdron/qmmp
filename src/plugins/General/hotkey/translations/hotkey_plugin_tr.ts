@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>HotkeyDialog</name>
     <message>
@@ -49,26 +49,6 @@
 </context>
 <context>
     <name>SettingsDialog</name>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Global Hotkey Plugin Settings</source>
-        <translation>Genel Kısayol Eklentisi Ayarları</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Action</source>
-        <translation>Eylem</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <source>Shortcut</source>
-        <translation>Kısayol</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <source>Reset</source>
-        <translation>Sıfırla</translation>
-    </message>
     <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
@@ -143,6 +123,26 @@
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Global Hotkey Plugin Settings</source>
+        <translation>Genel Kısayol Eklentisi Ayarları</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="42"/>
+        <source>Action</source>
+        <translation>Eylem</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Shortcut</source>
+        <translation>Kısayol</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Reset</source>
+        <translation>Sıfırla</translation>
     </message>
 </context>
 </TS>

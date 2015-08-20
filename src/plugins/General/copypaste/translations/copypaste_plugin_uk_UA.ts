@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>CopyPaste</name>
     <message>
         <location filename="../copypaste.cpp" line="43"/>
         <source>Cu&amp;t</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="44"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="45"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../copypaste.cpp" line="46"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../copypaste.cpp" line="47"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../copypaste.cpp" line="48"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

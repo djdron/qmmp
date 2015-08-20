@@ -44,12 +44,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Fast resampling</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Greitas formatavimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dažnis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
@@ -59,12 +59,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Resampling method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formatavimo metodas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Defaults song length, sec:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dainos trukmė sekundėmis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>

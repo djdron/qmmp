@@ -35,9 +35,14 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Notifier Plugin Settings</source>
-        <translation>通知插件设置</translation>
+        <location filename="../settingsdialog.ui" line="378"/>
+        <source>Psi Notification</source>
+        <translation>PSI 通知</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="390"/>
+        <source>Enable Psi notification</source>
+        <translation>启用 PSI 通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
@@ -45,20 +50,9 @@
         <translation>桌面通知</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>Font:</source>
-        <translation>字体：</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="68"/>
-        <location filename="../settingsdialog.ui" line="279"/>
-        <source>0</source>
-        <translation>0</translation>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation>延迟 (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -76,19 +70,9 @@
         <translation>编辑模板</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation>封面大小：</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation>音量更改通知</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation>延迟 (ms):</translation>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Notifier Plugin Settings</source>
+        <translation>通知插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="361"/>
@@ -101,19 +85,35 @@
         <translation>歌曲更改通知</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="378"/>
-        <source>Psi Notification</source>
-        <translation>PSI 通知</translation>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation>音量更改通知</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="390"/>
-        <source>Enable Psi notification</source>
-        <translation>启用 PSI 通知</translation>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="279"/>
+        <source>0</source>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <source>Notification Template</source>
         <translation>通知模板</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>Font:</source>
+        <translation>字体：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
+        <translation>封面大小：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -44,7 +44,7 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="81"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hz</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="82"/>

@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Не очищати список</translation>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Перейти до наступного фрагменту</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Перейти до попереднього фрагменту</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Грати поточну пісню</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Не очищати список</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -49,16 +59,6 @@
         <translation>Вимкнути/Відновити гучність</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Перейти до наступного фрагменту</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Перейти до попереднього фрагменту</translation>
-    </message>
-    <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
         <translation>Показати/сховати програму</translation>
@@ -82,11 +82,6 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="91"/>
-        <source>Unknown command</source>
-        <translation>Невідома команда</translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="326"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Використання: qmmp [options] [files]</translation>
@@ -100,11 +95,6 @@
         <location filename="../qmmpstarter.cpp" line="331"/>
         <source>Don&apos;t start the application</source>
         <translation>Не запускати програму</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
-        <source>Display this text and exit</source>
-        <translation>Показати цей текст та вийти</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
@@ -140,6 +130,16 @@
         <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Qmmp Version</source>
         <translation>Версія Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="332"/>
+        <source>Display this text and exit</source>
+        <translation>Показати цей текст та вийти</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="91"/>
+        <source>Unknown command</source>
+        <translation>Невідома команда</translation>
     </message>
 </context>
 </TS>

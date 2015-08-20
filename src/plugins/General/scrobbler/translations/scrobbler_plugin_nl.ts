@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Last.fm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="40"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Libre.fm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="86"/>
@@ -79,16 +79,6 @@
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -117,6 +107,16 @@
     <message>
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

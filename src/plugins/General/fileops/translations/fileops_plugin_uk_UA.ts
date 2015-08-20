@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>FileOps</name>
     <message>
@@ -114,59 +114,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
-        <translation>Налаштування файлових операцій</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Enabled</source>
-        <translation>Увімкнено</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="53"/>
-        <source>Operation</source>
-        <translation>Операція</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>Menu text</source>
-        <translation>Текст меню</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="63"/>
-        <source>Shortcut</source>
-        <translation>Комбінація клавіш</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation>Додати</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
-        <source>Remove</source>
-        <translation>Видалити</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="116"/>
-        <source>Destination:</source>
-        <translation>Призначення:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="133"/>
-        <source>File name pattern:</source>
-        <translation>Формат імені файла:</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="51"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Copy</source>
@@ -179,10 +126,11 @@
         <translation>Переіменувати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Move</source>
-        <translation>Перемістити</translation>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Remove</source>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
@@ -220,6 +168,11 @@
         <translation>Подвійний номер доріжки</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="226"/>
+        <source>Genre</source>
+        <translation>Жанр</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="230"/>
         <source>Disc Number</source>
         <translation>Номер диску</translation>
@@ -235,14 +188,20 @@
         <translation>Шлях файла</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="226"/>
-        <source>Genre</source>
-        <translation>Жанр</translation>
+        <location filename="../settingsdialog.cpp" line="233"/>
+        <source>Year</source>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="227"/>
         <source>Comment</source>
         <translation>Коментар</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Move</source>
+        <translation>Перемістити</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="228"/>
@@ -255,11 +214,6 @@
         <translation>Тривалість</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="233"/>
-        <source>Year</source>
-        <translation>Рік</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="234"/>
         <source>Condition</source>
         <translation>Умова</translation>
@@ -268,6 +222,52 @@
         <location filename="../settingsdialog.cpp" line="247"/>
         <source>Choose a directory</source>
         <translation>Виберіть теку</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>File Operations Settings</source>
+        <translation>Налаштування файлових операцій</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Enabled</source>
+        <translation>Увімкнено</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Operation</source>
+        <translation>Операція</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Menu text</source>
+        <translation>Текст меню</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="63"/>
+        <source>Shortcut</source>
+        <translation>Комбінація клавіш</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="116"/>
+        <source>Destination:</source>
+        <translation>Призначення:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Додати</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
+        <source>File name pattern:</source>
+        <translation>Формат імені файла:</translation>
     </message>
 </context>
 </TS>

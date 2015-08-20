@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>Converter</name>
     <message>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="90"/>
         <source>Choose a directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dizin seç</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="110"/>
@@ -102,11 +102,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation type="unfinished"></translation>
@@ -114,7 +109,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="117"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yorum</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="118"/>
@@ -129,7 +124,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="123"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yıl</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="124"/>
@@ -144,6 +139,11 @@
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>

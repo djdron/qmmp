@@ -63,7 +63,7 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Ar tu tikras, jog nori ištrinti  %n bylą(as) iš disko?</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -114,59 +114,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
-        <translation>Bylų operacijų nustatymai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Enabled</source>
-        <translation>Įjungta</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="53"/>
-        <source>Operation</source>
-        <translation>Operacija</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>Menu text</source>
-        <translation>Meniu tekstas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="63"/>
-        <source>Shortcut</source>
-        <translation>Mygtuko nuoroda</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation>Pridėti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
-        <source>Remove</source>
-        <translation>Ištrinti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="116"/>
-        <source>Destination:</source>
-        <translation>Paskirtis:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="133"/>
-        <source>File name pattern:</source>
-        <translation>Bylos plėtinys:</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="51"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Copy</source>
@@ -179,10 +126,11 @@
         <translation>Pervadinti</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Remove</source>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
@@ -220,6 +168,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="226"/>
+        <source>Genre</source>
+        <translation>Žanras</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="230"/>
         <source>Disc Number</source>
         <translation type="unfinished"></translation>
@@ -235,14 +188,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="226"/>
-        <source>Genre</source>
-        <translation>Žanras</translation>
+        <location filename="../settingsdialog.cpp" line="233"/>
+        <source>Year</source>
+        <translation>Metai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="227"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="228"/>
@@ -255,11 +214,6 @@
         <translation>Trukmė</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="233"/>
-        <source>Year</source>
-        <translation>Metai</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="234"/>
         <source>Condition</source>
         <translation>Būklė</translation>
@@ -268,6 +222,52 @@
         <location filename="../settingsdialog.cpp" line="247"/>
         <source>Choose a directory</source>
         <translation>Pasirinkite aplanką</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>File Operations Settings</source>
+        <translation>Bylų operacijų nustatymai</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Enabled</source>
+        <translation>Įjungta</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Operation</source>
+        <translation>Operacija</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Menu text</source>
+        <translation>Meniu tekstas</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="63"/>
+        <source>Shortcut</source>
+        <translation>Mygtuko nuoroda</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="116"/>
+        <source>Destination:</source>
+        <translation>Paskirtis:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Pridėti</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
+        <source>File name pattern:</source>
+        <translation>Bylos plėtinys:</translation>
     </message>
 </context>
 </TS>

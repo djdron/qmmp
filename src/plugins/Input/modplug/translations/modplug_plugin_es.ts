@@ -212,24 +212,12 @@
         <translation>Reverberación</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="202"/>
-        <location filename="../settingsdialog.ui" line="467"/>
-        <source>Depth (%)</source>
-        <translation>Intensidad (%)</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="234"/>
         <location filename="../settingsdialog.ui" line="368"/>
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
         <translation>0</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="260"/>
-        <location filename="../settingsdialog.ui" line="519"/>
-        <source>Delay (ms)</source>
-        <translation>Retardo (ms)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
@@ -240,16 +228,6 @@
         <location filename="../settingsdialog.ui" line="324"/>
         <source>Bass Boost</source>
         <translation>Refuerzo de graves</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="336"/>
-        <source>Amount (%)</source>
-        <translation>Cantidad (%)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="394"/>
-        <source>Range (Hz)</source>
-        <translation>Rango (Hz)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="426"/>
@@ -275,13 +253,6 @@
         <location filename="../settingsdialog.ui" line="586"/>
         <source>Volume</source>
         <translation>Volumen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="656"/>
-        <source>Note: Setting the preamp
-too high may cause clipping!</source>
-        <translation>Nota: ¡Una preamplificación muy
-alta puede producir cortes!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -337,6 +308,35 @@ alta puede producir cortes!</translation>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
         <translation>Repetir siempre</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="202"/>
+        <location filename="../settingsdialog.ui" line="467"/>
+        <source>Depth (%)</source>
+        <translation>Intensidad (%)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="260"/>
+        <location filename="../settingsdialog.ui" line="519"/>
+        <source>Delay (ms)</source>
+        <translation>Retardo (ms)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="336"/>
+        <source>Amount (%)</source>
+        <translation>Cantidad (%)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="394"/>
+        <source>Range (Hz)</source>
+        <translation>Rango (Hz)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="656"/>
+        <source>Note: Setting the preamp
+too high may cause clipping!</source>
+        <translation>Nota: ¡Una preamplificación muy
+alta puede producir cortes!</translation>
     </message>
 </context>
 </TS>

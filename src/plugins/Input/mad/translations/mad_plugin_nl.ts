@@ -54,7 +54,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="78"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
@@ -108,7 +108,7 @@
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
@@ -125,6 +125,30 @@
         <translation>MPEG Module Instellingen</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="110"/>
+        <location filename="../settingsdialog.ui" line="159"/>
+        <source>ID3v1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <location filename="../settingsdialog.ui" line="115"/>
+        <location filename="../settingsdialog.ui" line="164"/>
+        <source>ID3v2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>ID3v1 codering:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>ID3v2 codering:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Tag Priority</source>
         <translation>Tag prioriteit</translation>
@@ -135,25 +159,11 @@
         <translation>Primair:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="61"/>
-        <location filename="../settingsdialog.ui" line="110"/>
-        <location filename="../settingsdialog.ui" line="159"/>
-        <source>ID3v1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="66"/>
-        <location filename="../settingsdialog.ui" line="115"/>
-        <location filename="../settingsdialog.ui" line="164"/>
-        <source>ID3v2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <location filename="../settingsdialog.ui" line="120"/>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
@@ -176,16 +186,6 @@
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>Codering</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>ID3v1 codering:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>ID3v2 codering:</translation>
     </message>
 </context>
 </TS>

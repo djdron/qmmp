@@ -6,22 +6,22 @@
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="31"/>
         <source>SRC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de conversion d&apos;échantillonnage</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de conversion d&apos;échantillonnage</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de conversion d&apos;échantillonnage pour Qmmp</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="54"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,42 +29,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon de conversion d&apos;échantillonnage</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Sample Rate (Hz):</source>
-        <translation type="unfinished"></translation>
+        <translation>Taux d&apos;échantillonnage (Hz) :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Interpolation Engine:</source>
-        <translation type="unfinished"></translation>
+        <translation>Moteur d&apos;interpolation :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Best Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>interpolation sinc la meilleure</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Medium Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>interpolation sinc moyenne</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>interpolation sinc la plus rapide</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>ZOH Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>interpolation ZOH</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Linear Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>interpolation linéaire</translation>
     </message>
 </context>
 </TS>

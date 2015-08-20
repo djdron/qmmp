@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>DecoderMPCFactory</name>
     <message>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hz</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="48"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">kbps</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">KB</translation>
     </message>
 </context>
 </TS>

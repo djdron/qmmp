@@ -4,14 +4,24 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Neišvalyti sąrašo</translation>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Eiti prie sekančio elemento</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Eiti prie ankstesnio elemento</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Groti dainą</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Neišvalyti sąrašo</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -49,16 +59,6 @@
         <translation>Nutildyti/Atstatyti garsą</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Eiti prie sekančio elemento</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Eiti prie ankstesnio elemento</translation>
-    </message>
-    <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
         <source>Show/hide application</source>
         <translation>Parodyti/Slėpti programą</translation>
@@ -82,11 +82,6 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="91"/>
-        <source>Unknown command</source>
-        <translation>Nežinoma komanda</translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="326"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Naudojimas: qmmp [nuostatos] [bylos]</translation>
@@ -97,9 +92,9 @@
         <translation>Nustatymai:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="331"/>
-        <source>Don&apos;t start the application</source>
-        <translation>Nepaleisti programos</translation>
+        <location filename="../qmmpstarter.cpp" line="333"/>
+        <source>Print version number and exit</source>
+        <translation>Parodyti versiją ir išeiti</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="332"/>
@@ -107,9 +102,14 @@
         <translation>Parodyti šį tekstą ir išeiti</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="333"/>
-        <source>Print version number and exit</source>
-        <translation>Parodyti versiją ir išeiti</translation>
+        <location filename="../qmmpstarter.cpp" line="91"/>
+        <source>Unknown command</source>
+        <translation>Nežinoma komanda</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="331"/>
+        <source>Don&apos;t start the application</source>
+        <translation>Nepaleisti programos</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="334"/>

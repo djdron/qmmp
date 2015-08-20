@@ -69,12 +69,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="137"/>
         <source>User Agent:</source>
-        <translation type="unfinished"></translation>
+        <translation>Agent utilisateur :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>Change User Agent</source>
-        <translation type="unfinished"></translation>
+        <translation>Changer l&apos;agent utilisateur</translation>
     </message>
 </context>
 </TS>

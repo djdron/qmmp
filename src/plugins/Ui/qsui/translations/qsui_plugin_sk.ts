@@ -103,22 +103,17 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../actionmanager.cpp" line="44"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="45"/>
-        <source>&amp;Play Files</source>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>&amp;Jump to Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
-        <source>E</source>
+        <source>&amp;Play Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -192,6 +187,16 @@
         <translation>Dať na všetky plochy</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="71"/>
+        <source>&amp;Add File</source>
+        <translation>&amp;Pridať súbor</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Show Tabs</source>
         <translation type="unfinished"></translation>
@@ -235,11 +240,6 @@
         <location filename="../actionmanager.cpp" line="69"/>
         <source>M</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../actionmanager.cpp" line="71"/>
-        <source>&amp;Add File</source>
-        <translation>&amp;Pridať súbor</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -571,13 +571,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="66"/>
-        <source>Change Directory</source>
+        <location filename="../filesystembrowser.cpp" line="131"/>
+        <source>Select Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="131"/>
-        <source>Select Directory</source>
+        <location filename="../filesystembrowser.cpp" line="66"/>
+        <source>Change Directory</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -621,7 +621,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="74"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobraziť</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="80"/>
@@ -631,7 +631,7 @@
     <message>
         <location filename="../hotkeyeditor.cpp" line="86"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Playlist</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="92"/>
@@ -641,6 +641,178 @@
 </context>
 <context>
     <name>MainWindow</name>
+    <message>
+        <location filename="../mainwindow.cpp" line="138"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="375"/>
+        <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="376"/>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="386"/>
+        <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="387"/>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="289"/>
+        <source>Playlist name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="330"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Vzhľad</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="331"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="376"/>
+        <source>Playing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="430"/>
+        <source>Ctrl+0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="436"/>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="488"/>
+        <source>Edit Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="490"/>
+        <source>Sort List</source>
+        <translation type="unfinished">Triediť zoznam</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="548"/>
+        <source>By Title</source>
+        <translation type="unfinished">Podľa názvu</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="552"/>
+        <source>By Album</source>
+        <translation type="unfinished">Podľa albumu</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="501"/>
+        <location filename="../mainwindow.cpp" line="556"/>
+        <source>By Artist</source>
+        <translation type="unfinished">Podľa interpréta</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="505"/>
+        <location filename="../mainwindow.cpp" line="560"/>
+        <source>By Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="509"/>
+        <location filename="../mainwindow.cpp" line="564"/>
+        <source>By Filename</source>
+        <translation type="unfinished">Podľa názvu súboru</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="568"/>
+        <source>By Path + Filename</source>
+        <translation type="unfinished">Podľa cesty a názvu súboru</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="572"/>
+        <source>By Date</source>
+        <translation type="unfinished">Podľa dátumu</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="576"/>
+        <source>By Track Number</source>
+        <translation type="unfinished">Podľa čísla skladby</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="525"/>
+        <location filename="../mainwindow.cpp" line="580"/>
+        <source>By Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="584"/>
+        <source>By File Creation Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="533"/>
+        <location filename="../mainwindow.cpp" line="588"/>
+        <source>By File Modification Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="537"/>
+        <source>By Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="545"/>
+        <source>Sort Selection</source>
+        <translation type="unfinished">Potriediť výber</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="595"/>
+        <source>Randomize List</source>
+        <translation type="unfinished">Zamiešať zoznam</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="597"/>
+        <source>Reverse List</source>
+        <translation type="unfinished">Otočiť zoznam</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="604"/>
+        <location filename="../mainwindow.cpp" line="649"/>
+        <source>Actions</source>
+        <translation type="unfinished">Činnosti</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="682"/>
+        <source>Add new playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="688"/>
+        <source>Show all tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="841"/>
+        <source>Buffering: %1%</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
         <source>Qmmp</source>
@@ -709,27 +881,27 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="199"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Predchádzajúca</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="209"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hrať</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="219"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pozastaviť</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="229"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nasledujúca</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="239"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zastaviť</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="244"/>
@@ -798,181 +970,9 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="309"/>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.cpp" line="289"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="138"/>
-        <source>Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="373"/>
-        <source>&lt;b&gt;%1&lt;/b&gt;|%2 bit|%3 ch|%4 Hz|tracks: %5|total time: %6|%7 kbps|</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="374"/>
-        <source>Paused</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="384"/>
-        <source>&lt;b&gt;%1&lt;/b&gt;|tracks: %2|total time: %3|</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="385"/>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="287"/>
-        <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="328"/>
-        <source>Appearance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="329"/>
-        <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="374"/>
-        <source>Playing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="428"/>
-        <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="434"/>
-        <source>P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="486"/>
-        <source>Edit Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="488"/>
-        <source>Sort List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="546"/>
-        <source>By Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="495"/>
-        <location filename="../mainwindow.cpp" line="550"/>
-        <source>By Album</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <location filename="../mainwindow.cpp" line="554"/>
-        <source>By Artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="503"/>
-        <location filename="../mainwindow.cpp" line="558"/>
-        <source>By Album Artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="507"/>
-        <location filename="../mainwindow.cpp" line="562"/>
-        <source>By Filename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="511"/>
-        <location filename="../mainwindow.cpp" line="566"/>
-        <source>By Path + Filename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="515"/>
-        <location filename="../mainwindow.cpp" line="570"/>
-        <source>By Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="519"/>
-        <location filename="../mainwindow.cpp" line="574"/>
-        <source>By Track Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="523"/>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="527"/>
-        <location filename="../mainwindow.cpp" line="582"/>
-        <source>By File Creation Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="531"/>
-        <location filename="../mainwindow.cpp" line="586"/>
-        <source>By File Modification Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="535"/>
-        <source>By Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="543"/>
-        <source>Sort Selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="593"/>
-        <source>Randomize List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="595"/>
-        <source>Reverse List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="602"/>
-        <location filename="../mainwindow.cpp" line="647"/>
-        <source>Actions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="680"/>
-        <source>Add new playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="686"/>
-        <source>Show all tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="839"/>
-        <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Premenovať playlist</translation>
     </message>
 </context>
 <context>
@@ -1139,22 +1139,22 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="24"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobraziť</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skryť pri zatvorení</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spustiť skryté</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="722"/>
         <source>Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Písma</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="728"/>
@@ -1171,7 +1171,7 @@
         <location filename="../forms/qsuisettings.ui" line="821"/>
         <location filename="../forms/qsuisettings.ui" line="840"/>
         <source>???</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">???</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="62"/>
@@ -1179,7 +1179,7 @@
         <location filename="../forms/qsuisettings.ui" line="786"/>
         <location filename="../forms/qsuisettings.ui" line="847"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="30"/>
@@ -1194,17 +1194,17 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="74"/>
         <source>Song Display</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazenie skladby</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="80"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobraziť protokol</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="137"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazovať čísla piesní</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="144"/>
@@ -1214,21 +1214,31 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="154"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zarovnať čísla piesní</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="87"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazovať ukotvenie</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="94"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazovať upozornenia s informáciami</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="106"/>
         <source>Edit template</source>
+        <translation type="unfinished">Upraviť šablónu</translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="178"/>
+        <source>Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="618"/>
+        <source>Group background:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1247,13 +1257,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="911"/>
-        <source>Miscellaneous</source>
+        <location filename="../forms/qsuisettings.ui" line="647"/>
+        <source>Group text:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="184"/>
-        <source>Analyzer Colors</source>
+        <location filename="../forms/qsuisettings.ui" line="917"/>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="923"/>
+        <source>Show close buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="930"/>
+        <source>Show tab list menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="937"/>
+        <source>Show &apos;New Playlist&apos; button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/qsuisettings.ui" line="911"/>
+        <source>Miscellaneous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1262,8 +1292,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/qsuisettings.ui" line="178"/>
-        <source>Colors</source>
+        <location filename="../forms/qsuisettings.ui" line="184"/>
+        <source>Analyzer Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1297,6 +1327,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/qsuisettings.ui" line="404"/>
+        <source>Use system colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/qsuisettings.ui" line="423"/>
         <source>Background #1:</source>
         <translation type="unfinished"></translation>
@@ -1324,41 +1359,6 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="583"/>
         <source>Hightlighted text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="404"/>
-        <source>Use system colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="618"/>
-        <source>Group background:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="647"/>
-        <source>Group text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="917"/>
-        <source>Tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="923"/>
-        <source>Show close buttons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="930"/>
-        <source>Show tab list menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/qsuisettings.ui" line="937"/>
-        <source>Show &apos;New Playlist&apos; button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1445,77 +1445,77 @@
 <context>
     <name>QSUiAnalyzer</name>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="278"/>
+        <location filename="../qsuianalyzer.cpp" line="280"/>
         <source>Cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="281"/>
+        <location filename="../qsuianalyzer.cpp" line="283"/>
         <source>Peaks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="284"/>
+        <location filename="../qsuianalyzer.cpp" line="286"/>
         <source>Refresh Rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="287"/>
+        <location filename="../qsuianalyzer.cpp" line="289"/>
         <source>50 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="288"/>
+        <location filename="../qsuianalyzer.cpp" line="290"/>
         <source>25 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="289"/>
+        <location filename="../qsuianalyzer.cpp" line="291"/>
         <source>10 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="290"/>
+        <location filename="../qsuianalyzer.cpp" line="292"/>
         <source>5 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="297"/>
+        <location filename="../qsuianalyzer.cpp" line="299"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="300"/>
-        <location filename="../qsuianalyzer.cpp" line="314"/>
-        <source>Slowest</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qsuianalyzer.cpp" line="301"/>
-        <location filename="../qsuianalyzer.cpp" line="315"/>
-        <source>Slow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="302"/>
         <location filename="../qsuianalyzer.cpp" line="316"/>
-        <source>Medium</source>
+        <source>Slowest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="303"/>
         <location filename="../qsuianalyzer.cpp" line="317"/>
-        <source>Fast</source>
+        <source>Slow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qsuianalyzer.cpp" line="304"/>
         <location filename="../qsuianalyzer.cpp" line="318"/>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="305"/>
+        <location filename="../qsuianalyzer.cpp" line="319"/>
+        <source>Fast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qsuianalyzer.cpp" line="306"/>
+        <location filename="../qsuianalyzer.cpp" line="320"/>
         <source>Fastest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qsuianalyzer.cpp" line="311"/>
+        <location filename="../qsuianalyzer.cpp" line="313"/>
         <source>Peaks Falloff</source>
         <translation type="unfinished"></translation>
     </message>

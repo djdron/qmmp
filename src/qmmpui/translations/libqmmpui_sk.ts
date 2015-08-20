@@ -41,7 +41,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
         <source>Version: %1</source>
-        <translation>Verzia: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="68"/>
@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation>Zadajte URL na pridanie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation>&amp;Pridať</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Zrušiť</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -157,7 +157,7 @@
         <location filename="../columneditor.cpp" line="85"/>
         <location filename="../columneditor.cpp" line="109"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poznámka</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
@@ -169,7 +169,7 @@
         <location filename="../columneditor.cpp" line="87"/>
         <location filename="../columneditor.cpp" line="111"/>
         <source>Duration</source>
-        <translation type="unfinished">Trvanie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../columneditor.cpp" line="93"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stav</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="102"/>
@@ -245,7 +245,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>Nastavenia Qmmp</translation>
+        <translation>Qmmp nastavenia</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="58"/>
@@ -296,7 +296,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="150"/>
         <source>Group format:</source>
-        <translation>Formát skupiny</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="160"/>
@@ -306,12 +306,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="170"/>
         <source>Directory Scanning Options</source>
-        <translation>Možnosti prehľadávania adresára</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Restrict files to:</source>
-        <translation>Obmedziť súbory na:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="186"/>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="199"/>
         <source>Miscellaneous</source>
-        <translation>Rôzne</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Auto-save playlist when modified</source>
-        <translation>Automaticky ulož prehrávaný zoznam ak je zmenený</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="212"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation>Vymaž predchádzajúci prehrávaný zoznam pri otvorení nového</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="260"/>
@@ -359,12 +359,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="332"/>
         <source>Look and Feel</source>
-        <translation>Vzhľad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="338"/>
         <source>Language:</source>
-        <translation>Jazyk:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="374"/>
@@ -379,12 +379,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Determine file type by content</source>
-        <translation>Zisti typ súboru podľa obsahu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Add files from command line to this playlist:</source>
-        <translation>Pridať súbory z príkazového riadku do tohto zoznamu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="411"/>
@@ -409,12 +409,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="481"/>
         <source>URL Dialog</source>
-        <translation>URL dialóg</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="487"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation>Automaticky vložiť URL zo schránky</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="526"/>
@@ -475,7 +475,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="696"/>
         <source>Default gain:</source>
-        <translation>Východzí zisk:</translation>
+        <translation>Východzý zisk:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="748"/>
@@ -521,7 +521,7 @@
     <message>
         <location filename="../configdialog.cpp" line="82"/>
         <source>File Types</source>
-        <translation>Typy súborov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="183"/>
@@ -556,17 +556,17 @@
     <message>
         <location filename="../configdialog.cpp" line="243"/>
         <source>Output</source>
-        <translation>Výstup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="253"/>
         <source>File Dialogs</source>
-        <translation>Dialógy súborov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
-        <translation>Užívateľské rozhrania</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="295"/>
@@ -611,17 +611,17 @@
     <message>
         <location filename="../configdialog.cpp" line="304"/>
         <source>Artist/Album</source>
-        <translation>Interprét/Album</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="305"/>
         <source>Artist/Year/Album</source>
-        <translation>Interprét/Rok/Album</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="325"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation>&lt;Autodetekcia&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
@@ -749,37 +749,37 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation>Detaily</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="44"/>
         <source>Open the directory containing this file</source>
-        <translation>Otvor adresár obsahujúci tento súbor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="47"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="63"/>
         <source>Summary</source>
-        <translation>Sumár</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="124"/>
         <source>%1/%2</source>
-        <translation>%1/%2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="165"/>
         <source>Title</source>
-        <translation>Názov</translation>
+        <translation type="unfinished">Názov</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="166"/>
         <source>Artist</source>
-        <translation>Interprét</translation>
+        <translation type="unfinished">Interprét</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
@@ -789,37 +789,37 @@
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
         <source>Album</source>
-        <translation>Album</translation>
+        <translation type="unfinished">Album</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="169"/>
         <source>Comment</source>
-        <translation>Komentár</translation>
+        <translation type="unfinished">Poznámka</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="170"/>
         <source>Genre</source>
-        <translation>Žáner</translation>
+        <translation type="unfinished">Žáner</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="171"/>
         <source>Composer</source>
-        <translation>Skladateľ</translation>
+        <translation type="unfinished">Skladateľ</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="173"/>
         <source>Year</source>
-        <translation>Rok</translation>
+        <translation type="unfinished">Rok</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="175"/>
         <source>Track</source>
-        <translation>Stop</translation>
+        <translation type="unfinished">Skladba</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="177"/>
         <source>Disc number</source>
-        <translation>Číslo disku</translation>
+        <translation type="unfinished">Číslo disku</translation>
     </message>
 </context>
 <context>
@@ -832,7 +832,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter:</source>
-        <translation>Filter:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
@@ -918,7 +918,7 @@
     <message>
         <location filename="../playlisttrack.cpp" line="260"/>
         <source>Empty group</source>
-        <translation>Prázdna skupina</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -955,59 +955,59 @@
     <message>
         <location filename="../forms/tageditor.ui" line="38"/>
         <source>Title:</source>
-        <translation>Názov:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="64"/>
         <source>Artist:</source>
-        <translation>Interprét:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation>Album:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Album artist:</source>
-        <translation>Interprét albumu:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="123"/>
         <source>Composer:</source>
-        <translation>Skladateľ:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="143"/>
         <source>Genre:</source>
-        <translation>Žáner:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="169"/>
         <source>Track:</source>
-        <translation>Stopa:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="190"/>
         <location filename="../forms/tageditor.ui" line="228"/>
         <location filename="../forms/tageditor.ui" line="260"/>
         <source>?</source>
-        <translation>?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="203"/>
         <source>Year:</source>
-        <translation>Rok:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="250"/>
         <source>Disc number:</source>
-        <translation>Číslo disku:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="275"/>
         <source>Comment:</source>
-        <translation>Komentár:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="311"/>
@@ -1030,22 +1030,22 @@
     <message>
         <location filename="../forms/templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation>Vložiť</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation>Interprét</translation>
+        <translation type="unfinished">Interprét</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation>Album</translation>
+        <translation type="unfinished">Album</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Title</source>
-        <translation>Názov</translation>
+        <translation type="unfinished">Názov</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
@@ -1065,22 +1065,22 @@
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Genre</source>
-        <translation>Žáner</translation>
+        <translation type="unfinished">Žáner</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Comment</source>
-        <translation>Komentár</translation>
+        <translation type="unfinished">Poznámka</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Composer</source>
-        <translation>Skladateľ</translation>
+        <translation type="unfinished">Skladateľ</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Duration</source>
-        <translation>Trvanie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
@@ -1100,12 +1100,12 @@
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Year</source>
-        <translation>Rok</translation>
+        <translation type="unfinished">Rok</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="64"/>
         <source>Condition</source>
-        <translation>Podmienka</translation>
+        <translation type="unfinished">Stav</translation>
     </message>
 </context>
 <context>

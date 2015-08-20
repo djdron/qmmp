@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sk">
+<TS version="2.0" language="sk_SK">
 <context>
     <name>Lyrics</name>
     <message>
         <location filename="../lyrics.cpp" line="33"/>
         <source>View Lyrics</source>
-        <translation>Zobraziť text skladby</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="34"/>
         <source>Ctrl+L</source>
-        <translation>Ctrl+L</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -19,27 +19,27 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation>Plugin textov skladieb</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation>O plugine textov skladieb</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation>Qmmp plugin textov skladieb</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation>Tento plugin sťahuje texty z LyricWiki</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Napísal: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -47,32 +47,32 @@
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation>Plugin textov skladieb</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
         <source>Artist:</source>
-        <translation>Interprét:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
         <source>Title:</source>
-        <translation>Názov:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation>Hľadať</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>
         <source>No connection</source>
-        <translation>Žiadne pripojenie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
-        <translation>Dokončené</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="67"/>
@@ -82,24 +82,24 @@
         <location filename="../lyricswindow.cpp" line="113"/>
         <location filename="../lyricswindow.cpp" line="124"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="118"/>
         <location filename="../lyricswindow.cpp" line="153"/>
         <source>Not found</source>
-        <translation>Nenájdené</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="139"/>
         <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
-        <translation>Sťahujem</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
-        <translation>Text: %1 - %2</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

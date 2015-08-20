@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="hu">
+<TS version="2.0" language="hu_HU">
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ne töröld a lejátszási listát</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>

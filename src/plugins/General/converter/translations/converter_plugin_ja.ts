@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja">
+<TS version="2.0" language="ja_JP">
 <context>
     <name>Converter</name>
     <message>
@@ -102,11 +102,6 @@
         <translation>ファイルパス</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation>複製を作成</translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>ジャンル</translation>
@@ -145,6 +140,11 @@
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>編集</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation>複製を作成</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>

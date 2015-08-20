@@ -102,11 +102,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="132"/>
-        <source>Create a Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>Žanras</translation>
@@ -145,6 +140,11 @@
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Edit</source>
         <translation>Taisyti</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="132"/>
+        <source>Create a Copy</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="133"/>

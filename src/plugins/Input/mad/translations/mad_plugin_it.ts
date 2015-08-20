@@ -125,16 +125,6 @@
         <translation>Impostazioni modulo MPEG</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Tag Priority</source>
-        <translation>Priorità etichettatura</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>First:</source>
-        <translation>Prima:</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <location filename="../settingsdialog.ui" line="110"/>
         <location filename="../settingsdialog.ui" line="159"/>
@@ -147,6 +137,26 @@
         <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="210"/>
+        <source>ID3v1 encoding:</source>
+        <translation>Codifica ID3v1:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="236"/>
+        <source>ID3v2 encoding:</source>
+        <translation>Codifica ID3v2:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Tag Priority</source>
+        <translation>Priorità etichettatura</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>First:</source>
+        <translation>Prima:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
@@ -176,16 +186,6 @@
         <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>Codifiche</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="210"/>
-        <source>ID3v1 encoding:</source>
-        <translation>Codifica ID3v1:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="236"/>
-        <source>ID3v2 encoding:</source>
-        <translation>Codifica ID3v2:</translation>
     </message>
 </context>
 </TS>

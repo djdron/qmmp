@@ -74,22 +74,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="88"/>
         <source>2. Allow Qmmp to scrobble tracks to your %1 account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="90"/>
         <source>3. Press &quot;OK&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="103"/>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <location filename="../settingsdialog.cpp" line="136"/>
-        <location filename="../settingsdialog.cpp" line="140"/>
-        <location filename="../settingsdialog.cpp" line="180"/>
-        <location filename="../settingsdialog.cpp" line="184"/>
-        <source>Error</source>
-        <translation>Klaida</translation>
+        <translation type="unfinished">3. Paspausti &quot;OK&quot; </translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="103"/>
@@ -102,12 +92,12 @@
         <location filename="../settingsdialog.cpp" line="107"/>
         <location filename="../settingsdialog.cpp" line="140"/>
         <source>Unable to register new session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Negaliu registruoti naujos sesijos</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="121"/>
         <source>New session has been received successfully</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nauja sesija sėkmingai gauta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="172"/>
@@ -118,6 +108,16 @@
         <location filename="../settingsdialog.cpp" line="184"/>
         <source>Permission denied</source>
         <translation>Leidimas atšauktas</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="103"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
+        <location filename="../settingsdialog.cpp" line="136"/>
+        <location filename="../settingsdialog.cpp" line="140"/>
+        <location filename="../settingsdialog.cpp" line="180"/>
+        <location filename="../settingsdialog.cpp" line="184"/>
+        <source>Error</source>
+        <translation>Klaida</translation>
     </message>
 </context>
 </TS>

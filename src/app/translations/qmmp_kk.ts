@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="kk">
+<TS version="2.0" language="kk_KZ">
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <location filename="../builtincommandlineoption.cpp" line="80"/>
+        <source>Skip forward in playlist</source>
+        <translation>Келесіге өту</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="81"/>
+        <source>Skip backwards in playlist</source>
+        <translation>Алдыңғысына өту</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Start playing current song</source>
         <translation>Ағымдағы өленді ойнату</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="unfinished">Тізімді тазартпау</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
@@ -47,16 +57,6 @@
         <location filename="../builtincommandlineoption.cpp" line="79"/>
         <source>Mute/Restore volume</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="80"/>
-        <source>Skip forward in playlist</source>
-        <translation>Келесіге өту</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="81"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Алдыңғысына өту</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="82"/>
@@ -102,11 +102,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
-        <source>Display this text and exit</source>
-        <translation>Осы мәтінді көрсету және шығу</translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Print version number and exit</source>
         <translation>Нұсқасын көрсету мен шығу</translation>
@@ -140,6 +135,11 @@
         <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Qmmp Version</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="332"/>
+        <source>Display this text and exit</source>
+        <translation>Осы мәтінді көрсету және шығу</translation>
     </message>
 </context>
 </TS>

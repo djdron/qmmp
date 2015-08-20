@@ -50,26 +50,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Global Hotkey Plugin Settings</source>
-        <translation>Global Hotkey nustatymai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Action</source>
-        <translation>Veiksmas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <source>Shortcut</source>
-        <translation>Nuoroda</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <source>Reset</source>
-        <translation>Ištrinti</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
         <translation>Groti</translation>
@@ -143,6 +123,26 @@
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation>Klavišo kombinacija &apos;%1&apos; jau naudojama</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Global Hotkey Plugin Settings</source>
+        <translation>Global Hotkey nustatymai</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="42"/>
+        <source>Action</source>
+        <translation>Veiksmas</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Shortcut</source>
+        <translation>Nuoroda</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Reset</source>
+        <translation>Ištrinti</translation>
     </message>
 </context>
 </TS>

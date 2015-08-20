@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="49"/>
         <source>WildMidi Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon WildMidi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="51"/>
         <source>Midi Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers Midi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="105"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon audio WildMidi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="106"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon audio WildMidi pour Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="107"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce greffon utilise WildMidi pour jouer les fichiers Midi.</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="108"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,37 +39,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>WildMidi Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon WildMidi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration d&apos;instrument :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taux d&apos;échantillonage</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="50"/>
         <source>Enhanced resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>Ré-échantillonnage amélioré</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Reverberation</source>
-        <translation type="unfinished"></translation>
+        <translation>Réverbération</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="39"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44 100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="40"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48 000 Hz</translation>
     </message>
 </context>
 </TS>

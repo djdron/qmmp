@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0">
 <context>
     <name>EffectLADSPAFactory</name>
     <message>
@@ -47,6 +47,21 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="43"/>
+        <source>UID</source>
+        <translation>UID</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="44"/>
+        <source>Name</source>
+        <translation>Nome</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="126"/>
+        <source>This LADSPA plugin has no user controls</source>
+        <translation>QUesot plugin LADSPA non ha controlli</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>LADSPA Plugin Catalog</source>
         <translation>Catalogo Plugin LADSPA</translation>
@@ -65,21 +80,6 @@
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Configure</source>
         <translation>Configura</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="43"/>
-        <source>UID</source>
-        <translation>UID</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="44"/>
-        <source>Name</source>
-        <translation>Nome</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="126"/>
-        <source>This LADSPA plugin has no user controls</source>
-        <translation>QUesot plugin LADSPA non ha controlli</translation>
     </message>
 </context>
 </TS>

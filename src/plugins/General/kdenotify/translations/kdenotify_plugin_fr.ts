@@ -6,7 +6,7 @@
     <message>
         <location filename="../kdenotify.cpp" line="121"/>
         <source>Qmmp now playing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp joue :</translation>
     </message>
 </context>
 <context>
@@ -14,18 +14,19 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="31"/>
         <source>KDE 4 notification plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de notification KDE 4</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="51"/>
         <source>About KDE Notification Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de notification KDE 4</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="52"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de notification KDE 4 pour Qmmp
+</translation>
     </message>
 </context>
 <context>
@@ -33,42 +34,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>KDE 4 Notification Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Réglages du greffon de notification KDE 4</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Détail de notification [s] :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour la notification visible au lieu d&apos;en créer une nouvelle</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparence</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer les couvertures</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer le patron</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Patron de notification</translation>
     </message>
 </context>
 </TS>

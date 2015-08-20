@@ -34,12 +34,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Overlap:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

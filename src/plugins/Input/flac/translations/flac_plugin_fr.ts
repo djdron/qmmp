@@ -6,27 +6,27 @@
     <message>
         <location filename="../decoderflacfactory.cpp" line="61"/>
         <source>FLAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="63"/>
         <source>FLAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="204"/>
         <source>About FLAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon audio FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="205"/>
         <source>Qmmp FLAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon audio FLAC pour Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="206"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,42 +34,42 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="80"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Longueur</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="81"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Taux d&apos;échantillonage</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="81"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="82"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canaux</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Débit binaire</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille du fichier</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko</translation>
     </message>
 </context>
 </TS>

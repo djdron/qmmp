@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0">
 <context>
     <name>FileOps</name>
     <message>
@@ -24,7 +24,6 @@
         <location filename="../fileops.cpp" line="137"/>
         <source>Are you sure you want to move %n file(s)?</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -62,9 +61,8 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="115"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vuoi davvero rimuovere %n file(s) dal disco?</numerusform>
         </translation>
     </message>
 </context>
@@ -112,59 +110,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>File Operations Settings</source>
-        <translation>Impostazione operazioni sul file</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Enabled</source>
-        <translation>Abilitato</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="53"/>
-        <source>Operation</source>
-        <translation>Operazione</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>Menu text</source>
-        <translation>Menu testo</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="63"/>
-        <source>Shortcut</source>
-        <translation>Scorciatoia</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation>Aggiungi</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
-        <source>Remove</source>
-        <translation>Rimuovi</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="116"/>
-        <source>Destination:</source>
-        <translation>Destinazione:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="133"/>
-        <source>File name pattern:</source>
-        <translation>Schema nome del file</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="51"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Copy</source>
@@ -177,10 +122,11 @@
         <translation>Rinomina</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Remove</source>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
@@ -218,6 +164,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="226"/>
+        <source>Genre</source>
+        <translation>Genere</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="230"/>
         <source>Disc Number</source>
         <translation type="unfinished"></translation>
@@ -233,14 +184,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="226"/>
-        <source>Genre</source>
-        <translation>Genere</translation>
+        <location filename="../settingsdialog.cpp" line="233"/>
+        <source>Year</source>
+        <translation>Anno</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="227"/>
         <source>Comment</source>
         <translation>Commento</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="228"/>
@@ -253,11 +210,6 @@
         <translation>Durata</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="233"/>
-        <source>Year</source>
-        <translation>Anno</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="234"/>
         <source>Condition</source>
         <translation>PErcorso documento</translation>
@@ -266,6 +218,52 @@
         <location filename="../settingsdialog.cpp" line="247"/>
         <source>Choose a directory</source>
         <translation>Scegli una cartella</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>File Operations Settings</source>
+        <translation>Impostazione operazioni sul file</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Enabled</source>
+        <translation>Abilitato</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="53"/>
+        <source>Operation</source>
+        <translation>Operazione</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Menu text</source>
+        <translation>Menu testo</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="63"/>
+        <source>Shortcut</source>
+        <translation>Scorciatoia</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="116"/>
+        <source>Destination:</source>
+        <translation>Destinazione:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Aggiungi</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
+        <source>File name pattern:</source>
+        <translation>Schema nome del file</translation>
     </message>
 </context>
 </TS>

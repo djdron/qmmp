@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA">
+<TS version="2.0" language="uk">
 <context>
     <name>HotkeyDialog</name>
     <message>
@@ -49,26 +49,6 @@
 </context>
 <context>
     <name>SettingsDialog</name>
-    <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Global Hotkey Plugin Settings</source>
-        <translation>Налаштування модуля глобальних клавіш</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Action</source>
-        <translation>Дія</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <source>Shortcut</source>
-        <translation>Гаряча клавіша</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <source>Reset</source>
-        <translation>Скинути</translation>
-    </message>
     <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
@@ -143,6 +123,26 @@
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
         <translation>Комбінація клавіш &quot;%1&quot; вже використовується</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Global Hotkey Plugin Settings</source>
+        <translation>Налаштування модуля глобальних клавіш</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="42"/>
+        <source>Action</source>
+        <translation>Дія</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Shortcut</source>
+        <translation>Гаряча клавіша</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Reset</source>
+        <translation>Скинути</translation>
     </message>
 </context>
 </TS>

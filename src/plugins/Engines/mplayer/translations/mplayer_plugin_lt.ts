@@ -110,6 +110,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.cpp" line="29"/>
+        <location filename="../settingsdialog.cpp" line="37"/>
+        <location filename="../settingsdialog.cpp" line="46"/>
+        <location filename="../settingsdialog.cpp" line="47"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation>Numatytas</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
         <translation>MPlayer nustatymai</translation>
@@ -123,11 +133,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Audio:</source>
         <translation>Audio:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <source>Audio/video auto synchronization</source>
-        <translation>Audio/Video automatinė sinchronizacija</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
@@ -145,14 +150,9 @@
         <translation>Papildomi komandinės eilutės pasirinkimai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="29"/>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <location filename="../settingsdialog.cpp" line="46"/>
-        <location filename="../settingsdialog.cpp" line="47"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
-        <source>default</source>
-        <translation>Numatytas</translation>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <source>Audio/video auto synchronization</source>
+        <translation>Audio/Video automatinė sinchronizacija</translation>
     </message>
 </context>
 </TS>

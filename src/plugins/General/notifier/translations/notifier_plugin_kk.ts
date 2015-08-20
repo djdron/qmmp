@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="kk">
+<TS version="2.0" language="kk_KZ">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -45,6 +45,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="368"/>
+        <source>Song change notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="325"/>
+        <source>Volume change notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Font:</source>
         <translation type="unfinished"></translation>
@@ -52,6 +62,16 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="332"/>
+        <source>Delay (ms):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="299"/>
+        <source>Cover size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -76,28 +96,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="299"/>
-        <source>Cover size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="325"/>
-        <source>Volume change notification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="332"/>
-        <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="361"/>
         <source>Playback resume notification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="368"/>
-        <source>Song change notification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

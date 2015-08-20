@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>FileOps</name>
     <message>
@@ -104,11 +104,121 @@
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.cpp" line="51"/>
+        <location filename="../settingsdialog.cpp" line="131"/>
+        <source>Copy</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <location filename="../settingsdialog.cpp" line="132"/>
+        <source>Rename</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.cpp" line="54"/>
+        <location filename="../settingsdialog.cpp" line="134"/>
+        <source>Remove</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="137"/>
+        <source>New action</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="220"/>
+        <source>Artist</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="221"/>
+        <source>Album</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="222"/>
+        <source>Album Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="223"/>
+        <source>Title</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="224"/>
+        <source>Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="225"/>
+        <source>Two-digit Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="226"/>
+        <source>Genre</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="230"/>
+        <source>Disc Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="231"/>
+        <source>File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="232"/>
+        <source>File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="233"/>
+        <source>Year</source>
+        <translation>Yıl</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="227"/>
+        <source>Comment</source>
+        <translation>Yorum</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="228"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="229"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="234"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="247"/>
+        <source>Choose a directory</source>
+        <translation>Dizin seç</translation>
+    </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>File Operations Settings</source>
@@ -135,16 +245,10 @@
         <translation>Kısayol</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
-        <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
+        <source>...</source>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
@@ -152,118 +256,14 @@
         <translation>Hedef:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <location filename="../settingsdialog.ui" line="143"/>
-        <source>...</source>
-        <translation>...</translation>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>
         <source>File name pattern:</source>
         <translation>Dosya adı deseni:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="51"/>
-        <location filename="../settingsdialog.cpp" line="131"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="52"/>
-        <location filename="../settingsdialog.cpp" line="132"/>
-        <source>Rename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
-        <location filename="../settingsdialog.cpp" line="133"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
-        <source>New action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="220"/>
-        <source>Artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="221"/>
-        <source>Album</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="222"/>
-        <source>Album Artist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="223"/>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="224"/>
-        <source>Track Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="225"/>
-        <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="230"/>
-        <source>Disc Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="231"/>
-        <source>File Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="232"/>
-        <source>File Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="226"/>
-        <source>Genre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="227"/>
-        <source>Comment</source>
-        <translation>Yorum</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="228"/>
-        <source>Composer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="229"/>
-        <source>Duration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="233"/>
-        <source>Year</source>
-        <translation>Yıl</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="234"/>
-        <source>Condition</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="247"/>
-        <source>Choose a directory</source>
-        <translation>Dizin seç</translation>
     </message>
 </context>
 </TS>
