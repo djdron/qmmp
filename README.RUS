@@ -45,6 +45,7 @@ Qmmp - Qt-based multimedia player
 
 Другие возможности:
 - поддержка обложек XMMS и Winamp 2.x
+- альтернативный пользовательский интерфейс с использованием стандартного оформления
 - 10-полосный эквалайзер
 - поддержка потоков MP3, Vorbis, AAC, AAC+
 - поддержка протокола MMS
@@ -56,24 +57,24 @@ Qmmp - Qt-based multimedia player
 - поддержка CUE
 - поддержка "встроенного" CUE (для файлов FLAC и WavPack)
 - возможность использовать несколько списков воспроизведения
-- автоматической определение кодировки для cue-файлов и ShoutCast-метаданных
+- автоматическое определение кодировки для cue-файлов и ShoutCast-метаданных
 - поддерживаемые форматы списков воспроизведения: m3u, pls, xspf
 - поддержка ReplayGain
 - скробблер Last.fm/Libre.fm
 - поддержка CDDB
 - обзор потоков
 - преобразователь аудио-форматов
-- запуск внешних команд при смене трека
+- запуск внешних программ при смене трека
 - сканер ReplayGain
 
 Требования:
-- Qt >= 4.6
+- Qt >= 5.4 (qtbase, qtx11extras и qttools для сборки)
 - tar, unzip, bzip2, gzip
 - libmad
 - libvorbis
 - libogg
 - libalsa >= 1.0.1
-- taglib >= 1.6
+- taglib >= 1.9
 - curl >= 7.16
 - libmms >= 0.4 (Опционально)
 - flac >= 1.1.3 (Опционально)
@@ -98,9 +99,9 @@ Qmmp - Qt-based multimedia player
 - libprojectM >= 1.2.0 (Опционально)
 - libenca >= 1.9 (Опционально)
 - mplayer (Опционально)
-- cmake >= 2.8.6 (только для сборки)
+- cmake >= 2.8.11 (только для сборки)
 
-Внимание! Для сборки Qmmp нужна утилита lrelease. Очень часто она находится в пакете libqt4-devel.
+Внимание! Для сборки Qmmp нужна утилита lrelease.
 
 Конфигурация:
 cmake ./
@@ -117,16 +118,17 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Доступные опции:
 - USE_CURL, USE_MMS (транспортные модули);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
-  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_FFMPEG_LEGACY, USE_OPUS (декодеры);
+  USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME, USE_OPUS (декодеры);
 - USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT, USE_DSOUND (модули  вывода);
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY, USE_UDISKS2, USE_UDISKS, USE_CONVERTER, USE_RGSCAN, USE_TRACKCHANGE, USE_COPYPASTE,
+  USE_KDENOTIFY, USE_UDISKS2, USE_CONVERTER, USE_RGSCAN, USE_TRACKCHANGE, USE_COPYPASTE,
   USE_GNOMEHOTKEY (модули общего назначения);
 - USE_QMMP_DIALOG (файловый диалог);
 - USE_ENCA (автоматическое определение кодировки);
 - USE_SKINNED (стандартный пользовательский интерфейс);
+- USE_QSUI (простой интерфейс);
 - USE_DIR_ASSOC (привязка к mime-типу inode/directory);
 - USE_RPATH (включает опцию CMAKE_INSTALL_RPATH_USE_LINK_PATH, см. http://www.cmake.org/Wiki/CMake_RPATH_handling)
 
@@ -134,9 +136,9 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
 cmake ./ -DCMAKE_INSTALL_PREFIX=другой_путь
 
-Поддержка OSS3 и Udisks.
-Модули OSS3 и UDisks2 устарели и отключёны по умолчанию.
-Для их включения выполните 'cmake ./ -DUSE_OSS:BOOL=TRUE' или 'cmake ./ -DUSE_OSS:UDISKS2=TRUE' перед сборкой.
+Поддержка OSS3.
+Модуль OSS3 устарел и отключён по умолчанию.
+Для его включения выполните 'cmake ./ -DUSE_OSS:BOOL=TRUE' перед сборкой.
 
 Поддержка HAL и UDisks2.
 Большинство дистрибутивов Linux больше не поддерживает HAL. Для отключения модуля HAL выполните перед сборкой следующую команду:
@@ -157,7 +159,9 @@ make install INSTALL_ROOT=/usr/local
 
 Если какой-либо модуль не собирается или не нужен, в файле qmmp.pri можно его отключить.
 Для отключения необходимо закомментировать соответствующую строчку (символ "#").
-Внимание! по умолчанию включены все модули кроме OSS4.
+Кроме того, отключить модуль можно из командной строки:
+qmake DISABLED_PLUGINS+=JACK_PLUGIN DISABLED_PLUGINS+=OSS_PLUGIN
+Внимание! по умолчанию включены все модули.
 
 Изменение пути установки разделяемых библиотек и модулей (требуется для некоторых 64-битных дистрибутивов).
 По умолчанию все библиотеки и модули будут установлены в $(INSTALL PREFIX)/lib. Вы можете сменить "lib"
