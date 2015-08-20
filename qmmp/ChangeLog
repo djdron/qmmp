@@ -893,7 +893,6 @@ Version 0.8.0
 * updated Lithuanian translation (Algirdas Butkus)
 
 Version 0.9.0
-* added Simple User Interface (QSUI)
 * added channel position support
 * added 9-channels support to equalizer
 * added album artist tag support
@@ -911,6 +910,16 @@ Version 0.9.0
 * added feature to restore default shortcuts
 * added shortcut for "Rename List" action
 * added feature to disable fadeout in the gme plugin
+* added Simple User Interface (QSUI) with the following changes:
+  - added multiple columns support
+  - added sorting by album artist
+  - added sorting by file modification date
+  - added feature to hide song length
+  - added default hotkey for "Rename List" action
+  - added "Save List" action to the tab menu
+  - added feature to reset fonts
+  - added feature to reset shortcuts
+  - improved status bar
 * optimized playlist container
 * optimized sample rate converter
 * improved cmake build scripts (RyoTa SimaMoto)
@@ -921,16 +930,6 @@ Version 0.9.0
   - added feature to move files
   - reworked settings dialog
 * increased details dialog size
-* improved qsui plugin:
-  - added multiple columns support
-  - added sorting by album artist
-  - added sorting by file modification date
-  - added feature to hide song length
-  - added default hotkey for "Rename List" action
-  - added "Save List" action to the tab menu
-  - added feature to reset fonts
-  - added feature to reset shortcuts
-  - improved status bar
 * changed default skin to Glare (author: sixsixfive)
 * changed default playlist separator
 * using dsound plugin as default under windows
