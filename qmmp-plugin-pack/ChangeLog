@@ -128,13 +128,5 @@ Version 0.9.0
 * ported to qmmp 0.9 api
 * added xmp plugin
 * added album artist tag support to the mpg123 plugin
-* improved qsui plugin:
-  - added multiple columns support
-  - added sorting by album artist
-  - added sorting by file modification date
-  - added feature to hide song length
-  - added default hotkey for "Rename List" action
-  - added "Save List" action to the tab menu
-  - added feature to reset fonts
-  - added feature to reset shortcuts
-  - improved status bar
+* removed qsui plugin
+* improved cmake build scripts

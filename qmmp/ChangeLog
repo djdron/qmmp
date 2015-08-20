@@ -893,11 +893,13 @@ Version 0.8.0
 * updated Lithuanian translation (Algirdas Butkus)
 
 Version 0.9.0
+* added Simple User Interface (QSUI)
 * added channel position support
 * added 9-channels support to equalizer
 * added album artist tag support
 * added asynchronous sorting
 * added sorting by file modification date
+* added sorting by album artist
 * added multicolumn mode
 * added feature to hide song lengths
 * added feature to disable plugins without qmmp.pri modification (qmake only)
@@ -919,6 +921,16 @@ Version 0.9.0
   - added feature to move files
   - reworked settings dialog
 * increased details dialog size
+* improved qsui plugin:
+  - added multiple columns support
+  - added sorting by album artist
+  - added sorting by file modification date
+  - added feature to hide song length
+  - added default hotkey for "Rename List" action
+  - added "Save List" action to the tab menu
+  - added feature to reset fonts
+  - added feature to reset shortcuts
+  - improved status bar
 * changed default skin to Glare (author: sixsixfive)
 * changed default playlist separator
 * using dsound plugin as default under windows
