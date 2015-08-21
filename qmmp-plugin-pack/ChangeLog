@@ -131,3 +131,13 @@ Version 0.9.0
 * added feature to disable plugins without qmmp-plugin-pack.pri modification (qmake only)
 * removed qsui plugin
 * improved cmake build scripts
+* updated Russian translation
+* updated Czech translation (Jaroslav Lichtblau)
+* updated Hebrew translation (Genghis Khan)
+* updated German translation (Ettore Atalan)
+* updated Portuguese translation (Sérgio Marques)
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated French translation (Sébastien Aperghis-Tramoni)
+* updated Polish translation (Daniel Krawczyk)
+* updated Greek translation (Dimitrios Glentadakis)
+* updated Japanese translation (RyoTa SimaMoto)
