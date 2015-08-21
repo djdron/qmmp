@@ -69,6 +69,9 @@ public:
     virtual bool hasNotifySignal() const;
 
 signals:
+    /*!
+     * Emitted if volume is changed.
+     */
     void changed();
 };
 
