@@ -101,7 +101,7 @@ QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData,
 
 QString MetaDataFormatter::formatLength(qint64 length)
 {
-    if(length < 0)
+    if(length <= 0)
         return QString();
     QString str;
     if(length >= 3600)
