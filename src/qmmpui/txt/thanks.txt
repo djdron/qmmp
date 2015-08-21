@@ -8,6 +8,7 @@ Thanks to:
     Cristian Rodríguez <judas.iscariote@gmail.com> - scrobbler fixes
     Csaba Hruska <csaba.hruska@gmail.com> - FFmpeg plugin fixes
     Dmitry Kostin <kostindima@gmail.com> - iso.wv support
+    Dmitry Misharov <Dmitry.Misharov@gmail.com> - album artist tag support
     Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
     Ferdinand Vesely <erdofves@gmail.com> - scrobbler improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports

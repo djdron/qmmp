@@ -7,7 +7,8 @@
     Brice Videau <brice.videau@gmail.com> - исправления ошибок
     Cristian Rodríguez <judas.iscariote@gmail.com> - исправление ошибок в модуле scrobbler
     Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле FFmpeg
-    Dmitry Kostin <kostindima@gmail.com> - поддержка iso.wv
+    Дмитрий Костин <kostindima@gmail.com> - поддержка iso.wv
+    Дмитрий Мишаров <Dmitry.Misharov@gmail.com> - поддержка тега "исполнитель альбома"
     Evgeny Gleyzerman <evgley@gmail.com> - улучшение поддержки cue
     Ferdinand Vesely <erdofves@gmail.com> - улучшения модуля scrobbler
     Геннадий Моцьо <drool@altlinux.ru> - сообщения об ошибках
