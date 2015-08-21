@@ -81,6 +81,21 @@ struct SimpleSelection
  *
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  * @author Ilya Kotov <forkotov02@hotmail.ru>
+ *
+ *         Playlist Structure
+ *      -----------------------
+ *     | item  | track | item  |
+ *     | index | index | type  |
+ *      -----------------------
+ *     |  0    |       | group |
+ *     |  1    |  0    | track |
+ *     |  2    |  1    | track |
+ *     |  3    |  2    | track |
+ *     |  4    |  3    | track |
+ *     |  5    |       | group |
+ *     |  6    |  4    | track |
+ *     |  7    |  5    | track |
+ *     |  8    |  6    | track |
  */
 class PlayListModel : public QObject
 {
