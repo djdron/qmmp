@@ -53,9 +53,10 @@ make
 Installation:
 make install INSTALL_ROOT=/usr/local
 
+If someone module doesn't build or doesn't needed you can disable it in qmmp-plugin-pack.pri file - just comment
+corresponding line( symbol '#') or execute qmake with special parameters:
+qmake DISABLED_PLUGINS+=XMP_PLUGIN DISABLED_PLUGINS+=FFAP_PLUGIN
 
-If someone module doesn't build or doesn't needed you can disable it
-in qmmp-plugin-pack.pri file - just comment corresponding line( symbol '#').
 Attention! By default all plugins are enabled by default.
 
 Changing shared library install path (needed by some 64-bit distributions).
