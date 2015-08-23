@@ -5,7 +5,7 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
-ADD_DEFINITIONS(-DLIB_DIR=\\\"\\/${LIB_DIR}\\\")
+ADD_DEFINITIONS(-DLIB_DIR=\\\"/${LIB_DIR}\\\")
 ADD_DEFINITIONS(-DQMMP_INSTALL_PREFIX=\\\"${CMAKE_INSTALL_PREFIX}\\\")
 
 IF(NOT QMMP_VERSION_STABLE) #add svn revision
