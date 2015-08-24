@@ -10,6 +10,9 @@
 カザフ語:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
+ギリシャ語:
+    Dimitrios Glentadakis
+
 スペイン語:
     Félix Medrano <xukosky@yahoo.es>
 
@@ -24,14 +27,17 @@
 
 チェコ語:
     Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 ドイツ語:
+    Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
 トルコ語:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 ハンガリー語:
     Németh Gábor <sutee84@freemail.hu>
@@ -42,12 +48,14 @@
     Heitor Thury Barreiros Barbosa <hthury@gmail.com>
 
 フランス語:
+    Sébastien Aperghis-Tramoni (maddingue)
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 ヘブライ語:
     Genghis Khan <genghiskhan@gmx.ca>
 
 ポーランド語:
+    Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
 
 ポルトガル語:
