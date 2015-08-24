@@ -84,3 +84,4 @@ LEGEND
 
 0.8.8
 [*] qmmp-0.8.8
+[*] libsidplayfp-1.8.1
