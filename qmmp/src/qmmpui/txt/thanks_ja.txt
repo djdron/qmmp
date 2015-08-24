@@ -7,10 +7,12 @@
     Brice Videau <brice.videau@gmail.com> - バグ改修
     Cristian Rodríguez <judas.iscariote@gmail.com> - scrobbler 改修
     Csaba Hruska <csaba.hruska@gmail.com> - FFmpeg プラグイン改修
-    Dmitry Kostin <kostindima@gmail.com> - iso.wv サポート
+    Дмитрий Костин (Dmitry Kostin) <kostindima@gmail.com> - iso.wv サポート
+    Дмитрий Мишаров (Dmitry Misharov) <Dmitry.Misharov@gmail.com> - アルバムアーティストのタグ情報のサポート
     Evgeny Gleyzerman <evgley@gmail.com> - cue 解析の改良
     Ferdinand Vesely <erdofves@gmail.com> - scrobbler の改良
     Геннадий Моцьо (Gennadi Motsyo) <drool@altlinux.ru> - バグ報告
+    洪任諭 (Hon Jen Yee) (PCMan) <pcman.tw@gmail.com> - 最適化
     Вадим Калинников (Vadim Kalinnikov) <moose@ylsoftware.com> - ホスト提供
     Erik Ölsar <erlk.ozlr@gmail.com> - スキン化カーソル, UI 改良
     Funda Wang <fundawang@gmail.com> - cmake ファイル改修
@@ -22,4 +24,5 @@
     Karel Volný <kvolny@redhat.com> - 各種改修
     Sebastian Pipping <webmaster@hartwork.org> - bs2b パッチ
     Stefan Koelling <stefankoelling.ext@googlemail.com> - ビルド改修
+    Ville Skyttä - ModPlug プラグイン改良
     Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin パッチ
