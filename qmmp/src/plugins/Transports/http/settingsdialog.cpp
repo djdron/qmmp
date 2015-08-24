@@ -50,7 +50,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     pos = m_ui.encaAnalyserComboBox->findText(settings.value("enca_lang", langs[n-1]).toString());
     m_ui.encaAnalyserComboBox->setCurrentIndex(pos);
 #else
-    ui.autoCharsetCheckBox->setEnabled(false);
+    m_ui.autoCharsetCheckBox->setEnabled(false);
 #endif
     settings.endGroup();
 }
