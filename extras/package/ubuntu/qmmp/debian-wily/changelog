@@ -1,168 +1,157 @@
-qmmp (0.8.8-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.8-1ubuntu1~wily0) wily; urgency=medium
 
   * New upstream release.
 
  -- Ilya Kotov <forkotov02@hotmail.ru>  Tue, 25 Aug 2015 16:36:06 +0300
 
-qmmp (0.8.7-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.7-1ubuntu1~vivid0) vivid; urgency=medium
 
   * New upstream release.
 
  -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Aug 2015 10:13:13 +0300
 
-qmmp (0.8.6-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.6-1ubuntu1~vivid0) vivid; urgency=medium
 
   * New upstream release.
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 08 Aug 2015 22:10:52 +0300
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 08 Aug 2015 22:10:53 +0300
 
-qmmp (0.8.5-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.5-1ubuntu1~vivid0) vivid; urgency=medium
 
   * New upstream release.
 
  -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 06 Jun 2015 19:49:46 +0300
 
-qmmp (0.8.4-1ubuntu3~trusty0) trusty; urgency=medium
+qmmp (0.8.4-1ubuntu3~vivid0) vivid; urgency=medium
 
   * Rebuild with new taglib.
 
  -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 25 Apr 2015 15:16:40 +0300
 
-qmmp (0.8.4-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.4-1ubuntu1~vivid0) vivid; urgency=medium
 
   * New upstream release.
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 08 Apr 2015 18:31:21 +0300
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 08 Apr 2015 18:31:22 +0300
 
-qmmp (0.8.3-1ubuntu1~trusty0) trusty; urgency=medium
-
-  * New upstream release.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Mon, 05 Jan 2015 13:07:18 +0300
-
-qmmp (0.8.2-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.2-1) unstable; urgency=low
 
   * New upstream release.
+    + Removed patches (everything applied upstream).
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Mon, 13 Oct 2014 17:49:07 +0400
+ -- Matteo Cypriani <mcy@lm7.fr>  Mon, 20 Oct 2014 12:39:10 -0400
 
-qmmp (0.8.1-1ubuntu1~trusty0) trusty; urgency=medium
-
-  * New upstream release.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 06 Aug 2014 18:34:23 +0400
-
-qmmp (0.8.0-1ubuntu2~trusty0) trusty; urgency=medium
-
-  * Fixed *.install files.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Jul 2014 16:15:00 +0400
-
-qmmp (0.8.0-1ubuntu1~trusty0) trusty; urgency=medium
+qmmp (0.8.1-1) unstable; urgency=medium
 
   * New upstream release.
+  * Adoption. (Closes: #750924)
+  * Un-split the package: libqmmp* are now into the main qmmp package,
+    installed as private libraries (/usr/lib/qmmp/libqmmp*).
+  * Switch to debhelper 9 and format 3.0 (quilt).
+  * Bump Standards-Version to 3.9.6.
+  * debian/copyright:
+    + Switch to format 1.0.
+    + Full copyright review (thanks to Thomas Preud'homme): update dates, add
+      missing authors, add missing exceptions.
+    + Relicense debian/* under GPL-2+, with authorisation of the former
+      maintainer, Eugene V. Lyubimkin (cf. #750924).
+  * debian/control:
+    + Simplify Build-Depends (remove most version numbers).
+    + Add missing Build-Depends: qtchooser, libcdio-dev, libopus-dev,
+      libopusfile-dev, libsidplayfp-dev, libenca-dev.
+    + qmmp now Suggests mplayer2.
+    + Add Vcs-Git and Vcs-Browser fields.
+    + Update Homepage.
+    + Update qmmp's Description.
+  * debian/rules:
+    + Simplify.
+    + Don't call cmake directly, use dh_auto_configure instead.
+    + Add verbose build variables (commented-out).
+    + Add CPPFLAGS to CFLAGS and CXXFLAGS (fixes hardening).
+    + Add -Wl,--as-needed to LDFLAGS to avoid unneeded dependencies for
+      plugins.
+  * debian/patches:
+    + Actually remove 010-libav10-support.patch.
+    + Add allows_one_to_typo.patch.
+    + Add desktop_files.patch.
+  * debian/watch: add "debian uupdate".
+  * Add debian/upstream/metadata (DEP-12).
+  * Add lintian override (spellcheck false positive on libqmmpui).
+  * Remove useless debian/README.source.
+  * Remove useless debian/README.Debian (Opus is supported now).
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Jul 2014 09:36:25 +0400
+ -- Matteo Cypriani <mcy@lm7.fr>  Mon, 06 Oct 2014 17:03:56 -0400
 
-qmmp (0.7.7-1ubuntu1~trusty0) trusty; urgency=medium
-
-  * New upstream release.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Fri, 23 May 2014 18:37:36 +0400
-
-qmmp (0.7.6-1ubuntu1~trusty0) trusty; urgency=low
-
-  * New upstream release.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 05 Apr 2014 15:34:35 +0400
-
-qmmp (0.7.5-1ubuntu3~saucy0) saucy; urgency=low
-
-  * Fixed original sources again.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Feb 2014 18:46:54 +0400
-
-qmmp (0.7.5-1ubuntu2~saucy0) saucy; urgency=low
-
-  * Fixed original sources.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 12 Feb 2014 18:41:20 +0400
-
-qmmp (0.7.5-1ubuntu1~saucy0) saucy; urgency=low
-
-  * New upstream release.
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Tue, 11 Feb 2014 22:07:33 +0400
-
-qmmp (0.7.4-1ubuntu1~saucy0) saucy; urgency=low
-
-  * New upstream release
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Tue, 24 Dec 2013 20:40:17 +0400
-
-qmmp (0.7.3-1ubuntu1~saucy0) saucy; urgency=low
-
-  * New upstream release
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 02 Oct 2013 20:12:22 +0400
-
-qmmp (0.7.2-1ubuntu1~raring0) raring; urgency=low
-
-  * New upstream release
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Mon, 26 Aug 2013 23:11:21 +0400
-
-qmmp (0.7.1-1ubuntu1~raring1) raring; urgency=low
-
-  * New upstream release
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Fri, 31 May 2013 18:27:19 +0400
-
-qmmp (0.7.0-1ubuntu2~raring0) raring; urgency=low
+qmmp (0.7.6-2) unstable; urgency=medium
 
   * debian/control:
-    - New dependency: libenca-dev.
-    - Changed homepage.
+    - Typo fix: s/conveter/converter/. (Closes: #746181)
+    - Suggest udisks2 instead of udisks on linux. Already supported upstream
+      since 0.7.0. (Closes: #750513)
+    - libqmmpui-dev now depends on libqmmp-dev. Suggested by upstream.
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 20 Apr 2013 10:02:28 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Sun, 08 Jun 2014 17:27:05 +0300
 
-qmmp (0.7.0-1ubuntu1~quantal1) quantal; urgency=low
+qmmp (0.7.6-1) experimental; urgency=medium
 
+  * New upstream release.
+    - Uploading to experimental until libav10 transition is completed.
+  * debian/patches:
+    - 010-libav10-support.patch: removed, implemented in a different way
+      upstream.
+
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Wed, 23 Apr 2014 21:01:06 +0300
+
+qmmp (0.7.5-1) unstable; urgency=low
+
+  * New upstream release.
   * debian/control:
-    - Fixed suggestions.
-    - New dependency: libqmmui-dev requeres libqmmp-dev.
+    - Added quilt to Build-Depends.
+    - Bumped Standards-Version to 3.9.5, no changes needed.
+  * debian/rules:
+    - Use quilt sequence.
+  * debian/patches:
+    - New patch '010-libav10-support.patch' by Sebastian Ramacher.
+      (Closes: #739378)
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Fri, 12 Apr 2013 21:58:18 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Sat, 22 Feb 2014 15:02:54 +0200
 
-qmmp (0.7.0-1ubuntu1~quantal0) quantal; urgency=low
+qmmp (0.7.4-1) unstable; urgency=low
 
-  * New upstream release
+  * New upstream release.
+  * debian/copyright:
+    - Updated list of translators.
 
- -- Ilya <forkotov02@hotmail.ru>  Thu, 11 Apr 2013 19:18:39 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Thu, 26 Dec 2013 14:13:22 +0200
 
-qmmp (0.6.8-1ubuntu2~quantal1) quantal; urgency=low
+qmmp (0.7.3-1) unstable; urgency=low
 
-  * New upstream release
+  * New upstream relese.
 
- -- Ilya Kotov <forkotov02@jotmail.ru>  Mon, 25 Mar 2013 20:33:44 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Sat, 05 Oct 2013 16:53:22 +0300
 
-qmmp (0.6.7-1ubuntu1~quantal0) quantal; urgency=low
+qmmp (0.7.1-1) unstable; urgency=low
 
-  * New upstream release
+  * New upstream release.
+  * debian/control:
+    - Bumped Standards-Version to 3.9.4, no changes needed.
+  * debian/rules:
+    - Use dpkg-provided buildflags if possible.
+    - Enable verbose building.
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Wed, 20 Feb 2013 22:17:54 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Mon, 24 Jun 2013 21:28:47 +0300
 
-qmmp (0.6.6-1ubuntu3~quantal0) quantal; urgency=low
+qmmp (0.7.0-1) experimental; urgency=low
 
-  * Added pkg-config files
+  * New upstream release.
+  * debian/copyright:
+    - Updated upstream copyrights and licenses.
+  * debian/control:
+    - Updated list of features.
+  * debian/libqmmp{,ui}0.install:
+    - Updated for 0.7.x upstream releases.
 
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 09 Feb 2013 20:08:39 +0400
-
-qmmp (0.6.6-1ubuntu2~quantal0) quantal; urgency=low
-
-  * Backported from debian experimental
-
- -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 03 Feb 2013 12:10:06 +0400
+ -- Eugene V. Lyubimkin <jackyf@debian.org>  Sun, 21 Apr 2013 12:34:22 +0300
 
 qmmp (0.6.6-1) experimental; urgency=low
 

@@ -1,0 +1,95 @@
+Source: qmmp
+Section: sound
+Priority: optional
+Maintainer: Matteo Cypriani <mcy@lm7.fr>
+Build-Depends: debhelper (>= 9), cmake, pkg-config, qtchooser, libqt4-dev,
+  libqt4-opengl-dev, libx11-dev, oss4-dev, libmad0-dev, libvorbis-dev,
+  libasound2-dev [linux-any], libtag1-dev, libcurl4-gnutls-dev, libmms-dev,
+  libflac-dev, libmpcdec-dev, libjack-dev, libsamplerate0-dev, libmodplug-dev,
+  libsndfile1-dev, libwavpack-dev, libpulse-dev, libavcodec-dev,
+  libavformat-dev, libcdio-dev, libcdio-paranoia-dev, libcddb2-dev,
+  libfaad-dev, libgme-dev, libopus-dev (>= 1.0.2), libopusfile-dev,
+  libwildmidi-dev, libsidplayfp-dev (>= 1.0.3), libbs2b-dev, libprojectm-dev,
+  libenca-dev
+Standards-Version: 3.9.6
+Homepage: http://qmmp.ylsoftware.com/
+Vcs-Git: git://anonscm.debian.org/collab-maint/qmmp.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/qmmp.git
+
+Package: qmmp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: qmmp-plugin-projectm, mplayer2, unzip, udisks2 [linux-any],
+  hal [!linux-any]
+Replaces: libqmmp0 (<< 0.8), libqmmpui0 (<< 0.8), libqmmp-misc (<< 0.8)
+Breaks: libqmmp0 (<< 0.8), libqmmpui0 (<< 0.8), libqmmp-misc (<< 0.8)
+Description: feature-rich audio player with support of many formats
+ Qmmp is feature-rich audio player with support of many formats.
+ It is written in Qt.
+ .
+ Audio formats supported:
+  - MPEG1 layer 2/3
+  - Ogg Vorbis
+  - Ogg Opus
+  - Native FLAC, Ogg FLAC
+  - Musepack
+  - WavePack
+  - tracker modules (mod, s3m, it, xm, etc)
+  - ADTS AAC
+  - CD Audio
+  - WMA, Monkey's Audio (and other formats provided by FFmpeg library)
+  - PCM WAVE (and other formats provided by libsndfile library)
+  - midi
+  - SID
+  - chiptune formats (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ,
+    VTX)
+ .
+ Audio output through:
+  - ALSA
+  - OSS
+  - PulseAudio
+  - JACK
+ .
+ DSP effects:
+  - BS2B effect
+  - sample rate converter
+  - LADSPA effects
+  - extra stereo
+  - crossfade
+ .
+ Other features:
+  - XMMS and Winamp 2.x skins support
+  - 10-band equalizer
+  - MP3, Vorbis, AAC, AAC+ streams support
+  - mms support
+  - MPRIS (1.0 and 2.0)
+  - removable device detection (via HAL or UDisks)
+  - video playback via Mplayer
+  - lyrics (using lyrics.wikia.com)
+  - cover art support
+  - CUE sheet support
+  - embedded CUE support (for FLAC and WavPack)
+  - multiple playlists
+  - automatic charset detection for cue files and ShoutCast metadata
+  - playlist formats: m3u, pls, xspf
+  - ReplayGain support
+  - Last.fm/Libre.fm scrobbler
+  - CDDB support
+  - audio converter
+  - stream browser
+  - audio formats converter
+  - external programs execution on track change
+  - ReplayGain scanner
+  - visualization (spectre analyzer, projectm)
+  - global hotkeys
+
+Package: qmmp-plugin-projectm
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: qmmp audio player -- projectM visualization plugin
+ Qmmp is feature-rich audio player with support of many formats.
+ It is written in Qt.
+ .
+ See 'qmmp' package for full description.
+ .
+ This package contains projectM visualization plugin for qmmp.

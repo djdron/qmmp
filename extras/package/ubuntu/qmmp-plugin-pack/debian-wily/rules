@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+DEBDIR=debian/tmp
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	MAKE_AUX_FLAGS = -j$(NUMJOBS)
+endif
+
+# For hardening (CPPFLAGS is not taken into account by upstream's build system)
+CFLAGS += $(CPPFLAGS)
+CXXFLAGS += $(CPPFLAGS)
+
+# Prevent useless dependencies
+LDFLAGS += -Wl,--as-needed
+
+# Extra pkg-config path
+export PKG_CONFIG_PATH=/usr/lib/qmmp/pkgconfig
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX=/usr -DLIB_DIR=lib/qmmp \
+	 -DCMAKE_INSTALL_RPATH=/usr/lib/qmmp \
+	 -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=TRUE \
+	 $(EXTRA_CMAKE_ARGS)
+
+override_dh_auto_build:
+	dh_auto_build -- $(MAKE_AUX_FLAGS)
+
+

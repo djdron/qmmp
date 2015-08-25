@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PLUGIN_PACK_VERSION=0.8.5
-UBUNTU_CODENAMES='precise trusty vivid'
+PLUGIN_PACK_VERSION=0.8.6
+UBUNTU_CODENAMES='precise trusty vivid wily'
 BUILD_ROOT=build-root
 
 

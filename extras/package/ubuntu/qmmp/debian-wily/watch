@@ -1,0 +1,2 @@
+version=3
+http://qmmp.ylsoftware.com/files/ qmmp-(.+)\.tar\.bz2 debian uupdate

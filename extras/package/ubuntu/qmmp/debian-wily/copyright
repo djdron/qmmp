@@ -1,0 +1,122 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Qmmp
+Upstream-Contact: Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com>
+Source: http://qmmp.ylsoftware.com/
+License: GPL-2+
+Comment:
+ Qmms' code is based on many different programs, whose authors do not all appear
+ here. Please refer to the upstream AUTHORS file provided in this package.
+
+Files: *
+Copyright:
+ ???? Florin Braghis <florin@libertv.ro>
+ 1999 Richard Boulton <richard@tartarus.org>
+ 1999 Johan Levin
+ 2000-2001 Brad Hughes <bhughes@trolltech.com>
+ 2002-2003 Nick Lamb <njl195@zepler.org.uk>
+ 2000-2004 Robert Leslie <rob@mars.org>
+ 2002-2006 Felipe Rivera <liebremx@users.sourceforge.net>
+ 2005 Giacomo Lozito <city_hunter@users.sf.net>
+ 2005-2006 XMMS2 Team
+ 2006 Kevin Ottens <ervin@kde.org>
+ 2007 projectM team
+ 2003-2007 Justin Karneges and Michail Pishchagin
+ 2008 Andrey Adreev <andreev00@gmail.com>
+ 2007-2008 Vladimir Kuznetsov <vovanec@gmail.com>
+ 2007-2008 Yuriy Zhuravlev <stalkerg@gmail.com>
+ 2009 Erik Ölsar <erlk.ozlr@gmail.com>
+ 2009 Sebastian Pipping <sebastian@pipping.org>
+ 2006-2009 Licq developers
+ 2009-2012 Artur Guzik <aguzik88@gmail.com>
+ 2005-2014 Ilya Kotov <forkotov02@hotmail.ru> or <trialuser02@gmail.com>
+ 2006-2014 Ricardo Villalba <rvm@users.sourceforge.net>
+License: GPL-2+
+
+Files: src/plugins/Effect/ladspa/ladspa.h
+Copyright:
+ 2000-2002 Richard W.E. Furse
+ 2000-2002 Paul Barton-Davis
+ 2000-2002 Stefan Westerfeld
+License: LGPL-2.1+
+
+Files: src/plugins/General/rgscan/gain_analysis.*
+Copyright:
+ 2001-2009 David Robinson
+ 2001-2009 Glen Sawyer
+License: LGPL-2.1+
+
+Files:
+ src/plugins/Input/opus/opusfile.*
+ src/plugins/Input/opus/opusproperties.h
+ src/plugins/Input/opus/tdebug.*
+Copyright:
+ 2002-2008 Scott Wheeler <wheeler@kde.org>
+ 2012 Lukáš Lalinský <lalinsky@gmail.com>
+License: LGPL-2.1 or MPL-1.1
+
+Files:
+ src/plugins/Input/vorbis/decoder_vorbis.*
+ src/plugins/Ui/skinned/inlines.h
+ src/plugins/Visual/analyzer/inlines.h
+ src/qmmp/buffer.h
+ src/qmmp/decoder.*
+ src/qmmp/output.*
+ src/qmmp/recycler*
+Copyright:
+ 2000-2001 Brad Hughes <bhughes@trolltech.com>
+License: home-made-BSD
+ Use, modification and distribution is allowed without limitation, warranty, or
+ liability of any kind.
+
+Files: src/plugins/Output/jack/bio2jack.*
+Copyright:
+ 2003-2006 Chris Morgan <cmorgan@alum.wpi.edu>
+License: LGPL-2.1+
+
+Files: debian/*
+Copyright:
+ 2008-2014 Eugene V. Lyubimkin <jackyf.devel@gmail.com>
+ 2014 Matteo Cypriani <mcy@lm7.fr>
+License: GPL-2+
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify it under
+ the terms of the GNU General Public License v2 or later as published by the
+ Free Software Foundation.
+ .
+ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU General Public License for Libraries for more
+ details.
+ .
+ On Debian machines, the full text of the GNU Lesser General Public License can
+ be found in the file /usr/share/common-licenses/GPL-2.
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License as published by the Free
+ Software Foundation; either version 2.1 of the License, or (at your option) any
+ later version.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ .
+ On Debian machines, the full text of the GNU Lesser General Public License can
+ be found in the file /usr/share/common-licenses/LGPL-2.1.
+
+License: LGPL-2.1
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License version 2.1 as published by
+ the Free Software Foundation.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ .
+ On Debian machines, the full text of the GNU Lesser General Public License can
+ be found in the file /usr/share/common-licenses/GPL-2.
+
+License: MPL-1.1
+ Alternatively, this file is available under the Mozilla Public License Version
+ 1.1. You may obtain a copy of the License at http://www.mozilla.org/MPL/
