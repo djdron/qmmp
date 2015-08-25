@@ -11,19 +11,25 @@ Chinois simplifié :
 
 Tchèque :
     Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 Néerlandais :
     Ronald Uitermark <ronald645@gmail.com>
 
 Français :
+    Sébastien Aperghis-Tramoni (maddingue)
     Stanislas Zeller <uncensored.assault@gmail.com>
 
-Galician:
+Galicien :
     Óscar Pereira <oscarpereira1989@gmail.com>
 
 Allemand :
+    Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Grec :
+    Dimitrios Glentadakis
 
 Hebrew:
     Genghis Khan <genghiskhan@gmx.ca>
@@ -44,6 +50,7 @@ Lituanien :
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Polonais :
+    Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
 
 Portugais :
@@ -64,7 +71,7 @@ Espagnol :
 Turc :
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 Ukrainien :
     Gennadi Motsyo <drool@altlinux.ru>
-

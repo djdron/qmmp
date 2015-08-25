@@ -11,19 +11,25 @@ Mandarim simplificado:
 
 Checo:
     Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 Holandês:
     Ronald Uitermark <ronald645@gmail.com>
 
 Francês:
+    Sébastien Aperghis-Tramoni (maddingue)
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Galego:
     Óscar Pereira <oscarpereira1989@gmail.com>
 
 Alemão:
+    Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Grego:
+    Dimitrios Glentadakis
 
 Hebraico:
     Genghis Khan <genghiskhan@gmx.ca>
@@ -44,6 +50,7 @@ Lituano:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Polaco:
+    Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
 
 Português:
@@ -64,7 +71,7 @@ Espanhol:
 Turco:
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 Ucraniano:
     Gennadi Motsyo <drool@altlinux.ru>
-

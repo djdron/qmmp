@@ -8,9 +8,11 @@ Dank an:
     Cristian Rodríguez <judas.iscariote@gmail.com> - Scrobbler-Korrekturen
     Csaba Hruska <csaba.hruska@gmail.com> - FFmpeg-Modulkorrekturen
     Dmitry Kostin <kostindima@gmail.com> - iso.wv-Unterstützung
+    Dmitry Misharov <Dmitry.Misharov@gmail.com> - Album-, Interpret-, Schlagwort-Unterstützung
     Evgeny Gleyzerman <evgley@gmail.com> - cue-Zerteilungsverbesserungen
     Ferdinand Vesely <erdofves@gmail.com> - Scrobbler-Verbesserungen
     Gennadi Motsyo <drool@altlinux.ru> - Fehlerberichte
+    Hon Jen Yee (PCMan) <pcman.tw@gmail.com> - Optimierung
     Vadim Kalinnikov <moose@ylsoftware.com> - Projekt-Hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - Mauszeigerdesigns, Benutzeroberflächenverbesserungen
     Funda Wang <fundawang@gmail.com> - cmake-Dateienkorrekturen
@@ -23,4 +25,5 @@ Dank an:
     Ryota Shimamoto <liangtai.s16@gmail.com> - FreeBSD-Patches
     Sebastian Pipping <webmaster@hartwork.org> - bs2b-Patches
     Stefan Koelling <stefankoelling.ext@googlemail.com> - einige Build-Korrekturen
+    Ville Skyttä - Verbesserungen des ModPlug-Moduls
     Yaakov Selkowitz <yselkowitz@gmail.com> - Cygwin-Patches

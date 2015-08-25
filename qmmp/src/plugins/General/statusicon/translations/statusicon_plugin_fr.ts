@@ -6,68 +6,68 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Status Icon Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon d&apos;icône de statut</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>Message bulle</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai, en ms :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>Infobulle</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Essayer de couper le nom du fichier en l&apos;absence d&apos;étiquette</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer la barre de progression</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparence : </translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille de la couverture : </translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation>32</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer le patron</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>utiliser les icônes standard</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="80"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Patron d&apos;infobulle</translation>
     </message>
 </context>
 <context>
@@ -75,37 +75,37 @@
     <message>
         <location filename="../statusicon.cpp" line="67"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Jouer</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="68"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="69"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrêter</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="71"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Suivant</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="72"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Précédent</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="74"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitter</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="129"/>
         <source>Now Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>En cours</translation>
     </message>
 </context>
 <context>
@@ -113,32 +113,32 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="30"/>
         <source>Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon d&apos;icône de statut</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon d&apos;icône de statut</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon d&apos;icône de statut pour Qmmp</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Written by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par :</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrêté</translation>
     </message>
 </context>
 </TS>

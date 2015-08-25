@@ -6,17 +6,17 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier raccourci</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Appuyez sur la combinaison de touches que vous voulez assigner</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer</translation>
     </message>
 </context>
 <context>
@@ -24,27 +24,27 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="30"/>
         <source>Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de raccourci clavier global</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="50"/>
         <source>About Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de raccourci clavier global</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de raccourci clavier global pour Qmmp</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce greffon ajoute un support pour des touches multimédia ou des combinaisons globales de touches</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -52,97 +52,97 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon de raccourci clavier global</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Action</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Raccourci</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="37"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Jouer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrêter</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="39"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="40"/>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Jouer / Pause</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="41"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Suivant</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="42"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Précédent</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer / Cacher</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
         <source>Volume +</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume +</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="45"/>
         <source>Volume -</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume -</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>
         <source>Forward 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Avance de 5 secondes</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="47"/>
         <source>Rewind 5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Retour de 5 secondes</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Jump to track</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauter à la piste</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Couper le son</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Avertissement</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Key sequence &apos;%1&apos; is already used</source>
-        <translation type="unfinished"></translation>
+        <translation>La séquence de touches &quot;%1&quot; est déjà utilisée</translation>
     </message>
 </context>
 </TS>

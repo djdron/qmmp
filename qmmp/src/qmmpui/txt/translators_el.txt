@@ -11,19 +11,25 @@
 
 Τσέχικα
     Karel Volný <kvolny@redhat.com>
+    Jaroslav Lichtblau
 
 Ολλανδικά
     Ronald Uitermark <ronald645@gmail.com>
 
 Γαλλικά
+    Sébastien Aperghis-Tramoni (maddingue)
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 Γαλικιανά
     Óscar Pereira <oscarpereira1989@gmail.com>
 
 Γερμανικά
+    Ettore Atalan
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Ελληνικά:
+    Δημήτριος Γλενταδάκης
 
 Εβραϊκά
     Genghis Khan <genghiskhan@gmx.ca>
@@ -44,6 +50,7 @@
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Πολωνικά
+    Daniel Krawczyk
     Grzegorz Gibas <amigib@gmail.com>
 
 Πορτογαλικά
@@ -64,7 +71,7 @@
 Τουρκικά
     Mustafa GUNAY <mustafagunay@pgmail.com>
     Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+    Uğur KUYU
 
 Ουκρανικά
     Gennadi Motsyo <drool@altlinux.ru>
-

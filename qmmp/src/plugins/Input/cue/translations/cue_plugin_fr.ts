@@ -6,22 +6,22 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="44"/>
         <source>CUE Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de fichiers .cue</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="47"/>
         <source>CUE Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers .cue</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="98"/>
         <source>About CUE Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon de fichiers .cue</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="99"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon de fichiers .cue pour Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="100"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>CUE Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon de fichiers .cue</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -44,12 +44,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Load incorrect cue sheets if possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Charger les fichiers .cue incorrects si possible</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>CUE encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Encodage des fichiers .cue</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
