@@ -412,12 +412,14 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->sendFinished();
                 StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
-                StateHandler::instance()->dispatch(Qmmp::Playing);
                 m_decoder->next();
                 StateHandler::instance()->dispatch(m_decoder->totalTime());
                 m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
+                m_output->mutex()->lock();
                 m_output->seek(0); //reset counter
+                m_output->mutex()->unlock();
                 addOffset(); //offset
+                StateHandler::instance()->dispatch(Qmmp::Playing);
                 mutex()->unlock();
                 continue;
             }
@@ -435,9 +437,11 @@ void QmmpAudioEngine::run()
                     StateHandler::instance()->sendFinished();
                     StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
                     StateHandler::instance()->dispatch(Qmmp::Buffering);
-                    StateHandler::instance()->dispatch(Qmmp::Playing);
                     StateHandler::instance()->dispatch(m_decoder->totalTime());
+                    m_output->mutex()->lock();
                     m_output->seek(0); //reset counter
+                    m_output->mutex()->unlock();
+                    StateHandler::instance()->dispatch(Qmmp::Playing);
                     mutex()->unlock();
                     sendMetaData();
                     addOffset(); //offset
