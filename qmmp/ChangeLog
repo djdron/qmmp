@@ -892,6 +892,96 @@ Version 0.8.0
 * updated Polish translation (Grzegorz Gibas)
 * updated Lithuanian translation (Algirdas Butkus)
 
+Version 0.8.1
+* added rusxmms patch autodetection for all supported platforms
+* added application information to the windows executable
+* fixed --pl-dump/--pl-play command line options
+* fixed regressions in the mpris 1.0 support
+* fixed selection behaviour in the playlist when using keyboard
+* fixed disc number disappearing when using flac with embedded cue
+* fixed main window activation
+* fixed segmentation fault when moving track in the group mode
+* fixed not working 'exit' action when option 'hide on close' is enabled
+* fixed freezing in the alsa plugin
+* fixed m4a support
+* fixed clearing a key combination in the hotkey plugin
+* removed duplicate extensions from the file association page
+
+Version 0.8.2
+* added Portuguese translation (Sérgio Marques)
+* added transifex integration
+* added webm support
+* improved image scaling quality
+* fixed xspf parsing
+* fixed cover loading sequence
+* fixed main window activation under windows
+* fixed analyzer color settings
+* fixed typos (Matteo Cypriani)
+* fixed possible segmentation fault in the opus plugin
+* fixed separator of the file filters
+* reduced tag reading delay (requires TagLib 1.8 or higher)
+* updated Russian translation
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Japanese translation (RyōTa SimaMoto)
+
+Version 0.8.3
+* reduced time of the 'Randomize List' and "Remove Duplicates" operations
+* fixed ffmpeg 2.5 support
+* fixed 24/32 bit modes in the equalizer
+* fixed skin parsing
+* fixed autoplay when playlist was opened from command line
+* updated Portuguese translation (Sérgio Marques)
+* updated Czech translation (Jaroslav Lichtblau)
+
+Version 0.8.4
+* added icons for some actions
+* fixed multiple connections to same signal when switching playlists
+* fixed api documentation
+* fixed playlist selector drawing bug
+* fixed Portuguese translation (Sérgio Marques)
+* fixed Hebrew translation (Genghis Khan)
+* updated Turkish translation (Uğur KUYU)
+
+Version 0.8.5
+* added user data directory support
+* increased player thread priority under windows
+* fixed playlist resizing on RTL locales
+* fixed vorbis comment support
+* fixed build using qmake
+* fixed cover disappearing bug
+* fixed windows executable file description
+* fixed settings form
+* fixed problem with path separators under windows
+* fixed libre.fm support
+* fixed some skin parsing
+* fixed support of some skins
+* fixed modplug plugin settings
+
+Version 0.8.6
+* added *.med files support (Ville Skyttä)
+* added s3m, stm and xm extensions to desktop files (Ville Skyttä)
+* updated Japanese translation (RyoTa SimaMoto)
+* improved global hotkey settings
+* fixed main window activation
+* fixed minimizing throw taskbar under windows
+* fixed some skins parsing
+* fixed config directory path
+* fixed text scroller colors
+* fixed home page
+* fixed details dialog form
+* fixed documentation
+* fixed support of keyboards with single play/pause button
+
+Version 0.8.7
+* fixed opus plugin
+* fixed typos
+
+Version 0.8.8
+* fixed crash when quitting while playlist is being populated
+* fixed some skins support
+* fixed documentation
+* fixed cmake support
+
 Version 0.9.0
 * added audio-channel sequence converter
 * added 9 channels support to equalizer

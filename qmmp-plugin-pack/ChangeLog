@@ -124,6 +124,43 @@ Version 0.8.0
 * updated Polish translation (Grzegorz Gibas)
 * updated Lithuanian translation (Algirdas Butkus)
 
+Version 0.8.1
+* added rusxmms patch autodetection to the mpg123 plugin
+* fixed selection behaviour when using keyboard in the qsui plugin
+* fixed main window activation in the qsui plugin
+
+Version 0.8.2
+* added Portuguese translation (Sérgio Marques)
+* added transifex integration
+* added feature to create a new playlist on double click in the qsui plugin (patch by Evgeniy Alekseev)
+* improved image scaling quality
+* fixed color settings in the qsui plugin
+* reduced tag reading delay in the mpg123 plugin
+
+Version 0.8.3
+* fixed qsui plugin:
+  - fixed displaying of the symbol '&' in the tab name
+  - fixed displaying name of the current directory
+
+Version 0.8.4
+* fixed qsui plugin:
+  - fixed Ukrainian translation (Gennadi Motsyo)
+  - fixed custom color scheme usage
+  - optimized playlist drawing
+  - improved cover scaling quality
+* fixed clang warnings in the ffap plugin
+
+Version 0.8.5
+* fixed Japanese translation (RyoTa SimaMoto)
+* fixed cmake support
+* fixed qsui plugin:
+  - fixed problem with "jumping" slider
+  - restore maximized mode after hide/show cycle
+  - write settings when main window hides
+
+Version 0.8.6
+* fixed documentation
+
 Version 0.9.0
 * ported to qmmp 0.9 api
 * added xmp plugin
