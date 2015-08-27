@@ -104,6 +104,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
         connect(model, SIGNAL(nameChanged(QString)), SLOT(updateTabs()));
     }
     m_slider = new PositionSlider(this);
+    m_slider->setFocusPolicy(Qt::NoFocus);
     m_slider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_ui.progressToolBar->addWidget(m_slider);
     //prepare visualization
@@ -132,6 +133,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //volume
     m_ui.progressToolBar->addSeparator();
     m_volumeSlider = new QSlider(Qt::Horizontal, this);
+    m_volumeSlider->setFocusPolicy(Qt::NoFocus);
     m_volumeSlider->setFixedWidth(100);
     m_volumeSlider->setRange(0,100);
     QIcon volumeIcon = QIcon::fromTheme("audio-volume-high", QIcon(":/qsui/audio-volume-high.png"));
