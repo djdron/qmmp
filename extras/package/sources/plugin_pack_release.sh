@@ -9,7 +9,7 @@ cd cache
 
 echo "Receiving sources.."
 if [ ! -d "qmmp-plugin-pack-svn" ]; then
-svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-0.8/ qmmp-plugin-pack-svn
+svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-0.9/ qmmp-plugin-pack-svn
 fi
 
 cd qmmp-plugin-pack-svn
