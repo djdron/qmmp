@@ -1036,3 +1036,9 @@ Version 0.2.3
 * обновлён польский перевод (Daniel Krawczyk)
 * обновлён греческий перевод (Dimitrios Glentadakis)
 * обновлён японский перевод (RyoTa SimaMoto)
+
+Версия 1.0.0 PREVIEW
+* переход на Qt5
+* удалён модуль ffmpeg_legacy
+* удалён устаревший модуль udisks
+* удалена поддержка версий taglib ниже 1.8
