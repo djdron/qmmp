@@ -55,9 +55,10 @@ void PositionSlider::mousePressEvent (QMouseEvent *event)
     QSlider::mousePressEvent(event);
 }
 
-void PositionSlider::mouseReleaseEvent (QMouseEvent *)
+void PositionSlider::mouseReleaseEvent (QMouseEvent *event)
 {
     setSliderDown (false);
+    QSlider::mouseReleaseEvent(event);
 }
 
 void PositionSlider::wheelEvent(QWheelEvent *event)
