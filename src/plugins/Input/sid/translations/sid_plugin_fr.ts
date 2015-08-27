@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodersidfactory.cpp" line="69"/>
         <source>SID Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon SID</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="71"/>
         <source>SID Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers SID</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="125"/>
         <source>About SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos du greffon audio SID</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="126"/>
         <source>Qmmp SID Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon audio SID pour Qmmp</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="127"/>
         <source>This plugin plays Commodore 64 music files using libsidplayfp library</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce greffon permet de jouer les fichiers de musiques Commodore 64 en utilisant la bibliothèque libsidplayfp</translation>
     </message>
     <message>
         <location filename="../decodersidfactory.cpp" line="128"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrit par : Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,52 +39,52 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>SID Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration du greffon SID</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Fast resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>Ré-échantillonnage rapide</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taux d’échantillonnage :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>HVSC database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de base HVSC :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="76"/>
         <source>Resampling method:</source>
-        <translation type="unfinished"></translation>
+        <translation>Méthode de ré-échantillonnage :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Defaults song length, sec:</source>
-        <translation type="unfinished"></translation>
+        <translation>Durée de musique par défaut, en secondes :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Enable HVSC song length database</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer la base de durée des musiques HVSC :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Emulation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Émulation :</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="41"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44 100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="42"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48 000 Hz</translation>
     </message>
 </context>
 </TS>

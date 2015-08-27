@@ -1186,32 +1186,32 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробники:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Володимир Кузнєцов &lt;vovanec@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="49"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:</source>
-        <translation type="unfinished"></translation>
+        <translation>Оформлення:</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="51"/>
         <source>Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Андрій Андрєєв &lt;andreev00@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="52"/>
         <source>sixixfive &lt;http://sixsixfive.deviantart.com/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

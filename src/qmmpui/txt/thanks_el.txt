@@ -8,9 +8,11 @@
     Cristian Rodríguez <judas.iscariote@gmail.com> - διορθώσεις scrobbler
     Csaba Hruska <csaba.hruska@gmail.com> - διορθώσεις πρόσθετου FFmpeg plugin
     Dmitry Kostin <kostindima@gmail.com> - υποστήριξη iso.wv
+    Dmitry Misharov <Dmitry.Misharov@gmail.com> - album artist tag support
     Evgeny Gleyzerman <evgley@gmail.com> - βελτιώσεις ανάλυσης cue
     Ferdinand Vesely <erdofves@gmail.com> - βελτιώσεις του scrobbler
     Gennadi Motsyo <drool@altlinux.ru> - αναφορές σφαλμάτων
+    Hon Jen Yee (PCMan) <pcman.tw@gmail.com> - βελτιστοποίηση
     Vadim Kalinnikov <moose@ylsoftware.com> - φιλοξενία του έργου
     Erik Ölsar <erlk.ozlr@gmail.com> - θεματοποιημένοι δρομείς, βελτιώσεις περιβάλλοντος χρήστη
     Funda Wang <fundawang@gmail.com> - διορθώσεις αρχείων cmake
@@ -23,4 +25,5 @@
     Ryota Shimamoto <liangtai.s16@gmail.com> - διορθωτικά FreeBSD
     Sebastian Pipping <webmaster@hartwork.org> - διορθωτικά bs2b
     Stefan Koelling <stefankoelling.ext@googlemail.com> - μερικά διορθωτικά στην κατασκευή
+    Ville Skyttä - βελτιώσεις στο πρόσθετο ModPlug
     Yaakov Selkowitz <yselkowitz@gmail.com> - διορθωτικά cygwin
