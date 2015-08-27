@@ -78,29 +78,28 @@ FORMS += forms/mainwindow.ui \
 
 RESOURCES += translations/translations.qrc resources/qsui_resources.qrc txt/qsui_txt.qrc
 
-
-
 TEMPLATE = lib
-unix:QMAKE_LIBDIR += ../../../../lib
-unix:LIBS += -lqmmpui -lqmmp
-
-win32:QMAKE_LIBDIR += ../../../../bin
-win32:LIBS += -lqmmpui0 -lqmmp0
 
 CONFIG += warn_on \
           plugin
 
-
 TARGET = $$PLUGINS_PREFIX/Ui/qsui
 
 unix{
-isEmpty(LIB_DIR){
-LIB_DIR = /lib
+  QMAKE_LIBDIR += ../../../../lib
+  LIBS += -lqmmpui -lqmmp
+  isEmpty(LIB_DIR){
+    LIB_DIR = /lib
+  }  
+
+  target.path = $$LIB_DIR/qmmp/Ui
+  INSTALLS += target
 }
 
-target.path = $$LIB_DIR/qmmp/Ui
-INSTALLS += target
-
+win32{
+   QMAKE_LIBDIR += ../../../../bin
+   LIBS += -lqmmpui0 -lqmmp0
+   INCLUDEPATH += ../../ ./
 }
 
 INCLUDEPATH += ../../../
