@@ -1,6 +1,6 @@
 #!/bin/sh
 
-QMMP_VERSION=0.8.8
+QMMP_VERSION=0.9.0
 UBUNTU_CODENAMES='precise trusty vivid wily'
 BUILD_ROOT=build-root
 

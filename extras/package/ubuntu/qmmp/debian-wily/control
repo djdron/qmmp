@@ -21,8 +21,8 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: qmmp-plugin-projectm, mplayer2, unzip, udisks2 [linux-any],
   hal [!linux-any]
-Replaces: libqmmp0 (<< 0.8), libqmmpui0 (<< 0.8), libqmmp-misc (<< 0.8)
-Breaks: libqmmp0 (<< 0.8), libqmmpui0 (<< 0.8), libqmmp-misc (<< 0.8)
+Replaces: libqmmp0 (<< 0.9), libqmmpui0 (<< 0.9), libqmmp-misc (<< 0.9)
+Breaks: libqmmp0 (<< 0.9), libqmmpui0 (<< 0.9), libqmmp-misc (<< 0.9)
 Description: feature-rich audio player with support of many formats
  Qmmp is feature-rich audio player with support of many formats.
  It is written in Qt.
