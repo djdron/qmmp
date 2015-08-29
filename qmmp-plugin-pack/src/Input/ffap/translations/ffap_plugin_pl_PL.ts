@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="pl_PL">
 <context>
     <name>DecoderFFapFactory</name>
     <message>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="62"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="63"/>
         <source>kbps</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../ffapmetadatamodel.cpp" line="64"/>
         <source>KB</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
