@@ -74,7 +74,6 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_useEq = false;
     m_muted = false;
     m_settings = QmmpSettings::instance();
-    connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
 }
 
 OutputWriter::~OutputWriter()

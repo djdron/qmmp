@@ -104,8 +104,6 @@ public:
      * Returns sample size in bytes.
      */
     int sampleSize() const;
-
-private slots:
     void updateEqSettings();
 
 private:

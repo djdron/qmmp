@@ -49,6 +49,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_replayGain = new ReplayGain;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
+    connect(m_settings, SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
     updateReplayGainSettings();
     reset();
     m_instance = this;
@@ -327,6 +328,14 @@ void QmmpAudioEngine::updateReplayGainSettings()
                                  m_settings->replayGainPreamp(),
                                  m_settings->replayGainDefaultGain(),
                                  m_settings->replayGainPreventClipping());
+    mutex()->unlock();
+}
+
+void QmmpAudioEngine::updateEqSettings()
+{
+    mutex()->lock();
+    if(m_output)
+        m_output->updateEqSettings();
     mutex()->unlock();
 }
 

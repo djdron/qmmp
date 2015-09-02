@@ -61,6 +61,7 @@ public:
 private slots:
     void finish();
     void updateReplayGainSettings();
+    void updateEqSettings();
 
 private:
     void run();
