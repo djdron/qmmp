@@ -128,7 +128,6 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_ENCA (автоматичне визначення кодування);
 - USE_SKINNED (стандартний інтерфейс користувача);
 - USE_DIR_ASSOC (прив'язка до mime-типу inode/directory);
-- USE_RPATH (вмикає опцію CMAKE_INSTALL_RPATH_USE_LINK_PATH, див. http://www.cmake.org/Wiki/CMake_RPATH_handling)
 
 Також ви можете використовувати ccmake для зміни конфігурації модулів.
 За замовчуванням програма буде встановлена в /usr/local. Ви можете змінити цей шлях командою:

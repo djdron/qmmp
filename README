@@ -132,7 +132,6 @@ Available options:
 - USE_SKINNED (standard skinned UI);
 - USE_QSUI (simple UI);
 - USE_DIR_ASSOC (inode/directory mime type association);
-- USE_RPATH (enables CMAKE_INSTALL_RPATH_USE_LINK_PATH, see http://www.cmake.org/Wiki/CMake_RPATH_handling for details)
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
