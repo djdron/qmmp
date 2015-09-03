@@ -130,7 +130,6 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_SKINNED (стандартный пользовательский интерфейс);
 - USE_QSUI (простой интерфейс);
 - USE_DIR_ASSOC (привязка к mime-типу inode/directory);
-- USE_RPATH (включает опцию CMAKE_INSTALL_RPATH_USE_LINK_PATH, см. http://www.cmake.org/Wiki/CMake_RPATH_handling)
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
