@@ -55,7 +55,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     qDebug("MainWindow: detected wm: %s", qPrintable(WindowSystem::netWindowManagerName()));
 #endif
     m_vis = 0;
@@ -283,7 +283,7 @@ void MainWindow::readSettings()
         ACTION(ActionManager::NO_PL_ADVANCE)->setChecked(m_ui_settings->isNoPlayListAdvance());
         m_update = true;
     }
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
     WindowSystem::setWinHint(winId(), "player", "Qmmp");
 #endif
@@ -342,7 +342,7 @@ void MainWindow::toggleVisibility()
         activateWindow();
         m_playlist->setVisible(m_display->isPlaylistVisible());
         m_equalizer->setVisible(m_display->isEqualizerVisible());
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
         if(WindowSystem::netWindowManagerName() == "Metacity")
         {
             m_playlist->activateWindow();
@@ -355,7 +355,7 @@ void MainWindow::toggleVisibility()
         {
             showNormal();
         }
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
         WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
         WindowSystem::setWinHint(winId(), "player", "Qmmp");
         raise();

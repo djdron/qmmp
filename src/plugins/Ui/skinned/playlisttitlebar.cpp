@@ -184,7 +184,7 @@ void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
     QPoint npos = event->globalPos()-pos;
     if (m_shaded && m_resize)
     {
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
         //avoid right corner moving during resize
         if(layoutDirection() == Qt::RightToLeft)
             WindowSystem::revertGravity(m_pl->winId());

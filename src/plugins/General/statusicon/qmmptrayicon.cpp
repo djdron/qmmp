@@ -25,7 +25,7 @@
 #include <qmmp/soundcore.h>
 
 #include "qmmptrayicon.h"
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 #include "statusiconpopupwidget.h"
 #endif
 
@@ -39,7 +39,7 @@ QmmpTrayIcon::QmmpTrayIcon(QObject *parent)
 QmmpTrayIcon::~QmmpTrayIcon()
 {
 }
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 void QmmpTrayIcon::showNiceToolTip(bool value)
 {
     m_showNiceToolTip = value;

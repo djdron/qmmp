@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include <QtGlobal>
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 #include <QSettings>
 #include <QX11Info>
 #include <QEvent>

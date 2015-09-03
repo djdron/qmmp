@@ -98,7 +98,7 @@ class PlayList : public QWidget
         virtual void changeEvent (QEvent*);
         virtual void closeEvent (QCloseEvent*);
         virtual void keyPressEvent (QKeyEvent*);
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
         virtual bool event (QEvent *event);
 #endif
         QMenu *m_addMenu;

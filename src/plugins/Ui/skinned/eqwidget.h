@@ -79,7 +79,7 @@ private:
     virtual void keyPressEvent (QKeyEvent *);
     virtual void changeEvent(QEvent*);
     virtual void closeEvent(QCloseEvent*);
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     virtual bool event (QEvent *event);
 #endif
 

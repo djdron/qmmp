@@ -48,7 +48,7 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_useStandardIcons = settings.value("use_standard_icons",false).toBool();
     m_tooltip = settings.value("show_tooltip",true).toBool();
     m_formatter.setPattern("%p%if(%p&%t, - ,)%t");
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     m_tray->showNiceToolTip(m_tooltip);
 #endif
     if(m_useStandardIcons)
@@ -111,7 +111,7 @@ void StatusIcon::setState(Qmmp::State state)
             m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
         else
             m_tray->setIcon (QIcon(":/tray_stop.png"));
-#ifndef Q_WS_X11
+#ifndef QMMP_WS_X11
         m_tray->setToolTip("");
 #endif
         break;
@@ -128,7 +128,7 @@ void StatusIcon::showMetaData()
     if (m_showMessage)
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
-#ifndef Q_WS_X11
+#ifndef QMMP_WS_X11
     if(m_tooltip)
     {
         QString message = m_formatter.format(m_core->metaData());

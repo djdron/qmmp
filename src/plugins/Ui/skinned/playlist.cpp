@@ -121,7 +121,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
 
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
     updatePositions();
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     QString wm_name = WindowSystem::netWindowManagerName();
     if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
        wm_name.contains("openbox", Qt::CaseInsensitive))
@@ -422,7 +422,7 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
            sy--;
         resize (275+25*sx,116+29*sy);
 //#else
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
         //avoid right corner moving during resize
         if(layoutDirection() == Qt::RightToLeft)
             WindowSystem::revertGravity(winId());
@@ -484,7 +484,7 @@ void PlayList::readSettings()
     }
 }
 
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 bool PlayList::event (QEvent *event)
 {
     if(event->type() == QEvent::WinIdChange ||

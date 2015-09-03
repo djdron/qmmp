@@ -74,7 +74,7 @@ EqWidget::EqWidget (QWidget *parent)
     createActions();
     updatePositions();
     updateMask();
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     QString wm_name = WindowSystem::netWindowManagerName();
     if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
        wm_name.contains("openbox", Qt::CaseInsensitive))
@@ -427,7 +427,7 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
     QApplication::sendEvent(qobject_cast<MainWindow*>(parent())->playlist(), &event);
 }
 
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 bool EqWidget::event (QEvent *event)
 {
     if(event->type() == QEvent::WinIdChange ||

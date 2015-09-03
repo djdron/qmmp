@@ -7,7 +7,7 @@ OBJECTS_DIR=./.build/obj
 RCC_DIR=./.build/rcc
 
 QT += widgets
-DEFINES += Q_WS_X11
+DEFINES += QMMP_WS_X11
 
 #Version
 

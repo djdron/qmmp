@@ -33,7 +33,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageGroupBox->setChecked(settings.value("show_message",true).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     ui.niceTooltipGroupBox->setChecked(settings.value("show_tooltip", true).toBool());
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     ui.niceTooltipDelaySpinBox->setValue(settings.value("tooltip_delay",2000).toInt());
     ui.transparencySlider->setValue(settings.value("tooltip_transparency",0).toInt());
     ui.coverSizeSlider->setValue(settings.value("tooltip_cover_size", 100).toInt());
@@ -63,7 +63,7 @@ void SettingsDialog::accept()
     settings.setValue("message_delay", ui.messageDelaySpinBox->value());
     settings.setValue("use_standard_icons", ui.standardIconsCheckBox->isChecked());
     settings.setValue("show_tooltip", ui.niceTooltipGroupBox->isChecked());
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     settings.setValue("split_file_name", ui.niceTooltipSplitCheckBox->isChecked());
     settings.setValue("tooltip_delay", ui.niceTooltipDelaySpinBox->value());
     settings.setValue("tooltip_transparency",  ui.transparencySlider->value());

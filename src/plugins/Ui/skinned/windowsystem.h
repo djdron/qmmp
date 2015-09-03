@@ -27,7 +27,7 @@
 class WindowSystem
 {
 public:
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     static void ghostWindow(WId id);
     static QString netWindowManagerName();
     static void changeWinSticky(WId win, bool stick);

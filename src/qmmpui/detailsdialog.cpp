@@ -68,7 +68,7 @@ void DetailsDialog:: on_directoryButton_clicked()
     }
     else
         return;
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     QProcess::execute("xdg-open", QStringList() << dir_path); //works with lxde
 #else
     QDesktopServices::openUrl(QUrl::fromLocalFile(dir_path));

@@ -43,7 +43,7 @@ find_package(Qt5LinguistTools 5.4.0 REQUIRED)
 find_package(Qt5X11Extras 5.4.0 REQUIRED)
 find_package(Qt5Network 5.4.0 REQUIRED)
 find_package(Qt5DBus 5.4.0)
-ADD_DEFINITIONS(-DQ_WS_X11)
+ADD_DEFINITIONS(-DQMMP_WS_X11)
 
 get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
 

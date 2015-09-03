@@ -21,7 +21,7 @@
 
 #include "windowsystem.h"
 #include <QCoreApplication>
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 #include <QX11Info>
 #include <X11/X.h>
 #include <X11/Xatom.h>
@@ -29,7 +29,7 @@
 #include <X11/Xutil.h>
 #endif
 
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 void WindowSystem::ghostWindow(WId win)
 {
   Display* dsp = QX11Info::display();

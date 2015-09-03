@@ -25,7 +25,7 @@
 
 class QEvent;
 class QWheelEvent;
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
 class StatusIconPopupWidget;
 #endif
 
@@ -39,7 +39,7 @@ public:
     QmmpTrayIcon(QObject *parent = 0);
     ~QmmpTrayIcon();
 
-#ifdef Q_WS_X11
+#ifdef QMMP_WS_X11
     void showNiceToolTip(bool value);
 
 private:
