@@ -2,7 +2,7 @@ Source: qmmp
 Section: sound
 Priority: optional
 Maintainer: Eugene V. Lyubimkin <jackyf@debian.org>
-Build-Depends: debhelper (>= 7.0.50), libqt4-dev (>= 4:4.6.0), cmake (>= 2.8.11),
+Build-Depends: debhelper (>= 7.0.50), libqt4-dev (>= 4:4.6.0), cmake (>= 2.8.6),
   pkg-config, libasound2-dev [linux-any], libjack-dev (>= 0.102.5),
   libpulse-dev (>= 0.9.15), libvorbis-dev, libmad0-dev, libtag1-dev (>= 1.6),
   libcurl4-gnutls-dev (>= 7.16), libflac-dev (>= 1.1.3),
