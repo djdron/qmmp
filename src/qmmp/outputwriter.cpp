@@ -262,9 +262,9 @@ void OutputWriter::dispatchVisual (Buffer *buffer)
 
 void OutputWriter::applyConverters(Buffer *buffer)
 {
-    foreach (Effect *e, m_converters)
+    for (int i = 0; i < m_converters.count(); ++i)
     {
-        e->applyEffect(buffer);
+        m_converters[i]->applyEffect(buffer);
     }
 }
 
@@ -297,8 +297,7 @@ bool OutputWriter::prepareConverters()
         {
             qDebug("OutputWriter: using 16 bit comverter");
             m_converters << new AudioConverter();
-            m_converters.last()->configure(ap.sampleRate(), ap.channelMap(), ap.format());
-            ap = m_converters.last()->audioParameters();
+            m_converters.last()->configure(sampleRate(), channelMap(), format());
         }
         else
         {
@@ -310,8 +309,7 @@ bool OutputWriter::prepareConverters()
     if(channelMap() != ap.channelMap())
     {
         m_converters << new ChannelConverter(ap.channelMap());
-        m_converters.last()->configure(ap.sampleRate(), channelMap(), ap.format());
-        ap = m_converters.last()->audioParameters();
+        m_converters.last()->configure(sampleRate(), channelMap(), ap.format());
     }
 
     return true;
