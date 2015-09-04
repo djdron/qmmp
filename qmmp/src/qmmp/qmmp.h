@@ -23,7 +23,7 @@
 #include <QString>
 
 #define QMMP_VERSION_MAJOR 0
-#define QMMP_VERSION_MINOR 9
+#define QMMP_VERSION_MINOR 10
 #define QMMP_VERSION_PATCH 0
 #define QMMP_VERSION_STABLE 0
 
