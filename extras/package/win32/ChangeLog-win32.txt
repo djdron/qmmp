@@ -90,3 +90,6 @@ LEGEND
 0.9.0
 [*] qmmp-0.9.0
 [*] qmmp-plugin-pack-0.9.0
+
+0.9.1
+[*] qmmp-0.9.1
