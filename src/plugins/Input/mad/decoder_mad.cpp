@@ -418,21 +418,6 @@ unsigned long DecoderMAD::prng(unsigned long state) // 32-bit pseudo-random numb
     return (state * 0x0019660dL + 0x3c6ef35fL) & 0xffffffffL;
 }
 
-// gather signal statistics while clipping
-void DecoderMAD::clip(mad_fixed_t *sample)
-{
-    enum
-    {
-        MIN = -MAD_F_ONE,
-        MAX =  MAD_F_ONE - 1
-    };
-
-    if (*sample > MAX)
-        *sample = MAX;
-    else if (*sample < MIN)
-        *sample = MIN;
-}
-
 long DecoderMAD::audio_linear_dither(unsigned int bits, mad_fixed_t sample,
                                      struct audio_dither *dither)
 {
@@ -458,7 +443,20 @@ long DecoderMAD::audio_linear_dither(unsigned int bits, mad_fixed_t sample,
     dither->random = random;
 
     /* clip */
-    clip(&output);
+    if (output > CLIP_MAX)
+    {
+        output = CLIP_MAX;
+
+        if (sample > CLIP_MAX)
+            sample = CLIP_MAX;
+    }
+    else if (output < CLIP_MIN)
+    {
+        output = CLIP_MIN;
+
+        if (sample < CLIP_MIN)
+            sample = CLIP_MIN;
+    }
 
     /* quantize */
     output &= ~mask;
@@ -477,7 +475,10 @@ long DecoderMAD::audio_linear_round(unsigned int bits, mad_fixed_t sample)
     sample += (1L << (MAD_F_FRACBITS - bits));
 
     /* clip */
-    clip(&sample);
+    if (sample > CLIP_MAX)
+        sample = CLIP_MAX;
+    else if (sample < CLIP_MIN)
+        sample = CLIP_MIN;
 
     /* quantize and scale */
     return sample >> (MAD_F_FRACBITS + 1 - bits);
