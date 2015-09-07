@@ -99,9 +99,14 @@ private:
     struct mad_synth m_synth;
     struct audio_dither m_left_dither, m_right_dither;
 
+    enum
+    {
+        CLIP_MIN = -MAD_F_ONE,
+        CLIP_MAX =  MAD_F_ONE - 1
+    };
+
     //converter functions
     unsigned long prng(unsigned long state);
-    void clip(mad_fixed_t *sample);
     long audio_linear_dither(unsigned int bits, mad_fixed_t sample, struct audio_dither *dither);
     long audio_linear_round(unsigned int bits, mad_fixed_t sample);
 };
