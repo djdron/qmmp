@@ -24,6 +24,7 @@
      modifications compared to original code:
      added 48/96 kHz sampling rate support
      added 24/32bit sample size support
+     added optimization
      removed glib dependency
 */
 
@@ -114,6 +115,10 @@ __inline__ int iir(void * d, int length, int nch)
       /* For each band */
       for (band = 0; band < band_count; band++)
       {
+          /* Optimization */
+        if(gain[band][channel] > -1.0e-10 && gain[band][channel] < 1.0e-10)
+            continue;
+
         /* Store Xi(n) */
         data_history[band][channel].x[i] = pcm[channel];
         /* Calculate and store Yi(n) */
@@ -139,6 +144,10 @@ __inline__ int iir(void * d, int length, int nch)
         /* Filter the sample again */
         for (band = 0; band < band_count; band++)
         {
+            /* Optimization */
+          if(gain[band][channel] > -1.0e-10 && gain[band][channel] < 1.0e-10)
+             continue;
+
           /* Store Xi(n) */
           data_history2[band][channel].x[i] = out[channel];
           /* Calculate and store Yi(n) */

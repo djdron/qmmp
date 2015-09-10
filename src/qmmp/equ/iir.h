@@ -24,6 +24,7 @@
      modifications compared to original code:
      added 48/96 kHz sampling rate support
      added 24/32bit sample size support
+     added optimization
      removed glib dependency
 */
 
