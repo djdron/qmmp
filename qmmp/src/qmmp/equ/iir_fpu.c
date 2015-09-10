@@ -278,6 +278,10 @@ __inline__ int iir32(void * d, int length, int nch)
       /* For each band */
       for (band = 0; band < band_count; band++)
       {
+          /* Optimization */
+        if(gain[band][channel] > -1.0e-10 && gain[band][channel] < 1.0e-10)
+            continue;
+
         /* Store Xi(n) */
         data_history[band][channel].x[i] = pcm[channel];
         /* Calculate and store Yi(n) */
@@ -300,6 +304,10 @@ __inline__ int iir32(void * d, int length, int nch)
 
       //if (eqcfg.extra_filtering)
       {
+          /* Optimization */
+        if(gain[band][channel] > -1.0e-10 && gain[band][channel] < 1.0e-10)
+            continue;
+
         /* Filter the sample again */
         for (band = 0; band < band_count; band++)
         {
