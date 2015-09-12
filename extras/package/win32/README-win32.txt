@@ -11,8 +11,7 @@ Known issues:
   - packed Xmms skins (i.e. *.tar.gz, *.tar.bz2) are not supported. You should unpack them before usage.
 
 Extra plugins (see http://qmmp.ylsoftware.com/plugins.php):
-  - FFap - enhanced Monkey's Audio (APE) decoder;
-  - Simple Ui - simple user interface based on standard widgets set.
+  - FFap - enhanced Monkey's Audio (APE) decoder.
 
 This archive also contains third-party libraries. Source code of these libraries
 is freely available on the Internet.
