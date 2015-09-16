@@ -224,7 +224,7 @@ void DecoderMPG123::setMPG123Format(int encoding)
 
     /* Ensure that this output format will not change (it could, when we allow it). */
     mpg123_format_none(m_handle);
-    for(unsigned int i = 0; i < sizeof(sample_rates); ++i)
+    for(unsigned int i = 0; i < sizeof(sample_rates)/sizeof(int); ++i)
         mpg123_format(m_handle, sample_rates[i], MPG123_MONO | MPG123_STEREO, encoding);
     m_mpg123_encoding = encoding;
 }
