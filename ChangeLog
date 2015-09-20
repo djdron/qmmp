@@ -1035,8 +1035,12 @@ Version 0.9.0
 * updated Greek translation (Dimitrios Glentadakis)
 * updated Japanese translation (RyoTa SimaMoto)
 
-Version 1.0.0 PREVIEW
+Version 1.0.0
+* added equalizer optimization
 * switch to Qt5
 * removed ffmpeg_legacy plugin
 * removed legacy udisks plugin
-* removed suppor of taglib versions than 1.8
+* removed support of taglib versions less than 1.8
+* fixed 16-bit converter
+* fixed Russian translation
+* fixed clicks while playing some mp3 files
