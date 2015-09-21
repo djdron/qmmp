@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -173,7 +173,7 @@ void DecoderWavPack::deinit()
         delete m_parser;
     m_parser = 0;
     if(m_buf)
-        delete m_buf;
+        delete [] m_buf;
     m_buf = 0;
 }
 
