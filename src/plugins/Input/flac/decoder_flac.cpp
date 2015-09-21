@@ -36,55 +36,52 @@
 #include <QFile>
 #include <QIODevice>
 #include <FLAC/all.h>
+#include <stdint.h>
 #include "replaygainreader.h"
 #include "cueparser.h"
 #include "decoder_flac.h"
 
-static size_t pack_pcm_signed (FLAC__byte *data,
+static size_t pack_pcm_signed (FLAC__byte *output,
                                const FLAC__int32 * const input[],
-                               unsigned wide_samples,
+                               unsigned samples,
                                unsigned channels, unsigned bps)
 {
-    FLAC__byte * const start = data;
-    FLAC__int32 sample;
-    const FLAC__int32 *input_;
-    unsigned samples, channel;
-    unsigned bytes_per_sample;
-    unsigned incr;
+    unsigned channel = 0;
 
-    if(bps == 24) // we encode to 32-bit words
-        bps = 32;
-    bytes_per_sample = bps / 8;
-    incr = bytes_per_sample * channels;
-    for (channel = 0; channel < channels; channel++)
-    {
-        samples = wide_samples;
-        data = start + bytes_per_sample * channel;
-        input_ = input[channel];
+    uint8_t *data8 = (uint8_t *) output;
+    uint16_t *data16 = (uint16_t *) output;
+    uint32_t *data32 = (uint32_t *) output;
 
-        while (samples--)
-        {
-            sample = *input_++;
+     for(unsigned sample = 0; sample < samples; sample++)
+     {
+         for (channel = 0; channel < channels; channel++)
+         {
+             switch (bps)
+             {
+             case 8:
+                 *data8 = input[channel][sample] & 0xff;
+                 data8++;
+                 break;
+             case 16:
+                 *data16 = input[channel][sample] & 0xffffff;
+                 data16++;
+                 break;
+             case 24:
+                 *data32 = (input[channel][sample] << 8) & 0xffffff00;
+                 data32++;
+                 break;
+             case 32:
+                 *data32 = input[channel][sample];
+                 data32++;
+                 break;
+             }
+         }
+     }
 
-            switch (bps)
-            {
-            case 8:
-                data[0] = sample;
-                break;
-            case 16:
-                data[1] = (FLAC__byte)(sample >> 8) & 0xff;
-                data[0] = (FLAC__byte)sample & 0xff;
-                break;
-            case 32:
-                data[3] = (FLAC__byte)(sample >> 16) & 0xff;
-                data[2] = (FLAC__byte)(sample >> 8) & 0xff;
-                data[1] = (FLAC__byte)sample & 0xff;
-                data[0] = 0;
-            }
-            data += incr;
-        }
-    }
-    return wide_samples * channels * bytes_per_sample;
+     if(bps == 24) // we encode to 32-bit words
+         bps = 32;
+
+     return samples * channels * bps / 8;
 }
 
 static int flac_decode (void *void_data, char *buf, int buf_len)
