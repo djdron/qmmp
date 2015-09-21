@@ -992,7 +992,7 @@ Version 0.9.0
 * added multiple column support
 * added feature to hide track length
 * added feature to disable plugins without qmmp.pri modification (qmake only)
-* added feature to remember playlist scroll position 
+* added feature to remember playlist scroll position
 * added feature to exclude cue data files
 * added feature to change user agent
 * added feature to change window title
@@ -1044,3 +1044,4 @@ Version 1.0.0
 * fixed 16-bit converter
 * fixed Russian translation
 * fixed clicks while playing some mp3 files
+* fixed memory leak in the wavpack plugin
