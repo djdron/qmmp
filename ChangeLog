@@ -1045,3 +1045,4 @@ Version 1.0.0
 * fixed Russian translation
 * fixed clicks while playing some mp3 files
 * fixed memory leak in the wavpack plugin
+* updated Greek translation (Dimitrios Glentadakis)
