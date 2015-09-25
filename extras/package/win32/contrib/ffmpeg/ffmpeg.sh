@@ -23,7 +23,7 @@ case $1 in
     --disable-decoders \
     --enable-protocol=file --enable-protocol=data --enable-protocol=data --enable-protocol=pipe \
     --enable-parser=aac --enable-parser=aac_latm --enable-parser=ac3 --enable-parser=flac \
-    --enable-filter=aconvert --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
+    --enable-filter=atempo --enable-filter=movie --enable-filter=scale \
     --enable-filter=aformat --enable-filter=format --enable-filter=aresample --enable-filter=resample \
     --enable-decoder=ape --enable-decoder=wmav1 --enable-decoder=wmav2 --enable-decoder=truehd \
     --enable-decoder=aac --enable-decoder=alac --enable-decoder=shorten --enable-decoder=twinvq \
@@ -33,7 +33,8 @@ case $1 in
     --enable-demuxer=aac  --enable-demuxer=shorten --enable-demuxer=rtsp \
     --enable-demuxer=tta --enable-demuxer=rtp \
     --enable-demuxer=eac3 --enable-demuxer=dts --enable-demuxer=dtshd --enable-demuxer=flac \
-    --enable-demuxer=matroska --enable-demuxer=asf --enable-demuxer=mov
+    --enable-demuxer=matroska --enable-demuxer=asf --enable-demuxer=mov \
+    --disable-d3d11va --disable-dxva2
     make -j${JOBS}
     make install
 
