@@ -8,11 +8,11 @@ fi
 cd cache
 
 echo "Receiving sources.."
-if [ ! -d "qmmp-plugin-pack-svn" ]; then
-svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.0/ qmmp-plugin-pack-svn
+if [ ! -d "qmmp-plugin-pack-qt5-svn" ]; then
+svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.0/ qmmp-plugin-pack-qt5-svn
 fi
 
-cd qmmp-plugin-pack-svn
+cd qmmp-plugin-pack-qt5-svn
 svn up
 echo "Creating changelog.."
 svn log > ChangeLog.svn
@@ -30,7 +30,7 @@ rm -rf $TARBALL
 fi
 
 echo "Copying sources.."
-cp -r qmmp-plugin-pack-svn $TARBALL
+cp -r qmmp-plugin-pack-qt5-svn $TARBALL
 
 cd $TARBALL
 
