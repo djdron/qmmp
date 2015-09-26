@@ -13,31 +13,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libjack and samplerate
-pkg_check_modules(JACK jack samplerate)
+pkg_check_modules(JACK jack>=1.9.8 samplerate)
+
+IF(NOT JACK_FOUND)
+pkg_check_modules(JACK jack>=0.122.0 samplerate)
+ENDIF(NOT JACK_FOUND)
 
 include_directories(${JACK_INCLUDE_DIRS})
 link_directories(${JACK_LIBRARY_DIRS})
 ADD_DEFINITIONS(${JACK_CFLAGS})
-
-
-IF(JACK_FOUND)
-CHECK_CXX_SOURCE_COMPILES("
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <jack/jack.h>
-
-int main (int argc, char **argv)
-{
-   jack_latency_range_t range;
-   exit(0);
-}" JACK_NEW_API)
-
-ENDIF(JACK_FOUND)
-
-IF(JACK_NEW_API)
-ADD_DEFINITIONS(-DJACK_NEW_API)
-ENDIF(JACK_NEW_API)
 
 
 SET(libjack_SRCS

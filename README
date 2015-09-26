@@ -80,7 +80,7 @@ Requirements:
 - libmms >= 0.4 (Optional)
 - flac >= 1.1.3 (Optional)
 - libmpcdec >= 1.2.6 (Optional)
-- jackit >= 0.102.5 (Optional)
+- jackit1 >= 0.121.0 or jackit2 >= 1.9.8 (Optional)
 - libsamplerate >= 0.1.2 (Optional)
 - libmodplug >= 0.8.4 (Optional)
 - libsndfile >= 1.0.17 (Optional)
