@@ -44,6 +44,8 @@ Syntax:
 #include <QUrl>
 #include "metadataformatter.h"
 
+//#define DUMP_NODES
+
 MetaDataFormatter::MetaDataFormatter(const QString &pattern)
 {
     m_fieldNames.insert("t", Qmmp::TITLE);
@@ -74,14 +76,18 @@ void MetaDataFormatter::setPattern(const QString &pattern)
     m_pattern = pattern;
     m_nodes.clear();
 
+#ifdef DUMP_NODES
     qDebug("MetaDataFormatter: pattern: %s", qPrintable(pattern));
+#endif
     m_nodes = compile(pattern);
+#ifdef DUMP_NODES
     qDebug("MetaDataFormatter: dump of nodes");
     foreach (Node n, m_nodes)
     {
         qDebug("=>%s", qPrintable(dumpNode(n)));
     }
     qDebug("MetaDataFormatter: end of dump");
+#endif
 }
 
 const QString MetaDataFormatter::pattern() const
