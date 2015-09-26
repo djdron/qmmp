@@ -59,7 +59,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_core = 0;
     m_ui = 0;
 #ifndef QT_NO_SESSIONMANAGER
-    connect(qApp, SIGNAL(commitDataRequest(QSessionManager)), SLOT(commitData(QSessionManager)), Qt::DirectConnection);
+    connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)), SLOT(commitData(QSessionManager&)), Qt::DirectConnection);
 #endif
 #ifdef Q_OS_WIN
     m_named_mutex = 0;
