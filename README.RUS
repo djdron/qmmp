@@ -96,7 +96,7 @@ Qmmp - Qt-based multimedia player
 - libWildMidi >= 0.2.3.4 (Опционально)
 - libsidplayfp >= 1.0.3 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
-- libprojectM >= 1.2.0 (Опционально)
+- libprojectM >= 2.0.0 (Опционально)
 - libenca >= 1.9 (Опционально)
 - mplayer (Опционально)
 - cmake >= 2.8.11 (только для сборки)

@@ -97,7 +97,7 @@ Requirements:
 - libWildMidi >= 0.2.3.4 (Optional)
 - libsidplayfp >= 1.0.3 (Optional)
 - libbs2b >= 3.0.0 (Optional)
-- libprojectM >= 1.2.0 (Optional)
+- libprojectM >= 2.0.0 (Optional)
 - libenca >= 1.9 (Optional)
 - mplayer (Optional)
 - cmake >= 2.8.11 (for build only)
