@@ -1,0 +1,83 @@
+From: Timur Pocheptsov <timur.pocheptsov@digia.com>
+Date: Wed, 29 Jul 2015 15:11:08 +0000 (+0200)
+Subject: Single-key (and not only?) keyboard shortcuts
+X-Git-Url: https://codereview.qt-project.org/gitweb?p=qt%2Fqtbase.git;a=commitdiff_plain;h=2e448af33d7d819428897f84c6e0f780d6eb6cbe;hp=2a382655718dcf8d00822d8fdc1dfdae1666c67e
+
+Single-key (and not only?) keyboard shortcuts
+
+Native scan code is lost "in between" QGuiApplication and QWindowInterface,
+so tryHandleShortcutEvent always fails with non-English keyboard layout.
+
+Change-Id: Ib0eb7a0b969a16ac63fa6620664f5831fdd384b3
+Task-number: QTBUG-47352
+---
+
+diff --git a/src/gui/kernel/qguiapplication.cpp b/src/gui/kernel/qguiapplication.cpp
+index 8ebddf3..c485307 100644
+--- a/src/gui/kernel/qguiapplication.cpp
++++ b/src/gui/kernel/qguiapplication.cpp
+@@ -1884,7 +1884,7 @@ void QGuiApplicationPrivate::processKeyEvent(QWindowSystemInterfacePrivate::KeyE
+ #if !defined(Q_OS_OSX)
+     // On OS X the shortcut override is checked earlier, see: QWindowSystemInterface::handleKeyEvent()
+     const bool checkShortcut = e->keyType == QEvent::KeyPress && window != 0;
+-    if (checkShortcut && QWindowSystemInterface::tryHandleShortcutEvent(window, e->timestamp, e->key, e->modifiers, e->unicode))
++    if (checkShortcut && QWindowSystemInterface::tryHandleShortcutEvent(window, e->timestamp, e->nativeScanCode, e->key, e->modifiers, e->unicode, e->repeat, e->repeatCount))
+         return;
+ #endif // Q_OS_OSX
+ 
+diff --git a/src/gui/kernel/qwindowsysteminterface.cpp b/src/gui/kernel/qwindowsysteminterface.cpp
+index b17978c..166dc36 100644
+--- a/src/gui/kernel/qwindowsysteminterface.cpp
++++ b/src/gui/kernel/qwindowsysteminterface.cpp
+@@ -225,6 +225,37 @@ bool QWindowSystemInterface::tryHandleShortcutEvent(QWindow *w, ulong timestamp,
+ #endif
+ }
+ 
++bool QWindowSystemInterface::tryHandleShortcutEvent(QWindow *w, ulong timestamp, int nativeSC, int k, Qt::KeyboardModifiers mods,
++                                                               const QString & text, bool autorep, ushort count)
++{
++#ifndef QT_NO_SHORTCUT
++    QGuiApplicationPrivate::modifier_buttons = mods;
++
++    if (!w)
++        w = QGuiApplication::focusWindow();
++    if (!w)
++        return false;
++
++    QObject *focus = w->focusObject();
++    if (!focus)
++        focus = w;
++
++    QKeyEvent qevent(QEvent::ShortcutOverride, k, mods, nativeSC, 0, 0, text, autorep, count);
++    qevent.setTimestamp(timestamp);
++    return QGuiApplicationPrivate::instance()->shortcutMap.tryShortcutEvent(focus, &qevent);
++#else
++    Q_UNUSED(w)
++    Q_UNUSED(timestamp)
++    Q_UNUSED(nativeSC)
++    Q_UNUSED(k)
++    Q_UNUSED(mods)
++    Q_UNUSED(text)
++    Q_UNUSED(autorep)
++    Q_UNUSED(count)
++    return false;
++#endif
++}
++
+ // used by QTestLib to directly send shortcuts to objects
+ bool QWindowSystemInterface::tryHandleShortcutEventToObject(QObject *o, ulong timestamp, int k, Qt::KeyboardModifiers mods,
+                                    const QString &text, bool autorep, ushort count)
+diff --git a/src/gui/kernel/qwindowsysteminterface.h b/src/gui/kernel/qwindowsysteminterface.h
+index c004fc6..25556e5 100644
+--- a/src/gui/kernel/qwindowsysteminterface.h
++++ b/src/gui/kernel/qwindowsysteminterface.h
+@@ -83,6 +83,9 @@ public:
+     static bool tryHandleShortcutEvent(QWindow *w, ulong timestamp, int k, Qt::KeyboardModifiers mods,
+                                                   const QString & text = QString(), bool autorep = false, ushort count = 1);
+ 
++    static bool tryHandleShortcutEvent(QWindow *w, ulong timestamp, int nativeSC, int k, Qt::KeyboardModifiers mods,
++                                       const QString & text = QString(), bool autorep = false, ushort count = -1);
++
+     static bool tryHandleShortcutEventToObject(QObject *o, ulong timestamp, int k, Qt::KeyboardModifiers mods,
+                                        const QString & text = QString(), bool autorep = false, ushort count = 1);
+ 
