@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Copyright (C) 2007 by  projectM team                                  *
@@ -123,7 +123,7 @@ void ProjectMWidget::initializeGL()
 #endif
         foreach (QFileInfo info, l)
         {
-#if PROJECTM_20
+#ifdef PROJECTM_20
             m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), list);
 #else
             m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), 1);
