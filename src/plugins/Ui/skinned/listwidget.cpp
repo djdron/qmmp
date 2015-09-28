@@ -150,9 +150,7 @@ void ListWidget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     m_drawer.fillBackground(&painter, width(), height());
-#if QT_VERSION >= 0x040700
     painter.setLayoutDirection(Qt::LayoutDirectionAuto);
-#endif
     bool rtl = (layoutDirection() == Qt::RightToLeft);
 
     painter.setClipRect(5,0,width() - 9, height());
