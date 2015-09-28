@@ -18,7 +18,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-
 #include <QObject>
 #include <QIODevice>
 #include <QFile>
@@ -40,14 +39,12 @@ DecoderWavPack::DecoderWavPack(const QString &path)
     m_totalTime = 0.0;
     m_chan = 0;
     m_context = 0;
-    m_freq = 0;
     m_parser = 0;
     m_output_buf = 0;
     m_parser = 0;
-    length_in_bytes = 0;
+    m_length_in_bytes = 0;
     m_totalBytes = 0;
-    m_sz = 0;
-    m_buf = 0;
+    m_frame_size = 0;
     m_offset = 0;
     m_bps = 0;
 }
@@ -106,7 +103,7 @@ bool DecoderWavPack::initialize()
     }
 
     m_chan = WavpackGetNumChannels(m_context);
-    m_freq = WavpackGetSampleRate (m_context);
+    uint32_t freq = WavpackGetSampleRate (m_context);
     m_bps = WavpackGetBitsPerSample (m_context);
 
     ChannelMap chmap = findChannelMap(m_chan);
@@ -121,29 +118,29 @@ bool DecoderWavPack::initialize()
     switch(m_bps)
     {
     case 8:
-        configure(m_freq, chmap, Qmmp::PCM_S8);
+        configure(freq, chmap, Qmmp::PCM_S8);
         break;
     case 16:
-        configure(m_freq, chmap, Qmmp::PCM_S16LE);
+        configure(freq, chmap, Qmmp::PCM_S16LE);
         break;
     case 24:
     case 32:
-        configure(m_freq, chmap, Qmmp::PCM_S32LE);
+        configure(freq, chmap, Qmmp::PCM_S32LE);
     }
     if(!m_parser)
-        m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
+        m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / freq;
     else
     {
         m_length = m_parser->length(m_track);
         m_offset = m_parser->offset(m_track);
-        length_in_bytes = audioParameters().sampleRate() *
+        m_length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
         setReplayGainInfo(m_parser->replayGain(m_track));
         seek(0);
     }
     m_totalBytes = 0;
-    m_sz = audioParameters().sampleSize() * audioParameters().channels();
+    m_frame_size = audioParameters().sampleSize() * audioParameters().channels();
     qDebug("DecoderWavPack: initialize succes");
     return true;
 }
@@ -165,16 +162,12 @@ qint64 DecoderWavPack::totalTime()
 void DecoderWavPack::deinit()
 {
     m_chan = 0;
-    m_freq = 0;
     if (m_context)
         WavpackCloseFile (m_context);
     m_context = 0;
     if(m_parser)
         delete m_parser;
     m_parser = 0;
-    if(m_buf)
-        delete [] m_buf;
-    m_buf = 0;
 }
 
 void DecoderWavPack::seek(qint64 time)
@@ -184,53 +177,21 @@ void DecoderWavPack::seek(qint64 time)
                    audioParameters().sampleSize() * time/1000;
     if(m_parser)
         time += m_offset;
-    WavpackSeekSample (m_context, time * m_freq / 1000);
+    WavpackSeekSample (m_context, time * audioParameters().sampleRate() / 1000);
 }
 
 qint64 DecoderWavPack::read(char *data, qint64 size)
 {
     if(m_parser)
     {
-        if(length_in_bytes - m_totalBytes < m_sz) //end of cue track
+        if(m_length_in_bytes - m_totalBytes < m_frame_size) //end of cue track
             return 0;
 
-        qint64 len = 0;
-
-        if(m_buf) //read remaining data first
-        {
-            len = qMin(m_buf_size, size);
-            memmove(data, m_buf, len);
-            if(size >= m_buf_size)
-            {
-                delete[] m_buf;
-                m_buf = 0;
-                m_buf_size = 0;
-            }
-            else
-                memmove(m_buf, m_buf + len, size - len);
-        }
-        else
-            len = wavpack_decode (data, size);
-
-        if(len <= 0) //end of file
-            return 0;
-
-        if(len + m_totalBytes <= length_in_bytes)
-        {
-            m_totalBytes += len;
-            return len;
-        }
-
-        qint64 len2 = qMax(qint64(0), length_in_bytes - m_totalBytes);
-        len2 = (len2 / m_sz) * m_sz; //returned size must contain integer number of samples
-        m_totalBytes += len2;
-        //save data of the next track
-        if(m_buf)
-            delete[] m_buf;
-        m_buf_size = len - len2;
-        m_buf = new char[m_buf_size];
-        memmove(m_buf, data + len2, m_buf_size);
-        return len2;
+        //returned size must contain integer number of frames
+        size = qMin(size, (m_length_in_bytes - m_totalBytes) / m_frame_size * m_frame_size);
+        size = wavpack_decode(data, size);
+        m_totalBytes += size;
+        return size;
     }
     return wavpack_decode(data, size);
 }
@@ -250,7 +211,7 @@ void DecoderWavPack::next()
         m_track++;
         m_offset = m_parser->length(m_track);
         m_length = m_parser->length(m_track);
-        length_in_bytes = audioParameters().sampleRate() *
+        m_length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
         addMetaData(m_parser->info(m_track)->metaData());
@@ -273,19 +234,19 @@ qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
     case 8:
         for (i = 0;  i < len * m_chan; ++i)
             data8[i] = m_output_buf[i];
-         return len * m_chan;
+        return len * m_chan;
     case 16:
         for (i = 0;  i < len * m_chan; ++i)
             data16[i] = m_output_buf[i];
-         return len * m_chan * 2;
+        return len * m_chan * 2;
     case 24:
         for (i = 0;  i < len * m_chan; ++i)
             data32[i] = m_output_buf[i] << 8;
-         return len * m_chan * 4;
+        return len * m_chan * 4;
     case 32:
         for (i = 0;  i < len * m_chan; ++i)
             data32[i] = m_output_buf[i];
-         return len * m_chan * 4;
+        return len * m_chan * 4;
     }
     return 0;
 }

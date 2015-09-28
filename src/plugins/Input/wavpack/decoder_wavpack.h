@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -51,9 +51,8 @@ private:
     WavpackContext *m_context;
     int32_t *m_output_buf; // output buffer
     int m_chan;
-    quint32 m_freq;
     qint64 m_totalTime;
-    qint64 length_in_bytes;
+    qint64 m_length_in_bytes;
     qint64 m_totalBytes;
     qint64 m_offset;
     qint64 m_length;
@@ -61,10 +60,7 @@ private:
     CUEParser *m_parser;
     int m_track;
     int m_bps;
-    char *m_buf; //buffer for remainig data
-    qint64 m_buf_size;
-    qint64 m_sz; //sample size
-
+    qint64 m_frame_size; //frame size
 };
 
 #endif // DECODER_WAVPACK_H
