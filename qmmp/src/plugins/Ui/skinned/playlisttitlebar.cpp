@@ -134,13 +134,13 @@ void PlayListTitleBar::updatePixmap()
     if (m_shaded)
     {
         QColor col;
-        col.setNamedColor(QString(m_skin->getPLValue("mbbg")));
+        col.setNamedColor(QString(m_skin->getPLValue("normalbg")));
         paint.setBrush(QBrush(col));
         paint.setPen(col);
         paint.drawRect(8*m_ratio, m_ratio, 235*m_ratio + sx*25, 11*m_ratio);
         //draw text
         paint.setFont(m_font);
-        paint.setPen(QString(m_skin->getPLValue("mbfg")));
+        paint.setPen(QString(m_skin->getPLValue("normal")));
         paint.drawText(9*m_ratio, 11*m_ratio, m_truncatedText);
     }
     paint.end();
@@ -263,16 +263,13 @@ void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent *)
 
 void PlayListTitleBar::showCurrent()
 {
+    m_text.clear();
+
     if (m_model)
     {
         PlayListTrack* track = m_model->currentTrack();
         if (track)
-        {
-            m_text = QString("%1. %2").arg(m_model->indexOfTrack(m_model->currentIndex())+1)
-                    .arg(m_formatter.format(track));
-        }
-        else
-            m_text.clear();
+            m_text = QString("%1. %2").arg(track->trackIndex() + 1).arg(m_formatter.format(track));
     }
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
