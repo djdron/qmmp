@@ -56,7 +56,11 @@ FileSystemBrowser::FileSystemBrowser(QWidget *parent) :
     m_model = new QFileSystemModel(this);
     m_model->setReadOnly(true);
     m_model->setNameFilterDisables(false);
+#if QT_VERSION >= 0x040700
     m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDot);
+#else
+    m_model->setFilter(QDir::AllDirs | QDir::Files);
+#endif
     m_listView->setModel(m_model);
 
     setContextMenuPolicy(Qt::ActionsContextMenu);
