@@ -43,7 +43,7 @@ RGScanner::~RGScanner()
     deinit();
     if(m_handle)
     {
-        DeinitGainAbalysis(m_handle);
+        DeinitGainAnalysis(m_handle);
         m_handle = 0;
     }
 }
@@ -186,7 +186,7 @@ void RGScanner::run()
     double max = 0;
 
     if(m_handle)
-        DeinitGainAbalysis(m_handle);
+        DeinitGainAnalysis(m_handle);
     InitGainAnalysis(&m_handle, ap.sampleRate());
 
     forever
