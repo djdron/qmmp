@@ -130,7 +130,7 @@ void Decoder::loadPlugins()
         m_cache->append(item);
     }
     m_disabledNames = settings.value("Decoder/disabled_plugins").toStringList();
-    qSort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
+    qStableSort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
     QmmpPluginCache::cleanup(&settings);
 }
 

@@ -107,7 +107,7 @@ void Effect::loadPlugins()
         m_cache->append(item);
     }
 
-    qSort(m_cache->begin(), m_cache->end(), _effectCacheCompareFunc);
+    qStableSort(m_cache->begin(), m_cache->end(), _effectCacheCompareFunc);
     m_enabledNames = settings.value("Effect/enabled_plugins").toStringList();
 }
 
