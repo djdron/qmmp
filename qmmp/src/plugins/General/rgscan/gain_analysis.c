@@ -525,7 +525,7 @@ Float_t GetAlbumGain(GainHandle_t **handle, int count)
     return analyzeResult(B, sizeof(B)/sizeof(*B));
 }
 
-void DeinitGainAbalysis(GainHandle_t *handle)
+void DeinitGainAnalysis(GainHandle_t *handle)
 {
     free(handle);
 }
