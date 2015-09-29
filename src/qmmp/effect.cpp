@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <algorithm>
 #include <QStringList>
 #include <QDir>
 #include "qmmpaudioengine_p.h"
@@ -107,7 +108,7 @@ void Effect::loadPlugins()
         m_cache->append(item);
     }
 
-    qSort(m_cache->begin(), m_cache->end(), _effectCacheCompareFunc);
+    std::stable_sort(m_cache->begin(), m_cache->end(), _effectCacheCompareFunc);
     m_enabledNames = settings.value("Effect/enabled_plugins").toStringList();
 }
 

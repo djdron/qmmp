@@ -21,6 +21,7 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QTime>
+#include <algorithm>
 #include <qmmp/metadatamanager.h>
 #include "qmmpuisettings.h"
 #include "metadatahelper_p.h"
@@ -286,9 +287,9 @@ void PlayListTask::run()
         }
 
         if(m_reverted)
-            qStableSort(begin,end,compareGreaterFunc);
+            std::stable_sort(begin,end,compareGreaterFunc);
         else
-            qStableSort(begin,end,compareLessFunc);
+            std::stable_sort(begin,end,compareLessFunc);
 
         //align track list by group name (optimization)
         if(m_align_groups)

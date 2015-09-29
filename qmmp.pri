@@ -9,6 +9,8 @@ RCC_DIR=./.build/rcc
 QT += widgets
 DEFINES += QMMP_WS_X11
 
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050400
+
 #Version
 
 QMMP_VERSION = 1.0.0

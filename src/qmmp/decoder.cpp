@@ -8,6 +8,7 @@
 #include <QBuffer>
 #include <QDir>
 #include <math.h>
+#include <algorithm>
 #include "qmmpplugincache_p.h"
 #include "output.h"
 #include "decoderfactory.h"
@@ -130,7 +131,7 @@ void Decoder::loadPlugins()
         m_cache->append(item);
     }
     m_disabledNames = settings.value("Decoder/disabled_plugins").toStringList();
-    qSort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
+    std::stable_sort(m_cache->begin(), m_cache->end(), _pluginCacheLessComparator);
     QmmpPluginCache::cleanup(&settings);
 }
 

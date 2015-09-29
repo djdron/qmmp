@@ -31,6 +31,7 @@
 #include <QMenu>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <algorithm>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 #include <qmmpui/playlistmanager.h>
@@ -231,7 +232,7 @@ void StreamWindow::removeFromFavorites()
     {
         rows_to_remove.append(m_favoritesFilterModel->mapToSource(index).row());
     }
-    qStableSort(rows_to_remove);
+    std::stable_sort(rows_to_remove.begin(), rows_to_remove.end());
     int prev_row = -1;
     for(int i = rows_to_remove.count() - 1; i >= 0; i -= 1 )
     {
