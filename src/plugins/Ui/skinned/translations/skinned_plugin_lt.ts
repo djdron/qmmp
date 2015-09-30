@@ -555,62 +555,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="58"/>
+        <location filename="../display.cpp" line="60"/>
         <source>Previous</source>
         <translation>Ankstesnis</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="62"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Play</source>
         <translation>Groti</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="65"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Pause</source>
         <translation>Pristabdyti</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="68"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Stop</source>
         <translation>Sustoti</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="71"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Next</source>
         <translation>Sekantis</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="74"/>
+        <location filename="../display.cpp" line="76"/>
         <source>Play files</source>
         <translation>Groti bylas</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Equalizer</source>
         <translation>Glotintuvas</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="84"/>
+        <location filename="../display.cpp" line="86"/>
         <source>Playlist</source>
         <translation>Grojaraštis</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="89"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Repeat playlist</source>
         <translation>Gartoti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="92"/>
+        <location filename="../display.cpp" line="94"/>
         <source>Shuffle</source>
         <translation>Atsitiktine tvarka</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="104"/>
         <source>Volume</source>
         <translation>Garsumas</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="108"/>
+        <location filename="../display.cpp" line="110"/>
         <source>Balance</source>
         <translation>Balansas</translation>
     </message>

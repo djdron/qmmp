@@ -75,57 +75,57 @@
         <translation>Mettre à jour</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="51"/>
-        <location filename="../streamwindow.cpp" line="69"/>
+        <location filename="../streamwindow.cpp" line="52"/>
+        <location filename="../streamwindow.cpp" line="70"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="52"/>
-        <location filename="../streamwindow.cpp" line="70"/>
+        <location filename="../streamwindow.cpp" line="53"/>
+        <location filename="../streamwindow.cpp" line="71"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="53"/>
-        <location filename="../streamwindow.cpp" line="71"/>
+        <location filename="../streamwindow.cpp" line="54"/>
+        <location filename="../streamwindow.cpp" line="72"/>
         <source>Bitrate</source>
         <translation>Débit binaire</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="54"/>
-        <location filename="../streamwindow.cpp" line="72"/>
+        <location filename="../streamwindow.cpp" line="55"/>
+        <location filename="../streamwindow.cpp" line="73"/>
         <source>Format</source>
         <translation>Format</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="125"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
         <translation>&amp;Ajouter aux favoris</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
         <translation>Ajouter à la liste</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="131"/>
+        <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
         <translation>&amp;Enlever</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="141"/>
+        <location filename="../streamwindow.cpp" line="142"/>
         <source>Done</source>
         <translation>Fait</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
+        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="164"/>
+        <location filename="../streamwindow.cpp" line="165"/>
         <source>Receiving</source>
         <translation>Réception</translation>
     </message>

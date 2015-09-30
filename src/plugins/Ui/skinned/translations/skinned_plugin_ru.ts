@@ -554,62 +554,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="58"/>
+        <location filename="../display.cpp" line="60"/>
         <source>Previous</source>
         <translation>Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="62"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Play</source>
         <translation>Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="65"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Pause</source>
         <translation>Приостановить</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="68"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="71"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Next</source>
         <translation>Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="74"/>
+        <location filename="../display.cpp" line="76"/>
         <source>Play files</source>
         <translation>Воспроизвести файлы</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="84"/>
+        <location filename="../display.cpp" line="86"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="89"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Repeat playlist</source>
         <translation>Повторять список</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="92"/>
+        <location filename="../display.cpp" line="94"/>
         <source>Shuffle</source>
         <translation>В случайном порядке</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="104"/>
         <source>Volume</source>
         <translation>Громкость</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="108"/>
+        <location filename="../display.cpp" line="110"/>
         <source>Balance</source>
         <translation>Баланс</translation>
     </message>

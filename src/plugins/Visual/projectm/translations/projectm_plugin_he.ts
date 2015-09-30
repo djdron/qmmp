@@ -12,92 +12,92 @@
 <context>
     <name>ProjectMWidget</name>
     <message>
-        <location filename="../projectmwidget.cpp" line="160"/>
+        <location filename="../projectmwidget.cpp" line="155"/>
         <source>&amp;Help</source>
         <translation>&amp;עזרה</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="160"/>
+        <location filename="../projectmwidget.cpp" line="155"/>
         <source>F1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="161"/>
+        <location filename="../projectmwidget.cpp" line="156"/>
         <source>&amp;Show Song Title</source>
         <translation>הצג &amp;כותרת שיר</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="161"/>
+        <location filename="../projectmwidget.cpp" line="156"/>
         <source>F2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="162"/>
+        <location filename="../projectmwidget.cpp" line="157"/>
         <source>&amp;Show Preset Name</source>
         <translation>הצג &amp;שם קביעה</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="162"/>
+        <location filename="../projectmwidget.cpp" line="157"/>
         <source>F3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="163"/>
+        <location filename="../projectmwidget.cpp" line="158"/>
         <source>&amp;Show Menu</source>
         <translation>הצג &amp;תפריט</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="163"/>
+        <location filename="../projectmwidget.cpp" line="158"/>
         <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="165"/>
+        <location filename="../projectmwidget.cpp" line="160"/>
         <source>&amp;Next Preset</source>
         <translation>קביעה &amp;באה</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="165"/>
+        <location filename="../projectmwidget.cpp" line="160"/>
         <source>N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="166"/>
+        <location filename="../projectmwidget.cpp" line="161"/>
         <source>&amp;Previous Preset</source>
         <translation>קביעה &amp;קודמת</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="166"/>
+        <location filename="../projectmwidget.cpp" line="161"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="167"/>
+        <location filename="../projectmwidget.cpp" line="162"/>
         <source>&amp;Random Preset</source>
         <translation>קביעה &amp;אקריאת</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="167"/>
+        <location filename="../projectmwidget.cpp" line="162"/>
         <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="168"/>
+        <location filename="../projectmwidget.cpp" line="163"/>
         <source>&amp;Lock Preset</source>
         <translation>&amp;נעל קביעה</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="168"/>
+        <location filename="../projectmwidget.cpp" line="163"/>
         <source>L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="170"/>
+        <location filename="../projectmwidget.cpp" line="165"/>
         <source>&amp;Fullscreen</source>
         <translation>&amp;מסך מלא</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="170"/>
+        <location filename="../projectmwidget.cpp" line="165"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>

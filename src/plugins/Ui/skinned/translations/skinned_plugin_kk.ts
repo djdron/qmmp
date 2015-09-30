@@ -554,62 +554,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="58"/>
+        <location filename="../display.cpp" line="60"/>
         <source>Previous</source>
         <translation>Алдыңғысы</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="62"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Play</source>
         <translation>Ойнату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="65"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Pause</source>
         <translation>Аялдату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="68"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Stop</source>
         <translation>Тоқтату</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="71"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Next</source>
         <translation>Келесіге өту</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="74"/>
+        <location filename="../display.cpp" line="76"/>
         <source>Play files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="84"/>
+        <location filename="../display.cpp" line="86"/>
         <source>Playlist</source>
         <translation>Тізім</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="89"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Repeat playlist</source>
         <translation>Тізімді қайталау</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="92"/>
+        <location filename="../display.cpp" line="94"/>
         <source>Shuffle</source>
         <translation>Кез-келген ретпен</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="104"/>
         <source>Volume</source>
         <translation>Даусы</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="108"/>
+        <location filename="../display.cpp" line="110"/>
         <source>Balance</source>
         <translation>Баланс</translation>
     </message>

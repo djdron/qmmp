@@ -75,57 +75,57 @@
         <translation>Ажурирај</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="51"/>
-        <location filename="../streamwindow.cpp" line="69"/>
+        <location filename="../streamwindow.cpp" line="52"/>
+        <location filename="../streamwindow.cpp" line="70"/>
         <source>Name</source>
         <translation>име</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="52"/>
-        <location filename="../streamwindow.cpp" line="70"/>
+        <location filename="../streamwindow.cpp" line="53"/>
+        <location filename="../streamwindow.cpp" line="71"/>
         <source>Genre</source>
         <translation>жанр</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="53"/>
-        <location filename="../streamwindow.cpp" line="71"/>
+        <location filename="../streamwindow.cpp" line="54"/>
+        <location filename="../streamwindow.cpp" line="72"/>
         <source>Bitrate</source>
         <translation>битски проток</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="54"/>
-        <location filename="../streamwindow.cpp" line="72"/>
+        <location filename="../streamwindow.cpp" line="55"/>
+        <location filename="../streamwindow.cpp" line="73"/>
         <source>Format</source>
         <translation>формат</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="125"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
         <translation>Додај у &amp;омиљене</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
         <translation>Додај у &amp;листу нумера</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="131"/>
+        <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
         <translation>&amp;Уклони</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="141"/>
+        <location filename="../streamwindow.cpp" line="142"/>
         <source>Done</source>
         <translation>Завршено</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
+        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="164"/>
+        <location filename="../streamwindow.cpp" line="165"/>
         <source>Receiving</source>
         <translation>Примање</translation>
     </message>

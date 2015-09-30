@@ -75,57 +75,57 @@
         <translation>Bijwerken</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="51"/>
-        <location filename="../streamwindow.cpp" line="69"/>
+        <location filename="../streamwindow.cpp" line="52"/>
+        <location filename="../streamwindow.cpp" line="70"/>
         <source>Name</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="52"/>
-        <location filename="../streamwindow.cpp" line="70"/>
+        <location filename="../streamwindow.cpp" line="53"/>
+        <location filename="../streamwindow.cpp" line="71"/>
         <source>Genre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="53"/>
-        <location filename="../streamwindow.cpp" line="71"/>
+        <location filename="../streamwindow.cpp" line="54"/>
+        <location filename="../streamwindow.cpp" line="72"/>
         <source>Bitrate</source>
         <translation>Bitsnelheid</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="54"/>
-        <location filename="../streamwindow.cpp" line="72"/>
+        <location filename="../streamwindow.cpp" line="55"/>
+        <location filename="../streamwindow.cpp" line="73"/>
         <source>Format</source>
         <translation>Formaat</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="125"/>
+        <location filename="../streamwindow.cpp" line="126"/>
         <source>&amp;Add to favorites</source>
         <translation>&amp;Voeg toe aan favorieten</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="126"/>
+        <location filename="../streamwindow.cpp" line="127"/>
         <source>&amp;Add to playlist</source>
         <translation>&amp;Voeg toe aan afspeellijst</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="131"/>
+        <location filename="../streamwindow.cpp" line="132"/>
         <source>&amp;Remove</source>
         <translation>&amp;Verwijder</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="141"/>
+        <location filename="../streamwindow.cpp" line="142"/>
         <source>Done</source>
         <translation>Klaar</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="144"/>
         <location filename="../streamwindow.cpp" line="145"/>
+        <location filename="../streamwindow.cpp" line="146"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../streamwindow.cpp" line="164"/>
+        <location filename="../streamwindow.cpp" line="165"/>
         <source>Receiving</source>
         <translation>Bezig met ontvangen</translation>
     </message>

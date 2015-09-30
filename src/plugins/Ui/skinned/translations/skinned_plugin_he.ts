@@ -554,62 +554,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="58"/>
+        <location filename="../display.cpp" line="60"/>
         <source>Previous</source>
         <translation>הקודם</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="62"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Play</source>
         <translation>נגן</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="65"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Pause</source>
         <translation>השהה</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="68"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Stop</source>
         <translation>הפסק</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="71"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Next</source>
         <translation>הבא</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="74"/>
+        <location filename="../display.cpp" line="76"/>
         <source>Play files</source>
         <translation>נגן קבצים</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Equalizer</source>
         <translation>אקולייזר</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="84"/>
+        <location filename="../display.cpp" line="86"/>
         <source>Playlist</source>
         <translation>רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="89"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Repeat playlist</source>
         <translation>חזור על רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="92"/>
+        <location filename="../display.cpp" line="94"/>
         <source>Shuffle</source>
         <translation>ערבב</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="104"/>
         <source>Volume</source>
         <translation>עוצמת קול</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="108"/>
+        <location filename="../display.cpp" line="110"/>
         <source>Balance</source>
         <translation>איזון</translation>
     </message>

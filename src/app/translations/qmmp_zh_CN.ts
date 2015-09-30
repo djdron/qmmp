@@ -82,62 +82,62 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="326"/>
+        <location filename="../qmmpstarter.cpp" line="328"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用：qmmp [设置] [文件]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="327"/>
+        <location filename="../qmmpstarter.cpp" line="329"/>
         <source>Options:</source>
         <translation>设置：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="331"/>
+        <location filename="../qmmpstarter.cpp" line="333"/>
         <source>Don&apos;t start the application</source>
         <translation>无法启动此程序</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="333"/>
+        <location filename="../qmmpstarter.cpp" line="335"/>
         <source>Print version number and exit</source>
         <translation>显示版本并退出</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="334"/>
+        <location filename="../qmmpstarter.cpp" line="336"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>建议、补丁或提交 bug 请发送到 forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="337"/>
+        <location filename="../qmmpstarter.cpp" line="339"/>
         <source>Command Line Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="350"/>
+        <location filename="../qmmpstarter.cpp" line="352"/>
         <source>QMMP version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="351"/>
+        <location filename="../qmmpstarter.cpp" line="353"/>
         <source>Compiled with Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="352"/>
+        <location filename="../qmmpstarter.cpp" line="354"/>
         <source>Using Qt version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="355"/>
+        <location filename="../qmmpstarter.cpp" line="357"/>
         <source>Qmmp Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="332"/>
+        <location filename="../qmmpstarter.cpp" line="334"/>
         <source>Display this text and exit</source>
         <translation>显示这些文本并退出</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="91"/>
+        <location filename="../qmmpstarter.cpp" line="93"/>
         <source>Unknown command</source>
         <translation>未知指令</translation>
     </message>
