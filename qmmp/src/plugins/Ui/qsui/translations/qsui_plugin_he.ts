@@ -566,17 +566,17 @@
 <context>
     <name>FileSystemBrowser</name>
     <message>
-        <location filename="../filesystembrowser.cpp" line="63"/>
+        <location filename="../filesystembrowser.cpp" line="67"/>
         <source>Add to Playlist</source>
         <translation>הוסף אל רשימת נגינה</translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="66"/>
+        <location filename="../filesystembrowser.cpp" line="70"/>
         <source>Change Directory</source>
         <translation>שנה מדור</translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="131"/>
+        <location filename="../filesystembrowser.cpp" line="135"/>
         <source>Select Directory</source>
         <translation>בחר מדור</translation>
     </message>

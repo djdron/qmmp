@@ -566,17 +566,17 @@
 <context>
     <name>FileSystemBrowser</name>
     <message>
-        <location filename="../filesystembrowser.cpp" line="63"/>
+        <location filename="../filesystembrowser.cpp" line="67"/>
         <source>Add to Playlist</source>
         <translation>Dodaj do listy odtwarzania</translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="66"/>
+        <location filename="../filesystembrowser.cpp" line="70"/>
         <source>Change Directory</source>
         <translation>Zmień Katalog</translation>
     </message>
     <message>
-        <location filename="../filesystembrowser.cpp" line="131"/>
+        <location filename="../filesystembrowser.cpp" line="135"/>
         <source>Select Directory</source>
         <translation>Wybierz Katalog</translation>
     </message>
