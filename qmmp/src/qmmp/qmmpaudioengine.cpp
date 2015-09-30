@@ -355,8 +355,9 @@ void QmmpAudioEngine::run()
     m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
     mutex()->unlock();
     m_output->start();
-    StateHandler::instance()->dispatch(Qmmp::Playing);
+    StateHandler::instance()->dispatch(Qmmp::Buffering);
     StateHandler::instance()->dispatch(m_decoder->totalTime());
+    StateHandler::instance()->dispatch(Qmmp::Playing);
     sendMetaData();
 
     while (!m_done && !m_finish)
