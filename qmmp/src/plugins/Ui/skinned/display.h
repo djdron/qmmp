@@ -25,6 +25,7 @@
 #include "pixmapwidget.h"
 
 class TimeIndicator;
+class TimeIndicatorModel;
 class PositionBar;
 class Skin;
 class ToggleButton;
@@ -111,6 +112,7 @@ private:
     BalanceBar* m_balanceBar;
     MainWindow* m_mw;
     MainVisual* m_vis;
+    TimeIndicatorModel* m_timeIndicatorModel;
     TimeIndicator* m_timeIndicator;
     TitleBar *m_titlebar;
     SoundCore *m_core;

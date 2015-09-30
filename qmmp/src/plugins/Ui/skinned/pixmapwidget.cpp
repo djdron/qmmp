@@ -44,3 +44,10 @@ void PixmapWidget::paintEvent (QPaintEvent *e)
     QPainter paint(this);
     style()->drawItemPixmap(&paint, rect(), Qt::AlignCenter, m_pixmap);
 }
+
+void PixmapWidget::mousePressEvent(QMouseEvent *e)
+{
+    if (e->button() & Qt::LeftButton) {
+        emit mouseClicked();
+    }
+}

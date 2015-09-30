@@ -39,6 +39,10 @@ public:
 
 protected:
     void paintEvent ( QPaintEvent * event );
+    virtual void mousePressEvent(QMouseEvent*);
+
+signals:
+    void mouseClicked();
 
 private:
       QPixmap m_pixmap;

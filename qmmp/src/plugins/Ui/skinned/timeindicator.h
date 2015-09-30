@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,9 +23,48 @@
 #include "pixmapwidget.h"
 
 class QMouseEvent;
-class QTimer;
 
 class Skin;
+
+
+/** Class TimeIndicatorModel
+ * @author Thomas Perl <m@thp.io>
+ *
+ * Encapsulates state and settings for the time indicator
+ */
+class TimeIndicatorModel : public QObject {
+    Q_OBJECT
+public:
+    TimeIndicatorModel(QObject *parent = 0);
+    ~TimeIndicatorModel();
+
+    int position() { return m_position; }
+    int duration() { return m_duration; }
+    bool elapsed() { return m_elapsed; }
+    bool visible() { return m_visible; }
+
+    void setPosition(int position);
+    void setDuration(int duration);
+    void setElapsed(bool elapsed);
+    void setVisible(bool visible);
+
+    int displayTime();
+
+public slots:
+    void toggleElapsed();
+
+signals:
+    void changed();
+
+private:
+    void readSettings();
+    void writeSettings();
+
+    int m_position;
+    int m_duration;
+    bool m_elapsed;
+    bool m_visible;
+};
 
 
 /** Class TimeIndicator
@@ -38,31 +77,22 @@ class TimeIndicator : public PixmapWidget
 {
     Q_OBJECT
 public:
-    TimeIndicator(QWidget *parent = 0);
+    TimeIndicator(TimeIndicatorModel *model, QWidget *parent = 0);
     ~TimeIndicator();
-    void setTime ( int t );
-    void setSongDuration(int);
-    void setNeedToShowTime(bool);
 
 protected:
     virtual void mousePressEvent(QMouseEvent*);
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void mouseReleaseEvent(QMouseEvent*);
-    void writeSettings();
-    void readSettings();
 
 private slots:
+    void modelChanged();
     void updateSkin();
-    void reset();
 
 private:
+    TimeIndicatorModel *m_model;
     QPixmap m_pixmap;
     Skin *m_skin;
-    int m_time;
-    int m_songDuration;
-    bool m_elapsed;
-    bool m_needToShowTime;
-    QTimer *m_timer;
 };
 
 #endif

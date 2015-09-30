@@ -51,7 +51,9 @@ MainDisplay::MainDisplay (MainWindow *parent)
     setPixmap (m_skin->getMain());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
     m_mw = parent;
-    m_titlebar = new TitleBar(this);
+
+    m_timeIndicatorModel = new TimeIndicatorModel(this);
+    m_titlebar = new TitleBar(m_timeIndicatorModel, this);
     m_titlebar->move(0,0);
     m_titlebar->setActive(true);
     m_previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P, Skin::CUR_NORMAL);
@@ -115,7 +117,7 @@ MainDisplay::MainDisplay (MainWindow *parent)
     connect(m_posbar, SIGNAL(sliderMoved(qint64)),SLOT(showPosition()));
     connect(m_posbar, SIGNAL(sliderReleased()),SLOT(updatePosition()));
 
-    m_timeIndicator = new TimeIndicator(this);
+    m_timeIndicator = new TimeIndicator(m_timeIndicatorModel, this);
     m_aboutWidget = new QWidget(this);
     m_core = SoundCore::instance();
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
@@ -125,7 +127,6 @@ MainDisplay::MainDisplay (MainWindow *parent)
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_core, SIGNAL(volumeChanged(int)), m_volumeBar, SLOT(setValue(int)));
     connect(m_core, SIGNAL(balanceChanged(int)), m_balanceBar, SLOT(setValue(int)));
-    connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
     connect(m_balanceBar, SIGNAL(sliderMoved(int)), m_core, SLOT(setBalance(int)));
     connect(m_volumeBar, SIGNAL(sliderMoved(int)), m_core, SLOT(setVolume(int)));
     m_volumeBar->setValue(m_core->volume());
@@ -175,12 +176,12 @@ void MainDisplay::updatePositions()
 void MainDisplay::setTime (qint64 t)
 {
     m_posbar->setValue (t);
-    m_timeIndicator->setTime(t/1000);
+    m_timeIndicatorModel->setPosition(t/1000);
 }
 void MainDisplay::setDuration(qint64 t)
 {
     m_posbar->setMaximum (t);
-    m_timeIndicator->setSongDuration(t/1000);
+    m_timeIndicatorModel->setDuration(t/1000);
 }
 
 void MainDisplay::setState(Qmmp::State state)
@@ -189,7 +190,7 @@ void MainDisplay::setState(Qmmp::State state)
     {
     case Qmmp::Playing:
         m_playstatus->setStatus(PlayStatus::PLAY);
-        m_timeIndicator->setNeedToShowTime(true);
+        m_timeIndicatorModel->setVisible(true);
         setDuration(m_core->totalTime());
         break;
     case Qmmp::Paused:
@@ -198,10 +199,9 @@ void MainDisplay::setState(Qmmp::State state)
     case Qmmp::Stopped:
         m_playstatus->setStatus(PlayStatus::STOP);
         m_monoster->setChannels (0);
-        m_timeIndicator->setNeedToShowTime(false);
+        m_timeIndicatorModel->setVisible(false);
         m_posbar->setValue (0);
         m_posbar->setMaximum (0);
-        m_titlebar->setTime(-1);
     }
 }
 
