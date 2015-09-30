@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,10 +33,12 @@
 #include "display.h"
 #include "titlebar.h"
 #include "mainwindow.h"
+#include "timeindicator.h"
 
 // TODO skin cursor with shade mode
-TitleBar::TitleBar(QWidget *parent)
+TitleBar::TitleBar(TimeIndicatorModel *model, QWidget *parent)
         : PixmapWidget(parent)
+        , m_model(model)
 {
     m_align = false;
     m_skin = Skin::instance();
@@ -65,6 +67,7 @@ TitleBar::TitleBar(QWidget *parent)
     m_align = true;
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
     updatePositions();
+    connect(m_model, SIGNAL(changed()), this, SLOT(onModelChanged()));
 }
 
 TitleBar::~TitleBar()
@@ -160,7 +163,7 @@ void TitleBar::shade()
         m_shade2->show();
         m_currentTime = new SymbolDisplay(this, 6);
         m_currentTime->show();
-        m_currentTime->display("--:--");
+        connect (m_currentTime, SIGNAL (mouseClicked()), m_model, SLOT (toggleElapsed()));
         m_control = new TitleBarControl(this);
         m_control->show();
         connect (m_control, SIGNAL (nextClicked()), m_mw, SLOT (next()));
@@ -190,6 +193,7 @@ void TitleBar::shade()
     qobject_cast<MainDisplay *> (parent())->setMinimalMode(m_shaded);
     if (m_align)
         Dock::instance()->align(m_mw, m_shaded? -r*102: r*102);
+    onModelChanged();
     updatePositions();
 }
 
@@ -200,6 +204,11 @@ void TitleBar::mouseDoubleClickEvent (QMouseEvent *)
 
 QString TitleBar::formatTime (int sec)
 {
+    bool sign = false;
+    if (sec < 0) {
+        sign = true;
+        sec = -sec;
+    }
     int minutes = sec / 60;
     int seconds = sec % 60;
 
@@ -209,15 +218,24 @@ QString TitleBar::formatTime (int sec)
     if (minutes < 10) str_minutes.prepend ("0");
     if (seconds < 10) str_seconds.prepend ("0");
 
-    return str_minutes + ":" + str_seconds;
+    return (sign ? "-" : "") + str_minutes + ":" + str_seconds;
 }
 
-void TitleBar::setTime(qint64 time)
+void TitleBar::onModelChanged()
 {
     if (!m_currentTime)
         return;
-    if (time < 0)
+
+    if (!m_model->visible())
+    {
+        m_currentTime->display("  :  ");
+    }
+    else if (m_model->position() < 0)
+    {
         m_currentTime->display("--:--");
+    }
     else
-        m_currentTime->display(formatTime(time/1000));
+    {
+        m_currentTime->display(formatTime(m_model->displayTime()));
+    }
 }

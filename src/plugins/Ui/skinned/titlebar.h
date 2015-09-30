@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,6 +33,7 @@ class Button;
 class SymbolDisplay;
 class TitleBarControl;
 class ShadedVisual;
+class TimeIndicatorModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -41,16 +42,14 @@ class TitleBar : public PixmapWidget
 {
 Q_OBJECT
 public:
-    TitleBar(QWidget *parent = 0);
+    TitleBar(TimeIndicatorModel *model, QWidget *parent = 0);
 
     ~TitleBar();
 
     void setActive(bool);
 
-public slots:
-    void setTime(qint64 time);
-
 private slots:
+    void onModelChanged();
     void updateSkin();
     void showMainMenu();
     void shade();
@@ -70,6 +69,7 @@ private:
     bool m_align;
     TitleBarControl *m_control;
     ShadedVisual *m_visual;
+    TimeIndicatorModel *m_model;
     void updatePositions();
 
 protected:
