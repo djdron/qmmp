@@ -1036,14 +1036,20 @@ Version 0.9.0
 * updated Japanese translation (RyoTa SimaMoto)
 
 Version 1.0.0
-* added equalizer optimization
 * switch to Qt5
 * removed ffmpeg_legacy plugin
 * removed legacy udisks plugin
 * removed support of taglib versions less than 1.8
 * fixed 16-bit converter
 * fixed Russian translation
+* optimized equalizer
+* optimized flac and wavpack plugins
+* improved skinned ui in the shaded mode:
+  - improved time indicator (Thomas Perl)
+  - fixed playlist colors
 * fixed clicks while playing some mp3 files
 * fixed memory leak in the wavpack plugin
-* fixed shaded playlist colors
+* fixed effects and decoders sorting
+* fixed possible race condition
 * updated Greek translation (Dimitrios Glentadakis)
+
