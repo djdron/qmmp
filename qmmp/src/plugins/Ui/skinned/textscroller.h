@@ -60,6 +60,7 @@ private:
     void mousePressEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *);
+    void mouseDoubleClickEvent(QMouseEvent *);
     void preparePixmap(const QString &text, bool scrollable = false);
     QString m_defautText;
     QString m_bufferText;

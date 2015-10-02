@@ -624,6 +624,19 @@ void PlayListModel::showDetails(QWidget *parent)
     }
 }
 
+void PlayListModel::showDetailsForCurrent(QWidget *parent)
+{
+    if (m_current_track)
+    {
+        QList<PlayListTrack *> l;
+        l.append(m_current_track);
+        QDialog *d = new DetailsDialog(l, parent);
+        TagUpdater *updater = new TagUpdater(d, l);
+        connect(updater, SIGNAL(destroyed(QObject *)),SLOT(updateMetaData()));
+        d->show();
+    }
+}
+
 int PlayListModel::firstSelectedUpper(int row)
 {
     for (int i = row - 1;i >= 0;i--)
