@@ -28,6 +28,8 @@
 #include <qmmp/qmmp.h>
 #include <qmmp/soundcore.h>
 #include <qmmpui/metadataformatter.h>
+#include <qmmpui/playlistmanager.h>
+#include <qmmpui/playlistmodel.h>
 #include "skin.h"
 #include "actionmanager.h"
 #include "textscroller.h"
@@ -203,6 +205,20 @@ void TextScroller::mouseMoveEvent (QMouseEvent *e)
     }
     else
         QWidget::mouseMoveEvent(e);
+}
+
+void TextScroller::mouseDoubleClickEvent(QMouseEvent *e)
+{
+   if(e->button() == Qt::LeftButton)
+   {
+       PlayListManager *manager = PlayListManager::instance();
+       PlayListModel *model = manager->currentPlayList();
+       model->showDetailsForCurrent(this);
+   }
+   else
+   {
+       QWidget::mouseDoubleClickEvent(e);
+   }
 }
 
 void TextScroller::processState(Qmmp::State state)

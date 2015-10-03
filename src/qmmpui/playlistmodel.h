@@ -458,6 +458,11 @@ public slots:
      */
     void showDetails(QWidget *parent = 0);
     /*!
+     * Shows the details for the current song (if any).
+     * @param parent parent widget.
+     */
+    void showDetailsForCurrent(QWidget *parent = 0);
+    /*!
      * Ensures that the current track is visible.
      */
     void doCurrentVisibleRequest();
