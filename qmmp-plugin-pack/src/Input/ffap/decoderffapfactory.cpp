@@ -22,6 +22,9 @@
 #include <QRegExp>
 #include <taglib/apefile.h>
 #include <taglib/apetag.h>
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+#include <taglib/tfilestream.h>
+#endif
 #include "replaygainreader.h"
 #include "ffapmetadatamodel.h"
 #include "decoderffapfactory.h"
@@ -98,7 +101,12 @@ QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bo
         return QList<FileInfo *>() << info;
     }
 
+#if (TAGLIB_MAJOR_VERSION > 1) || ((TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION >= 8))
+    TagLib::FileStream stream(fileName.toLocal8Bit().constData(), true);
+    file = new TagLib::APE::File(&stream);
+#else
     file = new TagLib::APE::File(fileName.toLocal8Bit().constData());
+#endif
     tag = useMetaData ? file->APETag() : 0;
     ap = file->audioProperties();
 
