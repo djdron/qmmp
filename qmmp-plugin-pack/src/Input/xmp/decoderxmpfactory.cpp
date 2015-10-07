@@ -22,7 +22,7 @@
 #include <QStringList>
 #include <QRegExp>
 #include <xmp.h>
-#include <settingsdialog.h>
+#include "settingsdialog.h"
 #include "decoder_xmp.h"
 #include "xmpmetadatamodel.h"
 #include "decoderxmpfactory.h"

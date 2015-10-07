@@ -57,8 +57,8 @@ SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
 
 
 include(FindPkgConfig)
-pkg_check_modules(QMMPUI qmmpui>=0.8.0)
-pkg_check_modules(QMMP qmmp>=0.8.0 REQUIRED)
+pkg_check_modules(QMMPUI qmmpui>=0.10.0)
+pkg_check_modules(QMMP qmmp>=0.10.0 REQUIRED)
 
 IF(QMMP_FOUND)
 add_subdirectory(src)
