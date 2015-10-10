@@ -1,3 +1,9 @@
+qmmp-plugin-pack (0.9.2-1ubuntu1~trusty0) trusty; urgency=medium
+
+  * New upstream release.
+
+ -- Ilya Kotov <forkotov02@hotmail.ru>  Sat, 10 Oct 2015 11:05:28 +0300
+
 qmmp-plugin-pack (0.9.1-1ubuntu1~trusty0) trusty; urgency=medium
 
   * New upstream release.
