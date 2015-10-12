@@ -1,0 +1,12 @@
+diff --git a/src/widgets/util/qsystemtrayicon_x11.cpp b/src/widgets/util/qsystemtrayicon_x11.cpp
+index 4060655..d541e8e 100644
+--- a/src/widgets/util/qsystemtrayicon_x11.cpp
++++ b/src/widgets/util/qsystemtrayicon_x11.cpp
+@@ -212,6 +212,7 @@ void QSystemTrayIconSys::mouseDoubleClickEvent(QMouseEvent *ev)
+ bool QSystemTrayIconSys::event(QEvent *e)
+ {
+     switch (e->type()) {
++    case QEvent::ToolTip:
+ #ifndef QT_NO_WHEELEVENT
+     case QEvent::Wheel:
+         return QApplication::sendEvent(q, e);
