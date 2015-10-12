@@ -67,9 +67,9 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
     for (int i = 1;i < argc;i++)
-        tmp << QString::fromLocal8Bit(argv[i]).trimmed();
+        tmp << QString::fromLocal8Bit(argv[i]);
 
-    argString = tmp.join("\n");
+    argString = tmp.join("|||");
     QHash <QString, QStringList> commands = m_option_manager->splitArgs(tmp);
 
     if(commands.keys().contains("--help"))
@@ -168,7 +168,7 @@ QMMPStarter::~QMMPStarter()
 void QMMPStarter::startPlayer()
 {
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
-    QStringList args = argString.split("\n", QString::SkipEmptyParts);
+    QStringList args = argString.split("|||", QString::SkipEmptyParts);
 
 #ifdef Q_OS_WIN
     QIcon::setThemeSearchPaths(QStringList() << qApp->applicationDirPath() + "/themes/");
@@ -240,7 +240,7 @@ void QMMPStarter::commitData(QSessionManager &manager)
 
 void QMMPStarter::writeCommand()
 {
-    QString workingDir = QDir::currentPath() + "\n";
+    QString workingDir = QDir::currentPath() + "|||";
     QByteArray barray;
     barray.append(workingDir.toUtf8 ());
     barray.append(argString.isEmpty() ? "--show-mw" : argString.toUtf8 ());
@@ -272,7 +272,7 @@ void QMMPStarter::readCommand()
         socket->deleteLater();
         return;
     }
-    QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
+    QStringList slist = QString::fromUtf8(inputArray.data()).split("|||",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
     QString out = processCommandArgs(slist, cwd);
     if(!out.isEmpty())
