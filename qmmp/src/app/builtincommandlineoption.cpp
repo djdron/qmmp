@@ -224,12 +224,17 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
 QHash <QString, QStringList> BuiltinCommandLineOption::splitArgs(const QStringList &args) const
 {
     QHash <QString, QStringList> commands;
+    QString lastCmd;
     foreach(QString arg, args)
     {
-        if(arg.startsWith("-") || arg.startsWith("--"))
-            commands.insert(arg, QStringList());
-        else if(!commands.isEmpty())
-            commands[commands.keys().last()] << arg;
+        QString cmd = arg.trimmed();
+        if(cmd.startsWith("-") || cmd.startsWith("--"))
+        {
+            commands.insert(cmd, QStringList());
+            lastCmd = cmd;
+        }
+        else if(!commands.isEmpty() && !lastCmd.isEmpty())
+            commands[lastCmd] << arg;
     }
     return commands;
 }
