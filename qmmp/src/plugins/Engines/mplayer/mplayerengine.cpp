@@ -176,8 +176,8 @@ void MplayerEngine::stop()
         m_process->write("quit\n");
         m_process->waitForFinished(3500);
         m_process->kill();
+        StateHandler::instance()->dispatch(Qmmp::Stopped);
     }
-    StateHandler::instance()->dispatch(Qmmp::Stopped);
 }
 
 void MplayerEngine::pause()
