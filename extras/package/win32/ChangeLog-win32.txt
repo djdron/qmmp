@@ -100,3 +100,7 @@ LEGEND
 [*] ffmpeg-2.8
 [*] curl-7.44
 [*] mingw-w64 toolchain: i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z
+
+0.9.3
+[*] ffmpeg-2.8.1
+
