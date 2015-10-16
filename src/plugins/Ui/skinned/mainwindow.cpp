@@ -60,8 +60,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 #endif
     m_vis = 0;
     m_update = false;
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
-                   Qt::WindowCloseButtonHint | Qt::WindowMinMaxButtonsHint | Qt::WindowSystemMenuHint);
+
+#ifdef QMMP_WS_X11
+    if(WindowSystem::netWindowManagerName() == "Marco")
+        setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
+                       Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
+    else
+#endif
+        setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
+                       Qt::WindowCloseButtonHint | Qt::WindowMinMaxButtonsHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
 
     m_titleFormatter.setPattern("%if(%p,%p - %t,%t)");
