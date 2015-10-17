@@ -196,7 +196,9 @@ void MainWindow::updatePosition(qint64 pos)
         m_slider->setValue(pos/1000);
 
     QString text = MetaDataFormatter::formatLength(pos/1000);
-    if(m_core->totalTime() > 0)
+    if(text.isEmpty())
+        text = "0:00";
+    if(m_core->totalTime() > 1000)
     {
         text.append("/");
         text.append(MetaDataFormatter::formatLength(m_core->totalTime()/1000));
