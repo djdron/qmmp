@@ -79,8 +79,11 @@ public:
     /*!
      * Returns formatted length (example: 05:02:03).
      * \param length Length in seconds.
+     * \param hideZero Setting for zero values output.
+     * If \b hideZero is \b true, then the function outputs empty string for zero length,
+     * otherwise outputs "0:00".
      */
-    static QString formatLength(qint64 length);
+    static QString formatLength(qint64 length, bool hideZero = true);
 
 private:
     struct Node;

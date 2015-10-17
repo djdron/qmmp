@@ -105,10 +105,10 @@ QString MetaDataFormatter::format(const QMap<Qmmp::MetaData, QString> &metaData,
     return evalute(&m_nodes, &metaData, length, track).trimmed();
 }
 
-QString MetaDataFormatter::formatLength(qint64 length)
+QString MetaDataFormatter::formatLength(qint64 length, bool hideZero)
 {
     if(length <= 0)
-        return QString();
+        return hideZero ? QString() : "0:00";
     QString str;
     if(length >= 3600)
         str = QString("%1:%2").arg(length/3600).arg(length%3600/60, 2, 10, QChar('0'));

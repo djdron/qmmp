@@ -195,9 +195,7 @@ void MainWindow::updatePosition(qint64 pos)
     if(!m_slider->isSliderDown())
         m_slider->setValue(pos/1000);
 
-    QString text = MetaDataFormatter::formatLength(pos/1000);
-    if(text.isEmpty())
-        text = "0:00";
+    QString text = MetaDataFormatter::formatLength(pos/1000, false);
     if(m_core->totalTime() > 1000)
     {
         text.append("/");
@@ -382,7 +380,7 @@ void MainWindow::updateStatus()
                                .arg(m_core->channels())
                                .arg(m_core->frequency())
                                .arg(tracks)
-                               .arg(MetaDataFormatter::formatLength(length))
+                               .arg(MetaDataFormatter::formatLength(length, false))
                                .arg(m_core->bitrate()));
     }
     else if(m_core->state() == Qmmp::Stopped)
