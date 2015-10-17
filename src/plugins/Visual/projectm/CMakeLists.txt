@@ -12,8 +12,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # projectM
-pkg_search_module(PROJECTM libprojectM>=2.0.0)
-ADD_DEFINITIONS(${PROJECTM_CFLAGS})
+MESSAGE(STATUS "Found OpenGL implementation: ${Qt5Gui_OPENGL_IMPLEMENTATION}")
+IF(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL GL)
+  pkg_search_module(PROJECTM libprojectM>=2.0.0)
+  ADD_DEFINITIONS(${PROJECTM_CFLAGS})
+ELSE(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL GL)
+  MESSAGE(WARNING "Unsuppoted OpenGL implementation, projectM disabled")
+ENDIF(${Qt5Gui_OPENGL_IMPLEMENTATION} STREQUAL GL)
 
 find_file(PROJECTM_CONFIG config.inp
           PATHS "/usr/share/projectM/" "/usr/local/share/projectM/")
