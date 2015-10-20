@@ -52,6 +52,7 @@ void GroupedContainer::addTrack(PlayListTrack *track)
         {
             m_groups[i]->trackList.append(track);
             m_items.insert(lastIndex + 1, track);
+            m_update = true;
             return;
         }
     }
