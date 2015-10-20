@@ -252,7 +252,7 @@ void QMMPStarter::writeCommand()
     }
     m_socket->flush();
     //reading answer
-    if(m_socket->waitForReadyRead(1500))
+    while(m_socket->waitForReadyRead(1500))
         cout << m_socket->readAll().data();
 
 #ifndef Q_OS_WIN
@@ -280,7 +280,8 @@ void QMMPStarter::readCommand()
     {
         //writing answer
         socket->write(out.toLocal8Bit());
-        socket->flush();
+        while(socket->waitForBytesWritten())
+            socket->flush();
     }
     socket->deleteLater();
 }
