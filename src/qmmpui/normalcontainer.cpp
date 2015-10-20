@@ -43,6 +43,9 @@ void NormalContainer::insertTrack(int index, PlayListTrack *track)
     {
         m_items.insert(index, track);
         track->setTrackIndex(index);
+        //update indexes
+        for(int i = index; i < m_items.count(); ++i)
+            m_items[i]->setTrackIndex(i);
     }
     else
     {
