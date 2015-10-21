@@ -10,7 +10,7 @@
  ;-------------------------------
  ;Defines
  
-   !define QMMP_VERSION "0.9.2"
+   !define QMMP_VERSION "0.9.3"
    !define QMMP_DEF_PROGS_KEY "Software\Clients\Media\Qmmp"
    !define QMMP_UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\Qmmp"
    !define APP_DESCRIPTION "Qt-based multimedia player with support of many formats"

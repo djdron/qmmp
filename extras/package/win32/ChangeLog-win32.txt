@@ -104,3 +104,4 @@ LEGEND
 0.9.3
 [*] ffmpeg-2.8.1
 [*] wavpack-4.75.2
+[*] qmmp-0.9.3
