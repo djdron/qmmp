@@ -81,11 +81,6 @@ public slots:
     void about();
     void updateSettings();
 
-protected:
-    virtual void closeEvent (QCloseEvent *);
-    virtual void changeEvent (QEvent *event);
-    virtual void keyPressEvent (QKeyEvent* );
-
 private slots:
     void showState(Qmmp::State state);
     void showMetaData();
@@ -94,6 +89,11 @@ private slots:
     void backward();
 
 private:
+    //events
+    void closeEvent (QCloseEvent *);
+    void changeEvent (QEvent *event);
+    void keyPressEvent (QKeyEvent* );
+
     void readSettings();
     void writeSettings();
     void createActions();
