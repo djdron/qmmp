@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,6 +52,8 @@ public:
     void loadPreset(const QString &name);
     void setMimimalMode(bool b = true);
 
+    void writeSettings();
+
 signals:
     void closed();
 
@@ -71,16 +73,15 @@ private slots:
 private:
     void updatePositions();
     void readSettings();
-    void writeSettings();
     void createActions();
     void updateMask();
     EQPreset *findPreset(const QString &name);
     //events
-    virtual void keyPressEvent (QKeyEvent *);
-    virtual void changeEvent(QEvent*);
-    virtual void closeEvent(QCloseEvent*);
+    void keyPressEvent (QKeyEvent *);
+    void changeEvent(QEvent*);
+    void closeEvent(QCloseEvent*);
 #ifdef QMMP_WS_X11
-    virtual bool event (QEvent *event);
+    bool event (QEvent *event);
 #endif
 
     Skin *m_skin;

@@ -205,11 +205,15 @@ void MainWindow::showMetaData()
 
 void MainWindow::closeEvent (QCloseEvent *)
 {
-    writeSettings();
-    m_playlist->close();
-    m_equalizer->close();
     if (!m_hideOnClose || !m_uiHelper->visibilityControl())
         m_uiHelper->exit();
+}
+
+void MainWindow::hideEvent (QHideEvent *)
+{
+    writeSettings();
+    m_playlist->writeSettings();
+    m_equalizer->writeSettings();
 }
 
 void MainWindow::addDir()

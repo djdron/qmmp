@@ -357,7 +357,6 @@ void PlayList::createActions()
 
 void PlayList::closeEvent (QCloseEvent *e)
 {
-    writeSettings();
     if (e->spontaneous ())
         parentWidget()->close();
 }
