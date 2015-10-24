@@ -91,8 +91,10 @@ private slots:
 private:
     //events
     void closeEvent (QCloseEvent *);
+    void hideEvent (QHideEvent *);
     void changeEvent (QEvent *event);
     void keyPressEvent (QKeyEvent* );
+
 
     void readSettings();
     void writeSettings();

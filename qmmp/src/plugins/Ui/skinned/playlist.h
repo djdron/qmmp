@@ -55,6 +55,8 @@ class PlayList : public QWidget
         void readSettings();
         void setMinimalMode(bool b = true);
 
+        void writeSettings();
+
     signals:
         void play();
         void next();
@@ -86,7 +88,6 @@ class PlayList : public QWidget
         void updatePositions();
         QString formatTime (int sec);
         void drawPixmap (QPainter *painter, int x, int y, const QPixmap &pix);
-        void writeSettings();
         void createMenus();
         void createActions();
         //events
