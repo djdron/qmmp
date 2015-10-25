@@ -55,7 +55,6 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
     else
         m_tray->setIcon(QIcon(":/tray_stop.png"));
-    m_tray->show();
     settings.endGroup();
     //actions
     m_menu = new QMenu();
@@ -73,6 +72,7 @@ StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
     m_menu->addSeparator();
     m_menu->addAction(tr("Exit"), UiHelper::instance(), SLOT(exit()));
     m_tray->setContextMenu(m_menu);
+    m_tray->show();
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     setState(m_core->state()); //update state
