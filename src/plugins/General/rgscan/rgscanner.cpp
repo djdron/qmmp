@@ -64,10 +64,10 @@ bool RGScanner::prepare(const QString &url)
 
     if(source->ioDevice() && !source->ioDevice()->open(QIODevice::ReadOnly))
     {
-        delete source;
         qWarning("RGScanner: [%s] unable to open input stream, error: %s",
                  qPrintable(name),
                  qPrintable(source->ioDevice()->errorString()));
+        delete source;
         return false;
     }
 
