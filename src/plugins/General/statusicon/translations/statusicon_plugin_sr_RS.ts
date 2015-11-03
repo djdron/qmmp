@@ -73,32 +73,32 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Play</source>
         <translation>Пусти</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="68"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Pause</source>
         <translation>Паузирај</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Stop</source>
         <translation>Заустави</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="71"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Next</source>
         <translation>Следећа</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Previous</source>
         <translation>Претходна</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="74"/>
+        <location filename="../statusicon.cpp" line="73"/>
         <source>Exit</source>
         <translation>Напусти</translation>
     </message>

@@ -82,62 +82,62 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="93"/>
+        <location filename="../qmmpstarter.cpp" line="94"/>
         <source>Unknown command</source>
         <translation>Neznámý příkaz</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="328"/>
+        <location filename="../qmmpstarter.cpp" line="330"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použití: qmmp [volby] [soubory]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="329"/>
+        <location filename="../qmmpstarter.cpp" line="331"/>
         <source>Options:</source>
         <translation>Volby:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="333"/>
+        <location filename="../qmmpstarter.cpp" line="335"/>
         <source>Don&apos;t start the application</source>
         <translation>Nespouštět aplikaci</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="334"/>
+        <location filename="../qmmpstarter.cpp" line="336"/>
         <source>Display this text and exit</source>
         <translation>Zobrazit tento text a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="335"/>
+        <location filename="../qmmpstarter.cpp" line="337"/>
         <source>Print version number and exit</source>
         <translation>Vypsat číslo verze a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="336"/>
+        <location filename="../qmmpstarter.cpp" line="338"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Nápady, patche, hlášení chyb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="339"/>
+        <location filename="../qmmpstarter.cpp" line="341"/>
         <source>Command Line Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="352"/>
+        <location filename="../qmmpstarter.cpp" line="354"/>
         <source>QMMP version: %1</source>
         <translation>QMMP verze: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="353"/>
+        <location filename="../qmmpstarter.cpp" line="355"/>
         <source>Compiled with Qt version: %1</source>
         <translation>Zkompilováno s Qt verze: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="354"/>
+        <location filename="../qmmpstarter.cpp" line="356"/>
         <source>Using Qt version: %1</source>
         <translation>Používá Qt verze: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="357"/>
+        <location filename="../qmmpstarter.cpp" line="359"/>
         <source>Qmmp Version</source>
         <translation type="unfinished"></translation>
     </message>

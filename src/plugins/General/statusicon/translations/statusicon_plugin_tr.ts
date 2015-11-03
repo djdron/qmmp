@@ -73,32 +73,32 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Play</source>
         <translation>Oynat</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="68"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Pause</source>
         <translation>Duraklat</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Stop</source>
         <translation>Durdur</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="71"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Next</source>
         <translation>Sonraki</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Previous</source>
         <translation>Önceki</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="74"/>
+        <location filename="../statusicon.cpp" line="73"/>
         <source>Exit</source>
         <translation>Çık</translation>
     </message>

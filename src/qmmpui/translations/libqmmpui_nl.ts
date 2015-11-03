@@ -36,7 +36,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>Qt gebasseerde multimediaspeler (Qmmp)</translation>
+        <translation>Qt gebaseerde multimediaspeler (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
@@ -84,22 +84,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="14"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef nieuwe URL</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="43"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="50"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout</translation>
     </message>
 </context>
 <context>
@@ -107,137 +107,137 @@
     <message>
         <location filename="../forms/columneditor.ui" line="14"/>
         <source>Edit Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig kolom</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="36"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="76"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formaat:</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="64"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/columneditor.ui" line="29"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Type:</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="78"/>
         <location filename="../columneditor.cpp" line="100"/>
         <source>Artist</source>
-        <translation type="unfinished">Artiest</translation>
+        <translation>Artiest</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="79"/>
         <location filename="../columneditor.cpp" line="101"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="81"/>
         <location filename="../columneditor.cpp" line="105"/>
         <source>Title</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="84"/>
         <location filename="../columneditor.cpp" line="108"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="85"/>
         <location filename="../columneditor.cpp" line="109"/>
         <source>Comment</source>
-        <translation type="unfinished">Commentaar</translation>
+        <translation>Commentaar</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="86"/>
         <location filename="../columneditor.cpp" line="110"/>
         <source>Composer</source>
-        <translation type="unfinished">Componist</translation>
+        <translation>Componist</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="87"/>
         <location filename="../columneditor.cpp" line="111"/>
         <source>Duration</source>
-        <translation type="unfinished">Duur</translation>
+        <translation>Duur</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="91"/>
         <location filename="../columneditor.cpp" line="116"/>
         <source>Year</source>
-        <translation type="unfinished">Jaar</translation>
+        <translation>Jaar</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="92"/>
         <location filename="../columneditor.cpp" line="115"/>
         <source>Track Index</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="93"/>
         <source>Condition</source>
-        <translation type="unfinished">Staat</translation>
+        <translation>Staat</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="102"/>
         <source>Artist - Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Artiest - Album</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="103"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Artiest - Titel</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="80"/>
         <location filename="../columneditor.cpp" line="104"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Album Artiest</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="82"/>
         <location filename="../columneditor.cpp" line="106"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="83"/>
         <location filename="../columneditor.cpp" line="107"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>2 cijferig nummer</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="88"/>
         <location filename="../columneditor.cpp" line="112"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Schijf nummer</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="89"/>
         <location filename="../columneditor.cpp" line="113"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="90"/>
         <location filename="../columneditor.cpp" line="114"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandspad</translation>
     </message>
     <message>
         <location filename="../columneditor.cpp" line="117"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepast</translation>
     </message>
 </context>
 <context>
@@ -271,12 +271,12 @@
         <location filename="../forms/configdialog.ui" line="94"/>
         <location filename="../forms/configdialog.ui" line="758"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="123"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="143"/>
@@ -296,12 +296,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="150"/>
         <source>Group format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep formaat:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="160"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="170"/>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="199"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Allerlei</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Auto-save playlist when modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch playlist bewaren na wijziging</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="212"/>
         <source>Clear previous playlist when opening new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorige playlist verwijderen bij het openen van een nieuwe</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="260"/>
@@ -364,7 +364,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="338"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="374"/>
@@ -409,17 +409,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="481"/>
         <source>URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>URL Dialoog</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="487"/>
         <source>Auto-paste URL from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch URL plakken van het klembord</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="526"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="538"/>
@@ -454,7 +454,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay Gain</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="634"/>
@@ -521,7 +521,7 @@
     <message>
         <location filename="../configdialog.cpp" line="82"/>
         <source>File Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandstypes</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="183"/>
@@ -561,12 +561,12 @@
     <message>
         <location filename="../configdialog.cpp" line="253"/>
         <source>File Dialogs</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsdialogen</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="263"/>
         <source>User Interfaces</source>
-        <translation type="unfinished"></translation>
+        <translation>GebruikersInterfaces</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="295"/>
@@ -576,12 +576,12 @@
     <message>
         <location filename="../configdialog.cpp" line="297"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Album Artiest</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="298"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Genre</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="299"/>
@@ -596,7 +596,7 @@
     <message>
         <location filename="../configdialog.cpp" line="301"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Schijf nummer</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="302"/>
@@ -611,17 +611,17 @@
     <message>
         <location filename="../configdialog.cpp" line="304"/>
         <source>Artist/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Artiest/Album</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="305"/>
         <source>Artist/Year/Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Artiest/Jaar/Album</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="325"/>
         <source>&lt;Autodetect&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Automatisch&gt;</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="326"/>
@@ -759,7 +759,7 @@
     <message>
         <location filename="../forms/detailsdialog.ui" line="47"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../forms/detailsdialog.ui" line="63"/>
@@ -784,7 +784,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="167"/>
         <source>Album artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Album Artiest</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="168"/>
@@ -799,7 +799,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="170"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Genre</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="171"/>
@@ -878,7 +878,7 @@
     <message>
         <location filename="../playlistdownloader.cpp" line="108"/>
         <source>Unsupported playlist format</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet ondersteund playlist formaat</translation>
     </message>
 </context>
 <context>
@@ -886,17 +886,17 @@
     <message>
         <location filename="../playlistheadermodel.cpp" line="36"/>
         <source>Artist - Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Artiest - Naam</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="186"/>
         <source>Title</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../playlistheadermodel.cpp" line="187"/>
         <source>Add Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolom toevoegen</translation>
     </message>
 </context>
 <context>
@@ -970,7 +970,7 @@
     <message>
         <location filename="../forms/tageditor.ui" line="113"/>
         <source>Album artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Album artiest:</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="123"/>
@@ -1050,22 +1050,22 @@
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Album Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Album Artiest</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Two-digit Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>2 cijferige nummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
@@ -1085,17 +1085,17 @@
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Schijf nummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandspad</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
@@ -1124,7 +1124,7 @@
     <message>
         <location filename="../uihelper.cpp" line="155"/>
         <source>Select one or more files to play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kies één of meerdere bestanden om af te spelen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="163"/>
@@ -1153,47 +1153,47 @@
     <message>
         <location filename="../forms/winfileassocpage.ui" line="17"/>
         <source>Media files handled by Qmmp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Media bestanden voor Qmmp:</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="49"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles selecteren</translation>
     </message>
     <message>
         <location filename="../forms/winfileassocpage.ui" line="56"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation>Niks selecteren</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="136"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="137"/>
         <source>Not all files could be associated. Please check your security permissions and retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet alle bestanden konden worden gelinkt. Controleer uw security rechten en probeer op nieuw.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="144"/>
         <source>Check all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Vink alle bestandstypes aan in de lijst</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="145"/>
         <source>Uncheck all file types in the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Vink alle bestandstypes uit in de lijst</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="146"/>
         <source>Check the media file extensions you would like Qmmp to handle. When you click Apply, the checked files will be associated with Qmmp. If you uncheck a media type, the file association will be restored.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vink de media types aan die je aan Qmmp wil linken. Als je &quot;Toepassen&quot; klikt, worden de aangevinkte bestanden geassocieerd met Qmmp. Als je een media type uitvinkt wordt de link teruggezet.</translation>
     </message>
     <message>
         <location filename="../winfileassocpage.cpp" line="150"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Restoration doesn&apos;t work on Windows Vista/7.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Opgelet:&lt;/b&gt; Terugzetten werkt niet op Windows Vista/7.</translation>
     </message>
 </context>
 </TS>

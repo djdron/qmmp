@@ -442,53 +442,53 @@
         <translation>Ekvalizér</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="157"/>
-        <location filename="../eqwidget.cpp" line="178"/>
+        <location filename="../eqwidget.cpp" line="156"/>
+        <location filename="../eqwidget.cpp" line="177"/>
         <source>preset</source>
         <translation>předvolba</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="264"/>
+        <location filename="../eqwidget.cpp" line="263"/>
         <source>&amp;Load/Delete</source>
         <translation>&amp;Načíst/Odstranit</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="266"/>
+        <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Preset</source>
         <translation>&amp;Uložit předvolbu</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="268"/>
+        <location filename="../eqwidget.cpp" line="267"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>Uložit &amp;automatickou předvolbu</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="270"/>
+        <location filename="../eqwidget.cpp" line="269"/>
         <source>&amp;Import</source>
         <translation>&amp;Importovat</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="273"/>
+        <location filename="../eqwidget.cpp" line="272"/>
         <source>&amp;Clear</source>
         <translation>&amp;Vynulovat</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="302"/>
+        <location filename="../eqwidget.cpp" line="301"/>
         <source>Saving Preset</source>
         <translation>Uložení předvolby</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="303"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Preset name:</source>
         <translation>Název předvolby:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="304"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>preset #</source>
         <translation>předvolba #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="395"/>
+        <location filename="../eqwidget.cpp" line="394"/>
         <source>Import Preset</source>
         <translation>Importovat předvolbu</translation>
     </message>
@@ -775,32 +775,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="338"/>
         <source>Appearance</source>
         <translation type="unfinished">Vzhľad</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="339"/>
         <source>Shortcuts</source>
         <translation type="unfinished">Skratky</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="398"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>View</source>
         <translation>Zobraziť</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="406"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>Playlist</source>
         <translation>Playlist</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>Tools</source>
         <translation>Nástroje</translation>
     </message>
@@ -893,17 +893,17 @@
         <translation>Otočiť zoznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">Premenovať playlist</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Playlist name:</source>
         <translation type="unfinished">Název playlistu:</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="609"/>
+        <location filename="../playlist.cpp" line="608"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nový playlist</translation>
     </message>
@@ -1497,17 +1497,17 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="54"/>
+        <location filename="../textscroller.cpp" line="56"/>
         <source>Autoscroll Songname</source>
         <translation>Automaticky skrolovať názov piesne</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="55"/>
+        <location filename="../textscroller.cpp" line="57"/>
         <source>Transparent Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="124"/>
+        <location filename="../textscroller.cpp" line="126"/>
         <source>Buffering: %1%</source>
         <translation>Bufferuje sa:%1%</translation>
     </message>

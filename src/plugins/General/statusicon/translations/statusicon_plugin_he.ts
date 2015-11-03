@@ -73,32 +73,32 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Play</source>
         <translation>נגן</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="68"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Pause</source>
         <translation>השהה</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="69"/>
+        <location filename="../statusicon.cpp" line="68"/>
         <source>Stop</source>
         <translation>הפסק</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="71"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Next</source>
         <translation>הבא</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="72"/>
+        <location filename="../statusicon.cpp" line="71"/>
         <source>Previous</source>
         <translation>הקודם</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="74"/>
+        <location filename="../statusicon.cpp" line="73"/>
         <source>Exit</source>
         <translation>יציאה</translation>
     </message>

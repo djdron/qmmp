@@ -442,53 +442,53 @@
         <translation>Еквилајзер</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="157"/>
-        <location filename="../eqwidget.cpp" line="178"/>
+        <location filename="../eqwidget.cpp" line="156"/>
+        <location filename="../eqwidget.cpp" line="177"/>
         <source>preset</source>
         <translation>поставка</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="264"/>
+        <location filename="../eqwidget.cpp" line="263"/>
         <source>&amp;Load/Delete</source>
         <translation>&amp;Учитај/обриши</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="266"/>
+        <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Preset</source>
         <translation>&amp;Сачувај поставку</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="268"/>
+        <location filename="../eqwidget.cpp" line="267"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>&amp;Сачувај ауто-учитану поставку</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="270"/>
+        <location filename="../eqwidget.cpp" line="269"/>
         <source>&amp;Import</source>
         <translation>У&amp;вези</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="273"/>
+        <location filename="../eqwidget.cpp" line="272"/>
         <source>&amp;Clear</source>
         <translation>&amp;Очисти</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="302"/>
+        <location filename="../eqwidget.cpp" line="301"/>
         <source>Saving Preset</source>
         <translation>Уписивање поставке</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="303"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Preset name:</source>
         <translation>Име поставке:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="304"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>preset #</source>
         <translation>поставка еквилајзера #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="395"/>
+        <location filename="../eqwidget.cpp" line="394"/>
         <source>Import Preset</source>
         <translation>Увоз поставке еквилајзера</translation>
     </message>
@@ -775,32 +775,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="338"/>
         <source>Appearance</source>
         <translation>Изглед</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="339"/>
         <source>Shortcuts</source>
         <translation>Пречице</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="398"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>View</source>
         <translation>Приказ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="406"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>Playlist</source>
         <translation>Листа нумера</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>Tools</source>
         <translation>Алатке</translation>
     </message>
@@ -914,17 +914,17 @@
         <translation>Радње</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">Преименовање листе</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Playlist name:</source>
         <translation type="unfinished">Име листе:</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="609"/>
+        <location filename="../playlist.cpp" line="608"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;нову листу</translation>
     </message>
@@ -1497,17 +1497,17 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="54"/>
+        <location filename="../textscroller.cpp" line="56"/>
         <source>Autoscroll Songname</source>
         <translation>Ауто-клизање наслова нумере</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="55"/>
+        <location filename="../textscroller.cpp" line="57"/>
         <source>Transparent Background</source>
         <translation>Прозирна позадина</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="124"/>
+        <location filename="../textscroller.cpp" line="126"/>
         <source>Buffering: %1%</source>
         <translation>Баферовање: %1%</translation>
     </message>

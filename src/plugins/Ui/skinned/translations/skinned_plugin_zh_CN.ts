@@ -437,48 +437,48 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="157"/>
-        <location filename="../eqwidget.cpp" line="178"/>
+        <location filename="../eqwidget.cpp" line="156"/>
+        <location filename="../eqwidget.cpp" line="177"/>
         <source>preset</source>
         <translation>预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="264"/>
+        <location filename="../eqwidget.cpp" line="263"/>
         <source>&amp;Load/Delete</source>
         <translation>载入/删除(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="266"/>
+        <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Preset</source>
         <translation>保存预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="268"/>
+        <location filename="../eqwidget.cpp" line="267"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>保存自动载入预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="273"/>
+        <location filename="../eqwidget.cpp" line="272"/>
         <source>&amp;Clear</source>
         <translation>清除(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="302"/>
+        <location filename="../eqwidget.cpp" line="301"/>
         <source>Saving Preset</source>
         <translation>保存预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="303"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Preset name:</source>
         <translation>预设名称：</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="304"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>preset #</source>
         <translation>预设 #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="270"/>
+        <location filename="../eqwidget.cpp" line="269"/>
         <source>&amp;Import</source>
         <translation>导入(&amp;I)</translation>
     </message>
@@ -488,7 +488,7 @@
         <translation type="unfinished">均衡器</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="395"/>
+        <location filename="../eqwidget.cpp" line="394"/>
         <source>Import Preset</source>
         <translation>导入预设</translation>
     </message>
@@ -775,32 +775,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="338"/>
         <source>Appearance</source>
         <translation type="unfinished">外观</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="328"/>
+        <location filename="../mainwindow.cpp" line="339"/>
         <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="398"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="406"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>Playlist</source>
         <translation type="unfinished">播放列表</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
@@ -898,17 +898,17 @@
         <translation>逆序列表</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Rename Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="588"/>
+        <location filename="../playlist.cpp" line="587"/>
         <source>Playlist name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="609"/>
+        <location filename="../playlist.cpp" line="608"/>
         <source>&amp;New PlayList</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1497,17 +1497,17 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="54"/>
+        <location filename="../textscroller.cpp" line="56"/>
         <source>Autoscroll Songname</source>
         <translation>自动滚动曲目名</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="55"/>
+        <location filename="../textscroller.cpp" line="57"/>
         <source>Transparent Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="124"/>
+        <location filename="../textscroller.cpp" line="126"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
