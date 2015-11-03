@@ -82,57 +82,57 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="316"/>
+        <location filename="../qmmpstarter.cpp" line="317"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Употреба: qmmp [опције] [фајлови]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="317"/>
+        <location filename="../qmmpstarter.cpp" line="318"/>
         <source>Options:</source>
         <translation>Опције:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="321"/>
+        <location filename="../qmmpstarter.cpp" line="322"/>
         <source>Don&apos;t start the application</source>
         <translation>Не покрећи програм</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="323"/>
+        <location filename="../qmmpstarter.cpp" line="324"/>
         <source>Print version number and exit</source>
         <translation>Прикажи издање и изађи</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="324"/>
+        <location filename="../qmmpstarter.cpp" line="325"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Идеје, поправке и пријаве грешака шаљите на forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="327"/>
+        <location filename="../qmmpstarter.cpp" line="328"/>
         <source>Command Line Help</source>
         <translation>Помоћ командне линије</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="340"/>
+        <location filename="../qmmpstarter.cpp" line="341"/>
         <source>QMMP version: %1</source>
         <translation>КуМП: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="341"/>
+        <location filename="../qmmpstarter.cpp" line="342"/>
         <source>Compiled with Qt version: %1</source>
         <translation>Комилован Кут издањем: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="342"/>
+        <location filename="../qmmpstarter.cpp" line="343"/>
         <source>Using Qt version: %1</source>
         <translation>Користим Кут издање: %1</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="345"/>
+        <location filename="../qmmpstarter.cpp" line="346"/>
         <source>Qmmp Version</source>
         <translation>Издање Кумпа</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="322"/>
+        <location filename="../qmmpstarter.cpp" line="323"/>
         <source>Display this text and exit</source>
         <translation>Прикажи овај текст и изађи</translation>
     </message>
