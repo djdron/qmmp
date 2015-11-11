@@ -199,6 +199,11 @@ void MainWindow::closeEvent (QCloseEvent *)
 {
     if (!m_hideOnClose || !m_uiHelper->visibilityControl())
         m_uiHelper->exit();
+    else
+    {
+        m_playlist->close();
+        m_equalizer->close();
+    }
 }
 
 void MainWindow::hideEvent (QHideEvent *)
