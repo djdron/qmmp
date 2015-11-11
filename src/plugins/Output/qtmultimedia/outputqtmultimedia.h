@@ -23,12 +23,14 @@
 
 #include <qmmp/output.h>
 #include <QScopedPointer>
+#include <QObject>
 
 /**
     @author Ivan Ponomarev ivantrue@gmail.com
 */
 class QAudioOutput;
 class QIODevice;
+class OutputControl;
 
 class OutputQtMultimedia : public Output
 {
@@ -46,7 +48,24 @@ public:
 
 private:
     QScopedPointer<QAudioOutput> m_output;
+    QScopedPointer<OutputControl> m_control;
     QIODevice *m_buffer;
+};
+
+class OutputControl : public QObject
+{
+    Q_OBJECT
+
+public:
+    OutputControl(QAudioOutput *o);
+
+public slots:
+    void suspend();
+    void resume();
+
+private:
+    QAudioOutput *m_output;
+
 };
 
 

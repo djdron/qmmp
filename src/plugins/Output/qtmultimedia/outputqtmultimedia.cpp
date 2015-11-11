@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "outputqtmultimedia.h"
-
+#include <QMetaObject>
 #include <QAudioOutput>
 #include <QAudioFormat>
 #include <QAudioDeviceInfo>
@@ -98,6 +98,7 @@ bool OutputQtMultimedia::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFor
 
     m_output.reset(new QAudioOutput(device_info, qformat));
     m_buffer = m_output->start();
+    m_control.reset(new OutputControl(m_output.data()));
 
     configure(freq, map, format);
     return true;
@@ -122,15 +123,29 @@ void OutputQtMultimedia::drain()
 void OutputQtMultimedia::reset()
 {
     m_buffer->reset();
-    m_buffer = m_output->start();
 }
 
 void OutputQtMultimedia::suspend()
 {
-    m_output->suspend();
+    QMetaObject::invokeMethod(m_control.data(), "suspend", Qt::QueuedConnection);
 }
 
 void OutputQtMultimedia::resume()
+{
+    QMetaObject::invokeMethod(m_control.data(), "resume", Qt::QueuedConnection);
+}
+
+OutputControl::OutputControl(QAudioOutput *o)
+{
+    m_output = o;
+}
+
+void OutputControl::suspend()
+{
+    m_output->suspend();
+}
+
+void OutputControl::resume()
 {
     m_output->resume();
 }
