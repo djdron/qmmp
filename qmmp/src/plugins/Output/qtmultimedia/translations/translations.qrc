@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtmultimedia_plugin_en.qm</file>
+        <file>qtmultimedia_plugin_ru.qm</file>
+    </qresource>
+</RCC>

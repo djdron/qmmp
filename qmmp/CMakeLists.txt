@@ -33,6 +33,7 @@ ADD_CUSTOM_TARGET(uninstall
   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 SET(QT_MIN_VERSION 4.6.0)
+SET(QT_USE_QTMULTIMEDIA 1)
 INCLUDE(FindQt4)
 INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
@@ -156,6 +157,7 @@ PRINT_SUMMARY ("PulseAudio support ................" USE_PULSE PULSE_FOUND)
 PRINT_SUMMARY ("Null output support ..............." USE_NULL 1)
 PRINT_SUMMARY ("Win32 Waveout support ............." USE_WAVEOUT WINDOWS_H_FOUND)
 PRINT_SUMMARY ("Win32 DirectSound support ........." USE_DSOUND DSOUND_H_FOUND)
+PRINT_SUMMARY ("Qt Multimedia support ............." USE_QTMULTIMEDIA QT_QTMULTIMEDIA_FOUND)
 
 MESSAGE("")
 MESSAGE("Effect Plugins:")

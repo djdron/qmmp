@@ -28,4 +28,8 @@ contains(CONFIG, OSS4_PLUGIN){
     SUBDIRS += oss4
 }
 
+contains(CONFIG, QTMULTIMEDIA_PLUGIN){
+    SUBDIRS += qtmultimedia
+}
+
 }
