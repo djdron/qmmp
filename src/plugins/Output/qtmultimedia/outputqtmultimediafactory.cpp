@@ -21,7 +21,8 @@
 #include "outputqtmultimediafactory.h"
 #include "settingsdialog.h"
 
-#include <QtGui>
+#include <QMessageBox>
+#include <QTranslator>
 #include <qmmp/qmmp.h>
 #include "outputqtmultimedia.h"
 
@@ -66,5 +67,3 @@ QTranslator *OutputQtMultimediaFactory::createTranslator(QObject *parent)
     translator->load(QString(":/qtmultimedia_plugin_") + locale);
     return translator;
 }
-
-Q_EXPORT_PLUGIN2(qtmultimedia, OutputQtMultimediaFactory)
