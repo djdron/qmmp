@@ -90,7 +90,7 @@ bool RadioItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
             {
                 QRect checkRect = qApp->style()->subElementRect(QStyle::SE_RadioButtonIndicator, &option);
 
-                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(event);
+                QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
 
                 if(!checkRect.contains(mouseEvent->pos()))
                     return true;
