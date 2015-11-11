@@ -181,6 +181,12 @@ source_lang = en
 source_file = src/plugins/Output/waveout/translations/waveout_plugin_en.ts
 type = QT
 
+[qmmp.qtmultimedia]
+file_filter = src/plugins/Output/qtmultimedia/translations/qtmultimedia_plugin_<lang>.ts
+source_lang = en
+source_file = src/plugins/Output/qtmultimedia/translations/qtmultimedia_plugin_en.ts
+type = QT
+
 [qmmp.pulseaudio]
 file_filter = src/plugins/Output/pulseaudio/translations/pulseaudio_plugin_<lang>.ts
 source_lang = en

@@ -156,6 +156,7 @@ PRINT_SUMMARY ("PulseAudio support ................" USE_PULSE PULSE_FOUND)
 PRINT_SUMMARY ("Null output support ..............." USE_NULL 1)
 PRINT_SUMMARY ("Win32 Waveout support ............." USE_WAVEOUT WINDOWS_H_FOUND)
 PRINT_SUMMARY ("Win32 DirectSound support ........." USE_DSOUND DSOUND_H_FOUND)
+PRINT_SUMMARY ("Qt Multimedia support ............." USE_QTMULTIMEDIA QT_QTMULTIMEDIA_FOUND)
 
 MESSAGE("")
 MESSAGE("Effect Plugins:")

@@ -29,3 +29,10 @@ contains(CONFIG, OSS4_PLUGIN){
 }
 
 }
+
+#all platforms
+contains(QT_CONFIG, multimedia){
+  contains(CONFIG, QTMULTIMEDIA_PLUGIN){
+     SUBDIRS += qtmultimedia
+  }
+}
