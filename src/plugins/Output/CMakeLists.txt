@@ -40,6 +40,6 @@ IF(USE_DSOUND)
 add_subdirectory(directsound)
 ENDIF(USE_DSOUND)
 
-IF(USE_QTMULTIMEDIA)
+IF(USE_QTMULTIMEDIA AND Qt5Multimedia_FOUND)
 add_subdirectory(qtmultimedia)
-ENDIF(USE_QTMULTIMEDIA)
+ENDIF(USE_QTMULTIMEDIA AND Qt5Multimedia_FOUND)
