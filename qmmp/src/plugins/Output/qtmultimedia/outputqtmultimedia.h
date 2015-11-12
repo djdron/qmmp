@@ -47,6 +47,7 @@ public:
 private:
     QScopedPointer<QAudioOutput> m_output;
     QIODevice *m_buffer;
+    qint64 m_bytes_per_second;
 };
 
 
