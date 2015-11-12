@@ -4,24 +4,24 @@
 <context>
     <name>OutputQtMultimediaFactory</name>
     <message>
-        <location filename="../outputqtmultimediafactory.cpp" line="32"/>
+        <location filename="../outputqtmultimediafactory.cpp" line="33"/>
         <source>Qt Multimedia Plugin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../outputqtmultimediafactory.cpp" line="57"/>
-        <source>About Qt Multimedia Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль Qt Multimedia</translation>
     </message>
     <message>
         <location filename="../outputqtmultimediafactory.cpp" line="58"/>
-        <source>Qmmp Qt Multimedia Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <source>About Qt Multimedia Output Plugin</source>
+        <translation>Про модуль виведення Qt Multimedia</translation>
     </message>
     <message>
         <location filename="../outputqtmultimediafactory.cpp" line="59"/>
+        <source>Qmmp Qt Multimedia Output Plugin</source>
+        <translation>Модуль виведення Qt Multimedia для Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../outputqtmultimediafactory.cpp" line="60"/>
         <source>Written by: Ivan Ponomarev &lt;ivantrue@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробник: Іван Пономарьов &lt;ivantrue@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Qt Multimedia Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування модуля Qt Multimedia</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="46"/>
         <source>Device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пристрій:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>За замовчанням</translation>
     </message>
 </context>
 </TS>
