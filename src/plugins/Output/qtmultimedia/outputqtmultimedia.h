@@ -50,6 +50,7 @@ private:
     QScopedPointer<QAudioOutput> m_output;
     QScopedPointer<OutputControl> m_control;
     QIODevice *m_buffer;
+    qint64 m_bytes_per_second;
 };
 
 class OutputControl : public QObject

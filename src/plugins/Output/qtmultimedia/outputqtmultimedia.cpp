@@ -23,12 +23,12 @@
 #include <QAudioOutput>
 #include <QAudioFormat>
 #include <QAudioDeviceInfo>
-#include <QBuffer>
 #include <QSettings>
 #include <QDebug>
+#include <unistd.h>
 
 
-OutputQtMultimedia::OutputQtMultimedia() : Output(), m_buffer(NULL)
+OutputQtMultimedia::OutputQtMultimedia() : Output(), m_buffer(NULL), m_bytes_per_second(0)
 {
 }
 
@@ -38,35 +38,45 @@ OutputQtMultimedia::~OutputQtMultimedia()
 
 bool OutputQtMultimedia::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
 {
-    QAudioFormat qformat;
+	QAudioFormat qformat;
     qformat.setCodec("audio/pcm");
     qformat.setSampleRate(freq);
     qformat.setByteOrder(QAudioFormat::LittleEndian);
     qformat.setChannelCount(map.size());
     qformat.setSampleType(QAudioFormat::SignedInt);
-    switch (format)
-    {
-    case Qmmp::PCM_S8:
-        qformat.setSampleSize(8);
-        break;
-    case Qmmp::PCM_S16LE:
-        qformat.setSampleSize(16);
-        break;
-    case Qmmp::PCM_S24LE:
-        qformat.setSampleSize(24);
-        break;
-    case Qmmp::PCM_S32LE:
-        qformat.setSampleSize(32);
-        break;
-    default:
-        break;
-    }
+
+	//Size of sample representation in input data. For 24-bit is 4, high byte is ignored.
+	qint64 bytes_per_sample = 0;
+
+	switch (format)
+	{
+	case Qmmp::PCM_S8:
+		qformat.setSampleSize(8);
+		bytes_per_sample = 1;
+		break;
+	case Qmmp::PCM_S16LE:
+		qformat.setSampleSize(16);
+		bytes_per_sample = 2;
+		break;
+	case Qmmp::PCM_S24LE:
+		qformat.setSampleSize(24);
+		bytes_per_sample = 4;
+		break;
+	case Qmmp::PCM_S32LE:
+		qformat.setSampleSize(32);
+		bytes_per_sample = 4;
+		break;
+	default:
+		break;
+	}
 
     if (!qformat.isValid())
         return false;
 
     const QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     const QString saved_device_name = settings.value("QTMULTIMEDIA/device").toString();
+
+	m_bytes_per_second = bytes_per_sample * freq * qformat.channels();
 
     QAudioDeviceInfo device_info;
     if (!saved_device_name.isEmpty())
@@ -112,7 +122,12 @@ qint64 OutputQtMultimedia::latency()
 
 qint64 OutputQtMultimedia::writeAudio(unsigned char *data, qint64 maxSize)
 {
-    return m_buffer->write((const char*)data, maxSize);
+if (!m_output->bytesFree()) {
+		//If the buffer is full, waiting for some bytes to be played:
+		//trying to play maxSize bytes, but not more than half of buffer.
+		usleep(qMin(maxSize, static_cast<qint64>(m_output->bufferSize() / 2)) * 1000000 / m_bytes_per_second);
+	}
+	return m_buffer->write((const char*)data, maxSize);
 }
 
 void OutputQtMultimedia::drain()
