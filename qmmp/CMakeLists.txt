@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 2.8.6 FATAL_ERROR)
 include_directories(SYSTEM /usr/local/include)
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
 
+#macports support
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /opt/local/include)
+ENDIF()
+
 #extract version from qmmp.h
 FILE(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/qmmp/qmmp.h"
      QMMP_VERSION_DATA REGEX "^#define[ \t]+QMMP_VERSION_[A-Z]+[ \t]+[0-9]+.*$")
