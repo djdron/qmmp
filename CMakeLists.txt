@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 2.8.11 FATAL_ERROR)
 include_directories(SYSTEM /usr/local/include)
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
 
++#macports support
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /opt/local/include)
+ENDIF()
+
 #Qt5 modules
 SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} /opt/qt55/lib/cmake)
 
