@@ -463,7 +463,7 @@ index 0000000..31f4410
 +
 +#endif /* _RCC_PATCH_H */
 diff --git a/taglib/toolkit/tstring.cpp b/taglib/toolkit/tstring.cpp
-index 258e1fc..cff552d 100644
+index 258e1fc..70ff160 100644
 --- a/taglib/toolkit/tstring.cpp
 +++ b/taglib/toolkit/tstring.cpp
 @@ -29,6 +29,7 @@
@@ -488,16 +488,20 @@ index 258e1fc..cff552d 100644
    else if(t == String::UTF8)
      copyFromUTF8(s.c_str(), s.length());
    else {
-@@ -215,6 +219,9 @@ String::String(const wchar_t *s, Type t)
+@@ -215,8 +219,11 @@ String::String(const wchar_t *s, Type t)
  String::String(const char *s, Type t)
    : d(new StringPrivate())
  {
+-  if(t == Latin1)
+-    copyFromLatin1(s, ::strlen(s));
 +  if(t == Locale)
 +    t = rccTaglibPatchGetLocaleType();
 +
-   if(t == Latin1)
-     copyFromLatin1(s, ::strlen(s));
++  if(t == Latin1 || t == Latin1ID3 || t == Latin1ID3V2)
++    copyFromLatin1(s, ::strlen(s), true, t);
    else if(t == String::UTF8)
+     copyFromUTF8(s, ::strlen(s));
+   else {
 @@ -248,8 +255,11 @@ String::String(const ByteVector &v, Type t)
    if(v.isEmpty())
      return;
