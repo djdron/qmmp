@@ -3,7 +3,7 @@
 LIB_NAMES+='pkg-config yasm taglib libmad libogg libvorbis flac wavpack libsndfile opus opusfile '
 LIB_NAMES+='libbs2b curl libcdio libgnurx libcddb ffmpeg libmodplug game-music-emu musepack '
 LIB_NAMES+='glew projectm xa libsidplayfp enca '
-LIB_NAMES+='libxml2 librcd librcc taglib-rusxmms' #rusxmms
+LIB_NAMES+='libxml2 librcd librcc #taglib-rusxmms' #rusxmms
 
 export DEV_PATH=/c/devel
 export MINGW32_PATH=${DEV_PATH}/mingw32

@@ -23,7 +23,7 @@ List of the third-party libraries.
   MinGW-w64           4.2.0      http://mingw-w64.sourceforge.net/
   Qt                  4.8.7-git  http://qt.io/
   unzip               5.51       http://www.info-zip.org/pub/infozip/UnZip.html
-  taglib              1.9.1      http://taglib.github.io/
+  taglib              1.10       http://taglib.github.io/
   libmad              0.15.1b    http://www.underbit.com/products/mad/
   libogg              1.3.2      http://www.vorbis.com/
   libvorbis           1.3.5      http://www.vorbis.com/

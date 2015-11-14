@@ -109,3 +109,4 @@ LEGEND
 0.9.4
 [*] qmmp-0.9.4
 [*] libsidplayfp-1.8.2
+[*] taglib-1.10

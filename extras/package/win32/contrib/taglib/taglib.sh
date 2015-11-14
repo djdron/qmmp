@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=taglib
-VERSION=1.9.1
+VERSION=1.10
 
 case $1 in
   --download)
@@ -13,7 +13,6 @@ case $1 in
     cd temp
     tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
-    cat ../../taglib-1.9.1-bug-308.diff | patch -p1 --verbose
     cmake ./ -DCMAKE_INSTALL_PREFIX=${PREFIX} -G "MSYS Makefiles" -DZLIB_ROOT=${ZLIB_ROOT} \
     -DCMAKE_COLOR_MAKEFILE:BOOL=OFF
     mingw32-make -j${JOBS}
