@@ -22,9 +22,6 @@ download_qmmp_tarball()
   echo 'downloading qmmp...'
   wget -nc http://qmmp.ylsoftware.com/files/qmmp-${QMMP_VERSION}.tar.bz2
   tar xvjf qmmp-${QMMP_VERSION}.tar.bz2
-  cd qmmp-0.9.4
-  svn diff https://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-0.9 -r5779:5780 | patch -p0
-  cd ..
   cd ..
 }
 
