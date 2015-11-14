@@ -378,19 +378,20 @@ QPixmap *Skin::getPixmap (const QString& name, const QString &fallback)
 {
     m_skin_dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     m_skin_dir.setNameFilters(QStringList() << name + ".*");
-    QFileInfoList f = m_skin_dir.entryInfoList();
-    if(!f.isEmpty())
+
+    foreach(QFileInfo info, m_skin_dir.entryInfoList())
     {
-        return new QPixmap (f.first().filePath());
+        if(info.suffix().toLower() != "cur")
+            return new QPixmap (info.filePath());
     }
 
     if(!fallback.isEmpty())
     {
         m_skin_dir.setNameFilters(QStringList() << fallback + ".*");
-        f = m_skin_dir.entryInfoList();
-        if(!f.isEmpty())
+        foreach(QFileInfo info, m_skin_dir.entryInfoList())
         {
-            return new QPixmap (f.first().filePath());
+            if(info.suffix().toLower() != "cur")
+                return new QPixmap (info.filePath());
         }
     }
     return getDummyPixmap(name, fallback);
