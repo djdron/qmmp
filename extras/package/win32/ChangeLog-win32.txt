@@ -110,3 +110,4 @@ LEGEND
 [*] qmmp-0.9.4
 [*] libsidplayfp-1.8.2
 [*] taglib-1.10
+[*] ffmpeg-2.8.2
