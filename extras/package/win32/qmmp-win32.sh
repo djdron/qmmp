@@ -1,7 +1,7 @@
 #!/bin/sh
 
 QMMP_VERSION=0.9.4
-QMMP_PLUGIN_PACK_VERSION=0.9.1
+QMMP_PLUGIN_PACK_VERSION=0.9.2
 
 export DEV_PATH=/c/devel
 export MINGW32_PATH=${DEV_PATH}/mingw32
@@ -105,7 +105,7 @@ create_distr ()
     cp -v ${MINGW32_PATH}/bin/${LIB_NAME} ./
   done
   #third party libs   
-  for LIB_NAME in avcodec-55.dll avformat-55.dll avutil-52.dll glew32.dll libFLAC-8.dll libcddb-2.dll libcdio-13.dll libcdio_cdda-1.dll
+  for LIB_NAME in avcodec-56.dll avformat-56.dll avutil-54.dll glew32.dll libFLAC-8.dll libcddb-2.dll libcdio-13.dll libcdio_cdda-1.dll
   do
     cp -v ${PREFIX}/bin/${LIB_NAME} ./
   done
