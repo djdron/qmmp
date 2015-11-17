@@ -149,45 +149,37 @@ void EqWidget::readSettings()
     if(!QFile::exists(preset_path))
         preset_path = ":/skinned/eq.preset";
     QSettings eq_preset (preset_path, QSettings::IniFormat);
-    for (int i = 1; true; ++i)
+    int i = 0;
+    while(eq_preset.contains("Presets/Preset"+QString("%1").arg(++i)))
     {
-        if (eq_preset.contains("Presets/Preset"+QString("%1").arg(i)))
+        QString name = eq_preset.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
+        EQPreset *preset = new EQPreset();
+        preset->setText(name);
+        eq_preset.beginGroup(name);
+        for (int j = 0; j < 10; ++j)
         {
-            QString name = eq_preset.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
-            EQPreset *preset = new EQPreset();
-            preset->setText(name);
-            eq_preset.beginGroup(name);
-            for (int j = 0; j < 10; ++j)
-            {
-                preset->setGain(j,eq_preset.value(QString("Band%1").arg(j), 0).toDouble());
-            }
-            preset->setPreamp(eq_preset.value("Preamp",0).toDouble());
-            m_presets.append(preset);
-            eq_preset.endGroup();
+            preset->setGain(j,eq_preset.value(QString("Band%1").arg(j), 0).toDouble());
         }
-        else
-            break;
+        preset->setPreamp(eq_preset.value("Preamp",0).toDouble());
+        m_presets.append(preset);
+        eq_preset.endGroup();
     }
     //equalizer auto-load presets
     QSettings eq_auto (Qmmp::configDir() + "eq.auto_preset", QSettings::IniFormat);
-    for (int i = 1; true; ++i)
+    i = 0;
+    while(eq_auto.contains(QString("Presets/Preset%1").arg(++i)))
     {
-        if (eq_auto.contains(QString("Presets/Preset%1").arg(i)))
+        QString name = eq_auto.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
+        EQPreset *preset = new EQPreset();
+        preset->setText(name);
+        eq_auto.beginGroup(name);
+        for (int j = 0; j < 10; ++j)
         {
-            QString name = eq_auto.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
-            EQPreset *preset = new EQPreset();
-            preset->setText(name);
-            eq_auto.beginGroup(name);
-            for (int j = 0; j < 10; ++j)
-            {
-                preset->setGain(j,eq_auto.value(QString("Band%1").arg(j), 0).toDouble());
-            }
-            preset->setPreamp(eq_auto.value("Preamp",0).toDouble());
-            m_autoPresets.append(preset);
-            eq_auto.endGroup();
+            preset->setGain(j,eq_auto.value(QString("Band%1").arg(j), 0).toDouble());
         }
-        else
-            break;
+        preset->setPreamp(eq_auto.value("Preamp",0).toDouble());
+        m_autoPresets.append(preset);
+        eq_auto.endGroup();
     }
 }
 
