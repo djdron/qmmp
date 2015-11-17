@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -145,26 +145,20 @@ void Equalizer::loadPresets()
         preset_path = ":/qsui/eq16.preset";
     QSettings eq_preset (preset_path, QSettings::IniFormat);
     int i = 0;
-    forever
+    while(eq_preset.contains("Presets/Preset"+QString("%1").arg(++i)))
     {
-        i++;
-        if (eq_preset.contains("Presets/Preset"+QString("%1").arg(i)))
+        QString name = eq_preset.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
+        EQPreset *preset = new EQPreset();
+        //preset->setText(name);
+        eq_preset.beginGroup(name);
+        for (int j = 0; j < EqSettings::EQ_BANDS_15; ++j)
         {
-            QString name = eq_preset.value(QString("Presets/Preset%1").arg(i), tr("preset")).toString();
-            EQPreset *preset = new EQPreset();
-            //preset->setText(name);
-            eq_preset.beginGroup(name);
-            for (int j = 0; j < EqSettings::EQ_BANDS_15; ++j)
-            {
-                preset->setGain(j,eq_preset.value(QString("Band%1").arg(j), 0).toDouble());
-            }
-            preset->setPreamp(eq_preset.value("Preamp",0).toDouble());
-            m_presets.append(preset);
-            m_presetComboBox->addItem(name);
-            eq_preset.endGroup();
+            preset->setGain(j,eq_preset.value(QString("Band%1").arg(j), 0).toDouble());
         }
-        else
-            break;
+        preset->setPreamp(eq_preset.value("Preamp",0).toDouble());
+        m_presets.append(preset);
+        m_presetComboBox->addItem(name);
+        eq_preset.endGroup();
     }
     m_presetComboBox->clearEditText();
 }
