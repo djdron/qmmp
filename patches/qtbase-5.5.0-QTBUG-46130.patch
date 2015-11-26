@@ -1,12 +1,49 @@
+From 37350e2ff96317b9469b4805dee99b64831db365 Mon Sep 17 00:00:00 2001
+From: Ilya Kotov <forkotov02@hotmail.ru>
+Date: Sun, 22 Nov 2015 13:05:38 +0300
+Subject: [PATCH] Send QEvent::Tooltip to QSystemTrayIcon
+
+QSystemTrayIcon's window should send QEvent::ToolTip to QSystemTrayIcon
+main class. This patch fixes regression inroduced in Qt 5.0.
+
+Change-Id: I81f6d85e13f492e5e7d13dacc44185a511e5085d
+Task-number: QTBUG-46130
+---
+ src/widgets/util/qsystemtrayicon.cpp     | 6 ------
+ src/widgets/util/qsystemtrayicon_x11.cpp | 3 +++
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/widgets/util/qsystemtrayicon.cpp b/src/widgets/util/qsystemtrayicon.cpp
+index 20f5c95..47bc88c 100644
+--- a/src/widgets/util/qsystemtrayicon.cpp
++++ b/src/widgets/util/qsystemtrayicon.cpp
+@@ -284,12 +284,6 @@ bool QSystemTrayIcon::isVisible() const
+ */
+ bool QSystemTrayIcon::event(QEvent *e)
+ {
+-#if defined(Q_DEAD_CODE_FROM_QT4_X11)
+-    if (e->type() == QEvent::ToolTip) {
+-        Q_D(QSystemTrayIcon);
+-        return d->sys->deliverToolTipEvent(e);
+-    }
+-#endif
+     return QObject::event(e);
+ }
+ 
 diff --git a/src/widgets/util/qsystemtrayicon_x11.cpp b/src/widgets/util/qsystemtrayicon_x11.cpp
-index 4060655..d541e8e 100644
+index e50b0bd..13d58ac 100644
 --- a/src/widgets/util/qsystemtrayicon_x11.cpp
 +++ b/src/widgets/util/qsystemtrayicon_x11.cpp
-@@ -212,6 +212,7 @@ void QSystemTrayIconSys::mouseDoubleClickEvent(QMouseEvent *ev)
+@@ -196,6 +196,9 @@ void QSystemTrayIconSys::mouseDoubleClickEvent(QMouseEvent *ev)
  bool QSystemTrayIconSys::event(QEvent *e)
  {
      switch (e->type()) {
 +    case QEvent::ToolTip:
++        QApplication::sendEvent(q, e);
++        break;
  #ifndef QT_NO_WHEELEVENT
      case QEvent::Wheel:
          return QApplication::sendEvent(q, e);
+-- 
+1.9.1
+
