@@ -111,7 +111,7 @@ Equalizer::Equalizer(QWidget *parent) : QDialog(parent)
     setMinimumHeight(300);
     foreach(QSlider *slider, m_sliders)
     {
-        connect(slider, SIGNAL(sliderMoved(int)), SLOT(applySettings()));
+        connect(slider, SIGNAL(valueChanged(int)), SLOT(applySettings()));
     }
     connect(m_enabled, SIGNAL(clicked()), SLOT(applySettings()));
     readSettigs();
@@ -140,9 +140,9 @@ void Equalizer::loadPresets()
 {
     m_presetComboBox->clear();
     //equalizer presets
-    QString preset_path = QDir::homePath() +"/.qmmp/eq16.preset";
+    QString preset_path = QDir::homePath() +"/.qmmp/eq15.preset";
     if(!QFile::exists(preset_path))
-        preset_path = ":/qsui/eq16.preset";
+        preset_path = ":/qsui/eq15.preset";
     QSettings eq_preset (preset_path, QSettings::IniFormat);
     int i = 0;
     while(eq_preset.contains("Presets/Preset"+QString("%1").arg(++i)))
@@ -243,7 +243,7 @@ void Equalizer::savePreset()
 
 void Equalizer::savePresets()
 {
-    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq16.preset", QSettings::IniFormat);
+    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq15.preset", QSettings::IniFormat);
     eq_preset.clear ();
     for (int i = 0; i < m_presets.size(); ++i)
     {
