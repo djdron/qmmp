@@ -111,7 +111,7 @@ Equalizer::Equalizer(QWidget *parent) : QDialog(parent)
     setMinimumHeight(300);
     foreach(QSlider *slider, m_sliders)
     {
-        connect(slider, SIGNAL(sliderMoved(int)), SLOT(applySettings()));
+        connect(slider, SIGNAL(valueChanged(int)), SLOT(applySettings()));
     }
     connect(m_enabled, SIGNAL(clicked()), SLOT(applySettings()));
     readSettigs();
