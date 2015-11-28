@@ -128,6 +128,17 @@ QPixmap MPEGMetaDataModel::cover()
             return cover;
         }
     }
+    for(TagLib::ID3v2::FrameList::Iterator it = frames.begin(); it != frames.end(); ++it)
+    {
+        TagLib::ID3v2::AttachedPictureFrame *frame = dynamic_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
+        if(frame)
+        {
+            QPixmap cover;
+            cover.loadFromData((const uchar *)frame->picture().data(),
+                                     frame->picture().size());
+            return cover;
+        }
+    }
     return QPixmap();
 }
 
