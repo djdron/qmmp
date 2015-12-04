@@ -112,3 +112,7 @@ LEGEND
 [*] libsidplayfp-1.8.2
 [*] taglib-1.10
 [*] ffmpeg-2.8.2
+
+0.9.5
+[*] qmmp-0.9.5
+[*] opus-1.1.1
