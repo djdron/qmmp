@@ -45,9 +45,9 @@ IF(USE_UDISKS2 AND Qt5DBus_FOUND)
 add_subdirectory(udisks2)
 ENDIF(USE_UDISKS2 AND Qt5DBus_FOUND)
 
-IF(USE_HOTKEY)
+IF(USE_HOTKEY AND Qt5X11Extras_FOUND)
 add_subdirectory(hotkey)
-ENDIF(USE_HOTKEY)
+ENDIF(USE_HOTKEY AND Qt5X11Extras_FOUND)
 
 IF(USE_FILEOPS)
 add_subdirectory(fileops)
