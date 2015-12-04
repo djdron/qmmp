@@ -73,6 +73,6 @@ IF(FFMPEG_LEGACY_FOUND)
 ADD_LIBRARY(ffmpeg_legacy MODULE ${libffmpeg_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg_legacy qmmp)
-target_link_libraries(ffmpeg_legacy ${QT_LIBRARIES} -lqmmp ${FFMPEG_LEGACY_LDFLAGS})
+target_link_libraries(ffmpeg_legacy ${QT_LIBRARIES} libqmmp ${FFMPEG_LEGACY_LDFLAGS})
 install(TARGETS ffmpeg_legacy DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_LEGACY_FOUND)

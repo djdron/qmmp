@@ -56,5 +56,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(lyrics MODULE ${liblyrics_SRCS} ${liblyrics_UIS_H} ${liblyrics_RCC_SRCS})
 add_dependencies(lyrics qmmpui)
-target_link_libraries(lyrics ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(lyrics ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS lyrics DESTINATION ${LIB_DIR}/qmmp/General)

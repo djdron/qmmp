@@ -78,7 +78,7 @@ set_target_properties(jack PROPERTIES
                            COMPILE_FLAGS -pthread
                            LINK_FLAGS -pthread
 )
-target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS})
+target_link_libraries(jack ${QT_LIBRARIES} libqmmp ${JACK_LDFLAGS})
 install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(JACK_FOUND)
 

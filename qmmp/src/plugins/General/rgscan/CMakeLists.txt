@@ -66,5 +66,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(rgscan MODULE ${librgscan_SRCS} ${librgscan_UIS_H} ${librgscan_HDRS} ${librgscan_RCC_SRCS})
 add_dependencies(rgscan qmmpui)
-target_link_libraries(rgscan ${QT_LIBRARIES} -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
+target_link_libraries(rgscan ${QT_LIBRARIES} qmmpui libqmmp ${TAGLIB_LDFLAGS})
 install(TARGETS rgscan DESTINATION ${LIB_DIR}/qmmp/General)

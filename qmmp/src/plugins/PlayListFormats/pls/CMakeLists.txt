@@ -38,5 +38,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(plsplaylistformat MODULE ${libplsplaylistformat_SRCS})
 add_dependencies(plsplaylistformat qmmpui)
-target_link_libraries(plsplaylistformat ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(plsplaylistformat ${QT_LIBRARIES} qmmpui)
 install(TARGETS plsplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlayListFormats)

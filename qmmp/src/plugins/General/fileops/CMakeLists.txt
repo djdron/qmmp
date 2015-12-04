@@ -55,5 +55,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(fileops MODULE ${libfileops_SRCS} ${libfileops_UIS_H} ${libfileops_RCC_SRCS})
 add_dependencies(fileops qmmpui)
-target_link_libraries(fileops ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(fileops ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS fileops DESTINATION ${LIB_DIR}/qmmp/General)

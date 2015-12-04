@@ -42,5 +42,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(statusoption MODULE ${statusoption_SRCS} ${statusoption_RCC_SRCS})
 add_dependencies(statusoption qmmpui)
-target_link_libraries(statusoption ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(statusoption ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS statusoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)

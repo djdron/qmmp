@@ -56,5 +56,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(streambrowser MODULE ${libstreambrowser_SRCS} ${libstreambrowser_UIS_H} ${libstreambrowser_RCC_SRCS})
 add_dependencies(streambrowser qmmpui)
-target_link_libraries(streambrowser ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(streambrowser ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS streambrowser DESTINATION ${LIB_DIR}/qmmp/General)

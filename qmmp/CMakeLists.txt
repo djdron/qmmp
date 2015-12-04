@@ -75,7 +75,12 @@ set(LIB_SUFFIX 64)
 ENDIF("${QT_LIBRARY_DIR}" MATCHES lib64)
 ENDIF(NOT LIB_SUFFIX)
 
-SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
+IF(${CMAKE_SYSTEM_NAME} MATCHES Darwin)
+	SET(LIB_DIR "qmmp.app/Contents/Frameworks" CACHE STRING "library path")
+ELSE()
+	SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
+ENDIF()
+
 SET(USE_SKINNED TRUE CACHE BOOL "enable/disable standard skinned user interface")
 SET(USE_DIR_ASSOC TRUE CACHE BOOL "enable/disable inode/directory mime type association")
 
@@ -85,6 +90,10 @@ add_subdirectory(src/qmmp)
 add_subdirectory(src/qmmpui)
 add_subdirectory(src/plugins)
 add_subdirectory(src/app)
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	#Hack for MacOS X to run fix_mac_libs.sh script after installation
+	add_subdirectory(src/mac)
+ENDIF()
 
 MACRO(PRINT_SUMMARY str USE FOUND)
 IF(${USE} AND ${FOUND})

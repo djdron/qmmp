@@ -53,7 +53,7 @@ IF(PULSE_FOUND)
 ADD_LIBRARY(pulseaudio MODULE ${libpulseaudio_SRCS} ${libpulseaudio_UIS_H}
   ${libpulseaudio_RCC_SRCS} ${libpulseaudio_HDRS})
 add_dependencies(pulseaudio qmmp)
-target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS})
+target_link_libraries(pulseaudio ${QT_LIBRARIES} libqmmp ${PULSE_LDFLAGS})
 install(TARGETS pulseaudio DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(PULSE_FOUND)
 

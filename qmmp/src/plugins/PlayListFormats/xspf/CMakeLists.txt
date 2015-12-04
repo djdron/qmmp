@@ -38,5 +38,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(xspfplaylistformat MODULE ${libxspfplaylistformat_SRCS})
 add_dependencies(xspfplaylistformat qmmpui)
-target_link_libraries(xspfplaylistformat ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(xspfplaylistformat ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS xspfplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlayListFormats)

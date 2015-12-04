@@ -53,5 +53,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(stereo MODULE ${libstereo_SRCS} ${libstereo_UIS_H} ${libstereo_RCC_SRCS} ${libstereo_HDRS})
 add_dependencies(stereo qmmp)
-target_link_libraries(stereo ${QT_LIBRARIES} -lqmmp)
+target_link_libraries(stereo ${QT_LIBRARIES} libqmmp)
 install(TARGETS stereo DESTINATION ${LIB_DIR}/qmmp/Effect)

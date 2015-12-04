@@ -57,6 +57,6 @@ IF(CDIO_FOUND)
 ADD_LIBRARY(cdaudio MODULE ${libcdaudio_SRCS} ${libcdaudio_UIS_H} ${libcdaudio_RCC_SRCS}
 ${libcdaudio_HDRS})
 add_dependencies(cdaudio qmmp)
-target_link_libraries(cdaudio ${QT_LIBRARIES} -lqmmp ${CDIO_LDFLAGS})
+target_link_libraries(cdaudio ${QT_LIBRARIES} libqmmp ${CDIO_LDFLAGS})
 install(TARGETS cdaudio DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(CDIO_FOUND)

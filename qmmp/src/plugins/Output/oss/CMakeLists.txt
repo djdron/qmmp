@@ -56,6 +56,6 @@ QT4_WRAP_UI(liboss_UIS_H ${liboss_UIS})
 ADD_LIBRARY(oss MODULE ${liboss_SRCS} ${liboss_UIS_H}
   ${liboss_RCC_SRCS} ${liboss_HDRS})
 add_dependencies(oss qmmp)
-target_link_libraries(oss ${QT_LIBRARIES} -lqmmp)
+target_link_libraries(oss ${QT_LIBRARIES} libqmmp)
 install(TARGETS oss DESTINATION ${LIB_DIR}/qmmp/Output)
 

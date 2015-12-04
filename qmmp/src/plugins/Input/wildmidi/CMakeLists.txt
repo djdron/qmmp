@@ -71,6 +71,6 @@ IF(WILDMIDI_FOUND)
 ADD_LIBRARY(wildmidi MODULE ${libwildmidi_SRCS} ${libwildmidi_UIS_H} ${libwildmidi_RCC_SRCS}
 ${libwildmidi_HDRS})
 add_dependencies(wildmidi qmmp)
-target_link_libraries(wildmidi ${QT_LIBRARIES} -lqmmp ${WILDMIDI_LIB})
+target_link_libraries(wildmidi ${QT_LIBRARIES} libqmmp ${WILDMIDI_LIB})
 install(TARGETS wildmidi DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(WILDMIDI_FOUND)

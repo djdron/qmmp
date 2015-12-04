@@ -56,5 +56,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(statusicon MODULE ${libstatusicon_SRCS} ${libstatusicon_UIS_H} ${libstatusicon_RCC_SRCS})
 add_dependencies(statusicon qmmpui libqmmp)
-target_link_libraries(statusicon ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(statusicon ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS statusicon DESTINATION ${LIB_DIR}/qmmp/General)

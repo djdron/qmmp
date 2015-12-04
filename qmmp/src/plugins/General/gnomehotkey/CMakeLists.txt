@@ -42,5 +42,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(gnomehotkey MODULE ${libgnomehotkey_SRCS} ${libgnomehotkey_RCC_SRCS})
 add_dependencies(gnomehotkey qmmpui)
-target_link_libraries(gnomehotkey ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(gnomehotkey ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS gnomehotkey DESTINATION ${LIB_DIR}/qmmp/General)

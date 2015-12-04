@@ -52,5 +52,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(udisks MODULE ${libudisks_SRCS} ${libudisks_UIS_H} ${libudisks_RCC_SRCS})
 add_dependencies(udisks qmmpui)
-target_link_libraries(udisks ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(udisks ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS udisks DESTINATION ${LIB_DIR}/qmmp/General)

@@ -86,5 +86,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qsui MODULE ${libqsui_SRCS} ${libqsui_UIS_H} ${libqsui_RCC_SRCS} ${libqsui_HDRS})
 add_dependencies(qsui qmmpui libqmmp)
-target_link_libraries(qsui ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(qsui ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS qsui DESTINATION ${LIB_DIR}/qmmp/Ui)

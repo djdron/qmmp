@@ -45,5 +45,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(copypaste MODULE ${libcopypaste_SRCS} ${libcopypaste_UIS_H} ${libcopypaste_RCC_SRCS})
 add_dependencies(copypaste qmmpui)
-target_link_libraries(copypaste ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(copypaste ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS copypaste DESTINATION ${LIB_DIR}/qmmp/General)

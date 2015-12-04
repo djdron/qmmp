@@ -53,5 +53,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(mpris MODULE ${libmpris_SRCS} ${libmpris_RCC_SRCS})
 add_dependencies(mpris qmmpui)
-target_link_libraries(mpris ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(mpris ${QT_LIBRARIES} qmmpui libqmmp)
 install(TARGETS mpris DESTINATION ${LIB_DIR}/qmmp/General)

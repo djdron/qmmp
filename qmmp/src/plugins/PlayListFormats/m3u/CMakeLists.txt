@@ -38,5 +38,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(m3uplaylistformat MODULE ${libm3uplaylistformat_SRCS})
 add_dependencies(m3uplaylistformat qmmpui)
-target_link_libraries(m3uplaylistformat ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(m3uplaylistformat ${QT_LIBRARIES} qmmpui)
 install(TARGETS m3uplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlayListFormats)
