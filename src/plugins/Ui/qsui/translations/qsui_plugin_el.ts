@@ -537,28 +537,28 @@
     </message>
     <message>
         <location filename="../equalizer.cpp" line="100"/>
-        <location filename="../equalizer.cpp" line="203"/>
+        <location filename="../equalizer.cpp" line="197"/>
         <source>%1dB</source>
         <translation>%1dB</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="102"/>
-        <location filename="../equalizer.cpp" line="201"/>
+        <location filename="../equalizer.cpp" line="195"/>
         <source>+%1dB</source>
         <translation>+%1dB</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="153"/>
+        <location filename="../equalizer.cpp" line="150"/>
         <source>preset</source>
         <translation>προρύθμιση</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="226"/>
+        <location filename="../equalizer.cpp" line="220"/>
         <source>Overwrite Request</source>
         <translation>Αίτηση αντικατάστασης</translation>
     </message>
     <message>
-        <location filename="../equalizer.cpp" line="227"/>
+        <location filename="../equalizer.cpp" line="221"/>
         <source>Preset &apos;%1&apos; already exists. Overwrite?</source>
         <translation>Η προρύθμιση «%1» υπάρχει ήδη. Να αντικατασταθεί;</translation>
     </message>
