@@ -374,6 +374,7 @@ private:
     QMap<uint, QColor> m_main_colors;
     bool m_use_cursors;
     bool m_double_size;
+    bool m_antialiasing;
 
     void loadMain();
     void loadButtons();

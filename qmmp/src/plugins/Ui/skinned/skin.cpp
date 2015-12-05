@@ -59,7 +59,9 @@ Skin::Skin (QObject *parent) : QObject (parent)
     if (path.isEmpty() || !QDir(path).exists ())
         path = ":/glare";
     m_double_size = settings.value("Skinned/double_size", false).toBool();
+    m_antialiasing = settings.value("Skinned/antialiasing", false).toBool();
     ACTION(ActionManager::WM_DOUBLE_SIZE)->setChecked(m_double_size);
+    ACTION(ActionManager::WM_ANTIALIASING)->setChecked(m_antialiasing);
     setSkin (QDir::cleanPath(path));
     /* skin directory */
     QDir skinDir(Qmmp::configDir());
@@ -74,6 +76,7 @@ void Skin::setSkin (const QString& path)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_use_cursors = settings.value("Skinned/skin_cursors", false).toBool();
     m_double_size = ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked();
+    m_antialiasing = ACTION(ActionManager::WM_ANTIALIASING)->isChecked();
     settings.setValue("Skinned/skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
@@ -839,7 +842,8 @@ QPixmap * Skin::getDummyPixmap(const QString &name, const QString &fallback)
 QPixmap Skin::scalePixmap(const QPixmap &pix, int ratio)
 {
     return pix.scaled(pix.width() * ratio, pix.height() * ratio,
-                      Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                      Qt::KeepAspectRatio,
+                      m_antialiasing ? Qt::SmoothTransformation : Qt::FastTransformation);
 }
 
 const QString Skin::findFile(const QString &name)

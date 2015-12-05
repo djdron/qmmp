@@ -64,6 +64,7 @@ public:
         WM_ALLWAYS_ON_TOP,
         WM_STICKY,
         WM_DOUBLE_SIZE,
+        WM_ANTIALIASING,
 
         VOL_ENC,
         VOL_DEC,
