@@ -333,6 +333,7 @@ void MainWindow::writeSettings()
     settings.setValue("double_size", ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked());
     settings.setValue("always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("show_on_all_desktops", ACTION(ActionManager::WM_STICKY)->isChecked());
+    settings.setValue("antialiasing", ACTION(ActionManager::WM_ANTIALIASING)->isChecked());
     settings.endGroup();
 }
 
@@ -418,6 +419,7 @@ void MainWindow::createActions()
     viewMenu->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(updateSettings())));
     viewMenu->addAction(SET_ACTION(ActionManager::WM_STICKY, this, SLOT(updateSettings())));
     viewMenu->addAction(SET_ACTION(ActionManager::WM_DOUBLE_SIZE, this, SLOT(updateSettings())));
+    viewMenu->addAction(SET_ACTION(ActionManager::WM_ANTIALIASING, this, SLOT(updateSettings())));
 
     QMenu *plMenu = m_mainMenu->addMenu(tr("Playlist"));
     plMenu->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_ui_settings, SLOT(setRepeatableList(bool))));
