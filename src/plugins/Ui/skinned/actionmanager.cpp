@@ -57,6 +57,8 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "sticky", "");
     m_actions[WM_DOUBLE_SIZE] = createAction2(tr("Double Size"), "double_size", tr("Meta+D"));
     m_actions[WM_ANTIALIASING] = createAction2(tr("Anti-aliasing"), "anti_aliasing", "");
+    connect(m_actions[WM_DOUBLE_SIZE], SIGNAL(toggled(bool)), m_actions[WM_ANTIALIASING], SLOT(setEnabled(bool)));
+    m_actions[WM_ANTIALIASING]->setEnabled(false);
     //volume
     m_actions[VOL_ENC] = createAction(tr("Volume &+"), "vol_enc", tr("0"));
     m_actions[VOL_DEC] = createAction(tr("Volume &-"), "vol_dec", tr("9"));
