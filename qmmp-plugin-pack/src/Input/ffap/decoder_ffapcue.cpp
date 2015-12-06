@@ -136,7 +136,7 @@ void DecoderFFapCUE::seek(qint64 pos)
             audioParameters().sampleSize() * pos/1000;
 }
 
-qint64 DecoderFFapCUE::read(char *data, qint64 size)
+qint64 DecoderFFapCUE::read(unsigned char *data, qint64 size)
 {
     if(length_in_bytes - m_totalBytes < m_sz) //end of cue track
         return 0;

@@ -1642,7 +1642,7 @@ error:
     return bytes_used;
 }
 
-int ffap_read(FFap_decoder *decoder, char *buffer, int size)
+int ffap_read(FFap_decoder *decoder, unsigned char *buffer, int size)
 {
     int samplesize = decoder->bps / 8 * decoder->channels;
     if(decoder->bps == 24)

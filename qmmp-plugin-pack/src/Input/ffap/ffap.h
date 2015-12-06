@@ -61,7 +61,7 @@ FFap_decoder *ffap_new(ffap_read_callback read_callback,
 
 void ffap_load();
 int ffap_init(FFap_decoder *decoder);
-int ffap_read(FFap_decoder *decoder, char *buffer, int size);
+int ffap_read(FFap_decoder *decoder, unsigned char *buffer, int size);
 int ffap_seek(FFap_decoder *decoder, float seconds);
 void ffap_free(FFap_decoder *decoder);
 

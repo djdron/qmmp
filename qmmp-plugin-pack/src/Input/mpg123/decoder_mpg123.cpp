@@ -156,7 +156,7 @@ int DecoderMPG123::bitrate()
     return m_frame_info.bitrate;
 }
 
-qint64 DecoderMPG123::read(char *data, qint64 size)
+qint64 DecoderMPG123::read(unsigned char *data, qint64 size)
 {
     if(m_mpg123_encoding != MPG123_ENC_SIGNED_16)
         updateMPG123Format(MPG123_ENC_SIGNED_16);

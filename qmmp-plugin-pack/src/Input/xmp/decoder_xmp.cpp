@@ -87,7 +87,7 @@ int DecoderXmp::bitrate()
     return 8;
 }
 
-qint64 DecoderXmp::read(char *audio, qint64 maxSize)
+qint64 DecoderXmp::read(unsigned char *audio, qint64 maxSize)
 {
     int c = xmp_play_buffer(m_ctx, audio, maxSize, 1);
 

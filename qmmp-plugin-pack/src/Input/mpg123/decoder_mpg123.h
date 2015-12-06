@@ -37,7 +37,7 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-    qint64 read(char *data, qint64 size);
+    qint64 read(unsigned char *data, qint64 size);
     qint64 read(float *data, qint64 samples);
     void seek(qint64);
 
