@@ -92,7 +92,7 @@ int DecoderGme::bitrate()
     return 8;
 }
 
-qint64 DecoderGme::read(char *data, qint64 size)
+qint64 DecoderGme::read(unsigned char *data, qint64 size)
 {
     if(gme_track_ended(m_emu))
         return 0;

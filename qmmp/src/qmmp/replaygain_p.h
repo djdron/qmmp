@@ -40,7 +40,7 @@ public:
     void updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
                         double default_gain, bool clip);
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info, bool headroom);
-    qint64 read(Decoder *decoder, char *data, qint64 size);
+    qint64 read(Decoder *decoder, unsigned char *data, qint64 size);
 
 private:
     void updateScale();

@@ -180,7 +180,7 @@ void DecoderWavPack::seek(qint64 time)
     WavpackSeekSample (m_context, time * audioParameters().sampleRate() / 1000);
 }
 
-qint64 DecoderWavPack::read(char *data, qint64 size)
+qint64 DecoderWavPack::read(unsigned char *data, qint64 size)
 {
     if(m_parser)
     {
@@ -220,7 +220,7 @@ void DecoderWavPack::next()
     }
 }
 
-qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
+qint64 DecoderWavPack::wavpack_decode(unsigned char *data, qint64 size)
 {
     ulong len = qMin(QMMP_BLOCK_FRAMES, (int)size / m_chan / 4);
     len = WavpackUnpackSamples (m_context, m_output_buf, len);

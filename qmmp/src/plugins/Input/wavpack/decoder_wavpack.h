@@ -38,7 +38,7 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-    qint64 read(char *data, qint64 maxSize);
+    qint64 read(unsigned char *data, qint64 maxSize);
     void seek(qint64 time);
     const QString nextURL() const;
     void next();
@@ -46,7 +46,7 @@ public:
 private:
     // helper functions
     void deinit();
-    qint64 wavpack_decode(char *data, qint64 size);
+    qint64 wavpack_decode(unsigned char *data, qint64 size);
     ChannelMap findChannelMap(int channels);
     WavpackContext *m_context;
     int32_t *m_output_buf; // output buffer

@@ -67,7 +67,7 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-    qint64 read(char *data, qint64 maxSize);
+    qint64 read(unsigned char *data, qint64 maxSize);
     void seek(qint64 time);
     const QString nextURL() const;
     void next();

@@ -343,7 +343,7 @@ int DecoderMAD::bitrate()
     return int(m_bitrate);
 }
 
-qint64 DecoderMAD::read(char *data, qint64 size)
+qint64 DecoderMAD::read(unsigned char *data, qint64 size)
 {
     if(decodeFrame())
         return madOutput(data, size);
@@ -530,7 +530,7 @@ bool DecoderMAD::decodeFrame()
     return true;
 }
 
-qint64 DecoderMAD::madOutput(char *data, qint64 size)
+qint64 DecoderMAD::madOutput(unsigned char *data, qint64 size)
 {
     unsigned int samples_per_channel, channels;
     mad_fixed_t const *left, *right;

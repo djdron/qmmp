@@ -24,7 +24,7 @@ public:
     int bitrate();
 
 private:
-    virtual qint64 read(char *data, qint64 maxSize);
+    virtual qint64 read(unsigned char *data, qint64 maxSize);
     virtual qint64 read(float *data, qint64 samples);
     virtual void seek(qint64 time);
 

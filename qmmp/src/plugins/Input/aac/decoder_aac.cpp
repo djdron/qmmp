@@ -144,7 +144,7 @@ bool DecoderAAC::initialize()
     return true;
 }
 
-qint64 DecoderAAC::read(char *audio, qint64 maxSize)
+qint64 DecoderAAC::read(unsigned char *audio, qint64 maxSize)
 {
     NeAACDecFrameInfo frame_info;
     qint64 size = 0, to_read, read;

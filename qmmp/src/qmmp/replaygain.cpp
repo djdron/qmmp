@@ -68,7 +68,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
     updateScale();
 }
 
-qint64 ReplayGain::read(Decoder *decoder, char *data, qint64 size)
+qint64 ReplayGain::read(Decoder *decoder, unsigned char *data, qint64 size)
 {
     if(m_disabled)
         return decoder->read(data, size);

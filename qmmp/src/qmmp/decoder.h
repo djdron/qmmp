@@ -55,7 +55,7 @@ public:
      * Returns the number of bytes read, or -1 if an error occurred.
      * Subclass should reimplement this function.
      */
-    virtual qint64 read(char *data, qint64 maxSize) = 0;
+    virtual qint64 read(unsigned char *data, qint64 maxSize) = 0;
     /*!
      * Reads up of decoded audio using float audio format.
      * Reimplement this function if a decoder supports peak overflow (i.e. has headroom).
