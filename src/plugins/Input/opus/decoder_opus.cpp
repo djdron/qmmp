@@ -158,7 +158,7 @@ void DecoderOpus::seek(qint64 time)
     op_pcm_seek(m_opusfile, time*48);
 }
 
-qint64 DecoderOpus::read(char *data, qint64 maxSize)
+qint64 DecoderOpus::read(unsigned char *data, qint64 maxSize)
 {
     int samples = maxSize / 2 / m_chan;
     samples = op_read(m_opusfile, (opus_int16 *)data, samples, 0);

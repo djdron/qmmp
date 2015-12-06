@@ -319,7 +319,7 @@ bool Converter::convert(Decoder *decoder, FILE *file, bool use16bit)
     forever
     {
         // decode
-        len = decoder->read((char *)(output_buf + output_at), buf_size - output_at);
+        len = decoder->read((output_buf + output_at), buf_size - output_at);
 
         if (len > 0)
         {

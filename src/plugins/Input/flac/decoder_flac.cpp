@@ -84,7 +84,7 @@ static size_t pack_pcm_signed (FLAC__byte *output,
      return samples * channels * bps / 8;
 }
 
-static int flac_decode (void *void_data, char *buf, int buf_len)
+static int flac_decode (void *void_data, unsigned char *buf, int buf_len)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) void_data;
     unsigned to_copy;
@@ -460,7 +460,7 @@ void DecoderFLAC::seek(qint64 time)
 
 }
 
-qint64 DecoderFLAC::read(char *data, qint64 size)
+qint64 DecoderFLAC::read(unsigned char *data, qint64 size)
 {
     if(m_parser)
     {

@@ -91,7 +91,7 @@ int DecoderSndFile::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderSndFile::read(char *audio, qint64 maxSize)
+qint64 DecoderSndFile::read(unsigned char *audio, qint64 maxSize)
 {
     return sizeof(short)* sf_read_short  (m_sndfile, (short *)audio, maxSize / sizeof(short));
 }

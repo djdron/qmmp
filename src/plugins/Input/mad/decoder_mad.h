@@ -45,14 +45,14 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-    qint64 read(char *data, qint64 size);
+    qint64 read(unsigned char *data, qint64 size);
     qint64 read(float *data, qint64 samples);
     void seek(qint64);
 
 private:
     // helper functions
     bool decodeFrame();
-    qint64 madOutput(char *data, qint64 size);
+    qint64 madOutput(unsigned char *data, qint64 size);
     qint64 madOutputFloat(float *data, qint64 samples);
     bool fillBuffer();
     void deinit();

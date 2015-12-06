@@ -163,7 +163,7 @@ int DecoderSID::bitrate()
     return 8;
 }
 
-qint64 DecoderSID::read(char *data, qint64 size)
+qint64 DecoderSID::read(unsigned char *data, qint64 size)
 {
     size = qMin(size, qMax(m_length_in_bytes - m_read_bytes, qint64(0)));
     size -= size % 4;

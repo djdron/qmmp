@@ -300,7 +300,7 @@ int DecoderFFmpeg::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
+qint64 DecoderFFmpeg::read(unsigned char *audio, qint64 maxSize)
 {
     m_skipBytes = 0;
 

@@ -179,7 +179,7 @@ void RGScanner::run()
     const int buf_size = 8192; //samples
     double out_left[buf_size], out_right[buf_size]; //replay gain buffers
     float float_buf[buf_size]; //float buffer
-    char char_buf[buf_size*ap.sampleSize()]; //char buffer
+    unsigned char char_buf[buf_size*ap.sampleSize()]; //char buffer
     qint64 totalSamples = m_decoder->totalTime() * ap.sampleRate() * ap.channels() / 1000;
     qint64 sample_counter = 0;
     qint64 samples = 0;

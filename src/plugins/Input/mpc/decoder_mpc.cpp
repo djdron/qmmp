@@ -27,7 +27,7 @@
 #include "decoder_mpc.h"
 
 // this function used from xmms
-inline static void copyBuffer(MPC_SAMPLE_FORMAT* pInBuf, char* pOutBuf, unsigned pLength)
+inline static void copyBuffer(MPC_SAMPLE_FORMAT* pInBuf, unsigned char* pOutBuf, unsigned pLength)
 {
     unsigned pSize = 16;
     int clipMin    = -1 << (pSize - 1);
@@ -226,7 +226,7 @@ int DecoderMPC::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderMPC::read(char *audio, qint64 maxSize)
+qint64 DecoderMPC::read(unsigned char *audio, qint64 maxSize)
 {
 #ifdef MPC_OLD_API
     mpc_uint32_t vbrAcc = 0;

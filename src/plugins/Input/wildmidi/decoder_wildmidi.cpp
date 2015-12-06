@@ -82,7 +82,7 @@ int DecoderWildMidi::bitrate()
     return 8;
 }
 
-qint64 DecoderWildMidi::read(char *data, qint64 size)
+qint64 DecoderWildMidi::read(unsigned char *data, qint64 size)
 {
-    return WildMidi_GetOutput (midi_ptr, data, size);
+    return WildMidi_GetOutput (midi_ptr, (char *)data, size);
 }

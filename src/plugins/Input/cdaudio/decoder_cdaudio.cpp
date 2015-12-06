@@ -469,7 +469,7 @@ int DecoderCDAudio::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderCDAudio::read(char *audio, qint64 maxSize)
+qint64 DecoderCDAudio::read(unsigned char *audio, qint64 maxSize)
 {
     if(!m_buffer_at)
     {
