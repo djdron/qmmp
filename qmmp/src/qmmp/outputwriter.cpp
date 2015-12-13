@@ -346,7 +346,8 @@ void OutputWriter::run()
 
     bool done = false;
     Buffer *b = 0;
-    qint64 l, m = 0;
+    quint64 l;
+    qint64 m = 0;
 
     dispatch(Qmmp::Playing);
 
