@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QObject>
-#include <QProcess>
 #include <QFile>
 #include <QApplication>
 #include <QAction>
@@ -91,14 +90,14 @@ MplayerEngine::MplayerEngine(QObject *parent)
     m_currentTime = 0;
     m_muted = false;
     m_user_stop = false;
-    m_process = new QProcess(this);
-    connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
+    m_process = 0;
 }
 
 MplayerEngine::~MplayerEngine()
 {
     qDebug("%s",__FUNCTION__);
-    m_process->kill();
+    if(m_process)
+        m_process->kill();
     while(!m_sources.isEmpty())
         m_sources.dequeue()->deleteLater();
 }
@@ -106,7 +105,7 @@ MplayerEngine::~MplayerEngine()
 bool MplayerEngine::play()
 {
     m_user_stop = false;
-    if(m_process->state() != QProcess::NotRunning)
+    if(m_process && m_process->state() != QProcess::NotRunning)
         return false;
     startMplayerProcess();
     return true;
@@ -114,7 +113,6 @@ bool MplayerEngine::play()
 
 bool MplayerEngine::enqueue(InputSource *source)
 {
-    QString url = source->url();
     QStringList filters = MplayerInfo::filters();
     bool supports = false;
     foreach(QString filter, filters)
@@ -127,7 +125,7 @@ bool MplayerEngine::enqueue(InputSource *source)
     if(!supports)
         return false;
 
-    if(m_process->state() == QProcess::NotRunning)
+    if(!m_process || m_process->state() == QProcess::NotRunning)
         m_source = source;
     else
         m_sources.enqueue(source);
@@ -162,7 +160,7 @@ bool MplayerEngine::initialize()
 
 void MplayerEngine::seek(qint64 pos)
 {
-    if (m_process->state() == QProcess::Running)
+    if (m_process && m_process->state() == QProcess::Running)
         m_process->write(QString("seek %1\n").arg(pos/1000 - m_currentTime).toLocal8Bit ());
 }
 
@@ -170,7 +168,7 @@ void MplayerEngine::stop()
 {
     while(!m_sources.isEmpty())
         m_sources.dequeue()->deleteLater();
-    if(m_process->state() == QProcess::Running)
+    if(m_process && m_process->state() == QProcess::Running)
     {
         m_user_stop = true;
         m_process->write("quit\n");
@@ -182,12 +180,13 @@ void MplayerEngine::stop()
 
 void MplayerEngine::pause()
 {
-    m_process->write("pause\n");
+    if(m_process)
+        m_process->write("pause\n");
 }
 
 void MplayerEngine::setMuted(bool muted)
 {
-    if(m_process->state() == QProcess::Running)
+    if(m_process && m_process->state() == QProcess::Running)
     {
         m_process->write(muted ? "mute 1\n" : "mute 0\n");
     }
@@ -253,12 +252,21 @@ void MplayerEngine::readStdOut()
     }
 }
 
+void MplayerEngine::onError(QProcess::ProcessError error)
+{
+    if(error == QProcess::FailedToStart || error == QProcess::FailedToStart)
+        StateHandler::instance()->dispatch(Qmmp::FatalError);
+    qWarning("MplayerEngine: process error: %d", error);
+}
+
 void MplayerEngine::startMplayerProcess()
 {
     initialize();
-    delete m_process;
+    if(m_process)
+        delete m_process;
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
+    connect(m_process, SIGNAL(error(QProcess::ProcessError)), SLOT(onError(QProcess::ProcessError)));
     m_process->start ("mplayer", m_args);
     StateHandler::instance()->dispatch(Qmmp::Playing);
     StateHandler::instance()->dispatch(m_length * 1000);
