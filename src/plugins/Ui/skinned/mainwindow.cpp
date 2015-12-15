@@ -62,9 +62,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_update = false;
 
 #ifdef QMMP_WS_X11
-    if(WindowSystem::netWindowManagerName() == "Marco")
+    if(WindowSystem::netWindowManagerName().contains("Marco", Qt::CaseInsensitive) ||
+            WindowSystem::netWindowManagerName().contains("Metacity", Qt::CaseInsensitive) ||
+            WindowSystem::netWindowManagerName().contains("Mutter", Qt::CaseInsensitive))
+    {
         setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
                        Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
+    }
     else
 #endif
         setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
