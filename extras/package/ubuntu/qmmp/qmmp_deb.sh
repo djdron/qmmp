@@ -1,6 +1,6 @@
 #!/bin/sh
 
-QMMP_VERSION=0.9.4
+QMMP_VERSION=0.9.5
 UBUNTU_CODENAMES='precise trusty vivid wily'
 BUILD_ROOT=build-root
 
@@ -9,8 +9,8 @@ prepare ()
 {
 	cp ../qmmp-$QMMP_VERSION.tar.bz2 ./
 	bzip2 -dv ./qmmp-$QMMP_VERSION.tar.bz2
-    mv ./qmmp-$QMMP_VERSION.tar ./qmmp_$QMMP_VERSION.orig.tar
-    gzip ./qmmp_$QMMP_VERSION.orig.tar
+        mv ./qmmp-$QMMP_VERSION.tar ./qmmp_$QMMP_VERSION.orig.tar
+        gzip ./qmmp_$QMMP_VERSION.orig.tar
 }
 
 build ()
