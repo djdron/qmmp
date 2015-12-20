@@ -117,3 +117,8 @@ LEGEND
 [*] qmmp-0.9.5
 [*] opus-1.1.1
 [*] ffmpeg-2.8.3
+
+0.9.6
+[*] qmmp-0.9.6
+[*] qmmp-plugin-pack-0.9.3
+[*] ffmpeg-2.8.4
