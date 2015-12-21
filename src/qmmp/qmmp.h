@@ -83,9 +83,20 @@ public:
     {
         PCM_UNKNOWM = -1, /*!< Unknown format */
         PCM_S8 = 0, /*!< Signed 8 bit */
+        PCM_U8,     /*!< Unsigned 8 bit */
         PCM_S16LE,  /*!< Signed 16 bit Little Endian */
+        PCM_S16BE,  /*!< Signed 16 bit Big Endian */
+        PCM_U16LE,  /*!< Unsigned 16 bit Little Endian */
+        PCM_U16BE,  /*!< Unsigned 16 bit Big Endian */
         PCM_S24LE,  /*!< Signed 24 bit Little Endian using low three bytes in 32-bit word */
-        PCM_S32LE   /*!< Signed 32 bit Little Endian */
+        PCM_S24BE,  /*!< Signed 24 bit Big Endian using low three bytes in 32-bit word */
+        PCM_U24LE,  /*!< Unsigned 24 bit Little Endian using low three bytes in 32-bit word */
+        PCM_U24BE,  /*!< Unsigned 24 bit Big Endian using low three bytes in 32-bit word */
+        PCM_S32LE,  /*!< Signed 32 bit Little Endian */
+        PCM_S32BE,  /*!< Signed 32 bit Big Endian */
+        PCM_U32LE,  /*!< Unsigned 32 bit Little Endian */
+        PCM_U32BE,  /*!< Unsigned 32 bit Big Endian */
+        PCM_FLOAT   /*!< Float 32 bit Native Endian, Range -1.0 to 1.0 */
     };
 
     /*!

@@ -87,12 +87,23 @@ int AudioParameters::sampleSize(Qmmp::AudioFormat format)
     switch(format)
     {
     case Qmmp::PCM_S8:
+    case Qmmp::PCM_U8:
         return 1;
-    case Qmmp::PCM_S16LE:
     case Qmmp::PCM_UNKNOWM:
+    case Qmmp::PCM_S16LE:
+    case Qmmp::PCM_S16BE:
+    case Qmmp::PCM_U16LE:
+    case Qmmp::PCM_U16BE:
         return 2;
     case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S24BE:
+    case Qmmp::PCM_U24LE:
+    case Qmmp::PCM_U24BE:
     case Qmmp::PCM_S32LE:
+    case Qmmp::PCM_S32BE:
+    case Qmmp::PCM_U32LE:
+    case Qmmp::PCM_U32BE:
+    case Qmmp::PCM_FLOAT:
         return 4;
     }
     return 2;
