@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -94,9 +94,20 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
 {
     QMap<Qmmp::AudioFormat, QString> formatNames;
     formatNames.insert(Qmmp::PCM_S8, "s8");
+    formatNames.insert(Qmmp::PCM_U8, "u8");
     formatNames.insert(Qmmp::PCM_S16LE, "s16le");
+    formatNames.insert(Qmmp::PCM_S16BE, "s16be");
+    formatNames.insert(Qmmp::PCM_U16LE, "u16le");
+    formatNames.insert(Qmmp::PCM_U16BE, "u16be");
     formatNames.insert(Qmmp::PCM_S24LE, "s24le");
+    formatNames.insert(Qmmp::PCM_S24BE, "s24be");
+    formatNames.insert(Qmmp::PCM_U24LE, "u24le");
+    formatNames.insert(Qmmp::PCM_U24BE, "u24be");
     formatNames.insert(Qmmp::PCM_S32LE, "s32le");
+    formatNames.insert(Qmmp::PCM_S32BE, "s32be");
+    formatNames.insert(Qmmp::PCM_U32LE, "u32le");
+    formatNames.insert(Qmmp::PCM_U32BE, "u32be");
+    formatNames.insert(Qmmp::PCM_FLOAT, "float");
 
     m_output = Output::create();
     if(!m_output)
