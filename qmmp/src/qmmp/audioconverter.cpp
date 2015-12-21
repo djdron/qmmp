@@ -42,9 +42,19 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
     return;
 }
 
+#define INT_TO_FLOAT(TYPE,in,out,samples,offset,max) \
+{ \
+    TYPE *in_copy = (TYPE *) (in); \
+    float *out_copy = out; \
+    for(size_t i = 0; i < samples; ++i) \
+        out_copy[i] = (float) ((*in_copy++) - offset) / max; \
+}
+
 AudioConverter::AudioConverter()
 {
     m_format = Qmmp::PCM_UNKNOWM;
+    m_channels = 0;
+    m_swap = false;
 }
 
 void AudioConverter::configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f)
@@ -77,4 +87,90 @@ void AudioConverter::applyEffect(Buffer *b)
     default:
         ;
     }
+}
+
+void AudioConverter::configure(quint8 chan, Qmmp::AudioFormat f)
+{
+    m_format = f;
+    m_channels = chan;
+
+    switch (f)
+    {
+    case Qmmp::PCM_UNKNOWM:
+    case Qmmp::PCM_S8:
+    case Qmmp::PCM_U8:
+    case Qmmp::PCM_FLOAT:
+        m_swap = false;
+        break;
+    case Qmmp::PCM_S16LE:
+    case Qmmp::PCM_U16LE:
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_U24LE:
+    case Qmmp::PCM_S32LE:
+    case Qmmp::PCM_U32LE:
+#if Q_BYTE_ORDER == Q_BIG_ENDIAN
+        m_swap = true;
+#else
+        m_swap = false;
+#endif
+        break;
+    case Qmmp::PCM_S16BE:
+    case Qmmp::PCM_U16BE:
+    case Qmmp::PCM_S24BE:
+    case Qmmp::PCM_U24BE:
+    case Qmmp::PCM_S32BE:
+    case Qmmp::PCM_U32BE:
+#if Q_BYTE_ORDER == Q_BIG_ENDIAN
+        m_swap = false;
+#else
+        m_swap = true;
+#endif
+        break;
+
+    }
+}
+
+void AudioConverter::toFloat(const unsigned char *in, float *out, size_t samples)
+{
+    switch (m_format)
+    {
+    case Qmmp::PCM_S8:
+        INT_TO_FLOAT(qint8, in, out, samples, 0, 0x80);
+        break;
+    case Qmmp::PCM_U8:
+        INT_TO_FLOAT(quint8, in, out, samples, 0x80, 0x80);
+        break;
+    case Qmmp::PCM_S16LE:
+    case Qmmp::PCM_S16BE:
+        INT_TO_FLOAT(qint16, in, out, samples, 0, 0x8000);
+        break;
+    case Qmmp::PCM_U16LE:
+    case Qmmp::PCM_U16BE:
+        INT_TO_FLOAT(quint16, in, out, samples, 0x8000, 0x8000);
+        break;
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S24BE:
+        INT_TO_FLOAT(qint32, in, out, samples, 0, 0x800000);
+        break;
+    case Qmmp::PCM_U24LE:
+    case Qmmp::PCM_U24BE:
+        INT_TO_FLOAT(quint32, in, out, samples, 0x800000, 0x800000);
+        break;
+    case Qmmp::PCM_S32LE:
+    case Qmmp::PCM_S32BE:
+        INT_TO_FLOAT(qint32, in, out, samples, 0, 0x80000000);
+        break;
+    case Qmmp::PCM_U32LE:
+    case Qmmp::PCM_U32BE:
+        INT_TO_FLOAT(quint32, in, out, samples, 0x80000000, 0x80000000);
+        break;
+    case Qmmp::PCM_FLOAT:
+    case Qmmp::PCM_UNKNOWM:
+        ;
+    }
+}
+
+void AudioConverter::fromFloat(const float *in, const unsigned *out, size_t samples)
+{
+
 }
