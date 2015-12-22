@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@ AudioParameters::AudioParameters()
 {
     m_srate = 0;
     m_format = Qmmp::PCM_S16LE;
+    m_sz = 2;
 }
 
 AudioParameters::AudioParameters(const AudioParameters &other)
@@ -31,13 +32,15 @@ AudioParameters::AudioParameters(const AudioParameters &other)
     m_srate = other.sampleRate();
     m_chan_map = other.channelMap();
     m_format = other.format();
+    m_sz = other.sampleSize();
 }
 
-AudioParameters::AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat  format)
+AudioParameters::AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat format)
 {
     m_srate = srate;
     m_chan_map = map;
     m_format = format;
+    m_sz = sampleSize(format);
 }
 
 void AudioParameters::operator=(const AudioParameters &p)
@@ -79,7 +82,7 @@ Qmmp::AudioFormat AudioParameters::format() const
 
 int AudioParameters::sampleSize() const
 {
-    return sampleSize(m_format);
+    return m_sz;
 }
 
 int AudioParameters::sampleSize(Qmmp::AudioFormat format)

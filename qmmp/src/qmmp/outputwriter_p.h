@@ -32,6 +32,7 @@ class QmmpSettings;
 class StateHandler;
 class Output;
 class Effect;
+class AudioConverter;
 
 /** @internal
     @brief Output thread.
@@ -140,7 +141,7 @@ private:
     Output *m_output;
     bool m_muted;
     QList<Effect *> m_converters;
-
+    AudioConverter *m_converter;
 };
 
 #endif // OUTPUTWRITER_P_H

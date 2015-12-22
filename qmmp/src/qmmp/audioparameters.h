@@ -87,6 +87,7 @@ private:
     quint32 m_srate;
     ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
+    int m_sz;
 };
 
 #endif // AUDIOPARAMETERS_H

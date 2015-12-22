@@ -47,6 +47,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_output = 0;
     m_muted = false;
     m_replayGain = new ReplayGain;
+    m_converter = new AudioConverter;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
     connect(m_settings, SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
@@ -65,6 +66,7 @@ QmmpAudioEngine::~QmmpAudioEngine()
     qDeleteAll(m_effects);
     m_instance = 0;
     delete m_replayGain;
+    delete m_converter;
 }
 
 void QmmpAudioEngine::reset()
@@ -292,22 +294,28 @@ void QmmpAudioEngine::stop()
         delete m_effects.takeFirst();
 }
 
-qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate)
+qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 brate)
 {
     Buffer *b = m_output->recycler()->get();
-    uint sz = size < m_bks ? size : m_bks;
+    //uint sz = size < m_bks ? size : m_bks;
+    size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
+    size_t in_size = samples * m_ap.sampleSize();
+
+    m_converter->toFloat(data, (float*)(b->data), samples);
+
+
     //m_replayGain->applyReplayGain(data, sz);
-    memcpy(b->data, data, sz);
-    b->nbytes = sz;
+    //memcpy(b->data, data, sz);
+    b->nbytes = samples * sizeof(float);
     b->rate = brate;
-    foreach(Effect* effect, m_effects)
+    /*foreach(Effect* effect, m_effects)
     {
         effect->applyEffect(b);
-    }
-    size -= sz;
-    memmove(data, data + sz, size);
+    }*/
+    size -= in_size;
+    memmove(data, data + in_size, size);
     m_output->recycler()->add();
-    return sz;
+    return in_size;
 }
 
 void QmmpAudioEngine::finish()
@@ -403,8 +411,8 @@ void QmmpAudioEngine::run()
         {
             delay = 0;
             // decode
-            len = m_replayGain->read(m_decoder, (m_output_buf + m_output_at), m_output_size - m_output_at);
-            //len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
+            //len = m_replayGain->read(m_decoder, (m_output_buf + m_output_at), m_output_size - m_output_at);
+            len = m_decoder->read((m_output_buf + m_output_at), m_output_size - m_output_at);
         }
 
         if (len > 0)
@@ -543,7 +551,7 @@ void QmmpAudioEngine::flush(bool final)
             m_done = true;
         else
         {
-            m_output_at -= produceSound((char*)m_output_buf, m_output_at, m_bitrate);
+            m_output_at -= produceSound(m_output_buf, m_output_at, m_bitrate);
         }
 
         if (!m_output->recycler()->empty())
@@ -604,10 +612,11 @@ OutputWriter *QmmpAudioEngine::createOutput()
 void QmmpAudioEngine::prepareEffects(Decoder *d)
 {
     m_ap = d->audioParameters();
+    m_converter->configure(m_ap.format());
 
     //m_ap = AudioParameters(44100, 2, Qmmp::PCM_S24LE);
 
-    m_replayGain->configure(m_ap);
+    /*m_replayGain->configure(m_ap);
 
     foreach(Effect *e, m_effects) //remove disabled and external effects
     {
@@ -661,7 +670,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         }
         m_effects << effect;
         tmp_effects.removeAll(effect);
-    }
+    }*/
 }
 
 //static members

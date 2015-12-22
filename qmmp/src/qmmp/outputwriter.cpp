@@ -74,6 +74,7 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_useEq = false;
     m_muted = false;
     m_settings = QmmpSettings::instance();
+    m_converter = new AudioConverter();
 }
 
 OutputWriter::~OutputWriter()
@@ -88,6 +89,7 @@ OutputWriter::~OutputWriter()
         delete[] m_visBuffer;
         m_visBuffer = 0;
     }
+    delete m_converter;
 }
 
 bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
@@ -146,7 +148,7 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
     }
 
     m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(format) / 1000;
-    m_recycler.configure(m_frequency, m_channels, m_format); //calculate output buffer size
+    m_recycler.configure(m_frequency, m_channels, Qmmp::PCM_FLOAT); //calculate output buffer size
     //visual buffer
     if(m_visBuffer)
         delete [] m_visBuffer;
@@ -291,7 +293,8 @@ void OutputWriter::clearVisuals()
 
 bool OutputWriter::prepareConverters()
 {
-    qDeleteAll(m_converters);
+    m_converter->configure(m_output->audioParameters().format());
+    /*qDeleteAll(m_converters);
     m_converters.clear();
 
     AudioParameters ap = m_output->audioParameters();
@@ -321,7 +324,7 @@ bool OutputWriter::prepareConverters()
     {
         m_converters << new ChannelConverter(ap.channelMap());
         m_converters.last()->configure(sampleRate(), channelMap(), ap.format());
-    }
+    }*/
 
     return true;
 }
@@ -404,7 +407,7 @@ void OutputWriter::run()
         if (b)
         {
             mutex()->lock();
-            if (m_useEq)
+            /*if (m_useEq)
             {
                 switch(m_format)
                 {
@@ -420,7 +423,7 @@ void OutputWriter::run()
                 default:
                     ;
                 }
-            }
+            }*/
             mutex()->unlock();
             dispatchVisual(b);
             if (SoftwareVolume::instance())
@@ -430,7 +433,13 @@ void OutputWriter::run()
             applyConverters(b);
             l = 0;
             m = 0;
-            while (l < b->nbytes && !m_pause && !m_prev_pause)
+
+            size_t samples = b->nbytes / sizeof(float);
+            unsigned char buf[samples * 2];
+            m_converter->fromFloat((float*)b->data, buf, samples);
+
+
+            while (l < samples * 2 && !m_pause && !m_prev_pause)
             {
                 mutex()->lock();
                 if(m_skip)
@@ -441,7 +450,7 @@ void OutputWriter::run()
                     break;
                 }
                 mutex()->unlock();
-                m = m_output->writeAudio(b->data + l, b->nbytes - l);
+                m = m_output->writeAudio(buf + l, samples * 2 - l);
                 if(m >= 0)
                 {
                     m_totalWritten += m;

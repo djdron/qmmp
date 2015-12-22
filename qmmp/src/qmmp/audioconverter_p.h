@@ -22,27 +22,23 @@
 #define AUDIOCONVERTER_P_H
 
 #include <stddef.h>
-#include "effect.h"
+#include "qmmp.h"
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class AudioConverter : public Effect
+class AudioConverter
 {
 public:
     AudioConverter();
-    void configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
-    void applyEffect(Buffer *b);
 
-
-    void configure(quint8 chan, Qmmp::AudioFormat f);
+    void configure(Qmmp::AudioFormat f);
     void toFloat(const unsigned char *in, float *out, size_t samples);
-    void fromFloat(const float *in, const unsigned *out, size_t samples);
+    void fromFloat(const float *in, const unsigned char *out, size_t samples);
 
 
 private:
     Qmmp::AudioFormat m_format;
-    quint8 m_channels;
     bool m_swap;
 
 };

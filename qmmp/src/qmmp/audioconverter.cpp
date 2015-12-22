@@ -19,10 +19,11 @@
  ***************************************************************************/
 
 #include <math.h>
+#include <QtGlobal>
 #include "audioconverter_p.h"
 
 //static functions
-static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
+/*static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
 {
     for(qint64 i = 0; i < samples; ++i)
         out[i] = in[i] << 8;
@@ -41,7 +42,7 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
     for(qint64 i = 0; i < samples; ++i)
         out[i] = in[i] >> 16;
     return;
-}
+}*/
 
 #define INT_TO_FLOAT(TYPE,in,out,samples,offset,max) \
 { \
@@ -64,46 +65,12 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
 AudioConverter::AudioConverter()
 {
     m_format = Qmmp::PCM_UNKNOWM;
-    m_channels = 0;
     m_swap = false;
 }
 
-void AudioConverter::configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f)
+void AudioConverter::configure(Qmmp::AudioFormat f)
 {
     m_format = f;
-    Effect::configure(srate, map, Qmmp::PCM_S16LE);
-}
-
-void AudioConverter::applyEffect(Buffer *b)
-{
-    switch(m_format)
-    {
-    case Qmmp::PCM_S8:
-    {
-        unsigned char *out = new unsigned char[b->nbytes*2];
-        s8_to_s16((qint8 *)b->data, (qint16 *) out, b->nbytes);
-        delete [] b->data;
-        b->data = out;
-        b->nbytes <<= 1;
-        break;
-    }
-    case Qmmp::PCM_S24LE:
-        s24_to_s16((qint32 *)b->data, (qint16 *)b->data, b->nbytes >> 2);
-        b->nbytes >>= 1;
-        break;
-    case Qmmp::PCM_S32LE:
-        s32_to_s16((qint32 *)b->data, (qint16 *)b->data, b->nbytes >> 2);
-        b->nbytes >>= 1;
-        break;
-    default:
-        ;
-    }
-}
-
-void AudioConverter::configure(quint8 chan, Qmmp::AudioFormat f)
-{
-    m_format = f;
-    m_channels = chan;
 
     switch (f)
     {
@@ -181,7 +148,7 @@ void AudioConverter::toFloat(const unsigned char *in, float *out, size_t samples
     }
 }
 
-void AudioConverter::fromFloat(const float *in, const unsigned *out, size_t samples)
+void AudioConverter::fromFloat(const float *in, const unsigned char *out, size_t samples)
 {
     switch (m_format)
     {
