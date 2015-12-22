@@ -23,28 +23,6 @@
 #include <QtGlobal>
 #include "audioconverter_p.h"
 
-//static functions
-/*static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] << 8;
-    return;
-}
-
-static inline void s24_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 8;
-    return;
-}
-
-static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 16;
-    return;
-}*/
-
 #define INT_TO_FLOAT(TYPE,in,out,samples,offset,max) \
 { \
     TYPE *in_ref = (TYPE *) (in); \
