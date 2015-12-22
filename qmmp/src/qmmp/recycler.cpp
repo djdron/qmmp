@@ -32,9 +32,9 @@ Recycler::~Recycler()
     m_blocked = 0;
 }
 
-void Recycler::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void Recycler::configure(quint32 freq, int chan)
 {
-    unsigned long block_size = AudioParameters::sampleSize(format) * chan * QMMP_BLOCK_FRAMES;
+    size_t block_size = chan * QMMP_BLOCK_FRAMES;
     unsigned int buffer_count = freq * QmmpSettings::instance()->bufferSize() / 1000 / QMMP_BLOCK_FRAMES;
     if(block_size == m_block_size && buffer_count == m_buffer_count)
         return;
@@ -75,12 +75,10 @@ bool Recycler::blocked()
     return m_buffers[m_add_index] == m_blocked;
 }
 
-
 bool Recycler::empty() const
 {
     return m_current_count == 0;
 }
-
 
 int Recycler::available() const
 {
@@ -102,7 +100,7 @@ Buffer *Recycler::get()
 
 void Recycler::add()
 {
-    if(m_buffers[m_add_index]->nbytes)
+    if(m_buffers[m_add_index]->samples)
     {
         m_add_index = (m_add_index + 1) % m_buffer_count;
         m_current_count++;
@@ -136,12 +134,12 @@ void Recycler::clear()
     m_done_index = 0;
 }
 
-unsigned long Recycler::size() const
+size_t Recycler::size() const
 {
     return m_buffer_count * m_block_size;
 }
 
-unsigned long Recycler::blockSize() const
+size_t Recycler::blockSize() const
 {
     return m_block_size;
 }

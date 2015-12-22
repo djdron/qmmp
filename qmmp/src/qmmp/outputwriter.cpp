@@ -148,7 +148,7 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
     }
 
     m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(format) / 1000;
-    m_recycler.configure(m_frequency, m_channels, Qmmp::PCM_FLOAT); //calculate output buffer size
+    m_recycler.configure(m_frequency, m_channels); //calculate output buffer size
     //visual buffer
     if(m_visBuffer)
         delete [] m_visBuffer;
@@ -233,7 +233,7 @@ int OutputWriter::sampleSize() const
 
 void OutputWriter::dispatchVisual (Buffer *buffer)
 {
-    if (!buffer)
+    /*if (!buffer)
         return;
 
     int sampleSize = AudioParameters::sampleSize(m_format);
@@ -270,7 +270,7 @@ void OutputWriter::dispatchVisual (Buffer *buffer)
         visual->mutex()->unlock();
     }
     if(m_format == Qmmp::PCM_S16LE)
-        m_visBuffer = 0;
+        m_visBuffer = 0;*/
 }
 
 void OutputWriter::applyConverters(Buffer *buffer)
@@ -429,14 +429,14 @@ void OutputWriter::run()
             if (SoftwareVolume::instance())
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             if (m_muted)
-                memset(b->data, 0, b->nbytes);
+                memset(b->data, 0, b->size * sizeof(float));
             applyConverters(b);
             l = 0;
             m = 0;
 
-            size_t samples = b->nbytes / sizeof(float);
+            size_t samples = b->samples;
             unsigned char buf[samples * 2];
-            m_converter->fromFloat((float*)b->data, buf, samples);
+            m_converter->fromFloat(b->data, buf, samples);
 
 
             while (l < samples * 2 && !m_pause && !m_prev_pause)

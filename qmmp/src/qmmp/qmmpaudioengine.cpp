@@ -301,12 +301,12 @@ qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 b
     size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
     size_t in_size = samples * m_ap.sampleSize();
 
-    m_converter->toFloat(data, (float*)(b->data), samples);
+    m_converter->toFloat(data, b->data, samples);
 
 
     //m_replayGain->applyReplayGain(data, sz);
     //memcpy(b->data, data, sz);
-    b->nbytes = samples * sizeof(float);
+    b->samples = samples;
     b->rate = brate;
     /*foreach(Effect* effect, m_effects)
     {
@@ -604,7 +604,7 @@ OutputWriter *QmmpAudioEngine::createOutput()
     if(m_output_buf)
         delete [] m_output_buf;
     m_bks = output->recycler()->blockSize();
-    m_output_size = m_bks * 4;
+    m_output_size = m_bks * 4 * m_ap.sampleSize();
     m_output_buf = new unsigned char[m_output_size];
     return output;
 }

@@ -134,14 +134,14 @@ void VolumeControl::reload()
     {
         if((m_volume = Output::currentFactory()->createVolume()))
         {
-			if(m_volume->hasNotifySignal())
-			{
-				checkVolume();
-				connect(m_volume, SIGNAL(changed()), SLOT(checkVolume()));
-			}
-			else
-				m_timer->start(150); // fallback to polling if change notification is not available.
-		}
+            if(m_volume->hasNotifySignal())
+            {
+                checkVolume();
+                connect(m_volume, SIGNAL(changed()), SLOT(checkVolume()));
+            }
+            else
+                m_timer->start(150); // fallback to polling if change notification is not available.
+        }
     }
     if(!m_volume)
     {
@@ -191,7 +191,7 @@ VolumeSettings SoftwareVolume::volume() const
 
 void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
 {
-    int samples = 0;
+    /*int samples = 0;
     qint32 sample1 = 0;
     qint32 sample2 = 0;
     switch(format)
@@ -281,7 +281,7 @@ void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
         break;
     default:
         ;
-    }
+    }*/
 }
 
 //static

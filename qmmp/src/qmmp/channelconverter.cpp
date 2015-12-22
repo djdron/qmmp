@@ -65,7 +65,7 @@ void ChannelConverter::configure(quint32 srate, ChannelMap in_map, Qmmp::AudioFo
 
 void ChannelConverter::applyEffect(Buffer *b)
 {
-    if(m_disabled)
+    /*if(m_disabled)
         return;
 
     unsigned long i = 0;
@@ -115,5 +115,5 @@ void ChannelConverter::applyEffect(Buffer *b)
     }
     default:
         ;
-    }
+    }*/
 }
