@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <math.h>
+#include <string.h>
 #include <QtGlobal>
 #include "audioconverter_p.h"
 
@@ -144,7 +145,7 @@ void AudioConverter::toFloat(const unsigned char *in, float *out, size_t samples
         break;
     case Qmmp::PCM_FLOAT:
     case Qmmp::PCM_UNKNOWM:
-        ;
+        memcpy((void*)out, (void*)in, samples * sizeof(float));
     }
 }
 
@@ -184,6 +185,6 @@ void AudioConverter::fromFloat(const float *in, const unsigned char *out, size_t
         break;
     case Qmmp::PCM_FLOAT:
     case Qmmp::PCM_UNKNOWM:
-        ;
+        memcpy((void*)out, (void*)in, samples * sizeof(float));
     }
 }
