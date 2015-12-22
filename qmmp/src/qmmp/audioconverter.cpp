@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <math.h>
 #include "audioconverter_p.h"
 
 //static functions
@@ -44,10 +45,20 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
 
 #define INT_TO_FLOAT(TYPE,in,out,samples,offset,max) \
 { \
-    TYPE *in_copy = (TYPE *) (in); \
-    float *out_copy = out; \
+    TYPE *in_ref = (TYPE *) (in); \
     for(size_t i = 0; i < samples; ++i) \
-        out_copy[i] = (float) ((*in_copy++) - offset) / max; \
+        out[i] = (float) (in_ref[i] - offset) / max; \
+}
+
+#define FLOAT_TO_INT(TYPE,in,out,samples,offset,min,max) \
+{ \
+    TYPE *out_ref = (TYPE *) (out); \
+    float tmp; \
+    for(size_t i = 0; i < samples; ++i) \
+    { \
+        tmp = in[i] * max; \
+        out_ref[i] = offset + (TYPE) lrintf(qBound(-(float)min, tmp, (float)max)); \
+    } \
 }
 
 AudioConverter::AudioConverter()
@@ -172,5 +183,40 @@ void AudioConverter::toFloat(const unsigned char *in, float *out, size_t samples
 
 void AudioConverter::fromFloat(const float *in, const unsigned *out, size_t samples)
 {
-
+    switch (m_format)
+    {
+    case Qmmp::PCM_S8:
+        FLOAT_TO_INT(qint8, in, out, samples, 0, 0x80, 0x7F);
+        break;
+    case Qmmp::PCM_U8:
+        FLOAT_TO_INT(qint8, in, out, samples, 0x80, 0x80, 0x7F);
+        break;
+    case Qmmp::PCM_S16LE:
+    case Qmmp::PCM_S16BE:
+        FLOAT_TO_INT(qint16, in, out, samples, 0, 0x8000, 0x7FFF);
+        break;
+    case Qmmp::PCM_U16LE:
+    case Qmmp::PCM_U16BE:
+        FLOAT_TO_INT(quint16, in, out, samples, 0x8000, 0x8000, 0x7FFF);
+        break;
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S24BE:
+        FLOAT_TO_INT(qint32, in, out, samples, 0, 0x800000, 0x7FFFFF);
+        break;
+    case Qmmp::PCM_U24LE:
+    case Qmmp::PCM_U24BE:
+        FLOAT_TO_INT(quint32, in, out, samples, 0x800000, 0x800000, 0x7FFFFF);
+        break;
+    case Qmmp::PCM_S32LE:
+    case Qmmp::PCM_S32BE:
+        FLOAT_TO_INT(qint32, in, out, samples, 0, 0x80000000, 0x7FFFFFFF);
+        break;
+    case Qmmp::PCM_U32LE:
+    case Qmmp::PCM_U32BE:
+        FLOAT_TO_INT(quint32, in, out, samples, 0x80000000, 0x80000000, 0x7FFFFFFF);
+        break;
+    case Qmmp::PCM_FLOAT:
+    case Qmmp::PCM_UNKNOWM:
+        ;
+    }
 }
