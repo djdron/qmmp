@@ -16,7 +16,7 @@ Recycler::Recycler ()
     m_current_count = 0;
     m_buffer_count = 0;
     m_blocked = 0;
-    m_block_size = 0;
+    m_block_samples = 0;
     m_buffers = 0;
 }
 
@@ -36,7 +36,7 @@ void Recycler::configure(quint32 freq, int chan)
 {
     size_t block_size = chan * QMMP_BLOCK_FRAMES;
     unsigned int buffer_count = freq * QmmpSettings::instance()->bufferSize() / 1000 / QMMP_BLOCK_FRAMES;
-    if(block_size == m_block_size && buffer_count == m_buffer_count)
+    if(block_size == m_block_samples && buffer_count == m_buffer_count)
         return;
 
     for (unsigned int i = 0; i < m_buffer_count; i++)
@@ -50,7 +50,7 @@ void Recycler::configure(quint32 freq, int chan)
     m_done_index = 0;
     m_current_count = 0;
     m_blocked = 0;
-    m_block_size = block_size;
+    m_block_samples = block_size;
     m_buffer_count = buffer_count;
 
 
@@ -61,7 +61,7 @@ void Recycler::configure(quint32 freq, int chan)
 
     for (unsigned int i = 0; i < m_buffer_count; i++)
     {
-        m_buffers[i] = new Buffer(m_block_size);
+        m_buffers[i] = new Buffer(m_block_samples);
     }
 }
 
@@ -134,12 +134,12 @@ void Recycler::clear()
     m_done_index = 0;
 }
 
-size_t Recycler::size() const
+size_t Recycler::samples() const
 {
-    return m_buffer_count * m_block_size;
+    return m_buffer_count * m_block_samples;
 }
 
-size_t Recycler::blockSize() const
+size_t Recycler::blockSamples() const
 {
-    return m_block_size;
+    return m_block_samples;
 }

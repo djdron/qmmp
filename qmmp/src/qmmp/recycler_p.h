@@ -72,11 +72,11 @@ public:
     /*!
      * Returns size of all buffers in samples.
      */
-    size_t size() const; // size in samples
+    size_t samples() const; // size in samples
     /*!
      * Returns block size in samples.
      */
-    size_t blockSize() const; // size in samples
+    size_t blockSamples() const; // size in samples
 
     /*!
     * Returns mutex pointer.
@@ -99,7 +99,7 @@ public:
 
 private:
     unsigned int m_buffer_count, m_add_index, m_done_index, m_current_count;
-    size_t m_block_size;
+    size_t m_block_samples;
     Buffer **m_buffers;
     QMutex m_mtx;
     QWaitCondition m_cnd;

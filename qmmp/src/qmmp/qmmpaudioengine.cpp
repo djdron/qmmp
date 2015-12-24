@@ -297,12 +297,13 @@ void QmmpAudioEngine::stop()
 qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 brate)
 {
     Buffer *b = m_output->recycler()->get();
-    //uint sz = size < m_bks ? size : m_bks;
-    size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
-    size_t in_size = samples * m_ap.sampleSize();
+    size_t sz = size < m_bks ? size : m_bks;
+    size_t samples = sz / m_ap.sampleSize();
+
+    //size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
+    //size_t in_size = samples * m_ap.sampleSize();
 
     m_converter->toFloat(data, b->data, samples);
-
 
     //m_replayGain->applyReplayGain(data, sz);
     //memcpy(b->data, data, sz);
@@ -312,10 +313,9 @@ qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 b
     {
         effect->applyEffect(b);
     }*/
-    size -= in_size;
-    memmove(data, data + in_size, size);
+    memmove(data, data + sz, size - sz);
     m_output->recycler()->add();
-    return in_size;
+    return sz;
 }
 
 void QmmpAudioEngine::finish()
@@ -603,8 +603,8 @@ OutputWriter *QmmpAudioEngine::createOutput()
 
     if(m_output_buf)
         delete [] m_output_buf;
-    m_bks = output->recycler()->blockSize();
-    m_output_size = m_bks * 4 * m_ap.sampleSize();
+    m_bks = output->recycler()->blockSamples() * m_ap.sampleSize();
+    m_output_size = m_bks * 4;
     m_output_buf = new unsigned char[m_output_size];
     return output;
 }
