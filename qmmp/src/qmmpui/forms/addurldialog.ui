@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>379</width>
-    <height>58</height>
+    <width>389</width>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,6 +21,9 @@
     <widget class="QComboBox" name="urlComboBox">
      <property name="editable">
       <bool>true</bool>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToMinimumContentsLength</enum>
      </property>
     </widget>
    </item>
