@@ -95,10 +95,8 @@ public:
     /*!
      * Sets ReplayGain information. Use this function before playback.
      * @param rg ReplayGain information
-     * @param headroom Indicates that decoder allows peak overflow.
-     * In this case the decoder should support float output.
      */
-    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg, bool headroom = false);
+    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg);
     /*!
      * Returns QIODevice-based input source assigned for this decoder.
      */
@@ -113,10 +111,6 @@ public:
      * Returns \b true when new metadata has received, otherwise returns \b false.
      */
     bool hasMetaData() const;
-    /*!
-     * Returns \b true if a decoder allows peak overflow, otherwise returns \b false.
-     */
-    bool hasHeadroom() const;
     /*!
      * Takes metadata out of decoder and returns it.
      * Attention: hasMetaData() should return \b true before use of this fuction.
@@ -195,7 +189,6 @@ private:
     AudioParameters m_parameters;
     QIODevice *m_input;
     bool m_hasMetaData;
-    bool m_hasHeadroom;
     QMap<Qmmp::MetaData, QString> m_metaData;
     QMap <Qmmp::ReplayGainKey, double> m_rg; //replay gain information
 };

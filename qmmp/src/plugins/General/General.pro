@@ -9,8 +9,8 @@ SUBDIRS += statusicon \
            streambrowser \
            trackchange \
            hotkey \
-           copypaste \
-           rgscan
+           copypaste
+#           rgscan
 unix:SUBDIRS += mpris \
                 kdenotify \
                 converter \
