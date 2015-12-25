@@ -74,7 +74,8 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_useEq = false;
     m_muted = false;
     m_settings = QmmpSettings::instance();
-    m_converter = new AudioConverter();
+    m_format_converter = 0;
+    m_channel_converter = 0;
 }
 
 OutputWriter::~OutputWriter()
@@ -89,7 +90,10 @@ OutputWriter::~OutputWriter()
         delete[] m_visBuffer;
         m_visBuffer = 0;
     }
-    delete m_converter;
+    if(m_format_converter)
+        delete m_format_converter;
+    if(m_channel_converter)
+        delete m_channel_converter;
 }
 
 bool OutputWriter::initialize(quint32 freq, ChannelMap map)
@@ -269,59 +273,46 @@ void OutputWriter::dispatchVisual (Buffer *buffer)
         m_visBuffer = 0;*/
 }
 
-void OutputWriter::applyConverters(Buffer *buffer)
-{
-    for (int i = 0; i < m_converters.count(); ++i)
-    {
-        m_converters[i]->applyEffect(buffer);
-    }
-}
-
 void OutputWriter::clearVisuals()
 {
     foreach (Visual *visual, *Visual::visuals())
     {
         visual->mutex()->lock ();
-        visual->clear ();
+        visual->clear();
         visual->mutex()->unlock();
     }
 }
 
 bool OutputWriter::prepareConverters()
 {
-    m_converter->configure(m_output->audioParameters().format());
-    /*qDeleteAll(m_converters);
-    m_converters.clear();
+    if(m_format_converter)
+    {
+        delete m_format_converter;
+        m_format_converter = 0;
+    }
+    if(m_channel_converter)
+    {
+        delete m_channel_converter;
+        m_channel_converter = 0;
+    }
 
-    AudioParameters ap = m_output->audioParameters();
-
-    if(channels() != m_output->channels())
+    if(m_channels != m_output->channels())
     {
         qWarning("OutputWriter: unsupported channel number");
         return false;
     }
 
-    if(format() != ap.format())
+    if(m_in_params.format() != m_format)
     {
-        if(m_output->format() == Qmmp::PCM_S16LE)
-        {
-            qDebug("OutputWriter: using 16 bit comverter");
-            m_converters << new AudioConverter();
-            m_converters.last()->configure(sampleRate(), channelMap(), format());
-        }
-        else
-        {
-            qWarning("OutputWriter: unsupported audio format");
-            return false;
-        }
+        m_format_converter = new AudioConverter();
+        m_format_converter->configure(m_format);
     }
 
-    if(channelMap() != ap.channelMap())
+    if(m_in_params.channelMap() != m_chan_map)
     {
-        m_converters << new ChannelConverter(ap.channelMap());
-        m_converters.last()->configure(sampleRate(), channelMap(), ap.format());
-    }*/
-
+        m_channel_converter = new ChannelConverter(m_chan_map);
+        m_channel_converter->configure(m_in_params.sampleRate(), m_in_params.channelMap());
+    }
     return true;
 }
 
@@ -426,13 +417,14 @@ void OutputWriter::run()
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             if (m_muted)
                 memset(b->data, 0, b->size * sizeof(float));
-            applyConverters(b);
+            if(m_channel_converter)
+                m_channel_converter->applyEffect(b);
             l = 0;
             m = 0;
 
             size_t samples = b->samples;
             unsigned char buf[samples * 2];
-            m_converter->fromFloat(b->data, buf, samples);
+            m_format_converter->fromFloat(b->data, buf, samples);
 
 
             while (l < samples * 2 && !m_pause && !m_prev_pause)

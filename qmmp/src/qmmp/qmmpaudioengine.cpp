@@ -600,12 +600,6 @@ OutputWriter *QmmpAudioEngine::createOutput()
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
     }
-
-    /*if(m_output_buf)
-        delete [] m_output_buf;
-    m_bks = output->recycler()->blockSamples() * m_ap.sampleSize();
-    m_output_size = m_bks * 4;
-    m_output_buf = new unsigned char[m_output_size];*/
     return output;
 }
 
@@ -637,9 +631,12 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
     QList <Effect *> tmp_effects = m_effects;
     m_effects.clear();
 
-    m_effects << new ChannelConverter(m_ap.channelMap().remaped());
-    m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap());
-    m_ap = m_effects.at(0)->audioParameters();
+    if(m_ap.channelMap() != m_ap.channelMap().remaped())
+    {
+        m_effects << new ChannelConverter(m_ap.channelMap().remaped());
+        m_effects.last()->configure(m_ap.sampleRate(), m_ap.channelMap());
+        m_ap = m_effects.last()->audioParameters();
+    }
 
     foreach(EffectFactory *factory, Effect::enabledFactories())
     {

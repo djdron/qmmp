@@ -33,6 +33,7 @@ class StateHandler;
 class Output;
 class Effect;
 class AudioConverter;
+class ChannelConverter;
 
 /** @internal
     @brief Output thread.
@@ -116,7 +117,6 @@ private:
                   int channels);
     void dispatch(const Qmmp::State &state);
     void dispatchVisual(Buffer *buffer);
-    void applyConverters(Buffer *buffer);
     void clearVisuals();
     bool prepareConverters();
 
@@ -140,8 +140,8 @@ private:
     Output *m_output;
     bool m_muted;
     AudioParameters m_in_params;
-    QList<Effect *> m_converters;
-    AudioConverter *m_converter;
+    AudioConverter *m_format_converter;
+    ChannelConverter *m_channel_converter;
 };
 
 #endif // OUTPUTWRITER_P_H

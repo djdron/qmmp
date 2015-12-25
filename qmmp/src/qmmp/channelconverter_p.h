@@ -37,8 +37,7 @@ public:
 private:
     bool m_disabled;
     int m_reorder_array[9];
-    unsigned char *m_tmp_buf;
-    int m_frame_size;
+    float *m_tmp_buf;
     int m_channels;
     ChannelMap m_out_map;
 };
