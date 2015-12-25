@@ -81,7 +81,7 @@ private:
     OutputWriter *m_output;
 
     bool m_done, m_finish, m_user_stop;
-    uint m_bks;
+    uint m_bks, m_sample_size;
     qint64 m_seekTime;
     quint64 m_output_at, m_output_size;
     int m_bitrate;

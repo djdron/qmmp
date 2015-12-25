@@ -92,8 +92,9 @@ OutputWriter::~OutputWriter()
     delete m_converter;
 }
 
-bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+bool OutputWriter::initialize(quint32 freq, ChannelMap map)
 {
+    m_in_params = AudioParameters(freq, map, Qmmp::PCM_FLOAT);
     QMap<Qmmp::AudioFormat, QString> formatNames;
     formatNames.insert(Qmmp::PCM_S8, "s8");
     formatNames.insert(Qmmp::PCM_U8, "u8");
@@ -118,26 +119,26 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
         return false;
     }
 
-    if (!m_output->initialize(freq, map, format))
+    if (!m_output->initialize(freq, map, Qmmp::PCM_S16LE))
     {
         qWarning("OutputWriter: unable to initialize output");
         delete m_output;
         m_output = 0;
         return false;
     }
-    m_frequency = freq;
-    m_channels = map.count();
-    m_format = format;
-    m_chan_map = map;
+    m_frequency = m_output->sampleRate();
+    m_chan_map = m_output->channelMap();
+    m_channels = m_chan_map.count();
+    m_format = m_output->format();
 
     qDebug("OutputWriter: [%s] %u Hz, {%s}, %s ==> %u Hz, {%s}, %s",
            qPrintable(Output::currentFactory()->properties().shortName),
-           freq,
-           qPrintable(map.toString()),
-           qPrintable(formatNames.value(format)),
-           m_output->sampleRate(),
-           qPrintable(m_output->channelMap().toString()),
-           qPrintable(formatNames.value(m_output->format())));
+           m_in_params.sampleRate(),
+           qPrintable(m_in_params.channelMap().toString()),
+           qPrintable(formatNames.value(m_in_params.format())),
+           m_frequency,
+           qPrintable(m_chan_map.toString()),
+           qPrintable(formatNames.value(m_format)));
 
     if(!prepareConverters())
     {
@@ -147,12 +148,12 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
         return false;
     }
 
-    m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(format) / 1000;
-    m_recycler.configure(m_frequency, m_channels); //calculate output buffer size
+    m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(m_format) / 1000;
+    m_recycler.configure(m_in_params.sampleRate(), m_in_params.channels()); //calculate output buffer size
     //visual buffer
     if(m_visBuffer)
         delete [] m_visBuffer;
-    m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * m_channels; //16-bit samples
+    m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * m_in_params.channels(); //16-bit samples
     if(m_format != Qmmp::PCM_S16LE)
         m_visBuffer = new unsigned char [m_visBufferSize];
     updateEqSettings();
@@ -203,7 +204,7 @@ QMutex *OutputWriter::mutex()
 
 AudioParameters OutputWriter::audioParameters() const
 {
-    return AudioParameters(m_frequency, m_chan_map, m_format);
+    return AudioParameters(m_frequency, m_chan_map, Qmmp::PCM_FLOAT);
 }
 
 quint32 OutputWriter::sampleRate()
@@ -502,7 +503,7 @@ void OutputWriter::status()
 
 void OutputWriter::updateEqSettings()
 {
-    mutex()->lock();
+    /*mutex()->lock();
     if(m_settings->eqSettings().isEnabled())
     {
         double preamp = m_settings->eqSettings().preamp();
@@ -520,5 +521,5 @@ void OutputWriter::updateEqSettings()
         }
     }
     m_useEq = m_settings->eqSettings().isEnabled();
-    mutex()->unlock();
+    mutex()->unlock();*/
 }

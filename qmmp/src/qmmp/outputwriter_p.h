@@ -49,10 +49,9 @@ public:
      * Prepares object for usage and setups required audio parameters.
      * @param freq Sample rate.
      * @param map Map of channels.
-     * @param format Audio format
      * @return initialization result (\b true - success, \b false - failure)
      */
-    bool initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
+    bool initialize(quint32 freq, ChannelMap map);
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      */
@@ -97,7 +96,7 @@ public:
      */
     int channels();
     /*!
-     * Returns selected audio format.
+     * Returns input audio format.
      */
     Qmmp::AudioFormat format() const;
     const ChannelMap channelMap() const;
@@ -140,6 +139,7 @@ private:
     QmmpSettings *m_settings;
     Output *m_output;
     bool m_muted;
+    AudioParameters m_in_params;
     QList<Effect *> m_converters;
     AudioConverter *m_converter;
 };

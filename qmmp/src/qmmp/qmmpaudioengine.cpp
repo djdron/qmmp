@@ -43,6 +43,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_output_buf = 0;
     m_output_size = 0;
     m_bks = 0;
+    m_sample_size = 0;
     m_decoder = 0;
     m_output = 0;
     m_muted = false;
@@ -177,7 +178,7 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
         Effect *effect = Effect::create(factory);
         if(!effect)
             return;
-        effect->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
+        effect->configure(m_ap.sampleRate(), m_ap.channelMap());
         if(effect->audioParameters() == m_ap)
         {
             mutex()->lock();
@@ -298,7 +299,7 @@ qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 b
 {
     Buffer *b = m_output->recycler()->get();
     size_t sz = size < m_bks ? size : m_bks;
-    size_t samples = sz / m_ap.sampleSize();
+    size_t samples = sz / m_sample_size;
 
     //size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
     //size_t in_size = samples * m_ap.sampleSize();
@@ -309,10 +310,10 @@ qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 b
     //memcpy(b->data, data, sz);
     b->samples = samples;
     b->rate = brate;
-    /*foreach(Effect* effect, m_effects)
+    foreach(Effect* effect, m_effects)
     {
         effect->applyEffect(b);
-    }*/
+    }
     memmove(data, data + sz, size - sz);
     m_output->recycler()->add();
     return sz;
@@ -360,7 +361,7 @@ void QmmpAudioEngine::run()
     }
     m_decoder = m_decoders.dequeue();
     addOffset(); //offset
-    //m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
+    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
     mutex()->unlock();
     m_output->start();
     StateHandler::instance()->dispatch(Qmmp::Buffering);
@@ -411,7 +412,6 @@ void QmmpAudioEngine::run()
         {
             delay = 0;
             // decode
-            //len = m_replayGain->read(m_decoder, (m_output_buf + m_output_at), m_output_size - m_output_at);
             len = m_decoder->read((m_output_buf + m_output_at), m_output_size - m_output_at);
         }
 
@@ -432,7 +432,7 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
                 m_decoder->next();
                 StateHandler::instance()->dispatch(m_decoder->totalTime());
-                //m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
                 m_output->mutex()->lock();
                 m_output->seek(0); //reset counter
                 m_output->mutex()->unlock();
@@ -447,7 +447,8 @@ void QmmpAudioEngine::run()
                 delete m_decoder;
                 m_decoder = m_decoders.dequeue();
                 //m_seekTime = m_inputs.value(m_decoder)->offset();
-                //m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), m_decoder->hasHeadroom());
+                flush(true);
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
                 //use current output if possible
                 prepareEffects(m_decoder);
                 if(m_ap == m_output->audioParameters())
@@ -467,7 +468,6 @@ void QmmpAudioEngine::run()
                 }
                 else
                 {
-                    flush(true);
                     finish();
                     //wake up waiting threads
                     mutex()->unlock();
@@ -594,31 +594,38 @@ OutputWriter *QmmpAudioEngine::createOutput()
 {
     OutputWriter *output = new OutputWriter(0);
     output->setMuted(m_muted);
-    if (!output->initialize(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format()))
+    if (!output->initialize(m_ap.sampleRate(), m_ap.channelMap()))
     {
         delete output;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
     }
 
-    if(m_output_buf)
+    /*if(m_output_buf)
         delete [] m_output_buf;
     m_bks = output->recycler()->blockSamples() * m_ap.sampleSize();
     m_output_size = m_bks * 4;
-    m_output_buf = new unsigned char[m_output_size];
+    m_output_buf = new unsigned char[m_output_size];*/
     return output;
 }
 
 void QmmpAudioEngine::prepareEffects(Decoder *d)
 {
     m_ap = d->audioParameters();
+    //output buffer for decoder
+    if(m_output_buf)
+        delete [] m_output_buf;
+    m_bks = QMMP_BLOCK_FRAMES * m_ap.channels() * m_ap.sampleSize(); //block size
+    m_output_size = m_bks * 4;
+    m_sample_size = m_ap.sampleSize();
+    m_output_buf = new unsigned char[m_output_size];
+    //converter
     m_converter->configure(m_ap.format());
-
-    //m_ap = AudioParameters(44100, 2, Qmmp::PCM_S24LE);
-
-    /*m_replayGain->configure(m_ap);
-
-    foreach(Effect *e, m_effects) //remove disabled and external effects
+    m_ap = AudioParameters(m_ap.sampleRate(), m_ap.channelMap(), Qmmp::PCM_FLOAT);
+    //replay gain
+    m_replayGain->configure(m_ap);
+    //remove disabled and external effects
+    foreach(Effect *e, m_effects)
     {
         if(!e->factory() || !Effect::isEnabled(e->factory()))
         {
@@ -631,15 +638,8 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
     m_effects.clear();
 
     m_effects << new ChannelConverter(m_ap.channelMap().remaped());
-    m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
+    m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap());
     m_ap = m_effects.at(0)->audioParameters();
-
-    if(m_settings->use16BitOutput())
-    {
-        m_effects << new AudioConverter();
-        m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
-        m_ap = m_effects.at(0)->audioParameters();
-    }
 
     foreach(EffectFactory *factory, Effect::enabledFactories())
     {
@@ -661,7 +661,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         if(!effect)
         {
             effect = Effect::create(factory);
-            effect->configure(m_ap.sampleRate(), m_ap.channelMap(), m_ap.format());
+            effect->configure(m_ap.sampleRate(), m_ap.channelMap());
             if (m_ap != effect->audioParameters())
             {
                 m_blockedEffects << effect; //list of effects which require restart
@@ -670,7 +670,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         }
         m_effects << effect;
         tmp_effects.removeAll(effect);
-    }*/
+    }
 }
 
 //static members

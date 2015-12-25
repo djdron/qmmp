@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2014 by Ilya Kotov                                      *
+ *   Copyright (C) 2014-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,7 +31,7 @@ class ChannelConverter : public Effect
 public:
     ChannelConverter(ChannelMap out_map);
     ~ChannelConverter();
-    void configure(quint32 srate, ChannelMap in_map, Qmmp::AudioFormat f);
+    void configure(quint32 srate, ChannelMap in_map);
     void applyEffect(Buffer *b);
 
 private:
@@ -40,7 +40,6 @@ private:
     unsigned char *m_tmp_buf;
     int m_frame_size;
     int m_channels;
-    Qmmp::AudioFormat m_format;
     ChannelMap m_out_map;
 };
 

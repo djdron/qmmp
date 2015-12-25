@@ -29,7 +29,6 @@
 Effect::Effect()
 {
     m_freq = 0;
-    m_format = Qmmp::PCM_UNKNOWM;
     m_channels = 0;
     m_factory = 0;
 }
@@ -37,12 +36,11 @@ Effect::Effect()
 Effect::~Effect()
 {}
 
-void Effect::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+void Effect::configure(quint32 freq, ChannelMap map)
 {
     m_freq = freq;
     m_chan_map = map;
     m_channels = map.count();
-    m_format = format;
 }
 
 quint32 Effect::sampleRate() const
@@ -60,14 +58,9 @@ const ChannelMap Effect::channelMap() const
     return m_chan_map;
 }
 
-Qmmp::AudioFormat Effect::format() const
-{
-    return m_format;
-}
-
 const AudioParameters Effect::audioParameters() const
 {
-    return AudioParameters(m_freq, m_chan_map, m_format);
+    return AudioParameters(m_freq, m_chan_map, Qmmp::PCM_FLOAT);
 }
 
 EffectFactory* Effect::factory() const
@@ -81,7 +74,6 @@ bool _effectCacheCompareFunc(QmmpPluginCache *e1, QmmpPluginCache *e2)
 }
 
 //static members
-
 QList<QmmpPluginCache*> *Effect::m_cache = 0;
 QStringList Effect::m_enabledNames;
 
