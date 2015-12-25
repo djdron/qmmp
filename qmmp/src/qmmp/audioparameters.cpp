@@ -18,6 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QMap>
 #include "audioparameters.h"
 
 AudioParameters::AudioParameters()
@@ -83,6 +84,47 @@ Qmmp::AudioFormat AudioParameters::format() const
 int AudioParameters::sampleSize() const
 {
     return m_sz;
+}
+
+const QString AudioParameters::toString() const
+{
+    static const struct
+    {
+        Qmmp::AudioFormat format;
+        QString name;
+
+    }
+    format_names [] =
+    {
+    { Qmmp::PCM_S8, "s8" },
+    { Qmmp::PCM_U8, "u8" },
+    { Qmmp::PCM_S16LE, "s16le" },
+    { Qmmp::PCM_S16BE, "s16be" },
+    { Qmmp::PCM_U16LE, "u16le" },
+    { Qmmp::PCM_U16BE, "u16be" },
+    { Qmmp::PCM_S24LE, "s24le" },
+    { Qmmp::PCM_S24BE, "s24be" },
+    { Qmmp::PCM_U24LE, "u24le" },
+    { Qmmp::PCM_U24BE, "u24be" },
+    { Qmmp::PCM_S32LE, "s32le" },
+    { Qmmp::PCM_S32BE, "s32be" },
+    { Qmmp::PCM_U32LE, "u32le" },
+    { Qmmp::PCM_U32BE, "u32be" },
+    { Qmmp::PCM_FLOAT, "float" },
+    { Qmmp::PCM_UNKNOWM, QString() }
+    };
+
+    QString name = "unknown";
+    for(int i = 0; format_names[i].format != Qmmp::PCM_UNKNOWM; ++i)
+    {
+        if(m_format == format_names[i].format)
+        {
+            name = format_names[i].name;
+            break;
+        }
+    }
+
+    return QString("%1 Hz, {%2}, %3").arg(m_srate).arg(m_chan_map.toString()).arg(name);
 }
 
 int AudioParameters::sampleSize(Qmmp::AudioFormat format)

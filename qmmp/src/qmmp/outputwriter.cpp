@@ -131,14 +131,9 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map)
     m_channels = m_chan_map.count();
     m_format = m_output->format();
 
-    qDebug("OutputWriter: [%s] %u Hz, {%s}, %s ==> %u Hz, {%s}, %s",
+    qDebug("OutputWriter: [%s] %s ==> %s",
            qPrintable(Output::currentFactory()->properties().shortName),
-           m_in_params.sampleRate(),
-           qPrintable(m_in_params.channelMap().toString()),
-           qPrintable(formatNames.value(m_in_params.format())),
-           m_frequency,
-           qPrintable(m_chan_map.toString()),
-           qPrintable(formatNames.value(m_format)));
+           qPrintable(m_in_params.toString()), qPrintable(m_output->audioParameters().toString()));
 
     if(!prepareConverters())
     {

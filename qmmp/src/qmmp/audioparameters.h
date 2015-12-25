@@ -78,6 +78,8 @@ public:
      * Returns sample size in bytes.
      */
     int sampleSize() const;
+
+    const QString toString() const;
     /*!
      * Returns sample size in bytes of the given pcm data \b format.
      */
