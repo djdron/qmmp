@@ -34,9 +34,9 @@ Recycler::~Recycler()
 
 void Recycler::configure(quint32 freq, int chan)
 {
-    size_t block_size = chan * QMMP_BLOCK_FRAMES;
+    size_t block_samples = chan * QMMP_BLOCK_FRAMES;
     unsigned int buffer_count = freq * QmmpSettings::instance()->bufferSize() / 1000 / QMMP_BLOCK_FRAMES;
-    if(block_size == m_block_samples && buffer_count == m_buffer_count)
+    if(block_samples == m_block_samples && buffer_count == m_buffer_count)
         return;
 
     for (unsigned int i = 0; i < m_buffer_count; i++)
@@ -50,7 +50,7 @@ void Recycler::configure(quint32 freq, int chan)
     m_done_index = 0;
     m_current_count = 0;
     m_blocked = 0;
-    m_block_samples = block_size;
+    m_block_samples = block_samples;
     m_buffer_count = buffer_count;
 
 

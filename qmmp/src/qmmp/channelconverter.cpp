@@ -68,7 +68,7 @@ void ChannelConverter::applyEffect(Buffer *b)
     int j = 0;
 
     float *data = b->data;
-    for(i = 0; i < b->samples; ++i)
+    for(i = 0; i < b->samples / m_channels; ++i)
     {
         memcpy(m_tmp_buf, data, m_channels * sizeof(float));
         for(j = 0; j < m_channels; ++j)
