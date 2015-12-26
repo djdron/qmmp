@@ -233,6 +233,17 @@ int OutputWriter::sampleSize() const
 
 void OutputWriter::dispatchVisual (Buffer *buffer)
 {
+    if(!buffer)
+        return;
+
+    foreach (Visual *visual, *Visual::visuals())
+    {
+        visual->mutex()->lock ();
+        visual->add (buffer->data, buffer->samples, m_channels);
+        visual->mutex()->unlock();
+    }
+
+
     /*if (!buffer)
         return;
 

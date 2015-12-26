@@ -50,7 +50,7 @@ MainVisual::MainVisual (QWidget *parent) : Visual (parent), m_vis (0)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(readSettings()));
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
-    m_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_buffer = new float[VISUAL_BUFFER_SIZE];
     m_buffer_at = 0;
     m_instance = this;
     m_update = false;
@@ -95,7 +95,7 @@ void MainVisual::clear()
     update();
 }
 
-void MainVisual::add (unsigned char *data, qint64 size, int chan)
+void MainVisual::add (float *data, size_t samples, int chan)
 {
     if (!m_timer->isActive () || !m_vis)
         return;
@@ -103,20 +103,12 @@ void MainVisual::add (unsigned char *data, qint64 size, int chan)
     if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
         return;
     }
 
-    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
-
-    if (chan >= 2)
-    {
-        mono16_from_multichannel(m_buffer + m_buffer_at, (short *) data, frames, chan);
-    }
-    else
-    {
-        memcpy(m_buffer + m_buffer_at, (short *) data, frames << 1);
-    }
+    int frames = qMin(int(samples/chan), VISUAL_BUFFER_SIZE - m_buffer_at);
+    mono16_from_multichannel(m_buffer + m_buffer_at, data, frames, chan);
 
     m_buffer_at += frames;
 }
@@ -135,7 +127,7 @@ void MainVisual::timeout()
     {
         m_vis->process (m_buffer);
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at*sizeof(float));
         m_pixmap = m_bg;
         QPainter p(&m_pixmap);
         m_vis->draw (&p);
@@ -423,7 +415,7 @@ void Analyzer::clear()
     }
 }
 
-bool Analyzer::process (short *l)
+bool Analyzer::process (float *l)
 {
     static fft_state *state = 0;
     if (!state)
@@ -558,7 +550,7 @@ void Scope::clear()
 Scope::~Scope()
 {}
 
-bool Scope::process(short *l)
+bool Scope::process(float *l)
 {
     int step = (VISUAL_NODE_SIZE << 8)/76;
     int pos = 0;
@@ -566,12 +558,8 @@ bool Scope::process(short *l)
     for (int i = 0; i < 76; ++i)
     {
         pos += step;
-        m_intern_vis_data[i] = (l[pos >> 8] >> 12);
-
-        if (m_intern_vis_data[i] > 4)
-            m_intern_vis_data[i] = 4;
-        else if (m_intern_vis_data[i] < -4)
-            m_intern_vis_data[i] = -4;
+        m_intern_vis_data[i] = int(l[pos >> 8] * 8.0);
+        m_intern_vis_data[i] = qBound(-4, m_intern_vis_data[i], 4);
     }
     return true;
 }

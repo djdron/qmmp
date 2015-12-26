@@ -33,7 +33,7 @@ class VisualBase
 public:
     virtual ~VisualBase(){}
     virtual void clear() = 0;
-    virtual bool process(short *l) = 0;
+    virtual bool process(float *l) = 0;
     virtual void draw(QPainter *) = 0;
     virtual const QString name() = 0;
 };
@@ -50,7 +50,7 @@ public:
 
     static MainVisual *instance();
     void setVisual(VisualBase *newvis);
-    void add(unsigned char *data, qint64 size, int chan);
+    void add(float *data, size_t samples, int chan);
     void clear();
     void paintEvent(QPaintEvent *);
 
@@ -88,7 +88,7 @@ private:
     QAction *m_peaksAction;
     QAction *m_transparentAction;
     int m_ratio;
-    short *m_buffer;
+    float *m_buffer;
     int m_buffer_at;
     bool m_update;
 };
@@ -102,7 +102,7 @@ public:
     virtual ~Analyzer();
 
     void clear();
-    bool process(short *l);
+    bool process(float *l);
     void draw(QPainter *p);
     const QString name()
     {
@@ -127,7 +127,7 @@ public:
     Scope();
     virtual ~Scope();
     void clear();
-    bool process(short *l);
+    bool process(float *l);
     void draw(QPainter *p);
     const QString name()
     {
