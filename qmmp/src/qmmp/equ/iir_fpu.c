@@ -38,7 +38,7 @@ static sXYData data_history2[EQ_MAX_BANDS][EQ_CHANNELS] __attribute__((aligned))
 float gain[EQ_MAX_BANDS][EQ_CHANNELS] __attribute__((aligned));
 /* random noise */
 sample_t dither[256];
-int di;
+//int di;
 
 void set_gain(int index, int chn, float val)
 {
@@ -47,16 +47,16 @@ void set_gain(int index, int chn, float val)
 
 void clean_history()
 {
-  int n;
+  //int n;
   /* Zero the history arrays */
   memset(data_history, 0, sizeof(sXYData) * EQ_MAX_BANDS * EQ_CHANNELS);
   memset(data_history2, 0, sizeof(sXYData) * EQ_MAX_BANDS * EQ_CHANNELS);
   /* this is only needed if we use fpu code and there's no other place for
   the moment to init the dither array*/
-  for (n = 0; n < 256; n++) {
-      dither[n] = (rand() % 4) - 2;
-  }
-  di = 0;
+  //for (n = 0; n < 256; n++) {
+  //    dither[n] = (rand() % 4) - 2;
+  //}
+  //di = 0;
 }
 
 __inline__ int iir(float *d, int samples, int nch)
@@ -207,7 +207,7 @@ __inline__ int iir(float *d, int samples, int nch)
     j = (j+1)%3;
     k = (k+1)%3;
     /* random noise index */
-    di = (di + 1) % 256;
+    //di = (di + 1) % 256;
 
   }/* For each pair of samples */
 
