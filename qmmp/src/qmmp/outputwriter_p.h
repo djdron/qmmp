@@ -134,8 +134,6 @@ private:
     bool m_finish;
     bool m_useEq;
     qint64 m_totalWritten, m_currentMilliseconds;
-    unsigned char *m_visBuffer;
-    qint64 m_visBufferSize;
     QmmpSettings *m_settings;
     Output *m_output;
     bool m_muted;
