@@ -25,6 +25,11 @@
  * More optimisations.
  */
 
+/*
+     modifications compared to original code:
+     using float format for input data
+*/
+
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -56,7 +61,7 @@ struct _struct_fft_state {
 /* # Local function prototypes # */
 /* ############################# */
 
-static void fft_prepare(const sound_sample * input, float *re, float *im);
+static void fft_prepare(const float *input, float *re, float *im);
 static void fft_calculate(float *re, float *im);
 static void fft_output(const float *re, const float *im, float *output);
 static int reverseBits(unsigned int initial);
@@ -126,7 +131,7 @@ fft_init(void)
  * state is a (non-NULL) pointer returned by fft_init.
  */
 void
-fft_perform(const sound_sample * input, float *output, fft_state * state)
+fft_perform(const float *input, float *output, fft_state * state)
 {
     /* Convert data from sound format to be ready for FFT */
     fft_prepare(input, state->real, state->imag);
@@ -156,7 +161,7 @@ fft_close(fft_state * state)
  * Prepare data to perform an FFT on
  */
 static void
-fft_prepare(const sound_sample * input, float *re, float *im)
+fft_prepare(const float *input, float *re, float *im)
 {
     unsigned int i;
     float *realptr = re;
@@ -164,7 +169,7 @@ fft_prepare(const sound_sample * input, float *re, float *im)
 
     /* Get input, in reverse bit order */
     for (i = 0; i < FFT_BUFFER_SIZE; i++) {
-        *realptr++ = input[bitReverse[i]];
+        *realptr++ = input[bitReverse[i]] * 32767.0;
         *imagptr++ = 0;
     }
 }
@@ -174,7 +179,7 @@ fft_prepare(const sound_sample * input, float *re, float *im)
  * Note: only produces half as many data points as the input had.
  * This is roughly a consequence of the Nyquist sampling theorm thingy.
  * (FIXME - make this comment better, and helpful.)
- * 
+ *
  * The two divisions by 4 are also a consequence of this: the contributions
  * returned for each frequency are split into two parts, one at i in the
  * table, and the other at FFT_BUFFER_SIZE - i, except for i = 0 and

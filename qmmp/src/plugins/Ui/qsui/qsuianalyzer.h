@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,7 +37,7 @@ public:
     QSUiAnalyzer( QWidget *parent = 0);
     virtual ~QSUiAnalyzer();
 
-    void add(unsigned char *data, qint64 size, int chan);
+    void add(float *data, size_t samples, int chan);
     void setCover(const QPixmap &pixmap);
     void clear();
     void clearCover();
@@ -58,7 +58,7 @@ private:
     void hideEvent(QHideEvent *);
     void showEvent(QShowEvent *);
     void resizeEvent(QResizeEvent *);
-    void process(short *l, short *r);
+    void process(float *l, float *r);
     void draw(QPainter *p);
     void createMenu();
     void updateCover();
@@ -73,8 +73,8 @@ private:
     double m_analyzer_falloff;
     bool m_show_peaks;
     bool m_show_cover;
-    short *m_left_buffer;
-    short *m_right_buffer;
+    float *m_left_buffer;
+    float *m_right_buffer;
     int m_buffer_at;
     int m_cols, m_rows;
     int m_offset;

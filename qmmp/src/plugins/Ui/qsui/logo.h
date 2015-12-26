@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,7 +39,7 @@ public:
     explicit Logo(QWidget *parent = 0);
     virtual ~Logo();
 
-    void add(unsigned char *data, qint64 size, int chan);
+    void add(float *data, size_t samples, int chan);
     void clear();
 
 private slots:
@@ -55,7 +55,7 @@ private:
     QHash <QChar, QPixmap> m_letters;
     QStringList m_lines;
     QStringList m_source_lines;
-    short *m_buffer;
+    float *m_buffer;
     int m_buffer_at;
     int m_value;
     qint64 m_elapsed;

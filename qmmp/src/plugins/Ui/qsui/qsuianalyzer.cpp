@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2012-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -51,8 +51,8 @@ QSUiAnalyzer::QSUiAnalyzer (QWidget *parent) : Visual (parent)
 
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
-    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
-    m_right_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_left_buffer = new float[VISUAL_BUFFER_SIZE];
+    m_right_buffer = new float[VISUAL_BUFFER_SIZE];
 
     readSettings();
     clear();
@@ -91,7 +91,7 @@ QSize QSUiAnalyzer::sizeHint() const
     return QSize(200, 100);
 }
 
-void QSUiAnalyzer::add (unsigned char *data, qint64 size, int chan)
+void QSUiAnalyzer::add (float *data, size_t samples, int chan)
 {
     if (!m_timer->isActive ())
         return;
@@ -99,23 +99,16 @@ void QSUiAnalyzer::add (unsigned char *data, qint64 size, int chan)
     if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
+        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
         return;
     }
 
-    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+    int frames = qMin(int(samples/chan), VISUAL_BUFFER_SIZE - m_buffer_at);
 
-    if (chan >= 2)
-    {
-        stereo16_from_multichannel(m_left_buffer + m_buffer_at,
-                                   m_right_buffer + m_buffer_at,(short *) data, frames, chan);
-    }
-    else
-    {
-        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
-        memcpy(m_right_buffer + m_buffer_at, (short *) data, frames << 1);
-    }
+    stereo_from_multichannel(m_left_buffer + m_buffer_at,
+                               m_right_buffer + m_buffer_at, data, frames, chan);
+
 
     m_buffer_at += frames;
 }
@@ -157,8 +150,8 @@ void QSUiAnalyzer::hideEvent (QHideEvent *)
 
 void QSUiAnalyzer::showEvent (QShowEvent *)
 {
-	if(m_running)
-		m_timer->start();
+    if(m_running)
+        m_timer->start();
 }
 
 void QSUiAnalyzer::resizeEvent(QResizeEvent *)
@@ -166,7 +159,7 @@ void QSUiAnalyzer::resizeEvent(QResizeEvent *)
     updateCover();
 }
 
-void QSUiAnalyzer::process (short *left, short *right)
+void QSUiAnalyzer::process (float *left, float *right)
 {
     int rows = qMax((height() - 2) / m_cell_size.height(),2);
     int cols = qMax((width() - m_offset - 2) / m_cell_size.width(),1);
@@ -196,11 +189,12 @@ void QSUiAnalyzer::process (short *left, short *right)
     short dest[256];
     short y;
     int k, magnitude;
-    short data[512];
+    float data[512];
 
     for(int i = 0; i < VISUAL_NODE_SIZE; ++i)
     {
-        data[i] = (left[i] >> 1) + (right[i] >> 1);
+        data[i] = left[i] / 2 + right[i] / 2;
+        data[i] = qBound(-1.0f, data[i], 1.0f);
     }
     calc_freq (dest, data);
 
@@ -407,13 +401,13 @@ void QSUiAnalyzer::writeSettings()
 
 void QSUiAnalyzer::start()
 {
-	m_running = true;
+    m_running = true;
     if(isVisible())
         m_timer->start();
 }
 
 void QSUiAnalyzer::stop()
 {
-	m_running = false;
-	m_timer->stop();
+    m_running = false;
+    m_timer->stop();
 }
