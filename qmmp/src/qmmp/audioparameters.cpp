@@ -49,6 +49,7 @@ void AudioParameters::operator=(const AudioParameters &p)
     m_srate = p.sampleRate();
     m_chan_map = p.channelMap();
     m_format = p.format();
+    m_sz = p.sampleSize();
 }
 
 bool AudioParameters::operator==(const AudioParameters &p) const
