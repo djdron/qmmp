@@ -335,23 +335,10 @@ void OutputWriter::run()
         if (b)
         {
             mutex()->lock();
-            /*if (m_useEq)
+            if (m_useEq)
             {
-                switch(m_format)
-                {
-                case Qmmp::PCM_S16LE:
-                    iir((void*) b->data, b->nbytes, m_channels);
-                    break;
-                case Qmmp::PCM_S24LE:
-                    iir24((void*) b->data, b->nbytes, m_channels);
-                    break;
-                case Qmmp::PCM_S32LE:
-                    iir32((void*) b->data, b->nbytes, m_channels);
-                    break;
-                default:
-                    ;
-                }
-            }*/
+                iir(b->data, b->samples, m_channels);
+            }
             mutex()->unlock();
             dispatchVisual(b);
             if (SoftwareVolume::instance())
@@ -431,7 +418,7 @@ void OutputWriter::status()
 
 void OutputWriter::updateEqSettings()
 {
-    /*mutex()->lock();
+    mutex()->lock();
     if(m_settings->eqSettings().isEnabled())
     {
         double preamp = m_settings->eqSettings().preamp();
@@ -449,5 +436,5 @@ void OutputWriter::updateEqSettings()
         }
     }
     m_useEq = m_settings->eqSettings().isEnabled();
-    mutex()->unlock();*/
+    mutex()->unlock();
 }
