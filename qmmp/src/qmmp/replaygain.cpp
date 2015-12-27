@@ -39,7 +39,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
 {
     m_info = info;
     updateScale();
-    if(m_mode != QmmpSettings::REPLAYGAIN_DISABLED)
+    if(m_mode != QmmpSettings::REPLAYGAIN_DISABLED && !m_disabled)
     {
         qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
                m_info[Qmmp::REPLAYGAIN_TRACK_GAIN],
