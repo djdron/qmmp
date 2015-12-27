@@ -90,7 +90,7 @@ void ProjectMPlugin::add (float *data, size_t samples, int chan)
 
     if(chan == 1)
     {
-        for(size_t i = 0; i <= frames; i++)
+        for(size_t i = 0; i < frames; i++)
         {
             m_buf[0][i] = data[i*chan] * 32767.0;
             m_buf[1][i] = data[i*chan] * 32767.0;
@@ -99,7 +99,7 @@ void ProjectMPlugin::add (float *data, size_t samples, int chan)
     }
     else
     {
-        for(size_t i = 0; i <= frames; i++)
+        for(size_t i = 0; i < frames; i++)
         {
             m_buf[0][i] = data[i*chan] * 32767.0;
             m_buf[1][i] = data[i*chan+1] * 32767.0;
