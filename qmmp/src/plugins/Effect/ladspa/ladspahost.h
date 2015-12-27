@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2002,2003 Nick Lamb <njl195@zepler.org.uk>              *
  *   Copyright (C) 2005 Giacomo Lozito <city_hunter@users.sf.net>          *
- *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
+ *   Copyright (C) 2009-2015 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -24,6 +24,7 @@
 #include <QMutex>
 #include <QList>
 #include <QObject>
+#include <stddef.h>
 #include <qmmp/qmmp.h>
 #include "ladspa.h"
 
@@ -84,8 +85,8 @@ public:
 
     virtual ~LADSPAHost();
 
-    int applyEffect(qint16 *d, int length);
-    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
+    int applyEffect(float *data, size_t samples);
+    void configure(quint32 freq, int chan);
     QList <LADSPAPlugin *> plugins();
     QList <LADSPAEffect *> effects();
     LADSPAEffect *addPlugin(LADSPAPlugin * plugin);
@@ -106,7 +107,7 @@ private:
     LADSPA_Data m_left[MAX_SAMPLES], m_right[MAX_SAMPLES], m_trash[MAX_SAMPLES];
 
     static LADSPAHost *m_instance;
-    int m_chan, m_prec;
+    int m_chan;
     quint32 m_freq;
 };
 

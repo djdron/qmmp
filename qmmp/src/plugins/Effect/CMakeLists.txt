@@ -13,13 +13,13 @@ add_subdirectory(bs2b)
 ENDIF(USE_BS2B)
 
 IF(USE_LADSPA)
-#add_subdirectory(ladspa)
+add_subdirectory(ladspa)
 ENDIF(USE_LADSPA)
 
 IF(USE_CROSSFADE)
-#add_subdirectory(crossfade)
+add_subdirectory(crossfade)
 ENDIF(USE_CROSSFADE)
 
 IF(USE_STEREO)
-#add_subdirectory(stereo)
+add_subdirectory(stereo)
 ENDIF(USE_STEREO)

@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2002-2003 Nick Lamb <njl195@zepler.org.uk>              *
  *   Copyright (C) 2005 Giacomo Lozito <city_hunter@users.sf.net>          *
- *   Copyright (C) 2009-2012 by Ilya Kotov <forkotov02@hotmail.ru>         *
+ *   Copyright (C) 2009-2015 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -40,7 +40,6 @@ LADSPAHost *LADSPAHost::m_instance = 0;
 LADSPAHost::LADSPAHost(QObject *parent) : QObject(parent)
 {
     m_chan = 0;
-    m_prec = 0;
     m_freq = 0;
     m_instance = this;
     findAllPlugins();
@@ -99,10 +98,9 @@ LADSPAHost::~LADSPAHost()
         unload(effect);
 }
 
-void LADSPAHost::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void LADSPAHost::configure(quint32 freq, int chan)
 {
     m_chan = chan;
-    m_prec = AudioParameters::sampleSize(format);
     m_freq = freq;
     foreach(LADSPAEffect *e, m_effects)
     {
@@ -239,48 +237,47 @@ void LADSPAHost::bootPlugin(LADSPAEffect *instance)
     }
 }
 
-int LADSPAHost::applyEffect(qint16 *d, int length)
+int LADSPAHost::applyEffect(float *data, size_t samples)
 {
-    qint16 *raw16 = d;
     LADSPAEffect *instance;
-    int k;
+    uint k;
 
     if (m_effects.isEmpty())
-        return length;
+        return samples;
 
     if (m_chan == 1)
     {
-        for (k = 0; k < length >> 1; ++k)
-            m_left[k] = (LADSPA_Data) raw16[k] / 32768.0f;
+        memcpy(m_left, data, samples * sizeof(float));
+
         foreach(instance, m_effects)
         {
             if (instance->handle)
-                instance->descriptor->run(instance->handle, length >> 1);
+                instance->descriptor->run(instance->handle, samples);
         }
-        for (k = 0; k < length >> 1; ++k)
-            raw16[k] = qBound((int)(m_left[k] * 32768.0f), -32768, 32767);
+        for (k = 0; k < samples; ++k)
+            data[k] = qBound(-1.0f, m_left[k], 1.0f);
     }
     else
     {
-        for (k = 0; k < length >> 1; k += 2)
+        for (k = 0; k < samples; k += 2)
         {
-            m_left[k >> 1] = (LADSPA_Data) raw16[k] / 32768.0f;
-            m_right[k >> 1] = (LADSPA_Data) raw16[k+1] / 32768.0f;
+            m_left[k >> 1] = data[k];
+            m_right[k >> 1] = data[k+1];
         }
         foreach(instance, m_effects)
         {
             if (instance->handle)
-                instance->descriptor->run(instance->handle, length >> 2);
+                instance->descriptor->run(instance->handle, samples >> 1);
             if (instance->handle2)
-                instance->descriptor->run(instance->handle2, length >> 2);
+                instance->descriptor->run(instance->handle2, samples >> 1);
         }
-        for (k = 0; k < length >> 1; k += 2)
+        for (k = 0; k < samples; k+=2)
         {
-            raw16[k] = qBound((int)(m_left[k >> 1] * 32768.0f), -32768, 32767);
-            raw16[k+1] = qBound((int)(m_right[k >> 1] * 32768.0f), -32768, 32767);
+            data[k] = qBound(-1.0f, m_left[k >> 1], 1.0f);
+            data[k+1] = qBound(-1.0f, m_right[k>> 1], 1.0f);
         }
     }
-    return length;
+    return samples;
 }
 
 void LADSPAHost::portAssign(LADSPAEffect *instance)

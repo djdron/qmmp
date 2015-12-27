@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov <forkotov02@hotmail.ru>         *
+ *   Copyright (C) 2009-2015 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *   Copyright (C) 2009 by Sebastian Pipping <sebastian@pipping.org>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,14 +63,14 @@ void CrossfadePlugin::applyEffect(Buffer *b)
     case PREPARING:
         if(m_core->totalTime() && (m_core->totalTime() - m_handler->elapsed() <  m_overlap))
         {
-            if(m_buffer_at + b->nbytes > m_buffer_size)
+            if(m_buffer_at + b->samples > m_buffer_size)
             {
-                m_buffer_size = m_buffer_at + b->nbytes;
-                m_buffer = (uchar *)realloc(m_buffer, m_buffer_size);
+                m_buffer_size = m_buffer_at + b->samples;
+                m_buffer = (float *)realloc(m_buffer, m_buffer_size * sizeof(float));
             }
-            memcpy(m_buffer + m_buffer_at, b->data, b->nbytes);
-            m_buffer_at += b->nbytes;
-            b->nbytes = 0;
+            memcpy(m_buffer + m_buffer_at, b->data, b->samples * sizeof(float));
+            m_buffer_at += b->samples;
+            b->samples = 0;
             return;
         }
         else if(m_buffer_at > 0)
@@ -81,17 +81,10 @@ void CrossfadePlugin::applyEffect(Buffer *b)
         if (m_buffer_at > 0)
         {
             double volume = (double)m_buffer_at/m_buffer_size;
-            uint size = qMin((ulong)m_buffer_at, b->nbytes);
-
-            if(format() == Qmmp::PCM_S16LE)
-                mix16(b->data, m_buffer, size >> 1, volume);
-            else if(format() == Qmmp::PCM_S8)
-                mix8(b->data, m_buffer, size, volume);
-            else //PCM_24LE, PCM_32LE
-                mix32(b->data, m_buffer, size >> 2, volume);
-
-            m_buffer_at -= size;
-            memmove(m_buffer, m_buffer + size, m_buffer_at);
+            size_t samples = qMin(m_buffer_at, b->samples);
+            mix(b->data, m_buffer, samples, volume);
+            m_buffer_at -= samples;
+            memmove(m_buffer, m_buffer + samples, m_buffer_at * sizeof(float));
         }
         else
             m_state = WAITING;
@@ -101,31 +94,16 @@ void CrossfadePlugin::applyEffect(Buffer *b)
     return;
 }
 
-void CrossfadePlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+void CrossfadePlugin::configure(quint32 freq, ChannelMap map)
 {
-    Effect::configure(freq, map, format);
+    Effect::configure(freq, map);
 }
 
-void CrossfadePlugin::mix8(uchar *cur_buf, uchar *prev_buf, uint samples, double volume)
+void CrossfadePlugin::mix(float *cur_buf, float *prev_buf, uint samples, double volume)
 {
     for (uint i = 0; i < samples; i++)
     {
-        cur_buf[i] = cur_buf[i]*(1.0 - volume)+prev_buf[i]*volume;
-    }
-}
-
-void CrossfadePlugin::mix16(uchar *cur_buf, uchar *prev_buf, uint samples, double volume)
-{
-    for (uint i = 0; i < samples; i++)
-    {
-        ((short*)cur_buf)[i] =((short*)cur_buf)[i]*(1.0 - volume)+((short*)prev_buf)[i]*volume;
-    }
-}
-
-void CrossfadePlugin::mix32(uchar *cur_buf, uchar *prev_buf, uint samples, double volume)
-{
-    for (uint i = 0; i < samples; i++)
-    {
-        ((qint32*)cur_buf)[i] =((qint32*)cur_buf)[i]*(1.0 - volume)+((qint32*)prev_buf)[i]*volume;
+        cur_buf[i] = cur_buf[i]*(1.0 - volume) + prev_buf[i]*volume;
+        cur_buf[i] = qBound(-1.0f, cur_buf[i], 1.0f);
     }
 }
