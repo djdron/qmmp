@@ -357,7 +357,6 @@ void QmmpAudioEngine::run()
     }
     m_decoder = m_decoders.dequeue();
     addOffset(); //offset
-    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
     mutex()->unlock();
     m_output->start();
     StateHandler::instance()->dispatch(Qmmp::Buffering);
@@ -444,7 +443,6 @@ void QmmpAudioEngine::run()
                 m_decoder = m_decoders.dequeue();
                 //m_seekTime = m_inputs.value(m_decoder)->offset();
                 flush(true);
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 //use current output if possible
                 prepareEffects(m_decoder);
                 if(m_ap == m_output->audioParameters())
@@ -619,8 +617,6 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         {
             m_effects.removeAll(e);
             m_blockedEffects.removeAll(e);
-            if(m_replayGain != e)
-                delete e;
         }
     }
     m_replayGain = 0;
@@ -632,7 +628,11 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         m_replayGain = new ReplayGain();
         m_replayGain->configure(m_ap.sampleRate(), m_ap.channelMap());
         m_effects << m_replayGain;
-        updateReplayGainSettings();
+        m_replayGain->setReplayGainInfo(d->replayGainInfo());
+        m_replayGain->updateSettings(m_settings->replayGainMode(),
+                                     m_settings->replayGainPreamp(),
+                                     m_settings->replayGainDefaultGain(),
+                                     m_settings->replayGainPreventClipping());
     }
     //channel order converter
     if(m_ap.channelMap() != m_ap.channelMap().remaped())
