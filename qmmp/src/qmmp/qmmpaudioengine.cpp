@@ -30,7 +30,7 @@
 #include "effectfactory.h"
 #include "inputsource.h"
 #include "statehandler.h"
-#include "audioconverter_p.h"
+#include "audioconverter.h"
 #include "qmmpaudioengine_p.h"
 #include "channelconverter_p.h"
 #include "metadatamanager.h"

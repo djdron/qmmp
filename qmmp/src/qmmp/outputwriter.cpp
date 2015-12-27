@@ -22,7 +22,7 @@
 #include "statehandler.h"
 #include "visual.h"
 #include "output.h"
-#include "audioconverter_p.h"
+#include "audioconverter.h"
 #include "channelconverter_p.h"
 #include "volumecontrol_p.h"
 #include "outputwriter_p.h"
