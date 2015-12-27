@@ -8,7 +8,7 @@ SUBDIRS += bs2b
 }
 
 unix {
-#    SUBDIRS += srconverter
+    SUBDIRS += srconverter
     contains(CONFIG, LADSPA_PLUGIN){
 #    SUBDIRS += ladspa
     }

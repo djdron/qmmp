@@ -5,7 +5,7 @@ SET(USE_CROSSFADE TRUE CACHE BOOL "enable/disable crossfade plugin")
 SET(USE_STEREO TRUE CACHE BOOL "enable/disable extra stereo plugin")
 
 IF(USE_SRC)
-#add_subdirectory(srconverter)
+add_subdirectory(srconverter)
 ENDIF(USE_SRC)
 
 IF(USE_BS2B)

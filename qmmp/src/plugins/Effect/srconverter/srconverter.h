@@ -34,7 +34,7 @@ public:
     virtual ~SRConverter();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map);
 
 private:
     void freeSRC();
