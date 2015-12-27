@@ -31,28 +31,6 @@ extern "C" {
 #include "equ/iir.h"
 }
 
-//static functions
-static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] << 8;
-    return;
-}
-
-static inline void s24_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 8;
-    return;
-}
-
-static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 16;
-    return;
-}
-
 OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
 {
     m_handler = StateHandler::instance();
@@ -342,7 +320,7 @@ void OutputWriter::run()
             mutex()->unlock();
             dispatchVisual(b);
             if (SoftwareVolume::instance())
-                SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
+                SoftwareVolume::instance()->changeVolume(b, m_channels);
             if (m_muted)
                 memset(b->data, 0, b->size * sizeof(float));
             if(m_channel_converter)
