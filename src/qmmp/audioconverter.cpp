@@ -21,7 +21,7 @@
 #include <math.h>
 #include <string.h>
 #include <QtGlobal>
-#include "audioconverter_p.h"
+#include "audioconverter.h"
 
 #define INT_TO_FLOAT(TYPE,in,out,samples,offset,max) \
 { \

@@ -22,7 +22,10 @@
 #include <math.h>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmp/audioconverter.h>
 #include "rgscanner.h"
+
+#define BUFFER_FRAMES 4096
 
 RGScanner::RGScanner()
 {
@@ -174,15 +177,19 @@ void RGScanner::run()
     bool error = false;
 
     AudioParameters ap = m_decoder->audioParameters();
-    Qmmp::AudioFormat format = ap.format();
-    bool headroom = m_decoder->hasHeadroom();
-    const int buf_size = 8192; //samples
-    double out_left[buf_size], out_right[buf_size]; //replay gain buffers
-    float float_buf[buf_size]; //float buffer
-    unsigned char char_buf[buf_size*ap.sampleSize()]; //char buffer
-    qint64 totalSamples = m_decoder->totalTime() * ap.sampleRate() * ap.channels() / 1000;
-    qint64 sample_counter = 0;
-    qint64 samples = 0;
+    AudioConverter converter;
+    converter.configure(ap.format());
+    //buffers
+    double out_left[BUFFER_FRAMES], out_right[BUFFER_FRAMES]; //replay gain buffers
+    float float_buf[BUFFER_FRAMES*ap.channels()]; //float buffer
+    qint64 char_buf_size = BUFFER_FRAMES*ap.channels()*ap.sampleSize();
+    unsigned char char_buf[char_buf_size]; //char buffer
+
+
+    //counters
+    qint64 totalSamples = m_decoder->totalTime() * ap.sampleRate() * ap.channels() / 1000, len = 0;
+    quint64 sample_counter = 0;
+    quint64 samples = 0;
     double max = 0;
 
     if(m_handle)
@@ -191,104 +198,36 @@ void RGScanner::run()
 
     forever
     {
-        if(headroom)
+        len = m_decoder->read(char_buf, char_buf_size);
+
+        if(len < 0)
         {
-            samples = m_decoder->read(float_buf, buf_size);
+            error = true;
+            break;
+        }
+        else if(len == 0)
+            break;
 
-            if(samples < 0)
-            {
-                error = true;
-                break;
-            }
-            else if(samples == 0)
-                break;
+        samples = len / ap.sampleSize();
 
-            if(ap.channels() == 2)
+        converter.toFloat(char_buf, float_buf, samples);
+
+        if(ap.channels() == 2)
+        {
+            for(uint i = 0; i < (samples >> 1); ++i)
             {
-                for(int i = 0; i < (samples >> 1); ++i)
-                {
-                    out_left[i] = float_buf[i*2]*32768.0;
-                    out_right[i] = float_buf[i*2+1]*32768.0;
-                    max = qMax(fabs(out_left[i]), max);
-                    max = qMax(fabs(out_right[i]), max);
-                }
-            }
-            else if(ap.channels() == 1)
-            {
-                for(int i = 0; i < samples; ++i)
-                {
-                    out_left[i] = float_buf[i]*32768.0;
-                    max = qMax(fabs(out_left[i]), max);
-                }
+                out_left[i] = float_buf[i*2]*32768.0;
+                out_right[i] = float_buf[i*2+1]*32768.0;
+                max = qMax(fabs(out_left[i]), max);
+                max = qMax(fabs(out_right[i]), max);
             }
         }
-        else
+        else if(ap.channels() == 1)
         {
-
-            qint64 len = m_decoder->read(char_buf, buf_size*ap.sampleSize());
-
-            if(len < 0)
+            for(uint i = 0; i < samples; ++i)
             {
-                error = true;
-                break;
-            }
-            else if(len == 0)
-                break;
-
-            samples = len / ap.sampleSize();
-
-            if(ap.channels() == 2)
-            {
-                for(int i = 0; i < (samples >> 1); ++i)
-                {
-                    switch (format)
-                    {
-                    case Qmmp::PCM_S8:
-                        out_left[i] = char_buf[i*2]*32768.0/128.0;
-                        out_right[i] = char_buf[i*2+1]*32768.0/128.0;
-                        break;
-                    case Qmmp::PCM_S16LE:
-                        out_left[i] = ((short *)char_buf)[i*2];
-                        out_right[i] = ((short *)char_buf)[i*2+1];
-                        break;
-                    case Qmmp::PCM_S24LE:
-                        out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 23));
-                        out_right[i] = ((qint32 *)char_buf)[i*2+1]*32768.0/((1U << 23));
-                        break;
-                    case Qmmp::PCM_S32LE:
-                        out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 31));
-                        out_right[i] = ((qint32 *)char_buf)[i*2+1]*32768.0/((1U << 31));
-                        break;
-                    default:
-                        break;
-                    }
-                    max = qMax(fabs(out_left[i]), max);
-                    max = qMax(fabs(out_right[i]), max);
-                }
-            }
-            else if(ap.channels() == 1)
-            {
-                for(int i = 0; i < samples; ++i)
-                {
-                    switch (format)
-                    {
-                    case Qmmp::PCM_S8:
-                        out_left[i] = char_buf[i*2]*32768.0/128.0;
-                        break;
-                    case Qmmp::PCM_S16LE:
-                        out_left[i] = ((short *)char_buf)[i*2];
-                        break;
-                    case Qmmp::PCM_S24LE:
-                        out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 23));
-                        break;
-                    case Qmmp::PCM_S32LE:
-                        out_left[i] = ((qint32 *)char_buf)[i*2]*32768.0/((1U << 31));
-                        break;
-                    default:
-                        break;
-                    }
-                    max = qMax(fabs(out_left[i]), max);
-                }
+                out_left[i] = float_buf[i]*32768.0;
+                max = qMax(fabs(out_left[i]), max);
             }
         }
 

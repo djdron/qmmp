@@ -22,7 +22,7 @@
 #include "statehandler.h"
 #include "visual.h"
 #include "output.h"
-#include "audioconverter_p.h"
+#include "audioconverter.h"
 #include "channelconverter_p.h"
 #include "volumecontrol_p.h"
 #include "outputwriter_p.h"
@@ -52,19 +52,20 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_settings = QmmpSettings::instance();
     m_format_converter = 0;
     m_channel_converter = 0;
+    m_output_buf = 0;
+    m_output_at = 0;
 }
 
 OutputWriter::~OutputWriter()
 {
     if(m_output)
-    {
         delete m_output;
-        m_output = 0;
-    }
     if(m_format_converter)
         delete m_format_converter;
     if(m_channel_converter)
         delete m_channel_converter;
+    if(m_output_buf)
+        delete[] m_output_buf;
 }
 
 bool OutputWriter::initialize(quint32 freq, ChannelMap map)
@@ -100,6 +101,11 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map)
         m_output = 0;
         return false;
     }
+
+    if(m_output_buf)
+        delete[] m_output_buf;
+    m_output_buf = new unsigned char[QMMP_BLOCK_FRAMES * m_channels * m_output->sampleSize() * 4];
+    m_output_at = 0;
 
     m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(m_format) / 1000;
     m_recycler.configure(m_in_params.sampleRate(), m_in_params.channels()); //calculate output buffer size
@@ -328,12 +334,10 @@ void OutputWriter::run()
             l = 0;
             m = 0;
 
-            size_t samples = b->samples;
-            unsigned char buf[samples * 2];
-            m_format_converter->fromFloat(b->data, buf, samples);
+            m_format_converter->fromFloat(b->data, m_output_buf, b->samples);
+            m_output_at = b->samples * m_output->sampleSize();
 
-
-            while (l < samples * 2 && !m_pause && !m_prev_pause)
+            while (l < m_output_at && !m_pause && !m_prev_pause)
             {
                 mutex()->lock();
                 if(m_skip)
@@ -344,7 +348,7 @@ void OutputWriter::run()
                     break;
                 }
                 mutex()->unlock();
-                m = m_output->writeAudio(buf + l, samples * 2 - l);
+                m = m_output->writeAudio(m_output_buf + l, m_output_at - l);
                 if(m >= 0)
                 {
                     m_totalWritten += m;

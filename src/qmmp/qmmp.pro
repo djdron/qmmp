@@ -29,7 +29,6 @@ HEADERS += \
     enginefactory.h \
     metadatamanager.h \
     replaygain_p.h \
-    audioconverter_p.h \
     qmmpsettings.h \
     eqsettings.h \
     qmmpevents_p.h \
@@ -39,7 +38,8 @@ HEADERS += \
     recycler_p.h \
     qmmpplugincache_p.h \
     channelmap.h \
-    channelconverter_p.h
+    channelconverter_p.h \
+    audioconverter.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -107,6 +107,7 @@ unix {
     target.path = $$LIB_DIR
     devel.files += \
         abstractengine.h \
+        audioconverter.h \
         audioparameters.h \
         buffer.h \
         decoderfactory.h \

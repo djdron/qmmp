@@ -18,13 +18,13 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef AUDIOCONVERTER_P_H
-#define AUDIOCONVERTER_P_H
+#ifndef AUDIOCONVERTER_H
+#define AUDIOCONVERTER_H
 
 #include <stddef.h>
 #include "qmmp.h"
 
-/*! @internal
+/*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class AudioConverter
@@ -43,4 +43,4 @@ private:
 
 };
 
-#endif // AUDIOCONVERTER_P_H
+#endif // AUDIOCONVERTER_H

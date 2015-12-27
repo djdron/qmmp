@@ -70,7 +70,7 @@ SET(libqmmp_HDRS
     qmmp.h
     replaygain_p.h
     fileinfo.h
-    audioconverter_p.h
+    audioconverter.h
     qmmpplugincache_p.h
     eqsettings.h
     decoder.h
@@ -86,6 +86,7 @@ SET(libqmmp_HDRS
 
 SET(libqmmp_DEVEL_HDRS
     abstractengine.h
+    audioconverter.h
     audioparameters.h
     buffer.h
     decoderfactory.h
