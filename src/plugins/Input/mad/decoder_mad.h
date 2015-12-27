@@ -46,13 +46,11 @@ public:
     qint64 totalTime();
     int bitrate();
     qint64 read(unsigned char *data, qint64 size);
-    qint64 read(float *data, qint64 samples);
     void seek(qint64);
 
 private:
     // helper functions
     bool decodeFrame();
-    qint64 madOutput(unsigned char *data, qint64 size);
     qint64 madOutputFloat(float *data, qint64 samples);
     bool fillBuffer();
     void deinit();
@@ -64,7 +62,6 @@ private:
     int m_channels, m_skip_frames;
     uint m_bitrate;
     long m_freq, m_len;
-    qint64 m_output_bytes, m_output_at;
 
     // file input buffer
     char *m_input_buf;
@@ -88,27 +85,9 @@ private:
         XING_SCALE  = 0x0008
     };
 
-    struct audio_dither
-    {
-        mad_fixed_t error[3];
-        mad_fixed_t random;
-    };
-
     struct mad_stream m_stream;
     struct mad_frame m_frame;
     struct mad_synth m_synth;
-    struct audio_dither m_left_dither, m_right_dither;
-
-    enum
-    {
-        CLIP_MIN = -MAD_F_ONE,
-        CLIP_MAX =  MAD_F_ONE - 1
-    };
-
-    //converter functions
-    unsigned long prng(unsigned long state);
-    long audio_linear_dither(unsigned int bits, mad_fixed_t sample, struct audio_dither *dither);
-    long audio_linear_round(unsigned int bits, mad_fixed_t sample);
 };
 
 

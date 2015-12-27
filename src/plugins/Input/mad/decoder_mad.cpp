@@ -30,7 +30,6 @@
 
 #define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
 #define INPUT_BUFFER_SIZE (32*1024)
-#define USE_DITHERING
 
 DecoderMAD::DecoderMAD(QIODevice *i) : Decoder(i)
 {
@@ -42,20 +41,8 @@ DecoderMAD::DecoderMAD(QIODevice *i) : Decoder(i)
     m_len = 0;
     m_input_buf = 0;
     m_input_bytes = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
     m_skip_frames = 0;
     m_eof = false;
-
-    m_left_dither.random = 0;
-    m_left_dither.error[0] = 0;
-    m_left_dither.error[1] = 0;
-    m_left_dither.error[2] = 0;
-
-    m_right_dither.random = 0;
-    m_right_dither.error[0] = 0;
-    m_right_dither.error[1] = 0;
-    m_right_dither.error[2] = 0;
 }
 
 DecoderMAD::~DecoderMAD()
@@ -78,8 +65,6 @@ bool DecoderMAD::initialize()
     m_freq = 0;
     m_len = 0;
     m_input_bytes = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
 
     if (!input())
     {
@@ -125,11 +110,10 @@ bool DecoderMAD::initialize()
         map << Qmmp::CHAN_FRONT_LEFT;
     else
         map << Qmmp::CHAN_FRONT_LEFT << Qmmp::CHAN_FRONT_RIGHT;
-    configure(m_freq, map, Qmmp::PCM_S16LE);
+    configure(m_freq, map, Qmmp::PCM_FLOAT);
     m_inited = true;
     return true;
 }
-
 
 void DecoderMAD::deinit()
 {
@@ -147,8 +131,6 @@ void DecoderMAD::deinit()
     m_freq = 0;
     m_len = 0;
     m_input_bytes = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
     m_skip_frames = 0;
     m_eof = false;
 }
@@ -346,14 +328,7 @@ int DecoderMAD::bitrate()
 qint64 DecoderMAD::read(unsigned char *data, qint64 size)
 {
     if(decodeFrame())
-        return madOutput(data, size);
-    return 0;
-}
-
-qint64 DecoderMAD::read(float *data, qint64 samples)
-{
-    if(decodeFrame())
-        return madOutputFloat(data, samples);
+        return madOutputFloat((float*)data, size / sizeof(float)) * sizeof(float);
     return 0;
 }
 
@@ -413,77 +388,6 @@ uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size
     return 0;
 }
 
-unsigned long DecoderMAD::prng(unsigned long state) // 32-bit pseudo-random number generator
-{
-    return (state * 0x0019660dL + 0x3c6ef35fL) & 0xffffffffL;
-}
-
-long DecoderMAD::audio_linear_dither(unsigned int bits, mad_fixed_t sample,
-                                     struct audio_dither *dither)
-{
-    unsigned int scalebits;
-    mad_fixed_t output, mask, random;
-
-    /* noise shape */
-    sample += dither->error[0] - dither->error[1] + dither->error[2];
-
-    dither->error[2] = dither->error[1];
-    dither->error[1] = dither->error[0] / 2;
-
-    /* bias */
-    output = sample + (1L << (MAD_F_FRACBITS + 1 - bits - 1));
-
-    scalebits = MAD_F_FRACBITS + 1 - bits;
-    mask = (1L << scalebits) - 1;
-
-    /* dither */
-    random  = prng(dither->random);
-    output += (random & mask) - (dither->random & mask);
-
-    dither->random = random;
-
-    /* clip */
-    if (output > CLIP_MAX)
-    {
-        output = CLIP_MAX;
-
-        if (sample > CLIP_MAX)
-            sample = CLIP_MAX;
-    }
-    else if (output < CLIP_MIN)
-    {
-        output = CLIP_MIN;
-
-        if (sample < CLIP_MIN)
-            sample = CLIP_MIN;
-    }
-
-    /* quantize */
-    output &= ~mask;
-
-    /* error feedback */
-    dither->error[0] = sample - output;
-
-    /* scale */
-    return output >> scalebits;
-}
-
-//generic linear sample quantize routine
-long DecoderMAD::audio_linear_round(unsigned int bits, mad_fixed_t sample)
-{
-    /* round */
-    sample += (1L << (MAD_F_FRACBITS - bits));
-
-    /* clip */
-    if (sample > CLIP_MAX)
-        sample = CLIP_MAX;
-    else if (sample < CLIP_MIN)
-        sample = CLIP_MIN;
-
-    /* quantize and scale */
-    return sample >> (MAD_F_FRACBITS + 1 - bits);
-}
-
 bool DecoderMAD::decodeFrame()
 {
     forever
@@ -530,52 +434,6 @@ bool DecoderMAD::decodeFrame()
     return true;
 }
 
-qint64 DecoderMAD::madOutput(unsigned char *data, qint64 size)
-{
-    unsigned int samples_per_channel, channels;
-    mad_fixed_t const *left, *right;
-
-    samples_per_channel = m_synth.pcm.length;
-    channels = m_synth.pcm.channels;
-    left = m_synth.pcm.samples[0];
-    right = m_synth.pcm.samples[1];
-    m_bitrate = m_frame.header.bitrate / 1000;
-    m_output_at = 0;
-    m_output_bytes = 0;
-
-    if(samples_per_channel * channels * 2 > size)
-    {
-        qWarning("DecoderMad: input buffer is too small");
-        samples_per_channel = size / channels / 2;
-    }
-
-    while (samples_per_channel--)
-    {
-        signed int sample;
-#ifdef USE_DITHERING
-        sample = audio_linear_dither(16, *left++,  &m_left_dither);
-#else
-        sample = audio_linear_round(16, *left++);
-#endif
-        *(data + m_output_at++) = ((sample >> 0) & 0xff);
-        *(data + m_output_at++) = ((sample >> 8) & 0xff);
-        m_output_bytes += 2;
-
-        if (channels == 2)
-        {
-#ifdef USE_DITHERING
-            sample = audio_linear_dither(16, *right++, &m_right_dither);
-#else
-            sample = audio_linear_round(16, *right++);
-#endif
-            *(data + m_output_at++) = ((sample >> 0) & 0xff);
-            *(data + m_output_at++) = ((sample >> 8) & 0xff);
-            m_output_bytes += 2;
-        }
-    }
-    return m_output_bytes;
-}
-
 qint64 DecoderMAD::madOutputFloat(float *data, qint64 samples)
 {
     float *data_it = data;
@@ -587,8 +445,6 @@ qint64 DecoderMAD::madOutputFloat(float *data, qint64 samples)
     left = m_synth.pcm.samples[0];
     right = m_synth.pcm.samples[1];
     m_bitrate = m_frame.header.bitrate / 1000;
-    m_output_at = 0;
-    m_output_bytes = 0;
     qint64 output_samples = 0;
 
     if(samples_per_channel * channels > samples)
