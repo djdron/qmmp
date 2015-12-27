@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2013-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -137,7 +137,7 @@ bool DecoderOpus::initialize()
         qWarning("DecoderOpus: unsupported number of channels: %d", m_chan);
         return false;
     }
-    configure(48000, chmap, Qmmp::PCM_S16LE); //opus codec supports 48 kHz only
+    configure(48000, chmap, Qmmp::PCM_FLOAT); //opus codec supports 48 kHz only
     return true;
 }
 
@@ -160,10 +160,9 @@ void DecoderOpus::seek(qint64 time)
 
 qint64 DecoderOpus::read(unsigned char *data, qint64 maxSize)
 {
-    int samples = maxSize / 2 / m_chan;
-    samples = op_read(m_opusfile, (opus_int16 *)data, samples, 0);
+    int frames = op_read_float(m_opusfile, (float*) data, maxSize / sizeof(float), 0);
     m_bitrate = op_bitrate_instant(m_opusfile) / 1000;
-    return samples * m_chan * 2;
+    return frames * m_chan * sizeof(float);
 }
 
 //https://tools.ietf.org/id/draft-ietf-codec-oggopus-04.txt
