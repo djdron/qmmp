@@ -50,6 +50,7 @@ private:
     double m_default_gain;
     bool m_prevent_clipping;
     bool m_disabled;
+    bool m_update;
 };
 
 #endif // REPLAYGAIN_H

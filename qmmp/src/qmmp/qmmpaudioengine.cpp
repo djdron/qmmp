@@ -628,11 +628,11 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         m_replayGain = new ReplayGain();
         m_replayGain->configure(m_ap.sampleRate(), m_ap.channelMap());
         m_effects << m_replayGain;
-        m_replayGain->setReplayGainInfo(d->replayGainInfo());
         m_replayGain->updateSettings(m_settings->replayGainMode(),
                                      m_settings->replayGainPreamp(),
                                      m_settings->replayGainDefaultGain(),
                                      m_settings->replayGainPreventClipping());
+        m_replayGain->setReplayGainInfo(d->replayGainInfo());
     }
     //channel order converter
     if(m_ap.channelMap() != m_ap.channelMap().remaped())

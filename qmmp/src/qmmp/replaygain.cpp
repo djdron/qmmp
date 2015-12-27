@@ -30,6 +30,7 @@ ReplayGain::ReplayGain()
     m_default_gain = 0.0;
     m_prevent_clipping = false;
     m_disabled = true;
+    m_update = false;
 }
 
 ReplayGain::~ReplayGain()
@@ -48,6 +49,8 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
                m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK]);
         qDebug("ReplayGain: scale=%f", m_scale);
     }
+    else
+        qDebug("ReplayGain: disabled");
 }
 
 void ReplayGain::applyEffect(Buffer *b)
@@ -74,7 +77,9 @@ void ReplayGain::updateSettings(QmmpSettings::ReplayGainMode mode, double preamp
     m_preamp = preamp;
     m_default_gain = default_gain;
     m_prevent_clipping = clip;
-    setReplayGainInfo(m_info);
+    if(m_update)
+        setReplayGainInfo(m_info);
+    m_update = true;
 }
 
 void ReplayGain::updateScale()
@@ -94,7 +99,6 @@ void ReplayGain::updateScale()
         break;
     case QmmpSettings::REPLAYGAIN_DISABLED:
         m_scale = 1.0;
-        qDebug("ReplayGain: disabled");
         return;
     }
     if(m_scale == 1.0)
@@ -104,6 +108,5 @@ void ReplayGain::updateScale()
         m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
     m_scale = qMin(m_scale, 5.6234); // +15 dB
     m_scale = qMax(m_scale, 0.1778);  // -15 dB*/
-    if((m_disabled = (m_scale == 1.0)))
-        qDebug("ReplayGain: disabled");
+    m_disabled = (m_scale == 1.0);
 }
