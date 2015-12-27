@@ -4,7 +4,7 @@ TEMPLATE = subdirs
 #SUBDIRS += crossfade stereo
 
 contains(CONFIG, BS2B_PLUGIN){
-#SUBDIRS += bs2b
+SUBDIRS += bs2b
 }
 
 unix {
