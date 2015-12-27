@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,35 +26,19 @@ ReplayGain::ReplayGain()
 {
     m_scale = 1.0;
     m_mode = QmmpSettings::REPLAYGAIN_DISABLED;
-    m_format = Qmmp::PCM_UNKNOWM;
     m_preamp = 0.0;
     m_default_gain = 0.0;
-    m_prebuf = 0;
     m_prevent_clipping = false;
     m_disabled = true;
-    m_headroom = false;
-    m_sample_size = 2;
 }
 
 ReplayGain::~ReplayGain()
-{
-    if(m_prebuf)
-        delete [] m_prebuf;
-}
+{}
 
-void ReplayGain::configure(const AudioParameters &p)
-{
-    m_format = p.format();
-    if(m_prebuf)
-        delete [] m_prebuf;
-    m_prebuf = new float[QMMP_BLOCK_FRAMES * p.channels() * 4];
-    m_sample_size = AudioParameters::sampleSize(m_format);
-}
-
-void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info, bool headroom)
+void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info)
 {
     m_info = info;
-    m_headroom = headroom;
+    updateScale();
     if(m_mode != QmmpSettings::REPLAYGAIN_DISABLED)
     {
         qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
@@ -63,95 +47,23 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
                m_info[Qmmp::REPLAYGAIN_ALBUM_GAIN],
                m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK]);
         qDebug("ReplayGain: scale=%f", m_scale);
-        qDebug("ReplayGain: headroom=%d", m_headroom);
     }
-    updateScale();
 }
 
-qint64 ReplayGain::read(Decoder *decoder, unsigned char *data, qint64 size)
+void ReplayGain::applyEffect(Buffer *b)
 {
     if(m_disabled)
-        return decoder->read(data, size);
-
-    if(m_headroom) //with peak overflow support
     {
-        qint64 samples = decoder->read(m_prebuf, size >> (m_sample_size >> 1)); //size / m_sample_size;
-
-        if(samples <= 0)
-            return samples;
-
-        for(qint64 i = 0; i < samples; ++i)
+        for(size_t i = 0; i < b->samples; ++i)
         {
-            m_prebuf[i] *= m_scale;
-            m_prebuf[i] = qBound((float)-1.0, m_prebuf[i], (float)1.0);
-
-            switch (m_format)
-            {
-            case Qmmp::PCM_S8:
-                ((char*)data)[i] = m_prebuf[i] * (128.0 - 0.5);
-                break;
-            case Qmmp::PCM_S16LE:
-                ((short*)data)[i] = m_prebuf[i] * (32768.0 - 0.5);
-                break;
-            case Qmmp::PCM_S24LE:
-                ((qint32*)data)[i] = m_prebuf[i] * ((double)(1U << 23) - 0.5);
-                break;
-            case Qmmp::PCM_S32LE:
-                ((qint32*)data)[i] = m_prebuf[i] * ((double)(1U << 31) - 0.5);
-                break;
-            default:
-                return -1;
-            }
+            b->data[i] = qBound(-1.0f, b->data[i], 1.0f);
         }
-        return samples << (m_sample_size >> 1); //samples * m_sample_size;
+        return;
     }
-    else //without peak overflow support
+
+    for(size_t i = 0; i < b->samples; ++i)
     {
-        size = decoder->read(data, size);
-
-        if(size <= 0)
-            return size;
-
-        qint64 samples = size >> (m_sample_size >> 1); //size / m_sample_size;
-
-        switch (m_format)
-        {
-        case Qmmp::PCM_S8:
-        {
-            for (qint64 i = 0; i < samples; i++)
-                ((char*)data)[i] = qBound(-128.0, ((char*)data)[i] * m_scale, 127.0);
-            break;
-        }
-        case Qmmp::PCM_S16LE:
-        {
-            for (qint64 i = 0; i < samples; i++)
-                ((short*)data)[i] = qBound(-32768.0, ((short*)data)[i] * m_scale, 32767.0);
-            break;
-        }
-        case Qmmp::PCM_S24LE:
-        {
-            for (qint64 i = 0; i < samples; i++)
-            {
-                ((qint32*)data)[i] = qBound(-(double)(1U << 23),
-                                           ((qint32*)data)[i] * m_scale,
-                                           (double)((1U << 23) - 1));
-            }
-            break;
-        }
-        case Qmmp::PCM_S32LE:
-        {
-            for (qint64 i = 0; i < samples; i++)
-            {
-                ((qint32*)data)[i] = qBound(-(double)(1U << 31),
-                                           ((qint32*)data)[i] * m_scale,
-                                           (double)((1U << 31) - 1));
-            }
-            break;
-        }
-        default:
-            return -1;
-        }
-        return size;
+        b->data[i] = qBound(-1.0f, float(b->data[i] * m_scale), 1.0f);
     }
 }
 
@@ -162,7 +74,7 @@ void ReplayGain::updateSettings(QmmpSettings::ReplayGainMode mode, double preamp
     m_preamp = preamp;
     m_default_gain = default_gain;
     m_prevent_clipping = clip;
-    setReplayGainInfo(m_info, m_headroom);
+    setReplayGainInfo(m_info);
 }
 
 void ReplayGain::updateScale()

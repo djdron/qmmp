@@ -47,12 +47,11 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_decoder = 0;
     m_output = 0;
     m_muted = false;
-    m_replayGain = new ReplayGain;
+    m_replayGain = 0;
     m_converter = new AudioConverter;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
     connect(m_settings, SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
-    updateReplayGainSettings();
     reset();
     m_instance = this;
 }
@@ -66,7 +65,6 @@ QmmpAudioEngine::~QmmpAudioEngine()
     m_output_buf = 0;
     qDeleteAll(m_effects);
     m_instance = 0;
-    delete m_replayGain;
     delete m_converter;
 }
 
@@ -301,13 +299,8 @@ qint64 QmmpAudioEngine::produceSound(unsigned char *data, qint64 size, quint32 b
     size_t sz = size < m_bks ? size : m_bks;
     size_t samples = sz / m_sample_size;
 
-    //size_t samples = qMin(m_bks / sizeof(float), (uint)size / m_ap.sampleSize());
-    //size_t in_size = samples * m_ap.sampleSize();
-
     m_converter->toFloat(data, b->data, samples);
 
-    //m_replayGain->applyReplayGain(data, sz);
-    //memcpy(b->data, data, sz);
     b->samples = samples;
     b->rate = brate;
     foreach(Effect* effect, m_effects)
@@ -332,12 +325,15 @@ void QmmpAudioEngine::finish()
 
 void QmmpAudioEngine::updateReplayGainSettings()
 {
-    mutex()->lock();
-    m_replayGain->updateSettings(m_settings->replayGainMode(),
-                                 m_settings->replayGainPreamp(),
-                                 m_settings->replayGainDefaultGain(),
-                                 m_settings->replayGainPreventClipping());
-    mutex()->unlock();
+    if(m_replayGain)
+    {
+        mutex()->lock();
+        m_replayGain->updateSettings(m_settings->replayGainMode(),
+                                     m_settings->replayGainPreamp(),
+                                     m_settings->replayGainDefaultGain(),
+                                     m_settings->replayGainPreventClipping());
+        mutex()->unlock();
+    }
 }
 
 void QmmpAudioEngine::updateEqSettings()
@@ -361,7 +357,7 @@ void QmmpAudioEngine::run()
     }
     m_decoder = m_decoders.dequeue();
     addOffset(); //offset
-    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
+    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
     mutex()->unlock();
     m_output->start();
     StateHandler::instance()->dispatch(Qmmp::Buffering);
@@ -432,7 +428,7 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
                 m_decoder->next();
                 StateHandler::instance()->dispatch(m_decoder->totalTime());
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 m_output->mutex()->lock();
                 m_output->seek(0); //reset counter
                 m_output->mutex()->unlock();
@@ -448,7 +444,7 @@ void QmmpAudioEngine::run()
                 m_decoder = m_decoders.dequeue();
                 //m_seekTime = m_inputs.value(m_decoder)->offset();
                 flush(true);
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo(), false);
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 //use current output if possible
                 prepareEffects(m_decoder);
                 if(m_ap == m_output->audioParameters())
@@ -613,11 +609,9 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
     m_output_size = m_bks * 4;
     m_sample_size = m_ap.sampleSize();
     m_output_buf = new unsigned char[m_output_size];
-    //converter
+    //audio converter
     m_converter->configure(m_ap.format());
     m_ap = AudioParameters(m_ap.sampleRate(), m_ap.channelMap(), Qmmp::PCM_FLOAT);
-    //replay gain
-    m_replayGain->configure(m_ap);
     //remove disabled and external effects
     foreach(Effect *e, m_effects)
     {
@@ -625,12 +619,22 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         {
             m_effects.removeAll(e);
             m_blockedEffects.removeAll(e);
-            delete e;
+            if(m_replayGain != e)
+                delete e;
         }
     }
+    m_replayGain = 0;
     QList <Effect *> tmp_effects = m_effects;
     m_effects.clear();
 
+    //replay gain
+    {
+        m_replayGain = new ReplayGain();
+        m_replayGain->configure(m_ap.sampleRate(), m_ap.channelMap());
+        m_effects << m_replayGain;
+        updateReplayGainSettings();
+    }
+    //channel order converter
     if(m_ap.channelMap() != m_ap.channelMap().remaped())
     {
         m_effects << new ChannelConverter(m_ap.channelMap().remaped());
