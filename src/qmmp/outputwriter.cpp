@@ -31,28 +31,6 @@ extern "C" {
 #include "equ/iir.h"
 }
 
-//static functions
-static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] << 8;
-    return;
-}
-
-static inline void s24_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 8;
-    return;
-}
-
-static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
-{
-    for(qint64 i = 0; i < samples; ++i)
-        out[i] = in[i] >> 16;
-    return;
-}
-
 OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
 {
     m_handler = StateHandler::instance();
@@ -65,8 +43,6 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_bytesPerMillisecond = 0;
     m_user_stop = false;
     m_finish = false;
-    m_visBuffer = 0;
-    m_visBufferSize = 0;
     m_kbps = 0;
     m_skip = false;
     m_pause = false;
@@ -74,6 +50,8 @@ OutputWriter::OutputWriter (QObject* parent) : QThread (parent)
     m_useEq = false;
     m_muted = false;
     m_settings = QmmpSettings::instance();
+    m_format_converter = 0;
+    m_channel_converter = 0;
 }
 
 OutputWriter::~OutputWriter()
@@ -83,32 +61,15 @@ OutputWriter::~OutputWriter()
         delete m_output;
         m_output = 0;
     }
-    if(m_visBuffer)
-    {
-        delete[] m_visBuffer;
-        m_visBuffer = 0;
-    }
+    if(m_format_converter)
+        delete m_format_converter;
+    if(m_channel_converter)
+        delete m_channel_converter;
 }
 
-bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+bool OutputWriter::initialize(quint32 freq, ChannelMap map)
 {
-    QMap<Qmmp::AudioFormat, QString> formatNames;
-    formatNames.insert(Qmmp::PCM_S8, "s8");
-    formatNames.insert(Qmmp::PCM_U8, "u8");
-    formatNames.insert(Qmmp::PCM_S16LE, "s16le");
-    formatNames.insert(Qmmp::PCM_S16BE, "s16be");
-    formatNames.insert(Qmmp::PCM_U16LE, "u16le");
-    formatNames.insert(Qmmp::PCM_U16BE, "u16be");
-    formatNames.insert(Qmmp::PCM_S24LE, "s24le");
-    formatNames.insert(Qmmp::PCM_S24BE, "s24be");
-    formatNames.insert(Qmmp::PCM_U24LE, "u24le");
-    formatNames.insert(Qmmp::PCM_U24BE, "u24be");
-    formatNames.insert(Qmmp::PCM_S32LE, "s32le");
-    formatNames.insert(Qmmp::PCM_S32BE, "s32be");
-    formatNames.insert(Qmmp::PCM_U32LE, "u32le");
-    formatNames.insert(Qmmp::PCM_U32BE, "u32be");
-    formatNames.insert(Qmmp::PCM_FLOAT, "float");
-
+    m_in_params = AudioParameters(freq, map, Qmmp::PCM_FLOAT);
     m_output = Output::create();
     if(!m_output)
     {
@@ -116,26 +77,21 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
         return false;
     }
 
-    if (!m_output->initialize(freq, map, format))
+    if (!m_output->initialize(freq, map, Qmmp::PCM_S16LE))
     {
         qWarning("OutputWriter: unable to initialize output");
         delete m_output;
         m_output = 0;
         return false;
     }
-    m_frequency = freq;
-    m_channels = map.count();
-    m_format = format;
-    m_chan_map = map;
+    m_frequency = m_output->sampleRate();
+    m_chan_map = m_output->channelMap();
+    m_channels = m_chan_map.count();
+    m_format = m_output->format();
 
-    qDebug("OutputWriter: [%s] %u Hz, {%s}, %s ==> %u Hz, {%s}, %s",
+    qDebug("OutputWriter: [%s] %s ==> %s",
            qPrintable(Output::currentFactory()->properties().shortName),
-           freq,
-           qPrintable(map.toString()),
-           qPrintable(formatNames.value(format)),
-           m_output->sampleRate(),
-           qPrintable(m_output->channelMap().toString()),
-           qPrintable(formatNames.value(m_output->format())));
+           qPrintable(m_in_params.toString()), qPrintable(m_output->audioParameters().toString()));
 
     if(!prepareConverters())
     {
@@ -145,14 +101,8 @@ bool OutputWriter::initialize(quint32 freq, ChannelMap map, Qmmp::AudioFormat fo
         return false;
     }
 
-    m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(format) / 1000;
-    m_recycler.configure(m_frequency, m_channels, m_format); //calculate output buffer size
-    //visual buffer
-    if(m_visBuffer)
-        delete [] m_visBuffer;
-    m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * m_channels; //16-bit samples
-    if(m_format != Qmmp::PCM_S16LE)
-        m_visBuffer = new unsigned char [m_visBufferSize];
+    m_bytesPerMillisecond = m_frequency * m_channels * AudioParameters::sampleSize(m_format) / 1000;
+    m_recycler.configure(m_in_params.sampleRate(), m_in_params.channels()); //calculate output buffer size
     updateEqSettings();
     clean_history();
     return true;
@@ -201,7 +151,7 @@ QMutex *OutputWriter::mutex()
 
 AudioParameters OutputWriter::audioParameters() const
 {
-    return AudioParameters(m_frequency, m_chan_map, m_format);
+    return AudioParameters(m_frequency, m_chan_map, Qmmp::PCM_FLOAT);
 }
 
 quint32 OutputWriter::sampleRate()
@@ -231,51 +181,14 @@ int OutputWriter::sampleSize() const
 
 void OutputWriter::dispatchVisual (Buffer *buffer)
 {
-    if (!buffer)
+    if(!buffer)
         return;
 
-    int sampleSize = AudioParameters::sampleSize(m_format);
-    int samples = buffer->nbytes/sampleSize;
-    int outSize = samples*2;
-    if((m_format != Qmmp::PCM_S16LE) && outSize > m_visBufferSize) //increase buffer size
-    {
-        delete[] m_visBuffer;
-        m_visBufferSize = outSize;
-        m_visBuffer = new unsigned char [m_visBufferSize];
-    }
-    switch(m_format)
-    {
-    case Qmmp::PCM_S8:
-        s8_to_s16((qint8 *)buffer->data, (qint16 *) m_visBuffer, samples);
-        break;
-    case Qmmp::PCM_S16LE:
-        m_visBuffer = buffer->data;
-        outSize = buffer->nbytes;
-        break;
-    case Qmmp::PCM_S24LE:
-        s24_to_s16((qint32 *)buffer->data, (qint16 *) m_visBuffer, samples);
-        break;
-    case Qmmp::PCM_S32LE:
-        s32_to_s16((qint32 *)buffer->data, (qint16 *) m_visBuffer, samples);
-        break;
-    default:
-        return;
-    }
     foreach (Visual *visual, *Visual::visuals())
     {
         visual->mutex()->lock ();
-        visual->add (m_visBuffer, outSize, m_channels);
+        visual->add (buffer->data, buffer->samples, m_channels);
         visual->mutex()->unlock();
-    }
-    if(m_format == Qmmp::PCM_S16LE)
-        m_visBuffer = 0;
-}
-
-void OutputWriter::applyConverters(Buffer *buffer)
-{
-    for (int i = 0; i < m_converters.count(); ++i)
-    {
-        m_converters[i]->applyEffect(buffer);
     }
 }
 
@@ -284,45 +197,41 @@ void OutputWriter::clearVisuals()
     foreach (Visual *visual, *Visual::visuals())
     {
         visual->mutex()->lock ();
-        visual->clear ();
+        visual->clear();
         visual->mutex()->unlock();
     }
 }
 
 bool OutputWriter::prepareConverters()
 {
-    qDeleteAll(m_converters);
-    m_converters.clear();
+    if(m_format_converter)
+    {
+        delete m_format_converter;
+        m_format_converter = 0;
+    }
+    if(m_channel_converter)
+    {
+        delete m_channel_converter;
+        m_channel_converter = 0;
+    }
 
-    AudioParameters ap = m_output->audioParameters();
-
-    if(channels() != m_output->channels())
+    if(m_channels != m_output->channels())
     {
         qWarning("OutputWriter: unsupported channel number");
         return false;
     }
 
-    if(format() != ap.format())
+    if(m_in_params.format() != m_format)
     {
-        if(m_output->format() == Qmmp::PCM_S16LE)
-        {
-            qDebug("OutputWriter: using 16 bit comverter");
-            m_converters << new AudioConverter();
-            m_converters.last()->configure(sampleRate(), channelMap(), format());
-        }
-        else
-        {
-            qWarning("OutputWriter: unsupported audio format");
-            return false;
-        }
+        m_format_converter = new AudioConverter();
+        m_format_converter->configure(m_format);
     }
 
-    if(channelMap() != ap.channelMap())
+    if(m_in_params.channelMap() != m_chan_map)
     {
-        m_converters << new ChannelConverter(ap.channelMap());
-        m_converters.last()->configure(sampleRate(), channelMap(), ap.format());
+        m_channel_converter = new ChannelConverter(m_chan_map);
+        m_channel_converter->configure(m_in_params.sampleRate(), m_in_params.channelMap());
     }
-
     return true;
 }
 
@@ -406,31 +315,25 @@ void OutputWriter::run()
             mutex()->lock();
             if (m_useEq)
             {
-                switch(m_format)
-                {
-                case Qmmp::PCM_S16LE:
-                    iir((void*) b->data, b->nbytes, m_channels);
-                    break;
-                case Qmmp::PCM_S24LE:
-                    iir24((void*) b->data, b->nbytes, m_channels);
-                    break;
-                case Qmmp::PCM_S32LE:
-                    iir32((void*) b->data, b->nbytes, m_channels);
-                    break;
-                default:
-                    ;
-                }
+                iir(b->data, b->samples, m_channels);
             }
             mutex()->unlock();
             dispatchVisual(b);
             if (SoftwareVolume::instance())
-                SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
+                SoftwareVolume::instance()->changeVolume(b, m_channels);
             if (m_muted)
-                memset(b->data, 0, b->nbytes);
-            applyConverters(b);
+                memset(b->data, 0, b->size * sizeof(float));
+            if(m_channel_converter)
+                m_channel_converter->applyEffect(b);
             l = 0;
             m = 0;
-            while (l < b->nbytes && !m_pause && !m_prev_pause)
+
+            size_t samples = b->samples;
+            unsigned char buf[samples * 2];
+            m_format_converter->fromFloat(b->data, buf, samples);
+
+
+            while (l < samples * 2 && !m_pause && !m_prev_pause)
             {
                 mutex()->lock();
                 if(m_skip)
@@ -441,7 +344,7 @@ void OutputWriter::run()
                     break;
                 }
                 mutex()->unlock();
-                m = m_output->writeAudio(b->data + l, b->nbytes - l);
+                m = m_output->writeAudio(buf + l, samples * 2 - l);
                 if(m >= 0)
                 {
                     m_totalWritten += m;

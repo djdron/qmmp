@@ -23,8 +23,11 @@
 
 #define FFT_BUFFER_SIZE (1 << FFT_BUFFER_SIZE_LOG)
 
-/* sound sample - should be an signed 16 bit value */
-typedef short int sound_sample;
+/*
+     modifications compared to original code:
+     using float format for input data
+*/
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,7 +36,7 @@ extern "C" {
 /* FFT library */
     typedef struct _struct_fft_state fft_state;
     fft_state *fft_init(void);
-    void fft_perform(const sound_sample * input, float *output,
+    void fft_perform(const float *input, float *output,
                      fft_state * state);
     void fft_close(fft_state * state);
 

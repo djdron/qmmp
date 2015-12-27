@@ -36,6 +36,7 @@ class InputSource;
 class EffectFactory;
 class ReplayGain;
 class QmmpSettings;
+class AudioConverter;
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -69,7 +70,7 @@ private:
     void clearDecoders();
     void flush(bool = false);
     void addOffset();
-    qint64 produceSound(char *data, qint64 size, quint32 brate);
+    qint64 produceSound(unsigned char *data, qint64 size, quint32 brate);
     void sendMetaData();
     OutputWriter *createOutput();
     void prepareEffects(Decoder *d);
@@ -80,7 +81,7 @@ private:
     OutputWriter *m_output;
 
     bool m_done, m_finish, m_user_stop;
-    uint m_bks;
+    uint m_bks, m_sample_size;
     qint64 m_seekTime;
     quint64 m_output_at, m_output_size;
     int m_bitrate;
@@ -94,6 +95,7 @@ private:
     static QmmpAudioEngine *m_instance;
     ReplayGain *m_replayGain;
     QmmpSettings *m_settings;
+    AudioConverter *m_converter;
 };
 
 #endif // QMMPAUDIOENGINE_P_H

@@ -78,6 +78,8 @@ public:
      * Returns sample size in bytes.
      */
     int sampleSize() const;
+
+    const QString toString() const;
     /*!
      * Returns sample size in bytes of the given pcm data \b format.
      */
@@ -87,6 +89,7 @@ private:
     quint32 m_srate;
     ChannelMap m_chan_map;
     Qmmp::AudioFormat m_format;
+    int m_sz;
 };
 
 #endif // AUDIOPARAMETERS_H

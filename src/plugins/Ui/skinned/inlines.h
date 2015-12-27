@@ -4,13 +4,19 @@
 // warranty, or liability of any kind.
 //
 
+/*
+     modifications compared to original code:
+     using float format
+*/
+
 #ifndef INLINES_H
 #define INLINES_H
 
 #include "fft.h"
+#include <string.h>
 
 // *fast* convenience functions
-static inline void calc_freq(short* dest, short *src)
+static inline void calc_freq(short* dest, float *src)
 {
     static fft_state *state = NULL;
     float tmp_out[257];
@@ -25,11 +31,17 @@ static inline void calc_freq(short* dest, short *src)
         dest[i] = ((int) sqrt(tmp_out[i + 1])) >> 8;
 }
 
-static inline void stereo16_from_multichannel(register short *l,
-                                              register short *r,
-                                              register short *s,
+static inline void stereo16_from_multichannel(float *l,
+                                              float *r,
+                                              float *s,
                                               long cnt, int chan)
 {
+    if(chan == 1)
+    {
+        memcpy(l, s, cnt * sizeof(float));
+        memcpy(r, s, cnt * sizeof(float));
+        return;
+    }
     while (cnt > 0)
     {
         l[0] = s[0];
@@ -41,10 +53,16 @@ static inline void stereo16_from_multichannel(register short *l,
     }
 }
 
-static inline void mono16_from_multichannel(register short *l,
-                                            register short *s,
+static inline void mono16_from_multichannel(float *l,
+                                            float *s,
                                             long cnt, int chan)
 {
+    if(chan == 1)
+    {
+        memcpy(l, s, cnt * sizeof(float));
+        return;
+    }
+
     while (cnt > 0)
     {
         l[0] = s[0];

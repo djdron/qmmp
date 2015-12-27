@@ -66,7 +66,7 @@ add_subdirectory(converter)
 ENDIF(USE_CONVERTER AND TAGLIB_FOUND)
 
 IF(USE_RGSCAN AND TAGLIB_FOUND)
-add_subdirectory(rgscan)
+#add_subdirectory(rgscan)
 ENDIF(USE_RGSCAN AND TAGLIB_FOUND)
 
 IF(USE_SB)

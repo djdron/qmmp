@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QTimer>
 #include <stdlib.h>
 #include <qmmp/qmmp.h>
+#include "inlines.h"
 #include "logo.h"
 
 #define VISUAL_NODE_SIZE 128 //samples
@@ -73,7 +74,7 @@ Logo::Logo(QWidget *parent) : Visual(parent)
     m_buffer_at = 0;
     m_value = 0;
     m_elapsed = 0;
-    m_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_buffer = new float[VISUAL_BUFFER_SIZE];
 
     updateLetters();
     Visual::add(this);
@@ -82,20 +83,22 @@ Logo::Logo(QWidget *parent) : Visual(parent)
 Logo::~Logo()
 {
     Visual::remove(this);
+    delete[] m_buffer;
 }
 
-void Logo::add(unsigned char *data, qint64 size, int chan)
+void Logo::add(float *data, size_t samples, int chan)
 {
     Q_UNUSED(chan);
     if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_buffer, (short*) (m_buffer + VISUAL_NODE_SIZE), m_buffer_at * 2);
+        memmove(m_buffer, (m_buffer + VISUAL_NODE_SIZE), m_buffer_at * sizeof(float));
         return;
     }
-    int size_2 = qMin((int)size/2, VISUAL_BUFFER_SIZE - m_buffer_at);
-    memcpy((ushort*)(m_buffer + m_buffer_at), (short*) data, size_2 * 2);
-    m_buffer_at += size_2;
+    int frames = qMin(int(samples/chan), VISUAL_BUFFER_SIZE - m_buffer_at);
+
+    mono_from_multichannel(m_buffer + m_buffer_at, data, frames, chan);
+    m_buffer_at += frames;
 }
 
 void Logo::clear()
@@ -239,11 +242,11 @@ void Logo::processPreset4()
         for(int j = 0; j < VISUAL_NODE_SIZE; j+=8)
         {
             if(m_buffer[j] > max)
-                max = m_buffer[j];
+                max = abs(m_buffer[j] * 65536.0);
         }
 
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at * 2);
+        memmove(m_buffer, m_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
         m_value -= 512;
         m_value = qMax(m_value, max);
     }
@@ -258,7 +261,7 @@ void Logo::processPreset4()
 
         while(k < m_value * count / 2048 / 16 / 2)
         {
-            int value = abs(m_buffer[qMin(at++, m_buffer_at)] / 2048);
+            int value = abs(m_buffer[qMin(at++, m_buffer_at)] * 16);
             line.replace(line.indexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
             k++;
         }
@@ -267,7 +270,7 @@ void Logo::processPreset4()
 
         while(k < m_value * count / 2048 / 16 / 2)
         {
-            int value = abs(m_buffer[qMin(at++, m_buffer_at)] / 2048);
+            int value = abs(m_buffer[qMin(at++, m_buffer_at)] * 16);
             line.replace(line.lastIndexOf("X"), 1, QString("%1").arg(value, 0, 16).toUpper());
             k++;
         }

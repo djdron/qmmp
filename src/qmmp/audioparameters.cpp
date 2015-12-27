@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,12 +18,14 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include <QMap>
 #include "audioparameters.h"
 
 AudioParameters::AudioParameters()
 {
     m_srate = 0;
     m_format = Qmmp::PCM_S16LE;
+    m_sz = 2;
 }
 
 AudioParameters::AudioParameters(const AudioParameters &other)
@@ -31,13 +33,15 @@ AudioParameters::AudioParameters(const AudioParameters &other)
     m_srate = other.sampleRate();
     m_chan_map = other.channelMap();
     m_format = other.format();
+    m_sz = other.sampleSize();
 }
 
-AudioParameters::AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat  format)
+AudioParameters::AudioParameters(quint32 srate, const ChannelMap &map, Qmmp::AudioFormat format)
 {
     m_srate = srate;
     m_chan_map = map;
     m_format = format;
+    m_sz = sampleSize(format);
 }
 
 void AudioParameters::operator=(const AudioParameters &p)
@@ -45,6 +49,7 @@ void AudioParameters::operator=(const AudioParameters &p)
     m_srate = p.sampleRate();
     m_chan_map = p.channelMap();
     m_format = p.format();
+    m_sz = p.sampleSize();
 }
 
 bool AudioParameters::operator==(const AudioParameters &p) const
@@ -79,7 +84,48 @@ Qmmp::AudioFormat AudioParameters::format() const
 
 int AudioParameters::sampleSize() const
 {
-    return sampleSize(m_format);
+    return m_sz;
+}
+
+const QString AudioParameters::toString() const
+{
+    static const struct
+    {
+        Qmmp::AudioFormat format;
+        QString name;
+
+    }
+    format_names [] =
+    {
+    { Qmmp::PCM_S8, "s8" },
+    { Qmmp::PCM_U8, "u8" },
+    { Qmmp::PCM_S16LE, "s16le" },
+    { Qmmp::PCM_S16BE, "s16be" },
+    { Qmmp::PCM_U16LE, "u16le" },
+    { Qmmp::PCM_U16BE, "u16be" },
+    { Qmmp::PCM_S24LE, "s24le" },
+    { Qmmp::PCM_S24BE, "s24be" },
+    { Qmmp::PCM_U24LE, "u24le" },
+    { Qmmp::PCM_U24BE, "u24be" },
+    { Qmmp::PCM_S32LE, "s32le" },
+    { Qmmp::PCM_S32BE, "s32be" },
+    { Qmmp::PCM_U32LE, "u32le" },
+    { Qmmp::PCM_U32BE, "u32be" },
+    { Qmmp::PCM_FLOAT, "float" },
+    { Qmmp::PCM_UNKNOWM, QString() }
+    };
+
+    QString name = "unknown";
+    for(int i = 0; format_names[i].format != Qmmp::PCM_UNKNOWM; ++i)
+    {
+        if(m_format == format_names[i].format)
+        {
+            name = format_names[i].name;
+            break;
+        }
+    }
+
+    return QString("%1 Hz, {%2}, %3").arg(m_srate).arg(m_chan_map.toString()).arg(name);
 }
 
 int AudioParameters::sampleSize(Qmmp::AudioFormat format)

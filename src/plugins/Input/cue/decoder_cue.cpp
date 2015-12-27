@@ -99,7 +99,7 @@ bool DecoderCUE::initialize()
     configure(m_decoder->audioParameters().sampleRate(),
               m_decoder->audioParameters().channelMap(),
               m_decoder->audioParameters().format());
-    setReplayGainInfo(m_parser->replayGain(m_track), m_decoder->hasHeadroom());
+    setReplayGainInfo(m_parser->replayGain(m_track));
     length_in_bytes = audioParameters().sampleRate() *
                       audioParameters().channels() *
                       audioParameters().sampleSize() * m_length/1000;

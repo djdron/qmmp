@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2014 by Ilya Kotov                                      *
+ *   Copyright (C) 2014-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,8 +24,6 @@ ChannelConverter::ChannelConverter(ChannelMap out_map)
 {
     m_disabled = true;
     m_tmp_buf = 0;
-    m_format = Qmmp::PCM_UNKNOWM;
-    m_frame_size = 0;
     m_channels = 0;
     m_out_map = out_map;
     memset(m_reorder_array, 0, sizeof(m_reorder_array));
@@ -40,17 +38,15 @@ ChannelConverter::~ChannelConverter()
     }
 }
 
-void ChannelConverter::configure(quint32 srate, ChannelMap in_map, Qmmp::AudioFormat f)
+void ChannelConverter::configure(quint32 srate, ChannelMap in_map)
 {
-    Effect::configure(srate, m_out_map, f);
+    Effect::configure(srate, m_out_map);
 
     if((m_disabled = (in_map == m_out_map)))
         return;
 
     m_channels = channels();
-    m_frame_size = audioParameters().sampleSize() * channels();
-    m_tmp_buf = new unsigned char[m_frame_size];
-    m_format = f;
+    m_tmp_buf = new float[m_channels];
 
     QStringList reorderStringList;
     for(int i = 0; i < m_channels; ++i)
@@ -71,49 +67,13 @@ void ChannelConverter::applyEffect(Buffer *b)
     unsigned long i = 0;
     int j = 0;
 
-    switch(m_format)
+    float *data = b->data;
+    for(i = 0; i < b->samples / m_channels; ++i)
     {
-    case Qmmp::PCM_S8:
-    {
-        unsigned char *data = b->data;
-        unsigned char *prev_data = m_tmp_buf;
-        for(i = 0; i < b->nbytes/m_frame_size; ++i)
-        {
-            memcpy(m_tmp_buf, data, m_frame_size);
-            for(j = 0; j < m_channels; ++j)
-                data[j] = m_reorder_array[j] < 0 ? 0 : prev_data[m_reorder_array[j]];
-            data += m_channels;
-        }
-        break;
+        memcpy(m_tmp_buf, data, m_channels * sizeof(float));
+        for(j = 0; j < m_channels; ++j)
+            data[j] = m_reorder_array[j] < 0 ? 0 : m_tmp_buf[m_reorder_array[j]];
+        data += m_channels;
     }
-    case Qmmp::PCM_S16LE:
-    {
-        quint16 *data = (quint16 *) b->data;
-        quint16 *prev_data = (quint16 *) m_tmp_buf;
-        for(i = 0; i < b->nbytes/m_frame_size; ++i)
-        {
-            memcpy(m_tmp_buf, data, m_frame_size);
-            for(j = 0; j < m_channels; ++j)
-                data[j] = m_reorder_array[j] < 0 ? 0 : prev_data[m_reorder_array[j]];
-            data += m_channels;
-        }
-        break;
-    }
-    case Qmmp::PCM_S24LE:
-    case Qmmp::PCM_S32LE:
-    {
-        quint32 *data = (quint32 *) b->data;
-        quint32 *prev_data = (quint32 *) m_tmp_buf;
-        for(i = 0; i < b->nbytes/m_frame_size; ++i)
-        {
-            memcpy(m_tmp_buf, data, m_frame_size);
-            for(j = 0; j < m_channels; ++j)
-                data[j] = m_reorder_array[j] < 0 ? 0 : prev_data[m_reorder_array[j]];
-            data += m_channels;
-        }
-        break;
-    }
-    default:
-        ;
-    }
+
 }

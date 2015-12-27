@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,20 +21,25 @@
 #ifndef AUDIOCONVERTER_P_H
 #define AUDIOCONVERTER_P_H
 
-#include "effect.h"
+#include <stddef.h>
+#include "qmmp.h"
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class AudioConverter : public Effect
+class AudioConverter
 {
 public:
     AudioConverter();
-    void configure(quint32 srate, ChannelMap map, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
-    void applyEffect(Buffer *b);
+
+    void configure(Qmmp::AudioFormat f);
+    void toFloat(const unsigned char *in, float *out, size_t samples);
+    void fromFloat(const float *in, const unsigned char *out, size_t samples);
+
 
 private:
     Qmmp::AudioFormat m_format;
+    bool m_swap;
 
 };
 

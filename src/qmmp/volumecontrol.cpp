@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -134,14 +134,14 @@ void VolumeControl::reload()
     {
         if((m_volume = Output::currentFactory()->createVolume()))
         {
-			if(m_volume->hasNotifySignal())
-			{
-				checkVolume();
-				connect(m_volume, SIGNAL(changed()), SLOT(checkVolume()));
-			}
-			else
-				m_timer->start(150); // fallback to polling if change notification is not available.
-		}
+            if(m_volume->hasNotifySignal())
+            {
+                checkVolume();
+                connect(m_volume, SIGNAL(changed()), SLOT(checkVolume()));
+            }
+            else
+                m_timer->start(150); // fallback to polling if change notification is not available.
+        }
     }
     if(!m_volume)
     {
@@ -189,98 +189,22 @@ VolumeSettings SoftwareVolume::volume() const
     return v;
 }
 
-void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
+void SoftwareVolume::changeVolume(Buffer *b, int chan)
 {
-    int samples = 0;
-    qint32 sample1 = 0;
-    qint32 sample2 = 0;
-    switch(format)
+    if(chan == 1)
     {
-    case Qmmp::PCM_S8:
-        samples = b->nbytes;
-        if (chan > 1)
+        for(size_t i = 0; i < b->samples; ++i)
         {
-            for (int i = 0; i < samples; i+=2)
-            {
-                ((char*)b->data)[i]*= m_scaleLeft;
-                ((char*)b->data)[i+1]*= m_scaleRight;
-            }
+            b->data[i] *= qMax(m_scaleLeft, m_scaleRight);
         }
-        else
+    }
+    else
+    {
+        for(size_t i = 0; i < b->samples; i+=2)
         {
-            for (int i = 0; i < samples; i++)
-                ((char*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+            b->data[i] *= m_scaleLeft;
+            b->data[i+1] *= m_scaleRight;
         }
-    case Qmmp::PCM_S16LE:
-        samples = b->nbytes/2;
-        if (chan > 1)
-        {
-            for (int i = 0; i < samples; i+=2)
-            {
-                ((short*)b->data)[i]*= m_scaleLeft;
-                ((short*)b->data)[i+1]*= m_scaleRight;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < samples; i++)
-                ((short*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
-        }
-        break;
-    case Qmmp::PCM_S24LE:
-        samples = b->nbytes/4;
-        if (chan > 1)
-        {
-            for (qint64 i = 0; i < samples; i+=2)
-            {
-                sample1 = ((qint32*)b->data)[i];
-                sample2 = ((qint32*)b->data)[i+1];
-
-                if (sample1 & 0x800000)
-                    sample1 |= 0xff000000;
-
-                if (sample2 & 0x800000)
-                    sample2 |= 0xff000000;
-
-                sample1 *= m_scaleLeft;
-                sample2 *= m_scaleRight;
-
-                ((qint32*)b->data)[i] = sample1;
-                ((qint32*)b->data)[i+1] = sample2;
-            }
-        }
-        else
-        {
-            for (qint64 i = 0; i < samples; i++)
-            {
-                sample1 = ((qint32*)b->data)[i];
-                sample1 *= qMax(m_scaleRight, m_scaleLeft);
-
-                if (sample1 & 0x800000)
-                    sample1 |= 0xff000000;
-
-                ((qint32*)b->data)[i] = sample1;
-            }
-        }
-        break;
-    case Qmmp::PCM_S32LE:
-        samples = b->nbytes/4;
-        if (chan > 1)
-        {
-            for (qint64 i = 0; i < samples; i+=2)
-            {
-                ((qint32*)b->data)[i]*= m_scaleLeft;
-                ((qint32*)b->data)[i+1]*= m_scaleRight;
-            }
-        }
-        else
-        {
-            for (qint64 i = 0; i < samples; i++)
-                ((qint32*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
-        }
-        break;
-    default:
-        ;
     }
 }
 

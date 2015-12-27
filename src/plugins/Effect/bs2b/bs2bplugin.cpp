@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov <forkotov02@hotmail.ru>         *
+ *   Copyright (C) 2009-2015 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *   Copyright (C) 2009 by Sebastian Pipping <sebastian@pipping.org>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,36 +41,20 @@ Bs2bPlugin::~Bs2bPlugin()
     bs2b_close(m_bs2b_handler);
 }
 
-#define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
-    case bitsPerSample: \
-        { \
-            dataType * data = reinterpret_cast<dataType *>(out_data); \
-            functionToCall(m_bs2b_handler, data, samples); \
-        } \
-        break;
-
 void Bs2bPlugin::applyEffect(Buffer *b)
 {
     if(m_chan != 2)
         return;
-    uint samples = b->nbytes / audioParameters().sampleSize() / 2;
+
     m_mutex.lock();
-    switch (format())
-    {
-        CASE_BS2B(Qmmp::PCM_S8,  int8_t,  bs2b_cross_feed_s8, samples, b->data)
-        CASE_BS2B(Qmmp::PCM_S16LE, int16_t, bs2b_cross_feed_s16le, samples, b->data)
-        //CASE_BS2B(Qmmp::PCM_S24LE, bs2b_int24_t,  bs2b_cross_feed_s24le, samples, out_data)
-        CASE_BS2B(Qmmp::PCM_S32LE, int32_t,  bs2b_cross_feed_s32le, samples, b->data)
-    default:
-        ; // noop
-    }
+    bs2b_cross_feed_f(m_bs2b_handler, b->data, b->samples/2);
     m_mutex.unlock();
 }
 
-void Bs2bPlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+void Bs2bPlugin::configure(quint32 freq, ChannelMap map)
 {
     m_chan = map.count();
-    Effect::configure(freq, map, format);
+    Effect::configure(freq, map);
     bs2b_set_srate(m_bs2b_handler,freq);
 }
 

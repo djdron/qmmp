@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,7 +27,6 @@
 class QTimer;
 class QPixmap;
 class Skin;
-//class VisualNode;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -40,7 +39,7 @@ public:
 
     ~ShadedVisual();
 
-    void add(unsigned char *data, qint64 size, int chan);
+    void add(float *data, size_t samples, int chan);
     void clear();
 
     void paintEvent (QPaintEvent *);
@@ -54,13 +53,13 @@ private slots:
     void updateSkin();
 
 private:
-    void process (short *l, short *r);
+    void process (float *l, float *r);
     void draw (QPainter *);
     Skin *m_skin;
     QTimer *m_timer;
     QPixmap m_pixmap;
-    short *m_left_buffer;
-    short *m_right_buffer;
+    float *m_left_buffer;
+    float *m_right_buffer;
     int m_buffer_at;
     double m_l, m_r;
     int m_ratio;

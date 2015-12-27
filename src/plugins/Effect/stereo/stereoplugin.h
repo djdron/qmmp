@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ public:
     virtual ~StereoPlugin();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map);
     void setIntensity(double level);
     static StereoPlugin* instance();
 
@@ -42,7 +42,6 @@ private:
     int m_chan;
     QMutex m_mutex;
     double m_avg, m_ldiff, m_rdiff, m_tmp, m_mul;
-    int m_format;
     static StereoPlugin *m_instance;
 };
 

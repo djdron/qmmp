@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2010-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #define CROSSFADEPLUGIN_H
 
 #include <QMutex>
+#include <stddef.h>
 #include <qmmp/effect.h>
 
 class SoundCore;
@@ -38,7 +39,7 @@ public:
     virtual ~CrossfadePlugin();
 
     void applyEffect(Buffer *b);
-    void configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format);
+    void configure(quint32 freq, ChannelMap map);
 
 private:
     enum State
@@ -49,13 +50,11 @@ private:
         PROCESSING,
     };
 
-    void mix8(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
-    void mix16(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
-    void mix32(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
+    void mix(float *cur_buf, float *prev_buf, uint samples, double volume);
 
-    uchar *m_buffer;
-    ulong  m_buffer_at;
-    ulong  m_buffer_size;
+    float *m_buffer;
+    size_t m_buffer_at;
+    size_t m_buffer_size;
     qint64 m_overlap;
     int m_state;
     SoundCore *m_core;

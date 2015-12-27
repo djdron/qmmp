@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 1999 by Johan Levin                                     *
  *                                                                         *
- *   Copyright (C) 2011-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,7 +31,6 @@ StereoPlugin *StereoPlugin::m_instance = 0;
 StereoPlugin::StereoPlugin() : Effect()
 {
     m_instance = this;
-    m_format = Qmmp::PCM_S16LE;
     m_avg = 0;
     m_ldiff = 0;
     m_rdiff = 0;
@@ -53,44 +52,27 @@ void StereoPlugin::applyEffect(Buffer *b)
         return;
 
     m_mutex.lock();
-    if(m_format == Qmmp::PCM_S16LE)
-    {
-        short *data = (short *)b->data;
-        for (uint i = 0; i < (b->nbytes >> 1); i += 2)
-        {
-            m_avg = (data[i] + data[i + 1]) / 2;
-            m_ldiff = data[i] - m_avg;
-            m_rdiff = data[i + 1] - m_avg;
+    float *data = b->data;
 
-            m_tmp = m_avg + m_ldiff * m_mul;
-            data[i] = qBound(-32768.0, m_tmp, 32767.0);
-            m_tmp = m_avg + m_rdiff * m_mul;
-            data[i + 1] = qBound(-32768.0, m_tmp, 32767.0);
-        }
-    }
-    else if(m_format == Qmmp::PCM_S24LE || m_format == Qmmp::PCM_S32LE)
+    for (uint i = 0; i < b->samples; i += 2)
     {
-        int *data = (int *)b->data;
-        for (uint i = 0; i < (b->nbytes >> 2); i += 2)
-        {
-            m_avg = (data[i] + data[i + 1]) / 2;
-            m_ldiff = data[i] - m_avg;
-            m_rdiff = data[i + 1] - m_avg;
+        m_avg = (data[i] + data[i + 1]) / 2;
+        m_ldiff = data[i] - m_avg;
+        m_rdiff = data[i + 1] - m_avg;
 
-            m_tmp = m_avg + m_ldiff * m_mul;
-            data[i] = m_tmp;
-            m_tmp = m_avg + m_rdiff * m_mul;
-            data[i + 1] = m_tmp;
-        }
+        m_tmp = m_avg + m_ldiff * m_mul;
+        data[i] = qBound(-1.0, m_tmp, 1.0);
+        m_tmp = m_avg + m_rdiff * m_mul;
+        data[i + 1] = qBound(-1.0, m_tmp, 1.0);
     }
+
     m_mutex.unlock();
 }
 
-void StereoPlugin::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
+void StereoPlugin::configure(quint32 freq, ChannelMap map)
 {
     m_chan = map.count();
-    m_format = format;
-    Effect::configure(freq, map, format);
+    Effect::configure(freq, map);
 }
 
 void StereoPlugin::setIntensity(double level)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,7 @@
 #define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
 
 ShadedVisual::ShadedVisual(QWidget *parent) : Visual(parent)
-{    
+{
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
     resize(m_ratio*38,m_ratio*5);
@@ -37,8 +37,8 @@ ShadedVisual::ShadedVisual(QWidget *parent) : Visual(parent)
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
-    m_right_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_left_buffer = new float[VISUAL_BUFFER_SIZE];
+    m_right_buffer = new float[VISUAL_BUFFER_SIZE];
     m_buffer_at = 0;
     m_timer->setInterval(50);
     m_timer->start();
@@ -51,7 +51,7 @@ ShadedVisual::~ShadedVisual()
     delete [] m_right_buffer;
 }
 
-void ShadedVisual::add(unsigned char *data, qint64 size, int chan)
+void ShadedVisual::add(float *data, size_t samples, int chan)
 {
     if (!m_timer->isActive ())
         return;
@@ -59,24 +59,15 @@ void ShadedVisual::add(unsigned char *data, qint64 size, int chan)
     if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
+        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
         return;
     }
 
-    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+    int frames = qMin(int(samples/chan), VISUAL_BUFFER_SIZE - m_buffer_at);
 
-    if (chan >= 2)
-    {
-        stereo16_from_multichannel(m_left_buffer + m_buffer_at,
-                                   m_right_buffer + m_buffer_at,(short *) data, frames, chan);
-    }
-    else
-    {
-        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
-        memcpy(m_right_buffer + m_buffer_at, (short *) data, frames << 1);
-    }
-
+    stereo16_from_multichannel(m_left_buffer + m_buffer_at,
+                               m_right_buffer + m_buffer_at, data, frames, chan);
     m_buffer_at += frames;
 }
 
@@ -102,15 +93,15 @@ void ShadedVisual::timeout()
 
     process (m_left_buffer, m_right_buffer);
     m_buffer_at -= VISUAL_NODE_SIZE;
-    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
     QPainter p(&m_pixmap);
     draw (&p);
     mutex()->unlock ();
     update();
 }
 
-void ShadedVisual::process (short *left, short *right)
+void ShadedVisual::process (float *left, float *right)
 {
     int step = (VISUAL_NODE_SIZE << 8)/74;
     int pos = 0;
@@ -124,7 +115,7 @@ void ShadedVisual::process (short *left, short *right)
 
         if (left)
         {
-            j_l = abs((left[pos >> 8] >> 12));
+            j_l = abs(left[pos >> 8] * 8.0);
 
             if (j_l > 15)
                 j_l = 15;
@@ -132,16 +123,16 @@ void ShadedVisual::process (short *left, short *right)
         }
         if (right)
         {
-            j_r = abs((right[pos >> 8] >> 12));
+            j_r = abs(right[pos >> 8] * 8.0);
             if (j_r > 15)
                 j_r = 15;
             r = qMax(r, j_r);
         }
     }
     m_l -= 0.5;
-    m_l = m_l > l ? m_l : l;
+    m_l = qMax(m_l, (double)l);
     m_r -= 0.5;
-    m_r = m_r > r ? m_r : r;
+    m_r = qMax(m_r, (double)r);
 }
 
 void ShadedVisual::draw (QPainter *p)

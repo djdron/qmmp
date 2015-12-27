@@ -46,69 +46,37 @@ SRConverter::~SRConverter()
 
 void SRConverter::applyEffect(Buffer *b)
 {
-    if (m_src_state && b->nbytes > 0)
+    if (m_src_state && b->samples > 0)
     {
         m_src_data.end_of_input = 0;
-        m_src_data.input_frames = b->nbytes / m_sz / channels();
+        m_src_data.data_in = b->data;
+        m_src_data.input_frames = b->samples / channels();
         m_src_data.output_frames = m_src_data.src_ratio * m_src_data.input_frames + 1;
-
-        if(format() == Qmmp::PCM_S16LE)
-        {
-            src_short_to_float_array((short*) b->data, m_src_data.data_in,
-                                     m_src_data.input_frames * channels());
-        }
-        else
-        {
-            qint32 *data = (int *) b->data;
-            if(format() == Qmmp::PCM_S24LE)
-            {
-                uint samples =  b->size >> 2;
-                for(unsigned int i = 0; i < samples; ++i)
-                {
-                    if(data[i] & 0x800000)
-                        data[i] |= 0xff000000;
-                }
-            }
-            src_int_to_float_array((int*) b->data, m_src_data.data_in,
-                                   m_src_data.input_frames * channels());
-        }
 
         if ((m_srcError = src_process(m_src_state, &m_src_data)) > 0)
         {
             qWarning("SRConverter: src_process(): %s\n", src_strerror(m_srcError));
         }
-        else
+
+        b->samples = m_src_data.output_frames_gen * channels();
+        m_src_data.data_in = 0;
+        m_src_data.input_frames = 0;
+
+        if(b->samples > b->size)
         {
-            b->nbytes = m_src_data.output_frames_gen * channels() * m_sz; //bytes
-
-            //increase buffer size
-            if(b->nbytes > b->size)
-            {
-                delete [] b->data;
-                b->data = new unsigned char[b->nbytes];
-                b->size = b->nbytes;
-            }
-
-
-            if(format() == Qmmp::PCM_S16LE)
-            {
-                src_float_to_short_array(m_src_data.data_out, (short*)b->data,
-                                         m_src_data.output_frames_gen * channels());
-
-            }
-            else
-            {
-                src_float_to_int_array(m_src_data.data_out, (int*)b->data,
-                                       m_src_data.output_frames_gen * channels());
-            }
+            delete [] b->data;
+            b->data = new float[b->samples];
+            b->size = b->samples;
         }
+
+        memcpy(b->data, m_src_data.data_out, b->samples * sizeof(float));
     }
 }
 
-void SRConverter::configure(quint32 freq, ChannelMap map,  Qmmp::AudioFormat format)
+void SRConverter::configure(quint32 freq, ChannelMap map)
 {
     freeSRC();
-    if(freq != m_overSamplingFs && format != Qmmp::PCM_S8)
+    if(freq != m_overSamplingFs)
     {
         m_src_state = src_new(m_converter_type, map.count(), &m_srcError);
         if (m_src_state)
@@ -120,10 +88,9 @@ void SRConverter::configure(quint32 freq, ChannelMap map,  Qmmp::AudioFormat for
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
 
         m_sz = audioParameters().sampleSize();
-        m_src_data.data_in = new float[QMMP_BLOCK_FRAMES * map.count() * 2];
         m_src_data.data_out = new float[int(m_src_data.src_ratio * QMMP_BLOCK_FRAMES * map.count() * 2 + 2)];
     }
-    Effect::configure(m_overSamplingFs, map, format);
+    Effect::configure(m_overSamplingFs, map);
 }
 
 void SRConverter::freeSRC()

@@ -24,6 +24,7 @@
 #include <QStringList>
 #include <QWidget>
 #include <QHash>
+#include <stddef.h>
 
 class Buffer;
 class Decoder;
@@ -51,10 +52,10 @@ public:
      * Adds data for visualization.
      * Subclass should reimplement this function.
      * @param data Audio data.
-     * @param size Size of audio data.
+     * @param samples Number of samples.
      * @param chan Number of channels.
      */
-    virtual void add(unsigned char *data, qint64 size, int chan) = 0;
+    virtual void add(float *data, size_t samples, int chan) = 0;
     /*!
      * Resets visual plugin buffers and widgets.
      * Subclass should reimplement this function.

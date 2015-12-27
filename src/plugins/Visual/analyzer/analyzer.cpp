@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -48,8 +48,8 @@ Analyzer::Analyzer (QWidget *parent) : Visual (parent)
     setMinimumSize(2*300-30,105);
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
-    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
-    m_right_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_left_buffer = new float[VISUAL_BUFFER_SIZE];
+    m_right_buffer = new float[VISUAL_BUFFER_SIZE];
 
     clear();
     createMenu();
@@ -69,7 +69,7 @@ Analyzer::~Analyzer()
         delete [] m_x_scale;
 }
 
-void Analyzer::add (unsigned char *data, qint64 size, int chan)
+void Analyzer::add (float *data, size_t samples, int chan)
 {
     if (!m_timer->isActive ())
         return;
@@ -77,23 +77,15 @@ void Analyzer::add (unsigned char *data, qint64 size, int chan)
     if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
         m_buffer_at -= VISUAL_NODE_SIZE;
-        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
+        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
         return;
     }
 
-    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+    int frames = qMin(int(samples/chan), VISUAL_BUFFER_SIZE - m_buffer_at);
 
-    if (chan >= 2)
-    {
-        stereo16_from_multichannel(m_left_buffer + m_buffer_at,
-                                   m_right_buffer + m_buffer_at,(short *) data, frames, chan);
-    }
-    else
-    {
-        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
-        memcpy(m_right_buffer + m_buffer_at, (short *) data, frames << 1);
-    }
+    stereo_from_multichannel(m_left_buffer + m_buffer_at,
+                             m_right_buffer + m_buffer_at, data, frames, chan);
 
     m_buffer_at += frames;
 }
@@ -109,7 +101,7 @@ void Analyzer::clear()
 
 void Analyzer::timeout()
 {
-    mutex()->lock ();
+    mutex()->lock();
     if(m_buffer_at < VISUAL_NODE_SIZE)
     {
         mutex()->unlock ();
@@ -118,8 +110,8 @@ void Analyzer::timeout()
 
     process (m_left_buffer, m_right_buffer);
     m_buffer_at -= VISUAL_NODE_SIZE;
-    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
-    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at * sizeof(float));
     mutex()->unlock ();
     update();
 }
@@ -232,7 +224,7 @@ void Analyzer::mousePressEvent(QMouseEvent *e)
         m_menu->exec(e->globalPos());
 }
 
-void Analyzer::process (short *left, short *right)
+void Analyzer::process (float *left, float *right)
 {
     static fft_state *state = 0;
     if (!state)

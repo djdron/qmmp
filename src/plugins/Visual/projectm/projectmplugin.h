@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2014 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ public:
     ProjectMPlugin(QWidget *parent = 0);
     virtual ~ProjectMPlugin();
 
-    void add(unsigned char *data, qint64 size, int chan);
+    void add(float *data, size_t samples, int chan);
     void clear();
 
 private slots:
@@ -46,8 +46,7 @@ private:
     QTimer *m_timer;
     ProjectMWidget *m_projectMWidget;
     QSplitter *m_splitter;
-    short *m_buf;
-    int m_buf_size;
+    short m_buf[2][512];
 };
 
 

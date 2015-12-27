@@ -16,7 +16,7 @@ Recycler::Recycler ()
     m_current_count = 0;
     m_buffer_count = 0;
     m_blocked = 0;
-    m_block_size = 0;
+    m_block_samples = 0;
     m_buffers = 0;
 }
 
@@ -32,11 +32,11 @@ Recycler::~Recycler()
     m_blocked = 0;
 }
 
-void Recycler::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void Recycler::configure(quint32 freq, int chan)
 {
-    unsigned long block_size = AudioParameters::sampleSize(format) * chan * QMMP_BLOCK_FRAMES;
+    size_t block_samples = chan * QMMP_BLOCK_FRAMES;
     unsigned int buffer_count = freq * QmmpSettings::instance()->bufferSize() / 1000 / QMMP_BLOCK_FRAMES;
-    if(block_size == m_block_size && buffer_count == m_buffer_count)
+    if(block_samples == m_block_samples && buffer_count == m_buffer_count)
         return;
 
     for (unsigned int i = 0; i < m_buffer_count; i++)
@@ -50,7 +50,7 @@ void Recycler::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     m_done_index = 0;
     m_current_count = 0;
     m_blocked = 0;
-    m_block_size = block_size;
+    m_block_samples = block_samples;
     m_buffer_count = buffer_count;
 
 
@@ -61,7 +61,7 @@ void Recycler::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 
     for (unsigned int i = 0; i < m_buffer_count; i++)
     {
-        m_buffers[i] = new Buffer(m_block_size);
+        m_buffers[i] = new Buffer(m_block_samples);
     }
 }
 
@@ -75,12 +75,10 @@ bool Recycler::blocked()
     return m_buffers[m_add_index] == m_blocked;
 }
 
-
 bool Recycler::empty() const
 {
     return m_current_count == 0;
 }
-
 
 int Recycler::available() const
 {
@@ -102,7 +100,7 @@ Buffer *Recycler::get()
 
 void Recycler::add()
 {
-    if(m_buffers[m_add_index]->nbytes)
+    if(m_buffers[m_add_index]->samples)
     {
         m_add_index = (m_add_index + 1) % m_buffer_count;
         m_current_count++;
@@ -136,12 +134,12 @@ void Recycler::clear()
     m_done_index = 0;
 }
 
-unsigned long Recycler::size() const
+size_t Recycler::samples() const
 {
-    return m_buffer_count * m_block_size;
+    return m_buffer_count * m_block_samples;
 }
 
-unsigned long Recycler::blockSize() const
+size_t Recycler::blockSamples() const
 {
-    return m_block_size;
+    return m_block_samples;
 }
