@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2012 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,35 +25,6 @@
 #include <qmmp/output.h>
 #include <math.h>
 #include "decoder_mpc.h"
-
-// this function used from xmms
-inline static void copyBuffer(MPC_SAMPLE_FORMAT* pInBuf, unsigned char* pOutBuf, unsigned pLength)
-{
-    unsigned pSize = 16;
-    int clipMin    = -1 << (pSize - 1);
-    int clipMax    = (1 << (pSize - 1)) - 1;
-    int floatScale =  1 << (pSize - 1);
-    for (unsigned n = 0; n < 2 * pLength; n++)
-    {
-        int val;
-#ifdef MPC_FIXED_POINT
-        val = shiftSigned(pInBuf[n], pSize - MPC_FIXED_POINT_SCALE_SHIFT);
-#else
-        val = (int) (pInBuf[n] * floatScale);
-#endif
-        if (val < clipMin)
-            val = clipMin;
-        else if (val > clipMax)
-            val = clipMax;
-        unsigned shift = 0;
-        do
-        {
-            pOutBuf[n * 2 + (shift / 8)] = (unsigned char) ((val >> shift) & 0xFF);
-            shift += 8;
-        }
-        while (shift < pSize);
-    }
-}
 
 // mpc callbacks
 
@@ -188,7 +159,7 @@ bool DecoderMPC::initialize()
 #endif
 
     int chan = data()->info.channels;
-    configure(data()->info.sample_freq, chan, Qmmp::PCM_S16LE);
+    configure(data()->info.sample_freq, chan, Qmmp::PCM_FLOAT);
     QMap<Qmmp::ReplayGainKey, double> rg_info; //replay gain information
 #ifdef MPC_OLD_API
     mpc_decoder_setup (&data()->decoder, &data()->reader);
@@ -233,8 +204,8 @@ qint64 DecoderMPC::read(unsigned char *audio, qint64 maxSize)
     mpc_uint32_t vbrUpd = 0;
     MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
     m_len = mpc_decoder_decode (&data()->decoder, buffer, &vbrAcc, &vbrUpd);
-    copyBuffer(buffer, audio, qMin(m_len,long(maxSize/4)));
-    m_len = m_len * 4;
+    m_len *= data()->info.channels;
+    memcpy(audio, buffer, qMin((qint64)m_len * sizeof(float), maxSize));
     m_bitrate = vbrUpd * data()->info.sample_freq / 1152000;
 #else
     mpc_frame_info frame;
@@ -253,14 +224,13 @@ qint64 DecoderMPC::read(unsigned char *audio, qint64 maxSize)
         }
         else
         {
-            m_len = frame.samples;
-            copyBuffer(buffer, audio, qMin(m_len,long(maxSize/4)));
-            m_len = m_len * 4;
+            m_len = frame.samples * data()->info.channels;
+            memcpy(audio, buffer, qMin((qint64)m_len * sizeof(float), maxSize));
         }
     }
     m_bitrate = frame.bits * data()->info.sample_freq / 1152000;
 #endif
-    return m_len;
+    return m_len * sizeof(float);
 }
 
 void DecoderMPC::seek(qint64 pos)
