@@ -25,6 +25,7 @@ void Output::configure(quint32 freq, ChannelMap map, Qmmp::AudioFormat format)
     m_frequency = freq;
     m_chan_map = map;
     m_format = format;
+    m_sample_size = AudioParameters::sampleSize(format);
 }
 
 AudioParameters Output::audioParameters() const
@@ -54,7 +55,7 @@ Qmmp::AudioFormat Output::format() const
 
 int Output::sampleSize() const
 {
-    return AudioParameters::sampleSize(m_format);
+    return m_sample_size;
 }
 
 void Output::suspend()
