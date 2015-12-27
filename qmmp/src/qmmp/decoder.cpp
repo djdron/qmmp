@@ -42,14 +42,6 @@ void Decoder::configure(quint32 srate, int channels, Qmmp::AudioFormat f)
     m_parameters = AudioParameters(srate, ChannelMap(channels), f);
 }
 
-qint64 Decoder::read(float *data, qint64 samples)
-{
-    Q_UNUSED(data);
-    Q_UNUSED(samples);
-    qFatal("Decoder: peak overflow is enabled but does not implemented");
-    return -1;
-}
-
 void Decoder::next()
 {}
 

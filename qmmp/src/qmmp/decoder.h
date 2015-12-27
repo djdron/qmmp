@@ -57,16 +57,6 @@ public:
      */
     virtual qint64 read(unsigned char *data, qint64 maxSize) = 0;
     /*!
-     * Reads up of decoded audio using float audio format.
-     * Reimplement this function if a decoder supports peak overflow (i.e. has headroom).
-     * Audio engine uses this function to prevent clipping.
-     * Default implementation doesn nothing and returns -1.
-     * @param data output audio data
-     * @param samples maximum samples count
-     * @return the number of samples read, or -1 if an error occurred.
-     */
-    virtual qint64 read(float *data, qint64 samples);
-    /*!
      * Returns current bitrate (in kbps).
      * Subclass should reimplement this function.
      */

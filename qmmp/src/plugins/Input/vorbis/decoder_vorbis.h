@@ -25,7 +25,6 @@ public:
 
 private:
     virtual qint64 read(unsigned char *data, qint64 maxSize);
-    virtual qint64 read(float *data, qint64 samples);
     virtual void seek(qint64 time);
 
     // helper functions
@@ -37,9 +36,9 @@ private:
     OggVorbis_File oggfile;
     qint64 m_totalTime;
     long len;
-    int m_section, m_last_section;
+    int m_last_section;
     int m_bitrate;
-    bool inited;
+    bool m_inited;
     QString m_url;
 };
 
