@@ -6,5 +6,5 @@ add_subdirectory(analyzer)
 ENDIF(USE_ANALYZER)
 
 IF(USE_PROJECTM)
-#add_subdirectory(projectm)
+add_subdirectory(projectm)
 ENDIF(USE_PROJECTM)

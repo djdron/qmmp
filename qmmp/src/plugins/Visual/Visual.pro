@@ -3,5 +3,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += analyzer
 contains(CONFIG, PROJECTM_PLUGIN){
-#   SUBDIRS += projectm
+   SUBDIRS += projectm
 }
