@@ -107,7 +107,7 @@ unix {
     target.path = $$LIB_DIR
     devel.files += \
         abstractengine.h \
-        audioconverter.h
+        audioconverter.h \
         audioparameters.h \
         buffer.h \
         decoderfactory.h \
