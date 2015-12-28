@@ -126,7 +126,7 @@ Decoder *DecoderMPG123Factory::create(const QString &url, QIODevice *input)
     if(!url.contains("://")) //local file
     {
         ReplayGainReader rg(url);
-        d->setReplayGainInfo(rg.replayGainInfo(), true);
+        d->setReplayGainInfo(rg.replayGainInfo());
     }
     return d;
 }

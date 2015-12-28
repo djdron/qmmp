@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,7 +43,6 @@ public:
 
 private:
     void cleanup(mpg123_handle *handle);
-    void updateMPG123Format(int encoding);
     void setMPG123Format(int encoding);
     mpg123_handle *m_handle;
     mpg123_frameinfo m_frame_info;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2013 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -106,7 +106,7 @@ bool DecoderMPG123::initialize()
         m_handle = 0;
         return false;
     }
-    setMPG123Format(MPG123_ENC_SIGNED_16);
+    setMPG123Format(MPG123_ENC_FLOAT_32);
 
     if((err = mpg123_open_handle(m_handle, this)) != MPG123_OK)
     {
@@ -124,7 +124,7 @@ bool DecoderMPG123::initialize()
         return false;
     }
     //check format
-    if(m_mpg123_encoding != MPG123_ENC_SIGNED_16)
+    if(m_mpg123_encoding != MPG123_ENC_FLOAT_32)
     {
         cleanup(m_handle);
         qWarning("DecoderMPG123: bad encoding: 0x%x!\n", m_mpg123_encoding);
@@ -142,7 +142,7 @@ bool DecoderMPG123::initialize()
     else
         m_totalTime = 0;
 
-    configure(m_rate, channels, Qmmp::PCM_S16LE);
+    configure(m_rate, channels, Qmmp::PCM_FLOAT);
     return true;
 }
 
@@ -158,11 +158,8 @@ int DecoderMPG123::bitrate()
 
 qint64 DecoderMPG123::read(unsigned char *data, qint64 size)
 {
-    if(m_mpg123_encoding != MPG123_ENC_SIGNED_16)
-        updateMPG123Format(MPG123_ENC_SIGNED_16);
-
     size_t done = 0;
-    int err = mpg123_read(m_handle, (unsigned char *)data, size, &done);
+    int err = mpg123_read(m_handle, data, size, &done);
     if(err != MPG123_DONE && err != MPG123_OK)
     {
         qWarning("DecoderMPG123: decoder error: %s", mpg123_plain_strerror(err));
@@ -170,22 +167,6 @@ qint64 DecoderMPG123::read(unsigned char *data, qint64 size)
     }
     mpg123_info(m_handle, &m_frame_info);
     return done;
-}
-
-qint64 DecoderMPG123::read(float *data, qint64 samples)
-{
-    if(m_mpg123_encoding != MPG123_ENC_FLOAT_32)
-        updateMPG123Format(MPG123_ENC_FLOAT_32);
-
-    size_t done = 0;
-    int err = mpg123_read(m_handle, (unsigned char*)data, samples * sizeof(float), &done);
-    if(err != MPG123_DONE && err != MPG123_OK)
-    {
-        qWarning("DecoderMPG123: decoder error: %s", mpg123_plain_strerror(err));
-        return -1;
-    }
-    mpg123_info(m_handle, &m_frame_info);
-    return done / sizeof(float);
 }
 
 void DecoderMPG123::seek(qint64 pos)
@@ -201,21 +182,6 @@ void DecoderMPG123::cleanup(mpg123_handle *handle)
     mpg123_close(handle);
     mpg123_delete(handle);
     handle = 0;
-}
-
-void DecoderMPG123::updateMPG123Format(int encoding)
-{
-    if(encoding == MPG123_ENC_FLOAT_32)
-        qDebug("DecoderMPG123: changing output format to: MPG123_ENC_FLOAT_32");
-    else if(encoding == MPG123_ENC_SIGNED_16)
-        qDebug("DecoderMPG123: changing output format to: MPG123_ENC_SIGNED_16");
-    off_t pos = mpg123_tell(m_handle);
-    mpg123_close(m_handle);
-    setMPG123Format(encoding);
-    mpg123_open_handle(m_handle, this);
-    mpg123_getformat(m_handle, 0, 0, 0);
-    if(!input()->isSequential())
-        mpg123_seek(m_handle, pos, SEEK_SET);
 }
 
 void DecoderMPG123::setMPG123Format(int encoding)
