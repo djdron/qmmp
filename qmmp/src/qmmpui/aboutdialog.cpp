@@ -68,7 +68,7 @@ QString AboutDialog::loadAbout()
     text.append(tr("Using Qt %1 (compiled with Qt %2)" ).arg(qVersion()).arg(QT_VERSION_STR) + "</p>");
 
     text.append("<p>");
-    text.append(tr("(c) %1-%2 Qmmp Development Team").arg(2006).arg(2015)+"<br>");
+    text.append(tr("(c) %1-%2 Qmmp Development Team").arg(2006).arg(2016)+"<br>");
     text.append("<a href=\"http://qmmp.ylsoftware.com/\">http://qmmp.ylsoftware.com/</a><br>");
     text.append("<a href=\"https://sourceforge.net/projects/qmmp-dev/\">https://sourceforge.net/projects/qmmp-dev/</a>");
     text.append("</p>");
