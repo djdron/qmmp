@@ -155,11 +155,11 @@ void AudioConverter::fromFloat(const float *in, const unsigned char *out, size_t
         break;
     case Qmmp::PCM_S32LE:
     case Qmmp::PCM_S32BE:
-        FLOAT_TO_INT(qint32, in, out, samples, 0, 0x80000000, 0x7FFFFFFF);
+        FLOAT_TO_INT(qint32, in, out, samples, 0, 0x80000000, 0x7FFFFF80);
         break;
     case Qmmp::PCM_U32LE:
     case Qmmp::PCM_U32BE:
-        FLOAT_TO_INT(quint32, in, out, samples, 0x80000000, 0x80000000, 0x7FFFFFFF);
+        FLOAT_TO_INT(quint32, in, out, samples, 0x80000000, 0x80000000, 0x7FFFFF80);
         break;
     case Qmmp::PCM_FLOAT:
     case Qmmp::PCM_UNKNOWM:
