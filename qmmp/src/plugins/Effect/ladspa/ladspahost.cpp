@@ -167,7 +167,7 @@ LADSPAEffect *LADSPAHost::load(const QString &filename, long int num)
     LADSPAEffect *instance = new LADSPAEffect;
 
     instance->fileName = filename;
-    instance->library = dlopen(qPrintable(filename), RTLD_NOW);
+    instance->library = dlopen(qPrintable(filename), RTLD_NOW | RTLD_DEEPBIND);
     instance->handle = 0;
     instance->handle2 = 0;
     if (!instance->library)
@@ -368,7 +368,7 @@ void LADSPAHost::findPlugins(const QString &path_entry)
 
     foreach(QFileInfo file, files)
     {
-        library = dlopen(qPrintable(file.absoluteFilePath ()), RTLD_LAZY);
+        library = dlopen(qPrintable(file.absoluteFilePath ()), RTLD_NOW | RTLD_DEEPBIND);
         if (library == 0)
         {
             continue;
