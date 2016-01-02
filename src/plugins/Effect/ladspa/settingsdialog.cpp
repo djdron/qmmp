@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2015 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,7 @@
 #include <QFormLayout>
 #include <QWidget>
 #include <QLabel>
+#include <QIcon>
 #include <qmmp/qmmp.h>
 #include "ladspaslider.h"
 #include "ladspabutton.h"
@@ -38,6 +39,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
     ui.loadButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowRight));
     ui.unloadButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowLeft));
+    ui.configureButton->setIcon(QIcon::fromTheme("configure"));
 
     m_model = new QStandardItemModel(0, 2, this);
     m_model->setHeaderData(0, Qt::Horizontal, tr("UID"));
