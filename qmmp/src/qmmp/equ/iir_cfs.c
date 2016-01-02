@@ -83,7 +83,7 @@ static const double band_f031[] =
 #define GAIN_F1 GAIN_F0 / M_SQRT2
 
 #define SAMPLING_FREQ 44100.0
-#define TETA(f) (2*M_PI*(double)f/bands[n].sfreq)
+#define TETA(f) (2*M_PI*(double)f/iir_bands[n].sfreq)
 #define TWOPOWER(value) (value * value)
 
 #define BETA2(tf0, tf) \
@@ -111,7 +111,7 @@ struct {
     double octave;
     int band_count;
     double sfreq;
-} bands[] = {
+} iir_bands[] = {
   { iir_cf10_11k_11025,     band_f011k,         1.0,     10, 11025.0 },
   { iir_cf10_22k_22050,     band_f022k,         1.0,     10, 22050.0 },
   { iir_cforiginal10_44100, band_original_f010, 1.0,     10, 44100.0 },
@@ -210,13 +210,13 @@ void calc_coeffs()
   double x0;
 
   n = 0;
-  for (; bands[n].cfs; n++) {
-    double *freqs = (double *)bands[n].cfs;
-    for (i=0; i<bands[n].band_count; i++)
+  for (; iir_bands[n].cfs; n++) {
+    double *freqs = (double *)iir_bands[n].cfs;
+    for (i=0; i<iir_bands[n].band_count; i++)
     {
 
       /* Find -3dB frequencies for the center freq */
-      find_f1_and_f2(freqs[i], bands[n].octave, &f1, &f2);
+      find_f1_and_f2(freqs[i], iir_bands[n].octave, &f1, &f2);
       /* Find Beta */
       if ( find_root(
             BETA2(TETA(freqs[i]), TETA(f1)),
@@ -232,9 +232,9 @@ void calc_coeffs()
          *  Now the 2 factor has been distributed in the coefficients
          */
         /* Now store the coefficients */
-        bands[n].coeffs[i].beta = 2.0 * x0;
-        bands[n].coeffs[i].alpha = 2.0 * ALPHA(x0);
-        bands[n].coeffs[i].gamma = 2.0 * GAMMA(x0, TETA(freqs[i]));
+        iir_bands[n].coeffs[i].beta = 2.0 * x0;
+        iir_bands[n].coeffs[i].alpha = 2.0 * ALPHA(x0);
+        iir_bands[n].coeffs[i].gamma = 2.0 * GAMMA(x0, TETA(freqs[i]));
 #ifdef DEBUG
         printf("Freq[%d]: %f. Beta: %.10e Alpha: %.10e Gamma %.10e\n",
             i, freqs[i], bands[n].coeffs[i].beta,
@@ -242,9 +242,9 @@ void calc_coeffs()
 #endif
       } else {
         /* Shouldn't happen */
-        bands[n].coeffs[i].beta = 0.;
-        bands[n].coeffs[i].alpha = 0.;
-        bands[n].coeffs[i].gamma = 0.;
+        iir_bands[n].coeffs[i].beta = 0.;
+        iir_bands[n].coeffs[i].alpha = 0.;
+        iir_bands[n].coeffs[i].gamma = 0.;
         printf("  **** Where are the roots?\n");
       }
     }// for i
