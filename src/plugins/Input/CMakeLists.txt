@@ -11,6 +11,7 @@ SET(USE_CUE            TRUE CACHE BOOL "enable/disable cue plugin")
 SET(USE_CDA            TRUE CACHE BOOL "enable/disable cd audio support")
 SET(USE_MIDI           TRUE CACHE BOOL "enable/disable midi support")
 SET(USE_GME            TRUE CACHE BOOL "enable/disable game music plugin")
+SET(USE_ZXTUNE         TRUE CACHE BOOL "enable/disable zxtune plugin")
 SET(USE_OPUS           TRUE CACHE BOOL "enable/disable opus plugin")
 SET(USE_SID            TRUE CACHE BOOL "enable/disable sid plugin")
 
@@ -66,6 +67,10 @@ ENDIF(USE_MIDI)
 IF(USE_GME)
 add_subdirectory(gme)
 ENDIF(USE_GME)
+
+IF(USE_ZXTUNE)
+add_subdirectory(zxtune)
+ENDIF(USE_ZXTUNE)
 
 IF(USE_OPUS AND TAGLIB_FOUND)
 add_subdirectory(opus)
