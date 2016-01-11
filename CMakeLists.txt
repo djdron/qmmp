@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11 FATAL_ERROR)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
 #freebsd support
 include_directories(SYSTEM /usr/local/include)
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)

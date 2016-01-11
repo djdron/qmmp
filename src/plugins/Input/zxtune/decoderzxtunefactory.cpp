@@ -22,7 +22,7 @@
 #include <QMessageBox>
 #include <QRegExp>
 #include <QFile>
-#include "DecoderZXTuneFactory.h"
+#include "decoderzxtunefactory.h"
 #include "decoder_zxtune.h"
 
 static const char* plugin_info =
@@ -117,6 +117,13 @@ Decoder *DecoderZXTuneFactory::create(const QString &path, QIODevice *input)
     return new DecoderZXTune(path);
 }
 
+struct ModuleDesc
+{
+	Module::Holder::Ptr module;
+	std::string subname;
+};
+typedef std::vector<ModuleDesc> Modules;
+
 
 QList<FileInfo *> DecoderZXTuneFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredFiles)
 {
@@ -154,12 +161,6 @@ QList<FileInfo *> DecoderZXTuneFactory::createPlayList(const QString &fileName, 
 		return list;
 	}
 
-	struct ModuleDesc
-	{
-		Module::Holder::Ptr module;
-		std::string subname;
-	};
-	typedef std::vector<ModuleDesc> Modules;
 	Modules	input_modules;
 
 	struct ModuleDetector : public Module::DetectCallback
@@ -181,15 +182,16 @@ QList<FileInfo *> DecoderZXTuneFactory::createPlayList(const QString &fileName, 
 	Module::Detect(*params, ZXTune::CreateLocation(input_file), md);
 	if(input_modules.empty())
 	{
-        qWarning("DecoderZXTuneFactory: unsupported format");
-        return list;
+		qWarning("DecoderZXTuneFactory: unsupported format");
+		return list;
 	}
 	int m_idx = 1;
-	for(auto m : input_modules)
+	for(Modules::iterator it = input_modules.begin(); it != input_modules.end(); ++it)
 	{
+		ModuleDesc& m = *it;
 		FileInfo* info = new FileInfo();
 
-		auto meta = DecoderZXTune::GetMetadata(m.module, QString::fromStdString(m.subname), input_modules.size() > 1 ? m_idx++ : 0);
+		QMap<Qmmp::MetaData, QString> meta = DecoderZXTune::GetMetadata(m.module, QString::fromStdString(m.subname), input_modules.size() > 1 ? m_idx++ : 0);
 		info->setMetaData(meta);
 
 		Module::Information::Ptr mi = m.module->GetModuleInformation();

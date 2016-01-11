@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
-#ifndef DECODERGMEFACTORY_H
-#define DECODERGMEFACTORY_H
+#ifndef DECODERZXTUNEFACTORY_H
+#define DECODERZXTUNEFACTORY_H
 
 #include <QObject>
 #include <QString>
