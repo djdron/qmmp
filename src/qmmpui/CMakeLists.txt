@@ -114,6 +114,11 @@ SET(libqmmpui_UIS
     forms/columneditor.ui
 )
 
+if(WIN32)
+list(APPEND libqmmpui_SRCS winfileassoc.cpp winfileassocpage.cpp)
+list(APPEND libqmmpui_UIS forms/winfileassocpage.ui)
+endif(WIN32)
+
 QT5_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
 
 QT5_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc txt/txt.qrc images/qmmpui_images.qrc)

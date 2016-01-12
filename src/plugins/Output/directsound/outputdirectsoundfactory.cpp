@@ -21,6 +21,8 @@
 
 #include "outputdirectsound.h"
 #include "outputdirectsoundfactory.h"
+#include <QMessageBox>
+#include <QTranslator>
 
 const OutputProperties OutputDirectSoundFactory::properties() const
 {

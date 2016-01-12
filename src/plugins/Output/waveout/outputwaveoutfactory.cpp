@@ -21,6 +21,8 @@
 
 #include "outputwaveout.h"
 #include "outputwaveoutfactory.h"
+#include <QMessageBox>
+#include <QTranslator>
 
 
 const OutputProperties OutputWaveOutFactory::properties() const
