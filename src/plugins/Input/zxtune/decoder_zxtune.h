@@ -72,7 +72,7 @@ public:
     void seek(qint64);
 
 	static double FrameDuration(Parameters::Accessor::Ptr props);
-	static QMap<Qmmp::MetaData, QString> GetMetadata(Module::Holder::Ptr module, const QString& subname, int track_idx);
+	static QMap<Qmmp::MetaData, QString> GetMetadata(Module::Holder::Ptr module, const QString& subname);
 
 private:
 	bool	eos;

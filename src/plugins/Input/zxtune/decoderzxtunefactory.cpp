@@ -117,14 +117,6 @@ Decoder *DecoderZXTuneFactory::create(const QString &path, QIODevice *input)
     return new DecoderZXTune(path);
 }
 
-struct ModuleDesc
-{
-	Module::Holder::Ptr module;
-	std::string subname;
-};
-typedef std::vector<ModuleDesc> Modules;
-
-
 QList<FileInfo *> DecoderZXTuneFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *ignoredFiles)
 {
 	QList <FileInfo*> list;
@@ -161,48 +153,47 @@ QList<FileInfo *> DecoderZXTuneFactory::createPlayList(const QString &fileName, 
 		return list;
 	}
 
-	Modules	input_modules;
-
 	struct ModuleDetector : public Module::DetectCallback
 	{
-		ModuleDetector(Modules* _mods) : modules(_mods) {}
-		virtual void ProcessModule(ZXTune::DataLocation::Ptr location, ZXTune::Plugin::Ptr, Module::Holder::Ptr holder) const
+		ModuleDetector(const QString& _path, QList <FileInfo*>& _list) : path(_path), list(_list) {}
+		virtual void ProcessModule(ZXTune::DataLocation::Ptr location, ZXTune::Plugin::Ptr, Module::Holder::Ptr module) const
 		{
-			ModuleDesc m;
-			m.module = holder;
-			m.subname = location->GetPath()->AsString();
-			modules->push_back(m);
+			QString subname = QString::fromStdString(location->GetPath()->AsString());
+
+			FileInfo* info = new FileInfo();
+
+			QMap<Qmmp::MetaData, QString> meta = DecoderZXTune::GetMetadata(module, subname);
+			info->setMetaData(meta);
+
+			Module::Information::Ptr mi = module->GetModuleInformation();
+			Parameters::Accessor::Ptr props = module->GetModuleProperties();
+			double len = mi->FramesCount() * DecoderZXTune::FrameDuration(props);
+			QString fullPath = "zxtune://" + path;
+			if(!subname.isEmpty())
+				fullPath += "|" + subname;
+			info->setPath(fullPath);
+			info->setLength(len);
+			list << info;
 		}
 		virtual Log::ProgressCallback* GetProgress() const { return NULL; }
-		Modules* modules;
+		const QString& path;
+		QList <FileInfo*>& list;
 	};
 
-	ModuleDetector md(&input_modules);
+	ModuleDetector md(path, list);
 	Parameters::Container::Ptr params = Parameters::Container::Create();
 	Module::Detect(*params, ZXTune::CreateLocation(input_file), md);
-	if(input_modules.empty())
+	if(list.empty())
 	{
 		qWarning("DecoderZXTuneFactory: unsupported format");
 		return list;
 	}
-	int m_idx = 1;
-	for(Modules::iterator it = input_modules.begin(); it != input_modules.end(); ++it)
+	else if(list.size() > 1)
 	{
-		ModuleDesc& m = *it;
-		FileInfo* info = new FileInfo();
-
-		QMap<Qmmp::MetaData, QString> meta = DecoderZXTune::GetMetadata(m.module, QString::fromStdString(m.subname), input_modules.size() > 1 ? m_idx++ : 0);
-		info->setMetaData(meta);
-
-		Module::Information::Ptr mi = m.module->GetModuleInformation();
-		Parameters::Accessor::Ptr props = m.module->GetModuleProperties();
-		double len = mi->FramesCount() * DecoderZXTune::FrameDuration(props);
-		QString fullPath = "zxtune://" + path;
-		if(!m.subname.empty())
-			fullPath += "|" + QString::fromStdString(m.subname);
-		info->setPath(fullPath);
-		info->setLength(len);
-		list << info;
+		for(int idx = 0; idx < list.size(); ++idx)
+		{
+			list[idx]->setMetaData(Qmmp::TRACK, QString::number(idx + 1));
+		}
 	}
     return list;
 }

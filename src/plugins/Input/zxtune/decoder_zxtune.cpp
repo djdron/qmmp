@@ -81,7 +81,7 @@ bool DecoderZXTune::initialize()
 		return false;
 	}
 
-//	addMetaData(GetMetadata(m_module, m_subname, 0));
+//	addMetaData(GetMetadata(m_module, m_subname));
 
 	Module::Information::Ptr mi = m_module->GetModuleInformation();
 	Parameters::Accessor::Ptr props = m_module->GetModuleProperties();
@@ -128,7 +128,7 @@ double DecoderZXTune::FrameDuration(Parameters::Accessor::Ptr props)
 	return double(frameDuration) / Time::Microseconds::PER_SECOND;
 }
 
-QMap<Qmmp::MetaData, QString> DecoderZXTune::GetMetadata(Module::Holder::Ptr module, const QString& subname, int track_idx)
+QMap<Qmmp::MetaData, QString> DecoderZXTune::GetMetadata(Module::Holder::Ptr module, const QString& subname)
 {
 	QMap<Qmmp::MetaData, QString> metadata;
 
@@ -147,10 +147,6 @@ QMap<Qmmp::MetaData, QString> DecoderZXTune::GetMetadata(Module::Holder::Ptr mod
 	String program;
 	if(props->FindValue(Module::ATTR_PROGRAM, program) && !program.empty())
 		metadata.insert(Qmmp::COMPOSER, program.c_str());
-	if(track_idx > 0)
-	{
-		metadata.insert(Qmmp::TRACK, QString::number(track_idx));
-	}
 	metadata.insert(Qmmp::URL, subname);
 	return metadata;
 }
