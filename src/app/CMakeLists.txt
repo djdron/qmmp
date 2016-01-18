@@ -7,7 +7,6 @@ endif(COMMAND cmake_policy)
 
 INCLUDE(UsePkgConfig)
 
-ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_THREAD)
 
@@ -41,7 +40,14 @@ QT5_ADD_RESOURCES(app_RCC_SRCS ${app_RCCS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+if(WIN32)
+ADD_EXECUTABLE(qmmp WIN32 ${app_SRCS} ${app_RCC_SRCS} ${app_HDRS} qmmp.rc)
+else(WIN32)
 ADD_EXECUTABLE(qmmp ${app_SRCS} ${app_RCC_SRCS} ${app_HDRS})
+endif(WIN32)
+if(CMAKE_COMPILER_IS_GNUCXX)
+set_target_properties(qmmp PROPERTIES COMPILE_FLAGS "-Wall")
+endif(CMAKE_COMPILER_IS_GNUCXX)
 target_link_libraries(qmmp Qt5::Widgets libqmmp qmmpui)
 add_dependencies(qmmp qmmpui libqmmp)
 install(TARGETS qmmp DESTINATION bin)
